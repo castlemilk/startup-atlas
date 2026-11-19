@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mexico batch 001 research sidecars (packet-local, not the Atlas API)",
+  "$defs": {
+    "https": {"type": "string", "pattern": "^https://[^/]+"},
+    "nullableDate": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "company": {
+      "type": "object",
+      "required": ["key", "name", "website", "canonical_domain", "entity_id", "record_status", "headquarters", "incorporation", "founding", "founders", "claim_ids", "funding_observation_ids", "unknowns", "conflicts", "country_assignment", "production_accepted"],
+      "properties": {
+        "key": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "name": {"type": "string", "minLength": 1},
+        "website": {"$ref": "#/$defs/https"},
+        "entity_id": {"type": "string", "pattern": "^staged:mx:"},
+        "record_status": {"enum": ["accepted_staged", "deferred"]},
+        "headquarters": {"type": ["object", "null"]},
+        "incorporation": {"type": ["object", "null"]},
+        "founding": {"type": ["object", "null"]},
+        "founders": {"type": "array", "items": {"type": "object", "required": ["name", "source_url"]}},
+        "claim_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "funding_observation_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "unknowns": {"type": "object"},
+        "conflicts": {"type": "array"},
+        "country_assignment": {"type": "object", "required": ["scope", "qualification", "nexus_claim_ids"]},
+        "production_accepted": {"const": false}
+      }
+    },
+    "companies": {"type": "object", "required": ["packet_schema_version", "country_code", "records"], "properties": {"packet_schema_version": {"const": 1}, "country_code": {"const": "MX"}, "records": {"type": "array", "maxItems": 50, "items": {"$ref": "#/$defs/company"}}}},
+    "claim": {
+      "type": "object",
+      "required": ["claim_id", "entity_id", "field", "value", "source_id", "source_url", "source_kind", "accessed", "retrieved_at", "retrieved_on", "published_on", "effective_on", "evidence", "acquisition", "confidence", "rationale", "status", "reviewed_at", "publication_state"],
+      "properties": {
+        "source_url": {"$ref": "#/$defs/https"},
+        "source_kind": {"enum": ["primary_company", "primary_investor", "regulatory", "secondary", "discovery"]},
+        "accessed": {"const": true},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "retrieved_on": {"type": "string", "format": "date"},
+        "reviewed_at": {"type": "string", "format": "date-time"},
+        "published_on": {"$ref": "#/$defs/nullableDate"},
+        "effective_on": {"$ref": "#/$defs/nullableDate"},
+        "confidence": {"enum": ["high", "medium", "low"]},
+        "status": {"enum": ["reviewed_staged", "conflict"]},
+        "publication_state": {"const": "unsubmitted"}
+      }
+    },
+    "ledger": {"type": "object", "required": ["claims"], "properties": {"claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}}}},
+    "fundingObservation": {
+      "type": "object",
+      "required": ["id", "company_key", "source_url", "transaction_kind", "announced_on", "announced_date", "date_precision", "amount", "currency", "participants", "projection_eligible", "identity_status", "aggregation_eligible"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "source_url": {"$ref": "#/$defs/https"},
+        "announced_on": {"$ref": "#/$defs/nullableDate"},
+        "date_precision": {"enum": ["day", "month", "year", "unknown"]},
+        "amount": {"type": ["integer", "null"], "exclusiveMinimum": 0},
+        "currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
+        "participants": {"type": "array", "items": {"type": "object", "required": ["name", "event_id", "role", "source_url", "resolved_entity_id", "claim_ids"], "properties": {"role": {"enum": ["lead", "participant", "unspecified"]}, "resolved_entity_id": {"type": "null"}, "source_url": {"$ref": "#/$defs/https"}}}},
+        "projection_eligible": {"type": "boolean"},
+        "aggregation_eligible": {"const": false}
+      }
+    },
+    "funding": {"type": "object", "required": ["observations"], "properties": {"observations": {"type": "array", "items": {"$ref": "#/$defs/fundingObservation"}}}}
+  }
+}

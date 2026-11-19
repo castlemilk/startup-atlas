@@ -2,6 +2,7 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { entityHref, kindName } from './graph-model.js';
 import { logoFor } from './logos.js';
 import { renderIcon } from './atlas-icons.js';
+import { featureSymbol } from './atlas-feature-symbols.js';
 
 export function icon(name) {
   return renderIcon(name);
@@ -11,13 +12,17 @@ export function entityBadge(kind) {
   return `<span class="atlas-badge" data-kind="${esc(kind)}">${esc(kindName(kind))}</span>`;
 }
 
+export function renderEvidenceHeading() {
+  return `<h2 class="atlas-evidence-heading"><span class="atlas-evidence-mark" aria-hidden="true">${icon('source')}</span>Sources &amp; context</h2>`;
+}
+
 export function renderViewNavigation(active) {
   const views = [
-    ['directory', './#directory', 'list', 'List & search'],
+    ['directory', './#directory', 'search', 'List & search'],
     ['treemap', './treemap.html', 'treemap', 'Treemap'],
     ['graph', './graph.html', 'graph', 'Graph']
   ];
-  return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${icon(glyph)}${label}</a>`).join('')}<a class="atlas-system-link" href="./design-system.html"${active === 'system' ? ' aria-current="page"' : ''}>${icon('system')}Design system</a></nav>`;
+  return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${featureSymbol(glyph, { size: 18 })}${label}</a>`).join('')}<a class="atlas-system-link" href="./design-system.html"${active === 'system' ? ' aria-current="page"' : ''}>${icon('system')}Design system</a></nav>`;
 }
 
 /** One operational masthead, derived from the five Atlas wireframes. */

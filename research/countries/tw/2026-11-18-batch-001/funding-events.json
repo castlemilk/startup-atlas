@@ -1,0 +1,1485 @@
+{
+  "events": [
+    {
+      "event_id": "ikala-2024-series-b-plus",
+      "company_id": "unresolved:startup:ikala",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Series B+",
+      "transaction_kind": "equity_financing",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2024-03-26",
+        "precision": "day",
+        "basis": "announcement"
+      },
+      "announced_on": "2024-03-26",
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": "strict_lower_bound",
+      "amount_text": "More than US$20.8 million (approximately TWD 660 million)",
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": 20800000,
+      "lower_bound_currency": "USD",
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": "Chunghwa Telecom is the explicit strategic lead. The amount is a strict lower bound, so exact amount/currency fields are omitted. Original company dollar wording remains in the claim ledger. Prior investor names are not assumed to join this round.",
+      "source_ids": [
+        "tw-sw-s02",
+        "tw-review-s06"
+      ],
+      "claim_ids": [
+        "tw-sw-ikala-funding-round-01",
+        "tw-sw-ikala-round-participant-01",
+        "tw-integrate-ikala-qualified-amount",
+        "tw-integrate-ikala-lead"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "cycraft-2019-series-b",
+      "company_id": "unresolved:startup:cycraft",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Series B",
+      "transaction_kind": "equity_financing",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2019-08-02",
+        "precision": "day",
+        "basis": "announcement"
+      },
+      "announced_on": "2019-08-02",
+      "closed_on": null,
+      "amount": 5650000,
+      "currency": "USD",
+      "amount_precision": "reported",
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": "Company reported the round closed by the announcement date; exact close date is unknown. Pavilion Capital and the CID Group are named; no lead is stated.",
+      "source_ids": [
+        "tw-sw-s04"
+      ],
+      "claim_ids": [
+        "tw-sw-cycraft-funding-round-01",
+        "tw-sw-cycraft-round-participant-01",
+        "tw-sw-cycraft-round-participant-02"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "kdan-2021-series-b",
+      "company_id": "unresolved:startup:kdan",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Series B",
+      "transaction_kind": "equity_financing",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2021-07-20",
+        "precision": "day",
+        "basis": "announcement"
+      },
+      "announced_on": "2021-07-20",
+      "closed_on": null,
+      "amount": 16000000,
+      "currency": "USD",
+      "amount_precision": "reported",
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": "Company blog publication date is 20 July 2021; footer also records an update on 28 February 2023. Announcement date is not an exact close date. No lead investor is stated.",
+      "source_ids": [
+        "tw-sw-s06"
+      ],
+      "claim_ids": [
+        "tw-sw-kdan-funding-round-01",
+        "tw-sw-kdan-round-participant-01",
+        "tw-sw-kdan-round-participant-02",
+        "tw-sw-kdan-round-participant-03",
+        "tw-sw-kdan-round-participant-04"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "teamt5-2022-series-a",
+      "company_id": "unresolved:startup:teamt5",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Series A",
+      "transaction_kind": "equity_financing",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2022",
+        "precision": "year",
+        "basis": "investment_year"
+      },
+      "announced_on": null,
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": "Undisclosed in accessed official announcement",
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": "2022 year is corroborated by later company press boilerplate. Announcement day, close day, amount and currency remain unknown. JAFCO leads, ITOCHU and MACNICA participate; JAFCO legal/fund identity remains unresolved.",
+      "source_ids": [
+        "tw-sw-s21",
+        "tw-sw-s31"
+      ],
+      "claim_ids": [
+        "tw-sw-teamt5-funding-event-year-01",
+        "tw-sw-teamt5-funding-round-01",
+        "tw-sw-teamt5-round-participant-01",
+        "tw-sw-teamt5-round-participant-02",
+        "tw-sw-teamt5-round-participant-03"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Pre-A",
+      "transaction_kind": "equity_financing",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2021-08-23",
+        "precision": "day",
+        "basis": "announcement"
+      },
+      "announced_on": "2021-08-23",
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": "$17 million (currency not explicit in accessed article)",
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": "CDIB Capital Group leads. Other named round investors retained below as unresolved identities. Amount/currency numeric pair omitted because dollar symbol is unqualified.",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-funding-round-01",
+        "tw-sw-xrex-round-participant-01",
+        "tw-sw-xrex-round-participant-02",
+        "tw-sw-xrex-round-participant-03",
+        "tw-sw-xrex-round-participant-04",
+        "tw-sw-xrex-round-participant-05",
+        "tw-sw-xrex-round-participant-06",
+        "tw-sw-xrex-round-participant-07",
+        "tw-sw-xrex-round-participant-08",
+        "tw-sw-xrex-round-participant-09",
+        "tw-sw-xrex-round-participant-10",
+        "tw-sw-xrex-round-participant-11"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "xrex-2024-tether-strategic",
+      "company_id": "unresolved:startup:xrex",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Strategic investment",
+      "transaction_kind": "equity_financing",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2024-06-05",
+        "precision": "day",
+        "basis": "announcement"
+      },
+      "announced_on": "2024-06-05",
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": "$18.75 million (currency not explicit in accessed article)",
+      "amount_scope": "investor_contribution",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": "Tether announced a strategic investment. The quoted amount is Tether investment, not necessarily total round size. Existing investor lineup is not evidence those firms participated in this event.",
+      "source_ids": [
+        "tw-sw-s15"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-funding-round-02",
+        "tw-sw-xrex-round-participant-12"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "jmem-tek-2023-12-seed",
+      "company_id": "unresolved:startup:jmem-tek",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Seed",
+      "transaction_kind": "capital_increase",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2023-12",
+        "precision": "month",
+        "basis": "completion_period"
+      },
+      "announced_on": null,
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": null,
+      "source_ids": [
+        "tw-dt-s03"
+      ],
+      "claim_ids": [
+        "tw-dt-jmem-tek-funding-round-008"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "jmem-tek-2024-04-pre-a-safe",
+      "company_id": "unresolved:startup:jmem-tek",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Pre-A SAFE",
+      "transaction_kind": "safe",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2024-04",
+        "precision": "month",
+        "basis": "completion_period"
+      },
+      "announced_on": null,
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": null,
+      "source_ids": [
+        "tw-dt-s03"
+      ],
+      "claim_ids": [
+        "tw-dt-jmem-tek-funding-round-009"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "jmem-tek-2025-03-pre-a",
+      "company_id": "unresolved:startup:jmem-tek",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Pre-A",
+      "transaction_kind": "funding",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2025-03",
+        "precision": "month",
+        "basis": "completion_period"
+      },
+      "announced_on": null,
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": null,
+      "source_ids": [
+        "tw-dt-s03"
+      ],
+      "claim_ids": [
+        "tw-dt-jmem-tek-funding-round-010"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "profet-ai-2023-01-series-a",
+      "company_id": "unresolved:startup:profet-ai",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Series A",
+      "transaction_kind": "venture_funding",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2023-01-04",
+        "precision": "day",
+        "basis": "announcement_dateline"
+      },
+      "announced_on": "2023-01-04",
+      "closed_on": null,
+      "amount": 5600000,
+      "currency": "USD",
+      "amount_precision": "reported",
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": "Dateline January 4; distribution page January 5. Exact closing day is unknown.",
+      "source_ids": [
+        "tw-dt-s06"
+      ],
+      "claim_ids": [
+        "tw-dt-profet-ai-funding-round-018",
+        "tw-dt-profet-ai-round-participant-019",
+        "tw-dt-profet-ai-round-participant-020",
+        "tw-dt-profet-ai-round-participant-021",
+        "tw-dt-profet-ai-round-participant-022",
+        "tw-dt-profet-ai-round-participant-023",
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "jellox-biotech-2018-11-seed",
+      "company_id": "unresolved:startup:jellox-biotech",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Seed",
+      "transaction_kind": "funding",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2018-11",
+        "precision": "month",
+        "basis": "completion_period"
+      },
+      "announced_on": null,
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": null,
+      "source_ids": [
+        "tw-dt-s12"
+      ],
+      "claim_ids": [
+        "tw-dt-jellox-biotech-funding-round-041"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "jellox-biotech-2019-06-angel",
+      "company_id": "unresolved:startup:jellox-biotech",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Angel",
+      "transaction_kind": "funding",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2019-06",
+        "precision": "month",
+        "basis": "completion_period"
+      },
+      "announced_on": null,
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": null,
+      "source_ids": [
+        "tw-dt-s12"
+      ],
+      "claim_ids": [
+        "tw-dt-jellox-biotech-funding-round-042"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "cancerfree-biotech-2021-05-skydeck",
+      "company_id": "unresolved:startup:cancerfree-biotech",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Accelerator investment",
+      "transaction_kind": "accelerator_investment",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2021-05",
+        "precision": "month",
+        "basis": "completion_period"
+      },
+      "announced_on": null,
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": null,
+      "source_ids": [
+        "tw-dt-s09"
+      ],
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-funding-round-048",
+        "tw-dt-cancerfree-biotech-round-participant-049"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "cancerfree-biotech-2022-11-draper",
+      "company_id": "unresolved:startup:cancerfree-biotech",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Meet the Drapers winner investment",
+      "transaction_kind": "competition_investment",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2022-11",
+        "precision": "month",
+        "basis": "completion_period"
+      },
+      "announced_on": null,
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": "$1 million; currency unspecified on reviewed source",
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": "Source reports an investment associated with winning the competition; no conventional venture-round stage is inferred.",
+      "source_ids": [
+        "tw-dt-s09"
+      ],
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-funding-round-050",
+        "tw-dt-cancerfree-biotech-round-participant-051"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "aetherai-2024-series-b",
+      "company_id": "unresolved:startup:aetherai",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Series B",
+      "transaction_kind": "venture_funding",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2024",
+        "precision": "year",
+        "basis": "completion_period"
+      },
+      "announced_on": null,
+      "closed_on": null,
+      "amount": 765000000,
+      "currency": "TWD",
+      "amount_precision": "reported",
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": null,
+      "source_ids": [
+        "tw-dt-s21"
+      ],
+      "claim_ids": [
+        "tw-dt-aetherai-funding-round-061",
+        "tw-dt-aetherai-round-participant-062",
+        "tw-dt-aetherai-round-participant-063",
+        "tw-dt-aetherai-round-participant-064",
+        "tw-dt-aetherai-round-participant-065"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "tmytek-2024-12-09-series-b-plus",
+      "company_id": "unresolved:startup:tmytek",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Series B+",
+      "transaction_kind": "venture_funding",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2024-12-09",
+        "precision": "day",
+        "basis": "announcement_dateline"
+      },
+      "announced_on": "2024-12-09",
+      "closed_on": null,
+      "amount": 25000000,
+      "currency": "USD",
+      "amount_precision": "reported",
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": "US$25M is the incremental Series B+; US$40M is the total Series B aggregate and is not a second event.",
+      "source_ids": [
+        "tw-dt-s17"
+      ],
+      "claim_ids": [
+        "tw-dt-tmytek-funding-round-072",
+        "tw-dt-tmytek-round-participant-073",
+        "tw-dt-tmytek-round-participant-074",
+        "tw-dt-tmytek-round-participant-075"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "coolbitx-2020-series-b",
+      "company_id": "unresolved:startup:coolbitx",
+      "investee_label_as_reported": null,
+      "stage_as_reported": "Series B",
+      "transaction_kind": "unknown",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2020-02-25",
+        "precision": "day",
+        "basis": "announcement"
+      },
+      "announced_on": "2020-02-25",
+      "closed_on": null,
+      "amount": 16750000,
+      "currency": "USD",
+      "amount_precision": "exact",
+      "amount_text": null,
+      "amount_scope": "reported_event_total",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": null,
+      "source_ids": [
+        "TW-ROOT-002"
+      ],
+      "claim_ids": [
+        "tw-root-006",
+        "tw-root-007",
+        "tw-root-008",
+        "tw-root-009",
+        "tw-root-010"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "kkday-2024-12-financing",
+      "company_id": "unresolved:startup:kkday",
+      "investee_label_as_reported": null,
+      "stage_as_reported": null,
+      "transaction_kind": "mixed",
+      "event_status": "reported_historical",
+      "date": {
+        "value": "2024-12-05",
+        "precision": "day",
+        "basis": "announcement"
+      },
+      "announced_on": "2024-12-05",
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": "approximate",
+      "amount_text": "総額約7,000万ドル（約100億円）",
+      "amount_scope": "combined investments and credit facilities",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": null,
+      "equity_percentage": null,
+      "note": null,
+      "source_ids": [
+        "TW-ROOT-004"
+      ],
+      "claim_ids": [
+        "tw-root-016",
+        "tw-root-017",
+        "tw-root-018",
+        "tw-root-019",
+        "tw-root-020",
+        "tw-root-021"
+      ],
+      "participants_complete": false,
+      "production_projection": "funding_round"
+    },
+    {
+      "event_id": "funnow-hotai-2026-09-22",
+      "company_id": "unresolved:startup:funnow",
+      "investee_label_as_reported": "FunNow Ltd.",
+      "stage_as_reported": null,
+      "transaction_kind": "planned_equity_contribution",
+      "event_status": "planned_announcement",
+      "date": {
+        "value": "2026-09-22",
+        "precision": "day",
+        "basis": "announcement"
+      },
+      "announced_on": "2026-09-22",
+      "closed_on": null,
+      "amount": null,
+      "currency": null,
+      "amount_precision": null,
+      "amount_text": null,
+      "amount_scope": "round_total_unknown",
+      "amount_lower_bound": null,
+      "lower_bound_currency": null,
+      "valuation": null,
+      "valuation_currency": null,
+      "investor_contribution": {
+        "amount": 10000000,
+        "currency": "USD",
+        "precision": "exact"
+      },
+      "equity_percentage": {
+        "value": 10,
+        "precision": "approximate"
+      },
+      "note": null,
+      "source_ids": [
+        "TW-ROOT-013"
+      ],
+      "claim_ids": [
+        "tw-root-043",
+        "tw-root-044"
+      ],
+      "participants_complete": false,
+      "production_projection": "profile_fact"
+    }
+  ],
+  "participants": [
+    {
+      "participation_id": "ikala-2024-series-b-plus-participant-01",
+      "event_id": "ikala-2024-series-b-plus",
+      "company_id": "unresolved:startup:ikala",
+      "name_as_reported": "Chunghwa Telecom",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "tw-review-s06",
+        "tw-sw-s02"
+      ],
+      "claim_ids": [
+        "tw-integrate-ikala-lead",
+        "tw-sw-ikala-round-participant-01"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "cycraft-2019-series-b-participant-01",
+      "event_id": "cycraft-2019-series-b",
+      "company_id": "unresolved:startup:cycraft",
+      "name_as_reported": "Pavilion Capital",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s04"
+      ],
+      "claim_ids": [
+        "tw-sw-cycraft-round-participant-01"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "cycraft-2019-series-b-participant-02",
+      "event_id": "cycraft-2019-series-b",
+      "company_id": "unresolved:startup:cycraft",
+      "name_as_reported": "CID Group",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s04"
+      ],
+      "claim_ids": [
+        "tw-sw-cycraft-round-participant-02"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "kdan-2021-series-b-participant-01",
+      "event_id": "kdan-2021-series-b",
+      "company_id": "unresolved:startup:kdan",
+      "name_as_reported": "Dattoz Partners",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s06"
+      ],
+      "claim_ids": [
+        "tw-sw-kdan-round-participant-01"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "kdan-2021-series-b-participant-02",
+      "event_id": "kdan-2021-series-b",
+      "company_id": "unresolved:startup:kdan",
+      "name_as_reported": "WI Harper Group",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s06"
+      ],
+      "claim_ids": [
+        "tw-sw-kdan-round-participant-02"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "kdan-2021-series-b-participant-03",
+      "event_id": "kdan-2021-series-b",
+      "company_id": "unresolved:startup:kdan",
+      "name_as_reported": "Taiwania Capital",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s06"
+      ],
+      "claim_ids": [
+        "tw-sw-kdan-round-participant-03"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "kdan-2021-series-b-participant-04",
+      "event_id": "kdan-2021-series-b",
+      "company_id": "unresolved:startup:kdan",
+      "name_as_reported": "Golden Asia Fund Mitsubishi UFJ Capital",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s06"
+      ],
+      "claim_ids": [
+        "tw-sw-kdan-round-participant-04"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "teamt5-2022-series-a-participant-01",
+      "event_id": "teamt5-2022-series-a",
+      "company_id": "unresolved:startup:teamt5",
+      "name_as_reported": "JAFCO",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s31"
+      ],
+      "claim_ids": [
+        "tw-sw-teamt5-round-participant-01"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "teamt5-2022-series-a-participant-02",
+      "event_id": "teamt5-2022-series-a",
+      "company_id": "unresolved:startup:teamt5",
+      "name_as_reported": "ITOCHU",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s31"
+      ],
+      "claim_ids": [
+        "tw-sw-teamt5-round-participant-02"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "teamt5-2022-series-a-participant-03",
+      "event_id": "teamt5-2022-series-a",
+      "company_id": "unresolved:startup:teamt5",
+      "name_as_reported": "MACNICA",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s31"
+      ],
+      "claim_ids": [
+        "tw-sw-teamt5-round-participant-03"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-01",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "CDIB Capital Group",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-01"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-02",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "SBI Investment",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-02"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-03",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "Global Founders Capital",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-03"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-04",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "ThreeD Capital",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-04"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-05",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "E.Sun Venture Capital",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-05"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-06",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "Systex Corporation",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-06"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-07",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "Metaplanet Holdings",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-07"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-08",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "AppWorks",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-08"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-09",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "Black Marble",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-09"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-10",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "New Economy Ventures",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-10"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2021-pre-a-participant-11",
+      "event_id": "xrex-2021-pre-a",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "Seraph Group",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s09"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-11"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "xrex-2024-tether-strategic-participant-01",
+      "event_id": "xrex-2024-tether-strategic",
+      "company_id": "unresolved:startup:xrex",
+      "name_as_reported": "Tether",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-sw-s15"
+      ],
+      "claim_ids": [
+        "tw-sw-xrex-round-participant-12"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "profet-ai-2023-01-series-a-participant-01",
+      "event_id": "profet-ai-2023-01-series-a",
+      "company_id": "unresolved:startup:profet-ai",
+      "name_as_reported": "Darwin Ventures",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s06"
+      ],
+      "claim_ids": [
+        "tw-dt-profet-ai-round-participant-019"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "profet-ai-2023-01-series-a-participant-02",
+      "event_id": "profet-ai-2023-01-series-a",
+      "company_id": "unresolved:startup:profet-ai",
+      "name_as_reported": "Hive Ventures",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s06"
+      ],
+      "claim_ids": [
+        "tw-dt-profet-ai-round-participant-020"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "profet-ai-2023-01-series-a-participant-03",
+      "event_id": "profet-ai-2023-01-series-a",
+      "company_id": "unresolved:startup:profet-ai",
+      "name_as_reported": "AUO",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s06"
+      ],
+      "claim_ids": [
+        "tw-dt-profet-ai-round-participant-021"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "profet-ai-2023-01-series-a-participant-04",
+      "event_id": "profet-ai-2023-01-series-a",
+      "company_id": "unresolved:startup:profet-ai",
+      "name_as_reported": "SVTI",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s06"
+      ],
+      "claim_ids": [
+        "tw-dt-profet-ai-round-participant-022"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "profet-ai-2023-01-series-a-participant-05",
+      "event_id": "profet-ai-2023-01-series-a",
+      "company_id": "unresolved:startup:profet-ai",
+      "name_as_reported": "Harbinger Venture Capital",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s06"
+      ],
+      "claim_ids": [
+        "tw-dt-profet-ai-round-participant-023"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "profet-ai-2023-01-series-a-participant-06",
+      "event_id": "profet-ai-2023-01-series-a",
+      "company_id": "unresolved:startup:profet-ai",
+      "name_as_reported": "Jensen-Capital Management",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s06"
+      ],
+      "claim_ids": [
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "cancerfree-biotech-2021-05-skydeck-participant-01",
+      "event_id": "cancerfree-biotech-2021-05-skydeck",
+      "company_id": "unresolved:startup:cancerfree-biotech",
+      "name_as_reported": "Berkeley SkyDeck (investing legal entity unresolved)",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s09"
+      ],
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-round-participant-049"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "cancerfree-biotech-2022-11-draper-participant-01",
+      "event_id": "cancerfree-biotech-2022-11-draper",
+      "company_id": "unresolved:startup:cancerfree-biotech",
+      "name_as_reported": "Tim Draper",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s09"
+      ],
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-round-participant-051"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "aetherai-2024-series-b-participant-01",
+      "event_id": "aetherai-2024-series-b",
+      "company_id": "unresolved:startup:aetherai",
+      "name_as_reported": "CDIB Capital",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s21"
+      ],
+      "claim_ids": [
+        "tw-dt-aetherai-round-participant-062"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "aetherai-2024-series-b-participant-02",
+      "event_id": "aetherai-2024-series-b",
+      "company_id": "unresolved:startup:aetherai",
+      "name_as_reported": "Quanta Computer",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s21"
+      ],
+      "claim_ids": [
+        "tw-dt-aetherai-round-participant-063"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "aetherai-2024-series-b-participant-03",
+      "event_id": "aetherai-2024-series-b",
+      "company_id": "unresolved:startup:aetherai",
+      "name_as_reported": "Taiwan Business Bank VC",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s21"
+      ],
+      "claim_ids": [
+        "tw-dt-aetherai-round-participant-064"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "aetherai-2024-series-b-participant-04",
+      "event_id": "aetherai-2024-series-b",
+      "company_id": "unresolved:startup:aetherai",
+      "name_as_reported": "Cathay Venture",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s21"
+      ],
+      "claim_ids": [
+        "tw-dt-aetherai-round-participant-065"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "tmytek-2024-12-09-series-b-plus-participant-01",
+      "event_id": "tmytek-2024-12-09-series-b-plus",
+      "company_id": "unresolved:startup:tmytek",
+      "name_as_reported": "Amazing Microelectronic Corp.",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s17"
+      ],
+      "claim_ids": [
+        "tw-dt-tmytek-round-participant-073"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "tmytek-2024-12-09-series-b-plus-participant-02",
+      "event_id": "tmytek-2024-12-09-series-b-plus",
+      "company_id": "unresolved:startup:tmytek",
+      "name_as_reported": "EZconn Corporation",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s17"
+      ],
+      "claim_ids": [
+        "tw-dt-tmytek-round-participant-074"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "tmytek-2024-12-09-series-b-plus-participant-03",
+      "event_id": "tmytek-2024-12-09-series-b-plus",
+      "company_id": "unresolved:startup:tmytek",
+      "name_as_reported": "CDIB Capital Group",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "tw-dt-s17"
+      ],
+      "claim_ids": [
+        "tw-dt-tmytek-round-participant-075"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "coolbitx-2020-series-b-participant-01",
+      "event_id": "coolbitx-2020-series-b",
+      "company_id": "unresolved:startup:coolbitx",
+      "name_as_reported": "SBI Crypto Investment Co., Ltd.",
+      "resolved_entity_id": null,
+      "role": "lead",
+      "status": "reported",
+      "source_ids": [
+        "TW-ROOT-002"
+      ],
+      "claim_ids": [
+        "tw-root-007"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "coolbitx-2020-series-b-participant-02",
+      "event_id": "coolbitx-2020-series-b",
+      "company_id": "unresolved:startup:coolbitx",
+      "name_as_reported": "Monex Group",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "TW-ROOT-002"
+      ],
+      "claim_ids": [
+        "tw-root-008"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "coolbitx-2020-series-b-participant-03",
+      "event_id": "coolbitx-2020-series-b",
+      "company_id": "unresolved:startup:coolbitx",
+      "name_as_reported": "BitSonic",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "TW-ROOT-002"
+      ],
+      "claim_ids": [
+        "tw-root-009"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "coolbitx-2020-series-b-participant-04",
+      "event_id": "coolbitx-2020-series-b",
+      "company_id": "unresolved:startup:coolbitx",
+      "name_as_reported": "National Development Fund of Taiwan",
+      "resolved_entity_id": null,
+      "role": "participant",
+      "status": "reported",
+      "source_ids": [
+        "TW-ROOT-002"
+      ],
+      "claim_ids": [
+        "tw-root-010"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "kkday-2024-12-financing-participant-01",
+      "event_id": "kkday-2024-12-financing",
+      "company_id": "unresolved:startup:kkday",
+      "name_as_reported": "Cool Japan Fund",
+      "resolved_entity_id": null,
+      "role": "unspecified",
+      "status": "reported",
+      "source_ids": [
+        "TW-ROOT-004"
+      ],
+      "claim_ids": [
+        "tw-root-017"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "kkday-2024-12-financing-participant-02",
+      "event_id": "kkday-2024-12-financing",
+      "company_id": "unresolved:startup:kkday",
+      "name_as_reported": "National Development Fund of Taiwan",
+      "resolved_entity_id": null,
+      "role": "unspecified",
+      "status": "reported",
+      "source_ids": [
+        "TW-ROOT-004"
+      ],
+      "claim_ids": [
+        "tw-root-018"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "kkday-2024-12-financing-participant-03",
+      "event_id": "kkday-2024-12-financing",
+      "company_id": "unresolved:startup:kkday",
+      "name_as_reported": "ZUU & De Capital Fund",
+      "resolved_entity_id": null,
+      "role": "unspecified",
+      "status": "reported",
+      "source_ids": [
+        "TW-ROOT-004"
+      ],
+      "claim_ids": [
+        "tw-root-019"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "kkday-2024-12-financing-participant-04",
+      "event_id": "kkday-2024-12-financing",
+      "company_id": "unresolved:startup:kkday",
+      "name_as_reported": "Chang Hwa Venture Capital",
+      "resolved_entity_id": null,
+      "role": "unspecified",
+      "status": "reported",
+      "source_ids": [
+        "TW-ROOT-004"
+      ],
+      "claim_ids": [
+        "tw-root-020"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "kkday-2024-12-financing-participant-05",
+      "event_id": "kkday-2024-12-financing",
+      "company_id": "unresolved:startup:kkday",
+      "name_as_reported": "Darwin Ventures",
+      "resolved_entity_id": null,
+      "role": "unspecified",
+      "status": "reported",
+      "source_ids": [
+        "TW-ROOT-004"
+      ],
+      "claim_ids": [
+        "tw-root-021"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    },
+    {
+      "participation_id": "funnow-hotai-2026-09-22-participant-01",
+      "event_id": "funnow-hotai-2026-09-22",
+      "company_id": "unresolved:startup:funnow",
+      "name_as_reported": "Hotai Motor",
+      "resolved_entity_id": null,
+      "role": "unspecified",
+      "status": "planned",
+      "source_ids": [
+        "TW-ROOT-013"
+      ],
+      "claim_ids": [
+        "tw-root-044"
+      ],
+      "identity_status": "unresolved_no_canonical_edge"
+    }
+  ],
+  "canonical_investor_edges_proposed": 0
+}

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:startup-atlas:research:ch:2026-11-18:batch-001",
+  "title": "Switzerland research sidecar envelope (not a production API schema)",
+  "type": "object",
+  "required": ["schema_version", "document_type", "run_id", "country_code", "as_of"],
+  "properties": {
+    "schema_version": {"const": "ch-research-packet-v1"},
+    "document_type": {"enum": ["companies", "company_claims", "sources", "projection_map", "financing", "queue"]},
+    "run_id": {"type": "string", "minLength": 1},
+    "country_code": {"const": "CH"},
+    "as_of": {"type": "string", "format": "date"},
+    "companies": {"type": "array", "items": {"$ref": "#/$defs/company"}},
+    "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+    "sources": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+    "records": {"type": "array", "items": {"type": "object", "required": ["entity_id", "record_name", "all_claim_ids"]}},
+    "events": {"type": "array", "items": {"$ref": "#/$defs/event"}},
+    "source_tasks": {"type": "array", "items": {"type": "object", "required": ["queue_id", "crawler_seed_approved"], "properties": {"queue_id": {"type": "string"}, "crawler_seed_approved": {"const": false}}}},
+    "company_worklist": {"type": "array", "items": {"type": "object", "required": ["item_id", "name", "state"], "properties": {"state": {"enum": ["reviewed", "queued"]}}}},
+    "checkpoint": {"type": "object", "required": ["base_revision", "worklist_sha256", "next_index", "next_item_id", "cursor", "worklist_exhausted"], "properties": {"base_revision": {"type": "string", "pattern": "^[a-f0-9]{40}$"}, "worklist_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "next_index": {"type": "integer", "minimum": 0}, "worklist_exhausted": {"const": false}}}
+  },
+  "allOf": [
+    {"if": {"properties": {"document_type": {"const": "companies"}}}, "then": {"required": ["companies"]}},
+    {"if": {"properties": {"document_type": {"const": "company_claims"}}}, "then": {"required": ["claims"]}},
+    {"if": {"properties": {"document_type": {"const": "sources"}}}, "then": {"required": ["sources"]}},
+    {"if": {"properties": {"document_type": {"const": "projection_map"}}}, "then": {"required": ["records"]}},
+    {"if": {"properties": {"document_type": {"const": "financing"}}}, "then": {"required": ["events"]}},
+    {"if": {"properties": {"document_type": {"const": "queue"}}}, "then": {"required": ["source_tasks", "company_worklist", "checkpoint"]}}
+  ],
+  "$defs": {
+    "https": {"type": "string", "format": "uri", "pattern": "^https://"},
+    "nullable_date": {"anyOf": [{"type": "string", "format": "date"}, {"type": "null"}]},
+    "company": {
+      "type": "object",
+      "required": ["entity_id", "name", "slug", "canonical_domain", "website", "aliases", "founded", "headquarters", "incorporation", "disposition", "claim_ids", "funding_event_ids", "canonical_atlas_id", "publication_state", "crawler_seed_approved"],
+      "properties": {
+        "entity_id": {"type": "string", "pattern": "^unresolved:ch:[a-z0-9-]+$"},
+        "name": {"type": "string", "minLength": 1},
+        "slug": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"},
+        "canonical_domain": {"type": "string", "pattern": "^[a-z0-9.-]+\\.[a-z]{2,}$"},
+        "website": {"$ref": "#/$defs/https"},
+        "aliases": {"type": "array", "items": {"type": "object", "required": ["name", "type"], "properties": {"name": {"type": "string", "minLength": 1}, "type": {"type": "string"}}}},
+        "founded": {"type": "object", "required": ["value", "precision"], "properties": {"value": {"type": ["string", "null"]}, "precision": {"enum": ["day", "month", "year", null]}}},
+        "headquarters": {"type": ["object", "null"]},
+        "incorporation": {"type": "object", "required": ["status"], "properties": {"status": {"type": "string"}}},
+        "canonical_atlas_id": {"type": "null"},
+        "disposition": {"enum": ["accepted_staged_candidate", "excluded_from_independent_swiss_candidate_batch"]},
+        "claim_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "funding_event_ids": {"type": "array", "items": {"type": "string", "pattern": "^unresolved:funding:"}, "uniqueItems": true},
+        "publication_state": {"const": "unsubmitted"},
+        "crawler_seed_approved": {"const": false}
+      }
+    },
+    "claim": {
+      "type": "object",
+      "required": ["claim_id", "entity_id", "field", "value", "status", "rationale", "publication_state"],
+      "properties": {
+        "claim_id": {"type": "string", "minLength": 1},
+        "entity_id": {"type": "string", "pattern": "^unresolved:ch:"},
+        "field": {"type": "string", "minLength": 1},
+        "status": {"enum": ["reviewed_staged", "conflict", "unsearched", "searched_unknown", "blocked", "rejected", "candidate", "not_applicable"]},
+        "source_id": {"type": "string"},
+        "source_url": {"$ref": "#/$defs/https"},
+        "source_kind": {"enum": ["primary_company", "primary_investor", "regulatory", "secondary", "discovery"]},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "published_on": {"$ref": "#/$defs/nullable_date"},
+        "effective_on": {"$ref": "#/$defs/nullable_date"},
+        "confidence": {"enum": ["high", "medium", "low"]},
+        "rationale": {"type": "string", "minLength": 1},
+        "publication_state": {"const": "unsubmitted"}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"enum": ["reviewed_staged", "conflict", "candidate"]}}}, "then": {"required": ["source_id", "source_url", "source_kind", "retrieved_at", "published_on", "effective_on", "evidence", "acquisition", "confidence", "accessed"], "properties": {"value": {"not": {"type": "null"}}}}},
+        {"if": {"properties": {"status": {"const": "reviewed_staged"}}}, "then": {"required": ["reviewed_at"], "properties": {"accessed": {"const": true}, "source_kind": {"not": {"const": "discovery"}}, "reviewed_at": {"type": "string", "format": "date-time"}}}},
+        {"if": {"properties": {"status": {"const": "searched_unknown"}}}, "then": {"required": ["search_log"]}}
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": ["source_id", "url", "retrieved_on", "accessed", "access_status", "crawler_seed_approved", "canonical_source_id", "claim_ids", "ecosystem_claim_ids"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "url": {"$ref": "#/$defs/https"},
+        "retrieved_on": {"type": "string", "format": "date"},
+        "accessed": {"type": "boolean"},
+        "access_status": {"type": "string"},
+        "crawler_seed_approved": {"const": false},
+        "claim_ids": {"type": "array", "items": {"type": "string"}},
+        "ecosystem_claim_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": ["event_id", "company_id", "claim_id", "source_url", "announced_on", "announcement_date_precision", "closed_on", "amount", "currency", "amount_measure", "participants", "production_investor_edges_created"],
+      "properties": {
+        "event_id": {"type": "string", "pattern": "^unresolved:funding:"},
+        "company_id": {"type": "string", "pattern": "^unresolved:ch:"},
+        "source_url": {"$ref": "#/$defs/https"},
+        "announced_on": {"$ref": "#/$defs/nullable_date"},
+        "closed_on": {"$ref": "#/$defs/nullable_date"},
+        "announcement_date_precision": {"enum": ["day", "month", "year", "unknown", null]},
+        "amount": {"type": ["integer", "null"], "minimum": 0},
+        "currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
+        "amount_measure": {"type": ["string", "null"]},
+        "participants": {"type": "array", "items": {"type": "object", "required": ["name", "role", "canonical_investor_id", "claim_id", "source_url"], "properties": {"name": {"type": "string", "minLength": 1}, "role": {"enum": ["lead", "participant", "unspecified"]}, "canonical_investor_id": {"type": "null"}, "source_url": {"$ref": "#/$defs/https"}}}},
+        "production_investor_edges_created": {"const": false}
+      }
+    }
+  }
+}

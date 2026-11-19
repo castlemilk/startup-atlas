@@ -142,6 +142,8 @@ Small badge text and graph annotations are supplementary. Core names, actions an
 
 The operational views share a 1640px maximum shell. Their panel arrangements follow the five wireframes and retain route-specific reading order.
 
+Directory, Treemap and Graph use the shared `.atlas-feature` introduction with the corresponding Signal artwork from the asset library. The full composition appears in a white panel on wide screens. Narrow screens retain the same title and task description with the matching Signal symbol in navigation. Profile headers keep the record identity in view, and a common source-document symbol identifies the source section on company, person, programme, provider and partner profiles.
+
 | View | Wide composition | Responsive changes |
 | --- | --- | --- |
 | List & search | Flexible results, 350px inspector and 24px gap inside one white research panel. | Inspector reduces to 310px at 1200px; stacks at 900px. Other directory scopes retain their list layouts. |

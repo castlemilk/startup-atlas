@@ -138,6 +138,47 @@ class ExtractionTests(unittest.TestCase):
         self.assertTrue(all(not item['context'].startswith('L5:') for item in row['amount_mentions']))
 
 class TransportTests(unittest.TestCase):
+    def test_robots_paths_are_rejected_before_dns_or_network(self):
+        transport=crawl.Transport()
+        paths=['/robots.txt','/ROBOTS.TXT?x=1','/%72obots%2Etxt','/%2572obots.txt',
+               '/nested%2frobots.txt','/a/../robots.txt','/robots.txt;version=1',
+               '/robots.txt/extra','/robots.txt.','/a%5crobots.txt']
+        with patch.object(crawl.socket,'getaddrinfo') as dns, patch.object(transport.opener,'open') as request:
+            for path in paths:
+                with self.subTest(path=path), self.assertRaisesRegex(crawl.CrawlError,'disabled by source policy'):
+                    transport.request('https://example.com'+path)
+            dns.assert_not_called()
+            request.assert_not_called()
+
+    def test_deeply_encoded_paths_fail_closed_before_network(self):
+        transport=crawl.Transport()
+        for suffix in ['72obots.txt','61bout']:
+            url='https://example.com/%'+('25'*10000)+suffix
+            with patch.object(crawl.socket,'getaddrinfo') as dns, patch.object(transport.opener,'open') as request:
+                with self.assertRaisesRegex(crawl.CrawlError,'encoding exceeds'):
+                    transport.request(url)
+                dns.assert_not_called()
+                request.assert_not_called()
+
+    def test_ordinary_source_urls_keep_their_meaning(self):
+        for path in ['/robotics','/robots.txt-guide','/robots.txt.png','/?topic=robots.txt','/about#robots.txt']:
+            with self.subTest(path=path):
+                result=crawl.normalize_request_url('https://example.com'+path)
+                self.assertEqual(result,('https://example.com'+path).split('#')[0])
+
+    def test_redirect_to_robots_is_rejected_before_second_request(self):
+        class Response:
+            status=302
+            headers={'Location':'/%2572obots%252Etxt'}
+            def __enter__(self): return self
+            def __exit__(self,*args): pass
+        transport=crawl.Transport()
+        with patch.object(crawl.socket,'getaddrinfo',return_value=[(0,0,0,'',('93.184.216.34',443))]), patch.object(transport.opener,'open',return_value=Response()) as request:
+            with self.assertRaisesRegex(crawl.CrawlError,'disabled by source policy'):
+                transport.request('https://example.com/start')
+            self.assertEqual(request.call_count,1)
+            self.assertEqual(request.call_args.args[0].full_url,'https://example.com/start')
+
     def test_redirects_cannot_escape_host_or_skip_redirect_guard(self):
         class Response:
             status=302
@@ -157,6 +198,48 @@ class TransportTests(unittest.TestCase):
             self.assertEqual(len(calls),1)
 
 class WorkflowTests(unittest.TestCase):
+    def test_company_profile_mode_retains_subject_claims_without_fetching_assets(self):
+        class Fake:
+            def __init__(self): self.calls=[]
+            def request(self,url,allowed_host=None,**kwargs):
+                self.calls.append(url)
+                html=b'''<meta name="description" content="Source description"><script type="application/ld+json">{"@type":"Person","name":"Ada","jobTitle":"Researcher","image":"https://cdn.example/ada.jpg","sameAs":["https://www.linkedin.com/in/ada"]}</script><img alt="Ada" src="/ada.jpg"><a href="https://www.linkedin.com/company/example">LinkedIn</a><img class="logo" src="/logo.svg">'''
+                return 200,{'Content-Type':'text/html'},html,url
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'approved.csv'
+            path.write_text('partner,official_website,approved\nExample,https://example.com/,yes\n')
+            args=types.SimpleNamespace(approved=path,partner=None,limit=0,follow=0)
+            transport=Fake()
+            result=crawl.crawl_company_profiles([{'name':'Example','website':'https://example.com/'}],args,transport)
+            self.assertEqual(transport.calls,['https://example.com/'])
+            self.assertEqual(result['mode'],'company-profiles')
+            self.assertTrue(all(row['company']=='Example' and row['review_required'] and 'partner' not in row for row in result['candidates']))
+            profile=next(row for row in result['candidates'] if row['kind']=='company-profile')
+            self.assertEqual(profile['description'],'Source description')
+            self.assertEqual(profile['structured_subjects'][0]['jobTitle'],'Researcher')
+            self.assertEqual(profile['structured_subjects'][0]['name'],'Ada')
+            self.assertEqual(profile['logo_candidates'][0]['url'],'https://example.com/logo.svg')
+            self.assertEqual(result['coverage']['unreviewed_candidates'],len(result['candidates']))
+            self.assertTrue(profile['source_url'] and profile['checked_at'])
+
+    def test_company_about_links_and_accessible_icon_socials_are_discovered(self):
+        page=crawl.extract_page(b'<a href="/about">About</a><a href="https://x.com/Example" aria-label="X (Twitter)"><svg></svg></a><a href="https://youtube.com/@Example" title="YouTube"></a>', 'https://example.com/')
+        self.assertEqual(crawl.profile_landing_links(page,'https://example.com/',2),[])
+        self.assertEqual(crawl.profile_landing_links(page,'https://example.com/',2,include_about=True),[{'kind':'about','url':'https://example.com/about'}])
+        page.update(final_url='https://example.com/',checked_at='2026-11-17')
+        self.assertEqual([row['name'] for row in crawl.extract_profile_media_leads('Example',page,'homepage')],['X (Twitter)','YouTube'])
+
+    def test_company_profile_rejects_unknown_identity_or_changed_host_before_fetch(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'approved.csv'
+            args=types.SimpleNamespace(approved=path,partner=None,limit=0,follow=0)
+            class NoFetch:
+                def request(self,*args,**kwargs): raise AssertionError('Must not fetch')
+            for name,url in [('Unknown','https://example.com/'),('Example','https://other.example/')]:
+                path.write_text(f'partner,official_website,approved\n{name},{url},yes\n')
+                with self.assertRaises(crawl.CrawlError):
+                    crawl.crawl_company_profiles([{'name':'Example','website':'https://example.com/'}],args,NoFetch())
+
     def test_profile_crawl_follows_only_approved_host_and_stages_unverified_links(self):
         class Fake:
             def __init__(self): self.calls=[]
@@ -407,6 +490,114 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(candidate['label'],'Founder Program')
         self.assertEqual(candidate['source_scope'],'Australia')
         self.assertTrue(candidate['review_required'])
+    def test_program_discovery_preserves_each_source_and_page_observation(self):
+        class Fake:
+            def __init__(self): self.calls=[]
+            def request(self,url,allowed_host=None,**kwargs):
+                self.calls.append((url,allowed_host))
+                html=b'<a href="https://program.example/startup#one">Founder Program</a><a href="https://program.example/startup#two">Founder Program</a>'
+                if url.endswith('/national'):
+                    html+=b'<a href="/eligibility">Eligibility</a>'
+                return 200,{'Content-Type':'text/html'},html,url
+        registry={'sources':[
+            {'id':'national','name':'Directory','url':'https://example.com/national','scope':'Australia'},
+            {'id':'regional','name':'Directory','url':'https://example.com/regional','scope':'Victoria'},
+        ]}
+        args=types.SimpleNamespace(only=[],approved=None,limit=0,follow=1,partners_only=False)
+        transport=Fake()
+        with patch.object(crawl,'utc_now',return_value='2026-11-17T03:00:00+00:00'):
+            result=crawl.crawl_program_directories(registry,args,transport)
+        observations=result['candidates']
+        self.assertEqual([(c['source_id'],c['source_url'],c['source_scope']) for c in observations],[
+            ('national','https://example.com/national','Australia'),
+            ('national','https://example.com/eligibility','Australia'),
+            ('regional','https://example.com/regional','Victoria'),
+        ])
+        self.assertTrue(all(c['checked_at']=='2026-11-17T03:00:00+00:00' for c in observations))
+        self.assertTrue(all(c['review_required'] and 'eligibility' not in c for c in observations))
+        self.assertEqual(transport.calls,[
+            ('https://example.com/national','example.com'),
+            ('https://example.com/eligibility','example.com'),
+            ('https://example.com/regional','example.com'),
+        ])
+        self.assertEqual([s['observed_candidates'] for s in result['coverage']['sources']],[2,1])
+        self.assertEqual(result['coverage']['observed_candidates'],3)
+        with tempfile.TemporaryDirectory() as tmp:
+            review=Path(tmp)/'programs.csv'
+            crawl.write_program_review_csv(review,result)
+            with review.open(newline='') as handle: rows=list(csv.DictReader(handle))
+        self.assertEqual([(r['source_id'],r['source_url'],r['checked_at']) for r in rows],
+                         [(c['source_id'],c['source_url'],c['checked_at']) for c in observations])
+        self.assertTrue(all(r['approved']=='' for r in rows))
+
+    def test_program_coverage_distinguishes_failed_from_empty_success_and_partial(self):
+        class Fake:
+            def __init__(self): self.calls=[]
+            def request(self,url,*args,**kwargs):
+                self.calls.append(url)
+                if url.endswith('/failed'): raise crawl.CrawlError('DNS lookup failed')
+                if url.endswith('/partial'):
+                    return 200,{},b'<a href="/failed">Eligibility</a>',url
+                return 200,{},b'<main>No relevant links in this response</main>',url
+        registry={'sources':[{'id':name,'name':name,'url':'https://example.com/'+name,'scope':'Unknown'}
+                             for name in ('empty','failed','partial')]}
+        args=types.SimpleNamespace(only=[],approved=None,limit=0,follow=1,partners_only=False)
+        transport=Fake(); result=crawl.crawl_program_directories(registry,args,transport)
+        self.assertEqual(result['candidates'],[])
+        report=result['coverage']
+        self.assertEqual(report['fetch_status'],'partial')
+        self.assertEqual([s['fetch_status'] for s in report['sources']],['all_succeeded','none_succeeded','partial'])
+        self.assertEqual(transport.calls,['https://example.com/empty','https://example.com/failed','https://example.com/partial'])
+        self.assertEqual(report['pages_attempted'],3)
+        self.assertEqual(report['pages_succeeded'],2)
+        self.assertEqual(report['pages_skipped_or_failed'],1)
+        self.assertEqual(report['page_observations'],4)
+        self.assertEqual(report['reused_page_observations'],1)
+        self.assertEqual(report['sources'][2]['failed_page_observations'],1)
+        self.assertEqual(report['returned_candidates'],0)
+        self.assertFalse(report['truncated'])
+        self.assertNotIn('no programmes',report['note'].lower())
+
+    def test_program_coverage_reports_cap_and_omitted_source_observations(self):
+        sources=[{'id':str(n),'name':'Same display name','url':f'https://example.com/{n}','scope':'Unknown'} for n in range(5)]
+        rows=[{**s,'pages':[{'status':'ok','url':s['url'],'final_url':s['url'],'checked_at':'2026-11-17T03:00:00Z',
+                            'links':[{'text':f'Founder Program {n}','url':f'https://program.example/{n}'} for n in range(250)]}]} for s in sources]
+        with patch.object(crawl,'crawl_sites',return_value={'results':rows}):
+            result=crawl.crawl_program_directories({'sources':sources},object(),object())
+        report=result['coverage']
+        self.assertEqual(len(result['candidates']),1000)
+        self.assertEqual(report['observed_candidates'],1250)
+        self.assertEqual(report['returned_candidates'],1000)
+        self.assertEqual(report['unreviewed_candidates'],1000)
+        self.assertEqual(report['omitted_candidates'],250)
+        self.assertEqual(report['candidate_limit'],1000)
+        self.assertTrue(report['truncated'])
+        self.assertEqual([s['observed_candidates'] for s in report['sources']],[250]*5)
+        self.assertEqual([s['returned_candidates'] for s in report['sources']],[250]*4+[0])
+        self.assertEqual([s['omitted_candidates'] for s in report['sources']],[0]*4+[250])
+        with patch.object(crawl,'crawl_sites',return_value={'results':rows[:4]}):
+            boundary=crawl.crawl_program_directories({'sources':sources[:4]},object(),object())
+        self.assertFalse(boundary['coverage']['truncated'])
+
+    def test_program_shared_page_retains_source_attribution_but_counts_one_fetch(self):
+        class Fake:
+            def __init__(self): self.calls=[]
+            def request(self,url,*args,**kwargs):
+                self.calls.append(url)
+                return 200,{},b'<a href="/founder-program">Founder Program</a>',url
+        registry={'sources':[{'id':name,'name':name,'url':'https://example.com/directory','scope':name}
+                             for name in ('national','regional')]}
+        args=types.SimpleNamespace(only=[],approved=None,limit=0,follow=0,partners_only=False)
+        transport=Fake(); result=crawl.crawl_program_directories(registry,args,transport)
+        self.assertEqual(transport.calls,['https://example.com/directory'])
+        self.assertEqual([c['source_id'] for c in result['candidates']],['national','regional'])
+        self.assertEqual(result['coverage']['pages_attempted'],1)
+        self.assertEqual(result['coverage']['pages_succeeded'],1)
+        self.assertEqual(result['coverage']['page_observations'],2)
+        self.assertEqual(result['coverage']['reused_page_observations'],1)
+        self.assertEqual(result['coverage']['sources'][1]['new_fetch_attempts'],0)
+        self.assertEqual(result['coverage']['sources'][1]['successful_page_observations'],1)
+
     def test_named_heading_link_uses_following_programme_description(self):
         class Fake:
             delay=1

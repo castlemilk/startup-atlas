@@ -1,0 +1,142 @@
+{
+  "packet_version": 1,
+  "packet_id": "id-20261118-batch001",
+  "country": "Indonesia",
+  "country_code": "ID",
+  "prepared_at": "2026-11-18T10:12:31.081482+00:00",
+  "research_as_of": "2026-11-18",
+  "cohort": {
+    "user_supplied_label": "GDP 17/30 Indonesia",
+    "requested_vintage": "IMF October 2026 WEO",
+    "requested_measure": "NGDPD",
+    "requested_year": 2026,
+    "estimate_not_final_actual": true,
+    "publication_vintage_verified": true,
+    "numeric_nominal_gdp": null,
+    "currency": "USD",
+    "rank_independently_verified": false,
+    "rank": null,
+    "rank_label_from_user": 17,
+    "sources": [
+      "ID-E001",
+      "ID-E002",
+      "ID-E041"
+    ],
+    "reason": "Official October 2026 report read, but nominal-GDP API failed and DataMapper page supplied no values; growth table is not an acceptable substitute."
+  },
+  "scope": {
+    "maximum_initial_verified_startups": 50,
+    "bounded_checkpoint_size": 23,
+    "company_acceptance": "Claim-backed Indonesia ecosystem relevance; private status, current operating status, exhaustive founder lists and exhaustive funding histories not asserted.",
+    "production_modified": false,
+    "schemas_modified": false,
+    "crawler_seed_approval": false,
+    "no_live_crawler": true
+  },
+  "repository": {
+    "full_name": "castlemilk/startup-atlas",
+    "base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "base_tree": "f9032f5078ca130aba02f2b9ac0811eced8e1cbf",
+    "initial_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "branch": "research/indonesia-gdp17-20261118-batch01",
+    "owned_path": "research/countries/id/2026-11-18-batch-001/",
+    "startup_record_schema": "backend/hosted/src/startup-record.mjs",
+    "source_inputs_sha256": {
+      "partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+      "partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+      "partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+      "catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+      "startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41"
+    }
+  },
+  "ownership": {
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "replay": "https://github.com/castlemilk/startup-atlas/pull/178",
+    "scope_notice": "https://github.com/castlemilk/startup-atlas/pull/177#issuecomment-6974838009",
+    "owner_acknowledgment": "not_observed",
+    "merge_release_authority": "existing owners"
+  },
+  "counts": {
+    "discovered_candidates": 39,
+    "reviewed_candidates": 24,
+    "accepted_staged_startups": 23,
+    "listed_alumnus_context": 1,
+    "rejected_candidates": 0,
+    "discovered_unreviewed": 15,
+    "founder_records": 52,
+    "capital_events": 29,
+    "projected_funding_records": 26,
+    "event_participant_observations": 140,
+    "claims": 505,
+    "claim_statuses": {
+      "reviewed_staged": 457,
+      "unsearched": 23,
+      "searched_unknown": 16,
+      "conflict": 8,
+      "blocked": 1
+    },
+    "source_registry_rows": 148,
+    "distinct_registered_urls": 147,
+    "resume_queue_items": 39
+  },
+  "delivery_state": "reviewable_research_packet_not_production",
+  "integration_gates": [
+    {
+      "code": "unknown_founding_zero_fallback",
+      "status": "resolved_on_refreshed_main",
+      "affected_companies": [
+        "Mekari",
+        "Xendit",
+        "DANA",
+        "Ajaib",
+        "ALAMI",
+        "Fazz",
+        "Praktis",
+        "Astro",
+        "Paxel"
+      ],
+      "detail": "Existing owner fixed the omitted-year fallback in PR #179, merged at refreshed base ff4d51cf729d6a654787e9a1db63967b292df8c9. Nine packet omissions now remain absent in an in-memory graph; no shared implementation changes are made by this packet."
+    },
+    {
+      "code": "merge_omission_does_not_clear",
+      "status": "live_preflight_required",
+      "detail": "Existing mergeStartup retains prior round amount/currency when incoming fields are absent. A future matching record requires explicit owner resolution, not blind upsert."
+    },
+    {
+      "code": "typed_provenance",
+      "status": "sidecar_retained",
+      "detail": "Current schema has no typed event participants, date precision, instrument or group-geography fields. Preserve source ledger and event links; never manufacture graph investment edges from portfolio membership."
+    },
+    {
+      "code": "equity_components",
+      "status": "conservative_projection",
+      "detail": "JULO projection is USD30m equity with explicit component mapping. Traveloka facility and DANA individual placement use amount_text only. DANA transfer/conversion and Fazz facility term sheet remain sidecar-only."
+    },
+    {
+      "code": "lifecycle_and_aliases",
+      "status": "owner_review_required",
+      "detail": "Fore Coffee retained as listed context; cross-border, group/brand and predecessor observations do not assert one legal identity."
+    },
+    {
+      "code": "source_access",
+      "status": "incomplete",
+      "detail": "Blocked/partial sources and directory pagination remain recorded; research discovery does not approve crawler seeds."
+    }
+  ],
+  "files": {
+    "records": "records.json",
+    "company_index": "company-index.json",
+    "events": "funding-events.json",
+    "claims": "evidence-ledger.json",
+    "sources": "source-registry.json",
+    "ecosystem": "evidence/ecosystem.json",
+    "coverage": "coverage.json",
+    "deduplication": "deduplication.json",
+    "projection_map": "projection-map.json",
+    "integration": "INTEGRATION.md",
+    "validation": "validation.json",
+    "checksums": "checksums.sha256"
+  }
+}

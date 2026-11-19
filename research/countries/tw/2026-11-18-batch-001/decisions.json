@@ -1,0 +1,575 @@
+{
+  "reviewed_not_accepted": [
+    {
+      "entity_id": "unresolved:startup:appier",
+      "canonical_name": "Appier",
+      "disposition": "held",
+      "reason": "Listed Taiwan-origin alumnus; group legal identity/current HQ require reconciliation, and official history has duplicate conflicting founding entries.",
+      "source_url": "https://www.appier.com/en/about",
+      "source_ids": [
+        "tw-sw-s14"
+      ],
+      "research_detail": {
+        "staging_id": "unresolved:startup:appier",
+        "canonical_name": "Appier",
+        "disposition": "held",
+        "reason": "Listed Taiwan-origin alumnus; group legal identity/current HQ require reconciliation, and official history has duplicate conflicting founding entries.",
+        "source_url": "https://www.appier.com/en/about",
+        "observed": {
+          "founded_entries": [
+            "2012-06",
+            "2014-01"
+          ],
+          "founding_place": "Taipei, Taiwan",
+          "public_market": "Tokyo Stock Exchange"
+        },
+        "delivery_state": "unsubmitted",
+        "crawler_seed_approved": false
+      },
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:shopline",
+      "canonical_name": "SHOPLINE",
+      "disposition": "rejected_country_scope",
+      "reason": "Company-authored profile says Singapore headquarters; Taipei is one regional office. Do not count as Taiwan-headquartered startup.",
+      "source_url": "https://www.linkedin.com/company/shopline",
+      "source_ids": [
+        "tw-sw-s26"
+      ],
+      "research_detail": {
+        "staging_id": "unresolved:startup:shopline",
+        "canonical_name": "SHOPLINE",
+        "disposition": "rejected_country_scope",
+        "reason": "Company-authored profile says Singapore headquarters; Taipei is one regional office. Do not count as Taiwan-headquartered startup.",
+        "source_url": "https://www.linkedin.com/company/shopline",
+        "observed": {
+          "headquarters": "Singapore",
+          "taipei_presence": "regional office"
+        },
+        "delivery_state": "unsubmitted",
+        "crawler_seed_approved": false
+      },
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:avalanche-computing",
+      "canonical_name": "Avalanche Computing",
+      "disposition": "held",
+      "reason": [
+        "Current official page labels a US HQ. Retain for overseas-HQ cross-country reconciliation, not Taiwan-HQ count.",
+        "Corporate group versus Taiwan entity relationship and funding remain unresolved."
+      ],
+      "source_url": null,
+      "source_ids": [
+        "tw-dt-s08"
+      ],
+      "research_detail": {
+        "entity_id": "unresolved:startup:avalanche-computing",
+        "proposed_graph_id": "startup:avalanche-computing",
+        "canonical_name": "Avalanche Computing",
+        "canonical_domain": "avalanc.com",
+        "website": "https://www.avalanc.com/",
+        "aliases": [],
+        "identity_source_ids": [
+          "tw-dt-s08"
+        ],
+        "description": "Develops edge computing and enterprise generative-AI software.",
+        "description_source_ids": [
+          "tw-dt-s08"
+        ],
+        "sectors": [
+          "edge AI",
+          "enterprise software"
+        ],
+        "sector_semantics": "Research classification from sourced product description",
+        "classification": "taiwan_origin_overseas_hq",
+        "disposition": "held_overseas_headquarters",
+        "geography": {
+          "headquarters": {
+            "country": "United States",
+            "country_code": "US",
+            "city": "Palo Alto, California",
+            "source_ids": [
+              "tw-dt-s08"
+            ]
+          },
+          "operating_locations": [],
+          "incorporation": {
+            "country": "Taiwan",
+            "country_code": "TW",
+            "date": "2020",
+            "date_precision": "year",
+            "registration_id": null,
+            "registered_location": null,
+            "source_ids": [
+              "tw-dt-s08"
+            ],
+            "basis": "Company says registered in Taiwan in 2020; no direct registry checked."
+          }
+        },
+        "founding": null,
+        "founders": [
+          {
+            "name": "Jay Chen",
+            "canonical_person_id": null,
+            "aliases": [],
+            "source_ids": [
+              "tw-dt-s08"
+            ],
+            "role_as_reported": "Founder and CEO",
+            "role_as_of": null
+          },
+          {
+            "name": "F-H. Wang",
+            "canonical_person_id": null,
+            "aliases": [],
+            "source_ids": [
+              "tw-dt-s08"
+            ],
+            "role_as_reported": "Co-founder",
+            "role_as_of": null
+          }
+        ],
+        "funding_rounds": [],
+        "field_dispositions": {
+          "identity": {
+            "status": "reviewed_staged"
+          },
+          "description": {
+            "status": "reviewed_staged"
+          },
+          "founding": {
+            "status": "searched_unknown",
+            "reason": "2020 is the stated Taiwan registration year, not independently established founding.",
+            "search_log": [
+              {
+                "query": "Avalanche Computing Taiwan official founders funding",
+                "retrieved_at": "2026-11-18T09:48:47Z"
+              }
+            ],
+            "checked_source_urls": [
+              "https://www.avalanc.com/about"
+            ]
+          },
+          "headquarters": {
+            "status": "reviewed_staged",
+            "reason": null
+          },
+          "incorporation": {
+            "status": "reviewed_staged",
+            "reason": null
+          },
+          "founders": {
+            "status": "reviewed_staged",
+            "complete": false
+          },
+          "funding_rounds": {
+            "status": "searched_unknown",
+            "complete": false,
+            "reason": "Search returned no accepted opened primary event source within budget.",
+            "search_log": [
+              {
+                "query": "Avalanche Computing Taiwan official founders funding",
+                "retrieved_at": "2026-11-18T09:48:47Z"
+              }
+            ],
+            "checked_source_urls": [
+              "https://www.avalanc.com/about",
+              "https://www.avalanc.com/about"
+            ]
+          },
+          "investor_identity_resolution": {
+            "status": "unsearched",
+            "reason": "Round participant names retained without global canonical identity resolution."
+          },
+          "company_size": {
+            "status": "unsearched",
+            "reason": "Not part of bounded fact extraction; no zero inferred."
+          }
+        },
+        "uncertainties": [
+          "Current official page labels a US HQ. Retain for overseas-HQ cross-country reconciliation, not Taiwan-HQ count.",
+          "Corporate group versus Taiwan entity relationship and funding remain unresolved."
+        ],
+        "production_delivery_state": "unsubmitted",
+        "claim_ids": [
+          "tw-dt-avalanche-computing-identity-077",
+          "tw-dt-avalanche-computing-description-078",
+          "tw-dt-avalanche-computing-headquarters-080",
+          "tw-dt-avalanche-computing-incorporation-081",
+          "tw-dt-avalanche-computing-founder-082",
+          "tw-dt-avalanche-computing-founder-083"
+        ]
+      },
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    },
+    {
+      "entity_id": "unresolved:startup:chimes-ai",
+      "canonical_name": "Chimes AI",
+      "disposition": "held",
+      "reason": [
+        "Company identity/product/founder verified; primary founding/geography reference was blocked.",
+        "Exact 2020-12-04 date and addresses appeared only in search discovery and are not accepted.",
+        "English founder transliteration was only a search lead; no global person ID assigned."
+      ],
+      "source_url": null,
+      "source_ids": [
+        "tw-dt-s24"
+      ],
+      "research_detail": {
+        "entity_id": "unresolved:startup:chimes-ai",
+        "proposed_graph_id": "startup:chimes-ai",
+        "canonical_name": "Chimes AI",
+        "canonical_domain": "chimes.ai",
+        "website": "https://chimes.ai/",
+        "aliases": [
+          {
+            "name": "詠鋐智能",
+            "source_ids": [
+              "tw-dt-s24"
+            ]
+          }
+        ],
+        "identity_source_ids": [
+          "tw-dt-s24"
+        ],
+        "description": "Builds no-code AI tools for industrial process optimization and predictive maintenance.",
+        "description_source_ids": [
+          "tw-dt-s24"
+        ],
+        "sectors": [
+          "industrial AI",
+          "enterprise software",
+          "energy efficiency"
+        ],
+        "sector_semantics": "Research classification from sourced product description",
+        "classification": "startup_candidate",
+        "disposition": "held_geography_unverified",
+        "geography": {
+          "headquarters": null,
+          "operating_locations": [],
+          "incorporation": null
+        },
+        "founding": null,
+        "founders": [
+          {
+            "name": "謝宗震",
+            "canonical_person_id": null,
+            "aliases": [],
+            "source_ids": [
+              "tw-dt-s24"
+            ],
+            "role_as_reported": "Founder and CEO",
+            "role_as_of": null
+          }
+        ],
+        "funding_rounds": [],
+        "field_dispositions": {
+          "identity": {
+            "status": "reviewed_staged"
+          },
+          "description": {
+            "status": "reviewed_staged"
+          },
+          "founding": {
+            "status": "searched_unknown",
+            "reason": "No accepted explicit founding evidence in this pass.",
+            "search_log": [],
+            "checked_source_urls": [
+              "https://chimes.ai/about/",
+              "https://chimes.ai/about/"
+            ]
+          },
+          "headquarters": {
+            "status": "searched_unknown",
+            "reason": "Company presence/address does not explicitly establish headquarters.",
+            "search_log": [],
+            "checked_source_urls": [
+              "https://chimes.ai/about/",
+              "https://chimes.ai/about/"
+            ]
+          },
+          "incorporation": {
+            "status": "searched_unknown",
+            "reason": "Direct legal registry/date not established.",
+            "search_log": [],
+            "checked_source_urls": [
+              "https://chimes.ai/about/",
+              "https://chimes.ai/about/"
+            ]
+          },
+          "founders": {
+            "status": "reviewed_staged",
+            "complete": false
+          },
+          "funding_rounds": {
+            "status": "searched_unknown",
+            "complete": false,
+            "reason": "Search returned no accepted opened primary event source within budget.",
+            "search_log": [],
+            "checked_source_urls": [
+              "https://chimes.ai/about/",
+              "https://chimes.ai/about/"
+            ]
+          },
+          "investor_identity_resolution": {
+            "status": "unsearched",
+            "reason": "Round participant names retained without global canonical identity resolution."
+          },
+          "company_size": {
+            "status": "unsearched",
+            "reason": "Not part of bounded fact extraction; no zero inferred."
+          }
+        },
+        "uncertainties": [
+          "Company identity/product/founder verified; primary founding/geography reference was blocked.",
+          "Exact 2020-12-04 date and addresses appeared only in search discovery and are not accepted.",
+          "English founder transliteration was only a search lead; no global person ID assigned."
+        ],
+        "production_delivery_state": "unsubmitted",
+        "claim_ids": [
+          "tw-dt-chimes-ai-identity-084",
+          "tw-dt-chimes-ai-description-085",
+          "tw-dt-chimes-ai-alias-086",
+          "tw-dt-chimes-ai-founder-087"
+        ]
+      },
+      "publication_state": "unsubmitted",
+      "crawler_seed_approved": false
+    }
+  ],
+  "discovery_only": [
+    {
+      "discovered_name": "InterGrid Ltd.",
+      "alias_candidate": "合聯電網科技有限公司",
+      "source_id": "TW-ECO-025",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-001",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "Tai Yang Industrial Co., Ltd.",
+      "alias_candidate": "台煬實業有限公司",
+      "source_id": "TW-ECO-025",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-002",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "CW Regen Tech Co., Ltd.",
+      "alias_candidate": "錦威再生科技股份有限公司",
+      "source_id": "TW-ECO-025",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-003",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "Ampvolt Power Technology CO.",
+      "alias_candidate": "安沃能源科技有限公司",
+      "source_id": "TW-ECO-025",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-004",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "Asia Hydrogen Energy Corp",
+      "alias_candidate": "亞氫動力股份有限公司",
+      "source_id": "TW-ECO-025",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-005",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "TSGC Technologies Inc.",
+      "alias_candidate": "鴻躉股份有限公司",
+      "source_id": "TW-ECO-025",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-006",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "Wizecycle Inc.",
+      "alias_candidate": "台以環能股份有限公司",
+      "source_id": "TW-ECO-025",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-007",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "FREE BIONICS TAIWAN INC.",
+      "alias_candidate": "福寶科技股份有限公司",
+      "source_id": "TW-ECO-025",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-008",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "25sprout",
+      "alias_candidate": "SurveyCake",
+      "source_id": "TW-ECO-026",
+      "candidate_website": "https://www.25sprout.com",
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-009",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "3drens",
+      "alias_candidate": null,
+      "source_id": "TW-ECO-026",
+      "candidate_website": "https://www.3drens.com",
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-010",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "3Egreen",
+      "alias_candidate": null,
+      "source_id": "TW-ECO-026",
+      "candidate_website": "https://www.3egreen.com",
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-011",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "Accuvally",
+      "alias_candidate": "ACCUPASS",
+      "source_id": "TW-ECO-026",
+      "candidate_website": "https://www.accupass.com",
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-012",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "Adenovo",
+      "alias_candidate": null,
+      "source_id": "TW-ECO-026",
+      "candidate_website": "https://adenovo.com",
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-013",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "Atlas",
+      "alias_candidate": null,
+      "source_id": "TW-ECO-022",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-014",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "Cannova Bio",
+      "alias_candidate": "康諾瓦生醫",
+      "source_id": "TW-ECO-022",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-015",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "巨噬原力",
+      "alias_candidate": null,
+      "source_id": "TW-ECO-022",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "accepted_company_record": false,
+      "hq_country": null,
+      "incorporation_country": null,
+      "reason": "Programme/member list only; legal entity, current identity/domain, HQ and event claims await primary company verification.",
+      "candidate_id": "tw-discovery-016",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "AmazingTalker",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "source_url": "https://www.nasdaq.com/press-release/online-tutoring-innovator-amazingtalker-secures-%2415.5m-series-a-funding-2022-02-16",
+      "source_id": null,
+      "reason": "Search discovery only; primary-company identity and facts are queued.",
+      "candidate_id": "tw-discovery-017",
+      "crawler_seed_approved": false
+    },
+    {
+      "discovered_name": "Pinkoi",
+      "candidate_website": null,
+      "status": "discovery_only",
+      "source_url": "https://en.pinkoi.com/about",
+      "source_id": null,
+      "reason": "Search discovery only; primary-company identity and facts are queued.",
+      "candidate_id": "tw-discovery-018",
+      "crawler_seed_approved": false
+    }
+  ]
+}

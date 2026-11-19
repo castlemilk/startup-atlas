@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "catalogue_revision": "40a0bd78b03d68f4f4d35806f4f2b2a27f315979",
+  "startup_id": "startup:psiquantum",
+  "legal_entities": [
+    {
+      "id": "psiquantum-us",
+      "name": "PsiQuantum, Corp.",
+      "aliases": [
+        "PsiQuantum",
+        "PsiQuantum Corp."
+      ],
+      "jurisdiction": "US-DE",
+      "registry": {
+        "system": "sec_cik",
+        "id": "0002070804"
+      },
+      "role": "operating_company",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2070804/000199636625000006/0001996366-25-000006-index.html",
+          "basis": "EDGAR separately identifies the filer by exact name and CIK."
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2070804/000199636625000006/xslFormDX01/primary_doc.xml",
+          "basis": "Form D identifies Delaware as the issuer's jurisdiction."
+        }
+      ]
+    },
+    {
+      "id": "psiquantum-uk",
+      "name": "PSIQUANTUM LTD",
+      "aliases": [
+        "PsiQuantum"
+      ],
+      "jurisdiction": "UK",
+      "registry": {
+        "system": "companies_house",
+        "id": "10255737"
+      },
+      "role": "related_company",
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/10255737",
+          "basis": "Companies House identifies this separate UK company and its 28 June 2016 incorporation."
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/10255737/persons-with-significant-control",
+          "basis": "The UK register lists Psiquantum Corporation as the active person with significant control."
+        }
+      ]
+    },
+    {
+      "id": "fund-vehicle-hold",
+      "name": null,
+      "aliases": [],
+      "jurisdiction": "Unverified",
+      "registry": {
+        "system": "sec_cik",
+        "id": "0002107443"
+      },
+      "role": "excluded_vehicle",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/edgar/browse/?CIK=2107443",
+          "basis": "Owner-supplied exclusion ID. The direct lookup was unavailable during this review. Exact legal name, jurisdiction and filings remain unverified."
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "issuer-form-d-excerpt.json",
+      "format": "sec_form_d_json",
+      "url": "https://www.sec.gov/Archives/edgar/data/2070804/000199636625000006/xslFormDX01/primary_doc.xml",
+      "acquisition": "reviewed_public_excerpt",
+      "acquired_on": "2026-11-19",
+      "sha256": "3c0ae2e564012c0b8d3aac30d2d4bc9d02347bcb5fe3cc52487ff651e1689664",
+      "accession": "0001996366-25-000006",
+      "filed_on": "2025-05-30",
+      "filing_index_url": "https://www.sec.gov/Archives/edgar/data/2070804/000199636625000006/0001996366-25-000006-index.html"
+    },
+    {
+      "file": "playground-representative.json",
+      "format": "round_observations_json",
+      "url": "https://prwire.com.au/pr/115807/interview-us-based-aussie-peter-barrett-in-australia-talking-about-playground-and-the-940m-australian-govt-partnership",
+      "acquisition": "reviewed_public_excerpt",
+      "acquired_on": "2026-11-19",
+      "sha256": "e9e7f2076db9cea6d96eb78e171bcba4e3e880688cd258a6779210a29b516f19"
+    },
+    {
+      "file": "sourcery-show-notes.json",
+      "format": "round_observations_json",
+      "url": "https://www.sourcery.vc/p/breaking-psiquantums-1b-series-e",
+      "acquisition": "reviewed_public_excerpt",
+      "acquired_on": "2026-11-19",
+      "sha256": "72c90b134f5532523011f4cc4a850bd3cb07715996da53f5ba417e0c2a96fca3"
+    },
+    {
+      "file": "imperial-case-study.json",
+      "format": "round_observations_json",
+      "url": "https://results2021.ref.ac.uk/impact/e8ed3395-c149-4fb0-9b3c-93d23be5cc0e/pdf",
+      "acquisition": "reviewed_public_excerpt",
+      "acquired_on": "2026-11-19",
+      "sha256": "b2589d7ddacaae0a2cface270bc7e90385a8cfd6c211c2914ef702b9e0e7e973"
+    },
+    {
+      "file": "m12-investor-observation.json",
+      "format": "round_observations_json",
+      "url": "https://m12.vc/news/psiquantum-series-d-marks-important-technology-achievements/",
+      "acquisition": "reviewed_public_excerpt",
+      "acquired_on": "2026-11-19",
+      "sha256": "ad67d7069af8824735abe3377a737d441b22733749dc68cf12c5513d60ee6b91"
+    }
+  ]
+}

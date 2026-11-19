@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-motion-page>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A bounded Signal motion study for Startup Atlas. Three illustrative feature artworks, one quiet sequence, and a fully readable static alternative.">
+  <title>Signal motion study · Startup Atlas</title>
+  <link rel="icon" href="data:,">
+  <link rel="preload" href="../../fonts/geist-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../../design-tokens.css">
+  <link rel="stylesheet" href="./page.css">
+  <link rel="stylesheet" href="./motion.css">
+  <script type="module" src="./entry.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="masthead">
+    <a class="wordmark" href="../../../index.html" aria-label="Startup Atlas home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      Startup Atlas
+    </a>
+    <nav aria-label="Design navigation">
+      <a href="../../../design-aesthetic.html">Signal workbench <span aria-hidden="true">↗</span></a>
+      <a href="#principles">Motion principles</a>
+    </nav>
+  </header>
+
+  <main id="main" data-motion-pilot>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="signal-dot" aria-hidden="true"></span>Signal / Motion study 01</p>
+        <h1 id="hero-title">A little motion.<br>A clearer signal.</h1>
+        <p class="lede">Give attention a direction. Three familiar research motifs assemble into one quiet composition, then come to rest.</p>
+        <a class="button button-primary" href="../../../index.html?type=startup#directory">Explore the directory <span aria-hidden="true">↗</span></a>
+        <p class="study-note">An artwork pilot for the design microsite.<br>Research records and source links stay immediate.</p>
+      </div>
+
+      <figure class="artwork">
+        <div id="motion-stage" data-motion-stage class="artwork-stage" aria-hidden="true">
+          <div class="stage-rule stage-rule-top"></div>
+          <span class="stage-label">SIGNAL / ASSEMBLY</span>
+          <div class="art-layer art-layer-index" data-motion-layer>
+            <img src="../signal-search.webp" width="1536" height="1024" alt="" decoding="async">
+            <span class="art-caption"><span>01 / Index</span><span>Discover</span></span>
+          </div>
+          <div class="art-layer art-layer-partition" data-motion-layer>
+            <img src="../signal-treemap.webp" width="1254" height="1254" alt="" decoding="async">
+            <span class="art-caption"><span>02 / Partition</span><span>Compare</span></span>
+          </div>
+          <div class="art-layer art-layer-junction" data-motion-layer>
+            <img src="../signal-graph.webp" width="1254" height="1254" alt="" decoding="async">
+            <span class="art-caption"><span>03 / Junction</span><span>Explore</span></span>
+          </div>
+          <div class="stage-rule stage-rule-bottom"></div>
+          <span class="stage-footnote">ILLUSTRATIVE FEATURE ART</span>
+        </div>
+        <figcaption>
+          <p class="artwork-description">Index, Partition and Junction. Existing Signal feature artwork, brought together as an illustrative composition.</p>
+          <div class="motion-controls" role="group" aria-label="Artwork motion">
+            <button id="motion-replay" data-motion-replay class="button" type="button" disabled aria-describedby="motion-status"><span aria-hidden="true">↻</span> Replay artwork</button>
+            <label class="static-control"><input id="motion-static" data-motion-still type="checkbox" disabled aria-describedby="motion-status">Keep artwork still</label>
+          </div>
+          <p id="motion-status" data-motion-status class="motion-status" role="status">Static artwork. Motion controls become available when JavaScript is ready.</p>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="principles" class="principles" aria-labelledby="principles-title">
+      <div class="section-intro">
+        <p class="eyebrow">01 / Attention and restraint</p>
+        <h2 id="principles-title">A gesture with<br>a clear purpose.</h2>
+        <p>Motion belongs to the artwork. The reading order, controls and research context remain steady.</p>
+      </div>
+      <dl class="principle-list">
+        <div><dt><span>01</span> Arrive, then settle</dt><dd>The three layers move in sequence once on entry. Replay is always an explicit choice.</dd></div>
+        <div><dt><span>02</span> Keep the page readable</dt><dd>Headings, descriptions and destinations are available from the first frame, including with motion disabled.</dd></div>
+        <div><dt><span>03</span> Follow your preference</dt><dd>Keep the artwork still at any time. A device preference for reduced motion takes priority.</dd></div>
+      </dl>
+    </section>
+
+    <section class="journeys" aria-labelledby="journeys-title">
+      <div class="journeys-heading">
+        <div><p class="eyebrow">02 / Continue the research</p><h2 id="journeys-title">Follow the context.</h2></div>
+        <p>The illustrations introduce these views. Reviewed records provide their facts.</p>
+      </div>
+      <div class="journey-grid">
+        <article>
+          <p class="journey-index">01 / Index</p>
+          <h3>Find a starting point.</h3>
+          <p>Search startups, people and partners. Open a profile to read its fuller context.</p>
+          <a data-source-view href="../../../index.html?type=startup#directory">Open list and search <span aria-hidden="true">↗</span></a>
+        </article>
+        <article>
+          <p class="journey-index">02 / Partition</p>
+          <h3>Compare like with like.</h3>
+          <p>Choose one recorded measure and currency. Missing comparable data stays distinct from zero.</p>
+          <a data-source-view href="../../../treemap.html?metric=funding&amp;currency=USD">Open company views <span aria-hidden="true">↗</span></a>
+        </article>
+        <article>
+          <p class="journey-index">03 / Junction</p>
+          <h3>Inspect the connection.</h3>
+          <p>Follow a relationship to its source. Read its predicate before drawing a conclusion.</p>
+          <a data-source-view href="../../../graph.html?entity=startup%3Acanva">Open the graph <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Startup Atlas <span>Signal motion study</span></p>
+    <a href="https://github.com/castlemilk/startup-atlas">Source repository <span aria-hidden="true">↗</span></a>
+  </footer>
+</body>
+</html>

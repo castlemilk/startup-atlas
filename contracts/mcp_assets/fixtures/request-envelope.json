@@ -1,0 +1,45 @@
+{
+  "jsonrpc": "2.0",
+  "id": "offline-fixture-01",
+  "method": "tools/call",
+  "params": {
+    "name": "OFFLINE_ASSET_FIXTURE_NOT_A_TOOL",
+    "arguments": {
+      "content_base64": "",
+      "declared_mime": "image/png",
+      "public_manifest": {
+        "schema": "atlas.asset-public-candidate.v0",
+        "asset": {
+          "asset_id": "asset:sha256:733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2",
+          "sha256": "733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2",
+          "bytes": 74,
+          "mime": "image/png",
+          "width": 2,
+          "height": 2,
+          "bit_depth": 8,
+          "color_type": 6,
+          "validation": "png-rgb8-v0"
+        },
+        "subject": {
+          "id": "startup:fixture-company",
+          "role": "logo"
+        },
+        "source_page": "https://example.com/brand",
+        "attribution": "Crédit Ω — 作者 🛰️",
+        "licence_url": null
+      },
+      "public_manifest_revision": "sha256:6675008d1aadf8baab2db58883508be52ab3d31aecd56caa7fa47ed18a3d1ac8",
+      "target": {
+        "edited_record_id": "startup:fixture-company",
+        "subject_id": "startup:fixture-company",
+        "role": "logo",
+        "expected_record_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "expected_snapshot_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "asset_repository_commit": "cccccccccccccccccccccccccccccccccccccccc",
+        "target": {
+          "kind": "startup-logo"
+        }
+      }
+    }
+  }
+}

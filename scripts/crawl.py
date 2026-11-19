@@ -21,7 +21,7 @@ import socket
 import sys
 import time
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote, urlencode, urljoin, urlsplit, urlunsplit
+from urllib.parse import quote, unquote, urlencode, urljoin, urlsplit, urlunsplit
 from urllib.request import Request, HTTPRedirectHandler, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,6 +62,18 @@ def normalize_request_url(url):
     if any(ord(char) < 32 or ord(char) == 127 for char in url):
         raise CrawlError('URL contains a control character')
     parts=urlsplit(url)
+    # Owner policy: never retrieve robots files, even via followed links or
+    # redirects. Decode only for comparison; preserve request URL semantics.
+    path=parts.path
+    for _ in range(16):
+        decoded=unquote(path)
+        if decoded==path: break
+        path=decoded
+    else:
+        raise CrawlError('URL path encoding exceeds source-policy limit')
+    segments=path.replace('\\','/').split('/')
+    if any(segment.split(';',1)[0].rstrip(' .').casefold()=='robots.txt' for segment in segments):
+        raise CrawlError('robots.txt access is disabled by source policy')
     return urlunsplit((parts.scheme,parts.netloc,
                        quote(parts.path,safe="/%:@!$&'()*+,;=-._~"),
                        quote(parts.query,safe="/%?:@!$&'()*+,;=-._~"),''))
@@ -131,15 +143,135 @@ class Transport:
                 return status,headers,content,url
         raise CrawlError('too many redirects')
 
+ARTICLE_TYPES={'Article','NewsArticle','BlogPosting'}
+MAX_DATE_ASSERTIONS=32
+VOID_TAGS={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
+HEAD_TAGS={'base','link','meta','script','style','title'}
+INACTIVE_TAGS={'template','noscript','iframe','textarea','xmp','noembed','noframes'}
+
+
+class ArticleMarkup:
+    """Collect document metadata and dates owned by an explicit article item."""
+    def __init__(self,source):
+        self.source=evidence_url(source,source)
+        self.frames=[]
+        self.head_dates=[]
+        self.scoped_dates=[]
+        self.canonicals=set()
+        self.og_urls=set()
+        self.truncated=False
+        self.depth_limited=False
+        self.seen_head=False
+        self.body_started=False
+
+    @staticmethod
+    def retain(values, assertion):
+        if assertion in values: return True
+        if len(values)>=MAX_DATE_ASSERTIONS: return False
+        values.append(assertion)
+        return True
+
+    def start(self,tag,attrs):
+        if self.source is None or self.depth_limited: return
+        if self.frames and self.frames[-1][0]=='head' and tag not in HEAD_TAGS:
+            self.end('head')
+        if tag=='head':
+            if self.seen_head or self.body_started or self.frames: return
+            self.seen_head=True
+        elif not self.frames and tag!='html':
+            self.body_started=True
+        if self.frames and self.frames[-1][0]=='head':
+            key=(attrs.get('property') or attrs.get('name') or '').lower().strip()
+            if tag=='meta' and key=='article:published_time':
+                value=evidence_text(attrs.get('content'),100)
+                if value and not self.retain(self.head_dates,{'field':key,'value':value}):
+                    self.truncated=True
+            if tag=='meta' and key=='og:url' and len(self.og_urls)<2:
+                self.og_urls.add(evidence_url(attrs.get('content'),self.source))
+            if tag=='link' and 'canonical' in attrs.get('rel','').lower().split() and len(self.canonicals)<2:
+                url=evidence_url(attrs.get('href'),self.source)
+                if url and urlsplit(url).hostname==urlsplit(self.source).hostname: self.canonicals.add(url)
+
+        owner='itemscope' in attrs or tag=='article'
+        scope=self.frames[-1][1] if self.frames else None
+        if owner:
+            # Plain articles and non-article items still break inherited scope.
+            scope=None
+            types=structured_types({'@type':attrs.get('itemtype','').split()})
+            if 'itemscope' in attrs and types & ARTICLE_TYPES:
+                itemid=attrs.get('itemid')
+                subject=evidence_url(itemid,self.source)
+                scope={'subject':subject,'ambiguous':bool(itemid and subject is None),'dates':[],'truncated':False}
+        elif scope is not None:
+            props=attrs.get('itemprop','').lower().split()
+            if 'url' in props and tag in ('a','link','meta'):
+                raw=attrs.get('content' if tag=='meta' else 'href')
+                subject=evidence_url(raw,self.source)
+                if subject is None or scope['subject'] not in (None,subject):
+                    scope['ambiguous']=True
+                scope['subject']=subject
+            value=None
+            if tag=='time' and ('datepublished' in props or 'pubdate' in attrs):
+                value=attrs.get('datetime')
+            elif tag=='meta' and 'datepublished' in props:
+                value=attrs.get('content')
+            value=evidence_text(value,100)
+            if value and not self.retain(scope['dates'],{'field':f'html.{tag}.publication','value':value}):
+                scope['truncated']=True
+
+        if tag not in VOID_TAGS and (self.frames or owner or tag=='head'):
+            if len(self.frames)>=128:
+                self.frames.clear()
+                self.truncated=True
+                self.depth_limited=True
+                return
+            self.frames.append((tag,scope,owner))
+
+    def end(self,tag):
+        for index in range(len(self.frames)-1,-1,-1):
+            name,scope,owner=self.frames[index]
+            if name!=tag: continue
+            del self.frames[index:]
+            if (owner and scope is not None and scope['subject'] and not scope['ambiguous']
+                and scope['subject'] in (self.source,self.canonical_hint())):
+                if scope['truncated']: self.truncated=True
+                for assertion in scope['dates']:
+                    if not self.retain(self.scoped_dates,{**assertion,'subject_url':scope['subject']}):
+                        self.truncated=True
+            break
+
+    def canonical_hint(self):
+        return next(iter(self.canonicals)) if len(self.canonicals)==1 else None
+
+    def evidence(self):
+        canonical=self.canonical_hint()
+        subjects={self.source,canonical}-{None}
+        dates=[]
+        if self.og_urls <= subjects:
+            dates.extend({**assertion,'subject_url':self.source} for assertion in self.head_dates)
+        dates.extend(row for row in self.scoped_dates if row['subject_url'] in subjects)
+        return {'canonical_hint':canonical,'date_evidence':dates[:MAX_DATE_ASSERTIONS],
+                'truncated':self.truncated or len(dates)>MAX_DATE_ASSERTIONS}
+
+
 class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
+        self._inactive=[]
         self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]; self.images=[]
         self._brand_regions=[]; self._anchor_homes=[]; self._footer_depth=0
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
+        self.article_markup=ArticleMarkup(base)
     def handle_starttag(self,tag,attrs):
-        a={k.lower():(v or '') for k,v in attrs}; tag=tag.lower()
+        tag=tag.lower()
+        # Preserve nested template boundaries. Other inactive containers are
+        # treated as raw fallback text until their own closing tag.
+        if tag in INACTIVE_TAGS and (not self._inactive or self._inactive[-1]=='template'):
+            self._inactive.append(tag)
+        if self._inactive: return
+        a={k.lower():(v or '') for k,v in attrs}
+        if not self._hidden: self.article_markup.start(tag,a)
         if tag=='html': self.lang=a.get('lang','')[:40]
         if tag=='meta':
             key=(a.get('property') or a.get('name') or a.get('itemprop') or '').lower(); val=a.get('content','').strip()
@@ -172,8 +304,9 @@ class PageParser(HTMLParser):
                     if parts: add_logo(parts[0])
         if tag=='script':
             self._hidden+=1
-            if a.get('type','').lower()=='application/ld+json': self._ld=True; self._ldbuf=[]
-        elif tag in ('style','noscript'): self._hidden+=1
+            if self._hidden==1 and a.get('type','').lower()=='application/ld+json':
+                self._ld=True; self._ldbuf=[]
+        elif tag=='style': self._hidden+=1
         if not self._hidden:
             if tag=='table':
                 self._table_depth+=1
@@ -187,9 +320,13 @@ class PageParser(HTMLParser):
             self._contexts.append({'tag':tag,'start':len(self.links),'text':[]})
         if not self._hidden and tag in ('h1','h2','h3','h4'): self._heading_links=[]
         if not self._hidden and tag in ('title','h1','h2','h3','h4','a','p'):
-            self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links)})
+            self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links),'label':(a.get('aria-label') or a.get('title') or '')[:160]})
     def handle_endtag(self,tag):
         tag=tag.lower()
+        if self._inactive:
+            if tag==self._inactive[-1]: self._inactive.pop()
+            return
+        if not self._hidden or tag in ('script','style'): self.article_markup.end(tag)
         if tag in ('header','nav') and tag in self._brand_regions: self._brand_regions.remove(tag)
         if tag=='footer' and self._footer_depth: self._footer_depth-=1
         if tag=='a' and self._anchor_homes: self._anchor_homes.pop()
@@ -198,7 +335,7 @@ class PageParser(HTMLParser):
                 value=json.loads(''.join(self._ldbuf)[:50_000]); self.structured.extend(summarise_jsonld(value))
             except (ValueError,TypeError): pass
             self._ld=False
-        if tag in ('script','style','noscript') and self._hidden: self._hidden-=1
+        if tag in ('script','style') and self._hidden: self._hidden-=1
         if self._table_depth==1 and self._table is not None:
             if tag in ('th','td') and self._cell is not None:
                 if self._row is not None and len(self._row)<25:
@@ -216,6 +353,7 @@ class PageParser(HTMLParser):
         if capture is not None:
             self._captures.remove(capture)
             value=' '.join(' '.join(capture['text']).split())[:300]
+            if tag=='a' and not value: value=capture.get('label','')
             if tag=='title' and not self.title: self.title=value
             elif tag in ('h1','h2','h3','h4') and value:
                 if len(self.headings)<40: self.headings.append({'level':tag,'text':value})
@@ -233,6 +371,7 @@ class PageParser(HTMLParser):
             for link in self.links[context['start']:]:
                 if link.get('text') and not link.get('context'): link['context']=text
     def handle_data(self,data):
+        if self._inactive: return
         if self._ld and sum(map(len,self._ldbuf))<50_000: self._ldbuf.append(data)
         if not self._hidden and self._table_depth==1 and self._cell is not None and len(self._cell['text'])<100:
             self._cell['text'].append(data[:500])
@@ -242,7 +381,7 @@ class PageParser(HTMLParser):
         if not self._hidden and len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
 
 def summarise_jsonld(value):
-    keep={'@type','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory'}
+    keep={'@type','@id','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory','jobTitle','worksFor','headline','publisher','datePublished','mainEntityOfPage'}
     if isinstance(value,list): return sum((summarise_jsonld(x) for x in value[:10]),[])
     if not isinstance(value,dict): return []
     out=[]
@@ -340,7 +479,7 @@ def extract_page(body,url):
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
             'structured_data':parser.structured[:10],'links':links,'profile_links':profile_links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
             'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40], 'image_candidates':parser.images,
-            'tables':parser.tables}
+            'tables':parser.tables,'article_markup':parser.article_markup.evidence()}
 
 def follow_links(extracted,base,max_follow):
     if max_follow<=0: return []
@@ -353,30 +492,124 @@ def follow_links(extracted,base,max_follow):
         if len(found)>=max_follow: break
     return found
 
-def load_approved_csv(path,valid_names,require_qid=True):
-    result=[]; seen=set()
+def scope_url(url, host):
+    """Conservative document identity: no aliases, traversal or ambiguous encodings."""
+    if not isinstance(url,str) or len(url)>4096 or url!=url.strip():
+        raise CrawlError('Invalid scoped document URL')
+    normalized=normalize_request_url(url)
+    parts=urlsplit(normalized)
+    if (parts.scheme!='https' or parts.hostname!=host or parts.username or parts.password
+        or parts.port not in (None,443) or parts.fragment or urlsplit(url).fragment):
+        raise CrawlError('Scoped document must be on the approved HTTPS host without a fragment')
+    # Exact paths only. Reject encodings and path forms which servers/proxies may
+    # reinterpret rather than broadening the approved document through aliases.
+    if ('%' in parts.path or '\\' in parts.path or ';' in parts.path or '//' in parts.path
+        or any(x in ('.','..') or x.rstrip(' .')!=x for x in parts.path.split('/') if x)):
+        raise CrawlError('Ambiguous scoped document path')
+    return urlunsplit(('https',parts.hostname,parts.path or '/',parts.query,''))
+
+
+def parse_crawl_scope(raw, seed_url):
+    """An opt-in narrowing of existing approval, never a new source approval."""
+    if not raw or not raw.strip(): return None  # preserve existing reviewed rows
+    if len(raw)>65536: raise CrawlError('Crawl scope exceeds size limit')
+    def unique_object(pairs):
+        result={}
+        for key,value in pairs:
+            if key in result: raise CrawlError('Duplicate crawl scope key')
+            result[key]=value
+        return result
+    try: scope=json.loads(raw,object_pairs_hook=unique_object)
+    except (ValueError,TypeError,RecursionError) as exc: raise CrawlError('Invalid crawl scope JSON') from exc
+    if (not isinstance(scope,dict) or set(scope)-{'version','allowed_urls','denied_urls','max_follow'}
+        or type(scope.get('version')) is not int or scope['version']!=1
+        or type(scope.get('max_follow')) is not int or not 0<=scope['max_follow']<=20):
+        raise CrawlError('Invalid crawl scope contract')
+    host=urlsplit(seed_url).hostname
+    for field in ('allowed_urls','denied_urls'):
+        values=scope.get(field,[])
+        if not isinstance(values,list) or len(values)>100 or (field=='allowed_urls' and not values):
+            raise CrawlError('Crawl scope requires bounded document lists')
+        scope[field]=list(dict.fromkeys(scope_url(value,host) for value in values))
+    check_crawl_scope(seed_url,scope,host)
+    return scope
+
+
+def check_crawl_scope(url, scope, host):
+    if scope is None: return
+    key=scope_url(url,host)
+    if key in scope['denied_urls'] or key not in scope['allowed_urls']:
+        raise CrawlError('URL is outside the approved document scope')
+
+
+def scoped_request(transport, url, host, scope):
+    """Check before transport and on every redirect; verify returned URL as well."""
+    if scope is None: return transport.request(url,host)
+    guard=lambda target: check_crawl_scope(target,scope,host)
+    guard(url)
+    result=transport.request(url,host,redirect_guard=guard)
+    guard(result[3])
+    return result
+
+
+def validate_seed_headers(headers):
+    """Reject ambiguous reserved policy spelling instead of dropping its scope."""
+    headers=headers or []
+    if any(not re.fullmatch(r'[a-z][a-z0-9_]*',header) for header in headers):
+        raise CrawlError('Malformed seed CSV header; exact lowercase snake_case required')
+    semantic=[header.strip().casefold() for header in headers]
+    if len(semantic)!=len(set(semantic)):
+        raise CrawlError('Ambiguous duplicate seed CSV columns')
+    if any(key=='crawl_scope' and header!='crawl_scope' for header,key in zip(headers,semantic)):
+        raise CrawlError('Malformed reserved crawl_scope header')
+
+
+def require_scoped_launcher(path):
+    """New CLIs reject scoped inputs outside the digest-verified route."""
+    if path is None: return
     with open(path,newline='',encoding='utf-8-sig') as handle:
-        for row in csv.DictReader(handle):
-            name=(row.get('partner') or '').strip(); qid=(row.get('qid') or '').strip(); url=(row.get('official_website') or '').strip()
-            if (row.get('approved') or '').strip().lower() not in ('yes','true','1'): continue
-            parsed=urlsplit(url)
-            if (name not in valid_names or (qid and not re.fullmatch(r'Q[1-9]\d*',qid)) or (require_qid and not qid) or parsed.scheme!='https'
-                or not parsed.hostname or parsed.username or parsed.password or parsed.port not in (None,443)):
-                raise CrawlError(f'Invalid approved row for {name!r}')
-            try: ipaddress.ip_address(parsed.hostname)
-            except ValueError: pass
-            else: raise CrawlError(f'IP-literal website for {name!r} is not accepted')
-            if name in seen: raise CrawlError(f'Multiple approved candidates for {name}')
-            hosts=[]
-            for host in (row.get('asset_hosts') or '').split('|'):
-                host=host.strip().lower()
-                if not host: continue
-                if (len(host)>253 or not re.fullmatch(r'(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}',host)
-                    or host.endswith('.local')):
-                    raise CrawlError(f'Invalid asset host for {name!r}')
-                if host not in hosts: hosts.append(host)
-            if len(hosts)>5: raise CrawlError(f'Too many asset hosts for {name!r}')
-            seen.add(name); result.append({'name':name,'qid':qid,'url':url,'description':(row.get('description') or '')[:500],'asset_hosts':hosts})
+        reader=csv.DictReader(handle); validate_seed_headers(reader.fieldnames)
+        for row in reader:
+            if None in row or any(value is None for value in row.values()):
+                raise CrawlError('Seed CSV row width does not match header')
+            if (row.get('crawl_scope') or '').strip() and not globals().get('__implementation__'):
+                raise CrawlError('Scoped CLI input requires the reviewed digest-verified launcher')
+
+
+def load_approved_csv(path,valid_names,require_qid=True):
+    with open(path,newline='',encoding='utf-8-sig') as handle:
+        reader=csv.DictReader(handle)
+        validate_seed_headers(reader.fieldnames)
+        return parse_approved_rows(reader,valid_names,require_qid)
+
+def parse_approved_rows(rows,valid_names,require_qid=True):
+    """Shared approval validation for file and pinned in-memory planning inputs."""
+    result=[]; seen=set()
+    for row in rows:
+        validate_seed_headers([key for key in row if key is not None])
+        if None in row or any(value is None for value in row.values()):
+            raise CrawlError('Seed CSV row width does not match header')
+        name=(row.get('partner') or '').strip(); qid=(row.get('qid') or '').strip(); url=(row.get('official_website') or '').strip()
+        if (row.get('approved') or '').strip().lower() not in ('yes','true','1'): continue
+        parsed=urlsplit(url)
+        if (name not in valid_names or (qid and not re.fullmatch(r'Q[1-9]\d*',qid)) or (require_qid and not qid) or parsed.scheme!='https'
+            or not parsed.hostname or parsed.username or parsed.password or parsed.port not in (None,443)):
+            raise CrawlError(f'Invalid approved row for {name!r}')
+        try: ipaddress.ip_address(parsed.hostname)
+        except ValueError: pass
+        else: raise CrawlError(f'IP-literal website for {name!r} is not accepted')
+        if name in seen: raise CrawlError(f'Multiple approved candidates for {name}')
+        hosts=[]
+        for host in (row.get('asset_hosts') or '').split('|'):
+            host=host.strip().lower()
+            if not host: continue
+            if (len(host)>253 or not re.fullmatch(r'(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}',host)
+                or host.endswith('.local')):
+                raise CrawlError(f'Invalid asset host for {name!r}')
+            if host not in hosts: hosts.append(host)
+        if len(hosts)>5: raise CrawlError(f'Too many asset hosts for {name!r}')
+        scope=parse_crawl_scope(row.get('crawl_scope'),url)
+        seen.add(name); result.append({'name':name,'qid':qid,'url':url,'description':(row.get('description') or '')[:500],'asset_hosts':hosts,**({'crawl_scope':scope} if scope is not None else {})})
     return result
 
 def write_json(path,data):
@@ -407,25 +640,27 @@ def crawl_sites(catalogue,args,transport):
     if args.partners_only: entries=[]
     if args.only: entries=[x for x in entries if x['id'] in set(args.only)]
     if args.approved:
-        entries += [{'id':'partner:'+(x['qid'] or 'url-'+hashlib.sha256(x['url'].encode()).hexdigest()[:16]),'name':x['name'],'url':x['url'],'asset_hosts':x['asset_hosts']} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)]
+        entries += [{'id':'partner:'+(x['qid'] or 'url-'+hashlib.sha256(x['url'].encode()).hexdigest()[:16]),'name':x['name'],'url':x['url'],'asset_hosts':x['asset_hosts'],**({'crawl_scope':x['crawl_scope']} if 'crawl_scope' in x else {})} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)]
     entries=entries[:args.limit] if args.limit else entries
     if not entries: raise CrawlError('No site seeds matched the requested options')
     results=[]; seen={}
     for item in entries:
         seeds=list(dict.fromkeys([item['url'],*item.get('additional_urls',[])]))
         queue=seeds[:]; pages=[]
-        while queue and len(pages)<len(seeds)+args.follow:
+        scope=item.get('crawl_scope'); follow=min(args.follow,scope['max_follow']) if scope else args.follow
+        while queue and len(pages)<len(seeds)+follow:
             url=queue.pop(0)
-            if url in seen: pages.append(seen[url]); continue
+            cache_key=(url,json.dumps(scope,sort_keys=True))
+            if cache_key in seen: pages.append(seen[cache_key]); continue
             try:
-                status,headers,body,final=transport.request(url,urlsplit(url).hostname)
+                status,headers,body,final=scoped_request(transport,url,urlsplit(item['url'] if scope else url).hostname,scope)
                 content_type=headers.get('Content-Type','').lower()
                 if status!=200: raise CrawlError(f'HTTP {status}')
                 if content_type and 'html' not in content_type: raise CrawlError(f'not HTML: {content_type[:100]}')
                 page={'url':url,'final_url':final,'checked_at':utc_now(),'status':'ok','http_status':status,**extract_page(body,final)}
-                if len(pages)==0 and args.follow: queue.extend(u for u in follow_links(page,final,args.follow) if u not in queue)
+                if len(pages)==0 and follow: queue.extend(u for u in follow_links(page,final,follow) if u not in queue)
             except (CrawlError,ValueError) as exc: page={'url':url,'checked_at':utc_now(),'status':'skipped','reason':str(exc)}
-            seen[url]=page; pages.append(page)
+            seen[cache_key]=page; pages.append(page)
         results.append({**item,'pages':pages})
         print(f"[{len(results)}/{len(entries)}] {item['name']}: {pages[0]['status']}",file=sys.stderr)
     return {'version':1,'mode':'sites','generated_at':utc_now(),'results':results}
@@ -440,16 +675,18 @@ PROFILE_PATH_RULES={
 }
 PROFILE_GENERIC=re.compile(r'^(view|learn more|read more|meet|contact|all|our team|team|people|portfolio|companies|investments|about|careers|jobs|news|home|founders|apply|see all)\b',re.I)
 
-def profile_landing_links(page, base, max_follow):
+def profile_landing_links(page, base, max_follow, include_about=False):
     """Select a bounded, same-host set of team and company index pages."""
     if max_follow<=0: return []
     host=urlsplit(base).hostname; selected=[]
-    for kind,pattern in PROFILE_PAGE_RULES.items():
+    rules=dict(PROFILE_PAGE_RULES)
+    if include_about: rules['about']=re.compile(r'\b(about|our company)\b',re.I)
+    for kind,pattern in rules.items():
         for link in page.get('profile_links',[]):
             parts=urlsplit(link.get('url',''))
             if parts.scheme!='https' or parts.hostname!=host or parts.username or parts.password: continue
             if not pattern.search(link.get('text','')+' '+parts.path.replace('-',' ')): continue
-            if PROFILE_PATH_RULES[kind].search(parts.path): continue
+            if kind in PROFILE_PATH_RULES and PROFILE_PATH_RULES[kind].search(parts.path): continue
             clean=urlunsplit((parts.scheme,parts.netloc,parts.path,parts.query,''))
             if clean!=base and all(x['url']!=clean for x in selected):
                 selected.append({'kind':kind,'url':clean}); break
@@ -487,6 +724,233 @@ def extract_profile_media_leads(partner, page, kind):
                          'candidate_url':url,'source_url':page['final_url'],
                          'checked_at':page['checked_at'],'review_required':True})
     return rows[:150]
+
+def evidence_text(value, limit=300):
+    return ' '.join(value.split())[:limit] if isinstance(value,str) else ''
+
+
+def evidence_url(value, source):
+    """Validate the syntax of an HTTPS candidate without making a request."""
+    if not isinstance(value,str) or not value or len(value)>2048 or value!=value.strip():
+        return None
+    if '\\' in value or any(ord(char)<32 or ord(char)==127 for char in value):
+        return None
+    try:
+        reference=urlsplit(value)
+        if ((reference.scheme and reference.scheme!='https')
+            or ((reference.scheme or value.startswith('//')) and not reference.netloc)):
+            return None
+        resolved=urljoin(source,value)
+        parts=urlsplit(resolved)
+        host=parts.hostname or ''
+        if (parts.query or host.endswith('.local')
+            or not re.fullmatch(r'(?:[a-z0-9-]+\.)+[a-z]{2,63}',host)):
+            return None
+        return scope_url(resolved,host)
+    except (CrawlError,ValueError):
+        return None
+
+
+def structured_types(subject):
+    names=subject.get('@type',[])
+    if isinstance(names,str): names=[names]
+    if not isinstance(names,list): return set()
+    return {name.removeprefix('https://schema.org/').removeprefix('http://schema.org/')
+            for name in names if isinstance(name,str)}
+
+
+def matches_organization(subject, company, source):
+    official=evidence_url(company['website'],source)
+    return (official is not None and isinstance(subject,dict)
+            and evidence_text(subject.get('name')).casefold()==company['name'].casefold()
+            and evidence_url(subject.get('url'),source)==official)
+
+
+def company_profile_observation(company, page):
+    """A page-scoped evidence packet, never a verified company/person record."""
+    metadata=page.get('metadata',{})
+    source=page['final_url']
+    subjects=page.get('structured_data',[])
+    organizations=[{key:subject[key] for key in ('name','url','description','foundingDate','address','areaServed')
+                    if key in subject} for subject in subjects
+                   if structured_types(subject)&{'Organization','Corporation'}
+                   and matches_organization(subject,company,source)]
+    return {'company':company['name'],'kind':'company-profile','source_url':source,
+            'checked_at':page['checked_at'],'review_required':True,
+            'title':page.get('title',''),
+            'description':metadata.get('description') or metadata.get('og:description',''),
+            'structured_subjects':subjects,'organization_claims':organizations,
+            'logo_candidates':page.get('logo_candidates',[])[:40],
+            'identity_note':'Page subjects may include other organisations or people. Image alt text and sameAs links are source claims, not verified identities or employment.'}
+
+
+def structured_article_binding(article, source, documents):
+    """Return True for an explicit document match, False for absent identity, None for disagreement."""
+    refs=[(article[key],key=='@id') for key in ('url','@id') if key in article]
+    if 'mainEntityOfPage' in article:
+        page=article['mainEntityOfPage']
+        if isinstance(page,dict):
+            page_refs=[(page[key],key=='@id') for key in ('url','@id') if key in page]
+            if not page_refs: return None
+            refs.extend(page_refs)
+        else:
+            refs.append((page,True))
+
+    bound=False
+    for value,node_ref in refs:
+        if node_ref and isinstance(value,str) and '#' in value:
+            document,fragment=value.split('#',1)
+            # An identifier for a node within a document never proves page identity by itself.
+            if not fragment or (document and evidence_url(document,source) not in documents):
+                return None
+            continue
+        if evidence_url(value,source) not in documents: return None
+        bound=True
+    return bound
+
+
+def newsroom_observation(company, page):
+    source=page['final_url']
+    source_key=evidence_url(source,source)
+    if source_key is None: return None
+    metadata=page.get('metadata',{})
+    company_site=evidence_text(metadata.get('og:site_name')).casefold()==company['name'].casefold()
+    markup=page.get('article_markup',{})
+    canonical=markup.get('canonical_hint')
+    structured=[subject for subject in page['structured_data']
+                if structured_types(subject)&ARTICLE_TYPES]
+    equivalent={source_key,canonical} if canonical else {source_key}
+    bound_articles,unbound_articles=[],[]
+    for subject in structured:
+        if not (subject.get('publisher') is None and company_site
+                or matches_organization(subject.get('publisher'),company,source)):
+            continue
+        binding=structured_article_binding(subject,source,equivalent)
+        if binding is True: bound_articles.append(subject)
+        elif binding is False: unbound_articles.append(subject)
+    if not (bound_articles or unbound_articles) and (structured or metadata.get('og:type')!='article' or not company_site):
+        return None
+    title=next((title for article in bound_articles if (title:=evidence_text(article.get('headline')))),'')
+    title=title or evidence_text(metadata.get('og:title')) or evidence_text(page.get('title'))
+    if not title:
+        title=next((title for article in unbound_articles if (title:=evidence_text(article.get('headline')))),'')
+    if not title: return None
+    dates=[]
+    for article in bound_articles:
+        hint={'field':'structured.datePublished','value':evidence_text(article.get('datePublished'),100)}
+        if hint['value'] and hint not in dates: dates.append(hint)
+    dates.extend(markup.get('date_evidence',[]))
+    return {'source_url':source,'requested_url':page.get('url',source),'source_key':source_key,
+            'checked_at':page['checked_at'],'title':title,
+            'canonical_hint':canonical,'date_evidence':dates[:MAX_DATE_ASSERTIONS],
+            **({'date_evidence_truncated':True} if markup.get('truncated') or len(dates)>MAX_DATE_ASSERTIONS else {})}
+
+
+def reported_article_day(value):
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}(?:T.+)?',value): return None
+    try:
+        if len(value)>10: dt.datetime.fromisoformat(value.replace('Z','+00:00'))
+        return dt.date.fromisoformat(value[:10]).isoformat()
+    except ValueError:
+        return None
+
+
+def stage_newsroom_articles(company, observations):
+    by_url={item['source_key']:item for item in observations}
+    groups={}
+    for item in observations:
+        key=item['canonical_hint']
+        target=by_url.get(key)
+        # Merge only when the other article was itself fetched in this batch and
+        # either self-identifies as canonical or makes no competing assertion.
+        if not target or target['canonical_hint'] not in (None,key): key=item['source_key']
+        groups.setdefault(key,[]).append(item)
+    for key,sources in groups.items():
+        dates={day for item in sources for hint in item['date_evidence']
+               if (day:=reported_article_day(hint['value']))}
+        incomplete=any(item.get('date_evidence_truncated') for item in sources)
+        if len(dates)>1: date_state='conflict'
+        elif incomplete: date_state='incomplete'
+        else: date_state='reported' if dates else 'missing'
+        primary=by_url[key]
+        yield {'company':company,'kind':'newsroom-article','candidate_url':key,
+               'source_url':primary['source_url'],'checked_at':primary['checked_at'],'title':primary['title'],
+               'observations':sources,'review_required':True,
+               'date_state':date_state,
+               **({'published_on':next(iter(dates))} if date_state=='reported' else {})}
+
+
+def professional_bio_observations(company, page, asset_hosts):
+    """Require both the reviewed founder roster and a company-linked Person page."""
+    source=page['final_url']
+    source_key=evidence_url(source,source)
+    if source_key is None: return
+    names={row['name'].casefold():row['name'] for row in company.get('founders',[])}
+    for person in page['structured_data']:
+        name=names.get(evidence_text(person.get('name')).casefold())
+        if (not name or 'Person' not in structured_types(person)
+            or evidence_url(person.get('url'),source)!=source_key
+            or not matches_organization(person.get('worksFor'),company,source)):
+            continue
+        role=evidence_text(person.get('jobTitle'),200)
+        bio=evidence_text(person.get('description'),1000)
+        if not (role or bio): continue
+        same_as=person.get('sameAs',[])
+        if isinstance(same_as,str): same_as=[same_as]
+        social_urls=[]
+        if isinstance(same_as,list):
+            for value in same_as[:20]:
+                url=evidence_url(value,source)
+                if not url: continue
+                parts=urlsplit(url)
+                if (parts.hostname in ('linkedin.com','www.linkedin.com')
+                    and re.fullmatch(r'/in/[A-Za-z0-9-]+/?',parts.path) and url not in social_urls):
+                    social_urls.append(url)
+        image=person.get('image')
+        if isinstance(image,dict): image=image.get('contentUrl') or image.get('url')
+        portrait=evidence_url(image,source)
+        row={'company':company['name'],'kind':'professional-bio','name':name,
+             'candidate_url':source_key,'source_url':source,'checked_at':page['checked_at'],
+             'role':role,'bio':bio,'affiliation':person['worksFor'],'social_candidates':social_urls,
+             'review_required':True}
+        if portrait:
+            host=urlsplit(portrait).hostname
+            row['headshot_candidate']={'candidate_url':portrait,'source_url':source,
+                                       'status':'not_fetched','review_required':True,
+                                       'reason':('Rights and image review required'
+                                                 if host in asset_hosts or host==urlsplit(source).hostname
+                                                 else 'External asset host requires separate review')}
+        yield row
+
+
+def crawl_company_profiles(startups, args, transport):
+    # A separate mode keeps startup names out of the partner identity importer.
+    # The approved CSV is mandatory; only already researched companies qualify.
+    known={row['name']:row for row in startups}
+    approved=load_approved_csv(args.approved,set(known),require_qid=False)
+    asset_hosts={seed['name']:seed['asset_hosts'] for seed in approved}
+    for seed in approved:
+        if urlsplit(seed['url']).hostname != urlsplit(known[seed['name']].get('website','')).hostname:
+            raise CrawlError('Company seed must match its reviewed official website host')
+    result=crawl_profiles({'partnerLeads':list(known)},args,transport,company=True)
+    result['mode']='company-profiles'
+    for candidate in result['candidates']:
+        candidate['company']=candidate.pop('partner')
+    for row in result['results']:
+        company=known[row['name']]
+        articles=[]
+        for page in row['pages']:
+            if page.get('status')=='ok':
+                result['candidates'].append(company_profile_observation(company,page))
+                article=newsroom_observation(company,page)
+                if article:
+                    articles.append(article)
+                else:
+                    result['candidates'].extend(professional_bio_observations(company,page,asset_hosts[row['name']]))
+        result['candidates'].extend(stage_newsroom_articles(row['name'],articles))
+    result['coverage']=page_fetch_coverage(result['results'],result['candidates'])
+    result['warning']='Research-only page observations, not verified company profiles or headshots. Review each subject, role, social link and asset provenance before publication. No image or social destination is fetched by this mode.'
+    return result
 
 NEWS_FUNDING = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|invest(?:ment|or|s|ed)?|series|seed|acqui(?:res|red|sition)|launch(?:es|ed)?)\b',re.I)
 NEWS_PRIORITY = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|series|seed)\b',re.I)
@@ -548,15 +1012,15 @@ def page_fetch_coverage(results, candidates):
             'pages_skipped_or_failed':failed, 'unreviewed_candidates':len(candidates),
             'note':'Counts cover attempted pages only; they do not establish complete source coverage or verified facts.'}
 
-def crawl_profiles(catalogue,args,transport):
+def crawl_profiles(catalogue,args,transport,company=False):
     seeds=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
     if args.partner: seeds=[s for s in seeds if args.partner.casefold() in s['name'].casefold()]
     if args.limit: seeds=seeds[:args.limit]
     if not seeds: raise CrawlError('No approved partner websites matched')
     results=[]; candidates=[]
-    def fetch(url,host):
+    def fetch(url,host,scope):
         try:
-            status,headers,body,final=transport.request(url,host)
+            status,headers,body,final=scoped_request(transport,url,host,scope)
             ctype=headers.get('Content-Type','').lower()
             if status!=200: raise CrawlError(f'HTTP {status}')
             if ctype and 'html' not in ctype: raise CrawlError(f'not HTML: {ctype[:100]}')
@@ -565,16 +1029,29 @@ def crawl_profiles(catalogue,args,transport):
             return {'url':url,'checked_at':utc_now(),'status':'skipped','reason':str(exc)}
     for seed in seeds:
         host=urlsplit(seed['url']).hostname
-        homepage=fetch(seed['url'],host); pages=[homepage]; discovered=[]
+        scope=seed.get('crawl_scope'); follow=min(args.follow,scope['max_follow']) if scope else args.follow
+        homepage=fetch(seed['url'],host,scope); pages=[homepage]; discovered=[]
         if homepage['status']=='ok':
             candidates.extend(extract_profile_media_leads(seed['name'],homepage,'homepage'))
-            discovered=profile_landing_links(homepage,seed['url'],args.follow)
+            discovered=profile_landing_links(homepage,seed['url'],follow,include_about=company)
+            if company and scope is not None:
+                kinds={item['url']:item['kind'] for item in discovered}
+                visited={scope_url(homepage['final_url'],host),scope_url(seed['url'],host)}
+                approved=[{'url':url,'kind':kinds.get(url,'approved-document')}
+                          for url in scope['allowed_urls']
+                          if url not in scope['denied_urls'] and url not in visited]
+                # Retain skipped-link evidence for unused follow slots. The
+                # existing request guard rejects out-of-scope links before I/O.
+                approved_urls={item['url'] for item in approved}
+                discovered=(approved+[item for item in discovered
+                                      if item['url'] not in approved_urls | visited])[:follow]
             for target in discovered:
-                page=fetch(target['url'],host); page['profile_kind']=target['kind']; pages.append(page)
+                page=fetch(target['url'],host,scope); page['profile_kind']=target['kind']; pages.append(page)
                 if page['status']=='ok':
-                    candidates.extend(extract_profile_leads(seed['name'],page,target['kind']))
+                    if target['kind'] in PROFILE_PATH_RULES:
+                        candidates.extend(extract_profile_leads(seed['name'],page,target['kind']))
                     candidates.extend(extract_profile_media_leads(seed['name'],page,target['kind']))
-        results.append({'name':seed['name'],'url':seed['url'],'pages':pages,
+        results.append({'name':seed['name'],'url':seed['url'],'pages':pages,**({'crawl_scope':scope} if scope is not None else {}),
                         'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''})
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
     return {'version':1,'mode':'profiles','generated_at':utc_now(),'results':results,'candidates':candidates,
@@ -608,7 +1085,8 @@ def stage_partner_logos(snapshot,args,transport):
             candidates=sorted(page.get('logo_candidates',[]),key=lambda item: item.get('kind')=='site-icon' and urlsplit(item['url']).path.lower().endswith('.ico'))
             for item in candidates:
                 row={'partner':entry['name'],'page':page['final_url'],**item,'status':'not_fetched'}
-                if item['kind']=='social-image': row['reason']='Social images are not automatically treated as logos'
+                if entry.get('crawl_scope') is not None: row['reason']='Scoped document approval does not authorize asset downloads'
+                elif item['kind']=='social-image': row['reason']='Social images are not automatically treated as logos'
                 elif not item['same_host'] and (urlsplit(item['url']).hostname or '').lower() not in entry.get('asset_hosts',[]): row['reason']='External asset host requires separate review'
                 elif accepted>=args.logo_limit: row['reason']='Per-site candidate limit reached'
                 elif attempts>=max_attempts: row['reason']='Per-site attempt limit reached'
@@ -647,15 +1125,47 @@ def crawl_program_directories(registry,args,transport):
                 if not label or not parsed.hostname or parsed.scheme!='https' or parsed.username or parsed.password: continue
                 if not PROGRAM_WORDS.search(' '.join((label,context,parsed.path))): continue
                 if label.casefold() in ('learn more','apply now','apply','read more','find out more','programs','programmes','home'): continue
-                key=(url.split('#',1)[0],label.casefold())
+                # One programme can be listed by several directories or pages.
+                # Deduplicate repeated links, not their distinct source evidence.
+                key=(row['id'],page['final_url'],url.split('#',1)[0],label.casefold())
                 if key in seen: continue
                 seen.add(key)
                 candidates.append({'label':label[:200],'program_url':url,'context':context[:500],
-                                   'source_name':row['name'],'source_url':page['final_url'],
-                                   'source_scope':scopes.get(row['id'],''),'review_required':True})
+                                   'source_id':row['id'],'source_name':row['name'],'source_url':page['final_url'],
+                                   'source_scope':scopes.get(row['id'],''),'checked_at':page['checked_at'],
+                                   'review_required':True})
     result['candidates']=candidates[:1000]
-    result['warning']='Links are discovery candidates. Programme identity, intake, eligibility and external relationships require review.'
+    result['coverage']=program_candidate_coverage(result['results'],candidates,1000)
+    result['warning']='Links are unreviewed source observations, not unique programmes. Source scope is directory context, not applicant eligibility. Programme identity, intake and relationships require review.'
     return result
+
+def program_candidate_coverage(results, candidates, cap):
+    """Keep fetch failures and bounded source observations visible in review output."""
+    returned=candidates[:cap]
+    def counts(observed, retained):
+        return {'observed_candidates':len(observed), 'returned_candidates':len(retained),
+                'omitted_candidates':len(observed)-len(retained), 'truncated':len(observed)>len(retained)}
+    sources=[]; fetched_pages={}; page_observations=0
+    for row in results:
+        observed=[c for c in candidates if c['source_id']==row['id']]
+        retained=[c for c in returned if c['source_id']==row['id']]
+        fetched=page_fetch_coverage([row],retained)
+        pages=row.get('pages',[]); new_fetches=0; page_observations+=len(pages)
+        for page in pages:
+            # crawl_sites caches by the original request URL, including failures.
+            if page['url'] not in fetched_pages:
+                fetched_pages[page['url']]=page; new_fetches+=1
+        sources.append({'source_id':row['id'], 'source_name':row['name'], 'source_url':row['url'],
+                        'fetch_status':fetched['fetch_status'], 'page_observations':len(pages),
+                        'successful_page_observations':fetched['pages_succeeded'],
+                        'failed_page_observations':fetched['pages_skipped_or_failed'],
+                        'new_fetch_attempts':new_fetches, 'reused_page_observations':len(pages)-new_fetches,
+                        **counts(observed,retained)})
+    coverage=page_fetch_coverage([{'pages':list(fetched_pages.values())}],returned)
+    return {**coverage, 'sources_attempted':len(results), 'page_observations':page_observations,
+            'reused_page_observations':page_observations-len(fetched_pages),
+            **counts(candidates,returned), 'candidate_limit':cap, 'sources':sources,
+            'note':'Fetch counts cover unique requested URLs, not HTTP exchanges across redirects. Source page observations can reuse cached successes or failures. Candidate counts are source observations, not unique programmes or verified facts. Successful pages without matches may need parser review; failed pages remain unknown. Unattempted pages are excluded.'}
 
 def directory_coverage(results, candidates, notes, cap):
     """Describe observed source coverage; counts are not estimates of the full ecosystem."""
@@ -775,7 +1285,7 @@ def process_text_captures(captures):
             'warning':'Provided text excerpts were processed locally; they are not direct crawler fetches or complete page snapshots.'}
 
 def write_program_review_csv(path,data):
-    fields=['label','program_url','context','source_name','source_url','source_scope','approved']
+    fields=['label','program_url','context','source_name','source_url','source_scope','source_id','checked_at','approved']
     with path.open('w',newline='',encoding='utf-8') as handle:
         writer=csv.DictWriter(handle,fieldnames=fields); writer.writeheader()
         for candidate in data['candidates']:
@@ -788,22 +1298,44 @@ def write_partner_directory_review_csv(path,data):
         for candidate in data['candidates']:
             writer.writerow({key:csv_safe(candidate.get(key,'')) for key in fields})
 
+def wikidata_api_url(params):
+    return API+'?'+urlencode({**params,'format':'json','maxlag':'5'})
+
 def api_json(transport,params):
-    url=API+'?'+urlencode({**params,'format':'json','maxlag':'5'})
+    url=wikidata_api_url(params)
     status,_,body,_=transport.request(url,'www.wikidata.org',accept='application/json')
     if status!=200: raise CrawlError(f'Wikidata HTTP {status}')
     try: data=json.loads(body)
     except ValueError as exc: raise CrawlError('invalid Wikidata JSON') from exc
-    if 'error' in data: raise CrawlError('Wikidata API: '+str(data['error'].get('code','unknown')))
+    if not isinstance(data,dict): raise CrawlError('invalid Wikidata response object')
+    if 'error' in data:
+        error=data['error']; code=error.get('code','unknown') if isinstance(error,dict) else 'unknown'
+        raise CrawlError('Wikidata API: '+str(code)[:200])
+    if data.get('success')==0: raise CrawlError('Wikidata API reported success=0')
     return data
 
 def claim_values(entity,prop):
+    claims=entity.get('claims')
+    # The legacy Action API can serialize an empty map as an empty array.
+    if claims==[]: claims={}
+    if not isinstance(claims,dict): raise CrawlError('Wikidata claims are absent or invalid')
+    statements=claims.get(prop,[])
+    if not isinstance(statements,list): raise CrawlError(f'Invalid Wikidata statements for {prop}')
     output=[]
-    for item in entity.get('claims',{}).get(prop,[])[:8]:
+    for item in statements[:8]:
+        if not isinstance(item,dict): raise CrawlError(f'Invalid Wikidata statement for {prop}')
         if item.get('rank')=='deprecated': continue
-        value=item.get('mainsnak',{}).get('datavalue',{}).get('value')
+        snak=item.get('mainsnak')
+        if not isinstance(snak,dict): raise CrawlError(f'Invalid Wikidata mainsnak for {prop}')
+        if snak.get('snaktype') in ('somevalue','novalue'): continue
+        datavalue=snak.get('datavalue')
+        if not isinstance(datavalue,dict) or 'value' not in datavalue or datavalue['value'] is None:
+            raise CrawlError(f'Invalid Wikidata datavalue for {prop}')
+        value=datavalue['value']
         if isinstance(value,dict): value=value.get('id') or value.get('time') or value.get('text') or value.get('amount')
-        if isinstance(value,(str,int,float)) and value not in output: output.append(value)
+        if isinstance(value,bool) or not isinstance(value,(str,int,float)):
+            raise CrawlError(f'Invalid Wikidata selected value for {prop}')
+        if value not in output: output.append(value)
     return output
 
 def load_directory_leads(path):
@@ -845,20 +1377,50 @@ def discover(catalogue,args,transport):
             rows.append({'partner':name,'status':'candidates' if candidates else 'no_matches','candidates':candidates,**provenance})
         except CrawlError as exc: rows.append({'partner':name,'status':'failed','reason':str(exc),'candidates':[],**provenance})
         print(f'[{len(rows)}/{len(leads)}] {name}: {rows[-1]["status"]}',file=sys.stderr)
-    entities={}
+    metadata={}; operations={'attempted':0,'succeeded':0,'failed':0}
     def collect_batch(ids):
+        params={'action':'wbgetentities','ids':'|'.join(ids),'props':'claims','languages':'en'}
+        provenance={'source':wikidata_api_url(params),'checked_at':utc_now()}
+        operations['attempted']+=1
         try:
-            entities.update(api_json(transport,{'action':'wbgetentities','ids':'|'.join(ids),'props':'claims','languages':'en'}).get('entities',{}))
+            entities=api_json(transport,params).get('entities')
+            if entities==[]: entities={}
+            if not isinstance(entities,dict): raise CrawlError('invalid Wikidata entities response')
         except CrawlError as exc:
+            operations['failed']+=1
             if len(ids)>1 and 'response exceeds size limit' in str(exc):
                 mid=len(ids)//2; collect_batch(ids[:mid]); collect_batch(ids[mid:])
-            else: print(f'Entity batch unavailable: {exc}',file=sys.stderr)
+            else:
+                for qid in ids:
+                    metadata[qid]={'metadata_fetch':{'status':'failed','reason':str(exc),**provenance}}
+                print(f'Entity batch unavailable: {exc}',file=sys.stderr)
+            return
+        operations['succeeded']+=1
+        for qid in ids:
+            try:
+                if qid not in entities: raise CrawlError('Requested Wikidata entity was omitted from the response')
+                entity=entities[qid]
+                if not isinstance(entity,dict): raise CrawlError('Invalid Wikidata entity object')
+                if 'missing' in entity: raise CrawlError('Wikidata entity is missing')
+                if entity.get('id',qid)!=qid: raise CrawlError('Wikidata entity ID does not match the requested QID')
+                properties={name:values for prop,name in PROPERTIES.items() if (values:=claim_values(entity,prop))}
+            except CrawlError as exc:
+                metadata[qid]={'metadata_fetch':{'status':'unavailable','reason':str(exc),**provenance}}
+            else:
+                metadata[qid]={'metadata_fetch':{'status':'ok',**provenance},'properties':properties}
     for start in range(0,len(qids),20): collect_batch(qids[start:start+20])
     for row in rows:
         for candidate in row['candidates']:
-            entity=entities.get(candidate['qid'],{})
-            candidate['properties']={name:values for prop,name in PROPERTIES.items() if (values:=claim_values(entity,prop))}
-    return {'version':1,'mode':'discover','generated_at':utc_now(),'warning':'Candidates are unverified; name similarity is not identity or partnership verification.','results':rows}
+            candidate.update(metadata[candidate['qid']])
+    succeeded=sum(value['metadata_fetch']['status']=='ok' for value in metadata.values())
+    failed=sum(value['metadata_fetch']['status']=='failed' for value in metadata.values())
+    references=sum(len(row['candidates']) for row in rows)
+    coverage={'fetch_status':('not_attempted' if not qids else 'all_succeeded' if succeeded==len(qids) else 'partial' if succeeded else 'none_succeeded'),
+              'entities_requested':len(qids),'entities_succeeded':succeeded,'entities_failed':failed,
+              'entities_unavailable':len(qids)-succeeded-failed,'candidate_references':references,
+              'reused_candidate_references':references-len(qids),'api_operations':operations,
+              'note':'Metadata coverage counts unique QIDs, including valid empty claims. Repeated candidate references reuse the same outcome and provenance. API operations count wbgetentities client calls, including size-limit splits and calls rejected by the transport; they are not HTTP exchange counts. Search outcomes remain in each row status.'}
+    return {'version':1,'mode':'discover','generated_at':utc_now(),'warning':'Candidates are unverified; name similarity is not identity or partnership verification. Missing properties after a failed or unavailable metadata fetch are unknown, not evidence of absence.','metadata_coverage':coverage,'results':rows}
 
 def csv_safe(value):
     value=str(value)
@@ -866,13 +1428,14 @@ def csv_safe(value):
 
 def write_review_csv(path,data):
     with path.open('w',newline='',encoding='utf-8') as handle:
-        fields=['partner','qid','label','description','official_website','country_ids','headquarters_ids','inception','founder_ids','industry_ids','logo_file','linkedin_id','name_similarity','source','directory_provider','directory_type','directory_source','directory_scope','directory_checked_at','approved']
+        fields=['partner','qid','label','description','official_website','country_ids','headquarters_ids','inception','founder_ids','industry_ids','logo_file','linkedin_id','name_similarity','source','metadata_status','metadata_checked_at','metadata_source','metadata_reason','directory_provider','directory_type','directory_source','directory_scope','directory_checked_at','approved']
         writer=csv.DictWriter(handle,fieldnames=fields)
         writer.writeheader()
         for row in data['results']:
             for c in row['candidates']:
                 sites=c.get('properties',{}).get('official_website',[])
                 properties=c.get('properties',{})
+                metadata=c.get('metadata_fetch',{})
                 directory=row.get('directory_source',{})
                 values={'partner':row['partner'],'qid':c['qid'],'label':c['label'],'description':c['description'],
                                  'official_website':sites[0] if sites else '', 'country_ids':' | '.join(map(str,properties.get('country',[]))),
@@ -883,6 +1446,8 @@ def write_review_csv(path,data):
                                  'logo_file':' | '.join(map(str,properties.get('logo_file',[]))),
                                  'linkedin_id':' | '.join(map(str,properties.get('linkedin_id',[]))),
                                  'name_similarity':c['name_similarity'],'source':c['source'],
+                                 'metadata_status':metadata.get('status',''),'metadata_checked_at':metadata.get('checked_at',''),
+                                 'metadata_source':metadata.get('source',''),'metadata_reason':metadata.get('reason',''),
                                  'directory_provider':directory.get('provider',''),'directory_type':directory.get('reported_type',''),
                                  'directory_source':directory.get('url',''),'directory_scope':directory.get('scope',''),
                                  'directory_checked_at':directory.get('checked_at',''),'approved':''}
@@ -890,7 +1455,7 @@ def write_review_csv(path,data):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos','partner-candidates','profiles','news'])
+    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos','partner-candidates','profiles','company-profiles','news'])
     p.add_argument('--limit',type=int,default=0,help='Maximum records (0 = all)')
     p.add_argument('--delay',type=float,default=1.0,help='Minimum seconds between requests to one host (at least 1)')
     p.add_argument('--follow',type=int,default=2,help='Same-host related pages per starting page, 0–5')
@@ -905,11 +1470,12 @@ def main(argv=None):
     p.add_argument('--captures',type=Path,help='JSON file containing provided, attributable text excerpts')
     p.add_argument('--out',type=Path,default=ROOT/'research/crawl',help='Directory for generated snapshots')
     args=p.parse_args(argv)
+    require_scoped_launcher(args.approved)
     if args.limit<0 or not 0<=args.follow<=5 or not 1<=args.candidates<=10 or args.delay<0 or not 0<=args.logo_limit<=5: p.error('Invalid limits or delay')
     if args.mode=='apply-reviewed' and not args.approved: p.error('apply-reviewed requires --approved PATH')
     if args.mode=='partner-candidates' and (not args.approved or not args.snapshot): p.error('partner-candidates requires --approved and --snapshot')
     if args.mode=='captures' and not args.captures: p.error('captures requires --captures PATH')
-    if args.mode in ('logos','profiles') and not args.approved: p.error(f'{args.mode} requires --approved PATH')
+    if args.mode in ('logos','profiles','company-profiles') and not args.approved: p.error(f'{args.mode} requires --approved PATH')
     if args.leads and args.mode!='discover': p.error('--leads is only valid with discover')
     if args.mode=='partners' and args.approved: p.error('partners uses curated directory seeds, not --approved')
     if args.partners_only and (args.mode not in ('sites','logos') or not args.approved): p.error('--partners-only requires sites or logos --approved PATH')
@@ -946,26 +1512,36 @@ def main(argv=None):
         transport=Transport(args.delay)
         if args.mode=='news': data=crawl_startup_news(json.loads(STARTUP_NEWS_SOURCES.read_text(encoding='utf-8')),args,transport)
         elif args.mode=='profiles': data=crawl_profiles(catalogue,args,transport)
+        elif args.mode=='company-profiles': data=crawl_company_profiles(json.loads((ROOT/'data/startup-research.json').read_text(encoding='utf-8'))['startups'],args,transport)
         elif args.mode=='sites': data=crawl_sites(catalogue,args,transport)
         elif args.mode=='logos': data=stage_partner_logos(crawl_sites(catalogue,args,transport),args,transport)
         elif args.mode=='discover': data=discover(catalogue,args,transport)
         elif args.mode=='partners': data=crawl_partner_directories(json.loads(PARTNER_SOURCES.read_text(encoding='utf-8')),catalogue,args,transport)
         else: data=crawl_program_directories(json.loads(PROGRAM_SOURCES.read_text(encoding='utf-8')),args,transport)
+    if globals().get('__implementation__'): data['implementation']=__implementation__
     path=args.out/f'{args.mode}-{stamp()}.json'; write_json(path,data); write_json(args.out/f'latest-{args.mode}.json',data)
     if args.mode=='profiles': print(f"Prepared {len(data['candidates'])} unreviewed profile leads")
     if args.mode=='news': print(f"Prepared {len(data['candidates'])} unreviewed news leads")
     if args.mode=='discover':
         review=args.out/f'partner-review-{stamp()}.csv'; write_review_csv(review,data); print(f'Review candidates: {review}')
+        coverage=data['metadata_coverage']
+        print(f"Wikidata metadata coverage: {coverage['fetch_status']}; {coverage['entities_succeeded']}/{coverage['entities_requested']} unique entities retrieved; {coverage['entities_failed']} failed; {coverage['entities_unavailable']} unavailable. {coverage['candidate_references']} candidate references; {coverage['reused_candidate_references']} reused entity outcomes.")
     if args.mode=='programs':
-        review=args.out/f'program-review-{stamp()}.csv'; write_program_review_csv(review,data); print(f"Review {len(data['candidates'])} candidate links: {review}")
+        review=args.out/f'program-review-{stamp()}.csv'; write_program_review_csv(review,data); print(f"Review {len(data['candidates'])} unreviewed programme source observations: {review}")
+        coverage=data['coverage']
+        print(f"Programme observations: {coverage['observed_candidates']} observed; {coverage['returned_candidates']} returned; {coverage['omitted_candidates']} omitted by the candidate limit.")
     if args.mode=='partners':
         review=args.out/f'partner-directory-review-{stamp()}.csv'; write_partner_directory_review_csv(review,data); print(f"Review {len(data['candidates'])} directory leads: {review}")
         for note in data['notes']: print(f"{note['source_url']}: {note['message']}",file=sys.stderr)
-    if args.mode in ('profiles','news'):
+    if args.mode in ('profiles','company-profiles','news','programs'):
         coverage=data['coverage']
         print(f"Page fetch coverage: {coverage['fetch_status']}; {coverage['pages_succeeded']}/{coverage['pages_attempted']} attempted pages fetched; {coverage['pages_skipped_or_failed']} skipped or failed.")
     print(f'Snapshot: {path}')
-    if args.mode=='discover': success=sum(row['status'] in ('candidates','no_matches') for row in data['results'])
+    if args.mode=='discover':
+        if data['metadata_coverage']['entities_requested'] and not data['metadata_coverage']['entities_succeeded']:
+            print('Candidate leads staged; no entity metadata could be retrieved. Inspect the snapshot for reasons.',file=sys.stderr)
+            return 1
+        success=sum(row['status'] in ('candidates','no_matches') for row in data['results'])
     elif args.mode=='captures': success=len(data['results'])
     else: success=sum(any(p['status']=='ok' for p in row['pages']) for row in data['results'])
     if data['results'] and not success: print('No records could be fetched; inspect the snapshot for reasons.',file=sys.stderr); return 1

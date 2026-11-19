@@ -1,0 +1,80 @@
+{
+  "packet_id": "be-gdp23-2026-11-18-batch-001",
+  "country": "Belgium",
+  "country_code": "BE",
+  "cohort_label": "GDP 23/30",
+  "cohort": {
+    "rank": 23,
+    "size": 30,
+    "basis": "User-specified IMF October 2026 WEO 2026 nominal GDP estimates; aggregates excluded; Taiwan separately reported economy convention",
+    "verification": "not independently confirmed",
+    "gdp_nominal_usd_billions": null,
+    "source_attempts": [
+      "gap-s01",
+      "gap-s02"
+    ],
+    "reason": "Requested API returned DisabledError; WEO landing returned template only. No independent GDP value or rank asserted."
+  },
+  "repository": "castlemilk/startup-atlas",
+  "branch": "research/belgium-gdp23-batch01",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "owned_path": "research/countries/be/2026-11-18-batch-001/",
+  "production_overlay_modified": false,
+  "source_seed_changes": 0,
+  "crawler_runs": 0,
+  "robots_requests": 0,
+  "deployments": 0,
+  "publication_state": "unsubmitted",
+  "bounded_budget": {
+    "verified_company_checkpoint_max": 50,
+    "accepted_company_records": 26,
+    "budget_note": "Stopped at evidence-backed initial tranche; pending discovery is retained separately."
+  },
+  "counts": {
+    "discovered": 50,
+    "reviewed": 27,
+    "accepted": 26,
+    "rejected": 1,
+    "deferred": 23,
+    "projected_records": 26,
+    "published_records": 0,
+    "source_registry_entries": 128,
+    "unique_source_urls": 128,
+    "source_entries_accessed": 113,
+    "source_entries_failed": 15,
+    "claims": 440,
+    "ecosystem_claims": 18,
+    "projected_financing_events": 30,
+    "sidecar_events": 35,
+    "queue_items": 47,
+    "claim_statuses": {
+      "conflict": 18,
+      "reviewed_staged": 415,
+      "searched_unknown": 4,
+      "unsearched": 3
+    }
+  },
+  "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "planner_owner": "https://github.com/castlemilk/startup-atlas/pull/177",
+  "coordination_comment": "https://github.com/castlemilk/startup-atlas/pull/177#issuecomment-6974944469",
+  "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a",
+  "owner_acknowledgement": "pending",
+  "integration_state": "Staged research only; projection requires collection/record-owner review before importing into production",
+  "runtime_limitation": {
+    "research_baseline": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "observed_issue": "Historical builder substituted zero for missing founding year. Packet omits unknown values.",
+    "resolution_pr": "https://github.com/castlemilk/startup-atlas/pull/179",
+    "fixed_main_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "state": "owner_fix_merged",
+    "country_runtime_edits": false
+  },
+  "source_allowlist_effect": "none",
+  "schema_api_changes": false,
+  "claims_file": "claims.json",
+  "records_file": "records.json",
+  "coverage_file": "coverage.json",
+  "checksum_file": "CHECKSUMS.sha256",
+  "assembled_at": "2026-11-18T10:04:43Z",
+  "file_state_note": "Immutable research checkpoint metadata captured before PR submission; actual delivery is recorded in PR and canonical Space receipt.",
+  "validation_base_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9"
+}

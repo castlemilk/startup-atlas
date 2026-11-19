@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "packet_id": "italy-gdp09-20261118-batch001",
+  "country": "Italy",
+  "country_code": "IT",
+  "reviewed_on": "2026-11-18",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "branch": "research/italy-gdp09-batch01-20261118",
+  "staging_only": true,
+  "production_writes": 0,
+  "cohort": {
+    "source": "user-specified IMF October 2026 WEO 2026 nominal GDP estimates, excluding aggregates",
+    "rank": 9,
+    "size": 30,
+    "gdp_value": null,
+    "independently_verified": false,
+    "source_ids": [
+      "it-eco:imf-api",
+      "it-eco:imf-weo"
+    ]
+  },
+  "counts": {
+    "discovered_unique_candidates": 48,
+    "reviewed_companies": 24,
+    "accepted_staging": 22,
+    "rejected_reference_only": 2,
+    "pending_primary_identity_review": 24,
+    "published_companies": 0,
+    "registered_source_entries": 135,
+    "registered_unique_source_urls": 135,
+    "source_url_content_outcomes": {
+      "partial": 6,
+      "unavailable": 19,
+      "usable": 110
+    },
+    "claims": 444,
+    "claim_statuses": {
+      "blocked": 2,
+      "conflict": 8,
+      "reviewed_staged": 404,
+      "searched_unknown": 17,
+      "unsearched": 13
+    }
+  },
+  "denominators": {
+    "bounded_reviewed_set": 24,
+    "national_atlas_eligible_startup_population": null,
+    "statutory_startups_2025_10_31": 12073,
+    "statutory_count_is_batch_denominator": false
+  },
+  "source_pagination_exhausted": false,
+  "founder_lists_complete": false,
+  "funding_histories_complete": false,
+  "investor_lists_complete": false,
+  "incorporation_registry_audit_complete": false,
+  "all_sources_crawler_approved": false,
+  "ownership": {
+    "collection": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "coordination": "https://github.com/castlemilk/startup-atlas/pull/177#issuecomment-6974888294",
+    "acknowledgement_received": false,
+    "owned_paths": [
+      "research/countries/italy/2026-11-18/batch-001/"
+    ]
+  },
+  "material_gaps": [
+    "Exact IMF vintage/value/ranking not independently reproduced.",
+    "No national or complete institutional directory denominator.",
+    "Northern investor and university sources overrepresented; south/islands next.",
+    "Historical funding reviewed, not an exhaustive latest-round refresh for every company.",
+    "Current HQ and incorporation are separate; unknowns preserved.",
+    "No resolved canonical investor entities or typed production funding participation.",
+    "Known stale committed graph; deduplication uses a source rebuild."
+  ],
+  "initial_research_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "upstream_updates_adopted": [
+    {
+      "pr": 179,
+      "scope": "Preserve omitted founding years in generated graph"
+    },
+    {
+      "pr": 181,
+      "scope": "Reject legacy funding-source replacement that would silently inherit claims"
+    }
+  ]
+}

@@ -349,3 +349,9 @@
   .signal-app *, .signal-app *::before, .signal-app *::after { scroll-behavior:auto !important; animation:none !important; transition:none !important; }
   .signal-button:active { transform:none; }
 }
+
+/* Narrative anatomy uses reading type, not compact token-value specimens. */
+.signal-field-guide-list { margin:24px 0; }
+.signal-field-guide-list div + div { margin-top:20px; padding-top:16px; border-top:1px solid var(--signal-line); }
+.signal-field-guide-list dt { font-weight:650; font-size:14px; line-height:1.5; }
+.signal-field-guide-list dd { margin:6px 0 0; color:var(--signal-muted); font-size:14px; line-height:1.65; overflow-wrap:anywhere; }

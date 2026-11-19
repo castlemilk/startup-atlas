@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "receipt_kind": "verified-upstream-source-and-package",
+  "checked_at_utc": "2026-11-17T12:29:40.085386Z",
+  "scope": "Read-only upstream investigation and isolated dependency byte/API verification; not application integration, native browser acceptance, release approval or deployment.",
+  "package": {
+    "name": "@usefluid/motion",
+    "exact_pin": "0.1.2",
+    "latest_registry_tag_at_check": "0.1.2",
+    "published_at_utc": "2026-11-14T13:44:47.940Z",
+    "age_seconds_at_registry_check": 254684.161,
+    "published_git_head": "07ffba766bc7be5b4215384185a0e49363bb1d0e",
+    "published_source_url": "https://github.com/useFluid/fluidui/tree/07ffba766bc7be5b4215384185a0e49363bb1d0e/packages/motion",
+    "license": "MIT",
+    "type": "module",
+    "runtime_dependencies": {},
+    "exports": {
+      ".": {
+        "types": "./index.d.ts",
+        "default": "./index.js"
+      },
+      "./react": {
+        "types": "./react.d.ts",
+        "default": "./react.js"
+      },
+      "./theme.css": "./theme.css"
+    },
+    "peer_dependencies": {
+      "react": ">=18"
+    },
+    "peer_dependencies_meta": {
+      "react": {
+        "optional": true
+      }
+    },
+    "registry_integrity": "sha512-KADMAzh/A21PNuzIfaLyqku5bE24nTQQCVaBCBLrha3DRAjoiVxBPFGswhfb/ksY9hCuyb4+vwYS9kGqSsNEOw==",
+    "computed_tarball_integrity": "sha512-KADMAzh/A21PNuzIfaLyqku5bE24nTQQCVaBCBLrha3DRAjoiVxBPFGswhfb/ksY9hCuyb4+vwYS9kGqSsNEOw==",
+    "registry_sha1": "2561bbf3397e7ba562f18b4d463770ed57e8d52d",
+    "computed_tarball_sha1": "2561bbf3397e7ba562f18b4d463770ed57e8d52d",
+    "tarball_file_count": 18,
+    "installed_file_bytes_match_tarball": true,
+    "signature_verification": "Not performed independently. Matching byte hashes establish consistency with retrieved registry metadata, not independent publisher-signature or provenance-attestation verification."
+  },
+  "verified_sources": {
+    "npm_registry": {
+      "url": "https://registry.npmjs.org/@usefluid%2Fmotion",
+      "retrieved_at_utc": "2026-11-17T12:29:32.100562Z",
+      "http_status": 200,
+      "byte_length": 11375,
+      "sha256": "14cc834b01284227e07030a1dd1de8e73f4d2086a9f4d8911048fb36c10da949"
+    },
+    "npm_tarball": {
+      "url": "https://registry.npmjs.org/@usefluid/motion/-/motion-0.1.2.tgz",
+      "retrieved_at_utc": "2026-11-17T12:29:36.255422Z",
+      "http_status": 200,
+      "byte_length": 10401,
+      "sha256": "d8a9811603d55796c53d1b317d64e230eae06f3c752e41bd3e4a917377fec2fb"
+    },
+    "published_spring_source": {
+      "url": "https://raw.githubusercontent.com/useFluid/fluidui/07ffba766bc7be5b4215384185a0e49363bb1d0e/packages/motion/src/spring.ts",
+      "retrieved_at_utc": "2026-11-17T12:29:36.428414Z",
+      "http_status": 200,
+      "byte_length": 2845,
+      "sha256": "0044daf7dbaecc5afc4effd9f25e322b468caf8765edf8688a71d30234f73883"
+    },
+    "current_github_main": {
+      "url": "https://api.github.com/repos/useFluid/fluidui/commits/main",
+      "retrieved_at_utc": "2026-11-17T12:29:38.432613Z",
+      "http_status": 200,
+      "byte_length": 490652,
+      "sha256": "e6731eacf5f6d7dc3d4ea5f6047411f3ec7e388fabd652a7d6158ee1d4870707"
+    },
+    "live_llms_index": {
+      "url": "https://fluidui.willradoux.com/llms.txt",
+      "retrieved_at_utc": "2026-11-17T12:29:39.950983Z",
+      "http_status": 200,
+      "byte_length": 4532,
+      "sha256": "c6f2cabd00b5098c60cd96932d2aed6aa0d68a2f3fe21026a9eb8aa33d1347a3"
+    },
+    "live_llms_full": {
+      "url": "https://fluidui.willradoux.com/llms-full.txt",
+      "retrieved_at_utc": "2026-11-17T12:29:40.001943Z",
+      "http_status": 200,
+      "byte_length": 44158,
+      "sha256": "2f79e0ce14c7fed8f23803fcd4140fdc6db3b6de21b03cbf43a742e33c548abf"
+    }
+  },
+  "live_source_boundary": {
+    "main_sha": "0ad3688214d3f47cee09f51e1f426e7baff0c35b",
+    "main_committed_at_utc": "2026-11-17T04:41:07Z",
+    "main_commit_url": "https://github.com/useFluid/fluidui/commit/0ad3688214d3f47cee09f51e1f426e7baff0c35b",
+    "main_subject": "Fluid by hand: scalePath, coded errors, safer MorphPath, 2.3x faster morph, engineering rules (#11)",
+    "published_package_is_not_current_main": true,
+    "main_and_live_docs_include_unpublished_0_2_0_work": [
+      "scalePath",
+      "coded PathError values and troubleshooting links",
+      "MorphPath invalid-path handling and recovery",
+      "validation before changing a morpher target",
+      "morph performance changes"
+    ],
+    "unpublished_apis_not_used_by_adapter": true,
+    "caveat": "The live documentation describes newer source than npm 0.1.2. Validate every used export against the pinned package. The source workspace package version 0.0.0 is private build metadata, not the npm published version."
+  },
+  "adapter_api_usage": {
+    "module_specifier": "@usefluid/motion",
+    "used_exports": [
+      "springCss",
+      "springs"
+    ],
+    "used_preset": {
+      "export_path": "springs.firm",
+      "value": {
+        "w": 32,
+        "z": 1
+      }
+    },
+    "spring_css_signature": "springCss(config?: { w: number; z: number }, samples?: number) -> { easing: string, duration: number, transition(property: string, delay?: number): { transitionProperty: string, transitionDuration: string, transitionDelay: string, transitionTimingFunction: string } }",
+    "units": {
+      "spring_css_duration": "milliseconds",
+      "transition_delay": "milliseconds",
+      "core_step_dt": "seconds"
+    },
+    "installed_core_exports": [
+      "PathError",
+      "createMorpher",
+      "createSpring",
+      "fitPath",
+      "parsePath",
+      "play",
+      "sampleContours",
+      "serializePath",
+      "shapes",
+      "springCss",
+      "springs",
+      "stepSpring"
+    ],
+    "firm_css_probe": {
+      "easing": "linear(0, 0.0285, 0.0963, 0.1840, 0.2790, 0.3732, 0.4621, 0.5431, 0.6152, 0.6783, 0.7326, 0.7789, 0.8181, 0.8509, 0.8782, 0.9008, 0.9195, 0.9348, 0.9473, 0.9575, 0.9658, 0.9725, 0.9780, 0.9823, 0.9859, 0.9887, 0.9910, 0.9928, 0.9943, 0.9955, 0.9964, 0.9971, 0.9977, 0.9982, 0.9986, 0.9989, 0.9991, 0.9993, 0.9994, 0.9996, 1)",
+      "duration": 325,
+      "transition": {
+        "transitionProperty": "transform",
+        "transitionDuration": "325ms",
+        "transitionDelay": "0ms",
+        "transitionTimingFunction": "linear(0, 0.0285, 0.0963, 0.1840, 0.2790, 0.3732, 0.4621, 0.5431, 0.6152, 0.6783, 0.7326, 0.7789, 0.8181, 0.8509, 0.8782, 0.9008, 0.9195, 0.9348, 0.9473, 0.9575, 0.9658, 0.9725, 0.9780, 0.9823, 0.9859, 0.9887, 0.9910, 0.9928, 0.9943, 0.9955, 0.9964, 0.9971, 0.9977, 0.9982, 0.9986, 0.9989, 0.9991, 0.9993, 0.9994, 0.9996, 1)"
+      }
+    },
+    "execution_boundary": "Only the pure springCss calculation is used to prepare a finite browser animation. The Atlas adapter does not use upstream play, useSpring, MorphPath, useSequence or useReducedMotion.",
+    "signal_timing_boundary": "The upstream firm duration is 325 ms. Atlas host timing remains governed by Signal; consuming the easing does not authorize changing canonical 140/240 ms timings."
+  },
+  "compatibility_caveats": [
+    "The package core is ESM with no React runtime dependency; static vanilla use still needs the repository-approved same-origin build/module path.",
+    "The optional React entry declares React >=18 and a use-client boundary. That peer range does not establish compatibility with the actual active Hardware/Next.js owner stack.",
+    "CSS linear() and WAAPI capability must be detected by the adapter; unsupported capability leaves final state readable or uses the explicit Signal fallback.",
+    "Live reduced-motion changes, hidden-tab cleanup, rapid interruption, independent roots and unmount disposal are adapter responsibilities and require their own evidence.",
+    "The existing motion owner retains shared runtime/ticker ownership. Do not add a duplicate ticker or global animation cleanup.",
+    "Semantic state, keyboard/focus behavior, URL/history and success/permission remain owned by host controllers. Easing completion is never evidence of successful application work."
+  ],
+  "upstream_lifecycle_notes": {
+    "scope": "Source findings for future consumers; these APIs are not used by this adapter.",
+    "ticker": "play uses a module-scoped callback Set and one RAF, with dt clamped to 0..0.1 seconds. Its stop function only removes the callback, leaving any already queued empty frame. No hidden-tab listener is supplied. A throwing callback can interrupt scheduling bookkeeping.",
+    "react": "useReducedMotion subscribes to preference changes, but useSpring, MorphPath and useSequence only sample the preference when their target effect runs. useSpring keys its effect on Object.values(target).join(), so configuration, immediate or equal-value key changes alone do not retrigger it.",
+    "sources": [
+      "https://github.com/useFluid/fluidui/blob/07ffba766bc7be5b4215384185a0e49363bb1d0e/packages/motion/src/ticker.ts",
+      "https://github.com/useFluid/fluidui/blob/07ffba766bc7be5b4215384185a0e49363bb1d0e/packages/motion/src/react.tsx"
+    ]
+  },
+  "licensing": {
+    "spdx": "MIT",
+    "copyright": "Copyright (c) 2026 Willian Figueiredo",
+    "license_source": "https://github.com/useFluid/fluidui/blob/07ffba766bc7be5b4215384185a0e49363bb1d0e/LICENSE",
+    "distribution_requirement": "Retain the copyright and permission notice in copies or substantial portions of the upstream software.",
+    "artwork_boundary": "This software license does not establish ownership, permission or factual provenance for existing Atlas concept illustrations or third-party imagery."
+  },
+  "release_age_policy": {
+    "repository_observation": "No package release-age policy was observed by the coordinating owner in the repository material examined for this isolated lane. This is not a claim that every environment or active owner has no policy.",
+    "actual_hardware_nextjs_policy": "Unknown until the actual Hardware/Next.js owner and stack are coordinated.",
+    "required_behavior": "Preserve any existing release-age policy. Do not add exclusions, change registries/settings or replace the release with main to bypass a gate.",
+    "three_day_age_at_utc": "2026-11-17T13:44:47.940000Z",
+    "seven_day_age_at_utc": "2026-11-21T13:44:47.940000Z",
+    "install_note": "The coordinating owner reported an isolated exact-pin install using --ignore-scripts. This receipt independently checked installed package metadata and all package file bytes; it did not run or modify install hooks."
+  },
+  "verification": {
+    "verified": [
+      "Official npm metadata and publication time refreshed",
+      "Official package tarball SHA-512 and SHA-1 recomputed and matched",
+      "Every installed package file matched the corresponding tarball bytes",
+      "Installed exports checked and springCss(springs.firm) executed in Node",
+      "Official source main and live documentation retrieved with byte hashes"
+    ],
+    "not_verified": [
+      "Independent signature or provenance-attestation verification",
+      "Actual Hardware/Next.js build or framework integration",
+      "DOM or native rendered behavior",
+      "Keyboard/focus/browser/mobile acceptance",
+      "Application integration, publication or deployment"
+    ],
+    "installed_package_files": [
+      {
+        "path": "LICENSE",
+        "byte_length": 1075,
+        "sha256": "0af9ca512dff15eadcea08ac8cf8d4eeed672dd46d5c4722eed00b5117ed3a67",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "theme.css",
+        "byte_length": 338,
+        "sha256": "55f86c19a1d19f35b2186b444f73c1b9b13547c23c8759b21eb775cafde59a14",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "index.js",
+        "byte_length": 142,
+        "sha256": "efab67845442f8d3a5821b7787e46a9d067108a45cd6e0a9d0876c02fef337c9",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "morph.js",
+        "byte_length": 3942,
+        "sha256": "4a86cfe94f3fcbeb9eb2f2a7c89910bd21f58ad798aedffa8a13661e7a999cdc",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "path.js",
+        "byte_length": 10260,
+        "sha256": "ada98e8175e4b692513042bbf4122483bd00cb066d06d672d501ce0c1328f5c9",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "react.js",
+        "byte_length": 5217,
+        "sha256": "9c592813c628365fbaf63aefc010fc59bcbeab11454ecfa78e89c90b67fe31e0",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "shapes.js",
+        "byte_length": 1143,
+        "sha256": "4229646d5f01bd1253ef80d2b02d4533199dc442d1a9b3dec4bfa222e22999e9",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "spring.js",
+        "byte_length": 2814,
+        "sha256": "d7d742d09bf2d8b89dbea1c03f0b0a731b1033a408ce08fd8becd2e29b647b6c",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "ticker.js",
+        "byte_length": 519,
+        "sha256": "593924e53db88866e1e1d097925132a4979605cfe86c19aced03bb9507d329c1",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "package.json",
+        "byte_length": 939,
+        "sha256": "65ef43223a7f4c0a58d4d1d83b2576a034a32866ecc4046c659e65eaa871d55e",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "README.md",
+        "byte_length": 3335,
+        "sha256": "7a98fc4b0b8355998fe8073def95ce6ecc1d461c43e99f72347e96d566e190e4",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "index.d.ts",
+        "byte_length": 142,
+        "sha256": "efab67845442f8d3a5821b7787e46a9d067108a45cd6e0a9d0876c02fef337c9",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "morph.d.ts",
+        "byte_length": 358,
+        "sha256": "f1a7e9711169e2382a699ee75ef2efe7a1fdfd6648fb053438587725def33925",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "path.d.ts",
+        "byte_length": 655,
+        "sha256": "e2a750c70080ee1c3d729e4720c1079215e72e0238b77b8f80921e8418db6cb6",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "react.d.ts",
+        "byte_length": 887,
+        "sha256": "8e2407299c11c0408ccc4383803275c5ae2643fba9b0c1d0d7d36b8d7d47f334",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "shapes.d.ts",
+        "byte_length": 237,
+        "sha256": "ca324291ababcf6688918d1f745f80bfd64430e9a5ffd6a84cc980ccee748259",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "spring.d.ts",
+        "byte_length": 1036,
+        "sha256": "1fac6d43b0a0a02369dec52d84e7d0c8adaa4655901fb9d5bcc86bd016e0d71f",
+        "installed_matches_tarball": true
+      },
+      {
+        "path": "ticker.d.ts",
+        "byte_length": 105,
+        "sha256": "c203f18a61231f12009df16fab97e43ae6452746786c62bdb7c5886b57e9975a",
+        "installed_matches_tarball": true
+      }
+    ]
+  }
+}

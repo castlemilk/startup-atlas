@@ -1,0 +1,816 @@
+{
+  "format": "nl-queue-v1",
+  "runtime_status": "Research continuation only; not an activated crawler schedule or seed proposal",
+  "entries": [
+    {
+      "id": "NL-ECO-Q01",
+      "priority": 1,
+      "source_urls": [
+        "https://www.innovationindustries.com/"
+      ],
+      "source_ids": [
+        "nl-eco-innovation-industries"
+      ],
+      "next_batch_limit": 4,
+      "continuation": {
+        "kind": "named_lead_list",
+        "next_items": [
+          "PhotonBridge",
+          "EUCLYD",
+          "eyeo",
+          "Groove Quantum"
+        ],
+        "terminal_observed": false
+      },
+      "observed_scope": "Four homepage funding-news leads outside the deep-tech agent's eight targets.",
+      "next_action": "Open each dated investor release and company source; resolve canonical domain, entity/HQ and round participants; deduplicate before accepting.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q02",
+      "priority": 1,
+      "source_urls": [
+        "https://www.hightechxl.com/portfolio/"
+      ],
+      "source_ids": [
+        "nl-eco-hightechxl-portfolio"
+      ],
+      "next_batch_limit": 6,
+      "continuation": {
+        "kind": "first_visible_cards",
+        "next_items": [
+          "Zermicor",
+          "Maris Carbon",
+          "Perovix",
+          "Luba Labs",
+          "Grape Systems",
+          "Vialign"
+        ],
+        "observed_ui_result_count": 22,
+        "visible_cards_reviewed": 6,
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "One public rendered/extracted page; UI says 22 results while six cards were exposed.",
+      "next_action": "Verify the six named companies using official company pages; inspect the public next-page/filter mechanism before recording a resumable cursor; do not infer that all 22 are Dutch startups.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q03",
+      "priority": 1,
+      "source_urls": [
+        "https://leidenbiosciencepark.nl/at-the-park/"
+      ],
+      "source_ids": [
+        "nl-eco-leiden-directory"
+      ],
+      "next_batch_limit": 12,
+      "continuation": {
+        "kind": "directory_view_and_page",
+        "view": "List",
+        "observed_page": 1,
+        "observed_rows_on_page": 12,
+        "observed_list_page_count": 36,
+        "alternative_overview_page_count": 71,
+        "alternative_overview_cards_on_page": 6,
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "Page-one List and Overview controls inspected; different page sizes; no claim that advertised pages correspond to unique active startups.",
+      "next_action": "Use one fixed view and filter state. Resolve next-page URL, record last reviewed row and visible total if provided, classify institutions/branches before company enrichment.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q04",
+      "priority": 1,
+      "source_urls": [
+        "https://startlife.nl/startups/",
+        "https://startlife.nl/accelerate/"
+      ],
+      "source_ids": [
+        "nl-eco-startlife-portfolio",
+        "nl-eco-startlife-programme"
+      ],
+      "next_batch_limit": 8,
+      "continuation": {
+        "kind": "selected_portfolio",
+        "last_reviewed_company": null,
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "The portfolio describes a selection; a long public list is visible, but it was not exhausted or copied in bulk.",
+      "next_action": "Pick eight official company links, verify current Dutch HQ versus international programme attendance, then save exact last reviewed item. Reconcile inconsistent programme dates independently.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q05",
+      "priority": 1,
+      "source_urls": [
+        "https://www.nom.nl/diensten/investeren/investeren-portfolio/"
+      ],
+      "source_ids": [
+        "nl-eco-nom-portfolio"
+      ],
+      "next_batch_limit": 8,
+      "continuation": {
+        "kind": "portfolio_first_pass",
+        "last_reviewed_company": null,
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "Public portfolio mixes companies, fund investments and operating sites; first-pass structure reviewed, no full enumeration.",
+      "next_action": "Prioritise Groningen, Friesland and Drenthe companies; classify fund vehicles and public/mature companies; verify operating address versus HQ.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q06",
+      "priority": 2,
+      "source_urls": [
+        "https://utrechtinc.nl/community/startups/"
+      ],
+      "source_ids": [
+        "nl-eco-utrechtinc"
+      ],
+      "next_batch_limit": 6,
+      "continuation": {
+        "kind": "community_categories",
+        "categories": [
+          "in-house startups",
+          "graduates"
+        ],
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "Current/community and graduate populations differ; no defensible unified startup denominator was established.",
+      "next_action": "Inspect six current or recent health/AI/sustainability companies and check current legal status; store programme membership separately from financing.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q07",
+      "priority": 2,
+      "source_urls": [
+        "https://yesdelft.com/about/",
+        "https://novelt.com/en/support/startup/"
+      ],
+      "source_ids": [
+        "nl-eco-yes-delft",
+        "nl-eco-novelt"
+      ],
+      "next_batch_limit": 8,
+      "continuation": {
+        "kind": "operator_profile_to_dated_cases",
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "Operator and sector evidence only; no complete startup directory traversal.",
+      "next_action": "Follow visible official links into dated cases/cohorts, prioritising Delft and Twente spin-outs missing from Atlas. Reject render-zero counters as population data.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q08",
+      "priority": 2,
+      "source_urls": [
+        "https://portxl.org/about-us/"
+      ],
+      "source_ids": [
+        "nl-eco-portxl"
+      ],
+      "next_batch_limit": 6,
+      "continuation": {
+        "kind": "dated_cohort_discovery",
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "Programme geography and B2B maritime focus verified, not Dutch HQ of attendees.",
+      "next_action": "Find dated Rotterdam cohorts and corroborate each candidate on its company website; preserve international attendees as out-of-scope if HQ condition fails.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q09",
+      "priority": 2,
+      "source_urls": [
+        "https://www.iamsterdam.com/en/business/startupamsterdam/startup-ecosystem/startup-incubators-and-accelerators",
+        "https://www.amsterdamumcventures.nl/onderneming/ace-incubator-bv/",
+        "https://student.uva.nl/en/information/entrepreneurship"
+      ],
+      "source_ids": [
+        "nl-eco-amsterdam-programmes",
+        "nl-eco-ace-status",
+        "nl-eco-uva-ace-reference"
+      ],
+      "next_batch_limit": 6,
+      "continuation": {
+        "kind": "operator_verification",
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "City programme overview and conflicting ACE references reviewed.",
+      "next_action": "Verify the operators and current intake of Nursery, AMS Startup Booster and other listed programmes; keep ACE historical until current successor/availability is documented.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q10",
+      "priority": 2,
+      "source_urls": [
+        "https://www.rvo.nl/subsidies-financiering/seed-capital/totaaloverzicht-fondsen"
+      ],
+      "source_ids": [
+        "nl-eco-rvo-seed-fund-directory"
+      ],
+      "next_batch_limit": 6,
+      "continuation": {
+        "kind": "alphabetical_fund_list",
+        "categories": [
+          "within investment period",
+          "outside investment period"
+        ],
+        "last_reviewed_fund": null,
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "Directory categories and investment-period distinction inspected; individual fund terms were not all reviewed.",
+      "next_action": "Review six active-period funds and dated portfolio announcements. Keep fund, manager and co-investor identities separate; do not infer a portfolio company's round investors.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q11",
+      "priority": 2,
+      "source_urls": [
+        "https://rockstart.com/portfolio/"
+      ],
+      "source_ids": [
+        "nl-eco-rockstart-portfolio"
+      ],
+      "next_batch_limit": 5,
+      "continuation": {
+        "kind": "javascript_directory",
+        "observed_show_control_count": 247,
+        "exposed_company_cards": 1,
+        "exposed_company_name": "123Carbon",
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "JavaScript-dependent view exposed one fallback card and a Show(247) control; 247 is not a verified unique-company or Netherlands count.",
+      "next_action": "Use the approved existing collection/browser capability only if public rendering is permitted; otherwise enrich named public company/press sources one at a time. Membership funding-stage labels are not dated rounds.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q12",
+      "priority": 2,
+      "source_urls": [
+        "https://forbion.com/",
+        "https://eqtgroup.com/private-capital/eqt-life-sciences",
+        "https://www.primeventures.com/",
+        "https://peak.capital/",
+        "https://newion.com/about",
+        "https://www.henq.vc/",
+        "https://www.capitaltvc.com/home"
+      ],
+      "source_ids": [
+        "nl-eco-forbion",
+        "nl-eco-eqt-life-sciences",
+        "nl-eco-prime",
+        "nl-eco-peak",
+        "nl-eco-newion",
+        "nl-eco-henq",
+        "nl-eco-capitalt"
+      ],
+      "next_batch_limit": 7,
+      "continuation": {
+        "kind": "one_dated_release_per_manager",
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "Manager strategies and identity only; international portfolios were not copied or treated as Dutch-company lists.",
+      "next_action": "Select up to one Netherlands-relevant primary funding release per manager, corroborate company identity and currency, and preserve historical LSP naming and fund vehicles.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q13",
+      "priority": 3,
+      "source_urls": [
+        "https://ondernemersplein.overheid.nl/geldzaken-en-belastingen/financiering-regelen/regionale-ontwikkelingsmaatschappijen-rom/"
+      ],
+      "source_ids": [
+        "nl-eco-rom-regions"
+      ],
+      "next_batch_limit": 8,
+      "continuation": {
+        "kind": "regional_operator_followup",
+        "remaining_operators": [
+          "BOM",
+          "Horizon Flevoland",
+          "Oost NL",
+          "LIOF",
+          "ROM InWest",
+          "ROM Utrecht Region",
+          "Impuls Zeeland",
+          "InnovationQuarter"
+        ],
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "All nine regional jurisdictions are mapped by KVK; NOM separately inspected, eight operator portfolio routes remain.",
+      "next_action": "Review one recent source-backed company per remaining operator, maintaining provincial coverage without turning programme membership into investor evidence.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-ECO-Q14",
+      "priority": 3,
+      "source_urls": [
+        "https://techleap.nl/reports",
+        "https://techleap.nl/reports/new-report",
+        "https://framerusercontent.com/assets/bGWDIKYnsjjUnrR6nwd85qL53Do.pdf"
+      ],
+      "source_ids": [
+        "nl-eco-techleap-reports",
+        "nl-eco-techleap-state2026",
+        "nl-eco-tno-state2026"
+      ],
+      "next_batch_limit": 2,
+      "continuation": {
+        "kind": "methodology_and_access_gap",
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "observed_scope": "State of Dutch Tech 2026 official HTML releases available; full PDF inaccessible. Reports index advertises Dutch Deep Tech Report 2026 dated 17 November 2026; linked article inaccessible.",
+      "next_action": "Obtain accessible primary methodology and dated report content through an approved public channel; keep any search-only numbers unaccepted until page verification.",
+      "population_denominator": null,
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "implementation_owner": "existing collection owner / planner #177",
+      "retrieved_on": "2026-11-18",
+      "complete": false
+    },
+    {
+      "id": "NL-DT-Q01",
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "company": "QuantWare",
+      "source_url": "https://quantware.com/news/quantware-closes-additional-funding-oversubscribing-its-series-a-to-27-million",
+      "dimension": "funding history",
+      "reason": "Search discovered June 2025 second close; review against March 2025 initial Series A to avoid duplicate totals.",
+      "original_id": "nl-dt-next-001",
+      "priority": 2,
+      "next_batch_limit": 1,
+      "complete": false,
+      "implementation_owner": "Existing collection owner / planner #177"
+    },
+    {
+      "id": "NL-DT-Q02",
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "company": "Qblox",
+      "source_url": "https://www.hightechnl.nl/wp-content/uploads/2023/10/20230929_chip-design-event-next-delft_qblox.pdf",
+      "dimension": "founding conflict",
+      "reason": "Resolve 2018 founding versus 2019 spin-out/incubator start without inventing incorporation date.",
+      "original_id": "nl-dt-next-002",
+      "priority": 2,
+      "next_batch_limit": 1,
+      "complete": false,
+      "implementation_owner": "Existing collection owner / planner #177"
+    },
+    {
+      "id": "NL-DT-Q03",
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "company": "QuiX Quantum",
+      "source_url": "https://www.quixquantum.com/about",
+      "dimension": "corporate entities",
+      "reason": "Resolve Dutch KvK and German HRB to specific legal entities; no name-only merge.",
+      "original_id": "nl-dt-next-003",
+      "priority": 2,
+      "next_batch_limit": 1,
+      "complete": false,
+      "implementation_owner": "Existing collection owner / planner #177"
+    },
+    {
+      "id": "NL-DT-Q04",
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "company": "Falqon Systems",
+      "source_url": "https://www.falqonsystems.com/resources/qbird-becomes-falqon-systems-building-the-infrastructure-for-quantum-secure-networks-qsn/",
+      "dimension": "corporate identity",
+      "reason": "Verify unchanged KvK and exact registered name through an accessible public official source.",
+      "original_id": "nl-dt-next-004",
+      "priority": 2,
+      "next_batch_limit": 1,
+      "complete": false,
+      "implementation_owner": "Existing collection owner / planner #177"
+    },
+    {
+      "id": "NL-DT-Q05",
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "company": "SMART Photonics",
+      "source_url": "https://www.invest-nl.nl/en/news/invest-nls-deep-tech-fund-is-investing-in-a-photonics-chipmaker",
+      "dimension": "financing instruments and participant identity",
+      "reason": "Clarify public/private instrument split, BOP Impact Ventures and current HQ; leave mixed numeric total out of untyped equity metrics.",
+      "original_id": "nl-dt-next-005",
+      "priority": 2,
+      "next_batch_limit": 1,
+      "complete": false,
+      "implementation_owner": "Existing collection owner / planner #177"
+    },
+    {
+      "id": "NL-DT-Q06",
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "company": "Axelera AI",
+      "source_url": "https://www.invest-nl.nl/nl/nieuws/grote-financieringsronde-voor-ai-semiconbedrijf-axelera-ai",
+      "dimension": "mixed financing",
+      "reason": "Review equity/debt/subsidy component totals and source-specific investor names; native Dutch primary source is pivotal.",
+      "original_id": "nl-dt-next-006",
+      "priority": 2,
+      "next_batch_limit": 1,
+      "complete": false,
+      "implementation_owner": "Existing collection owner / planner #177"
+    },
+    {
+      "id": "NL-DT-Q07",
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "company": "Nearfield Instruments",
+      "source_url": "https://www.nearfieldinstruments.com/portfolio/380-million-series-d-funding/",
+      "dimension": "funding history",
+      "reason": "Add prior rounds as separate events; do not infer every participant's contribution or valuation pre/post status.",
+      "original_id": "nl-dt-next-007",
+      "priority": 2,
+      "next_batch_limit": 1,
+      "complete": false,
+      "implementation_owner": "Existing collection owner / planner #177"
+    },
+    {
+      "id": "NL-DT-Q08",
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "company": "Onera Health",
+      "source_url": "https://www.onerahealth.com/get-in-touch",
+      "dimension": "legal group and history",
+      "reason": "Resolve Onera BV / Onera Technologies BV / Onera Health Inc., founders history and undated HQ move.",
+      "original_id": "nl-dt-next-008",
+      "priority": 2,
+      "next_batch_limit": 1,
+      "complete": false,
+      "implementation_owner": "Existing collection owner / planner #177"
+    },
+    {
+      "id": "NL-DT-Q09",
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "company": "Onera Health",
+      "source_url": "https://onerahealth.com/newsroom-articles/onera-raises-series-c",
+      "dimension": "funding precision",
+      "reason": "Find investor's original Series C announcement to resolve EUR30m versus over EUR30m.",
+      "original_id": "nl-dt-next-009",
+      "priority": 2,
+      "next_batch_limit": 1,
+      "complete": false,
+      "implementation_owner": "Existing collection owner / planner #177"
+    },
+    {
+      "id": "NL-COMP-Q01",
+      "priority": 2,
+      "company": "Picnic",
+      "source_urls": [
+        "https://jobs.picnic.app/en/blogs/the-art-of-master-data-management-at-picnic"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Reconcile conflicting company-reported KvK identifiers; verify the remaining founder roster and dated 2025 investor participation.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q02",
+      "priority": 2,
+      "company": "Crisp",
+      "source_urls": [
+        "https://crisp.nl/pers"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Review the 2022 EUR75m announcement and later primary developments on the 2024 loan/2026 court ruling; distinguish completed financing from ordered repayment.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q03",
+      "priority": 2,
+      "company": "Weaviate",
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/weaviate-raises-50-million-series-b-funding-to-meet-soaring-demand-for-ai-native-vector-database-technology-301803296.html"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Find explicit ISO currency evidence for the 2023 round; reconcile Dutch/US entities without name-only merging.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q04",
+      "priority": 2,
+      "company": "Framer",
+      "source_urls": [
+        "https://www.framer.com/about"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Find explicit ISO currency evidence for the 2025 round and direct corporate headquarters wording.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q05",
+      "priority": 2,
+      "company": "Mews",
+      "source_urls": [
+        "https://stories.eqtventures.com/articles/backing-the-future-of-hospitality-why-eqt-growth-led-mews%E2%80%99-300m-series-d"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Resolve company/investor founding discrepancy, event closing conditions and parent versus OPCO identifiers.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q06",
+      "priority": 2,
+      "company": "Cradle",
+      "source_urls": [
+        "https://www.cradle.bio/team"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Resolve headquarters and Dutch/Swiss group legal structure; find explicit ISO currency evidence for Series B.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q07",
+      "priority": 2,
+      "company": "SolarDuck",
+      "source_urls": [
+        "https://www.invest-nl.nl/nl/impact/ons-portfolio/solarduck"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Continue through public investor and programme releases while company access is blocked; verify later financing without treating search snippets as facts.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q08",
+      "priority": 2,
+      "company": "Alquion",
+      "source_urls": [
+        "https://www.alquion.com/articles/battolyser-systems-and-vdl-hydrogen-systems-merge-to-form-alquion"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Resolve merger effective/announcement date discrepancy and legal successor structure; do not transfer predecessor funding.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q09",
+      "priority": 2,
+      "company": "Meatable",
+      "source_urls": [
+        "https://www.lse.co.uk/rns/dissolution-of-meatable-p7k3mwl0dlg2pn0.html?mobile_view=desktop"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "If historical records are in scope, verify completed legal status separately from the 2025 announced resolution to wind down.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q10",
+      "priority": 2,
+      "company": "Leyden Labs",
+      "source_urls": [
+        "https://www.eib.org/en/press/all/2025-228-leyden-labs-lands-eur20-million-eib-investment-facilitated-by-hera-to-advance-pandemic-preparedness-activities"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Resolve strict headquarters wording and earlier funding history; retain EIB debt separately from investment events.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q11",
+      "priority": 2,
+      "company": "Mosa Meat",
+      "source_urls": [
+        "https://static1.squarespace.com/static/5f58b0094108a94a07e7dbd2/t/6949bcfd1833b93b44e49dd4/1766440189137/Press%2BRelease%2B-%2BMosa%2BMeat%2BSecures%2BAdditional%2B%E2%82%AC15M%2Bin%2BFunding%2B%28EN%29.pdf"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Reconcile December 2025 blog/PDF dates and continue dated primary funding history.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q12",
+      "priority": 2,
+      "company": "Rocsys",
+      "source_urls": [
+        "https://www.rocsys.com/company/"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Use the public news hub continuation to review prior financings; preserve 2017 origin versus 2019 company formation.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-COMP-Q13",
+      "priority": 2,
+      "company": "Vitestro",
+      "source_urls": [
+        "https://vitestro.com/rotw/about-us/"
+      ],
+      "next_batch_limit": 1,
+      "next_action": "Resolve dollar currency explicitly and verify incorporation; keep programme guarantees separate from investors.",
+      "continuation": {
+        "kind": "company_followup",
+        "last_completed_step": "Batch 001 source and identity checkpoint",
+        "terminal_observed": false,
+        "next_cursor": null
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    },
+    {
+      "id": "NL-IMF-Q01",
+      "priority": 1,
+      "next_batch_limit": 1,
+      "source_urls": [
+        "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+        "https://www.imf.org/external/datamapper/datasets/WEO"
+      ],
+      "next_action": "Verify October 2026 WEO vintage and rank from an accessible official snapshot; do not substitute another vintage.",
+      "continuation": {
+        "kind": "access_gap",
+        "next_cursor": null,
+        "terminal_observed": false
+      },
+      "status": "queued_research_only",
+      "crawler_seed_approved": false,
+      "complete": false,
+      "population_denominator": null
+    }
+  ]
+}

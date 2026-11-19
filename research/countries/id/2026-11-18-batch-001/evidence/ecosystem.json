@@ -1,0 +1,2916 @@
+{
+  "run": {
+    "country": "Indonesia",
+    "country_code": "ID",
+    "lane": "ecosystem",
+    "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "checked_at": "2026-11-18T09:46:30Z",
+    "publication_state": "research_staged",
+    "owner_boundary": "Indonesia research only; collection, source approval, schemas, planner #177 and releases retain existing owners.",
+    "page_budget": {
+      "maximum_distinct_page_urls": 50,
+      "used_distinct_requested_urls": 44
+    },
+    "no_live_crawler": true,
+    "rights": "Short researcher paraphrases only; no copied articles, images, personal contacts or proprietary bulk datasets."
+  },
+  "sources": [
+    {
+      "id": "ID-E001",
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "title": "IMF DataMapper NGDPD 2026 API",
+      "publisher": "IMF",
+      "kind": "primary_intergovernmental",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": false,
+      "access_outcome": "failed_disabled",
+      "web_ref_ids": [
+        "turn717174216view0"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "DisabledError. No nominal GDP values or rank read."
+    },
+    {
+      "id": "ID-E002",
+      "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "title": "IMF DataMapper WEO dataset",
+      "publisher": "IMF",
+      "kind": "primary_intergovernmental",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": false,
+      "access_outcome": "template_only",
+      "web_ref_ids": [
+        "turn717174216view1"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Only unresolved interface labels and navigation; no usable dataset values."
+    },
+    {
+      "id": "ID-E003",
+      "url": "https://1000startupdigital.id/program/",
+      "title": "Program 1000 Startup Digital",
+      "publisher": "1000 Startup Digital",
+      "kind": "primary_programme",
+      "language": "id",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn871668456view0"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E004",
+      "url": "https://1000startupdigital.id/",
+      "title": "1000 Startup Digital home",
+      "publisher": "1000 Startup Digital",
+      "kind": "primary_programme",
+      "language": "id",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn871668456view1"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Initial readable city labels; later line read timed out. Animated counters rendered zero and are not accepted values."
+    },
+    {
+      "id": "ID-E005",
+      "url": "https://www.hub.id/about/",
+      "title": "About HUB.ID",
+      "publisher": "HUB.ID / Komdigi",
+      "kind": "primary_programme",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn871668456view2",
+        "turn284821303view3"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E006",
+      "url": "https://www.hub.id/",
+      "title": "HUB.ID programmes",
+      "publisher": "HUB.ID / Komdigi",
+      "kind": "primary_programme",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn871668456view3"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Zero counters ignored as rendering placeholders; dated programme descriptions usable."
+    },
+    {
+      "id": "ID-E007",
+      "url": "https://ekraf.go.id/news/menteri-ekraf-buka-kick-off-bekup-2025-gerakkan-inovasi-startup-dan-buka-lapangan-kerja",
+      "title": "Menteri Ekraf Buka Kick Off BEKUP 2025",
+      "publisher": "Kemenekraf/Bekraf RI",
+      "kind": "primary_government",
+      "language": "id",
+      "published_on": "2025-06-02",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn871668456view4",
+        "turn284821303view2"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E008",
+      "url": "https://startupstudio.id/",
+      "title": "Startup Studio Indonesia",
+      "publisher": "Startup Studio Indonesia / Komdigi",
+      "kind": "primary_programme",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn284821303view0"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Initial body readable through programme criteria. Later line and find reads timed out; alumni not exhaustively reviewed."
+    },
+    {
+      "id": "ID-E009",
+      "url": "https://brin.go.id/dpri/direktorat-kemitraan-riset-dan-inovasi/page/layanan-pendampingan-dan-pembinaan-perusahaan-pemula-berbasis-riset-ppbr-2025",
+      "title": "PPBR 2025 service page",
+      "publisher": "BRIN",
+      "kind": "primary_government",
+      "language": "id",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": false,
+      "access_outcome": "template_only",
+      "web_ref_ids": [
+        "turn284821303view1"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Body absent from read; search snippet not promoted to an accepted claim."
+    },
+    {
+      "id": "ID-E010",
+      "url": "https://east.vc/",
+      "title": "East Ventures home",
+      "publisher": "East Ventures",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": false,
+      "access_outcome": "failed_timeout",
+      "web_ref_ids": [
+        "turn634976514view0"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Separate official about page was read successfully; homepage search snippet was not used as evidence."
+    },
+    {
+      "id": "ID-E011",
+      "url": "https://acvcap.com/about/",
+      "title": "About ACV Capital",
+      "publisher": "ACV Capital",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn634976514view1"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Observed redirect from acv.vc. Legal manager/fund identity not established by redirect alone.",
+      "requested_url": "https://acv.vc/about/"
+    },
+    {
+      "id": "ID-E012",
+      "url": "https://acvcap.com/portfolio/",
+      "title": "ACV Capital portfolio",
+      "publisher": "ACV Capital",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn634976514view2"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Partial roster read; company description truncation and generic theme residue present. No event participation inferred."
+    },
+    {
+      "id": "ID-E013",
+      "url": "https://www.alphajwc.com/portfolios/",
+      "title": "Alpha JWC portfolio",
+      "publisher": "Alpha JWC",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn634976514view3"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Explicitly curated selection spanning Southeast Asia and beyond; not a complete Indonesia company denominator."
+    },
+    {
+      "id": "ID-E014",
+      "url": "https://www.intudovc.com/",
+      "title": "Intudo www home",
+      "publisher": "Intudo",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": false,
+      "access_outcome": "failed_inaccessible",
+      "web_ref_ids": [
+        "turn634976514view4"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Tool reported inaccessible. Non-www official manifesto/portfolio later discovered in search and read."
+    },
+    {
+      "id": "ID-E015",
+      "url": "https://www.briventures.id/about",
+      "title": "About BRI Ventures",
+      "publisher": "BRI Ventures",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn508754202view0"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Repeated timeline gives both 2020 and 2021 for Sembrani Nusantara launch; unresolved."
+    },
+    {
+      "id": "ID-E016",
+      "url": "https://mdi.vc/about",
+      "title": "About MDI Ventures",
+      "publisher": "MDI Ventures",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn508754202view1"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E017",
+      "url": "https://www.antler.co/location/indonesia",
+      "title": "Antler in Indonesia",
+      "publisher": "Antler",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn508754202view2"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Current page describes conditional investment after an in-person six-week residency. Currency for bare dollar symbols not normalized."
+    },
+    {
+      "id": "ID-E018",
+      "url": "https://www.brin.go.id/press-release/119840/brin-siap-fasilitasi-pendanaan-startup-berbasis-riset-hingga-rp-300-juta-per-tahun",
+      "title": "RIIM Startup research-based startup funding announcement",
+      "publisher": "BRIN",
+      "kind": "primary_government",
+      "language": "id",
+      "published_on": "2024-07-25",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn508754202view3"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Historical 2024 announcement; 2026 funding terms not verified."
+    },
+    {
+      "id": "ID-E019",
+      "url": "https://dhkt.itb.ac.id/id/layanan/inkubasi-dan-akselerasi-bisnis",
+      "title": "Inkubasi dan Akselerasi Bisnis",
+      "publisher": "ITB DHKT / DKST",
+      "kind": "primary_university",
+      "language": "id",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn362827905view0"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E020",
+      "url": "https://dhkt.itb.ac.id/id/berita/detail/open-registration-inkubasi-akselerasi-startup-prime-step-2026",
+      "title": "Open Registration Inkubasi dan Akselerasi Startup PRIME STeP 2026",
+      "publisher": "ITB DHKT",
+      "kind": "primary_university",
+      "language": "id",
+      "published_on": "2026-01-09",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn362827905view1"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Historical call; availability in November not inferred from headline."
+    },
+    {
+      "id": "ID-E021",
+      "url": "https://www.its.ac.id/stp/inkubator/",
+      "title": "Inkubator dan Layanan Bisnis Inovatif",
+      "publisher": "ITS Science Techno Park",
+      "kind": "primary_university",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn362827905view2",
+        "turn928759439view6"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "No dated cohort denominator; marketing aggregates not treated as current startup inventory."
+    },
+    {
+      "id": "ID-E022",
+      "url": "https://www.antler.co/cohort-start-dates",
+      "title": "Antler cohort start dates",
+      "publisher": "Antler",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn362827905view3"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "No Indonesia next-start date observed in the retrieved table; start dates are not deadlines."
+    },
+    {
+      "id": "ID-E023",
+      "url": "https://intudovc.com/manifesto/",
+      "title": "Intudo manifesto",
+      "publisher": "Intudo",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn351678082view0"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Platform geography and investment focus wording have different scopes on the same page; preserve both."
+    },
+    {
+      "id": "ID-E024",
+      "url": "https://intudovc.com/portfolio/",
+      "title": "Intudo portfolio",
+      "publisher": "Intudo",
+      "kind": "primary_investor",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn351678082view1"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Initial roster has descriptive text and image-only identities. Follow detail pages before resolving company names/domains."
+    },
+    {
+      "id": "ID-E025",
+      "url": "https://ia.ugm.ac.id/programs/",
+      "title": "Innovative Academy programmes",
+      "publisher": "Universitas Gadjah Mada",
+      "kind": "primary_university",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn351678082view2"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Contains PRIME STeP 2025 references; undated programme page is not proof of an open 2026 intake."
+    },
+    {
+      "id": "ID-E026",
+      "url": "https://ia.ugm.ac.id/startup-grant-2025-innovative-academy-ugm-telah-dibuka/",
+      "title": "Startup Grant 2025 Innovative Academy UGM",
+      "publisher": "Universitas Gadjah Mada",
+      "kind": "primary_university",
+      "language": "en",
+      "published_on": "2025-06-16",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn351678082view3"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E027",
+      "url": "https://east.vc/id/berita/press-release/east-ventures-releases-digital-competitiveness-index-2026",
+      "title": "East Ventures Digital Competitiveness Index 2026 release",
+      "publisher": "East Ventures / Katadata Insight Center",
+      "kind": "primary_investor",
+      "language": "id",
+      "published_on": "2026-06-24",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn685056300view0"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Digital competitiveness index, not startup count, ecosystem ranking or funding census."
+    },
+    {
+      "id": "ID-E028",
+      "url": "https://garudaspark.id/",
+      "title": "Garuda Spark national and regional hub model",
+      "publisher": "Garuda Spark / Komdigi",
+      "kind": "primary_programme",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn685056300view1"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Homepage regional-node labels must not be equated with verified operating hubs."
+    },
+    {
+      "id": "ID-E029",
+      "url": "https://www.komdigi.go.id/berita/artikel/detail/ekonomi-digital-indonesia-tumbuh-14-persen-kemkomdigi-perkuat-ekosistem-inovasi",
+      "title": "Ekonomi Digital Indonesia Tumbuh 14 Persen",
+      "publisher": "Komdigi",
+      "kind": "primary_government",
+      "language": "id",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": false,
+      "access_outcome": "template_only",
+      "web_ref_ids": [
+        "turn685056300view2"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Footer-only response; search-only growth and programme metrics not accepted."
+    },
+    {
+      "id": "ID-E030",
+      "url": "https://skystarventures.com/program/incubation-program/",
+      "title": "Skystar Ventures startup incubation programme",
+      "publisher": "Skystar Ventures / Universitas Multimedia Nusantara",
+      "kind": "primary_programme",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn685056300view3"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E031",
+      "url": "https://fore.coffee/investors-faq/",
+      "title": "Fore Coffee investor FAQ",
+      "publisher": "PT Fore Kopi Indonesia Tbk",
+      "kind": "primary_company",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn457189956view0"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E032",
+      "url": "https://tribratanews.polri.go.id/article/bos-efisheri-ditahan-bareskrim-polri",
+      "title": "Bos eFisheri Ditahan Bareskrim Polri",
+      "publisher": "Polri Tribratanews",
+      "kind": "primary_government",
+      "language": "id",
+      "published_on": "2025-08-04",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn457189956view1",
+        "turn737010297view2"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Reports an allegation and detention, not a conviction or present operating status."
+    },
+    {
+      "id": "ID-E033",
+      "url": "https://dashboard.1000startupdigital.id/register",
+      "title": "1000 Startup Digital registration landing page",
+      "publisher": "1000 Startup Digital",
+      "kind": "primary_programme",
+      "language": "id",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn457189956view2"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Public page read only; no registration, personal details or authentication submitted."
+    },
+    {
+      "id": "ID-E034",
+      "url": "https://www.brin.go.id/press-release/131380/brin-luncurkan-rumah-inovasi-indonesia-percepat-hilirisasi-dan-pemanfaatan-inovasi-nasional",
+      "title": "BRIN Rumah Inovasi Indonesia launch",
+      "publisher": "BRIN",
+      "kind": "primary_government",
+      "language": "id",
+      "published_on": "2026-11-10",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn457189956view3"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E035",
+      "url": "https://garudaspark.id/2026/09/01/gsih-hubungkan-10-kota-meutya-hafid-pastikan-inovasi-daerah-terhubung-dengan-talenta-investor-dan-pasar-global/",
+      "title": "GSIH Hubungkan 10 Kota",
+      "publisher": "Garuda Spark republishing Komdigi",
+      "kind": "primary_programme",
+      "language": "id",
+      "published_on": "2026-09-01",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn457189956view4",
+        "turn737010297view0",
+        "turn928759439view7"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Article attributes launch to 26 August 2026. Its original Komdigi URL is linked; no claim of independent corroboration."
+    },
+    {
+      "id": "ID-E036",
+      "url": "https://east.vc/id/tentang-east-ventures",
+      "title": "Tentang East Ventures",
+      "publisher": "East Ventures",
+      "kind": "primary_investor",
+      "language": "id",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn457189956view5",
+        "turn737010297view1"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E037",
+      "url": "https://www.telkom.co.id/sites/berita/id_ID/news/intip-cara-telkom-perkuat-ekosistem-ai-melalui-indigohub-dan-indigospace-2869",
+      "title": "Intip Cara Telkom Perkuat Ekosistem AI melalui IndigoHub dan IndigoSpace",
+      "publisher": "Telkom Indonesia",
+      "kind": "primary_company",
+      "language": "id",
+      "published_on": "2025-02-28",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn737010297view3",
+        "turn928759439view5"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Historical AI ecosystem activity; present admission terms and programme rebranding unverified."
+    },
+    {
+      "id": "ID-E038",
+      "url": "https://inbis.primakara.ac.id/en/news/78",
+      "title": "Garuda Spark KOMDIGI Team Visits Primakara University",
+      "publisher": "Primakara University",
+      "kind": "primary_university",
+      "language": "en",
+      "published_on": "2026-08-05",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn737010297view4"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Body disambiguates numeric date as 5 August; describes planning discussions, not an operational-hub launch."
+    },
+    {
+      "id": "ID-E039",
+      "url": "https://www.gotocompany.com/en/news/press/goto-completes-landmark-listing-on-idx",
+      "title": "GoTo Completes Landmark Listing on the Indonesia Stock Exchange",
+      "publisher": "GoTo Group",
+      "kind": "primary_company",
+      "language": "en",
+      "published_on": "2022-04-11",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn928759439view0"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E040",
+      "url": "https://www.idx.co.id/en/listed-companies/company-profiles/BUKA",
+      "title": "IDX company profile BUKA",
+      "publisher": "Indonesia Stock Exchange",
+      "kind": "primary_exchange",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": false,
+      "access_outcome": "failed_forbidden",
+      "web_ref_ids": [
+        "turn928759439view1"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "403. No bypass or retry; listing fact supported separately by transaction counsel."
+    },
+    {
+      "id": "ID-E041",
+      "url": "https://www.imf.org/-/media/files/publications/weo/2026/october/english/text.pdf",
+      "title": "World Economic Outlook October 2026: Resilience Under Strain, Urgent Choices",
+      "publisher": "IMF",
+      "kind": "primary_intergovernmental",
+      "language": "en",
+      "published_on": "2026-10-13",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn928759439view2",
+        "turn398980197view6"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Publication vintage confirmed. Retrieved table is growth/inflation, not NGDPD; it cannot independently validate the requested nominal-GDP rank."
+    },
+    {
+      "id": "ID-E042",
+      "url": "https://alumni.itb.ac.id/prime-step-2025-14-startup-alumni-dan-1-startup-mahasiswa-itb-dapatkan-pendanaan-dan-pembinaan/",
+      "title": "PRIME STeP 2025 selected startup cohort",
+      "publisher": "ITB Alumni Directorate",
+      "kind": "primary_university",
+      "language": "id",
+      "published_on": "2025-09-25",
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn928759439view3"
+      ],
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ID-E043",
+      "url": "https://1000startupdigital.id/startup/",
+      "title": "1000 Startup Digital alumni directory",
+      "publisher": "1000 Startup Digital",
+      "kind": "primary_programme",
+      "language": "id",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": false,
+      "access_outcome": "metadata_only_then_timeouts",
+      "web_ref_ids": [
+        "turn928759439view4"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Initial response exposed title and line count only. Four body/find followups timed out. No company names or pagination extracted."
+    },
+    {
+      "id": "ID-E044",
+      "url": "https://www.ahp.id/ahp-advises-pt-bukalapak-com-tbk-in-its-ipo/",
+      "title": "AHP advises PT Bukalapak.com Tbk in its IPO",
+      "publisher": "Assegaf Hamzah & Partners",
+      "kind": "primary_transaction_adviser",
+      "language": "en",
+      "published_on": null,
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "retrieval_timestamp_basis": "Batch checkpoint recorded immediately after research; sources were read in the 09:44–09:46 UTC session on 2026-11-18.",
+      "acquisition": "web_tool_page_read",
+      "accessed": true,
+      "access_outcome": "readable",
+      "web_ref_ids": [
+        "turn398980197view0"
+      ],
+      "crawler_seed_approved": false,
+      "notes": "Transaction counsel reports the IPO date; separate from a current exchange listing check."
+    }
+  ],
+  "ecosystem_claims": [
+    {
+      "id": "ID-EC001",
+      "entity_id": "unresolved:1000startupdigital",
+      "category": "public_programme",
+      "field": "programme_pathway",
+      "value": {
+        "name": "1000 Startup Digital",
+        "initiated_year": 2016,
+        "stages": [
+          "Ignition",
+          "Workshop",
+          "Hacksprint",
+          "Bootcamp",
+          "Hatch"
+        ],
+        "purpose": "Digital-startup formation from ideas through MVP and metric-focused mentoring."
+      },
+      "source_ids": [
+        "ID-E003"
+      ],
+      "source_urls": [
+        "https://1000startupdigital.id/program/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": "year",
+      "evidence": "Programme page states the initiation year and five sequential stages.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Current cohort intake and outcome counts not verified.",
+      "effective_date": {
+        "value": "2016",
+        "precision": "year"
+      }
+    },
+    {
+      "id": "ID-EC002",
+      "entity_id": "unresolved:1000startupdigital",
+      "category": "source_conflict",
+      "field": "advertised_city_coverage",
+      "value": 20,
+      "source_ids": [
+        "ID-E003"
+      ],
+      "source_urls": [
+        "https://1000startupdigital.id/program/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "Main programme page states 20 Indonesian cities.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "conflict",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Registration landing page states 17; neither has an effective date.",
+      "conflict_group": "1000-city-count",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC003",
+      "entity_id": "unresolved:1000startupdigital",
+      "category": "source_conflict",
+      "field": "registration_city_coverage",
+      "value": 17,
+      "source_ids": [
+        "ID-E033"
+      ],
+      "source_urls": [
+        "https://dashboard.1000startupdigital.id/register"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "Registration page says the programme is currently in 17 cities.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "conflict",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Conflicts with the main programme page; no current count selected.",
+      "conflict_group": "1000-city-count",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC004",
+      "entity_id": "unresolved:indonesia-regional-formation-network",
+      "category": "hub",
+      "field": "named_programme_locations",
+      "value": [
+        "Jakarta",
+        "Bandung",
+        "Yogyakarta",
+        "Surabaya",
+        "Bali",
+        "Medan",
+        "Batam",
+        "Makassar",
+        "Manado",
+        "Ambon",
+        "Jayapura"
+      ],
+      "source_ids": [
+        "ID-E004"
+      ],
+      "source_urls": [
+        "https://1000startupdigital.id/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "Homepage names these programme locations.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Selected observed labels, not an exhaustive city census or verified startup headquarters.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC005",
+      "entity_id": "unresolved:hub-id",
+      "category": "public_programme",
+      "field": "matchmaking_role",
+      "value": {
+        "operator": "Komdigi",
+        "purpose": "Startup, corporate and investor business matchmaking",
+        "reported_2026_activity_locations": [
+          "Jakarta",
+          "Sanur, Bali"
+        ]
+      },
+      "source_ids": [
+        "ID-E005"
+      ],
+      "source_urls": [
+        "https://www.hub.id/about/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": "year",
+      "evidence": "About page describes the platform and reports 2026 Jakarta and Bali activity.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Self-reported programme activity; meetings are not investments or accepted startup records.",
+      "effective_date": {
+        "value": "2026",
+        "precision": "year"
+      }
+    },
+    {
+      "id": "ID-EC006",
+      "entity_id": "unresolved:hub-id",
+      "category": "public_programme",
+      "field": "advertised_2026_events",
+      "value": [
+        {
+          "name": "Biz Dev Access",
+          "location": "Jakarta",
+          "start": "2026-06",
+          "end": "2026-09",
+          "date_precision": "month"
+        },
+        {
+          "name": "Global Summit",
+          "location": "Bali",
+          "start": "2026-10-20",
+          "end": "2026-10-21",
+          "date_precision": "day"
+        }
+      ],
+      "source_ids": [
+        "ID-E006"
+      ],
+      "source_urls": [
+        "https://www.hub.id/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": "year",
+      "evidence": "Homepage displays these programme periods.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Dates are past at retrieval; registration buttons do not prove a new open intake.",
+      "effective_date": {
+        "value": "2026",
+        "precision": "year"
+      }
+    },
+    {
+      "id": "ID-EC007",
+      "entity_id": "unresolved:bekup",
+      "category": "public_programme",
+      "field": "historical_programme",
+      "value": {
+        "name": "BEKUP",
+        "operator": "Kemenekraf/Bekraf",
+        "cohort": "2025",
+        "focus": "Early-stage creative-economy startups, especially applications and digital ecosystem development."
+      },
+      "source_ids": [
+        "ID-E007"
+      ],
+      "source_urls": [
+        "https://ekraf.go.id/news/menteri-ekraf-buka-kick-off-bekup-2025-gerakkan-inovasi-startup-dan-buka-lapangan-kerja"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2025-06-02",
+      "effective_on": "2025-06-02",
+      "date_precision": "day",
+      "evidence": "Ministry announced the 2025 programme launch.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Historical launch; no 2026 eligibility or deadline inferred.",
+      "effective_date": {
+        "value": "2025-06-02",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC008",
+      "entity_id": "unresolved:startup-studio-indonesia",
+      "category": "public_programme",
+      "field": "2026_programme_design",
+      "value": {
+        "cohort": "SSI x IBM 2026",
+        "support": [
+          "Product-market-fit work",
+          "Product and market validation",
+          "Financial compliance and governance"
+        ],
+        "criteria_observed": [
+          "Indonesia technology company",
+          "At least six months of traction",
+          "Legal entity",
+          "Full-time founders"
+        ],
+        "main_programme_period": "2026-04 to 2026-08"
+      },
+      "source_ids": [
+        "ID-E008"
+      ],
+      "source_urls": [
+        "https://startupstudio.id/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": "year",
+      "evidence": "The page presents the 2026 timeline, benefits and criteria.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Eligibility is a source observation; no applicant acceptance or November opening established.",
+      "effective_date": {
+        "value": "2026",
+        "precision": "year"
+      }
+    },
+    {
+      "id": "ID-EC009",
+      "entity_id": "unresolved:riim-startup",
+      "category": "public_programme",
+      "field": "historical_grant_terms",
+      "value": {
+        "name": "RIIM Startup",
+        "operator": "BRIN",
+        "maximum_amount": 300000000,
+        "currency": "IDR",
+        "period": "per year",
+        "transaction_kind": "competitive_research_startup_support",
+        "announcement_year": 2024
+      },
+      "source_ids": [
+        "ID-E018"
+      ],
+      "source_urls": [
+        "https://www.brin.go.id/press-release/119840/brin-siap-fasilitasi-pendanaan-startup-berbasis-riset-hingga-rp-300-juta-per-tahun"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2024-07-25",
+      "effective_on": "2024-07-25",
+      "date_precision": "day",
+      "evidence": "BRIN described research-commercialisation support up to this annual cap.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Historical cap, not a company funding round or verified 2026 entitlement.",
+      "effective_date": {
+        "value": "2024-07-25",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC010",
+      "entity_id": "unresolved:rumah-inovasi-indonesia",
+      "category": "public_programme",
+      "field": "launch",
+      "value": {
+        "name": "Rumah Inovasi Indonesia",
+        "location": "South Jakarta",
+        "operator": "BRIN",
+        "purpose": "Connect research, industry, investors and universities for commercialisation."
+      },
+      "source_ids": [
+        "ID-E034"
+      ],
+      "source_urls": [
+        "https://www.brin.go.id/press-release/131380/brin-luncurkan-rumah-inovasi-indonesia-percepat-hilirisasi-dan-pemanfaatan-inovasi-nasional"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2026-11-10",
+      "effective_on": "2026-11-10",
+      "date_precision": "day",
+      "evidence": "BRIN describes the national collaboration centre launch.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Launch evidence does not establish measured startup outcomes or an open funding call.",
+      "effective_date": {
+        "value": "2026-11-10",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC011",
+      "entity_id": "unresolved:bandung-itb",
+      "category": "hub",
+      "field": "innovation_pathway",
+      "value": {
+        "city": "Bandung",
+        "institutions": [
+          "ITB Innovation Park Ganesha",
+          "ITB Innovation Park Teknopolis"
+        ],
+        "activities": [
+          "Technology incubation",
+          "Business validation",
+          "Mentoring",
+          "Investor and industry connections"
+        ]
+      },
+      "source_ids": [
+        "ID-E019"
+      ],
+      "source_urls": [
+        "https://dhkt.itb.ac.id/id/layanan/inkubasi-dan-akselerasi-bisnis"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "ITB identifies both Bandung sites and their incubation role.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Institutional locations; no company headquarters inferred from affiliation.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC012",
+      "entity_id": "unresolved:itb-prime-step",
+      "category": "public_programme",
+      "field": "2026_call",
+      "value": {
+        "name": "ITB PRIME STeP",
+        "announced_on": "2026-01-09",
+        "focus": "Technology startups linked to ITB",
+        "technology_readiness": "TKT 7–9",
+        "incubation_age_window": "6 months–5 years",
+        "acceleration_age_limit_years": 7
+      },
+      "source_ids": [
+        "ID-E020"
+      ],
+      "source_urls": [
+        "https://dhkt.itb.ac.id/id/berita/detail/open-registration-inkubasi-akselerasi-startup-prime-step-2026"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2026-01-09",
+      "effective_on": "2026-01-09",
+      "date_precision": "day",
+      "evidence": "ITB provides separate incubation and acceleration criteria.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Historical call; full terms and any current admission cycle require rechecking.",
+      "effective_date": {
+        "value": "2026-01-09",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC013",
+      "entity_id": "unresolved:yogyakarta-ugm",
+      "category": "hub",
+      "field": "innovation_pathway",
+      "value": {
+        "city": "Yogyakarta",
+        "institution": "UGM Innovative Academy",
+        "areas": [
+          "Health and pharmacy",
+          "Agroindustry",
+          "Renewable energy",
+          "Manufacturing, engineering and digital technology",
+          "Cultural heritage management"
+        ]
+      },
+      "source_ids": [
+        "ID-E025"
+      ],
+      "source_urls": [
+        "https://ia.ugm.ac.id/programs/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "UGM lists its location and five innovation areas.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "The page references a 2025 programme; current intake not established.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC014",
+      "entity_id": "unresolved:ugm-startup-grant-2025",
+      "category": "public_programme",
+      "field": "historical_grant_call",
+      "value": {
+        "maximum_amount": 400000000,
+        "currency": "IDR",
+        "amount_scope": "per startup",
+        "submission_window": {
+          "start": "2025-06-16",
+          "end": "2025-06-30",
+          "precision": "day"
+        },
+        "focus": [
+          "Health/pharmacy",
+          "Agroindustry",
+          "Engineering/energy"
+        ]
+      },
+      "source_ids": [
+        "ID-E026"
+      ],
+      "source_urls": [
+        "https://ia.ugm.ac.id/startup-grant-2025-innovative-academy-ugm-telah-dibuka/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2025-06-16",
+      "effective_on": "2025-06-16",
+      "date_precision": "day",
+      "evidence": "UGM announced this 2025 grant and submission window.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Closed historical window; differs from other Innovative Academy funding offers.",
+      "effective_date": {
+        "value": "2025-06-16",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC015",
+      "entity_id": "unresolved:surabaya-its",
+      "category": "hub",
+      "field": "innovation_pathway",
+      "value": {
+        "city": "Surabaya",
+        "institution": "ITS ILBI / Science Techno Park",
+        "sectors": [
+          "ICT and robotics",
+          "Creative design",
+          "Maritime",
+          "Automotive and transportation"
+        ]
+      },
+      "source_ids": [
+        "ID-E021"
+      ],
+      "source_urls": [
+        "https://www.its.ac.id/stp/inkubator/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "ITS describes incubator services, sectors and the Sukolilo location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Undated facility description; advertised aggregate totals not used as a census.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC016",
+      "entity_id": "unresolved:skystar-ventures",
+      "category": "accelerator",
+      "field": "incubator_identity",
+      "value": {
+        "operator": "Universitas Multimedia Nusantara",
+        "location": "Tangerang, Banten",
+        "stages": [
+          "Ideation",
+          "Growth",
+          "Level-Up"
+        ]
+      },
+      "source_ids": [
+        "ID-E030"
+      ],
+      "source_urls": [
+        "https://skystarventures.com/program/incubation-program/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "Skystar identifies its UMN affiliation, stages and Tangerang location.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Name does not establish that the incubator is a venture fund; alumni are not event investors.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC017",
+      "entity_id": "unresolved:bali-primakara",
+      "category": "hub",
+      "field": "planned_hub_collaboration",
+      "value": {
+        "location": "Bali",
+        "institution": "Primakara University",
+        "activity": "Discussion with Komdigi concerning a planned Garuda Spark hub"
+      },
+      "source_ids": [
+        "ID-E038"
+      ],
+      "source_urls": [
+        "https://inbis.primakara.ac.id/en/news/78"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2026-08-05",
+      "effective_on": "2026-08-05",
+      "date_precision": "day",
+      "evidence": "University account describes an August planning visit.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Planning evidence only; not proof that the Bali hub was operating.",
+      "effective_date": {
+        "value": "2026-08-05",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC018",
+      "entity_id": "unresolved:garuda-spark",
+      "category": "public_programme",
+      "field": "announced_hub_launch",
+      "value": {
+        "reported_locations": [
+          "Jakarta",
+          "Batam",
+          "Medan",
+          "Bandung",
+          "Malang",
+          "Makassar",
+          "Papua",
+          "Yogyakarta",
+          "Aceh",
+          "Surabaya"
+        ],
+        "reported_location_count": 10,
+        "event_date": "2026-08-26"
+      },
+      "source_ids": [
+        "ID-E035"
+      ],
+      "source_urls": [
+        "https://garudaspark.id/2026/09/01/gsih-hubungkan-10-kota-meutya-hafid-pastikan-inovasi-daerah-terhubung-dengan-talenta-investor-dan-pasar-global/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2026-09-01",
+      "effective_on": "2026-08-26",
+      "date_precision": "day",
+      "evidence": "Dated announcement names ten hub locations.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Labels include provinces; do not force every label into a city or equate further expansion targets with launches.",
+      "effective_date": {
+        "value": "2026-08-26",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC019",
+      "entity_id": "unresolved:garuda-spark",
+      "category": "public_programme",
+      "field": "network_model",
+      "value": {
+        "national_coordination_hub": "Jakarta",
+        "advertised_regional_hubs": 20,
+        "model": "National coordination with locally adapted incubation and matchmaking"
+      },
+      "source_ids": [
+        "ID-E028"
+      ],
+      "source_urls": [
+        "https://garudaspark.id/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "Homepage describes a national hub and twenty regional nodes.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Undated network description differs in scope from the dated ten-hub launch. Operating coverage needs reconciliation.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC020",
+      "entity_id": "unresolved:telkom-indigo",
+      "category": "accelerator",
+      "field": "historical_regional_ai_activity",
+      "value": {
+        "operator": "Telkom Indonesia",
+        "channels": [
+          "IndigoHub",
+          "IndigoSpace"
+        ],
+        "activity": "AI literacy and adoption programmes",
+        "locations_explicitly_described": [
+          "Denpasar",
+          "Yogyakarta",
+          "Malang",
+          "Aceh"
+        ]
+      },
+      "source_ids": [
+        "ID-E037"
+      ],
+      "source_urls": [
+        "https://www.telkom.co.id/sites/berita/id_ID/news/intip-cara-telkom-perkuat-ekosistem-ai-melalui-indigohub-dan-indigospace-2869"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2025-02-28",
+      "effective_on": null,
+      "date_precision": "month",
+      "evidence": "Telkom reports February 2025 regional AI activities.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "No 2026 intake or current branding assumed.",
+      "effective_date": {
+        "value": "2025-02",
+        "precision": "month"
+      }
+    },
+    {
+      "id": "ID-EC021",
+      "entity_id": "unresolved:indonesia-digital-readiness",
+      "category": "ecosystem_context",
+      "field": "province_pattern",
+      "value": {
+        "measurement": "EV-DCI 2026 digital competitiveness",
+        "top_five": [
+          "DKI Jakarta",
+          "West Java",
+          "East Java",
+          "Banten",
+          "DI Yogyakarta"
+        ]
+      },
+      "source_ids": [
+        "ID-E027"
+      ],
+      "source_urls": [
+        "https://east.vc/id/berita/press-release/east-ventures-releases-digital-competitiveness-index-2026"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2026-06-24",
+      "effective_on": null,
+      "date_precision": "year",
+      "evidence": "The June release lists this provincial ordering.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Digital-readiness proxy, not a startup ecosystem rank, company denominator or investment total.",
+      "effective_date": {
+        "value": "2026",
+        "precision": "year"
+      }
+    },
+    {
+      "id": "ID-EC022",
+      "entity_id": "unresolved:east-ventures",
+      "category": "investor_network",
+      "field": "investment_scope",
+      "value": {
+        "name": "East Ventures",
+        "scope": "Southeast Asia",
+        "approach": "Sector-agnostic technology investment from early to later stages"
+      },
+      "source_ids": [
+        "ID-E036"
+      ],
+      "source_urls": [
+        "https://east.vc/id/tentang-east-ventures"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "The firm describes its geographic and stage remit.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Firm-level remit is not evidence of participation in any particular company round.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC023",
+      "entity_id": "unresolved:acv-capital",
+      "category": "investor_network",
+      "field": "current_brand_and_scope",
+      "value": {
+        "name": "ACV Capital",
+        "website": "https://acvcap.com/",
+        "observed_redirect_from": "https://acv.vc/about/",
+        "scope": "Southeast Asia growth equity with roots in Indonesia"
+      },
+      "source_ids": [
+        "ID-E011"
+      ],
+      "source_urls": [
+        "https://acvcap.com/about/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "The requested AC Ventures domain redirects to the current ACV Capital description.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Legal manager/fund continuity and historical alias mapping need identity review; retain event-source names.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC024",
+      "entity_id": "unresolved:acv-capital",
+      "category": "investor_network",
+      "field": "portfolio_discovery_scope",
+      "value": {
+        "categories": [
+          "B2B / Enterprise SaaS",
+          "Climate & Sustainability",
+          "Consumer",
+          "Fintech",
+          "Platform & Commerce"
+        ],
+        "sample_names": [
+          "Astro",
+          "Stockbit",
+          "Bibit",
+          "Xendit",
+          "Aruna",
+          "Waste4Change"
+        ]
+      },
+      "source_ids": [
+        "ID-E012"
+      ],
+      "source_urls": [
+        "https://acvcap.com/portfolio/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "The portfolio page lists these categories and selected names.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Partial roster observation only; no specific funding-event roles, dates or amounts supported.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC025",
+      "entity_id": "unresolved:alpha-jwc",
+      "category": "investor_network",
+      "field": "curated_portfolio_scope",
+      "value": {
+        "name": "Alpha JWC",
+        "scope": "Southeast Asia and beyond",
+        "sample_indonesia_related_names": [
+          "Ajaib",
+          "Kopi Kenangan",
+          "Kredivo",
+          "ESB"
+        ]
+      },
+      "source_ids": [
+        "ID-E013"
+      ],
+      "source_urls": [
+        "https://www.alphajwc.com/portfolios/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "The firm calls the displayed companies a curated selection.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Mixes several countries; no complete portfolio denominator or domestic-company classification inferred.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC026",
+      "entity_id": "unresolved:intudo",
+      "category": "investor_network",
+      "field": "strategy_wording",
+      "value": {
+        "name": "Intudo",
+        "platform_geography": [
+          "Indonesia",
+          "Silicon Valley"
+        ],
+        "founder_section_investment_focus": "Indonesia"
+      },
+      "source_ids": [
+        "ID-E023"
+      ],
+      "source_urls": [
+        "https://intudovc.com/manifesto/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "The manifesto describes both a cross-border platform and Indonesia-focused bets.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Different strategy scopes coexist on one page; do not collapse into a verified Indonesia-only legal investment mandate.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC027",
+      "entity_id": "unresolved:bri-ventures",
+      "category": "investor_network",
+      "field": "corporate_network",
+      "value": {
+        "name": "BRI Ventures",
+        "corporate_connection": "BRI",
+        "sectors_named": [
+          "Fintech",
+          "Agriculture",
+          "Healthcare",
+          "Retail",
+          "Logistics",
+          "Supply chain"
+        ]
+      },
+      "source_ids": [
+        "ID-E015"
+      ],
+      "source_urls": [
+        "https://www.briventures.id/about"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "BRI Ventures describes its financial network and expanded sectors.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "No company-specific round relationship inferred.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC028",
+      "entity_id": "unresolved:sembrani-nusantara",
+      "category": "source_conflict",
+      "field": "launch_year",
+      "value": [
+        2020,
+        2021
+      ],
+      "source_ids": [
+        "ID-E015"
+      ],
+      "source_urls": [
+        "https://www.briventures.id/about"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "Duplicate timeline sections attribute different years to the same fund launch.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "conflict",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Leave launch year unresolved pending a dated fund announcement.",
+      "conflict_group": "sembrani-launch-year",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC029",
+      "entity_id": "unresolved:mdi-ventures",
+      "category": "investor_network",
+      "field": "corporate_network",
+      "value": {
+        "name": "MDI Ventures",
+        "anchor_connection": "Telkom Indonesia",
+        "other_backers": "Other third-party LP investors",
+        "stage_coverage": [
+          "Pre-seed",
+          "Series A–B",
+          "Series C"
+        ]
+      },
+      "source_ids": [
+        "ID-E016"
+      ],
+      "source_urls": [
+        "https://mdi.vc/about"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "MDI describes multiple managed funds and corporate business-development connections.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Manager, funds and corporate LPs must remain separate identities in future relationship resolution.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC030",
+      "entity_id": "unresolved:antler-indonesia",
+      "category": "accelerator",
+      "field": "residency_structure",
+      "value": {
+        "name": "Antler Indonesia",
+        "location": "Jakarta",
+        "length_weeks": 6,
+        "attendance": "In person",
+        "investment": "Conditional on due diligence"
+      },
+      "source_ids": [
+        "ID-E017"
+      ],
+      "source_urls": [
+        "https://www.antler.co/location/indonesia"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": null,
+      "date_precision": null,
+      "evidence": "Antler describes its six-week evaluation and Jakarta attendance requirement.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "No guarantee of funding, fee interpretation or next intake date; bare dollar symbols not converted into USD.",
+      "effective_date": null
+    },
+    {
+      "id": "ID-EC031",
+      "entity_id": "unresolved:fore-coffee",
+      "category": "lifecycle_watch",
+      "field": "listed_company",
+      "value": {
+        "canonical_name": "PT Fore Kopi Indonesia Tbk",
+        "brand": "Fore Coffee",
+        "exchange": "IDX",
+        "ticker": "FORE",
+        "listed_on": "2025-04-14"
+      },
+      "source_ids": [
+        "ID-E031"
+      ],
+      "source_urls": [
+        "https://fore.coffee/investors-faq/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": "2025-04-14",
+      "date_precision": "day",
+      "evidence": "Company investor FAQ states the listing date and symbol.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Keep separate from private-startup checkpoint counts unless collection owner explicitly adopts a listed-alumni category.",
+      "effective_date": {
+        "value": "2025-04-14",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC032",
+      "entity_id": "unresolved:goto",
+      "category": "lifecycle_watch",
+      "field": "listed_company",
+      "value": {
+        "canonical_name": "PT GoTo Gojek Tokopedia Tbk",
+        "brand": "GoTo",
+        "exchange": "IDX",
+        "ticker": "GOTO",
+        "listed_on": "2022-04-11"
+      },
+      "source_ids": [
+        "ID-E039"
+      ],
+      "source_urls": [
+        "https://www.gotocompany.com/en/news/press/goto-completes-landmark-listing-on-idx"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2022-04-11",
+      "effective_on": "2022-04-11",
+      "date_precision": "day",
+      "evidence": "Company announcement reports its completed IDX listing.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Listed parent context; company/product/subsidiary identities require separate treatment.",
+      "effective_date": {
+        "value": "2022-04-11",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC033",
+      "entity_id": "unresolved:bukalapak",
+      "category": "lifecycle_watch",
+      "field": "historical_ipo",
+      "value": {
+        "canonical_name": "PT Bukalapak.com Tbk",
+        "ipo_on": "2021-08-06"
+      },
+      "source_ids": [
+        "ID-E044"
+      ],
+      "source_urls": [
+        "https://www.ahp.id/ahp-advises-pt-bukalapak-com-tbk-in-its-ipo/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": null,
+      "effective_on": "2021-08-06",
+      "date_precision": "day",
+      "evidence": "Its Indonesian transaction counsel identifies the completed IPO.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Current exchange-profile read was forbidden; historical IPO fact does not establish present operations.",
+      "effective_date": {
+        "value": "2021-08-06",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC034",
+      "entity_id": "unresolved:efishery",
+      "category": "lifecycle_watch",
+      "field": "historical_governance_event",
+      "value": {
+        "company": "eFishery",
+        "event": "Police reported detention of a company executive in an alleged embezzlement case",
+        "event_date": "2025-07-31"
+      },
+      "source_ids": [
+        "ID-E032"
+      ],
+      "source_urls": [
+        "https://tribratanews.polri.go.id/article/bos-efisheri-ditahan-bareskrim-polri"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2025-08-04",
+      "effective_on": "2025-07-31",
+      "date_precision": "day",
+      "evidence": "Police news reports detention and alleged wrongdoing.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Allegation, not conviction. Current financial reliability, management and operating status remain unverified; hold growth/valuation claims.",
+      "effective_date": {
+        "value": "2025-07-31",
+        "precision": "day"
+      }
+    },
+    {
+      "id": "ID-EC035",
+      "entity_id": "unresolved:indonesia-gdp-cohort",
+      "category": "cohort_context",
+      "field": "publication_vintage",
+      "value": {
+        "publisher": "IMF",
+        "edition": "October 2026 WEO",
+        "title": "Resilience Under Strain, Urgent Choices"
+      },
+      "source_ids": [
+        "ID-E041"
+      ],
+      "source_urls": [
+        "https://www.imf.org/-/media/files/publications/weo/2026/october/english/text.pdf"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2026-10-13",
+      "effective_on": null,
+      "date_precision": "month",
+      "evidence": "Official PDF cover and publication metadata identify the edition.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Does not independently verify NGDPD 2026 amount or country rank.",
+      "effective_date": {
+        "value": "2026-10",
+        "precision": "month"
+      }
+    },
+    {
+      "id": "ID-EC036",
+      "entity_id": "unresolved:itb-prime-step-2025",
+      "category": "discovery_cohort",
+      "field": "reported_selection_count",
+      "value": 15,
+      "source_ids": [
+        "ID-E042"
+      ],
+      "source_urls": [
+        "https://alumni.itb.ac.id/prime-step-2025-14-startup-alumni-dan-1-startup-mahasiswa-itb-dapatkan-pendanaan-dan-pembinaan/"
+      ],
+      "retrieved_at": "2026-11-18T09:46:30Z",
+      "published_on": "2025-09-25",
+      "effective_on": null,
+      "date_precision": "year",
+      "evidence": "ITB lists fifteen selected programme participants.",
+      "acquisition": "web_tool_page_read",
+      "confidence": "high",
+      "rationale": "Explicit statement on the named primary publisher page; confidence applies to the source assertion, not ecosystem completeness.",
+      "status": "reviewed_staged",
+      "reviewed_at": "2026-11-18T09:46:30Z",
+      "delivery_state": "unsubmitted",
+      "uncertainty": "Finite programme list is a discovery denominator only; not fifteen verified company profiles or specific investment rounds.",
+      "effective_date": {
+        "value": "2025",
+        "precision": "year"
+      }
+    }
+  ],
+  "source_queue": [
+    {
+      "id": "ID-EQ001",
+      "priority": 1,
+      "source_ids": [
+        "ID-E042"
+      ],
+      "source_urls": [
+        "https://alumni.itb.ac.id/prime-step-2025-14-startup-alumni-dan-1-startup-mahasiswa-itb-dapatkan-pendanaan-dan-pembinaan/"
+      ],
+      "focus": "Bandung technology spinouts",
+      "next_action": "Resolve each named 2025 participant against its company website and existing Atlas entities.",
+      "gap": "Programme membership verified; companies, founders, locations and funding events unreviewed.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": 15,
+      "candidate_names": [
+        "Agroobot Bangun Nusantara",
+        "Algatek Karbon Nusantara",
+        "Bell Living Lab",
+        "EBM Scitech",
+        "Indera Agri",
+        "Greenlabs",
+        "Nasho",
+        "Curaweda",
+        "Goopo Indonesia",
+        "Pelihara",
+        "Dago Kinematics",
+        "Hamasa Lab",
+        "Reservoair",
+        "Lead AI",
+        "Urbansolv.id"
+      ]
+    },
+    {
+      "id": "ID-EQ002",
+      "priority": 1,
+      "source_ids": [
+        "ID-E043"
+      ],
+      "source_urls": [
+        "https://1000startupdigital.id/startup/"
+      ],
+      "focus": "1000 Startup Digital alumni",
+      "next_action": "Resume readable public alumni pages; record filters, page count and cohort bounds before enumerating.",
+      "gap": "Directory metadata received, body followups timed out; pagination and total unknown.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ003",
+      "priority": 1,
+      "source_ids": [
+        "ID-E008"
+      ],
+      "source_urls": [
+        "https://startupstudio.id/"
+      ],
+      "focus": "Startup Studio Indonesia alumni",
+      "next_action": "Resume below the observed 2026 criteria to inspect alumni and cohort profile links.",
+      "gap": "Page has 1,010 parsed lines but only the relevant initial programme sections reviewed; no exhaustive roster.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ004",
+      "priority": 2,
+      "source_ids": [
+        "ID-E025",
+        "ID-E026"
+      ],
+      "source_urls": [
+        "https://ia.ugm.ac.id/programs/",
+        "https://ia.ugm.ac.id/startup-grant-2025-innovative-academy-ugm-telah-dibuka/"
+      ],
+      "focus": "Yogyakarta UGM spinouts",
+      "next_action": "Find dated grant selections and company-owned sources.",
+      "gap": "2025 grant deadline is past; current selected/startup operating roster unverified.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ005",
+      "priority": 2,
+      "source_ids": [
+        "ID-E021"
+      ],
+      "source_urls": [
+        "https://www.its.ac.id/stp/inkubator/"
+      ],
+      "focus": "Surabaya industrial and maritime innovation",
+      "next_action": "Follow named tenant profiles and verify official domains before staging firms.",
+      "gap": "Source-reported aggregate counts lack a scoped current company denominator.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ006",
+      "priority": 2,
+      "source_ids": [
+        "ID-E038"
+      ],
+      "source_urls": [
+        "https://inbis.primakara.ac.id/en/news/78"
+      ],
+      "focus": "Bali regional innovation",
+      "next_action": "Follow observed Incubated Startups link on the university site and inspect actual company profiles.",
+      "gap": "Planning meeting does not prove hub activation or startup headquarters.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ007",
+      "priority": 1,
+      "source_ids": [
+        "ID-E011",
+        "ID-E012"
+      ],
+      "source_urls": [
+        "https://acvcap.com/about/",
+        "https://acvcap.com/portfolio/"
+      ],
+      "focus": "ACV Capital company discovery and identity",
+      "next_action": "Continue roster after the reviewed initial portion; verify historical AC Ventures versus ACV Capital legal identities before canonical joins.",
+      "gap": "Partial roster; old-domain redirect is not legal fund-identity proof.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ008",
+      "priority": 2,
+      "source_ids": [
+        "ID-E013"
+      ],
+      "source_urls": [
+        "https://www.alphajwc.com/portfolios/"
+      ],
+      "focus": "Alpha JWC discovery",
+      "next_action": "Review Indonesia-related companies individually and retain non-Indonesia HQ separately.",
+      "gap": "Curated cross-border list, not a national or full-firm census.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ009",
+      "priority": 2,
+      "source_ids": [
+        "ID-E023",
+        "ID-E024"
+      ],
+      "source_urls": [
+        "https://intudovc.com/manifesto/",
+        "https://intudovc.com/portfolio/"
+      ],
+      "focus": "Intudo discovery",
+      "next_action": "Follow Learn more detail links to recover company identity and event-source links.",
+      "gap": "Image-led roster lacks text company labels for several entries; strategy scope wording needs care.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ010",
+      "priority": 2,
+      "source_ids": [
+        "ID-E015",
+        "ID-E016"
+      ],
+      "source_urls": [
+        "https://www.briventures.id/about",
+        "https://mdi.vc/about"
+      ],
+      "focus": "Corporate venture networks",
+      "next_action": "Review BRI beneficiary and MDI managed-fund detail pages; distinguish managers, funds, LPs and companies.",
+      "gap": "No event-specific participation supported by about pages; Sembrani launch year conflicts.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ011",
+      "priority": 2,
+      "source_ids": [
+        "ID-E027",
+        "ID-E035",
+        "ID-E037"
+      ],
+      "source_urls": [
+        "https://east.vc/id/berita/press-release/east-ventures-releases-digital-competitiveness-index-2026",
+        "https://garudaspark.id/2026/09/01/gsih-hubungkan-10-kota-meutya-hafid-pastikan-inovasi-daerah-terhubung-dengan-talenta-investor-dan-pasar-global/",
+        "https://www.telkom.co.id/sites/berita/id_ID/news/intip-cara-telkom-perkuat-ekosistem-ai-melalui-indigohub-dan-indigospace-2869"
+      ],
+      "focus": "Non-Java source expansion",
+      "next_action": "Prioritize Batam, Medan, Makassar, Aceh and Papua through dated regional programme rosters.",
+      "gap": "Programme nodes are not company HQ or funding denominators; regional company coverage is thin.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ012",
+      "priority": 1,
+      "source_ids": [
+        "ID-E031",
+        "ID-E039",
+        "ID-E044"
+      ],
+      "source_urls": [
+        "https://fore.coffee/investors-faq/",
+        "https://www.gotocompany.com/en/news/press/goto-completes-landmark-listing-on-idx",
+        "https://www.ahp.id/ahp-advises-pt-bukalapak-com-tbk-in-its-ipo/"
+      ],
+      "focus": "Listed ecosystem alumni",
+      "next_action": "Ask existing collection owner to apply lifecycle policy before counting listed companies in startup batches.",
+      "gap": "Fore and GoTo listing confirmed, Bukalapak historic IPO confirmed; no production lifecycle extension proposed.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ013",
+      "priority": 1,
+      "source_ids": [
+        "ID-E032"
+      ],
+      "source_urls": [
+        "https://tribratanews.polri.go.id/article/bos-efisheri-ditahan-bareskrim-polri"
+      ],
+      "focus": "eFishery governance and operating-status review",
+      "next_action": "Seek current first-party management or public filing evidence before accepting financial and operational claims.",
+      "gap": "Historical police allegation does not establish conviction, current business status or reliable historic metrics.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ014",
+      "priority": 1,
+      "source_ids": [
+        "ID-E001",
+        "ID-E002",
+        "ID-E041"
+      ],
+      "source_urls": [
+        "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+        "https://www.imf.org/external/datamapper/datasets/WEO",
+        "https://www.imf.org/-/media/files/publications/weo/2026/october/english/text.pdf"
+      ],
+      "focus": "IMF nominal GDP cohort verification",
+      "next_action": "Obtain an authorized October 2026-vintage NGDPD snapshot and recompute ranks after excluding aggregates.",
+      "gap": "API disabled and dataset template-only; publication vintage verified, numeric GDP and rank unresolved.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ015",
+      "priority": 2,
+      "source_ids": [
+        "ID-E003",
+        "ID-E033",
+        "ID-E028",
+        "ID-E035"
+      ],
+      "source_urls": [
+        "https://1000startupdigital.id/program/",
+        "https://dashboard.1000startupdigital.id/register",
+        "https://garudaspark.id/",
+        "https://garudaspark.id/2026/09/01/gsih-hubungkan-10-kota-meutya-hafid-pastikan-inovasi-daerah-terhubung-dengan-talenta-investor-dan-pasar-global/"
+      ],
+      "focus": "Programme geography reconciliation",
+      "next_action": "Reconcile stale registration text and planned/operational hub scope using dated official updates.",
+      "gap": "20/17 1000-city conflict and Garuda 20-node versus ten-hub launch scope.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    },
+    {
+      "id": "ID-EQ016",
+      "priority": 2,
+      "source_ids": [
+        "ID-E017",
+        "ID-E022"
+      ],
+      "source_urls": [
+        "https://www.antler.co/location/indonesia",
+        "https://www.antler.co/cohort-start-dates"
+      ],
+      "focus": "Antler current intake",
+      "next_action": "Recheck the actual Indonesia programme and official cohort table when assessing an application opportunity.",
+      "gap": "No Indonesia next-start date observed; dates must not be invented from old residency material.",
+      "status": "queued",
+      "research_discovery_only": true,
+      "crawler_seed_approval": "not_requested",
+      "cursor": null,
+      "cursor_scope": "Research continuation, not planner #177 or live crawler cursor",
+      "source_denominator": null
+    }
+  ],
+  "candidate_company_leads": [
+    {
+      "name": "Agroobot Bangun Nusantara",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Algatek Karbon Nusantara",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Bell Living Lab",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "EBM Scitech",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Indera Agri",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Greenlabs",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Nasho",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Curaweda",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Goopo Indonesia",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Pelihara",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Dago Kinematics",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Hamasa Lab",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Reservoair",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Lead AI",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    },
+    {
+      "name": "Urbansolv.id",
+      "source_id": "ID-E042",
+      "status": "discovered_unreviewed",
+      "identity_reviewed": false,
+      "funding_event_supported": false,
+      "website": null
+    }
+  ],
+  "coverage": {
+    "queries_issued": 37,
+    "page_operations_including_repeated_opens_finds_clicks": 60,
+    "distinct_requested_page_urls": 44,
+    "source_registry_rows": 44,
+    "usable_primary_content_sources": 36,
+    "failed_unique_pages": 4,
+    "partial_or_template_only_unique_pages": 4,
+    "claims_reviewed_staged": 33,
+    "claims_conflicting": 3,
+    "claims_total": 36,
+    "startup_profiles_accepted_by_this_lane": 0,
+    "new_unreviewed_names_from_finite_itb_cohort": 15,
+    "source_queue_items": 16,
+    "country_startup_denominator": null,
+    "country_startup_denominator_reason": "No defensible all-company census or complete scoped source enumeration obtained.",
+    "published_claims": 0,
+    "crawler_runs": 0,
+    "source_access_gaps": [
+      "IMF DataMapper API disabled",
+      "IMF dataset template-only",
+      "BRIN PPBR service body absent",
+      "East Ventures homepage timeout; about page usable",
+      "Intudo www homepage unavailable; independently discovered non-www pages usable",
+      "Komdigi digital-growth article body absent",
+      "IDX BUKA forbidden",
+      "1000 alumni body/pagination unavailable after repeated timeouts"
+    ],
+    "pagination_gaps": [
+      "1000 alumni directory body/pagination unobserved",
+      "SSI alumni below initial criteria not enumerated",
+      "ACV portfolio only initial portion reviewed",
+      "Intudo portfolio identities require detail pages",
+      "University discovery rosters not systematically paged"
+    ],
+    "completeness_claim": false
+  },
+  "cohort_verification": {
+    "user_supplied_label": "GDP 17/30 Indonesia",
+    "requested_vintage": "IMF October 2026 WEO",
+    "requested_measure": "NGDPD",
+    "requested_year": 2026,
+    "estimate_not_final_actual": true,
+    "publication_vintage_verified": true,
+    "numeric_nominal_gdp": null,
+    "currency": "USD",
+    "rank_independently_verified": false,
+    "rank": null,
+    "rank_label_from_user": 17,
+    "sources": [
+      "ID-E001",
+      "ID-E002",
+      "ID-E041"
+    ],
+    "reason": "Official October 2026 report read, but nominal-GDP API failed and DataMapper page supplied no values; growth table is not an acceptable substitute."
+  },
+  "search_log": [
+    {
+      "id": "ID-ESEARCH001",
+      "engine": "system1",
+      "query": "site.komdigi.go.id Startup Studio Indonesia HUB.ID 2025 2026",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH002",
+      "engine": "system1",
+      "query": "site.1000startupdigital.id kota 1000 Startup Digital",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH003",
+      "engine": "system1",
+      "query": "site.kemenparekraf.go.id BEKUP Bandung Yogyakarta Surabaya Bali 2025",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH004",
+      "engine": "system2",
+      "query": "Startup Studio Indonesia official 2026 startupstudio.id",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH005",
+      "engine": "system2",
+      "query": "site.east.vc portfolio Indonesia investment sector 2026",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH006",
+      "engine": "system2",
+      "query": "site.acv.vc Indonesia portfolio venture capital",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH007",
+      "engine": "system2",
+      "query": "site.brin.go.id inkubasi startup inovasi riset 2025 2026",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH008",
+      "engine": "system1",
+      "query": "site.east.vc portfolio Indonesia venture capital official",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH009",
+      "engine": "system1",
+      "query": "site.acv.vc about portfolio Indonesia ACV Capital",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH010",
+      "engine": "system1",
+      "query": "site.alphajwc.com portfolio Indonesia",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH011",
+      "engine": "system1",
+      "query": "site.intudovc.com Indonesia portfolio",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH012",
+      "engine": "system1",
+      "query": "site.briventures.id portfolio",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH013",
+      "engine": "system1",
+      "query": "site.mdi.vc portfolio Indonesia",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH014",
+      "engine": "system1",
+      "query": "site.antler.co Indonesia residency 2026 Jakarta",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH015",
+      "engine": "system1",
+      "query": "site.itb.ac.id startup inkubasi inovasi Bandung 2025",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH016",
+      "engine": "system1",
+      "query": "site.ugm.ac.id innovative academy startup inkubasi Yogyakarta 2025",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH017",
+      "engine": "system1",
+      "query": "site.its.ac.id startup inkubator Surabaya 2025",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH018",
+      "engine": "system1",
+      "query": "Intudo official Indonesia only venture capital portfolio",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH019",
+      "engine": "system2",
+      "query": "site.ugm.ac.id \"Innovative Academy\" \"2025\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH020",
+      "engine": "system2",
+      "query": "site.intudovc.com Intudo",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH021",
+      "engine": "system2",
+      "query": "site.intudo.vc Indonesia",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH022",
+      "engine": "system2",
+      "query": "site.indigo.id startup Telkom Bandung Yogyakarta",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH023",
+      "engine": "system1",
+      "query": "site.east.vc \"Digital Competitiveness Index 2026\" \"Jakarta\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH024",
+      "engine": "system1",
+      "query": "site.komdigi.go.id \"Garuda Spark\" \"Bali\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH025",
+      "engine": "system1",
+      "query": "site.telkom.co.id \"Indigo\" \"2026\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH026",
+      "engine": "system1",
+      "query": "site.skystarventures.com incubation program Tangerang",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH027",
+      "engine": "system1",
+      "query": "site.efishery.com \"FTI\" 2025",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH028",
+      "engine": "system1",
+      "query": "site.polri.go.id \"eFishery\" 2025",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH029",
+      "engine": "system1",
+      "query": "site.gotocompany.com \"listed\" \"2022\" IPO",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH030",
+      "engine": "system1",
+      "query": "site.fore.coffee \"listed\" \"2025\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH031",
+      "engine": "system2",
+      "query": "site.gotocompany.com \"11 April 2022\" \"listed\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH032",
+      "engine": "system2",
+      "query": "site.bukalapak.com \"6 August 2021\" \"IPO\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH033",
+      "engine": "system2",
+      "query": "site.telkom.co.id \"Indigo\" \"AI Connect\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH034",
+      "engine": "system1",
+      "query": "site.gotocompany.com \"GoTo\" \"listing\" \"April\" \"2022\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH035",
+      "engine": "system1",
+      "query": "site.about.bukalapak.com \"IPO\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH036",
+      "engine": "system1",
+      "query": "site.bukalapak.com \"IPO\" \"2021\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    },
+    {
+      "id": "ID-ESEARCH037",
+      "engine": "system1",
+      "query": "site.imf.org \"October 2026\" \"WEO\" \"Indonesia\"",
+      "queried_on": "2026-11-18",
+      "outcome": "Discovery only; accepted assertions require separately listed readable page sources."
+    }
+  ]
+}

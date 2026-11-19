@@ -13,11 +13,14 @@ const root=resolve('dist'), profile=await mkdtemp(join(tmpdir(),'atlas-treemap-c
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-treemap-screenshots');
 const contentTypes={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png'};
 const requests=[];
+let markFixture;
 const server=createServer(async(req,res)=>{
   try {
     const path=resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));
     if(path!==root&&!path.startsWith(root+sep)){res.writeHead(403).end();return;}
-    const bytes=await readFile(path===root?join(root,'index.html'):path);
+    const bytes=markFixture && path===join(root,'data','graph.json')
+      ? markFixture
+      : await readFile(path===root?join(root,'index.html'):path);
     requests.push({url:req.url,status:200});
     res.writeHead(200,{'Content-Type':contentTypes[extname(path)]||'application/octet-stream'}).end(bytes);
   } catch {requests.push({url:req.url,status:404});res.writeHead(404).end();}
@@ -115,6 +118,15 @@ try {
   const click = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);
   const text = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).textContent`);
   const cardIds=()=>evaluate("Array.from(document.querySelectorAll('#treemap-cards .treemap-card[data-company]'),card=>card.dataset.company)");
+  const companyTiles='.treemap-tile[data-company]';
+  const tileMarks=selector=>evaluate(`(()=>{
+    const tiles=[...document.querySelectorAll(${JSON.stringify(selector)})];
+    const missing=tiles.filter(tile=>{
+      const mark=tile.querySelector('.treemap-logo');
+      return !mark || !mark.getClientRects().length || getComputedStyle(mark).visibility!=='visible';
+    }).map(tile=>tile.dataset.company);
+    return {count:tiles.length,missing};
+  })()`);
   const snapshot=JSON.parse(await readFile('dist/data/graph.json','utf8')), valuation=makeView(snapshot,{metric:'valuation',currency:'USD'});
   // Hold snapshot requests to observe the real loading state before data resolves.
   await command('Fetch.enable',{patterns:[{urlPattern:'*atlas.sqlite*'},{urlPattern:'*data/graph.json*'}]});
@@ -229,7 +241,8 @@ try {
 
   assert.ok(await evaluate("document.querySelectorAll('#treemap-list .treemap-logo img').length>0"),'Ranked list must retain logo images');
   await change('treemap-group','company');await click('#show-map');
-  assert.ok(await evaluate("Array.from(document.querySelectorAll('.treemap-tile.compact .treemap-logo')).some(el=>getComputedStyle(el).display!=='none')"),'Compact company tiles must retain marks');
+  assert.equal((await tileMarks(companyTiles)).count,companyView.rows.length);
+  assert.deepEqual((await tileMarks(companyTiles+':not(.micro)')).missing,[],'Desktop company tiles that have room must retain marks');
   await screenshot('company-logos-desktop.png');
   await evaluate("globalThis.logoUnderTest=document.querySelector('#treemap-list img[src*=revolut]')");
   await until(()=>evaluate("logoUnderTest.complete&&logoUnderTest.naturalWidth>0&&!logoUnderTest.hidden"),'Bundled logo must decode before testing failure');
@@ -255,7 +268,8 @@ try {
   await screenshot('company-logos-mobile-320.png');
   await change('treemap-metric','funding');await screenshot('funding-mobile-320.png');
   await change('treemap-metric','companies');
-  assert.ok(await evaluate("Array.from(document.querySelectorAll('.treemap-tile.tiny:not(.micro) .treemap-logo')).some(el=>getComputedStyle(el).display!=='none')"),'Mobile small company tiles must retain marks');
+  assert.equal((await tileMarks(companyTiles)).count,companyView.rows.length);
+  assert.deepEqual((await tileMarks(companyTiles+':not(.micro)')).missing,[],'Mobile company tiles that have room must retain marks');
   await change('treemap-metric','valuation');
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await click('#show-cards');
@@ -314,6 +328,27 @@ try {
   await until(()=>evaluate("document.querySelector('#treemap-metric')?.disabled===false"),'Reload recovery did not restore controls');
   await settled();
   assert.match(await text('#treemap-status'),/Historical figures/);
+
+  // A fixed set of equal-area tiles exercises both size classes as the catalogue grows.
+  const fixtureCompanies=Array.from({length:24},(_,index)=>({
+    id:`startup:mark-fixture-${index+1}`,kind:'startup',name:`Fixture company ${index+1}`,
+  }));
+  markFixture=JSON.stringify({version:snapshot.version,entities:fixtureCompanies,edges:[],funding_rounds:[],articles:[]});
+  await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*']});
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+  await navigate('?metric=companies');
+  assert.match(await text('#treemap-status'),/JSON backup/);
+  assert.equal((await tileMarks(companyTiles)).count,fixtureCompanies.length);
+  const compact=await tileMarks(companyTiles+'.compact');
+  assert.ok(compact.count>0,'The fixed desktop layout must exercise compact company tiles');
+  assert.deepEqual(compact.missing,[],'Compact company tiles must retain marks');
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:844,deviceScaleFactor:1,mobile:true});
+  const small=await until(async()=>{
+    const marks=await tileMarks(companyTiles+'.tiny:not(.micro)');
+    return marks.count>0 ? marks : null;
+  },'The fixed mobile layout did not produce small company tiles');
+  assert.deepEqual(small.missing,[],'Mobile small company tiles must retain marks');
+  await command('Network.setBlockedURLs',{urls:[]});
 
   assert.deepEqual(exceptions,[],'Treemap must not raise unhandled JavaScript exceptions');
   console.log('Treemap browser checks passed: proportional views, ranked cards, currencies, source caveats, grouped drilldown, shared selection/history, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');

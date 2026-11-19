@@ -1,0 +1,172 @@
+{
+  "revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "checked_at": "2026-11-18T09:46:31.565207+00:00",
+  "snapshot_kind": "committed_sources_rebuilt_in_memory",
+  "production_files_modified": false,
+  "overlay_startups": 45,
+  "committed_graph": {
+    "entities": 537,
+    "by_kind": {
+      "partner": 202,
+      "person": 103,
+      "programme": 103,
+      "provider": 83,
+      "startup": 46
+    },
+    "edges": 289,
+    "funding_rounds": 17,
+    "articles": 26
+  },
+  "source_rebuilt_graph": {
+    "entities": 555,
+    "by_kind": {
+      "partner": 202,
+      "person": 119,
+      "programme": 104,
+      "provider": 84,
+      "startup": 46
+    },
+    "edges": 273,
+    "funding_rounds": 25,
+    "articles": 37
+  },
+  "country_scan_pattern": "belgium|belgian|brussels|bruxelles|brussel|ghent|gent\\b|leuven|antwerp|antwerpen|liège|liege|walloni|flander|imec|pmv|fortino|volta|hummingbird|smartfin",
+  "country_scan_matches": [
+    {
+      "id": "partner:imec",
+      "kind": "partner",
+      "name": "imec",
+      "summary": "",
+      "website": "",
+      "source": ""
+    }
+  ],
+  "startup_names": [
+    "Canva",
+    "Fusion Books",
+    "Airwallex",
+    "Bugcrowd",
+    "Morse Micro",
+    "T:0",
+    "Alloovium",
+    "Ascenda",
+    "Brainwaves",
+    "cascayd",
+    "CheckGen",
+    "CrossCourtAI",
+    "Deeligence",
+    "Neuralindex",
+    "Guin",
+    "Tendor",
+    "FlowGo",
+    "iBnkVault",
+    "Lockii",
+    "Superstat",
+    "Talentsheet",
+    "Thermal Dawn",
+    "Vixia",
+    "Wiingman",
+    "Zabidou",
+    "Gilmour Space",
+    "ULUU",
+    "Go1",
+    "Culture Amp",
+    "Quantum Brilliance",
+    "Cauldron",
+    "Goterra",
+    "Wise",
+    "Revolut",
+    "UiPath",
+    "Synthesia",
+    "Eucalyptus",
+    "JigSpace",
+    "Loam Bio",
+    "ENA Respiratory",
+    "PsiQuantum",
+    "Cuttable",
+    "Strongroom AI",
+    "Puralink",
+    "PI.EXCHANGE"
+  ],
+  "graph_only_startups": [
+    {
+      "id": "startup:remi-ai",
+      "kind": "startup",
+      "name": "Remi AI"
+    }
+  ],
+  "planner_population": {
+    "scope": "all records in the supplied startup-research overlay",
+    "source_records": 45,
+    "seed_states": {
+      "approved_seed_ready": 1,
+      "seed_review_required": 43,
+      "missing_reviewed_website": 1,
+      "invalid_reviewed_website": 0,
+      "seed_url_blocked": 0,
+      "seed_host_mismatch": 0
+    }
+  },
+  "input_sha256": {
+    "AGENTS.md": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+    ".agents/skills/startup-atlas-collection/SKILL.md": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4",
+    "docs/AGENT-RUNBOOK.md": "24db10d9e979840da0ab6ec2a9853fc4aabb2d16a8edb8fadefa33b8f33db7f0",
+    "docs/KNOWLEDGE-GRAPH.md": "be001b66c2904f5bed6f1fff2c6fad8712b2e329b9e57e2cfff6d437c2b7532a",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "backend/hosted/src/startup-edit.mjs": "b5aab4706c0da847a3ad73b68958dde0fd94820584a641bf052036a34aacfca9",
+    "scripts/make-graph.py": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "scripts/replay_company_profiles.py": "b8b1c39543ca051b312f23b95ae959a7a7f613aa846c326ced881c25d368e188",
+    "contracts/investor_rounds/README.md": "39f8074b998001a8255836a9848b30936f2d7501ba940e5207884a6ad114e063",
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a"
+  },
+  "schema_constraints": {
+    "production_nulls": "unsupported; omit unknown fields",
+    "funding_dates": "day-precision YYYY-MM-DD only; omit partial dates, preserve exact precision in sidecar and note",
+    "founding": "founded_year only, 1800 through current year",
+    "funding_amount": "non-negative safe integer; amount+currency paired; currency syntax exactly 3 uppercase letters; no currency inference",
+    "funding_required": [
+      "id",
+      "stage",
+      "source"
+    ],
+    "record_required": [
+      "name",
+      "source",
+      "reviewed_at"
+    ],
+    "new_record_additional_required": [
+      "description",
+      "website"
+    ],
+    "unknown_stage": "use neutral source-supported Funding round or omit event pending review; never infer series",
+    "round_participants": "no typed support; source-attributed note plus original claim-level ledger, no fabricated relationship edges",
+    "geography_aliases_sectors": "sourced profile_facts plus typed sidecar; no new top-level fields",
+    "socials": "public professional source-linked only; no contacts",
+    "limits": {
+      "founders": 30,
+      "funding_rounds": 100,
+      "profile_facts": 100,
+      "articles": 100,
+      "relationships": 100,
+      "socials": 30
+    }
+  },
+  "ownership": {
+    "collection": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "coverage": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "replay": "https://github.com/castlemilk/startup-atlas/pull/178",
+    "record": "https://chatgpt.com/c/6afc35bc-3abc-83ec-aa2c-101dd825be51"
+  },
+  "integration_boundaries": [
+    "research-only files outside source allowlist",
+    "No real investor packet passed through synthetic-only contract",
+    "No seed approval or roster publication from research discovery",
+    "No crawler runs or robots requests",
+    "Do not claim committed graph counts are live",
+    "No source-schema expansion",
+    "No auto-merge or deploy"
+  ]
+}

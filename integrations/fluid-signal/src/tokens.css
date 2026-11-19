@@ -1,0 +1,22 @@
+[data-atlas-fluid] {
+  --fluid-accent: var(--atlas-action);
+  --fluid-on-accent: var(--atlas-on-action);
+  --fluid-surface: var(--atlas-surface);
+  --fluid-surface-2: var(--atlas-soft);
+  --fluid-text: var(--atlas-ink);
+  --fluid-text-2: var(--atlas-muted);
+  --fluid-border: var(--atlas-border-strong);
+  --fluid-focus: var(--atlas-focus);
+  --fluid-radius: var(--atlas-radius-control);
+  --fluid-font: var(--atlas-font-body);
+  --atlas-fluid-duration-feedback: var(--atlas-duration-fast);
+  --atlas-fluid-duration-context: var(--atlas-duration-normal);
+  --atlas-fluid-ease-fallback: var(--atlas-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-atlas-fluid] {
+    --atlas-fluid-duration-feedback: 0ms;
+    --atlas-fluid-duration-context: 0ms;
+  }
+}
