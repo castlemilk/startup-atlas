@@ -156,6 +156,8 @@ class PageParser(HTMLParser):
         if tag=='meta':
             key=(a.get('property') or a.get('name') or a.get('itemprop') or '').lower(); val=a.get('content','').strip()
             if key and val and key not in self.meta: self.meta[key]=val[:2000]
+        if tag=='time' and ('pubdate' in a or a.get('itemprop','').lower()=='datepublished'):
+            if a.get('datetime'): self.meta.setdefault('datepublished',a['datetime'][:2000])
         if tag=='link' and a.get('href'):
             rel=a.get('rel','').lower(); self.links.append({'rel':rel,'url':urljoin(self.base,a['href'])})
         if tag in ('header','nav'): self._brand_regions.append(tag)
@@ -255,7 +257,7 @@ class PageParser(HTMLParser):
         if not self._hidden and len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
 
 def summarise_jsonld(value):
-    keep={'@type','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory','jobTitle','worksFor'}
+    keep={'@type','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory','jobTitle','worksFor','headline','publisher','datePublished'}
     if isinstance(value,list): return sum((summarise_jsonld(x) for x in value[:10]),[])
     if not isinstance(value,dict): return []
     out=[]
@@ -302,7 +304,7 @@ def extract_amount_mentions(parts,url):
 
 def extract_page(body,url):
     parser=PageParser(url); parser.feed(body.decode('utf-8','replace'))
-    metadata={key:value for key,value in parser.meta.items() if key in ('description','keywords','author','logo','og:logo','og:url','og:title','og:description','og:site_name','og:image','og:type','og:locale','twitter:site','twitter:title','twitter:description','twitter:image','article:published_time','article:modified_time')}
+    metadata={key:value for key,value in parser.meta.items() if key in ('description','keywords','author','logo','og:logo','og:url','og:title','og:description','og:site_name','og:image','og:type','og:locale','twitter:site','twitter:title','twitter:description','twitter:image','article:published_time','article:modified_time','datepublished')}
     links=[]; seen=set()
     for link in parser.links:
         u=link.get('url',''); p=urlsplit(u)
@@ -599,22 +601,172 @@ def extract_profile_media_leads(partner, page, kind):
                          'checked_at':page['checked_at'],'review_required':True})
     return rows[:150]
 
+def evidence_text(value, limit=300):
+    return ' '.join(value.split())[:limit] if isinstance(value,str) else ''
+
+
+def evidence_url(value, source):
+    """Validate the syntax of an HTTPS candidate without making a request."""
+    if not isinstance(value,str) or not value or len(value)>2048 or value!=value.strip():
+        return None
+    try:
+        resolved=urljoin(source,value)
+        parts=urlsplit(resolved)
+        host=parts.hostname or ''
+        if (parts.query or '\\' in value or host.endswith('.local')
+            or not re.fullmatch(r'(?:[a-z0-9-]+\.)+[a-z]{2,63}',host)):
+            return None
+        return scope_url(resolved,host)
+    except (CrawlError,ValueError):
+        return None
+
+
+def structured_types(subject):
+    names=subject.get('@type',[])
+    if isinstance(names,str): names=[names]
+    if not isinstance(names,list): return set()
+    return {name.removeprefix('https://schema.org/').removeprefix('http://schema.org/')
+            for name in names if isinstance(name,str)}
+
+
+def matches_organization(subject, company, source):
+    official=evidence_url(company['website'],source)
+    return (official is not None and isinstance(subject,dict)
+            and evidence_text(subject.get('name')).casefold()==company['name'].casefold()
+            and evidence_url(subject.get('url'),source)==official)
+
+
 def company_profile_observation(company, page):
     """A page-scoped evidence packet, never a verified company/person record."""
     metadata=page.get('metadata',{})
-    return {'company':company,'kind':'company-profile','source_url':page['final_url'],
+    source=page['final_url']
+    subjects=page.get('structured_data',[])
+    organizations=[{key:subject[key] for key in ('name','url','description','foundingDate','address','areaServed')
+                    if key in subject} for subject in subjects
+                   if structured_types(subject)&{'Organization','Corporation'}
+                   and matches_organization(subject,company,source)]
+    return {'company':company['name'],'kind':'company-profile','source_url':source,
             'checked_at':page['checked_at'],'review_required':True,
             'title':page.get('title',''),
             'description':metadata.get('description') or metadata.get('og:description',''),
-            'structured_subjects':page.get('structured_data',[])[:10],
+            'structured_subjects':subjects,'organization_claims':organizations,
             'logo_candidates':page.get('logo_candidates',[])[:40],
             'identity_note':'Page subjects may include other organisations or people. Image alt text and sameAs links are source claims, not verified identities or employment.'}
+
+
+def newsroom_observation(company, page):
+    source=page['final_url']
+    source_key=evidence_url(source,source)
+    if source_key is None: return None
+    metadata=page.get('metadata',{})
+    company_site=evidence_text(metadata.get('og:site_name')).casefold()==company['name'].casefold()
+    canonicals=set()
+    for link in page['links']:
+        if 'canonical' not in link.get('rel','').split(): continue
+        url=evidence_url(link['url'],source)
+        if url and urlsplit(url).hostname==urlsplit(source).hostname: canonicals.add(url)
+    canonical=next(iter(canonicals)) if len(canonicals)==1 else None
+    structured=[subject for subject in page['structured_data']
+                if structured_types(subject)&{'Article','NewsArticle','BlogPosting'}]
+    equivalent={source_key,canonical} if canonical else {source_key}
+    articles=[subject for subject in structured
+              if (subject.get('publisher') is None and company_site
+                  or matches_organization(subject.get('publisher'),company,source))
+              and (subject.get('url') is None or evidence_url(subject['url'],source) in equivalent)]
+    if not articles and (structured or metadata.get('og:type')!='article' or not company_site):
+        return None
+    title=next((title for article in articles if (title:=evidence_text(article.get('headline')))),'')
+    title=title or evidence_text(metadata.get('og:title')) or evidence_text(page.get('title'))
+    if not title: return None
+    dates=[]
+    for field,value in [('structured.datePublished',article.get('datePublished')) for article in articles]+[
+            (key,metadata.get(key)) for key in ('article:published_time','datepublished')]:
+        hint={'field':field,'value':evidence_text(value,100)}
+        if hint['value'] and hint not in dates: dates.append(hint)
+    return {'source_url':source,'requested_url':page.get('url',source),'source_key':source_key,
+            'checked_at':page['checked_at'],'title':title,
+            'canonical_hint':canonical,'date_evidence':dates}
+
+
+def reported_article_day(value):
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}(?:T.+)?',value): return None
+    try:
+        if len(value)>10: dt.datetime.fromisoformat(value.replace('Z','+00:00'))
+        return dt.date.fromisoformat(value[:10]).isoformat()
+    except ValueError:
+        return None
+
+
+def stage_newsroom_articles(company, observations):
+    by_url={item['source_key']:item for item in observations}
+    groups={}
+    for item in observations:
+        key=item['canonical_hint']
+        target=by_url.get(key)
+        # Merge only when the other article was itself fetched in this batch and
+        # either self-identifies as canonical or makes no competing assertion.
+        if not target or target['canonical_hint'] not in (None,key): key=item['source_key']
+        groups.setdefault(key,[]).append(item)
+    for key,sources in groups.items():
+        dates={day for item in sources for hint in item['date_evidence']
+               if (day:=reported_article_day(hint['value']))}
+        primary=by_url[key]
+        yield {'company':company,'kind':'newsroom-article','candidate_url':key,
+               'source_url':primary['source_url'],'checked_at':primary['checked_at'],'title':primary['title'],
+               'observations':sources,'review_required':True,
+               'date_state':'reported' if len(dates)==1 else 'conflict' if dates else 'missing',
+               **({'published_on':next(iter(dates))} if len(dates)==1 else {})}
+
+
+def professional_bio_observations(company, page, asset_hosts):
+    """Require both the reviewed founder roster and a company-linked Person page."""
+    source=page['final_url']
+    source_key=evidence_url(source,source)
+    if source_key is None: return
+    names={row['name'].casefold():row['name'] for row in company.get('founders',[])}
+    for person in page['structured_data']:
+        name=names.get(evidence_text(person.get('name')).casefold())
+        if (not name or 'Person' not in structured_types(person)
+            or evidence_url(person.get('url'),source)!=source_key
+            or not matches_organization(person.get('worksFor'),company,source)):
+            continue
+        role=evidence_text(person.get('jobTitle'),200)
+        bio=evidence_text(person.get('description'),1000)
+        if not (role or bio): continue
+        same_as=person.get('sameAs',[])
+        if isinstance(same_as,str): same_as=[same_as]
+        social_urls=[]
+        if isinstance(same_as,list):
+            for value in same_as[:20]:
+                url=evidence_url(value,source)
+                if not url: continue
+                parts=urlsplit(url)
+                if (parts.hostname in ('linkedin.com','www.linkedin.com')
+                    and re.fullmatch(r'/in/[A-Za-z0-9-]+/?',parts.path) and url not in social_urls):
+                    social_urls.append(url)
+        image=person.get('image')
+        if isinstance(image,dict): image=image.get('contentUrl') or image.get('url')
+        portrait=evidence_url(image,source)
+        row={'company':company['name'],'kind':'professional-bio','name':name,
+             'candidate_url':source_key,'source_url':source,'checked_at':page['checked_at'],
+             'role':role,'bio':bio,'affiliation':person['worksFor'],'social_candidates':social_urls,
+             'review_required':True}
+        if portrait:
+            host=urlsplit(portrait).hostname
+            row['headshot_candidate']={'candidate_url':portrait,'source_url':source,
+                                       'status':'not_fetched','review_required':True,
+                                       'reason':('Rights and image review required'
+                                                 if host in asset_hosts or host==urlsplit(source).hostname
+                                                 else 'External asset host requires separate review')}
+        yield row
+
 
 def crawl_company_profiles(startups, args, transport):
     # A separate mode keeps startup names out of the partner identity importer.
     # The approved CSV is mandatory; only already researched companies qualify.
     known={row['name']:row for row in startups}
     approved=load_approved_csv(args.approved,set(known),require_qid=False)
+    asset_hosts={seed['name']:seed['asset_hosts'] for seed in approved}
     for seed in approved:
         if urlsplit(seed['url']).hostname != urlsplit(known[seed['name']].get('website','')).hostname:
             raise CrawlError('Company seed must match its reviewed official website host')
@@ -623,9 +775,17 @@ def crawl_company_profiles(startups, args, transport):
     for candidate in result['candidates']:
         candidate['company']=candidate.pop('partner')
     for row in result['results']:
+        company=known[row['name']]
+        articles=[]
         for page in row['pages']:
             if page.get('status')=='ok':
-                result['candidates'].append(company_profile_observation(row['name'],page))
+                result['candidates'].append(company_profile_observation(company,page))
+                article=newsroom_observation(company,page)
+                if article:
+                    articles.append(article)
+                else:
+                    result['candidates'].extend(professional_bio_observations(company,page,asset_hosts[row['name']]))
+        result['candidates'].extend(stage_newsroom_articles(row['name'],articles))
     result['coverage']=page_fetch_coverage(result['results'],result['candidates'])
     result['warning']='Research-only page observations, not verified company profiles or headshots. Review each subject, role, social link and asset provenance before publication. No image or social destination is fetched by this mode.'
     return result
@@ -712,6 +872,17 @@ def crawl_profiles(catalogue,args,transport,company=False):
         if homepage['status']=='ok':
             candidates.extend(extract_profile_media_leads(seed['name'],homepage,'homepage'))
             discovered=profile_landing_links(homepage,seed['url'],follow,include_about=company)
+            if company and scope is not None:
+                kinds={item['url']:item['kind'] for item in discovered}
+                visited={scope_url(homepage['final_url'],host),scope_url(seed['url'],host)}
+                approved=[{'url':url,'kind':kinds.get(url,'approved-document')}
+                          for url in scope['allowed_urls']
+                          if url not in scope['denied_urls'] and url not in visited]
+                # Retain skipped-link evidence for unused follow slots. The
+                # existing request guard rejects out-of-scope links before I/O.
+                approved_urls={item['url'] for item in approved}
+                discovered=(approved+[item for item in discovered
+                                      if item['url'] not in approved_urls | visited])[:follow]
             for target in discovered:
                 page=fetch(target['url'],host,scope); page['profile_kind']=target['kind']; pages.append(page)
                 if page['status']=='ok':
