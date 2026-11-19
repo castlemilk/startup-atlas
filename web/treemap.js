@@ -6,13 +6,14 @@ import { METRICS, companyContext, validYear, cohort, cohortNames, currencies, ma
 
 const $ = id => document.getElementById(id);
 const controls = $('treemap-controls'), chart = $('treemap-chart'), detail = $('treemap-detail');
+const filterToggle = $('treemap-filter-toggle'), filterFields = $('treemap-filter-fields');
 const DEFAULT_PRESENTATION = 'cards';
 const titles = {valuation:'Recorded valuations', funding:'Funding announcements', companies:'Companies in the Atlas'};
 const palette = ['#dce5ff','#e1dcf5','#d9e8ed','#e5e8ef','#f0e3d9','#dcebe4'];
 let graph, view, state, storeMode, lastWidth = 0, cohortColors = new Map();
 const money = value => formatValue(value, state.metric, state.currency);
 const safeImageUrl = value => /^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(value || '') ? value : sourceUrl(value);
-const safeImage = entity => safeImageUrl(logoFor(entity.name)) || safeImageUrl(entity.logo) || '';
+const safeImage = entity => safeImageUrl(logoFor(entity.name)) || (state.presentation === 'cards' ? '' : safeImageUrl(entity.logo)) || '';
 const initials = name => name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
 const mark = entity => { const image = safeImage(entity); return `<span class="treemap-logo ${esc(logoClassFor(entity.name))}">${image ? `<img src="${esc(image)}" alt="" hidden referrerpolicy="no-referrer"><span>${esc(initials(entity.name))}</span>` : esc(initials(entity.name))}</span>`; };
 const evidenceLink = (url, label) => sourceUrl(url) ? `<a class="treemap-source" href="${esc(sourceUrl(url))}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>` : '';
@@ -33,9 +34,17 @@ function presentationFrom(params) {
   return legacy ? 'map' : DEFAULT_PRESENTATION;
 }
 function showPresentation(presentation) {
+  const isCards = presentation === 'cards';
+  const collapseFilters = isCards && filterToggle.getAttribute('aria-expanded') === 'false';
+  const returnFilterFocus = collapseFilters && filterFields.contains(document.activeElement);
   document.body.dataset.treemapView = presentation;
+  $('treemap-board-heading').hidden = !isCards;
+  $('treemap-panel').setAttribute('aria-labelledby', isCards ? 'treemap-board-title' : 'treemap-heading');
+  filterToggle.hidden = !isCards;
+  filterFields.hidden = collapseFilters;
+  if (returnFilterFocus) filterToggle.focus();
   chart.hidden = presentation !== 'map';
-  $('treemap-cards').hidden = presentation !== 'cards';
+  $('treemap-cards').hidden = !isCards;
   $('treemap-list').hidden = presentation !== 'list';
 }
 function readState() {
@@ -114,6 +123,13 @@ function draw() {
   }).join('');
   watchImages(chart);
 }
+function cardMedia(entity) {
+  const image = logoFor(entity.name);
+  return `<span class="treemap-card-media" aria-hidden="true">
+    ${image ? `<img src="${esc(image)}" alt="" hidden>` : ''}
+    <span class="treemap-card-word">${esc(entity.name)}</span>
+  </span>`;
+}
 function drawCards() {
   const cards = $('treemap-cards');
   const grouped = state.group === 'decade' && state.period === 'all';
@@ -143,7 +159,7 @@ function drawCards() {
     const target = grouped ? `data-period="${esc(item.id)}"` : `data-company="${esc(item.id)}" aria-pressed="${state.company === item.id}"`;
     return `<button type="button" class="treemap-card${variant}" ${target} aria-label="${esc(label)}">
       ${value ? `<span class="treemap-card-top"><span class="treemap-card-rank">${index + 1}</span><span class="treemap-card-value">${esc(value)}</span></span>` : ''}
-      ${grouped ? '' : `<span class="treemap-card-media" aria-hidden="true">${mark(item.entity)}</span>`}
+      ${grouped ? '' : cardMedia(item.entity)}
       <span class="treemap-card-body"><span class="treemap-card-name">${esc(name)}</span><span class="treemap-card-summary">${esc(summary)}</span>
         ${place ? `<span class="treemap-card-place" title="${esc(place.value)}">${esc(place.value)}</span>` : ''}
         <span class="treemap-card-footer"><span class="treemap-card-date">${esc(date)}</span>${year ? `<span class="treemap-card-year">${esc(year)}</span>` : ''}</span>
@@ -153,6 +169,11 @@ function drawCards() {
   }).join('');
   watchImages(cards);
 }
+function drawRankedList() {
+  const list = $('treemap-list');
+  list.innerHTML = view.rows.length ? `<ol>${view.rows.map((row, index) => `<li><span>${String(index + 1).padStart(2, '0')}</span><div><button type="button" data-company="${esc(row.id)}" aria-pressed="false">${mark(row.entity)}<span>${esc(row.entity.name)}</span></button><small>${row.event ? `Announced ${esc(row.event.announced_on)}` : esc(row.group)}</small><a href="${esc(entityHref(row.entity))}">Full profile ↗</a></div><div class="treemap-list-value"><strong>${esc(money(row.value))}</strong>${row.event ? `<a href="${esc(sourceUrl(row.event.source))}" target="_blank" rel="noopener noreferrer">Announcement ↗</a>` : ''}</div></li>`).join('')}</ol>` : '<p>No comparable companies in this selection. Change the filters or try Company count.</p>';
+  watchImages(list);
+}
 function render() {
   view = makeView(graph, state);
   const selectedRow = view.rows.find(row => row.id === state.company);
@@ -160,6 +181,7 @@ function render() {
   const isMap = state.presentation === 'map', isCards = state.presentation === 'cards';
   const groupedCards = isCards && state.group === 'decade' && state.period === 'all';
   $('treemap-heading').textContent = titles[state.metric];
+  $('treemap-board-title').textContent = titles[state.metric];
   $('treemap-instructions').textContent = isMap
     ? 'Each rectangle is proportional to its recorded value or company count. Select a company to read its evidence. Small tiles have equivalent controls in the ranked list. Select a founding decade to explore the companies within it.'
     : isCards
@@ -167,9 +189,16 @@ function render() {
       : 'Select a company in the list to read its evidence. Financial figures are ranked by recorded value; company counts use alphabetical order.';
 
   $('treemap-subtitle').textContent = state.metric === 'companies' ? `${isMap ? 'Every company has equal area. Color indicates the recorded founding decade.' : groupedCards ? 'Founding decades ranked by company count.' : 'Companies in alphabetical order.'}` : `Latest dated numeric ${state.metric === 'valuation' ? 'valuation' : 'event amount'} recorded per company in ${state.currency}.`;
+  $('treemap-board-context').textContent = state.metric === 'companies'
+    ? groupedCards ? 'Founding decades ranked by company count.' : 'Companies in alphabetical order.'
+    : `Latest comparable figure per company · ${state.currency}`;
   $('treemap-breadcrumb').innerHTML = state.period === 'all' ? 'ALL COMPANIES' : `<button type="button" class="treemap-breadcrumb-button" data-period="all">ALL COMPANIES</button> / ${esc(state.period.toUpperCase())}`;
-  $('treemap-summary').innerHTML = `<span><strong>${view.rows.length}</strong> of ${view.filteredCount} matching companies ${isMap ? 'plotted' : 'shown'}</span>${!isCards && state.metric !== 'companies' && view.rows.length ? `<span><strong>${esc(money(view.total))}</strong> sum of displayed figures</span>` : ''}`;
-  $('treemap-status').textContent = `${storeMode === 'fallback' ? 'Showing the published JSON backup. ' : ''}${state.metric === 'companies' ? 'Company count includes records without financial data.' : 'Historical figures, not current values. Unknown or non-comparable amounts are excluded.'}`;
+  const coverage = `<span><strong>${view.rows.length}</strong> of ${view.filteredCount} matching companies ${isMap ? 'plotted' : 'shown'}</span>`;
+  $('treemap-board-summary').innerHTML = coverage;
+  $('treemap-summary').innerHTML = coverage + (!isCards && state.metric !== 'companies' && view.rows.length ? `<span><strong>${esc(money(view.total))}</strong> sum of displayed figures</span>` : '');
+  const status = $('treemap-status');
+  status.textContent = `${storeMode === 'fallback' ? 'Showing the published JSON backup. ' : ''}${state.metric === 'companies' ? 'Company count includes records without financial data.' : 'Historical figures, not current values. Unknown or non-comparable amounts are excluded.'}`;
+  status.classList.toggle('sr-only', isCards && storeMode !== 'fallback');
   $('treemap-legend').innerHTML = isMap
     ? `<span>Area = ${state.metric === 'companies' ? 'company count' : 'recorded value'} · Founding decade:</span> ${view.groups.map(group => `<span class="treemap-legend-item"><i aria-hidden="true" style="background:${cohortColors.get(group.id)}"></i>${esc(group.name)}</span>`).join('')}`
     : isCards ? 'Cards use an editorial layout. Read the amount and its source for each company.'
@@ -177,13 +206,16 @@ function render() {
   showPresentation(state.presentation);
   $('treemap-share').textContent = 'Share view';
   $('treemap-share-status').textContent = '';
-  $('treemap-list').innerHTML = view.rows.length ? `<ol>${view.rows.map((row, index) => `<li><span>${String(index + 1).padStart(2, '0')}</span><div><button type="button" data-company="${esc(row.id)}" aria-pressed="false">${mark(row.entity)}<span>${esc(row.entity.name)}</span></button><small>${row.event ? `Announced ${esc(row.event.announced_on)}` : esc(row.group)}</small><a href="${esc(entityHref(row.entity))}">Full profile ↗</a></div><div class="treemap-list-value"><strong>${esc(money(row.value))}</strong>${row.event ? `<a href="${esc(sourceUrl(row.event.source))}" target="_blank" rel="noopener noreferrer">Announcement ↗</a>` : ''}</div></li>`).join('')}</ol>` : '<p>No comparable companies in this selection. Change the filters or try Company count.</p>';
-  watchImages($('treemap-list'));
+  if (isCards) {
+    $('treemap-list').replaceChildren();
+    drawCards();
+  } else {
+    drawRankedList();
+  }
   $('treemap-missing').hidden = !view.missing.length;
   $('treemap-missing-label').textContent = `${view.missing.length} matching ${view.missing.length === 1 ? 'company has' : 'companies have'} no comparable ${state.metric === 'valuation' ? 'valuation' : 'amount'} in ${state.currency}`;
   $('treemap-missing-list').innerHTML = view.missing.map(entity => `<a href="${esc(entityHref(entity))}">${esc(entity.name)}</a>`).join('');
   draw();
-  drawCards();
   showDetail(selectedRow);
 }
 function change(next, replace = false, preserveSelection = false) {
@@ -191,6 +223,11 @@ function change(next, replace = false, preserveSelection = false) {
   syncControls(); render(); writeState(replace);
 }
 controls.addEventListener('submit', event => event.preventDefault());
+filterToggle.addEventListener('click', () => {
+  const open = filterFields.hidden;
+  filterFields.hidden = !open;
+  filterToggle.setAttribute('aria-expanded', String(open));
+});
 controls.addEventListener('change', event => {
   if (!graph) return;
   if (event.target.id === 'treemap-metric') {
