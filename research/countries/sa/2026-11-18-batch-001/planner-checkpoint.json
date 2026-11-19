@@ -1,0 +1,34 @@
+{
+  "valid": true,
+  "planner": "scripts/plan_company_profiles.py::build_plan",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "baseline": {
+    "pages": 5,
+    "returned": 45,
+    "population": {
+      "scope": "all records in the supplied startup-research overlay",
+      "source_records": 45,
+      "seed_states": {
+        "approved_seed_ready": 1,
+        "seed_review_required": 43,
+        "missing_reviewed_website": 1,
+        "invalid_reviewed_website": 0,
+        "seed_url_blocked": 0,
+        "seed_host_mismatch": 0
+      }
+    },
+    "plan_id": "772e889c7ef0a347226e609180d6ea81c25463db28a4794a5e93ea7b7f966dac",
+    "last_cursor": null,
+    "inventory_exhausted": true
+  },
+  "hypothetical_staged_overlay": {
+    "pages": 7,
+    "records": 70,
+    "new_startups": 25,
+    "new_seed_review_required": 25,
+    "new_approved_seeds": 0,
+    "production_mutation": false,
+    "is_committed_revision_snapshot": false
+  },
+  "warning": "Offline supplied-overlay inventory only; neither web coverage nor crawler completion. Existing planner implementation reused unchanged."
+}

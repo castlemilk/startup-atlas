@@ -1,0 +1,178 @@
+{
+  "audit_id": "br-independent-fintech-platforms-20261118",
+  "input_path": "/workspace/scratch/50167a6326e0/work/fintech/fintech-research.json",
+  "input_sha256": "2964881d247c08d8bcbd1c43c5c312537c5f798707c1d687d52b446979a8e6e0",
+  "scope": "Read-only independent audit of five requested event/entity distinctions; no broad collection or target mutation.",
+  "blocking_findings": 0,
+  "passed_checks": 5,
+  "checks": [
+    {
+      "id": "audit-qi-extension",
+      "company": "qi-tech",
+      "status": "pass",
+      "severity": "none",
+      "fields": [
+        "funding_events.qi-tech-series-b-extension-2025"
+      ],
+      "source_ids": [
+        "fin-qi-extension",
+        "fin-qi-wire"
+      ],
+      "audit_refs": [
+        "turn144605799view0",
+        "turn691359172view4",
+        "turn691359172view7"
+      ],
+      "verified_at": "2026-11-18T09:57:29.687Z",
+      "finding": "Official newsroom dates July 30; company-issued wire announces July 31. Both describe the same USD63m extension with General Atlantic leading; wire explicitly includes Across. Month precision is defensible.",
+      "action": "Preserve conflict and month precision. Do not add cumulative USD313m as a further transaction.",
+      "sources": [
+        {
+          "source_id": "fin-qi-extension",
+          "url": "https://qitech.com.br/en/newsroom/qi-tech-raises-us63m-series-b-extension/"
+        },
+        {
+          "source_id": "fin-qi-wire",
+          "url": "https://www.prnewswire.com/news-releases/qi-tech-raises-63-million-in-a-series-b-extension-led-by-general-atlantic-and-strengthens-its-position-as-a-leading-financial-infrastructure-platform-in-brazil-302518706.html"
+        }
+      ]
+    },
+    {
+      "id": "audit-dock-milestones",
+      "company": "dock",
+      "status": "pass",
+      "severity": "none",
+      "fields": [
+        "facts.founding_milestones",
+        "facts.founders"
+      ],
+      "source_ids": [
+        "fin-dock-about",
+        "fin-dock-ey"
+      ],
+      "audit_refs": [
+        "turn691359172view5",
+        "turn691359172view6"
+      ],
+      "verified_at": "2026-11-18T09:57:29.687Z",
+      "finding": "Company distinguishes Conductor origin in 1999, Antonio joining as CEO in 2012, Dock internal venture in 2018, and group rebrand in 2021. EY explicitly labels Antonio founder/CEO while also describing his 2012 arrival.",
+      "action": "Keep founder_scope and milestones; do not attribute predecessor founding to Antonio.",
+      "sources": [
+        {
+          "source_id": "fin-dock-about",
+          "url": "https://dock.tech/Sobre/"
+        },
+        {
+          "source_id": "fin-dock-ey",
+          "url": "https://www.ey.com/en_gl/weoy/class-of-2024/brazil"
+        }
+      ]
+    },
+    {
+      "id": "audit-recarga-date-currency",
+      "company": "recargapay",
+      "status": "pass",
+      "severity": "none",
+      "fields": [
+        "funding_events.recargapay-series-c-2021.date",
+        "funding_events.recargapay-series-c-2021.currency"
+      ],
+      "source_ids": [
+        "fin-recarga-c-en",
+        "fin-recarga-usd"
+      ],
+      "audit_refs": [
+        "turn691359172view0",
+        "turn314585129view4",
+        "turn314585129view2"
+      ],
+      "verified_at": "2026-11-18T09:57:37.133Z",
+      "finding": "Event dateline and embargo are February 24, 2021; blog publication is March 26. Later company debt announcement explicitly states the earlier Series C was US$70m.",
+      "action": "Keep February 24 announcement, USD70m amount; exclude BRL40m debt and converted BRL headline from venture total.",
+      "sources": [
+        {
+          "source_id": "fin-recarga-c-en",
+          "url": "https://blog.recargapay.com.br/brazilian-fintech-recargapay-raises-70m-series-c-round/"
+        },
+        {
+          "source_id": "fin-recarga-usd",
+          "url": "https://blog.recargapay.com.br/recargapay-estreia-no-mercado-de-divida-com-debenture-de-r-40-milhoes/"
+        }
+      ]
+    },
+    {
+      "id": "audit-nomad-geography",
+      "company": "nomad",
+      "status": "pass",
+      "severity": "none",
+      "fields": [
+        "facts.operating_entity_seat",
+        "facts.incorporation",
+        "facts.other_group_entity"
+      ],
+      "source_ids": [
+        "fin-nomad-about",
+        "fin-nomad-legal"
+      ],
+      "audit_refs": [
+        "turn314585129view1",
+        "turn475731149view1"
+      ],
+      "verified_at": "2026-11-18T09:57:56.221Z",
+      "finding": "Contract page 4 explicitly identifies Nomad Tecnologia e Participações Ltda as constituted under Brazilian law, with São Paulo seat and the recorded CNPJ. Company footer separately locates Nomad Fintech Inc. in Orlando.",
+      "action": "Keep scoped entities; leave US incorporation and single global HQ unknown.",
+      "sources": [
+        {
+          "source_id": "fin-nomad-about",
+          "url": "https://www.nomadglobal.com/quem-somos"
+        },
+        {
+          "source_id": "fin-nomad-legal",
+          "url": "https://resources.benomad.us/legal/cartao_de_credito-termos_e_condicoes-27022025.pdf"
+        }
+      ]
+    },
+    {
+      "id": "audit-creditas-roles",
+      "company": "creditas",
+      "status": "pass",
+      "severity": "none",
+      "fields": [
+        "funding_events.creditas-series-f-2022.participants"
+      ],
+      "source_ids": [
+        "fin-creditas-f"
+      ],
+      "audit_refs": [
+        "turn144605799view4"
+      ],
+      "verified_at": "2026-11-18T09:57:18.149Z",
+      "finding": "Company expressly names retained participants. Fidelity is a new key shareholder, not explicitly a lead. Advent participation is expressed through affiliate Sunley House Capital. The omitted Lightock spelling remains disclosed as an identity-resolution gap.",
+      "action": "Retain participant roles and partial-roster caveat. No lead upgrade or parent/affiliate double count.",
+      "sources": [
+        {
+          "source_id": "fin-creditas-f",
+          "url": "https://www.creditas.com/ir/non-regulatory/creditas-announces-usd260-million-series-f-fundraising-round/"
+        }
+      ]
+    }
+  ],
+  "nonblocking_cautions": [
+    {
+      "id": "nomad-role-date",
+      "company": "nomad",
+      "field": "facts.founders.role_as_of",
+      "finding": "Undated website role labels were observed on retrieval date; effective appointment date is not established.",
+      "recommendation": "Describe 2026-11-18 as observation date, not an official appointment/effective date."
+    },
+    {
+      "id": "dock-projection-scope",
+      "company": "dock",
+      "field": "founders/founded_year production projection",
+      "finding": "Flattening could remove the already recorded distinction between modern Dock founder and 1999 predecessor.",
+      "recommendation": "Preserve scoped founder provenance and history as profile facts; omit an unqualified scalar founding year."
+    }
+  ],
+  "target_modified": false,
+  "integration_note": "Independent source review of earlier checkpoint; recommended corrections applied to final dossiers. Original checkpoint hashes retained for audit, not substituted for final file hashes."
+}

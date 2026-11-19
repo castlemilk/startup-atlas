@@ -1,0 +1,92 @@
+{
+  "digestAlgorithm": "atlas-json-sorted-keys-v1",
+  "toolsDigest": "sha256:b805ba8ecf89c09446a6cef55ee3a18e0d1ee910755f58599a7f5d32700f2aa7",
+  "schemaDigest": "sha256:53ee1890fa1ff331babd507c975534c85a3f09f3e7007c4c5b902adfe8b5da3a",
+  "tools": [
+    {
+      "name": "atlas_add_opportunity",
+      "toolDigest": "sha256:e2b391a1329a00e245196b06d81ca77a20bc078eddae808104cb4f6e19138397",
+      "schemaDigest": "sha256:c9e3354a9a9b09ab9a2886af35b5c5115bd464d7c0decd372bff0a14e55e218e"
+    },
+    {
+      "name": "atlas_get_connection",
+      "toolDigest": "sha256:33d1b0950ba14a8ca3b233e846aba4b318288111cb3831fd6110752a8cc4d103",
+      "schemaDigest": "sha256:c66fa4703c454fa4a533e568000f07715da1203e7a756550b5d4987feb38af0e"
+    },
+    {
+      "name": "atlas_get_opportunity",
+      "toolDigest": "sha256:45c8ac635277701a505dfef53a5379acba09e3786e7626321500115f8012db8c",
+      "schemaDigest": "sha256:3a719c704e553e9a193a72358598c2deaadca8ea133aee889d303965dedd7c7e"
+    },
+    {
+      "name": "atlas_get_partner",
+      "toolDigest": "sha256:165581df6f8eb9da8ddd85e2a8665dfd54cf0f620337c508704779a9f9d7b1b9",
+      "schemaDigest": "sha256:1a12defd33277064234e63f1fa6ff5c2cd121a563f69b5db066709a4de3a8101"
+    },
+    {
+      "name": "atlas_get_startup",
+      "toolDigest": "sha256:91f0c2675885060988caad8e2dafa0f69afb790a32bacc8015506c8c05c924a1",
+      "schemaDigest": "sha256:3bf30c84c933f350d0227802dc4fc1f7557d9c85ded3a9a986e57c8327088445"
+    },
+    {
+      "name": "atlas_get_startup_edit_proposal",
+      "toolDigest": "sha256:dbd75cb9f95d3b4225c4c69d6bb3d2d93c3b495ad5e5014c2edc78fd5541c7a4",
+      "schemaDigest": "sha256:5e4f3ae121e99a0d6cb4e3a3b68691ac31586723d03a59c432159786a2c840a2"
+    },
+    {
+      "name": "atlas_get_startup_record",
+      "toolDigest": "sha256:5e84c1ed9510d62fcdf77cf66d4d337c085add3582e8285acba0b4451a2da65e",
+      "schemaDigest": "sha256:e8f9156adae1a0107f810a3e459f962b81ee7f025e1a0749d67d1b56bca45986"
+    },
+    {
+      "name": "atlas_propose_partner",
+      "toolDigest": "sha256:4b0b18a777ddac31b59bff750536a1e060ba210161db4ef8262d07f9460f0cc1",
+      "schemaDigest": "sha256:17905a59de25dadb27f9a7aa22679ab5a3df66465babfbd4af52f3c63aec1460"
+    },
+    {
+      "name": "atlas_propose_startup",
+      "toolDigest": "sha256:cdf7dba21d0c53dee2089dfda3e02603cc8b0227aa65833ccce43e51ea81999f",
+      "schemaDigest": "sha256:e079f8d1c631ffa16fff1fc0054d17b5e54d014e44fdeb45e4227086f2707b75"
+    },
+    {
+      "name": "atlas_propose_startup_edit",
+      "toolDigest": "sha256:2ca626e6513e83c74c360a4639e5bf7790360999922c9bc8500c0384c2306195",
+      "schemaDigest": "sha256:e022c3482dac1f08b84b0d9bfaf87611e9ff3f39dcd9b3d5014fa7010763f21d"
+    },
+    {
+      "name": "atlas_search_graph",
+      "toolDigest": "sha256:be8f2da9f04209882ba9c8159f078fa6971d589492dd2d2b1b743d8fba73efc2",
+      "schemaDigest": "sha256:c6a0388b4c21b64e8a04968bafc9392ff65f0a0141de0312af2431b46a28c485"
+    },
+    {
+      "name": "atlas_search_opportunities",
+      "toolDigest": "sha256:27190d9734274dce97d561724c3d595b104d5e52d70b7c716b820ed706ed912d",
+      "schemaDigest": "sha256:75e0454e7079b6890b54c40b4b1cc4b655e4be59db5df6632506080a7fc7496b"
+    },
+    {
+      "name": "atlas_search_partners",
+      "toolDigest": "sha256:dcf80182addf4652107812141f397e5b4c0046c9146e295afa7d78a09ea12e7c",
+      "schemaDigest": "sha256:f9b488baa1f45264b682a14f0a98e1ef514bbf1ec6e900dbd92facc8b5906f6b"
+    },
+    {
+      "name": "atlas_validate_opportunity",
+      "toolDigest": "sha256:07f304b4497163f30170449cdc4c7e0f25f13cb68445de12983ca3c65c956ac3",
+      "schemaDigest": "sha256:c8178deae5d73a8439358758f12599b43a86f7810719e764b4f61e211650c431"
+    },
+    {
+      "name": "atlas_validate_partner",
+      "toolDigest": "sha256:09bf929d146b343e5cc82266f9744c0ea62ea8a554ff6db68418eac3e2456e41",
+      "schemaDigest": "sha256:56019343bbd07d614ea3f6aa02925092484c10c473dc5c91098ac6dd8f492511"
+    },
+    {
+      "name": "atlas_validate_startup",
+      "toolDigest": "sha256:f3b64654b4981d2b7e19797fe97338a19c2029db690dbdcab02a9039ead53d68",
+      "schemaDigest": "sha256:5ff83b850e4c0f1bc56be5a03cc9f4aef48dd0bd5337b53ccf0f286b9520c2b9"
+    },
+    {
+      "name": "atlas_validate_startup_edit",
+      "toolDigest": "sha256:e282ad2cf4aa5ad68b08648ac0b4acbd34951f620057dc6450860bde5b21851e",
+      "schemaDigest": "sha256:5e68dc89bc6cc90dae70983d930883f7a53dc26537b16cb2b036164701878aa4"
+    }
+  ]
+}

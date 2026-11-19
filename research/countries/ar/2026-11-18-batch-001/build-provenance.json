@@ -1,0 +1,36 @@
+{
+  "batch_id": "ar-2026-11-18-001",
+  "built_at": "2026-11-18T10:09:12.872738Z",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "input_packet_sha256": {
+    "software": "6a0b3e5a5a3121a9dbb180daaf051ea5ce42bfcbc1b4d57986a129e3b2725638",
+    "science": "3be43fc1f03f740551ba6f2d84d0a671fcf73e5be9ed19e6df8dac48979c44f6",
+    "fintech": "41cd3ce6d49e306041326aee26f5ea007f10b8b50b45dc4d09103bf32b1f1259",
+    "ecosystem": "72a3036e4b0303c1e512f1e2857915d247e1dcd878f3ba10daec46c489685a82"
+  },
+  "runtime_schema_file": "backend/hosted/src/startup-record.mjs",
+  "runtime_schema_sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+  "enrichment_validator_sha256": "a0e49483ff5deb7d5e882582c9b0a00261cbd9dd461d7762d50838ce846c37af",
+  "review_corrections": [
+    "Humand US base separated from HQ; Mural historic HQ not silently current.",
+    "VU legal observation held as candidate; earlier successful read and later 404 both preserved; parent relationship withheld.",
+    "Globant-hosted TechCrunch copy classified secondary.",
+    "Kilimo June date labeled reported_month; Puna provisional linkage and unknown legal close preserved.",
+    "Sole lead labels preserved; supporting URLs retained in projection funding notes.",
+    "Operating launch is not normalized to company founding.",
+    "Ecosystem methodology source corrected from summary to PDF."
+  ],
+  "ownership": {
+    "scope": "research/countries/ar/2026-11-18-batch-001/",
+    "branch": "research/ar-gdp-24-batch-001-20261118",
+    "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "replay": "https://github.com/castlemilk/startup-atlas/pull/178",
+    "acknowledgement": "pending; coordination recorded in canonical Space, not owner approval"
+  },
+  "production_mutations": false,
+  "schema_mutations": false,
+  "deployment": false,
+  "refreshed_main_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "refresh_note": "Main advanced through #179 and #181. Startup overlay, committed graph, runtime startup schema and #177 planner are unchanged from the initial research baseline. #179 preserves unknown founding-year omission; #181 guards legacy funding-source inheritance. Country branch fast-forwarded before committing; neither shared fix was duplicated."
+}

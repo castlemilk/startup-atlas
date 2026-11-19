@@ -1,0 +1,2375 @@
+{
+  "mapping_semantics": "Each projected field or compound item cites its exact source and same-company claims. Nested metadata (IDs/review dates) is structural. Rich precision, aliases, geography and participant identities are also retained outside the production schema.",
+  "items": [
+    {
+      "pointer": "/startups/0/name",
+      "entity_id": "unresolved:startup:ikala",
+      "source_url": "https://ikala.ai/about/",
+      "claim_ids": [
+        "tw-sw-ikala-canonical-name-01",
+        "tw-sw-ikala-website-01",
+        "tw-sw-ikala-description-01",
+        "tw-sw-ikala-sectors-01",
+        "tw-sw-ikala-founded-year-01",
+        "tw-sw-ikala-headquarters-01",
+        "tw-sw-ikala-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/0/website",
+      "entity_id": "unresolved:startup:ikala",
+      "source_url": "https://ikala.ai/about/",
+      "claim_ids": [
+        "tw-sw-ikala-canonical-name-01",
+        "tw-sw-ikala-website-01",
+        "tw-sw-ikala-description-01",
+        "tw-sw-ikala-sectors-01",
+        "tw-sw-ikala-founded-year-01",
+        "tw-sw-ikala-headquarters-01",
+        "tw-sw-ikala-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/0/description",
+      "entity_id": "unresolved:startup:ikala",
+      "source_url": "https://ikala.ai/about/",
+      "claim_ids": [
+        "tw-sw-ikala-canonical-name-01",
+        "tw-sw-ikala-website-01",
+        "tw-sw-ikala-description-01",
+        "tw-sw-ikala-sectors-01",
+        "tw-sw-ikala-founded-year-01",
+        "tw-sw-ikala-headquarters-01",
+        "tw-sw-ikala-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/0/founded_year",
+      "entity_id": "unresolved:startup:ikala",
+      "source_url": "https://ikala.ai/about/",
+      "claim_ids": [
+        "tw-sw-ikala-founded-year-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/0/founders/0",
+      "entity_id": "unresolved:startup:ikala",
+      "source_url": "https://ikala.ai/about/",
+      "claim_ids": [
+        "tw-sw-ikala-canonical-name-01",
+        "tw-sw-ikala-website-01",
+        "tw-sw-ikala-description-01",
+        "tw-sw-ikala-sectors-01",
+        "tw-sw-ikala-founded-year-01",
+        "tw-sw-ikala-headquarters-01",
+        "tw-sw-ikala-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/0/profile_facts/0",
+      "entity_id": "unresolved:startup:ikala",
+      "source_url": "https://ikala.ai/about/",
+      "claim_ids": [
+        "tw-sw-ikala-canonical-name-01",
+        "tw-sw-ikala-website-01",
+        "tw-sw-ikala-description-01",
+        "tw-sw-ikala-sectors-01",
+        "tw-sw-ikala-founded-year-01",
+        "tw-sw-ikala-headquarters-01",
+        "tw-sw-ikala-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/0/funding_rounds/0",
+      "entity_id": "unresolved:startup:ikala",
+      "source_url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2024/0326-1610",
+      "claim_ids": [
+        "tw-integrate-ikala-qualified-amount",
+        "tw-integrate-ikala-lead"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/1/name",
+      "entity_id": "unresolved:startup:cycraft",
+      "source_url": "https://www.cycraft.com/en/about-cycraft",
+      "claim_ids": [
+        "tw-sw-cycraft-canonical-name-01",
+        "tw-sw-cycraft-website-01",
+        "tw-sw-cycraft-description-01",
+        "tw-sw-cycraft-sectors-01",
+        "tw-sw-cycraft-founder-01",
+        "tw-sw-cycraft-founder-02",
+        "tw-sw-cycraft-founder-03"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/1/website",
+      "entity_id": "unresolved:startup:cycraft",
+      "source_url": "https://www.cycraft.com/en/about-cycraft",
+      "claim_ids": [
+        "tw-sw-cycraft-canonical-name-01",
+        "tw-sw-cycraft-website-01",
+        "tw-sw-cycraft-description-01",
+        "tw-sw-cycraft-sectors-01",
+        "tw-sw-cycraft-founder-01",
+        "tw-sw-cycraft-founder-02",
+        "tw-sw-cycraft-founder-03"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/1/description",
+      "entity_id": "unresolved:startup:cycraft",
+      "source_url": "https://www.cycraft.com/en/about-cycraft",
+      "claim_ids": [
+        "tw-sw-cycraft-canonical-name-01",
+        "tw-sw-cycraft-website-01",
+        "tw-sw-cycraft-description-01",
+        "tw-sw-cycraft-sectors-01",
+        "tw-sw-cycraft-founder-01",
+        "tw-sw-cycraft-founder-02",
+        "tw-sw-cycraft-founder-03"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/1/founders/0",
+      "entity_id": "unresolved:startup:cycraft",
+      "source_url": "https://www.cycraft.com/en/about-cycraft",
+      "claim_ids": [
+        "tw-sw-cycraft-canonical-name-01",
+        "tw-sw-cycraft-website-01",
+        "tw-sw-cycraft-description-01",
+        "tw-sw-cycraft-sectors-01",
+        "tw-sw-cycraft-founder-01",
+        "tw-sw-cycraft-founder-02",
+        "tw-sw-cycraft-founder-03"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/1/founders/1",
+      "entity_id": "unresolved:startup:cycraft",
+      "source_url": "https://www.cycraft.com/en/about-cycraft",
+      "claim_ids": [
+        "tw-sw-cycraft-canonical-name-01",
+        "tw-sw-cycraft-website-01",
+        "tw-sw-cycraft-description-01",
+        "tw-sw-cycraft-sectors-01",
+        "tw-sw-cycraft-founder-01",
+        "tw-sw-cycraft-founder-02",
+        "tw-sw-cycraft-founder-03"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/1/founders/2",
+      "entity_id": "unresolved:startup:cycraft",
+      "source_url": "https://www.cycraft.com/en/about-cycraft",
+      "claim_ids": [
+        "tw-sw-cycraft-canonical-name-01",
+        "tw-sw-cycraft-website-01",
+        "tw-sw-cycraft-description-01",
+        "tw-sw-cycraft-sectors-01",
+        "tw-sw-cycraft-founder-01",
+        "tw-sw-cycraft-founder-02",
+        "tw-sw-cycraft-founder-03"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/1/profile_facts/0",
+      "entity_id": "unresolved:startup:cycraft",
+      "source_url": "https://www.twse.com.tw/pdf/en/7823_en.pdf",
+      "claim_ids": [
+        "tw-sw-cycraft-founded-year-01",
+        "tw-sw-cycraft-public-market-status-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/1/profile_facts/1",
+      "entity_id": "unresolved:startup:cycraft",
+      "source_url": "https://www.twse.com.tw/pdf/en/7823_en.pdf",
+      "claim_ids": [
+        "tw-sw-cycraft-founded-year-01",
+        "tw-sw-cycraft-public-market-status-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/1/funding_rounds/0",
+      "entity_id": "unresolved:startup:cycraft",
+      "source_url": "https://www.cycraft.com/en/news/cybersecurity20190802",
+      "claim_ids": [
+        "tw-sw-cycraft-funding-round-01",
+        "tw-sw-cycraft-round-participant-01",
+        "tw-sw-cycraft-round-participant-02"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/2/name",
+      "entity_id": "unresolved:startup:kdan",
+      "source_url": "https://www.kdan.com/aboutus",
+      "claim_ids": [
+        "tw-sw-kdan-canonical-name-01",
+        "tw-sw-kdan-website-01",
+        "tw-sw-kdan-description-01",
+        "tw-sw-kdan-sectors-01",
+        "tw-sw-kdan-founded-year-01",
+        "tw-sw-kdan-public-market-status-01",
+        "tw-sw-kdan-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/2/website",
+      "entity_id": "unresolved:startup:kdan",
+      "source_url": "https://www.kdan.com/aboutus",
+      "claim_ids": [
+        "tw-sw-kdan-canonical-name-01",
+        "tw-sw-kdan-website-01",
+        "tw-sw-kdan-description-01",
+        "tw-sw-kdan-sectors-01",
+        "tw-sw-kdan-founded-year-01",
+        "tw-sw-kdan-public-market-status-01",
+        "tw-sw-kdan-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/2/description",
+      "entity_id": "unresolved:startup:kdan",
+      "source_url": "https://www.kdan.com/aboutus",
+      "claim_ids": [
+        "tw-sw-kdan-canonical-name-01",
+        "tw-sw-kdan-website-01",
+        "tw-sw-kdan-description-01",
+        "tw-sw-kdan-sectors-01",
+        "tw-sw-kdan-founded-year-01",
+        "tw-sw-kdan-public-market-status-01",
+        "tw-sw-kdan-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/2/founded_year",
+      "entity_id": "unresolved:startup:kdan",
+      "source_url": "https://www.kdan.com/aboutus",
+      "claim_ids": [
+        "tw-sw-kdan-founded-year-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/2/founders/0",
+      "entity_id": "unresolved:startup:kdan",
+      "source_url": "https://www.kdan.com/aboutus",
+      "claim_ids": [
+        "tw-sw-kdan-canonical-name-01",
+        "tw-sw-kdan-website-01",
+        "tw-sw-kdan-description-01",
+        "tw-sw-kdan-sectors-01",
+        "tw-sw-kdan-founded-year-01",
+        "tw-sw-kdan-public-market-status-01",
+        "tw-sw-kdan-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/2/profile_facts/0",
+      "entity_id": "unresolved:startup:kdan",
+      "source_url": "https://www.kdan.com/blog/kdan-rebranding-2024",
+      "claim_ids": [
+        "tw-sw-kdan-headquarters-01",
+        "tw-sw-kdan-aliases-01",
+        "tw-sw-kdan-alias-01",
+        "tw-sw-kdan-alias-02"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/2/profile_facts/1",
+      "entity_id": "unresolved:startup:kdan",
+      "source_url": "https://www.kdan.com/blog/kdan-rebranding-2024",
+      "claim_ids": [
+        "tw-sw-kdan-headquarters-01",
+        "tw-sw-kdan-aliases-01",
+        "tw-sw-kdan-alias-01",
+        "tw-sw-kdan-alias-02"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/2/profile_facts/2",
+      "entity_id": "unresolved:startup:kdan",
+      "source_url": "https://www.kdan.com/aboutus",
+      "claim_ids": [
+        "tw-sw-kdan-canonical-name-01",
+        "tw-sw-kdan-website-01",
+        "tw-sw-kdan-description-01",
+        "tw-sw-kdan-sectors-01",
+        "tw-sw-kdan-founded-year-01",
+        "tw-sw-kdan-public-market-status-01",
+        "tw-sw-kdan-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/2/profile_facts/3",
+      "entity_id": "unresolved:startup:kdan",
+      "source_url": "https://www.kdan.com/zh-tw/blog/kdan-ipo",
+      "claim_ids": [
+        "tw-integrate-kdan-emerging"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/2/funding_rounds/0",
+      "entity_id": "unresolved:startup:kdan",
+      "source_url": "https://www.kdan.com/blog/kdan-raised-usd-16-million-in-series-b-round",
+      "claim_ids": [
+        "tw-sw-kdan-funding-round-01",
+        "tw-sw-kdan-round-participant-01",
+        "tw-sw-kdan-round-participant-02",
+        "tw-sw-kdan-round-participant-03",
+        "tw-sw-kdan-round-participant-04"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/3/name",
+      "entity_id": "unresolved:startup:teamt5",
+      "source_url": "https://teamt5.org/en/why/about",
+      "claim_ids": [
+        "tw-sw-teamt5-canonical-name-01",
+        "tw-sw-teamt5-website-01",
+        "tw-sw-teamt5-description-01",
+        "tw-sw-teamt5-sectors-01",
+        "tw-sw-teamt5-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/3/website",
+      "entity_id": "unresolved:startup:teamt5",
+      "source_url": "https://teamt5.org/en/why/about",
+      "claim_ids": [
+        "tw-sw-teamt5-canonical-name-01",
+        "tw-sw-teamt5-website-01",
+        "tw-sw-teamt5-description-01",
+        "tw-sw-teamt5-sectors-01",
+        "tw-sw-teamt5-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/3/description",
+      "entity_id": "unresolved:startup:teamt5",
+      "source_url": "https://teamt5.org/en/why/about",
+      "claim_ids": [
+        "tw-sw-teamt5-canonical-name-01",
+        "tw-sw-teamt5-website-01",
+        "tw-sw-teamt5-description-01",
+        "tw-sw-teamt5-sectors-01",
+        "tw-sw-teamt5-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/3/founders/0",
+      "entity_id": "unresolved:startup:teamt5",
+      "source_url": "https://teamt5.org/en/why/about",
+      "claim_ids": [
+        "tw-sw-teamt5-canonical-name-01",
+        "tw-sw-teamt5-website-01",
+        "tw-sw-teamt5-description-01",
+        "tw-sw-teamt5-sectors-01",
+        "tw-sw-teamt5-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/3/profile_facts/0",
+      "entity_id": "unresolved:startup:teamt5",
+      "source_url": "https://teamt5.org/en/news-press/category/press-release",
+      "claim_ids": [
+        "tw-sw-teamt5-founded-year-01",
+        "tw-sw-teamt5-funding-event-year-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/3/profile_facts/1",
+      "entity_id": "unresolved:startup:teamt5",
+      "source_url": "https://www.macnica.co.jp/en/business/security/manufacturers/teamt5/",
+      "claim_ids": [
+        "tw-sw-teamt5-founded-year-02",
+        "tw-sw-teamt5-headquarters-01",
+        "tw-sw-teamt5-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/3/profile_facts/2",
+      "entity_id": "unresolved:startup:teamt5",
+      "source_url": "https://www.macnica.co.jp/en/business/security/manufacturers/teamt5/",
+      "claim_ids": [
+        "tw-sw-teamt5-founded-year-02",
+        "tw-sw-teamt5-headquarters-01",
+        "tw-sw-teamt5-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/3/profile_facts/3",
+      "entity_id": "unresolved:startup:teamt5",
+      "source_url": "https://teamt5.org/en/news-press/category/press-release",
+      "claim_ids": [
+        "tw-sw-teamt5-founded-year-01",
+        "tw-sw-teamt5-funding-event-year-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/3/funding_rounds/0",
+      "entity_id": "unresolved:startup:teamt5",
+      "source_url": "https://teamt5.org/en/news-press/team-t5-expands-its-cyber-threat-intelligence-solutions-securing-series-a-funding",
+      "claim_ids": [
+        "tw-sw-teamt5-funding-round-01",
+        "tw-sw-teamt5-round-participant-01",
+        "tw-sw-teamt5-round-participant-02",
+        "tw-sw-teamt5-round-participant-03"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/4/name",
+      "entity_id": "unresolved:startup:91app",
+      "source_url": "https://91app.com/about-91app/",
+      "claim_ids": [
+        "tw-sw-91app-canonical-name-01",
+        "tw-sw-91app-website-01",
+        "tw-sw-91app-description-01",
+        "tw-sw-91app-sectors-01",
+        "tw-sw-91app-headquarters-01",
+        "tw-sw-91app-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/4/website",
+      "entity_id": "unresolved:startup:91app",
+      "source_url": "https://91app.com/about-91app/",
+      "claim_ids": [
+        "tw-sw-91app-canonical-name-01",
+        "tw-sw-91app-website-01",
+        "tw-sw-91app-description-01",
+        "tw-sw-91app-sectors-01",
+        "tw-sw-91app-headquarters-01",
+        "tw-sw-91app-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/4/description",
+      "entity_id": "unresolved:startup:91app",
+      "source_url": "https://91app.com/about-91app/",
+      "claim_ids": [
+        "tw-sw-91app-canonical-name-01",
+        "tw-sw-91app-website-01",
+        "tw-sw-91app-description-01",
+        "tw-sw-91app-sectors-01",
+        "tw-sw-91app-headquarters-01",
+        "tw-sw-91app-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/4/founders/0",
+      "entity_id": "unresolved:startup:91app",
+      "source_url": "https://91app.com/about-91app/",
+      "claim_ids": [
+        "tw-sw-91app-canonical-name-01",
+        "tw-sw-91app-website-01",
+        "tw-sw-91app-description-01",
+        "tw-sw-91app-sectors-01",
+        "tw-sw-91app-headquarters-01",
+        "tw-sw-91app-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/4/profile_facts/0",
+      "entity_id": "unresolved:startup:91app",
+      "source_url": "https://ir.91app.com/en/faqs.php",
+      "claim_ids": [
+        "tw-sw-91app-founding-date-01",
+        "tw-sw-91app-public-market-status-01",
+        "tw-sw-91app-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/4/profile_facts/1",
+      "entity_id": "unresolved:startup:91app",
+      "source_url": "https://91app.com/about-91app/",
+      "claim_ids": [
+        "tw-sw-91app-canonical-name-01",
+        "tw-sw-91app-website-01",
+        "tw-sw-91app-description-01",
+        "tw-sw-91app-sectors-01",
+        "tw-sw-91app-headquarters-01",
+        "tw-sw-91app-founder-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/4/profile_facts/2",
+      "entity_id": "unresolved:startup:91app",
+      "source_url": "https://www.irpro.co/6741/esg/5/CH/20250829162658.pdf",
+      "claim_ids": [
+        "tw-sw-91app-incorporation-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/4/profile_facts/3",
+      "entity_id": "unresolved:startup:91app",
+      "source_url": "https://ir.91app.com/en/faqs.php",
+      "claim_ids": [
+        "tw-sw-91app-founding-date-01",
+        "tw-sw-91app-public-market-status-01",
+        "tw-sw-91app-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/5/name",
+      "entity_id": "unresolved:startup:gogolook",
+      "source_url": "https://www.gogolook.com/about",
+      "claim_ids": [
+        "tw-sw-gogolook-canonical-name-01",
+        "tw-sw-gogolook-website-01",
+        "tw-sw-gogolook-description-01",
+        "tw-sw-gogolook-sectors-01",
+        "tw-sw-gogolook-founded-year-01",
+        "tw-sw-gogolook-public-market-status-01",
+        "tw-sw-gogolook-founders-unresolved-names-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/5/website",
+      "entity_id": "unresolved:startup:gogolook",
+      "source_url": "https://www.gogolook.com/about",
+      "claim_ids": [
+        "tw-sw-gogolook-canonical-name-01",
+        "tw-sw-gogolook-website-01",
+        "tw-sw-gogolook-description-01",
+        "tw-sw-gogolook-sectors-01",
+        "tw-sw-gogolook-founded-year-01",
+        "tw-sw-gogolook-public-market-status-01",
+        "tw-sw-gogolook-founders-unresolved-names-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/5/description",
+      "entity_id": "unresolved:startup:gogolook",
+      "source_url": "https://www.gogolook.com/about",
+      "claim_ids": [
+        "tw-sw-gogolook-canonical-name-01",
+        "tw-sw-gogolook-website-01",
+        "tw-sw-gogolook-description-01",
+        "tw-sw-gogolook-sectors-01",
+        "tw-sw-gogolook-founded-year-01",
+        "tw-sw-gogolook-public-market-status-01",
+        "tw-sw-gogolook-founders-unresolved-names-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/5/founded_year",
+      "entity_id": "unresolved:startup:gogolook",
+      "source_url": "https://www.gogolook.com/about",
+      "claim_ids": [
+        "tw-sw-gogolook-founded-year-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/5/profile_facts/0",
+      "entity_id": "unresolved:startup:gogolook",
+      "source_url": "https://www.gogolook.com/about",
+      "claim_ids": [
+        "tw-sw-gogolook-canonical-name-01",
+        "tw-sw-gogolook-website-01",
+        "tw-sw-gogolook-description-01",
+        "tw-sw-gogolook-sectors-01",
+        "tw-sw-gogolook-founded-year-01",
+        "tw-sw-gogolook-public-market-status-01",
+        "tw-sw-gogolook-founders-unresolved-names-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/5/profile_facts/1",
+      "entity_id": "unresolved:startup:gogolook",
+      "source_url": "https://www.gogolook.com/about",
+      "claim_ids": [
+        "tw-sw-gogolook-canonical-name-01",
+        "tw-sw-gogolook-website-01",
+        "tw-sw-gogolook-description-01",
+        "tw-sw-gogolook-sectors-01",
+        "tw-sw-gogolook-founded-year-01",
+        "tw-sw-gogolook-public-market-status-01",
+        "tw-sw-gogolook-founders-unresolved-names-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/5/profile_facts/2",
+      "entity_id": "unresolved:startup:gogolook",
+      "source_url": "https://www.gogolook.com/about",
+      "claim_ids": [
+        "tw-sw-gogolook-canonical-name-01",
+        "tw-sw-gogolook-website-01",
+        "tw-sw-gogolook-description-01",
+        "tw-sw-gogolook-sectors-01",
+        "tw-sw-gogolook-founded-year-01",
+        "tw-sw-gogolook-public-market-status-01",
+        "tw-sw-gogolook-founders-unresolved-names-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/6/name",
+      "entity_id": "unresolved:startup:xrex",
+      "source_url": "https://xrex.io/tw/en/blog/announcements/tether-invests-18-75m-in-xrex-group-to-drive-financial-inclusion-in-emerging-markets-en/",
+      "claim_ids": [
+        "tw-sw-xrex-canonical-name-01",
+        "tw-sw-xrex-website-01",
+        "tw-sw-xrex-description-01",
+        "tw-sw-xrex-sectors-01",
+        "tw-sw-xrex-funding-round-02",
+        "tw-sw-xrex-round-participant-12",
+        "tw-sw-xrex-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/6/website",
+      "entity_id": "unresolved:startup:xrex",
+      "source_url": "https://xrex.io/tw/en/blog/announcements/tether-invests-18-75m-in-xrex-group-to-drive-financial-inclusion-in-emerging-markets-en/",
+      "claim_ids": [
+        "tw-sw-xrex-canonical-name-01",
+        "tw-sw-xrex-website-01",
+        "tw-sw-xrex-description-01",
+        "tw-sw-xrex-sectors-01",
+        "tw-sw-xrex-funding-round-02",
+        "tw-sw-xrex-round-participant-12",
+        "tw-sw-xrex-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/6/description",
+      "entity_id": "unresolved:startup:xrex",
+      "source_url": "https://xrex.io/tw/en/blog/announcements/tether-invests-18-75m-in-xrex-group-to-drive-financial-inclusion-in-emerging-markets-en/",
+      "claim_ids": [
+        "tw-sw-xrex-canonical-name-01",
+        "tw-sw-xrex-website-01",
+        "tw-sw-xrex-description-01",
+        "tw-sw-xrex-sectors-01",
+        "tw-sw-xrex-funding-round-02",
+        "tw-sw-xrex-round-participant-12",
+        "tw-sw-xrex-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/6/founders/0",
+      "entity_id": "unresolved:startup:xrex",
+      "source_url": "https://xrex.io/tw/en/blog/announcements/xrex-raises-17m-to-expand-fiat-currency-portfolio-and-partnerships/",
+      "claim_ids": [
+        "tw-sw-xrex-founding-date-01",
+        "tw-sw-xrex-founder-01",
+        "tw-sw-xrex-founder-02",
+        "tw-sw-xrex-funding-round-01",
+        "tw-sw-xrex-round-participant-01",
+        "tw-sw-xrex-round-participant-02",
+        "tw-sw-xrex-round-participant-03",
+        "tw-sw-xrex-round-participant-04",
+        "tw-sw-xrex-round-participant-05",
+        "tw-sw-xrex-round-participant-06",
+        "tw-sw-xrex-round-participant-07",
+        "tw-sw-xrex-round-participant-08",
+        "tw-sw-xrex-round-participant-09",
+        "tw-sw-xrex-round-participant-10",
+        "tw-sw-xrex-round-participant-11",
+        "tw-sw-xrex-alias-02"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/6/founders/1",
+      "entity_id": "unresolved:startup:xrex",
+      "source_url": "https://xrex.io/tw/en/blog/announcements/xrex-raises-17m-to-expand-fiat-currency-portfolio-and-partnerships/",
+      "claim_ids": [
+        "tw-sw-xrex-founding-date-01",
+        "tw-sw-xrex-founder-01",
+        "tw-sw-xrex-founder-02",
+        "tw-sw-xrex-funding-round-01",
+        "tw-sw-xrex-round-participant-01",
+        "tw-sw-xrex-round-participant-02",
+        "tw-sw-xrex-round-participant-03",
+        "tw-sw-xrex-round-participant-04",
+        "tw-sw-xrex-round-participant-05",
+        "tw-sw-xrex-round-participant-06",
+        "tw-sw-xrex-round-participant-07",
+        "tw-sw-xrex-round-participant-08",
+        "tw-sw-xrex-round-participant-09",
+        "tw-sw-xrex-round-participant-10",
+        "tw-sw-xrex-round-participant-11",
+        "tw-sw-xrex-alias-02"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/6/profile_facts/0",
+      "entity_id": "unresolved:startup:xrex",
+      "source_url": "https://xrex.io/tw/en/blog/announcements/xrex-raises-17m-to-expand-fiat-currency-portfolio-and-partnerships/",
+      "claim_ids": [
+        "tw-sw-xrex-founding-date-01",
+        "tw-sw-xrex-founder-01",
+        "tw-sw-xrex-founder-02",
+        "tw-sw-xrex-funding-round-01",
+        "tw-sw-xrex-round-participant-01",
+        "tw-sw-xrex-round-participant-02",
+        "tw-sw-xrex-round-participant-03",
+        "tw-sw-xrex-round-participant-04",
+        "tw-sw-xrex-round-participant-05",
+        "tw-sw-xrex-round-participant-06",
+        "tw-sw-xrex-round-participant-07",
+        "tw-sw-xrex-round-participant-08",
+        "tw-sw-xrex-round-participant-09",
+        "tw-sw-xrex-round-participant-10",
+        "tw-sw-xrex-round-participant-11",
+        "tw-sw-xrex-alias-02"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/6/profile_facts/1",
+      "entity_id": "unresolved:startup:xrex",
+      "source_url": "https://support.xrex.io/en/articles/5459528-where-is-xrex-located",
+      "claim_ids": [
+        "tw-sw-xrex-headquarters-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/6/profile_facts/2",
+      "entity_id": "unresolved:startup:xrex",
+      "source_url": "https://xrex.io/tw/en/blog/announcements/tether-invests-18-75m-in-xrex-group-to-drive-financial-inclusion-in-emerging-markets-en/",
+      "claim_ids": [
+        "tw-sw-xrex-canonical-name-01",
+        "tw-sw-xrex-website-01",
+        "tw-sw-xrex-description-01",
+        "tw-sw-xrex-sectors-01",
+        "tw-sw-xrex-funding-round-02",
+        "tw-sw-xrex-round-participant-12",
+        "tw-sw-xrex-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/6/funding_rounds/0",
+      "entity_id": "unresolved:startup:xrex",
+      "source_url": "https://xrex.io/tw/en/blog/announcements/xrex-raises-17m-to-expand-fiat-currency-portfolio-and-partnerships/",
+      "claim_ids": [
+        "tw-sw-xrex-founding-date-01",
+        "tw-sw-xrex-founder-01",
+        "tw-sw-xrex-founder-02",
+        "tw-sw-xrex-funding-round-01",
+        "tw-sw-xrex-round-participant-01",
+        "tw-sw-xrex-round-participant-02",
+        "tw-sw-xrex-round-participant-03",
+        "tw-sw-xrex-round-participant-04",
+        "tw-sw-xrex-round-participant-05",
+        "tw-sw-xrex-round-participant-06",
+        "tw-sw-xrex-round-participant-07",
+        "tw-sw-xrex-round-participant-08",
+        "tw-sw-xrex-round-participant-09",
+        "tw-sw-xrex-round-participant-10",
+        "tw-sw-xrex-round-participant-11",
+        "tw-sw-xrex-alias-02"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/6/funding_rounds/1",
+      "entity_id": "unresolved:startup:xrex",
+      "source_url": "https://xrex.io/tw/en/blog/announcements/tether-invests-18-75m-in-xrex-group-to-drive-financial-inclusion-in-emerging-markets-en/",
+      "claim_ids": [
+        "tw-sw-xrex-canonical-name-01",
+        "tw-sw-xrex-website-01",
+        "tw-sw-xrex-description-01",
+        "tw-sw-xrex-sectors-01",
+        "tw-sw-xrex-funding-round-02",
+        "tw-sw-xrex-round-participant-12",
+        "tw-sw-xrex-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/7/name",
+      "entity_id": "unresolved:startup:numbers-protocol",
+      "source_url": "https://docs.numbersprotocol.io/introduction/",
+      "claim_ids": [
+        "tw-sw-numbers-protocol-canonical-name-01",
+        "tw-sw-numbers-protocol-website-01",
+        "tw-sw-numbers-protocol-description-01",
+        "tw-sw-numbers-protocol-sectors-01",
+        "tw-sw-numbers-protocol-founded-year-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/7/website",
+      "entity_id": "unresolved:startup:numbers-protocol",
+      "source_url": "https://docs.numbersprotocol.io/introduction/",
+      "claim_ids": [
+        "tw-sw-numbers-protocol-canonical-name-01",
+        "tw-sw-numbers-protocol-website-01",
+        "tw-sw-numbers-protocol-description-01",
+        "tw-sw-numbers-protocol-sectors-01",
+        "tw-sw-numbers-protocol-founded-year-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/7/description",
+      "entity_id": "unresolved:startup:numbers-protocol",
+      "source_url": "https://docs.numbersprotocol.io/introduction/",
+      "claim_ids": [
+        "tw-sw-numbers-protocol-canonical-name-01",
+        "tw-sw-numbers-protocol-website-01",
+        "tw-sw-numbers-protocol-description-01",
+        "tw-sw-numbers-protocol-sectors-01",
+        "tw-sw-numbers-protocol-founded-year-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/7/founders/0",
+      "entity_id": "unresolved:startup:numbers-protocol",
+      "source_url": "https://outlierventures.io/portfolio/numbers/",
+      "claim_ids": [
+        "tw-sw-numbers-protocol-country-nexus-01",
+        "tw-sw-numbers-protocol-founder-01",
+        "tw-sw-numbers-protocol-founder-02",
+        "tw-sw-numbers-protocol-founder-03",
+        "tw-sw-numbers-protocol-programme-membership-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/7/founders/1",
+      "entity_id": "unresolved:startup:numbers-protocol",
+      "source_url": "https://outlierventures.io/portfolio/numbers/",
+      "claim_ids": [
+        "tw-sw-numbers-protocol-country-nexus-01",
+        "tw-sw-numbers-protocol-founder-01",
+        "tw-sw-numbers-protocol-founder-02",
+        "tw-sw-numbers-protocol-founder-03",
+        "tw-sw-numbers-protocol-programme-membership-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/7/founders/2",
+      "entity_id": "unresolved:startup:numbers-protocol",
+      "source_url": "https://outlierventures.io/portfolio/numbers/",
+      "claim_ids": [
+        "tw-sw-numbers-protocol-country-nexus-01",
+        "tw-sw-numbers-protocol-founder-01",
+        "tw-sw-numbers-protocol-founder-02",
+        "tw-sw-numbers-protocol-founder-03",
+        "tw-sw-numbers-protocol-programme-membership-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/7/profile_facts/0",
+      "entity_id": "unresolved:startup:numbers-protocol",
+      "source_url": "https://outlierventures.io/portfolio/numbers/",
+      "claim_ids": [
+        "tw-sw-numbers-protocol-country-nexus-01",
+        "tw-sw-numbers-protocol-founder-01",
+        "tw-sw-numbers-protocol-founder-02",
+        "tw-sw-numbers-protocol-founder-03",
+        "tw-sw-numbers-protocol-programme-membership-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/7/profile_facts/1",
+      "entity_id": "unresolved:startup:numbers-protocol",
+      "source_url": "https://docs.numbersprotocol.io/introduction/",
+      "claim_ids": [
+        "tw-sw-numbers-protocol-canonical-name-01",
+        "tw-sw-numbers-protocol-website-01",
+        "tw-sw-numbers-protocol-description-01",
+        "tw-sw-numbers-protocol-sectors-01",
+        "tw-sw-numbers-protocol-founded-year-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/8/name",
+      "entity_id": "unresolved:startup:dcard",
+      "source_url": "https://about.dcard.tw/about",
+      "claim_ids": [
+        "tw-sw-dcard-canonical-name-01",
+        "tw-sw-dcard-website-01",
+        "tw-sw-dcard-description-01",
+        "tw-sw-dcard-sectors-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/8/website",
+      "entity_id": "unresolved:startup:dcard",
+      "source_url": "https://about.dcard.tw/about",
+      "claim_ids": [
+        "tw-sw-dcard-canonical-name-01",
+        "tw-sw-dcard-website-01",
+        "tw-sw-dcard-description-01",
+        "tw-sw-dcard-sectors-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/8/description",
+      "entity_id": "unresolved:startup:dcard",
+      "source_url": "https://about.dcard.tw/about",
+      "claim_ids": [
+        "tw-sw-dcard-canonical-name-01",
+        "tw-sw-dcard-website-01",
+        "tw-sw-dcard-description-01",
+        "tw-sw-dcard-sectors-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/8/profile_facts/0",
+      "entity_id": "unresolved:startup:dcard",
+      "source_url": "https://about.dcard.tw/news/6",
+      "claim_ids": [
+        "tw-sw-dcard-company-formation-01",
+        "tw-sw-dcard-product-origin-01",
+        "tw-sw-dcard-founder-01",
+        "tw-sw-dcard-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/8/profile_facts/1",
+      "entity_id": "unresolved:startup:dcard",
+      "source_url": "https://about.dcard.tw/news/6",
+      "claim_ids": [
+        "tw-sw-dcard-company-formation-01",
+        "tw-sw-dcard-product-origin-01",
+        "tw-sw-dcard-founder-01",
+        "tw-sw-dcard-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/8/profile_facts/2",
+      "entity_id": "unresolved:startup:dcard",
+      "source_url": "https://about.dcard.tw/news/6",
+      "claim_ids": [
+        "tw-sw-dcard-company-formation-01",
+        "tw-sw-dcard-product-origin-01",
+        "tw-sw-dcard-founder-01",
+        "tw-sw-dcard-alias-01"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/9/name",
+      "entity_id": "unresolved:startup:jmem-tek",
+      "source_url": "https://www.jmemtek.com/aboutus/",
+      "claim_ids": [
+        "tw-dt-jmem-tek-identity-001",
+        "tw-dt-jmem-tek-description-002",
+        "tw-dt-jmem-tek-founder-006",
+        "tw-dt-jmem-tek-founder-007"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/9/website",
+      "entity_id": "unresolved:startup:jmem-tek",
+      "source_url": "https://www.jmemtek.com/aboutus/",
+      "claim_ids": [
+        "tw-dt-jmem-tek-identity-001",
+        "tw-dt-jmem-tek-description-002",
+        "tw-dt-jmem-tek-founder-006",
+        "tw-dt-jmem-tek-founder-007"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/9/description",
+      "entity_id": "unresolved:startup:jmem-tek",
+      "source_url": "https://www.jmemtek.com/aboutus/",
+      "claim_ids": [
+        "tw-dt-jmem-tek-identity-001",
+        "tw-dt-jmem-tek-description-002",
+        "tw-dt-jmem-tek-founder-006",
+        "tw-dt-jmem-tek-founder-007"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/9/founders/0",
+      "entity_id": "unresolved:startup:jmem-tek",
+      "source_url": "https://www.jmemtek.com/aboutus/",
+      "claim_ids": [
+        "tw-dt-jmem-tek-identity-001",
+        "tw-dt-jmem-tek-description-002",
+        "tw-dt-jmem-tek-founder-006",
+        "tw-dt-jmem-tek-founder-007"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/9/founders/1",
+      "entity_id": "unresolved:startup:jmem-tek",
+      "source_url": "https://www.jmemtek.com/aboutus/",
+      "claim_ids": [
+        "tw-dt-jmem-tek-identity-001",
+        "tw-dt-jmem-tek-description-002",
+        "tw-dt-jmem-tek-founder-006",
+        "tw-dt-jmem-tek-founder-007"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/9/profile_facts/0",
+      "entity_id": "unresolved:startup:jmem-tek",
+      "source_url": "https://www.jmemtek.com/milestone/",
+      "claim_ids": [
+        "tw-dt-jmem-tek-alias-003",
+        "tw-dt-jmem-tek-founding-004",
+        "tw-dt-jmem-tek-funding-round-008",
+        "tw-dt-jmem-tek-funding-round-009",
+        "tw-dt-jmem-tek-funding-round-010"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/9/profile_facts/1",
+      "entity_id": "unresolved:startup:jmem-tek",
+      "source_url": "https://www.jmemtek.com/jmem-tek-joins-the-intel-foundry-accelerator-ecosystem-alliance-program-enabling-jpuf-and-post-quantum-security-designs/",
+      "claim_ids": [
+        "tw-dt-jmem-tek-headquarters-005"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/9/funding_rounds/0",
+      "entity_id": "unresolved:startup:jmem-tek",
+      "source_url": "https://www.jmemtek.com/milestone/",
+      "claim_ids": [
+        "tw-dt-jmem-tek-alias-003",
+        "tw-dt-jmem-tek-founding-004",
+        "tw-dt-jmem-tek-funding-round-008",
+        "tw-dt-jmem-tek-funding-round-009",
+        "tw-dt-jmem-tek-funding-round-010"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/9/funding_rounds/1",
+      "entity_id": "unresolved:startup:jmem-tek",
+      "source_url": "https://www.jmemtek.com/milestone/",
+      "claim_ids": [
+        "tw-dt-jmem-tek-alias-003",
+        "tw-dt-jmem-tek-founding-004",
+        "tw-dt-jmem-tek-funding-round-008",
+        "tw-dt-jmem-tek-funding-round-009",
+        "tw-dt-jmem-tek-funding-round-010"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/9/funding_rounds/2",
+      "entity_id": "unresolved:startup:jmem-tek",
+      "source_url": "https://www.jmemtek.com/milestone/",
+      "claim_ids": [
+        "tw-dt-jmem-tek-alias-003",
+        "tw-dt-jmem-tek-founding-004",
+        "tw-dt-jmem-tek-funding-round-008",
+        "tw-dt-jmem-tek-funding-round-009",
+        "tw-dt-jmem-tek-funding-round-010"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/10/name",
+      "entity_id": "unresolved:startup:profet-ai",
+      "source_url": "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+      "claim_ids": [
+        "tw-dt-profet-ai-identity-011",
+        "tw-dt-profet-ai-description-012",
+        "tw-dt-profet-ai-founding-013",
+        "tw-dt-profet-ai-operating-location-014",
+        "tw-dt-profet-ai-founder-015",
+        "tw-dt-profet-ai-founder-016",
+        "tw-dt-profet-ai-founder-017",
+        "tw-dt-profet-ai-funding-round-018",
+        "tw-dt-profet-ai-round-participant-019",
+        "tw-dt-profet-ai-round-participant-020",
+        "tw-dt-profet-ai-round-participant-021",
+        "tw-dt-profet-ai-round-participant-022",
+        "tw-dt-profet-ai-round-participant-023",
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/10/website",
+      "entity_id": "unresolved:startup:profet-ai",
+      "source_url": "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+      "claim_ids": [
+        "tw-dt-profet-ai-identity-011",
+        "tw-dt-profet-ai-description-012",
+        "tw-dt-profet-ai-founding-013",
+        "tw-dt-profet-ai-operating-location-014",
+        "tw-dt-profet-ai-founder-015",
+        "tw-dt-profet-ai-founder-016",
+        "tw-dt-profet-ai-founder-017",
+        "tw-dt-profet-ai-funding-round-018",
+        "tw-dt-profet-ai-round-participant-019",
+        "tw-dt-profet-ai-round-participant-020",
+        "tw-dt-profet-ai-round-participant-021",
+        "tw-dt-profet-ai-round-participant-022",
+        "tw-dt-profet-ai-round-participant-023",
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/10/description",
+      "entity_id": "unresolved:startup:profet-ai",
+      "source_url": "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+      "claim_ids": [
+        "tw-dt-profet-ai-identity-011",
+        "tw-dt-profet-ai-description-012",
+        "tw-dt-profet-ai-founding-013",
+        "tw-dt-profet-ai-operating-location-014",
+        "tw-dt-profet-ai-founder-015",
+        "tw-dt-profet-ai-founder-016",
+        "tw-dt-profet-ai-founder-017",
+        "tw-dt-profet-ai-funding-round-018",
+        "tw-dt-profet-ai-round-participant-019",
+        "tw-dt-profet-ai-round-participant-020",
+        "tw-dt-profet-ai-round-participant-021",
+        "tw-dt-profet-ai-round-participant-022",
+        "tw-dt-profet-ai-round-participant-023",
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/10/founded_year",
+      "entity_id": "unresolved:startup:profet-ai",
+      "source_url": "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+      "claim_ids": [
+        "tw-dt-profet-ai-founding-013"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/10/founders/0",
+      "entity_id": "unresolved:startup:profet-ai",
+      "source_url": "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+      "claim_ids": [
+        "tw-dt-profet-ai-identity-011",
+        "tw-dt-profet-ai-description-012",
+        "tw-dt-profet-ai-founding-013",
+        "tw-dt-profet-ai-operating-location-014",
+        "tw-dt-profet-ai-founder-015",
+        "tw-dt-profet-ai-founder-016",
+        "tw-dt-profet-ai-founder-017",
+        "tw-dt-profet-ai-funding-round-018",
+        "tw-dt-profet-ai-round-participant-019",
+        "tw-dt-profet-ai-round-participant-020",
+        "tw-dt-profet-ai-round-participant-021",
+        "tw-dt-profet-ai-round-participant-022",
+        "tw-dt-profet-ai-round-participant-023",
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/10/founders/1",
+      "entity_id": "unresolved:startup:profet-ai",
+      "source_url": "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+      "claim_ids": [
+        "tw-dt-profet-ai-identity-011",
+        "tw-dt-profet-ai-description-012",
+        "tw-dt-profet-ai-founding-013",
+        "tw-dt-profet-ai-operating-location-014",
+        "tw-dt-profet-ai-founder-015",
+        "tw-dt-profet-ai-founder-016",
+        "tw-dt-profet-ai-founder-017",
+        "tw-dt-profet-ai-funding-round-018",
+        "tw-dt-profet-ai-round-participant-019",
+        "tw-dt-profet-ai-round-participant-020",
+        "tw-dt-profet-ai-round-participant-021",
+        "tw-dt-profet-ai-round-participant-022",
+        "tw-dt-profet-ai-round-participant-023",
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/10/founders/2",
+      "entity_id": "unresolved:startup:profet-ai",
+      "source_url": "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+      "claim_ids": [
+        "tw-dt-profet-ai-identity-011",
+        "tw-dt-profet-ai-description-012",
+        "tw-dt-profet-ai-founding-013",
+        "tw-dt-profet-ai-operating-location-014",
+        "tw-dt-profet-ai-founder-015",
+        "tw-dt-profet-ai-founder-016",
+        "tw-dt-profet-ai-founder-017",
+        "tw-dt-profet-ai-funding-round-018",
+        "tw-dt-profet-ai-round-participant-019",
+        "tw-dt-profet-ai-round-participant-020",
+        "tw-dt-profet-ai-round-participant-021",
+        "tw-dt-profet-ai-round-participant-022",
+        "tw-dt-profet-ai-round-participant-023",
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/10/profile_facts/0",
+      "entity_id": "unresolved:startup:profet-ai",
+      "source_url": "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+      "claim_ids": [
+        "tw-dt-profet-ai-identity-011",
+        "tw-dt-profet-ai-description-012",
+        "tw-dt-profet-ai-founding-013",
+        "tw-dt-profet-ai-operating-location-014",
+        "tw-dt-profet-ai-founder-015",
+        "tw-dt-profet-ai-founder-016",
+        "tw-dt-profet-ai-founder-017",
+        "tw-dt-profet-ai-funding-round-018",
+        "tw-dt-profet-ai-round-participant-019",
+        "tw-dt-profet-ai-round-participant-020",
+        "tw-dt-profet-ai-round-participant-021",
+        "tw-dt-profet-ai-round-participant-022",
+        "tw-dt-profet-ai-round-participant-023",
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/10/funding_rounds/0",
+      "entity_id": "unresolved:startup:profet-ai",
+      "source_url": "https://en.prnasia.com/releases/global/profet-ai-closes-us-5-6m-series-a-round-to-fuel-regional-expansion-and-product-development-389462.shtml",
+      "claim_ids": [
+        "tw-dt-profet-ai-identity-011",
+        "tw-dt-profet-ai-description-012",
+        "tw-dt-profet-ai-founding-013",
+        "tw-dt-profet-ai-operating-location-014",
+        "tw-dt-profet-ai-founder-015",
+        "tw-dt-profet-ai-founder-016",
+        "tw-dt-profet-ai-founder-017",
+        "tw-dt-profet-ai-funding-round-018",
+        "tw-dt-profet-ai-round-participant-019",
+        "tw-dt-profet-ai-round-participant-020",
+        "tw-dt-profet-ai-round-participant-021",
+        "tw-dt-profet-ai-round-participant-022",
+        "tw-dt-profet-ai-round-participant-023",
+        "tw-dt-profet-ai-round-participant-024"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/11/name",
+      "entity_id": "unresolved:startup:tensor-tech",
+      "source_url": "https://tensortech.co/about",
+      "claim_ids": [
+        "tw-dt-tensor-tech-identity-025",
+        "tw-dt-tensor-tech-description-026"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/11/website",
+      "entity_id": "unresolved:startup:tensor-tech",
+      "source_url": "https://tensortech.co/about",
+      "claim_ids": [
+        "tw-dt-tensor-tech-identity-025",
+        "tw-dt-tensor-tech-description-026"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/11/description",
+      "entity_id": "unresolved:startup:tensor-tech",
+      "source_url": "https://tensortech.co/about",
+      "claim_ids": [
+        "tw-dt-tensor-tech-identity-025",
+        "tw-dt-tensor-tech-description-026"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/11/founders/0",
+      "entity_id": "unresolved:startup:tensor-tech",
+      "source_url": "https://tensortech.co/careers/",
+      "claim_ids": [
+        "tw-dt-tensor-tech-founder-032",
+        "tw-dt-tensor-tech-founder-033"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/11/founders/1",
+      "entity_id": "unresolved:startup:tensor-tech",
+      "source_url": "https://tensortech.co/careers/",
+      "claim_ids": [
+        "tw-dt-tensor-tech-founder-032",
+        "tw-dt-tensor-tech-founder-033"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/11/profile_facts/0",
+      "entity_id": "unresolved:startup:tensor-tech",
+      "source_url": "https://findit.sme.gov.tw/en/Startup/VEhhM0dhKzhPV3pNV1NRN0hEeHRRdz09/Basic",
+      "claim_ids": [
+        "tw-dt-tensor-tech-alias-027",
+        "tw-dt-tensor-tech-founding-028",
+        "tw-dt-tensor-tech-incorporation-029"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/11/profile_facts/1",
+      "entity_id": "unresolved:startup:tensor-tech",
+      "source_url": "https://tensortech.co/teams",
+      "claim_ids": [
+        "tw-dt-tensor-tech-operating-location-030",
+        "tw-dt-tensor-tech-operating-location-031"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/11/profile_facts/2",
+      "entity_id": "unresolved:startup:tensor-tech",
+      "source_url": "https://tensortech.co/teams",
+      "claim_ids": [
+        "tw-dt-tensor-tech-operating-location-030",
+        "tw-dt-tensor-tech-operating-location-031"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/11/profile_facts/3",
+      "entity_id": "unresolved:startup:tensor-tech",
+      "source_url": "https://findit.sme.gov.tw/en/Startup/VEhhM0dhKzhPV3pNV1NRN0hEeHRRdz09/Basic",
+      "claim_ids": [
+        "tw-dt-tensor-tech-alias-027",
+        "tw-dt-tensor-tech-founding-028",
+        "tw-dt-tensor-tech-incorporation-029"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/12/name",
+      "entity_id": "unresolved:startup:jellox-biotech",
+      "source_url": "https://jellox.com/en/organization/",
+      "claim_ids": [
+        "tw-dt-jellox-biotech-identity-034",
+        "tw-dt-jellox-biotech-description-035",
+        "tw-dt-jellox-biotech-alias-036",
+        "tw-dt-jellox-biotech-alias-037",
+        "tw-dt-jellox-biotech-operating-location-039"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/12/website",
+      "entity_id": "unresolved:startup:jellox-biotech",
+      "source_url": "https://jellox.com/en/organization/",
+      "claim_ids": [
+        "tw-dt-jellox-biotech-identity-034",
+        "tw-dt-jellox-biotech-description-035",
+        "tw-dt-jellox-biotech-alias-036",
+        "tw-dt-jellox-biotech-alias-037",
+        "tw-dt-jellox-biotech-operating-location-039"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/12/description",
+      "entity_id": "unresolved:startup:jellox-biotech",
+      "source_url": "https://jellox.com/en/organization/",
+      "claim_ids": [
+        "tw-dt-jellox-biotech-identity-034",
+        "tw-dt-jellox-biotech-description-035",
+        "tw-dt-jellox-biotech-alias-036",
+        "tw-dt-jellox-biotech-alias-037",
+        "tw-dt-jellox-biotech-operating-location-039"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/12/founders/0",
+      "entity_id": "unresolved:startup:jellox-biotech",
+      "source_url": "https://jellox.com/en/dah-tsyr-chang/",
+      "claim_ids": [
+        "tw-dt-jellox-biotech-founder-040"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/12/profile_facts/0",
+      "entity_id": "unresolved:startup:jellox-biotech",
+      "source_url": "https://jellox.com/en/history-2/",
+      "claim_ids": [
+        "tw-dt-jellox-biotech-founding-038",
+        "tw-dt-jellox-biotech-funding-round-041",
+        "tw-dt-jellox-biotech-funding-round-042"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/12/profile_facts/1",
+      "entity_id": "unresolved:startup:jellox-biotech",
+      "source_url": "https://jellox.com/en/organization/",
+      "claim_ids": [
+        "tw-dt-jellox-biotech-identity-034",
+        "tw-dt-jellox-biotech-description-035",
+        "tw-dt-jellox-biotech-alias-036",
+        "tw-dt-jellox-biotech-alias-037",
+        "tw-dt-jellox-biotech-operating-location-039"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/12/funding_rounds/0",
+      "entity_id": "unresolved:startup:jellox-biotech",
+      "source_url": "https://jellox.com/en/history-2/",
+      "claim_ids": [
+        "tw-dt-jellox-biotech-founding-038",
+        "tw-dt-jellox-biotech-funding-round-041",
+        "tw-dt-jellox-biotech-funding-round-042"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/12/funding_rounds/1",
+      "entity_id": "unresolved:startup:jellox-biotech",
+      "source_url": "https://jellox.com/en/history-2/",
+      "claim_ids": [
+        "tw-dt-jellox-biotech-founding-038",
+        "tw-dt-jellox-biotech-funding-round-041",
+        "tw-dt-jellox-biotech-funding-round-042"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/13/name",
+      "entity_id": "unresolved:startup:cancerfree-biotech",
+      "source_url": "https://cancerfree.io/en/pages/%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91",
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-identity-043",
+        "tw-dt-cancerfree-biotech-description-044",
+        "tw-dt-cancerfree-biotech-founding-045",
+        "tw-dt-cancerfree-biotech-founder-047",
+        "tw-dt-cancerfree-biotech-funding-round-048",
+        "tw-dt-cancerfree-biotech-round-participant-049",
+        "tw-dt-cancerfree-biotech-funding-round-050",
+        "tw-dt-cancerfree-biotech-round-participant-051"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/13/website",
+      "entity_id": "unresolved:startup:cancerfree-biotech",
+      "source_url": "https://cancerfree.io/en/pages/%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91",
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-identity-043",
+        "tw-dt-cancerfree-biotech-description-044",
+        "tw-dt-cancerfree-biotech-founding-045",
+        "tw-dt-cancerfree-biotech-founder-047",
+        "tw-dt-cancerfree-biotech-funding-round-048",
+        "tw-dt-cancerfree-biotech-round-participant-049",
+        "tw-dt-cancerfree-biotech-funding-round-050",
+        "tw-dt-cancerfree-biotech-round-participant-051"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/13/description",
+      "entity_id": "unresolved:startup:cancerfree-biotech",
+      "source_url": "https://cancerfree.io/en/pages/%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91",
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-identity-043",
+        "tw-dt-cancerfree-biotech-description-044",
+        "tw-dt-cancerfree-biotech-founding-045",
+        "tw-dt-cancerfree-biotech-founder-047",
+        "tw-dt-cancerfree-biotech-funding-round-048",
+        "tw-dt-cancerfree-biotech-round-participant-049",
+        "tw-dt-cancerfree-biotech-funding-round-050",
+        "tw-dt-cancerfree-biotech-round-participant-051"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/13/founders/0",
+      "entity_id": "unresolved:startup:cancerfree-biotech",
+      "source_url": "https://cancerfree.io/en/pages/%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91",
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-identity-043",
+        "tw-dt-cancerfree-biotech-description-044",
+        "tw-dt-cancerfree-biotech-founding-045",
+        "tw-dt-cancerfree-biotech-founder-047",
+        "tw-dt-cancerfree-biotech-funding-round-048",
+        "tw-dt-cancerfree-biotech-round-participant-049",
+        "tw-dt-cancerfree-biotech-funding-round-050",
+        "tw-dt-cancerfree-biotech-round-participant-051"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/13/profile_facts/0",
+      "entity_id": "unresolved:startup:cancerfree-biotech",
+      "source_url": "https://cancerfree.io/en/pages/%E8%81%AF%E7%B5%A1%E6%88%91%E5%80%91",
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-operating-location-046"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/13/profile_facts/1",
+      "entity_id": "unresolved:startup:cancerfree-biotech",
+      "source_url": "https://cancerfree.io/en/pages/%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91",
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-identity-043",
+        "tw-dt-cancerfree-biotech-description-044",
+        "tw-dt-cancerfree-biotech-founding-045",
+        "tw-dt-cancerfree-biotech-founder-047",
+        "tw-dt-cancerfree-biotech-funding-round-048",
+        "tw-dt-cancerfree-biotech-round-participant-049",
+        "tw-dt-cancerfree-biotech-funding-round-050",
+        "tw-dt-cancerfree-biotech-round-participant-051"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/13/funding_rounds/0",
+      "entity_id": "unresolved:startup:cancerfree-biotech",
+      "source_url": "https://cancerfree.io/en/pages/%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91",
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-identity-043",
+        "tw-dt-cancerfree-biotech-description-044",
+        "tw-dt-cancerfree-biotech-founding-045",
+        "tw-dt-cancerfree-biotech-founder-047",
+        "tw-dt-cancerfree-biotech-funding-round-048",
+        "tw-dt-cancerfree-biotech-round-participant-049",
+        "tw-dt-cancerfree-biotech-funding-round-050",
+        "tw-dt-cancerfree-biotech-round-participant-051"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/13/funding_rounds/1",
+      "entity_id": "unresolved:startup:cancerfree-biotech",
+      "source_url": "https://cancerfree.io/en/pages/%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91",
+      "claim_ids": [
+        "tw-dt-cancerfree-biotech-identity-043",
+        "tw-dt-cancerfree-biotech-description-044",
+        "tw-dt-cancerfree-biotech-founding-045",
+        "tw-dt-cancerfree-biotech-founder-047",
+        "tw-dt-cancerfree-biotech-funding-round-048",
+        "tw-dt-cancerfree-biotech-round-participant-049",
+        "tw-dt-cancerfree-biotech-funding-round-050",
+        "tw-dt-cancerfree-biotech-round-participant-051"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/name",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/about",
+      "claim_ids": [
+        "tw-dt-aetherai-identity-052",
+        "tw-dt-aetherai-description-053",
+        "tw-dt-aetherai-founding-055",
+        "tw-dt-aetherai-founder-058",
+        "tw-dt-aetherai-founder-059",
+        "tw-dt-aetherai-founder-060",
+        "tw-dt-aetherai-funding-round-061",
+        "tw-dt-aetherai-round-participant-062",
+        "tw-dt-aetherai-round-participant-063",
+        "tw-dt-aetherai-round-participant-064",
+        "tw-dt-aetherai-round-participant-065",
+        "tw-dt-aetherai-listing-066"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/website",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/about",
+      "claim_ids": [
+        "tw-dt-aetherai-identity-052",
+        "tw-dt-aetherai-description-053",
+        "tw-dt-aetherai-founding-055",
+        "tw-dt-aetherai-founder-058",
+        "tw-dt-aetherai-founder-059",
+        "tw-dt-aetherai-founder-060",
+        "tw-dt-aetherai-funding-round-061",
+        "tw-dt-aetherai-round-participant-062",
+        "tw-dt-aetherai-round-participant-063",
+        "tw-dt-aetherai-round-participant-064",
+        "tw-dt-aetherai-round-participant-065",
+        "tw-dt-aetherai-listing-066"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/description",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/about",
+      "claim_ids": [
+        "tw-dt-aetherai-identity-052",
+        "tw-dt-aetherai-description-053",
+        "tw-dt-aetherai-founding-055",
+        "tw-dt-aetherai-founder-058",
+        "tw-dt-aetherai-founder-059",
+        "tw-dt-aetherai-founder-060",
+        "tw-dt-aetherai-funding-round-061",
+        "tw-dt-aetherai-round-participant-062",
+        "tw-dt-aetherai-round-participant-063",
+        "tw-dt-aetherai-round-participant-064",
+        "tw-dt-aetherai-round-participant-065",
+        "tw-dt-aetherai-listing-066"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/founded_year",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/about",
+      "claim_ids": [
+        "tw-dt-aetherai-founding-055"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/founders/0",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/about",
+      "claim_ids": [
+        "tw-dt-aetherai-identity-052",
+        "tw-dt-aetherai-description-053",
+        "tw-dt-aetherai-founding-055",
+        "tw-dt-aetherai-founder-058",
+        "tw-dt-aetherai-founder-059",
+        "tw-dt-aetherai-founder-060",
+        "tw-dt-aetherai-funding-round-061",
+        "tw-dt-aetherai-round-participant-062",
+        "tw-dt-aetherai-round-participant-063",
+        "tw-dt-aetherai-round-participant-064",
+        "tw-dt-aetherai-round-participant-065",
+        "tw-dt-aetherai-listing-066"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/founders/1",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/about",
+      "claim_ids": [
+        "tw-dt-aetherai-identity-052",
+        "tw-dt-aetherai-description-053",
+        "tw-dt-aetherai-founding-055",
+        "tw-dt-aetherai-founder-058",
+        "tw-dt-aetherai-founder-059",
+        "tw-dt-aetherai-founder-060",
+        "tw-dt-aetherai-funding-round-061",
+        "tw-dt-aetherai-round-participant-062",
+        "tw-dt-aetherai-round-participant-063",
+        "tw-dt-aetherai-round-participant-064",
+        "tw-dt-aetherai-round-participant-065",
+        "tw-dt-aetherai-listing-066"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/founders/2",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/about",
+      "claim_ids": [
+        "tw-dt-aetherai-identity-052",
+        "tw-dt-aetherai-description-053",
+        "tw-dt-aetherai-founding-055",
+        "tw-dt-aetherai-founder-058",
+        "tw-dt-aetherai-founder-059",
+        "tw-dt-aetherai-founder-060",
+        "tw-dt-aetherai-funding-round-061",
+        "tw-dt-aetherai-round-participant-062",
+        "tw-dt-aetherai-round-participant-063",
+        "tw-dt-aetherai-round-participant-064",
+        "tw-dt-aetherai-round-participant-065",
+        "tw-dt-aetherai-listing-066"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/profile_facts/0",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/copy-of-corporate-governance-1",
+      "claim_ids": [
+        "tw-dt-aetherai-alias-054",
+        "tw-dt-aetherai-incorporation-056",
+        "tw-dt-aetherai-operating-location-057"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/profile_facts/1",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/copy-of-corporate-governance-1",
+      "claim_ids": [
+        "tw-dt-aetherai-alias-054",
+        "tw-dt-aetherai-incorporation-056",
+        "tw-dt-aetherai-operating-location-057"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/profile_facts/2",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/about",
+      "claim_ids": [
+        "tw-dt-aetherai-identity-052",
+        "tw-dt-aetherai-description-053",
+        "tw-dt-aetherai-founding-055",
+        "tw-dt-aetherai-founder-058",
+        "tw-dt-aetherai-founder-059",
+        "tw-dt-aetherai-founder-060",
+        "tw-dt-aetherai-funding-round-061",
+        "tw-dt-aetherai-round-participant-062",
+        "tw-dt-aetherai-round-participant-063",
+        "tw-dt-aetherai-round-participant-064",
+        "tw-dt-aetherai-round-participant-065",
+        "tw-dt-aetherai-listing-066"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/profile_facts/3",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.twse.com.tw/en/company/newlisting?response=html",
+      "claim_ids": [
+        "tw-integrate-aetherai-tib"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/14/funding_rounds/0",
+      "entity_id": "unresolved:startup:aetherai",
+      "source_url": "https://www.aetherai.com/about",
+      "claim_ids": [
+        "tw-dt-aetherai-identity-052",
+        "tw-dt-aetherai-description-053",
+        "tw-dt-aetherai-founding-055",
+        "tw-dt-aetherai-founder-058",
+        "tw-dt-aetherai-founder-059",
+        "tw-dt-aetherai-founder-060",
+        "tw-dt-aetherai-funding-round-061",
+        "tw-dt-aetherai-round-participant-062",
+        "tw-dt-aetherai-round-participant-063",
+        "tw-dt-aetherai-round-participant-064",
+        "tw-dt-aetherai-round-participant-065",
+        "tw-dt-aetherai-listing-066"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/15/name",
+      "entity_id": "unresolved:startup:tmytek",
+      "source_url": "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding",
+      "claim_ids": [
+        "tw-dt-tmytek-identity-067",
+        "tw-dt-tmytek-description-068",
+        "tw-dt-tmytek-alias-069",
+        "tw-dt-tmytek-founder-071",
+        "tw-dt-tmytek-funding-round-072",
+        "tw-dt-tmytek-round-participant-073",
+        "tw-dt-tmytek-round-participant-074",
+        "tw-dt-tmytek-round-participant-075"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/15/website",
+      "entity_id": "unresolved:startup:tmytek",
+      "source_url": "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding",
+      "claim_ids": [
+        "tw-dt-tmytek-identity-067",
+        "tw-dt-tmytek-description-068",
+        "tw-dt-tmytek-alias-069",
+        "tw-dt-tmytek-founder-071",
+        "tw-dt-tmytek-funding-round-072",
+        "tw-dt-tmytek-round-participant-073",
+        "tw-dt-tmytek-round-participant-074",
+        "tw-dt-tmytek-round-participant-075"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/15/description",
+      "entity_id": "unresolved:startup:tmytek",
+      "source_url": "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding",
+      "claim_ids": [
+        "tw-dt-tmytek-identity-067",
+        "tw-dt-tmytek-description-068",
+        "tw-dt-tmytek-alias-069",
+        "tw-dt-tmytek-founder-071",
+        "tw-dt-tmytek-funding-round-072",
+        "tw-dt-tmytek-round-participant-073",
+        "tw-dt-tmytek-round-participant-074",
+        "tw-dt-tmytek-round-participant-075"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/15/founders/0",
+      "entity_id": "unresolved:startup:tmytek",
+      "source_url": "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding",
+      "claim_ids": [
+        "tw-dt-tmytek-identity-067",
+        "tw-dt-tmytek-description-068",
+        "tw-dt-tmytek-alias-069",
+        "tw-dt-tmytek-founder-071",
+        "tw-dt-tmytek-funding-round-072",
+        "tw-dt-tmytek-round-participant-073",
+        "tw-dt-tmytek-round-participant-074",
+        "tw-dt-tmytek-round-participant-075"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/15/profile_facts/0",
+      "entity_id": "unresolved:startup:tmytek",
+      "source_url": "https://www.twse.com.tw/market_insights/en/detail/8a8216d6a0bdcc0001a0c875d4f90042",
+      "claim_ids": [
+        "tw-dt-tmytek-listing-076"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/15/profile_facts/1",
+      "entity_id": "unresolved:startup:tmytek",
+      "source_url": "https://www.twse.com.tw/en/company/newlisting?response=html",
+      "claim_ids": [
+        "tw-integrate-tmytek-tib"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/15/funding_rounds/0",
+      "entity_id": "unresolved:startup:tmytek",
+      "source_url": "https://tmytek.com/post/tmytek-completes-US40-million-series-b-funding",
+      "claim_ids": [
+        "tw-dt-tmytek-identity-067",
+        "tw-dt-tmytek-description-068",
+        "tw-dt-tmytek-alias-069",
+        "tw-dt-tmytek-founder-071",
+        "tw-dt-tmytek-funding-round-072",
+        "tw-dt-tmytek-round-participant-073",
+        "tw-dt-tmytek-round-participant-074",
+        "tw-dt-tmytek-round-participant-075"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/16/name",
+      "entity_id": "unresolved:startup:coolbitx",
+      "source_url": "https://coolbitx.com/about/",
+      "claim_ids": [
+        "tw-root-001",
+        "tw-root-002",
+        "tw-root-003",
+        "tw-root-004",
+        "tw-root-045"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/16/website",
+      "entity_id": "unresolved:startup:coolbitx",
+      "source_url": "https://coolbitx.com/about/",
+      "claim_ids": [
+        "tw-root-001",
+        "tw-root-002",
+        "tw-root-003",
+        "tw-root-004",
+        "tw-root-045"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/16/description",
+      "entity_id": "unresolved:startup:coolbitx",
+      "source_url": "https://coolbitx.com/about/",
+      "claim_ids": [
+        "tw-root-001",
+        "tw-root-002",
+        "tw-root-003",
+        "tw-root-004",
+        "tw-root-045"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/16/founded_year",
+      "entity_id": "unresolved:startup:coolbitx",
+      "source_url": "https://coolbitx.com/about/",
+      "claim_ids": [
+        "tw-root-003"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/16/founders/0",
+      "entity_id": "unresolved:startup:coolbitx",
+      "source_url": "https://coolbitx.com/about/",
+      "claim_ids": [
+        "tw-root-001",
+        "tw-root-002",
+        "tw-root-003",
+        "tw-root-004",
+        "tw-root-045"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/16/profile_facts/0",
+      "entity_id": "unresolved:startup:coolbitx",
+      "source_url": "https://coolbitx.com/wp-content/uploads/2020/03/Series-B-funding-announcement-.pdf",
+      "claim_ids": [
+        "tw-root-005",
+        "tw-root-006",
+        "tw-root-007",
+        "tw-root-008",
+        "tw-root-009",
+        "tw-root-010"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/16/funding_rounds/0",
+      "entity_id": "unresolved:startup:coolbitx",
+      "source_url": "https://coolbitx.com/wp-content/uploads/2020/03/Series-B-funding-announcement-.pdf",
+      "claim_ids": [
+        "tw-root-005",
+        "tw-root-006",
+        "tw-root-007",
+        "tw-root-008",
+        "tw-root-009",
+        "tw-root-010"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/17/name",
+      "entity_id": "unresolved:startup:kkday",
+      "source_url": "https://www.kkday.com/ja/corp/aboutus/company/",
+      "claim_ids": [
+        "tw-root-011",
+        "tw-root-012",
+        "tw-root-013",
+        "tw-root-046"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/17/website",
+      "entity_id": "unresolved:startup:kkday",
+      "source_url": "https://www.kkday.com/ja/corp/aboutus/company/",
+      "claim_ids": [
+        "tw-root-011",
+        "tw-root-012",
+        "tw-root-013",
+        "tw-root-046"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/17/description",
+      "entity_id": "unresolved:startup:kkday",
+      "source_url": "https://www.kkday.com/ja/corp/aboutus/company/",
+      "claim_ids": [
+        "tw-root-011",
+        "tw-root-012",
+        "tw-root-013",
+        "tw-root-046"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/17/founded_year",
+      "entity_id": "unresolved:startup:kkday",
+      "source_url": "https://www.kkday.com/ja/corp/aboutus/company/",
+      "claim_ids": [
+        "tw-root-013"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/17/founders/0",
+      "entity_id": "unresolved:startup:kkday",
+      "source_url": "https://www.kkday.com/ja/corp/news_fundraising2412/",
+      "claim_ids": [
+        "tw-root-014",
+        "tw-root-016",
+        "tw-root-017",
+        "tw-root-018",
+        "tw-root-019",
+        "tw-root-020",
+        "tw-root-021"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/17/profile_facts/0",
+      "entity_id": "unresolved:startup:kkday",
+      "source_url": "https://www.kkday.com/ja/corp/aboutus/company/",
+      "claim_ids": [
+        "tw-root-011",
+        "tw-root-012",
+        "tw-root-013",
+        "tw-root-046"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/17/profile_facts/1",
+      "entity_id": "unresolved:startup:kkday",
+      "source_url": "https://www.kkday.com/static/en/about/media-report.html",
+      "claim_ids": [
+        "tw-root-015"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/17/funding_rounds/0",
+      "entity_id": "unresolved:startup:kkday",
+      "source_url": "https://www.kkday.com/ja/corp/news_fundraising2412/",
+      "claim_ids": [
+        "tw-root-014",
+        "tw-root-016",
+        "tw-root-017",
+        "tw-root-018",
+        "tw-root-019",
+        "tw-root-020",
+        "tw-root-021"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/18/name",
+      "entity_id": "unresolved:startup:kryptogo",
+      "source_url": "https://www.kryptogo.com/about-us",
+      "claim_ids": [
+        "tw-root-022",
+        "tw-root-023",
+        "tw-root-024",
+        "tw-root-025",
+        "tw-root-026",
+        "tw-root-047"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/18/website",
+      "entity_id": "unresolved:startup:kryptogo",
+      "source_url": "https://www.kryptogo.com/about-us",
+      "claim_ids": [
+        "tw-root-022",
+        "tw-root-023",
+        "tw-root-024",
+        "tw-root-025",
+        "tw-root-026",
+        "tw-root-047"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/18/description",
+      "entity_id": "unresolved:startup:kryptogo",
+      "source_url": "https://www.kryptogo.com/about-us",
+      "claim_ids": [
+        "tw-root-022",
+        "tw-root-023",
+        "tw-root-024",
+        "tw-root-025",
+        "tw-root-026",
+        "tw-root-047"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/18/founded_year",
+      "entity_id": "unresolved:startup:kryptogo",
+      "source_url": "https://www.kryptogo.com/about-us",
+      "claim_ids": [
+        "tw-root-024"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/18/founders/0",
+      "entity_id": "unresolved:startup:kryptogo",
+      "source_url": "https://www.kryptogo.com/about-us",
+      "claim_ids": [
+        "tw-root-022",
+        "tw-root-023",
+        "tw-root-024",
+        "tw-root-025",
+        "tw-root-026",
+        "tw-root-047"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/18/founders/1",
+      "entity_id": "unresolved:startup:kryptogo",
+      "source_url": "https://www.kryptogo.com/about-us",
+      "claim_ids": [
+        "tw-root-022",
+        "tw-root-023",
+        "tw-root-024",
+        "tw-root-025",
+        "tw-root-026",
+        "tw-root-047"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/18/profile_facts/0",
+      "entity_id": "unresolved:startup:kryptogo",
+      "source_url": "https://www.linkedin.com/company/kryptogo",
+      "claim_ids": [
+        "tw-root-027",
+        "tw-root-029"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/18/profile_facts/1",
+      "entity_id": "unresolved:startup:kryptogo",
+      "source_url": "https://findit.sme.gov.tw/en/Startup/V29YVDU5RmFRbEhDVlFQUUZVQnZYdz09/Basic",
+      "claim_ids": [
+        "tw-root-028"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/18/profile_facts/2",
+      "entity_id": "unresolved:startup:kryptogo",
+      "source_url": "https://www.kryptogo.com/en/blog/kryptogo-secures-3m-seed-funding",
+      "claim_ids": [
+        "tw-root-030"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/18/profile_facts/3",
+      "entity_id": "unresolved:startup:kryptogo",
+      "source_url": "https://www.kryptogo.com/tw/blog/kryptogo-secures-3m-seed-funding",
+      "claim_ids": [
+        "tw-root-031"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/name",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.events.myfunnow.com/brandstory-en",
+      "claim_ids": [
+        "tw-root-032",
+        "tw-root-033",
+        "tw-root-034",
+        "tw-root-035",
+        "tw-root-036",
+        "tw-root-037",
+        "tw-root-038",
+        "tw-root-048"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/website",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.events.myfunnow.com/brandstory-en",
+      "claim_ids": [
+        "tw-root-032",
+        "tw-root-033",
+        "tw-root-034",
+        "tw-root-035",
+        "tw-root-036",
+        "tw-root-037",
+        "tw-root-038",
+        "tw-root-048"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/description",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.events.myfunnow.com/brandstory-en",
+      "claim_ids": [
+        "tw-root-032",
+        "tw-root-033",
+        "tw-root-034",
+        "tw-root-035",
+        "tw-root-036",
+        "tw-root-037",
+        "tw-root-038",
+        "tw-root-048"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/founded_year",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.events.myfunnow.com/brandstory-en",
+      "claim_ids": [
+        "tw-root-034"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/founders/0",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.events.myfunnow.com/brandstory-en",
+      "claim_ids": [
+        "tw-root-032",
+        "tw-root-033",
+        "tw-root-034",
+        "tw-root-035",
+        "tw-root-036",
+        "tw-root-037",
+        "tw-root-038",
+        "tw-root-048"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/founders/1",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.events.myfunnow.com/brandstory-en",
+      "claim_ids": [
+        "tw-root-032",
+        "tw-root-033",
+        "tw-root-034",
+        "tw-root-035",
+        "tw-root-036",
+        "tw-root-037",
+        "tw-root-038",
+        "tw-root-048"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/founders/2",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.events.myfunnow.com/brandstory-en",
+      "claim_ids": [
+        "tw-root-032",
+        "tw-root-033",
+        "tw-root-034",
+        "tw-root-035",
+        "tw-root-036",
+        "tw-root-037",
+        "tw-root-038",
+        "tw-root-048"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/founders/3",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.events.myfunnow.com/brandstory-en",
+      "claim_ids": [
+        "tw-root-032",
+        "tw-root-033",
+        "tw-root-034",
+        "tw-root-035",
+        "tw-root-036",
+        "tw-root-037",
+        "tw-root-038",
+        "tw-root-048"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/profile_facts/0",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.linkedin.com/company/funnow",
+      "claim_ids": [
+        "tw-root-039",
+        "tw-root-041",
+        "tw-root-042"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/profile_facts/1",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.ent-fund.org/en/portfolio/tw/details/45",
+      "claim_ids": [
+        "tw-root-040"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    },
+    {
+      "pointer": "/startups/19/profile_facts/2",
+      "entity_id": "unresolved:startup:funnow",
+      "source_url": "https://www.hotaimotor.com.tw/News/Details/537",
+      "claim_ids": [
+        "tw-root-043",
+        "tw-root-044"
+      ],
+      "mapping": "Source-matched claim set; retain claim field/value/evidence for semantic review, not all claims support every subfield."
+    }
+  ]
+}

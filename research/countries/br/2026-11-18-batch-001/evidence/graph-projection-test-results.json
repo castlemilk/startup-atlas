@@ -1,0 +1,97 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 python research/countries/br/2026-11-18-batch-001/test_graph_projection.py -v",
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "research/countries/br/2026-11-18-batch-001/test_graph_projection.py",
+    "-v"
+  ],
+  "working_directory": "/workspace/scratch/50167a6326e0/startup-atlas-brazil",
+  "started_at": "2026-11-18T10:17:56.891+00:00",
+  "completed_at": "2026-11-18T10:17:57.117+00:00",
+  "exit_code": 0,
+  "result": "passed",
+  "tests_run": 6,
+  "failures": 0,
+  "errors": 0,
+  "tests": [
+    {
+      "name": "test_98_participant_assertions_remain_sidecar_only",
+      "status": "passed"
+    },
+    {
+      "name": "test_all_25_funding_events_preserve_values_precision_and_notes",
+      "status": "passed"
+    },
+    {
+      "name": "test_builds_are_offline_and_production_inputs_are_unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "test_exact_names_and_provisional_to_candidate_ids_round_trip",
+      "status": "passed"
+    },
+    {
+      "name": "test_explicit_articles_preserve_source_publication_not_event_date",
+      "status": "passed"
+    },
+    {
+      "name": "test_unknown_founded_year_never_becomes_zero",
+      "status": "passed"
+    }
+  ],
+  "stdout_stderr": "test_98_participant_assertions_remain_sidecar_only (__main__.BrazilGraphProjectionTests.test_98_participant_assertions_remain_sidecar_only) ... ok\ntest_all_25_funding_events_preserve_values_precision_and_notes (__main__.BrazilGraphProjectionTests.test_all_25_funding_events_preserve_values_precision_and_notes) ... ok\ntest_builds_are_offline_and_production_inputs_are_unchanged (__main__.BrazilGraphProjectionTests.test_builds_are_offline_and_production_inputs_are_unchanged) ... ok\ntest_exact_names_and_provisional_to_candidate_ids_round_trip (__main__.BrazilGraphProjectionTests.test_exact_names_and_provisional_to_candidate_ids_round_trip) ... ok\ntest_explicit_articles_preserve_source_publication_not_event_date (__main__.BrazilGraphProjectionTests.test_explicit_articles_preserve_source_publication_not_event_date) ... ok\ntest_unknown_founded_year_never_becomes_zero (__main__.BrazilGraphProjectionTests.test_unknown_founded_year_never_becomes_zero) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.079s\n\nOK\n",
+  "source_sha256_before": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+  "source_sha256_after": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+  "source_unchanged_during_run": true,
+  "sha256": {
+    "staged_records": "123334cedcc2b4c7d2cc30820e50f23bb346e8977a113e463cfc1f0a51e14182",
+    "test_file": "438c62c3bfb8ad6f4e6fe3b86806e8e3bd4ac0d4d7970a17a6e7aaf62dd1ebea",
+    "manifest": "eb0fe31bb2bcdf48bffd822debea642e365339bee28848cfc40f8a8e1177ddd9",
+    "production_seed_csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "graph_builder": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+    "database_builder": "65fe51ce6d47d8545f6a59546423e002cc04ad00b074be133f5b9a192be5897c",
+    "source_registry": "d4742ca0469386f5649ff1204bedc7b353229ea8bd09b62d87a064376296da81",
+    "event_participants": "fc1232d6f5c2b1ded65f84acf303b2db424e4a805e87ba812a88a68cc953f89b",
+    "dossiers": "014b32d5e0a746bd3b35aad1a799e22a56f950ea61cafc4f6a67e841ab405ec4",
+    "production_partner-profiles": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "production_partner-leads": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "production_partners-reviewed": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "production_catalogue": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "production_startup-research": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41"
+  },
+  "planner_binding_revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "source_names": [
+    "Alice",
+    "Asaas",
+    "Beep Saúde",
+    "CloudWalk",
+    "Conta Azul",
+    "Cora",
+    "Creditas",
+    "Cromai",
+    "Dock",
+    "EBANX",
+    "Loft",
+    "Loggi",
+    "MadeiraMadeira",
+    "Mombak",
+    "Nilo Saúde",
+    "Nomad",
+    "Olist",
+    "Omie",
+    "QI Tech",
+    "QuintoAndar",
+    "RecargaPay",
+    "Solinftec"
+  ],
+  "packet_pycache_paths": [],
+  "expected_population": 22,
+  "production_mutations": 0,
+  "network_attempts": 0,
+  "hash_observation": "Staged bytes hashed before and after execution. Each suite uses the packet manifest revision. No commit ownership of staged bytes is implied.",
+  "prior_runs": [],
+  "scope": "Temporary in-memory graph and SQLite replay using verified committed baseline plus 22 staged records. No production graph rebuild or publication.",
+  "funding_events_checked": 25,
+  "research_only_participant_assertions_checked": 98,
+  "sqlite_public_document_ingestion": false
+}

@@ -2,7 +2,8 @@ import { marketNames, escapeHtml as esc, sourceUrl, marketLabel, filterOpportuni
 import { logoFor, logoClassFor } from './logos.js?v=3';
 import { partnerRelationships } from './relationships.js';
 import { openGraph } from './graph-store.js';
-import { entityHref, kindName } from './graph-model.js';
+import { entityBadge, icon, renderEntityRow } from './atlas-ui.js';
+import { entityDetails, entityHref } from './graph-model.js';
 
 // The directory stays usable if an older browser cannot load the table model.
 let opportunityRows=(items,state,saved,visible)=>{
@@ -16,6 +17,7 @@ const byId = id => document.getElementById(id);
 const controls = { search: byId('search'), entityKind:byId('entity-kind'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort'), partnerCountry: byId('partner-country'), partnerProvider: byId('partner-provider'), partnerEvidence: byId('partner-evidence'), partnerLogo: byId('partner-logo') };
 const defaults = { view:'all', query:'', entityKind:'all', country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended', partnerCountry:'all', partnerProvider:'all', partnerEvidence:'all', partnerLogo:false };
 let state = { ...defaults }, data = null, visible = 12;
+let inspectedEntity = '';
 let saved = new Set();
 try { const stored = JSON.parse(localStorage.getItem('startup-atlas-saved') || '[]'); if (Array.isArray(stored)) saved = new Set(stored.filter(x => typeof x === 'string')); } catch { /* Browsing remains available without storage. */ }
 
@@ -44,44 +46,16 @@ try {
   controls.partnerCountry.disabled=true;
   controls.partnerCountry.options[0].textContent='Countries unavailable';
 }
-/* Gamma-inspired single-choice menus with visible option icons. */
-const facetLabels={country:['🌏','Market'],kind:['✦','Resource'],access:['↗','Access'],partnerCountry:['🌍','Country'],partnerProvider:['🏢','Provider'],partnerEvidence:['🔎','Evidence']};
-const facetOptionIcons={
-  country:{all:'🌍',AU:'🇦🇺',NZ:'🇳🇿',US:'🇺🇸',GB:'🇬🇧',CA:'🇨🇦',IN:'🇮🇳',SG:'🇸🇬',JP:'🇯🇵',KR:'🇰🇷',BR:'🇧🇷',ZA:'🇿🇦',FR:'🇫🇷'},
-  kind:{all:'✦','AI model credits':'✨','Cloud credits':'☁️','GPU & inference':'⚡','Developer tools':'🛠️','Data & analytics':'📊','Business tools':'🧰','Founder programmes':'🚀','Funding finders':'💰'},
-  access:{all:'✦',Direct:'↗','Partner referral':'🤝',Community:'👥',Investment:'💼'},
-  partnerCountry:{all:'🌍',unmapped:'📍',Australia:'🇦🇺','United States':'🇺🇸','United Kingdom':'🇬🇧',France:'🇫🇷',Singapore:'🇸🇬'},partnerProvider:{all:'🌐'},partnerEvidence:{all:'✦',official:'🔗',screenshot:'📷',self_report:'💬',reviewed:'✓'}
-};
-function facetOptionIcon(key,value) {
-  const providerName=key==='partnerProvider'?({AWS:'Amazon Web Services',Vercel:'Vercel',Microsoft:'Microsoft'}[value]):null;
-  const logo=providerName && logoFor(providerName);
-  return logo?`<img class="facet-option-logo" src="${esc(logo)}" alt="">`:`<span class="facet-option-symbol" aria-hidden="true">${esc(facetOptionIcons[key]?.[value] || '✦')}</span>`;
-}
-const facetPopovers=new Map();
-for (const [key,[icon,label]] of Object.entries(facetLabels)) {
-  const select=controls[key], details=document.createElement('details');
-  details.className='facet-picker'; details.dataset.facet=key; if(select.disabled) details.dataset.disabled='true';
-  const summary=document.createElement('summary');
-  summary.innerHTML=`<span class="facet-icon" aria-hidden="true">${icon}</span><span class="facet-label">${label}</span><span class="facet-value"></span><span class="facet-chevron" aria-hidden="true"></span>`;
-  const panel=document.createElement('div'); panel.className='facet-panel';
-  panel.innerHTML=`<div class="facet-panel-heading"><strong>${label}</strong><span>Choose one</span></div><div class="facet-options" role="group" aria-label="${label}">${[...select.options].map((option,index)=>{const text=index===0?({Market:'All markets',Resource:'All resources',Access:'All pathways',Provider:'All providers',Evidence:'All evidence',Country:'All countries'}[label]):option.textContent;return `<button type="button" class="facet-option" data-value="${esc(option.value)}" aria-pressed="false">${facetOptionIcon(key,option.value)}<span class="facet-option-text">${esc(text)}</span><span class="facet-option-check" aria-hidden="true">✓</span></button>`;}).join('')}</div>`;
-  details.append(summary,panel); select.after(details); select.hidden=true; if(select.disabled){summary.setAttribute('aria-disabled','true'); summary.addEventListener('click',event=>event.preventDefault());}
-  panel.addEventListener('click',event=>{const option=event.target.closest('button[data-value]');if(!option)return;select.value=option.dataset.value;select.dispatchEvent(new Event('change',{bubbles:true}));details.open=false;summary.focus();});
-  details.addEventListener('toggle',()=>{if(details.open) for(const other of facetPopovers.values()) if(other!==details) other.open=false;});
-  facetPopovers.set(key,details);
+const facetLabels={country:['location','Market'],kind:['filter','Resource'],access:['link','Access'],partnerCountry:['location','Country'],partnerProvider:['provider','Provider'],partnerEvidence:['source','Evidence']};
+for (const [key,[glyph,label]] of Object.entries(facetLabels)) {
+  Object.assign(controls[key].dataset, {atlasFacet:key, atlasIcon:glyph, atlasLabel:label});
 }
 function syncFacets() {
-  for(const [key,details] of facetPopovers) {
-    const select=controls[key], selected=select.selectedOptions[0], active=select.value!=='all';
-    details.dataset.active=String(active);
-    details.querySelector('.facet-value').textContent=active?selected.textContent:'';
-    details.querySelector('summary').setAttribute('aria-label',facetLabels[key][1]+(active?': '+selected.textContent:''));
-    for(const option of details.querySelectorAll('button[data-value]')) option.setAttribute('aria-pressed',String(option.dataset.value===select.value));
-  }
+  if (typeof CustomEvent !== 'undefined') document.dispatchEvent?.(new CustomEvent('atlas:controls-sync'));
 }
-function focusFacet(key) { (facetPopovers.get(key)?.querySelector('summary') || controls[key]).focus(); }
-document.addEventListener('pointerdown',event=>{for(const details of facetPopovers.values()) if(details.open && !details.contains(event.target)) details.open=false;});
-document.addEventListener('keydown',event=>{if(event.key==='Escape') for(const details of facetPopovers.values()) if(details.open){details.open=false;details.querySelector('summary').focus();break;}});
+function focusFacet(key) {
+  (byId(controls[key].id+'-control') || byId(controls[key].id+'-trigger') || controls[key]).focus();
+}
 
 function stateFromUrl() {
   const params = new URLSearchParams(location.search);
@@ -101,6 +75,7 @@ function stateFromUrl() {
 }
 function writeUrl() {
   const params = new URLSearchParams();
+  if (visible>12) params.set('shown',String(visible));
   if (state.view !== defaults.view) params.set('view',state.view);
   if (state.query) params.set('q',state.query);
   if (state.entityKind!=='all') params.set('type',state.entityKind);
@@ -124,8 +99,9 @@ function syncControls() {
   syncFacets();
   byId('clear-search').hidden=!state.query;
   document.querySelectorAll('[data-view]').forEach(button => {
-    const active=button.dataset.view===state.view; button.classList.toggle('active',active); button.setAttribute('aria-selected',String(active)); button.tabIndex=active?0:-1;
+    const active=button.dataset.view===state.view; button.classList.toggle('active',active);
   });
+  byId('directory-scope').setAttribute('value',state.view);
   byId('directory-panel').setAttribute('aria-labelledby',`tab-${state.view}`);
 }
 function renderActiveFilters() {
@@ -192,11 +168,54 @@ function renderLead(name) {
   return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3><a class="partner-profile-link" href="./partner.html?name=${encodeURIComponent(name)}">${esc(name)}</a></h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge(providerListed?'Provider-listed':selfReported?'Self-reported':'Relationship to verify',providerListed?'accent':'neutral')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
 }
 function renderEntity(item) {
-  const initials=item.name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
-  const logo=sourceUrl(item.logo)||logoFor(item.name);
-  const summary=item.summary || (item.kind==='partner'?'Research lead; identity and relationships may need review.':'Further profile details are being researched.');
-  return `<article class="entity-row"><span class="entity-row-mark${logo?' has-logo':''}" aria-hidden="true"><span>${esc(initials)}</span>${logo?`<img class="entity-row-image" src="${esc(logo)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:''}</span><div class="entity-row-main"><h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3><p>${esc(summary)}</p></div><span class="entity-row-kind">${esc(kindName(item.kind))}</span><a class="entity-row-graph" href="./graph.html?entity=${encodeURIComponent(item.id)}" aria-label="Explore ${esc(item.name)} connections">Explore <span aria-hidden="true">↗</span></a></article>`;
+  const connections=graphStore?.graph.edges.filter(edge=>edge.from===item.id || edge.to===item.id).length;
+  return renderEntityRow(item,connections,{inspectable:true,selected:item.id===inspectedEntity});
 }
+
+function inspectorSource(value,label='Source') {
+  const href=sourceUrl(value);
+  return href?`<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${icon('source')}${esc(label)} ${icon('external')}</a>`:'';
+}
+function inspectEntity(id,{moveFocus=false}={}) {
+  inspectedEntity=id;
+  for (const row of byId('results-list').querySelectorAll('[data-entity-id]')) {
+    const selected=row.dataset.entityId===id;
+    row.dataset.selected=String(selected);
+    row.querySelector('[data-inspect-entity]')?.setAttribute('aria-pressed',String(selected));
+  }
+  const panel=byId('directory-inspector');
+  if (!id || !graphStore) {
+    panel.innerHTML=`<div class="directory-inspector-empty">${icon('source')}<p class="directory-eyebrow">THE RECORD, IN CONTEXT</p><h2>A closer look.</h2><p>Select <strong>Inspect</strong> beside a record to see its description, people and source-backed details.</p><p class="directory-inspector-note">Profiles and connections remain a separate step, so your search stays in place.</p></div>`;
+    return;
+  }
+  const details=entityDetails(graphStore.graph,id), entity=details.entity;
+  const facts=Array.isArray(entity.profile_facts)?entity.profile_facts.filter(fact=>fact.label&&fact.value&&sourceUrl(fact.source)):[];
+  const related=new Map(details.related.map(item=>[item.id,item]));
+  const founders=entity.kind==='startup'?details.edges.filter(edge=>edge.kind==='founded'&&edge.to===id&&related.get(edge.from)?.kind==='person'&&sourceUrl(edge.source)):[];
+  const connections=details.edges.filter(edge=>related.has(edge.from===id?edge.to:edge.from)&&sourceUrl(edge.source));
+  const contextEdges=entity.kind==='startup'?founders:connections;
+  const relationship=edge=>edge.description||({founded:'Founded',supports:'Listed in portfolio',team_member:'Team member',offers:'Offers'}[edge.kind]||'Recorded connection');
+  const people=contextEdges.slice(0,3).map(edge=>{const other=related.get(edge.from===id?edge.to:edge.from);return `<li><div><a href="${esc(entityHref(other))}">${esc(other.name)}</a><span>${esc(entity.kind==='startup'?'Founder':relationship(edge))}</span></div>${inspectorSource(edge.source,'Evidence')}</li>`;}).join('');
+  const initials=entity.name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
+  const image=sourceUrl(entity.logo)||logoFor(entity.name);
+  const imageMarkup=image?`<img src="${esc(image)}" alt="" referrerpolicy="no-referrer"><span hidden>${esc(initials)}</span>`:`<span>${esc(initials)}</span>`;
+  panel.innerHTML=`<div class="directory-inspector-top"><p class="directory-eyebrow">INSPECTED RECORD</p><button type="button" id="close-directory-inspector" class="atlas-button directory-inspector-close" aria-label="Close record inspection">${icon('close')}</button></div><div class="directory-inspector-identity"><span class="directory-inspector-mark" aria-hidden="true">${imageMarkup}</span><div><h2 id="directory-inspector-heading" tabindex="-1">${esc(entity.name)}</h2>${entityBadge(entity.kind)}</div></div><p class="directory-inspector-summary">${esc(entity.summary||'Further profile details are being researched.')}</p><section class="directory-inspector-section"><h3>${entity.kind==='startup'?'Founders':'Connections'} <span>${contextEdges.length} recorded</span></h3>${people?`<ul class="directory-inspector-people">${people}</ul>${contextEdges.length>3?`<p class="directory-inspector-note">Showing 3 of ${contextEdges.length}. Open the full profile for the researched connections.</p>`:''}`:`<p class="directory-inspector-note">${entity.kind==='startup'?'Founder details have not been recorded yet.':'Sourced connections have not been recorded yet.'}</p>`}</section><section class="directory-inspector-section"><h3>Sourced details</h3>${facts.length?`<dl class="directory-inspector-facts">${facts.slice(0,3).map(fact=>`<div><dt>${esc(fact.label)}</dt><dd>${esc(fact.value)}${inspectorSource(fact.source)}${fact.reviewed_at?`<small>Reviewed ${esc(fact.reviewed_at)}</small>`:''}</dd></div>`).join('')}</dl>${facts.length>3?`<p class="directory-inspector-note">Showing 3 of ${facts.length} recorded facts.</p>`:''}`:'<p class="directory-inspector-note">Additional facts have not been recorded. Follow the profile source for its original context.</p>'}${inspectorSource(entity.source,'Profile source')||'<p class="directory-inspector-note">A profile source has not been recorded.</p>'}</section><div class="directory-inspector-actions"><a class="atlas-button atlas-button-accent" href="${esc(entityHref(entity))}">Open profile ${icon('arrow')}</a><a class="atlas-button" href="./graph.html?entity=${encodeURIComponent(id)}">${icon('graph')}Explore connections</a></div><p class="sr-only" role="status">Inspecting ${esc(entity.name)}.</p>`;
+  panel.querySelectorAll('img').forEach(img=>{const fallback=()=>{img.hidden=true;if(img.nextElementSibling)img.nextElementSibling.hidden=false;};img.addEventListener('error',fallback,{once:true});if(img.complete&&!img.naturalWidth)fallback();});
+  byId('close-directory-inspector').addEventListener('click',()=>{
+    const previous=inspectedEntity;inspectEntity('');
+    const trigger=[...byId('results-list').querySelectorAll('[data-inspect-entity]')].find(button=>button.dataset.inspectEntity===previous);
+    if(!trigger) return;
+    if(window.matchMedia('(max-width: 900px)').matches) {
+      trigger.focus({preventScroll:true});
+      trigger.scrollIntoView({block:'nearest',behavior:'instant'});
+    } else trigger.focus();
+  });
+  if(moveFocus&&window.matchMedia('(max-width: 900px)').matches) {
+    byId('directory-inspector-heading').focus({preventScroll:true});
+    panel.scrollIntoView({block:'start',behavior:'instant'});
+  }
+}
+
 function render() {
   if (!data) return;
   syncControls();
@@ -207,10 +226,14 @@ function render() {
   const entities=isAll&&graphStore?graphStore.search(state.query,Math.max(100,graphStore.graph.entities.length)).filter(item=>state.entityKind==='all'||item.kind===state.entityKind):[];
   const result=isAll?{total:entities.length,rows:entities.slice(0,visible)}:isPartners?{total:leads.length,rows:leads.slice(0,visible)}:opportunityRows(data.opportunities,state,saved,visible);
   const shown=result.rows, total=result.total;
+  if (!isAll || !shown.some(item=>item.id===inspectedEntity)) inspectedEntity='';
   document.querySelector('.filters').hidden=isPartners||isAll;
   byId('entity-filter').hidden=!isAll;
   byId('partner-filter-controls').hidden=!isPartners;
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
+  document.querySelector('.directory-layout').classList.toggle('all-view',isAll);
+  byId('directory-inspector').hidden=!isAll;
+  byId('entity-columns').hidden=!isAll || !total;
   byId('directory-note').innerHTML=isAll?'<span aria-hidden="true">✳</span><p>Explore sourced profiles and connections. Some partner entries are research leads awaiting verification.</p>':isPartners?'<span aria-hidden="true">✳</span><p>Some names come from a historical screenshot and need verification. <strong>Provider-listed</strong> identifies a cited provider listing. Self-reported relationships are identified separately; neither guarantees access or credits. Mapped countries represent selected offices or programme locations, not geographic eligibility.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
   byId('result-title').textContent=isAll?'ALL OF THE ATLAS':isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
   byId('result-count').textContent=isAll&&!graphStore?'Unavailable':`${total} ${total===1?'result':'results'}`;
@@ -229,12 +252,14 @@ function render() {
     byId('results-list').innerHTML=`<div class="empty-state"><h3>${noSaved?'Nothing saved yet':'No matches found'}</h3><p>${explanation}</p><div class="empty-state-actions"><button type="button" id="empty-action">${noSaved?'Browse opportunities':'Clear search and filters'}</button></div></div>`;
     byId('empty-action').addEventListener('click',()=>{update({...defaults,view:noSaved?'opportunities':state.view});controls.search.focus();});
   } else byId('results-list').innerHTML=shown.map((item,i)=>isAll?renderEntity(item):isPartners?renderLead(item):renderCard(item,i)).join('');
+  byId('result-range').textContent=total ? `Showing ${shown.length} of ${total} results` : '';
   byId('load-more').hidden=visible>=total;
   byId('load-more').textContent=`Load more · ${Math.min(12,total-visible)} of ${total-visible} remaining ↓`;
   byId('results-list').querySelectorAll('[data-save]').forEach(button=>button.addEventListener('click',()=>save(button.dataset.save)));
   byId('results-list').querySelectorAll('.company-logo').forEach(image=>image.addEventListener('error',()=>{image.closest('.avatar')?.classList.remove('has-logo');image.remove();}));
   byId('results-list').querySelectorAll('.entity-row-image').forEach(image=>image.addEventListener('error',()=>{image.closest('.entity-row-mark')?.classList.remove('has-logo');image.remove();}));
   byId('results-list').querySelectorAll('[data-related]').forEach(button=>button.addEventListener('click',()=>{update({...defaults,query:button.dataset.related});controls.search.focus();}));
+  if(isAll) inspectEntity(inspectedEntity);
   writeUrl();
 }
 function update(partial){Object.assign(state,partial);visible=12;render();}
@@ -247,8 +272,9 @@ window.addEventListener('atlas:find-partner',event=>{
   controls.search.focus({preventScroll:true});
 });
 for (const button of viewButtons) {
-  button.addEventListener('click',()=>update({view:button.dataset.view}));
+  button.addEventListener('click',()=>{if (!button.closest?.('ui-segmented-control')?.api) update({view:button.dataset.view});});
   button.addEventListener('keydown',event=>{
+    if (button.closest?.('ui-segmented-control')?.api) return;
     const index=viewButtons.indexOf(button); let next;
     if (event.key==='ArrowRight') next=(index+1)%viewButtons.length;
     else if (event.key==='ArrowLeft') next=(index+viewButtons.length-1)%viewButtons.length;
@@ -258,10 +284,10 @@ for (const button of viewButtons) {
     event.preventDefault(); update({view:viewButtons[next].dataset.view}); viewButtons[next].focus();
   });
 }
+document.addEventListener('valuechange',event=>{if (event.target.id==='directory-scope') update({view:event.detail.value});},{capture:true});
 controls.search.addEventListener('input',event=>{if (!event.isComposing) update({query:event.target.value});});
 controls.search.addEventListener('compositionend',event=>update({query:event.target.value}));
 controls.entityKind.addEventListener('change',event=>update({entityKind:event.target.value}));
-byId('clear-search').addEventListener('click',()=>{update({query:''});controls.search.focus();});
 controls.country.addEventListener('change',event=>update({country:event.target.value}));
 controls.includeUnknown.addEventListener('change',event=>update({includeUnknown:event.target.checked}));
 controls.kind.addEventListener('change',event=>update({kind:event.target.value}));
@@ -279,9 +305,24 @@ byId('active-filter-chips').addEventListener('click',event=>{
   update({[key]:defaults[key]}); focusFacet(key);
 });
 byId('clear-active-filters').addEventListener('click',()=>{const partnerView=state.view==='partners',allView=state.view==='all'; update(allView?{entityKind:'all'}:partnerView?{partnerProvider:'all',partnerEvidence:'all',partnerLogo:false,partnerCountry:'all'}:{country:'all',includeUnknown:false,kind:'all',access:'all'}); focusFacet(allView?'entityKind':partnerView?'partnerProvider':'country');});
-byId('load-more').addEventListener('click',()=>{visible+=12;render();});
-window.addEventListener('popstate',()=>{state=stateFromUrl();visible=12;render();});
-state=stateFromUrl(); syncControls();
+byId('load-more').addEventListener('click',()=>{
+  const results=byId('results-list');
+  const firstNewIndex=results.children.length;
+  visible+=12;
+  render();
+  // Continue reading at the first new record, including the final batch when
+  // Load more disappears. Ordinary search/history renders must not move focus.
+  const firstNewRow=results.children[firstNewIndex];
+  const profileLink=firstNewRow?.querySelector('h3 a[href]');
+  if (profileLink) {
+    profileLink.focus({preventScroll:true});
+    firstNewRow.scrollIntoView({block:'start',behavior:'instant'});
+  }
+});
+byId('results-list').addEventListener('click',event=>{const button=event.target.closest('[data-inspect-entity]');if(button&&graphStore)inspectEntity(button.dataset.inspectEntity===inspectedEntity?'':button.dataset.inspectEntity,{moveFocus:true});});
+const visibleFromUrl=()=>{const value=Number(new URLSearchParams(location.search).get('shown'));return Number.isInteger(value)&&value>12?Math.min(value,1200):12;};
+window.addEventListener('popstate',()=>{state=stateFromUrl();visible=visibleFromUrl();render();});
+state=stateFromUrl(); visible=visibleFromUrl(); syncControls();
 try {
   const [catalogue,reviewed,profiles]=await Promise.all([publicDocument('catalogue.json'),publicDocument('partners-reviewed.json').catch(()=>({})),publicDocument('partner-profiles.json').catch(()=>({}))]);
   data=catalogue;

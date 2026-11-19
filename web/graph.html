@@ -1,24 +1,37 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#173a2b"><meta name="description" content="Explore the people, companies and programmes connected across Startup Atlas.">
-<title>Explore the ecosystem — Startup Atlas</title>
+<meta name="theme-color" content="#111318"><meta name="description" content="Explore the people, companies and programmes connected across Startup Atlas.">
+<title>Follow the connections — Startup Atlas</title>
 <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./graph.css">
 <script defer src="./vendor/sql.js/sql-wasm.js"></script><script type="module" src="./graph.js"></script>
-</head><body>
+<link rel="stylesheet" href="./design-tokens.css">
+<link rel="stylesheet" href="./atlas-ui.css">
+<script type="module" src="./atlas-ui.js"></script>
+<link rel="stylesheet" href="./atlas-sdk.css">
+<script type="module" src="./atlas-sdk.js"></script>
+</head><body class="atlas-graph-page">
 <a class="skip-link" href="#graph-main">Skip to explorer</a>
-<header class="topbar"><a class="brand" href="./" aria-label="Startup Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="brand-light">atlas</span><small>THE FOUNDER RESOURCE INDEX</small></span></a><nav class="top-nav" aria-label="Primary"><a href="./">Directory</a><a href="./?view=partners#directory">Partners</a><a href="./graph.html" aria-current="page">Knowledge graph</a></nav></header>
+<header class="atlas-masthead" data-atlas-masthead="graph"></header>
 <main id="graph-main" class="explorer-shell">
-  <div class="explorer-intro"><div><p class="explorer-kicker"><span aria-hidden="true">✳</span> STARTUP ATLAS / EXPLORER</p><h1>Explore the ecosystem.</h1><p>People, companies, investors and programmes — connected through their sources.</p></div><div class="explorer-intro-note"><span>AN OPEN FIELD GUIDE</span><strong>Follow the connections.</strong><a href="./treemap.html">Compare company treemaps ↗</a></div></div>
+  <header class="atlas-feature">
+    <div class="atlas-feature-copy">
+      <h1>Follow the connections.</h1>
+      <p>Explore recorded relationships between companies, people and organisations.</p>
+    </div>
+    <div class="atlas-feature-art" aria-hidden="true"><img src="./assets/design-lab/signal-graph-thumb.webp" width="768" height="768" alt="" decoding="async"></div>
+  </header>
   <div class="explorer-toolbar">
-    <div class="explorer-search-wrap"><form id="graph-search" class="explorer-search"><label class="visually-hidden" for="graph-query">Search the knowledge graph</label><span class="search-icon" aria-hidden="true">⌕</span><input id="graph-query" type="search" autocomplete="off" placeholder="Search people, startups, partners…" maxlength="200"><button type="submit">Search</button></form><div id="graph-results" class="explorer-results" aria-live="polite" hidden></div></div>
-    <div id="graph-filters" class="explorer-filters" role="group" aria-label="Show entity types"><button type="button" data-kind="startup" aria-pressed="true"><span class="filter-symbol startup-symbol">◈</span> Startups</button><button type="button" data-kind="partner" aria-pressed="true"><span class="filter-symbol partner-symbol">✳</span> Partners</button><button type="button" data-kind="person" aria-pressed="true"><span class="filter-symbol person-symbol">◉</span> People</button><button type="button" data-kind="programme" aria-pressed="true"><span class="filter-symbol programme-symbol">✦</span> Programmes</button><button type="button" data-kind="provider" aria-pressed="true"><span class="filter-symbol provider-symbol">▧</span> Providers</button></div>
+    <div class="explorer-search-wrap"><form novalidate id="graph-search" class="explorer-search"><label class="visually-hidden" for="graph-query">Search the knowledge graph</label><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="graph-query" type="search" autocomplete="off" placeholder="Search people, startups, partners…" maxlength="200"><button type="button" class="atlas-clear" data-atlas-clear-for="graph-query" aria-label="Clear graph search" hidden><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><button type="submit">Search</button></form><div id="graph-results" class="explorer-results" aria-live="polite" hidden></div></div>
+    <div id="graph-filters" class="explorer-filters" role="group" aria-label="Show entity types"><button type="button" data-kind="startup" aria-pressed="true"><span class="filter-check" aria-hidden="true">✓</span> Startups</button><button type="button" data-kind="person" aria-pressed="true"><span class="filter-check" aria-hidden="true">✓</span> People</button><button type="button" data-kind="partner" aria-pressed="true"><span class="filter-check" aria-hidden="true">✓</span> Partners</button><button type="button" data-kind="programme" aria-pressed="true"><span class="filter-check" aria-hidden="true">✓</span> Programmes</button><button type="button" data-kind="provider" aria-pressed="true"><span class="filter-check" aria-hidden="true">✓</span> Providers</button></div>
+    <div class="network-controls"><label for="graph-depth">Depth</label><select id="graph-depth" aria-label="Connection depth"><option value="1">1 hop</option><option value="2">2 hops</option></select><button id="graph-list-toggle" type="button" aria-pressed="false"><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01"/></svg> <span>Connections list</span></button></div>
   </div>
   <p id="graph-status" class="explorer-status" role="status"></p>
   <div class="explorer-workspace">
-    <section class="network-panel" aria-labelledby="network-heading"><div class="network-header"><div><p class="network-eyebrow">THE RELATIONSHIP MAP</p><h2 id="network-heading">A closer look</h2></div><div class="network-controls"><label for="graph-depth">Depth</label><select id="graph-depth" aria-label="Connection depth"><option value="1">1 hop</option><option value="2">2 hops</option></select><button id="graph-list-toggle" type="button" aria-pressed="false">☷ <span>List view</span></button></div></div>
-      <div class="network-canvas"><svg id="graph-canvas" viewBox="0 0 1200 720" role="group" aria-label="Interactive relationship graph" aria-describedby="graph-instructions"><text x="600" y="360" text-anchor="middle">Loading the graph…</text></svg><div class="network-scale" role="group" aria-label="Graph zoom"><button id="graph-zoom-in" type="button" aria-label="Zoom in">+</button><button id="graph-zoom-out" type="button" aria-label="Zoom out">−</button><button id="graph-reset" type="button" aria-label="Fit graph and reset positions">⤢</button></div><span class="network-coordinate" aria-hidden="true">DRAG TO EXPLORE</span></div>
-      <p id="graph-instructions" class="visually-hidden">Drag nodes to rearrange them, or drag the background to pan. Use arrow keys to move a focused node and Enter to explore it. Reset restores the automatic layout. The list view provides the same connections and sources.</p>
+    <section class="network-panel" aria-labelledby="network-heading"><div class="network-header"><h2 id="network-heading">A closer look</h2><p>Inspect a card. Follow its evidence.</p></div>
+      <p class="network-mobile-guide">The map is an overview on small screens. Zoom in to inspect a card, or use the <strong>connections list</strong> for a readable view of the same relationships.</p>
+      <div class="network-canvas"><svg id="graph-canvas" viewBox="0 0 1200 720" role="group" aria-label="Interactive relationship graph" aria-describedby="graph-instructions"><text x="600" y="360" text-anchor="middle">Loading the graph…</text></svg><div class="network-scale" role="group" aria-label="Graph zoom"><button id="graph-zoom-in" type="button" aria-label="Zoom in">+</button><button id="graph-zoom-out" type="button" aria-label="Zoom out">−</button><button id="graph-fit" type="button" aria-label="Fit view"><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button><button id="graph-reset" type="button" aria-label="Reset graph layout"><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg></button></div><span class="network-coordinate" aria-hidden="true">DRAG TO EXPLORE</span></div>
+      <p id="graph-instructions" class="visually-hidden">Select a node to inspect it without changing the map. Use Explore from here to make it the centre. Drag nodes or use arrow keys to move them; drag the background to pan. Reset restores the automatic layout. The list shows the same visible connections and sources.</p>
       <div class="network-footer"><div class="network-legend"><span><i class="legend-startup"></i> Startup</span><span><i class="legend-partner"></i> Partner</span><span><i class="legend-person"></i> Person</span><span><i class="legend-programme"></i> Programme</span><span><i class="legend-provider"></i> Provider</span></div><p id="graph-count" role="status"></p></div>
       <div id="graph-list" class="network-list" hidden></div>
     </section>

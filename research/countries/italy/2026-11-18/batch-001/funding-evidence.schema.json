@@ -1,0 +1,1072 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:startup-atlas:research:italy:2026-11-18:funding-evidence:1",
+  "title": "Italy batch 001 funding evidence research companion (not an Atlas API)",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "./funding-evidence.schema.json"
+    },
+    "schema_version": {
+      "const": "italy-funding-evidence-v1"
+    },
+    "packet_kind": {
+      "const": "country_research_companion"
+    },
+    "country_code": {
+      "const": "IT"
+    },
+    "as_of": {
+      "const": "2026-11-18"
+    },
+    "production_write": {
+      "const": false
+    },
+    "input_packets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/input_packet"
+      }
+    },
+    "method": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "companies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/company"
+      }
+    },
+    "funding_events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/event"
+      }
+    },
+    "financing_observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/observation"
+      }
+    },
+    "participations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/participant"
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/conflict"
+      }
+    },
+    "context_observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/context"
+      }
+    },
+    "round_groups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/group"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  },
+  "required": [
+    "$schema",
+    "schema_version",
+    "packet_kind",
+    "country_code",
+    "as_of",
+    "production_write",
+    "input_packets",
+    "method",
+    "companies",
+    "funding_events",
+    "financing_observations",
+    "participations",
+    "conflicts",
+    "context_observations",
+    "round_groups",
+    "sources",
+    "summary"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "raw_ref": {
+      "type": "object",
+      "properties": {
+        "packet_id": {
+          "enum": [
+            "general",
+            "fintech",
+            "deeptech"
+          ]
+        },
+        "pointer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fragment_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "packet_id",
+        "pointer",
+        "fragment_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "field_mapping": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "pattern": "^/"
+        },
+        "raw_pointers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "mode": {
+          "enum": [
+            "direct",
+            "conservative_normalization",
+            "structural",
+            "unknown"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "field",
+        "raw_pointers",
+        "source_ids",
+        "claim_ids",
+        "mode",
+        "rationale"
+      ],
+      "additionalProperties": false
+    },
+    "date": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "precision": {
+              "const": "unknown"
+            }
+          },
+          "required": [
+            "value",
+            "precision"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9]{4}$"
+            },
+            "precision": {
+              "const": "year"
+            }
+          },
+          "required": [
+            "value",
+            "precision"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}$"
+            },
+            "precision": {
+              "const": "month"
+            }
+          },
+          "required": [
+            "value",
+            "precision"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "format": "date"
+            },
+            "precision": {
+              "const": "day"
+            }
+          },
+          "required": [
+            "value",
+            "precision"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "amount": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Z]{3}$"
+        },
+        "precision": {
+          "enum": [
+            "exact",
+            "as_reported",
+            "approximate",
+            "reported_rounded_total",
+            "lower_bound",
+            "upper_bound",
+            "conflict",
+            "currency_unresolved",
+            "unknown"
+          ]
+        },
+        "lower_bound": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "upper_bound": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "bound_inclusive": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "reported_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "value",
+        "currency",
+        "precision",
+        "lower_bound",
+        "upper_bound",
+        "bound_inclusive",
+        "reported_text",
+        "basis"
+      ],
+      "additionalProperties": false
+    },
+    "input_packet": {
+      "type": "object",
+      "properties": {
+        "packet_id": {
+          "enum": [
+            "general",
+            "fintech",
+            "deeptech"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "packet_id",
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "company": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "startup_candidate": {
+          "type": "boolean"
+        },
+        "scope_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_ref": {
+          "$ref": "#/$defs/raw_ref"
+        },
+        "event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "observation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "funding_history_complete": {
+          "const": false
+        },
+        "coverage_disposition": {
+          "enum": [
+            "reviewed_subset",
+            "no_accepted_round_in_this_pass"
+          ]
+        },
+        "absence_meaning": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "company_id",
+        "canonical_name",
+        "startup_candidate",
+        "scope_reason",
+        "raw_ref",
+        "event_ids",
+        "observation_ids",
+        "funding_history_complete",
+        "coverage_disposition",
+        "absence_meaning"
+      ],
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "startup_candidate": {
+          "type": "boolean"
+        },
+        "raw_ref": {
+          "$ref": "#/$defs/raw_ref"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "field_mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field_mapping"
+          }
+        },
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transaction_kind": {
+          "enum": [
+            "equity",
+            "unknown"
+          ]
+        },
+        "raw_transaction_kind": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "instrument_basis": {
+          "enum": [
+            "explicit_source_wording",
+            "not_established"
+          ]
+        },
+        "announced": {
+          "$ref": "#/$defs/date"
+        },
+        "closed": {
+          "$ref": "#/$defs/date"
+        },
+        "event_date": {
+          "$ref": "#/$defs/date"
+        },
+        "amount": {
+          "$ref": "#/$defs/amount"
+        },
+        "amount_scope": {
+          "enum": [
+            "reported_round_observation",
+            "first_close_total",
+            "round_total_after_multiple_closes",
+            "incremental_extension"
+          ]
+        },
+        "round_group_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "related_event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "null_reasons": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "primary_amount": {
+          "type": "null"
+        },
+        "secondary_amount": {
+          "type": "null"
+        },
+        "participants_complete": {
+          "const": false
+        },
+        "funding_history_complete": {
+          "const": false
+        },
+        "aggregation_permitted_without_review": {
+          "const": false
+        }
+      },
+      "required": [
+        "company_id",
+        "startup_candidate",
+        "raw_ref",
+        "source_ids",
+        "claim_ids",
+        "field_mappings",
+        "event_id",
+        "stage",
+        "transaction_kind",
+        "raw_transaction_kind",
+        "instrument_basis",
+        "announced",
+        "closed",
+        "event_date",
+        "amount",
+        "amount_scope",
+        "round_group_id",
+        "related_event_ids",
+        "note",
+        "null_reasons",
+        "primary_amount",
+        "secondary_amount",
+        "participants_complete",
+        "funding_history_complete",
+        "aggregation_permitted_without_review"
+      ],
+      "additionalProperties": false
+    },
+    "observation": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "startup_candidate": {
+          "type": "boolean"
+        },
+        "raw_ref": {
+          "$ref": "#/$defs/raw_ref"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "field_mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field_mapping"
+          }
+        },
+        "observation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "debt_capacity",
+            "proposed_capital_increase",
+            "later_same_round_total",
+            "first_tranche",
+            "venture_debt_availability",
+            "mixed_aggregate_reference",
+            "earlier_same_round_total",
+            "extension_component"
+          ]
+        },
+        "linked_event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "round_group_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transaction_kind": {
+          "enum": [
+            "equity",
+            "debt",
+            "mixed",
+            "unknown"
+          ]
+        },
+        "completion_status": {
+          "enum": [
+            "reported_financing_observation",
+            "capacity_not_drawdown",
+            "proposal_not_completed",
+            "not_yet_fully_finalized",
+            "mixed_status_reference"
+          ]
+        },
+        "announced": {
+          "$ref": "#/$defs/date"
+        },
+        "closed": {
+          "$ref": "#/$defs/date"
+        },
+        "amount": {
+          "$ref": "#/$defs/amount"
+        },
+        "amount_scope": {
+          "enum": [
+            "facility_limit",
+            "proposal_ceiling",
+            "same_round_total",
+            "included_component",
+            "mixed_instrument_aggregate"
+          ]
+        },
+        "count_as_additional_completed_round": {
+          "const": false
+        },
+        "approximate_committed_fraction": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "company_id",
+        "startup_candidate",
+        "raw_ref",
+        "source_ids",
+        "claim_ids",
+        "field_mappings",
+        "observation_id",
+        "kind",
+        "linked_event_ids",
+        "round_group_id",
+        "transaction_kind",
+        "completion_status",
+        "announced",
+        "closed",
+        "amount",
+        "amount_scope",
+        "count_as_additional_completed_round",
+        "approximate_committed_fraction",
+        "note"
+      ],
+      "additionalProperties": false
+    },
+    "participant": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "startup_candidate": {
+          "type": "boolean"
+        },
+        "raw_ref": {
+          "$ref": "#/$defs/raw_ref"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "field_mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field_mapping"
+          }
+        },
+        "participation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_kind": {
+          "enum": [
+            "funding_event",
+            "financing_observation"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolved_investor_id": {
+          "type": "null"
+        },
+        "role": {
+          "enum": [
+            "lead",
+            "participant",
+            "lender",
+            "prospective_lender",
+            "subscriber_commitment"
+          ]
+        },
+        "participation_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "assertion_basis": {
+          "const": "explicit_named_relationship_in_reviewed_evidence"
+        },
+        "not_portfolio_inference": {
+          "const": true
+        }
+      },
+      "required": [
+        "company_id",
+        "startup_candidate",
+        "raw_ref",
+        "source_ids",
+        "claim_ids",
+        "field_mappings",
+        "participation_id",
+        "target_id",
+        "target_kind",
+        "name",
+        "resolved_investor_id",
+        "role",
+        "participation_scope",
+        "assertion_basis",
+        "not_portfolio_inference"
+      ],
+      "additionalProperties": false
+    },
+    "conflict": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "startup_candidate": {
+          "type": "boolean"
+        },
+        "raw_ref": {
+          "$ref": "#/$defs/raw_ref"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "field_mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field_mapping"
+          }
+        },
+        "conflict_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolution": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "company_id",
+        "startup_candidate",
+        "raw_ref",
+        "source_ids",
+        "claim_ids",
+        "field_mappings",
+        "conflict_id",
+        "event_ids",
+        "field",
+        "resolution"
+      ],
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "startup_candidate": {
+          "type": "boolean"
+        },
+        "raw_ref": {
+          "$ref": "#/$defs/raw_ref"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "field_mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field_mapping"
+          }
+        },
+        "context_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "acquisition_reference"
+        },
+        "count_as_funding_round": {
+          "const": false
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "company_id",
+        "startup_candidate",
+        "raw_ref",
+        "source_ids",
+        "claim_ids",
+        "field_mappings",
+        "context_id",
+        "kind",
+        "count_as_funding_round",
+        "note"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_ref": {
+          "$ref": "#/$defs/raw_ref"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "accessed": {
+          "const": true
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "published_on": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "acquisition": {
+          "const": "web_tool_page_read"
+        },
+        "retrieval_context": {
+          "type": "object"
+        },
+        "paraphrase": {
+          "type": "string",
+          "minLength": 1
+        },
+        "crawler_seed_approved": {
+          "const": false
+        }
+      },
+      "required": [
+        "source_id",
+        "raw_ref",
+        "url",
+        "title",
+        "publisher",
+        "source_kind",
+        "accessed",
+        "retrieved_at",
+        "published_on",
+        "acquisition",
+        "retrieval_context",
+        "paraphrase",
+        "crawler_seed_approved"
+      ],
+      "additionalProperties": false
+    },
+    "group": {
+      "type": "object",
+      "properties": {
+        "group_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "company_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "policy": {
+          "enum": [
+            "non_additive_overlapping_observations",
+            "separate_instruments_and_statuses",
+            "explicit_increment_without_derived_total"
+          ]
+        },
+        "preferred_total_record_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "group_id",
+        "company_id",
+        "record_ids",
+        "policy",
+        "preferred_total_record_id",
+        "reason"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

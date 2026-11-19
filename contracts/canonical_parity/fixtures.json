@@ -1,0 +1,97 @@
+{
+  "fixture_version": 1,
+  "source_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "main_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "checked_at": "2026-11-18T00:00:00+00:00",
+  "collection": {
+    "registry": {
+      "sources": [
+        {
+          "id": "directory-synthetic",
+          "name": "Synthetic Directory",
+          "url": "https://directory.example.test/list",
+          "scope": "Directory-only scope"
+        }
+      ]
+    },
+    "html": "<a href=\"https://programme.example.test/apply?track=source#terms\">Synthetic Founder Program</a>",
+    "final_url": "https://directory.example.test/list/current"
+  },
+  "inputs": {
+    "profiles": {
+      "Synthetic Firm": {
+        "people": [
+          {
+            "name": "Ada Example",
+            "source": "https://firm.example.test/team"
+          }
+        ]
+      }
+    },
+    "leads": ["Synthetic Firm"],
+    "reviewed": {},
+    "catalogue": {
+      "opportunities": [
+        {
+          "id": "synthetic-programme",
+          "name": "Synthetic Founder Program",
+          "org": "Synthetic Operator",
+          "url": "https://programme.example.test/apply?track=source#terms"
+        }
+      ]
+    },
+    "research": {
+      "startups": [
+        {
+          "name": "Café Synthetic",
+          "description": "Synthetic description",
+          "website": "https://startup.example.test/",
+          "source": "https://startup.example.test/about?x=1#evidence",
+          "reviewed_at": "2026-11-18",
+          "founders": [
+            {
+              "name": "Ada Example",
+              "source": "https://startup.example.test/team"
+            }
+          ],
+          "funding_rounds": [],
+          "profile_facts": [
+            {
+              "key": "synthetic-fact",
+              "label": "Synthetic fact",
+              "value": "value",
+              "source": "https://startup.example.test/evidence",
+              "reviewed_at": "2026-11-18"
+            }
+          ],
+          "socials": [],
+          "articles": [
+            {
+              "title": "Synthetic source announcement",
+              "url": "https://startup.example.test/news?item=1#evidence",
+              "kind": "news"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "expected": {
+    "entity_ids": [
+      "partner:synthetic-firm",
+      "person:ada-example",
+      "person:ada-example--synthetic-firm",
+      "programme:synthetic-programme",
+      "provider:synthetic-operator",
+      "startup:cafe-synthetic"
+    ],
+    "source_id": "directory-synthetic",
+    "source_url": "https://directory.example.test/list/current",
+    "program_url": "https://programme.example.test/apply?track=source#terms",
+    "startup_id": "startup:cafe-synthetic",
+    "founder_id": "person:ada-example",
+    "team_member_id": "person:ada-example--synthetic-firm",
+    "article_url": "https://startup.example.test/news?item=1#evidence",
+    "profile_fact_source": "https://startup.example.test/evidence"
+  }
+}

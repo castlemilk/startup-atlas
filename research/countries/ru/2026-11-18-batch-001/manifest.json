@@ -1,0 +1,86 @@
+{
+  "packet_id": "ru-gdp-08-20261118-001",
+  "country_code": "RU",
+  "country": "Russia",
+  "cohort": "IMF October2026 WEO,2026 nominal GDP NGDPD estimates; economy rows only; Taiwan separately reported",
+  "cohort_rank": 8,
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "branch": "research/ru-gdp-08-batch-001-20261118",
+  "owned_path": "research/countries/ru/2026-11-18-batch-001",
+  "delivery_state": "staged_for_pull_request",
+  "production_written": false,
+  "crawler_seed_approved": false,
+  "schema_changed": false,
+  "api_changed": false,
+  "reviewed_on": "2026-11-18",
+  "counts": {
+    "accepted": 19,
+    "held": 3,
+    "rejected": 2,
+    "queued": 18,
+    "discovered": 42,
+    "reviewed": 24,
+    "published": 0
+  },
+  "projection_contract": "Existing backend/hosted/src/startup-record.mjs only; research sidecars are documentation/data, not new production schema.",
+  "input_sha256": {
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "scripts/make-graph.py": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4"
+  },
+  "research_input_sha256": {
+    "segment-a/segment-a.json": "1ceec97f93dc8cb3e83984df43139e077a5b877730778c5da651530c97bb0e9a",
+    "segment-b/evidence.json": "05fc90215a088d68be5a0842d7dd9bf03bec8b19f96fc1c865585f616f709b1b",
+    "segment-root/segment-root.json": "92f3e335092ae90238faac6d72444c745d96959424d518cdde1aafb5af1f9420",
+    "ecosystem/ecosystem_research.json": "65d07b8cdb1903f8774bcbea2499e24d3d3682766685d40acda0cac1fe4ba60f"
+  },
+  "owners": {
+    "collection": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a"
+  },
+  "checksums": "SHA256SUMS covers all final packet files except itself; Git commit identifies the complete immutable tree.",
+  "tests": [
+    "node --test research/countries/ru/2026-11-18-batch-001/test_packet.mjs",
+    "python3 research/countries/ru/2026-11-18-batch-001/test_planner.py",
+    "node research/countries/ru/2026-11-18-batch-001/validate.mjs"
+  ],
+  "material_limits": [
+    "This checkpoint is neither a census nor a current-HQ ranking.",
+    "Partial founding, founder, current ownership, date, amount and investor identity gaps remain explicit.",
+    "No production import, allowlist approval, merge, release or deployment is part of this PR."
+  ],
+  "last_main_refresh": "2026-11-18T10:14:27Z",
+  "last_main_refresh_precision": "review_checkpoint",
+  "validation_tests_passed": 80,
+  "validation_receipts": [
+    "validation-receipt.json",
+    "record-validation.json",
+    "ledger-validation.json",
+    "REVIEW.md"
+  ],
+  "initial_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "owner_fix_adoption": {
+    "unknown_founding_year": {
+      "pr": 179,
+      "merge_commit": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+      "state": "merged_in_final_base",
+      "affected_records": [
+        "Celsus",
+        "Smart Engines",
+        "ROBBO",
+        "QRate",
+        "QApp"
+      ]
+    },
+    "funding_source_inheritance": {
+      "pr": 181,
+      "merge_commit": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+      "state": "merged_in_final_base"
+    },
+    "production_adoption": "Separate owner review/release; no production writes from this packet."
+  }
+}

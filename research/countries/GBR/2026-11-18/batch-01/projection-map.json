@@ -1,0 +1,2563 @@
+{
+  "projections": [
+    {
+      "entity_id": "startup:revolut",
+      "canonical_name": "Revolut",
+      "projection_group": "existing",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-fintech-revolut-001"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-98ed2b415519018e",
+          "claim_ids": [
+            "uk-fintech-revolut-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-b2e2edbc56f24a5e",
+          "claim_ids": [
+            "uk-fintech-revolut-007"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-3ca25923b6491b83",
+          "claim_ids": [
+            "uk-fintech-revolut-011"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-9c18f0bc00318ae1",
+          "claim_ids": [
+            "uk-fintech-revolut-012"
+          ]
+        }
+      ],
+      "existing_record_sha256": "6357e05b9b0c3d96bb4108ad2bf993c1554f87e3b5eea79bffaa4672141c9903",
+      "existing_source_and_rounds_preserved": true,
+      "new_founder_ids_require_global_review": false
+    },
+    {
+      "entity_id": "startup:monzo",
+      "canonical_name": "Monzo",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-fintech-monzo-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-fintech-monzo-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-fintech-monzo-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-fintech-monzo-004"
+          ]
+        },
+        {
+          "record_path": "founders.Tom Blomfield",
+          "claim_ids": [
+            "uk-fintech-monzo-008"
+          ]
+        },
+        {
+          "record_path": "founders.Gary Dolman",
+          "claim_ids": [
+            "uk-fintech-monzo-009"
+          ]
+        },
+        {
+          "record_path": "founders.Jonas Huckestein",
+          "claim_ids": [
+            "uk-fintech-monzo-010"
+          ]
+        },
+        {
+          "record_path": "founders.Paul Rippon",
+          "claim_ids": [
+            "uk-fintech-monzo-011"
+          ]
+        },
+        {
+          "record_path": "founders.Jason Bates",
+          "claim_ids": [
+            "uk-fintech-monzo-012"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.monzo-2024-03-funding",
+          "claim_ids": [
+            "uk-fintech-monzo-013"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-aa960f0db138756d",
+          "claim_ids": [
+            "uk-fintech-monzo-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-e37869157f266bac",
+          "claim_ids": [
+            "uk-fintech-monzo-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-8160f668e5c28b66",
+          "claim_ids": [
+            "uk-fintech-monzo-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-f10cc017b6065405",
+          "claim_ids": [
+            "uk-fintech-monzo-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-be099009e4404928",
+          "claim_ids": [
+            "uk-fintech-monzo-007"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:starling-bank",
+      "canonical_name": "Starling Bank",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-fintech-starling-bank-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-fintech-starling-bank-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-fintech-starling-bank-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-fintech-starling-bank-004"
+          ]
+        },
+        {
+          "record_path": "founders.Anne Boden",
+          "claim_ids": [
+            "uk-fintech-starling-bank-005"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.starling-2021-series-d",
+          "claim_ids": [
+            "uk-fintech-starling-bank-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-03de9759ab60b190",
+          "claim_ids": [
+            "uk-fintech-starling-bank-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-3a777e7e18975e0f",
+          "claim_ids": [
+            "uk-fintech-starling-bank-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-2952670656181ac4",
+          "claim_ids": [
+            "uk-fintech-starling-bank-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-bdb6c6fd4c344f8d",
+          "claim_ids": [
+            "uk-fintech-starling-bank-007"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-9df477b80ea4903d",
+          "claim_ids": [
+            "uk-fintech-starling-bank-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-fc9ac7cd75e5b62d",
+          "claim_ids": [
+            "uk-fintech-starling-bank-009"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:tide",
+      "canonical_name": "Tide",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-fintech-tide-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-fintech-tide-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-fintech-tide-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-fintech-tide-004"
+          ]
+        },
+        {
+          "record_path": "founders.George Bevis",
+          "claim_ids": [
+            "uk-fintech-tide-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-1e6f1d7d12a58fc7",
+          "claim_ids": [
+            "uk-fintech-tide-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-173acdccf0eea6c7",
+          "claim_ids": [
+            "uk-fintech-tide-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-cd4e601e70d08e3b",
+          "claim_ids": [
+            "uk-fintech-tide-007"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-83e022e5beeb7e88",
+          "claim_ids": [
+            "uk-fintech-tide-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-5851156bc8094fc0",
+          "claim_ids": [
+            "uk-fintech-tide-009"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:gocardless",
+      "canonical_name": "GoCardless",
+      "projection_group": "context",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-fintech-gocardless-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-fintech-gocardless-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-fintech-gocardless-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-fintech-gocardless-004"
+          ]
+        },
+        {
+          "record_path": "founders.Hiroki Takeuchi",
+          "claim_ids": [
+            "uk-fintech-gocardless-005"
+          ]
+        },
+        {
+          "record_path": "founders.Matt Robinson",
+          "claim_ids": [
+            "uk-fintech-gocardless-006"
+          ]
+        },
+        {
+          "record_path": "founders.Tom Blomfield",
+          "claim_ids": [
+            "uk-fintech-gocardless-007"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.gocardless-2022-series-g",
+          "claim_ids": [
+            "uk-fintech-gocardless-011"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-b410c8ccf8f91ee3",
+          "claim_ids": [
+            "uk-fintech-gocardless-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-899aa0d0c69bd4a3",
+          "claim_ids": [
+            "uk-fintech-gocardless-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-a81a802eb024139e",
+          "claim_ids": [
+            "uk-fintech-gocardless-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-c029a04b2f675507",
+          "claim_ids": [
+            "uk-fintech-gocardless-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-a30d7186ea96773b",
+          "claim_ids": [
+            "uk-fintech-gocardless-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-ad4f4327a8393f60",
+          "claim_ids": [
+            "uk-fintech-gocardless-014"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:zilch",
+      "canonical_name": "Zilch",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-fintech-zilch-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-fintech-zilch-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-fintech-zilch-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-fintech-zilch-004"
+          ]
+        },
+        {
+          "record_path": "founders.Philip Belamant",
+          "claim_ids": [
+            "uk-fintech-zilch-005"
+          ]
+        },
+        {
+          "record_path": "founders.Sean O’Connor",
+          "claim_ids": [
+            "uk-fintech-zilch-006"
+          ]
+        },
+        {
+          "record_path": "founders.Serge Belamant",
+          "claim_ids": [
+            "uk-fintech-zilch-007"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.zilch-2021-series-c",
+          "claim_ids": [
+            "uk-fintech-zilch-010"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.zilch-2022-series-c-extension",
+          "claim_ids": [
+            "uk-fintech-zilch-013"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6059ee20e7dff339",
+          "claim_ids": [
+            "uk-fintech-zilch-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-0ef2bf4c9b706c4a",
+          "claim_ids": [
+            "uk-fintech-zilch-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-370f7f2fca9b2f35",
+          "claim_ids": [
+            "uk-fintech-zilch-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-eaaa26befff2d568",
+          "claim_ids": [
+            "uk-fintech-zilch-009"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:cleo",
+      "canonical_name": "Cleo",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-fintech-cleo-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-fintech-cleo-003"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-fintech-cleo-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-fintech-cleo-006"
+          ]
+        },
+        {
+          "record_path": "founders.Barney Hussey-Yeo",
+          "claim_ids": [
+            "uk-fintech-cleo-007"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.cleo-2022-series-c",
+          "claim_ids": [
+            "uk-fintech-cleo-011"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-21c42025b1d1fc98",
+          "claim_ids": [
+            "uk-fintech-cleo-002"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-c5907a49a2220535",
+          "claim_ids": [
+            "uk-fintech-cleo-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-1f79fd451424f4ce",
+          "claim_ids": [
+            "uk-fintech-cleo-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-3e4ce26d5d5b746e",
+          "claim_ids": [
+            "uk-fintech-cleo-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-ae71ff6010dd99ad",
+          "claim_ids": [
+            "uk-fintech-cleo-010"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:stream",
+      "canonical_name": "Stream",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-fintech-stream-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-fintech-stream-004"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-fintech-stream-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-fintech-stream-006"
+          ]
+        },
+        {
+          "record_path": "founders.Peter Briffett",
+          "claim_ids": [
+            "uk-fintech-stream-007"
+          ]
+        },
+        {
+          "record_path": "founders.Portman Wills",
+          "claim_ids": [
+            "uk-fintech-stream-008"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.wagestream-2024-funding",
+          "claim_ids": [
+            "uk-fintech-stream-013"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.stream-2026-series-d",
+          "claim_ids": [
+            "uk-fintech-stream-017"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-1abc14b793ef2041",
+          "claim_ids": [
+            "uk-fintech-stream-002"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-171204e643dd2531",
+          "claim_ids": [
+            "uk-fintech-stream-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-cc7f707f20901438",
+          "claim_ids": [
+            "uk-fintech-stream-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-25c8ac2ba3400fa7",
+          "claim_ids": [
+            "uk-fintech-stream-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-44cedae5dd3c1fde",
+          "claim_ids": [
+            "uk-fintech-stream-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-534b2fd8651c8994",
+          "claim_ids": [
+            "uk-fintech-stream-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-7a671c1db7b938d4",
+          "claim_ids": [
+            "uk-fintech-stream-011"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-5e4d555c5d24fcb2",
+          "claim_ids": [
+            "uk-fintech-stream-012"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:wayve",
+      "canonical_name": "Wayve",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-ai-wayve-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-ai-wayve-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-ai-wayve-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-ai-wayve-003"
+          ]
+        },
+        {
+          "record_path": "founders.Alex Kendall",
+          "claim_ids": [
+            "uk-ai-wayve-004"
+          ]
+        },
+        {
+          "record_path": "founders.Amar Shah",
+          "claim_ids": [
+            "uk-ai-wayve-005"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.wayve-2026-series-d",
+          "claim_ids": [
+            "uk-ai-wayve-008"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.wayve-2026-series-d-extension-20260415",
+          "claim_ids": [
+            "uk-ai-wayve-023"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-d9224eb32e4da94f",
+          "claim_ids": [
+            "uk-ai-wayve-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-2094479c14d70172",
+          "claim_ids": [
+            "uk-ai-wayve-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-9bdec80ae874cf7d",
+          "claim_ids": [
+            "uk-ai-wayve-007"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:quantexa",
+      "canonical_name": "Quantexa",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-ai-quantexa-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-ai-quantexa-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-ai-quantexa-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-ai-quantexa-003"
+          ]
+        },
+        {
+          "record_path": "founders.Vishal Marria",
+          "claim_ids": [
+            "uk-ai-quantexa-004"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.quantexa-2025-series-f",
+          "claim_ids": [
+            "uk-ai-quantexa-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-c9e79da25634b2ba",
+          "claim_ids": [
+            "uk-ai-quantexa-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-91dc976abe2015bb",
+          "claim_ids": [
+            "uk-ai-quantexa-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-3e3440206b3f3a1e",
+          "claim_ids": [
+            "uk-ai-quantexa-007"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:polyai",
+      "canonical_name": "PolyAI",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-ai-polyai-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-ai-polyai-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-ai-polyai-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-ai-polyai-003"
+          ]
+        },
+        {
+          "record_path": "founders.Nikola Mrkšić",
+          "claim_ids": [
+            "uk-ai-polyai-004"
+          ]
+        },
+        {
+          "record_path": "founders.Shawn Wen",
+          "claim_ids": [
+            "uk-ai-polyai-005"
+          ]
+        },
+        {
+          "record_path": "founders.Eddy Su",
+          "claim_ids": [
+            "uk-ai-polyai-006"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.polyai-2025-series-d",
+          "claim_ids": [
+            "uk-ai-polyai-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-5e026bb051240e63",
+          "claim_ids": [
+            "uk-ai-polyai-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-2533bdea4cbacd7e",
+          "claim_ids": [
+            "uk-ai-polyai-007"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:luminance",
+      "canonical_name": "Luminance",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-ai-luminance-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-ai-luminance-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-ai-luminance-001"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.luminance-2025-series-c",
+          "claim_ids": [
+            "uk-ai-luminance-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-d2215a41faf93f8f",
+          "claim_ids": [
+            "uk-ai-luminance-003"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:matillion",
+      "canonical_name": "Matillion",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-ai-matillion-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-ai-matillion-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-ai-matillion-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-ai-matillion-003"
+          ]
+        },
+        {
+          "record_path": "founders.Matthew Scullion",
+          "claim_ids": [
+            "uk-ai-matillion-004"
+          ]
+        },
+        {
+          "record_path": "founders.Ed Thompson",
+          "claim_ids": [
+            "uk-ai-matillion-005"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.matillion-2021-series-e",
+          "claim_ids": [
+            "uk-ai-matillion-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-ddefcc6fd18497f1",
+          "claim_ids": [
+            "uk-ai-matillion-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-887a0d949c96c803",
+          "claim_ids": [
+            "uk-ai-matillion-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-77254b6e3a858405",
+          "claim_ids": [
+            "uk-ai-matillion-007"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:synthesia",
+      "canonical_name": "Synthesia",
+      "projection_group": "existing",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-ai-synthesia-001"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-0dced73b992dda65",
+          "claim_ids": [
+            "uk-ai-synthesia-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-d9ea090b37a00bf5",
+          "claim_ids": [
+            "uk-ai-synthesia-008"
+          ]
+        }
+      ],
+      "existing_record_sha256": "ba3bdebd2b0c35c9dea4e3dbab8a8140a151c028565a20b12bc7174b4c74104f",
+      "existing_source_and_rounds_preserved": true,
+      "new_founder_ids_require_global_review": false
+    },
+    {
+      "entity_id": "startup:tractable",
+      "canonical_name": "Tractable",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-ai-tractable-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-ai-tractable-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-ai-tractable-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-ai-tractable-003"
+          ]
+        },
+        {
+          "record_path": "founders.Alex Dalyac",
+          "claim_ids": [
+            "uk-ai-tractable-004"
+          ]
+        },
+        {
+          "record_path": "founders.Razvan Ranca",
+          "claim_ids": [
+            "uk-ai-tractable-005"
+          ]
+        },
+        {
+          "record_path": "founders.Adrien Cohen",
+          "claim_ids": [
+            "uk-ai-tractable-006"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.tractable-2023-series-e",
+          "claim_ids": [
+            "uk-ai-tractable-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-8d19432acbef8bfc",
+          "claim_ids": [
+            "uk-ai-tractable-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-8e3523342d2f72c6",
+          "claim_ids": [
+            "uk-ai-tractable-007"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:elevenlabs",
+      "canonical_name": "ElevenLabs",
+      "projection_group": "context",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-ai-elevenlabs-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-ai-elevenlabs-002"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-ai-elevenlabs-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-ai-elevenlabs-003"
+          ]
+        },
+        {
+          "record_path": "founders.Mati Staniszewski",
+          "claim_ids": [
+            "uk-ai-elevenlabs-004"
+          ]
+        },
+        {
+          "record_path": "founders.Piotr Dabkowski",
+          "claim_ids": [
+            "uk-ai-elevenlabs-005"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.elevenlabs-2026-series-d",
+          "claim_ids": [
+            "uk-ai-elevenlabs-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-1fae2b3d58b01c07",
+          "claim_ids": [
+            "uk-ai-elevenlabs-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6b833c379072a558",
+          "claim_ids": [
+            "uk-ai-elevenlabs-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-e747ebf92243d314",
+          "claim_ids": [
+            "uk-ai-elevenlabs-007"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:oxford-quantum-circuits",
+      "canonical_name": "Oxford Quantum Circuits",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-003"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-002"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-010"
+          ]
+        },
+        {
+          "record_path": "founders.Peter Leek",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-011"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.oxford-quantum-circuits-series-c-2026",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-014"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-1b64603cde07bd9f",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-57beb713de58dd29",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-8064bfbfce83d206",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-007"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-1f180085398f17bc",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-0acd6c96a3707d1e",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-20582863e473dd1b",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-012"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-22af227c0901cd55",
+          "claim_ids": [
+            "uk-dt-oxford-quantum-circuits-013"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:quantum-motion",
+      "canonical_name": "Quantum Motion",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-dt-quantum-motion-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-dt-quantum-motion-003"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-dt-quantum-motion-002"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-dt-quantum-motion-010"
+          ]
+        },
+        {
+          "record_path": "founders.Simon Benjamin",
+          "claim_ids": [
+            "uk-dt-quantum-motion-011"
+          ]
+        },
+        {
+          "record_path": "founders.John Morton",
+          "claim_ids": [
+            "uk-dt-quantum-motion-012"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.quantum-motion-series-c-first-close-2026",
+          "claim_ids": [
+            "uk-dt-quantum-motion-015"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.quantum-motion-series-c-second-close-2026",
+          "claim_ids": [
+            "uk-dt-quantum-motion-026"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-61837fe2457c592f",
+          "claim_ids": [
+            "uk-dt-quantum-motion-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-2e9c0eb602703e5d",
+          "claim_ids": [
+            "uk-dt-quantum-motion-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-c136445a40a579f8",
+          "claim_ids": [
+            "uk-dt-quantum-motion-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6fbf236739c021b9",
+          "claim_ids": [
+            "uk-dt-quantum-motion-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-49185cd65eb492ef",
+          "claim_ids": [
+            "uk-dt-quantum-motion-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-0e4788f7681c309b",
+          "claim_ids": [
+            "uk-dt-quantum-motion-013"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-b642cd243da47e96",
+          "claim_ids": [
+            "uk-dt-quantum-motion-014"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:riverlane",
+      "canonical_name": "Riverlane",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-dt-riverlane-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-dt-riverlane-003"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-dt-riverlane-002"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-dt-riverlane-011"
+          ]
+        },
+        {
+          "record_path": "founders.Steve Brierley",
+          "claim_ids": [
+            "uk-dt-riverlane-012"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.riverlane-series-c-2024",
+          "claim_ids": [
+            "uk-dt-riverlane-015"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-b4f217cfea3f3709",
+          "claim_ids": [
+            "uk-dt-riverlane-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6f70d8da961cb511",
+          "claim_ids": [
+            "uk-dt-riverlane-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6978283b044737c9",
+          "claim_ids": [
+            "uk-dt-riverlane-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-609f1cbf6f666906",
+          "claim_ids": [
+            "uk-dt-riverlane-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-c8ba6e827261d6e6",
+          "claim_ids": [
+            "uk-dt-riverlane-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-06156a9ce26b2897",
+          "claim_ids": [
+            "uk-dt-riverlane-011"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-f5cb7dcc2b6caaac",
+          "claim_ids": [
+            "uk-dt-riverlane-013"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-4d8318bdc6837312",
+          "claim_ids": [
+            "uk-dt-riverlane-014"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-612ebb5a8bd80b37",
+          "claim_ids": [
+            "uk-dt-riverlane-024"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:cmr-surgical",
+      "canonical_name": "CMR Surgical",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-003"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-002"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-011"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.cmr-surgical-stryker-preferred-investment-2026",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-019"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-9c4b58a8b90b0761",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-c047f739458855e5",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-5538713c1f8d931b",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-9f7dc9110f0645dc",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-19d16db6d2e4e681",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-58969e9d2aecc435",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-011"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-4b32299becbd175d",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-014"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-ca527c586fb8a819",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-015"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-30e3179dc7e9d050",
+          "claim_ids": [
+            "uk-dt-cmr-surgical-021"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:pragmatic-semiconductor",
+      "canonical_name": "Pragmatic Semiconductor",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-003"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-002"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-011"
+          ]
+        },
+        {
+          "record_path": "founders.Scott White",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-012"
+          ]
+        },
+        {
+          "record_path": "founders.Richard Price",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-013"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.pragmatic-semiconductor-series-d-first-close-2023",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-016"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-a3615e2eb2a3af65",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-8a3548a182a0ec78",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-888971ee3f03191c",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-1d18414a15740af2",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-7a533363a70fe245",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-487a226545aa659b",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-011"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-280fd10b00131ab1",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-014"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-0472320ac7c66c12",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-015"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-54213b2262fbb374",
+          "claim_ids": [
+            "uk-dt-pragmatic-semiconductor-025"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:paragraf",
+      "canonical_name": "Paragraf",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-dt-paragraf-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-dt-paragraf-003"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-dt-paragraf-002"
+          ]
+        },
+        {
+          "record_path": "founders.Simon Thomas",
+          "claim_ids": [
+            "uk-dt-paragraf-013"
+          ]
+        },
+        {
+          "record_path": "founders.Colin Humphreys",
+          "claim_ids": [
+            "uk-dt-paragraf-014"
+          ]
+        },
+        {
+          "record_path": "founders.Ivor Guiney",
+          "claim_ids": [
+            "uk-dt-paragraf-015"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.paragraf-series-c-2025",
+          "claim_ids": [
+            "uk-dt-paragraf-018"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.paragraf-series-a-2019",
+          "claim_ids": [
+            "uk-dt-paragraf-020"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6f77929749d88c81",
+          "claim_ids": [
+            "uk-dt-paragraf-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-c8cf709cbb1c9acb",
+          "claim_ids": [
+            "uk-dt-paragraf-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-7e3013fc0640d229",
+          "claim_ids": [
+            "uk-dt-paragraf-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-68a03aa6f8e40793",
+          "claim_ids": [
+            "uk-dt-paragraf-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-874a78345204fd76",
+          "claim_ids": [
+            "uk-dt-paragraf-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-3a58b4e3f9e01ac8",
+          "claim_ids": [
+            "uk-dt-paragraf-011"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-0c1aa42056f98557",
+          "claim_ids": [
+            "uk-dt-paragraf-012"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-f83b957682b20a41",
+          "claim_ids": [
+            "uk-dt-paragraf-016"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6706efc012a85943",
+          "claim_ids": [
+            "uk-dt-paragraf-017"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:tokamak-energy",
+      "canonical_name": "Tokamak Energy",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-003"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-002"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-011"
+          ]
+        },
+        {
+          "record_path": "founders.David Kingham",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-012"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.tokamak-energy-funding-round-2024",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-015"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-679bc47c433a13b6",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-c1785151b66b3607",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-2fd6186c29298fb5",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-1df13463e9e9e441",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-00b86d963a11c6ad",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-bd1e3e3985b4bdcd",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-011"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-a70255ebb78e439b",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-013"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-4fa1d3070d786789",
+          "claim_ids": [
+            "uk-dt-tokamak-energy-014"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:oxford-ionics",
+      "canonical_name": "Oxford Ionics",
+      "projection_group": "context",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-003"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-002"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-010"
+          ]
+        },
+        {
+          "record_path": "founders.Chris Ballance",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-011"
+          ]
+        },
+        {
+          "record_path": "founders.Tom Harty",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-012"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.oxford-ionics-series-a-2023",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-015"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-2601d1b6964ccf0d",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-e2218e4a7f1ee1ed",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-8e5051b9c471dc7c",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-bfa6ccef0aacdb4f",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-3bf5978d866f1f71",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-19824c0cb5f2bdaf",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-013"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-90e6b4f649f35e84",
+          "claim_ids": [
+            "uk-dt-oxford-ionics-014"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:chemify",
+      "canonical_name": "Chemify",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-regions-chemify-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-regions-chemify-008"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-regions-chemify-001"
+          ]
+        },
+        {
+          "record_path": "founders.Lee Cronin",
+          "claim_ids": [
+            "uk-regions-chemify-010"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.chemify-series-b-2025",
+          "claim_ids": [
+            "uk-regions-chemify-011"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-11d7f925a4dee696",
+          "claim_ids": [
+            "uk-regions-chemify-002"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-a198949f3b39c1cb",
+          "claim_ids": [
+            "uk-regions-chemify-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6181631351702ef2",
+          "claim_ids": [
+            "uk-regions-chemify-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-791c0de04a6a09d8",
+          "claim_ids": [
+            "uk-regions-chemify-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-7f8ae80454e62308",
+          "claim_ids": [
+            "uk-regions-chemify-007"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-4d81130c01677651",
+          "claim_ids": [
+            "uk-regions-chemify-020"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-58a057ad7934a319",
+          "claim_ids": [
+            "uk-regions-chemify-021"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:mialgae",
+      "canonical_name": "MiAlgae",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-regions-mialgae-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-regions-mialgae-006"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-regions-mialgae-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-regions-mialgae-005"
+          ]
+        },
+        {
+          "record_path": "founders.Douglas Martin",
+          "claim_ids": [
+            "uk-regions-mialgae-008"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.mialgae-financing-2024",
+          "claim_ids": [
+            "uk-regions-mialgae-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6a7a8df1eeaad4c3",
+          "claim_ids": [
+            "uk-regions-mialgae-002"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-1a3074a660a1c7ce",
+          "claim_ids": [
+            "uk-regions-mialgae-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-456bd518ee9f4db7",
+          "claim_ids": [
+            "uk-regions-mialgae-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-2e9a2c4e85cdce61",
+          "claim_ids": [
+            "uk-regions-mialgae-005"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:enterobiotix",
+      "canonical_name": "EnteroBiotix",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-regions-enterobiotix-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-regions-enterobiotix-005"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-regions-enterobiotix-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-regions-enterobiotix-004"
+          ]
+        },
+        {
+          "record_path": "founders.James McIlroy",
+          "claim_ids": [
+            "uk-regions-enterobiotix-007"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.enterobiotix-financing-2026",
+          "claim_ids": [
+            "uk-regions-enterobiotix-015"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-2287383826c7c192",
+          "claim_ids": [
+            "uk-regions-enterobiotix-002"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-f1c693e9a5bce1e2",
+          "claim_ids": [
+            "uk-regions-enterobiotix-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6d12cfd0d68fd342",
+          "claim_ids": [
+            "uk-regions-enterobiotix-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-36bcbbeff0e9ab19",
+          "claim_ids": [
+            "uk-regions-enterobiotix-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-05c8bfb7ddaca7d5",
+          "claim_ids": [
+            "uk-regions-enterobiotix-009"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:amiqus",
+      "canonical_name": "Amiqus",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-regions-amiqus-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-regions-amiqus-007"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-regions-amiqus-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-regions-amiqus-005"
+          ]
+        },
+        {
+          "record_path": "founders.Callum Murray",
+          "claim_ids": [
+            "uk-regions-amiqus-006"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.amiqus-as-capital-investment-2019",
+          "claim_ids": [
+            "uk-regions-amiqus-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-baa318d8259bcaf7",
+          "claim_ids": [
+            "uk-regions-amiqus-002"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6049527e68b1997b",
+          "claim_ids": [
+            "uk-regions-amiqus-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-35b7e6e3782d57c2",
+          "claim_ids": [
+            "uk-regions-amiqus-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-53e5315fcb5251e6",
+          "claim_ids": [
+            "uk-regions-amiqus-005"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:space-forge",
+      "canonical_name": "Space Forge",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-regions-space-forge-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-regions-space-forge-006"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-regions-space-forge-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-regions-space-forge-005"
+          ]
+        },
+        {
+          "record_path": "founders.Joshua Western",
+          "claim_ids": [
+            "uk-regions-space-forge-008"
+          ]
+        },
+        {
+          "record_path": "founders.Andrew Bacon",
+          "claim_ids": [
+            "uk-regions-space-forge-009"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.space-forge-series-a-2025",
+          "claim_ids": [
+            "uk-regions-space-forge-010"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-4060642ae0d38e84",
+          "claim_ids": [
+            "uk-regions-space-forge-002"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-480c265195d7bb55",
+          "claim_ids": [
+            "uk-regions-space-forge-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-ff0b00f123aca648",
+          "claim_ids": [
+            "uk-regions-space-forge-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-2e39584fa5a2d4f6",
+          "claim_ids": [
+            "uk-regions-space-forge-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-7c6be2d1554b294f",
+          "claim_ids": [
+            "uk-regions-space-forge-023"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:phion-therapeutics",
+      "canonical_name": "Phion Therapeutics",
+      "projection_group": "context",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-regions-phion-therapeutics-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-regions-phion-therapeutics-005"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-regions-phion-therapeutics-001"
+          ]
+        },
+        {
+          "record_path": "founders.Helen McCarthy",
+          "claim_ids": [
+            "uk-regions-phion-therapeutics-007"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.phion-invox-second-tranche-2023",
+          "claim_ids": [
+            "uk-regions-phion-therapeutics-009"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-cc5ce62c1de08933",
+          "claim_ids": [
+            "uk-regions-phion-therapeutics-002"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-fc44ed4139f9b010",
+          "claim_ids": [
+            "uk-regions-phion-therapeutics-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-6f5cf88685d695bb",
+          "claim_ids": [
+            "uk-regions-phion-therapeutics-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-4c28a3fb59833803",
+          "claim_ids": [
+            "uk-regions-phion-therapeutics-012"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:cumulus-neuroscience",
+      "canonical_name": "Cumulus Neuroscience",
+      "projection_group": "new",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-008"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-006"
+          ]
+        },
+        {
+          "record_path": "founders.Brian Murphy",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-010"
+          ]
+        },
+        {
+          "record_path": "founders.Ronan Cunningham",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-011"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.cumulus-financing-2021",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-012"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-9d69f93e4aa821df",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-002"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-b66b2e9d0d796166",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-fba9c20a3c6d8579",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-d9fe6a40fd75caeb",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-404444af6b56325b",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-c3ab76e9f4ce525a",
+          "claim_ids": [
+            "uk-regions-cumulus-neuroscience-007"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    },
+    {
+      "entity_id": "startup:ultraleap",
+      "canonical_name": "Ultraleap",
+      "projection_group": "context",
+      "claim_map": [
+        {
+          "record_path": "name",
+          "claim_ids": [
+            "uk-regions-ultraleap-001"
+          ]
+        },
+        {
+          "record_path": "description",
+          "claim_ids": [
+            "uk-regions-ultraleap-009"
+          ]
+        },
+        {
+          "record_path": "website",
+          "claim_ids": [
+            "uk-regions-ultraleap-001"
+          ]
+        },
+        {
+          "record_path": "founded_year",
+          "claim_ids": [
+            "uk-regions-ultraleap-008"
+          ]
+        },
+        {
+          "record_path": "founders.Tom Carter",
+          "claim_ids": [
+            "uk-regions-ultraleap-011"
+          ]
+        },
+        {
+          "record_path": "funding_rounds.ultraleap-series-d-2021",
+          "claim_ids": [
+            "uk-regions-ultraleap-012"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-a48388c9aa9d3ad1",
+          "claim_ids": [
+            "uk-regions-ultraleap-002"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-7a2b87d633624ef4",
+          "claim_ids": [
+            "uk-regions-ultraleap-003"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-64b727b6768e1cba",
+          "claim_ids": [
+            "uk-regions-ultraleap-004"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-ed3bf6cb5f4fd138",
+          "claim_ids": [
+            "uk-regions-ultraleap-005"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-2d3998cd4b529b0a",
+          "claim_ids": [
+            "uk-regions-ultraleap-006"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-93937c72f9ef60c3",
+          "claim_ids": [
+            "uk-regions-ultraleap-007"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-a84f00651bed168c",
+          "claim_ids": [
+            "uk-regions-ultraleap-008"
+          ]
+        },
+        {
+          "record_path": "profile_facts.uk-b01-4002fbb30742c6c7",
+          "claim_ids": [
+            "uk-regions-ultraleap-018"
+          ]
+        }
+      ],
+      "existing_record_sha256": null,
+      "existing_source_and_rounds_preserved": false,
+      "new_founder_ids_require_global_review": true
+    }
+  ],
+  "policy": "Strict existing schema only. Profile facts retain source-scoped claims; full typed provenance lives in sidecars. Existing funding and founders are never replaced by this projection."
+}

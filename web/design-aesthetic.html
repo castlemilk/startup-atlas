@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#fafafc">
+  <meta name="description" content="Signal: a sharper visual direction for Startup Atlas. Explore custom feature graphics, light and dark surfaces, navigation and header specimens, and the rules behind the system.">
+  <title>Signal — Startup Atlas aesthetic lab</title>
+  <link rel="stylesheet" href="./design-aesthetic-tokens.css">
+  <link rel="stylesheet" href="./design-aesthetic.css">
+  <link rel="stylesheet" href="./signal-controls.css">
+  <script type="module" src="./design-aesthetic.js"></script>
+</head>
+<body class="signal-app" data-theme="light">
+  <a class="signal-skip" href="#signal-main">Skip to aesthetic lab</a>
+  <header class="signal-topbar signal-wrap">
+    <a class="signal-brand" href="./design-lab.html" aria-label="Startup Atlas design lab"><span class="signal-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="signal-brand-light">atlas</span><small>Signal / aesthetic lab</small></span></a>
+    <nav class="signal-topnav" aria-label="Aesthetic lab"><a href="#applications">Applications</a><a href="#controls">Controls</a><a href="#graphics">Feature graphics</a><a href="#foundations">Foundations</a></nav>
+    <a class="signal-back" href="./design-lab.html">All studies <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="signal-main">
+    <section class="signal-hero signal-wrap" aria-labelledby="signal-title">
+      <div class="signal-hero-copy">
+        <p class="signal-eyebrow"><span class="signal-indicator" aria-hidden="true"></span> A new direction for Startup Atlas</p>
+        <h1 id="signal-title">A clearer view<br>of the ecosystem.</h1>
+        <p class="signal-lead">Precise interfaces. Distinctive feature graphics. One visual language for finding companies and following connections.</p>
+        <div class="signal-actions"><a class="signal-button signal-button-primary" href="#applications">Explore the direction <span aria-hidden="true">↓</span></a><a class="signal-text-link" href="./docs/AESTHETIC-DIRECTION.md">Read the design brief <span aria-hidden="true">↗</span></a></div>
+        <p class="signal-hero-note"><span class="signal-status-label">Proposed aesthetic</span> The next visual chapter of Atlas.</p>
+      </div>
+      <figure class="signal-hero-art">
+        <img id="signal-hero-art" src="./assets/design-lab/signal-graph.webp" width="1024" height="1024" alt="A sparse junction of square metal and porcelain nodes with one cobalt selected node." fetchpriority="high">
+        <figcaption><span><span class="signal-art-kicker">The feature language</span><strong id="signal-hero-feature">Knowledge graph</strong></span><span class="signal-art-code" id="signal-hero-shape">Junction</span></figcaption>
+      </figure>
+    </section>
+
+    <div class="signal-principles signal-wrap" id="signal-principles"></div>
+
+    <section id="applications" class="signal-section signal-wrap" aria-labelledby="signal-applications-title">
+      <div class="signal-section-heading"><div><p class="signal-eyebrow">Navigation → feature → workspace</p><h2 id="signal-applications-title">See the system<br>in context.</h2></div><p>Choose a feature, then switch between its navigation and header treatments. The same forms hold together in light and dark.</p></div>
+      <div id="signal-feature-tabs" class="signal-feature-tabs" role="group" aria-label="Choose a feature"></div>
+      <div class="signal-preview-controls">
+        <div class="signal-control-group"><span id="signal-placement-label">Placement</span><div class="signal-segment" role="group" aria-labelledby="signal-placement-label"><button type="button" id="signal-placement-menu" aria-pressed="true">Feature menu</button><button type="button" id="signal-placement-header" aria-pressed="false">Page header</button></div></div>
+        <div class="signal-control-group"><span id="signal-theme-label">Appearance</span><div class="signal-segment" role="group" aria-labelledby="signal-theme-label"><button type="button" id="signal-theme-light" aria-pressed="true">Light</button><button type="button" id="signal-theme-dark" aria-pressed="false">Dark</button></div></div>
+      </div>
+
+      <div id="signal-preview" class="signal-preview" data-feature="graph" data-placement="menu">
+        <nav class="signal-product-nav" aria-label="Product navigation preview">
+          <span class="signal-product-brand"><span class="signal-brand-mark signal-brand-mark-small" aria-hidden="true"><i></i><i></i><i></i><i></i></span>startupatlas</span>
+          <button type="button" id="signal-menu-toggle" class="signal-menu-toggle" aria-expanded="true" aria-controls="signal-menu">Explore <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></button>
+          <span class="signal-specimen-label">Navigation specimen</span>
+        </nav>
+        <div class="signal-preview-main">
+          <div class="signal-preview-copy">
+            <div id="signal-menu" class="signal-menu" role="group" aria-label="Feature menu"></div>
+            <div id="signal-header-copy" class="signal-header-copy" hidden><p id="signal-preview-verb" class="signal-eyebrow">Explore the ecosystem</p><h3 id="signal-header-title">Knowledge graph</h3><p id="signal-header-description"></p><a id="signal-header-link" class="signal-button signal-button-primary" href="./graph.html">Explore the graph <span aria-hidden="true">↗</span></a></div>
+          </div>
+          <div class="signal-preview-visual">
+            <div class="signal-preview-image"><img id="signal-preview-art" src="./assets/design-lab/signal-graph.webp" width="1024" height="1024" alt="A sparse junction of square metal and porcelain nodes with one cobalt selected node." decoding="async"></div>
+            <div class="signal-preview-caption"><div><p id="signal-preview-shape" class="signal-art-kicker">Junction</p><h3 id="signal-preview-title">Knowledge graph</h3><p id="signal-preview-description"></p></div><a id="signal-live-link" class="signal-text-link" href="./graph.html">Explore the graph <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="signal-preview-footnote"><p id="signal-selection-status" role="status" aria-live="polite">Knowledge graph selected. Feature menu in light appearance.</p><p>Illustrative feature art · Working-view links open the current Atlas.</p></div>
+    </section>
+
+    <section id="controls" class="signal-section signal-controls-section" aria-labelledby="signal-controls-title">
+      <div class="signal-wrap">
+        <div class="signal-section-heading"><div><p class="signal-eyebrow">Material becomes interaction</p><h2 id="signal-controls-title">Give the interface<br>a physical feel.</h2></div><div class="signal-controls-intro"><p>Soft bevels, recessed fields and rounded trays connect the interface to the feature instruments. Compare depth and corner treatments, then try a small directory.</p><div class="signal-control-group"><span id="signal-controls-theme-label">Appearance</span><div class="signal-segment" role="group" aria-labelledby="signal-controls-theme-label"><button type="button" id="signal-controls-theme-light" aria-pressed="true">Light</button><button type="button" id="signal-controls-theme-dark" aria-pressed="false">Dark</button></div></div></div></div>
+        <div id="signal-controls-workbench"></div>
+        <div class="signal-controls-resources"><a class="signal-text-link" href="./docs/SIGNAL-COMPONENTS.md">Read the component direction <span aria-hidden="true">↗</span></a><a class="signal-text-link" href="./signal-controls.css" download>Download component styles <span aria-hidden="true">↓</span></a><a class="signal-text-link" href="#component-field-guide">Explore the component field guide <span aria-hidden="true">↓</span></a><a class="signal-text-link" href="#reference-measurements">See reference measurements <span aria-hidden="true">↓</span></a></div>
+      </div>
+    </section>
+
+    <section id="component-field-guide" class="signal-section signal-wrap" aria-labelledby="signal-field-guide-title">
+      <div class="signal-section-heading"><div><p class="signal-eyebrow">Component field guide · New interpretation</p><h2 id="signal-field-guide-title">One material.<br>Different responsibilities.</h2></div><p>The recovered Signal boards guide this new interpretation. They are concepts, not screenshots of implemented features. Keep the physical cues consistent while giving every element a precise job.</p></div>
+      <div class="signal-foundation-grid">
+        <article class="signal-foundation"><p class="signal-art-kicker">Core controls</p><h3>Touch the control.<br>Keep the label still.</h3><dl class="signal-field-guide-list"><div><dt>Actions</dt><dd>A raised face and shallow lip; pressing depresses the face, never the surrounding layout.</dd></div><div><dt>Search &amp; input</dt><dd>A recessed well, persistent label and separate focus ring. Clearing returns focus to the input.</dd></div><div><dt>View switch</dt><dd>A shared tray with one selected segment. Selection is stable; hover is temporary.</dd></div><div><dt>Filters &amp; choices</dt><dd>Aligned triggers, explicit selected values and a checkmark. Open menus keep keyboard focus visible.</dd></div><div><dt>Feedback</dt><dd>Readable status beside its cause. Loading keeps dimensions stable; failure keeps a recovery action.</dd></div></dl><a class="signal-text-link" href="#controls">Try the existing controls <span aria-hidden="true">↑</span></a></article>
+        <article class="signal-foundation"><p class="signal-art-kicker">Research surfaces</p><h3>Raise the workspace.<br>Leave the data flat.</h3><dl class="signal-field-guide-list"><div><dt>Result rows</dt><dd>Quiet separators inside one tray. A rail and marker connect the selected company to its inspector.</dd></div><div><dt>Company &amp; partner</dt><dd>Identity first, then facts and sources. Decorative badges must not imply verified eligibility.</dd></div><div><dt>Treemap</dt><dd>Area describes the selected measure, never decoration. Selection adds an outline without resizing a company.</dd></div><div><dt>Knowledge graph</dt><dd>Keep root, inspected node and keyboard focus distinct. Motion must not invent a relationship.</dd></div><div><dt>MCP connection</dt><dd>Show actual connection state and a clear next action. Artwork is not evidence that a connection succeeded.</dd></div></dl><a class="signal-text-link" href="./design-system.html">Inspect the working views <span aria-hidden="true">↗</span></a></article>
+        <article class="signal-foundation"><p class="signal-art-kicker">Feature identity</p><h3>A recognisable object.<br>A functional symbol.</h3><dl class="signal-field-guide-list"><div><dt>Navigation</dt><dd>Pair the compact symbol with a visible feature name. Keep the larger object in a supporting preview.</dd></div><div><dt>Headers</dt><dd>One feature object, one useful explanation and a direct link into the working view.</dd></div><div><dt>Materials</dt><dd>Satin face, recessed edge and one cobalt key. Depth belongs to actionable layers, not every row.</dd></div><div><dt>Effects</dt><dd>Respond to a deliberate action. Do not tilt labels, drift data or require hover to reveal a destination.</dd></div><div><dt>Reduced motion</dt><dd>Keep the same information and selected state without travel, bounce or continuous animation.</dd></div></dl><a class="signal-text-link" href="#applications">Compare feature treatments <span aria-hidden="true">↑</span></a></article>
+      </div>
+      <div class="signal-foundation-footer"><p>Bencho informs action-led micro-interactions; SPEC-01 informs the hardware reference. Neither library is installed by this field guide. The current UI SDK remains the behaviour owner.</p><a class="signal-text-link" href="./docs/SIGNAL-COMPONENTS.md#recovered-board-interpretation">Read scope and implementation notes <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section id="graphics" class="signal-section signal-family-section" aria-labelledby="signal-graphics-title">
+      <div class="signal-wrap">
+        <div class="signal-section-heading"><div><p class="signal-eyebrow">The first feature family</p><h2 id="signal-graphics-title">Different jobs.<br>Same construction.</h2></div><p>Satin metal, porcelain faces and graphite recesses. One cobalt component brings the important part into focus. Each operation has its own silhouette, framed on porcelain white in either theme.</p></div>
+        <div id="signal-graphics" class="signal-graphic-grid"></div>
+        <div class="signal-usage-strip"><div><span>Small</span><strong>Symbols</strong><p>16–48px · controls and compact navigation</p></div><div><span>Medium</span><strong>Feature objects</strong><p>80–120px · menu previews and feature entries</p></div><div><span>Large</span><strong>Feature headers</strong><p>240–480px · a clear subject with room to breathe</p></div></div>
+      </div>
+    </section>
+
+    <section id="foundations" class="signal-section signal-wrap" aria-labelledby="signal-foundations-title">
+      <div class="signal-section-heading"><div><p class="signal-eyebrow">Core aesthetic</p><h2 id="signal-foundations-title">Precision in the<br>small decisions.</h2></div><p>The artwork supplies character. Type, spacing and surfaces keep the interface clear. These proposed foundations are isolated to this exploration.</p></div>
+      <div class="signal-foundation-grid">
+        <article class="signal-foundation signal-type-specimen"><p class="signal-art-kicker">Typography</p><span class="signal-type-sample">Aa<span>↗</span></span><h3>Geist Sans</h3><p class="signal-type-copy">A complete name.<br>A clear next step.</p><div class="signal-mono-sample"><span>Geist Mono</span><code>entity:atlas / 24.0</code></div><p class="signal-small">Sans for reading and action. Mono for identifiers and measurements.</p></article>
+        <article class="signal-foundation"><p class="signal-art-kicker">Colour roles</p><h3>A neutral field.<br>One active signal.</h3><div id="signal-palette" class="signal-palette"></div><p class="signal-small">Selection and keyboard focus remain visible through shape and position as well as colour.</p></article>
+        <article class="signal-foundation signal-material-specimen"><p class="signal-art-kicker">Edges &amp; surfaces</p><div class="signal-surface-demo" aria-hidden="true"><div class="signal-surface-under"></div><div class="signal-surface-over"><span></span><i></i><i></i></div></div><h3>Engineered, with softer edges.</h3><p class="signal-small">A subtle bevel on controls. Recessed fields. Rounded panels that follow their scale.</p><dl class="signal-spec-list"><div><dt>Controls</dt><dd>10px radius</dd></div><div><dt>Selected rows</dt><dd>12px radius</dd></div><div><dt>Panels</dt><dd>18px radius</dd></div><div><dt>Feature frames</dt><dd>24px radius</dd></div><div><dt>Spacing</dt><dd>4px base</dd></div></dl></article>
+      </div>
+      <div class="signal-foundation-footer"><a class="signal-text-link" href="./design-aesthetic-tokens.css" download>Download proposed tokens <span aria-hidden="true">↓</span></a><p>Light and dark use the same roles. Motion follows an action and respects reduced motion.</p></div>
+      <div class="signal-symbol-heading"><div><p class="signal-eyebrow">A smaller expression</p><h3>Drawn to stay clear.</h3></div><p>Editable, background-free SVG symbols preserve each feature’s structure at navigation size.</p></div>
+      <div id="signal-symbols" class="signal-symbol-grid"></div>
+    </section>
+
+    <section class="signal-section signal-board-section" aria-labelledby="signal-board-title"><div class="signal-wrap">
+      <div class="signal-section-heading"><div><p class="signal-eyebrow">Material &amp; form</p><h2 id="signal-board-title">The world behind<br>the interface.</h2></div><p>The direction board fixes the family’s camera, light, material and silhouette. New assets begin with these shared decisions.</p></div>
+      <figure class="signal-system-board"><img id="signal-system-art" src="./assets/design-lab/signal-system.webp" width="1536" height="1024" alt="Signal art-direction board with four technical feature instruments, a neutral and cobalt palette, and a dark surface comparison." loading="lazy" decoding="async"><figcaption><span>Signal · core aesthetic study</span><a class="signal-text-link" href="./assets/design-lab/signal-system.webp" download>Download the board <span aria-hidden="true">↓</span></a></figcaption></figure>
+    </div></section>
+
+    <section class="signal-section signal-wrap signal-production-section" aria-labelledby="signal-production-title">
+      <div><p class="signal-eyebrow">A repeatable language</p><h2 id="signal-production-title">Ready for the<br>next asset.</h2><p class="signal-production-intro">Keep the material, camera and light fixed. Change the feature’s structure. Review its silhouette at small size, then use the same form in its header.</p><a class="signal-button signal-button-primary" href="./assets/design-lab/atlas-design-kit.zip" download>Download the design kit <span aria-hidden="true">↓</span></a><a class="signal-production-guide signal-text-link" href="./docs/AESTHETIC-DIRECTION.md">Read the full production guide <span aria-hidden="true">↗</span></a></div>
+      <div id="signal-prompts" class="signal-prompts"></div>
+    </section>
+
+    <section class="signal-reference-section signal-wrap" aria-labelledby="signal-reference-title"><div><p class="signal-eyebrow">References &amp; interpretation</p><h2 id="signal-reference-title">Learn from the method.<br>Make the language our own.</h2><p>Feature recognition from Granola. A coherent graphic world from Clay. Interface precision from Geist.</p></div><div id="signal-references"></div></section>
+
+    <section id="reference-measurements" class="signal-measurements signal-wrap" aria-labelledby="signal-measurements-title">
+      <div class="signal-measurements-heading"><div><p class="signal-eyebrow">Reference extraction · 17 November 2026</p><h2 id="signal-measurements-title">Measured, then interpreted.</h2></div><p>29 rendered elements across three reference pages. Desktop light measurements inform the direction; Signal keeps its own palette, type and tactile controls.</p></div>
+      <div class="signal-measurements-grid">
+        <article><span class="signal-measurement-index">01 / Granola</span><h3>8px menu corners</h3><p>A thin boundary, flat menu rows and pill-shaped actions. The feature artwork carries the character.</p><div><a href="./docs/reference-extraction/granola/tokens.json" download>Token JSON <span aria-hidden="true">↓</span></a><a href="./docs/reference-extraction/granola/tokens.css" download>Token CSS <span aria-hidden="true">↓</span></a></div></article>
+        <article><span class="signal-measurement-index">02 / Clay</span><h3>12px controls · 20px field</h3><p>Soft corners at different scales, with warm neutral fills. Sampled controls use flat surfaces.</p><div><a href="./docs/reference-extraction/clay/tokens.json" download>Token JSON <span aria-hidden="true">↓</span></a><a href="./docs/reference-extraction/clay/tokens.css" download>Token CSS <span aria-hidden="true">↓</span></a></div></article>
+        <article><span class="signal-measurement-index">03 / Geist</span><h3>6 / 12 / 16px materials</h3><p>Surface roles combine radius, fill and layered shadows. Elevation follows a component’s purpose.</p><div><a href="./docs/reference-extraction/geist/tokens.json" download>Token JSON <span aria-hidden="true">↓</span></a><a href="./docs/reference-extraction/geist/tokens.css" download>Token CSS <span aria-hidden="true">↓</span></a></div></article>
+      </div>
+      <div class="signal-measurements-footer"><p>Adapted with <a href="https://github.com/arvindrk/extract-design-system">extract-design-system</a>. The audit separates observed CSS, generated token candidates and Atlas decisions.</p><a class="signal-text-link" href="./docs/REFERENCE-EXTRACTION.md">Read the extraction audit <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+
+  <footer class="signal-footer signal-wrap"><a class="signal-brand" href="./design-lab.html"><span class="signal-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>startupatlas</a><p>Signal · Proposed aesthetic · November 2026</p><a href="#signal-main">Back to top <span aria-hidden="true">↑</span></a></footer>
+  <noscript><p class="signal-noscript">The direction, graphic files and design kit remain available. Enable JavaScript to explore feature selection, menu states and light/dark appearance.</p></noscript>
+</body>
+</html>

@@ -88,3 +88,13 @@ The bundle is `backend/hosted/dist/server/index.js`. Tests cover private setup i
 6. Use Sites' generated private plugin for MCP OAuth. Verify discovery, a catalogue read and unauthenticated denial through the actual client. Test a repository mutation only when the specific real entry and PR creation are authorized; never publish a synthetic fixture.
 
 Until these steps complete, this is tested source, **not a deployed or connected OAuth service**.
+
+## Canonical startup edits
+
+The [record editing contract](../../docs/MCP-RECORD-EDITS.md) documents the source
+tools `atlas_get_startup_record`, `atlas_validate_startup_edit`,
+`atlas_propose_startup_edit` and `atlas_get_startup_edit_proposal`. They preserve
+the current OAuth/Sites boundary and draft-PR-only writes. Validation and
+proposal receipts distinguish record digests, repository commits and published
+graph revisions; private MCP deployment and client tool discovery remain
+separate release checks.

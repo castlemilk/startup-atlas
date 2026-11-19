@@ -1,0 +1,492 @@
+{
+  "retrieved_on": "2026-11-18",
+  "segments": [
+    {
+      "segment": "a",
+      "search_log": [
+        {
+          "batch_id": "a01",
+          "engine": "system1_search_query",
+          "queries": [
+            "site.motorica.org о компании основатели инвестиции Москва",
+            "site.celsus.ai о компании основатели инвестиции",
+            "site.thirdopinion.ai компания основатели инвестиции",
+            "site.ntechlab.ru компания основатели инвестиции"
+          ],
+          "note": "Original query syntax retained; search discovery only."
+        },
+        {
+          "batch_id": "a02-a04",
+          "engine": "system1_search_query",
+          "themes": [
+            "Motorica investment and founder history",
+            "Celsus founders and funding",
+            "Third Opinion investors"
+          ],
+          "query_text": null,
+          "activity": "Company, annual-report, investor and founder-page opens; exact query strings not retained."
+        },
+        {
+          "batch_id": "a05-a07",
+          "engine": "system1_search_query",
+          "themes": [
+            "Smart Engines founders and company origin",
+            "Just AI founding and investment",
+            "ROBBO founder and financing",
+            "Promobot company and history",
+            "NtechLab founding and financing",
+            "MEDSI Third Opinion transaction"
+          ],
+          "query_text": null,
+          "activity": "Official company and investor discovery and opens."
+        },
+        {
+          "batch_id": "a08-a10",
+          "engine": "system1_search_query",
+          "themes": [
+            "NtechLab 2020 RDIF investment",
+            "MTS Just AI RUB187.7m",
+            "ROBBO investment history",
+            "Motorica Vasily Khlebnikov"
+          ],
+          "query_text": null,
+          "activity": "Targeted page reads and historical-date checks."
+        },
+        {
+          "batch_id": "a11",
+          "engine": "system2_search_query",
+          "queries": [
+            "site:robbo.ru инвестиции",
+            "site:rdif.ru NtechLab 2020",
+            "site:robotpromobot.ru investment",
+            "site:sk.ru Моторика Василий Хлебников"
+          ],
+          "note": "Fallback coverage; robotpromobot.ru was a discovery guess and not accepted canonical domain."
+        },
+        {
+          "batch_id": "a12-a14",
+          "engine": "system1_search_query",
+          "themes": [
+            "Promobot IIDF RUB150m and MIR financing",
+            "ROBBO 2015 Pavel Frolov",
+            "NtechLab legal entity and founders"
+          ],
+          "query_text": null,
+          "activity": "IIDF, Rostec and NtechLab failed opens retained as gaps."
+        },
+        {
+          "batch_id": "a15-a17",
+          "engine": "web_open",
+          "urls": [
+            "https://kamaflow.com/ru/post/nti-venture-fund-invests-in-a-platform-for-medical-diagnostics-based-on-ai-celsus-1622098283/",
+            "https://robbo.ru/about-us/",
+            "https://robbo.ru/about-us/team/",
+            "https://interfax.com/newsroom/top-stories/111111/",
+            "https://ntechlab.com/privacy-policy",
+            "https://mts.ai/en/investment/mts-ai-investing-in-just-ai-conversational-artificial-intelligence-tech-developer/"
+          ],
+          "activity": "Primary deal and corporate-history reconciliation."
+        },
+        {
+          "batch_id": "a18",
+          "engine": "system1_search_query",
+          "queries": [
+            "site:smartengines.ru \"инвестиц\"",
+            "site:thirdopinion.ai \"150\" \"инвест\"",
+            "site:just-ai.com \"инвестиции\" \"Совкомбанк\""
+          ],
+          "note": "No additional closed round accepted from results."
+        },
+        {
+          "batch_id": "a19",
+          "engine": "web_open",
+          "urls": [
+            "https://smartengines.ru/"
+          ],
+          "activity": "Verified current 2016 founding label against 2010 historical claim."
+        },
+        {
+          "batch_id": "a20-financial-scope",
+          "engine": "system1_search_query",
+          "queries": [
+            "site:promo-bot.ru \"150\" \"инвестиций\"",
+            "site:promo-bot.ru \"ФРИИ\" \"раунд\""
+          ],
+          "opened_urls": [
+            "https://ar2024.motorica.org/ru/about-company/events",
+            "https://celsus.ai/news/2020-celsus/",
+            "https://promo-bot.ru/about-us/"
+          ],
+          "activity": "Independent scope review: company-reported proceeds, explicit round total and investor contributions distinguished.",
+          "reviewed_at": "2026-11-18T10:02:38Z"
+        }
+      ],
+      "gaps": [
+        {
+          "gap_id": "a-universe",
+          "status": "open",
+          "description": "Purposive seed batch, not a comprehensive Russia or sector census; universe denominator unknown.",
+          "resume": "Expand official programme and investor portfolio discovery under planner #177."
+        },
+        {
+          "gap_id": "a-pagination",
+          "status": "open",
+          "description": "Company news archives and portfolio pagination were not exhausted. Search results are not a denominator.",
+          "resume": "Enumerate dated archive pages one bounded source at a time; retain cursor and source-specific counts."
+        },
+        {
+          "gap_id": "a-funding",
+          "status": "open",
+          "description": "Four financing records staged: two numeric company funding events and two text-only investor contributions; other observations remain separate.",
+          "resume": "Reconcile named historical events before projecting further rounds."
+        },
+        {
+          "gap_id": "a-geometry",
+          "status": "open",
+          "description": "Only explicit head-office claims become HQ. Registered/contact offices remain distinct; five companies lack verified HQ city.",
+          "resume": "Seek primary corporate disclosures without upgrading office addresses."
+        },
+        {
+          "gap_id": "a-ntech-primary",
+          "status": "blocked",
+          "description": "NtechLab domestic legal page and investor announcements unavailable to this pass.",
+          "resume": "Use accessible official registry or company statement on later permitted attempt; no access-control bypass."
+        },
+        {
+          "gap_id": "a-foundation-conflicts",
+          "status": "open",
+          "description": "Celsus 2017/2018 and Smart Engines 2010/2016 require identity/history clarification.",
+          "resume": "Prefer dated incorporation and company-history explanation, keeping project start separate."
+        },
+        {
+          "gap_id": "a-queue",
+          "status": "queued",
+          "items": [
+            {
+              "priority": 1,
+              "company": "Motorica",
+              "url": "https://ar2024.motorica.org/ru/about-company/history",
+              "task": "Reconcile 2019 and 2020 investor contributions with original announcements; keep bond separate."
+            },
+            {
+              "priority": 1,
+              "company": "Celsus",
+              "url": "https://kamaflow.com/ru/post/nti-venture-fund-invests-in-a-platform-for-medical-diagnostics-based-on-ai-celsus-1622098283/",
+              "task": "Check announcement-versus-closing year and Igor Chernin attribution."
+            },
+            {
+              "priority": 1,
+              "company": "NtechLab",
+              "url": "https://ntechlab.ru/of_information",
+              "task": "On later permitted session, seek accessible current legal disclosure; preserve failed access."
+            },
+            {
+              "priority": 2,
+              "company": "Third Opinion",
+              "url": "https://thirdopinion.ai/",
+              "task": "Check whether 2026 proposed RUB150m raise completed; proposal is not funding."
+            },
+            {
+              "priority": 2,
+              "company": "Promobot",
+              "url": "https://promo-bot.ru/about-us/",
+              "task": "Seek completion evidence for June 2019 proposed SME Corporation investment."
+            },
+            {
+              "priority": 2,
+              "company": "ROBBO",
+              "url": "https://robbo.ru/about-us/",
+              "task": "Separate brand, legacy JSC and technologies LLC; verify founding and financing."
+            },
+            {
+              "priority": 2,
+              "company": "Promobot",
+              "url": "https://promo-bot.ru/about-us/",
+              "task": "Review April 2020 third-round entry and linked transaction source before adding another financing projection."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "segment": "b",
+      "search_log": [
+        {
+          "batch": 1,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "Mindbox о компании основатели 2006 инвестиции официальный",
+            "Flowwow founders headquarters incorporation official funding",
+            "Skyeng основатели 2012 инвестиции Baring Vostok официальный",
+            "GetCourse основатели инвестиции Goldman Sachs Baring Vostok официальный"
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        },
+        {
+          "batch": 2,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "site.mindbox.ru \"Baring\" \"13\"",
+            "site.getcourse.ru \"основатели\" \"2014\"",
+            "site.sravni.ru \"инвестиции\" \"2021\"",
+            "site.bestdoctor.ru \"инвестиций\" \"2021\""
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        },
+        {
+          "batch": 3,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "site.wintercapital.com GetCourse 50 million",
+            "site.getcourse.ru \"реквизиты\" \"Москва\"",
+            "site.youdo.com \"О компании\" \"основатели\"",
+            "site.sravni.ru \"О компании\" \"основали\""
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        },
+        {
+          "batch": 4,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "site.sravni.ru \"основатели\" \"2009\"",
+            "site.sravni.ru \"about\"",
+            "site.carprice.ru \"О компании\" \"2014\"",
+            "site.qummy.ru инвестиции основатель"
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        },
+        {
+          "batch": 5,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "site.mts.ru \"YouDo\" \"2018\" \"27\"",
+            "site.voskhod.vc Qummy",
+            "Skyeer официальный о компании основатели инвестиции",
+            "site.bestdoctor.ru \"Бест\" \"2025\""
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        },
+        {
+          "batch": 6,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "Qummy site.voskhod \"2025\"",
+            "Qummy \"Восход\" \"400\" фонд официальный",
+            "YouDo MTS invests online service 2018 ir.mts.ru",
+            "site.qummy.ru \"О компании\""
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        },
+        {
+          "batch": 7,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "site.moscow.vc Qummy \"93\"",
+            "site.sravni.ru \"компании\" \"Попков\"",
+            "site.youdo.com \"12\" \"МТС\"",
+            "site.skyeng.ru \"реквизиты\""
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        },
+        {
+          "batch": 8,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "Skyeng Winter Capital investment official 2021",
+            "CarPrice Almaz Capital investment 2015 official",
+            "Flowwow Yandex completed acquisition Russian business 2026 official",
+            "site.bestdoctor.ru \"Бест\" \"основатели\""
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        },
+        {
+          "batch": 9,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "site.flowwow.com \"2014\" \"Вячеслав\" \"Артем\"",
+            "site.dostavista.ru \"Михаил\" \"2012\"",
+            "site.dostavista.ru \"25\" \"инвестиций\"",
+            "site.buddy.ai \"San Francisco\" \"founded\""
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        },
+        {
+          "batch": 10,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "Достависта продана 2024 2025 2026 Borzo группа основатель",
+            "site.dostavista.ru \"основатель\"",
+            "site.sravni.ru/about/o-kompanii \"2009\"",
+            "site.mindbox.ru \"продаж\" \"2026\" \"Потанин\""
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        },
+        {
+          "batch": 11,
+          "engine": "system1_search_query",
+          "retrieved_on": "2026-11-18",
+          "queries": [
+            "\"Mindbox\" \"US$13\"",
+            "\"Mindbox\" \"$13 million\" \"Baring\"",
+            "\"Sravni\" \"50 million\" funding 2021",
+            "\"Достависта\" \"продал\" \"2025\""
+          ],
+          "pagination": "first returned result set only; no exhaustive search pagination",
+          "use": "Discovery only; accepted claims require opened sources."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "b-gap-hq",
+          "scope": "All eight accepted profiles",
+          "gap": "Current group headquarters not established by explicit primary statement. Russian operating/legal presence must not automatically set HQ country.",
+          "next_action": "Resolve current parent entity, group domicile and headquarters; preserve operator-level geography."
+        },
+        {
+          "id": "b-gap-current-ownership",
+          "scope": "All eight accepted profiles",
+          "gap": "No complete current cap table, public/acquired status or ownership chronology. Historical investors do not imply current ownership.",
+          "next_action": "Company and shareholder announcements; named-register checks only if accessible without restricted access."
+        },
+        {
+          "id": "b-gap-funding-partial",
+          "scope": "Funding histories",
+          "gap": "Six projected events plus two separated contribution/group transactions are a selective historical sample, not complete company funding histories.",
+          "next_action": "GetCourse issuer/investor release and currency; Skyeng primary funding release; YouDo total round and recipient linkage; earlier Qummy rounds."
+        },
+        {
+          "id": "b-gap-canonical-domain",
+          "scope": "Skyeer",
+          "gap": "Former domain and investor page unusable; current domain unknown.",
+          "next_action": "Official programme participant record or active corporate issuer source."
+        },
+        {
+          "id": "b-gap-pagination",
+          "scope": "Moscow Venture Fund news and search",
+          "gap": "Fund page yielded embedded news including Qummy; no claim its portfolio/news catalogue was exhausted. Search reviewed first result sets only.",
+          "next_action": "Resume from named company sources; broad portfolio traversal belongs to crawler planner, subject to approved seeds."
+        },
+        {
+          "id": "b-gap-founders",
+          "scope": "Founders",
+          "gap": "Lists are partial verified professional identities; Latin transliterations are research normalization. No personal contact collection.",
+          "next_action": "Add cofounders only after official evidence; do not infer founders from investor ownership tables."
+        },
+        {
+          "id": "b-gap-date",
+          "scope": "Dates",
+          "gap": "Publication, business founding, educational entity creation, closing, and investor transaction periods are distinct.",
+          "next_action": "Retain date precision and avoid invented first-of-month/day values."
+        },
+        {
+          "id": "b-gap-denominator",
+          "scope": "Russia ecosystem",
+          "gap": "Convenience sample across named sector candidates; no defensible national startup denominator.",
+          "next_action": "Use resumable source-based coverage ledgers, not national completeness claims."
+        }
+      ]
+    },
+    {
+      "segment": "root",
+      "search_log": [
+        {
+          "query": "Биомикрогели компания инвестиции 13 млн 2021 официальный",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Company identity and historical funding discovery"
+        },
+        {
+          "query": "QRate компания основана инвестиции квантовые 2025",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Identity, founding and funding"
+        },
+        {
+          "query": "QApp компания основана квантовая криптография инвестиции официальный",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Identity and origins"
+        },
+        {
+          "query": "site:qapp.tech инвест",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Funding search"
+        },
+        {
+          "query": "site:goqrate.com основат",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Founder search"
+        },
+        {
+          "query": "site:gazprombank.ru QApp инвестиции",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Event-specific investor search"
+        },
+        {
+          "query": "site:genotek.ru основатели",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Founder search"
+        },
+        {
+          "query": "site:yandex.ru Genotek 2020",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Primary investor-date search"
+        },
+        {
+          "query": "site:genotek.ru Москва Юридический",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Geography and incorporation"
+        },
+        {
+          "query": "site:rqc.ru QApp основатель",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Primary founder evidence"
+        },
+        {
+          "query": "site:goqrate.com инвестиции",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Funding search"
+        },
+        {
+          "query": "Genotek Yandex funding 4 million 2020 December",
+          "date": "2026-11-18",
+          "method": "web_search",
+          "purpose": "Historic round date corroboration"
+        }
+      ],
+      "gaps": [
+        "No exhaustive national startup denominator.",
+        "No crawler executed or seeds approved.",
+        "Only 3 accepted profiles in this segment, with separate partial fields and source failures."
+      ]
+    }
+  ]
+}

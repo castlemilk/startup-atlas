@@ -1,0 +1,978 @@
+{
+  "schema_version": 1,
+  "batch_id": "atlas-signal-studies-r2",
+  "revision": "r2",
+  "created_at": "2026-11-17",
+  "base_revision": "d9a63d86c285c139a413b6b1fe9e79d3f6d72460",
+  "status": "experimental-review-collection",
+  "identity_approval": null,
+  "fact_source": null,
+  "provenance": {
+    "class": "original-authored-vector",
+    "method": "Fixed authored paths and a shared orthographic plane transform.",
+    "generated_image_source": null,
+    "prompt": null,
+    "description": "Six constructions, eighteen theme exports. Palette variants are not separate concepts. No company names, figures or relationships are encoded.",
+    "license_note": "No external logo, artwork or typeface embedded; existing repository licensing is unchanged. Design review does not establish trademark clearance."
+  },
+  "generator": "scripts/make-signal-studies-r2.py",
+  "generator_version": 1,
+  "palettes": {
+    "light": {
+      "ink": "#111318",
+      "face": "#ffffff",
+      "depth": "#dfe3e8",
+      "edge": "#7d899b",
+      "accent": "#315efb"
+    },
+    "dark": {
+      "ink": "#f4f6fa",
+      "face": "#f4f6fa",
+      "depth": "#adb6c5",
+      "edge": "#718096",
+      "accent": "#9aafff"
+    },
+    "mono": {
+      "ink": "#111318",
+      "face": "#111318",
+      "depth": "#111318",
+      "edge": "#111318",
+      "accent": "#111318"
+    }
+  },
+  "sources": [
+    {
+      "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/docs/SIGNAL-ASSET-STUDIES.md",
+      "permission": "Existing project-owned design reference; no external artwork copied.",
+      "use": "Aperture, Folio and Relay concepts; original r1 geometry remains unchanged."
+    },
+    {
+      "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-tokens.css",
+      "sha256": "c8e402037bb6a04f255909f418ca01c155f32bd8378b11040c16644b2e19be44",
+      "permission": "Existing project runtime tokens.",
+      "use": "Frozen light export palette; gallery consumes current runtime CSS directly."
+    },
+    {
+      "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-aesthetic-tokens.css",
+      "sha256": "3fc03959dce24e270b37eec0c0ec346c02722ed37190bec5cd5f12f0159529fc",
+      "permission": "Existing project exploratory tokens.",
+      "use": "Dark study palette only; no operational dark-mode claim."
+    }
+  ],
+  "background": "transparent outside all shapes and through the documented cutouts",
+  "artworks": [
+    {
+      "id": "aperture-cut",
+      "revision": 2,
+      "title": "Aperture Cut",
+      "tier": "identity-study",
+      "style": "Signal constructed instrument",
+      "brief": "A stable frontal silhouette, a wide triangular void, and one separated low shelf. Preserve visible air between the shelf and uprights.",
+      "provenance": "original-authored-vector",
+      "meaning": "A broad survey opening with an isolated inspection shelf. The open space stays legible in one ink.",
+      "minimum_display_width": 32,
+      "placements": [
+        "Identity review sheets",
+        "Proposed editorial lockups",
+        "Cover-mark comparisons"
+      ],
+      "avoid": [
+        "Production masthead or favicon before identity selection",
+        "Verification badge",
+        "16px utility icon"
+      ],
+      "sources": [
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/docs/SIGNAL-ASSET-STUDIES.md",
+          "permission": "Existing project-owned design reference; no external artwork copied.",
+          "use": "Aperture, Folio and Relay concepts; original r1 geometry remains unchanged."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-tokens.css",
+          "sha256": "c8e402037bb6a04f255909f418ca01c155f32bd8378b11040c16644b2e19be44",
+          "permission": "Existing project runtime tokens.",
+          "use": "Frozen light export palette; gallery consumes current runtime CSS directly."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-aesthetic-tokens.css",
+          "sha256": "3fc03959dce24e270b37eec0c0ec346c02722ed37190bec5cd5f12f0159529fc",
+          "permission": "Existing project exploratory tokens.",
+          "use": "Dark study palette only; no operational dark-mode claim."
+        }
+      ],
+      "files": {
+        "light": "aperture-cut-r2-light.svg",
+        "dark": "aperture-cut-r2-dark.svg",
+        "mono": "aperture-cut-r2-mono.svg"
+      },
+      "user_selection": null,
+      "operational_identity": false
+    },
+    {
+      "id": "aperture-fold",
+      "revision": 2,
+      "title": "Aperture Fold",
+      "tier": "identity-study",
+      "style": "Signal constructed instrument",
+      "brief": "Separate the upper shoulder, return plane and inner shelf. The diagonal asymmetry and negative-space breaks must survive monochrome.",
+      "provenance": "original-authored-vector",
+      "meaning": "Two offset folded planes frame an open sightline. Its broken shoulder makes the silhouette more directional than Cut.",
+      "minimum_display_width": 32,
+      "placements": [
+        "Alternate identity review",
+        "Proposed editorial title-page lockups"
+      ],
+      "avoid": [
+        "Production identity before selection",
+        "Navigation arrow",
+        "Success or authentication state"
+      ],
+      "sources": [
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/docs/SIGNAL-ASSET-STUDIES.md",
+          "permission": "Existing project-owned design reference; no external artwork copied.",
+          "use": "Aperture, Folio and Relay concepts; original r1 geometry remains unchanged."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-tokens.css",
+          "sha256": "c8e402037bb6a04f255909f418ca01c155f32bd8378b11040c16644b2e19be44",
+          "permission": "Existing project runtime tokens.",
+          "use": "Frozen light export palette; gallery consumes current runtime CSS directly."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-aesthetic-tokens.css",
+          "sha256": "3fc03959dce24e270b37eec0c0ec346c02722ed37190bec5cd5f12f0159529fc",
+          "permission": "Existing project exploratory tokens.",
+          "use": "Dark study palette only; no operational dark-mode claim."
+        }
+      ],
+      "files": {
+        "light": "aperture-fold-r2-light.svg",
+        "dark": "aperture-fold-r2-dark.svg",
+        "mono": "aperture-fold-r2-mono.svg"
+      },
+      "user_selection": null,
+      "operational_identity": false
+    },
+    {
+      "id": "folio-source",
+      "revision": 2,
+      "title": "Folio Source",
+      "tier": "editorial-object",
+      "style": "Signal constructed instrument",
+      "brief": "Use two unequal document planes with one exposed binding and cobalt tab; keep a broad open window, not an archive stack.",
+      "provenance": "original-authored-vector",
+      "meaning": "A broad open dossier sits beside a smaller supporting sheet. One reference tab brings source and record into view together.",
+      "minimum_display_width": 160,
+      "placements": [
+        "Source-reading introductions",
+        "Evidence-method headers",
+        "Research documentation covers"
+      ],
+      "avoid": [
+        "Verified, trusted or reviewed badge",
+        "Proof that a claim is correct",
+        "Dense table rows"
+      ],
+      "sources": [
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/docs/SIGNAL-ASSET-STUDIES.md",
+          "permission": "Existing project-owned design reference; no external artwork copied.",
+          "use": "Aperture, Folio and Relay concepts; original r1 geometry remains unchanged."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-tokens.css",
+          "sha256": "c8e402037bb6a04f255909f418ca01c155f32bd8378b11040c16644b2e19be44",
+          "permission": "Existing project runtime tokens.",
+          "use": "Frozen light export palette; gallery consumes current runtime CSS directly."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-aesthetic-tokens.css",
+          "sha256": "3fc03959dce24e270b37eec0c0ec346c02722ed37190bec5cd5f12f0159529fc",
+          "permission": "Existing project exploratory tokens.",
+          "use": "Dark study palette only; no operational dark-mode claim."
+        }
+      ],
+      "files": {
+        "light": "folio-source-r2-light.svg",
+        "dark": "folio-source-r2-dark.svg",
+        "mono": "folio-source-r2-mono.svg"
+      },
+      "user_selection": null,
+      "operational_identity": false
+    },
+    {
+      "id": "measure-compare",
+      "revision": 2,
+      "title": "Measure Compare",
+      "tier": "editorial-object",
+      "style": "Signal constructed instrument",
+      "brief": "Build the same footprint twice along the same projection. Give the composition a long horizontal datum and one central cobalt reference.",
+      "provenance": "original-authored-vector",
+      "meaning": "Two equal plates align against one reference rail. They express the discipline of choosing a common comparison frame.",
+      "minimum_display_width": 160,
+      "placements": [
+        "Comparison-method introductions",
+        "Guides to measures and missing data",
+        "Editorial feature headers"
+      ],
+      "avoid": [
+        "Actual metric chart",
+        "Ranking, growth or funding amount",
+        "Different-sized plates implying values"
+      ],
+      "sources": [
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/docs/SIGNAL-ASSET-STUDIES.md",
+          "permission": "Existing project-owned design reference; no external artwork copied.",
+          "use": "Aperture, Folio and Relay concepts; original r1 geometry remains unchanged."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-tokens.css",
+          "sha256": "c8e402037bb6a04f255909f418ca01c155f32bd8378b11040c16644b2e19be44",
+          "permission": "Existing project runtime tokens.",
+          "use": "Frozen light export palette; gallery consumes current runtime CSS directly."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-aesthetic-tokens.css",
+          "sha256": "3fc03959dce24e270b37eec0c0ec346c02722ed37190bec5cd5f12f0159529fc",
+          "permission": "Existing project exploratory tokens.",
+          "use": "Dark study palette only; no operational dark-mode claim."
+        }
+      ],
+      "files": {
+        "light": "measure-compare-r2-light.svg",
+        "dark": "measure-compare-r2-dark.svg",
+        "mono": "measure-compare-r2-mono.svg"
+      },
+      "user_selection": null,
+      "operational_identity": false
+    },
+    {
+      "id": "index-collection",
+      "revision": 2,
+      "title": "Index Collection",
+      "tier": "editorial-object",
+      "style": "Signal constructed instrument",
+      "brief": "An upright, regularly spaced archive contrasts with the broad Folio dossier. Move one whole cobalt leaf forward, keeping the other records neutral.",
+      "provenance": "original-authored-vector",
+      "meaning": "Parallel archive leaves and a withdrawn record express retrieval from a working collection. Their order and count are editorial.",
+      "minimum_display_width": 160,
+      "placements": [
+        "Collection-building guides",
+        "Retrieval feature introductions",
+        "Saved-research editorial studies"
+      ],
+      "avoid": [
+        "Claim that a collection feature has shipped",
+        "Record count or ranking",
+        "Evidence of company affiliation"
+      ],
+      "sources": [
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/docs/SIGNAL-ASSET-STUDIES.md",
+          "permission": "Existing project-owned design reference; no external artwork copied.",
+          "use": "Aperture, Folio and Relay concepts; original r1 geometry remains unchanged."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-tokens.css",
+          "sha256": "c8e402037bb6a04f255909f418ca01c155f32bd8378b11040c16644b2e19be44",
+          "permission": "Existing project runtime tokens.",
+          "use": "Frozen light export palette; gallery consumes current runtime CSS directly."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-aesthetic-tokens.css",
+          "sha256": "3fc03959dce24e270b37eec0c0ec346c02722ed37190bec5cd5f12f0159529fc",
+          "permission": "Existing project exploratory tokens.",
+          "use": "Dark study palette only; no operational dark-mode claim."
+        }
+      ],
+      "files": {
+        "light": "index-collection-r2-light.svg",
+        "dark": "index-collection-r2-dark.svg",
+        "mono": "index-collection-r2-mono.svg"
+      },
+      "user_selection": null,
+      "operational_identity": false
+    },
+    {
+      "id": "relay-context",
+      "revision": 2,
+      "title": "Relay Context",
+      "tier": "editorial-object",
+      "style": "Signal constructed instrument",
+      "brief": "Keep the two housings separately readable and the join uncluttered. Use no lights, ticks, network dots or extra modules.",
+      "provenance": "original-authored-vector",
+      "meaning": "Exactly two open modules meet through one cobalt bridge, expressing an intentional context interface.",
+      "minimum_display_width": 160,
+      "placements": [
+        "MCP feature introductions",
+        "Context-transfer explanations",
+        "Integration documentation covers"
+      ],
+      "avoid": [
+        "Live connected status",
+        "Authentication or transfer success",
+        "Recorded company relationships"
+      ],
+      "sources": [
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/docs/SIGNAL-ASSET-STUDIES.md",
+          "permission": "Existing project-owned design reference; no external artwork copied.",
+          "use": "Aperture, Folio and Relay concepts; original r1 geometry remains unchanged."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-tokens.css",
+          "sha256": "c8e402037bb6a04f255909f418ca01c155f32bd8378b11040c16644b2e19be44",
+          "permission": "Existing project runtime tokens.",
+          "use": "Frozen light export palette; gallery consumes current runtime CSS directly."
+        },
+        {
+          "reference": "https://github.com/castlemilk/startup-atlas/blob/d9a63d86c285c139a413b6b1fe9e79d3f6d72460/web/design-aesthetic-tokens.css",
+          "sha256": "3fc03959dce24e270b37eec0c0ec346c02722ed37190bec5cd5f12f0159529fc",
+          "permission": "Existing project exploratory tokens.",
+          "use": "Dark study palette only; no operational dark-mode claim."
+        }
+      ],
+      "files": {
+        "light": "relay-context-r2-light.svg",
+        "dark": "relay-context-r2-dark.svg",
+        "mono": "relay-context-r2-mono.svg"
+      },
+      "user_selection": null,
+      "operational_identity": false
+    }
+  ],
+  "assets": [
+    {
+      "id": "aperture-cut-r2-light",
+      "family": "aperture-cut",
+      "revision": "r2",
+      "theme": "light",
+      "file": "aperture-cut-r2-light.svg",
+      "sha256": "79e4c8ba7101a2a303bd00c95040047814df6c289f9acf08b4cf284ea5b40310",
+      "bytes": 722,
+      "width": 128,
+      "height": 128,
+      "viewBox": "0 0 128 128",
+      "minimum_size_px": 32,
+      "tier": "identity-study",
+      "alt": "A broad survey opening with an isolated inspection shelf. The open space stays legible in one ink.",
+      "layers": [
+        "aperture-frame",
+        "separated-shelf"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          64,
+          65
+        ],
+        [
+          49,
+          97
+        ]
+      ]
+    },
+    {
+      "id": "aperture-cut-r2-dark",
+      "family": "aperture-cut",
+      "revision": "r2",
+      "theme": "dark",
+      "file": "aperture-cut-r2-dark.svg",
+      "sha256": "3db46a6e0c6ef511bb78c9d6e543bcba4f31d21469130e0670c115a66c5fc134",
+      "bytes": 721,
+      "width": 128,
+      "height": 128,
+      "viewBox": "0 0 128 128",
+      "minimum_size_px": 32,
+      "tier": "identity-study",
+      "alt": "A broad survey opening with an isolated inspection shelf. The open space stays legible in one ink.",
+      "layers": [
+        "aperture-frame",
+        "separated-shelf"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          64,
+          65
+        ],
+        [
+          49,
+          97
+        ]
+      ]
+    },
+    {
+      "id": "aperture-cut-r2-mono",
+      "family": "aperture-cut",
+      "revision": "r2",
+      "theme": "mono",
+      "file": "aperture-cut-r2-mono.svg",
+      "sha256": "c5029af97502830c7e473fd04f7717ce9055a7b9a5017df7a9e486acc7a4e32c",
+      "bytes": 721,
+      "width": 128,
+      "height": 128,
+      "viewBox": "0 0 128 128",
+      "minimum_size_px": 32,
+      "tier": "identity-study",
+      "alt": "A broad survey opening with an isolated inspection shelf. The open space stays legible in one ink.",
+      "layers": [
+        "aperture-frame",
+        "separated-shelf"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          64,
+          65
+        ],
+        [
+          49,
+          97
+        ]
+      ]
+    },
+    {
+      "id": "aperture-fold-r2-light",
+      "family": "aperture-fold",
+      "revision": "r2",
+      "theme": "light",
+      "file": "aperture-fold-r2-light.svg",
+      "sha256": "f6b66db16abced2078058880f891bb9fc58dcfd7e05b0fc12c2a13ac6886ec99",
+      "bytes": 832,
+      "width": 128,
+      "height": 128,
+      "viewBox": "0 0 128 128",
+      "minimum_size_px": 32,
+      "tier": "identity-study",
+      "alt": "Two offset folded planes frame an open sightline. Its broken shoulder makes the silhouette more directional than Cut.",
+      "layers": [
+        "fold-upright",
+        "fold-return",
+        "fold-shelf"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          77,
+          33
+        ],
+        [
+          62,
+          72
+        ]
+      ]
+    },
+    {
+      "id": "aperture-fold-r2-dark",
+      "family": "aperture-fold",
+      "revision": "r2",
+      "theme": "dark",
+      "file": "aperture-fold-r2-dark.svg",
+      "sha256": "99dd273acf571e465763afb4ec5981c449a6abd5e09af961e5a7cbcee3802483",
+      "bytes": 831,
+      "width": 128,
+      "height": 128,
+      "viewBox": "0 0 128 128",
+      "minimum_size_px": 32,
+      "tier": "identity-study",
+      "alt": "Two offset folded planes frame an open sightline. Its broken shoulder makes the silhouette more directional than Cut.",
+      "layers": [
+        "fold-upright",
+        "fold-return",
+        "fold-shelf"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          77,
+          33
+        ],
+        [
+          62,
+          72
+        ]
+      ]
+    },
+    {
+      "id": "aperture-fold-r2-mono",
+      "family": "aperture-fold",
+      "revision": "r2",
+      "theme": "mono",
+      "file": "aperture-fold-r2-mono.svg",
+      "sha256": "658f459f6969e2059e74dddaa2417c18b596d4df7ef4a40612bddcd88be8ef01",
+      "bytes": 831,
+      "width": 128,
+      "height": 128,
+      "viewBox": "0 0 128 128",
+      "minimum_size_px": 32,
+      "tier": "identity-study",
+      "alt": "Two offset folded planes frame an open sightline. Its broken shoulder makes the silhouette more directional than Cut.",
+      "layers": [
+        "fold-upright",
+        "fold-return",
+        "fold-shelf"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          77,
+          33
+        ],
+        [
+          62,
+          72
+        ]
+      ]
+    },
+    {
+      "id": "folio-source-r2-light",
+      "family": "folio-source",
+      "revision": "r2",
+      "theme": "light",
+      "file": "folio-source-r2-light.svg",
+      "sha256": "73f6120a3416c63b8a367c1266f161b19da3bf4457e49f73a3875a52ab3ecf4e",
+      "bytes": 2466,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "A broad open dossier sits beside a smaller supporting sheet. One reference tab brings source and record into view together.",
+      "layers": [
+        "supporting-sheet-depth",
+        "supporting-sheet",
+        "source-dossier-depth",
+        "source-dossier",
+        "reference-tab",
+        "exposed-binding"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          310,
+          165
+        ]
+      ]
+    },
+    {
+      "id": "folio-source-r2-dark",
+      "family": "folio-source",
+      "revision": "r2",
+      "theme": "dark",
+      "file": "folio-source-r2-dark.svg",
+      "sha256": "9a7e612142ccfc06fce2770fac130085673f242d5755c3bb0bf549165511a539",
+      "bytes": 2465,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "A broad open dossier sits beside a smaller supporting sheet. One reference tab brings source and record into view together.",
+      "layers": [
+        "supporting-sheet-depth",
+        "supporting-sheet",
+        "source-dossier-depth",
+        "source-dossier",
+        "reference-tab",
+        "exposed-binding"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          310,
+          165
+        ]
+      ]
+    },
+    {
+      "id": "folio-source-r2-mono",
+      "family": "folio-source",
+      "revision": "r2",
+      "theme": "mono",
+      "file": "folio-source-r2-mono.svg",
+      "sha256": "efa9026a137f4b8cb8af8e49eba78d97b51ae598244f8dbc9ac1b3c6b3e2378f",
+      "bytes": 2465,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "A broad open dossier sits beside a smaller supporting sheet. One reference tab brings source and record into view together.",
+      "layers": [
+        "supporting-sheet-depth",
+        "supporting-sheet",
+        "source-dossier-depth",
+        "source-dossier",
+        "reference-tab",
+        "exposed-binding"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          310,
+          165
+        ]
+      ]
+    },
+    {
+      "id": "measure-compare-r2-light",
+      "family": "measure-compare",
+      "revision": "r2",
+      "theme": "light",
+      "file": "measure-compare-r2-light.svg",
+      "sha256": "6551094d03c7729963821b14c4bf3ea9f01fb078cda19890b5daa3483856fe2d",
+      "bytes": 3519,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "Two equal plates align against one reference rail. They express the discipline of choosing a common comparison frame.",
+      "layers": [
+        "comparison-plate-left-depth",
+        "comparison-plate-left",
+        "comparison-plate-right-depth",
+        "comparison-plate-right",
+        "common-datum",
+        "selected-reference",
+        "datum-left-foot",
+        "datum-right-foot"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          140,
+          215
+        ]
+      ]
+    },
+    {
+      "id": "measure-compare-r2-dark",
+      "family": "measure-compare",
+      "revision": "r2",
+      "theme": "dark",
+      "file": "measure-compare-r2-dark.svg",
+      "sha256": "5b2e7610e50dea0923fd2f2f5f701a74f6a0ac9f8660c07dde9f2a0c881db77a",
+      "bytes": 3518,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "Two equal plates align against one reference rail. They express the discipline of choosing a common comparison frame.",
+      "layers": [
+        "comparison-plate-left-depth",
+        "comparison-plate-left",
+        "comparison-plate-right-depth",
+        "comparison-plate-right",
+        "common-datum",
+        "selected-reference",
+        "datum-left-foot",
+        "datum-right-foot"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          140,
+          215
+        ]
+      ]
+    },
+    {
+      "id": "measure-compare-r2-mono",
+      "family": "measure-compare",
+      "revision": "r2",
+      "theme": "mono",
+      "file": "measure-compare-r2-mono.svg",
+      "sha256": "fc489f9951cf269f0dafcf38b483e156cfc9cc9c5c03aaa5878221deac7bbe53",
+      "bytes": 3518,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "Two equal plates align against one reference rail. They express the discipline of choosing a common comparison frame.",
+      "layers": [
+        "comparison-plate-left-depth",
+        "comparison-plate-left",
+        "comparison-plate-right-depth",
+        "comparison-plate-right",
+        "common-datum",
+        "selected-reference",
+        "datum-left-foot",
+        "datum-right-foot"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          140,
+          215
+        ]
+      ]
+    },
+    {
+      "id": "index-collection-r2-light",
+      "family": "index-collection",
+      "revision": "r2",
+      "theme": "light",
+      "file": "index-collection-r2-light.svg",
+      "sha256": "dbdf5ad445c9a023a4ddbd548959ef5c6af7bf4d809731a9751d618e7bf366c4",
+      "bytes": 3389,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "Parallel archive leaves and a withdrawn record express retrieval from a working collection. Their order and count are editorial.",
+      "layers": [
+        "archive-left-depth",
+        "archive-left",
+        "archive-middle-depth",
+        "archive-middle",
+        "archive-right-depth",
+        "archive-right",
+        "withdrawn-record",
+        "archive-foot"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          125,
+          204
+        ],
+        [
+          361,
+          193
+        ]
+      ]
+    },
+    {
+      "id": "index-collection-r2-dark",
+      "family": "index-collection",
+      "revision": "r2",
+      "theme": "dark",
+      "file": "index-collection-r2-dark.svg",
+      "sha256": "d324caee995203dbf769861b3b492ddf89e6acee4cbffb9685309cd852b8a071",
+      "bytes": 3388,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "Parallel archive leaves and a withdrawn record express retrieval from a working collection. Their order and count are editorial.",
+      "layers": [
+        "archive-left-depth",
+        "archive-left",
+        "archive-middle-depth",
+        "archive-middle",
+        "archive-right-depth",
+        "archive-right",
+        "withdrawn-record",
+        "archive-foot"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          125,
+          204
+        ],
+        [
+          361,
+          193
+        ]
+      ]
+    },
+    {
+      "id": "index-collection-r2-mono",
+      "family": "index-collection",
+      "revision": "r2",
+      "theme": "mono",
+      "file": "index-collection-r2-mono.svg",
+      "sha256": "47cb3b0b6bbbb42a72b5e1b62b1b3da586f31e9ad38de01624be0c4484590528",
+      "bytes": 3388,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "Parallel archive leaves and a withdrawn record express retrieval from a working collection. Their order and count are editorial.",
+      "layers": [
+        "archive-left-depth",
+        "archive-left",
+        "archive-middle-depth",
+        "archive-middle",
+        "archive-right-depth",
+        "archive-right",
+        "withdrawn-record",
+        "archive-foot"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          125,
+          204
+        ],
+        [
+          361,
+          193
+        ]
+      ]
+    },
+    {
+      "id": "relay-context-r2-light",
+      "family": "relay-context",
+      "revision": "r2",
+      "theme": "light",
+      "file": "relay-context-r2-light.svg",
+      "sha256": "5766c69e292a8c31461c52346d42e2c5ee6f8c69403f235765db9381f751af59",
+      "bytes": 2210,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "Exactly two open modules meet through one cobalt bridge, expressing an intentional context interface.",
+      "layers": [
+        "context-left-depth",
+        "context-left",
+        "context-right-depth",
+        "context-right",
+        "context-bridge"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          147,
+          208
+        ],
+        [
+          374,
+          149
+        ]
+      ]
+    },
+    {
+      "id": "relay-context-r2-dark",
+      "family": "relay-context",
+      "revision": "r2",
+      "theme": "dark",
+      "file": "relay-context-r2-dark.svg",
+      "sha256": "b819287da49d4ab17d720259822c6acd35db3e2f8ad67814c8df75b8fbd7956e",
+      "bytes": 2209,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "Exactly two open modules meet through one cobalt bridge, expressing an intentional context interface.",
+      "layers": [
+        "context-left-depth",
+        "context-left",
+        "context-right-depth",
+        "context-right",
+        "context-bridge"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          147,
+          208
+        ],
+        [
+          374,
+          149
+        ]
+      ]
+    },
+    {
+      "id": "relay-context-r2-mono",
+      "family": "relay-context",
+      "revision": "r2",
+      "theme": "mono",
+      "file": "relay-context-r2-mono.svg",
+      "sha256": "76a968b096e7c9b10c4efdcc7de5e3c4bc65e4aed67e0da8802c5b362bd803ce",
+      "bytes": 2209,
+      "width": 512,
+      "height": 384,
+      "viewBox": "0 0 512 384",
+      "minimum_size_px": 160,
+      "tier": "editorial-object",
+      "alt": "Exactly two open modules meet through one cobalt bridge, expressing an intentional context interface.",
+      "layers": [
+        "context-left-depth",
+        "context-left",
+        "context-right-depth",
+        "context-right",
+        "context-bridge"
+      ],
+      "alpha_probes": [
+        [
+          0,
+          0
+        ],
+        [
+          147,
+          208
+        ],
+        [
+          374,
+          149
+        ]
+      ]
+    }
+  ]
+}

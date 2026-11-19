@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {cohort, cohortNames, comparableEvent, currencies, makeView, formatValue, treemap} from '../web/treemap-model.js';
+import {companyContext, cohort, cohortNames, comparableEvent, currencies, makeView, formatValue, treemap} from '../web/treemap-model.js';
 const company = (id, name=id, founded_year) => ({id, kind:'startup', name, founded_year});
 const event = (id, startup_id, announced_on, value, currency='USD', extra={}) => ({id, startup_id, announced_on, amount:value, valuation:value, currency, valuation_currency:currency, source:'https://example.com/evidence', ...extra});
 const graph = {entities:[company('a','Alpha',2013),company('b','Beta',0),company('c','Gamma',2005),{id:'person:a',kind:'person',name:'Not a company'}], funding_rounds:[event('a-old','a','2020-01-01',10),event('a-new','a','2025-01-01',20),event('a-aud','a','2026-01-01',200,'AUD'),event('b-text','b','2026-02-01',null),event('c-aud','c','2022-01-01',30,'AUD')]};
@@ -59,4 +59,25 @@ test('current graph exposes honest coverage without multiplying valuations acros
 test('cohort palette keys are stable across entity ordering and financial filtering',()=>{
   assert.deepEqual(cohortNames(graph),['2000s','2010s','Not recorded']);
   assert.deepEqual(cohortNames({...graph,entities:graph.entities.toReversed()}),cohortNames(graph));
+});
+
+
+test('company context preserves separate funding and valuation observations without market-cap inference',()=>{
+  const context=companyContext(graph,graph.entities[0],'USD');
+  assert.deepEqual(context.figures.map(item=>[item.metric,item.row.value]),[['funding',20],['valuation',20]]);
+  assert.equal(Object.hasOwn(context,'marketCap'),false);
+  assert.equal(companyContext(graph,graph.entities[1],'USD').figures[0].row,null);
+});
+test('context requires founder direction, person identity and HTTPS evidence; deduplicates without mutating',()=>{
+  const person={id:'p',kind:'person',name:'Founder',logo:'https://example.com/photo',logo_source:'https://example.com/team',socials:[{label:'LinkedIn',url:'https://example.com/profile',source:'https://example.com/team'}]};
+  const edge={from:'p',to:'a',kind:'founded',source:'https://example.com/team'};
+  const g={...graph,entities:[...graph.entities,person],edges:[edge,edge,{...edge,kind:'team_member'},{...edge,from:'a',to:'p'}]};
+  const before=JSON.stringify(g),context=companyContext(g,g.entities[0]);
+  assert.equal(context.founders.length,1);assert.equal(context.founders[0].person.logo,person.logo);assert.equal(context.founders[0].socials.length,1);assert.equal(JSON.stringify(g),before);
+  assert.equal(companyContext({...g,edges:[{...edge,source:'javascript:bad'}]},g.entities[0]).founders.length,0);
+});
+test('unsourced portraits, facts and social handles never acquire invented evidence',()=>{
+  const entity={...graph.entities[0],profile_facts:[{label:'Team',value:'100',source:'https://example.com/report'},{label:'Guess',value:'999',source:''}],socials:[{label:'Bad',url:'https://example.com/user',source:''}]};
+  const g={...graph,entities:[entity,{id:'p',kind:'person',name:'Founder',logo:'https://example.com/photo'}],edges:[{from:'p',to:'a',kind:'founded',source:'https://example.com/team'}]};
+  const context=companyContext(g,entity);assert.equal(context.facts.length,1);assert.equal(context.socials.length,0);assert.equal(context.founders[0].person.logo,'');
 });

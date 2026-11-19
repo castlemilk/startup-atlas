@@ -1,0 +1,108 @@
+{
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "initial_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "reviewed_on": "2026-11-18",
+  "tests_passed": 80,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "breakdown": {
+    "country_node": 42,
+    "country_planner_graph": 6,
+    "existing_planner": 16,
+    "existing_record_contract": 6,
+    "existing_graph_sqlite": 10
+  },
+  "runs": [
+    {
+      "name": "country_node",
+      "command": [
+        "node",
+        "--test",
+        "research/countries/ru/2026-11-18-batch-001/test_packet.mjs"
+      ],
+      "test_cases": 42,
+      "exit_code": 0,
+      "stdout": "✔ complete saved research packet validates against the current record contract (24.595564ms)\n✔ names normalize width, case and whitespace without transliterating Cyrillic (0.290047ms)\n✔ official-domain normalization ignores paths and www but preserves subdomain identity (0.984923ms)\n✔ dedup detects verified aliases against existing names (0.301067ms)\n✔ dedup detects existing official domains even after a rebrand (0.335544ms)\n✔ dedup retains aliases on both sides and does not depend on candidate order (0.632402ms)\n✔ verified alternative domains participate in identity review (0.35237ms)\n✔ profiles and records must be exactly the same projection (11.34796ms)\n✔ accepted coverage joins by candidate identity rather than only count (19.005715ms)\n✔ all projected source URLs must be registered and accessed (5.561281ms)\n✔ a valid schema with no evidence cannot become an accepted packet (6.980045ms)\n✔ profile claim references cannot borrow another company evidence (9.140792ms)\n✔ projected founder must match an accepted founder name and source (7.044743ms)\n✔ unknown or conflicting founding year cannot acquire an unsupported projection (12.770224ms)\n✔ unknown fields stay omitted from production projection, not null (8.091971ms)\n✔ new production fields cannot be smuggled through a research projection (6.640936ms)\n✔ unknown funding is not converted into numeric zero (4.968119ms)\n✔ partial dates retain their actual precision (0.17343ms)\n✔ source registries cannot automatically approve crawler seeds (2.955681ms)\n✔ every accepted claim must point to its exact registered source (9.231862ms)\n✔ search snippets cannot be promoted to reviewed evidence (7.519724ms)\n✔ registry and accepted claim source classifications must agree (7.503486ms)\n✔ unknown claim status cannot bypass the accessed-page requirement (8.020716ms)\n✔ unopened pages cannot support accepted facts (9.31546ms)\n✔ duplicate claim observations are rejected (6.26404ms)\n✔ round identity must be unique across companies (5.862179ms)\n✔ portfolio membership cannot become event participation (5.73977ms)\n✔ investor contributions cannot become full round amounts (5.128313ms)\n✔ numeric financing without explicit currency is rejected (6.595507ms)\n✔ numeric company receipt needs an explicit amount basis (6.489046ms)\n✔ production amount must equal the reviewed financing event amount (6.360502ms)\n✔ financing event cannot move to another company (6.105255ms)\n✔ excluded financing observation cannot project into a company record (7.199137ms)\n✔ partial announcement date cannot gain invented day precision in projection (7.438171ms)\n✔ projected announcement day cannot differ from its event (6.646002ms)\n✔ reviewed participants cannot point to nonexistent events (7.185401ms)\n✔ country denominator remains unknown rather than a guessed zero (6.697209ms)\n✔ accepted and published counts remain separate (7.124485ms)\n✔ interrupted-review checkpoint cannot drop a reviewed candidate (7.24808ms)\n✔ reloading a saved checkpoint preserves the complete next-source queue (13.765028ms)\n✔ queue remains a review handoff, never an executable approved crawl (6.165691ms)\n✔ known source population cannot be a negative placeholder (5.4768ms)\nℹ tests 42\nℹ suites 0\nℹ pass 42\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 482.701933\n",
+      "stderr": ""
+    },
+    {
+      "name": "country_planner_graph",
+      "command": [
+        "python3",
+        "research/countries/ru/2026-11-18-batch-001/test_planner.py"
+      ],
+      "test_cases": 6,
+      "exit_code": 0,
+      "stdout": "OWNER_FIX_REGRESSION {\"kind\": \"owner_fix_unknown_founding_year\", \"owner_pr\": \"https://github.com/castlemilk/startup-atlas/pull/179\", \"preserved_absent_names\": [\"Celsus\", \"QApp\", \"QRate\", \"ROBBO\", \"Smart Engines\"], \"production_publication_performed\": false, \"status\": \"passed\", \"unknown_record_count\": 5}\n",
+      "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.075s\n\nOK\n"
+    },
+    {
+      "name": "existing_planner",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_company_profile_plan.py"
+      ],
+      "test_cases": 16,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.228s\n\nOK\n"
+    },
+    {
+      "name": "existing_record_contract",
+      "command": [
+        "node",
+        "--test",
+        "backend/hosted/tests/startup.test.mjs"
+      ],
+      "test_cases": 6,
+      "exit_code": 0,
+      "stdout": "✔ startup validation preserves existing founder and funding records (9.97133ms)\n✔ startup proposal changes only the reviewed data file and rejects an unverified existing branch (17.982844ms)\n✔ new startup profiles need an official site and conflicting identifiers are rejected (3.50291ms)\n✔ startup facts require evidence and merge without discarding reviewed facts (2.627015ms)\n✔ legacy funding updates cannot reattribute omitted claims to a replacement source (4.156799ms)\n✔ legacy funding updates retain partial-upsert semantics and explicit replacement claims (1.305104ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 170.247356\n",
+      "stderr": ""
+    },
+    {
+      "name": "existing_graph_sqlite",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_graph.py"
+      ],
+      "test_cases": 10,
+      "exit_code": 0,
+      "stdout": "Built SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes\nBuilt SQLite snapshot: 1 entities, 0 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 1 entities, 0 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 2 entities, 1 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 2 entities, 1 relationships, 0 public documents, 122880 bytes\nBuilt SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes\nBuilt SQLite snapshot: 3 entities, 2 relationships, 0 public documents, 122880 bytes\n",
+      "stderr": ".....[1/1] Example: ok; 1 articles\n.[1/1] Example: ok; 1 articles\n....\n----------------------------------------------------------------------\nRan 10 tests in 0.487s\n\nOK\n"
+    }
+  ],
+  "record_validation": "record-validation.json",
+  "graph_preview": "graph-preview-receipt.json",
+  "production_inputs_unchanged": true,
+  "input_sha256_after_tests": {
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "scripts/make-graph.py": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4"
+  },
+  "semantic_reviews": "REVIEW.md",
+  "remote_ci_status": "Not yet observed; local tests are not a remote-CI receipt.",
+  "owner_fix_regression": {
+    "pr": 179,
+    "status": "passed",
+    "unknown_years_preserved": 5,
+    "zero_or_null_synthesized": false
+  },
+  "production_written": false,
+  "production_adoption": "Separate existing-owner proposal/review/release, not performed by this research packet.",
+  "limits": "Offline structural, identity and regression checks plus independent source review; not complete-company, national-coverage or live-publication validation."
+}

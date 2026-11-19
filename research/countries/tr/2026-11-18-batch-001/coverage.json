@@ -1,0 +1,150 @@
+{
+  "batch_id": "tr-2026-11-18-batch-001",
+  "counts": {
+    "enrolled_candidate_items": 35,
+    "enrolled_company_candidates": 34,
+    "fully_reviewed_company_profiles": 22,
+    "reviewed_or_identity_triaged_items": 24,
+    "accepted_staged_company_identities": 21,
+    "held_company_identities": 1,
+    "rejected_company_identity_candidates": 1,
+    "rejected_domain_identity_candidates": 1,
+    "pending_discovery_company_candidates": 11,
+    "claim_count": 366,
+    "claim_states": {
+      "reviewed_staged": 357,
+      "conflict": 8,
+      "candidate": 1
+    },
+    "source_entries": 152,
+    "unique_registered_source_urls": 152,
+    "source_access_states": {
+      "unavailable": 12,
+      "partial": 8,
+      "accessed": 129,
+      "blocked_429": 1,
+      "fetch_error": 2
+    },
+    "source_kinds": {
+      "regulatory": 20,
+      "secondary": 12,
+      "discovery": 14,
+      "primary_company": 64,
+      "primary_investor": 42
+    },
+    "company_founder_assertions": 50,
+    "funding_and_corporate_events_in_funding_sidecar": 29,
+    "event_transaction_kinds": {
+      "equity": 16,
+      "mixed_equity_secondary_and_debt": 1,
+      "acquisition": 2,
+      "unspecified": 10
+    },
+    "projected_financing_rounds": 24,
+    "projected_numeric_round_amounts": 9,
+    "separate_financing_facility_claims": 2,
+    "separate_corporate_event_claims": 4,
+    "ecosystem_findings": 19,
+    "next_source_queue_items": 32,
+    "production_published": 0,
+    "crawler_seed_approvals": 0
+  },
+  "context_entity_ids": [
+    "research:tr:ecosystem",
+    "staged:tr:reengen"
+  ],
+  "population_denominator": null,
+  "country_completion_claim": false,
+  "count_definitions": {
+    "enrolled": "Deliberately selected identity or domain candidates only; names incidentally displayed in a portfolio/search page are excluded.",
+    "reviewed": "22 company profiles received bounded source review; 2 other identity candidates were excluded during matching. Eleven leads remain discovery only.",
+    "accepted": "Identity and selected claims accepted into research staging, not all fields verified and not active-private-startup certification.",
+    "source_entries": "Includes multiple observations of the same URL, failed pages and discovery sources; not every network/search request.",
+    "founders": "Company-founder assertions, not identity-resolved unique people; repeated cross-company founders retained.",
+    "funding": "Selected historical events. Amounts cannot be summed across kinds, currencies, entity scopes or facility commitments."
+  },
+  "checkpoint": {
+    "population_denominator": null,
+    "collection_complete": false,
+    "production_published": 0,
+    "crawler_seed_approvals": 0,
+    "accepted_entity_ids": [
+      "staged:tr:midas",
+      "staged:tr:sipay",
+      "staged:tr:colendi",
+      "staged:tr:iyzico",
+      "staged:tr:papara",
+      "staged:tr:param",
+      "staged:tr:getir",
+      "staged:tr:marti",
+      "staged:tr:dream-games",
+      "staged:tr:good-job-games",
+      "staged:tr:spyke-games",
+      "staged:tr:peak",
+      "staged:tr:insider-one",
+      "staged:tr:picus-security",
+      "staged:tr:akinon",
+      "staged:tr:sestek",
+      "staged:tr:ikas",
+      "staged:tr:tarfin",
+      "staged:tr:oplog",
+      "staged:tr:fazla",
+      "staged:tr:binalyze"
+    ],
+    "held_entity_ids": [
+      "staged:tr:reengen"
+    ],
+    "reviewed_entity_ids": [
+      "staged:tr:midas",
+      "staged:tr:sipay",
+      "staged:tr:colendi",
+      "staged:tr:iyzico",
+      "staged:tr:papara",
+      "staged:tr:param",
+      "staged:tr:getir",
+      "staged:tr:marti",
+      "staged:tr:dream-games",
+      "staged:tr:good-job-games",
+      "staged:tr:spyke-games",
+      "staged:tr:peak",
+      "staged:tr:insider-one",
+      "staged:tr:picus-security",
+      "staged:tr:akinon",
+      "staged:tr:sestek",
+      "staged:tr:ikas",
+      "staged:tr:tarfin",
+      "staged:tr:oplog",
+      "staged:tr:fazla",
+      "staged:tr:binalyze",
+      "staged:tr:reengen"
+    ],
+    "pending_entity_ids": [
+      "discovery:tr:navlungo",
+      "discovery:tr:iletmen",
+      "discovery:tr:co-print",
+      "discovery:tr:forfarming",
+      "discovery:tr:from-your-eyes",
+      "discovery:tr:acrome",
+      "discovery:tr:genz",
+      "discovery:tr:kavaken",
+      "discovery:tr:synnada",
+      "discovery:tr:yolda",
+      "discovery:tr:libra-softworks"
+    ],
+    "input_sha256": {
+      "companies.json": "798a2309f5726ed3c946d763087197db321e6bac918b840883dfb2015130d48b",
+      "claims.json": "28bd12c4d59fb6b41283f6facf1fd828d4e77500be278aaa1bf84dc2ad138038",
+      "sources.json": "5e9de38552d81901886138dbd75910a20a26b41fc18cd0a914ea9fbeed4113b7",
+      "next-source-queue.json": "e38b49341dbff8f513ce0eccdfb2daefb537a27a8e0f171d8fbf6337783ad939"
+    }
+  },
+  "gaps": [
+    "National eligible startup population and source-list denominators unknown.",
+    "Programme, portfolio and newsroom pagination not exhausted; exact UI cursors recorded only when observed.",
+    "Current HQ/legal parent and full financing histories remain incomplete for multiple accepted companies.",
+    "Current IMF release verified; 2026 NGDPD API values and rank could not be independently recomputed.",
+    "Unavailable or partial sources are recorded without bypass; no robots.txt requests or crawler seed approvals.",
+    "Some early search strings and one failed Sestek URL were not retained; registry counts are not request counts.",
+    "Initial graph substituted 0 for missing founding_year. Owner PR179 merged in refreshed main; fresh graph check records whether absence is preserved. Production adoption still requires owner review and live revision verification."
+  ]
+}

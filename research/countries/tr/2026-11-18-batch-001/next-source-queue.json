@@ -1,0 +1,561 @@
+{
+  "batch_id": "tr-2026-11-18-batch-001",
+  "queue": [
+    {
+      "priority": 1,
+      "scope": "company_identity",
+      "entity_id": "staged:tr:reengen",
+      "status": "held",
+      "source_ids": [
+        "tr-eco-023",
+        "tr-eco-024",
+        "tr-eco-025"
+      ],
+      "next_action": "Resolve Reengen/Faradai active brand and legal-entity boundary using permitted official company/registry sources. Do not transfer Faradai funding to subsidiary.",
+      "queue_id": "tr-next-ecosystem-001",
+      "research_lane": "ecosystem",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "eligible_population": null
+    },
+    {
+      "priority": 1,
+      "scope": "funding_dates_and_currency",
+      "entity_ids": [
+        "staged:tr:ikas",
+        "staged:tr:fazla",
+        "staged:tr:binalyze"
+      ],
+      "source_ids": [
+        "tr-eco-003",
+        "tr-eco-011",
+        "tr-eco-012",
+        "tr-eco-013",
+        "tr-eco-015",
+        "tr-eco-021",
+        "tr-eco-022"
+      ],
+      "next_action": "Find exact event announcement dates where unknown and explicit ISO currencies from original primary releases; retain raw dollar text until unambiguous. Resolve Binalyze19m/20m conflict without creating extra event.",
+      "queue_id": "tr-next-ecosystem-002",
+      "research_lane": "ecosystem",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "priority": 1,
+      "scope": "field_conflicts",
+      "entity_ids": [
+        "staged:tr:fazla",
+        "staged:tr:binalyze"
+      ],
+      "source_ids": [
+        "tr-eco-009",
+        "tr-eco-012",
+        "tr-eco-014",
+        "tr-eco-016",
+        "tr-eco-018",
+        "tr-eco-020",
+        "tr-eco-021"
+      ],
+      "next_action": "Investigate2016/2017Fazla and2016/2018Binalyze founding differences; separate legal incorporation from founder chronology. Retain2021seed/preseedlabels.",
+      "queue_id": "tr-next-ecosystem-003",
+      "research_lane": "ecosystem",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "priority": 1,
+      "entity_id": "staged:tr:papara",
+      "dimension": "lifecycle",
+      "status": "candidate",
+      "next_source": "Company, Türkiye Emlak Katılım Bankası and official competition/registry follow-up",
+      "reason": "Verify completed transfer following May 7 approval; no completion inferred.",
+      "queue_id": "tr-next-fintech-001",
+      "research_lane": "fintech",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "eligible_population": null
+    },
+    {
+      "priority": 1,
+      "entity_id": "staged:tr:param",
+      "dimension": "incorporation_and_scope",
+      "status": "blocked",
+      "next_source": "https://param.com.tr/dosya/raporlar/2024-faaliyet-raporu.pdf",
+      "reason": "Read accessible alternative official registry/report for legal incorporation and HQ; distinguish group 2005, operation 2013, unverified 2014 registry lead. Do not repeat a blocked host bypass.",
+      "queue_id": "tr-next-fintech-002",
+      "research_lane": "fintech",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "eligible_population": null
+    },
+    {
+      "priority": 1,
+      "entity_id": "staged:tr:getir",
+      "dimension": "legal_entity_and_current_hq",
+      "status": "searched_unknown",
+      "next_source": "Official corporate filings and company transaction releases",
+      "reason": "Resolve parent, food business and grocery entity tree; historical Istanbul HQ only. Homepage 403 respected.",
+      "queue_id": "tr-next-fintech-003",
+      "research_lane": "fintech",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "eligible_population": null
+    },
+    {
+      "priority": 1,
+      "entity_id": "staged:tr:colendi",
+      "dimension": "headquarters_and_incorporation",
+      "status": "candidate",
+      "next_source": "https://find-and-update.company-information.service.gov.uk/company/13576746",
+      "reason": "Unopened registry lead for COLENDI HOLDINGS LIMITED; explicit linkage needed before treating London registration as parent HQ.",
+      "queue_id": "tr-next-fintech-004",
+      "research_lane": "fintech",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-001",
+      "entity_id": "staged:tr:dream-games",
+      "priority": 1,
+      "task": "Verify CVC transaction close, final structure and any explicit currency/consideration from CVC, Dream Games or transaction filings.",
+      "reason": "2025 announcement expected Q3 close, but no closing source reviewed; do not report announced deal as closed.",
+      "source_domains": [
+        "dreamgames.com",
+        "cvc.com"
+      ],
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-003",
+      "entity_id": "staged:tr:good-job-games",
+      "priority": 1,
+      "task": "Find explicit currency for 23m seed and 60m Series A; verify Arcadia fund's exact legal/name identity and event role from a company or investor announcement.",
+      "reason": "Menlo mentions an introduction by Arcadia Game Advisors; that is not investment proof. Numeric amounts remain null.",
+      "source_domains": [
+        "goodjobgames.com",
+        "menlovc.com"
+      ],
+      "cursor": {
+        "publisher_index_pages_reviewed": [
+          "/perspective/page/7/",
+          "/perspective/page/2/?f=Consumer"
+        ],
+        "exhausted": false
+      },
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-004",
+      "entity_id": "staged:tr:spyke-games",
+      "priority": 1,
+      "task": "Verify exact first seed announcement day, alleged 2024 Moon Active minority transaction, and company-issued founder/year evidence.",
+      "reason": "Do not derive 50m from cumulative 105m minus 55m; one reviewed event only. Official Endeavor member profile is the founder evidence in this pass.",
+      "source_domains": [
+        "spykegames.com",
+        "griffingp.com",
+        "moonactive.com",
+        "endeavor.org"
+      ],
+      "cursor": {
+        "endeavor_pdf_page_reviewed": 33,
+        "pdf_pages": 101,
+        "exhausted": false
+      },
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-007",
+      "entity_id": "staged:tr:insider-one",
+      "priority": 1,
+      "task": "Resolve 8/9 December 2025 rebrand date discrepancy and exact canonical parent legal entity; verify Series D dollar currency.",
+      "reason": "Singapore HQ, APAC regional subsidiary and Türkiye principal operating entity must remain distinct; brand rename not a second startup.",
+      "source_domains": [
+        "insiderone.com",
+        "academy.insiderone.com"
+      ],
+      "cursor": {
+        "newsroom_pagination_exhausted": false
+      },
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-008",
+      "entity_id": "staged:tr:picus-security",
+      "priority": 1,
+      "task": "Verify Aycan İrican founder attribution directly and investigate Earlybird Digital East Fund / Bek Ventures name relationship before investor deduplication.",
+      "reason": "Additional founder appears in official government reporting; investor current-name differences need an explicit legal/name link.",
+      "source_domains": [
+        "picussecurity.com"
+      ],
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-009",
+      "entity_id": "staged:tr:akinon",
+      "priority": 1,
+      "task": "Resolve retrospective 2022 versus October 2021 Series B chronology and confirm legal incorporation / founder-list scope.",
+      "reason": "Do not create duplicate 20m rounds; four supported founder names derive from different explicit profiles.",
+      "source_domains": [
+        "akinon.com",
+        "revo.vc"
+      ],
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "scope": "ten_enrolled_discovery_leads",
+      "entity_ids": [
+        "discovery:tr:navlungo",
+        "discovery:tr:iletmen",
+        "discovery:tr:co-print",
+        "discovery:tr:forfarming",
+        "discovery:tr:from-your-eyes",
+        "discovery:tr:acrome",
+        "discovery:tr:genz",
+        "discovery:tr:kavaken",
+        "discovery:tr:synnada",
+        "discovery:tr:yolda"
+      ],
+      "next_action": "Process selected leads sequentially in next bounded batch; company/registry checks before accepting startup records; portfolio membership never round investment.",
+      "queue_id": "tr-next-ecosystem-004",
+      "research_lane": "ecosystem",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "scope": "regional_hubs",
+      "source_ids": [
+        "tr-eco-047",
+        "tr-eco-048",
+        "tr-eco-049",
+        "tr-eco-050",
+        "tr-eco-051"
+      ],
+      "next_action": "Retry only permitted low-volume access at a later checkpoint or find alternate official programme announcements for BilkentCYBERPARK,Teknoparkİzmir andTurcorn. Do not bypass access restrictions.",
+      "queue_id": "tr-next-ecosystem-005",
+      "research_lane": "ecosystem",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "scope": "portfolio_pagination",
+      "source_ids": [
+        "tr-eco-030",
+        "tr-eco-033",
+        "tr-eco-038",
+        "tr-eco-042",
+        "tr-eco-046",
+        "tr-eco-019"
+      ],
+      "next_action": "Record real UI pagination/filter cursors and candidate denominators on next programme/portfolio pass. DCPlogo-only view and BTMshell profiles remain partial; no national denominator.",
+      "queue_id": "tr-next-ecosystem-006",
+      "research_lane": "ecosystem",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "entity_id": "staged:tr:midas",
+      "dimension": "legal_parent_and_earlier_rounds",
+      "status": "candidate",
+      "next_source": "Company legal pages, IFC and primary investor releases",
+      "reason": "Parent versus broker legal join and earlier Series A chronology; reject unrelated midas.app results.",
+      "queue_id": "tr-next-fintech-005",
+      "research_lane": "fintech",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "entity_id": "staged:tr:sipay",
+      "dimension": "earlier_round_currency",
+      "status": "candidate",
+      "next_source": "Anfa or Sipay June 2024 announcement",
+      "reason": "Verify explicit currency for reported $15m Series A and exact date precision.",
+      "queue_id": "tr-next-fintech-006",
+      "research_lane": "fintech",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "entity_id": "staged:tr:iyzico",
+      "dimension": "incorporation_and_round_extension",
+      "status": "candidate",
+      "next_source": "https://media.iyzico.com/b/2018/08/BDDK_faaliyet_izinleri.pdf",
+      "reason": "Unopened registry PDF lead; preserve 2012 company/2013 product history and do not double count initial Series C versus extension.",
+      "queue_id": "tr-next-fintech-007",
+      "research_lane": "fintech",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "eligible_population": null
+    },
+    {
+      "priority": 2,
+      "entity_id": "staged:tr:marti",
+      "dimension": "funding_history_and_subscriber_resolution",
+      "status": "candidate",
+      "next_source": "Annual filing exhibits and historical primary financing releases",
+      "reason": "Resolve abbreviated subscriber legal identities, original venture/SPAC history, and qualified debt draws; no ceiling-as-proceeds conversion.",
+      "queue_id": "tr-next-fintech-008",
+      "research_lane": "fintech",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-002",
+      "entity_id": "staged:tr:dream-games",
+      "priority": 2,
+      "task": "Resolve current global HQ and canonical parent incorporation using company statements and public registry filings; preserve Istanbul and London operating offices.",
+      "reason": "UK affiliates and Istanbul operating base are not a definitive top-parent jurisdiction.",
+      "source_domains": [
+        "dreamgames.com"
+      ],
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-005",
+      "entity_id": "staged:tr:spyke-games",
+      "priority": 2,
+      "task": "Resolve corporate disclosure versus privacy notice unit/address differences and effective dates.",
+      "reason": "Both official pages give same building with different units; preserve conflict.",
+      "source_domains": [
+        "spykegames.com"
+      ],
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-006",
+      "entity_id": "staged:tr:peak",
+      "priority": 2,
+      "task": "Verify current HQ/legal entity and prior equity rounds; corroborate acquisition dollar denomination from regulatory/acquirer financial statements.",
+      "reason": "Current record is acquired alumni with a historical HQ point and raw acquisition consideration.",
+      "source_domains": [
+        "peak.com",
+        "zynga.com"
+      ],
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-010",
+      "entity_id": "staged:tr:sestek",
+      "priority": 2,
+      "task": "Verify current global headquarters, canonical Turkish legal entity and any prior financing from company/acquirer filings.",
+      "reason": "Regional office list and US mailing subsidiary do not establish a global HQ or sole incorporation.",
+      "source_domains": [
+        "sestek.com",
+        "unifonic.com"
+      ],
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-011",
+      "entity_id": null,
+      "priority": 2,
+      "task": "Research Libra Softworks identity, current domain and country relevance before acceptance.",
+      "reason": "New lead from reviewed official government report; no primary company page yet.",
+      "source_domains": [],
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "queue_id": "tr-next-games-012",
+      "entity_id": "staged:tr:dream-games",
+      "priority": 2,
+      "task": "Verify 2022 round participants Makers Fund, IVP, Kora, Balderton Capital and BlackRock through direct company/investor announcements.",
+      "reason": "Government report names them; only directly evidenced Index lead currently accepted in event participant list.",
+      "source_domains": [
+        "dreamgames.com",
+        "indexventures.com"
+      ],
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "research_lane": "games",
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "id": "tr-next-root-002",
+      "source_url": "https://www.turcorn.gov.tr/upload/Node/100496/files/Year_in_Review_2025_v1-01.pdf",
+      "priority": 2,
+      "status": "blocked",
+      "next_action": "Retry one permitted report retrieval later and compare definitions with KPMG; do not bulk copy or infer missing companies.",
+      "reason": "PDF timed out.",
+      "eligible_population": null,
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "queue_id": "tr-next-root-002",
+      "research_lane": "root",
+      "cursor_note": "No source-wide completion or pagination cursor inferred."
+    },
+    {
+      "priority": 3,
+      "scope": "additional_regions",
+      "next_action": "Research official university/industrial channels inBursa,Konya,Gaziantep,Eskişehir,Adana andotherregions before geographic comparisons; current scope is not national completeness.",
+      "queue_id": "tr-next-ecosystem-007",
+      "research_lane": "ecosystem",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "priority": 3,
+      "scope": "public_programme_refresh",
+      "source_ids": [
+        "tr-eco-026",
+        "tr-eco-027",
+        "tr-eco-028"
+      ],
+      "next_action": "After scheduledNov24–27BiGG results, verify actual published outcomes if another batch is authorized; no automatic schedule created.",
+      "queue_id": "tr-next-ecosystem-008",
+      "research_lane": "ecosystem",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "status": "pending_review",
+      "eligible_population": null
+    },
+    {
+      "priority": 3,
+      "dimension": "wider_fintech_coverage",
+      "status": "unsearched",
+      "next_source": "TCMB licensed-company lists, programme cohorts and primary investor portfolios",
+      "reason": "Next bounded discovery pass only; list membership is not startup qualification or crawler-seed approval.",
+      "queue_id": "tr-next-fintech-009",
+      "research_lane": "fintech",
+      "crawler_seed_approved": false,
+      "cursor": null,
+      "cursor_note": "No source-wide completion or pagination cursor inferred.",
+      "eligible_population": null
+    },
+    {
+      "id": "tr-next-root-001",
+      "source_url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "priority": 3,
+      "status": "blocked",
+      "next_action": "Re-read the permitted public NGDPD API when available and verify the country-only rank; preserve the assigned cohort meanwhile.",
+      "reason": "DisabledError; dynamic template contains no numeric values.",
+      "eligible_population": null,
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "queue_id": "tr-next-root-001",
+      "research_lane": "root",
+      "cursor_note": "No source-wide completion or pagination cursor inferred."
+    },
+    {
+      "id": "tr-next-root-003",
+      "source_url": "https://startups.watch/faq",
+      "priority": 3,
+      "status": "restricted",
+      "next_action": "Use public methodological references only. Continue independent primary company/programme research; do not export proprietary database rows.",
+      "reason": "Public redistribution and bulk export are restricted; no paid credentials or rights obtained.",
+      "eligible_population": null,
+      "cursor": null,
+      "crawler_seed_approved": false,
+      "queue_id": "tr-next-root-003",
+      "research_lane": "root",
+      "cursor_note": "No source-wide completion or pagination cursor inferred."
+    }
+  ],
+  "pending_discovery_entity_ids": [
+    "discovery:tr:navlungo",
+    "discovery:tr:iletmen",
+    "discovery:tr:co-print",
+    "discovery:tr:forfarming",
+    "discovery:tr:from-your-eyes",
+    "discovery:tr:acrome",
+    "discovery:tr:genz",
+    "discovery:tr:kavaken",
+    "discovery:tr:synnada",
+    "discovery:tr:yolda",
+    "discovery:tr:libra-softworks"
+  ],
+  "collection_complete": false,
+  "crawler_seed_approvals": 0,
+  "note": "Research queue only. Existing planner owns approved source inventory and operational cursors."
+}

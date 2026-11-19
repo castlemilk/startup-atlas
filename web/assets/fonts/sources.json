@@ -1,0 +1,70 @@
+{
+  "family": "Geist",
+  "version": "v1.9.2",
+  "repository": "https://github.com/vercel/geist-font",
+  "reviewedAt": "2026-11-17",
+  "files": [
+    {
+      "file": "geist-sans-variable.woff2",
+      "source": "https://raw.githubusercontent.com/vercel/geist-font/v1.9.2/fonts/Geist/webfonts/Geist%5Bwght%5D.woff2",
+      "bytes": 69760,
+      "gitBlob": "71dab8bedba3bfef5dccd7875ed05cac44c7345d",
+      "sha256": "2ffebe993e969069a9789d15164b7715d42491b5835516c5e3b935d5f81b05f1"
+    },
+    {
+      "file": "geist-mono-variable.woff2",
+      "source": "https://raw.githubusercontent.com/vercel/geist-font/v1.9.2/fonts/GeistMono/webfonts/GeistMono%5Bwght%5D.woff2",
+      "bytes": 71596,
+      "gitBlob": "0e746fc18223dfcb107a85502a0abe1b1a02d51a",
+      "sha256": "afaacc4c5fbba89d2ebf7a02dc4070208540874592a5504d57175782fe893101"
+    },
+    {
+      "file": "LICENSE.txt",
+      "source": "https://raw.githubusercontent.com/vercel/geist-font/v1.9.2/LICENSE.txt",
+      "bytes": 4368,
+      "gitBlob": "8d003fec6b8a0f9f866ab1038579b6ea20926ac4",
+      "sha256": "930853ee1daa68554d9e35c8a9175affb74f699fad9a5da6ee5ebe76379d9137"
+    },
+    {
+      "file": "OFL.txt",
+      "source": "https://raw.githubusercontent.com/vercel/geist-font/v1.9.2/OFL.txt",
+      "bytes": 4384,
+      "gitBlob": "999fa2373263f4ce66077075c9ede594c6a49510",
+      "sha256": "021caa749f89fecd7c2e40a50499de29e84d2bc19251659b47d499c2fbfffc17"
+    }
+  ],
+  "fontMetadata": [
+    {
+      "file": "geist-sans-variable.woff2",
+      "family": "Geist",
+      "subfamily": "Regular",
+      "version": "Version 1.800",
+      "flavor": "woff2",
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "glyphs": 975
+    },
+    {
+      "file": "geist-mono-variable.woff2",
+      "family": "Geist Mono",
+      "subfamily": "Regular",
+      "version": "Version 1.700",
+      "flavor": "woff2",
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "glyphs": 1159
+    }
+  ]
+}

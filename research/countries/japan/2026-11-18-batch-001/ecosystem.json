@@ -1,0 +1,905 @@
+{
+  "packet_kind": "japan_ecosystem_research_contribution",
+  "status": "reviewed_staged",
+  "country": "Japan",
+  "iso3166_alpha2": "JP",
+  "run": {
+    "started_at": "2026-11-18T09:41:11Z",
+    "checkpoint_at": "2026-11-18T09:45:31Z",
+    "repo_source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "source_method": "bounded_web_tool_research",
+    "live_crawler_runs": 0,
+    "production_writes": 0,
+    "source_allowlist_changes": 0,
+    "inventory_note": "Root reported committed generated graph is stale at pinned main; this ecosystem contribution makes no committed, built or live graph-count claim. Root owns rebuild/dedup receipt."
+  },
+  "cohort": {
+    "requested_label": "GDP 4/30",
+    "rank_supplied_by_user": 4,
+    "rank_independently_verified": null,
+    "dataset": "IMF October 2026 WEO",
+    "indicator": "NGDPD",
+    "year": 2026,
+    "measure": "nominal GDP estimate, not final actual",
+    "japan_value": null,
+    "source_ids": [
+      "jp-eco-33",
+      "jp-eco-34",
+      "jp-eco-35"
+    ],
+    "status": "release_identified_values_unavailable",
+    "aggregate_exclusion": "required_on_future_dataset_verification",
+    "taiwan_convention": "separately reported economy as instructed"
+  },
+  "hubs": [
+    {
+      "name": "Sapporo Hokkaido",
+      "area": "Hokkaido",
+      "policy_category": "global",
+      "source_ids": [
+        "jp-eco-01",
+        "jp-eco-28",
+        "jp-eco-22"
+      ],
+      "research_focus": [
+        "space",
+        "agriculture and food",
+        "environment and energy",
+        "GX",
+        "AI"
+      ],
+      "gap": null,
+      "startup_denominator": null
+    },
+    {
+      "name": "Sendai Tohoku",
+      "area": "Sendai and Tohoku region",
+      "policy_category": "global",
+      "source_ids": [
+        "jp-eco-01",
+        "jp-eco-25"
+      ],
+      "research_focus": [
+        "university-origin deeptech",
+        "impact startups"
+      ],
+      "gap": null,
+      "startup_denominator": null
+    },
+    {
+      "name": "Tokyo consortium",
+      "area": "Tokyo and consortium geography",
+      "policy_category": "global",
+      "source_ids": [
+        "jp-eco-01",
+        "jp-eco-26",
+        "jp-eco-27"
+      ],
+      "research_focus": [
+        "mixed-sector entrepreneurship",
+        "hardware demonstration",
+        "corporate collaboration"
+      ],
+      "gap": "Programme location is not company HQ. Tokyo consortium geographical edges not fully extracted.",
+      "startup_denominator": null
+    },
+    {
+      "name": "Central Japan",
+      "area": "Aichi/Nagoya and Central Japan consortium",
+      "policy_category": "global",
+      "source_ids": [
+        "jp-eco-01",
+        "jp-eco-07",
+        "jp-eco-08"
+      ],
+      "research_focus": [
+        "industrial technology",
+        "mobility",
+        "robotics",
+        "aerospace",
+        "materials"
+      ],
+      "gap": null,
+      "startup_denominator": null
+    },
+    {
+      "name": "Kansai",
+      "area": "Osaka, Kyoto, Hyogo/Kobe",
+      "policy_category": "global",
+      "source_ids": [
+        "jp-eco-01",
+        "jp-eco-29",
+        "jp-eco-17"
+      ],
+      "research_focus": [
+        "life science",
+        "green technology",
+        "digital",
+        "university commercialisation"
+      ],
+      "gap": null,
+      "startup_denominator": null
+    },
+    {
+      "name": "Hiroshima",
+      "area": "Hiroshima regional consortium",
+      "policy_category": "global",
+      "source_ids": [
+        "jp-eco-01"
+      ],
+      "research_focus": null,
+      "gap": "Regional plan and company roster queued.",
+      "startup_denominator": null
+    },
+    {
+      "name": "Kitakyushu",
+      "area": "Kitakyushu",
+      "policy_category": "global",
+      "source_ids": [
+        "jp-eco-01"
+      ],
+      "research_focus": null,
+      "gap": "Regional plan and company roster queued.",
+      "startup_denominator": null
+    },
+    {
+      "name": "Fukuoka RAMEN TECH",
+      "area": "Fukuoka",
+      "policy_category": "global",
+      "source_ids": [
+        "jp-eco-01",
+        "jp-eco-23",
+        "jp-eco-24"
+      ],
+      "research_focus": [
+        "entrepreneurship support",
+        "international business matching"
+      ],
+      "gap": null,
+      "startup_denominator": null
+    },
+    {
+      "name": "Hokuriku",
+      "area": "Hokuriku",
+      "policy_category": "next_global",
+      "source_ids": [
+        "jp-eco-01"
+      ],
+      "research_focus": null,
+      "gap": "Regional plan and company roster queued.",
+      "startup_denominator": null
+    },
+    {
+      "name": "Regional Nexus Hub Nagano Niigata",
+      "area": "Nagano and Niigata",
+      "policy_category": "next_global",
+      "source_ids": [
+        "jp-eco-01"
+      ],
+      "research_focus": null,
+      "gap": "Regional plan and company roster queued.",
+      "startup_denominator": null
+    },
+    {
+      "name": "Setouchi",
+      "area": "Setouchi",
+      "policy_category": "next_global",
+      "source_ids": [
+        "jp-eco-01"
+      ],
+      "research_focus": null,
+      "gap": "Regional plan and company roster queued.",
+      "startup_denominator": null
+    },
+    {
+      "name": "Kumamoto",
+      "area": "Kumamoto",
+      "policy_category": "next_global",
+      "source_ids": [
+        "jp-eco-01"
+      ],
+      "research_focus": null,
+      "gap": "Regional plan and company roster queued.",
+      "startup_denominator": null
+    },
+    {
+      "name": "Okinawa",
+      "area": "Okinawa",
+      "policy_category": "next_global",
+      "source_ids": [
+        "jp-eco-01"
+      ],
+      "research_focus": null,
+      "gap": "Regional plan and company roster queued.",
+      "startup_denominator": null
+    },
+    {
+      "name": "Tsukuba science network",
+      "area": "Tsukuba, Ibaraki",
+      "policy_category": "subregional_research_node",
+      "source_ids": [
+        "jp-eco-20",
+        "jp-eco-21"
+      ],
+      "research_focus": [
+        "university and research-origin technology"
+      ],
+      "gap": "Separate research node, not a fourteenth Cabinet-selected hub.",
+      "startup_denominator": null
+    }
+  ],
+  "programmes": [
+    {
+      "name": "J-Startup",
+      "source_ids": [
+        "jp-eco-02",
+        "jp-eco-03",
+        "dt-spiber-jstartup",
+        "jp-eco-05"
+      ],
+      "support": "Public-private intensive growth support; nominations and sixth-round public applications.",
+      "current_application_status": "sixth_round_closed",
+      "application_deadline": "2026-11-13T17:00:00+09:00",
+      "expected_selection": "2027-02 or later",
+      "funding_relationship": "selection_support_not_equity",
+      "population": {
+        "kind": "historical_fifth_selection_roster",
+        "denominator": 31,
+        "individually_verified_in_this_ecosystem_lane": 0,
+        "national_denominator": null
+      }
+    },
+    {
+      "name": "J-StarX",
+      "source_ids": [
+        "jp-eco-06"
+      ],
+      "support": "Course-specific overseas entrepreneurship and market expansion training.",
+      "current_application_status": "varies_by_course",
+      "application_deadline": null,
+      "funding_relationship": "programme_participation_not_equity",
+      "population": {
+        "denominator": null,
+        "gap": "Not all courses or participant rosters enumerated; course eligibility varies."
+      }
+    },
+    {
+      "name": "NEDO DTSU and GX",
+      "source_ids": [
+        "jp-eco-31"
+      ],
+      "support": "R&D, commercialisation and industrial demonstration subsidy support.",
+      "current_application_status": "course_specific",
+      "funding_relationship": "subsidy_not_equity",
+      "population": {
+        "dtsu_reported_companies": 119,
+        "dtsu_rounds": "1–9",
+        "gx_reported_companies": 19,
+        "gx_rounds": "1–6",
+        "unique_union": null,
+        "as_of": "2026-10-05",
+        "gap": "Repeated phase/year rows and programme overlap require company-level deduplication."
+      }
+    },
+    {
+      "name": "NEDO international joint R&D",
+      "source_ids": [
+        "jp-eco-32"
+      ],
+      "support": "Co-funded Japanese and overseas business R&D partnerships.",
+      "funding_relationship": "subsidy_not_equity",
+      "population": {
+        "denominator": null
+      }
+    },
+    {
+      "name": "Tokyo Innovation Base",
+      "source_ids": [
+        "jp-eco-26",
+        "jp-eco-27"
+      ],
+      "support": "Demonstration, mentoring, trial sales, entrepreneurship and open innovation.",
+      "funding_relationship": "service_or_procurement_relationship_not_equity",
+      "population": {
+        "denominator": null,
+        "scope": "Database is companies collaborating or contracting with Tokyo Metropolitan Government."
+      }
+    },
+    {
+      "name": "STATION Ai",
+      "source_ids": [
+        "jp-eco-08"
+      ],
+      "support": "Nagoya incubation and corporate/startup collaboration.",
+      "funding_relationship": "membership_not_equity",
+      "population": {
+        "denominator": null,
+        "gap": "2024 grand-opening forecast is not a current member census."
+      }
+    },
+    {
+      "name": "Osaka Fintech and Beyond Accelerator 2026",
+      "source_ids": [
+        "jp-eco-19",
+        "jp-eco-18"
+      ],
+      "support": "Business matching, PoC, mentoring and Osaka establishment support.",
+      "current_application_status": "open_as_of_retrieval",
+      "application_deadline": "2026-12-02",
+      "funding_relationship": "accelerator_not_equity",
+      "population": {
+        "maximum_selections": 4,
+        "actual_selected": null,
+        "eligibility": "Domestic or overseas fintech companies interested in Osaka operations/base."
+      }
+    },
+    {
+      "name": "Incubate Camp",
+      "source_ids": [
+        "jp-eco-14"
+      ],
+      "support": "Seed-stage entrepreneur/VC accelerator and community.",
+      "funding_relationship": "participation_does_not_prove_investment",
+      "population": {
+        "denominator": null
+      }
+    },
+    {
+      "name": "Fukuoka Growth Next and Startup Cafe",
+      "source_ids": [
+        "jp-eco-23"
+      ],
+      "support": "Public-private founder support, finance and business/investor matching.",
+      "funding_relationship": "support_not_equity",
+      "population": {
+        "denominator": null
+      }
+    }
+  ],
+  "investors": [
+    {
+      "name": "UTEC",
+      "canonical_name_candidate": "The University of Tokyo Edge Capital Partners Co., Ltd.",
+      "role": "venture_fund_manager",
+      "focus": "science and technology, university-origin and other startups",
+      "source_ids": [
+        "jp-eco-09",
+        "jp-eco-10"
+      ],
+      "canonical_atlas_id": null
+    },
+    {
+      "name": "JAFCO",
+      "canonical_name_candidate": "JAFCO Co., Ltd.",
+      "role": "venture_and_buyout_fund_manager",
+      "focus": "venture and buyout are separate populations",
+      "source_ids": [
+        "jp-eco-11"
+      ],
+      "canonical_atlas_id": null,
+      "identity_note": "Current site naming differs from older JAFCO Group references; exact legal alias chronology not reviewed."
+    },
+    {
+      "name": "Global Brain",
+      "canonical_name_candidate": null,
+      "role": "venture_and_corporate_fund_manager",
+      "focus": "multi-sector Japanese and overseas companies",
+      "source_ids": [
+        "jp-eco-12",
+        "jp-eco-13"
+      ],
+      "canonical_atlas_id": null
+    },
+    {
+      "name": "Incubate Fund",
+      "canonical_name_candidate": "Incubate Fund Co., Ltd.",
+      "role": "seed_venture_fund_manager",
+      "focus": "first-round seed investing and founder support",
+      "source_ids": [
+        "jp-eco-14",
+        "jp-eco-15"
+      ],
+      "canonical_atlas_id": null
+    },
+    {
+      "name": "KYOTO-iCAP",
+      "canonical_name_candidate": "Kyoto University Innovation Capital Co., Ltd.",
+      "role": "university_venture_fund_manager",
+      "focus": "national-university research commercialisation",
+      "source_ids": [
+        "jp-eco-17"
+      ],
+      "canonical_atlas_id": null
+    },
+    {
+      "name": "Japan Investment Corporation",
+      "canonical_name_candidate": "Japan Investment Corporation",
+      "role": "institutional_lp_and_group_parent",
+      "focus": "risk-capital supply through fund investments",
+      "source_ids": [
+        "jp-eco-16"
+      ],
+      "canonical_atlas_id": null
+    },
+    {
+      "name": "Plug and Play Japan",
+      "canonical_name_candidate": null,
+      "role": "accelerator_and_venture_network",
+      "focus": "corporate collaboration and sector acceleration",
+      "source_ids": [
+        "jp-eco-18",
+        "jp-eco-19"
+      ],
+      "canonical_atlas_id": null
+    }
+  ],
+  "next_queue": [
+    {
+      "queue_id": "jp-eco-q01",
+      "priority": 1,
+      "source_ids": [
+        "jp-eco-02"
+      ],
+      "scope": "Fixed J-Startup fifth selection roster",
+      "denominator": 31,
+      "pagination": "single dated announcement; no pagination",
+      "checkpoint": {
+        "next_item_index": 0,
+        "reviewed_individually": 0,
+        "complete": false
+      },
+      "next_action": "Deduplicate each native company name against first batch and Atlas, open official company/legal profile, then funding sources; selection alone does not meet company acceptance.",
+      "candidate_names": [
+        "株式会社アークエッジ・スペース",
+        "EF Polymer株式会社",
+        "株式会社イクスフォレストセラピューティクス",
+        "株式会社イノカ",
+        "株式会社インターホールディングス",
+        "株式会社エアロネクスト",
+        "エイターリンク株式会社",
+        "株式会社ElevationSpace",
+        "大熊ダイヤモンドデバイス株式会社",
+        "株式会社Orbital Lasers",
+        "株式会社オレンジ",
+        "Global Vascular株式会社",
+        "コミューン株式会社",
+        "Sakana AI株式会社",
+        "SUN METALON 株式会社",
+        "ジェリクル株式会社",
+        "将来宇宙輸送システム株式会社",
+        "株式会社Splink",
+        "スペースワン株式会社",
+        "スペクトロニクス株式会社",
+        "株式会社DigitalArchi",
+        "TopoLogic株式会社",
+        "トレジェムバイオファーマ株式会社",
+        "HarvestX株式会社",
+        "株式会社ピリカ",
+        "株式会社BULL",
+        "株式会社Pale Blue",
+        "株式会社Helical Fusion",
+        "ugo株式会社",
+        "Letara株式会社",
+        "株式会社Logomix"
+      ]
+    },
+    {
+      "queue_id": "jp-eco-q02",
+      "priority": 1,
+      "source_ids": [
+        "jp-eco-31"
+      ],
+      "scope": "NEDO DTSU/GX selection tables",
+      "denominator": null,
+      "reported_scope_counts": {
+        "DTSU": 119,
+        "GX": 19
+      },
+      "pagination": "single programme page plus company detail links; table rows repeat phases/years",
+      "next_action": "Pin page, enumerate company identities with phase/year keys, deduplicate overlapping projects; preserve subsidy classification."
+    },
+    {
+      "queue_id": "jp-eco-q03",
+      "priority": 1,
+      "source_ids": [
+        "jp-eco-21"
+      ],
+      "scope": "University of Tsukuba certified ventures",
+      "denominator": null,
+      "pagination": "year sections on one page; whole list not counted",
+      "next_action": "Start FY2025–26 entries; keep establishment month separate from approval month; verify actual HQ."
+    },
+    {
+      "queue_id": "jp-eco-q04",
+      "priority": 1,
+      "source_ids": [
+        "jp-eco-22",
+        "jp-eco-28"
+      ],
+      "scope": "Hokkaido certified ventures",
+      "denominator": null,
+      "pagination": "single roster; no full company review",
+      "next_action": "Resolve valid company domains; ignore malformed/placeholder hrefs; prioritize space, agri-food and energy companies."
+    },
+    {
+      "queue_id": "jp-eco-q05",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-10"
+      ],
+      "scope": "UTEC Japan-HQ current company subset",
+      "denominator": null,
+      "pagination": "current/exited, sector and fund filters; endpoint not exhaustively traversed",
+      "next_action": "Separate funds and overseas companies; inspect company-specific investment announcements."
+    },
+    {
+      "queue_id": "jp-eco-q06",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-13",
+        "jp-eco-12"
+      ],
+      "scope": "Global Brain Japan-tagged companies",
+      "denominator": null,
+      "pagination": "long combined directory; current/exited and region semantics require pinning",
+      "next_action": "Resolve HQ/legal entity and current status; distinguish fund sponsor/manager/investing partnership."
+    },
+    {
+      "queue_id": "jp-eco-q07",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-15"
+      ],
+      "scope": "Incubate Fund portfolio",
+      "denominator": null,
+      "pagination": "11 page numbers observed; first page attempted, 10 later pages unvisited; company labels not extracted",
+      "next_action": "Use readable official investment announcements or permitted rendered-source route without bypass; no zero-company count."
+    },
+    {
+      "queue_id": "jp-eco-q08",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-26",
+        "jp-eco-37"
+      ],
+      "scope": "Tokyo contracted/collaborating startups",
+      "denominator": null,
+      "pagination": "explore route timed out",
+      "next_action": "Retry once later within budget; capture filter scope/end condition before company enumeration."
+    },
+    {
+      "queue_id": "jp-eco-q09",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-07"
+      ],
+      "scope": "J-Startup CENTRAL",
+      "denominator": null,
+      "pagination": "directory names unavailable in extracted view",
+      "next_action": "Reconcile undated 22 regional/six national numbers with newer fifth-selection release; verify regional companies."
+    },
+    {
+      "queue_id": "jp-eco-q10",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-25",
+        "jp-eco-40"
+      ],
+      "scope": "J-Startup TOHOKU January 2026 additions",
+      "denominator": 7,
+      "pagination": "linked press release blocked 403",
+      "next_action": "Find independently accessible official roster or company announcements; no access-control bypass."
+    },
+    {
+      "queue_id": "jp-eco-q11",
+      "priority": 2,
+      "source_ids": [
+        "jp-eco-24"
+      ],
+      "scope": "Fukuoka municipal matching companies",
+      "denominator": null,
+      "pagination": "single visible directory; complete enumeration not attempted",
+      "next_action": "Review businesses by identity, private/listed status and HQ; do not equate municipal promotion with investment."
+    },
+    {
+      "queue_id": "jp-eco-q12",
+      "priority": 3,
+      "source_ids": [
+        "jp-eco-01"
+      ],
+      "scope": "Undercovered policy hubs",
+      "denominator": null,
+      "pagination": "regional plan PDFs and linked rosters pending",
+      "next_action": "Open Hiroshima, Kitakyushu, Hokuriku, Nagano/Niigata, Setouchi, Kumamoto, Okinawa plans and source-backed company lists in separate bounded batches."
+    },
+    {
+      "queue_id": "jp-eco-q13",
+      "priority": 3,
+      "source_ids": [
+        "jp-eco-33",
+        "jp-eco-34",
+        "jp-eco-35"
+      ],
+      "scope": "IMF October 2026 cohort verification",
+      "denominator": null,
+      "pagination": "API unavailable; Data Mapper template only",
+      "next_action": "Obtain authoritative version-pinned NGDPD/2026 dataset via allowed tool; exclude aggregates; preserve Taiwan separate-economy convention; calculate rank only from complete country/economy set."
+    },
+    {
+      "queue_id": "jp-eco-q14",
+      "priority": 3,
+      "source_ids": [
+        "jp-eco-41"
+      ],
+      "scope": "Additional investor networks",
+      "denominator": null,
+      "pagination": "ANRI homepage extraction unavailable; other firm pages not researched",
+      "next_action": "Review ANRI, University of Tokyo IPC, Coral, DNX, Scrum and 500 Global Japan through official company/programme pages; no implied completeness."
+    }
+  ],
+  "search_log": [
+    {
+      "query": "Japan startup ecosystem cities 2025 2026 site:jetro.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "J-Startup 2025 selected companies site:meti.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "October 2026 World Economic Outlook site:imf.org",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "スタートアップ育成5か年計画 2022 site:cas.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "J-StarX Global Startup Acceleration Program 2026 site:jetro.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "STATION Ai hub Aichi site:stationai.co.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Tokyo Innovation Base site:tib.metro.tokyo.lg.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "J-Startup company list site:j-startup.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "UTEC science technology site:ut-ec.co.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "ANRI seed deeptech site:anri.vc",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "JAFCO venture investment site:jafco.co.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Global Brain portfolio site:globalbrains.com",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Incubate Fund seed site:incubatefund.com",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "JIC fund investment site:j-ic.co.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Plug and Play Japan accelerator site:plugandplaytechcenter.com",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Kyoto iCAP investment site:kyoto-unicap.co.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Tsukuba startup science",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Fukuoka startups ecosystem",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Hokkaido startups space agriculture",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Sendai Tohoku deep tech",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Startup Development Five-year Plan site:cas.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "Startup Development Five-year Plan 10 trillion site:meti.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    },
+    {
+      "query": "NEDO deeptech support 2026 site:nedo.go.jp",
+      "time_window": [
+        "2026-11-18T09:41:11Z",
+        "2026-11-18T09:45:31Z"
+      ],
+      "purpose": "discovery_only_until_supporting_page_open"
+    }
+  ],
+  "coverage": {
+    "registry_sources": 41,
+    "supporting_pages_accessed": 33,
+    "partial_pages": 2,
+    "blocked_pages": 4,
+    "unavailable_pages": 2,
+    "source_scope": "curated selected-source registry, not all search results or all sources",
+    "source_registry_is_exhaustive": false,
+    "policy_hub_denominator": 13,
+    "policy_hubs_named": 13,
+    "additional_subregional_nodes": 1,
+    "investor_networks_reviewed": 7,
+    "programmes_reviewed": 9,
+    "company_candidates_discovered_in_fixed_roster": 31,
+    "companies_individually_reviewed_in_this_ecosystem_lane": 0,
+    "companies_accepted_in_this_ecosystem_lane": 0,
+    "companies_rejected_in_this_ecosystem_lane": 0,
+    "japan_startup_population_denominator": null
+  },
+  "conflicts_and_limits": [
+    {
+      "subject": "Spiber",
+      "source_ids": [
+        "dt-spiber-jstartup"
+      ],
+      "issue": "Historical J-Startup membership superseded by selection removal; successor identity and business transfer need company-level review."
+    },
+    {
+      "subject": "J-Startup CENTRAL count",
+      "source_ids": [
+        "jp-eco-07"
+      ],
+      "issue": "Undated 22 regional and six national counts are not a current additive denominator."
+    },
+    {
+      "subject": "J-StarX bootcamp dates",
+      "source_ids": [
+        "jp-eco-06"
+      ],
+      "issue": "Page states February 2026 overseas visit following later 2026 domestic sessions; maintain explicit date conflict."
+    },
+    {
+      "subject": "Incubate Fund aggregate statistics",
+      "source_ids": [
+        "jp-eco-14"
+      ],
+      "issue": "English numeric sentence malformed; omit AUM and cumulative portfolio number."
+    },
+    {
+      "subject": "Cabinet portal",
+      "source_ids": [
+        "jp-eco-38",
+        "jp-eco-39"
+      ],
+      "issue": "Direct 404 despite search snippets. No 2026-package claim promoted from snippet."
+    },
+    {
+      "subject": "Investor relationships",
+      "source_ids": [
+        "jp-eco-09",
+        "jp-eco-12",
+        "jp-eco-16"
+      ],
+      "issue": "Portfolio/LP/fund-management relationship is not a company funding-event participation edge."
+    },
+    {
+      "subject": "Population",
+      "source_ids": [
+        "jp-eco-02",
+        "jp-eco-05",
+        "jp-eco-21",
+        "jp-eco-26",
+        "jp-eco-31"
+      ],
+      "issue": "All source rosters use different eligibility, timing and legal/operational definitions; no combined national completeness percentage."
+    }
+  ],
+  "scope_note": "Historical ecosystem-only contribution checkpoint; individual company review counts in this file do not include the separately integrated company lanes.",
+  "authoritative_resumption_file": "next-source-queue.json"
+}

@@ -1,6 +1,7 @@
 import { validateOpportunity, validateProvenance, parseAdditions } from '../../../scripts/catalogue-entries.mjs';
 import { ServiceError, REPOSITORY, digest, readJson } from './common.mjs';
 import { validateStartupRecord, mergeStartup, startupSlug } from './startup-record.mjs';
+import { describeStartupRecord, startupEditIdentity, applyStartupEdit, prepareStartupEdit } from './startup-edit.mjs';
 
 const normalize = value => value.normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim();
 const stable = value => Array.isArray(value) ? value.map(stable) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, stable(value[key])])) : value;
@@ -8,8 +9,18 @@ const same = (a, b) => JSON.stringify(stable(a)) === JSON.stringify(stable(b));
 const decode = value => new TextDecoder().decode(Uint8Array.from(atob(value.replace(/\s/g, '')), c => c.charCodeAt(0)));
 function startupUpdate(research, record) {
   const previous = research.startups.find(item => normalize(item.name) === normalize(record.name));
+  // Legacy proposals are partial upserts too. A changed evidence URL must
+  // not silently inherit claims that the caller did not review/resubmit.
+  for (const incoming of record.funding_rounds || []) {
+    const existing = previous?.funding_rounds?.find(item => item.id === incoming.id);
+    if (!existing || incoming.source === existing.source) continue;
+    const inherited = Object.keys(existing).filter(key => !['id', 'source'].includes(key) && !Object.hasOwn(incoming, key));
+    if (inherited.length) throw new ServiceError('SOURCE_INHERITANCE', `Funding event ${incoming.id}: keep the previous source or verify and explicitly resubmit inherited claims (${inherited.join(', ')}) with the replacement source.`);
+  }
   const merged = mergeStartup(previous || {}, record);
   if (previous) merged.name = previous.name;
+  // Patch limits are not record limits: keyed upserts can grow an existing array.
+  validateStartupRecord(merged);
   const startups = previous ? research.startups.map(item => item === previous ? merged : item) : [...research.startups, merged];
   return { previous, merged, research: { ...research, reviewed: research.reviewed > record.reviewed_at ? research.reviewed : record.reviewed_at, startups } };
 }
@@ -118,7 +129,7 @@ export class GitHubCatalogue {
     const revision=/^[a-f0-9]{40}$/.test(graph.source_revision||'')?graph.source_revision:null;
     return {head,graph,revision};
   }
-  async searchGraph(query='',limit=20) {
+  async searchGraph(query='',limit=20,cursor) {
     if(typeof query!=='string' || query.length>200 || !Number.isInteger(limit) || limit<1 || limit>100) throw new ServiceError('VALIDATION_ERROR','Use a query up to 200 characters and a limit from 1 to 100.');
     const {head,graph,revision}=await this.graphSnapshot(); const q=normalize(query);
     const byId=new Map(graph.entities.map(entity=>[entity.id,entity]));
@@ -127,8 +138,21 @@ export class GitHubCatalogue {
     for(const round of graph.funding_rounds)context.get(round.startup_id)?.push(round.stage||'',round.note||'');
     for(const article of graph.articles)context.get(article.startup_id)?.push(article.title||'');
     const matches=graph.entities.filter(e=>['startup','partner','provider'].includes(e.kind) && normalize([e.name,e.summary||'',...(context.get(e.id)||[])].join(' ')).includes(q));
-    matches.sort((a,b)=>(normalize(a.name)===q?0:normalize(a.name).startsWith(q)?1:2)-(normalize(b.name)===q?0:normalize(b.name).startsWith(q)?1:2)||a.name.localeCompare(b.name));
-    return {revision,mainRevision:head,indexStatus:revision?(revision===head?'current':'pending_publication'):'unknown',total:matches.length,entities:matches.slice(0,limit),note:'Published graph snapshot; links and funding are source-attributed and may be incomplete.'};
+    matches.sort((a,b)=>(normalize(a.name)===q?0:normalize(a.name).startsWith(q)?1:2)-(normalize(b.name)===q?0:normalize(b.name).startsWith(q)?1:2)||a.name.localeCompare(b.name)||a.id.localeCompare(b.id));
+    // Include result order so different runtime collation cannot silently skip records.
+    const fingerprint=await digest(JSON.stringify([graph,q,matches.map(e=>e.id)]));
+    let offset=0;
+    if(cursor!==undefined) {
+      if(typeof cursor!=='string' || cursor.length>128) throw new ServiceError('VALIDATION_ERROR','Invalid graph search cursor.');
+      const parts=cursor.split('.');
+      if(parts.length!==2 || !/^(0|[1-9][0-9]*)$/.test(parts[0]) || !/^[A-Za-z0-9_-]{43}$/.test(parts[1])) throw new ServiceError('VALIDATION_ERROR','Invalid graph search cursor.');
+      offset=Number(parts[0]);
+      if(!Number.isSafeInteger(offset)) throw new ServiceError('VALIDATION_ERROR','Invalid graph search cursor.');
+      if(parts[1]!==fingerprint) throw new ServiceError('STALE_CURSOR','The graph snapshot or query changed. Restart the search.');
+      if(offset>matches.length) throw new ServiceError('VALIDATION_ERROR','Invalid graph search cursor.');
+    }
+    const next=offset+limit;
+    return {revision,mainRevision:head,indexStatus:revision?(revision===head?'current':'pending_publication'):'unknown',total:matches.length,entities:matches.slice(offset,next),nextCursor:next<matches.length?`${next}.${fingerprint}`:null,note:'Published graph snapshot; links and funding are source-attributed and may be incomplete.'};
   }
   async getStartup(id) {
     if(typeof id!=='string' || !/^startup:[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || id.length>200) throw new ServiceError('VALIDATION_ERROR','Use a startup graph ID.');
@@ -163,6 +187,95 @@ export class GitHubCatalogue {
     validateStartupRecord(record);
     const current=await this.startupSnapshot(), result=this.inspectStartup(current,record);
     return {...result,revision:current.head,persisted:false,note:'Validation checks shape and collisions; independently verify all sources before publication.'};
+  }
+  async getStartupRecord(id) {
+    const current = await this.startupSnapshot();
+    return { ...(await describeStartupRecord(current.research, id, current.head)), origin: 'repository',
+      note: 'Authoritative reviewed source record at this repository commit. Publication and graph projection are separate.' };
+  }
+  async validateStartupEdit(edit) {
+    const prepared = await prepareStartupEdit(await this.startupSnapshot(), edit);
+    const { research, ...preview } = prepared;
+    return { ...preview, origin: 'repository_preview',
+      note: 'Review the complete merged record and source attribution. Validation checks structure and consistency, not source truth. No data was written.' };
+  }
+  async getStartupEditProposal(edit) {
+    const intent = await startupEditIdentity(edit);
+    try {
+      const receipt = await this.updateProposal(intent.branch, 'data/startup-research.json',
+        async original => (await applyStartupEdit(original, edit)).research, intent);
+      if (!receipt) return { ...intent, status: 'not_found', published: false,
+        note: 'No matching branch or pull request was observed. This read does not complete or retry a write.' };
+      const research = await this.file('data/startup-research.json', receipt.headRevision);
+      const record = await describeStartupRecord(research, edit.id, receipt.headRevision);
+      return { ...receipt, ...record, origin: 'proposal',
+        note: 'Exact proposal-head record read back after verifying the complete one-file diff, parent and PR. A draft, closed or merged PR is not proof of publication.' };
+    } catch (error) {
+      if (error instanceof ServiceError) error.details = { ...(error.details || {}),
+        ...intent, action: 'inspect_proposal', recoveryTool: 'atlas_get_startup_edit_proposal', retryable: false };
+      throw error;
+    }
+  }
+  async proposeStartupEdit(edit, expectedRevision, validationToken) {
+    const intent = await startupEditIdentity(edit);
+    const invalid = (path, message) => {
+      const error = new ServiceError('VALIDATION_ERROR', message);
+      error.details = { path, action: 'validate_again', retryable: false };
+      throw error;
+    };
+    if (typeof expectedRevision !== 'string' || !/^[a-f0-9]{40}$/.test(expectedRevision))
+      invalid('expectedRevision', 'Use the exact repository revision returned by startup edit validation.');
+    if (typeof validationToken !== 'string' || !/^[a-f0-9]{64}$/.test(validationToken))
+      invalid('validationToken', 'Use the validation token returned for this exact edit and revision.');
+    // Reconcile the immutable intent first. A verified receipt never creates or repairs a partial proposal.
+    const existing = await this.getStartupEditProposal(edit);
+    if (existing.status !== 'not_found') return existing;
+    const current = await this.startupSnapshot();
+    if (current.head !== expectedRevision) {
+      const error = new ServiceError('STALE_REVISION', 'Repository main changed. Read the record, reconcile the intended changes, and validate again before proposing.', 409);
+      error.details = { path: 'expectedRevision', expectedRevision, actualRevision: current.head,
+        ...intent, action: 'read_reconcile_validate', retryable: false };
+      throw error;
+    }
+    const prepared = await prepareStartupEdit(current, edit);
+    if (prepared.validationToken !== validationToken) {
+      const error = new ServiceError('VALIDATION_CONFLICT', 'The edit or validated merged record differs from the supplied validation token.', 409);
+      error.details = { path: 'validationToken', ...intent, action: 'review_and_validate_again', retryable: false };
+      throw error;
+    }
+    if (same(prepared.previous, prepared.merged)) {
+      return { ...intent, status: 'already_present', ...(await describeStartupRecord(current.research, edit.id, current.head)),
+        origin: 'repository', published: false, note: 'The requested values already match the repository record. No proposal was created; publication is separate.' };
+    }
+    let writeStarted = false;
+    try {
+      const parent = await this.api(`/git/commits/${current.head}`);
+      writeStarted = true;
+      const tree = await this.api('/git/trees', { method: 'POST', body: { base_tree: parent.tree.sha, tree: [{
+        path: 'data/startup-research.json', mode: '100644', type: 'blob', content: JSON.stringify(prepared.research, null, 2) + '\n',
+      }] } });
+      const commit = await this.api('/git/commits', { method: 'POST', body: {
+        message: `Edit sourced startup: ${prepared.merged.name}`, tree: tree.sha, parents: [current.head],
+      } });
+      await this.api('/git/refs', { method: 'POST', body: { ref: `refs/heads/${intent.branch}`, sha: commit.sha } });
+      await this.api('/pulls', { method: 'POST', body: {
+        title: `Edit sourced startup: ${prepared.merged.name}`, head: intent.branch, base: 'main', draft: true,
+        body: `Updates one reviewed startup through the canonical-ID MCP edit contract.\n\n- Target: ${edit.id}\n- Base revision: ${current.head}\n- Prior record revision: ${prepared.recordRevision}\n- Intended record revision: ${prepared.nextRecordRevision}\n- Intent: ${intent.intentDigest}\n\nReview the full diff, unchanged claims and item-specific sources. Validation establishes structure, not truth. No merge or publication is performed.`,
+      } });
+      // Success means readback at the exact proposal head, not merely a successful POST.
+      const verified = await this.getStartupEditProposal(edit);
+      if (verified.status !== 'proposed' || verified.headRevision !== commit.sha || verified.recordRevision !== prepared.nextRecordRevision)
+        throw new ServiceError('WRITE_UNCERTAIN', 'The proposal write did not yield the exact expected draft and record readback.', 409);
+      return verified;
+    } catch (error) {
+      if (!writeStarted) throw error;
+      // A timeout, conflict or failed readback after the first POST has a potentially partial outcome.
+      const uncertain = new ServiceError('WRITE_UNCERTAIN', 'The edit proposal was not fully confirmed. Inspect its deterministic branch and PR with the read-only recovery tool before any retry.', 409);
+      uncertain.details = { ...intent, baseRevision: current.head, expectedRecordRevision: prepared.nextRecordRevision,
+        causeCode: error instanceof ServiceError ? error.code : 'UNCONFIRMED_RESULT',
+        action: 'inspect_proposal', recoveryTool: 'atlas_get_startup_edit_proposal', retryable: false };
+      throw uncertain;
+    }
   }
   async proposeStartup(record,expectedRevision) {
     validateStartupRecord(record);
@@ -251,13 +364,15 @@ export class GitHubCatalogue {
     if (comparison.total_commits !== 1 || comparison.files?.length !== 1 || comparison.files[0].filename !== file || comparison.files[0].status !== 'modified') conflict();
     const [original, proposed] = await Promise.all([this.file(file, parent), this.file(file, tip)]);
     let expected;
-    try { expected = apply(original); } catch { conflict(); }
+    try { expected = await apply(original); } catch { conflict(); }
     if (same(original, proposed) || !same(proposed, expected)) conflict();
     if (!prs.length) throw new ServiceError('WRITE_UNCERTAIN', `The matching proposal branch ${branch} exists without a confirmed pull request. Inspect it manually; no write was replayed or completed.`, 409);
     const pr = prs[0];
     if (pr.head?.ref !== branch || pr.head.sha !== tip || pr.head.repo?.full_name !== REPOSITORY || pr.base?.ref !== 'main' || pr.base.repo?.full_name !== REPOSITORY ||
         !['open', 'closed'].includes(pr.state) || (pr.merged_at && pr.state !== 'closed') || !new RegExp(`^https://github\\.com/${REPOSITORY}/pull/[1-9][0-9]*$`).test(pr.html_url || '')) conflict();
-    return { status: pr.merged_at ? 'merged' : pr.state === 'closed' ? 'closed' : 'proposed', ...receipt, branch, pullRequest: pr.html_url, published: false, note: 'Verified existing proposal; no write was replayed. Deployment status is separate.' };
+    return { status: pr.merged_at ? 'merged' : pr.state === 'closed' ? 'closed' : 'proposed', ...receipt,
+      branch, baseRevision: parent, headRevision: tip, mainRevision: main, sourceFile: file,
+      pullRequest: pr.html_url, published: false, note: 'Verified existing proposal; no write was replayed. Deployment status is separate.' };
   }
   async validateCandidate(entry, provenance) {
     this.validate(entry, provenance);

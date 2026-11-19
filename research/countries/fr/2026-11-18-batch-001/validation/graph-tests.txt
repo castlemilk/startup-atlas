@@ -1,0 +1,24 @@
+test_distinct_names_cannot_silently_collapse_into_same_id (test_graph.GraphTests.test_distinct_names_cannot_silently_collapse_into_same_id) ... ok
+test_failed_rebuild_keeps_the_previous_snapshot (test_graph.GraphTests.test_failed_rebuild_keeps_the_previous_snapshot) ... ok
+test_founder_social_references_survive_source_to_graph_projection (test_graph.GraphTests.test_founder_social_references_survive_source_to_graph_projection) ... ok
+test_graph_deduplicates_startups_and_preserves_round_currency (test_graph.GraphTests.test_graph_deduplicates_startups_and_preserves_round_currency) ... ok
+test_missing_founding_year_stays_absent_in_graph_and_sqlite (test_graph.GraphTests.test_missing_founding_year_stays_absent_in_graph_and_sqlite) ... ok
+test_news_collection_is_bounded_and_returns_unreviewed_amounts (test_graph.GraphTests.test_news_collection_is_bounded_and_returns_unreviewed_amounts) ... [1/1] Example: ok; 1 articles
+ok
+test_news_crawl_prioritizes_funding_without_exceeding_follow_limit (test_graph.GraphTests.test_news_crawl_prioritizes_funding_without_exceeding_follow_limit) ... [1/1] Example: ok; 1 articles
+ok
+test_public_catalogue_snapshot_round_trips_sources_and_mappings (test_graph.GraphTests.test_public_catalogue_snapshot_round_trips_sources_and_mappings) ... ok
+test_reviewed_startup_updates_flow_into_the_sqlite_index (test_graph.GraphTests.test_reviewed_startup_updates_flow_into_the_sqlite_index) ... ok
+test_startup_socials_preserve_reviewed_source_attribution (test_graph.GraphTests.test_startup_socials_preserve_reviewed_source_attribution) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.627s
+
+OK
+Built SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes
+Built SQLite snapshot: 1 entities, 0 relationships, 0 public documents, 122880 bytes
+Built SQLite snapshot: 1 entities, 0 relationships, 0 public documents, 122880 bytes
+Built SQLite snapshot: 2 entities, 1 relationships, 0 public documents, 122880 bytes
+Built SQLite snapshot: 2 entities, 1 relationships, 0 public documents, 122880 bytes
+Built SQLite snapshot: 537 entities, 289 relationships, 13 public documents, 1372160 bytes
+Built SQLite snapshot: 3 entities, 2 relationships, 0 public documents, 122880 bytes

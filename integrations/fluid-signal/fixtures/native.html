@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fluid Signal adapter acceptance fixture</title>
+<link rel="stylesheet" href="/design-tokens.css">
+<style>
+  body { margin: 24px; color: var(--atlas-ink); background: var(--atlas-canvas); font: 16px/1.5 var(--atlas-font-body); }
+  main { max-width: 720px; margin: auto; }
+  section { border: 1px solid var(--atlas-border-strong); padding: 16px; margin-block: 16px; }
+  h1 { font-size: 1.3rem; }
+  h2 { font-size: 1.1rem; }
+  button { min-height: 44px; padding-inline: 16px; font: inherit; }
+  button:focus-visible, a:focus-visible { outline: 3px solid var(--atlas-focus); outline-offset: 3px; }
+  .stage { height: 48px; position: relative; margin-block: 16px; }
+  .sample { position: absolute; top: 4px; left: 40px; width: 24px; height: 24px; background: var(--atlas-action); border-radius: 6px; }
+  #sentinel { font: 17px/1.5 Georgia, serif; color: rgb(23, 42, 56); padding: 7px; border: 2px solid rgb(23, 42, 56); }
+  #foreign { width: 12px; height: 12px; background: var(--atlas-muted); }
+</style>
+<main>
+  <h1>Fluid Signal adapter acceptance fixture</h1>
+  <p id="sentinel">This host text remains outside the adapter's scope.</p>
+  <div id="foreign" aria-hidden="true"></div>
+  <section id="root-a" data-atlas-fluid>
+    <h2>Independent sample A</h2>
+    <p id="content-a">The current state is available before motion. <a href="/away">Read source context</a>.</p>
+    <button id="trigger-a" type="button" aria-pressed="false">Move sample A</button>
+    <p id="state-a">No host changes.</p>
+    <div class="stage"><span id="layer-a" class="sample" data-atlas-fluid-layer aria-hidden="true"></span></div>
+  </section>
+  <section id="root-b" data-atlas-fluid>
+    <h2>Independent sample B</h2>
+    <p id="content-b">This sample has its own host state and motion owner.</p>
+    <button id="trigger-b" type="button" aria-pressed="false">Move sample B</button>
+    <p id="state-b">No host changes.</p>
+    <div class="stage"><span id="layer-b" class="sample" data-atlas-fluid-layer aria-hidden="true"></span></div>
+  </section>
+  <p>Decorative squares carry no evidence or success meaning.</p>
+</main>
+<script type="module" src="/fixture.js"></script>
+</html>

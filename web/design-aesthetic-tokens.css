@@ -1,0 +1,79 @@
+/* Signal is an exploratory Atlas theme. Its roles are scoped to this page. */
+@font-face {
+  font-family: 'Atlas Geist';
+  src: url('./assets/fonts/geist-sans-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Atlas Geist Mono';
+  src: url('./assets/fonts/geist-mono-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+.signal-app {
+  color-scheme: light;
+  --signal-bg: #fafafc;
+  --signal-surface: #ffffff;
+  --signal-soft: #f0f2f6;
+  --signal-ink: #111318;
+  --signal-muted: #626975;
+  --signal-line: #dfe3e8;
+  --signal-line-strong: #7d899b;
+  --signal-accent: #315efb;
+  --signal-accent-soft: #eef2ff;
+  --signal-on-accent: #ffffff;
+  --signal-focus: #315efb;
+  --signal-font-sans: 'Atlas Geist', 'Helvetica Neue', Arial, sans-serif;
+  --signal-font-mono: 'Atlas Geist Mono', 'SFMono-Regular', Consolas, monospace;
+  --signal-radius-compact: 6px;
+  --signal-radius-control: 10px;
+  --signal-radius-row: 12px;
+  --signal-radius: 18px;
+  --signal-radius-feature: 24px;
+  --signal-radius-pill: 999px;
+  --signal-face-top: #ffffff;
+  --signal-face-bottom: #e9edf3;
+  --signal-action-top: #315efb;
+  --signal-action-bottom: #2349d9;
+  --signal-action-border: #2448c5;
+  --signal-on-action: #ffffff;
+  --signal-shadow-control: inset 0 1px 0 rgb(255 255 255 / 94%), inset 0 -1px 0 rgb(17 19 24 / 9%), 0 1px 2px rgb(17 19 24 / 6%), 0 3px 5px rgb(17 19 24 / 5%);
+  --signal-shadow-inset: inset 0 1px 3px rgb(17 19 24 / 9%), 0 1px 0 rgb(255 255 255 / 85%);
+  --signal-shadow-pressed: inset 0 2px 4px rgb(17 19 24 / 15%), 0 1px 0 rgb(255 255 255 / 75%);
+  --signal-shadow-action: inset 0 1px 0 rgb(255 255 255 / 24%), inset 0 -1px 0 rgb(10 26 89 / 24%), 0 2px 3px rgb(17 19 24 / 12%), 0 4px 8px rgb(49 94 251 / 12%);
+  --signal-shadow: 0 2px 6px rgb(17 19 24 / 4%), 0 18px 60px rgb(17 19 24 / 10%);
+  --signal-duration-fast: 140ms;
+  --signal-duration-normal: 240ms;
+  --signal-ease: cubic-bezier(.2,.7,.2,1);
+  --signal-space-unit: 4px;
+}
+.signal-app[data-theme='dark'] {
+  color-scheme: dark;
+  --signal-bg: #101114;
+  --signal-surface: #17191e;
+  --signal-soft: #20242b;
+  --signal-ink: #f4f6fa;
+  --signal-muted: #adb6c5;
+  --signal-line: #343b47;
+  --signal-line-strong: #718096;
+  --signal-accent: #9aafff;
+  --signal-accent-soft: #242f50;
+  --signal-on-accent: #101114;
+  --signal-focus: #b5c5ff;
+  --signal-face-top: #30343c;
+  --signal-face-bottom: #20242c;
+  --signal-shadow-control: inset 0 1px 0 rgb(255 255 255 / 13%), inset 0 -1px 0 rgb(0 0 0 / 32%), 0 1px 2px rgb(0 0 0 / 24%), 0 3px 6px rgb(0 0 0 / 16%);
+  --signal-shadow-inset: inset 0 2px 4px rgb(0 0 0 / 34%), 0 1px 0 rgb(255 255 255 / 6%);
+  --signal-shadow-pressed: inset 0 2px 5px rgb(0 0 0 / 42%), 0 1px 0 rgb(255 255 255 / 5%);
+  --signal-shadow-action: inset 0 1px 0 rgb(255 255 255 / 25%), inset 0 -1px 0 rgb(0 0 0 / 25%), 0 2px 4px rgb(0 0 0 / 32%), 0 4px 10px rgb(0 0 0 / 20%);
+  --signal-shadow: 0 2px 6px rgb(0 0 0 / 16%), 0 18px 60px rgb(0 0 0 / 30%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .signal-app {
+    --signal-duration-fast: 0ms;
+    --signal-duration-normal: 0ms;
+  }
+}

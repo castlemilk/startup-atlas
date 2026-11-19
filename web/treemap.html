@@ -1,37 +1,51 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#173a2b"><meta name="description" content="Compare source-backed startup valuations, funding announcements and company counts in an interactive treemap.">
+<meta name="theme-color" content="#111318"><meta name="description" content="Compare source-backed startup valuations, funding announcements and company counts in an interactive treemap.">
 <title>Startup treemaps — Startup Atlas</title>
 <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./field-atlas.css"><link rel="stylesheet" href="./treemap.css">
 <script defer src="./vendor/sql.js/sql-wasm.js"></script><script type="module" src="./treemap.js"></script>
-</head><body>
+<link rel="stylesheet" href="./design-tokens.css">
+<link rel="stylesheet" href="./atlas-ui.css">
+<script type="module" src="./atlas-ui.js"></script>
+<link rel="stylesheet" href="./atlas-sdk.css">
+<script type="module" src="./atlas-sdk.js"></script>
+</head><body class="atlas-treemap-page">
 <a class="skip-link" href="#treemap-main">Skip to treemap</a>
-<header class="topbar"><a class="brand" href="./" aria-label="Startup Atlas home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup<span class="brand-light">atlas</span><small>THE FOUNDER RESOURCE INDEX</small></span></a><nav class="top-nav" aria-label="Primary"><a href="./">Directory</a><a href="./graph.html">Knowledge graph</a><a href="./treemap.html" aria-current="page">Treemaps</a></nav></header>
+<header class="atlas-masthead" data-atlas-masthead="treemap"></header>
 <main id="treemap-main" class="treemap-shell">
-  <div class="treemap-intro"><div><p class="treemap-eyebrow">THE COMPANY LANDSCAPE</p><h1>A sense of scale.</h1><p>Explore the companies behind the numbers. Follow every figure to its source.</p></div><a class="treemap-method-link" href="#method">How to read this map ↘</a></div>
-  <form id="treemap-controls" class="treemap-controls" aria-label="Treemap filters">
-    <label class="metric-control" for="treemap-metric">Size by<select id="treemap-metric"><option value="valuation">Recorded valuation</option><option value="funding">Funding announcement</option><option value="companies">Company count</option></select></label>
-    <label for="treemap-currency">Currency<select id="treemap-currency"><option value="USD">USD</option></select></label>
-    <label for="treemap-group">Group by<select id="treemap-group"><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
-    <label class="query-control" for="treemap-query">Find a company<input type="search" id="treemap-query" placeholder="Name or description" maxlength="200" autocomplete="off"></label>
-    <button type="button" id="treemap-reset">Reset</button>
+  <header class="atlas-feature">
+    <div class="atlas-feature-copy">
+      <h1>A sense of scale.</h1>
+      <p>Compare recorded valuations, funding announcements or company counts.</p>
+      <a class="atlas-feature-link" href="#method">How to read this map <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="atlas-feature-art" aria-hidden="true"><img src="./assets/design-lab/signal-treemap-thumb.webp" width="768" height="768" alt="" decoding="async"></div>
+  </header>
+  <form novalidate id="treemap-controls" class="treemap-controls" aria-label="Treemap filters" aria-busy="true" aria-describedby="treemap-status">
+    <label class="metric-control" for="treemap-metric">Size by<select disabled id="treemap-metric"><option value="valuation">Recorded valuation</option><option value="funding">Funding announcement</option><option value="companies">Company count</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
+    <label for="treemap-currency">Currency<select disabled id="treemap-currency"><option value="USD">USD</option></select></label>
+    <label for="treemap-group">Group by<select disabled id="treemap-group"><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
+    <label class="query-control" for="treemap-query">Find a company<span class="atlas-search-control"><input disabled type="search" id="treemap-query" placeholder="Name or description" maxlength="200" autocomplete="off"><button disabled type="button" class="atlas-clear" data-atlas-clear-for="treemap-query" aria-label="Clear company search" hidden><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></span></label>
+    <button disabled type="button" id="treemap-reset">Reset</button>
+    <ui-segmented-control disabled id="treemap-presentation" class="treemap-view-switch" aria-label="Presentation" default-value="map"><ui-segmented-control-item as-child value="map"><button disabled type="button" id="show-map">Treemap</button></ui-segmented-control-item><ui-segmented-control-item as-child value="cards"><button disabled type="button" id="show-cards">Cards</button></ui-segmented-control-item><ui-segmented-control-item as-child value="list"><button disabled type="button" id="show-list">Ranked list</button></ui-segmented-control-item></ui-segmented-control>
+  <button disabled type="button" id="treemap-share" class="treemap-share">Share view</button><span id="treemap-share-status" class="sr-only" role="status"></span>
   </form>
   <p id="treemap-status" class="treemap-status" role="status">Loading the published company snapshot…</p>
   <div class="treemap-workspace" aria-busy="true" id="treemap-workspace">
     <section class="treemap-panel" aria-labelledby="treemap-heading">
-      <div class="treemap-panel-heading"><div><p id="treemap-breadcrumb" class="treemap-eyebrow">ALL COMPANIES</p><h2 id="treemap-heading">Recorded valuations</h2><p id="treemap-subtitle"></p></div><div class="treemap-panel-actions"><div class="treemap-view-switch" role="group" aria-label="Presentation"><button type="button" id="show-map" aria-pressed="true">Treemap</button><button type="button" id="show-cards" aria-pressed="false">Cards</button><button type="button" id="show-list" aria-pressed="false">Ranked list</button></div><button type="button" id="treemap-share" class="treemap-share" aria-label="Copy a link to this view"><span aria-hidden="true">↗</span> Share view</button><span id="treemap-share-status" class="sr-only" role="status" aria-live="polite"></span></div></div>
+      <div class="treemap-panel-heading"><div><p id="treemap-breadcrumb" class="treemap-eyebrow">ALL COMPANIES</p><h2 id="treemap-heading">Recorded valuations</h2><p id="treemap-subtitle"></p></div></div>
       <div id="treemap-summary" class="treemap-summary"></div>
       <p id="treemap-instructions" class="sr-only">Each rectangle is proportional to its recorded value. Select a company to read its evidence. Small tiles have equivalent controls in the ranked list. Select a founding decade to explore the companies within it.</p>
       <div id="treemap-chart" class="treemap-chart" role="group" aria-label="Company treemap" aria-describedby="treemap-instructions"><p>Loading treemap…</p></div>
-      <div id="treemap-cards" class="treemap-cards" role="group" aria-label="Company cards" hidden></div>
-      <div id="treemap-list" class="treemap-list" hidden></div>
+      <div id="treemap-cards" class="treemap-cards" role="group" aria-label="Company cards" aria-describedby="treemap-instructions" hidden></div>
+      <div id="treemap-list" class="treemap-list" role="group" aria-label="Ranked companies" aria-describedby="treemap-instructions" hidden></div>
       <div class="treemap-panel-footer"><span id="treemap-legend">Area represents recorded value.</span><a href="#method">Read the caveats ↗</a></div>
     </section>
     <aside id="treemap-detail" class="treemap-detail" tabindex="-1" aria-label="Selected company evidence" aria-live="polite"><p>Select a company to inspect its figure and source.</p></aside>
   </div>
   <details id="treemap-missing" class="treemap-missing" hidden><summary id="treemap-missing-label"></summary><p>These companies remain in the Atlas. An absent comparable value does not mean zero or no funding.</p><div id="treemap-missing-list"></div></details>
-  <section id="method" class="treemap-method" aria-labelledby="method-heading"><div><p class="treemap-eyebrow">READING THE LANDSCAPE</p><h2 id="method-heading">Recorded, not real-time.</h2></div><div><p><strong>Valuation:</strong> the latest dated, positive numeric valuation recorded for each company in the selected currency. These historical announcements are from different dates, not current market values or a ranking of every startup.</p><p><strong>Funding announcement:</strong> the latest dated, positive numeric event amount in the selected currency. It is not total funding raised. Events may include secondary transfers or other financing; read each source note.</p><p><strong>Coverage:</strong> newer announcements with unrecorded dates, amounts or currencies may be omitted. Currencies are never converted or combined. Company count gives every company equal area, including those with no financial data. Founding decades use recorded founding years only; missing years stay “Not recorded”.</p></div></section>
+  <section id="method" class="treemap-method" aria-labelledby="method-heading"><div><p class="treemap-eyebrow">READING THE LANDSCAPE</p><h2 id="method-heading">Recorded, not real-time.</h2></div><div><p><strong>Valuation:</strong> the latest dated, positive numeric valuation recorded for each company in the selected currency. These historical announcements are from different dates, not current market values or a ranking of every startup.</p><p><strong>Funding announcement:</strong> the latest dated, positive numeric event amount in the selected currency. It is not total funding raised. Events may include secondary transfers or other financing; read each source note.</p><p><strong>Market cap:</strong> public-company equity market capitalisation is not recorded in this dataset. Private valuations and funding announcements are not substitutes.</p><p><strong>Coverage:</strong> newer announcements with unrecorded dates, amounts or currencies may be omitted. Currencies are never converted or combined. Company count includes every company equally, including those with no financial data. In the treemap, companies have equal area. Cards use an editorial layout; card area does not encode company count or financial value. Founding decades use recorded founding years only; missing years stay “Not recorded”.</p></div></section>
 </main>
 <footer><span class="footer-brand">startup<span>atlas</span></span><span>Built for the people building what comes next.</span></footer>
 </body></html>

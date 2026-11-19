@@ -1,0 +1,83 @@
+@layer ui-sdk;
+
+@font-face { font-family: "Atlas Geist"; src: url("./assets/fonts/geist-sans-variable.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Atlas Geist Mono"; src: url("./assets/fonts/geist-mono-variable.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: swap; }
+:root {
+  color-scheme: light;
+  --atlas-ink: #111318;
+  --atlas-action: #315efb;
+  --atlas-action-hover: #2349d9;
+  --atlas-muted: #626975;
+  --atlas-canvas: #fafafc;
+  --atlas-paper: #fafafc;
+  --atlas-surface: #ffffff;
+  --atlas-border: #dfe3e8;
+  --atlas-border-strong: #7d899b;
+  --atlas-soft: #f0f2f6;
+  --atlas-accent: #315efb;
+  --atlas-selection-soft: #eef2ff;
+  --atlas-focus: #315efb;
+  --atlas-on-action: #ffffff;
+  --atlas-startup: #3156ae;
+  --atlas-startup-soft: #eaf0ff;
+  --atlas-partner: #6251a7;
+  --atlas-partner-soft: #f0edfc;
+  --atlas-person: #86501f;
+  --atlas-person-soft: #f9eedf;
+  --atlas-programme: #855e18;
+  --atlas-programme-soft: #faf0db;
+  --atlas-provider: #21677a;
+  --atlas-provider-soft: #e6f3f6;
+  --atlas-warning: #855c14;
+  --atlas-warning-soft: #faf0db;
+  --atlas-danger: #ad3b39;
+  --atlas-danger-soft: #fceceb;
+  --atlas-font-display: "Atlas Geist", "Helvetica Neue", Arial, sans-serif;
+  --atlas-font-body: "Atlas Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --atlas-font-mono: "Atlas Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+  --atlas-text-xs: 0.75rem;
+  --atlas-text-sm: 0.8125rem;
+  --atlas-text-md: 0.9375rem;
+  --atlas-text-lg: 1.125rem;
+  --atlas-radius-control: 10px;
+  --atlas-radius-panel: 18px;
+  --atlas-radius-row: 12px;
+  --atlas-radius-feature: 24px;
+  --atlas-face-top: #ffffff;
+  --atlas-face-bottom: #e9edf3;
+  --atlas-action-top: #315efb;
+  --atlas-action-bottom: #2349d9;
+  --atlas-action-border: #2448c5;
+  --atlas-shadow-control: inset 0 1px 0 rgb(255 255 255 / 94%), inset 0 -1px 0 rgb(17 19 24 / 9%), 0 1px 2px rgb(17 19 24 / 6%), 0 3px 5px rgb(17 19 24 / 5%);
+  --atlas-shadow-inset: inset 0 1px 3px rgb(17 19 24 / 9%), 0 1px 0 rgb(255 255 255 / 85%);
+  --atlas-shadow-pressed: inset 0 2px 4px rgb(17 19 24 / 15%);
+  --atlas-shadow-panel: 0 1px 3px rgb(17 19 24 / 3%), 0 10px 30px rgb(17 19 24 / 4%);
+  --atlas-space-1: 4px;
+  --atlas-space-2: 8px;
+  --atlas-space-3: 12px;
+  --atlas-space-4: 16px;
+  --atlas-space-6: 24px;
+  --atlas-space-8: 32px;
+  --atlas-space-12: 48px;
+  --atlas-page-max: 1640px;
+  --atlas-panel-width: 360px;
+  --atlas-duration-fast: 140ms;
+  --atlas-duration-normal: 240ms;
+  --atlas-ease: cubic-bezier(.2,.8,.2,1);
+  --atlas-shadow-overlay: 0 2px 6px rgb(17 19 24 / 4%), 0 18px 48px rgb(17 19 24 / 12%);
+  --atlas-scroll-thumb: #929aa8;
+  --atlas-scroll-hover: #6f7989;
+  --atlas-scroll-active: #505c70;
+  --atlas-scroll-track: #f0f2f6;
+  /* Adapters for the existing static routes. New components use atlas tokens. */
+  --ink: var(--atlas-ink);
+  --muted: var(--atlas-muted);
+  --line: var(--atlas-border);
+  --focus: var(--atlas-focus);
+  --navy: var(--atlas-ink);
+  --blue: var(--atlas-action);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --atlas-duration-fast: 0ms; --atlas-duration-normal: 0ms; }
+}

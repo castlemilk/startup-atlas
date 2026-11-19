@@ -1,0 +1,729 @@
+{
+  "review_scope": "Independent research findings plus exact assembled-data resolution readback; no reviewer authorizes publication.",
+  "reports": [
+    {
+      "schema_version": "canada-independent-review-v1",
+      "reviewed_at": "2026-11-18T10:07:24Z",
+      "reviewer_scope": "Independent review of stored Ontario and West record structures, source registries and evidence summaries, plus completion of Ontario baseline identity checks. No new web retrieval or full external re-verification.",
+      "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+      "inputs": [
+        {
+          "path": "/workspace/scratch/215f6524a3e0/canada-ontario-fragment.json",
+          "bytes": 84217,
+          "sha256": "5b6dca9b30c356aa02c327c11bd5f398a6e4c74c95542cff52ae23e104abd258"
+        },
+        {
+          "path": "/workspace/scratch/215f6524a3e0/canada-west-fragment.json",
+          "bytes": 98570,
+          "sha256": "8ad1a209249cd472209e543a996b21021d32acc5f2eaff12f1d0af43faf1c4f9"
+        },
+        {
+          "path": "/workspace/scratch/215f6524a3e0/canada-baseline-review.json",
+          "bytes": 84056,
+          "sha256": "a0cef1ff0aa0d431c044229c4219af2c14f81200e3b21d95c82a5c7689842ff2"
+        }
+      ],
+      "decision": "No definite source-semantic contradictions found within the Ontario/West stored evidence. Suitable for country staging with the listed projection requirements; this is not production or crawler approval.",
+      "summary": {
+        "companies_reviewed": 15,
+        "event_entries_reviewed": 19,
+        "event_specific_participant_occurrences": 92,
+        "registered_source_urls": 72,
+        "claim_source_bindings_checked": 307,
+        "source_binding_or_basic_semantic_errors": 0,
+        "duplicate_event_ids": 0,
+        "definite_fragment_semantic_errors_found_in_reviewed_lanes": 0,
+        "new_web_requests": 0,
+        "repository_writes": 0
+      },
+      "structural_checks": [
+        {
+          "lane": "ontario",
+          "companies": 7,
+          "source_registry_urls": 37,
+          "claim_source_bindings": 160,
+          "funding_events": 9,
+          "participant_occurrences": 51,
+          "source_binding_or_basic_semantic_errors": []
+        },
+        {
+          "lane": "west",
+          "companies": 8,
+          "source_registry_urls": 35,
+          "claim_source_bindings": 147,
+          "funding_events": 10,
+          "participant_occurrences": 41,
+          "source_binding_or_basic_semantic_errors": []
+        }
+      ],
+      "ontology_and_provenance_findings": [
+        {
+          "id": "ca-review-001",
+          "severity": "integration_requirement",
+          "topic": "Per-claim provenance in a legacy single-source round",
+          "companies": [
+            "Ideogram",
+            "Neo Financial"
+          ],
+          "finding": "Both staged events correctly use distinct sources for the event and its currency, but a naive projection of event.source_url alongside numeric amount/currency would make the chosen source appear to support a claim that its own registry says is unspecified.",
+          "evidence": [
+            {
+              "company": "Ideogram",
+              "event_id": "ideogram-2024-02-28-series-a",
+              "event_source_url": "https://www.osler.com/en/about-us/representative-work/ideogram-en/",
+              "amount_currency_source_url": "https://betakit.com/midjourney-competitor-ideogram-closes-80-million-series-a-round-as-it-launches-latest-text-to-image-model/",
+              "lead_source_url": "https://a16z.com/announcement/investing-in-ideogram/",
+              "registry_observation": "Osler supplies announcement/close; corrected BetaKit supplies explicit USD denomination and other participants; a16z supplies lead role."
+            },
+            {
+              "company": "Neo Financial",
+              "event_id": "neo-financial-2026-02-03-equity",
+              "event_source_url": "https://www.newswire.ca/news-releases/neo-financial-secures-68-5m-in-equity-backed-by-100-canadian-investors-to-fuel-securitization-strategy-847296811.html",
+              "amount_currency_source_url": "https://ca.marketscreener.com/news/canadian-fintech-neo-financial-adds-aimco-northleaf-capital-as-investors-ce7e5bd3da80f224",
+              "registry_observation": "Company release uses an unspecified dollar symbol; Reuters explicitly supplies C$68.5m."
+            }
+          ],
+          "required_action": "Preserve the explicit amount/date/role source mapping in the staging ledger and legacy note/profile facts, choose a source that actually supports the projected claim, or omit unsupported numeric currency fields. Do not collapse the mapping under a single URL without qualification.",
+          "fragment_error_confirmed": false
+        },
+        {
+          "id": "ca-review-002",
+          "severity": "integration_requirement",
+          "topic": "Ceilings, secondary sales, debt facilities and lower bounds",
+          "companies": [
+            "Wealthsimple",
+            "Jane",
+            "Photonic",
+            "Clio"
+          ],
+          "finding": "The staging records distinguish these correctly. Projection must preserve those distinctions so financial totals do not become exact primary capital raised.",
+          "evidence": [
+            {
+              "company": "Wealthsimple",
+              "event_id": "wealthsimple-2026-10-27-equity-agreement",
+              "source_url": "https://newsroom.wealthsimple.com/wealthsimple-raises-425-million-at-138-billion-valuation-to-accelerate-growth",
+              "qualifier": "Agreement for up to CAD425m combines CAD300m primary and up to CAD125m secondary; closing unverified. Its non-null numeric value is explicitly an upper bound."
+            },
+            {
+              "company": "Jane",
+              "event_id": "jane-2025-05-29-secondary",
+              "source_url": "https://www.fasken.com/en/experience/2025/08/jane-software-valuation-secondary-financing-round",
+              "qualifier": "Secondary shares above CAD500m; not primary proceeds to the company and not exact CAD500m."
+            },
+            {
+              "company": "Photonic",
+              "event_id": "photonic-2026-investment-round-final-close",
+              "source_url": "https://photonic.com/news/photonic-inc-closes-investment-round-with-over-200m-usd-275m-cad/",
+              "qualifier": "Final total exceeds USD200m and includes the first close in January; no second additive round or exact USD200m amount."
+            },
+            {
+              "company": "Clio",
+              "event_id": "clio-2025-11-10-debt-facility",
+              "source_url": "https://www.clio.com/about/press/clio-completes-landmark-1b-vlex-acquisition-series-g-5b-valuation/",
+              "qualifier": "USD350m debt facility size does not establish drawdown. Separate from USD500m equity and USD1bn acquisition price."
+            }
+          ],
+          "required_action": "Omit legacy numeric amount/currency for ceilings/lower bounds if the legacy display cannot express the qualifier; retain exact reported wording and transaction type. Keep debt identified as debt and avoid combined capital-raised totals across unlike transactions.",
+          "fragment_error_confirmed": false
+        },
+        {
+          "id": "ca-review-003",
+          "severity": "integration_requirement",
+          "topic": "Closing date versus announcement date",
+          "companies": [
+            "Jane"
+          ],
+          "finding": "The stored counsel evidence establishes a 2025-05-29 closing day, while announcement day is explicitly unknown. A date in event_id or URL does not supply the missing announcement day.",
+          "source_urls": [
+            "https://www.fasken.com/en/experience/2025/08/jane-software-valuation-secondary-financing-round"
+          ],
+          "required_action": "Leave legacy announced_on omitted. Preserve closed_on in the richer ledger and any dated narrative with its label.",
+          "fragment_error_confirmed": false
+        },
+        {
+          "id": "ca-review-004",
+          "severity": "integration_requirement",
+          "topic": "Historical headquarters must remain dated",
+          "companies": [
+            "Certn"
+          ],
+          "finding": "The direct founder quote supports Victoria HQ as of 2024-02-27, and the same source introduction says Vancouver-based. The fragment preserves both and explicitly leaves current headquarters unresolved.",
+          "source_urls": [
+            "https://www.canadianinnovators.org/content/cci-welcomes-certn-to-our-national-team-of-innovators"
+          ],
+          "required_action": "Use a dated headquarters profile fact, including the retained conflict/currentness limit. Do not render Victoria as independently verified current HQ in an unqualified country field.",
+          "fragment_error_confirmed": false
+        },
+        {
+          "id": "ca-review-005",
+          "severity": "integration_requirement",
+          "topic": "Conditional and public commitments",
+          "companies": [
+            "Cohere",
+            "Waabi"
+          ],
+          "finding": "Government staged commitment and Uber milestone-based future investment are separate research-only event entries with undisclosed or unresolved numeric amounts. Neither is a second completed equity round.",
+          "source_urls": [
+            "https://www.pm.gc.ca/en/news/news-releases/2026/10/29/canada-announces-landmark-investment-cohere-scale-secure-sovereign-ai",
+            "https://www.waabi.ai/insights/waabi-secures-1-billion-in-new-funding-to-lead-physical-ai-revolution"
+          ],
+          "required_action": "Respect projection=research_only. Do not subtract the Waabi Series C from a headline aggregate to invent a separate amount, and do not treat Cohere commitment ceiling as disbursed capital.",
+          "fragment_error_confirmed": false
+        },
+        {
+          "id": "ca-review-006",
+          "severity": "provenance_guard",
+          "topic": "Founder name expansion across sources",
+          "companies": [
+            "1Password"
+          ],
+          "finding": "Natalia Karimova uses the 2021 founder mention plus a separate 2019 official caption for the full name. The fragment explicitly retains identity_source_url.",
+          "source_urls": [
+            "https://1password.com/blog/investing-in-our-future-again",
+            "https://1password.com/blog/accel-partnership"
+          ],
+          "required_action": "Retain both source associations in the provenance ledger or explanatory profile fact when projecting the legacy founder object, which has only one source field.",
+          "fragment_error_confirmed": false
+        },
+        {
+          "id": "ca-review-007",
+          "severity": "identity_guard",
+          "topic": "Short investor/fund/brand names are unresolved entities",
+          "companies": [
+            "Waabi",
+            "Clio",
+            "Neo Financial",
+            "Sanctuary AI"
+          ],
+          "finding": "The records generally preserve named funds, managers and parent/subsidiary relations without asserting canonical investor IDs. A parser must not replace these with convenient parent-company identities or merge Neo Financial with unsourced partner:neo.",
+          "source_urls": [
+            "https://www.waabi.ai/insights/waabi-secures-1-billion-in-new-funding-to-lead-physical-ai-revolution",
+            "https://www.clio.com/about/press/clio-completes-landmark-1b-vlex-acquisition-series-g-5b-valuation/",
+            "https://www.newswire.ca/news-releases/neo-financial-secures-68-5m-in-equity-backed-by-100-canadian-investors-to-fuel-securitization-strategy-847296811.html",
+            "https://www.zeon.co.jp/en/news/assets/pdf/260526.pdf"
+          ],
+          "required_action": "Keep manager/fund/subsidiary wording as reported. Use event-specific evidence for any future participation role. No automatic entity merge or event-investment edge is approved.",
+          "fragment_error_confirmed": false
+        }
+      ],
+      "company_review": [
+        {
+          "name": "Cohere",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Toronto HQ is supported by a recent joint release rather than founding location; selected Series D is historical, and the newer public commitment remains separate."
+        },
+        {
+          "name": "Waabi",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Canada-only HQ is retained without inventing a city; Series C and future Uber milestone commitment are correctly separated."
+        },
+        {
+          "name": "Float Financial",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Formal HQ remains null while Toronto operating base is retained. Series C is exact CAD85m; contradictory historical Series B dates/amount wording are held."
+        },
+        {
+          "name": "Wealthsimple",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Toronto HQ has explicit company boilerplate. Funding status, ceiling and primary/secondary components must survive projection."
+        },
+        {
+          "name": "BenchSci",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Formal HQ remains null; office evidence is not promoted. USD70m denomination is explicit, while the alternative dollar amount is not assigned a guessed currency."
+        },
+        {
+          "name": "1Password",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Toronto HQ is explicit; 2005 founding is separated from 2006 product release. Full founder-name provenance spans two official sources."
+        },
+        {
+          "name": "Ideogram",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Toronto HQ is explicitly separate from the San Francisco office. Funding date, currency and lead role have different supporting sources; old redirected page is not used."
+        },
+        {
+          "name": "Clio",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Global Greater Vancouver metro HQ and New York US HQ remain distinct. Equity, facility and acquisition are separated; facility size is not drawdown."
+        },
+        {
+          "name": "Jane",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "North Vancouver HQ is explicitly supported by the current contact page. Founding-year conflict remains visible. Secondary close date is not announcement date."
+        },
+        {
+          "name": "Jobber",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Edmonton HQ is explicitly labelled. Historical USD100m Series D primary-capital description and participant list agree with the stored investor evidence."
+        },
+        {
+          "name": "Neo Financial",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Three headquarters locations are preserved without selecting a sole HQ. CAD currency depends on Reuters, not the company dollar symbol. Named investors are partial participants without unsupported lead roles."
+        },
+        {
+          "name": "Photonic",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Vancouver HQ is explicit. Lower-bound final investment total incorporates the January first close, avoiding double counting."
+        },
+        {
+          "name": "Sanctuary AI",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Vancouver HQ is explicit. Two undisclosed investments remain distinct; Zeon Ventures is one investing vehicle, not duplicate parent plus subsidiary participants."
+        },
+        {
+          "name": "Carbon Upcycling",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Calgary HQ and 2014 founding have explicit company support. Event membership is kept separate from general backer logos/list."
+        },
+        {
+          "name": "Certn",
+          "status": "consistent_with_stored_evidence_subject_to_projection_requirements",
+          "note": "Victoria HQ is only a dated historical assertion with an internal source conflict; current HQ is unknown. $30m currency and instrument remain unassigned."
+        }
+      ],
+      "headquarters_assessment": {
+        "unsupported_current_hq_assertions_confirmed_in_fragments": 0,
+        "accepted_company_hq_left_null": [
+          "Float Financial",
+          "BenchSci"
+        ],
+        "country_only_hq": [
+          "Waabi"
+        ],
+        "multiple_or_regional_headquarters": [
+          "Clio",
+          "Neo Financial"
+        ],
+        "historical_only_with_current_unknown": [
+          "Certn"
+        ],
+        "interpretation": "The existing qualifiers are meaningful claims. A projection that drops them can create an unsupported current-HQ assertion even when the fragment itself is careful."
+      },
+      "baseline_followup": {
+        "new_ontario_founder_occurrences": 22,
+        "total_founder_occurrences_checked": 54,
+        "accepted_companies_with_sourced_founder_checks": 21,
+        "selected_founder_reviews_pending": 0,
+        "existing_startup_duplicate_candidates": 0,
+        "existing_person_collision_candidates": 0,
+        "cross_kind_name_candidate": "Neo Financial alias Neo versus unsourced partner:neo; unresolved and no merge permitted",
+        "normalization_parity_strings_checked": 98,
+        "normalization_parity_passed": true,
+        "disposition_candidates_updated": [
+          "Ada held for merger-status review",
+          "Xanadu excluded as listed comparator"
+        ],
+        "baseline_population_counts_unchanged": true
+      },
+      "cross_lane_correction_communicated": {
+        "company": "Spellbook",
+        "origin": "Root relayed West independent review of the East fragment while this review was underway.",
+        "field": "Series B announced_on / source published_on",
+        "finding": "The earlier East claim of a dated issuer release could not be supported by preserved visible evidence; blog Last Updated and a date-shaped Business Wire URL are insufficient announcement/publication date evidence.",
+        "recommendation": "Root should leave announcement/publication date unknown, retain an explicitly observed blog updated_on separately, and preserve event identity independently of date.",
+        "parent_notified": true,
+        "east_fragment_modified_by_this_task": false,
+        "scope_note": "Not counted as an Ontario/West contradiction; explicit correction of earlier East provenance overstatement."
+      },
+      "limitations": [
+        "Source summaries were assessed as stored; absence of a contradiction is not a second fresh primary-source verification.",
+        "No archive, portfolio pagination, funding timeline or nationwide startup denominator was exhausted.",
+        "No founder profile URL, photo identity, legal incorporation registry, licensing claim or asset right was newly verified.",
+        "Projected legacy records have not been inspected here because this task did not receive a finalized assembled projection. Repeat the concrete projection checks before committing it."
+      ]
+    },
+    {
+      "review_kind": "Independent evidence and integration review",
+      "reviewer": "canada_west",
+      "reviewed_at": "2026-11-18T10:06:25Z",
+      "inputs": [
+        {
+          "path": "/workspace/scratch/215f6524a3e0/canada-east-fragment.json",
+          "sha256": "f2a3a9f16e682c689f3a5992cdc687551d03ad65fc89a661b233f3ee7c607b98",
+          "registered_accessed_source_bindings": 127,
+          "unregistered_or_unaccessed_bindings": [],
+          "source_count": 34
+        },
+        {
+          "path": "/workspace/scratch/215f6524a3e0/canada-ecosystem-fragment.json",
+          "sha256": "b4bc11b722ba3baf1967c2c56bec50c64ace1169bde0c62c6e3922ceeb256bd8",
+          "registered_accessed_source_bindings": 22,
+          "unregistered_or_unaccessed_bindings": [],
+          "source_count": 32
+        }
+      ],
+      "scope": "Read all six East records and 22 ecosystem claims, source registries, date/amount/role annotations and coverage counters; independently reopened 14 existing East sources, five ecosystem sources and one linked investor-context PDF. This is targeted evidence review, not exhaustive revalidation of every source or a production-schema test.",
+      "source_counts_match_registries": true,
+      "findings": [
+        {
+          "id": "CA-EVID-01",
+          "severity": "high",
+          "file": "canada-east-fragment.json",
+          "entities": [
+            "dcbel",
+            "CarbonCure Technologies",
+            "Deep Sky"
+          ],
+          "fields": [
+            "funding_events[].amount.value"
+          ],
+          "issue": "Non-exact amounts occupy the scalar value field. dcbel is up to USD55m; CarbonCure is more than USD80m. Deep Sky reports a rounded CAD75m total while the stated cash and note-conversion components sum to CAD75.2m.",
+          "evidence": [
+            {
+              "source_url": "https://www.newswire.ca/news-releases/canada-growth-fund-leads-55-million-usd-financing-round-in-dcbel-to-accelerate-the-commercialization-of-bidirectional-ev-charger-technology-827191092.html",
+              "tool_ref": "turn823874502view4",
+              "observation": "CGF completed USD40m within a financing of up to USD55m; the remaining amount was prospective."
+            },
+            {
+              "source_url": "https://www.carboncure.com/news/carboncure-secures-80m-in-new-equity-round-led-by-blue-earth-capital/",
+              "tool_ref": "turn800287350view1",
+              "observation": "Body reports a total exceeding USD80m."
+            },
+            {
+              "source_url": "https://www.newswire.ca/fr/news-releases/deep-sky-developpeur-canadien-de-projets-d-elimination-du-carbone-a-l-echelle-de-la-gigatonne-obtient-un-financement-de-serie-a-de-75-m-ca-862075158.html",
+              "tool_ref": "turn279269956view6",
+              "observation": "Headline total CAD75m; components CAD57.5m new capital and CAD17.7m seed-note conversion."
+            }
+          ],
+          "proposed_fix": "In normalized evidence set value:null for every non-exact amount. Preserve numeric_reported and upper_bound:55000000, lower_bound:80000000 or rounded_reported:75000000 with currencies, precision, operators and original components. Do not repair the Deep Sky discrepancy silently or treat note conversion as new cash.",
+          "root_resolution": "Agreed by root: canonicalizer will null non-exact values and preserve raw observations and bounds. Implementation verification pending.",
+          "status": "fix_agreed_pending_assembled_verification"
+        },
+        {
+          "id": "CA-EVID-02",
+          "severity": "high",
+          "file": "canada-east-fragment.json",
+          "entities": [
+            "dcbel"
+          ],
+          "fields": [
+            "funding_events[dcbel-2025-03-07-financing].participants[Idealist Climate Impact Fund LP]"
+          ],
+          "issue": "The announcement describes Idealist and others as planning the additional commitment. Its participant entry has prospective status, which must survive normalization and must not become a confirmed completed investment relationship.",
+          "evidence": [
+            {
+              "source_url": "https://www.newswire.ca/news-releases/canada-growth-fund-leads-55-million-usd-financing-round-in-dcbel-to-accelerate-the-commercialization-of-bidirectional-ev-charger-technology-827191092.html",
+              "tool_ref": "turn823874502view4",
+              "observation": "Issuer distinguishes completed CGF investment from additional prospective investment; general investor-base names are separate."
+            }
+          ],
+          "proposed_fix": "Keep the prospective assertion in evidence and omit it from any completed round-participant projection until closing evidence exists. Do not infer Coatue or Volvo participation from the general backer list.",
+          "root_resolution": "Agreed by root: prospective status remains explicit and no production relationship is created.",
+          "status": "fix_agreed_pending_assembled_verification"
+        },
+        {
+          "id": "CA-EVID-03",
+          "severity": "medium",
+          "file": "canada-east-fragment.json",
+          "entities": [
+            "Spellbook"
+          ],
+          "fields": [
+            "funding_events[spellbook-2025-10-09-series-b].announced_on",
+            "sources[Spellbook Series B blog].published_on",
+            "sources[BusinessWire Series B release].published_on"
+          ],
+          "issue": "The company blog labels 2025-10-09 as Last Updated, not publication or announcement. The independently accessed BusinessWire text contains no visible date; a date-shaped URL is not itself publication evidence. Amount, currency and named participants are supported, but the current exact-day binding is weaker than its precision suggests.",
+          "evidence": [
+            {
+              "source_url": "https://spellbook.com/blog/series-b",
+              "tool_ref": "turn800287350view2",
+              "observation": "The displayed date label is Last Updated on Oct 09, 2025."
+            },
+            {
+              "source_url": "https://www.businesswire.com/news/home/20251009110230/en/Spellbook-Raises-$50M-Series-B-to-Expand-AI-Contract-Review-Platform",
+              "tool_ref": "turn196049289view1",
+              "observation": "Release body establishes USD50m and participants; no visible publication timestamp in the obtained text."
+            }
+          ],
+          "proposed_fix": "Verify an explicit primary publication/announcement timestamp and bind announced_on to it, or leave exact announcement day unresolved and retain update-date evidence separately. Keep the RBCx relative-date discrepancy without inventing a duplicate Series B.",
+          "status": "open"
+        },
+        {
+          "id": "CA-EVID-04",
+          "severity": "medium",
+          "file": "canada-east-fragment.json",
+          "entities": [
+            "Spellbook",
+            "dcbel"
+          ],
+          "fields": [
+            "sources[Spellbook 2023 Rally announcement].published_on",
+            "sources[EnergySage Q&A].published_on"
+          ],
+          "issue": "Two other source registry publication dates are displayed as update dates in the pages read. This does not invalidate the alias or founder assertions but the provenance dates should distinguish updated from published.",
+          "evidence": [
+            {
+              "source_url": "https://spellbook.com/blog/spellbook-raises-10-9m-usd-in-funding",
+              "tool_ref": "turn775935160view3",
+              "observation": "May 6, 2023 is labelled Last Updated."
+            },
+            {
+              "source_url": "https://www.energysage.com/blog/qa-with-dcbel/",
+              "tool_ref": "turn279269956view5",
+              "observation": "November 29, 2022 is labelled Updated; founder names appear in the company interview response."
+            }
+          ],
+          "proposed_fix": "Use published_on:null unless publication metadata is independently established; retain the observed date as updated_on with its explicit label. EnergySage remains a secondary-hosted interview with a direct company statement, not an anonymous directory assertion.",
+          "status": "open"
+        },
+        {
+          "id": "CA-EVID-05",
+          "severity": "medium",
+          "file": "canada-ecosystem-fragment.json",
+          "entities": [
+            "Centech"
+          ],
+          "fields": [
+            "ecosystem_claims[eco:centech].value",
+            "ecosystem_claims[eco:centech].evidence"
+          ],
+          "issue": "A French-language website does not establish that programme delivery is in French. The programme-language phrase exceeds the observed evidence.",
+          "evidence": [
+            {
+              "source_url": "https://centech.co/",
+              "tool_ref": "turn800287350view4",
+              "observation": "French page describes science/engineering commercialization and programmes; an English-language site option is also present."
+            }
+          ],
+          "proposed_fix": "Say that the official French-language website describes Centech programmes supporting science and engineering ventures from validation to commercialization. Leave programme delivery language unknown.",
+          "root_resolution": "Agreed by root: report will identify French-language website review; programme delivery language remains unknown.",
+          "status": "fix_agreed_pending_assembled_verification"
+        },
+        {
+          "id": "CA-EVID-06",
+          "severity": "medium",
+          "file": "canada-east-fragment.json",
+          "entities": [
+            "Vention"
+          ],
+          "fields": [
+            "headquarters",
+            "notes"
+          ],
+          "issue": "Montreal is stored as the sole structured HQ object while the basis correctly describes North American and European regional headquarters. A flat projection can lose the qualification and Berlin location.",
+          "evidence": [
+            {
+              "source_url": "https://vention.com/about",
+              "tool_ref": "turn279269956view2",
+              "observation": "Company offices section identifies North American and European headquarters and lists Montreal and Berlin."
+            }
+          ],
+          "proposed_fix": "Preserve scope:North America for Montreal and structured additional_headquarters/locations for Berlin, Germany, scoped Europe. Do not infer sole global HQ or incorporation from either address.",
+          "status": "integration_guard"
+        },
+        {
+          "id": "CA-EVID-07",
+          "severity": "medium",
+          "file": "canada-east-fragment.json",
+          "entities": [
+            "Deep Sky"
+          ],
+          "fields": [
+            "funding_events[deep-sky-2026-06-smbc-investment].participants"
+          ],
+          "issue": "The investor release directly names Sumitomo Mitsui Banking Corporation as the investing actor and says the investment was made under its Social Value Creation Investment Fund. A distinct legal fund entity has not been established by the sources read.",
+          "evidence": [
+            {
+              "source_url": "https://www.smbc.co.jp/news_e/pdf/e20260625_01.pdf",
+              "tool_ref": "turn775935160view2",
+              "observation": "SMBC announces its investment under the named fund; terms undisclosed."
+            },
+            {
+              "source_url": "https://www.smbc.co.jp/news_e/pdf/e20240517_01.pdf",
+              "tool_ref": "turn683147999view0",
+              "observation": "Linked establishment announcement describes a group investment framework and allocated capital; no separate legal fund identity is specified."
+            }
+          ],
+          "proposed_fix": "Use Sumitomo Mitsui Banking Corporation as the supported investing actor and retain Social Value Creation Investment Fund as the stated fund/framework context. Alternatively mark fund legal identity unresolved. Do not count bank and framework twice.",
+          "status": "open"
+        },
+        {
+          "id": "CA-EVID-08",
+          "severity": "low",
+          "file": "canada-east-fragment.json",
+          "entities": [
+            "GHGSat"
+          ],
+          "fields": [
+            "notes[0]"
+          ],
+          "issue": "The phrase Public company identity may be misread as listed-company status, which the cited identity and headquarters evidence does not establish.",
+          "proposed_fix": "Change to Publicly documented company identity or Official company identity. Do not classify a company as publicly traded from this wording.",
+          "status": "editorial_guard"
+        }
+      ],
+      "positive_checks": [
+        "No missing registry binding or binding to blocked/partial sources was found in the company and ecosystem claim structures.",
+        "Source access-status counters match both registries; denominators are explicitly bounded and are not national startup counts.",
+        "CVCA public summary supports CAD4.3bn, 397 deals and Ontario share51%; subscription-only deal data is not needed for these claims.",
+        "GHGSat 2025 mixed financing keeps debt and convertible-note roles separated and does not promote EDC support to proven investment.",
+        "GHGSat 2026 preserves October investment versus November publication and avoids duplicating fund managers as investors.",
+        "CarbonCure media kit explicitly supports Halifax HQ, 2012 founding and technology licensing; it distinguishes the company from concrete production and carbon capture.",
+        "Deep Sky preserves the 2022/2023 founding conflict and June18/June25 document-date conflict instead of fabricating exact values.",
+        "dcbel keeps Canadian HQ distinct from Montreal operating base; legal incorporation stays unknown.",
+        "Issuer press releases distributed by newswires are correctly primary when the issuer is identified; EnergySage is correctly distinguished as third-party hosting.",
+        "CDL programme geography, BDC scale-up context and Invest Ottawa/Capital Angel Network SheBoot relationship are supported by reopened official sources."
+      ],
+      "additional_review_source": {
+        "url": "https://www.smbc.co.jp/news_e/pdf/e20240517_01.pdf",
+        "title": "Establishment of Expense Budget for Creation of Social Values",
+        "publisher": "Sumitomo Mitsui Financial Group",
+        "source_kind": "primary_investor",
+        "published_on": "2024-05-17",
+        "retrieved_on": "2026-11-18",
+        "retrieved_at": "2026-11-18T10:06:25Z",
+        "retrieved_at_precision": "review_checkpoint_upper_end",
+        "access_status": "accessed",
+        "acquisition": "web_tool_page_read",
+        "tool_ref": "turn683147999view0",
+        "evidence_summary": "The group describes a Social Value Creation Investment Fund set aside from an earlier sustainability framework; no separate legal fund entity is specified."
+      },
+      "limitations": [
+        "No repository files or input fragments were changed.",
+        "Remaining ecosystem pages were inspected through their registry assertions and claim bindings but were not all independently reopened.",
+        "No canonical incorporation or security-holder identity is certified by this review.",
+        "Root-agreed fixes have not yet been verified in assembled output."
+      ]
+    },
+    {
+      "review_kind": "Verification of eight independent evidence-review resolutions",
+      "reviewed_at": "2026-11-18T10:20:56.440525Z",
+      "packet_path": "/workspace/scratch/215f6524a3e0/startup-atlas-canada/research/countries/ca/2026-11-18-batch-001",
+      "inputs": [
+        {
+          "file": "company-evidence.json",
+          "sha256": "853ad66a47879db18477787ef5b18129bc19ff44806dd8b3c0ce92e7c16abb6a"
+        },
+        {
+          "file": "claims.json",
+          "sha256": "1f4b3cc726c88cf3e6bb545fdaadd8238085a868d68d720cef26d0cc53e35c0c"
+        },
+        {
+          "file": "source-registry.json",
+          "sha256": "90ed4caaa292ef9a116e13eb90c923112825a5331271ff41c4a6e87748be980b"
+        },
+        {
+          "file": "startup-records.json",
+          "sha256": "4492d1c9fcb1ad22a38c2ca5b28b7cfdb11df57c451386eea1636b516a2c2810"
+        },
+        {
+          "file": "coverage.json",
+          "sha256": "3b442d508404a4ba8bcab0970d51809c0c37951625a4f426b22cb1ea3f0fb47d"
+        }
+      ],
+      "resolutions": [
+        {
+          "finding_id": "CA-EVID-01",
+          "status": "resolved_verified",
+          "checks": {
+            "dcbel_null_exact_value_and_preserved_bound": true,
+            "dcbel_projection_omits_numeric_amount": true,
+            "dcbel_claim_preserves_null_value": true,
+            "CarbonCure Technologies_null_exact_value_and_preserved_bound": true,
+            "CarbonCure Technologies_projection_omits_numeric_amount": true,
+            "CarbonCure Technologies_claim_preserves_null_value": true,
+            "Deep Sky_null_exact_value_and_preserved_bound": true,
+            "Deep Sky_projection_omits_numeric_amount": true,
+            "Deep Sky_claim_preserves_null_value": true,
+            "deep_sky_components_preserved": true
+          },
+          "observed_resolution": "Bounds and rounded totals occupy dedicated fields; scalar exact values and legacy numeric projections are absent. Original Deep Sky cash/conversion components and discrepancy remain.",
+          "limitations": []
+        },
+        {
+          "finding_id": "CA-EVID-02",
+          "status": "resolved_verified",
+          "checks": {
+            "participant_status_is_prospective": true,
+            "claim_retains_prospective_status": true,
+            "canonical_investor_unassigned": true,
+            "no_participant_projection": true
+          },
+          "observed_resolution": "Prospective commitment is preserved in evidence and claim status; no canonical investor or production participant relationship is projected.",
+          "limitations": []
+        },
+        {
+          "finding_id": "CA-EVID-03",
+          "status": "resolved_verified",
+          "checks": {
+            "announcement_unknown": true,
+            "neutral_event_id": true,
+            "separate_update_date": true,
+            "claim_unknown": true,
+            "projection_has_no_announcement_date": true,
+            "source_publication_dates_unknown": true,
+            "amount_remains_supported": true
+          },
+          "observed_resolution": "Series B retains amount and participants but has no exact announcement date. Update date, unknown-date rationale and conflict history remain separate.",
+          "limitations": []
+        },
+        {
+          "finding_id": "CA-EVID-04",
+          "status": "resolved_verified",
+          "checks": {
+            "https://spellbook.com/blog/spellbook-raises-10-9m-usd-in-funding_date_types": true,
+            "https://spellbook.com/blog/spellbook-raises-10-9m-usd-in-funding_derived_claim_publication_unknown": true,
+            "https://www.energysage.com/blog/qa-with-dcbel/_date_types": true,
+            "https://www.energysage.com/blog/qa-with-dcbel/_derived_claim_publication_unknown": true
+          },
+          "observed_resolution": "Both registry entries distinguish observed update date from unknown publication date, including derived claim provenance.",
+          "limitations": []
+        },
+        {
+          "finding_id": "CA-EVID-05",
+          "status": "resolved_verified",
+          "checks": {
+            "claim_limits_language_to_website": true,
+            "evidence_matches_narrowed_claim": true
+          },
+          "observed_resolution": "Centech language claim applies to the reviewed website, while programme delivery language is explicitly unresolved.",
+          "limitations": []
+        },
+        {
+          "finding_id": "CA-EVID-06",
+          "status": "resolved_verified",
+          "checks": {
+            "montreal_regional_scope": true,
+            "berlin_structured_extra_hq": true,
+            "both_claims_preserved": true,
+            "legacy_profile_retains_regional_scope": true
+          },
+          "observed_resolution": "Montreal regional scope and Berlin European headquarters are preserved structurally and as separate claims; legacy profile retains regional scope.",
+          "limitations": []
+        },
+        {
+          "finding_id": "CA-EVID-07",
+          "status": "resolved_verified",
+          "checks": {
+            "one_bank_actor": true,
+            "fund_context_legal_identity_unresolved": true,
+            "claim_has_bank_actor_only": true,
+            "no_global_canonical_merge": true
+          },
+          "observed_resolution": "The bank is the named actor; the fund is retained only as context with unresolved legal vehicle identity. No duplicate bank/fund participants exist.",
+          "limitations": []
+        },
+        {
+          "finding_id": "CA-EVID-08",
+          "status": "resolved_verified",
+          "checks": {
+            "ambiguous_phrase_removed": true,
+            "identity_wording_is_not_listing_assertion": true
+          },
+          "observed_resolution": "GHGSat notes now refer to public-source identity, without asserting listed-company status.",
+          "limitations": []
+        }
+      ],
+      "resolved_count": 8,
+      "remaining_concerns": [],
+      "overall_status": "all_eight_resolved_verified",
+      "limitations": [
+        "Verification is limited to the eight findings and identified propagation paths; it is not a fresh source review of all 21 companies or a repository-wide test.",
+        "No repository or source-fragment file was modified."
+      ]
+    }
+  ]
+}

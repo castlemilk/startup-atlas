@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-11-15",
+  "reviewed": "2026-11-19",
   "startups": [
     {
       "name": "Canva",
@@ -410,6 +410,15 @@
           "name": "Justin Hansky",
           "source": "https://www.deeligence.com/about"
         }
+      ],
+      "funding_rounds": [
+        {
+          "id": "deeligence-2024-funding",
+          "stage": "Funding round",
+          "amount_text": "$1 million (currency unspecified in the LaunchVic case study)",
+          "source": "https://launchvic.org/case-studies/the-legaltech-startup-revolutionising-due-diligence-with-ai/",
+          "note": "LaunchVic reports that Deeligence announced this round in early 2024, including backing from its Alice Anderson Fund. Exact announcement and closing dates, currency, stage and lead status are not specified by this source. This is not an exhaustive participant list; the fund name is not resolved to a canonical graph identity."
+        }
       ]
     },
     {
@@ -607,7 +616,7 @@
     {
       "name": "Gilmour Space",
       "source": "https://www.gspace.com/team",
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-15",
       "founders": [
         {
           "name": "Adam Gilmour",
@@ -625,10 +634,37 @@
           "value": "280+ engineers, technicians and specialists listed as a company team claim. Undated page observed 13 November 2026; not an independently verified payroll count.",
           "source": "https://www.gspace.com/team",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "series-e-2026-valuation-lower-bound",
+          "label": "January 2026 private valuation lower bound",
+          "value": "On 20 January 2026, investor Blackbird reported Gilmour Space valued at over US$1 billion following its A$217 million Series E. Exact valuation and pre-money/post-money basis were not disclosed. This is a strict lower bound on a dated private valuation, not public market capitalisation.",
+          "source": "https://www.blackbird.vc/blog/investment-notes-gilmour-space-series-e",
+          "reviewed_at": "2026-11-15"
+        },
+        {
+          "key": "founding-year-source",
+          "label": "Reported establishment year",
+          "value": "Invest Gold Coast reports that Adam and James Gilmour established their launch-services company in 2012. This is the reported company establishment year, not a verified legal incorporation date.",
+          "source": "https://www.investgoldcoast.com/invest-with-us/investor-resources/success-stories/advanced-manufacturing-gilmour-space-technologies",
+          "reviewed_at": "2026-11-18"
         }
       ],
       "description": "Australian developer of rockets and satellite platforms.",
-      "website": "https://www.gspace.com/"
+      "website": "https://www.gspace.com/",
+      "funding_rounds": [
+        {
+          "id": "gilmour-space-2026-series-e-january",
+          "stage": "Series E",
+          "announced_on": "2026-01-20",
+          "amount": 217000000,
+          "amount_text": "A$217 million (company reports US$145 million equivalent)",
+          "currency": "AUD",
+          "note": "January 2026 announced financing, not a cumulative Series E or all-time funding total. Explicit AUD currency and closed-week wording are corroborated by investor Blackbird: https://www.blackbird.vc/blog/investment-notes-gilmour-space-series-e. Exact closing day is undisclosed. Company names National Reconstruction Fund Corporation and Hostplus as co-leads, with Future Fund, Blackbird, Funds SA, HESTA, NGS Super, Main Sequence, QIC and Brighter Super participating. Participant identities remain unresolved. Blackbird reports valuation over US$1 billion; this lower bound is not an exact valuation and is not plotted as one.",
+          "source": "https://www.gspace.com/post/gilmour-space-secures-major-australian-investment-to-scale-sovereign-space-capability"
+        }
+      ],
+      "founded_year": 2012
     },
     {
       "name": "ULUU",
@@ -699,7 +735,17 @@
         }
       ],
       "description": "Learning-content platform that combines workplace training from multiple providers in one subscription.",
-      "website": "https://www.go1.com/"
+      "website": "https://www.go1.com/",
+      "funding_rounds": [
+        {
+          "id": "go1-2022-06-funding",
+          "stage": "Funding round",
+          "announced_on": "2022-06-09",
+          "amount_text": "Over $100 million (currency unspecified in the company announcement)",
+          "note": "The company reports the round closed in May 2022; announced_on is the publication date, not the closing date. Its quoted Five Sigma founding partner says Five Sigma led the round. Named participants include AirTree Ventures, Blue Cloud Ventures, Five Sigma, Madrona, Salesforce Ventures and SoftBank Vision Fund 2; this is not an exhaustive investor list or canonical identity mapping. No numeric amount, valuation or lifetime total is inferred from the unspecified currency and lower-bound wording.",
+          "source": "https://www.go1.com/blog/go1-secures-fresh-support-after-year-of-record-growth"
+        }
+      ]
     },
     {
       "name": "Culture Amp",
@@ -708,7 +754,21 @@
       "founders": [
         {
           "name": "Didier Elzinga",
-          "source": "https://invest.vic.gov.au/understand-the-market/explore-investment-success-stories/culture-amp-launches-global-headquarters-and-asia-pacific-engineering-hub"
+          "source": "https://invest.vic.gov.au/understand-the-market/explore-investment-success-stories/culture-amp-launches-global-headquarters-and-asia-pacific-engineering-hub",
+          "socials": [
+            {
+              "label": "Twitter (company-profile linked)",
+              "url": "https://twitter.com/didierelzinga",
+              "source": "https://www.cultureamp.com/contributors/didier-elzinga",
+              "reviewed_at": "2026-11-18"
+            },
+            {
+              "label": "LinkedIn (company-profile linked)",
+              "url": "https://www.linkedin.com/in/didierelzinga",
+              "source": "https://www.cultureamp.com/contributors/didier-elzinga",
+              "reviewed_at": "2026-11-18"
+            }
+          ]
         },
         {
           "name": "Doug English",
@@ -774,7 +834,18 @@
       ],
       "founded_year": 2019,
       "description": "Develops diamond-based quantum chips for computing and sensing.",
-      "website": "https://quantumbrilliance.com/"
+      "website": "https://quantumbrilliance.com/",
+      "funding_rounds": [
+        {
+          "id": "quantum-brilliance-2025-series-a",
+          "stage": "Series A",
+          "announced_on": "2025-01-15",
+          "amount": 20000000,
+          "currency": "USD",
+          "note": "The announcement names Main Sequence, In-Q-Tel (IQT), Intervalley Ventures, National Reconstruction Fund Corporation (NRFC), Breakthrough Victoria (BV), Alium Capital Management, Investible and Jelix Ventures as investors. This is a reported participant list, not an exhaustive list or a statement of lead status. Investor names are not resolved to canonical graph identities.",
+          "source": "https://quantumbrilliance.com/news/quantum-brilliance-raises-usd-20-million-in-series-a-funding-round/"
+        }
+      ]
     },
     {
       "name": "Cauldron",
@@ -857,7 +928,7 @@
     {
       "name": "Revolut",
       "source": "https://www.revolut.com/en-UA/about/",
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-16",
       "founders": [
         {
           "name": "Nik Storonsky",
@@ -882,6 +953,27 @@
           "value": "The official page states 10k+ employees worldwide. Undated observation checked 13 November 2026, not an independently verified current count.",
           "source": "https://www.revolut.com/en-UA/about/",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "group-employees-2025-12-31",
+          "label": "Group employees at 31 December 2025",
+          "value": "Revolut Group Holdings Ltd reports 12,200 Group employees at 31 December 2025 (2025 Annual Report, page 126, Note 11). This is a historical group-wide count; full-time/FTE basis is unspecified. The nearby 10,909 is the average monthly number during 2025, including Executive Directors, not the year-end count. Neither is a current payroll figure; narrower subsidiary counts must not be added.",
+          "source": "https://assets.revolut.com/pdf/annualreport2025.pdf",
+          "reviewed_at": "2026-11-16"
+        },
+        {
+          "key": "company-reported-founding-2015",
+          "label": "Company-reported founding year",
+          "value": "Revolut’s 1 June 2023 announcement says it was founded in London in 2015. This company-reported founding/launch year is distinct from REVOLUT LTD’s legal incorporation on 6 December 2013; no single reconciled founded_year is asserted.",
+          "source": "https://www.revolut.com/news/revolut_surpasses_30_million_retail_customers_worldwide/",
+          "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "revolut-ltd-incorporation",
+          "label": "REVOLUT LTD legal incorporation",
+          "value": "Companies House lists REVOLUT LTD (08804411) as incorporated on 6 December 2013. This is the named legal entity’s registration date, not Revolut’s 2015 company-reported founding/launch date.",
+          "source": "https://find-and-update.company-information.service.gov.uk/company/08804411",
+          "reviewed_at": "2026-11-18"
         }
       ],
       "funding_rounds": [
@@ -895,7 +987,14 @@
         }
       ],
       "description": "Financial-services platform for spending, saving, investing and international transfers.",
-      "website": "https://www.revolut.com/"
+      "website": "https://www.revolut.com/",
+      "articles": [
+        {
+          "title": "Revolut Group Holdings Ltd Annual Report 2025",
+          "url": "https://assets.revolut.com/pdf/annualreport2025.pdf",
+          "kind": "company annual report"
+        }
+      ]
     },
     {
       "name": "UiPath",
@@ -945,7 +1044,7 @@
     {
       "name": "Synthesia",
       "source": "https://www.synthesia.io/about",
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-15",
       "founders": [
         {
           "name": "Victor Riparbelli",
@@ -970,13 +1069,26 @@
           "id": "synthesia-2026-series-e",
           "stage": "Series E",
           "announced_on": "2026-01-26",
-          "amount_text": "$200 million; dollar currency not explicit in inspected release",
+          "amount_text": "US$200 million",
           "source": "https://www.synthesia.io/post/series-e-200-million-4-billion-valuation-future-work",
-          "note": "The release reports a $4bn valuation and a separate employee secondary sale facilitated with NASDAQ. Secondary-sale amount and transaction split are unspecified; do not count the secondary as new company capital. Currency remains unnormalized. Named participants: Google Ventures (GV) (lead), Evantic (participant), Hedosophia (participant), NVentures (participant), Accel (participant), Kleiner Perkins (participant), New Enterprise Associates (NEA) (participant), PSP Growth (participant), Air Street Capital (participant), FirstMark (participant), MMC Ventures (participant). Identities remain unresolved."
+          "note": "Announced 26 January 2026 at a US$4 billion private-company valuation; pre-money/post-money basis is unspecified. Explicit USD amount and valuation are corroborated by transaction counsel on 27 January 2026: https://www.lw.com/en/news/latham-watkins-advises-synthesia-on-us200-million-series-e-and-secondary-transaction. The company also announced an employee secondary sale facilitated with NASDAQ. Its size and primary/secondary allocation are undisclosed; do not add secondary proceeds to company capital. Named participants: Google Ventures (GV) (lead), Evantic, Hedosophia, NVentures, Accel, Kleiner Perkins, New Enterprise Associates (NEA), PSP Growth, Air Street Capital, FirstMark and MMC Ventures. Participant identities remain unresolved.",
+          "amount": 200000000,
+          "currency": "USD",
+          "valuation": 4000000000,
+          "valuation_currency": "USD"
         }
       ],
       "description": "AI video-creation platform for businesses.",
-      "website": "https://www.synthesia.io/"
+      "website": "https://www.synthesia.io/",
+      "profile_facts": [
+        {
+          "key": "series-e-2026-currency-source",
+          "label": "Series E currency and valuation evidence",
+          "value": "Transaction counsel's 27 January 2026 announcement explicitly reports US$200 million and a US$4 billion valuation for the Series E announced by Synthesia on 26 January. This is a dated private financing valuation, not public market capitalisation. Pre-money/post-money basis and employee-secondary size are unspecified.",
+          "source": "https://www.lw.com/en/news/latham-watkins-advises-synthesia-on-us200-million-series-e-and-secondary-transaction",
+          "reviewed_at": "2026-11-15"
+        }
+      ]
     },
     {
       "name": "Eucalyptus",
@@ -1118,15 +1230,15 @@
     {
       "name": "ENA Respiratory",
       "source": "https://enarespiratory.com/about/",
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-15",
       "founded_year": 2020,
       "profile_facts": [
         {
           "key": "company-origin",
           "label": "Company origin",
-          "value": "Formed in 2020 as a spinout from ENA Therapeutics Pty Ltd, later renamed Axelia Oncology Pty Ltd. CEO since formation is not sufficient evidence of founder status.",
+          "value": "Formed in 2020 as a spinout from ENA Therapeutics Pty Ltd, later renamed Axelia Oncology Pty Ltd.",
           "source": "https://enarespiratory.com/about/leadership/",
-          "reviewed_at": "2026-11-13"
+          "reviewed_at": "2026-11-15"
         },
         {
           "key": "leadership-directory-2026-11-13",
@@ -1152,6 +1264,16 @@
           "currency": "AUD",
           "source": "https://enarespiratory.com/about/",
           "note": "Company reports a CUREator grant in 2024. Exact award and disbursement dates were not stated. Kept separate from equity rounds."
+        },
+        {
+          "id": "ena-respiratory-2025-series-b",
+          "stage": "Series B",
+          "announced_on": "2025-10-22",
+          "amount": 34000000,
+          "amount_text": "AUD34 million (US$22.4 million as reported)",
+          "currency": "AUD",
+          "note": "Company-announced Series B; exact closing date and valuation not disclosed. The same round is reported as AUD34 million and US$22.4 million, not two events or an assistant-derived FX conversion. Participants named by the company: Gates Foundation, Flu Lab (previously announced contribution included in this round), Brandon Capital, Uniseed and Stoic Venture Capital. No lead is identified; participant identities remain unresolved. Separate from the non-equity grants already recorded.",
+          "source": "https://enarespiratory.com/ena-respiratory-attracts-us22-4m-au34m-to-fund-phase-ii-development-of-inna-051-nasal-spray-designed-to-protect-against-symptomatic-viral-respiratory-infections/"
         }
       ],
       "articles": [
@@ -1163,31 +1285,41 @@
         }
       ],
       "description": "Clinical-stage pharmaceutical company developing preventatives for respiratory viral infections.",
-      "website": "https://enarespiratory.com/"
+      "website": "https://enarespiratory.com/",
+      "founders": [
+        {
+          "name": "Christophe Demaison",
+          "source": "https://enarespiratory.com/ena-respiratory-expands-leadership-team-and-extends-u-s-department-of-defense-funding-to-enable-phase-ii-program-of-inna-051-in-community-acquired-viral-respiratory-infections/"
+        }
+      ]
     },
     {
       "name": "PsiQuantum",
       "description": "Developer of photonic fault-tolerant quantum computers.",
       "website": "https://www.psiquantum.com/",
       "source": "https://newshub.medianet.com.au/2025/09/psiquantum-raises-1-billion-1-5-billion-aud-to-build-million-qubit-scale-fault-tolerant-quantum-computers/117977/",
-      "reviewed_at": "2026-11-15",
+      "reviewed_at": "2026-11-19",
       "founded_year": 2016,
       "founders": [
         {
           "name": "Jeremy O’Brien",
-          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum"
+          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum",
+          "profile_url": "https://www.psiquantum.com/prof-jeremy-obrien"
         },
         {
           "name": "Pete Shadbolt",
-          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum"
+          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum",
+          "profile_url": "https://www.psiquantum.com/prof-pete-shadbolt"
         },
         {
           "name": "Mark Thompson",
-          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum"
+          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum",
+          "profile_url": "https://www.psiquantum.com/prof-mark-thompson"
         },
         {
           "name": "Terry Rudolph",
-          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum"
+          "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum",
+          "profile_url": "https://www.psiquantum.com/prof-terry-rudolph"
         }
       ],
       "funding_rounds": [
@@ -1195,8 +1327,8 @@
           "id": "psiquantum-2025-series-e",
           "stage": "Series E",
           "announced_on": "2025-09-10",
-          "amount_text": "$1 billion; currency not explicitly specified in the accessed company release",
-          "note": "Reported valuation: $7 billion (currency and valuation type not explicit). Leads: funds and accounts managed by affiliates of BlackRock; Temasek; Baillie Gifford. Other named participants: entities administered by Macquarie Capital, Ribbit Capital, NVentures, Adage Capital Management, Qatar Investment Authority, Type One Ventures, Counterpoint Global (Morgan Stanley), 1789 Capital, S Ventures (SentinelOne), Blackbird, Third Point Ventures, T. Rowe Price Associates, Inc. Named participants are not claimed exhaustive; fund/firm identities remain unresolved.",
+          "amount_text": "US$1 billion reported Series E total, including government convertible notes",
+          "note": "The Queensland Audit Office reports that the Series E total includes Australian and Queensland government convertible notes. It reports a US$7 billion post-money valuation and describes note conversion as conditional at the time of the audit. The cited sources leave fresh-cash and equity-only amounts undisclosed. See https://www.qao.qld.gov.au/reports-resources/reports-parliament/managing-queenslands-finances-2025. Leads: funds and accounts managed by affiliates of BlackRock; Temasek; Baillie Gifford. Other named participants: entities administered by Macquarie Capital, Ribbit Capital, NVentures, Adage Capital Management, Qatar Investment Authority, Type One Ventures, Counterpoint Global (Morgan Stanley), 1789 Capital, S Ventures (SentinelOne), Blackbird, Third Point Ventures, T. Rowe Price Associates, Inc. Named participants are not claimed exhaustive; fund/firm identities remain unresolved.",
           "source": "https://www.psiquantum.com/news-import/psiquantum-1b-fundraise"
         },
         {
@@ -1207,6 +1339,12 @@
           "currency": "USD",
           "note": "Led by funds and accounts managed by BlackRock, with participation from Baillie Gifford, M12 (Microsoft’s venture fund), Blackbird Ventures and Temasek. Company release distributed by Business Wire, read in its syndicated copy. USD denomination is explicit in Blackbird’s investor announcement dated 29 July 2021: https://www.blackbird.vc/blog/investment-notes-psiquantum. Named participants are not claimed exhaustive; legal fund identities remain unresolved. This is the round amount, not cumulative funding.",
           "source": "https://mtrustcompany.marketminute.com/article/bizwire-2021-7-27-psiquantum-closes-450-million-funding-round-to-build-the-worlds-first-commercially-viable-quantum-computer"
+        },
+        {
+          "id": "psiquantum-2020-series-c",
+          "stage": "Series C",
+          "source": "https://m12.vc/news/psiquantum-series-d-marks-important-technology-achievements/",
+          "note": "M12 says it first invested in PsiQuantum in the Series C announced in April 2020. M12 announced its investment on 6 April 2020: https://m12.vc/news/welcoming-psiquantum-to-the-m12-portfolio/. The exact round announcement day, round amount and lead allocation remain unconfirmed."
         }
       ],
       "profile_facts": [
@@ -1223,6 +1361,20 @@
           "value": "The company release reports 2016, used as the preferred company-reported year here. Blackbird’s investor narrative says established in 2017. The discrepancy remains unresolved; neither statement establishes an incorporation date.",
           "source": "https://www.blackbird.vc/blog/investment-notes-psiquantum",
           "reviewed_at": "2026-11-14"
+        },
+        {
+          "key": "official-press-materials",
+          "label": "Official press materials",
+          "value": "Official logo downloads are available from the company press page. Atlas does not republish the logo while usage permission remains unresolved.",
+          "source": "https://www.psiquantum.com/press-materials",
+          "reviewed_at": "2026-11-17"
+        },
+        {
+          "key": "company-listed-cofounder-roles",
+          "label": "Company-listed co-founder roles",
+          "value": "As reviewed on 19 November 2026, PsiQuantum lists Jeremy O’Brien as Executive Chairman, Terry Rudolph as Chief Architect, Pete Shadbolt as Chief Scientific Officer, and Mark Thompson as Chief Technology Officer.",
+          "source": "https://www.psiquantum.com/about/",
+          "reviewed_at": "2026-11-19"
         }
       ],
       "articles": [
@@ -1237,6 +1389,641 @@
           "url": "https://mtrustcompany.marketminute.com/article/bizwire-2021-7-27-psiquantum-closes-450-million-funding-round-to-build-the-worlds-first-commercially-viable-quantum-computer",
           "published_on": "2021-07-27",
           "kind": "funding announcement"
+        },
+        {
+          "title": "M12 announces its investment in PsiQuantum",
+          "url": "https://m12.vc/news/welcoming-psiquantum-to-the-m12-portfolio/",
+          "published_on": "2020-04-06",
+          "kind": "investor announcement"
+        },
+        {
+          "title": "M12 reflects on PsiQuantum’s Series D and prior investment",
+          "url": "https://m12.vc/news/psiquantum-series-d-marks-important-technology-achievements/",
+          "published_on": "2021-07-27",
+          "kind": "investor commentary"
+        },
+        {
+          "title": "Australia and Queensland announce the Brisbane quantum computing investment",
+          "url": "https://www.pm.gov.au/media/delivering-future-made-australia-400-new-technology-jobs-brisbane",
+          "published_on": "2024-04-30",
+          "kind": "public funding announcement"
+        },
+        {
+          "title": "PsiQuantum announces the Omega photonic chipset",
+          "url": "https://www.psiquantum.com/news-import/omega",
+          "published_on": "2025-02-26",
+          "kind": "technical milestone"
+        }
+      ],
+      "socials": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/company/psiquantum-ltd",
+          "source": "https://www.psiquantum.com/",
+          "reviewed_at": "2026-11-17"
+        },
+        {
+          "label": "X",
+          "url": "https://x.com/PsiQuantum",
+          "source": "https://www.psiquantum.com/",
+          "reviewed_at": "2026-11-17"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@PsiQuantum",
+          "source": "https://www.psiquantum.com/",
+          "reviewed_at": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "name": "Cuttable",
+      "description": "Advertising software that turns brands’ existing creative assets into ads and uses performance data to guide further creative production.",
+      "website": "https://www.cuttable.com/",
+      "source": "https://www.cuttable.com/about/",
+      "reviewed_at": "2026-11-15",
+      "founders": [
+        {
+          "name": "Sam Kroonenburg",
+          "source": "https://www.cuttable.com/about/"
+        },
+        {
+          "name": "Ed Ring",
+          "source": "https://www.cuttable.com/about/"
+        },
+        {
+          "name": "Jack White",
+          "source": "https://www.squarepeg.vc/portfolio/cuttable"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-year-company-profile",
+          "label": "Founding year: company profile",
+          "value": "Cuttable’s company LinkedIn profile lists 2023. This conflicts with the 2022 year on Square Peg’s portfolio profile; no canonical founding year is assigned.",
+          "source": "https://au.linkedin.com/company/cuttable",
+          "reviewed_at": "2026-11-15"
+        },
+        {
+          "key": "founding-year-investor-profile",
+          "label": "Founding year: investor profile",
+          "value": "Square Peg’s portfolio profile lists 2022. This conflicts with the 2023 year on Cuttable’s company LinkedIn profile; the difference is unresolved.",
+          "source": "https://www.squarepeg.vc/portfolio/cuttable",
+          "reviewed_at": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "name": "Strongroom AI",
+      "description": "Medication-management software venture developing tools for pharmacies, hospitals and care facilities. This profile preserves the historical venture’s founder attribution; it does not identify the founders or ownership of the current operating company.",
+      "website": "https://strongroom.ai/",
+      "source": "https://strongroom.ai/about/",
+      "reviewed_at": "2026-11-15",
+      "founders": [
+        {
+          "name": "Christopher Durre",
+          "source": "https://www.linkedin.com/posts/strong-room-technology_we-are-honoured-to-have-strongroom-ais-founders-activity-7197118768718766081-10dT"
+        },
+        {
+          "name": "Kieran Start",
+          "source": "https://www.linkedin.com/posts/strong-room-technology_we-are-honoured-to-have-strongroom-ais-founders-activity-7197118768718766081-10dT"
+        },
+        {
+          "name": "Max Mito",
+          "source": "https://www.linkedin.com/posts/strong-room-technology_we-are-honoured-to-have-strongroom-ais-founders-activity-7197118768718766081-10dT"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "historical-founder-scope",
+          "label": "Historical founder attribution",
+          "value": "Christopher Durre, Kieran Start and Max Mito are identified as co-founders in a 15 July 2024 profile. These links describe the original venture, not current executive roles or the founders or owners of SRSPV Pty Ltd.",
+          "source": "https://selectgreaterphl.com/2024/07/strongroom-ais-expansion-into-greater-philadelphia-shows-strength-of-regions-business-community/",
+          "reviewed_at": "2026-11-15"
+        },
+        {
+          "key": "current-site-operator",
+          "label": "Website operator statement (2026)",
+          "value": "The website’s 2026 privacy policy identifies SRSPV Pty Ltd as StrongRoom AI. This is an attributed operator statement, not verification of ultimate ownership, legal succession or the terms of an asset transfer.",
+          "source": "https://strongroom.ai/privacy/",
+          "reviewed_at": "2026-11-15"
+        },
+        {
+          "key": "founding-year-company-history",
+          "label": "Founding year: company history",
+          "value": "The company About page states 2017 and separately dates its first product launch to May 2019. Capital Brief’s 28 March 2025 article states a 2019 founding year. The difference is unresolved; no canonical founding year is assigned.",
+          "source": "https://strongroom.ai/about/",
+          "reviewed_at": "2026-11-15"
+        },
+        {
+          "key": "founding-year-reported",
+          "label": "Founding year: reporting",
+          "value": "Capital Brief’s 28 March 2025 article states the venture was founded in 2019, differing from 2017 in the company’s own history. This source disagreement is retained without treating a launch year or registration date as an equivalent founding milestone.",
+          "source": "https://www.capitalbrief.com/article/im-in-shock-strongroom-ai-investor-blasts-evp-for-calling-in-police-7774f64d-f517-4b8e-846e-8258f47096c6/",
+          "reviewed_at": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "name": "Puralink",
+      "description": "Builds autonomous robots and software for inspecting and mapping underground pipe infrastructure.",
+      "website": "https://puralink.com/",
+      "source": "https://puralink.com/",
+      "reviewed_at": "2026-11-15",
+      "founders": [
+        {
+          "name": "Harrison Crowe-Maxwell",
+          "source": "https://www.startmate.com/writing/summer25accelerator-puralink"
+        },
+        {
+          "name": "Thien Long Tran",
+          "source": "https://www.startmate.com/writing/summer25accelerator-puralink"
+        },
+        {
+          "name": "Shyeon Delnawaz",
+          "source": "https://www.startmate.com/writing/summer25accelerator-puralink"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Ferret Alpha 2: expanding where one robot can go",
+          "url": "https://puralink.com/news/ferret-alpha-2/",
+          "published_on": "2026-09-14",
+          "kind": "product update"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "puralink-2025-pre-seed",
+          "stage": "Pre-seed",
+          "announced_on": "2025-09-17",
+          "amount_text": "$2.5 million (currency unspecified in the company announcement)",
+          "source": "https://puralink.com/news/",
+          "note": "The company news archive dates the announcement 17 September 2025 and names Peak XV Partners as lead. This is the publication date, not a verified closing date. The linked detail at https://puralink.com/news/pre-seed-round/ names Side Stage Ventures, Startmate, NZVC, Wollemi Capital Group, Ashik Ahmed, Matt Jones and Matthew Dellavedova among backers. This is not an exhaustive list. Names are not resolved to canonical graph identities; customer and development-support mentions are not treated as round participation."
+        }
+      ]
+    },
+    {
+      "name": "PI.EXCHANGE",
+      "description": "PI.EXCHANGE PTY LTD trades as Mentana, offering AI software for supply-chain forecasting and operations.",
+      "website": "https://www.mentana.ai/",
+      "source": "https://www.mentana.ai/",
+      "profile_facts": [
+        {
+          "key": "trading-name",
+          "label": "Current trading name",
+          "value": "Mentana. The company identifies PI.EXCHANGE PTY LTD as trading as Mentana. Retain the existing PI.EXCHANGE directory identity and historical cohort relationship.",
+          "source": "https://www.mentana.ai/website-terms-of-use",
+          "reviewed_at": "2026-11-18"
+        }
+      ],
+      "founders": [
+        {
+          "name": "Quan Pham",
+          "source": "https://www.prnewswire.com/news-releases/piexchange-announces-the-worlds-first-personal-data-bank-is-ready-300523051.html"
+        }
+      ]
+    },
+    {
+      "name": "Wayve",
+      "website": "https://wayve.ai/",
+      "description": "Develops AI software for assisted and autonomous driving.",
+      "founded_year": 2017,
+      "source": "https://wayve.ai/company/leadership-team/",
+      "reviewed_at": "2026-11-19",
+      "founders": [
+        {
+          "name": "Alex Kendall",
+          "source": "https://www.eng.cam.ac.uk/node/5380"
+        },
+        {
+          "name": "Amar Shah",
+          "source": "https://www.eng.cam.ac.uk/node/5380"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "wayve-2024-series-c",
+          "stage": "Series C",
+          "announced_on": "2024-05-07",
+          "amount_text": "$1.05 billion",
+          "source": "https://wayve.ai/press/series-c/",
+          "note": "Wayve named SoftBank Group as lead and NVIDIA and Microsoft as participants. The announcement uses a dollar sign without a currency code."
+        },
+        {
+          "id": "wayve-2026-series-d",
+          "stage": "Series D",
+          "announced_on": "2026-02-25",
+          "amount_text": "$1.2 billion",
+          "source": "https://wayve.ai/press/series-d/",
+          "note": "Wayve reported a closed round led by Eclipse, Balderton and SoftBank Vision Fund 2. Named participants include Ontario Teachers’ Pension Plan, Baillie Gifford, British Business Bank, Icehouse Ventures, Schroders Capital, Microsoft, NVIDIA, Uber, Mercedes-Benz, Nissan and Stellantis. The separate $1.5 billion headline includes milestone-based Uber capital. The company’s release uses a dollar sign without a currency code."
+        },
+        {
+          "id": "wayve-2026-series-d-extension-20260415",
+          "stage": "Series D extension",
+          "announced_on": "2026-04-15",
+          "amount_text": "$60 million",
+          "source": "https://wayve.ai/press/series-d-extension/",
+          "note": "Wayve announced this extension to its February Series D with AMD, Arm and Qualcomm Ventures. The announcement uses a dollar sign without a currency code."
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "uk-b01-2094479c14d70172",
+          "label": "Headquarters",
+          "value": "London, United Kingdom, listed as headquarters by Wayve.",
+          "source": "https://wayve.ai/company/",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "uk-b01-9bdec80ae874cf7d",
+          "label": "UK incorporation",
+          "value": "Wayve Technologies Ltd, Companies House number 10924127, was incorporated on 21 August 2017.",
+          "source": "https://find-and-update.company-information.service.gov.uk/company/10924127",
+          "reviewed_at": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "name": "Q-CTRL",
+      "website": "https://q-ctrl.com/",
+      "description": "Develops control software to improve the performance of quantum computers and sensors.",
+      "founded_year": 2017,
+      "source": "https://q-ctrl.com/blog/q-ctrl-secures-us-290-million-series-c-funding-led-by-salesforce-ventures-to-accelerate-the-convergence-of-quantum-and-ai",
+      "reviewed_at": "2026-11-19",
+      "founders": [
+        {
+          "name": "Michael J. Biercuk",
+          "source": "https://q-ctrl.com/blog/q-ctrl-secures-us-290-million-series-c-funding-led-by-salesforce-ventures-to-accelerate-the-convergence-of-quantum-and-ai"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "q-ctrl-2026-series-c",
+          "stage": "Series C",
+          "amount": 290000000,
+          "currency": "USD",
+          "announced_on": "2026-11-12",
+          "source": "https://q-ctrl.com/blog/q-ctrl-secures-us-290-million-series-c-funding-led-by-salesforce-ventures-to-accelerate-the-convergence-of-quantum-and-ai",
+          "note": "Q-CTRL announced the Series C total after two expansions. Salesforce Ventures led, and Bullhound Capital and Affinity Partners were significant participants. Other new investors named include AMD Ventures, EDGE Group, MPower Partners, the National Reconstruction Fund Corporation and SPARX Asset Management. Other returning investors named include Alpha Edison, Alumni Ventures, DCVC, In-Q-Tel, Lockheed Martin Ventures, Main Sequence, Ridgeline, Salus Ventures and Square Peg."
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "australian-business-number",
+          "label": "Australian business registration",
+          "value": "ABN Lookup lists Q-CTRL Pty Ltd as an Australian private company with ABN 78 622 325 535.",
+          "source": "https://abr.business.gov.au/ABN/View/78622325535",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "sydney-headquarters",
+          "label": "Headquarters",
+          "value": "Q-CTRL announced Sydney, Australia, as the location of its global headquarters in June 2023.",
+          "source": "https://q-ctrl.com/blog/q-ctrl-breaks-ground-on-new-global-headquarters-in-sydney-first-commercial-facility-in-australia-dedicated-to-quantum-tech",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "headcount-nrfc-series-c",
+          "label": "Staff reported by NRFC",
+          "value": "The National Reconstruction Fund Corporation reported more than 225 staff across Australia, the United States, the United Kingdom and Europe in its Series C investment announcement.",
+          "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-strengthens-australias-quantum-capability-70-million-investment-quantum-technology-unicorn-q-ctrl",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "headcount-australia-nrfc-series-c",
+          "label": "Australian staff reported by NRFC",
+          "value": "The National Reconstruction Fund Corporation reported more than 150 staff in Australia in its Series C investment announcement.",
+          "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-strengthens-australias-quantum-capability-70-million-investment-quantum-technology-unicorn-q-ctrl",
+          "reviewed_at": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "name": "Diraq",
+      "website": "https://www.diraq.com/",
+      "description": "Develops silicon-spin quantum processors designed for existing semiconductor fabrication processes.",
+      "founded_year": 2022,
+      "source": "https://www.diraq.com/newsdesk/diraq-expands-us-presence-with-palo-alto-office-to-accelerate-commercial-quantum-computingnbsp",
+      "reviewed_at": "2026-11-19",
+      "founders": [
+        {
+          "name": "Andrew Dzurak",
+          "source": "https://www.diraq.com/about"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "diraq-2024-series-a-2",
+          "stage": "Series A-2",
+          "amount": 15000000,
+          "currency": "USD",
+          "announced_on": "2024-02-12",
+          "source": "https://www.quantonation.com/news/diraq-secures-usd-15-million-in-series-a-2-funding-to-advance-fault-tolerant-quantum-computing-development",
+          "note": "Quantonation led the US$15 million close announced in February 2024. John Higgins Family Investments and the University of New South Wales participated. Diraq subsequently reported US$22 million for the expanded round, including this close. See the company’s expansion announcement in Company details."
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "australian-business-number",
+          "label": "Australian business registration",
+          "value": "ABN Lookup lists Diraq Pty Ltd as an Australian private company with ABN 80 656 222 883.",
+          "source": "https://abr.business.gov.au/ABN/View?id=80656222883",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "sydney-headquarters",
+          "label": "Headquarters",
+          "value": "Diraq identifies Sydney, Australia, as its headquarters.",
+          "source": "https://www.diraq.com/newsdesk/blog-post-title-one-sfk9t-72msg-t48e9-4lpks-8n2x6-kygnl",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "series-a-2-expanded-total",
+          "label": "Expanded Series A-2",
+          "value": "Diraq reported a US$22 million total for the expanded round, including the US$15 million February 2024 close. Diraq named Main Sequence, Taronga Ventures, Uniseed, UniSuper, Co:Act Capital and additional participation from UNSW.",
+          "source": "https://www.diraq.com/newsdesk/diraq-adds-leading-deeptech-and-venture-investors-to-usd-22-million-investment-round",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "nrf-equity-stake",
+          "label": "National Reconstruction Fund investment",
+          "value": "The National Reconstruction Fund Corporation reported a $20 million equity stake in Diraq. The release uses an unqualified dollar sign.",
+          "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-backs-next-generation-quantum-computing-startup-diraq-20-million-equity-investment",
+          "reviewed_at": "2026-11-19"
+        }
+      ]
+    },
+    {
+      "name": "Emesent",
+      "website": "https://www.emesent.com/",
+      "description": "Develops autonomous mapping, mobile LiDAR scanning and spatial data analytics for mining and other industries.",
+      "founded_year": 2018,
+      "source": "https://www.emesent.com/who-we-are",
+      "reviewed_at": "2026-11-19",
+      "founders": [
+        {
+          "name": "Stefan Hrabar",
+          "source": "https://www.emesent.com/our-team"
+        },
+        {
+          "name": "Farid Kendoul",
+          "source": "https://www.emesent.com/our-team"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "emesent-2022-series-a",
+          "stage": "Series A",
+          "amount_text": "$32 million (currency unspecified in company announcement)",
+          "source": "https://www.emesent.com/news/2022/02/25/emesent-doubles-down-on-global-growth-after-closing-32-million-series-a",
+          "note": "In February 2022, Emesent reported the Series A had closed. Perennial Partners led. Tiger Global, TELUS Ventures, Main Sequence and Archangel Ventures participated."
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "australian-business-number",
+          "label": "Australian business registration",
+          "value": "ABN Lookup lists Emesent Pty Ltd as an Australian private company with ABN 95 626 502 350, active from 31 May 2018.",
+          "source": "https://abr.business.gov.au/ABN/View?id=626502350",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "brisbane-headquarters-2022",
+          "label": "Reported headquarters",
+          "value": "Emesent identified Brisbane, Australia, as its headquarters in its February 2022 Series A announcement.",
+          "source": "https://www.emesent.com/news/2022/02/25/emesent-doubles-down-on-global-growth-after-closing-32-million-series-a",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "founder-roles-company-page",
+          "label": "Co-founder roles",
+          "value": "Emesent lists Stefan Hrabar as chief strategy officer and Farid Kendoul as chief technology officer on its leadership page, checked 19 November 2026.",
+          "source": "https://www.emesent.com/our-team",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "staff-reported-february-2022",
+          "label": "Staff reported in February 2022",
+          "value": "Emesent reported 130 staff in its February 2022 Series A announcement. The announcement does not specify geographic scope.",
+          "source": "https://www.emesent.com/news/2022/02/25/emesent-doubles-down-on-global-growth-after-closing-32-million-series-a",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "australian-staff-2026-07-08",
+          "label": "Australian staff reported in July 2026",
+          "value": "Emesent reported 109 people across its Australian operations on 8 July 2026.",
+          "source": "https://www.emesent.com/news/emesent-secures-25-million-aud-to-accelerate-autonomous-intelligence-platform",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "july-2026-financing-instruments",
+          "label": "July 2026 financing instruments",
+          "value": "The National Reconstruction Fund Corporation described its part as venture debt and the separate syndicated financing as a SAFE note.",
+          "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-invests-10-million-venture-debt-csiro-spin-out-emesent-build-robotics-and-spatial-computing-capabilities",
+          "reviewed_at": "2026-11-19"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Emesent announces an A$25 million financing package",
+          "url": "https://www.emesent.com/news/emesent-secures-25-million-aud-to-accelerate-autonomous-intelligence-platform",
+          "published_on": "2026-07-08",
+          "kind": "financing announcement"
+        }
+      ],
+      "relationships": [
+        {
+          "target_id": "partner:main-sequence",
+          "kind": "supports",
+          "description": "Main Sequence lists Emesent in its portfolio.",
+          "source": "https://www.mseq.vc/portfolio/emesent"
+        }
+      ]
+    },
+    {
+      "name": "Skykraft",
+      "website": "https://www.skykraft.com.au/",
+      "description": "Designs, manufactures and operates low Earth orbit satellites in Canberra for space-based air traffic management.",
+      "source": "https://www.skykraft.com.au/",
+      "reviewed_at": "2026-11-19",
+      "founded_year": 2017,
+      "founders": [
+        {
+          "name": "Craig Benson",
+          "source": "https://www.skykraft.com.au/post/skykraft-opens-new-satellite-manufacturing-facility-in-canberra"
+        },
+        {
+          "name": "Douglas Griffin",
+          "source": "https://www.mseq.vc/portfolio/skykraft"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "skykraft-2023-october-financing",
+          "stage": "Funding round (stage undisclosed)",
+          "amount_text": "More than A$100 million",
+          "announced_on": "2023-10-16",
+          "source": "https://www.skykraft.com.au/post/skykraft-secures-100m-of-investment-to-transform-air-traffic-management",
+          "note": "In a release datelined 16 October 2023 and posted on its site on 19 October, Skykraft reported completing a round that would provide over A$100 million. It named Foresight Australia, OPTrust and Main Sequence as new investors. The release gives no exact amount, lead investor or instrument."
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "australian-business-number",
+          "label": "Australian business registration",
+          "value": "ABN Lookup lists Skykraft Pty Ltd as an Australian private company with ABN 24 621 641 610, active from 4 December 2017.",
+          "source": "https://abr.business.gov.au/ABN/View?abn=24621641610",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "unsw-canberra-spin-off",
+          "label": "Reported origin",
+          "value": "Skykraft identified itself as a 2017 spin-off from UNSW Canberra in its January 2023 update.",
+          "source": "https://www.skykraft.com.au/post/australia-s-largest-ever-satellite-constellation-now-active",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "canberra-manufacturing-2022",
+          "label": "Canberra manufacturing milestone",
+          "value": "Skykraft reported opening its satellite manufacturing facility at UNSW Canberra City on 21 March 2022.",
+          "source": "https://www.skykraft.com.au/post/skykraft-opens-new-satellite-manufacturing-facility-in-canberra",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "headcount-january-2023",
+          "label": "Staff reported in January 2023",
+          "value": "Skykraft reported 30 staff in its January 2023 update. The update does not specify the geographical scope of the count.",
+          "source": "https://www.skykraft.com.au/post/australia-s-largest-ever-satellite-constellation-now-active",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "block-ii-operations-january-2023",
+          "label": "Satellite operations reported in January 2023",
+          "value": "Skykraft reported operating five satellites after its January 2023 launch.",
+          "source": "https://www.skykraft.com.au/post/australia-s-largest-ever-satellite-constellation-now-active",
+          "reviewed_at": "2026-11-19"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Skykraft opens new satellite manufacturing facility in Canberra",
+          "url": "https://www.skykraft.com.au/post/skykraft-opens-new-satellite-manufacturing-facility-in-canberra",
+          "published_on": "2022-03-21",
+          "kind": "technical milestone"
+        }
+      ],
+      "relationships": [
+        {
+          "target_id": "partner:main-sequence",
+          "kind": "supports",
+          "description": "Main Sequence lists Skykraft in its investment portfolio.",
+          "source": "https://www.mseq.vc/portfolio/skykraft"
+        }
+      ]
+    },
+    {
+      "name": "Arkeus",
+      "website": "https://arkeus.com/",
+      "description": "Develops optical sensing and analytics systems for defence, security and civilian applications.",
+      "source": "https://arkeus.com/who-we-are",
+      "reviewed_at": "2026-11-19",
+      "founders": [
+        {
+          "name": "Simon Olsen",
+          "source": "https://www.folklore.vc/insights/our-investment-in-arkeus"
+        },
+        {
+          "name": "Jonathan Nebauer",
+          "source": "https://www.folklore.vc/insights/our-investment-in-arkeus"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "arkeus-2025-march-financing",
+          "stage": "Funding round (stage undisclosed)",
+          "amount": 5000000,
+          "currency": "AUD",
+          "announced_on": "2025-03-20",
+          "source": "https://arkeus.com/news/arkeus-secures-5-million-to-accelerate",
+          "note": "Arkeus announced an additional A$5 million in an oversubscribed round. It named Main Sequence, Salus Ventures and Beaten Zone Venture Partners as returning backers. The announcement does not give a stage, lead investor or security type."
+        },
+        {
+          "id": "arkeus-2026-series-a",
+          "stage": "Series A",
+          "amount": 25000000,
+          "currency": "AUD",
+          "announced_on": "2026-05-15",
+          "source": "https://arkeus.com/news/arkeus-raises-a-25-million-series-a-to-scale-ai-powered-sensing-systems-for-allied-defence-markets",
+          "note": "Arkeus announced an A$25 million Series A led by QIC Ventures. New investors included R+ VC, Folklore Ventures and DYNE Ventures. Main Sequence, Salus Ventures and Beaten Zone Venture Partners returned."
+        },
+        {
+          "id": "arkeus-2023-seed",
+          "stage": "Seed",
+          "amount": 4450000,
+          "currency": "AUD",
+          "announced_on": "2023-12-05",
+          "source": "https://arkeus.com/news/arkeus-new-funding-2023-december",
+          "note": "Arkeus announced the seed round on 5 December 2023 and named Main Sequence as lead, with Salus Ventures and Steve Baxter as participants. Arkeus described Baxter as from Beaten Zone Venture Partners. The closing date and Baxter's investment vehicle are unknown."
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "australian-business-registration",
+          "label": "Australian business registration",
+          "value": "ABN Lookup lists Arkeus Pty Ltd under ABN 91 638 881 286. The same ABN was active under IAS Asia Pacific Pty Ltd from 4 February 2020 until the legal name changed on 16 February 2023.",
+          "source": "https://abr.business.gov.au/AbnHistory/View?id=91638881286",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "reported-origin-melbourne",
+          "label": "Reported founding location",
+          "value": "Folklore Ventures identifies Melbourne as the place where Simon Olsen and Jonathan Nebauer founded Arkeus.",
+          "source": "https://www.folklore.vc/insights/our-investment-in-arkeus",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "cofounder-roles-company-page",
+          "label": "Co-founder roles",
+          "value": "Arkeus lists Simon Olsen as chief executive officer and Jon Nebauer as chief technology officer on the leadership page checked 19 November 2026.",
+          "source": "https://arkeus.com/who-we-are",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "ormeau-manufacturing-2026",
+          "label": "Ormeau manufacturing milestone",
+          "value": "In its 8 July 2026 update, Arkeus reported unveiling its manufacturing facility in Ormeau, Queensland.",
+          "source": "https://arkeus.com/news/deputy-premier-of-queensland-unveils-new-arkeus-advanced-manufacturing-facility-supported-by-1-48m-in-funding-from-the-sovereign-industry-development-fund",
+          "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "queensland-sidf-award",
+          "label": "Queensland funding award",
+          "value": "Arkeus reported a separate A$1.48 million award from Queensland’s Sovereign Industry Development Fund to support the Ormeau facility.",
+          "source": "https://arkeus.com/news/deputy-premier-of-queensland-unveils-new-arkeus-advanced-manufacturing-facility-supported-by-1-48m-in-funding-from-the-sovereign-industry-development-fund",
+          "reviewed_at": "2026-11-19"
+        }
+      ],
+      "articles": [
+        {
+          "title": "IAS Asia Pacific rebrands as Arkeus",
+          "url": "https://arkeus.com/news/arkeus-rebrand",
+          "published_on": "2023-02-16",
+          "kind": "company news"
+        },
+        {
+          "title": "Arkeus unveils its Ormeau manufacturing facility",
+          "url": "https://arkeus.com/news/deputy-premier-of-queensland-unveils-new-arkeus-advanced-manufacturing-facility-supported-by-1-48m-in-funding-from-the-sovereign-industry-development-fund",
+          "published_on": "2026-07-08",
+          "kind": "technical milestone"
+        }
+      ],
+      "relationships": [
+        {
+          "target_id": "partner:main-sequence",
+          "kind": "supports",
+          "description": "Main Sequence lists Arkeus in its portfolio.",
+          "source": "https://www.mseq.vc/portfolio/arkeus"
         }
       ]
     }

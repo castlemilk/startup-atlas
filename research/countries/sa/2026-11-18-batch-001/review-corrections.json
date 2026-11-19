@@ -1,0 +1,27 @@
+{
+  "corrections": [
+    {
+      "claim_id": "sa-fin-0151",
+      "entity_id": "startup:lean-technologies",
+      "original_field": "headquarters",
+      "normalized_field": "operating_location",
+      "source_url": "https://leantech.me/uae/en/blog/lean-technologies-secures-67-5m-in-series-b-funding-led-by-general-catalyst-solidifying-its-position-as-the-leading-fintech-infrastructure-platform-in-the-middle-east",
+      "reason": "Peer review: based in/at is an operating-location observation; explicit headquarters remains unknown.",
+      "original_snapshot_preserved": true
+    },
+    {
+      "claim_id": "sa-eco-c027",
+      "entity_id": "startup:polymeron",
+      "original_field": "headquarters",
+      "normalized_field": "operating_location",
+      "source_url": "https://polymeron.com/about-us/",
+      "reason": "Peer review: based in/at is an operating-location observation; explicit headquarters remains unknown.",
+      "original_snapshot_preserved": true
+    }
+  ],
+  "additional_geography_qa_reads": {
+    "fintech": 4,
+    "ecosystem": 2
+  },
+  "note": "Post-packet peer review re-read existing registered sources. These QA requests are separate from original snapshot request counts."
+}

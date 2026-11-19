@@ -1,0 +1,532 @@
+{
+  "reviews": [
+    {
+      "lane": "independent_commerce_review",
+      "checked_at": "2026-11-18T10:00:00Z",
+      "scope": "Read-only targeted review of six risky cases. No company enumeration or restricted Seez/Stake domains accessed.",
+      "counts": {
+        "companies_reviewed": 6,
+        "unique_source_urls_reopened": 9,
+        "readable_source_urls": 8,
+        "unavailable_source_urls": 1,
+        "confirmed_substantive_fact_errors": 0,
+        "normalization_issues": 1,
+        "unresolved_independent_verification_gaps": 1
+      },
+      "conclusion": "The reviewed event distinctions and source-level claims are broadly correct. Preserve unresolved stage, currency and legal-name conflicts. A cross-record null-currency normalization issue remains in the inspected raw snapshot; the commerce agent is already addressing it.",
+      "findings": [
+        {
+          "id": "review-commerce-001",
+          "severity": "required_normalization",
+          "companies": [
+            "kitopi",
+            "eyewa",
+            "grubtech",
+            "letswork"
+          ],
+          "status": "open_in_raw_snapshot; parent reports fix in progress",
+          "field": "funding_events.amount and funding_round claims",
+          "issue": "Eyewa, Grubtech and Letswork retain numeric amounts while currency is null. Kitopi's company-only funding_round claim also retains numeric amount with null currency although the event fields and separate adviser currency claim establish USD.",
+          "correction": "For currency-null claims set amount=null and preserve the reported dollar amount in amount_text. For Kitopi retain the separately sourced USD 415,000,000 event only if the adviser currency claim remains attached to that event; the company-only assertion must not silently borrow a currency without its provenance.",
+          "affected_claim": "uae-commerce-kitopi-012",
+          "supporting_sources": [
+            "https://www.legal500.com/intelligence/global/finance-and-banking/walkers-fundamentals-white-paper-2021-%E2%80%93-regional-update-asia-&-mena"
+          ]
+        },
+        {
+          "id": "review-commerce-002",
+          "severity": "verification_gap",
+          "company": "kitopi",
+          "status": "currency_verified; company_page_not_independently_reopened",
+          "field": "founders; announced_on; founded",
+          "finding": "Walkers identifies itself as British Virgin Islands counsel on Kitopi's transaction and explicitly reports US$415 million Series C. This independently corroborates USD and amount. The company release repeatedly timed out during this review; the four founders, January 2018 founding period and 1 July 2021 event dateline were not independently re-read.",
+          "correction": "Retain the original research agent's sourced founder/date assertions with their existing provenance; describe the independent review limit accurately. Do not replace the claimed 2021 event dateline with the migrated 2022 page header. Leave closed_on null unless an exact closing day is separately explicit.",
+          "source_url": "https://www.legal500.com/intelligence/global/finance-and-banking/walkers-fundamentals-white-paper-2021-%E2%80%93-regional-update-asia-&-mena",
+          "web_ref": "turn266628575view1",
+          "unavailable_source_url": "https://www.kitopi.com/post/kitopi-announces-415-million-series-c-funding-round",
+          "unavailable_web_ref": "turn266628575view0"
+        },
+        {
+          "id": "review-commerce-003",
+          "severity": "confirmed",
+          "company": "eyewa",
+          "status": "verified",
+          "field": "founders; headquarters; founded",
+          "finding": "General Atlantic's dated release explicitly names Anass Boumediene and Mehdi Oudghiri as co-founders/co-CEOs and Abdullah AlRugaib as co-founder/managing director; its company description states founded 2017 and dual headquarters in Riyadh and Dubai. These are not inferred from the Riyadh dateline.",
+          "correction": "No factual correction. Preserve all three founders and dual HQ as of 2024-11-27; use a single canonical company identity across UAE and Saudi packets.",
+          "source_url": "https://www.generalatlantic.com/media-article/eyewa-announces-100m-in-series-c-round-led-by-general-atlantic/",
+          "web_ref": "turn441074019view0"
+        },
+        {
+          "id": "review-commerce-004",
+          "severity": "confirmed",
+          "company": "grubtech",
+          "status": "verified",
+          "field": "funding_round; round_participants",
+          "finding": "The Salica page's headline shortens the financing to Series B, but its release body explicitly says the $15 million covers Series B and Series A extension rounds. It attributes the lead Jahez investment arm and participation by Addition and Oryx Fund specifically to the Series B.",
+          "correction": "Retain one combined financing observation with component amounts null, reported_on 2024-05-28 and announced_on null. Do not encode a standalone $15 million Series B or assume those participants funded the A extension.",
+          "source_url": "https://salicainvestments.com/grubtech-raises-15-million-series-b-led-by-jahez/",
+          "web_ref": "turn773225914view1"
+        },
+        {
+          "id": "review-commerce-005",
+          "severity": "confirmed_with_qualification",
+          "company": "letswork",
+          "status": "verified_retrospective_company_assertion",
+          "field": "founded; round_participants",
+          "finding": "The current company About page explicitly states 2019 founding in Dubai by Omar AlMheiri and Hamza Khan and explicitly describes the December 2022 $2.1M seed as led by 500 Global and Sanabil Investments. The two lead names therefore are supported by the company statement, not inferred merely from accelerator participation.",
+          "correction": "Use: 'The current company About page reports a December 2022 seed round led by 500 Global and Sanabil Investments; the exact investing legal vehicles remain unresolved.' Preserve source names with resolved_entity_id=null and do not substitute a combined accelerator entity. Keep 2019 as the current company's assertion; retain any separate 2018 launch chronology conflict found by the commerce agent. About's Letswork Technologies LLC and Terms' Letswork LLC remain a legal-name conflict, not a resolved alias or proven incorporation relationship.",
+          "source_url": "https://www.letswork.io/about",
+          "web_ref": "turn773225914view2",
+          "remaining_gap": "Original dated financing release and exact investing vehicles have not been independently verified."
+        },
+        {
+          "id": "review-commerce-006",
+          "severity": "confirmed_with_provenance_note",
+          "company": "squatwolf",
+          "status": "verified_commitment_distinction",
+          "field": "funding_round; funding_instrument",
+          "finding": "The reproduced announcement body describes a minority investment agreement allowing ASCA to invest up to $30 million over time; it does not establish that $30 million had been funded. ASCA's own investment profile separately supplies structured equity/growth capital, Arnold Investments Fund LP and May 2023.",
+          "correction": "Use: 'Minority investment announced; agreement permits ASCA to invest up to $30 million over time. Amount funded at announcement is undisclosed.' Keep amount=null and currency=null. Preserve commitment cap only as an explicitly unconverted source observation, not a normalized funding amount. Keep ASCA as the event participant and Disrupt.com as a continuing shareholder only. Keep the Arnold Investments Fund LP and instrument assertions linked to ASCA's own profile instead of attributing them solely to the reproduced announcement.",
+          "source_urls": [
+            "https://www.wamda.com/index.php/2023/05/squatwolf-raises-30-million-asca-capital",
+            "https://ascacapital.com/"
+          ],
+          "web_refs": [
+            "turn773225914view3",
+            "turn266628575view4"
+          ]
+        },
+        {
+          "id": "review-commerce-007",
+          "severity": "confirmed_conflict",
+          "company": "immensa",
+          "status": "unresolved_conflict_correctly_retained",
+          "field": "funding_stage; funding_amount; funding_dates",
+          "finding": "Wamda's 29 November 2023 headline/bullets label the financing Series B; its reproduced release describes a funding round and explicitly states US$20 million. DFDF's 2026 investor release has an 11 February 2026 dateline, a 20 February page date and describes new funding ahead of a planned Series B.",
+          "correction": "Use: 'Wamda labels the 2023 financing Series B; its reproduced release calls it a funding round. DFDF's February 2026 release describes its new funding as ahead of a planned Series B. Preserve both dated source assertions without resolving the stage.' Keep the 2023 USD 20,000,000 amount. Keep the 2026 amount null, announced_on 2026-02-11 and published_on 2026-02-20. Do not silently restage the 2023 or 2026 event.",
+          "source_urls": [
+            "https://www.wamda.com/en/2023/11/uae-immensa-raises-20-million-series-b-round",
+            "https://dfdf.vc/press-releases/immensa-raises-growth-capital-from-dubai-future-district-fund-and-global-ventures-to-strengthen-global-advanced-manufacturing-and-supply-chain-resilience-from-dubai/"
+          ],
+          "web_refs": [
+            "turn266628575view3",
+            "turn773225914view5"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.kitopi.com/post/kitopi-announces-415-million-series-c-funding-round",
+          "publisher": "Kitopi",
+          "source_kind": "primary_company",
+          "accessed": false,
+          "status": "timeout",
+          "web_ref": "turn266628575view0",
+          "retrieved_at": "2026-11-18",
+          "acquisition": "web_tool_page_read",
+          "retrieval_precision": "day"
+        },
+        {
+          "url": "https://www.legal500.com/intelligence/global/finance-and-banking/walkers-fundamentals-white-paper-2021-%E2%80%93-regional-update-asia-&-mena",
+          "publisher": "Walkers, published by Legal 500",
+          "source_kind": "primary_transaction_adviser",
+          "published_on": "2021-12-19",
+          "accessed": true,
+          "status": "read",
+          "web_ref": "turn266628575view1",
+          "retrieved_at": "2026-11-18",
+          "acquisition": "web_tool_page_read",
+          "retrieval_precision": "day"
+        },
+        {
+          "url": "https://www.generalatlantic.com/media-article/eyewa-announces-100m-in-series-c-round-led-by-general-atlantic/",
+          "publisher": "General Atlantic",
+          "source_kind": "primary_investor",
+          "published_on": "2024-11-27",
+          "accessed": true,
+          "status": "read",
+          "web_ref": "turn441074019view0",
+          "retrieved_at": "2026-11-18",
+          "acquisition": "web_tool_page_read",
+          "retrieval_precision": "day"
+        },
+        {
+          "url": "https://salicainvestments.com/grubtech-raises-15-million-series-b-led-by-jahez/",
+          "publisher": "Salica Investments",
+          "source_kind": "primary_investor",
+          "published_on": "2024-05-28",
+          "accessed": true,
+          "status": "read",
+          "web_ref": "turn773225914view1",
+          "retrieved_at": "2026-11-18",
+          "acquisition": "web_tool_page_read",
+          "retrieval_precision": "day"
+        },
+        {
+          "url": "https://www.letswork.io/about",
+          "publisher": "Letswork",
+          "source_kind": "primary_company",
+          "published_on": null,
+          "accessed": true,
+          "status": "read",
+          "web_ref": "turn773225914view2",
+          "retrieved_at": "2026-11-18",
+          "acquisition": "web_tool_page_read",
+          "retrieval_precision": "day"
+        },
+        {
+          "url": "https://ascacapital.com/",
+          "publisher": "ASCA Capital",
+          "source_kind": "primary_investor",
+          "published_on": null,
+          "accessed": true,
+          "status": "read",
+          "web_ref": "turn266628575view4",
+          "retrieved_at": "2026-11-18",
+          "acquisition": "web_tool_page_read",
+          "retrieval_precision": "day"
+        },
+        {
+          "url": "https://www.wamda.com/index.php/2023/05/squatwolf-raises-30-million-asca-capital",
+          "publisher": "Wamda",
+          "source_kind": "secondary_with_reproduced_press_release",
+          "published_on": "2023-05-03",
+          "accessed": true,
+          "status": "read",
+          "web_ref": "turn773225914view3",
+          "retrieved_at": "2026-11-18",
+          "acquisition": "web_tool_page_read",
+          "retrieval_precision": "day"
+        },
+        {
+          "url": "https://www.wamda.com/en/2023/11/uae-immensa-raises-20-million-series-b-round",
+          "publisher": "Wamda",
+          "source_kind": "secondary_with_reproduced_press_release",
+          "published_on": "2023-11-29",
+          "accessed": true,
+          "status": "read",
+          "web_ref": "turn266628575view3",
+          "retrieved_at": "2026-11-18",
+          "acquisition": "web_tool_page_read",
+          "retrieval_precision": "day"
+        },
+        {
+          "url": "https://dfdf.vc/press-releases/immensa-raises-growth-capital-from-dubai-future-district-fund-and-global-ventures-to-strengthen-global-advanced-manufacturing-and-supply-chain-resilience-from-dubai/",
+          "publisher": "Dubai Future District Fund",
+          "source_kind": "primary_investor",
+          "published_on": "2026-02-20",
+          "accessed": true,
+          "status": "read",
+          "web_ref": "turn773225914view5",
+          "retrieved_at": "2026-11-18",
+          "acquisition": "web_tool_page_read",
+          "retrieval_precision": "day"
+        }
+      ],
+      "next_checks": [
+        "Confirm commerce-agent normalization before parent schema validation.",
+        "Retain Kitopi independent-review timeout as a gap; original page evidence may remain accepted from the originating researcher.",
+        "Resolve Letswork founding/launch chronology only if further primary dated evidence is available; original round release remains queued.",
+        "Leave Immensa stage conflict for owner review."
+      ],
+      "mutation_log": [
+        "No edits to commerce.json or repository. This review file is the only written artifact."
+      ],
+      "reviewed_lane": "commerce"
+    },
+    {
+      "review_id": "uae-fintech-targeted-independent-review",
+      "checked_at": "2026-11-18T10:05:40Z",
+      "input_sha256_at_review_end": "787bff9192e3f5472a528a43404322bb62f68147618dca24f748cb603cca51ea",
+      "input_modified": false,
+      "scope": {
+        "companies": [
+          "Huspy",
+          "Ziina",
+          "Bayzat",
+          "NymCard",
+          "Qashio"
+        ],
+        "targeted_urls_attempted": 10,
+        "targeted_urls_accessed": 9,
+        "targeted_urls_failed": 1,
+        "stake_company_domains_accessed": false,
+        "repository_or_pr_mutation": false,
+        "not_exhaustive": true
+      },
+      "overall_result": "Checked texts support recorded high-impact facts and explicit conflicts. Required currency/null sanitation acknowledged by owner; Alinma independent verification timed out.",
+      "findings": [
+        {
+          "id": "fintech-review-01",
+          "severity": "required_normalization",
+          "entities": [
+            "nymcard",
+            "ziina",
+            "qashio",
+            "bayzat"
+          ],
+          "result": "correction_required_in_input_and_projection",
+          "finding": "Input still has numeric amounts with null currency. Parent acknowledged assembler sanitation and plans equivalent input sanitation.",
+          "correction": "Set amount=null wherever currency=null in fields and funding_round claims; retain amount_text. Apply equivalent valuation/currency rule. Explicit currency pairs stay unchanged.",
+          "input_examples": [
+            "nymcard-2025-series-b",
+            "ziina-2021-seed",
+            "qashio-2025-may-financing",
+            "bayzat-2017-series-a1-extension"
+          ],
+          "source_urls": [],
+          "evidence_kind": "local_input_inspection",
+          "verification_state": "owner_acknowledged_not_retested_here"
+        },
+        {
+          "id": "fintech-review-02",
+          "severity": "pass",
+          "entity": "huspy",
+          "result": "corroborated",
+          "finding": "Adviser explicitly reports US$59 million Series B; page publication is 14 July 2025. It names Balderton lead and the same seven other participants.",
+          "correction": null,
+          "required_preservation": "Keep adviser publication distinct from issuer announcement and unknown legal close. Retain adviser URL alongside issuer URL for normalized currency provenance.",
+          "source_urls": [
+            "https://www.lw.com/en/news/latham-advises-huspy-in-usd59-million-series-b-fundraising"
+          ],
+          "evidence_kind": "independent_page_read",
+          "limits": "Issuer PRNewswire page and 8 July announcement were not independently reopened in this ten-URL review."
+        },
+        {
+          "id": "fintech-review-03",
+          "severity": "pass_with_existing_conflicts",
+          "entity": "ziina",
+          "result": "corroborated_with_temporal_and_identity_limits",
+          "finding": "JIMCO explicitly reports US$22 million Series A participation in December 2024 and founding in 2021. Company timeline and YC say founded 2020. YC names Sarah Toukan, Faisal Toukan and Andrew Gold as founders. Company narrative includes Talal Toukan; its linked press title names the three Toukan siblings as co-founders.",
+          "correction": null,
+          "required_preservation": "Retain December participation separately from September announcement and unknown close. Founder union is not proof of a single simultaneous original team or complete current team. Do not duplicate financing from date difference alone.",
+          "source_urls": [
+            "https://jimco.com/en/portfolio/ziina/",
+            "https://ziina.com/about",
+            "https://www.ycombinator.com/companies/ziina"
+          ],
+          "evidence_kind": "independent_page_read",
+          "limits": "MENAbytes September 3 day claim was not independently reopened. Company outbound news labels span September 2 and 3; publication labels alone do not resolve announcement timezone or close."
+        },
+        {
+          "id": "fintech-review-04",
+          "severity": "pass_with_existing_conflict",
+          "entity": "bayzat",
+          "result": "corroborated_with_founder_disagreement",
+          "finding": "Issuer dateline 23 December 2022 explicitly reports USD 25 million Series C, led by DisruptAD alongside Ischyros. Mubadala and Point 72 occur only as historical backing. BECO really lists Talal Bayaa and Ramzi Habibi; conflict is not a transcription error.",
+          "correction": null,
+          "required_preservation": "Do not attribute historical investors to this round. Do not equate Ramzi and Brian or resolve an extra founder from conflicting profile alone. Keep founder uncertainty and close date null.",
+          "source_urls": [
+            "https://www.bayzat.com/blog/bayzat-targets-becoming-middle-east-leader-in-hr-insuretech-following-25million-series-c-round/",
+            "https://www.becocapital.com/portfolio/bayzat/"
+          ],
+          "evidence_kind": "independent_page_read",
+          "limits": "Brian Habibi Wamda report not independently reopened within ten-URL review; its earlier observation remains subject to recorded conflict."
+        },
+        {
+          "id": "fintech-review-05",
+          "severity": "pass",
+          "entity": "nymcard",
+          "result": "corroborated",
+          "finding": "Undated QED profile explicitly labels Dubai headquarters. Company press release dated 8 February 2021 announces Abu Dhabi relocation and describes Beirut origin.",
+          "correction": null,
+          "required_preservation": "Keep current observed Dubai and dated historical Abu Dhabi separate. No Dubai move date or incorporation inferred. as_of=null is appropriate for undated profile, with retrieval date in ledger.",
+          "source_urls": [
+            "https://www.qedinvestors.com/companies/nymcard",
+            "https://www.nymcard.com/company/newsroom/nymcard-moves-its-headquarters-to-abu-dhabi-to-tap-into-the-growing-mena-fintech-ecosystem"
+          ],
+          "evidence_kind": "independent_page_read"
+        },
+        {
+          "id": "fintech-review-06",
+          "severity": "pass_subject_to_normalization",
+          "entity": "qashio",
+          "result": "corroborated",
+          "finding": "Wamda dated 28 May 2025 reports $19.8 million combining equity and non-equity. Rocketship leads; ABN Ventures, MITAA, Oneway VC and MoreThan Capital participate. Regional banks and family offices are unnamed.",
+          "correction": "Set normalized amount=null because currency is unresolved; retain $19.8 million amount_text.",
+          "required_preservation": "Keep mixed classification, unknown components/stage and publication-date semantics. Rewards partners are not investors.",
+          "source_urls": [
+            "https://www.wamda.com/index.php/en/2025/05/qashio-closes-19-8-million-round-accelerate-expansion-saudi-arabia"
+          ],
+          "evidence_kind": "independent_page_read"
+        },
+        {
+          "id": "fintech-review-07",
+          "severity": "independent_access_gap",
+          "entity": "qashio",
+          "result": "inconclusive_access_timeout",
+          "finding": "Alinma investor page timed out during independent reopen. No repeated request or bypass attempted.",
+          "correction": null,
+          "required_preservation": "Retain amount=null, currency=null, unspecified instrument, and secondary publication date rather than inferred close. Earlier source evidence is not invalidated by timeout, but this review does not independently certify contents.",
+          "source_urls": [
+            "https://www.alinma.com/en/About-the-Bank/The-Bank/News/2025/9/Qashio"
+          ],
+          "evidence_kind": "failed_page_reopen"
+        }
+      ],
+      "sources": [
+        {
+          "id": "fintech-review-source-latham",
+          "url": "https://www.lw.com/en/news/latham-advises-huspy-in-usd59-million-series-b-fundraising",
+          "publisher": "Latham & Watkins",
+          "source_kind": "primary_adviser",
+          "published_on": "2025-07-14",
+          "web_ref": "turn745104829view0",
+          "retrieved_at": "2026-11-18T10:05:40Z",
+          "retrieval_time_precision": "review_batch_end",
+          "acquisition": "web_tool_page_read",
+          "accessed": true,
+          "status": "accessed",
+          "notes": "Independent page reopen; no personal contact details retained."
+        },
+        {
+          "id": "fintech-review-source-jimco",
+          "url": "https://jimco.com/en/portfolio/ziina/",
+          "publisher": "JIMCO",
+          "source_kind": "primary_investor",
+          "published_on": null,
+          "web_ref": "turn745104829view1",
+          "retrieved_at": "2026-11-18T10:05:40Z",
+          "retrieval_time_precision": "review_batch_end",
+          "acquisition": "web_tool_page_read",
+          "accessed": true,
+          "status": "accessed",
+          "notes": "Independent page reopen; no personal contact details retained."
+        },
+        {
+          "id": "fintech-review-source-ziina",
+          "url": "https://ziina.com/about",
+          "publisher": "Ziina",
+          "source_kind": "primary_company",
+          "published_on": null,
+          "web_ref": "turn745104829view2",
+          "retrieved_at": "2026-11-18T10:05:40Z",
+          "retrieval_time_precision": "review_batch_end",
+          "acquisition": "web_tool_page_read",
+          "accessed": true,
+          "status": "accessed",
+          "notes": "Independent page reopen; no personal contact details retained."
+        },
+        {
+          "id": "fintech-review-source-yc",
+          "url": "https://www.ycombinator.com/companies/ziina",
+          "publisher": "Y Combinator",
+          "source_kind": "primary_investor",
+          "published_on": null,
+          "web_ref": "turn874292571view0",
+          "retrieved_at": "2026-11-18T10:05:40Z",
+          "retrieval_time_precision": "review_batch_end",
+          "acquisition": "web_tool_page_read",
+          "accessed": true,
+          "status": "accessed",
+          "notes": "Independent page reopen; no personal contact details retained."
+        },
+        {
+          "id": "fintech-review-source-bayzat",
+          "url": "https://www.bayzat.com/blog/bayzat-targets-becoming-middle-east-leader-in-hr-insuretech-following-25million-series-c-round/",
+          "publisher": "Bayzat",
+          "source_kind": "primary_company",
+          "published_on": "2022-12-23",
+          "web_ref": "turn874292571view1",
+          "retrieved_at": "2026-11-18T10:05:40Z",
+          "retrieval_time_precision": "review_batch_end",
+          "acquisition": "web_tool_page_read",
+          "accessed": true,
+          "status": "accessed",
+          "notes": "Independent page reopen; no personal contact details retained."
+        },
+        {
+          "id": "fintech-review-source-beco",
+          "url": "https://www.becocapital.com/portfolio/bayzat/",
+          "publisher": "BECO Capital",
+          "source_kind": "primary_investor",
+          "published_on": null,
+          "web_ref": "turn874292571view2",
+          "retrieved_at": "2026-11-18T10:05:40Z",
+          "retrieval_time_precision": "review_batch_end",
+          "acquisition": "web_tool_page_read",
+          "accessed": true,
+          "status": "accessed",
+          "notes": "Independent page reopen; no personal contact details retained."
+        },
+        {
+          "id": "fintech-review-source-qed",
+          "url": "https://www.qedinvestors.com/companies/nymcard",
+          "publisher": "QED Investors",
+          "source_kind": "primary_investor",
+          "published_on": null,
+          "web_ref": "turn884766969view0",
+          "retrieved_at": "2026-11-18T10:05:40Z",
+          "retrieval_time_precision": "review_batch_end",
+          "acquisition": "web_tool_page_read",
+          "accessed": true,
+          "status": "accessed",
+          "notes": "Independent page reopen; no personal contact details retained."
+        },
+        {
+          "id": "fintech-review-source-nymcard",
+          "url": "https://www.nymcard.com/company/newsroom/nymcard-moves-its-headquarters-to-abu-dhabi-to-tap-into-the-growing-mena-fintech-ecosystem",
+          "publisher": "NymCard",
+          "source_kind": "primary_company",
+          "published_on": "2021-02-08",
+          "web_ref": "turn884766969view1",
+          "retrieved_at": "2026-11-18T10:05:40Z",
+          "retrieval_time_precision": "review_batch_end",
+          "acquisition": "web_tool_page_read",
+          "accessed": true,
+          "status": "accessed",
+          "notes": "Independent page reopen; no personal contact details retained."
+        },
+        {
+          "id": "fintech-review-source-qashio",
+          "url": "https://www.wamda.com/index.php/en/2025/05/qashio-closes-19-8-million-round-accelerate-expansion-saudi-arabia",
+          "publisher": "Wamda",
+          "source_kind": "secondary",
+          "published_on": "2025-05-28",
+          "web_ref": "turn884766969view2",
+          "retrieved_at": "2026-11-18T10:05:40Z",
+          "retrieval_time_precision": "review_batch_end",
+          "acquisition": "web_tool_page_read",
+          "accessed": true,
+          "status": "accessed",
+          "notes": "Independent page reopen; no personal contact details retained."
+        },
+        {
+          "id": "fintech-review-source-alinma",
+          "url": "https://www.alinma.com/en/About-the-Bank/The-Bank/News/2025/9/Qashio",
+          "publisher": "Alinma Bank",
+          "source_kind": "primary_investor",
+          "published_on": null,
+          "web_ref": "turn884766969view3",
+          "retrieved_at": "2026-11-18T10:05:40Z",
+          "retrieval_time_precision": "review_batch_end",
+          "acquisition": "web_tool_page_read",
+          "accessed": false,
+          "status": "timeout",
+          "notes": "400 timeout; stopped after one attempt."
+        }
+      ],
+      "access_gaps": [
+        {
+          "url": "https://www.alinma.com/en/About-the-Bank/The-Bank/News/2025/9/Qashio",
+          "reason": "Timeout; original agent observation not independently reconfirmed."
+        }
+      ],
+      "coverage_limits": [
+        "No broad funding-history search or new candidate enumeration.",
+        "Huspy issuer release, Ziina MENAbytes day claim and Bayzat Brian Habibi report not reopened in this bounded review.",
+        "Review does not approve crawler seeds or production promotion."
+      ],
+      "corrections_applied": [],
+      "owner_coordination": "Parent informed immediately of numeric amount/null-currency issue; assembler sanitation and planned input sanitation acknowledged.",
+      "reviewed_lane": "fintech"
+    }
+  ],
+  "resolution": {
+    "numeric_amount_without_currency": "Normalized to null throughout delivered observations and claims; original amount_text retained.",
+    "kitopi_currency": "Supplementary adviser claim explicitly contributes USD415m to normalized event and schema projection; both sources and claim IDs retained.",
+    "partial_independent_verification": "Company release Kitopi and Alinma page timeouts retained; original research observations not falsely marked independently verified.",
+    "root_programme_review": "Added current Khalifa funding-scheme page and preserved contradictory FAQ eligibility; no universal rule asserted."
+  }
+}

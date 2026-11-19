@@ -16,6 +16,37 @@ crawl=load('atlas_crawl_news','scripts/crawl.py')
 database=load('atlas_graph_db','scripts/build-graph-db.py')
 
 class GraphTests(unittest.TestCase):
+    def test_missing_founding_year_stays_absent_in_graph_and_sqlite(self):
+        for portfolio in (False, True):
+            for year in (None, 2018):
+                with self.subTest(portfolio=portfolio, year=year):
+                    startup={'name':'Example','source':'https://example.com/'}
+                    if year is not None: startup['founded_year']=year
+                    profiles={'Investor':{'companies':[{'name':'Example','source':'https://example.org/portfolio'}]}} if portfolio else {}
+                    result=graph.build_graph(profiles,[],{}, {'opportunities':[]},{'startups':[startup]})
+                    entity=next(item for item in result['entities'] if item['id']=='startup:example')
+                    if year is None: self.assertNotIn('founded_year',entity)
+                    else: self.assertEqual(entity['founded_year'],year)
+                    with tempfile.TemporaryDirectory() as temp:
+                        source=Path(temp)/'graph.json'; target=Path(temp)/'graph.sqlite'
+                        source.write_text(json.dumps(result),encoding='utf-8')
+                        database.build(source,target)
+                        with sqlite3.connect(target) as db:
+                            stored=json.loads(db.execute('select data from entities where id=?',('startup:example',)).fetchone()[0])
+                        self.assertEqual(stored,entity)
+
+    def test_founder_social_references_survive_source_to_graph_projection(self):
+        socials=[{'label':'LinkedIn','url':'https://www.linkedin.com/in/example-founder',
+                  'source':'https://example.com/team','reviewed_at':'2026-01-01'}]
+        research={'startups':[{'name':'Example','source':'https://example.com/about',
+                              'founders':[{'name':'Example Founder','source':'https://example.com/team',
+                                           'socials':socials}]}]}
+        result=graph.build_graph({},[],{},{'opportunities':[]},research)
+        founder=next(entity for entity in result['entities'] if entity['id']=='person:example-founder')
+        self.assertEqual(founder['socials'],socials)
+        self.assertEqual(result['edges'][0]['source'],'https://example.com/team')
+        self.assertEqual(result['edges'][0]['to'],'startup:example')
+
     def test_public_catalogue_snapshot_round_trips_sources_and_mappings(self):
         with tempfile.TemporaryDirectory() as temp:
             data_dir=Path(temp)/'data'; shutil.copytree(ROOT/'data',data_dir)
@@ -66,6 +97,11 @@ class GraphTests(unittest.TestCase):
     def test_distinct_names_cannot_silently_collapse_into_same_id(self):
         profiles={'P':{'companies':[{'name':'A&B','source':'https://example.com/'},{'name':'A B','source':'https://example.com/'}]}}
         with self.assertRaises(ValueError):graph.build_graph(profiles,['P'],{}, {'opportunities':[]},{'startups':[]})
+    def test_startup_socials_preserve_reviewed_source_attribution(self):
+        socials=[{'label':'LinkedIn','url':'https://linkedin.com/company/example','source':'https://example.com/','reviewed_at':'2026-11-17'}]
+        data=graph.build_graph({},[],{}, {'opportunities':[]},{'startups':[{'name':'Example','source':'https://example.com/','socials':socials}]})
+        self.assertEqual(data['entities'][0]['socials'],socials)
+
     def test_reviewed_startup_updates_flow_into_the_sqlite_index(self):
         research={'startups':[{'name':'Example','description':'An Australian startup','source':'https://example.com/',
             'founders':[{'name':'Pat Founder','source':'https://example.com/team'}],

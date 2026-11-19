@@ -4,7 +4,9 @@
   "type": "module",
   "dependencies": {
     "@tanstack/query-core": "5.107.1",
-    "@tanstack/table-core": "8.21.3"
+    "@tanstack/table-core": "8.21.3",
+    "@ui-sdk/core": "0.1.0-beta.6",
+    "@ui-sdk/web": "0.1.0-beta.6"
   },
   "scripts": {
     "test": "npm run data:generate && node --test tests/*.test.js && python3 -m unittest discover -s tests -p \"test_*.py\" && npm run audit:images",
@@ -17,5 +19,9 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "jsdom": "26.1.0"
   }
 }

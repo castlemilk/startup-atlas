@@ -25,3 +25,11 @@ Read repository `AGENTS.md` and `docs/AGENT-RUNBOOK.md`; inspect current main, o
 5. Report counts separately for discovered, captured, reviewed and published records, with sources, failure statuses and limitations. Do not claim unreviewed candidates are new firms or deployed logos.
 
 For OAuth, Workers fetch/redirect constraints, workflow commands and deployment troubleshooting, consult `docs/AGENT-RUNBOOK.md`.
+
+## Company profiles, portraits and social references
+
+Use `python3 scripts/crawl.py company-profiles --approved data/company-profile-seeds.csv --partner PsiQuantum --follow 2` for the reviewed company seed example. The CSV uses the existing `partner` column for compatibility, but this mode validates names against `data/startup-research.json` and requires the reviewed official website host. Do not add company names to the partner importer to bypass identity checks. Team/portfolio/About discovery is bounded by `--follow`; all transport limits and the no-robots rule above remain in force.
+
+Company packets preserve page descriptions, structured subject claims, logo candidates, labelled images and accessible-label social links. They do not fetch image/social destinations or establish headshot identity, employment, account verification or asset-use permission. Preserve source URL and observation date; counts are page-scoped observations and can repeat the same asset/account. Report successful empty pages separately from failed fetches.
+
+Before publication, verify the exact subject and cited primary source, preserve attribution, and review rights separately from availability. A press download is not automatically a licence. When permission is unresolved, retain the candidate and cite the official source without copying or embedding the image. Outbound links found on an official homepage may be described as homepage-linked references, not independently verified accounts. Confirm the generated graph and live profile after a reviewed update; record Pages and MCP graph revisions without claiming a separately hosted MCP code deployment.

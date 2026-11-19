@@ -13,11 +13,14 @@ const root=resolve('dist'), profile=await mkdtemp(join(tmpdir(),'atlas-treemap-c
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-treemap-screenshots');
 const contentTypes={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png'};
 const requests=[];
+let markFixture;
 const server=createServer(async(req,res)=>{
   try {
     const path=resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));
     if(path!==root&&!path.startsWith(root+sep)){res.writeHead(403).end();return;}
-    const bytes=await readFile(path===root?join(root,'index.html'):path);
+    const bytes=markFixture && path===join(root,'data','graph.json')
+      ? markFixture
+      : await readFile(path===root?join(root,'index.html'):path);
     requests.push({url:req.url,status:200});
     res.writeHead(200,{'Content-Type':contentTypes[extname(path)]||'application/octet-stream'}).end(bytes);
   } catch {requests.push({url:req.url,status:404});res.writeHead(404).end();}
@@ -34,8 +37,8 @@ chrome.on('error',error=>{spawnError=error;});
 chrome.on('exit',(code,signal)=>{chromeExit=`Chrome exited (${code ?? signal})`;});
 chrome.stderr.on('data',chunk=>{chromeLog=(chromeLog+chunk.toString()).slice(-5000);});
 
-async function until(fn,message) {
-  for(let i=0;i<100;i++) {
+async function until(fn,message,attempts=100) {
+  for(let i=0;i<attempts;i++) {
     if(spawnError)throw spawnError;
     if(chromeExit)throw new Error(chromeExit+'\n'+chromeLog);
     const result=await fn().catch(()=>null);
@@ -45,17 +48,20 @@ async function until(fn,message) {
   throw new Error(message+'\n'+chromeLog);
 }
 try {
-  const port=await until(async()=>Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start');
+  // Cold CI runners can take longer to start Chrome; allow 45 seconds only here.
+  // Page interactions retain the normal polling budget.
+  const port=await until(async()=>Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start',450);
   const target=await until(async()=>{
     const targets=await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
     return targets.find(item=>item.type==='page');
-  },'Chrome did not expose a page');
+  },'Chrome did not expose a page',450);
   socket=new WebSocket(target.webSocketDebuggerUrl);
   await new Promise((resolveOpen,reject)=>{socket.addEventListener('open',resolveOpen,{once:true});socket.addEventListener('error',reject,{once:true});});
-  const pending=new Map(), exceptions=[], browserMessages=[];let sequence=0, documentLoads=0;
+  const pending=new Map(), exceptions=[], browserMessages=[];let sequence=0, documentLoads=0, pausedRequests=0;
   socket.addEventListener('message',event=>{
     const message=JSON.parse(event.data);
     if(message.method==='Page.domContentEventFired')documentLoads++;
+    if(message.method==='Fetch.requestPaused')pausedRequests++;
     if(message.method==='Runtime.exceptionThrown')exceptions.push(message.params.exceptionDetails.exception?.description||message.params.exceptionDetails.text);
     if(message.method==='Runtime.consoleAPICalled'&&['error','warning'].includes(message.params.type))browserMessages.push(message.params.args.map(item=>item.value||item.description||'').join(' '));
     if(!message.id)return;
@@ -112,8 +118,32 @@ try {
   const click = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);
   const text = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).textContent`);
   const cardIds=()=>evaluate("Array.from(document.querySelectorAll('#treemap-cards .treemap-card[data-company]'),card=>card.dataset.company)");
+  const companyTiles='.treemap-tile[data-company]';
+  const tileMarks=selector=>evaluate(`(()=>{
+    const tiles=[...document.querySelectorAll(${JSON.stringify(selector)})];
+    const missing=tiles.filter(tile=>{
+      const mark=tile.querySelector('.treemap-logo');
+      return !mark || !mark.getClientRects().length || getComputedStyle(mark).visibility!=='visible';
+    }).map(tile=>tile.dataset.company);
+    return {count:tiles.length,missing};
+  })()`);
   const snapshot=JSON.parse(await readFile('dist/data/graph.json','utf8')), valuation=makeView(snapshot,{metric:'valuation',currency:'USD'});
-  await navigate('');
+  // Hold snapshot requests to observe the real loading state before data resolves.
+  await command('Fetch.enable',{patterns:[{urlPattern:'*atlas.sqlite*'},{urlPattern:'*data/graph.json*'}]});
+  await command('Page.navigate',{url:address+'/treemap.html'});
+  await until(async()=>pausedRequests>0,'Snapshot request was not paused');
+  assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>control.disabled)"),true,'Loading controls must not accept changes that will be lost');
+  assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-busy')"),'true');
+  assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-describedby')"),'treemap-status');
+  assert.match(await text('#treemap-status'),/Loading/);
+  await command('Fetch.disable');
+  await settled();
+  assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-busy')"),'false');
+  assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>!control.disabled)"),true,'Loaded funding controls must be available');
+  assert.equal(await evaluate("document.querySelector('#treemap-metric').value"),'funding');
+  assert.match(await text('#treemap-subtitle'),/event amount/);
+  await screenshot('funding-default-desktop.png');
+  await navigate('?metric=companies');
   assert.equal(await evaluate("document.querySelector('#treemap-metric').value"),'companies');
   assert.equal(await evaluate("document.querySelectorAll('.treemap-tile').length"),JSON.parse(await readFile('dist/data/graph.json','utf8')).entities.filter(entity=>entity.kind==='startup').length);
   await screenshot('companies-desktop.png');
@@ -135,6 +165,10 @@ try {
   await change('treemap-currency','USD');await click('#show-cards');
   const funding=makeView(snapshot,{metric:'funding',currency:'USD'});
   assert.equal(await evaluate("document.querySelector('#treemap-cards').hidden"),false);
+  assert.match(await text('#treemap-instructions'),/card area does not encode value or company count/);
+  assert.doesNotMatch(await text('#treemap-instructions'),/rectangle is proportional/);
+  assert.equal(await evaluate("document.querySelector('#treemap-cards').getAttribute('aria-describedby')"),'treemap-instructions');
+
   assert.equal(await evaluate("document.querySelector('#treemap-chart').hidden"),true);
   assert.equal(await evaluate("document.querySelector('#treemap-list').hidden"),true);
   assert.deepEqual(await cardIds(),funding.rows.map(row=>row.id),'Cards must preserve the financial ranking and coverage');
@@ -152,6 +186,10 @@ try {
   assert.equal(await evaluate("new URL(location.href).searchParams.get('company')"),'startup:psiquantum');
   assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"),'cards');
   await screenshot('cards-funding-desktop.png',true);
+  await click('#treemap-company-tab');
+  assert.equal(await evaluate("document.querySelector('#treemap-company-panel').hidden"),false,'Cards retain the company inspector');
+  await click('#treemap-figure-tab');
+  assert.equal(await evaluate("document.querySelector('#treemap-figure-panel').hidden"),false,'Cards retain the figure inspector');
   const sharedUrl=await evaluate('location.href');
   await reload();
   assert.equal(await evaluate('location.href'),sharedUrl,'Shared card state must survive reload');
@@ -187,8 +225,30 @@ try {
   await click('#treemap-cards [data-period="2010s"]');
   assert.match(await text('#treemap-breadcrumb'),/2010S/);
   assert.deepEqual(await cardIds(),makeView(snapshot,{metric:'companies',period:'2010s'}).rows.map(row=>row.id),'A decade card must drill down to the same companies as its map');
+  await click('#treemap-cards [data-company]');
+  assert.match(await text('#treemap-figure-panel'),/card area does not encode company count/);
+  assert.doesNotMatch(await text('#treemap-figure-panel'),/equal area/,'Cards must not claim proportional count areas');
+  assert.match(await text('#method'),/In the treemap, companies have equal area/,'Method caveat scopes equal area to the treemap');
+  await click('#show-map');
+  assert.match(await text('#treemap-figure-panel'),/equal area in the treemap/,'Switching presentation updates the retained company evidence');
+  assert.match(await text('#treemap-instructions'),/rectangle is proportional/);
+  await click('#show-cards');
+  assert.doesNotMatch(await text('#treemap-figure-panel'),/equal area/);
   await click('[data-period="all"]');await click('#show-list');
   assert.equal(await evaluate("document.querySelector('#treemap-list').hidden"),false);
+  assert.match(await text('#treemap-instructions'),/Select a company in the list/);
+  assert.equal(await evaluate("document.querySelector('#treemap-list').getAttribute('aria-describedby')"),'treemap-instructions');
+
+  assert.ok(await evaluate("document.querySelectorAll('#treemap-list .treemap-logo img').length>0"),'Ranked list must retain logo images');
+  await change('treemap-group','company');await click('#show-map');
+  assert.equal((await tileMarks(companyTiles)).count,companyView.rows.length);
+  assert.deepEqual((await tileMarks(companyTiles+':not(.micro)')).missing,[],'Desktop company tiles that have room must retain marks');
+  await screenshot('company-logos-desktop.png');
+  await evaluate("globalThis.logoUnderTest=document.querySelector('#treemap-list img[src*=revolut]')");
+  await until(()=>evaluate("logoUnderTest.complete&&logoUnderTest.naturalWidth>0&&!logoUnderTest.hidden"),'Bundled logo must decode before testing failure');
+  await evaluate("logoUnderTest.src='/missing-logo-regression.svg'");
+  await until(()=>evaluate("logoUnderTest.complete&&!logoUnderTest.naturalWidth&&logoUnderTest.hidden&&!logoUnderTest.nextElementSibling.hidden"),'Failed logo must show initials');
+  await click('#show-list');
   await click('#treemap-reset');
   await evaluate("(()=>{const e=document.querySelector('#treemap-query');e.value='no company matches this';e.dispatchEvent(new Event('input',{bubbles:true}));})()");
   assert.match(await text('#treemap-chart'),/No companies match/);
@@ -197,6 +257,21 @@ try {
   await until(()=>evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().width<390"),'Mobile did not resize');
   assert.equal(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),true,'No horizontal overflow on mobile');
   await screenshot('valuation-mobile.png');
+  await change('treemap-metric','companies');
+  await screenshot('company-logos-mobile.png');
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:844,deviceScaleFactor:1,mobile:true});
+  await until(()=>evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().width<320"),'Small mobile did not resize');
+  assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'No horizontal overflow at 320px');
+  const masthead=await evaluate("(()=>{const links=[...document.querySelectorAll('.atlas-masthead [data-atlas-view]')].map(a=>a.getBoundingClientRect()),brand=document.querySelector('.atlas-wordmark').getBoundingClientRect(),system=document.querySelector('.atlas-masthead .atlas-system-link').getBoundingClientRect();return {sameRow:Math.max(...links.map(r=>r.top))-Math.min(...links.map(r=>r.top))<1,brandClear:brand.right<=system.left||brand.bottom<=system.top||system.bottom<=brand.top};})()");
+  assert.ok(masthead.sameRow,'The three primary views should share one row at 320px');
+  assert.ok(masthead.brandClear,'The home identity and design-system link must not overlap');
+  await screenshot('company-logos-mobile-320.png');
+  await change('treemap-metric','funding');await screenshot('funding-mobile-320.png');
+  await change('treemap-metric','companies');
+  assert.equal((await tileMarks(companyTiles)).count,companyView.rows.length);
+  assert.deepEqual((await tileMarks(companyTiles+':not(.micro)')).missing,[],'Mobile company tiles that have room must retain marks');
+  await change('treemap-metric','valuation');
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await click('#show-cards');
   assert.deepEqual(await cardIds(),valuation.rows.map(row=>row.id),'Mobile cards must preserve the valuation rows');
   assert.equal(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),true,'Cards must not overflow at 390px');
@@ -220,6 +295,25 @@ try {
   assert.equal(await text('#treemap-detail h2'),'Canva');
   await click('.treemap-profile');await until(()=>evaluate("document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'"),'Profile did not load');
   assert.equal(await text('h1'),'Canva');
+  // Company context exposes existing reviewed founder/media evidence, not guessed metadata.
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+  await navigate('?metric=companies&q=Morse');
+  await click('#treemap-chart [data-company="startup:morse-micro"]');
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-detail .treemap-founder').length"),2);
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-detail .treemap-founder img').length"),2);
+  assert.match(await text('#treemap-detail'),/Financial context/);
+  assert.match(await text('#treemap-detail'),/Public market cap/);
+  assert.match(await text('#treemap-detail'),/Not recorded in USD/);
+  assert.ok(await evaluate("Array.from(document.querySelectorAll('#treemap-detail .treemap-founder a')).some(a=>a.textContent.includes('Profile')&&a.href.includes('linkedin.com'))"),'Founder profile links must use recorded URLs');
+  assert.ok(await evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().height<=300"),'A single filtered company must not become an oversized empty tile');
+  await screenshot('company-context-desktop.png');
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await until(()=>evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().width<390"),'Context mobile did not resize');
+  assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'Context must not overflow at390px');
+  await screenshot('company-context-mobile.png');
+  await navigate('?metric=companies&q=Revolut');await click('#treemap-chart [data-company="startup:revolut"]');
+  assert.match(await text('#treemap-detail'),/Company details/);
+  assert.match(await text('#treemap-detail'),/12,200/);
   // Exercise progressive fallback by rejecting only the database request.
   await command('Network.enable');await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*']});
   await navigate('?metric=valuation');assert.match(await text('#treemap-status'),/JSON backup/);
@@ -227,6 +321,35 @@ try {
   await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*','*data/graph.json*']});
   await navigate('');assert.match(await text('#treemap-status'),/could not be loaded/);
   assert.equal(await evaluate("document.querySelector('#treemap-metric').disabled"),true);
+  assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>control.disabled)"),true);
+  assert.match(await text('#treemap-chart'),/Reload this view/);
+  await command('Network.setBlockedURLs',{urls:[]});
+  await click('#treemap-chart a');
+  await until(()=>evaluate("document.querySelector('#treemap-metric')?.disabled===false"),'Reload recovery did not restore controls');
+  await settled();
+  assert.match(await text('#treemap-status'),/Historical figures/);
+
+  // A fixed set of equal-area tiles exercises both size classes as the catalogue grows.
+  const fixtureCompanies=Array.from({length:24},(_,index)=>({
+    id:`startup:mark-fixture-${index+1}`,kind:'startup',name:`Fixture company ${index+1}`,
+  }));
+  markFixture=JSON.stringify({version:snapshot.version,entities:fixtureCompanies,edges:[],funding_rounds:[],articles:[]});
+  await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*']});
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+  await navigate('?metric=companies');
+  assert.match(await text('#treemap-status'),/JSON backup/);
+  assert.equal((await tileMarks(companyTiles)).count,fixtureCompanies.length);
+  const compact=await tileMarks(companyTiles+'.compact');
+  assert.ok(compact.count>0,'The fixed desktop layout must exercise compact company tiles');
+  assert.deepEqual(compact.missing,[],'Compact company tiles must retain marks');
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:844,deviceScaleFactor:1,mobile:true});
+  const small=await until(async()=>{
+    const marks=await tileMarks(companyTiles+'.tiny:not(.micro)');
+    return marks.count>0 ? marks : null;
+  },'The fixed mobile layout did not produce small company tiles');
+  assert.deepEqual(small.missing,[],'Mobile small company tiles must retain marks');
+  await command('Network.setBlockedURLs',{urls:[]});
+
   assert.deepEqual(exceptions,[],'Treemap must not raise unhandled JavaScript exceptions');
   console.log('Treemap browser checks passed: proportional views, ranked cards, currencies, source caveats, grouped drilldown, shared selection/history, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
 } catch(error) {

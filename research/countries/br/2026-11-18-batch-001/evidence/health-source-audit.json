@@ -1,0 +1,354 @@
+{
+  "audit_version": 1,
+  "scope": "Read-only independent factual/provenance audit of six-company health/agriculture/climate research sidecar; no production/schema/crawler changes",
+  "completed_at": "2026-11-18T09:57:34.329Z",
+  "audited_input": {
+    "path": "/workspace/scratch/50167a6326e0/work/health/health.json",
+    "sha256": "dce8bc77aefac08054a489bb0d1fb6408c8dad8b8d5e8310d91d68f631cb134d",
+    "company_count": 6,
+    "source_count": 23,
+    "accessed_source_count": 21,
+    "funding_event_count": 6,
+    "funding_participant_count": 20,
+    "founder_count": 11,
+    "source_reference_integrity": "pass",
+    "counsel_kind_at_checkpoint": "primary_company"
+  },
+  "health_file_mutated_by_auditor": false,
+  "rechecks": [
+    {
+      "batch_id": 1,
+      "started_at": "2026-11-18T09:55:38.671Z",
+      "retrieved_at": "2026-11-18T09:55:39.869Z",
+      "retrieved_at_precision": "web_tool_completion",
+      "sources": [
+        {
+          "id": "h-alice-manifesto",
+          "url": "https://alice.com.br/alice-manifesto",
+          "web_ref": "turn617369113view0",
+          "accessed": true
+        },
+        {
+          "id": "h-alice-c",
+          "url": "https://alice.com.br/blog/imprensa/rodada-investimento-series-c-alice/",
+          "web_ref": "turn617369113view1",
+          "accessed": true
+        },
+        {
+          "id": "h-alice-letter",
+          "url": "https://alice.com.br/blog/imprensa/carta-fundadores-series-c/",
+          "web_ref": "turn617369113view2",
+          "accessed": true
+        },
+        {
+          "id": "h-beep-about",
+          "url": "https://beepsaude.com.br/a-beep/",
+          "web_ref": "turn617369113view3",
+          "accessed": true
+        }
+      ]
+    },
+    {
+      "batch_id": 2,
+      "started_at": "2026-11-18T09:55:38.671Z",
+      "retrieved_at": "2026-11-18T09:55:40.334Z",
+      "retrieved_at_precision": "web_tool_completion",
+      "sources": [
+        {
+          "id": "h-beep-lightsmith",
+          "url": "https://lightsmithgp.com/news-posts/lightsmith-leads-16-6-million-investment-round-in-digital-health-leader-beep-saude-supporting-climate-resilience-in-healthcare/",
+          "web_ref": "turn753485689view0",
+          "accessed": true
+        },
+        {
+          "id": "h-cromai-about",
+          "url": "https://www.cromai.com/a-cromai/",
+          "web_ref": "turn753485689view1",
+          "accessed": true
+        },
+        {
+          "id": "h-citrino-portfolio",
+          "url": "https://citrino.vc/portfolio-totvs-en",
+          "web_ref": "turn753485689view2",
+          "accessed": true
+        },
+        {
+          "id": "h-cromai-release",
+          "url": "https://agridocecomunicacao.com.br/2024/02/28/cromai-capta-r-30-milhoes-em-ampliacao-da-serie-a-com-novo-investimento-liderado-pelo-cv-idexo-fundo-da-totvs/",
+          "web_ref": "turn753485689view3",
+          "accessed": true
+        }
+      ]
+    },
+    {
+      "batch_id": 3,
+      "started_at": "2026-11-18T09:55:38.671Z",
+      "retrieved_at": "2026-11-18T09:55:40.827Z",
+      "retrieved_at_precision": "web_tool_completion",
+      "sources": [
+        {
+          "id": "h-cromai-bj",
+          "url": "https://braziljournal.com/totvs-investe-na-cromai-que-usa-ia-para-identificar-ervas-daninhas",
+          "web_ref": "turn441890914view0",
+          "accessed": true
+        },
+        {
+          "id": "h-mombak-kaszek",
+          "url": "https://kaszek.com/company/mombak/",
+          "web_ref": "turn441890914view1",
+          "accessed": true
+        },
+        {
+          "id": "h-mombak-usv",
+          "url": "https://www.usv.com/writing/mombak",
+          "web_ref": "turn441890914view2",
+          "accessed": true
+        },
+        {
+          "id": "h-mombak-usv-profile",
+          "url": "https://www.usv.com/portfolio/company/mombak",
+          "web_ref": "turn441890914view3",
+          "accessed": true
+        }
+      ]
+    },
+    {
+      "batch_id": 4,
+      "started_at": "2026-11-18T09:55:38.671Z",
+      "retrieved_at": "2026-11-18T09:55:40.673Z",
+      "retrieved_at_precision": "web_tool_completion",
+      "sources": [
+        {
+          "id": "h-mombak-counsel",
+          "url": "https://www.gunder.com/en/news-insights/client-news/brazilian-carbon-capture-company-mombak-announces-dollar30m-financing",
+          "web_ref": "turn301296071view0",
+          "accessed": true
+        },
+        {
+          "id": "h-mombak-reuters",
+          "url": "https://economia.uol.com.br/noticias/reuters/2025/04/29/startup-de-reflorestamento-mombak-levanta-us30-mi-em-rodada-liderada-pela-usv.htm",
+          "web_ref": "turn301296071view1",
+          "accessed": true
+        },
+        {
+          "id": "h-nilo-home",
+          "url": "https://www.nilosaude.com.br/",
+          "web_ref": "turn301296071view2",
+          "accessed": true
+        },
+        {
+          "id": "h-nilo-grao",
+          "url": "https://grao.vc/en/conheca-a-nilo-saude-a-healthtech-que-usa-tecnologia-para-oferecer-uma-assistencia-medica-de-qualidade-a-populacao-50/",
+          "web_ref": "turn301296071view3",
+          "accessed": true
+        }
+      ]
+    },
+    {
+      "batch_id": 5,
+      "started_at": "2026-11-18T09:55:38.671Z",
+      "retrieved_at": "2026-11-18T09:55:39.745Z",
+      "retrieved_at_precision": "web_tool_completion",
+      "sources": [
+        {
+          "id": "h-nilo-round",
+          "url": "https://startups.com.br/negocios/nilo-saude-levanta-serie-a-de-r-55-mi-com-softbank-e-gfc/",
+          "web_ref": "turn376737412view0",
+          "accessed": true
+        },
+        {
+          "id": "h-solinftec-about",
+          "url": "https://www.solinftec.com/en-us/about/",
+          "web_ref": "turn376737412view1",
+          "accessed": true
+        },
+        {
+          "id": "h-solinftec-founder",
+          "url": "https://www.solinftec.com/en-us/britaldo-hernandez/",
+          "web_ref": "turn376737412view2",
+          "accessed": true
+        },
+        {
+          "id": "h-solinftec-round",
+          "url": "https://www.solinftec.com/en-us/lightsmith-leads-60-million-investment-round-in-solinftec-a-leading-data-driven-precision-agriculture-company/",
+          "web_ref": "turn376737412view3",
+          "accessed": true
+        }
+      ]
+    },
+    {
+      "batch_id": 6,
+      "started_at": "2026-11-18T09:55:38.671Z",
+      "retrieved_at": "2026-11-18T09:55:40.433Z",
+      "retrieved_at_precision": "web_tool_completion",
+      "sources": [
+        {
+          "id": "h-solinftec-pt",
+          "url": "https://www.noticiasagricolas.com.br/noticias/maquinas-e-tecnologias/316010-solinftec-recebe-aporte-de-us-60-milhoes-do-fundo-internacional-lightsmith-group-e-da-nacional-unbox-capital.html",
+          "web_ref": "turn537909385view0",
+          "accessed": true
+        }
+      ]
+    }
+  ],
+  "focused_find_rechecks": [
+    {
+      "url": "https://www.nilosaude.com.br/",
+      "source_id": "h-nilo-home",
+      "web_refs": [
+        "turn364720157view0",
+        "turn364720157view1"
+      ],
+      "retrieved_at": "2026-11-18T09:56:04.021Z",
+      "retrieved_at_precision": "web_tool_completion",
+      "purpose": "Verify 2020 creation and legal-name/footer attribution"
+    },
+    {
+      "url": "https://beepsaude.com.br/a-beep/",
+      "source_id": "h-beep-about",
+      "web_refs": [
+        "turn364720157view2"
+      ],
+      "retrieved_at": "2026-11-18T09:56:04.021Z",
+      "retrieved_at_precision": "web_tool_completion",
+      "purpose": "Verify legal-name/footer and founding-vs-service-launch distinction"
+    }
+  ],
+  "blocked_sources_not_retried": [
+    "h-mombak-home-blocked",
+    "h-solinftec-about-blocked"
+  ],
+  "findings": [
+    {
+      "id": "audit-source-counsel",
+      "severity": "correction",
+      "company": "mombak",
+      "field": "sources.h-mombak-counsel.source_kind",
+      "finding": "Gunderson Dettmer is the issuer's transaction counsel, not the issuer. The current source taxonomy has no direct-adviser kind.",
+      "recommendation": "Use secondary in the existing enum and preserve its direct transaction-adviser relationship in source notes. Do not silently treat this as a company-published source or expand the schema.",
+      "source_ids": [
+        "h-mombak-counsel"
+      ],
+      "accepted_core_claim_removal_required": false,
+      "status": "owner_accepted_correction"
+    },
+    {
+      "id": "audit-alice",
+      "severity": "pass_with_hold",
+      "company": "alice",
+      "field": "funding_event",
+      "finding": "Official funding page explicitly supports USD127m, Series C and SoftBank Latin America Fund lead. Its displayed 2021-10-01 date conflicts with the year-end framing and the linked founder letter's displayed 2021-12-21. Year precision is defensible; an exact event/close day is not established.",
+      "recommendation": "Retain event year2021 and amount127000000USD. Bind amount/stage/lead to h-alice-c; use the founder letter for date-context conflict, not as direct numeric-amount evidence.",
+      "source_ids": [
+        "h-alice-c",
+        "h-alice-letter"
+      ],
+      "accepted_core_claim_removal_required": false
+    },
+    {
+      "id": "audit-beep",
+      "severity": "pass_with_hold",
+      "company": "beep-saude",
+      "field": "funding_event",
+      "finding": "The same investor release has $16.6m in its heading and $15m Series C-1 in its body. It explicitly names Lightsmith as lead, CZI and David Velez as participants, and Rio de Janeiro headquarters as of2024-09-12.",
+      "recommendation": "Retain amount/currency null and the competing raw amount strings. Keep announcement date and named participant edges. The company-about source separately supports founding2016; vaccinations2017 is a service-launch milestone.",
+      "source_ids": [
+        "h-beep-lightsmith",
+        "h-beep-about"
+      ],
+      "accepted_core_claim_removal_required": false
+    },
+    {
+      "id": "audit-cromai",
+      "severity": "wording_refinement",
+      "company": "cromai",
+      "field": "funding_event.amount_candidates",
+      "finding": "AgriDoce states a BRL30m enlarged Series A total, then uses grammatically ambiguous wording around a BRL12m investment led by CV iDEXO and accompanying follow-ons. Brazil Journal states a BRL17m extension. The12m figure may represent a narrower contribution; no source read resolves the scopes.",
+      "recommendation": "Retain accepted numeric amount null and BRL currency. Label12m candidate scope as ambiguous contribution-versus-extension,17m as reported extension total,30m as reported cumulative enlarged SeriesA. Replace unqualified wording that calls both12m and17m extension totals. Do not add13m inferred prior tranche or arithmetic reconciliation.",
+      "source_ids": [
+        "h-cromai-release",
+        "h-cromai-bj"
+      ],
+      "accepted_core_claim_removal_required": false
+    },
+    {
+      "id": "audit-mombak",
+      "severity": "pass_with_hold",
+      "company": "mombak",
+      "field": "funding_event",
+      "finding": "Reuters explicitly supports USD30m Series A announced2025-04-29 and participants USV(lead),Kaszek,BainCapital,AXAIMAlts,Lowercarbon,Copa. Counsel confirms30m and first four investor names but uses bare dollar and does not label the stage. USV's2022announcement describes a separate100m project fund; the investor-profile2021SeriesA metadata is a separate unresolved timeline datum.",
+      "recommendation": "Retain2025company round and all six edges. Scope currency/stage/Lowercarbon/Copa evidence to Reuters. Do not merge project fund, carbon-credit purchase agreements or cumulative investment figures into this equity-round amount. Keep2021metadata distinct without declaring that it is necessarily the same event.",
+      "source_ids": [
+        "h-mombak-reuters",
+        "h-mombak-counsel",
+        "h-mombak-usv",
+        "h-mombak-usv-profile"
+      ],
+      "accepted_core_claim_removal_required": false
+    },
+    {
+      "id": "audit-nilo",
+      "severity": "pass",
+      "company": "nilo-saude",
+      "field": "founders_and_round",
+      "finding": "Grão's2021 narrative explicitly names IsadoraKimura,VictorMarcondes,RodrigoGrossi as founders. Citrino's current portfolio lists only the first two; omission does not retract historical founder status. The2022round article independently captions all three founders and spells Rodrigo Luiz Grossi; it supports BRL55m and the five listed participants, without a lead assignment.",
+      "recommendation": "Retain all three historical founders, no asserted current operating roles, and no assigned funding lead. Optional alias Rodrigo Luiz Grossi can be added with the round article as evidence; it is not required for acceptance. Keep current SaaS/AI description sourced to current company page.",
+      "source_ids": [
+        "h-nilo-grao",
+        "h-citrino-portfolio",
+        "h-nilo-round",
+        "h-nilo-home"
+      ],
+      "accepted_core_claim_removal_required": false
+    },
+    {
+      "id": "audit-solinftec",
+      "severity": "pass",
+      "company": "solinftec",
+      "field": "funding_participants_and_instrument",
+      "finding": "Official May2,2022 release says Lightsmith lead and Unbox also participated; Circularis is named only as an existing investor. The Portuguese attributed press-office report explicitly states USD60m and debentures convertible into shares.",
+      "recommendation": "Retain Lightsmith/Unbox event edges and exclude Circularis from this event. Keep convertible_debt supported specifically by h-solinftec-pt. Preserve partial participant-list status because additional investors are undisclosed.",
+      "source_ids": [
+        "h-solinftec-round",
+        "h-solinftec-pt"
+      ],
+      "accepted_core_claim_removal_required": false
+    },
+    {
+      "id": "audit-instrument-inference",
+      "severity": "integration_caution",
+      "company": null,
+      "field": "funding_events.transaction_kind",
+      "finding": "The five non-Solinftec records label transaction_kind equity. The reviewed pages name venture round stages/investment, but do not explicitly document the exact security or legal instrument. Equity is a reasonable classification inference, not a directly stated instrument claim.",
+      "recommendation": "If integrating strictly explicit instrument facts, keep those five transaction_kind values unspecified/null or explicitly mark them inferred; do not promote them as an explicit source statement. Solinftec convertible debt is directly stated. This does not invalidate the five funding-event records, amounts, currencies or participant evidence.",
+      "source_ids": [
+        "h-alice-c",
+        "h-beep-lightsmith",
+        "h-cromai-release",
+        "h-cromai-bj",
+        "h-mombak-reuters",
+        "h-nilo-round"
+      ],
+      "accepted_core_claim_removal_required": false
+    }
+  ],
+  "disposition": {
+    "companies_rechecked": 6,
+    "funding_events_rechecked": 6,
+    "source_urls_reopened_successfully": 21,
+    "blocked_sources_deliberately_not_retried": 2,
+    "company_or_funding_event_removals_required": 0,
+    "source_kind_corrections": 1,
+    "cromai_scope_wording_refinements": 1,
+    "exact_instrument_inference_caution": 1,
+    "new_company_discovery": 0,
+    "new_crawler_seed_approvals": 0
+  },
+  "limits": [
+    "Audit verifies the selected records and cited claims, not full funding histories, incorporation, ownership completeness or an exhaustive founder list.",
+    "Recheck times are actual web-tool batch completion times captured immediately after tool return, not original HTTP fetch times; older bounded-window timestamps remain historical metadata.",
+    "All21previously accessed URLs reopened successfully; no inaccessible source was retried or bypassed.",
+    "No company source bodies, personal contacts, image assets or linked professional profiles were copied."
+  ],
+  "integration_note": "Independent source review of earlier checkpoint; recommended corrections applied to final dossiers. Original checkpoint hashes retained for audit, not substituted for final file hashes."
+}
