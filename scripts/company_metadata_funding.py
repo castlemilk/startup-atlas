@@ -18,11 +18,15 @@ EARLY_TERMS = ('pre-seed', 'seed funding', 'seed round', 'early investment')
 EARLY = re.compile(r'\b(?:pre[- ]?seed|seed)[ -]+(?:funding|financing|investment|round)\b', re.I)
 SERIES = re.compile(r'\bseries\s+[a-h]\b(?![\s—–:-]+(?:products?|models?|editions?)\b)', re.I)
 FINANCING_ROUND = re.compile(r'\b(?:financing|funding|investment)\s+round\b', re.I)
+NAMED_FUND = r'(?:the\s+)?(?:[\w-]+\s+){1,8}fund'
+FUND_AWARD = rf'award(?:ed)?\s+(?:by|from|through)\s+{NAMED_FUND}'
 CONTEXT = {
-    'grant_or_public_support': re.compile(r'\b(?:grants?|public support|government award)\b', re.I),
+    'grant_or_public_support': re.compile(rf'\b(?:grants?|public support|government awards?|{FUND_AWARD})\b', re.I),
     'commercial_contract': re.compile(r'\bcontracts?\b', re.I),
     'valuation': re.compile(r'\bvaluations?\b', re.I),
-    'debt_or_secondary': re.compile(r'\b(?:venture debt|secondary (?:sale|transaction)|tender offer)\b', re.I),
+    'debt_or_secondary': re.compile(
+        r'\b(?:venture debt|secondary (?:share )?(?:sales?|transactions?|transfers?)|tender offer)\b', re.I,
+    ),
 }
 CLAUSE_BREAK = re.compile(
     r'(?<=[.!?;])\s+|\s+(?:and|but)\s+'
@@ -36,17 +40,40 @@ PROSPECTIVE = re.compile(
 )
 # These words connect an actor or its statement to a round label. Amount and
 # currency tokens are used only for proximity and stay in the original excerpt.
+CURRENCY = r'(?:aud|usd|eur|gbp|cad|au|us)'
 ROUND_MODIFIERS = (
     r'(?: (?:a|an|the|its|another|new|additional|planned|oversubscribed|at least'
-    r'|about|over|more than|up to|in|of|aud|usd|eur|gbp|cad|au|us'
-    r'|million|billion|thousand|\d+[kmb]?))*'
+    rf'|about|over|more than|up to|in|of|{CURRENCY}'
+    rf'|million|billion|thousand|{CURRENCY}?\d+[kmb]?))*'
 )
+ROUND_ACTION = r'(?:raised|raises|received|receives|secured|secures|closed|closes|completed|completes)'
+REPORT_ACTION = r'(?:announced|announces|reported|reports)'
 ISSUER_ACTION = re.compile(
-    r'(?:(?:(?:has|had|recently) )*(?:raised|secured|announced|reported|closed|completed)'
-    r'|launched in [0-9]{4} with|s)' + ROUND_MODIFIERS
+    r'(?:launched in [0-9]{4} with|s|(?:(?:has|had|today|recently) )*'
+    rf'(?:{ROUND_ACTION}|{REPORT_ACTION}(?: (?:that )?it (?:has |had )?{ROUND_ACTION})?))'
+    + ROUND_MODIFIERS
+)
+ISSUER_APPOSITION = re.compile(
+    r',\s+(?:an?|the)\s+(?:[\w-]+\s+){0,6}'
+    r'(?:company|start[- ]?up|provider|developer|manufacturer|supplier|firm|spin[- ]?out|leader|platform)'
+    r'(?:\s+(?:of|in|for|developing)\s+(?:[\w-]+\s+){0,24}[\w-]+)?\s*,',
+    re.I,
+)
+ISSUER_BOUNDARY = re.compile(
+    rf'[,)]\s*(?=(?:(?:has|had|today|recently)\s+)*(?:{ROUND_ACTION}|{REPORT_ACTION})\b)',
+    re.I,
 )
 ISSUER_RELEASE = re.compile(
     r'(?:news )?release (?:says|said|reports|reported)(?: that)?' + ROUND_MODIFIERS
+)
+AMOUNT = rf'(?:(?:{CURRENCY}|a) ?)?\d+(?: \d+){{0,3}}(?: ?(?:[kmb]|thousand|million|billion))?'
+ROUND_SUFFIX = r'(?:(?:(?:funding|financing|investment) )?round )?'
+SCOPED_CONTEXT_SUFFIX = re.compile(
+    ROUND_SUFFIX
+    + rf'(?:at (?:(?:an?|its) )?(?:{AMOUNT} (?:post money |pre money )?valuation'
+    rf'|(?:post money |pre money )?valuation of {AMOUNT})'
+    rf'|plus (?:(?:an?|the) )?(?:(?:separate|additional|further) )?(?:{AMOUNT} )?'
+    rf'(?:{FUND_AWARD}|(?:public |government )?grant(?: (?:by|from) {NAMED_FUND})?))'
 )
 REPORTED_COMPLETION = re.compile(r'(?:(?:was|has been|had been) )?(?:completed|closed|announced)\b')
 ROUND_COMPLETION = re.compile(r'(?:(?:was|has been|had been) )?(?:completed|closed)\b')
@@ -83,8 +110,18 @@ def former_names(aliases, current, host, owners, evidence):
 
 
 def associated_round(clause, mention, names):
-    prefix = name_key(clause[:mention.start()])
-    suffix = name_key(clause[mention.end():])
+    subject = clause[:mention.start()]
+    tail = clause[mention.end():]
+    suffix = name_key(tail)
+    if any(pattern.search(subject) for pattern in CONTEXT.values()):
+        return False
+    # Check the full tail so a valuation or award cannot hide another issuer.
+    if any(pattern.search(tail) for pattern in CONTEXT.values()) and not SCOPED_CONTEXT_SUFFIX.fullmatch(suffix):
+        return False
+    if mention.group().casefold().endswith('investment') and suffix.startswith('in '):
+        return False
+    # A company inside another actor's unresolved aside cannot own the next verb.
+    prefix = name_key(ISSUER_BOUNDARY.split(ISSUER_APPOSITION.sub(' ', subject))[-1])
     for name in names:
         if suffix == f'for {name}' and LEAD_ACTION.search(prefix):
             return True
@@ -119,7 +156,7 @@ def classify(excerpt, names):
     subjects = ' '.join(matching)
     round_clauses = [
         clause for clause in matching
-        if not prospective_clause(clause) and not any(pattern.search(clause) for pattern in CONTEXT.values())
+        if not prospective_clause(clause)
     ]
     early = any(associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause))
     round_mention = early or any(
