@@ -10,6 +10,7 @@ class CiPathTests(unittest.TestCase):
     def test_data_and_web_are_independent(self):
         self.assertEqual(self.selected('data/startup-research.json'), {'data'})
         self.assertEqual(self.selected('web/entity.js'), {'web'})
+        self.assertEqual(self.selected('tests/analytics.test.js'), {'web'})
         self.assertEqual(self.selected('web/atlas-ui.css', 'data/graph.json'), {'data', 'web'})
 
     def test_shared_catalogue_contract_covers_both_mcp_hosts(self):
