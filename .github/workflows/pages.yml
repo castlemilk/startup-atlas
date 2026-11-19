@@ -38,7 +38,7 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_graph.py'
       - name: Check search, relationships and financial views
         if: steps.changes.outputs.web == 'true'
-        run: node --test tests/fuzzy-search.test.js tests/graph-layout.test.js tests/treemap.test.js
+        run: node --test tests/fuzzy-search.test.js tests/graph-layout.test.js tests/treemap.test.js tests/analytics.test.js
       - name: Validate collection boundaries and saved evidence
         if: steps.changes.outputs.collection == 'true'
         run: |
