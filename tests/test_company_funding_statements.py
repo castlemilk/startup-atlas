@@ -25,6 +25,28 @@ EASYCEP_ESG = (
     'https://s3.eu-central-1.amazonaws.com/cdn.easycep.com/fileserver/Reports/'
     'EasyCep_ESG_Report_Final_2023_compressed.pdf'
 )
+CHIPS_MAY = (
+    'https://www.nist.gov/news-events/news/2026/05/'
+    'department-commerce-announces-letters-intent-9-companies-2-billion'
+)
+CHIPS_SEPTEMBER = (
+    'https://www.nist.gov/news-events/news/2026/09/'
+    'department-commerce-announces-finalization-chips-rd-award-psiquantum'
+)
+# Short source-based reconstructions place the cohort frame beside its recipient rows.
+CHIPS_COHORT = 'The Department of Commerce signed letters of intent under the CHIPS and Science Act.'
+DIRAQ_PLANNED = 'Diraq will receive up to $38 million in planned funding.'
+PSIQUANTUM_PLANNED = 'PsiQuantum will receive $100 million in planned funding.'
+PSIQUANTUM_SIGNED = (
+    'Commerce announced today the signing of a final award of up to $100 million to PsiQuantum '
+    'under the CHIPS and Science Act.'
+)
+# Source-based reconstruction of the September release with its dateline.
+PSIQUANTUM_DATELINE = (
+    'WASHINGTON, D.C. — The U.S. Department of Commerce announced the signing of a final award of up to '
+    '$100 million to PsiQuantum under the CHIPS and Science Act.'
+)
+PSIQUANTUM_RESEARCH = 'The supported research concerns photonic components and semiconductor manufacturing.'
 
 # These sentences preserve relevant wording and scope from the source reviews.
 # The full verbatim paragraphs were not retained in the offline review packets.
@@ -201,4 +223,86 @@ class CompanyFundingStatementTests(unittest.TestCase):
                 source = next(capture for capture in captures if capture['url'] == result['url'])
                 self.assertEqual(result['observations'], [{
                     **source, 'bucket': 'early_round_lead', 'signals': ['round_mention', 'early_stage_mention'],
+                }])
+
+    def test_chips_review_cues_require_recipient_and_programme_context(self):
+        cohorts = f'{CHIPS_COHORT} {DIRAQ_PLANNED} {PSIQUANTUM_PLANNED}'
+        cases = (
+            ('diraq', cohorts, 'public_support_letter_of_intent'),
+            ('psiquantum', cohorts, 'public_support_letter_of_intent'),
+            ('psiquantum', PSIQUANTUM_SIGNED, 'public_support_signed_award'),
+            ('diraq', f'{CHIPS_COHORT} {PSIQUANTUM_PLANNED} Diraq is listed elsewhere.', None),
+            ('diraq', f'{PSIQUANTUM_SIGNED} Diraq was in the May cohort.', None),
+            ('diraq', f'{CHIPS_COHORT} Diraq and PsiQuantum will receive $100 million in planned funding.', None),
+            ('diraq', DIRAQ_PLANNED, None),
+            ('diraq', f'{CHIPS_COHORT} A new unrelated subject follows. {DIRAQ_PLANNED}', None),
+            ('diraq', f'{DIRAQ_PLANNED} {CHIPS_COHORT}', None),
+            ('psiquantum', PSIQUANTUM_SIGNED.replace('announced today', 'expects to announce'), None),
+            ('psiquantum', 'Commerce disbursed $100 million to PsiQuantum under the CHIPS and Science Act.', None),
+        )
+        for name, excerpt, cue in cases:
+            with self.subTest(name=name, excerpt=excerpt):
+                expected = ('context', ['grant_or_public_support', cue]) if cue else ('unmatched', [])
+                self.assertEqual(classify(excerpt, [name]), expected)
+
+    def test_chips_signing_and_independent_private_round_remain_distinct(self):
+        private_round = 'PsiQuantum completed a Series D.'
+        self.assertEqual(classify(private_round, ['psiquantum']), ('round_lead', ['round_mention']))
+        self.assertEqual(classify(f'{private_round} {PSIQUANTUM_SIGNED}', ['psiquantum']), (
+            'mixed_financing_lead', ['round_mention', 'grant_or_public_support', 'public_support_signed_award'],
+        ))
+
+    def test_chips_signing_with_dateline_requires_asserted_statement(self):
+        self.assertEqual(classify(f'{PSIQUANTUM_DATELINE} {PSIQUANTUM_RESEARCH}', ['psiquantum']), (
+            'context', ['grant_or_public_support', 'public_support_signed_award'],
+        ))
+        question = f'{PSIQUANTUM_DATELINE[:-1]}?'
+        for excerpt in (
+            f'{question} {PSIQUANTUM_RESEARCH}',
+            f'“{question}”',
+            f'{PSIQUANTUM_DATELINE[:-1]} and separately received an update?',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, ['psiquantum']), ('unmatched', []))
+
+    def test_chips_cohort_requires_asserted_and_contiguous_recipient_statements(self):
+        frame_question = f'{CHIPS_COHORT[:-1]}?'
+        recipient_question = f'{DIRAQ_PLANNED[:-1]}?'
+        cases = (
+            ('diraq', f'{frame_question} {DIRAQ_PLANNED}'),
+            ('diraq', f'“{frame_question}” {DIRAQ_PLANNED}'),
+            ('diraq', f'{CHIPS_COHORT} {recipient_question}'),
+            ('diraq', f'{CHIPS_COHORT} “{recipient_question}”'),
+            ('psiquantum', f'{CHIPS_COHORT} {recipient_question} {PSIQUANTUM_PLANNED}'),
+            # The May release contains intervening portfolio prose before the recipient lines.
+            ('diraq', f'{CHIPS_COHORT} These funds will support a portfolio of quantum companies. {DIRAQ_PLANNED}'),
+        )
+        for company, excerpt in cases:
+            with self.subTest(company=company, excerpt=excerpt):
+                self.assertEqual(classify(excerpt, [company]), ('unmatched', []))
+
+    def test_chips_captures_keep_source_caps_and_publication_dates_separate(self):
+        sources = (
+            (CHIPS_MAY, f'{CHIPS_COHORT} {DIRAQ_PLANNED} {PSIQUANTUM_PLANNED}', '2026-05-21',
+             'public_support_letter_of_intent'),
+            (CHIPS_SEPTEMBER, f'{PSIQUANTUM_DATELINE} {PSIQUANTUM_RESEARCH}', '2026-09-08',
+             'public_support_signed_award'),
+        )
+        captures = [
+            {'url': url, 'excerpt': excerpt, 'dates': {'published': published},
+             'acquisition': 'reviewer_paraphrase', 'retrieved_on': '2026-11-19'}
+            for url, excerpt, published, _ in sources
+        ]
+        results = saved_results(captures + captures[::-1], 'psiquantum.com', ['psiquantum'])
+        self.assertEqual(len(results), 2)
+        observed = {result['url']: result for result in results}
+        for url, excerpt, published, cue in sources:
+            with self.subTest(source=url):
+                result = observed[url]
+                self.assertTrue(result['review_required'])
+                self.assertEqual(result['bucket'], 'context')
+                self.assertEqual(result['observations'], [{
+                    'url': url, 'excerpt': excerpt, 'acquisition': 'reviewer_paraphrase', 'retrieved_on': '2026-11-19',
+                    'dates': {'published': {'value': published, 'precision': 'day'}},
+                    'bucket': 'context', 'signals': ['grant_or_public_support', cue],
                 }])
