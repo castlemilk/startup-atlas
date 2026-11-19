@@ -80,3 +80,36 @@ python3 scripts/rollup_company_metadata.py \
 - A published decision is evidence of the indicated value at the revision in the report. Start a separate rollup after the revision changes. Revalidate prior excerpts and identity evidence against the new inputs and use a fresh exact-revision hosted readback for any published decisions. Retain previous observations in their original bundle and rollup.
 
 A field disposition describes the cited observations. Later sources can reveal additional history, finer dates or conflicts. The external source denominator remains unknown after the batch finishes. A Form D can stage an early-financing candidate without creating a named round or investor relationship. Keep source-reported transaction scope and amendment lineage in the financing manifest. A portrait candidate leaves rights for the established image review. Source onboarding and enabled collection continue through the existing scoped collection runbook and review gates.
+
+### Prioritise earlier financing from saved research
+
+Add `--funding-review funding-sources.json` to the rollup command to plan a
+targeted funding-history pass for up to four reviewed companies. This uses the
+existing checkpoints and keeps their coverage dispositions. An unsearched early
+history gets a search hint even when a later round has been reviewed. A financing
+conflict gets a reconciliation task.
+
+The input is a JSON object with `version: 1`, the exact rollup `revision` and
+`plan_id`, and a `companies` array. Each entry names the exact `name` in the
+rollup and has a `captures` array of up to 32 already saved observations, which
+can be empty. Each observation has an HTTPS `url`, a bounded `excerpt`,
+`retrieved_on` (YYYY-MM-DD), and `acquisition` of `page_excerpt`,
+`reviewer_paraphrase` or `search_result`. Use explicitly sourced `dates` from a
+saved page or its paraphrase, keyed by `published`, `announced` or `closed`, with year, month or day
+precision. Keep an unknown date absent. The report retains distinct assertions
+when it groups repeated URLs.
+
+For a former name, add up to four `former_names` entries with `name` and the
+`evidence_id` cited by the committed alias decision. Use the issuer's saved
+evidence of the name change. The report links that exact evidence digest and
+prioritises issuer pages with explicit early-stage financing language. A lead
+needs wording that ties the round to the company. Keep phrasing that leaves the
+issuer or purpose unclear available for source review. Grants,
+contracts, valuations and portfolio backing can be useful context. A mixed
+release stays flagged for review and a snippet can only supply a lead.
+An announced planned round stays prospective until completion is stated, and an
+investment in another company is not attributed to the announcing issuer.
+A distinct round alongside a grant remains a mixed financing lead; a seed-funding
+grant remains context. The report retains observations for claim review. Check the original source for
+event scope, amounts, stage, dates and investor attribution. Use the existing
+source approval process before adding a suggested document to the crawl scope.
