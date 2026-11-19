@@ -256,22 +256,37 @@ class CompanyMetadataRollupTests(unittest.TestCase):
     def test_saved_financing_leads_keep_other_event_scopes_visible(self):
         cases = [
             ('Ready Company won a grant for seed production.', 'context', 'grant_or_public_support'),
+            ('Ready Company won a seed funding grant.', 'context', 'grant_or_public_support'),
+            ('Ready Company secured seed funding, a government grant.', 'context', 'grant_or_public_support'),
             ('Ready Company announced a contract for seed supplies.', 'context', 'commercial_contract'),
             ('Ready Company applied to the government grant funding round.', 'context', 'grant_or_public_support'),
             ('Ready Company reported a valuation of A$8 million.', 'context', 'valuation'),
             ('Ready Company appears in the investor portfolio.', 'context', 'backing_context'),
             ('Ready Company is seeking seed funding.', 'context', 'prospective_or_negated'),
             ('Ready Company did not raise seed funding.', 'context', 'prospective_or_negated'),
+            ('Ready Company expects to close a seed round.', 'context', 'prospective_or_negated'),
+            ('Ready Company has not yet closed a seed round.', 'context', 'prospective_or_negated'),
             ('Ready Company appointed a CFO. Another Corp raised seed funding.', 'unmatched', None),
             ('Unready Company announced its seed round.', 'unmatched', None),
+            ('Ready Company partnered with Another Corp, which raised seed funding.', 'unmatched', None),
+            ('Ready Company profiled Another Corp which raised seed funding.', 'unmatched', None),
+            ("Ready Company announced Another Corp's seed round.", 'unmatched', None),
+            ('Ready Company reported seed funding for Another Corp.', 'unmatched', None),
             ('Ready Company raised seed funding and separately received a grant.',
              'mixed_financing_lead', 'grant_or_public_support'),
             ('Ready Company completed a funding round.', 'round_lead', 'round_mention'),
+            ('An investor said it led the A$25 million Series A for Ready Company.',
+             'round_lead', 'round_mention'),
+            ('The Ready Company release says that a planned funding round was completed.',
+             'round_lead', 'round_mention'),
         ]
         for excerpt, expected, signal in cases:
             with self.subTest(excerpt=excerpt):
                 bucket, signals = classify(excerpt, ['ready company'])
                 self.assertEqual(bucket, expected)
+                if expected in ('context', 'unmatched'):
+                    self.assertNotIn('round_mention', signals)
+                    self.assertNotIn('early_stage_mention', signals)
                 if signal:
                     self.assertIn(signal, signals)
 

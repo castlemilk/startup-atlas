@@ -102,7 +102,9 @@ when it groups repeated URLs.
 For a former name, add up to four `former_names` entries with `name` and the
 `evidence_id` cited by the committed alias decision. Use the issuer's saved
 evidence of the name change. The report links that exact evidence digest and
-prioritises issuer pages with explicit early-stage financing language. Grants,
+prioritises issuer pages with explicit early-stage financing language. A lead
+needs wording that ties the round to the company. Keep phrasing that leaves the
+issuer or purpose unclear available for source review. Grants,
 contracts, valuations and portfolio backing can be useful context. A mixed
 release stays flagged for review and a snippet can only supply a lead. The
 report retains observations for claim review. Check the original source for

@@ -24,7 +24,31 @@ CONTEXT = {
     'valuation': re.compile(r'\bvaluations?\b', re.I),
     'debt_or_secondary': re.compile(r'\b(?:venture debt|secondary (?:sale|transaction)|tender offer)\b', re.I),
 }
-PROSPECTIVE = re.compile(r'\b(?:seeking|plans to raise|did not raise|no seed funding)\b', re.I)
+CLAUSE_BREAK = re.compile(
+    r'(?<=[.!?;])\s+|\s+(?:and|but)\s+'
+    r'(?=(?:(?:also|separately)\s+)*(?:received|won|secured|was awarded)\b)',
+    re.I,
+)
+PROSPECTIVE = re.compile(
+    r'\b(?:seeking|(?:plans|expects) to (?:raise|close)|did not raise|no seed funding'
+    r'|not yet|yet to (?:raise|close)|only if)\b', re.I,
+)
+# These words connect an actor or its statement to a round label. Amount and
+# currency tokens are used only for proximity and stay in the original excerpt.
+ROUND_MODIFIERS = (
+    r'(?: (?:a|an|the|its|another|new|additional|planned|oversubscribed|at least'
+    r'|about|over|more than|up to|in|of|aud|usd|eur|gbp|cad|au|us'
+    r'|million|billion|thousand|\d+[kmb]?))*'
+)
+ISSUER_ACTION = re.compile(
+    r'(?:(?:(?:has|had|recently) )*(?:raised|secured|announced|reported|closed|completed)'
+    r'|launched in [0-9]{4} with|s)' + ROUND_MODIFIERS
+)
+ISSUER_RELEASE = re.compile(
+    r'(?:news )?release (?:says|said|reports|reported)(?: that)?' + ROUND_MODIFIERS
+)
+REPORTED_COMPLETION = re.compile(r'(?:(?:was|has been|had been) )?(?:completed|closed|announced)\b')
+LEAD_ACTION = re.compile(r'\bled' + ROUND_MODIFIERS + r'$')
 BACKING = re.compile(r'\b(?:portfolio|back(?:ed|ing|ers?)|invest(?:ors?|ments?)|participat\w*|led by)\b', re.I)
 BUCKETS = ('early_round_lead', 'mixed_financing_lead', 'round_lead', 'context', 'unmatched')
 
@@ -53,19 +77,36 @@ def former_names(aliases, current, host, owners, evidence):
     return sorted(names, key=lambda item: item['name'])
 
 
+def associated_round(clause, mention, names):
+    prefix = name_key(clause[:mention.start()])
+    suffix = name_key(clause[mention.end():])
+    for name in names:
+        if suffix == f'for {name}' and LEAD_ACTION.search(prefix):
+            return True
+        _, found, after_name = f' {prefix} '.rpartition(f' {name} ')
+        if not found:
+            continue
+        after_name = after_name.strip()
+        if ISSUER_ACTION.fullmatch(after_name) and not suffix.startswith(('for ', 'on behalf of ')):
+            return True
+        if ISSUER_RELEASE.fullmatch(after_name) and REPORTED_COMPLETION.match(suffix):
+            return True
+    return False
+
+
 def classify(excerpt, names):
-    # Keep financing language tied to a named subject in the saved excerpt.
-    sentences = re.split(r'(?<=[.!?])\s+', excerpt)
-    matching = [part for part in sentences if any(includes_name(part, name) for name in names)]
+    matching = [part for part in CLAUSE_BREAK.split(excerpt) if any(includes_name(part, name) for name in names)]
     if not matching:
         return 'unmatched', []
     subjects = ' '.join(matching)
-    round_sentences = [part for part in matching if not PROSPECTIVE.search(part)]
-    early = any(EARLY.search(part) for part in round_sentences)
+    round_clauses = [
+        clause for clause in matching
+        if not PROSPECTIVE.search(clause) and not any(pattern.search(clause) for pattern in CONTEXT.values())
+    ]
+    early = any(associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause))
     round_mention = early or any(
-        SERIES.search(part) or (FINANCING_ROUND.search(part)
-                                and not any(pattern.search(part) for pattern in CONTEXT.values()))
-        for part in round_sentences
+        associated_round(clause, match, names) for clause in round_clauses
+        for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
     )
     context = [label for label, pattern in CONTEXT.items() if pattern.search(excerpt)]
     if PROSPECTIVE.search(subjects):
