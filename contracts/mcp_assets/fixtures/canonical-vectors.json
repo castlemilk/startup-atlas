@@ -1,0 +1,128 @@
+{
+  "fixture_notice": "Synthetic offline vectors. No source request, image permission or publication is asserted.",
+  "profile": "atlas.asset-canonical.v0",
+  "valid": [
+    {
+      "name": "merged_ascii_review",
+      "input_json": "{\"blob\": {\"asset_id\": \"asset:sha256:733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\", \"bit_depth\": 8, \"bytes\": 74, \"color_type\": 6, \"declared_mime\": \"image/png\", \"height\": 2, \"mime\": \"image/png\", \"observed_mime\": null, \"sha256\": \"733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\", \"validation\": \"png-rgb8-v0\", \"width\": 2}, \"provenance\": {\"acquired_at\": \"2026-01-01T00:00:00Z\", \"acquisition\": \"synthetic-fixture\", \"approved_asset_host\": \"assets.example.com\", \"final_url\": \"https://assets.example.com/brand/logo.png\", \"host_evidence_url\": \"https://example.com/brand\", \"identity\": {\"decision\": \"approved\", \"evidence\": \"Synthetic fixture is explicitly bound to Fixture Company.\", \"reviewed_at\": \"2026-01-01T00:00:00Z\", \"reviewer\": \"fixture-reviewer\"}, \"rights\": {\"attribution\": \"Fixture author\", \"basis\": \"permission\", \"decision\": \"approved\", \"evidence\": \"Synthetic pixels authored for this offline test only.\", \"evidence_url\": \"https://example.com/brand/terms\", \"public_repository\": true, \"public_website\": true, \"reviewed_at\": \"2026-01-01T00:00:00Z\", \"reviewer\": \"fixture-reviewer\"}, \"role\": \"logo\", \"source_asset_url\": \"https://assets.example.com/brand/logo.png\", \"source_kind\": \"official-brand\", \"source_page\": \"https://example.com/brand\", \"subject_id\": \"startup:fixture-company\"}, \"schema\": \"atlas.asset-review.v0\"}",
+      "canonical_utf8": "{\"blob\":{\"asset_id\":\"asset:sha256:733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\",\"bit_depth\":8,\"bytes\":74,\"color_type\":6,\"declared_mime\":\"image/png\",\"height\":2,\"mime\":\"image/png\",\"observed_mime\":null,\"sha256\":\"733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\",\"validation\":\"png-rgb8-v0\",\"width\":2},\"provenance\":{\"acquired_at\":\"2026-01-01T00:00:00Z\",\"acquisition\":\"synthetic-fixture\",\"approved_asset_host\":\"assets.example.com\",\"final_url\":\"https://assets.example.com/brand/logo.png\",\"host_evidence_url\":\"https://example.com/brand\",\"identity\":{\"decision\":\"approved\",\"evidence\":\"Synthetic fixture is explicitly bound to Fixture Company.\",\"reviewed_at\":\"2026-01-01T00:00:00Z\",\"reviewer\":\"fixture-reviewer\"},\"rights\":{\"attribution\":\"Fixture author\",\"basis\":\"permission\",\"decision\":\"approved\",\"evidence\":\"Synthetic pixels authored for this offline test only.\",\"evidence_url\":\"https://example.com/brand/terms\",\"public_repository\":true,\"public_website\":true,\"reviewed_at\":\"2026-01-01T00:00:00Z\",\"reviewer\":\"fixture-reviewer\"},\"role\":\"logo\",\"source_asset_url\":\"https://assets.example.com/brand/logo.png\",\"source_kind\":\"official-brand\",\"source_page\":\"https://example.com/brand\",\"subject_id\":\"startup:fixture-company\"},\"schema\":\"atlas.asset-review.v0\"}",
+      "sha256": "9a6cfe884c7549d12949cfb57ddf5132bff12178fce47f206c25fd68eb479dc8"
+    },
+    {
+      "name": "merged_unicode_review",
+      "input_json": "{\"blob\": {\"asset_id\": \"asset:sha256:733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\", \"bit_depth\": 8, \"bytes\": 74, \"color_type\": 6, \"declared_mime\": \"image/png\", \"height\": 2, \"mime\": \"image/png\", \"observed_mime\": null, \"sha256\": \"733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\", \"validation\": \"png-rgb8-v0\", \"width\": 2}, \"provenance\": {\"acquired_at\": \"2026-01-01T00:00:00Z\", \"acquisition\": \"synthetic-fixture\", \"approved_asset_host\": \"assets.example.com\", \"final_url\": \"https://assets.example.com/brand/logo.png\", \"host_evidence_url\": \"https://example.com/brand\", \"identity\": {\"decision\": \"approved\", \"evidence\": \"Synthetic fixture is explicitly bound to Fixture Company.\", \"reviewed_at\": \"2026-01-01T00:00:00Z\", \"reviewer\": \"fixture-reviewer\"}, \"rights\": {\"attribution\": \"Crédit Ω — 作者\", \"basis\": \"permission\", \"decision\": \"approved\", \"evidence\": \"Synthetic pixels authored for this offline test only.\", \"evidence_url\": \"https://example.com/brand/terms\", \"public_repository\": true, \"public_website\": true, \"reviewed_at\": \"2026-01-01T00:00:00Z\", \"reviewer\": \"fixture-reviewer\"}, \"role\": \"logo\", \"source_asset_url\": \"https://assets.example.com/brand/logo.png\", \"source_kind\": \"official-brand\", \"source_page\": \"https://example.com/brand\", \"subject_id\": \"startup:fixture-company\"}, \"schema\": \"atlas.asset-review.v0\"}",
+      "canonical_utf8": "{\"blob\":{\"asset_id\":\"asset:sha256:733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\",\"bit_depth\":8,\"bytes\":74,\"color_type\":6,\"declared_mime\":\"image/png\",\"height\":2,\"mime\":\"image/png\",\"observed_mime\":null,\"sha256\":\"733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\",\"validation\":\"png-rgb8-v0\",\"width\":2},\"provenance\":{\"acquired_at\":\"2026-01-01T00:00:00Z\",\"acquisition\":\"synthetic-fixture\",\"approved_asset_host\":\"assets.example.com\",\"final_url\":\"https://assets.example.com/brand/logo.png\",\"host_evidence_url\":\"https://example.com/brand\",\"identity\":{\"decision\":\"approved\",\"evidence\":\"Synthetic fixture is explicitly bound to Fixture Company.\",\"reviewed_at\":\"2026-01-01T00:00:00Z\",\"reviewer\":\"fixture-reviewer\"},\"rights\":{\"attribution\":\"Crédit Ω — 作者\",\"basis\":\"permission\",\"decision\":\"approved\",\"evidence\":\"Synthetic pixels authored for this offline test only.\",\"evidence_url\":\"https://example.com/brand/terms\",\"public_repository\":true,\"public_website\":true,\"reviewed_at\":\"2026-01-01T00:00:00Z\",\"reviewer\":\"fixture-reviewer\"},\"role\":\"logo\",\"source_asset_url\":\"https://assets.example.com/brand/logo.png\",\"source_kind\":\"official-brand\",\"source_page\":\"https://example.com/brand\",\"subject_id\":\"startup:fixture-company\"},\"schema\":\"atlas.asset-review.v0\"}",
+      "sha256": "39074a146f91bdae2c9d79c78da0133827aed6dcac262dd54df29f29035f9a6c"
+    },
+    {
+      "name": "unicode_and_escaping",
+      "input_json": "{\"z\": [\"é\", \"é\", \"🚀\", \"  \", null, true, false, 0, 9007199254740991], \"a\": {\"second\": \"line\\n\\ttab\\\\quote\\\"\", \"first\": \"\\u0000\\b\\f\\r\"}}",
+      "canonical_utf8": "{\"a\":{\"first\":\"\\u0000\\b\\f\\r\",\"second\":\"line\\n\\ttab\\\\quote\\\"\"},\"z\":[\"é\",\"é\",\"🚀\",\"  \",null,true,false,0,9007199254740991]}",
+      "sha256": "22d286974a71f33a1e56d9a0d232c7aa7bbdbc8f839fb3d16d02c66665a3f0b6"
+    },
+    {
+      "name": "escaped_astral_pair",
+      "input_json": "{\"emoji\":\"\\ud83d\\ude80\"}",
+      "canonical_utf8": "{\"emoji\":\"🚀\"}",
+      "sha256": "98fdbcf457c3bd6e0901ad2e4fefa0768bcf2c9e01126f230e9aae8b34b2068e"
+    },
+    {
+      "name": "reserved_own_keys",
+      "input_json": "{\"constructor\": \"plain\", \"__proto__\": {\"x\": 1}, \"prototype\": \"data\"}",
+      "canonical_utf8": "{\"__proto__\":{\"x\":1},\"constructor\":\"plain\",\"prototype\":\"data\"}",
+      "sha256": "abae666ab9f96fda3d133ee6fe68fdd95802c2f36231fe43b1bda5f2e1b94a70"
+    },
+    {
+      "name": "empty_and_boolean",
+      "input_json": "{\"empty_list\": [], \"empty_object\": {}, \"no\": false, \"yes\": true, \"nothing\": null}",
+      "canonical_utf8": "{\"empty_list\":[],\"empty_object\":{},\"no\":false,\"nothing\":null,\"yes\":true}",
+      "sha256": "b5337c3ac80a34fe9ff8e36999eab1e76d09fe122364119e2bb84c8e4bf05af7"
+    },
+    {
+      "name": "safe_integer_edges",
+      "input_json": "{\"low\": 0, \"high\": 9007199254740991}",
+      "canonical_utf8": "{\"high\":9007199254740991,\"low\":0}",
+      "sha256": "d87f5b0ead4dc58bb8e815e150fec9fe9b9655318be128b1fe7eceba333637c6"
+    },
+    {
+      "name": "public_projection_candidate",
+      "input_json": "{\"schema\": \"atlas.asset-public-candidate.v0\", \"asset\": {\"asset_id\": \"asset:sha256:733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\", \"sha256\": \"733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\", \"bytes\": 74, \"mime\": \"image/png\", \"width\": 2, \"height\": 2, \"bit_depth\": 8, \"color_type\": 6, \"validation\": \"png-rgb8-v0\"}, \"subject\": {\"id\": \"startup:fixture-company\", \"role\": \"logo\"}, \"source_page\": \"https://example.com/brand\", \"attribution\": \"Crédit Ω — 作者 🛰️\", \"licence_url\": null}",
+      "canonical_utf8": "{\"asset\":{\"asset_id\":\"asset:sha256:733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\",\"bit_depth\":8,\"bytes\":74,\"color_type\":6,\"height\":2,\"mime\":\"image/png\",\"sha256\":\"733bb085d25acbd72c1a440f9d4eae5b7cabdf74b636a152afc65185c0d7f2b2\",\"validation\":\"png-rgb8-v0\",\"width\":2},\"attribution\":\"Crédit Ω — 作者 🛰️\",\"licence_url\":null,\"schema\":\"atlas.asset-public-candidate.v0\",\"source_page\":\"https://example.com/brand\",\"subject\":{\"id\":\"startup:fixture-company\",\"role\":\"logo\"}}",
+      "sha256": "6675008d1aadf8baab2db58883508be52ab3d31aecd56caa7fa47ed18a3d1ac8"
+    }
+  ],
+  "invalid": [
+    {
+      "name": "duplicate_key",
+      "input_json": "{\"a\":1,\"a\":2}"
+    },
+    {
+      "name": "escaped_duplicate_key",
+      "input_json": "{\"a\":1,\"\\u0061\":2}"
+    },
+    {
+      "name": "fraction",
+      "input_json": "{\"a\":1.0}"
+    },
+    {
+      "name": "exponent",
+      "input_json": "{\"a\":1e0}"
+    },
+    {
+      "name": "negative_zero",
+      "input_json": "{\"a\":-0}"
+    },
+    {
+      "name": "negative_integer",
+      "input_json": "{\"a\":-1}"
+    },
+    {
+      "name": "unsafe_integer",
+      "input_json": "{\"a\":9007199254740992}"
+    },
+    {
+      "name": "nonfinite_nan",
+      "input_json": "{\"a\":NaN}"
+    },
+    {
+      "name": "nonfinite_infinity",
+      "input_json": "{\"a\":Infinity}"
+    },
+    {
+      "name": "numeric_key",
+      "input_json": "{\"2\":\"two\",\"10\":\"ten\"}"
+    },
+    {
+      "name": "unicode_key",
+      "input_json": "{\"é\":1}"
+    },
+    {
+      "name": "astral_key",
+      "input_json": "{\"🚀\":1}"
+    },
+    {
+      "name": "lone_high_surrogate",
+      "input_json": "{\"a\":\"\\ud800\"}"
+    },
+    {
+      "name": "lone_low_surrogate",
+      "input_json": "{\"a\":\"\\udfff\"}"
+    },
+    {
+      "name": "bom",
+      "input_json": "﻿{\"a\":1}"
+    },
+    {
+      "name": "trailing_json",
+      "input_json": "{\"a\":1}{}"
+    },
+    {
+      "name": "trailing_comma",
+      "input_json": "{\"a\":1,}"
+    },
+    {
+      "name": "leading_zero",
+      "input_json": "{\"a\":01}"
+    }
+  ]
+}

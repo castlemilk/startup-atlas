@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: rapid A/B/C selection updates facts immediately and keeps one opening trajectory
+ok 1 - rapid A/B/C selection updates facts immediately and keeps one opening trajectory
+  ---
+  duration_ms: 122.730106
+  type: 'test'
+  ...
+# Subtest: close then reopen retargets the actual spring without resetting its value or velocity
+ok 2 - close then reopen retargets the actual spring without resetting its value or velocity
+  ---
+  duration_ms: 44.535345
+  type: 'test'
+  ...
+# Subtest: deferred runtime leaves working readable details and does not replay when it arrives
+ok 3 - deferred runtime leaves working readable details and does not replay when it arrives
+  ---
+  duration_ms: 14.779243
+  type: 'test'
+  ...
+# Subtest: failed motion runtime preserves selection, facts, dismissal and focus return
+ok 4 - failed motion runtime preserves selection, facts, dismissal and focus return
+  ---
+  duration_ms: 13.628168
+  type: 'test'
+  ...
+# Subtest: live reduced-motion changes settle latest intent and returning to full motion does not replay
+ok 5 - live reduced-motion changes settle latest intent and returning to full motion does not replay
+  ---
+  duration_ms: 18.095676
+  type: 'test'
+  ...
+# Subtest: hidden-tab cleanup settles the latest selection and latest dismissal without replay
+ok 6 - hidden-tab cleanup settles the latest selection and latest dismissal without replay
+  ---
+  duration_ms: 25.119051
+  type: 'test'
+  ...
+# Subtest: initial reduced motion and hidden state perform no animation
+ok 7 - initial reduced motion and hidden state perform no animation
+  ---
+  duration_ms: 22.584314
+  type: 'test'
+  ...
+# Subtest: destroy cancels owned work, removes listeners and makes escaped callbacks harmless
+ok 8 - destroy cancels owned work, removes listeners and makes escaped callbacks harmless
+  ---
+  duration_ms: 16.752695
+  type: 'test'
+  ...
+# Subtest: remount owns the root while a superseded loader and old destroy remain harmless
+ok 9 - remount owns the root while a superseded loader and old destroy remain harmless
+  ---
+  duration_ms: 34.851944
+  type: 'test'
+  ...
+# Subtest: a late runtime rejection after destruction cannot overwrite fallback state
+ok 10 - a late runtime rejection after destruction cannot overwrite fallback state
+  ---
+  duration_ms: 14.467369
+  type: 'test'
+  ...
+# Subtest: an escaped frame from an interrupted generation cannot finish the replacement
+ok 11 - an escaped frame from an interrupted generation cannot finish the replacement
+  ---
+  duration_ms: 22.58886
+  type: 'test'
+  ...
+# Subtest: CSS linear support selects the official curve or the explicit supported fallback
+ok 12 - CSS linear support selects the official curve or the explicit supported fallback
+  ---
+  duration_ms: 11.476462
+  type: 'test'
+  ...
+# Subtest: sibling roots keep identity, selection, frames and teardown independent
+ok 13 - sibling roots keep identity, selection, frames and teardown independent
+  ---
+  duration_ms: 19.654468
+  type: 'test'
+  ...
+# Subtest: dismissal returns application focus to the latest opener
+ok 14 - dismissal returns application focus to the latest opener
+  ---
+  duration_ms: 23.973495
+  type: 'test'
+  ...
+# Subtest: a disconnected or disabled opener falls back to the authored records heading
+ok 15 - a disconnected or disabled opener falls back to the authored records heading
+  ---
+  duration_ms: 43.388486
+  type: 'test'
+  ...
+# Subtest: focus deliberately moved elsewhere during exit is not stolen on completion
+ok 16 - focus deliberately moved elsewhere during exit is not stolen on completion
+  ---
+  duration_ms: 15.033702
+  type: 'test'
+  ...
+# Subtest: a mobile mode change settles current intent and preserves panel focus without replay
+ok 17 - a mobile mode change settles current intent and preserves panel focus without replay
+  ---
+  duration_ms: 12.050899
+  type: 'test'
+  ...
+# Subtest: Escape on desktop and dialog cancel on mobile dismiss through the controller
+ok 18 - Escape on desktop and dialog cancel on mobile dismiss through the controller
+  ---
+  duration_ms: 12.451935
+  type: 'test'
+  ...
+# Subtest: a detached root discovered during a frame disposes owned work
+ok 19 - a detached root discovered during a frame disposes owned work
+  ---
+  duration_ms: 13.818522
+  type: 'test'
+  ...
+# Subtest: an unknown entity cannot replace current content or start another transition
+ok 20 - an unknown entity cannot replace current content or start another transition
+  ---
+  duration_ms: 9.576
+  type: 'test'
+  ...
+# Subtest: desktop Inspect auto focus stays on its control while mobile and explicit panel requests enter details
+ok 21 - desktop Inspect auto focus stays on its control while mobile and explicit panel requests enter details
+  ---
+  duration_ms: 20.181304
+  type: 'test'
+  ...
+# Subtest: a new programmatic entity without an opener clears stale return identity and repairs removed detail focus
+ok 22 - a new programmatic entity without an opener clears stale return identity and repairs removed detail focus
+  ---
+  duration_ms: 11.243455
+  type: 'test'
+  ...
+# Subtest: an Escape already consumed by a detail control does not dismiss the inspector
+ok 23 - an Escape already consumed by a detail control does not dismiss the inspector
+  ---
+  duration_ms: 9.857048
+  type: 'test'
+  ...
+# Subtest: destroy restores the authored root easing and its priority through the CSS API
+ok 24 - destroy restores the authored root easing and its priority through the CSS API
+  ---
+  duration_ms: 6.074453
+  type: 'test'
+  ...
+# Subtest: environment and breakpoint changes while closed never move body focus to fallback or a former opener
+ok 25 - environment and breakpoint changes while closed never move body focus to fallback or a former opener
+  ---
+  duration_ms: 9.246068
+  type: 'test'
+  ...
+# Subtest: explicit host invalidation preserves unrelated focus even if native close restores an old opener
+ok 26 - explicit host invalidation preserves unrelated focus even if native close restores an old opener
+  ---
+  duration_ms: 10.426287
+  type: 'test'
+  ...
+# Subtest: hidden explicit selection and mode changes do not invoke application focus methods
+ok 27 - hidden explicit selection and mode changes do not invoke application focus methods
+  ---
+  duration_ms: 7.136284
+  type: 'test'
+  ...
+# Subtest: desktop preserve keeps an external control focused across opening and a different selection despite supplied openers
+ok 28 - desktop preserve keeps an external control focused across opening and a different selection despite supplied openers
+  ---
+  duration_ms: 19.961336
+  type: 'test'
+  ...
+# Subtest: removing only the opener button leaves its row clear and allows dismissal, later selection and teardown
+ok 29 - removing only the opener button leaves its row clear and allows dismissal, later selection and teardown
+  ---
+  duration_ms: 11.745111
+  type: 'test'
+  ...
+# Subtest: a trigger reparented outside its root retains host attributes and cannot activate the former inspector
+ok 30 - a trigger reparented outside its root retains host attributes and cannot activate the former inspector
+  ---
+  duration_ms: 10.273409
+  type: 'test'
+  ...
+# Subtest: modal Tab wraps ordinary boundaries in both directions and leaves middle navigation to the browser
+ok 31 - modal Tab wraps ordinary boundaries in both directions and leaves middle navigation to the browser
+  ---
+  duration_ms: 27.526598
+  type: 'test'
+  ...
+# Subtest: Tab boundary handling does not override desktop, already-consumed or browser modifier semantics
+ok 32 - Tab boundary handling does not override desktop, already-consumed or browser modifier semantics
+  ---
+  duration_ms: 23.62176
+  type: 'test'
+  ...
+# Subtest: teardown removes the panel Tab boundary listener before a new host reuses the dialog
+ok 33 - teardown removes the panel Tab boundary listener before a new host reuses the dialog
+  ---
+  duration_ms: 21.608861
+  type: 'test'
+  ...
+# Subtest: hidden opener or ancestor falls back before and during dismissal (DOM decisions)
+ok 34 - hidden opener or ancestor falls back before and during dismissal (DOM decisions)
+  ---
+  duration_ms: 123.463215
+  type: 'test'
+  ...
+# Subtest: inert opener or ancestor falls back before and during dismissal (DOM decisions)
+ok 35 - inert opener or ancestor falls back before and during dismissal (DOM decisions)
+  ---
+  duration_ms: 70.862476
+  type: 'test'
+  ...
+# Subtest: authored record payloads remain identical across full, reduced, failed and CSS-fallback modes
+ok 36 - authored record payloads remain identical across full, reduced, failed and CSS-fallback modes
+  ---
+  duration_ms: 194.740498
+  type: 'test'
+  ...
+# Subtest: a missing authored summary stays explicit after another entity in every content mode
+ok 37 - a missing authored summary stays explicit after another entity in every content mode
+  ---
+  duration_ms: 68.717759
+  type: 'test'
+  ...
+# Subtest: Fluid inspector native browser acceptance — BLOCKED
+ok 38 - Fluid inspector native browser acceptance — BLOCKED # SKIP Unresolved Chrome permission; source/DOM/unit continuation only. This skip is not native browser acceptance.
+  ---
+  duration_ms: 0.150013
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 37
+# fail 0
+# cancelled 0
+# skipped 1
+# todo 0
+# duration_ms 1573.267031

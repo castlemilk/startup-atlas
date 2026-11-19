@@ -1,0 +1,442 @@
+{
+  "schema_version": 1,
+  "collection_owner": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+  "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+  "owner_acknowledgement": null,
+  "country_scope": "IT",
+  "items": [
+    {
+      "priority": 1,
+      "entity": "Leaf Space",
+      "dimension": "Current headquarters and complete founder list",
+      "next_source": "Official company legal/company pages; historical founder slide needs separate access",
+      "reason": "2023 Lomazzo HQ and current Milan office differ; current founder listing may be partial.",
+      "queue_id": "it-deeptech-refresh-01",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "company_id": "staging:it:satispay",
+      "task": "Verify final 2026 capital increase closing and exact amount; retain proposal ceiling distinct from completed funding. Verify Samuele Pinta founder evidence and holding incorporation history.",
+      "priority": 1,
+      "resume_source_urls": [
+        "https://satispay.com/it-it/newsroom/lancio-buoni-acquisto/",
+        "https://satispay.com/it-it/newsroom/nuova-identita-satispay/",
+        "https://satispay.com/en-it/newsroom/satispay-aumento-di-capitale-per-accelerare-la-crescita/",
+        "https://satispay.com/en-it/newsroom/satispay-accelera-con-claude-anthropic-ai/",
+        "https://satispay.com/en-it/newsroom/"
+      ],
+      "pagination_cursor": null,
+      "cursor_note": "Name-specific primary-source pass; any source directory pagination remains unexhausted.",
+      "queue_id": "it-fintech-refresh-01",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "company_id": "staging:it:scalapay",
+      "task": "Verify group holding incorporation and equity/debt split of 2022 financing; review newer BNP Paribas financing and EIB source separately.",
+      "priority": 1,
+      "resume_source_urls": [
+        "https://careers.scalapay.com/about-us/",
+        "https://www.prnewswire.com/news-releases/scalapay-now-a-unicorn-raises-497m-series-b-and-enters-the-checkout-market-301487923.html",
+        "https://www.prnewswire.co.uk/news-releases/leading-bnpl-platform-scalapay-raises-27m-usd-from-poste-italiane-in-a-series-b-capital-increase-extension-853869079.html",
+        "https://blog.scalapay.com/en/blog/scalapay-partners-with-trustfull-to-strengthen-bnpl-fraud-prevention-across-europe",
+        "https://cdn.scalapay.com/website/ip/terms-and-conditions/it-IT/terms-and-conditions.pdf"
+      ],
+      "pagination_cursor": null,
+      "cursor_note": "Name-specific primary-source pass; any source directory pagination remains unexhausted.",
+      "queue_id": "it-fintech-refresh-02",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "company_id": "staging:it:casavo",
+      "task": "Check current headquarters and incorporation; resolve 2024 page date; preserve 2026 lower-bound amount and resolve EVRG 18 entity identity.",
+      "priority": 1,
+      "resume_source_urls": [
+        "https://blog.casavo.com/en/articoli/casavo-europes-next-generation-residential-platform-raises-400-million-to-extend-its-category-leadership",
+        "https://blog.casavo.com/en/articoli/casavo-round-20-million-euro-led-unicredit-continues-profitability-path",
+        "https://blog.casavo.com/en/articoli/casavo-inaugurates-its-new-milan-headquarters-to-continue-its-growth",
+        "https://blog.casavo.com/en/articoli/casavo-rafforza-la-sua-presenza-nel-mercato-immobiliare-italiano-con-lacquisizione-di-casando-agency"
+      ],
+      "pagination_cursor": null,
+      "cursor_note": "Name-specific primary-source pass; any source directory pagination remains unexhausted.",
+      "queue_id": "it-fintech-refresh-03",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "company_id": "staging:it:fiscozen",
+      "task": "Reconcile 2017 origin/2018 founding and Fabio Ciotoli early role; retrieve exact 2022 EUR 8m primary announcement; retain acquired lifecycle.",
+      "priority": 1,
+      "resume_source_urls": [
+        "https://unitedventures.com/2020/03/16/fiscozen-secures-e3m-series-a-round/",
+        "https://unitedventures.com/wp-content/uploads/2024/04/2024-04-16-Press-release-ITA_Fiscozen-Visma.pdf",
+        "https://www.visma.com/newsroom/visma-reaches-eur-2-5-billion-in-arr-after-solid-q2-57b19a58",
+        "https://www.fiscozen.it/privacy/"
+      ],
+      "pagination_cursor": null,
+      "cursor_note": "Name-specific primary-source pass; any source directory pagination remains unexhausted.",
+      "queue_id": "it-fintech-refresh-04",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "queue_id": "it-general-refresh-01",
+      "priority": 1,
+      "title": "WeRoad currency",
+      "next_action": "Reconcile the conflicting $58m and €58m Series C labels with a second primary source.",
+      "source_ids": [
+        "it-general-weroad-seriesc"
+      ],
+      "max_pages": 5,
+      "status": "pending",
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-general-refresh-02",
+      "priority": 1,
+      "title": "Domyn completed funding",
+      "next_action": "Verify an actually closed round and legal issuer; treat fundraising targets and unavailable SEC XML as unresolved.",
+      "source_ids": [
+        "it-general-domyn-home",
+        "it-general-domyn-sec-blocked"
+      ],
+      "max_pages": 5,
+      "status": "pending",
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-q01",
+      "priority": 1,
+      "title": "Resolve current statutory registry denominator",
+      "source_ids": [
+        "it-eco:registro-frontiers",
+        "it-eco:registro-startup-list",
+        "it-eco:mimit-reports"
+      ],
+      "max_new_company_reviews_or_pages": 5,
+      "next_action": "Find a permitted official current statistical release or working linked list endpoint. Preserve innovative-startup versus SME and profile-list distinctions.",
+      "reason": "Official statistics link failed; national venture-startup denominator remains null.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "priority": 2,
+      "entity": "D-Orbit",
+      "dimension": "Series C final date and2026 funding",
+      "next_source": "Current company press archive and investor announcements",
+      "reason": "Original final-closing PDF timed out;2026 Series D only discovery lead.",
+      "queue_id": "it-deeptech-refresh-02",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "company_id": "staging:it:jet-hr",
+      "task": "Verify current HQ and legal registered office with accessible company legal material; exact Dec 2022 formation vs June 2023 launch.",
+      "priority": 2,
+      "resume_source_urls": [
+        "https://www.jethr.com/press/jet-hr-round-da-eu25-mln-per-liberare-le-pmi-italiane-dalla-burocrazia",
+        "https://www.jethr.com/chi-siamo"
+      ],
+      "pagination_cursor": null,
+      "cursor_note": "Name-specific primary-source pass; any source directory pagination remains unexhausted.",
+      "queue_id": "it-fintech-refresh-05",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "company_id": "staging:it:sibill",
+      "task": "Verify HQ terminology independently of operating/registered offices; review 2024 event separately and do not derive round size by subtraction.",
+      "priority": 2,
+      "resume_source_urls": [
+        "https://sibill.com/news/raccolta-capitale-creandum/",
+        "https://www.keenventurepartners.com/posts/sibill-raises-eu12m-series-a-to-modernise-financial-management-for-italys-smes"
+      ],
+      "pagination_cursor": null,
+      "cursor_note": "Name-specific primary-source pass; any source directory pagination remains unexhausted.",
+      "queue_id": "it-fintech-refresh-06",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "company_id": "staging:it:tot",
+      "task": "Confirm incorporation and registered office; reconcile seed/pre-seed stage labels; resolve Azimut/FNDX fund-manager identities before investor edges.",
+      "priority": 2,
+      "resume_source_urls": [
+        "https://tot.money/blog/round-2025",
+        "https://www.cdpventurecapital.it/it/news.page?contentId=COM51936",
+        "https://bebeez.it/wp-content/uploads/2021/11/CS_Nasce-Tot-e-ancor-prima-dellingresso-sul-mercato-chiude-un-round-da-E2-milioni.pdf",
+        "https://tot.money/about"
+      ],
+      "pagination_cursor": null,
+      "cursor_note": "Name-specific primary-source pass; any source directory pagination remains unexhausted.",
+      "queue_id": "it-fintech-refresh-07",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "company_id": "staging:it:qomodo",
+      "task": "Review original 2023 mixed EUR 34.5m financing, with equity/credit separated, and exact legal incorporation.",
+      "priority": 2,
+      "resume_source_urls": [
+        "https://www.primo.capital/news/qomodo-raises-eu13-5m-series-a-to-revolutionize-payments-for-physical-merchants",
+        "https://www.qomodo.me/"
+      ],
+      "pagination_cursor": null,
+      "cursor_note": "Name-specific primary-source pass; any source directory pagination remains unexhausted.",
+      "queue_id": "it-fintech-refresh-08",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "queue_id": "it-general-refresh-03",
+      "priority": 2,
+      "title": "Unobravo chronology",
+      "next_action": "Reconcile 2019 initiative and 2020 founding wording; verify 2022 round via an accessible primary release.",
+      "source_ids": [
+        "it-general-unobravo-about",
+        "it-general-unobravo-exit",
+        "it-general-unobravo-2022-blocked"
+      ],
+      "max_pages": 5,
+      "status": "pending",
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-general-refresh-04",
+      "priority": 2,
+      "title": "General geography and incorporation",
+      "next_action": "Verify current HQ for Serenis/Musixmatch, exact SQIM legal rename date and legal incorporation separately from company origins.",
+      "source_ids": [
+        "it-general-serenis-legal",
+        "it-general-musixmatch-tpg",
+        "it-general-sqim-hq"
+      ],
+      "max_pages": 5,
+      "status": "pending",
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-general-refresh-05",
+      "priority": 2,
+      "title": "South and islands",
+      "next_action": "Allocate the next company pass to Puglia, Sicily, Sardinia, Calabria, Abruzzo and Basilicata using official regional and university sources.",
+      "source_ids": [],
+      "max_pages": 5,
+      "status": "pending",
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-q02",
+      "priority": 2,
+      "title": "Verify IMF cohort vintage and exact rank",
+      "source_ids": [
+        "it-eco:imf-api",
+        "it-eco:imf-weo",
+        "it-eco:imf-italy-profile",
+        "it-eco:imf-ngdpd-map"
+      ],
+      "max_new_company_reviews_or_pages": 3,
+      "next_action": "Obtain accessible official October 2026 WEO NGDPD values, record original payload hash and country/economy filter, then recompute rank.",
+      "reason": "API blocked; page templates incomplete. User-specified Italy GDP9 retained as cohort label only.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "priority": 3,
+      "entity": "Caracol",
+      "dimension": "Series B currency/primary-secondary split and founding chronology",
+      "next_source": "Company and round investor financial release; reconcile Omnes2015 versus company2017",
+      "reason": "Dollar denomination unspecified; secondary exits mentioned without allocation; discovered chronology disagreement not resolved.",
+      "queue_id": "it-deeptech-refresh-03",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "queue_id": "it-q03",
+      "priority": 3,
+      "title": "Review deep-tech candidate identities from I3P and PoliHub",
+      "source_ids": [
+        "it-eco:i3p-portfolio",
+        "it-eco:polihub-portfolio"
+      ],
+      "max_new_company_reviews_or_pages": 10,
+      "next_action": "Take the first ten unreviewed lead IDs in saved order; verify current canonical domains, company nexus, date precision and one primary funding event each.",
+      "reason": "Portfolio membership does not determine investment rounds; no host approved automatically.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "priority": 4,
+      "entity": "Planckian",
+      "dimension": "Founding versus launch/incorporation and current HQ",
+      "next_source": "Company institutional history and lawful public registry evidence",
+      "reason": "Founder biography says2021;2023 launch/investment context must not be used as incorporation.",
+      "queue_id": "it-deeptech-refresh-04",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "queue_id": "it-q04",
+      "priority": 4,
+      "title": "Broaden regional coverage beyond Milan and Turin",
+      "source_ids": [
+        "it-eco:lazio-spazioattivo",
+        "it-eco:er-startup-service",
+        "it-eco:er-2026-programmes",
+        "it-eco:tuscany-unlock",
+        "it-eco:campania-about"
+      ],
+      "max_new_company_reviews_or_pages": 10,
+      "next_action": "Select two companies each from Lazio, Emilia-Romagna, Tuscany, Campania and one remaining southern/island region using public programme/member profiles.",
+      "reason": "Programme participant locations may be branches or eligibility, not headquarters. South/island sources underrepresented.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "priority": 5,
+      "entity": "AAVantgarde Bio",
+      "dimension": "Founding and group/legal identity",
+      "next_source": "Company history and lawful public incorporation records",
+      "reason": "Cross-border operations verified, global HQ and incorporation unverified.",
+      "queue_id": "it-deeptech-refresh-05",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "queue_id": "it-q05",
+      "priority": 5,
+      "title": "Reconcile investor manager and fund identities",
+      "source_ids": [
+        "it-eco:lb-products",
+        "it-eco:ifigest-annual2025",
+        "it-eco:primo-capital",
+        "it-eco:p101-portfolio"
+      ],
+      "max_new_company_reviews_or_pages": 6,
+      "next_action": "Map historical names and successor entities with source dates; keep named funds distinct from their managers.",
+      "reason": "MIP succession and Primo branding observed; exact Atlas canonical identities and historical fund participants need review.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "priority": 6,
+      "entity": "AIKO",
+      "dimension": "First-close month and final Series A close",
+      "next_source": "Deep Blue Ventures and Primo Space dated announcements; complete newsroom pagination",
+      "reason": "October/December chronology differs; financing remained open in February2025.",
+      "queue_id": "it-deeptech-refresh-06",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "queue_id": "it-q06",
+      "priority": 6,
+      "title": "Resolve current financial report aggregate discrepancy",
+      "source_ids": [
+        "it-eco:growthcapital-q3-release",
+        "it-eco:ita-q3-pdf",
+        "it-eco:aifi-vem"
+      ],
+      "max_new_company_reviews_or_pages": 3,
+      "next_action": "Retain PDF 1477 versus release quotation 1465 conflict; seek an official correction or later report without outreach.",
+      "reason": "No private/proprietary component copied; this report is not an auditable list of all real-world rounds.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "priority": 7,
+      "entity": "All eight",
+      "dimension": "Incorporation, full financing history and professional founder identities",
+      "next_source": "Official registries/company filings and primary dated releases",
+      "reason": "No incorporation register was inspected; founder/investor lists deliberately partial.",
+      "queue_id": "it-deeptech-refresh-07",
+      "status": "pending",
+      "max_pages": 5,
+      "crawler_seed_approved": false,
+      "pagination_exhausted": false
+    },
+    {
+      "queue_id": "it-q07",
+      "priority": 7,
+      "title": "Review new accelerator calls and cohort boundaries",
+      "source_ids": [
+        "it-eco:cdp-acceleratori2",
+        "it-eco:cdp-acceleratori1",
+        "it-eco:hfarm-studentfounder",
+        "it-eco:invitalia-smartstart"
+      ],
+      "max_new_company_reviews_or_pages": 6,
+      "next_action": "Review programme-specific calls and dates, prioritizing post-Oct2026 strategy and closed-banner inconsistencies.",
+      "reason": "Do not infer all 20 historical accelerators still share unchanged terms; H-FARM Fall application dates expired despite open banner.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    },
+    {
+      "queue_id": "it-q08",
+      "priority": 8,
+      "title": "Resolve inaccessible and non-rendered public sources",
+      "source_ids": [
+        "it-eco:motorvalley",
+        "it-eco:p101-portfolio",
+        "it-eco:campania-startups"
+      ],
+      "max_new_company_reviews_or_pages": 3,
+      "next_action": "Use alternative primary dated announcements if ordinarily accessible; retain failures and do not retry denied access in this batch.",
+      "reason": "MVA 403; P101 partial name rendering; Campania list image-only extraction. No bypass or crawler change.",
+      "status": "pending",
+      "source_population_denominator": null,
+      "pagination_exhausted": false,
+      "crawler_seed_approved": false
+    }
+  ],
+  "source_policy": "Research discovery is not crawler-seed approval."
+}

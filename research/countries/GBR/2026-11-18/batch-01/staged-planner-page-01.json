@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "revision": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "overlay_sha256": "8e8285327df7201aed50f456695549d016eaa9b3466980862f83bca0e9812e81",
+  "seeds_sha256": "bfee5d82c24e5ae5b9b24c4c8b8a18857f96d4dad7fbeaeb0447f43c4a59c6f3",
+  "order": "exact-source-name-codepoint",
+  "limit": 7,
+  "plan_id": "849f40731a36d6b205f2fb0d44fc221219eb5d72e33a0023ed943351243df4a6",
+  "snapshot_kind": "input_files",
+  "population": {
+    "scope": "all records in the supplied startup-research overlay",
+    "source_records": 25,
+    "seed_states": {
+      "approved_seed_ready": 0,
+      "seed_review_required": 25,
+      "missing_reviewed_website": 0,
+      "invalid_reviewed_website": 0,
+      "seed_url_blocked": 0,
+      "seed_host_mismatch": 0
+    }
+  },
+  "field_presence_totals": {
+    "description": 25,
+    "founded_year": 22,
+    "founders": 23,
+    "funding_rounds": 24,
+    "profile_facts": 25,
+    "socials": 0,
+    "articles": 0
+  },
+  "items": [
+    {
+      "source_record_name": "Amiqus",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "CMR Surgical",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "absent",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Chemify",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "absent",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Cleo",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Cumulus Neuroscience",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "EnteroBiotix",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "present",
+        "founders": "present",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    },
+    {
+      "source_record_name": "Luminance",
+      "seed_state": "seed_review_required",
+      "approved_url": null,
+      "collection_state": "not_assessed",
+      "field_presence": {
+        "description": "present",
+        "founded_year": "absent",
+        "founders": "absent",
+        "funding_rounds": "present",
+        "profile_facts": "present",
+        "socials": "absent",
+        "articles": "absent"
+      }
+    }
+  ],
+  "offset": 0,
+  "returned": 7,
+  "next_cursor": "v1:849f40731a36d6b205f2fb0d44fc221219eb5d72e33a0023ed943351243df4a6:7",
+  "inventory_exhausted": false,
+  "warning": "Inventory pagination only, not crawl completion. Source-record names are not graph IDs. Field presence is not factual verification, freshness or completeness. Input hashes bind these bytes but do not prove they belong to the caller-supplied Git revision. Ready seeds still require current identity/access review and the existing collector transport guards."
+}

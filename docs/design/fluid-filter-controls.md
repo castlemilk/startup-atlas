@@ -4,6 +4,16 @@ This isolated specimen adds selection continuity and finite feedback to a small 
 
 The implementation lives outside `web/`, so the normal site build does not publish it. It is not a Hardware installation, a React migration, an inspector-continuity implementation or a global motion adapter.
 
+## Source-only release integration — 19 November 2026
+
+**Native browser acceptance remains BLOCKED.** The existing Chrome permission request is unresolved; this integration neither requests nor grants permission and does not authorize a browser attempt. The release instruction to merge the remaining PRs permits this unlinked source specimen to be integrated. It does not approve mounting the controls in the product, publishing the standalone preview, or claiming current rendered acceptance.
+
+This is a new release-integration correction against published PR head `0bc9af119d093b93da069a691abab9f96e040bb0`, reconciled with main `d93b4d5ce42f19439c662a9e214b1b4acf7293bf`. It is distinct from the earlier local checkpoint `2f17e72256147ebaa5246632a82aab69a87bcf41` (tree `d211be287d362730641390c77e91bf1da191bb73`). That checkpoint and its integrity receipt remain historical evidence in the [specimen Space](https://chatgpt.com/space/page_8734e3c819288191a08148ae557faf2c); its archive could not be recovered through the available file access, so no byte-for-byte recovery or reuse of its hashes is claimed here.
+
+The correction changes only this document, the focused test and the retained browser harness. It removes the subprocess import and automatic CI-to-browser bridge, makes the native case unconditionally skipped with an explicit BLOCKED reason, and stops the browser harness before setup with an unconditional error and no environment override. Even the specimen build module is imported only after that guard. All controller, markup, CSS, standalone build and vendored package bytes remain identical to the published head.
+
+At the reconciled main, the Pages workflow runs focused PR checks and builds/deploys main; deep browser checks require a separate manual workflow. None of the 13 specimen-owned paths triggers the signal-motion browser workflow. The normal production build explicitly selects its web files and never copies `prototypes/fluid-filter-controls/`. Vercel Git deployments are disabled by the existing configuration. This correction changes none of those workflows, deployment settings, shared runtime files or CI path mappings.
+
 ## Ownership and coordination
 
 Initial main inspected was `a8da234e976142647277d799d84bae792d47bf98`. The branch was subsequently advanced to `01375e4c62fd0b057cd7d21a34223b26a9e23360`, preserving the merged MCP record and asset lanes. Signal, UI SDK and motion embedding guidance were read at those baselines; the latter updates changed no frontend owners or tokens.
@@ -15,7 +25,7 @@ Owned paths are limited to:
 - `scripts/test-fluid-filter-controls-browser.mjs`
 - This document
 
-The [canonical Design System Space](https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a) and [specimen receipt](https://chatgpt.com/space/page_8734e3c819288191a08148ae557faf2c) carry the handoff. A bounded search found no published branch matching Fluid or Hardware at the initial audit; it does not establish that those owners are inactive. Their work remains reserved, as do inspector continuity and shared skills. Held PRs 107 and 135 are unrelated.
+The [canonical Design System Space](https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a) and [specimen receipt](https://chatgpt.com/space/page_8734e3c819288191a08148ae557faf2c) carry the handoff. A bounded search found no published branch matching Fluid or Hardware at the initial audit; it does not establish that those owners are inactive. Their work remains reserved, as do inspector continuity and shared skills. PRs 107 and 135 have separate release dispositions.
 
 **Shared boundary:** the host owns committed filters, route/history state, records, result presentation and SDK semantics. A decorative selection indicator may consume those committed choices. Its motion is cancellable, instance-scoped and disposable; it cannot defer a semantic change or own inspector selection. Hosts call disposal before removing a root. This specimen proposes no shared adapter API and changes no global token or skill.
 
@@ -68,14 +78,13 @@ The vanilla spring/ticker module does not implement reduced-motion or document-v
 
 ## Build and lifecycle
 
-From the repository root, using the existing installed dependencies:
+Source-only compilation is available from the repository root using the existing installed dependencies:
 
 ```sh
 node prototypes/fluid-filter-controls/build.mjs /tmp/atlas-fluid-filter-preview
-python3 -m http.server 4178 --bind 127.0.0.1 --directory /tmp/atlas-fluid-filter-preview
 ```
 
-Open `http://127.0.0.1:4178/`. Query options `?mode=baseline`, `?mode=reduced`, `?theme=dark` and `?fallback=true` initialize review settings. They are specimen harness settings, not new product preferences or a filter-route contract. Device reduced motion takes priority over all harness modes.
+Do not serve, open or deploy that output under the current native-acceptance hold. The historical query options `?mode=baseline`, `?mode=reduced`, `?theme=dark` and `?fallback=true` initialize specimen review settings; they are not new product preferences or a filter-route contract. Device reduced motion takes priority over all harness modes.
 
 `buildSpecimen(output)` bundles only the already installed UI SDK entries and the specimen controller. It copies the existing Atlas/Signal styles and self-hosted fonts. The optional spring module remains a local separate request, allowing failure and initial reduced-mode tests. No CDN, credentials, model call or external service is involved.
 
@@ -86,25 +95,25 @@ The root owns no RAF loop, resize observer, document mutation observer or pollin
 ## Acceptance and evidence
 
 ```sh
-node --test tests/fluid-filter-controls.test.js
-node scripts/test-fluid-filter-controls-browser.mjs
-npm test
-npm run build
+GITHUB_ACTIONS=true node --test tests/fluid-filter-controls.test.js
+node --check scripts/test-fluid-filter-controls-browser.mjs
 git diff --check
 ```
 
 The focused source suite checks synchronous state/result commits, active-filter focus, composition across other filters, explicit clear/reset, reduced and baseline parity, live preference cancellation, injected hidden-document lifecycle, failed/deferred loading, replacement ownership, disposal, independent controllers and vendor hashes. Those are deterministic DOM/lifecycle checks, not rendered geometry or contrast evidence.
 
-On GitHub Actions the existing `npm test` step also runs the dedicated browser acceptance script. Its outputs go beneath the existing `startup-atlas-graph/fluid-filter-controls` artifact directory, requiring no workflow or permission changes. Local execution of the browser script remains available independently; the source test reports the CI browser case as skipped outside that environment. The browser script must fail on an actual acceptance failure rather than silently converting it into a pass.
+The focused source suite retains its 16 deterministic tests. Its native-browser case is unconditionally skipped with an explicit BLOCKED reason, including when `GITHUB_ACTIONS=true`; it never spawns the browser script. The retained browser script throws before any setup, build import, filesystem write, server or browser start. No environment variable clears that guard. A skipped native case is an unexecuted acceptance target, not a passing browser result.
 
-The browser run records source revision and hashes, actual keyboard actions, SDK agent parity, interruption geometry, reduced-motion media changes, compatibility easing, cleanup, no-JavaScript and failed-curve cases, and responsive/light-dark screenshots. Real tab visibility and any injected visibility seam must be reported separately. Actual screenshots require inspection before visual acceptance. Source-only colour calculations cannot establish rendered contrast.
+The historical browser harness recorded source revision and hashes, actual keyboard actions, SDK agent parity, interruption geometry, reduced-motion media changes, compatibility easing, cleanup, no-JavaScript and failed-curve cases, and responsive/light-dark screenshots. Those historical records do not establish current native acceptance. Real tab visibility and an injected visibility seam are separate evidence. Source-only colour calculations and simulated DOM focus cannot establish rendered contrast or native focus behavior.
 
-Local browser constraints observed in this session: Browser extension bootstrap timed out; the cloud browser returned `ERR_CONNECTION_REFUSED` for the local preview; local Chromium with its sandbox enabled aborted with `socket() failed: Operation not permitted`. No permission, credential, sandbox or security changes were made. Exact CI receipts and any remaining browser gaps belong in the linked specimen receipt. A local build, draft PR or passing source suite is not a production release.
+The earlier browser extension timeout, cloud-browser `ERR_CONNECTION_REFUSED`, and local Chromium `socket() failed: Operation not permitted` remain historical constraints. No browser attempt or permission, credential, sandbox or security change is part of this source-only integration. Exact current source checks and publication revisions belong in the release receipt. A local static build establishes compilation only.
 
 ## Review status and integration gate
 
 Independent source review reproduced and corrected IME draft loss on unrelated filter changes, stale result state after explicit SDK clear, reset of an uncommitted draft, and a misleading disposed-state message. The Country filter was promoted from a native-only control to a locally composed SDK Select so named filter actions are also available to the SDK agent. Regression tests cover those corrections.
 
-The first exact-tree CI run passed all 24 browser checks, but independent screenshot inspection found that Chrome's native placeholder grey was omitted from the contrast oracle and produced about 3.82:1 on the dark surface. The follow-up uses the existing scoped muted-text token for the placeholder and measures its actual computed pseudo-element colour and opacity in every responsive light/dark case. Final CI and screenshot receipts, including exact source and synthetic merge revisions, are recorded in the linked Space receipt.
+The historical first exact-tree CI run passed all 24 browser checks, but independent screenshot inspection found that Chrome's native placeholder grey was omitted from the contrast oracle and produced about 3.82:1 on the dark surface. The follow-up uses the existing scoped muted-text token for the placeholder and measures its actual computed pseudo-element colour and opacity in every responsive light/dark case. Historical CI and screenshot receipts, including exact source and synthetic merge revisions, are preserved in the linked Space receipt and are superseded for current native acceptance by the unresolved permission hold.
 
-Promotion remains contingent on independent review of the final revision and actual browser receipts, then acceptance of the concrete integration by the compatibility, inspector and Hardware owners. The specimen introduces no production migration, release, inspector changes, shared skill rewrite, source data edit or new global token. Browser/screen-reader/physical-device coverage that has not been executed must remain explicit.
+The inert, unlinked source merge is separate from product integration. Mounting these controls, changing shared compatibility/inspector behavior or publishing the standalone preview still requires the owners' concrete integration agreement and current native evidence after the permission hold is legitimately resolved. The [compatibility owner](https://chatgpt.com/c/6afc3963-c358-83ec-883f-e4f4be682ef6), [inspector owner](https://chatgpt.com/c/6afc37a6-eb4c-83ec-91a2-3c1cf1adc821) and [controls owner](https://chatgpt.com/c/6afc3784-4350-83ec-a419-05b97d3999b8) retain those boundaries; Hardware/Next.js mounting remains a separate agreement.
+
+Missing native evidence includes actual SDK keyboard/popup/focus behavior, live preference and visibility changes, disconnect/remount, interruption geometry, native CSS `linear()` fallback rendering, fresh 1440/390/320px light/dark layout and contrast, and JavaScript-unavailable rendering. Firefox/WebKit, physical devices, assistive technology, native IME/OS preference UI and actual OS/browser scaling remain unexecuted. The specimen introduces no production migration, inspector change, shared skill rewrite, source data edit or new global token.

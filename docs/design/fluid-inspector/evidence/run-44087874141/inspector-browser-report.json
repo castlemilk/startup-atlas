@@ -1,0 +1,4217 @@
+{
+  "sourceRevision": "41781fce7f872d55a55c5c3d5c43f801442c446f",
+  "checkoutRevision": "41781fce7f872d55a55c5c3d5c43f801442c446f",
+  "startedAt": "2026-11-17T12:56:58.637Z",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/157.0.8103.50",
+    "revision": "@049750111b1e5c11565c792b2aeed5541f332bad",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "jsVersion": "15.7.112.23"
+  },
+  "sandbox": "enabled; no sandbox-disabling flags",
+  "scopeLimits": [
+    "Chrome viewport and touch emulation; no physical-device, WebKit, Firefox or screen-reader speech acceptance."
+  ],
+  "scenarios": [
+    {
+      "id": "I01-I02",
+      "name": "Desktop native activation, focus preservation and latest-opener return",
+      "environment": "real Chrome browser",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "input": "native Enter, Space, Tab, Escape and pointer",
+      "observations": {
+        "state": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 65,
+          "generation": 4,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "events": [
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "<button type=\"button\" data-fi-select=\"startup:canva\" aria-label=\"Inspect Canva\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+            "time": 507.59999999999854
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "<button type=\"button\" data-fi-select=\"person:melanie-perkins\" aria-label=\"Inspect Melanie Perkins\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+            "time": 1036.9000000000015
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+            "time": 1317.5999999999985
+          }
+        ],
+        "focusContract": "Desktop Inspect preserves its opener focus and remains nonmodal; panel actions are in normal Tab order."
+      },
+      "result": "pass",
+      "durationMs": 1113
+    },
+    {
+      "id": "I03",
+      "name": "Rapid selection commits coherent latest identity",
+      "environment": "real Chrome browser",
+      "input": "Native specimen burst action, then its documented timed controller selections",
+      "observations": {
+        "trace": [
+          {
+            "id": "startup:canva",
+            "title": "Canva",
+            "detailId": "startup:canva",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+            "time": 100.89999999999418
+          },
+          {
+            "id": "startup:canva",
+            "title": "Canva",
+            "detailId": "startup:canva",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+            "time": 107.09999999999127
+          },
+          {
+            "id": "startup:canva",
+            "title": "Canva",
+            "detailId": "startup:canva",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+            "time": 123.69999999999709
+          },
+          {
+            "id": "person:melanie-perkins",
+            "title": "Melanie Perkins",
+            "detailId": "person:melanie-perkins",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+            "time": 137.29999999998836
+          },
+          {
+            "id": "person:melanie-perkins",
+            "title": "Melanie Perkins",
+            "detailId": "person:melanie-perkins",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+            "time": 140.6999999999971
+          },
+          {
+            "id": "person:melanie-perkins",
+            "title": "Melanie Perkins",
+            "detailId": "person:melanie-perkins",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+            "time": 157.39999999999418
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 167.29999999998836
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 174
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 190.5
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 207.1999999999971
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 223.6999999999971
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 240.39999999999418
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 257
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 273.59999999999127
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 292.59999999999127
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 307
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 323.6999999999971
+          },
+          {
+            "id": "startup:fusion-books",
+            "title": "Fusion Books",
+            "detailId": "startup:fusion-books",
+            "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+            "time": 340.3999999999942
+          }
+        ],
+        "final": {
+          "selectedId": "startup:fusion-books",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [
+            "startup:fusion-books"
+          ],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 435.28125,
+            "bottom": 741.03125
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 368
+    },
+    {
+      "id": "I04-I05",
+      "name": "Close/reopen preserves value and velocity; same selection is idempotent",
+      "environment": "real Chrome browser",
+      "input": "Documented controller, actual browser frames",
+      "observations": {
+        "trace": {
+          "opening": {
+            "selectedId": "startup:canva",
+            "intendedOpen": true,
+            "phase": "opening",
+            "mode": "nonmodal",
+            "motionState": "ready",
+            "reduced": false,
+            "hidden": false,
+            "pendingFrames": 1,
+            "paints": 2,
+            "generation": 1,
+            "value": 0.1004757967512846,
+            "velocity": 10.012095479637876,
+            "target": 1,
+            "destroyed": false
+          },
+          "reversed": {
+            "selectedId": null,
+            "intendedOpen": false,
+            "phase": "closing",
+            "mode": "nonmodal",
+            "motionState": "ready",
+            "reduced": false,
+            "hidden": false,
+            "pendingFrames": 1,
+            "paints": 3,
+            "generation": 2,
+            "value": 0.1004757967512846,
+            "velocity": 10.012095479637876,
+            "target": 0,
+            "destroyed": false
+          },
+          "closing": {
+            "selectedId": null,
+            "intendedOpen": false,
+            "phase": "closing",
+            "mode": "nonmodal",
+            "motionState": "ready",
+            "reduced": false,
+            "hidden": false,
+            "pendingFrames": 1,
+            "paints": 4,
+            "generation": 2,
+            "value": 0.18827304372686315,
+            "velocity": 1.7350204453682012,
+            "target": 0,
+            "destroyed": false
+          },
+          "reopened": {
+            "selectedId": "person:melanie-perkins",
+            "intendedOpen": true,
+            "phase": "opening",
+            "mode": "nonmodal",
+            "motionState": "ready",
+            "reduced": false,
+            "hidden": false,
+            "pendingFrames": 1,
+            "paints": 5,
+            "generation": 3,
+            "value": 0.18827304372686315,
+            "velocity": 1.7350204453682012,
+            "target": 1,
+            "destroyed": false
+          },
+          "beforeSame": {
+            "selectedId": "person:melanie-perkins",
+            "intendedOpen": true,
+            "phase": "opening",
+            "mode": "nonmodal",
+            "motionState": "ready",
+            "reduced": false,
+            "hidden": false,
+            "pendingFrames": 1,
+            "paints": 5,
+            "generation": 3,
+            "value": 0.18827304372686315,
+            "velocity": 1.7350204453682012,
+            "target": 1,
+            "destroyed": false
+          },
+          "afterSame": {
+            "selectedId": "person:melanie-perkins",
+            "intendedOpen": true,
+            "phase": "opening",
+            "mode": "nonmodal",
+            "motionState": "ready",
+            "reduced": false,
+            "hidden": false,
+            "pendingFrames": 1,
+            "paints": 5,
+            "generation": 3,
+            "value": 0.18827304372686315,
+            "velocity": 1.7350204453682012,
+            "target": 1,
+            "destroyed": false
+          }
+        },
+        "final": {
+          "selectedId": "person:melanie-perkins",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 21,
+          "generation": 3,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Melanie Perkins",
+          "selectedButtons": [
+            "person:melanie-perkins"
+          ],
+          "detailId": "person:melanie-perkins",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "person:melanie-perkins",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"person:melanie-perkins\" aria-label=\"Inspect Melanie Perkins\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 344
+    },
+    {
+      "id": "I07",
+      "name": "Missing opener falls back; invalidation preserves external focus",
+      "environment": "real Chrome browser",
+      "observations": {
+        "missing": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Canva",
+          "selectedButtons": [],
+          "detailId": "startup:canva",
+          "source": "https://www.canva.com/newsroom/news/canva-team-update/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "H2",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": true,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<h2 data-fi-fallback=\"\" tabindex=\"-1\">Research records</h2>",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "invalidated": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 66,
+          "generation": 4,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Melanie Perkins",
+          "selectedButtons": [],
+          "detailId": "person:melanie-perkins",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-theme=\"\">Show dark specimen</button>",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 1144
+    },
+    {
+      "id": "I08",
+      "name": "Live viewport changes preserve intent and native modality",
+      "environment": "real Chrome browser",
+      "observations": {
+        "narrow": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 2,
+          "generation": 2,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Canva",
+          "selectedButtons": [
+            "startup:canva"
+          ],
+          "detailId": "startup:canva",
+          "source": "https://www.canva.com/newsroom/news/canva-team-update/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+          "panelOpen": true,
+          "modal": true,
+          "documentHasFocus": true,
+          "activeTag": "H2",
+          "activeId": "inspector-title",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<h2 id=\"inspector-title\" data-fi-title=\"\" tabindex=\"-1\">Canva</h2>",
+          "focusVisible": true,
+          "ownedAnimations": 1,
+          "visibility": "visible",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "overflow": 0,
+          "panelRect": {
+            "x": 8,
+            "y": 419.125,
+            "width": 374,
+            "height": 416.875,
+            "bottom": 836
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "desktop": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 3,
+          "generation": 3,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Canva",
+          "selectedButtons": [
+            "startup:canva"
+          ],
+          "detailId": "startup:canva",
+          "source": "https://www.canva.com/newsroom/news/canva-team-update/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "H2",
+          "activeId": "inspector-title",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<h2 id=\"inspector-title\" data-fi-title=\"\" tabindex=\"-1\">Canva</h2>",
+          "focusVisible": true,
+          "ownedAnimations": 1,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "crossedWhileClosing": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 4,
+          "generation": 5,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Canva",
+          "selectedButtons": [],
+          "detailId": "startup:canva",
+          "source": "https://www.canva.com/newsroom/news/canva-team-update/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:canva",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:canva\" aria-label=\"Inspect Canva\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 1,
+          "visibility": "visible",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "overflow": 0,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 146
+    },
+    {
+      "id": "I09-I10",
+      "name": "Live reduced-motion preference settles open/close and does not replay",
+      "environment": "real Chrome browser",
+      "preferenceMechanism": "CDP Emulation.setEmulatedMedia in the already mounted document; real MediaQueryList change events",
+      "observations": {
+        "initial": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": true,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 1,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Canva",
+          "selectedButtons": [
+            "startup:canva"
+          ],
+          "detailId": "startup:canva",
+          "source": "https://www.canva.com/newsroom/news/canva-team-update/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:canva",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:canva\" aria-label=\"Inspect Canva\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "ease"
+        },
+        "beforeOpenFlip": {
+          "selectedId": "person:melanie-perkins",
+          "intendedOpen": true,
+          "phase": "opening",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 1,
+          "paints": 19,
+          "generation": 3,
+          "value": 0.1004757967512846,
+          "velocity": 10.012095479637876,
+          "target": 1,
+          "destroyed": false,
+          "title": "Melanie Perkins",
+          "selectedButtons": [
+            "person:melanie-perkins"
+          ],
+          "detailId": "person:melanie-perkins",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "person:melanie-perkins",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"person:melanie-perkins\" aria-label=\"Inspect Melanie Perkins\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 1,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 715.7056884765625,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "afterOpenFlip": {
+          "selectedId": "person:melanie-perkins",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": true,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 20,
+          "generation": 3,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Melanie Perkins",
+          "selectedButtons": [
+            "person:melanie-perkins"
+          ],
+          "detailId": "person:melanie-perkins",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "person:melanie-perkins",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"person:melanie-perkins\" aria-label=\"Inspect Melanie Perkins\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "ease"
+        },
+        "restored": {
+          "selectedId": "person:melanie-perkins",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 20,
+          "generation": 3,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Melanie Perkins",
+          "selectedButtons": [
+            "person:melanie-perkins"
+          ],
+          "detailId": "person:melanie-perkins",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "person:melanie-perkins",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"person:melanie-perkins\" aria-label=\"Inspect Melanie Perkins\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "ease"
+        },
+        "beforeCloseFlip": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closing",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 1,
+          "paints": 22,
+          "generation": 4,
+          "value": 0.8995242032487154,
+          "velocity": -10.012095479637876,
+          "target": 0,
+          "destroyed": false,
+          "title": "Melanie Perkins",
+          "selectedButtons": [],
+          "detailId": "person:melanie-perkins",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "person:melanie-perkins",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"person:melanie-perkins\" aria-label=\"Inspect Melanie Perkins\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 725.2943115234375,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "afterCloseFlip": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": true,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 22,
+          "generation": 5,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Melanie Perkins",
+          "selectedButtons": [],
+          "detailId": "person:melanie-perkins",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "person:melanie-perkins",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"person:melanie-perkins\" aria-label=\"Inspect Melanie Perkins\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "ease"
+        }
+      },
+      "result": "pass",
+      "durationMs": 1160
+    },
+    {
+      "id": "I11",
+      "name": "Actual tab visibility transition",
+      "environment": "real Chrome browser",
+      "observations": {
+        "acceptance": "pass",
+        "hiddenState": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": true,
+          "pendingFrames": 0,
+          "paints": 4,
+          "generation": 2,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Canva",
+          "selectedButtons": [
+            "startup:canva"
+          ],
+          "detailId": "startup:canva",
+          "source": "https://www.canva.com/newsroom/news/canva-team-update/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": false,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:canva",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:canva\" aria-label=\"Inspect Canva\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "hidden",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "ease"
+        },
+        "restored": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 4,
+          "generation": 2,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Canva",
+          "selectedButtons": [
+            "startup:canva"
+          ],
+          "detailId": "startup:canva",
+          "source": "https://www.canva.com/newsroom/news/canva-team-update/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:canva",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:canva\" aria-label=\"Inspect Canva\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "trace": [
+          {
+            "state": "hidden",
+            "hidden": true,
+            "time": 119.29999999998836
+          },
+          {
+            "state": "visible",
+            "hidden": false,
+            "time": 185
+          }
+        ]
+      },
+      "result": "pass",
+      "durationMs": 510
+    },
+    {
+      "id": "I12",
+      "name": "Destroy, remount and stale destroy callback",
+      "environment": "real Chrome browser",
+      "observations": {
+        "destroyed": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "destroyed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 1,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": true
+        },
+        "afterEnvironmentChanges": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "destroyed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 1,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": true
+        },
+        "remounted": {
+          "selectedId": "startup:fusion-books",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [
+            "startup:fusion-books"
+          ],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 199.75,
+            "width": 536,
+            "height": 435.28125,
+            "bottom": 635.03125
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 819
+    },
+    {
+      "id": "I13",
+      "name": "Sibling ownership and host animation survive teardown",
+      "environment": "real Chrome browser",
+      "input": "Test host fixture with two independently authored ID scopes and a finite host-owned animation",
+      "observations": {
+        "during": {
+          "a": {
+            "selectedId": null,
+            "intendedOpen": false,
+            "phase": "destroyed",
+            "mode": "nonmodal",
+            "motionState": "ready",
+            "reduced": false,
+            "hidden": false,
+            "pendingFrames": 0,
+            "paints": 1,
+            "generation": 2,
+            "value": 0,
+            "velocity": 0,
+            "target": 1,
+            "destroyed": true
+          },
+          "b": {
+            "selectedId": "startup:canva",
+            "intendedOpen": true,
+            "phase": "opening",
+            "mode": "nonmodal",
+            "motionState": "ready",
+            "reduced": false,
+            "hidden": false,
+            "pendingFrames": 1,
+            "paints": 1,
+            "generation": 1,
+            "value": 0,
+            "velocity": 0,
+            "target": 1,
+            "destroyed": false
+          },
+          "hostPlayState": "running",
+          "color": "rgb(11, 22, 33)"
+        },
+        "after": {
+          "b": {
+            "selectedId": "startup:canva",
+            "intendedOpen": true,
+            "phase": "open",
+            "mode": "nonmodal",
+            "motionState": "ready",
+            "reduced": false,
+            "hidden": false,
+            "pendingFrames": 0,
+            "paints": 17,
+            "generation": 1,
+            "value": 1,
+            "velocity": 0,
+            "target": 1,
+            "destroyed": false
+          },
+          "panelOpen": true,
+          "hostPlayState": "running",
+          "uniqueIds": true
+        },
+        "restoredEasing": {
+          "value": "ease-in",
+          "priority": "important"
+        }
+      },
+      "result": "pass",
+      "durationMs": 463
+    },
+    {
+      "id": "I14",
+      "name": "CSS linear capability and explicit fallback preserve semantics",
+      "environment": "real Chrome browser",
+      "observations": {
+        "supported": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 0,
+          "generation": 0,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Entity details",
+          "selectedButtons": [],
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BODY",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<body><main><header><p class=\"fi-label\">STARTUP ATLAS / INTERACTION STUDY 02</p><h1>Keep the record in view.</h1><p class=\"fi-intro\">Select an entity. Its identity and evidence move into focus, with a quiet transition that keeps up as you change your mind.</p></header>\n<section data-fi-root=\"\" class=\"signal-app\" data-theme=\"light\" aria-label=\"Entity inspector specimen\" data-fi-phase=\"closed\" data-",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "fallback": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Canva",
+          "selectedButtons": [
+            "startup:canva"
+          ],
+          "detailId": "startup:canva",
+          "source": "https://www.canva.com/newsroom/news/canva-team-update/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:canva",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:canva\" aria-label=\"Inspect Canva\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "fallback",
+          "nativeLinear": true,
+          "actualEasing": "cubic-bezier(0.2, 0.8, 0.2, 1)"
+        },
+        "unsupportedPath": "Injected feature-test result; not an old browser compatibility claim"
+      },
+      "result": "pass",
+      "durationMs": 403
+    },
+    {
+      "id": "I15",
+      "name": "Failed optional motion and no-JavaScript preserve evidence",
+      "environment": "real Chrome browser",
+      "observations": {
+        "failedMotion": {
+          "selectedId": "startup:fusion-books",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "unavailable",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 1,
+          "generation": 2,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [
+            "startup:fusion-books"
+          ],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 281.75,
+            "width": 536,
+            "height": 435.28125,
+            "bottom": 717.03125
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "nativeLinear": true,
+          "actualEasing": "ease"
+        },
+        "noJavaScript": {
+          "staticVisible": true,
+          "records": 3,
+          "disabled": true,
+          "links": [
+            "https://www.canva.com/newsroom/news/canva-team-update/",
+            "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+            "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+            "https://castlemilk.github.io/startup-atlas/entity.html?id=person%3Amelanie-perkins",
+            "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+            "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books"
+          ],
+          "liveInspector": false
+        }
+      },
+      "result": "pass",
+      "durationMs": 221
+    },
+    {
+      "id": "I06-I17",
+      "name": "1440px light appearance, focus and overflow",
+      "environment": "real Chrome browser",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "input": "Native Enter, Tab, Shift+Tab, Escape",
+      "observations": {
+        "selected": {
+          "selectedId": "startup:fusion-books",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [
+            "startup:fusion-books"
+          ],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 435.28125,
+            "bottom": 741.03125
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "colors": {
+          "title": "rgb(17, 19, 24)",
+          "surface": "rgb(255, 255, 255)",
+          "muted": "rgb(98, 105, 117)",
+          "focus": "rgb(49, 94, 251)",
+          "selectedBorder": "rgb(49, 94, 251)",
+          "selectedSurface": "rgb(238, 242, 255)"
+        },
+        "contrastRatios": {
+          "title": 18.58123177089014,
+          "muted": 5.530922394785149,
+          "focus": 5.091301642618909,
+          "selected": 4.553146415709509
+        },
+        "screenshot": "1440-light-selected-focus.png",
+        "dismissed": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 625
+    },
+    {
+      "id": "I06-I17",
+      "name": "1440px dark appearance, focus and overflow",
+      "environment": "real Chrome browser",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "input": "Native Enter, Tab, Shift+Tab, Escape",
+      "observations": {
+        "selected": {
+          "selectedId": "startup:fusion-books",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [
+            "startup:fusion-books"
+          ],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 435.28125,
+            "bottom": 741.03125
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "colors": {
+          "title": "rgb(244, 246, 250)",
+          "surface": "rgb(23, 25, 30)",
+          "muted": "rgb(173, 182, 197)",
+          "focus": "rgb(181, 197, 255)",
+          "selectedBorder": "rgb(154, 175, 255)",
+          "selectedSurface": "rgb(36, 47, 80)"
+        },
+        "contrastRatios": {
+          "title": 16.25258782362367,
+          "muted": 8.603248696533445,
+          "focus": 10.3792713026904,
+          "selected": 6.228645459540863
+        },
+        "screenshot": "1440-dark-selected-focus.png",
+        "dismissed": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 663
+    },
+    {
+      "id": "I06-I17",
+      "name": "390px light appearance, focus and overflow",
+      "environment": "real Chrome browser",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "input": "Native Enter, Tab, Shift+Tab, Escape",
+      "observations": {
+        "selected": {
+          "selectedId": "startup:fusion-books",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [
+            "startup:fusion-books"
+          ],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": true,
+          "modal": true,
+          "documentHasFocus": true,
+          "activeTag": "H2",
+          "activeId": "inspector-title",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<h2 id=\"inspector-title\" data-fi-title=\"\" tabindex=\"-1\">Fusion Books</h2>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "overflow": 0,
+          "panelRect": {
+            "x": 8,
+            "y": 393.53125,
+            "width": 374,
+            "height": 442.46875,
+            "bottom": 836
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "colors": {
+          "title": "rgb(17, 19, 24)",
+          "surface": "rgb(255, 255, 255)",
+          "muted": "rgb(98, 105, 117)",
+          "focus": "rgb(49, 94, 251)",
+          "selectedBorder": "rgb(49, 94, 251)",
+          "selectedSurface": "rgb(238, 242, 255)"
+        },
+        "contrastRatios": {
+          "title": 18.58123177089014,
+          "muted": 5.530922394785149,
+          "focus": 5.091301642618909,
+          "selected": 4.553146415709509
+        },
+        "screenshot": "390-light-selected-focus.png",
+        "dismissed": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "overflow": 0,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 734
+    },
+    {
+      "id": "I06-I17",
+      "name": "390px dark appearance, focus and overflow",
+      "environment": "real Chrome browser",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "input": "Native Enter, Tab, Shift+Tab, Escape",
+      "observations": {
+        "selected": {
+          "selectedId": "startup:fusion-books",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [
+            "startup:fusion-books"
+          ],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": true,
+          "modal": true,
+          "documentHasFocus": true,
+          "activeTag": "H2",
+          "activeId": "inspector-title",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<h2 id=\"inspector-title\" data-fi-title=\"\" tabindex=\"-1\">Fusion Books</h2>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "overflow": 0,
+          "panelRect": {
+            "x": 8,
+            "y": 393.53125,
+            "width": 374,
+            "height": 442.46875,
+            "bottom": 836
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "colors": {
+          "title": "rgb(244, 246, 250)",
+          "surface": "rgb(23, 25, 30)",
+          "muted": "rgb(173, 182, 197)",
+          "focus": "rgb(181, 197, 255)",
+          "selectedBorder": "rgb(154, 175, 255)",
+          "selectedSurface": "rgb(36, 47, 80)"
+        },
+        "contrastRatios": {
+          "title": 16.25258782362367,
+          "muted": 8.603248696533445,
+          "focus": 10.3792713026904,
+          "selected": 6.228645459540863
+        },
+        "screenshot": "390-dark-selected-focus.png",
+        "dismissed": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "overflow": 0,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 705
+    },
+    {
+      "id": "I06-I17",
+      "name": "320px light appearance, focus and overflow",
+      "environment": "real Chrome browser",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "theme": "light",
+      "input": "Native Enter, Tab, Shift+Tab, Escape",
+      "observations": {
+        "selected": {
+          "selectedId": "startup:fusion-books",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [
+            "startup:fusion-books"
+          ],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": true,
+          "modal": true,
+          "documentHasFocus": true,
+          "activeTag": "H2",
+          "activeId": "inspector-title",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<h2 id=\"inspector-title\" data-fi-title=\"\" tabindex=\"-1\">Fusion Books</h2>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "overflow": 0,
+          "panelRect": {
+            "x": 8,
+            "y": 245.34375,
+            "width": 304,
+            "height": 486.65625,
+            "bottom": 732
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "colors": {
+          "title": "rgb(17, 19, 24)",
+          "surface": "rgb(255, 255, 255)",
+          "muted": "rgb(98, 105, 117)",
+          "focus": "rgb(49, 94, 251)",
+          "selectedBorder": "rgb(49, 94, 251)",
+          "selectedSurface": "rgb(238, 242, 255)"
+        },
+        "contrastRatios": {
+          "title": 18.58123177089014,
+          "muted": 5.530922394785149,
+          "focus": 5.091301642618909,
+          "selected": 4.553146415709509
+        },
+        "screenshot": "320-light-selected-focus.png",
+        "dismissed": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "overflow": 0,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 741
+    },
+    {
+      "id": "I06-I17",
+      "name": "320px dark appearance, focus and overflow",
+      "environment": "real Chrome browser",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "theme": "dark",
+      "input": "Native Enter, Tab, Shift+Tab, Escape",
+      "observations": {
+        "selected": {
+          "selectedId": "startup:fusion-books",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [
+            "startup:fusion-books"
+          ],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": true,
+          "modal": true,
+          "documentHasFocus": true,
+          "activeTag": "H2",
+          "activeId": "inspector-title",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<h2 id=\"inspector-title\" data-fi-title=\"\" tabindex=\"-1\">Fusion Books</h2>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "overflow": 0,
+          "panelRect": {
+            "x": 8,
+            "y": 245.34375,
+            "width": 304,
+            "height": 486.65625,
+            "bottom": 732
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "colors": {
+          "title": "rgb(244, 246, 250)",
+          "surface": "rgb(23, 25, 30)",
+          "muted": "rgb(173, 182, 197)",
+          "focus": "rgb(181, 197, 255)",
+          "selectedBorder": "rgb(154, 175, 255)",
+          "selectedSurface": "rgb(36, 47, 80)"
+        },
+        "contrastRatios": {
+          "title": 16.25258782362367,
+          "muted": 8.603248696533445,
+          "focus": 10.3792713026904,
+          "selected": 6.228645459540863
+        },
+        "screenshot": "320-dark-selected-focus.png",
+        "dismissed": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false,
+          "title": "Fusion Books",
+          "selectedButtons": [],
+          "detailId": "startup:fusion-books",
+          "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books",
+          "panelOpen": false,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:fusion-books",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:fusion-books\" aria-label=\"Inspect Fusion Books\" aria-expanded=\"false\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": true,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 320,
+            "height": 740
+          },
+          "overflow": 0,
+          "panelRect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "bottom": 0
+          },
+          "closeRect": {
+            "width": 0,
+            "height": 0
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 727
+    },
+    {
+      "id": "I16-I18",
+      "name": "Settled inspector has no continuing frame or animation work",
+      "environment": "real Chrome browser",
+      "observations": {
+        "windowMs": 600,
+        "before": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Canva",
+          "selectedButtons": [
+            "startup:canva"
+          ],
+          "detailId": "startup:canva",
+          "source": "https://www.canva.com/newsroom/news/canva-team-update/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:canva",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:canva\" aria-label=\"Inspect Canva\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        },
+        "after": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 17,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false,
+          "title": "Canva",
+          "selectedButtons": [
+            "startup:canva"
+          ],
+          "detailId": "startup:canva",
+          "source": "https://www.canva.com/newsroom/news/canva-team-update/",
+          "profile": "https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva",
+          "panelOpen": true,
+          "modal": false,
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": "startup:canva",
+          "activeInPanel": false,
+          "activeIsClose": false,
+          "activeIsFallback": false,
+          "activeIsSource": false,
+          "activeIsProfile": false,
+          "focused": "<button type=\"button\" data-fi-select=\"startup:canva\" aria-label=\"Inspect Canva\" aria-expanded=\"true\" aria-controls=\"inspector-panel\">Inspect</button>",
+          "focusVisible": false,
+          "ownedAnimations": 0,
+          "visibility": "visible",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "overflow": -15,
+          "panelRect": {
+            "x": 726.5,
+            "y": 305.75,
+            "width": 536,
+            "height": 409.6875,
+            "bottom": 715.4375
+          },
+          "closeRect": {
+            "width": 61.46875,
+            "height": 44
+          },
+          "easing": "linear",
+          "nativeLinear": true,
+          "actualEasing": "linear(0 0%, 0.0285 2.5%, 0.0963 5%, 0.184 7.5%, 0.279 10%, 0.3732 12.5%, 0.4621 15%, 0.5431 17.5%, 0.6152 20%, 0.6783 22.5%, 0.7326 25%, 0.7789 27.5%, 0.8181 30%, 0.8509 32.5%, 0.8782 35%, 0.9008 37.5%, 0.9195 40%, 0.9348 42.5%, 0.9473 45%, 0.9575 47.5%, 0.9658 50%, 0.9725 52.5%, 0.978 55%, 0.9823 57.5%, 0.9859 60%, 0.9887 62.5%, 0.991 65%, 0.9928 67.5%, 0.9943 70%, 0.9955 72.5%, 0.9964 75%, 0.9971 77.5%, 0.9977 80%, 0.9982 82.5%, 0.9986 85%, 0.9989 87.5%, 0.9991 90%, 0.9993 92.5%, 0.9994 95%, 0.9996 97.5%, 1 100%)"
+        }
+      },
+      "result": "pass",
+      "durationMs": 1047
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "no-javascript-desktop.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "reduced": false
+    },
+    {
+      "file": "1440-light-selected-focus.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "reduced": false
+    },
+    {
+      "file": "1440-dark-selected-focus.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "reduced": false
+    },
+    {
+      "file": "390-light-selected-focus.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "reduced": false
+    },
+    {
+      "file": "390-dark-selected-focus.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "reduced": false
+    },
+    {
+      "file": "320-light-selected-focus.png",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "theme": "light",
+      "reduced": false
+    },
+    {
+      "file": "320-dark-selected-focus.png",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "theme": "dark",
+      "reduced": false
+    }
+  ],
+  "accessibilityTrees": [
+    "no-javascript-desktop.ax.json",
+    "1440-light-selected-focus.ax.json",
+    "1440-dark-selected-focus.ax.json",
+    "390-light-selected-focus.ax.json",
+    "390-dark-selected-focus.ax.json",
+    "320-light-selected-focus.ax.json",
+    "320-dark-selected-focus.ax.json"
+  ],
+  "environmentTransitions": [
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 1440,
+        "height": 1000
+      },
+      "observed": {
+        "width": 1440,
+        "height": 1000,
+        "narrow": false,
+        "controller": null,
+        "panelOpen": false,
+        "modal": false
+      },
+      "durationMs": 59
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": false,
+        "hasAudit": false,
+        "reducedEvents": 0
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 0,
+        "controller": null
+      },
+      "durationMs": 12
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 390,
+        "height": 844
+      },
+      "observed": {
+        "width": 390,
+        "height": 844,
+        "narrow": true,
+        "controller": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 2,
+          "generation": 2,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false
+        },
+        "panelOpen": true,
+        "modal": true
+      },
+      "durationMs": 14
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 1440,
+        "height": 1000
+      },
+      "observed": {
+        "width": 1440,
+        "height": 1000,
+        "narrow": false,
+        "controller": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 3,
+          "generation": 3,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false
+        },
+        "panelOpen": true,
+        "modal": false
+      },
+      "durationMs": 12
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 390,
+        "height": 844
+      },
+      "observed": {
+        "width": 390,
+        "height": 844,
+        "narrow": true,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 4,
+          "generation": 5,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        },
+        "panelOpen": false,
+        "modal": false
+      },
+      "durationMs": 40
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 1440,
+        "height": 1000
+      },
+      "observed": {
+        "width": 1440,
+        "height": 1000,
+        "narrow": false,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 4,
+          "generation": 6,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        },
+        "panelOpen": false,
+        "modal": false
+      },
+      "durationMs": 9
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "reduce",
+      "before": {
+        "matches": false,
+        "hasAudit": true,
+        "reducedEvents": 0
+      },
+      "observed": {
+        "matches": true,
+        "reducedEvents": 1,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": true,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 4,
+          "generation": 6,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        }
+      },
+      "durationMs": 35
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": true,
+        "hasAudit": true,
+        "reducedEvents": 0
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 1,
+        "controller": {
+          "selectedId": "startup:canva",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 1,
+          "generation": 1,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false
+        }
+      },
+      "durationMs": 38
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "reduce",
+      "before": {
+        "matches": false,
+        "hasAudit": true,
+        "reducedEvents": 1
+      },
+      "observed": {
+        "matches": true,
+        "reducedEvents": 2,
+        "controller": {
+          "selectedId": "person:melanie-perkins",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": true,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 20,
+          "generation": 3,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false
+        }
+      },
+      "durationMs": 35
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": true,
+        "hasAudit": true,
+        "reducedEvents": 2
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 3,
+        "controller": {
+          "selectedId": "person:melanie-perkins",
+          "intendedOpen": true,
+          "phase": "open",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 20,
+          "generation": 3,
+          "value": 1,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": false
+        }
+      },
+      "durationMs": 32
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "reduce",
+      "before": {
+        "matches": false,
+        "hasAudit": true,
+        "reducedEvents": 3
+      },
+      "observed": {
+        "matches": true,
+        "reducedEvents": 4,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": true,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 22,
+          "generation": 5,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        }
+      },
+      "durationMs": 10
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": true,
+        "hasAudit": true,
+        "reducedEvents": 4
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 5,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 22,
+          "generation": 5,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        }
+      },
+      "durationMs": 39
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "reduce",
+      "before": {
+        "matches": false,
+        "hasAudit": true,
+        "reducedEvents": 0
+      },
+      "observed": {
+        "matches": true,
+        "reducedEvents": 1,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "destroyed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": true,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 1,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": true
+        }
+      },
+      "durationMs": 37
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": true,
+        "hasAudit": true,
+        "reducedEvents": 1
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 2,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "destroyed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 1,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 1,
+          "destroyed": true
+        }
+      },
+      "durationMs": 42
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 1440,
+        "height": 1000
+      },
+      "observed": {
+        "width": 1440,
+        "height": 1000,
+        "narrow": false,
+        "controller": null,
+        "panelOpen": false,
+        "modal": false
+      },
+      "durationMs": 2
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": false,
+        "hasAudit": true,
+        "reducedEvents": 0
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 0,
+        "controller": null
+      },
+      "durationMs": 1
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 1440,
+        "height": 1000
+      },
+      "observed": {
+        "width": 1440,
+        "height": 1000,
+        "narrow": false,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        },
+        "panelOpen": false,
+        "modal": false
+      },
+      "durationMs": 2
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": false,
+        "hasAudit": true,
+        "reducedEvents": 0
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 0,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        }
+      },
+      "durationMs": 1
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 390,
+        "height": 844
+      },
+      "observed": {
+        "width": 390,
+        "height": 844,
+        "narrow": true,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 3,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        },
+        "panelOpen": false,
+        "modal": false
+      },
+      "durationMs": 40
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": false,
+        "hasAudit": true,
+        "reducedEvents": 0
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 0,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 3,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        }
+      },
+      "durationMs": 14
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 390,
+        "height": 844
+      },
+      "observed": {
+        "width": 390,
+        "height": 844,
+        "narrow": true,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        },
+        "panelOpen": false,
+        "modal": false
+      },
+      "durationMs": 3
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": false,
+        "hasAudit": true,
+        "reducedEvents": 0
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 0,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        }
+      },
+      "durationMs": 1
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 320,
+        "height": 740
+      },
+      "observed": {
+        "width": 320,
+        "height": 740,
+        "narrow": true,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        },
+        "panelOpen": false,
+        "modal": false
+      },
+      "durationMs": 3
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": false,
+        "hasAudit": true,
+        "reducedEvents": 0
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 0,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        }
+      },
+      "durationMs": 1
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 320,
+        "height": 740
+      },
+      "observed": {
+        "width": 320,
+        "height": 740,
+        "narrow": true,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        },
+        "panelOpen": false,
+        "modal": false
+      },
+      "durationMs": 1
+    },
+    {
+      "kind": "reduced-motion",
+      "requested": "no-preference",
+      "before": {
+        "matches": false,
+        "hasAudit": true,
+        "reducedEvents": 0
+      },
+      "observed": {
+        "matches": false,
+        "reducedEvents": 0,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "modal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 2,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        }
+      },
+      "durationMs": 1
+    },
+    {
+      "kind": "viewport",
+      "requested": {
+        "width": 1440,
+        "height": 1000
+      },
+      "observed": {
+        "width": 1440,
+        "height": 1000,
+        "narrow": false,
+        "controller": {
+          "selectedId": null,
+          "intendedOpen": false,
+          "phase": "closed",
+          "mode": "nonmodal",
+          "motionState": "ready",
+          "reduced": false,
+          "hidden": false,
+          "pendingFrames": 0,
+          "paints": 33,
+          "generation": 3,
+          "value": 0,
+          "velocity": 0,
+          "target": 0,
+          "destroyed": false
+        },
+        "panelOpen": false,
+        "modal": false
+      },
+      "durationMs": 53
+    }
+  ],
+  "modalFocusTraces": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "steps": [
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "source",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a href=\"https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/\">Source recorded for Fusion Books</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "source",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a href=\"https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/\">Source recorded for Fusion Books</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Shift+Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        }
+      ],
+      "backgroundFocusAttempt": {
+        "sameActive": true,
+        "activeInPanel": true,
+        "documentHasFocus": true,
+        "activeTag": "A",
+        "backgroundFocused": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "steps": [
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "source",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a href=\"https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/\">Source recorded for Fusion Books</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "source",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a href=\"https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/\">Source recorded for Fusion Books</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Shift+Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        }
+      ],
+      "backgroundFocusAttempt": {
+        "sameActive": true,
+        "activeInPanel": true,
+        "documentHasFocus": true,
+        "activeTag": "A",
+        "backgroundFocused": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "theme": "light",
+      "steps": [
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "source",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a href=\"https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/\">Source recorded for Fusion Books</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "source",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a href=\"https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/\">Source recorded for Fusion Books</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Shift+Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        }
+      ],
+      "backgroundFocusAttempt": {
+        "sameActive": true,
+        "activeInPanel": true,
+        "documentHasFocus": true,
+        "activeTag": "A",
+        "backgroundFocused": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "theme": "dark",
+      "steps": [
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "source",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a href=\"https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/\">Source recorded for Fusion Books</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "source",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a href=\"https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/\">Source recorded for Fusion Books</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        },
+        {
+          "key": "Tab",
+          "purpose": "cycle",
+          "target": "close",
+          "documentHasFocus": true,
+          "activeTag": "BUTTON",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<button type=\"button\" data-fi-close=\"\" aria-label=\"Close entity details\">Close</button>"
+        },
+        {
+          "key": "Shift+Tab",
+          "purpose": "cycle",
+          "target": "profile",
+          "documentHasFocus": true,
+          "activeTag": "A",
+          "activeId": "",
+          "activeSelect": null,
+          "activeInPanel": true,
+          "modal": true,
+          "focused": "<a class=\"fi-profile\" href=\"https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Afusion-books\">Open Fusion Books profile →</a>"
+        }
+      ],
+      "backgroundFocusAttempt": {
+        "sameActive": true,
+        "activeInPanel": true,
+        "documentHasFocus": true,
+        "activeTag": "A",
+        "backgroundFocused": false
+      }
+    }
+  ],
+  "sourceFiles": {
+    "index.html": {
+      "bytes": 8192,
+      "sha256": "09aab39ca016a4b2eb5cae24ed78ed857694a4a554cba9148ee05cd6c2d0620f"
+    },
+    "entry.js": {
+      "bytes": 2871,
+      "sha256": "d3d3eaac3411e15d0c76616989dd2fcb18397ff13c8a3089af1f1e6d92e02847"
+    },
+    "inspector.js": {
+      "bytes": 13925,
+      "sha256": "a1c12c44f2d677094031c192e0824139150d8474c45bda9132fca686222aaf8b"
+    },
+    "inspector.css": {
+      "bytes": 7250,
+      "sha256": "4c6b48ce1cffd9d22d3dbbff7af70ccce8326e14ec221adf60075eb69c35d4e6"
+    },
+    "page.css": {
+      "bytes": 2842,
+      "sha256": "dd5a3c11acf58b9f89413147b7407df911d1b27e326b9f2a6f87365e18705117"
+    },
+    "fixtures.json": {
+      "bytes": 1033,
+      "sha256": "0dab4ab5540ec60f12bb89c4ff5b253f41df1ca28a066f059d45f82a271152f7"
+    },
+    "vendor/usefluid-motion-0.1.2/manifest.json": {
+      "bytes": 3656,
+      "sha256": "58263aba3f308b30d8c0af04c6aaa0d16d4dac10d56759179840d27fa53c274e"
+    },
+    "web/design-tokens.css": {
+      "bytes": 3219,
+      "sha256": "c8e402037bb6a04f255909f418ca01c155f32bd8378b11040c16644b2e19be44"
+    },
+    "web/design-aesthetic-tokens.css": {
+      "bytes": 3197,
+      "sha256": "3fc03959dce24e270b37eec0c0ec346c02722ed37190bec5cd5f12f0159529fc"
+    }
+  },
+  "consoleErrors": [],
+  "exceptions": [],
+  "requests": [
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=1",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=2",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=3",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=4",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=5",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=6",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=7",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=8",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=9",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=10",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?linear=off&acceptanceRun=11",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?motion=fail&acceptanceRun=12",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=13",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=14",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=15",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=16",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=17",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=18",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=19",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/index.html?acceptanceRun=20",
+    "http://127.0.0.1:38039/web/design-tokens.css",
+    "http://127.0.0.1:38039/web/design-aesthetic-tokens.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/page.css",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/entry.js",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-mono-variable.woff2",
+    "http://127.0.0.1:38039/web/assets/fonts/geist-sans-variable.woff2",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/inspector.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/index.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/spring.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/ticker.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/path.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/morph.js",
+    "http://127.0.0.1:38039/specimens/fluid-inspector/vendor/usefluid-motion-0.1.2/shapes.js"
+  ],
+  "limitations": [],
+  "vendorIntegrity": {
+    "package": "@usefluid/motion",
+    "version": "0.1.2",
+    "filesVerified": 14,
+    "tarballIntegrity": "sha512-KADMAzh/A21PNuzIfaLyqku5bE24nTQQCVaBCBLrha3DRAjoiVxBPFGswhfb/ksY9hCuyb4+vwYS9kGqSsNEOw=="
+  },
+  "status": "passed",
+  "finishedAt": "2026-11-17T12:57:19.577Z"
+}

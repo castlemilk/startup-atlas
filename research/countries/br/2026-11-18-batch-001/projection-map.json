@@ -1,0 +1,3483 @@
+{
+  "target_schema": "backend/hosted/src/startup-record.mjs@ff4d51cf729d6a654787e9a1db63967b292df8c9",
+  "null_policy": "Omit unsupported nulls from projection; preserve null and reason in dossiers and claims.",
+  "mappings": [
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/name",
+      "claim_ids": [
+        "br-b001-alice-001"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/website",
+      "claim_ids": [
+        "br-b001-alice-002"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/description",
+      "claim_ids": [
+        "br-b001-alice-003"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-alice-004"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-alice-005"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/founded_year",
+      "claim_ids": [
+        "br-b001-alice-005"
+      ],
+      "note": "Year extracted from explicitly sourced date; full precision retained in dossier."
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-alice-006"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-alice-007"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/founders/0/name",
+      "claim_ids": [
+        "br-b001-alice-008"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-alice-008"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/founders/1/name",
+      "claim_ids": [
+        "br-b001-alice-009"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-alice-009"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/founders/2/name",
+      "claim_ids": [
+        "br-b001-alice-010"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/profile_facts/6/value",
+      "claim_ids": [
+        "br-b001-alice-010"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-alice-011"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-alice-011",
+        "br-b001-alice-012",
+        "br-b001-alice-013",
+        "br-b001-alice-014"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-alice-014"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-alice-014"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/articles/0/title",
+      "claim_ids": [
+        "br-b001-alice-016"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/articles/0/url",
+      "claim_ids": [
+        "br-b001-alice-016"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/articles/0/kind",
+      "claim_ids": [
+        "br-b001-alice-016"
+      ]
+    },
+    {
+      "record_index": 0,
+      "json_pointer": "/startups/0/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-alice-016"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/name",
+      "claim_ids": [
+        "br-b001-asaas-001"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/website",
+      "claim_ids": [
+        "br-b001-asaas-002"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/description",
+      "claim_ids": [
+        "br-b001-asaas-003"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-asaas-004"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-asaas-005"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-asaas-006"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/founders/0/name",
+      "claim_ids": [
+        "br-b001-asaas-007"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-asaas-007"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/founders/1/name",
+      "claim_ids": [
+        "br-b001-asaas-008"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-asaas-008"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-asaas-009"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-asaas-010"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-asaas-010",
+        "br-b001-asaas-011",
+        "br-b001-asaas-012",
+        "br-b001-asaas-013"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-asaas-012"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-asaas-013"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-asaas-013"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/articles/0/title",
+      "claim_ids": [
+        "br-b001-asaas-018"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/articles/0/url",
+      "claim_ids": [
+        "br-b001-asaas-018"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/articles/0/kind",
+      "claim_ids": [
+        "br-b001-asaas-018"
+      ]
+    },
+    {
+      "record_index": 1,
+      "json_pointer": "/startups/1/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-asaas-018"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/name",
+      "claim_ids": [
+        "br-b001-beep-saude-001"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/website",
+      "claim_ids": [
+        "br-b001-beep-saude-002"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/description",
+      "claim_ids": [
+        "br-b001-beep-saude-004"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-beep-saude-003"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-beep-saude-005"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-beep-saude-006"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/founded_year",
+      "claim_ids": [
+        "br-b001-beep-saude-006"
+      ],
+      "note": "Year extracted from explicitly sourced date; full precision retained in dossier."
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-beep-saude-007"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-beep-saude-008"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/founders/0/name",
+      "claim_ids": [
+        "br-b001-beep-saude-009"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-beep-saude-009"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-beep-saude-010"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-beep-saude-010",
+        "br-b001-beep-saude-011",
+        "br-b001-beep-saude-012",
+        "br-b001-beep-saude-013"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-beep-saude-012"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "br-b001-beep-saude-013"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/articles/0/title",
+      "claim_ids": [
+        "br-b001-beep-saude-017"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/articles/0/url",
+      "claim_ids": [
+        "br-b001-beep-saude-017"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/articles/0/kind",
+      "claim_ids": [
+        "br-b001-beep-saude-017"
+      ]
+    },
+    {
+      "record_index": 2,
+      "json_pointer": "/startups/2/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-beep-saude-017"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/name",
+      "claim_ids": [
+        "br-b001-cloudwalk-001"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/website",
+      "claim_ids": [
+        "br-b001-cloudwalk-002"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/description",
+      "claim_ids": [
+        "br-b001-cloudwalk-003"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-cloudwalk-004"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-cloudwalk-005"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-cloudwalk-006"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/founders/0/name",
+      "claim_ids": [
+        "br-b001-cloudwalk-007"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-cloudwalk-007"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-cloudwalk-008"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-cloudwalk-008",
+        "br-b001-cloudwalk-009",
+        "br-b001-cloudwalk-010",
+        "br-b001-cloudwalk-011"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-cloudwalk-010"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-cloudwalk-011"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-cloudwalk-011"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/articles/0/title",
+      "claim_ids": [
+        "br-b001-cloudwalk-017"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/articles/0/url",
+      "claim_ids": [
+        "br-b001-cloudwalk-017"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/articles/0/kind",
+      "claim_ids": [
+        "br-b001-cloudwalk-017"
+      ]
+    },
+    {
+      "record_index": 3,
+      "json_pointer": "/startups/3/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-cloudwalk-017"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/name",
+      "claim_ids": [
+        "br-b001-conta-azul-001"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/website",
+      "claim_ids": [
+        "br-b001-conta-azul-002"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/description",
+      "claim_ids": [
+        "br-b001-conta-azul-003"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-conta-azul-004"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-conta-azul-005"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/founders/0/name",
+      "claim_ids": [
+        "br-b001-conta-azul-006"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-conta-azul-006"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/founders/1/name",
+      "claim_ids": [
+        "br-b001-conta-azul-007"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-conta-azul-007"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/founders/2/name",
+      "claim_ids": [
+        "br-b001-conta-azul-008"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-conta-azul-008"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-conta-azul-009"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/profile_facts/6/value",
+      "claim_ids": [
+        "br-b001-conta-azul-010"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-conta-azul-011"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-conta-azul-011",
+        "br-b001-conta-azul-012",
+        "br-b001-conta-azul-013",
+        "br-b001-conta-azul-014"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-conta-azul-014"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-conta-azul-014"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/articles/0/title",
+      "claim_ids": [
+        "br-b001-conta-azul-016"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/articles/0/url",
+      "claim_ids": [
+        "br-b001-conta-azul-016"
+      ]
+    },
+    {
+      "record_index": 4,
+      "json_pointer": "/startups/4/articles/0/kind",
+      "claim_ids": [
+        "br-b001-conta-azul-016"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/name",
+      "claim_ids": [
+        "br-b001-cora-001"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/website",
+      "claim_ids": [
+        "br-b001-cora-002"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/description",
+      "claim_ids": [
+        "br-b001-cora-003"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-cora-004"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-cora-005"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-cora-006"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/founders/0/name",
+      "claim_ids": [
+        "br-b001-cora-007"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-cora-007"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/founders/1/name",
+      "claim_ids": [
+        "br-b001-cora-008"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-cora-008"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/founders/2/name",
+      "claim_ids": [
+        "br-b001-cora-009"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-cora-009"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/profile_facts/6/value",
+      "claim_ids": [
+        "br-b001-cora-010"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/profile_facts/7/value",
+      "claim_ids": [
+        "br-b001-cora-011"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-cora-012"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-cora-012",
+        "br-b001-cora-013",
+        "br-b001-cora-014",
+        "br-b001-cora-015"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-cora-014"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-cora-015"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-cora-015"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/articles/0/title",
+      "claim_ids": [
+        "br-b001-cora-019"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/articles/0/url",
+      "claim_ids": [
+        "br-b001-cora-019"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/articles/0/kind",
+      "claim_ids": [
+        "br-b001-cora-019"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-cora-019"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/funding_rounds/1/stage",
+      "claim_ids": [
+        "br-b001-cora-020"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/funding_rounds/1/note",
+      "claim_ids": [
+        "br-b001-cora-020",
+        "br-b001-cora-021",
+        "br-b001-cora-022",
+        "br-b001-cora-023"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/funding_rounds/1/announced_on",
+      "claim_ids": [
+        "br-b001-cora-022"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/funding_rounds/1/amount",
+      "claim_ids": [
+        "br-b001-cora-023"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/funding_rounds/1/currency",
+      "claim_ids": [
+        "br-b001-cora-023"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/articles/1/title",
+      "claim_ids": [
+        "br-b001-cora-030"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/articles/1/url",
+      "claim_ids": [
+        "br-b001-cora-030"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/articles/1/kind",
+      "claim_ids": [
+        "br-b001-cora-030"
+      ]
+    },
+    {
+      "record_index": 5,
+      "json_pointer": "/startups/5/articles/1/published_on",
+      "claim_ids": [
+        "br-b001-cora-030"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/name",
+      "claim_ids": [
+        "br-b001-creditas-001"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/website",
+      "claim_ids": [
+        "br-b001-creditas-002"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/description",
+      "claim_ids": [
+        "br-b001-creditas-004"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-creditas-003"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-creditas-005"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-creditas-006"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/founded_year",
+      "claim_ids": [
+        "br-b001-creditas-006"
+      ],
+      "note": "Year extracted from explicitly sourced date; full precision retained in dossier."
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/founders/0/name",
+      "claim_ids": [
+        "br-b001-creditas-007"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-creditas-007"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-creditas-008"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-creditas-009"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-creditas-010"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-creditas-010",
+        "br-b001-creditas-011",
+        "br-b001-creditas-012",
+        "br-b001-creditas-013"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-creditas-012"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-creditas-013"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-creditas-013"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/articles/0/title",
+      "claim_ids": [
+        "br-b001-creditas-025"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/articles/0/url",
+      "claim_ids": [
+        "br-b001-creditas-025"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/articles/0/kind",
+      "claim_ids": [
+        "br-b001-creditas-025"
+      ]
+    },
+    {
+      "record_index": 6,
+      "json_pointer": "/startups/6/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-creditas-025"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/name",
+      "claim_ids": [
+        "br-b001-cromai-001"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/website",
+      "claim_ids": [
+        "br-b001-cromai-002"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/description",
+      "claim_ids": [
+        "br-b001-cromai-003"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-cromai-004"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-cromai-005"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-cromai-006"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/founders/0/name",
+      "claim_ids": [
+        "br-b001-cromai-007"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-cromai-007"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-cromai-008"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-cromai-008",
+        "br-b001-cromai-009",
+        "br-b001-cromai-010",
+        "br-b001-cromai-011"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/funding_rounds/0/amount_text",
+      "claim_ids": [
+        "br-b001-cromai-011"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/articles/0/title",
+      "claim_ids": [
+        "br-b001-cromai-015"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/articles/0/url",
+      "claim_ids": [
+        "br-b001-cromai-015"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/articles/0/kind",
+      "claim_ids": [
+        "br-b001-cromai-015"
+      ]
+    },
+    {
+      "record_index": 7,
+      "json_pointer": "/startups/7/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-cromai-015"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/name",
+      "claim_ids": [
+        "br-b001-dock-001"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/website",
+      "claim_ids": [
+        "br-b001-dock-002"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/description",
+      "claim_ids": [
+        "br-b001-dock-004"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-dock-003"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-dock-005"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-dock-006"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-dock-007"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-dock-008"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/founders/0/name",
+      "claim_ids": [
+        "br-b001-dock-009"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-dock-009"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-dock-010"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-dock-010",
+        "br-b001-dock-011",
+        "br-b001-dock-012",
+        "br-b001-dock-013"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-dock-012"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-dock-013"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-dock-013"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/articles/0/title",
+      "claim_ids": [
+        "br-b001-dock-019"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/articles/0/url",
+      "claim_ids": [
+        "br-b001-dock-019"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/articles/0/kind",
+      "claim_ids": [
+        "br-b001-dock-019"
+      ]
+    },
+    {
+      "record_index": 8,
+      "json_pointer": "/startups/8/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-dock-019"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/name",
+      "claim_ids": [
+        "br-b001-ebanx-001"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/website",
+      "claim_ids": [
+        "br-b001-ebanx-002"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/description",
+      "claim_ids": [
+        "br-b001-ebanx-003"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-ebanx-004"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-ebanx-005"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/founded_year",
+      "claim_ids": [
+        "br-b001-ebanx-005"
+      ],
+      "note": "Year extracted from explicitly sourced date; full precision retained in dossier."
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/founders/0/name",
+      "claim_ids": [
+        "br-b001-ebanx-006"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-ebanx-006"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/founders/1/name",
+      "claim_ids": [
+        "br-b001-ebanx-007"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-ebanx-007"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/founders/2/name",
+      "claim_ids": [
+        "br-b001-ebanx-008"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-ebanx-008"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-ebanx-009"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/profile_facts/6/value",
+      "claim_ids": [
+        "br-b001-ebanx-010"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/profile_facts/7/value",
+      "claim_ids": [
+        "br-b001-ebanx-011"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-ebanx-012"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-ebanx-012",
+        "br-b001-ebanx-013",
+        "br-b001-ebanx-014",
+        "br-b001-ebanx-015"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-ebanx-014"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-ebanx-015"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-ebanx-015"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/articles/0/title",
+      "claim_ids": [
+        "br-b001-ebanx-017"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/articles/0/url",
+      "claim_ids": [
+        "br-b001-ebanx-017"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/articles/0/kind",
+      "claim_ids": [
+        "br-b001-ebanx-017"
+      ]
+    },
+    {
+      "record_index": 9,
+      "json_pointer": "/startups/9/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-ebanx-017"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/name",
+      "claim_ids": [
+        "br-b001-loft-001"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/website",
+      "claim_ids": [
+        "br-b001-loft-002"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/description",
+      "claim_ids": [
+        "br-b001-loft-003"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-loft-004"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-loft-005"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/founded_year",
+      "claim_ids": [
+        "br-b001-loft-005"
+      ],
+      "note": "Year extracted from explicitly sourced date; full precision retained in dossier."
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/founders/0/name",
+      "claim_ids": [
+        "br-b001-loft-006"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-loft-006"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/founders/1/name",
+      "claim_ids": [
+        "br-b001-loft-007"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-loft-007"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-loft-008"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-loft-009"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-loft-010"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-loft-010",
+        "br-b001-loft-011",
+        "br-b001-loft-012",
+        "br-b001-loft-013"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-loft-012"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-loft-013"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-loft-013"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/articles/0/title",
+      "claim_ids": [
+        "br-b001-loft-018"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/articles/0/url",
+      "claim_ids": [
+        "br-b001-loft-018"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/articles/0/kind",
+      "claim_ids": [
+        "br-b001-loft-018"
+      ]
+    },
+    {
+      "record_index": 10,
+      "json_pointer": "/startups/10/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-loft-018"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/name",
+      "claim_ids": [
+        "br-b001-loggi-001"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/website",
+      "claim_ids": [
+        "br-b001-loggi-002"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/description",
+      "claim_ids": [
+        "br-b001-loggi-003"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-loggi-004"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-loggi-005"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/founders/0/name",
+      "claim_ids": [
+        "br-b001-loggi-006"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-loggi-006"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/founders/1/name",
+      "claim_ids": [
+        "br-b001-loggi-007"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-loggi-007"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-loggi-008"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-loggi-009"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-loggi-010"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-loggi-010",
+        "br-b001-loggi-011",
+        "br-b001-loggi-012",
+        "br-b001-loggi-013"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-loggi-012"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-loggi-013"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-loggi-013"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/articles/0/title",
+      "claim_ids": [
+        "br-b001-loggi-021"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/articles/0/url",
+      "claim_ids": [
+        "br-b001-loggi-021"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/articles/0/kind",
+      "claim_ids": [
+        "br-b001-loggi-021"
+      ]
+    },
+    {
+      "record_index": 11,
+      "json_pointer": "/startups/11/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-loggi-021"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/name",
+      "claim_ids": [
+        "br-b001-madeiramadeira-001"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/website",
+      "claim_ids": [
+        "br-b001-madeiramadeira-002"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/description",
+      "claim_ids": [
+        "br-b001-madeiramadeira-003"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-madeiramadeira-004"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-madeiramadeira-005"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/founded_year",
+      "claim_ids": [
+        "br-b001-madeiramadeira-005"
+      ],
+      "note": "Year extracted from explicitly sourced date; full precision retained in dossier."
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/founders/0/name",
+      "claim_ids": [
+        "br-b001-madeiramadeira-006"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-madeiramadeira-006"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/founders/1/name",
+      "claim_ids": [
+        "br-b001-madeiramadeira-007"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-madeiramadeira-007"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/founders/2/name",
+      "claim_ids": [
+        "br-b001-madeiramadeira-008"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-madeiramadeira-008"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-madeiramadeira-009"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/profile_facts/6/value",
+      "claim_ids": [
+        "br-b001-madeiramadeira-010"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-madeiramadeira-011"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-madeiramadeira-011",
+        "br-b001-madeiramadeira-012",
+        "br-b001-madeiramadeira-013",
+        "br-b001-madeiramadeira-014"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-madeiramadeira-013"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-madeiramadeira-014"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-madeiramadeira-014"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/articles/0/title",
+      "claim_ids": [
+        "br-b001-madeiramadeira-022"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/articles/0/url",
+      "claim_ids": [
+        "br-b001-madeiramadeira-022"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/articles/0/kind",
+      "claim_ids": [
+        "br-b001-madeiramadeira-022"
+      ]
+    },
+    {
+      "record_index": 12,
+      "json_pointer": "/startups/12/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-madeiramadeira-022"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/name",
+      "claim_ids": [
+        "br-b001-mombak-001"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/website",
+      "claim_ids": [
+        "br-b001-mombak-002"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/description",
+      "claim_ids": [
+        "br-b001-mombak-003"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-mombak-004"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-mombak-005"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-mombak-006"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-mombak-007"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/founders/0/name",
+      "claim_ids": [
+        "br-b001-mombak-008"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-mombak-008"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/founders/1/name",
+      "claim_ids": [
+        "br-b001-mombak-009"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-mombak-009"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/profile_facts/6/value",
+      "claim_ids": [
+        "br-b001-mombak-010"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-mombak-011"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-mombak-011",
+        "br-b001-mombak-012",
+        "br-b001-mombak-013",
+        "br-b001-mombak-014"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-mombak-013"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-mombak-014"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-mombak-014"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/articles/0/title",
+      "claim_ids": [
+        "br-b001-mombak-021"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/articles/0/url",
+      "claim_ids": [
+        "br-b001-mombak-021"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/articles/0/kind",
+      "claim_ids": [
+        "br-b001-mombak-021"
+      ]
+    },
+    {
+      "record_index": 13,
+      "json_pointer": "/startups/13/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-mombak-021"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/name",
+      "claim_ids": [
+        "br-b001-nilo-saude-001"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/website",
+      "claim_ids": [
+        "br-b001-nilo-saude-002"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/description",
+      "claim_ids": [
+        "br-b001-nilo-saude-004"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-nilo-saude-003"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-nilo-saude-005"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-nilo-saude-006"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/founded_year",
+      "claim_ids": [
+        "br-b001-nilo-saude-006"
+      ],
+      "note": "Year extracted from explicitly sourced date; full precision retained in dossier."
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-nilo-saude-007"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-nilo-saude-008"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/founders/0/name",
+      "claim_ids": [
+        "br-b001-nilo-saude-009"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-nilo-saude-009"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/founders/1/name",
+      "claim_ids": [
+        "br-b001-nilo-saude-010"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/profile_facts/6/value",
+      "claim_ids": [
+        "br-b001-nilo-saude-010"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/founders/2/name",
+      "claim_ids": [
+        "br-b001-nilo-saude-011"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/profile_facts/7/value",
+      "claim_ids": [
+        "br-b001-nilo-saude-011"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-nilo-saude-012"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-nilo-saude-012",
+        "br-b001-nilo-saude-013",
+        "br-b001-nilo-saude-014",
+        "br-b001-nilo-saude-015"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-nilo-saude-014"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-nilo-saude-015"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-nilo-saude-015"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/articles/0/title",
+      "claim_ids": [
+        "br-b001-nilo-saude-021"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/articles/0/url",
+      "claim_ids": [
+        "br-b001-nilo-saude-021"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/articles/0/kind",
+      "claim_ids": [
+        "br-b001-nilo-saude-021"
+      ]
+    },
+    {
+      "record_index": 14,
+      "json_pointer": "/startups/14/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-nilo-saude-021"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/name",
+      "claim_ids": [
+        "br-b001-nomad-001"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/website",
+      "claim_ids": [
+        "br-b001-nomad-002"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/description",
+      "claim_ids": [
+        "br-b001-nomad-003"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-nomad-004"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-nomad-005"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-nomad-006"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/founders/0/name",
+      "claim_ids": [
+        "br-b001-nomad-007"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-nomad-007"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/founders/1/name",
+      "claim_ids": [
+        "br-b001-nomad-008"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-nomad-008"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/founders/2/name",
+      "claim_ids": [
+        "br-b001-nomad-009"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-nomad-009"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/founders/3/name",
+      "claim_ids": [
+        "br-b001-nomad-010"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/6/value",
+      "claim_ids": [
+        "br-b001-nomad-010"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/founders/4/name",
+      "claim_ids": [
+        "br-b001-nomad-011"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/7/value",
+      "claim_ids": [
+        "br-b001-nomad-011"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/8/value",
+      "claim_ids": [
+        "br-b001-nomad-012"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/9/value",
+      "claim_ids": [
+        "br-b001-nomad-013"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/profile_facts/10/value",
+      "claim_ids": [
+        "br-b001-nomad-014"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-nomad-015"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-nomad-015",
+        "br-b001-nomad-016",
+        "br-b001-nomad-017",
+        "br-b001-nomad-018"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-nomad-017"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-nomad-018"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-nomad-018"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/articles/0/title",
+      "claim_ids": [
+        "br-b001-nomad-026"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/articles/0/url",
+      "claim_ids": [
+        "br-b001-nomad-026"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/articles/0/kind",
+      "claim_ids": [
+        "br-b001-nomad-026"
+      ]
+    },
+    {
+      "record_index": 15,
+      "json_pointer": "/startups/15/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-nomad-026"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/name",
+      "claim_ids": [
+        "br-b001-olist-001"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/website",
+      "claim_ids": [
+        "br-b001-olist-002"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/description",
+      "claim_ids": [
+        "br-b001-olist-004"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-olist-003"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-olist-005"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-olist-006"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/founders/0/name",
+      "claim_ids": [
+        "br-b001-olist-007"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-olist-007"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-olist-008"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-olist-009"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-olist-010"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-olist-010",
+        "br-b001-olist-011",
+        "br-b001-olist-012",
+        "br-b001-olist-013"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-olist-013"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-olist-013"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/articles/0/title",
+      "claim_ids": [
+        "br-b001-olist-015"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/articles/0/url",
+      "claim_ids": [
+        "br-b001-olist-015"
+      ]
+    },
+    {
+      "record_index": 16,
+      "json_pointer": "/startups/16/articles/0/kind",
+      "claim_ids": [
+        "br-b001-olist-015"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/name",
+      "claim_ids": [
+        "br-b001-omie-001"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/website",
+      "claim_ids": [
+        "br-b001-omie-002"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/description",
+      "claim_ids": [
+        "br-b001-omie-003"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-omie-004"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-omie-005"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/founders/0/name",
+      "claim_ids": [
+        "br-b001-omie-006"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-omie-006"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/founders/1/name",
+      "claim_ids": [
+        "br-b001-omie-007"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-omie-007"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-omie-008"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-omie-009"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-omie-009",
+        "br-b001-omie-010",
+        "br-b001-omie-011",
+        "br-b001-omie-012"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-omie-012"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-omie-012"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/articles/0/title",
+      "claim_ids": [
+        "br-b001-omie-014"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/articles/0/url",
+      "claim_ids": [
+        "br-b001-omie-014"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/articles/0/kind",
+      "claim_ids": [
+        "br-b001-omie-014"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-omie-014"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/funding_rounds/1/stage",
+      "claim_ids": [
+        "br-b001-omie-015"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/funding_rounds/1/note",
+      "claim_ids": [
+        "br-b001-omie-015",
+        "br-b001-omie-016",
+        "br-b001-omie-017",
+        "br-b001-omie-018"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/funding_rounds/1/announced_on",
+      "claim_ids": [
+        "br-b001-omie-017"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/funding_rounds/1/amount",
+      "claim_ids": [
+        "br-b001-omie-018"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/funding_rounds/1/currency",
+      "claim_ids": [
+        "br-b001-omie-018"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/articles/1/title",
+      "claim_ids": [
+        "br-b001-omie-020"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/articles/1/url",
+      "claim_ids": [
+        "br-b001-omie-020"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/articles/1/kind",
+      "claim_ids": [
+        "br-b001-omie-020"
+      ]
+    },
+    {
+      "record_index": 17,
+      "json_pointer": "/startups/17/articles/1/published_on",
+      "claim_ids": [
+        "br-b001-omie-020"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/name",
+      "claim_ids": [
+        "br-b001-qi-tech-001"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/website",
+      "claim_ids": [
+        "br-b001-qi-tech-002"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/description",
+      "claim_ids": [
+        "br-b001-qi-tech-003"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-qi-tech-004"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-qi-tech-005"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/founded_year",
+      "claim_ids": [
+        "br-b001-qi-tech-005"
+      ],
+      "note": "Year extracted from explicitly sourced date; full precision retained in dossier."
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/founders/0/name",
+      "claim_ids": [
+        "br-b001-qi-tech-006"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-qi-tech-006"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/founders/1/name",
+      "claim_ids": [
+        "br-b001-qi-tech-007"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-qi-tech-007"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/founders/2/name",
+      "claim_ids": [
+        "br-b001-qi-tech-008"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-qi-tech-008"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-qi-tech-009"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/profile_facts/6/value",
+      "claim_ids": [
+        "br-b001-qi-tech-010"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-qi-tech-011"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-qi-tech-011",
+        "br-b001-qi-tech-012",
+        "br-b001-qi-tech-013",
+        "br-b001-qi-tech-014"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-qi-tech-013"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-qi-tech-014"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-qi-tech-014"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/articles/0/title",
+      "claim_ids": [
+        "br-b001-qi-tech-017"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/articles/0/url",
+      "claim_ids": [
+        "br-b001-qi-tech-017"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/articles/0/kind",
+      "claim_ids": [
+        "br-b001-qi-tech-017"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-qi-tech-017"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/funding_rounds/1/stage",
+      "claim_ids": [
+        "br-b001-qi-tech-018"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/funding_rounds/1/note",
+      "claim_ids": [
+        "br-b001-qi-tech-018",
+        "br-b001-qi-tech-019",
+        "br-b001-qi-tech-020",
+        "br-b001-qi-tech-021"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/funding_rounds/1/amount",
+      "claim_ids": [
+        "br-b001-qi-tech-021"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/funding_rounds/1/currency",
+      "claim_ids": [
+        "br-b001-qi-tech-021"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/articles/1/title",
+      "claim_ids": [
+        "br-b001-qi-tech-024"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/articles/1/url",
+      "claim_ids": [
+        "br-b001-qi-tech-024"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/articles/1/kind",
+      "claim_ids": [
+        "br-b001-qi-tech-024"
+      ]
+    },
+    {
+      "record_index": 18,
+      "json_pointer": "/startups/18/articles/1/published_on",
+      "claim_ids": [
+        "br-b001-qi-tech-024"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/name",
+      "claim_ids": [
+        "br-b001-quintoandar-001"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/website",
+      "claim_ids": [
+        "br-b001-quintoandar-002"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/description",
+      "claim_ids": [
+        "br-b001-quintoandar-003"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-quintoandar-004"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-quintoandar-005"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/founders/0/name",
+      "claim_ids": [
+        "br-b001-quintoandar-006"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-quintoandar-006"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/founders/1/name",
+      "claim_ids": [
+        "br-b001-quintoandar-007"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-quintoandar-007"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-quintoandar-008"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-quintoandar-009"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-quintoandar-010"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-quintoandar-010",
+        "br-b001-quintoandar-011",
+        "br-b001-quintoandar-012",
+        "br-b001-quintoandar-013"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-quintoandar-012"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-quintoandar-013"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-quintoandar-013"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/articles/0/title",
+      "claim_ids": [
+        "br-b001-quintoandar-019"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/articles/0/url",
+      "claim_ids": [
+        "br-b001-quintoandar-019"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/articles/0/kind",
+      "claim_ids": [
+        "br-b001-quintoandar-019"
+      ]
+    },
+    {
+      "record_index": 19,
+      "json_pointer": "/startups/19/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-quintoandar-019"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/name",
+      "claim_ids": [
+        "br-b001-recargapay-001"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/website",
+      "claim_ids": [
+        "br-b001-recargapay-002"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/description",
+      "claim_ids": [
+        "br-b001-recargapay-004"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-recargapay-003"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-recargapay-005"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-recargapay-006"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/founded_year",
+      "claim_ids": [
+        "br-b001-recargapay-006"
+      ],
+      "note": "Year extracted from explicitly sourced date; full precision retained in dossier."
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/founders/0/name",
+      "claim_ids": [
+        "br-b001-recargapay-007"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-recargapay-007"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/founders/1/name",
+      "claim_ids": [
+        "br-b001-recargapay-008"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/profile_facts/4/value",
+      "claim_ids": [
+        "br-b001-recargapay-008"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/founders/2/name",
+      "claim_ids": [
+        "br-b001-recargapay-009"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/profile_facts/5/value",
+      "claim_ids": [
+        "br-b001-recargapay-009"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/profile_facts/6/value",
+      "claim_ids": [
+        "br-b001-recargapay-010"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-recargapay-011"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-recargapay-011",
+        "br-b001-recargapay-012",
+        "br-b001-recargapay-013",
+        "br-b001-recargapay-014"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-recargapay-013"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-recargapay-014"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-recargapay-014"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/articles/0/title",
+      "claim_ids": [
+        "br-b001-recargapay-020"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/articles/0/url",
+      "claim_ids": [
+        "br-b001-recargapay-020"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/articles/0/kind",
+      "claim_ids": [
+        "br-b001-recargapay-020"
+      ]
+    },
+    {
+      "record_index": 20,
+      "json_pointer": "/startups/20/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-recargapay-020"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/name",
+      "claim_ids": [
+        "br-b001-solinftec-001"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/website",
+      "claim_ids": [
+        "br-b001-solinftec-002"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/description",
+      "claim_ids": [
+        "br-b001-solinftec-003"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/profile_facts/0/value",
+      "claim_ids": [
+        "br-b001-solinftec-004"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/profile_facts/1/value",
+      "claim_ids": [
+        "br-b001-solinftec-005"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/founded_year",
+      "claim_ids": [
+        "br-b001-solinftec-005"
+      ],
+      "note": "Year extracted from explicitly sourced date; full precision retained in dossier."
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/profile_facts/2/value",
+      "claim_ids": [
+        "br-b001-solinftec-006"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/founders/0/name",
+      "claim_ids": [
+        "br-b001-solinftec-007"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/profile_facts/3/value",
+      "claim_ids": [
+        "br-b001-solinftec-007"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/funding_rounds/0/stage",
+      "claim_ids": [
+        "br-b001-solinftec-008"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/funding_rounds/0/note",
+      "claim_ids": [
+        "br-b001-solinftec-008",
+        "br-b001-solinftec-009",
+        "br-b001-solinftec-010",
+        "br-b001-solinftec-011"
+      ],
+      "note": "Precision, instrument and conflicts retained; typed participants remain research-only."
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/funding_rounds/0/announced_on",
+      "claim_ids": [
+        "br-b001-solinftec-010"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/funding_rounds/0/amount",
+      "claim_ids": [
+        "br-b001-solinftec-011"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/funding_rounds/0/currency",
+      "claim_ids": [
+        "br-b001-solinftec-011"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/articles/0/title",
+      "claim_ids": [
+        "br-b001-solinftec-014"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/articles/0/url",
+      "claim_ids": [
+        "br-b001-solinftec-014"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/articles/0/kind",
+      "claim_ids": [
+        "br-b001-solinftec-014"
+      ]
+    },
+    {
+      "record_index": 21,
+      "json_pointer": "/startups/21/articles/0/published_on",
+      "claim_ids": [
+        "br-b001-solinftec-014"
+      ]
+    }
+  ]
+}

@@ -7,7 +7,12 @@ import { tmpdir } from 'node:os';
 import { dirname, extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { setTimeout as delay } from 'node:timers/promises';
-import { buildSpecimen } from '../prototypes/fluid-filter-controls/build.mjs';
+
+// Preserve this historical harness without starting setup, a server or a browser.
+// There is deliberately no environment override for the unresolved permission hold.
+throw new Error('BLOCKED: Native browser acceptance is held while the existing Chrome permission request remains unresolved.');
+
+const { buildSpecimen } = await import('../prototypes/fluid-filter-controls/build.mjs');
 
 const repository = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const outputDir = process.env.ATLAS_FLUID_SCREENSHOTS_DIR || join(process.env.RUNNER_TEMP || tmpdir(), 'startup-atlas-graph', 'fluid-filter-controls');

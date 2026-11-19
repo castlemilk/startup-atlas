@@ -1,0 +1,18 @@
+{
+  "valid": true,
+  "validator": "backend/hosted/src/startup-record.mjs::validateStartupRecord",
+  "projection_records": 25,
+  "existing_overlay_records": 45,
+  "adversarial_checks": 6,
+  "adversarial": [
+    "null founding year is not coerced to zero",
+    "unsupported headquarters field is not silently expanded",
+    "partial funding day is not padded",
+    "amount without currency is invalid",
+    "duplicate founder normalization is rejected",
+    "typed participants remain outside legacy schema"
+  ],
+  "omitted_field_merge_preservation": true,
+  "additional_properties": false,
+  "warning": "Shape and collision checks only. No network, proposal, merge, or publication."
+}

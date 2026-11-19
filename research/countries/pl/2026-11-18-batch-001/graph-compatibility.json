@@ -1,0 +1,513 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-11-18T10:07:09Z",
+  "scope": "Offline preflight of current main graph builder and existing #177 planner against a temporary combined overlay; no production import.",
+  "base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "staged_record_count": 23,
+  "baseline_source_record_count": 45,
+  "combined_source_record_count": 68,
+  "input_sha256": {
+    "data/partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "data/partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "data/partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "data/catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "scripts/make-graph.py": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "scripts/crawl.py": "82de068f640ee2550b05a1483929907490b34afb80fc2a2519204fc1369340d0",
+    "research/countries/pl/2026-11-18-batch-001/startup-records.json": "98a71a6fd9c1aceed57484e71402d01e5c5179d336bdb049ac800ab43f6e1168",
+    "research/countries/pl/2026-11-18-batch-001/companies.json": "4d5fd42efc772beca1fdd463b2ba6a181fc2bcb15b215130bdc0832ddc3f54df"
+  },
+  "production_import_state": "HOLD",
+  "owner_dependencies": [
+    {
+      "pull_request": 179,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/179",
+      "reason": "Current builder defaults omitted founded_year to 0; owner fix must land and preflight must be repeated."
+    },
+    {
+      "pull_request": 181,
+      "url": "https://github.com/castlemilk/startup-atlas/pull/181",
+      "reason": "Source inheritance owner work remains separate; this append-only preflight does not validate an existing-record source replacement."
+    }
+  ],
+  "execution": {
+    "builder_function": "scripts/make-graph.py:build_graph",
+    "builder_main_called": false,
+    "planner_function": "scripts/plan_company_profiles.py:build_plan",
+    "network_requests": 0,
+    "crawler_runs": 0,
+    "seed_approvals": 0,
+    "production_writes": 0,
+    "shared_implementation_edits": 0,
+    "temporary_overlay_deleted": true
+  },
+  "identity_checks": {
+    "duplicate_startup_ids": [],
+    "duplicate_funding_event_ids": [],
+    "founder_person_id_duplicate_groups": [
+      {
+        "id": "person:melanie-perkins",
+        "observations": [
+          {
+            "name": "Melanie Perkins",
+            "startup_id": "startup:canva",
+            "origin": "baseline"
+          },
+          {
+            "name": "Melanie Perkins",
+            "startup_id": "startup:fusion-books",
+            "origin": "baseline"
+          }
+        ],
+        "distinct_names": [
+          "Melanie Perkins"
+        ],
+        "distinct_startups": [
+          "startup:canva",
+          "startup:fusion-books"
+        ]
+      },
+      {
+        "id": "person:cliff-obrecht",
+        "observations": [
+          {
+            "name": "Cliff Obrecht",
+            "startup_id": "startup:canva",
+            "origin": "baseline"
+          },
+          {
+            "name": "Cliff Obrecht",
+            "startup_id": "startup:fusion-books",
+            "origin": "baseline"
+          }
+        ],
+        "distinct_names": [
+          "Cliff Obrecht"
+        ],
+        "distinct_startups": [
+          "startup:canva",
+          "startup:fusion-books"
+        ]
+      }
+    ],
+    "poland_involving_founder_person_id_duplicate_groups": [],
+    "poland_founder_name_matches_to_existing_graph_people": [],
+    "interpretation": "Same-name/slug groups are identity-review leads, not automatic same-person decisions. Firm team IDs are scoped by existing builder."
+  },
+  "graph": {
+    "build_succeeded": true,
+    "baseline_counts": {
+      "entities": 555,
+      "startups": 46,
+      "people": 119,
+      "edges": 273,
+      "funding_rounds": 25,
+      "articles": 37
+    },
+    "combined_counts": {
+      "entities": 635,
+      "startups": 69,
+      "people": 176,
+      "edges": 330,
+      "funding_rounds": 47,
+      "articles": 59
+    },
+    "combined_graph_semantic_sha256": "c1ab26a315a7815086337f0e3e215da5471bcf6dbc2ccab3415ba37ac4c27cd6",
+    "appended_startups_present": 23,
+    "staged_startups_missing_from_graph": [],
+    "zero_founded_year": {
+      "baseline_count": 1,
+      "combined_count": 24,
+      "poland_count": 23,
+      "poland_omitted_input_coerced_to_zero_count": 23,
+      "poland_rich_founding_unknown_count": 2,
+      "poland_rich_founding_unknown_names": [
+        "Nevomo",
+        "Omnipack"
+      ],
+      "poland_observations": [
+        {
+          "name": "Alokai",
+          "startup_id": "startup:alokai",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2021",
+            "precision": "year",
+            "source_url": "https://alokai.com/about-us",
+            "note": "Company foundation; predecessor open-source project dates to 2017."
+          }
+        },
+        {
+          "name": "Autenti",
+          "startup_id": "startup:autenti",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2013",
+            "precision": "year",
+            "event_type": "company_founding",
+            "source_url": "https://autenti.com/de/blog/autenti-und-swisscom-trust-services-schlieben-partnerschaft-fur-paneuropaische-e-signaturen"
+          }
+        },
+        {
+          "name": "BioCam",
+          "startup_id": "startup:biocam",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2019-05",
+            "precision": "month",
+            "source_url": "https://www.biocam.ai/post/how-gastroenterology-can-benefit-from-ai",
+            "meaning": "company founding, not legal incorporation date"
+          }
+        },
+        {
+          "name": "Booksy",
+          "startup_id": "startup:booksy",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2014",
+            "precision": "year",
+            "event_type": "company_founding",
+            "source_url": "https://careers.booksy.com/the-company-youll-join/our-story"
+          }
+        },
+        {
+          "name": "Brainly",
+          "startup_id": "startup:brainly",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2009",
+            "precision": "year",
+            "event_type": "company_founding",
+            "source_url": "https://brainly.com/insights/brainlys-journey-from-side-hustle-to-global-online-education-powerhouse"
+          }
+        },
+        {
+          "name": "Docplanner",
+          "startup_id": "startup:docplanner",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2012",
+            "precision": "year",
+            "event_type": "company_founding",
+            "source_url": "https://www.onepeak.tech/insights/leading-global-healthcare-booking-platform-docplanner-raises-eur80-million-led-by-one-peak-to-fuel-further-growth"
+          }
+        },
+        {
+          "name": "ElevenLabs",
+          "startup_id": "startup:elevenlabs",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2022",
+            "precision": "year",
+            "source_url": "https://elevenlabs.io/blog/london-office-opening"
+          }
+        },
+        {
+          "name": "ICEYE",
+          "startup_id": "startup:iceye",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2014",
+            "precision": "year",
+            "source_url": "https://www.iceye.com/company"
+          }
+        },
+        {
+          "name": "Infermedica",
+          "startup_id": "startup:infermedica",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2012",
+            "precision": "year",
+            "source_url": "https://infermedica.com/press",
+            "meaning": "company founding, not legal incorporation date"
+          }
+        },
+        {
+          "name": "Molecule.one",
+          "startup_id": "startup:molecule-one",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2016-11",
+            "precision": "month",
+            "source_url": "https://www.5-ht.com/en/media/blog/speeding-up-the-development-of-drugs-against-the-new-corona-virus",
+            "meaning": "company founding, not legal incorporation date"
+          }
+        },
+        {
+          "name": "Nevomo",
+          "startup_id": "startup:nevomo",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": null,
+            "precision": "unknown"
+          }
+        },
+        {
+          "name": "Nomagic",
+          "startup_id": "startup:nomagic",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2017",
+            "precision": "year",
+            "source_url": "https://nomagic.ai/about-us/"
+          }
+        },
+        {
+          "name": "Omnipack",
+          "startup_id": "startup:omnipack",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": null,
+            "precision": "unknown"
+          }
+        },
+        {
+          "name": "Packhelp",
+          "startup_id": "startup:packhelp",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2015",
+            "precision": "year",
+            "event_type": "company_founding",
+            "source_url": "https://infraviacapital.com/infravia-leads-the-e40m-series-b-funding-round-of-packhelp-marketplace-for-personalized-sustainable-packaging-products/"
+          }
+        },
+        {
+          "name": "Ramp Network",
+          "startup_id": "startup:ramp-network",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2017-11",
+            "precision": "month",
+            "event_type": "company-reported beginning/registration; legal event not independently verified",
+            "source_url": "https://rampnetwork.com/about"
+          }
+        },
+        {
+          "name": "ReSpo.Vision",
+          "startup_id": "startup:respo-vision",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2020",
+            "precision": "year",
+            "source_url": "https://respo.vision/about-us"
+          }
+        },
+        {
+          "name": "SatRev",
+          "startup_id": "startup:satrev",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2016",
+            "precision": "year",
+            "source_url": "https://www.nasdaq.com/press-release/satrevolution-secures-series-b-funding-from-virgin-orbit-2021-12-14",
+            "meaning": "company founding, not legal incorporation date"
+          }
+        },
+        {
+          "name": "Silent Eight",
+          "startup_id": "startup:silent-eight",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2013",
+            "precision": "year",
+            "source_url": "https://www.silenteight.com/blog/julia-markiewicz-rebuilding-compliance-with-ai"
+          }
+        },
+        {
+          "name": "SmokeD",
+          "startup_id": "startup:smoked",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2020",
+            "precision": "year",
+            "source_url": "https://taxusagro.pl/o-nas/",
+            "meaning": "company founding, not legal incorporation date"
+          }
+        },
+        {
+          "name": "Spacelift",
+          "startup_id": "startup:spacelift",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2020",
+            "precision": "year",
+            "source_url": "https://careers.spacelift.io/"
+          }
+        },
+        {
+          "name": "Synerise",
+          "startup_id": "startup:synerise",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2013",
+            "precision": "year",
+            "source_url": "https://pulse.synerise.com/synerise-strengthens-growth-strategy/"
+          }
+        },
+        {
+          "name": "WIDMO Spectral Technologies",
+          "startup_id": "startup:widmo-spectral-technologies",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2019",
+            "precision": "year",
+            "source_url": "https://innoventure.vc/en/news/widmo-spectral-technologies-formerly-sgpr-tech-solution-now-commercially-available/",
+            "meaning": "company founding, not legal incorporation date"
+          }
+        },
+        {
+          "name": "Zowie",
+          "startup_id": "startup:zowie",
+          "projected_founded_year_present": false,
+          "projected_founded_year": null,
+          "output_founded_year": 0,
+          "rich_founding": {
+            "value": "2019",
+            "precision": "year",
+            "event_type": "company_founding",
+            "source_url": "https://www.prnewswire.com/news-releases/zowie-closes-14m-series-a-from-tiger-global-to-help-ecommerce-brands-turn-customer-support-into-sales-301552032.html"
+          }
+        }
+      ]
+    },
+    "baseline_entity_mutations": [],
+    "duplicate_output_entity_ids": 0,
+    "duplicate_output_event_ids": 0
+  },
+  "planner": {
+    "executed": true,
+    "revision_parameter": "f4bcbf7030d741772bb750deee584efa3ee17749",
+    "input_binding_note": "Derived combined overlay is temporary and uncommitted; planner hashes exact bytes but does not certify that the derived bytes belong to the supplied revision.",
+    "combined_overlay_sha256": "b522ea0c3cc0a3d63839986a012f9367051a0361fe3b69b58af942f446f87e54",
+    "seeds_sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "plan_id": "cc8f863890d174d5d5ac3236b85d696134a80374f523acebdca7554d65c3c325",
+    "page_size": 10,
+    "page_count": 7,
+    "pages": [
+      {
+        "offset": 0,
+        "returned": 10,
+        "inventory_exhausted": false,
+        "next_cursor_present": true
+      },
+      {
+        "offset": 10,
+        "returned": 10,
+        "inventory_exhausted": false,
+        "next_cursor_present": true
+      },
+      {
+        "offset": 20,
+        "returned": 10,
+        "inventory_exhausted": false,
+        "next_cursor_present": true
+      },
+      {
+        "offset": 30,
+        "returned": 10,
+        "inventory_exhausted": false,
+        "next_cursor_present": true
+      },
+      {
+        "offset": 40,
+        "returned": 10,
+        "inventory_exhausted": false,
+        "next_cursor_present": true
+      },
+      {
+        "offset": 50,
+        "returned": 10,
+        "inventory_exhausted": false,
+        "next_cursor_present": true
+      },
+      {
+        "offset": 60,
+        "returned": 8,
+        "inventory_exhausted": true,
+        "next_cursor_present": false
+      }
+    ],
+    "all_pages_same_plan_id": true,
+    "ordered_exactly_once": true,
+    "first_page_replay_identical": true,
+    "changed_limit_cursor_rejected": true,
+    "final_inventory_exhausted": true,
+    "final_cursor": null,
+    "seed_states": {
+      "approved_seed_ready": 1,
+      "seed_review_required": 66,
+      "missing_reviewed_website": 1,
+      "invalid_reviewed_website": 0,
+      "seed_url_blocked": 0,
+      "seed_host_mismatch": 0
+    },
+    "poland_count": 23,
+    "poland_seed_states": {
+      "seed_review_required": 23
+    },
+    "all_poland_seed_review_required": true,
+    "all_poland_collection_not_assessed": true,
+    "poland_approved_url_count": 0,
+    "crawl_completion_claimed": false
+  },
+  "protected_file_hashes_unchanged": true,
+  "protected_files_changed": [],
+  "summary": {
+    "graph_build_passed": true,
+    "graph_founding_presence_semantics_passed": false,
+    "duplicate_startup_id_count": 0,
+    "duplicate_event_id_count": 0,
+    "poland_person_collision_group_count": 0,
+    "planner_pagination_passed": true,
+    "poland_seeds_still_require_review": true,
+    "production_import_state": "HOLD pending owner PR #179 and repeated preflight on merged revision; no publication or crawl authorised by this result."
+  }
+}

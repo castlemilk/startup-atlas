@@ -1,0 +1,413 @@
+{
+  "company_conflicts": [
+    {
+      "company_id": "startup:ai21-labs",
+      "field": "funding",
+      "detail": "Discovered $300 million Series D claims are excluded: reviewed reporting says the discussed round did not close.",
+      "source_ids": [
+        "aiq-s08"
+      ]
+    },
+    {
+      "company_id": "startup:ai21-labs",
+      "field": "company_status",
+      "detail": "Acquisition talks are not a completed acquisition; May 2026 reporting says talks with Nebius ended.",
+      "source_ids": [
+        "aiq-s09"
+      ]
+    },
+    {
+      "company_id": "startup:classiq",
+      "field": "funding_event_date",
+      "event_id": "classiq-2025-05-12-series-c",
+      "source_ids": [
+        "aiq-s43",
+        "aiq-s50"
+      ],
+      "resolution": "Prefer May 12 explicit dateline and issuer wire; preserve site publication date separately."
+    },
+    {
+      "company_id": "startup:classiq",
+      "field": "funding_event_date",
+      "event_id": "classiq-2025-11-strategic-up-round",
+      "source_ids": [
+        "aiq-s47",
+        "aiq-s49"
+      ],
+      "resolution": "Exact day held; event month retained.",
+      "projection_hold": true
+    },
+    {
+      "company_id": "startup:oasis-security",
+      "field": "round_date",
+      "observations": [
+        {
+          "value": "2026-04-07",
+          "source_id": "cyber-s32",
+          "scope": "newsroom listing date"
+        },
+        {
+          "value": "2026-03-19",
+          "source_id": "cyber-s33",
+          "scope": "release announcement date"
+        }
+      ],
+      "resolution": "Use March 19 announcement date. Retain April 7 as listing date, not another event."
+    },
+    {
+      "company_id": "startup:qodo",
+      "field": "founding",
+      "preferred_value": "2022",
+      "preferred_source_ids": [
+        "aiq-s22",
+        "aiq-s23"
+      ],
+      "conflicting_value": "2018",
+      "source_ids": [
+        "aiq-s21"
+      ],
+      "reason": "Investor and AWS company account, plus 2024 rebrand chronology, support 2022. The 2026 issuer-supplied release says 2018. Neither exact founding day nor a legal-entity explanation is established.",
+      "projection_hold": true
+    },
+    {
+      "company_id": "startup:silverfort",
+      "field": "headquarters",
+      "observations": [
+        {
+          "value": "Tel Aviv headquarters",
+          "source_id": "cyber-s30",
+          "as_of": "2018"
+        },
+        {
+          "value": "United States HQ: Plano; Israel office: Tel Aviv",
+          "source_id": "cyber-s34",
+          "as_of": null
+        }
+      ],
+      "resolution": "Retain historical observation and current page labels separately; not necessarily a contradiction because geography scopes differ."
+    },
+    {
+      "company_id": "startup:torq",
+      "field": "funding_announcement_date",
+      "observations": [
+        {
+          "value": "2026-01-09",
+          "source_id": "cyber-s23",
+          "scope": "publication header"
+        },
+        {
+          "value": "2026-01-12",
+          "source_id": "cyber-s23",
+          "scope": "announcement dateline"
+        },
+        {
+          "value": "2026-01-12",
+          "source_id": "cyber-s15",
+          "scope": "CEO blog"
+        }
+      ],
+      "resolution": "Use 2026-01-12 as announced_on; preserve source published_on 2026-01-09 and discrepancy."
+    },
+    {
+      "company_id": "startup:torq",
+      "field": "headquarters",
+      "observations": [
+        {
+          "value": "New York worldwide headquarters",
+          "source_id": "cyber-s36",
+          "as_of": "2025"
+        },
+        {
+          "value": "Tel Aviv International HQ; Denver Americas HQ",
+          "source_id": "cyber-s24",
+          "as_of": null
+        }
+      ],
+      "resolution": "Retain temporal and scope distinctions; no sole global-HQ inference."
+    }
+  ],
+  "company_qualifications": [
+    {
+      "company_id": "startup:island",
+      "notes": [],
+      "founding_qualification": "Public launch in February 2022 is a separate event.",
+      "funding_observations": []
+    },
+    {
+      "company_id": "startup:upwind",
+      "notes": [],
+      "founding_qualification": "Source states founded in October 2022 in San Francisco, California.",
+      "funding_observations": []
+    },
+    {
+      "company_id": "startup:aleph-farms",
+      "notes": [
+        "Current about page labels Neta Lavon co-founder; 2021 release identifies her as CTO/VP R&D without founder wording, while describing The Kitchen Hub as an organisational co-founder. Founder listing is source-time specific and incomplete.",
+        "Company-reported 2017 founding preferred over interpreting 2016 collaboration as incorporation."
+      ],
+      "founding_qualification": "2016 teaming-up narrative retained separately; not incorporation.",
+      "funding_observations": []
+    },
+    {
+      "company_id": "startup:remilk",
+      "notes": [
+        "Champel Capital portfolio membership does not create a 2022 round edge.",
+        "Current office country not inferred from publication city; legal incorporation unknown."
+      ],
+      "founding_qualification": null,
+      "funding_observations": []
+    },
+    {
+      "company_id": "startup:cropx",
+      "notes": [
+        "Cross-border company: NZ origin is preserved alongside Israeli HQ.",
+        "Gideon Soesman co-founder at Greensoil and Israel Grimberg co-founder at Team8 on CropX page are not founder evidence for CropX.",
+        "2013 versus 2015 founding conflict retained; primary company history preferred."
+      ],
+      "founding_qualification": "Company says founded in New Zealand; secondary member profile says 2015, retained as conflict.",
+      "funding_observations": []
+    },
+    {
+      "company_id": "startup:bluewhite",
+      "notes": [
+        "Acquisition is not a funding round. Preserve historical company identity rather than merge into Elbit Systems."
+      ],
+      "founding_qualification": null,
+      "funding_observations": []
+    },
+    {
+      "company_id": "startup:seetree",
+      "notes": [
+        "Financing conflict: EBRD approved up to USD5M into Series C shares as part of USD16M financing on 2023-10-31; Jan17 2024 reporting says $17.5M. Could reflect final size/closing changes, not resolved.",
+        "EBRD project location Ukraine must not overwrite Tel Aviv HQ."
+      ],
+      "founding_qualification": null,
+      "funding_observations": []
+    },
+    {
+      "company_id": "startup:insightec",
+      "notes": [
+        "Mature growth company founded1999; do not present as recently founded startup."
+      ],
+      "founding_qualification": null,
+      "funding_observations": []
+    },
+    {
+      "company_id": "startup:immunai",
+      "notes": [
+        "Israel ecosystem nexus is Tel Aviv office; HQ remains NYC.",
+        "Animated extraction zeros for funding/founded/team are rejected as UI placeholders.",
+        "Full founding team unresolved: two founders evidenced, no claim exhaustive."
+      ],
+      "founding_qualification": "Company explicitly states December2018; directories claiming2019 not adopted.",
+      "funding_observations": []
+    },
+    {
+      "company_id": "startup:aidoc",
+      "notes": [
+        "About page says four founders; only three individually evidenced here, so founder coverage is explicitly incomplete.",
+        "Prior $150M financing includes a $40M revolving credit facility; preserve as mixed financing observation and do not code as $150M equity."
+      ],
+      "founding_qualification": "CEO bio says early2016; month not invented.",
+      "funding_observations": [
+        {
+          "id": "aidoc-earlier-care-mixed-financing",
+          "transaction_type": "mixed_financing",
+          "announced_on": null,
+          "date_precision": "unknown",
+          "amount": 150000000,
+          "currency": null,
+          "amount_text": "$150 million financing including a $40 million revolving credit facility",
+          "components": [
+            {
+              "type": "revolving_credit_facility",
+              "amount": 40000000,
+              "currency": null,
+              "amount_text": "$40 million"
+            }
+          ],
+          "source_ids": [
+            "ch-aidoc-mixed"
+          ],
+          "status": "reviewed_staged",
+          "notes": "Publication day absent from accessed body; not counted as an additional dated round in this shard."
+        }
+      ]
+    },
+    {
+      "company_id": "startup:qodo",
+      "notes": [],
+      "founding_qualification": "Unresolved founding conflict; preferred and conflicting observations remain in conflicts. No founded_year projection.",
+      "funding_observations": []
+    }
+  ],
+  "shard_dispositions": {
+    "cyber": [
+      {
+        "subject": "Oasis / Leaders Fund participation",
+        "status": "candidate",
+        "source_id": "cyber-s22",
+        "reason": "Craft article redirected to homepage on open; only search excerpt contains Leaders Fund; not accepted as evidence."
+      },
+      {
+        "subject": "Torq / StackPulse alias",
+        "status": "candidate",
+        "reason": "Secondary discovery only; primary identity reconciliation deferred."
+      },
+      {
+        "subject": "Upwind / Liran Polak founder",
+        "status": "candidate",
+        "reason": "Secondary discovery only; primary team page lists three other founders. Do not assert absent or invent exhaustive list."
+      },
+      {
+        "subject": "Oasis initial $40m announcement",
+        "status": "rejected_for_round_normalization",
+        "reason": "Search result describes cumulative total; not accepted as a single funding round."
+      },
+      {
+        "subject": "All dollar-denominated funding currencies",
+        "status": "searched_unknown",
+        "reason": "Reviewed primary releases use $ without an explicit ISO currency. Preserve numeric magnitudes and original strings, normalized currency null."
+      }
+    ],
+    "climate-health": [
+      {
+        "candidate_id": "israel:bluewhite",
+        "scope": "active-independent-startup-count",
+        "disposition": "exclude",
+        "reason": "Official current About page says acquired by Elbit Systems in2026. Historical company evidence remains retained.",
+        "source_ids": [
+          "ch-bluewhite-about",
+          "ch-bluewhite-acquisition"
+        ]
+      },
+      {
+        "candidate_id": "israel:immunai",
+        "scope": "numeric-placeholder-extraction",
+        "disposition": "reject_claim",
+        "reason": "Animated page counters rendered0; not evidence of zero funding, zero founding year or zero staff.",
+        "source_ids": [
+          "ch-immunai-about"
+        ]
+      },
+      {
+        "candidate_id": "israel:cropx",
+        "scope": "founder-attribution",
+        "disposition": "reject_inference",
+        "reason": "Co-founder labels on CropX team page are scoped to Greensoil Investments and Team8, not CropX.",
+        "source_ids": [
+          "ch-cropx-about"
+        ]
+      },
+      {
+        "candidate_id": "israel:seetree",
+        "scope": "financing-normalization",
+        "disposition": "defer_conflict",
+        "reason": "EBRD approved project envelope USD16M differs from later reported$17.5M round. No automatic merge or total.",
+        "source_ids": [
+          "ch-seetree-ebrd",
+          "ch-seetree-round-secondary"
+        ]
+      }
+    ],
+    "ai-quantum": [
+      {
+        "company": "AI21 Labs",
+        "candidate_claim": "$300 million 2025 Series D completed",
+        "disposition": "rejected_from_staged_rounds",
+        "reason": "No reviewed primary closing announcement; subsequent reporting says proposed round did not close.",
+        "source_ids": [
+          "aiq-s08"
+        ]
+      },
+      {
+        "company": "AI21 Labs",
+        "candidate_claim": "Nebius acquisition completed",
+        "disposition": "rejected_from_staged_status",
+        "reason": "May 2026 report says acquisition talks terminated; negotiations are not an acquisition.",
+        "source_ids": [
+          "aiq-s09"
+        ]
+      },
+      {
+        "company": "Qodo",
+        "candidate_claim": "2018 founding as single canonical year",
+        "disposition": "deferred_conflict",
+        "reason": "Issuer release disagrees with investor and AWS sources stating 2022; preserve all observations and hold founding projection.",
+        "source_ids": [
+          "aiq-s21",
+          "aiq-s22",
+          "aiq-s23"
+        ]
+      },
+      {
+        "company": "Qodo",
+        "candidate_claim": "Square Peg profile template ACQUIRED label proves acquisition",
+        "disposition": "rejected_from_staged_status",
+        "reason": "No buyer, date or supporting transaction evidence supplied by the label.",
+        "source_ids": [
+          "aiq-s22"
+        ]
+      },
+      {
+        "company": "Qodo",
+        "candidate_claim": "$50 million 2024 round",
+        "disposition": "rejected_normalization",
+        "reason": "$50 million is cumulative; Series A is USD40 million.",
+        "source_ids": [
+          "aiq-s16",
+          "aiq-s23"
+        ]
+      },
+      {
+        "company": "Qedma",
+        "candidate_claim": "November 2026 $26 million Series A",
+        "disposition": "deferred_discovery_only",
+        "discovery_url": "https://israelrounds.com/rounds/qedma-series-a-2026-11",
+        "accessed": false,
+        "reason": "Search discovery appears to re-date the established July 2025 round and references a different company; no second funding event accepted.",
+        "source_ids": [
+          "aiq-s51",
+          "aiq-s54"
+        ]
+      },
+      {
+        "company": "Classiq",
+        "candidate_claim": "Exact day and amount for November 2025 strategic up-round",
+        "disposition": "deferred_conflict_and_undisclosed",
+        "reason": "Article and index dates differ; amount given only as tens of millions.",
+        "source_ids": [
+          "aiq-s47",
+          "aiq-s49"
+        ]
+      },
+      {
+        "company": "Deepdub",
+        "candidate_claim": "June 2023 PDF content",
+        "disposition": "deferred_unreadable",
+        "discovery_url": "https://israel-keizai.org/wp/wp-content/uploads/2023/07/Deepdub-Brochure_June2023.pdf",
+        "accessed": false,
+        "reason": "No extractable text; screenshot not reviewed."
+      },
+      {
+        "company": "Qodo",
+        "candidate_claim": "CodiumAI alias from OpenVSX changes page",
+        "disposition": "rejected_source_as_support",
+        "discovery_url": "https://open-vsx.org/extension/Codium/codium/changes",
+        "accessed": false,
+        "reason": "No usable page content. Alias independently supported by reviewed CTech article.",
+        "source_ids": [
+          "aiq-s26"
+        ]
+      }
+    ]
+  },
+  "normalization_rules": [
+    "No implicit dollar currency.",
+    "Do not sum extended rounds, cumulative totals, secondary proceeds or valuations.",
+    "No legal-incorporation inference from HQ/office/dateline.",
+    "No acquisition date inference from publication or privacy-policy effective dates.",
+    "Keep foreign-founded, dual-HQ and relocated-company distinctions.",
+    "Do not promote programme/portfolio membership to event participation."
+  ]
+}

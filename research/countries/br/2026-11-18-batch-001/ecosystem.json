@@ -1,0 +1,1620 @@
+{
+  "packet_version": 1,
+  "scope": "Brazil ecosystem research and next-source queue only; no production company records",
+  "country": {
+    "name": "Brazil",
+    "iso_alpha2": "BR",
+    "iso_alpha3": "BRA"
+  },
+  "source_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "started_at": "2026-11-18T09:43:02Z",
+  "checkpoint_at": "2026-11-18T09:50:39.031Z",
+  "cohort": {
+    "requested_position": 10,
+    "requested_size": 30,
+    "edition": "IMF October 2026 WEO",
+    "year": 2026,
+    "indicator": "NGDPD",
+    "status": "user_specified_not_independently_recomputed",
+    "verified_rank": null,
+    "exact_gdp_usd_billion": null,
+    "note": "API failed; dataset/profile opened as templates. Official search result showed a rounded value, retained as discovery only."
+  },
+  "national_eligible_startup_denominator": null,
+  "sources": [
+    {
+      "id": "ecobr-imf-api",
+      "url": "https://www.imf.org/external/datamapper/api/v1/NGDPD/2026",
+      "title": "IMF DataMapper NGDPD 2026 API",
+      "publisher": "IMF",
+      "source_kind": "regulatory",
+      "accessed": false,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "acquisition": "web_tool_attempt",
+      "web_ref": "turn372557856view0",
+      "notes": "DisabledError; no values read.",
+      "status": "blocked_or_empty",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-imf-dataset",
+      "url": "https://www.imf.org/external/datamapper/datasets/WEO",
+      "title": "IMF WEO DataMapper dataset",
+      "publisher": "IMF",
+      "source_kind": "regulatory",
+      "accessed": false,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "acquisition": "web_tool_attempt",
+      "web_ref": "turn372557856view1",
+      "notes": "Only unresolved page-template fields; edition and data not read.",
+      "status": "blocked_or_empty",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-imf-profile",
+      "url": "https://www.imf.org/external/datamapper/profile/BRA",
+      "title": "Brazil country profile",
+      "publisher": "IMF",
+      "source_kind": "regulatory",
+      "accessed": false,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "acquisition": "web_tool_attempt",
+      "web_ref": "turn241546975view0",
+      "notes": "Open returned template. Search result turn518365676search0 mentioned October 2026 WEO and rounded GDP 2.65 thousand billion USD; search-only lead, not verified exact value.",
+      "status": "blocked_or_empty",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-imf-indicator",
+      "url": "https://www.imf.org/external/datamapper/NGDPD@WEO/BRA?year=2026",
+      "title": "Brazil nominal GDP 2026 indicator",
+      "publisher": "IMF",
+      "source_kind": "regulatory",
+      "accessed": false,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "acquisition": "web_tool_attempt",
+      "web_ref": "turn241546975view1",
+      "notes": "Tool reported URL inaccessible.",
+      "status": "blocked_or_empty",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-sebrae-2025",
+      "url": "https://agenciasebrae.com.br/inovacao-e-tecnologia/inteligencia-artificial-ja-esta-em-metade-das-startups-brasileiras/",
+      "title": "Inteligência Artificial já está em metade das startups brasileiras",
+      "publisher": "Sebrae",
+      "source_kind": "primary_institution",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": "2026-03-03",
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view0",
+      "notes": "Operator report of its 2025 mapped universe; not a census or national eligible denominator.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-abstartups-2025",
+      "url": "https://abstartups.com.br/wp-content/uploads/Mapeamento-do-Ecossistema-de-Startups-2025.pdf",
+      "title": "Mapeamento do Ecossistema Brasileiro de Startups — Edição 2025",
+      "publisher": "ABStartups",
+      "source_kind": "primary_association",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view1",
+      "notes": "Publication year 2025; 26-page PDF. Methodology read on pages 2–3. Full day publication unknown.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-bndes-call",
+      "url": "https://garagem.bndes.gov.br/inscreva-se/",
+      "title": "Inscreva-se no BNDES Garagem — Edição 2026",
+      "publisher": "BNDES / Quintessa",
+      "source_kind": "primary_programme",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view2",
+      "notes": "Current page states October 28–November 30 2026 intake; individual eligibility still requires full edital review.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-fapesp-old",
+      "url": "https://fapesp.br/58/programa-fapesp-pesquisa-inovativa-em-pequenas-empresas-pipe",
+      "title": "PIPE legacy landing page",
+      "publisher": "FAPESP",
+      "source_kind": "regulatory",
+      "accessed": false,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "acquisition": "web_tool_attempt",
+      "web_ref": "turn527075600view3",
+      "notes": "Redirect page had no readable lines. Accessible official /pipe/normas/ used instead.",
+      "status": "blocked_or_empty",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-fapesp-rules",
+      "url": "https://fapesp.br/pipe/normas/",
+      "title": "Programa FAPESP Pesquisa Inovativa em Pequenas Empresas — PIPE normas",
+      "publisher": "FAPESP",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view3",
+      "notes": "Page updated September 28 2026; norms effective September 15 2026. Update date is not publication date.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-embrapii-sebrae",
+      "url": "https://embrapii.org.br/sebrae/",
+      "title": "Embrapii e Sebrae: Inovação para os pequenos negócios e startups",
+      "publisher": "Embrapii",
+      "source_kind": "primary_programme",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view4",
+      "notes": "Funding percentages are source claims and depend on project/modalities; no individual eligibility determination.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-finep-opportunities",
+      "url": "https://www.finep.gov.br/oportunidades/",
+      "title": "Oportunidades",
+      "publisher": "Finep",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn174489242view8",
+      "notes": "Current navigation to credit, grants and indirect investment. Full filtered opportunity inventory not exposed in opened text.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-finep-suspension",
+      "url": "https://legacy.finep.gov.br/finepstartup",
+      "title": "Suspensão do Fluxo Contínuo — Programa Finep Startup",
+      "publisher": "Finep",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view5",
+      "notes": "Suspension effective June 30 2025; publication day not stated.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-inovativa-2026",
+      "url": "https://www.gov.br/mdic/pt-br/assuntos/noticias/2026/junho/mdic-divulga-selecao-do-inovativa-de-impacto-2026",
+      "title": "MDIC divulga seleção do InovAtiva de Impacto 2026",
+      "publisher": "MDIC",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": "2026-10-26",
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view6",
+      "notes": "Displayed publication/update date conflicts with text saying next June 15. Preserve explicit chronology conflict.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-porto-digital",
+      "url": "https://portodigital.org/sobre-o-porto-digital/",
+      "title": "Sobre o Porto Digital",
+      "publisher": "Porto Digital",
+      "source_kind": "primary_institution",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view7",
+      "notes": "541 displayed companies include startups and large organisations; not a startup-only denominator.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-porto-directory",
+      "url": "https://embarcadas.portodigital.org/",
+      "title": "Porto Digital — Embarcadas",
+      "publisher": "Porto Digital",
+      "source_kind": "primary_institution",
+      "accessed": false,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "acquisition": "web_tool_attempt",
+      "web_ref": "turn174489242view1",
+      "notes": "Open returned zero readable lines despite search-visible directory text. Dynamic directory unenumerated.",
+      "status": "blocked_or_empty",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-acate",
+      "url": "https://www.acate.com.br/blog-da-acate/empresas-tecnologia-sc-2025/",
+      "title": "Observatório ACATE 2025: Insights sobre empresas de tecnologia de Santa Catarina",
+      "publisher": "ACATE",
+      "source_kind": "primary_association",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view8",
+      "notes": "Report concerns technology firms, broader than startups; use regional network/sector context only.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-unicamp",
+      "url": "https://www.unicamp.br/noticias/2026/11/12/empresas-filhas-da-unicamp-ja-geraram-quase-58-mil-empregos-diretos/",
+      "title": "Empresas-filhas da Unicamp já geraram quase 58 mil empregos diretos",
+      "publisher": "Unicamp / Inova Unicamp",
+      "source_kind": "primary_institution",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": "2026-11-12",
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view9",
+      "notes": "Voluntary registry; 2026 report registration window August 1 2025–July 31 2026. Alumni-founded firms need not be in Campinas or be startups.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-curitiba",
+      "url": "https://www.curitiba.pr.gov.br/noticias/curitiba-fortalece-ecossistema-vale-do-pinhao-e-ganha-o-oscar-mundial-da-inovacao/81087",
+      "title": "Curitiba fortalece ecossistema Vale do Pinhão",
+      "publisher": "Prefeitura de Curitiba",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view10",
+      "notes": "2025 retrospective page; exact publication date not captured. Municipal count uses own undefined universe.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-tecnopuc",
+      "url": "https://tecnopuc.pucrs.br/",
+      "title": "Tecnopuc",
+      "publisher": "PUCRS / Tecnopuc",
+      "source_kind": "primary_institution",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view11",
+      "notes": "Opened text counters rendered +0; treat counts as unavailable, not actual zeros. Sector hub links are readable.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-spv",
+      "url": "https://sanpedrovalley.org.br/",
+      "title": "San Pedro Valley",
+      "publisher": "San Pedro Valley",
+      "source_kind": "primary_institution",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view12",
+      "notes": "Community history and directory links read. Historical 2022 third-party figures and placeholder zero/XX counters not used as current totals.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-coppe",
+      "url": "https://incubadora.coppe.ufrj.br/portfolio-de-empresas",
+      "title": "Portfólio de Empresas",
+      "publisher": "COPPE/UFRJ incubator",
+      "source_kind": "primary_institution",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view13",
+      "notes": "Sector focus readable; lifetime developed-startup claim is not current active membership.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-coppe-directory",
+      "url": "https://incubadora.coppe.ufrj.br/?id=403&option=com_content&view=article",
+      "title": "Empresas residentes e graduadas",
+      "publisher": "COPPE/UFRJ incubator",
+      "source_kind": "primary_institution",
+      "accessed": true,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn241546975view3",
+      "notes": "Mostly image labels, including repeated logo alt text; company identities require independent checking.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-ceara",
+      "url": "https://www.sct.ce.gov.br/2026/05/18/secitece-lanca-edital-do-corredores-digitais-para-novos-projetos-inovadores-e-startups-em-crescimento/",
+      "title": "Secitece lança edital do Corredores Digitais",
+      "publisher": "Secitece Ceará",
+      "source_kind": "regulatory",
+      "accessed": true,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": "2026-05-18",
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn174489242view5",
+      "notes": "Earlier page read succeeded. Final find at 2026-11-18T09:46:54.357Z timed out; original historical evidence retained, no fresh-success claim.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-amazon",
+      "url": "https://certi.org.br/plataforma-jornada-amazonia/",
+      "title": "Plataforma Jornada Amazônia",
+      "publisher": "Fundação CERTI",
+      "source_kind": "primary_institution",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:46:54.357Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn593064800view15",
+      "notes": "Programme purpose and support pathway read; undated cumulative metrics not used as current active-startup count.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-kaszek",
+      "url": "https://kaszek.com/companies/",
+      "title": "Companies",
+      "publisher": "Kaszek",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:03.205Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn990980895view0",
+      "notes": "HQ/sector/active-exit filters visible; text extraction lacks a full row inventory.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-canary",
+      "url": "https://www.canary.com.br/portfolio/",
+      "title": "Portfolio",
+      "publisher": "Canary",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:03.205Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn990980895view1",
+      "notes": "Opened text exposes selected news cards, not a complete portfolio. Dates/currencies need separate event sources.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-monashees",
+      "url": "https://www.monashees.com/portfolio",
+      "title": "Our Portfolio",
+      "publisher": "monashees",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:03.205Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn990980895view2",
+      "notes": "Partial rendered portfolio repeats cards and includes non-Brazil HQ, M&A and active statuses. No bulk copying.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-latitud",
+      "url": "https://latitud.com/portfolio",
+      "title": "Portfolio",
+      "publisher": "Latitud",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:03.205Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn990980895view3",
+      "notes": "Category/search controls visible; companies not enumerated in accessible text.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-angels",
+      "url": "https://anjosdobrasil.net/pesquisa-anual-investimento-anjo-2026-anjos-do-brasil/",
+      "title": "Pesquisa Anual Investimento Anjo 2026",
+      "publisher": "Anjos do Brasil",
+      "source_kind": "primary_association",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:03.205Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": "2026-06-23",
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn990980895view4",
+      "notes": "Survey estimate for 2025, not a startup inventory or event-level funding evidence.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-abvcap",
+      "url": "https://abvcap.com.br/wp-content/uploads/2026/02/report-abvcap-ttr-data-4q2025.pdf",
+      "title": "Brasil Private Equity e Venture Capital — Investimentos 2025",
+      "publisher": "ABVCAP / TTR Data",
+      "source_kind": "primary_association",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:03.205Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn990980895view5",
+      "notes": "Public report with proprietary underlying data; brief methodology paraphrase only. Publication month from path not treated as verified day.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-wow",
+      "url": "https://www.wow.ac/",
+      "title": "WOW Aceleradora",
+      "publisher": "WOW",
+      "source_kind": "primary_investor",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:03.205Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn990980895view6",
+      "notes": "Current homepage says Batch 36 open; exact closing deadline not verified. Portfolio membership does not establish any particular round.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-ace",
+      "url": "https://aceventures.com.br/aceleracao-turma14/",
+      "title": "Aceleração Digital ACE — Turma 14",
+      "publisher": "ACE Ventures",
+      "source_kind": "primary_programme",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:03.205Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn990980895view7",
+      "notes": "October 17 2026 application deadline has passed as of retrieval; historical call, despite open wording on page.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-bndes-directory",
+      "url": "https://garagem.bndes.gov.br/startups/",
+      "title": "Startups — BNDES Garagem",
+      "publisher": "BNDES / Quintessa",
+      "source_kind": "primary_programme",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:03.205Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn990980895view8",
+      "notes": "398 displayed results; 12 visible cards; Carregar mais not traversed. Displayed count not eligible denominator.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-spv-directory",
+      "url": "https://sanpedrovalley.org.br/startups/",
+      "title": "Startups — San Pedro Valley",
+      "publisher": "San Pedro Valley",
+      "source_kind": "primary_institution",
+      "accessed": true,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn518365676view3",
+      "notes": "Self-submitted profile text includes contact details; no personal contacts retained. Page/pagination boundary unresolved.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-sebrae-observatory",
+      "url": "https://observatorio.sebraestartups.com.br/pt-br/estudo",
+      "title": "Observatório Sebrae Startups — Estudos",
+      "publisher": "Sebrae",
+      "source_kind": "primary_institution",
+      "accessed": true,
+      "retrieved_at": "2026-11-18T09:47:03.205Z",
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "tool_completion",
+      "published_on": null,
+      "acquisition": "web_tool_page_read",
+      "web_ref": "turn990980895view9",
+      "notes": "Report catalogue visible; linked full reports and form/access terms not evaluated or bypassed.",
+      "status": "reviewed_staged",
+      "crawler_seed_approved": false
+    },
+    {
+      "id": "ecobr-genesis-directory",
+      "url": "https://www.genesis.puc-rio.br/startups/",
+      "title": "Startups — Gênesis PUC-Rio",
+      "publisher": "Gênesis PUC-Rio",
+      "source_kind": "primary_institution",
+      "accessed": false,
+      "retrieved_at": null,
+      "retrieved_on": "2026-11-18",
+      "retrieval_precision": "day",
+      "published_on": null,
+      "acquisition": "web_tool_attempt",
+      "web_ref": "turn174489242view3",
+      "notes": "502 Bad Gateway. Search-only descriptions retained as queue leads; no accepted substantive claim from this URL.",
+      "status": "blocked_or_empty",
+      "crawler_seed_approved": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "ecobr-f01",
+      "topic": "population",
+      "claim": "Sebrae reports 22,869 startups mapped through December 2025; this is the report's mapped universe, not a verified census of all eligible Brazilian startups.",
+      "source_ids": [
+        "ecobr-sebrae-2025"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "as_of": "2025-12",
+      "as_of_precision": "month",
+      "reported_population": 22869
+    },
+    {
+      "id": "ecobr-f02",
+      "topic": "population",
+      "claim": "ABStartups' 2025 study analyses self-declared information from 3,650 mapped active startups, collected July–September 2025 across 424 cities.",
+      "source_ids": [
+        "ecobr-abstartups-2025"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "as_of": "2025-09",
+      "as_of_precision": "month",
+      "reported_population": 3650,
+      "universe": "respondents / existing registry updates plus new registrations"
+    },
+    {
+      "id": "ecobr-f03",
+      "topic": "sectors",
+      "claim": "Sebrae describes a predominance of B2B and SaaS, with 51.8% reporting AI in products or operations. These source-universe characteristics guide sampling, not market-share conclusions.",
+      "source_ids": [
+        "ecobr-sebrae-2025"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f04",
+      "topic": "hubs",
+      "claim": "The Sebrae 2025 municipal table places São Paulo first, followed by Florianópolis, Rio de Janeiro, Recife, Fortaleza, Brasília, Belo Horizonte, Curitiba, Porto Alegre and Teresina.",
+      "source_ids": [
+        "ecobr-sebrae-2025"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "interpretation": "mapped-population order only; avoid presenting as a universal ecosystem-quality ranking"
+    },
+    {
+      "id": "ecobr-f05",
+      "topic": "campinas",
+      "claim": "Inova Unicamp's 2026 voluntary registry reports 2,055 cumulative company registrations and 1,624 active firms. The universe includes alumni-founded companies and spin-offs across Brazil and abroad, not just Campinas startups.",
+      "source_ids": [
+        "ecobr-unicamp"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "as_of": "2026-07-31",
+      "reported_population": 1624,
+      "universe": "active firms in voluntary university-affiliated registry"
+    },
+    {
+      "id": "ecobr-f06",
+      "topic": "belo_horizonte",
+      "claim": "San Pedro Valley identifies itself as a founder-created Belo Horizonte community originating in the São Pedro neighbourhood and links a self-registration startup directory.",
+      "source_ids": [
+        "ecobr-spv"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f07",
+      "topic": "curitiba",
+      "claim": "Curitiba's 2025 retrospective connects the Vale do Pinhão network, Worktiba residency, Pinhão Hub and investment/funding actors. Its stated 670 startups is a municipal universe distinct from Sebrae's mapped count.",
+      "source_ids": [
+        "ecobr-curitiba"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f08",
+      "topic": "florianopolis_sc",
+      "claim": "ACATE describes regional poles and the MIDIHUB incubator network using MIDITEC methods. Its broader technology-industry measures should not be relabelled startup totals.",
+      "source_ids": [
+        "ecobr-acate"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f09",
+      "topic": "porto_alegre",
+      "claim": "Tecnopuc organises sector hubs including agrifood, education, finance, creative industry, AI, mobility and health. Its text-rendered +0 counters are unavailable observations, not zeros.",
+      "source_ids": [
+        "ecobr-tecnopuc"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f10",
+      "topic": "recife",
+      "claim": "Porto Digital integrates startups, established companies, universities and public actors in Recife, spanning IT, digital communication, automation, AI and creative activity. Its 541 displayed firms are broader than startups.",
+      "source_ids": [
+        "ecobr-porto-digital"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f11",
+      "topic": "rio_de_janeiro",
+      "claim": "COPPE/UFRJ's incubator lists technology-based domains including health/biotech, energy, sustainability, smart cities, oil/gas, naval industry and advanced manufacturing, providing a deep-tech discovery route.",
+      "source_ids": [
+        "ecobr-coppe"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f12",
+      "topic": "fortaleza_ceara",
+      "claim": "Ceará's Corredores Digitais 2026 call separated Bora Criar for early ideas from Bora Crescer for operating businesses. Its stated June 8 deadline is historical by this checkpoint.",
+      "source_ids": [
+        "ecobr-ceara"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "freshness_note": "Earlier successful page read; final recheck timed out. Does not establish current intake status."
+    },
+    {
+      "id": "ecobr-f13",
+      "topic": "amazon_bioeconomy",
+      "claim": "CERTI describes Jornada Amazônia as a startup-development pathway connecting forest-conservation-oriented businesses to technical support, markets and investment.",
+      "source_ids": [
+        "ecobr-amazon"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f14",
+      "topic": "bndes_garagem",
+      "claim": "The BNDES Garagem 2026 application page states intake October 28–November 30, up to 100 selections, creation and traction modules, and socioenvironmental impact themes. This does not confer an individual eligibility determination.",
+      "source_ids": [
+        "ecobr-bndes-call"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "intake_window": {
+        "start": "2026-10-28",
+        "end": "2026-11-30"
+      },
+      "observed_state": "open_on_2026-11-18_per_published_window"
+    },
+    {
+      "id": "ecobr-f15",
+      "topic": "fapesp_pipe",
+      "claim": "PIPE provides non-repayable innovation-research support for small companies. The rules effective September 15 2026 require at most 250 employees and a real headquarters or research unit in São Paulo.",
+      "source_ids": [
+        "ecobr-fapesp-rules"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "effective_on": "2026-09-15"
+    },
+    {
+      "id": "ecobr-f16",
+      "topic": "embrapii_sebrae",
+      "claim": "Embrapii/Sebrae offers technical and financial R&D support; its page advertises coverage up to 90% under project-dependent conditions and identifies Sebrae support for annual revenue up to BRL 4.8 million.",
+      "source_ids": [
+        "ecobr-embrapii-sebrae"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f17",
+      "topic": "finep",
+      "claim": "Finep's current opportunity portal separates credit, non-repayable support and indirect investment. The Finep Startup page states continuous intake suspended from June 30 2025, so older rolling-intake descriptions are stale.",
+      "source_ids": [
+        "ecobr-finep-opportunities",
+        "ecobr-finep-suspension"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "intake_suspension_effective_on": "2025-06-30"
+    },
+    {
+      "id": "ecobr-f18",
+      "topic": "inovativa",
+      "claim": "The 2026 InovAtiva de Impacto announcement reports 72 selected ventures and limits that edition to Alagoas, Ceará, Espírito Santo, Pará, Pernambuco and Rio Grande do Norte. Programme-wide older eligibility must not override this edition.",
+      "source_ids": [
+        "ecobr-inovativa-2026"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "reported_selected_population": 72,
+      "date_conflict": true
+    },
+    {
+      "id": "ecobr-f19",
+      "topic": "angel_network",
+      "claim": "Anjos do Brasil reports a 2025 angel-investment estimate of BRL 919 million and 8,044 investors in its June 2026 publication. These survey estimates are ecosystem context, not startup-level funding events.",
+      "source_ids": [
+        "ecobr-angels"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "as_of": "2025",
+      "as_of_precision": "year"
+    },
+    {
+      "id": "ecobr-f20",
+      "topic": "vc_measurement",
+      "claim": "ABVCAP/TTR's 2025 VC section counts investments in Brazilian companies initiated during the period, completed or ongoing; amount totals use non-confidential values and exclude angel investments.",
+      "source_ids": [
+        "ecobr-abvcap"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f21",
+      "topic": "investor_discovery",
+      "claim": "Kaszek offers country-HQ, sector and active/exit filters; monashees shows initial investment labels and headquarters; Canary exposes selected announcements; Latitud exposes sector/market filters. These are discovery routes requiring company- and event-level review.",
+      "source_ids": [
+        "ecobr-kaszek",
+        "ecobr-monashees",
+        "ecobr-canary",
+        "ecobr-latitud"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f22",
+      "topic": "accelerators",
+      "claim": "WOW describes national remote-compatible startup acceleration supported by an angel-investor network. Its Batch 36 banner was open at retrieval, but an exact closing date was not verified.",
+      "source_ids": [
+        "ecobr-wow"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f23",
+      "topic": "accelerators",
+      "claim": "ACE's Digital Acceleration Turma 14 targets Espírito Santo and states an October 17 2026 deadline; that call is historical at this checkpoint despite retained open-application wording.",
+      "source_ids": [
+        "ecobr-ace"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    },
+    {
+      "id": "ecobr-f24",
+      "topic": "enumeration",
+      "claim": "BNDES Garagem's directory displays 398 results but exposes only 12 cards before a Load more button in the retrieved text. No pagination completion, eligible denominator or 398 verified-company claim is made.",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged",
+      "displayed_results": 398,
+      "visible_card_observations": 12,
+      "eligible_denominator": null
+    },
+    {
+      "id": "ecobr-f25",
+      "topic": "next_reports",
+      "claim": "The Sebrae observatory lists Brazil, Northeast, Amazônia Legal, regional and deep-tech reports as discovery routes; linked reports and their licensing/access conditions require separate review.",
+      "source_ids": [
+        "ecobr-sebrae-observatory"
+      ],
+      "confidence": "high",
+      "status": "reviewed_staged"
+    }
+  ],
+  "next_source_queue": [
+    {
+      "id": "ecobr-q01",
+      "url": "https://garagem.bndes.gov.br/startups/",
+      "scope": "Brazil impact startups by region, state, cohort and module",
+      "pagination_status": "first_text_page_only; 12 cards; Load more not traversed",
+      "eligible_denominator": null,
+      "reason": "Strong official operator route for North/Northeast and impact companies underrepresented in venture announcements.",
+      "next_action": "Review visible identity/official-domain leads; preserve selected cohort filters and next-page boundary before bounded continuation.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "displayed_results": 398,
+      "visible_cards": 12,
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q02",
+      "url": "https://embarcadas.portodigital.org/",
+      "scope": "Recife/Pernambuco resident companies",
+      "pagination_status": "dynamic_empty_text",
+      "eligible_denominator": null,
+      "reason": "Official directory inaccessible to readable extraction; residents include non-startups.",
+      "next_action": "Use a permitted readable official company profile/news source; confirm startup eligibility and legal identity individually.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q03",
+      "url": "https://incubadora.coppe.ufrj.br/portfolio-de-empresas",
+      "scope": "Rio deep-tech incubated and graduated firms",
+      "pagination_status": "portfolio link followed; image labels only",
+      "eligible_denominator": null,
+      "reason": "Avoid treating logo alt text as canonical identity.",
+      "next_action": "Read official incubation cohorts or individual company pages with founders, domain and status.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q04",
+      "url": "https://sanpedrovalley.org.br/startups/",
+      "scope": "Belo Horizonte founder community",
+      "pagination_status": "partial public text; termination not established",
+      "eligible_denominator": null,
+      "reason": "Self-submitted descriptions require official corroboration; personal contacts intentionally excluded.",
+      "next_action": "Extract bounded company names/domain leads only, then verify official sites; do not harvest contacts.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q05",
+      "url": "https://www.unicamp.br/noticias/2026/11/12/empresas-filhas-da-unicamp-ja-geraram-quase-58-mil-empregos-diretos/",
+      "scope": "Campinas university spin-offs and alumni businesses",
+      "pagination_status": "article only; underlying register not traversed",
+      "eligible_denominator": null,
+      "reason": "Voluntary universe includes large/old/foreign firms.",
+      "next_action": "Follow officially linked Inova registry/report and fix an eligibility subset before enumeration.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "reported_active_registered_firms": 1624,
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q06",
+      "url": "https://www.sct.ce.gov.br/2026/05/18/secitece-lanca-edital-do-corredores-digitais-para-novos-projetos-inovadores-e-startups-em-crescimento/",
+      "scope": "Ceará programme cohorts",
+      "pagination_status": "call read; selection lists not traversed",
+      "eligible_denominator": null,
+      "reason": "Historical call plus later recheck timeout.",
+      "next_action": "Follow official final-result lists when accessible and retain selected edition; individual company corroboration required.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q07",
+      "url": "https://certi.org.br/plataforma-jornada-amazonia/",
+      "scope": "Amazônia bioeconomy ventures",
+      "pagination_status": "programme overview only",
+      "eligible_denominator": null,
+      "reason": "Region and purpose do not prove each company is Brazil-HQ or currently active.",
+      "next_action": "Read publicly available Jornada Amazônia cohorts, verify official company domain and HQ/incorporation separately.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q08",
+      "url": "https://www.gov.br/mdic/pt-br/assuntos/noticias/2026/junho/mdic-divulga-selecao-do-inovativa-de-impacto-2026",
+      "scope": "Six-state InovAtiva de Impacto 2026 cohort",
+      "pagination_status": "announcement read; selected-ventures list not traversed",
+      "eligible_denominator": null,
+      "reason": "72 selected ventures asserted; founding/active/HQ eligibility not reviewed.",
+      "next_action": "Resolve date conflict and follow official selected list in a bounded pass.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "reported_selected_ventures": 72,
+      "priority": 1
+    },
+    {
+      "id": "ecobr-q09",
+      "url": "https://www.monashees.com/portfolio",
+      "scope": "VC-backed Brazil-HQ and Brazil-origin companies",
+      "pagination_status": "partially rendered repeated cards; full termination unknown",
+      "eligible_denominator": null,
+      "reason": "Mixes geographies, active and M&A states.",
+      "next_action": "Deduplicate name/domain observations; verify precise geography, status and dated event evidence.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q10",
+      "url": "https://kaszek.com/companies/",
+      "scope": "Brazil-HQ active/exited portfolio subset",
+      "pagination_status": "filters visible; company rows incomplete",
+      "eligible_denominator": null,
+      "reason": "Portfolio cannot establish specific round dates/amounts/participants.",
+      "next_action": "Read individual company pages under explicit Brazil/active filters and keep event proof separate.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q11",
+      "url": "https://www.canary.com.br/portfolio/",
+      "scope": "Early-stage Brazil and Latin America",
+      "pagination_status": "news cards only in readable text",
+      "eligible_denominator": null,
+      "reason": "Incomplete portfolio and undated/ambiguous currency announcement snippets.",
+      "next_action": "Follow official company/investor announcements; log exact dates and currencies before accepting funding.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q12",
+      "url": "https://latitud.com/portfolio",
+      "scope": "Founder-led early-stage regional companies",
+      "pagination_status": "filters only; rows not exposed",
+      "eligible_denominator": null,
+      "reason": "Regional scope broader than Brazil.",
+      "next_action": "Use accessible individual primary company pages; document geographic admission and status.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q13",
+      "url": "https://www.wow.ac/",
+      "scope": "Early-stage accelerator portfolio",
+      "pagination_status": "homepage only; portfolio link not followed",
+      "eligible_denominator": null,
+      "reason": "Programme participation not proof of a specific investment.",
+      "next_action": "Follow portfolio by cohort, confirm company and event evidence; verify current intake deadline separately.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q14",
+      "url": "https://observatorio.sebraestartups.com.br/pt-br/estudo",
+      "scope": "Regional, deep-tech, Norte/Nordeste and Amazônia Legal reports",
+      "pagination_status": "report catalogue read; linked files unexamined",
+      "eligible_denominator": null,
+      "reason": "Report access/rights and populations differ.",
+      "next_action": "Review publicly available report methodology; avoid gated/proprietary bulk copying and pin any enumeration denominator.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 2
+    },
+    {
+      "id": "ecobr-q15",
+      "url": "https://www.genesis.puc-rio.br/startups/",
+      "scope": "PUC-Rio incubated and alumni ventures",
+      "pagination_status": "502 error; unenumerated",
+      "eligible_denominator": null,
+      "reason": "Search descriptions are leads only.",
+      "next_action": "Retry only via an available permitted source at a later checkpoint; no access bypass.",
+      "crawler_seed_approved": false,
+      "status": "queued",
+      "priority": 3
+    }
+  ],
+  "discovered_company_leads": [
+    {
+      "id": "ecobr-lead-01",
+      "name": "2Finance",
+      "directory_link_target": "https://b2finance.com/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-02",
+      "name": "4 Habitos",
+      "directory_link_target": "https://www.4habitos.com.br/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-03",
+      "name": "4FEEDSTOCK",
+      "directory_link_target": "https://www.4feedstock.com/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-04",
+      "name": "AçaíMaps",
+      "directory_link_target": "https://acaimaps.com/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-05",
+      "name": "AERORIVER",
+      "directory_link_target": "https://aeroriver.com.br/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-06",
+      "name": "AFREEKTECH",
+      "directory_link_target": "https://www.afreektech.com.br/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-07",
+      "name": "Afro Academy",
+      "directory_link_target": "https://www.afroacademy.com.br/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-08",
+      "name": "AFROCENTRADOS CONCEITO",
+      "directory_link_target": null,
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-09",
+      "name": "AFROSAÚDE",
+      "directory_link_target": "https://afrosaude.com.br/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-10",
+      "name": "AGROFORESTREE",
+      "directory_link_target": "https://agroforestree.com/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-11",
+      "name": "AICURY",
+      "directory_link_target": "https://aicury.com/",
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    },
+    {
+      "id": "ecobr-lead-12",
+      "name": "Alpha D",
+      "directory_link_target": null,
+      "source_ids": [
+        "ecobr-bndes-directory"
+      ],
+      "status": "discovery_only",
+      "canonical_domain_verified": false,
+      "reviewed_company": false,
+      "eligible": null,
+      "reason": "Directory observation only; target not opened or canonical identity established."
+    }
+  ],
+  "queries": [
+    {
+      "engine": "system2",
+      "query": "site.abstartups.com.br mapeamento ecossistema brasileiro startups 2025 2026 São Paulo Florianópolis Recife",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.gov.br startup Brasil InovAtiva 2026 programa",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.bndes.gov.br Garagem 2025 2026 startups 100 impacto",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.fapesp.br PIPE pequenas empresas inovativas São Paulo 2026",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.finep.gov.br Finep startup programa condições empresas 2026",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.embrapii.org.br startups Sebrae parceria pequenas empresas inovação 2026",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.gov.br InovAtiva 2026 aceleração startups",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.portodigital.org empresas embarcadas Recife 2025 2026 Porto Digital",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.acate.com.br observatório 2025 Santa Catarina tecnologia Florianópolis MIDITEC",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.valedopinhao.com.br startups Curitiba ecossistema 2026",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.pucrs.br tecnopuc startups Porto Alegre 2026 parque",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.curitiba.pr.gov.br Vale do Pinhão startups Curitiba 2026",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.pucrs.br Tecnopuc startups Porto Alegre 2026",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.inova.unicamp.br empresas filhas Unicamp 2025 2026",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.pbh.gov.br Belo Horizonte startups San Pedro Valley BH-TEC",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.puc-rio.br Instituto Gênesis startups Rio de Janeiro incubadora",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.ufrj.br parque tecnológico Rio de Janeiro incubadora empresas startups",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.secitece.ce.gov.br Corredores Digitais 2026 startups Ceará",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.fundacaocerti.org.br Jornada Amazônia Sinergia startups 2026",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.mon ashees.com.br portfolio",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Malformed query typo; corrected later with site.monashees.com portfolio."
+    },
+    {
+      "engine": "system2",
+      "query": "site.canary.com.br portfolio empresas",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.kaszek.com companies Brazil portfolio",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system2",
+      "query": "site.anjosdobrasil.net pesquisa investimento anjo 2025",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.abvcap.com.br 2026 venture capital 2025 dados indústria",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.latitud.com fund portfolio founders community Brazil",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.monashees.com portfolio",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.fapesp.br PIPE 2026 pequenas empresas programa normas sede pesquisa São Paulo",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.finep.gov.br \"Finep Startup\" \"fluxo\" \"2026\"",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.aceventures.com.br \"aceleração\"",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.wow.ac \"startups\" \"aceleradora\"",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Discovery results reviewed selectively; accepted sources are only opened entries in registry."
+    },
+    {
+      "engine": "system1",
+      "query": "site.imf.org \"World Economic Outlook\" \"October 2026\" \"Brazil\"",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Official indexed leads found; open did not expose exact data."
+    },
+    {
+      "engine": "system1",
+      "query": "site.imf.org \"NGDPD\" \"2026\" \"Brazil\" \"October 2026\"",
+      "retrieved_on": "2026-11-18",
+      "outcome": "Official indexed leads found; open did not expose exact data."
+    }
+  ],
+  "access_gaps": [
+    {
+      "source_id": "ecobr-imf-api",
+      "outcome": "DisabledError; no values read.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-imf-dataset",
+      "outcome": "Only unresolved page-template fields; edition and data not read.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-imf-profile",
+      "outcome": "Open returned template. Search result turn518365676search0 mentioned October 2026 WEO and rounded GDP 2.65 thousand billion USD; search-only lead, not verified exact value.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-imf-indicator",
+      "outcome": "Tool reported URL inaccessible.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-fapesp-old",
+      "outcome": "Redirect page had no readable lines. Accessible official /pipe/normas/ used instead.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-porto-directory",
+      "outcome": "Open returned zero readable lines despite search-visible directory text. Dynamic directory unenumerated.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-genesis-directory",
+      "outcome": "502 Bad Gateway. Search-only descriptions retained as queue leads; no accepted substantive claim from this URL.",
+      "followup": "Retain source as unresolved; do not accept content claims or infer absence."
+    },
+    {
+      "source_id": "ecobr-ceara",
+      "outcome": "Initial page read succeeded; final find timed out.",
+      "followup": "Retain initial historical evidence; mark current refresh unavailable."
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "ecobr-c01",
+      "source_ids": [
+        "ecobr-inovativa-2026"
+      ],
+      "field": "announcement chronology",
+      "observations": [
+        "Page path is in 2026/junho and text says activities begin next June 15.",
+        "Displayed publication and update are October 26 2026."
+      ],
+      "resolution": "Retain displayed publication date; event date remains unresolved. Do not infer an October launch or current open intake."
+    },
+    {
+      "id": "ecobr-c02",
+      "source_ids": [
+        "ecobr-sebrae-2025",
+        "ecobr-curitiba"
+      ],
+      "field": "Curitiba startup count",
+      "observations": [
+        "Sebrae maps 481 Curitiba startups in its 2025 municipal table.",
+        "Municipality reports 670 in its own 2025 retrospective."
+      ],
+      "resolution": "Different unaligned source universes; do not overwrite either or infer national completeness."
+    },
+    {
+      "id": "ecobr-c03",
+      "source_ids": [
+        "ecobr-tecnopuc",
+        "ecobr-spv"
+      ],
+      "field": "dynamic counters",
+      "observations": [
+        "Accessible Tecnopuc and San Pedro Valley text contains +0 or zero/XX placeholders."
+      ],
+      "resolution": "Counts unavailable; never record zero organisations/startups."
+    }
+  ],
+  "retrieval_log": [
+    {
+      "kind": "source_reads",
+      "started_at": "2026-11-18T09:43:02Z",
+      "ended_at": "2026-11-18T09:47:03.205Z",
+      "scope": "All listed sources opened with web tools; earlier per-source seconds not captured. retrieved_on retains actual day and retrieved_at is null where exact timing is unavailable."
+    },
+    {
+      "kind": "final_primary_recheck",
+      "completed_at": "2026-11-18T09:46:54.357Z",
+      "source_ids": [
+        "ecobr-sebrae-2025",
+        "ecobr-abstartups-2025",
+        "ecobr-bndes-call",
+        "ecobr-fapesp-rules",
+        "ecobr-embrapii-sebrae",
+        "ecobr-finep-suspension",
+        "ecobr-inovativa-2026",
+        "ecobr-porto-digital",
+        "ecobr-acate",
+        "ecobr-unicamp",
+        "ecobr-curitiba",
+        "ecobr-tecnopuc",
+        "ecobr-spv",
+        "ecobr-coppe",
+        "ecobr-amazon"
+      ],
+      "failed_source_ids": [
+        "ecobr-ceara"
+      ],
+      "method": "web_tool_find"
+    },
+    {
+      "kind": "final_network_recheck",
+      "completed_at": "2026-11-18T09:47:03.205Z",
+      "source_ids": [
+        "ecobr-kaszek",
+        "ecobr-canary",
+        "ecobr-monashees",
+        "ecobr-latitud",
+        "ecobr-angels",
+        "ecobr-abvcap",
+        "ecobr-wow",
+        "ecobr-ace",
+        "ecobr-bndes-directory",
+        "ecobr-sebrae-observatory"
+      ],
+      "failed_source_ids": [],
+      "method": "web_tool_find"
+    }
+  ],
+  "counts": {
+    "unique_source_urls_attempted": 36,
+    "source_urls_with_readable_content": 29,
+    "source_urls_blocked_or_empty": 7,
+    "source_urls_successful_then_failed_recheck": 1,
+    "reviewed_ecosystem_findings": 25,
+    "discovered_company_leads": 12,
+    "companies_reviewed": 0,
+    "companies_accepted": 0,
+    "companies_rejected": 0,
+    "next_source_routes": 15,
+    "search_queries": 32,
+    "live_crawler_runs": 0,
+    "production_records_written": 0
+  },
+  "handoff": {
+    "owner_scope": "Brazil ecosystem evidence only",
+    "source_schema_note": "Source registry uses explicit primary_institution / primary_programme / primary_association labels in addition to regulatory / primary_investor. These are research sidecar classifications, not added production API fields.",
+    "rights": "No raw page bodies, logos, portraits, private contacts or proprietary company-table copies retained.",
+    "integration": "Keep ecosystem.json and ecosystem-report.md beside country claims and current-schema projection. The parent owner supplies the separate scope of 22 accepted company dossiers. Preserve sidecar taxonomy without expanding production schema. Company leads remain candidates, not accepted records or approved seeds."
+  },
+  "parent_batch_scope": {
+    "accepted_company_dossiers": 22,
+    "provided_by": "parent integration owner",
+    "basis": "Parent-supplied integration scope; not independently enumerated by this ecosystem subpacket",
+    "company_list_location": "batch README maintained by parent",
+    "national_completeness_claimed": false
+  },
+  "report_artifact": "ecosystem-report.md",
+  "final_integration_base": "ff4d51cf729d6a654787e9a1db63967b292df8c9"
+}

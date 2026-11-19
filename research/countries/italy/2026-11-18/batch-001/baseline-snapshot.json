@@ -1,0 +1,801 @@
+{
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "inputs": {
+    "data/partner-profiles.json": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+    "data/partner-leads.json": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+    "data/partners-reviewed.json": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+    "data/catalogue.json": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41"
+  },
+  "builder_sha256": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+  "startup_entities": [
+    {
+      "id": "startup:airwallex",
+      "name": "Airwallex",
+      "website": "https://www.airwallex.com/",
+      "canonical_domain": "airwallex.com"
+    },
+    {
+      "id": "startup:alloovium",
+      "name": "Alloovium",
+      "website": "https://www.alloovium.com/",
+      "canonical_domain": "alloovium.com"
+    },
+    {
+      "id": "startup:ascenda",
+      "name": "Ascenda",
+      "website": "https://ascenda.one/",
+      "canonical_domain": "ascenda.one"
+    },
+    {
+      "id": "startup:brainwaves",
+      "name": "Brainwaves",
+      "website": "https://getbrainwaves.com/",
+      "canonical_domain": "getbrainwaves.com"
+    },
+    {
+      "id": "startup:bugcrowd",
+      "name": "Bugcrowd",
+      "website": "https://www.bugcrowd.com/",
+      "canonical_domain": "bugcrowd.com"
+    },
+    {
+      "id": "startup:canva",
+      "name": "Canva",
+      "website": "https://www.canva.com/",
+      "canonical_domain": "canva.com"
+    },
+    {
+      "id": "startup:cascayd",
+      "name": "cascayd",
+      "website": "https://cascayd.app/",
+      "canonical_domain": "cascayd.app"
+    },
+    {
+      "id": "startup:cauldron",
+      "name": "Cauldron",
+      "website": "https://www.cauldronferm.com/",
+      "canonical_domain": "cauldronferm.com"
+    },
+    {
+      "id": "startup:checkgen",
+      "name": "CheckGen",
+      "website": "https://www.checkgen.com.au/",
+      "canonical_domain": "checkgen.com.au"
+    },
+    {
+      "id": "startup:crosscourtai",
+      "name": "CrossCourtAI",
+      "website": "https://crosscourtai.com/",
+      "canonical_domain": "crosscourtai.com"
+    },
+    {
+      "id": "startup:culture-amp",
+      "name": "Culture Amp",
+      "website": "https://www.cultureamp.com/",
+      "canonical_domain": "cultureamp.com"
+    },
+    {
+      "id": "startup:cuttable",
+      "name": "Cuttable",
+      "website": "https://www.cuttable.com/",
+      "canonical_domain": "cuttable.com"
+    },
+    {
+      "id": "startup:deeligence",
+      "name": "Deeligence",
+      "website": "https://deeligence.com/",
+      "canonical_domain": "deeligence.com"
+    },
+    {
+      "id": "startup:ena-respiratory",
+      "name": "ENA Respiratory",
+      "website": "https://enarespiratory.com/",
+      "canonical_domain": "enarespiratory.com"
+    },
+    {
+      "id": "startup:eucalyptus",
+      "name": "Eucalyptus",
+      "website": "https://www.eucalyptus.health/",
+      "canonical_domain": "eucalyptus.health"
+    },
+    {
+      "id": "startup:flowgo",
+      "name": "FlowGo",
+      "website": "https://flowgoai.com/",
+      "canonical_domain": "flowgoai.com"
+    },
+    {
+      "id": "startup:fusion-books",
+      "name": "Fusion Books",
+      "website": null,
+      "canonical_domain": null
+    },
+    {
+      "id": "startup:gilmour-space",
+      "name": "Gilmour Space",
+      "website": "https://www.gspace.com/",
+      "canonical_domain": "gspace.com"
+    },
+    {
+      "id": "startup:go1",
+      "name": "Go1",
+      "website": "https://www.go1.com/",
+      "canonical_domain": "go1.com"
+    },
+    {
+      "id": "startup:goterra",
+      "name": "Goterra",
+      "website": "https://www.goterra.com.au/home",
+      "canonical_domain": "goterra.com.au"
+    },
+    {
+      "id": "startup:guin",
+      "name": "Guin",
+      "website": "https://guin.ai/",
+      "canonical_domain": "guin.ai"
+    },
+    {
+      "id": "startup:ibnkvault",
+      "name": "iBnkVault",
+      "website": "https://ibnk.xyz/",
+      "canonical_domain": "ibnk.xyz"
+    },
+    {
+      "id": "startup:jigspace",
+      "name": "JigSpace",
+      "website": "https://www.jig.com/",
+      "canonical_domain": "jig.com"
+    },
+    {
+      "id": "startup:loam-bio",
+      "name": "Loam Bio",
+      "website": "https://www.loambio.com/",
+      "canonical_domain": "loambio.com"
+    },
+    {
+      "id": "startup:lockii",
+      "name": "Lockii",
+      "website": "https://lockii.app/",
+      "canonical_domain": "lockii.app"
+    },
+    {
+      "id": "startup:morse-micro",
+      "name": "Morse Micro",
+      "website": "https://www.morsemicro.com/",
+      "canonical_domain": "morsemicro.com"
+    },
+    {
+      "id": "startup:neuralindex",
+      "name": "Neuralindex",
+      "website": "https://neuralindex.ai/",
+      "canonical_domain": "neuralindex.ai"
+    },
+    {
+      "id": "startup:pi-exchange",
+      "name": "PI.EXCHANGE",
+      "website": "https://www.mentana.ai/",
+      "canonical_domain": "mentana.ai"
+    },
+    {
+      "id": "startup:psiquantum",
+      "name": "PsiQuantum",
+      "website": "https://www.psiquantum.com/",
+      "canonical_domain": "psiquantum.com"
+    },
+    {
+      "id": "startup:puralink",
+      "name": "Puralink",
+      "website": "https://puralink.com/",
+      "canonical_domain": "puralink.com"
+    },
+    {
+      "id": "startup:quantum-brilliance",
+      "name": "Quantum Brilliance",
+      "website": "https://quantumbrilliance.com/",
+      "canonical_domain": "quantumbrilliance.com"
+    },
+    {
+      "id": "startup:remi-ai",
+      "name": "Remi AI",
+      "website": null,
+      "canonical_domain": null
+    },
+    {
+      "id": "startup:revolut",
+      "name": "Revolut",
+      "website": "https://www.revolut.com/",
+      "canonical_domain": "revolut.com"
+    },
+    {
+      "id": "startup:strongroom-ai",
+      "name": "Strongroom AI",
+      "website": "https://strongroom.ai/",
+      "canonical_domain": "strongroom.ai"
+    },
+    {
+      "id": "startup:superstat",
+      "name": "Superstat",
+      "website": "https://superstat.com.au/",
+      "canonical_domain": "superstat.com.au"
+    },
+    {
+      "id": "startup:synthesia",
+      "name": "Synthesia",
+      "website": "https://www.synthesia.io/",
+      "canonical_domain": "synthesia.io"
+    },
+    {
+      "id": "startup:t-0",
+      "name": "T:0",
+      "website": "https://t0.ai/",
+      "canonical_domain": "t0.ai"
+    },
+    {
+      "id": "startup:talentsheet",
+      "name": "Talentsheet",
+      "website": "https://talentsheet.xyz/",
+      "canonical_domain": "talentsheet.xyz"
+    },
+    {
+      "id": "startup:tendor",
+      "name": "Tendor",
+      "website": "https://tendor.ai/",
+      "canonical_domain": "tendor.ai"
+    },
+    {
+      "id": "startup:thermal-dawn",
+      "name": "Thermal Dawn",
+      "website": "https://www.thermaldawn.com/",
+      "canonical_domain": "thermaldawn.com"
+    },
+    {
+      "id": "startup:uipath",
+      "name": "UiPath",
+      "website": "https://www.uipath.com/",
+      "canonical_domain": "uipath.com"
+    },
+    {
+      "id": "startup:uluu",
+      "name": "ULUU",
+      "website": "https://www.uluu.com.au/",
+      "canonical_domain": "uluu.com.au"
+    },
+    {
+      "id": "startup:vixia",
+      "name": "Vixia",
+      "website": "https://www.vixia.ai/",
+      "canonical_domain": "vixia.ai"
+    },
+    {
+      "id": "startup:wiingman",
+      "name": "Wiingman",
+      "website": "https://wiingman.io/",
+      "canonical_domain": "wiingman.io"
+    },
+    {
+      "id": "startup:wise",
+      "name": "Wise",
+      "website": "https://wise.com/",
+      "canonical_domain": "wise.com"
+    },
+    {
+      "id": "startup:zabidou",
+      "name": "Zabidou",
+      "website": "https://zabidou.com/",
+      "canonical_domain": "zabidou.com"
+    }
+  ],
+  "person_entities": [
+    {
+      "id": "person:adam-gilmour",
+      "name": "Adam Gilmour"
+    },
+    {
+      "id": "person:alex-delbridge--brandon-capital",
+      "name": "Alex Delbridge"
+    },
+    {
+      "id": "person:alexey-mitko",
+      "name": "Alexey Mitko"
+    },
+    {
+      "id": "person:andrew-barnes",
+      "name": "Andrew Barnes"
+    },
+    {
+      "id": "person:andrew-horsley",
+      "name": "Andrew Horsley"
+    },
+    {
+      "id": "person:andrew-lai--boab-ai",
+      "name": "Andrew Lai"
+    },
+    {
+      "id": "person:andrew-terry",
+      "name": "Andrew Terry"
+    },
+    {
+      "id": "person:anish-deenadayalan",
+      "name": "Anish Deenadayalan"
+    },
+    {
+      "id": "person:anthony-see",
+      "name": "Anthony See"
+    },
+    {
+      "id": "person:ben-abbatangelo",
+      "name": "Ben Abbatangelo"
+    },
+    {
+      "id": "person:ben-crawford",
+      "name": "Ben Crawford"
+    },
+    {
+      "id": "person:ben-lindsay--investible",
+      "name": "Ben Lindsay"
+    },
+    {
+      "id": "person:ben-simai--startmate",
+      "name": "Ben Simai"
+    },
+    {
+      "id": "person:benny-kleist",
+      "name": "Benny Kleist"
+    },
+    {
+      "id": "person:bill-bartee--main-sequence",
+      "name": "Bill Bartee"
+    },
+    {
+      "id": "person:bodhi-hawken",
+      "name": "Bodhi Hawken"
+    },
+    {
+      "id": "person:cameron-adams",
+      "name": "Cameron Adams"
+    },
+    {
+      "id": "person:carlos-eduardo-espinal--seedcamp",
+      "name": "Carlos Eduardo Espinal"
+    },
+    {
+      "id": "person:casey-ellis",
+      "name": "Casey Ellis"
+    },
+    {
+      "id": "person:charlie-gearside",
+      "name": "Charlie Gearside"
+    },
+    {
+      "id": "person:chirag-babu",
+      "name": "Chirag Babu"
+    },
+    {
+      "id": "person:chris-eigeland",
+      "name": "Chris Eigeland"
+    },
+    {
+      "id": "person:chris-hood",
+      "name": "Chris Hood"
+    },
+    {
+      "id": "person:chris-raethke",
+      "name": "Chris Raethke"
+    },
+    {
+      "id": "person:christophe-demaison",
+      "name": "Christophe Demaison"
+    },
+    {
+      "id": "person:christopher-durre",
+      "name": "Christopher Durre"
+    },
+    {
+      "id": "person:cibby-pulikkaseril",
+      "name": "Cibby Pulikkaseril"
+    },
+    {
+      "id": "person:cielo-nicolosi",
+      "name": "Cielo Nicolosi"
+    },
+    {
+      "id": "person:cliff-obrecht",
+      "name": "Cliff Obrecht"
+    },
+    {
+      "id": "person:cordelia-king",
+      "name": "Cordelia King"
+    },
+    {
+      "id": "person:craig-blair--airtree",
+      "name": "Craig Blair"
+    },
+    {
+      "id": "person:creel-price--investible",
+      "name": "Creel Price"
+    },
+    {
+      "id": "person:daniel-dines",
+      "name": "Daniel Dines"
+    },
+    {
+      "id": "person:david-kestenbaum",
+      "name": "David Kestenbaum"
+    },
+    {
+      "id": "person:dexter-todd",
+      "name": "Dexter Todd"
+    },
+    {
+      "id": "person:didier-elzinga",
+      "name": "Didier Elzinga"
+    },
+    {
+      "id": "person:doug-english",
+      "name": "Doug English"
+    },
+    {
+      "id": "person:ed-ring",
+      "name": "Ed Ring"
+    },
+    {
+      "id": "person:elaine-stead--main-sequence",
+      "name": "Elaine Stead"
+    },
+    {
+      "id": "person:elena-tsalanidis",
+      "name": "Elena Tsalanidis"
+    },
+    {
+      "id": "person:elicia-mcdonald--airtree",
+      "name": "Elicia McDonald"
+    },
+    {
+      "id": "person:emma-grife--startmate",
+      "name": "Emma Grife"
+    },
+    {
+      "id": "person:guy-hudson",
+      "name": "Guy Hudson"
+    },
+    {
+      "id": "person:guy-webb",
+      "name": "Guy Webb"
+    },
+    {
+      "id": "person:hailey-mason",
+      "name": "Hailey Mason"
+    },
+    {
+      "id": "person:hamada-els",
+      "name": "Hamada Els"
+    },
+    {
+      "id": "person:harrison-crowe-maxwell",
+      "name": "Harrison Crowe-Maxwell"
+    },
+    {
+      "id": "person:ivy-fan",
+      "name": "Ivy Fan"
+    },
+    {
+      "id": "person:jack-white",
+      "name": "Jack White"
+    },
+    {
+      "id": "person:jack-zhang",
+      "name": "Jack Zhang"
+    },
+    {
+      "id": "person:jackie-vullinghs--airtree",
+      "name": "Jackie Vullinghs"
+    },
+    {
+      "id": "person:james-cameron--airtree",
+      "name": "James Cameron"
+    },
+    {
+      "id": "person:james-gilmour",
+      "name": "James Gilmour"
+    },
+    {
+      "id": "person:james-oliver",
+      "name": "James Oliver"
+    },
+    {
+      "id": "person:jamie-brownlee",
+      "name": "Jamie Brownlee"
+    },
+    {
+      "id": "person:jason-cai",
+      "name": "Jason Cai"
+    },
+    {
+      "id": "person:jason-hor",
+      "name": "Jason Hor"
+    },
+    {
+      "id": "person:jeremy-obrien",
+      "name": "Jeremy O’Brien"
+    },
+    {
+      "id": "person:jon-williams",
+      "name": "Jon Williams"
+    },
+    {
+      "id": "person:julia-reisser",
+      "name": "Julia Reisser"
+    },
+    {
+      "id": "person:justin-hansky",
+      "name": "Justin Hansky"
+    },
+    {
+      "id": "person:kai-bloomfield",
+      "name": "Kai Bloomfield"
+    },
+    {
+      "id": "person:kieran-start",
+      "name": "Kieran Start"
+    },
+    {
+      "id": "person:kristo-kaarmann",
+      "name": "Kristo Käärmann"
+    },
+    {
+      "id": "person:lance-co-ting-keh",
+      "name": "Lance Co Ting Keh"
+    },
+    {
+      "id": "person:linda-zeniou",
+      "name": "Linda Zeniou"
+    },
+    {
+      "id": "person:lourdes-agapito",
+      "name": "Lourdes Agapito"
+    },
+    {
+      "id": "person:lucy-liu",
+      "name": "Lucy Liu"
+    },
+    {
+      "id": "person:marcus-doherty",
+      "name": "Marcus Doherty"
+    },
+    {
+      "id": "person:maria-faleeva",
+      "name": "Maria Faleeva"
+    },
+    {
+      "id": "person:marius-tirca",
+      "name": "Marius Tirca"
+    },
+    {
+      "id": "person:mark-luo",
+      "name": "Mark Luo"
+    },
+    {
+      "id": "person:mark-thompson",
+      "name": "Mark Thompson"
+    },
+    {
+      "id": "person:mat-heywood",
+      "name": "Mat Heywood"
+    },
+    {
+      "id": "person:matthew-eyles",
+      "name": "Matthew Eyles"
+    },
+    {
+      "id": "person:matthias-niessner",
+      "name": "Matthias Niessner"
+    },
+    {
+      "id": "person:max-mito",
+      "name": "Max Mito"
+    },
+    {
+      "id": "person:melanie-perkins",
+      "name": "Melanie Perkins"
+    },
+    {
+      "id": "person:michael-de-nil",
+      "name": "Michael De Nil"
+    },
+    {
+      "id": "person:michael-kingsbury",
+      "name": "Michael Kingsbury"
+    },
+    {
+      "id": "person:michele-stansfield",
+      "name": "Michele Stansfield"
+    },
+    {
+      "id": "person:nathan-challen",
+      "name": "Nathan Challen"
+    },
+    {
+      "id": "person:naveed-nekoo",
+      "name": "Naveed Nekoo"
+    },
+    {
+      "id": "person:nick-zeniou",
+      "name": "Nick Zeniou"
+    },
+    {
+      "id": "person:nik-storonsky",
+      "name": "Nik Storonsky"
+    },
+    {
+      "id": "person:niki-scevak--blackbird-ventures",
+      "name": "Niki Scevak"
+    },
+    {
+      "id": "person:numa-bertron",
+      "name": "Numa Bertron"
+    },
+    {
+      "id": "person:oliver-bagin",
+      "name": "Oliver Bagin"
+    },
+    {
+      "id": "person:oliver-wright",
+      "name": "Oliver Wright"
+    },
+    {
+      "id": "person:olympia-yarger",
+      "name": "Olympia Yarger"
+    },
+    {
+      "id": "person:paul-bassat--square-peg",
+      "name": "Paul Bassat"
+    },
+    {
+      "id": "person:paul-naphtali--rampersand",
+      "name": "Paul Naphtali"
+    },
+    {
+      "id": "person:pete-shadbolt",
+      "name": "Pete Shadbolt"
+    },
+    {
+      "id": "person:phoebe-pincus--startmate",
+      "name": "Phoebe Pincus"
+    },
+    {
+      "id": "person:quan-pham",
+      "name": "Quan Pham"
+    },
+    {
+      "id": "person:randula-ariyawanse",
+      "name": "Randula Ariyawanse"
+    },
+    {
+      "id": "person:reshma-sohoni--seedcamp",
+      "name": "Reshma Sohoni"
+    },
+    {
+      "id": "person:rick-baker--blackbird-ventures",
+      "name": "Rick Baker"
+    },
+    {
+      "id": "person:rod-hamilton",
+      "name": "Rod Hamilton"
+    },
+    {
+      "id": "person:sai-naicker",
+      "name": "Sai Naicker"
+    },
+    {
+      "id": "person:sam-hung",
+      "name": "Sam Hung"
+    },
+    {
+      "id": "person:sam-kroonenburg",
+      "name": "Sam Kroonenburg"
+    },
+    {
+      "id": "person:shyeon-delnawaz",
+      "name": "Shyeon Delnawaz"
+    },
+    {
+      "id": "person:son-duong",
+      "name": "Son Duong"
+    },
+    {
+      "id": "person:steffen-tjerrild",
+      "name": "Steffen Tjerrild"
+    },
+    {
+      "id": "person:storm-drury",
+      "name": "Storm Drury"
+    },
+    {
+      "id": "person:taavet-hinrikus",
+      "name": "Taavet Hinrikus"
+    },
+    {
+      "id": "person:tegan-nock",
+      "name": "Tegan Nock"
+    },
+    {
+      "id": "person:terry-rudolph",
+      "name": "Terry Rudolph"
+    },
+    {
+      "id": "person:thien-long-tran",
+      "name": "Thien Long Tran"
+    },
+    {
+      "id": "person:tim-doyle",
+      "name": "Tim Doyle"
+    },
+    {
+      "id": "person:tom-mckenzie",
+      "name": "Tom McKenzie"
+    },
+    {
+      "id": "person:victor-riparbelli",
+      "name": "Victor Riparbelli"
+    },
+    {
+      "id": "person:vlad-yatsenko",
+      "name": "Vlad Yatsenko"
+    },
+    {
+      "id": "person:vu-tran",
+      "name": "Vu Tran"
+    },
+    {
+      "id": "person:will-obrien",
+      "name": "Will O’Brien"
+    },
+    {
+      "id": "person:yi-zhang",
+      "name": "Yi Zhang"
+    },
+    {
+      "id": "person:zac-duff",
+      "name": "Zac Duff"
+    },
+    {
+      "id": "person:zander-schweitzer",
+      "name": "Zander Schweitzer"
+    }
+  ],
+  "funding_round_ids": [
+    "airwallex-2025-series-f",
+    "airwallex-2026-series-h",
+    "bugcrowd-2024-growth",
+    "canva-2013-seed",
+    "canva-2021-09-15",
+    "cauldron-2024-series-a",
+    "culture-amp-2021-series-f",
+    "deeligence-2024-funding",
+    "ena-respiratory-2024-cureator-grant",
+    "ena-respiratory-2025-series-b",
+    "ena-respiratory-2026-biointelect-grant",
+    "eucalyptus-2023-series-c",
+    "gilmour-space-2026-series-e-january",
+    "go1-2022-06-funding",
+    "jigspace-2024-funding-round",
+    "loam-bio-2023-series-b",
+    "morse-micro-2025-series-c",
+    "psiquantum-2021-series-d",
+    "psiquantum-2025-series-e",
+    "puralink-2025-pre-seed",
+    "quantum-brilliance-2025-series-a",
+    "revolut-2021-series-e",
+    "synthesia-2026-series-e",
+    "uipath-2021-series-f",
+    "uluu-series-a-official-announcement"
+  ],
+  "counts": {
+    "entities": 555,
+    "startups": 46,
+    "edges": 273,
+    "funding_rounds": 25,
+    "articles": 37
+  }
+}

@@ -1,0 +1,713 @@
+{
+  "schema_version": 1,
+  "companies": [
+    {
+      "id": "staging:it:aavantgarde-bio",
+      "name": "AAVantgarde Bio",
+      "website": "https://www.aavantgarde.com/",
+      "canonical_domain": "aavantgarde.com",
+      "aliases": [
+        {
+          "name": "AAVantgarde",
+          "alias_type": "short_name",
+          "source_ids": [
+            "it-deep-15"
+          ]
+        },
+        {
+          "name": "AAVantgarde Bio s.r.l.",
+          "alias_type": "Italian_legal_entity",
+          "source_ids": [
+            "it-deep-29"
+          ]
+        }
+      ],
+      "atlas_candidate_id": "startup:aavantgarde-bio",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/deeptech.json",
+      "evidence_pointer": "/companies/7",
+      "founders": [
+        {
+          "name": "Alberto Auricchio",
+          "atlas_candidate_id": "person:alberto-auricchio",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:aiko",
+      "name": "AIKO",
+      "website": "https://www.aikospace.com/",
+      "canonical_domain": "aikospace.com",
+      "aliases": [
+        {
+          "name": "AIKO S.r.l.",
+          "alias_type": "legal_name_as_stated",
+          "source_ids": [
+            "it-deep-07"
+          ]
+        }
+      ],
+      "atlas_candidate_id": "startup:aiko",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/deeptech.json",
+      "evidence_pointer": "/companies/3",
+      "founders": [
+        {
+          "name": "Lorenzo Feruglio",
+          "atlas_candidate_id": "person:lorenzo-feruglio",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:bending-spoons",
+      "name": "Bending Spoons",
+      "website": "https://bendingspoons.com/",
+      "canonical_domain": "bendingspoons.com",
+      "aliases": [],
+      "atlas_candidate_id": "startup:bending-spoons",
+      "decision": "rejected_reference_only",
+      "reason": "September 2026 company release explicitly identifies NASDAQ:BSP.",
+      "source_packet": "evidence/general.json",
+      "evidence_pointer": "/companies/7",
+      "founders": [],
+      "published": false
+    },
+    {
+      "id": "staging:it:caracol",
+      "name": "Caracol",
+      "website": "https://www.caracol-am.com/",
+      "canonical_domain": "caracol-am.com",
+      "aliases": [
+        {
+          "name": "Caracol AM",
+          "alias_type": "display_name",
+          "source_ids": [
+            "it-deep-33"
+          ]
+        }
+      ],
+      "atlas_candidate_id": "startup:caracol",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/deeptech.json",
+      "evidence_pointer": "/companies/4",
+      "founders": [
+        {
+          "name": "Francesco De Stefano",
+          "atlas_candidate_id": "person:francesco-de-stefano",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Paolo Cassis",
+          "atlas_candidate_id": "person:paolo-cassis",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Jacopo Gervasini",
+          "atlas_candidate_id": "person:jacopo-gervasini",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Giovanni Avallone",
+          "atlas_candidate_id": "person:giovanni-avallone",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:casavo",
+      "name": "Casavo",
+      "website": "https://casavo.com/",
+      "canonical_domain": "casavo.com",
+      "aliases": [],
+      "atlas_candidate_id": "startup:casavo",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/fintech.json",
+      "evidence_pointer": "/companies/2",
+      "founders": [
+        {
+          "name": "Giorgio Tinacci",
+          "atlas_candidate_id": "person:giorgio-tinacci",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:d-orbit",
+      "name": "D-Orbit",
+      "website": "https://dorbit.space/",
+      "canonical_domain": "dorbit.space",
+      "aliases": [
+        {
+          "name": "D-Orbit SPA",
+          "alias_type": "legal_name_as_stated",
+          "source_ids": [
+            "it-deep-26"
+          ]
+        }
+      ],
+      "atlas_candidate_id": "startup:d-orbit",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/deeptech.json",
+      "evidence_pointer": "/companies/0",
+      "founders": [
+        {
+          "name": "Luca Rossettini",
+          "atlas_candidate_id": "person:luca-rossettini",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Renato Panesi",
+          "atlas_candidate_id": "person:renato-panesi",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:domyn",
+      "name": "Domyn",
+      "website": "https://www.domyn.com/",
+      "canonical_domain": "domyn.com",
+      "aliases": [
+        {
+          "name": "iGenius",
+          "kind": "former_name",
+          "source_ids": [
+            "it-general-domyn-home"
+          ]
+        }
+      ],
+      "atlas_candidate_id": "startup:domyn",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/general.json",
+      "evidence_pointer": "/companies/4",
+      "founders": [
+        {
+          "name": "Uljan Sharka",
+          "atlas_candidate_id": "person:uljan-sharka",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:energy-dome",
+      "name": "Energy Dome",
+      "website": "https://energydome.com/",
+      "canonical_domain": "energydome.com",
+      "aliases": [
+        {
+          "name": "ENERGY DOME S.p.A.",
+          "alias_type": "legal_name_as_stated",
+          "source_ids": [
+            "it-deep-03"
+          ]
+        }
+      ],
+      "atlas_candidate_id": "startup:energy-dome",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/deeptech.json",
+      "evidence_pointer": "/companies/1",
+      "founders": [
+        {
+          "name": "Claudio Spadacini",
+          "atlas_candidate_id": "person:claudio-spadacini",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Dario Rizzi",
+          "atlas_candidate_id": "person:dario-rizzi",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Francesco Oppici",
+          "atlas_candidate_id": "person:francesco-oppici",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:fiscozen",
+      "name": "Fiscozen",
+      "website": "https://www.fiscozen.it/",
+      "canonical_domain": "fiscozen.it",
+      "aliases": [],
+      "atlas_candidate_id": "startup:fiscozen",
+      "decision": "rejected_reference_only",
+      "reason": "Acquisition by Visma in April 2024 is explicitly documented.",
+      "source_packet": "evidence/fintech.json",
+      "evidence_pointer": "/companies/4",
+      "founders": [
+        {
+          "name": "Enrico Mattiazzi",
+          "atlas_candidate_id": "person:enrico-mattiazzi",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Vito Lomele",
+          "atlas_candidate_id": "person:vito-lomele",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:genespire",
+      "name": "Genespire",
+      "website": "https://genespire.com/",
+      "canonical_domain": "genespire.com",
+      "aliases": [
+        {
+          "name": "Genespire Srl",
+          "alias_type": "legal_name_as_stated",
+          "source_ids": [
+            "it-deep-13"
+          ]
+        }
+      ],
+      "atlas_candidate_id": "startup:genespire",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/deeptech.json",
+      "evidence_pointer": "/companies/6",
+      "founders": [
+        {
+          "name": "Luigi Naldini",
+          "atlas_candidate_id": "person:luigi-naldini",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Alessio Cantore",
+          "atlas_candidate_id": "person:alessio-cantore",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:jet-hr",
+      "name": "Jet HR",
+      "website": "https://www.jethr.com/",
+      "canonical_domain": "jethr.com",
+      "aliases": [],
+      "atlas_candidate_id": "startup:jet-hr",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/fintech.json",
+      "evidence_pointer": "/companies/5",
+      "founders": [
+        {
+          "name": "Marco Ogliengo",
+          "atlas_candidate_id": "person:marco-ogliengo",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Francesco Scalambrino",
+          "atlas_candidate_id": "person:francesco-scalambrino",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:leaf-space",
+      "name": "Leaf Space",
+      "website": "https://leaf.space/",
+      "canonical_domain": "leaf.space",
+      "aliases": [],
+      "atlas_candidate_id": "startup:leaf-space",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/deeptech.json",
+      "evidence_pointer": "/companies/2",
+      "founders": [
+        {
+          "name": "Giovanni Pandolfi Bortoletto",
+          "atlas_candidate_id": "person:giovanni-pandolfi-bortoletto",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Jonata Puglia",
+          "atlas_candidate_id": "person:jonata-puglia",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:musixmatch",
+      "name": "Musixmatch",
+      "website": "https://www.musixmatch.com/",
+      "canonical_domain": "musixmatch.com",
+      "aliases": [],
+      "atlas_candidate_id": "startup:musixmatch",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/general.json",
+      "evidence_pointer": "/companies/6",
+      "founders": [
+        {
+          "name": "Max Ciociola",
+          "atlas_candidate_id": "person:max-ciociola",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Giuseppe Costantino",
+          "atlas_candidate_id": "person:giuseppe-costantino",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Gianluca Delli Carri",
+          "atlas_candidate_id": "person:gianluca-delli-carri",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Francesco Delfino",
+          "atlas_candidate_id": "person:francesco-delfino",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Loreto Parisi",
+          "atlas_candidate_id": "person:loreto-parisi",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:planckian",
+      "name": "Planckian",
+      "website": "https://www.planckian.co/",
+      "canonical_domain": "planckian.co",
+      "aliases": [],
+      "atlas_candidate_id": "startup:planckian",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/deeptech.json",
+      "evidence_pointer": "/companies/5",
+      "founders": [
+        {
+          "name": "Marco Polini",
+          "atlas_candidate_id": "person:marco-polini",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Vittorio Giovannetti",
+          "atlas_candidate_id": "person:vittorio-giovannetti",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Michele Dallari",
+          "atlas_candidate_id": "person:michele-dallari",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:qomodo",
+      "name": "Qomodo",
+      "website": "https://www.qomodo.me/",
+      "canonical_domain": "qomodo.me",
+      "aliases": [],
+      "atlas_candidate_id": "startup:qomodo",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/fintech.json",
+      "evidence_pointer": "/companies/3",
+      "founders": [
+        {
+          "name": "Gianluca Cocco",
+          "atlas_candidate_id": "person:gianluca-cocco",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Gaetano de Maio",
+          "atlas_candidate_id": "person:gaetano-de-maio",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:satispay",
+      "name": "Satispay",
+      "website": "https://satispay.com/",
+      "canonical_domain": "satispay.com",
+      "aliases": [],
+      "atlas_candidate_id": "startup:satispay",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/fintech.json",
+      "evidence_pointer": "/companies/0",
+      "founders": [
+        {
+          "name": "Alberto Dalmasso",
+          "atlas_candidate_id": "person:alberto-dalmasso",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Dario Brignone",
+          "atlas_candidate_id": "person:dario-brignone",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:scalapay",
+      "name": "Scalapay",
+      "website": "https://www.scalapay.com/",
+      "canonical_domain": "scalapay.com",
+      "aliases": [],
+      "atlas_candidate_id": "startup:scalapay",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/fintech.json",
+      "evidence_pointer": "/companies/1",
+      "founders": [
+        {
+          "name": "Simone Mancini",
+          "atlas_candidate_id": "person:simone-mancini",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Johnny Mitrevski",
+          "atlas_candidate_id": "person:johnny-mitrevski",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:serenis",
+      "name": "Serenis",
+      "website": "https://www.serenis.it/",
+      "canonical_domain": "serenis.it",
+      "aliases": [],
+      "atlas_candidate_id": "startup:serenis",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/general.json",
+      "evidence_pointer": "/companies/2",
+      "founders": [
+        {
+          "name": "Silvia Wang",
+          "atlas_candidate_id": "person:silvia-wang",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Daniele Francescon",
+          "atlas_candidate_id": "person:daniele-francescon",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:sibill",
+      "name": "Sibill",
+      "website": "https://sibill.com/",
+      "canonical_domain": "sibill.com",
+      "aliases": [],
+      "atlas_candidate_id": "startup:sibill",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/fintech.json",
+      "evidence_pointer": "/companies/6",
+      "founders": [
+        {
+          "name": "Mattia Montepara",
+          "atlas_candidate_id": "person:mattia-montepara",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Lorenzo Liguori",
+          "atlas_candidate_id": "person:lorenzo-liguori",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Dario Prencipe",
+          "atlas_candidate_id": "person:dario-prencipe",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:smartness",
+      "name": "Smartness",
+      "website": "https://www.smartness.com/",
+      "canonical_domain": "smartness.com",
+      "aliases": [
+        {
+          "name": "Smartpricing",
+          "kind": "former_company_brand_and_current_product",
+          "source_ids": [
+            "it-general-smartness-about"
+          ]
+        }
+      ],
+      "atlas_candidate_id": "startup:smartness",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/general.json",
+      "evidence_pointer": "/companies/0",
+      "founders": [
+        {
+          "name": "Luca Rodella",
+          "atlas_candidate_id": "person:luca-rodella",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Tommaso Centonze",
+          "atlas_candidate_id": "person:tommaso-centonze",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Eugenio Bancaro",
+          "atlas_candidate_id": "person:eugenio-bancaro",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:sqim",
+      "name": "SQIM",
+      "website": "https://www.sqim.bio/",
+      "canonical_domain": "sqim.bio",
+      "aliases": [
+        {
+          "name": "MOGU SRL",
+          "kind": "former_legal_name",
+          "source_ids": [
+            "it-general-sqim-seriesa",
+            "it-general-sqim-hq"
+          ],
+          "effective_on": null,
+          "note": "January 2024 release still names MOGU SRL; current privacy notice names SQIM S.r.l. Exact legal rename effective date is unknown."
+        },
+        {
+          "name": "MOGU",
+          "kind": "current_product_brand_not_separate_company",
+          "source_ids": [
+            "it-general-sqim-seriesa"
+          ]
+        }
+      ],
+      "atlas_candidate_id": "startup:sqim",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/general.json",
+      "evidence_pointer": "/companies/5",
+      "founders": [
+        {
+          "name": "Stefano Babbini",
+          "atlas_candidate_id": "person:stefano-babbini",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Maurizio Montalti",
+          "atlas_candidate_id": "person:maurizio-montalti",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:tot",
+      "name": "Tot",
+      "website": "https://tot.money/",
+      "canonical_domain": "tot.money",
+      "aliases": [],
+      "atlas_candidate_id": "startup:tot",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/fintech.json",
+      "evidence_pointer": "/companies/7",
+      "founders": [
+        {
+          "name": "Doris Messina",
+          "atlas_candidate_id": "person:doris-messina",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Bruno Reggiani",
+          "atlas_candidate_id": "person:bruno-reggiani",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Andrea Susta",
+          "atlas_candidate_id": "person:andrea-susta",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:unobravo",
+      "name": "Unobravo",
+      "website": "https://www.unobravo.com/",
+      "canonical_domain": "unobravo.com",
+      "aliases": [],
+      "atlas_candidate_id": "startup:unobravo",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/general.json",
+      "evidence_pointer": "/companies/1",
+      "founders": [
+        {
+          "name": "Danila De Stefano",
+          "atlas_candidate_id": "person:danila-de-stefano",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    },
+    {
+      "id": "staging:it:weroad",
+      "name": "WeRoad",
+      "website": "https://www.weroad.com/",
+      "canonical_domain": "weroad.com",
+      "aliases": [],
+      "atlas_candidate_id": "startup:weroad",
+      "decision": "accepted_staging",
+      "reason": "Primary identity/activity and Italy nexus reviewed; current legal lifecycle not comprehensively registry-audited.",
+      "source_packet": "evidence/general.json",
+      "evidence_pointer": "/companies/3",
+      "founders": [
+        {
+          "name": "Paolo De Nadai",
+          "atlas_candidate_id": "person:paolo-de-nadai",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Fabio Bin",
+          "atlas_candidate_id": "person:fabio-bin",
+          "canonical_person_id": null
+        },
+        {
+          "name": "Erika De Santi",
+          "atlas_candidate_id": "person:erika-de-santi",
+          "canonical_person_id": null
+        }
+      ],
+      "published": false
+    }
+  ]
+}

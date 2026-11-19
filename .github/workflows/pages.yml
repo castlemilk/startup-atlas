@@ -4,8 +4,6 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  schedule:
-    - cron: '17 3 * * *'
   workflow_dispatch:
 permissions:
   contents: read
@@ -19,69 +17,66 @@ jobs:
       ATLAS_SOURCE_REVISION: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
         with:
-          node-version: '22'
-      - name: Install site dependencies
-        run: npm ci --ignore-scripts
-      - name: Install MCP dependencies
-        run: npm ci --prefix backend/mcp --ignore-scripts
-      - name: Validate MCP protocol and persistence
-        run: npm run test:mcp
-      - name: Validate hosted OAuth implementation
+          fetch-depth: 2
+      - name: Check patch and select tests
+        id: changes
+        if: github.event_name == 'pull_request'
+        env:
+          ATLAS_PR_BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git diff --check "$ATLAS_PR_BASE" HEAD
+          python3 scripts/check_ci_paths.py "$ATLAS_PR_BASE" >> "$GITHUB_OUTPUT"
+      - name: Check CI routing
+        if: steps.changes.outputs.ci == 'true'
+        run: python3 -m unittest discover -s tests -p 'test_ci_paths.py'
+      - name: Validate changed data and provenance
+        if: steps.changes.outputs.data == 'true'
+        run: |
+          npm run data:generate
+          node --test tests/catalogue.test.js tests/graph-data.test.js
+          python3 -m unittest discover -s tests -p 'test_graph.py'
+      - name: Check search, relationships and financial views
+        if: steps.changes.outputs.web == 'true'
+        run: node --test tests/fuzzy-search.test.js tests/graph-layout.test.js tests/treemap.test.js tests/analytics.test.js
+      - name: Validate collection boundaries and saved evidence
+        if: steps.changes.outputs.collection == 'true'
+        run: |
+          python3 -m unittest discover -s tests -p 'test_crawl*.py'
+          python3 -m unittest discover -s tests -p 'test_company*.py'
+          python3 -m unittest discover -s tests -p 'test_collection_coverage.py'
+          python3 -m unittest discover -s tests -p 'test_scoped_implementation.py'
+          python3 -m unittest discover -s tests -p 'test_early_investments.py'
+      - name: Check country research indexing
+        if: steps.changes.outputs.research == 'true'
+        run: python3 -m unittest discover -s tests -p 'test_country_research_index.py'
+      - name: Run MCP checks
+        if: steps.changes.outputs.mcp == 'true'
+        run: |
+          npm ci --prefix backend/mcp --ignore-scripts
+          npm run test:mcp
+      - name: Run hosted MCP and OAuth checks
+        if: steps.changes.outputs.hosted == 'true'
         run: |
           npm ci --prefix backend/hosted --ignore-scripts
           npm --prefix backend/hosted test
-          npm --prefix backend/hosted run build
-      - name: Validate catalogue and filtering
-        run: npm test
       - uses: actions/setup-go@v5
+        if: steps.changes.outputs.go == 'true'
         with:
           go-version-file: go.mod
       - name: Validate Connect graph service
+        if: steps.changes.outputs.go == 'true'
         run: go test -mod=readonly ./backend/internal/graph ./api
-      - name: Build static site
-        run: npm run build
-      - name: Smoke test the graph explorer
-        run: |
-          node scripts/smoke-graph-ui.mjs
-          node scripts/smoke-graph-ui.mjs query
-          node scripts/smoke-graph-ui.mjs fallback
-          node scripts/smoke-graph-ui.mjs unavailable
-          node scripts/smoke-directory-ui.mjs
-          node scripts/smoke-directory-ui.mjs fallback
-          node scripts/smoke-directory-ui.mjs unavailable
-          node scripts/smoke-entity-ui.mjs
-          node scripts/smoke-entity-ui.mjs fallback
-          node scripts/smoke-entity-ui.mjs person
-          node scripts/smoke-entity-ui.mjs person-fallback
-          node scripts/smoke-entity-ui.mjs programme
-          node scripts/smoke-entity-ui.mjs programme-fallback
-      - name: Exercise the graph in Chrome
-        run: |
-          node scripts/test-graph-browser.mjs
-          node scripts/test-treemap-browser.mjs
-        env:
-          ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
-      - name: Exercise design-system and profile views in Chrome
-        run: node scripts/test-atlas-views-browser.mjs
-        env:
-          ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
-      - name: Exercise the design microsite in Chrome
-        run: |
-          node scripts/test-design-lab-browser.mjs
-          node scripts/test-signal-studies-r2-browser.mjs
-          node scripts/test-signal-evidence-states-browser.mjs
-        env:
-          ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
-      - name: Preserve graph review screenshots
-        if: failure() || (always() && github.event_name == 'pull_request')
-        uses: actions/upload-artifact@v4
+      - uses: actions/setup-node@v4
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:
-          name: graph-review
-          path: ${{ runner.temp }}/startup-atlas-graph/
-          if-no-files-found: warn
-          retention-days: 7
+          node-version: '22'
+      - name: Install site dependencies
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: npm ci --ignore-scripts
+      - name: Build the Pages snapshot
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: npm run build
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3

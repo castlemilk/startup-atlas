@@ -1,0 +1,364 @@
+{
+  "validation_kind": "offline_country_evidence_packet",
+  "checked_at": "2026-11-18T10:10:07.879612+00:00",
+  "checks_passed": 33,
+  "checks_failed": 0,
+  "checks": [
+    {
+      "name": "strict JSON: records.json",
+      "status": "passed"
+    },
+    {
+      "name": "strict JSON: companies.json",
+      "status": "passed"
+    },
+    {
+      "name": "strict JSON: claims.json",
+      "status": "passed"
+    },
+    {
+      "name": "strict JSON: sources.json",
+      "status": "passed"
+    },
+    {
+      "name": "strict JSON: coverage.json",
+      "status": "passed"
+    },
+    {
+      "name": "strict JSON: manifest.json",
+      "status": "passed"
+    },
+    {
+      "name": "strict JSON: deduplication.json",
+      "status": "passed"
+    },
+    {
+      "name": "strict JSON: ecosystem.json",
+      "status": "passed"
+    },
+    {
+      "name": "strict JSON: projection-map.json",
+      "status": "passed"
+    },
+    {
+      "name": "strict JSON: baseline-audit.json",
+      "status": "passed"
+    },
+    {
+      "name": "rebuild exact baseline in memory",
+      "status": "passed"
+    },
+    {
+      "name": "claim/source/entity provenance and explicit unknowns",
+      "status": "passed"
+    },
+    {
+      "name": "event-specific round/transaction participants, exact roles and no inferred investor edges",
+      "status": "passed"
+    },
+    {
+      "name": "production projection preserves unknowns, conflicts and date precision",
+      "status": "passed"
+    },
+    {
+      "name": "identity normalization, aliases, domains and baseline deduplication",
+      "status": "passed"
+    },
+    {
+      "name": "coverage equations and exact resume without overlap",
+      "status": "passed"
+    },
+    {
+      "name": "actual production record validator and rejection probes",
+      "status": "passed"
+    },
+    {
+      "name": "combined graph preserves identities and event IDs without writing generated files",
+      "status": "passed"
+    },
+    {
+      "name": "reject duplicate JSON keys",
+      "status": "passed"
+    },
+    {
+      "name": "reject nonfinite JSON numbers",
+      "status": "passed"
+    },
+    {
+      "name": "reject claim/source URL rebinding",
+      "status": "passed"
+    },
+    {
+      "name": "reject failed source promoted to reviewed fact",
+      "status": "passed"
+    },
+    {
+      "name": "reject unknown financing converted to zero",
+      "status": "passed"
+    },
+    {
+      "name": "reject participant reattached to a different event",
+      "status": "passed"
+    },
+    {
+      "name": "reject general portfolio basis as a round participation",
+      "status": "passed"
+    },
+    {
+      "name": "reject transaction participant relabeled as funding-round participant",
+      "status": "passed"
+    },
+    {
+      "name": "reject participant role changed without a matching claim",
+      "status": "passed"
+    },
+    {
+      "name": "reject acquisition or secondary transaction projected as company financing",
+      "status": "passed"
+    },
+    {
+      "name": "reject cursor after revision change",
+      "status": "passed"
+    },
+    {
+      "name": "reject cursor after page-size change",
+      "status": "passed"
+    },
+    {
+      "name": "reject cursor after queue-state change",
+      "status": "passed"
+    },
+    {
+      "name": "reject unsorted/changed queue with stale fingerprint",
+      "status": "passed"
+    },
+    {
+      "name": "reject unsupported coverage total",
+      "status": "passed"
+    }
+  ],
+  "records_validation": {
+    "validation_kind": "offline_country_record_projection",
+    "checked_at": "2026-11-18T10:10:07.688Z",
+    "production_validator": "backend/hosted/src/startup-record.mjs",
+    "production_validator_sha256": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "record_count": 26,
+    "checks_passed": 42,
+    "checks_failed": 0,
+    "checks": [
+      {
+        "name": "records.json contains a bounded, nonempty startups array",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Accountable",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Aerospacelab",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Aikido Security",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Aphea.Bio",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Collibra",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Cowboy",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Deliverect",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: e-peas",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: I-care",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Intigriti",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Keyrock",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: LEGALFLY",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Magnax",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: MICLEDI Microdisplays",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Nodalview",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Odoo",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: OncoDNA",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: OTIV",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Qover",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Robovision",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Solhyd",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Spectricity",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Swave Photonics",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: Teamleader",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: TechWolf",
+        "status": "passed"
+      },
+      {
+        "name": "production validator: XenomatiX",
+        "status": "passed"
+      },
+      {
+        "name": "projected company IDs are unique",
+        "status": "passed"
+      },
+      {
+        "name": "funding IDs are globally unique across projected companies",
+        "status": "passed"
+      },
+      {
+        "name": "reject null founding year",
+        "status": "passed"
+      },
+      {
+        "name": "reject null funding amount",
+        "status": "passed"
+      },
+      {
+        "name": "reject invalid calendar date",
+        "status": "passed"
+      },
+      {
+        "name": "reject partial day date in production field",
+        "status": "passed"
+      },
+      {
+        "name": "reject amount without currency",
+        "status": "passed"
+      },
+      {
+        "name": "reject currency without numeric amount",
+        "status": "passed"
+      },
+      {
+        "name": "reject decimal numeric major-unit amount",
+        "status": "passed"
+      },
+      {
+        "name": "reject duplicate funding IDs",
+        "status": "passed"
+      },
+      {
+        "name": "reject duplicate profile fact keys",
+        "status": "passed"
+      },
+      {
+        "name": "reject unsupported schema expansion",
+        "status": "passed"
+      },
+      {
+        "name": "reject unsupported top-level aliases",
+        "status": "passed"
+      },
+      {
+        "name": "reject insecure source URL",
+        "status": "passed"
+      },
+      {
+        "name": "unknown funding amount remains absent through actual validation",
+        "status": "passed"
+      }
+    ],
+    "limitations": [
+      "Schema validation does not verify source truth or completeness.",
+      "Python packet checks additionally reject duplicate JSON object keys and compare null/precision/provenance with the claim ledger.",
+      "No production data, crawler sources, API schemas, deployment or runtime behavior changed."
+    ]
+  },
+  "combined_in_memory_graph": {
+    "entities": 638,
+    "startups": 72,
+    "funding_rounds": 55
+  },
+  "distinct_projected_founder_names": 57,
+  "resume_pages_tested": 7,
+  "input_sha256": {
+    "records.json": "a970d9d7782fd717727d37fb0871866422fb582a9ac719c05c9c19d9409f97fc",
+    "companies.json": "64ef0cabff6a75aec1f2a67ea71a05c73ce7c23ff57016e8f26c258202e51c45",
+    "claims.json": "858cf70f607560b36d33722b575178e540a5d5ca3bcad5eeeb93855ee3733926",
+    "sources.json": "88788798e60e1afe8096bf07c97500f4a8130ac80d5b2614998dffecd932afc5",
+    "coverage.json": "2084a58cc1ce7f5042635dcf48f9fb6a561f75df01c2e385fa7d6b0269dca964",
+    "manifest.json": "178de1534dbc42044c379c9ff760253ebfa7217b660be276e8290d4a45af258b",
+    "deduplication.json": "114ffc0ac6ed1dd5198fcf97157877b639ebe04157deb060d7db9d81e5df57a0",
+    "ecosystem.json": "71600fc9160fc71cdbca8bf9c17d1dd60478de352f6487eb71e3d118a0b89ae6",
+    "projection-map.json": "03b9a52e030d45da95c1de32c3b7027efc2f84589626b1ed257c8e08d3fbccfa",
+    "baseline-audit.json": "1a34edf3c314a89d46d751c41ee38b29ac43eee0e08c9f79a2de3ea357955d9c"
+  },
+  "notes": [
+    {
+      "integration_limitation": "Existing graph builder turns absent founded_year into zero. Staged records omit it and no production build was written.",
+      "affected_company_names": [
+        "Accountable",
+        "Aphea.Bio",
+        "Odoo",
+        "Robovision",
+        "XenomatiX"
+      ],
+      "owner_gate": "Preserve unknown semantics in downstream consumers before publication; this packet does not change the runtime."
+    }
+  ],
+  "limitations": [
+    "Structural and cross-file checks do not prove that source passages are factually complete or truthful.",
+    "Event source and claim linkage are tested; semantic evidence review remains a separate review receipt.",
+    "No network, crawler run, source approval, production record write or generated graph write is performed.",
+    "Hashes identify bytes, not source authenticity or publication."
+  ],
+  "receipt_state": "historical_baseline",
+  "historical_reason": "Passed research-baseline validation before concurrent main PR #179 fixed missing founding-year projection; superseded for integration by current packet-validation.json pinned to validation_base_revision ff4d51cf729d6a654787e9a1db63967b292df8c9."
+}

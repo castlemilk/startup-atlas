@@ -1,0 +1,74 @@
+{
+  "run": {
+    "batch_id": "se-2026-11-18-001",
+    "country": "Sweden",
+    "iso2": "SE",
+    "retrieval_date": "2026-11-18",
+    "cohort": {
+      "country": "Sweden",
+      "iso2": "SE",
+      "country_session": "GDP 26/30",
+      "assignment_source": "user",
+      "basis": "IMF October 2026 WEO nominal GDP estimates for 2026, not final actuals",
+      "rank_independently_verified": false,
+      "gdp_usd_billions": null,
+      "exclude_aggregates": true,
+      "taiwan_convention": "IMF separately reported economy convention",
+      "verification_gap": "API retrieval disabled and WEO/profile pages rendered as JavaScript shells; exact ranking and value are not asserted."
+    },
+    "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "publication_state": "unsubmitted",
+    "production_modified": false,
+    "crawler_seed_approval": false
+  },
+  "branch": "research/sweden-gdp-26-batch-001-20261118",
+  "production_import_requires_owner_review": true,
+  "owners": {
+    "collection": "https://chatgpt.com/c/6afbc931-0378-83ec-8434-cd7e8db42db2",
+    "planner": "https://github.com/castlemilk/startup-atlas/pull/177",
+    "canonical_space": "https://chatgpt.com/space/page_5167bcbbbb0c81919e1d565fd4d82e4a"
+  },
+  "baseline_files_sha256": {
+    "AGENTS.md": "d180178ec22ae1546f81e3d4a8ea0f4f0cb89fa6f78f716ccf0cd1d7acb284a6",
+    ".agents/skills/startup-atlas-collection/SKILL.md": "4763b8defa837c96f3383a691312d8cf87535a970864e4e631d371b6ef67eae4",
+    "backend/hosted/src/startup-record.mjs": "964178926fcbdb19051e3e852c72eea5e5267b484ec884fbf75c47b751c2392c",
+    "scripts/make-graph.py": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+    "scripts/plan_company_profiles.py": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+    "data/startup-research.json": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+    "data/company-profile-seeds.csv": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+    "data/graph.json": "3062cf1c1522ea5e04ac9ec24515b1c846593798cb1d5ed4f7ff62e6a5437a5a"
+  },
+  "observation_files_sha256": {
+    "ecosystem.json": "cb364b0a28c1378221becdd94eeb588e045a8ff1e4690472b123ba8c1cf33f99",
+    "fintech.json": "2883ae60b3759d7c7e5ac14eeb242df085a3e7b3f47ae94a8a801270c7e624ab",
+    "industrial.json": "f2bac5762232609c930436fee53d408744ae0039f24f629f9e286cf358374e15",
+    "science.json": "52fea038b9bf1c0c00155b5fbbf530e27f9954f2f34868b5dd6b25a05bfd5704",
+    "software.json": "5aaadf4dd9e590dcb5153120f3677f90e17cbda28f2b88551a066df791c9c8b7"
+  },
+  "counts": {
+    "registered_discovered_companies": 47,
+    "reviewed_companies": 27,
+    "accepted_company_profiles": 19,
+    "held_companies": 7,
+    "rejected_from_active_scope": 1,
+    "unreviewed_named_discoveries": 20,
+    "claim_observations": 504,
+    "company_claim_observations": 476,
+    "ecosystem_claim_observations": 28,
+    "funding_events_researched": 35,
+    "legacy_funding_events_projected": 24,
+    "founder_observations": 55,
+    "participant_observations": 176,
+    "distinct_source_urls": 153,
+    "accessed_source_urls": 146,
+    "source_access_gaps": 7,
+    "queue_items": 48
+  },
+  "schema_contract": "Each staged-startups.json.startups[] must pass current validateStartupRecord. Rich claims follow the enrichment evidence contract; rich-only fields are not API additions. Investor-round synthetic contract is not used for real data.",
+  "rebuild_command": "python3 research/countries/se/2026-11-18-batch-001/build_packet.py",
+  "limitations": [
+    "Prepared and reviewed research only; no live ingestion, crawler seed approval, merge or deployment.",
+    "No definitive country-wide denominator or complete funding histories.",
+    "All numbers retain announced scope, date precision and original currencies; no FX or aggregate funding total."
+  ]
+}

@@ -23,7 +23,7 @@ assert.ok(partners.Airtree?.companies.length&&partners.Airtree?.people.length,'A
 assert.ok(missingFunding,'A startup without recorded funding is needed to verify unknown data');
 const profile=await mkdtemp(join(tmpdir(),'atlas-views-chrome-'));
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-view-screenshots');
-const contentTypes={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png','.md':'text/markdown'};
+const contentTypes={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.md':'text/markdown'};
 const requests=[];
 const server=createServer(async(req,res)=>{
   try {
@@ -215,6 +215,17 @@ try {
     assert.equal(await evaluate("document.querySelectorAll('[data-pattern][aria-selected=true]').length"),1);
     assert.equal(await evaluate("new URL(document.querySelector('#pattern-open').href).pathname"),pattern.path);
     assert.ok(await evaluate("document.querySelector('#view-preview').title.length>0"),'Iframe needs an accessible title');
+    if (['search','treemap','graph'].includes(pattern.key)) {
+      const artwork=await evaluate(`(async()=>{
+        const doc=document.querySelector('#view-preview').contentDocument;
+        const art=doc.querySelector('.atlas-feature-art img');
+        await art.decode();
+        return {file:new URL(art.currentSrc).pathname.split('/').pop(),alt:art.alt,fit:doc.defaultView.getComputedStyle(art).objectFit};
+      })()`);
+      assert.deepEqual(artwork,{file:`signal-${pattern.key}-thumb.webp`,alt:'',fit:'contain'},'The feature uses its full, decorative Signal composition');
+    } else {
+      assert.ok(await evaluate("!!document.querySelector('#view-preview').contentDocument.querySelector('.atlas-evidence-heading [aria-hidden=true] .atlas-icon')"),'Profile sources share the decorative evidence mark');
+    }
   }
   await evaluate("document.querySelector('#pattern-partner').focus()");
   await press('Home','Home',36);
@@ -304,6 +315,10 @@ try {
   await navigate('/partner.html?name=Airtree',"document.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('#profile h1')?.textContent==='Airtree'");
   await assertNoOverflow('390px partner profile');
   await screenshot('atlas-partner-mobile.png',true);
+
+  await navigate('/',"!!document.querySelector('.atlas-masthead [data-atlas-view=directory] .signal-feature-symbol')");
+  assert.equal(await evaluate("getComputedStyle(document.querySelector('.atlas-feature-art')).display"),'none','Small screens give the space to search');
+  await assertNoOverflow('390px directory feature');
 
   await command('Network.setBlockedURLs',{urls:['*partner-profiles.json*']});
   await navigate('/partner.html?name=Airtree',"document.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('.profile-notice')");

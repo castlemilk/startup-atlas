@@ -1,0 +1,633 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-11-18T10:15:08Z",
+  "scope": "Refreshed offline graph/planner preflight with exact git-show code from merged main and unchanged Poland company/projection bytes.",
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "prior_base_revision": "f4bcbf7030d741772bb750deee584efa3ee17749",
+  "historical_receipt": {
+    "path": "/workspace/scratch/79673965a3f2/poland-graph-compatibility.json",
+    "sha256": "6f446ea03f62d115bfe8c92b878bd3435417cdbb824c2d4a9fb1c9dbcf8180ed",
+    "preserved_unchanged": true,
+    "earlier_founder_zero_count": 23,
+    "earlier_graph_reproduced_by_semantic_sha256": true
+  },
+  "owner_fixes": {
+    "founding_presence_fix_commit": "ff4d51cf729d6a654787e9a1db63967b292df8c9",
+    "founding_presence_pr": 179,
+    "source_inheritance_pr": 181,
+    "new_main_is_supplied_pr181_revision": true,
+    "source_inheritance_behaviour_tested_here": false,
+    "boundary": "This receipt resolves the graph zero-default blocker only; it does not authorise an import or replace the owner tests for existing-record updates."
+  },
+  "input_continuity": [
+    {
+      "path": "data/partner-profiles.json",
+      "old_main_sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+      "new_main_sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+      "working_tree_sha256": "de51b811050f33a65ab1286daca0d462c023ec992a98253e2ae2bb0f5d7543e6",
+      "same_old_new_and_working": true,
+      "matches_historical_receipt": true
+    },
+    {
+      "path": "data/partner-leads.json",
+      "old_main_sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+      "new_main_sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+      "working_tree_sha256": "4cb1406a42f00edb0afddaaa6275e1e7c74eb654cbd8e338c1aaf2da4ade52a7",
+      "same_old_new_and_working": true,
+      "matches_historical_receipt": true
+    },
+    {
+      "path": "data/partners-reviewed.json",
+      "old_main_sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+      "new_main_sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+      "working_tree_sha256": "5ba690b0c735950c48d53efe51ac865924e0122bb0998e5253294fbf5cbb87b3",
+      "same_old_new_and_working": true,
+      "matches_historical_receipt": true
+    },
+    {
+      "path": "data/catalogue.json",
+      "old_main_sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+      "new_main_sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+      "working_tree_sha256": "0b292d23dc88af5914794264504c3297116c6712ec651ad3fce1fef4473d76a4",
+      "same_old_new_and_working": true,
+      "matches_historical_receipt": true
+    },
+    {
+      "path": "data/startup-research.json",
+      "old_main_sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+      "new_main_sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+      "working_tree_sha256": "938bb23855f6b267ef7ebc97202a28bf4e8127ae112bbb57642a0dca5dbb4a41",
+      "same_old_new_and_working": true,
+      "matches_historical_receipt": true
+    },
+    {
+      "path": "data/company-profile-seeds.csv",
+      "old_main_sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+      "new_main_sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+      "working_tree_sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+      "same_old_new_and_working": true,
+      "matches_historical_receipt": true
+    }
+  ],
+  "staged_input_continuity": [
+    {
+      "path": "research/countries/pl/2026-11-18-batch-001/startup-records.json",
+      "historical_sha256": "98a71a6fd9c1aceed57484e71402d01e5c5179d336bdb049ac800ab43f6e1168",
+      "current_sha256": "98a71a6fd9c1aceed57484e71402d01e5c5179d336bdb049ac800ab43f6e1168",
+      "unchanged": true
+    },
+    {
+      "path": "research/countries/pl/2026-11-18-batch-001/companies.json",
+      "historical_sha256": "4d5fd42efc772beca1fdd463b2ba6a181fc2bcb15b215130bdc0832ddc3f54df",
+      "current_sha256": "4d5fd42efc772beca1fdd463b2ba6a181fc2bcb15b215130bdc0832ddc3f54df",
+      "unchanged": true
+    }
+  ],
+  "builder": {
+    "code_acquisition": "git show exact-revision:scripts/make-graph.py, compiled and called in memory; main() not called",
+    "prior_sha256": "a78b0063fd358b16de65f7250c5552b2ea6d882a8b5d673c2e35c00e975c8c43",
+    "new_sha256": "0e65145d5f7b985f99424d990a0248e5aec53613b70f80a9e53274021ad7beb4",
+    "baseline_counts": {
+      "entities": 555,
+      "startups": 46,
+      "people": 119,
+      "edges": 273,
+      "funding_rounds": 25,
+      "articles": 37
+    },
+    "combined_counts": {
+      "entities": 635,
+      "startups": 69,
+      "people": 176,
+      "edges": 330,
+      "funding_rounds": 47,
+      "articles": 59
+    },
+    "combined_graph_semantic_sha256": "3e0cc40cdc4222250ce74666271e69e5b6880cbb295943db61d10968f57a2b22",
+    "build_succeeded": true,
+    "poland_records": 23,
+    "all_poland_present": true,
+    "omitted_poland_founded_year_count": 23,
+    "poland_founded_year_absence_preserved_count": 23,
+    "poland_output_founded_year_zero_count": 0,
+    "baseline_zero_count": 0,
+    "combined_zero_count": 0,
+    "baseline_entity_mutations_from_appending_poland": [],
+    "duplicate_startup_ids": {},
+    "duplicate_funding_event_ids": {},
+    "poland_person_id_collision_groups": {},
+    "duplicate_output_entity_id_count": 0,
+    "duplicate_output_event_id_count": 0,
+    "owner_fix_entity_changes": [
+      {
+        "entity_id": "startup:alokai",
+        "name": "Alokai",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:autenti",
+        "name": "Autenti",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:biocam",
+        "name": "BioCam",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:booksy",
+        "name": "Booksy",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:brainly",
+        "name": "Brainly",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:docplanner",
+        "name": "Docplanner",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:elevenlabs",
+        "name": "ElevenLabs",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:iceye",
+        "name": "ICEYE",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:infermedica",
+        "name": "Infermedica",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:molecule-one",
+        "name": "Molecule.one",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:nevomo",
+        "name": "Nevomo",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:nomagic",
+        "name": "Nomagic",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:omnipack",
+        "name": "Omnipack",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:packhelp",
+        "name": "Packhelp",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:ramp-network",
+        "name": "Ramp Network",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:respo-vision",
+        "name": "ReSpo.Vision",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:satrev",
+        "name": "SatRev",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:silent-eight",
+        "name": "Silent Eight",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:smoked",
+        "name": "SmokeD",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:spacelift",
+        "name": "Spacelift",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:synerise",
+        "name": "Synerise",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:t-0",
+        "name": "T:0",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:widmo-spectral-technologies",
+        "name": "WIDMO Spectral Technologies",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      },
+      {
+        "entity_id": "startup:zowie",
+        "name": "Zowie",
+        "removed_keys": [
+          "founded_year"
+        ],
+        "added_keys": [],
+        "changed_shared_keys": [],
+        "prior_founded_year": 0,
+        "current_founded_year_present": false
+      }
+    ],
+    "owner_fix_changes_confined_to_zero_field_removal": true,
+    "non_entity_graph_unchanged_from_prior_builder": true,
+    "poland_founding_presence_observations": [
+      {
+        "name": "Alokai",
+        "startup_id": "startup:alokai",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Autenti",
+        "startup_id": "startup:autenti",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "BioCam",
+        "startup_id": "startup:biocam",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Booksy",
+        "startup_id": "startup:booksy",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Brainly",
+        "startup_id": "startup:brainly",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Docplanner",
+        "startup_id": "startup:docplanner",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "ElevenLabs",
+        "startup_id": "startup:elevenlabs",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "ICEYE",
+        "startup_id": "startup:iceye",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Infermedica",
+        "startup_id": "startup:infermedica",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Molecule.one",
+        "startup_id": "startup:molecule-one",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Nevomo",
+        "startup_id": "startup:nevomo",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Nomagic",
+        "startup_id": "startup:nomagic",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Omnipack",
+        "startup_id": "startup:omnipack",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Packhelp",
+        "startup_id": "startup:packhelp",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Ramp Network",
+        "startup_id": "startup:ramp-network",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "ReSpo.Vision",
+        "startup_id": "startup:respo-vision",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "SatRev",
+        "startup_id": "startup:satrev",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Silent Eight",
+        "startup_id": "startup:silent-eight",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "SmokeD",
+        "startup_id": "startup:smoked",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Spacelift",
+        "startup_id": "startup:spacelift",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Synerise",
+        "startup_id": "startup:synerise",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "WIDMO Spectral Technologies",
+        "startup_id": "startup:widmo-spectral-technologies",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      },
+      {
+        "name": "Zowie",
+        "startup_id": "startup:zowie",
+        "input_has_founded_year": false,
+        "output_has_founded_year": false,
+        "output_value": null
+      }
+    ]
+  },
+  "planner": {
+    "implementation_hashes": [
+      {
+        "path": "scripts/plan_company_profiles.py",
+        "sha256": "4a016d4409f1116262730961b523280322f592405c947ff50ce61ea9ce110a5a",
+        "same_old_new_and_working": true,
+        "matches_historical_receipt": true
+      },
+      {
+        "path": "scripts/crawl.py",
+        "sha256": "82de068f640ee2550b05a1483929907490b34afb80fc2a2519204fc1369340d0",
+        "same_old_new_and_working": true,
+        "matches_historical_receipt": true
+      },
+      {
+        "path": "data/company-profile-seeds.csv",
+        "sha256": "abe7dbbec49babe90555d89e3042ae6b8bd73e613149d4f629a2502f8bbf8d8e",
+        "same_old_new_and_working": true,
+        "matches_historical_receipt": true
+      }
+    ],
+    "all_hashes_unchanged": true,
+    "revision_binding": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+    "combined_overlay_sha256": "b522ea0c3cc0a3d63839986a012f9367051a0361fe3b69b58af942f446f87e54",
+    "combined_overlay_bytes_unchanged": true,
+    "source_record_count": 68,
+    "page_size": 10,
+    "page_count": 7,
+    "page_offsets": [
+      0,
+      10,
+      20,
+      30,
+      40,
+      50,
+      60
+    ],
+    "page_returned_counts": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      8
+    ],
+    "ordered_exactly_once": true,
+    "replay_identical": true,
+    "inventory_exhausted": true,
+    "final_cursor": null,
+    "new_plan_id": "41e288837d49fdc57973624afeebc66ee9b7e197028920134fadae9f0725029b",
+    "old_revision_cursor_rejected": true,
+    "poland_seed_states": {
+      "seed_review_required": 23
+    },
+    "all_poland_seed_review_required": true,
+    "all_poland_collection_not_assessed": true,
+    "poland_approved_url_count": 0,
+    "warning": "Input inventory pagination only; derived overlay is not committed at the supplied main revision; no crawl or seed approval."
+  },
+  "execution": {
+    "network_requests": 0,
+    "crawler_runs": 0,
+    "seed_approvals": 0,
+    "production_writes": 0,
+    "generated_graph_writes": 0,
+    "shared_implementation_edits": 0,
+    "temporary_inputs_deleted": true,
+    "protected_files_unchanged": true,
+    "protected_files_changed": []
+  },
+  "summary": {
+    "all_data_and_staged_inputs_unchanged": true,
+    "graph_compatibility_passed": true,
+    "historical_zero_default_blocker_resolved": true,
+    "planner_unchanged_and_passed": true,
+    "staging_only": true,
+    "production_import_authorized": false,
+    "remaining_boundary": "Normal fresh identity/revision/evidence/owner review gates remain; this is not a release receipt."
+  }
+}

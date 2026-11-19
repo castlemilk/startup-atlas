@@ -1,0 +1,2824 @@
+{
+  "mapped": [
+    {
+      "claim_id": "alight-identity-1",
+      "company_id": "startup:alight",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "alight-identity-1",
+      "company_id": "startup:alight",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "alight-description-5",
+      "company_id": "startup:alight",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "alight-headquarters-2",
+      "company_id": "startup:alight",
+      "path": "profile_facts.evidence-alight-headquarters-2",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "alight-founded-3",
+      "company_id": "startup:alight",
+      "path": "founded_year",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "alight-aliases-4",
+      "company_id": "startup:alight",
+      "path": "profile_facts.evidence-alight-aliases-4",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "alight-sectors-6",
+      "company_id": "startup:alight",
+      "path": "profile_facts.evidence-alight-sectors-6",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "alight-founder-7",
+      "company_id": "startup:alight",
+      "path": "founders.Harald Overholm",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "alight-founder-8",
+      "company_id": "startup:alight",
+      "path": "founders.Richard Nicolin",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "alight-founder-9",
+      "company_id": "startup:alight",
+      "path": "founders.Wilhelm Lowenhielm",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "alight-funding-round-10",
+      "company_id": "startup:alight",
+      "path": "profile_facts.evidence-alight-funding-round-10",
+      "mode": "sourced_text_projection",
+      "unprojected_components": "Typed financing semantics remain research-only; no simple legacy funding round."
+    },
+    {
+      "claim_id": "alight-lifecycle-12",
+      "company_id": "startup:alight",
+      "path": "profile_facts.evidence-alight-lifecycle-12",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-altris-identity-1",
+      "company_id": "startup:altris",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-identity-1",
+      "company_id": "startup:altris",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-description-1",
+      "company_id": "startup:altris",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-aliases-1",
+      "company_id": "startup:altris",
+      "path": "profile_facts.evidence-se-science-altris-aliases-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-altris-operating-location-1",
+      "company_id": "startup:altris",
+      "path": "profile_facts.evidence-se-science-altris-operating-location-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-altris-founded-1",
+      "company_id": "startup:altris",
+      "path": "founded_year",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-founder-1",
+      "company_id": "startup:altris",
+      "path": "founders.Ronnie Mogensen",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-founder-2",
+      "company_id": "startup:altris",
+      "path": "founders.Reza Younesi",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-founder-3",
+      "company_id": "startup:altris",
+      "path": "founders.William Brant",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-founder-4",
+      "company_id": "startup:altris",
+      "path": "founders.Adam Dahlquist",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-founder-5",
+      "company_id": "startup:altris",
+      "path": "founders.Paul Larsson",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-founder-6",
+      "company_id": "startup:altris",
+      "path": "founders.Tim Nordh",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-sectors-1",
+      "company_id": "startup:altris",
+      "path": "profile_facts.evidence-se-science-altris-sectors-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-altris-round-participant-1",
+      "company_id": "startup:altris",
+      "path": "funding_rounds.funding-altris-2024-series-b1.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-altris-round-participant-2",
+      "company_id": "startup:altris",
+      "path": "funding_rounds.funding-altris-2024-series-b1.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-altris-round-participant-3",
+      "company_id": "startup:altris",
+      "path": "funding_rounds.funding-altris-2024-series-b1.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-altris-round-participant-4",
+      "company_id": "startup:altris",
+      "path": "funding_rounds.funding-altris-2024-series-b1.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-altris-funding-round-1",
+      "company_id": "startup:altris",
+      "path": "funding_rounds.funding-altris-2024-series-b1",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-altris-funding-round-2",
+      "company_id": "startup:altris",
+      "path": "funding_rounds.funding-altris-2025-additional-funding",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "brite-payments-identity-1",
+      "company_id": "startup:brite-payments",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "brite-payments-identity-1",
+      "company_id": "startup:brite-payments",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "brite-payments-description-2",
+      "company_id": "startup:brite-payments",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "brite-payments-sectors-3",
+      "company_id": "startup:brite-payments",
+      "path": "profile_facts.evidence-brite-payments-sectors-3",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "brite-payments-headquarters-4",
+      "company_id": "startup:brite-payments",
+      "path": "profile_facts.evidence-brite-payments-headquarters-4",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "brite-payments-founded-5",
+      "company_id": "startup:brite-payments",
+      "path": "founded_year",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "brite-payments-founder-6",
+      "company_id": "startup:brite-payments",
+      "path": "founders.Lena Hackelöer",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "brite-payments-aliases-7",
+      "company_id": "startup:brite-payments",
+      "path": "profile_facts.evidence-brite-payments-aliases-7",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "brite-payments-incorporation-8",
+      "company_id": "startup:brite-payments",
+      "path": "profile_facts.evidence-brite-payments-incorporation-8",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "brite-payments-round_participant-10",
+      "company_id": "startup:brite-payments",
+      "path": "profile_facts.evidence-brite-payments-round-participant-10",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "brite-payments-round_participant-11",
+      "company_id": "startup:brite-payments",
+      "path": "profile_facts.evidence-brite-payments-round-participant-11",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "brite-payments-round_participant-12",
+      "company_id": "startup:brite-payments",
+      "path": "profile_facts.evidence-brite-payments-round-participant-12",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "brite-payments-funding_round-9",
+      "company_id": "startup:brite-payments",
+      "path": "funding_rounds.brite-payments-2023-10-04-funding",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "candela-identity-1",
+      "company_id": "startup:candela",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "candela-identity-1",
+      "company_id": "startup:candela",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "candela-description-4",
+      "company_id": "startup:candela",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "candela-headquarters-2",
+      "company_id": "startup:candela",
+      "path": "profile_facts.evidence-candela-headquarters-2",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "candela-founded-3",
+      "company_id": "startup:candela",
+      "path": "profile_facts.evidence-candela-founded-3",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "candela-sectors-5",
+      "company_id": "startup:candela",
+      "path": "profile_facts.evidence-candela-sectors-5",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "candela-founder-6",
+      "company_id": "startup:candela",
+      "path": "founders.Gustav Hasselskog",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "candela-incorporation-7",
+      "company_id": "startup:candela",
+      "path": "profile_facts.evidence-candela-incorporation-7",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "candela-round-participant-9",
+      "company_id": "startup:candela",
+      "path": "funding_rounds.candela-2026-03-18-funding.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "candela-round-participant-10",
+      "company_id": "startup:candela",
+      "path": "funding_rounds.candela-2026-03-18-funding.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "candela-round-participant-11",
+      "company_id": "startup:candela",
+      "path": "funding_rounds.candela-2026-03-18-funding.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "candela-round-participant-12",
+      "company_id": "startup:candela",
+      "path": "funding_rounds.candela-2026-03-18-funding.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "candela-round-participant-13",
+      "company_id": "startup:candela",
+      "path": "funding_rounds.candela-2026-03-18-funding.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "candela-funding-round-8",
+      "company_id": "startup:candela",
+      "path": "funding_rounds.candela-2026-03-18-funding",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "candela-lifecycle-15",
+      "company_id": "startup:candela",
+      "path": "profile_facts.evidence-candela-lifecycle-15",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-capitainer-identity-1",
+      "company_id": "startup:capitainer",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-capitainer-identity-1",
+      "company_id": "startup:capitainer",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-capitainer-description-1",
+      "company_id": "startup:capitainer",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-capitainer-aliases-1",
+      "company_id": "startup:capitainer",
+      "path": "profile_facts.evidence-se-science-capitainer-aliases-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-capitainer-registered-office-1",
+      "company_id": "startup:capitainer",
+      "path": "profile_facts.evidence-se-science-capitainer-registered-office-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-capitainer-founded-1",
+      "company_id": "startup:capitainer",
+      "path": "profile_facts.evidence-se-science-capitainer-founded-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-capitainer-founded-2",
+      "company_id": "startup:capitainer",
+      "path": "profile_facts.evidence-se-science-capitainer-founded-2",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-capitainer-founder-1",
+      "company_id": "startup:capitainer",
+      "path": "founders.Olof Beck",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-capitainer-founder-2",
+      "company_id": "startup:capitainer",
+      "path": "founders.Göran Stemme",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-capitainer-founder-3",
+      "company_id": "startup:capitainer",
+      "path": "founders.Niclas Roxhed",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-capitainer-founder-4",
+      "company_id": "startup:capitainer",
+      "path": "founders.Gabriel Lenk",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-capitainer-founder-5",
+      "company_id": "startup:capitainer",
+      "path": "founders.Peter Bräutigam",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-capitainer-sectors-1",
+      "company_id": "startup:capitainer",
+      "path": "profile_facts.evidence-se-science-capitainer-sectors-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-capitainer-round-participant-1",
+      "company_id": "startup:capitainer",
+      "path": "funding_rounds.funding-capitainer-2020-share-issue.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-capitainer-round-participant-2",
+      "company_id": "startup:capitainer",
+      "path": "funding_rounds.funding-capitainer-2020-share-issue.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-capitainer-funding-round-1",
+      "company_id": "startup:capitainer",
+      "path": "funding_rounds.funding-capitainer-2020-share-issue",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-capitainer-funding-round-2",
+      "company_id": "startup:capitainer",
+      "path": "profile_facts.evidence-se-science-capitainer-funding-round-2",
+      "mode": "sourced_text_projection",
+      "unprojected_components": "Typed financing semantics remain research-only; no simple legacy funding round."
+    },
+    {
+      "claim_id": "se-science-elypta-identity-1",
+      "company_id": "startup:elypta",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-elypta-identity-1",
+      "company_id": "startup:elypta",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-elypta-description-1",
+      "company_id": "startup:elypta",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-elypta-aliases-1",
+      "company_id": "startup:elypta",
+      "path": "profile_facts.evidence-se-science-elypta-aliases-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-elypta-operating-location-1",
+      "company_id": "startup:elypta",
+      "path": "profile_facts.evidence-se-science-elypta-operating-location-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-elypta-founded-1",
+      "company_id": "startup:elypta",
+      "path": "profile_facts.evidence-se-science-elypta-founded-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-elypta-founder-1",
+      "company_id": "startup:elypta",
+      "path": "founders.Francesco Gatto",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-elypta-founder-2",
+      "company_id": "startup:elypta",
+      "path": "founders.Jens Nielsen",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-elypta-sectors-1",
+      "company_id": "startup:elypta",
+      "path": "profile_facts.evidence-se-science-elypta-sectors-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-1",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2019-late-seed.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-2",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2019-late-seed.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-3",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2019-late-seed.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-4",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2019-late-seed.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-5",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2019-late-seed.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-funding-round-1",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2019-late-seed",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-elypta-funding-round-1",
+      "company_id": "startup:elypta",
+      "path": "profile_facts.evidence-se-science-elypta-funding-round-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-6",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2022-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-7",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2022-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-8",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2022-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-9",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2022-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-10",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2022-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-11",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2022-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-round-participant-12",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2022-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-elypta-funding-round-2",
+      "company_id": "startup:elypta",
+      "path": "funding_rounds.funding-elypta-2022-series-a",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-enginzyme-identity-1",
+      "company_id": "startup:enginzyme",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-enginzyme-identity-1",
+      "company_id": "startup:enginzyme",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-enginzyme-description-1",
+      "company_id": "startup:enginzyme",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-enginzyme-aliases-1",
+      "company_id": "startup:enginzyme",
+      "path": "profile_facts.evidence-se-science-enginzyme-aliases-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-enginzyme-headquarters-1",
+      "company_id": "startup:enginzyme",
+      "path": "profile_facts.evidence-se-science-enginzyme-headquarters-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-enginzyme-founded-1",
+      "company_id": "startup:enginzyme",
+      "path": "profile_facts.evidence-se-science-enginzyme-founded-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-enginzyme-founder-1",
+      "company_id": "startup:enginzyme",
+      "path": "founders.Karim Engelmark Cassimjee",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-enginzyme-sectors-1",
+      "company_id": "startup:enginzyme",
+      "path": "profile_facts.evidence-se-science-enginzyme-sectors-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-1",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2022-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-2",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2022-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-3",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2022-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-4",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2022-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-5",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2022-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-6",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2022-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-funding-round-1",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2022-series-b",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-7",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2026-equity.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-8",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2026-equity.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-9",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2026-equity.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-10",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2026-equity.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-11",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2026-equity.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-round-participant-12",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2026-equity.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-enginzyme-funding-round-2",
+      "company_id": "startup:enginzyme",
+      "path": "funding_rounds.funding-enginzyme-2026-equity",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-epishine-identity-1",
+      "company_id": "startup:epishine",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-epishine-identity-1",
+      "company_id": "startup:epishine",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-epishine-description-1",
+      "company_id": "startup:epishine",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-epishine-aliases-1",
+      "company_id": "startup:epishine",
+      "path": "profile_facts.evidence-se-science-epishine-aliases-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-epishine-headquarters-1",
+      "company_id": "startup:epishine",
+      "path": "profile_facts.evidence-se-science-epishine-headquarters-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-epishine-founded-1",
+      "company_id": "startup:epishine",
+      "path": "founded_year",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-epishine-founder-1",
+      "company_id": "startup:epishine",
+      "path": "founders.Mattias Josephson",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-epishine-founder-2",
+      "company_id": "startup:epishine",
+      "path": "founders.Olle Inganäs",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-epishine-sectors-1",
+      "company_id": "startup:epishine",
+      "path": "profile_facts.evidence-se-science-epishine-sectors-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-epishine-round-participant-1",
+      "company_id": "startup:epishine",
+      "path": "funding_rounds.funding-epishine-2024-private-placement.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-epishine-round-participant-2",
+      "company_id": "startup:epishine",
+      "path": "funding_rounds.funding-epishine-2024-private-placement.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-epishine-round-participant-3",
+      "company_id": "startup:epishine",
+      "path": "funding_rounds.funding-epishine-2024-private-placement.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-epishine-round-participant-4",
+      "company_id": "startup:epishine",
+      "path": "funding_rounds.funding-epishine-2024-private-placement.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-epishine-funding-round-1",
+      "company_id": "startup:epishine",
+      "path": "funding_rounds.funding-epishine-2024-private-placement",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "flower-identity-1",
+      "company_id": "startup:flower",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "flower-identity-1",
+      "company_id": "startup:flower",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "flower-description-6",
+      "company_id": "startup:flower",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "flower-headquarters-2",
+      "company_id": "startup:flower",
+      "path": "profile_facts.evidence-flower-headquarters-2",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "flower-founded-3",
+      "company_id": "startup:flower",
+      "path": "profile_facts.evidence-flower-founded-3",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "flower-founder-4",
+      "company_id": "startup:flower",
+      "path": "founders.John Diklev",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "flower-aliases-5",
+      "company_id": "startup:flower",
+      "path": "profile_facts.evidence-flower-aliases-5",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "flower-sectors-7",
+      "company_id": "startup:flower",
+      "path": "profile_facts.evidence-flower-sectors-7",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "flower-incorporation-8",
+      "company_id": "startup:flower",
+      "path": "profile_facts.evidence-flower-incorporation-8",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "flower-round-participant-11",
+      "company_id": "startup:flower",
+      "path": "funding_rounds.flower-2024-10-31-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "flower-round-participant-12",
+      "company_id": "startup:flower",
+      "path": "funding_rounds.flower-2024-10-31-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "flower-round-participant-13",
+      "company_id": "startup:flower",
+      "path": "funding_rounds.flower-2024-10-31-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "flower-round-participant-14",
+      "company_id": "startup:flower",
+      "path": "funding_rounds.flower-2024-10-31-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "flower-round-participant-15",
+      "company_id": "startup:flower",
+      "path": "funding_rounds.flower-2024-10-31-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "flower-round-participant-16",
+      "company_id": "startup:flower",
+      "path": "funding_rounds.flower-2024-10-31-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "flower-funding-round-10",
+      "company_id": "startup:flower",
+      "path": "funding_rounds.flower-2024-10-31-series-a",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "flower-lifecycle-17",
+      "company_id": "startup:flower",
+      "path": "profile_facts.evidence-flower-lifecycle-17",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-funnel-001",
+      "company_id": "startup:funnel",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-funnel-001",
+      "company_id": "startup:funnel",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-funnel-002",
+      "company_id": "startup:funnel",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-funnel-003",
+      "company_id": "startup:funnel",
+      "path": "profile_facts.evidence-se-software-funnel-003",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-funnel-004",
+      "company_id": "startup:funnel",
+      "path": "founded_year",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-funnel-005",
+      "company_id": "startup:funnel",
+      "path": "profile_facts.evidence-se-software-funnel-005",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-funnel-006",
+      "company_id": "startup:funnel",
+      "path": "founders.Fredrik Skantze",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-funnel-007",
+      "company_id": "startup:funnel",
+      "path": "founders.Per Made",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-funnel-008",
+      "company_id": "startup:funnel",
+      "path": "profile_facts.evidence-se-software-funnel-008",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-funnel-009",
+      "company_id": "startup:funnel",
+      "path": "profile_facts.evidence-se-software-funnel-009",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-funnel-011",
+      "company_id": "startup:funnel",
+      "path": "funding_rounds.funnel-2021-10-12-pre-ipo.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-funnel-012",
+      "company_id": "startup:funnel",
+      "path": "funding_rounds.funnel-2021-10-12-pre-ipo.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-funnel-013",
+      "company_id": "startup:funnel",
+      "path": "funding_rounds.funnel-2021-10-12-pre-ipo.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-funnel-014",
+      "company_id": "startup:funnel",
+      "path": "funding_rounds.funnel-2021-10-12-pre-ipo.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-funnel-015",
+      "company_id": "startup:funnel",
+      "path": "funding_rounds.funnel-2021-10-12-pre-ipo.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-funnel-016",
+      "company_id": "startup:funnel",
+      "path": "funding_rounds.funnel-2021-10-12-pre-ipo.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-funnel-017",
+      "company_id": "startup:funnel",
+      "path": "funding_rounds.funnel-2021-10-12-pre-ipo.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-funnel-010",
+      "company_id": "startup:funnel",
+      "path": "funding_rounds.funnel-2021-10-12-pre-ipo",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-funnel-010",
+      "company_id": "startup:funnel",
+      "path": "profile_facts.evidence-se-software-funnel-010",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-legora-001",
+      "company_id": "startup:legora",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-legora-001",
+      "company_id": "startup:legora",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-legora-002",
+      "company_id": "startup:legora",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-legora-003",
+      "company_id": "startup:legora",
+      "path": "profile_facts.evidence-se-software-legora-003",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-legora-004",
+      "company_id": "startup:legora",
+      "path": "founded_year",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-legora-005",
+      "company_id": "startup:legora",
+      "path": "profile_facts.evidence-se-software-legora-005",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-legora-006",
+      "company_id": "startup:legora",
+      "path": "profile_facts.evidence-se-software-legora-006",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-legora-007",
+      "company_id": "startup:legora",
+      "path": "profile_facts.evidence-se-software-legora-007",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-legora-008",
+      "company_id": "startup:legora",
+      "path": "profile_facts.evidence-se-software-legora-008",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-legora-009",
+      "company_id": "startup:legora",
+      "path": "profile_facts.evidence-se-software-legora-009",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-legora-010",
+      "company_id": "startup:legora",
+      "path": "founders.Max Junestrand",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-legora-011",
+      "company_id": "startup:legora",
+      "path": "founders.Sigge Labor",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-legora-012",
+      "company_id": "startup:legora",
+      "path": "profile_facts.evidence-se-software-legora-012",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-legora-014",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-015",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-016",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-017",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-018",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-019",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-020",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-021",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-022",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-023",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-024",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-025",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-026",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-027",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-028",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-029",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-legora-013",
+      "company_id": "startup:legora",
+      "path": "funding_rounds.legora-2026-10-21-series-e",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-lovable-001",
+      "company_id": "startup:lovable",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-lovable-001",
+      "company_id": "startup:lovable",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-lovable-002",
+      "company_id": "startup:lovable",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-lovable-003",
+      "company_id": "startup:lovable",
+      "path": "profile_facts.evidence-se-software-lovable-003",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-lovable-004",
+      "company_id": "startup:lovable",
+      "path": "profile_facts.evidence-se-software-lovable-004",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-lovable-005",
+      "company_id": "startup:lovable",
+      "path": "profile_facts.evidence-se-software-lovable-005",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-lovable-006",
+      "company_id": "startup:lovable",
+      "path": "profile_facts.evidence-se-software-lovable-006",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-lovable-007",
+      "company_id": "startup:lovable",
+      "path": "profile_facts.evidence-se-software-lovable-007",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-lovable-008",
+      "company_id": "startup:lovable",
+      "path": "founders.Anton Osika",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-lovable-009",
+      "company_id": "startup:lovable",
+      "path": "founders.Fabian Hedin",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-lovable-012",
+      "company_id": "startup:lovable",
+      "path": "funding_rounds.lovable-2025-07-17-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-lovable-013",
+      "company_id": "startup:lovable",
+      "path": "funding_rounds.lovable-2025-07-17-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-lovable-014",
+      "company_id": "startup:lovable",
+      "path": "funding_rounds.lovable-2025-07-17-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-lovable-015",
+      "company_id": "startup:lovable",
+      "path": "funding_rounds.lovable-2025-07-17-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-lovable-016",
+      "company_id": "startup:lovable",
+      "path": "funding_rounds.lovable-2025-07-17-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-lovable-011",
+      "company_id": "startup:lovable",
+      "path": "profile_facts.evidence-se-software-lovable-011",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-lovable-010",
+      "company_id": "startup:lovable",
+      "path": "funding_rounds.lovable-2025-07-17-series-a",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-mentimeter-001",
+      "company_id": "startup:mentimeter",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-mentimeter-001",
+      "company_id": "startup:mentimeter",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-mentimeter-002",
+      "company_id": "startup:mentimeter",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-mentimeter-003",
+      "company_id": "startup:mentimeter",
+      "path": "profile_facts.evidence-se-software-mentimeter-003",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-mentimeter-004",
+      "company_id": "startup:mentimeter",
+      "path": "profile_facts.evidence-se-software-mentimeter-004",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-mentimeter-005",
+      "company_id": "startup:mentimeter",
+      "path": "profile_facts.evidence-se-software-mentimeter-005",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-mentimeter-006",
+      "company_id": "startup:mentimeter",
+      "path": "profile_facts.evidence-se-software-mentimeter-006",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-mentimeter-007",
+      "company_id": "startup:mentimeter",
+      "path": "founders.Johnny Warström",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-mentimeter-008",
+      "company_id": "startup:mentimeter",
+      "path": "founders.Niklas Ingvar",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-mentimeter-009",
+      "company_id": "startup:mentimeter",
+      "path": "founders.Henrik Fräsén",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-mentimeter-010",
+      "company_id": "startup:mentimeter",
+      "path": "founders.Kristoffer Renholm",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-mentimeter-011",
+      "company_id": "startup:mentimeter",
+      "path": "profile_facts.evidence-se-software-mentimeter-011",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-mentimeter-012",
+      "company_id": "startup:mentimeter",
+      "path": "profile_facts.evidence-se-software-mentimeter-012",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-mentimeter-013",
+      "company_id": "startup:mentimeter",
+      "path": "profile_facts.evidence-se-software-mentimeter-013",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-mentimeter-014",
+      "company_id": "startup:mentimeter",
+      "path": "profile_facts.evidence-se-software-mentimeter-014",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-mentimeter-016",
+      "company_id": "startup:mentimeter",
+      "path": "funding_rounds.mentimeter-2022-06-22-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-mentimeter-017",
+      "company_id": "startup:mentimeter",
+      "path": "funding_rounds.mentimeter-2022-06-22-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-mentimeter-018",
+      "company_id": "startup:mentimeter",
+      "path": "funding_rounds.mentimeter-2022-06-22-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-mentimeter-019",
+      "company_id": "startup:mentimeter",
+      "path": "profile_facts.evidence-se-software-mentimeter-019",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-mentimeter-015",
+      "company_id": "startup:mentimeter",
+      "path": "funding_rounds.mentimeter-2022-06-22-series-c",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "mynt-identity-1",
+      "company_id": "startup:mynt",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "mynt-identity-1",
+      "company_id": "startup:mynt",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "mynt-description-2",
+      "company_id": "startup:mynt",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "mynt-sectors-3",
+      "company_id": "startup:mynt",
+      "path": "profile_facts.evidence-mynt-sectors-3",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "mynt-founded-4",
+      "company_id": "startup:mynt",
+      "path": "founded_year",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "mynt-founder-5",
+      "company_id": "startup:mynt",
+      "path": "founders.Baltsar Sahlin",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "mynt-founder-6",
+      "company_id": "startup:mynt",
+      "path": "founders.Johan Obermayer",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "mynt-founder-7",
+      "company_id": "startup:mynt",
+      "path": "founders.Magnus Widerberg",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "mynt-aliases-9",
+      "company_id": "startup:mynt",
+      "path": "profile_facts.evidence-mynt-aliases-9",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "mynt-incorporation-10",
+      "company_id": "startup:mynt",
+      "path": "profile_facts.evidence-mynt-incorporation-10",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "mynt-office_location-11",
+      "company_id": "startup:mynt",
+      "path": "profile_facts.evidence-mynt-office-location-11",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "mynt-round_participant-13",
+      "company_id": "startup:mynt",
+      "path": "funding_rounds.mynt-2024-12-11-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "mynt-round_participant-14",
+      "company_id": "startup:mynt",
+      "path": "funding_rounds.mynt-2024-12-11-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "mynt-round_participant-15",
+      "company_id": "startup:mynt",
+      "path": "funding_rounds.mynt-2024-12-11-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "mynt-round_participant-16",
+      "company_id": "startup:mynt",
+      "path": "profile_facts.evidence-mynt-round-participant-16",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "mynt-funding_round-12",
+      "company_id": "startup:mynt",
+      "path": "funding_rounds.mynt-2024-12-11-series-b",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-neko-health-identity-1",
+      "company_id": "startup:neko-health",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-neko-health-identity-1",
+      "company_id": "startup:neko-health",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-neko-health-description-1",
+      "company_id": "startup:neko-health",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-neko-health-aliases-1",
+      "company_id": "startup:neko-health",
+      "path": "profile_facts.evidence-se-science-neko-health-aliases-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-neko-health-incorporation-1",
+      "company_id": "startup:neko-health",
+      "path": "profile_facts.evidence-se-science-neko-health-incorporation-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-neko-health-registered-office-1",
+      "company_id": "startup:neko-health",
+      "path": "profile_facts.evidence-se-science-neko-health-registered-office-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-neko-health-operating-location-1",
+      "company_id": "startup:neko-health",
+      "path": "profile_facts.evidence-se-science-neko-health-operating-location-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-neko-health-founded-1",
+      "company_id": "startup:neko-health",
+      "path": "profile_facts.evidence-se-science-neko-health-founded-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-neko-health-founder-1",
+      "company_id": "startup:neko-health",
+      "path": "founders.Hjalmar Nilsonne",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-neko-health-founder-2",
+      "company_id": "startup:neko-health",
+      "path": "founders.Daniel Ek",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-neko-health-sectors-1",
+      "company_id": "startup:neko-health",
+      "path": "profile_facts.evidence-se-science-neko-health-sectors-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-1",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2023-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-2",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2023-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-3",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2023-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-funding-round-1",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2023-series-a",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-4",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2026-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-5",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2026-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-6",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2026-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-7",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2026-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-8",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2026-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-9",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2026-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-10",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2026-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-round-participant-11",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2026-series-c.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-neko-health-funding-round-2",
+      "company_id": "startup:neko-health",
+      "path": "funding_rounds.funding-neko-health-2026-series-c",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "syre-identity-1",
+      "company_id": "startup:syre",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "syre-identity-1",
+      "company_id": "startup:syre",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "syre-description-4",
+      "company_id": "startup:syre",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "syre-headquarters-2",
+      "company_id": "startup:syre",
+      "path": "profile_facts.evidence-syre-headquarters-2",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "syre-founded-3",
+      "company_id": "startup:syre",
+      "path": "founded_year",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "syre-sectors-5",
+      "company_id": "startup:syre",
+      "path": "profile_facts.evidence-syre-sectors-5",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "syre-corporate-origin-6",
+      "company_id": "startup:syre",
+      "path": "profile_facts.evidence-syre-corporate-origin-6",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "syre-funding-currency-8",
+      "company_id": "startup:syre",
+      "path": "profile_facts.evidence-syre-funding-currency-8",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "syre-round-participant-9",
+      "company_id": "startup:syre",
+      "path": "funding_rounds.syre-2024-05-23-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "syre-round-participant-10",
+      "company_id": "startup:syre",
+      "path": "funding_rounds.syre-2024-05-23-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "syre-round-participant-11",
+      "company_id": "startup:syre",
+      "path": "funding_rounds.syre-2024-05-23-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "syre-round-participant-12",
+      "company_id": "startup:syre",
+      "path": "funding_rounds.syre-2024-05-23-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "syre-round-participant-13",
+      "company_id": "startup:syre",
+      "path": "funding_rounds.syre-2024-05-23-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "syre-round-participant-14",
+      "company_id": "startup:syre",
+      "path": "funding_rounds.syre-2024-05-23-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "syre-funding-round-7",
+      "company_id": "startup:syre",
+      "path": "funding_rounds.syre-2024-05-23-series-a",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "syre-lifecycle-15",
+      "company_id": "startup:syre",
+      "path": "profile_facts.evidence-syre-lifecycle-15",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-tandem-health-identity-1",
+      "company_id": "startup:tandem-health",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-tandem-health-identity-1",
+      "company_id": "startup:tandem-health",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-tandem-health-description-1",
+      "company_id": "startup:tandem-health",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-tandem-health-aliases-1",
+      "company_id": "startup:tandem-health",
+      "path": "profile_facts.evidence-se-science-tandem-health-aliases-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-tandem-health-headquarters-1",
+      "company_id": "startup:tandem-health",
+      "path": "profile_facts.evidence-se-science-tandem-health-headquarters-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-tandem-health-founded-1",
+      "company_id": "startup:tandem-health",
+      "path": "founded_year",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-tandem-health-founder-1",
+      "company_id": "startup:tandem-health",
+      "path": "founders.Lukas Saari",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-tandem-health-founder-2",
+      "company_id": "startup:tandem-health",
+      "path": "founders.Oliver Åstrand",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-tandem-health-founder-3",
+      "company_id": "startup:tandem-health",
+      "path": "founders.Oscar Boldt-Christmas",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-tandem-health-sectors-1",
+      "company_id": "startup:tandem-health",
+      "path": "profile_facts.evidence-se-science-tandem-health-sectors-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-tandem-health-round-participant-1",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2025-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-tandem-health-round-participant-2",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2025-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-tandem-health-round-participant-3",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2025-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-tandem-health-round-participant-4",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2025-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-tandem-health-funding-amount-observation-1",
+      "company_id": "startup:tandem-health",
+      "path": "profile_facts.evidence-se-science-tandem-health-funding-amount-observation-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-tandem-health-funding-round-1",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2025-series-a",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-tandem-health-round-participant-5",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2026-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-tandem-health-round-participant-6",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2026-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-tandem-health-round-participant-7",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2026-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-tandem-health-round-participant-8",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2026-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-tandem-health-round-participant-9",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2026-series-b.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-tandem-health-funding-round-2",
+      "company_id": "startup:tandem-health",
+      "path": "funding_rounds.funding-tandem-health-2026-series-b",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-voi-technology-001",
+      "company_id": "startup:voi-technology",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-voi-technology-001",
+      "company_id": "startup:voi-technology",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-voi-technology-003",
+      "company_id": "startup:voi-technology",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-voi-technology-002",
+      "company_id": "startup:voi-technology",
+      "path": "profile_facts.evidence-se-software-voi-technology-002",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-voi-technology-004",
+      "company_id": "startup:voi-technology",
+      "path": "profile_facts.evidence-se-software-voi-technology-004",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-voi-technology-005",
+      "company_id": "startup:voi-technology",
+      "path": "profile_facts.evidence-se-software-voi-technology-005",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-voi-technology-006",
+      "company_id": "startup:voi-technology",
+      "path": "profile_facts.evidence-se-software-voi-technology-006",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-voi-technology-007",
+      "company_id": "startup:voi-technology",
+      "path": "founders.Fredrik Hjelm",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-voi-technology-008",
+      "company_id": "startup:voi-technology",
+      "path": "founders.Adam Jafer",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-voi-technology-009",
+      "company_id": "startup:voi-technology",
+      "path": "founders.Filip Lindvall",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-voi-technology-010",
+      "company_id": "startup:voi-technology",
+      "path": "founders.Douglas Stark",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-voi-technology-011",
+      "company_id": "startup:voi-technology",
+      "path": "profile_facts.evidence-se-software-voi-technology-011",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-voi-technology-012",
+      "company_id": "startup:voi-technology",
+      "path": "profile_facts.evidence-se-software-voi-technology-012",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-software-voi-technology-014",
+      "company_id": "startup:voi-technology",
+      "path": "funding_rounds.voi-technology-2024-03-12-financing.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-voi-technology-015",
+      "company_id": "startup:voi-technology",
+      "path": "funding_rounds.voi-technology-2024-03-12-financing.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-voi-technology-016",
+      "company_id": "startup:voi-technology",
+      "path": "funding_rounds.voi-technology-2024-03-12-financing.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-voi-technology-017",
+      "company_id": "startup:voi-technology",
+      "path": "funding_rounds.voi-technology-2024-03-12-financing.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-voi-technology-018",
+      "company_id": "startup:voi-technology",
+      "path": "funding_rounds.voi-technology-2024-03-12-financing.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-voi-technology-019",
+      "company_id": "startup:voi-technology",
+      "path": "funding_rounds.voi-technology-2024-03-12-financing.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-voi-technology-020",
+      "company_id": "startup:voi-technology",
+      "path": "funding_rounds.voi-technology-2024-03-12-financing.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-voi-technology-021",
+      "company_id": "startup:voi-technology",
+      "path": "funding_rounds.voi-technology-2024-03-12-financing.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-software-voi-technology-013",
+      "company_id": "startup:voi-technology",
+      "path": "funding_rounds.voi-technology-2024-03-12-financing",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-software-voi-technology-022",
+      "company_id": "startup:voi-technology",
+      "path": "profile_facts.evidence-se-software-voi-technology-022",
+      "mode": "sourced_text_projection",
+      "unprojected_components": "Typed financing semantics remain research-only; no simple legacy funding round."
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-identity-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "name",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-identity-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "website",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-description-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "description",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-aliases-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "profile_facts.evidence-se-science-zeropoint-technologies-aliases-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-operating-location-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "profile_facts.evidence-se-science-zeropoint-technologies-operating-location-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-founded-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "profile_facts.evidence-se-science-zeropoint-technologies-founded-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-founder-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "founders.Per Stenström",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-founder-2",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "founders.Angelos Arelakis",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-sectors-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "profile_facts.evidence-se-science-zeropoint-technologies-sectors-1",
+      "mode": "sourced_text_projection"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-round-participant-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "funding_rounds.funding-zeropoint-technologies-2021-seed.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-funding-round-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "funding_rounds.funding-zeropoint-technologies-2021-seed",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-round-participant-2",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "funding_rounds.funding-zeropoint-technologies-2024-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-round-participant-3",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "funding_rounds.funding-zeropoint-technologies-2024-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-round-participant-4",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "funding_rounds.funding-zeropoint-technologies-2024-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-round-participant-5",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "funding_rounds.funding-zeropoint-technologies-2024-series-a.note",
+      "mode": "text_only_no_resolved_investor_id"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-funding-round-2",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "funding_rounds.funding-zeropoint-technologies-2024-series-a",
+      "mode": "direct"
+    },
+    {
+      "claim_id": "se-science-zeropoint-technologies-research-origin-1",
+      "company_id": "startup:zeropoint-technologies",
+      "path": "profile_facts.evidence-se-science-zeropoint-technologies-research-origin-1",
+      "mode": "sourced_text_projection"
+    }
+  ],
+  "research_only": [
+    {
+      "claim_id": "einride-identity-1",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-headquarters-2",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-incorporation-3",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-founded-4",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-description-5",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-sectors-6",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-founder-7",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-founder-8",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-founder-9",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-funding-round-10",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-round-participant-11",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-round-participant-12",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-round-participant-13",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-round-participant-14",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-round-participant-15",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-round-participant-16",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-round-participant-17",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-round-participant-18",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-round-participant-19",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-round-participant-20",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "einride-lifecycle-21",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-identity-1",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-headquarters-2",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-headquarters-history-3",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-founded-4",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-founded-5",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-description-6",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-sectors-7",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-founder-8",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-funding-round-9",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-round-participant-10",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-round-participant-11",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-round-participant-12",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-round-participant-13",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-round-participant-14",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-round-participant-15",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-round-participant-16",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-round-participant-17",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-round-participant-18",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "heart-aerospace-lifecycle-19",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-001",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-002",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-003",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-004",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-005",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-006",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-007",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-008",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-009",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-010",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-011",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-012",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-013",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-014",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-015",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-016",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-normative-017",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "northvolt-identity-1",
+      "reason": "Company disposition is rejected; see companies.json."
+    },
+    {
+      "claim_id": "northvolt-lifecycle-2",
+      "reason": "Company disposition is rejected; see companies.json."
+    },
+    {
+      "claim_id": "northvolt-asset-acquisition-3",
+      "reason": "Company disposition is rejected; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-001",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-002",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-003",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-004",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-005",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-006",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-007",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-008",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-009",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-010",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-011",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-planhat-012",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-001",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-002",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-003",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-004",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-005",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-006",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-007",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-008",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-009",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-010",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-011",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-sana-012",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-identity-1",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-headquarters-2",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-founded-3",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-aliases-4",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-description-5",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-sectors-6",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-founder-7",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-incorporation-8",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-legal-entity-transition-9",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-funding-round-10",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-11",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-12",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-13",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-14",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-15",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-16",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-17",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-18",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-19",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-20",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-21",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-22",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-23",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-24",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-funding-round-25",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-26",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-27",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-28",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-29",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-30",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-31",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-32",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-33",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-round-participant-34",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "stegra-lifecycle-35",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "x-shore-identity-1",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "x-shore-founded-2",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "x-shore-origin-3",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "x-shore-description-4",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "x-shore-sectors-5",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "x-shore-incorporation-6",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "x-shore-funding-round-7",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "x-shore-lifecycle-8",
+      "reason": "Company disposition is held; see companies.json."
+    },
+    {
+      "claim_id": "se-software-voi-technology-023",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "se-science-tandem-health-related-legal-entity-1",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "se-science-tandem-health-investor-commitment-1",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "se-science-elypta-funding-advisor-1",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "se-science-capitainer-round-participant-3",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "se-science-capitainer-round-participant-4",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "se-science-capitainer-investor-commitment-1",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "se-science-epishine-funding-advisor-1",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "se-science-epishine-grant-award-1",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "candela-round-allocation-14",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "flower-subsidiary-relationship-9",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "alight-round-participant-11",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "mynt-founder_name_conflict-8",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-sisp-nip-2025",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-business-sweden-tech",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-stockholm-2026",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-sting-about",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-sting-location",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-propel",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-kth",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-sse",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-sse-summer-2026",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-chalmers",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-chalmers-portfolio",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-minc",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-minc-directory",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-smile",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-uic",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-lead",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-uminova",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-uminova-directory",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-arctic",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-vinnova-2026",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-energy-customer-verification",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-almi",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-saminvest",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-industrifonden",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-norrsken-vc",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-creandum",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-northzone",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    },
+    {
+      "claim_id": "ecosystem-eqt-ventures",
+      "reason": "Research-only structured observation, conflict, adviser, commitment, programme or unsupported typed relationship; no production schema extension."
+    }
+  ],
+  "note": "Distinct claim IDs in mapped versus research_only are disjoint and cover the ledger. Mapped text facts can retain unprojected typed components; those are marked inside the mapping item, not counted again. Several mapped paths may refer to one claim. No production schema changes."
+}

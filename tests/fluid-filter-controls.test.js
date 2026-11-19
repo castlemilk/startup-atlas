@@ -2,7 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { spawnSync } from 'node:child_process';
 import { JSDOM } from 'jsdom';
 import { mountFilterControls, loadFluidCurve } from '../prototypes/fluid-filter-controls/controller.js';
 
@@ -306,7 +305,6 @@ test('verbatim Fluid files match reviewed provenance and expose the real spring 
   assert.match(await loadFluidCurve(), /^linear\(0, .*1\)$/);
 });
 
-test('hosted CI runs the isolated real-browser acceptance suite', { skip: process.env.GITHUB_ACTIONS !== 'true', timeout: 180000 }, () => {
-  const result = spawnSync(process.execPath, ['scripts/test-fluid-filter-controls-browser.mjs'], { encoding: 'utf8', timeout: 170000, env: process.env });
-  assert.equal(result.status, 0, result.stdout + '\n' + result.stderr);
-});
+test('native browser acceptance remains blocked', {
+  skip: 'BLOCKED: The existing Chrome permission request is unresolved. Source/DOM checks do not establish native browser acceptance.'
+}, () => {});

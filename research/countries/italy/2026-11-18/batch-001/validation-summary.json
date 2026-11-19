@@ -1,0 +1,51 @@
+{
+  "base_revision": "988a4ddcc4dbbc853da0c7f7899b6d6e7579f840",
+  "reviewed_on": "2026-11-18",
+  "status": "passed",
+  "production_writes": 0,
+  "projection": {
+    "records": 22,
+    "checks": 24,
+    "founders": 50,
+    "financing_observations": 30,
+    "numeric_funding_amounts": 20,
+    "profile_facts": 147
+  },
+  "funding": {
+    "status": "passed",
+    "adversarial_passed": 22,
+    "adversarial_total": 22,
+    "summary": {
+      "companies_reviewed": 24,
+      "startup_candidates": 22,
+      "historical_references_excluded": 2,
+      "funding_events": 30,
+      "candidate_funding_events": 29,
+      "financing_observations": 8,
+      "funding_event_participations": 135,
+      "observation_relationships": 6,
+      "funding_conflicts": 6,
+      "accessed_supporting_sources": 40,
+      "acquisition_context_observations": 2,
+      "round_groups": 6
+    }
+  },
+  "country_packet_checks": 48,
+  "claims": {
+    "valid": true,
+    "count": 444
+  },
+  "existing_planner": {
+    "source_records": 67,
+    "pages": 7,
+    "new_seed_review_required": 22
+  },
+  "receipt_sha256": {
+    "projection-validation.json": "88d285b86376adf96116a5594bb0fe8a9075277dc1e8a89dd099b13b40193813",
+    "funding-validation.json": "5d5e6e4d2dfa53b913a9d1a3927e5c70c567d50491bbeb39446e6dce5983565e",
+    "packet-validation.json": "a73eef06e9cdece12771f5f3bc1fc2567eacf887006b6a690f6d9aafe1304c4a",
+    "claims-validation.json": "a7c955efab2c129f3fcf125e932b33a8968fabc66d428124562f37a8418653d7",
+    "planner-validation.json": "9294360444ba5c9970405d3fffab1dc26f1a56d6d3df504a09eb863c68346e41"
+  },
+  "count_semantics": "Funding companion has29 candidate funding events plus1 historical Fiscozen event; production projection has30 candidate financing observations because it also retains Casavo debt capacity as a separately qualified nonnumeric record. No lifetime total is calculated."
+}

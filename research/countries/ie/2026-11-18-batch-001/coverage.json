@@ -1,0 +1,98 @@
+{
+  "counts": {
+    "company_candidates_discovered": 43,
+    "company_candidates_reviewed": 25,
+    "accepted_staged": 21,
+    "held_boundary": 3,
+    "rejected": 1,
+    "queued_unreviewed": 18,
+    "source_backed_company_dossiers": 24,
+    "schema_valid_records_proposed": 21,
+    "schema_valid_records_boundary": 3,
+    "atomic_claims": 458,
+    "claim_statuses": {
+      "reviewed_staged": 447,
+      "conflict": 9,
+      "candidate": 2
+    },
+    "registered_unique_urls": 172,
+    "accessed_unique_urls": 153,
+    "unaccessed_unique_urls": 19,
+    "accessed_template_shells": 1,
+    "source_observations": 172,
+    "founder_entries": 44,
+    "financing_and_secondary_events_in_company_arrays": 30,
+    "venture_or_company_financing_events": 28,
+    "grant_events_in_company_arrays": 1,
+    "secondary_share_sale_events": 1,
+    "separate_non_round_items": 3,
+    "event_specific_participant_links": 140,
+    "legacy_funding_rows_proposed": 26,
+    "legacy_funding_rows_boundary": 2,
+    "canonical_investor_edges_created": 0,
+    "production_records_written": 0,
+    "crawler_seeds_approved": 0
+  },
+  "dispositions": {
+    "accepted_staged": 21,
+    "rejected": 1,
+    "held_boundary": 3,
+    "queued": 18
+  },
+  "source_coverage": [
+    {
+      "source_id": "ie-eco-ndrc-cohort",
+      "population": "one 2026 cohort page",
+      "pagination": "single page; 12 outbound company links observed",
+      "reviewed_company_links": 0,
+      "remaining_company_links": 12,
+      "exhaustive_scope": false
+    },
+    {
+      "source_id": "ie-eco-tyndall-2025",
+      "population": "three named 2025 spinouts",
+      "pagination": "one news article",
+      "reviewed_companies": 0,
+      "remaining_companies": 3,
+      "exhaustive_scope": false
+    },
+    {
+      "source_id": "ie-eco-ivca-q3",
+      "population": "129 deals in 2026 January-September as reported by IVCA",
+      "pagination": "underlying transaction list/PDF not enumerated",
+      "reviewed_deals_from_report": 0,
+      "exhaustive_scope": false
+    },
+    {
+      "source_id": "ie-eco-ei-2025",
+      "population": "198 agency-supported startups in 2025",
+      "pagination": "announcement only; company cohort roster not retrieved",
+      "exhaustive_scope": false
+    },
+    {
+      "source_id": "ie-eco-novaucd",
+      "population": "community/alumni/sector programme pages",
+      "pagination": "no complete directory traversal",
+      "exhaustive_scope": false
+    },
+    {
+      "source_id": "ie-eco-newfrontiers-locations",
+      "population": "18 delivery locations as stated by programme",
+      "pagination": "location index read; no campus participant rosters traversed",
+      "exhaustive_scope": false
+    }
+  ],
+  "country_population_denominator": null,
+  "country_completeness_claim": false,
+  "company_histories_complete": false,
+  "gaps": [
+    "IMF supplied cohort rank/edition not independently verified; API blocked and dataset shell incomplete.",
+    "Source access failures and rewritten/partial representations retained; no bypass attempted.",
+    "Most incorporation dates and ultimate parent entities unknown; no inference from office or governing law.",
+    "Founding/HQ/currency conflicts preserved for review.",
+    "Company-specific investor IDs remain unresolved; portfolio/network membership never promoted into rounds.",
+    "No full directory or investor-archive pagination exhausted; Seroba pages 2–4 and Next remain.",
+    "Republic scope differs from all-island IVCA, HBAN and some programme sources.",
+    "18 next company leads not yet reviewed; founder lists/funding histories partial."
+  ]
+}

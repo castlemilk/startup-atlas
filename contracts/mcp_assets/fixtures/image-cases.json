@@ -1,0 +1,96 @@
+{
+  "status": "offline-synthetic-format-fixtures",
+  "real_asset_or_identity_evidence": false,
+  "generator": "Original procedural pixels and frozen synthetic source fixtures; see image_fixtures.py and CONVERSION.md.",
+  "jpeg_creation": {
+    "tool": "Pillow",
+    "version": "13.0.0",
+    "jpeg_codec": "6.2",
+    "libjpeg_turbo": "3.2.0",
+    "parameters": {
+      "format": "JPEG",
+      "quality": 85,
+      "subsampling": 0,
+      "optimize": false,
+      "progressive": false,
+      "mode": "RGB",
+      "width": 16,
+      "height": 16
+    },
+    "pixels": "For y then x in range(16): (x*16, y*16, ((x+y)%16)*16).",
+    "creation_check": "Pillow Image.open(BytesIO(data)).load() decoded RGB 16x16 successfully.",
+    "sha256": "4aa80df28941dcfae2a76f4a5d46d3a4b9f5644f1ec84356f7d2d2f0492dac20"
+  },
+  "icc_creation": {
+    "tool": "Pillow ImageCms",
+    "pillow_version": "13.0.0",
+    "littlecms_version": "2.19",
+    "parameters": {
+      "createProfile": "sRGB"
+    },
+    "sha256": "4a74a3e4d7ddedbd8dbf450f6deb75fed932dd457ef34d3472b4d715aea1b54a",
+    "note": "Frozen generated profile; do not regenerate its timestamp-bearing header during tests."
+  },
+  "cases": {
+    "logo-rgb": {
+      "sha256": "7cd5d8c96584e61d7af8af76e7683d5384ba08ea8c877ea2dd2b93420cd9eef4",
+      "bytes": 4708,
+      "declared_mime": "image/png",
+      "expected_format_result": "accepted"
+    },
+    "logo-rgba": {
+      "sha256": "1412c28096cc6b4a20921d8da3c7ed497672fbe3a6e107ffe0fb5283bb55e21b",
+      "bytes": 6244,
+      "declared_mime": "image/png",
+      "expected_format_result": "accepted"
+    },
+    "portrait-rgb": {
+      "sha256": "d49a0c807fc8c7b0c7f3cd3c621c41c8096a222e5f7bc43cbc54c8d8db7209cc",
+      "bytes": 9348,
+      "declared_mime": "image/png",
+      "expected_format_result": "accepted"
+    },
+    "complete-jpeg": {
+      "sha256": "4aa80df28941dcfae2a76f4a5d46d3a4b9f5644f1ec84356f7d2d2f0492dac20",
+      "bytes": 770,
+      "declared_mime": "image/jpeg",
+      "expected_format_result": "rejected"
+    },
+    "benign-svg": {
+      "sha256": "fbd206dd78874af47e8ac9c60e684cabf5e34968a57fa57937a43238dd21c661",
+      "bytes": 126,
+      "declared_mime": "image/svg+xml",
+      "expected_format_result": "rejected"
+    },
+    "active-svg": {
+      "sha256": "ede6dd71c38161ac8f07a602c560f8885e51030dd852ee39820ff89956530eb9",
+      "bytes": 159,
+      "declared_mime": "image/svg+xml",
+      "expected_format_result": "rejected"
+    },
+    "png-tEXt": {
+      "sha256": "a5a9037462ff7fb463298f8f67b85a1d9fa619de9af22d8fd11fbc820a875c19",
+      "bytes": 4773,
+      "declared_mime": "image/png",
+      "expected_format_result": "rejected"
+    },
+    "png-iCCP": {
+      "sha256": "4d4413631b0ec38b7441f74b14981328c06f4ecddaadc180bf0d72897f6e368a",
+      "bytes": 5335,
+      "declared_mime": "image/png",
+      "expected_format_result": "rejected"
+    },
+    "png-eXIf": {
+      "sha256": "d0b8ca0f88533d1bd0c6d577d055796407ef3afe62894ed07f06e662ab9815ea",
+      "bytes": 4746,
+      "declared_mime": "image/png",
+      "expected_format_result": "rejected"
+    },
+    "png-gAMA": {
+      "sha256": "8129084f3588c0fbdb5bc9aaec88dbb0746a0f2e1650a8e6057f7f09461230c1",
+      "bytes": 4724,
+      "declared_mime": "image/png",
+      "expected_format_result": "rejected"
+    }
+  }
+}
