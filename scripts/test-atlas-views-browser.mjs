@@ -215,14 +215,17 @@ try {
     assert.equal(await evaluate("document.querySelectorAll('[data-pattern][aria-selected=true]').length"),1);
     assert.equal(await evaluate("new URL(document.querySelector('#pattern-open').href).pathname"),pattern.path);
     assert.ok(await evaluate("document.querySelector('#view-preview').title.length>0"),'Iframe needs an accessible title');
+    assert.equal(await evaluate(`(()=>{
+      const doc=document.querySelector('#view-preview').contentDocument;
+      return doc.defaultView.getComputedStyle(doc.body).getPropertyValue('--atlas-paper').trim();
+    })()`),'#fcf9f2','Live previews use the same palette as the full explorer');
     if (['search','treemap','graph'].includes(pattern.key)) {
-      const artwork=await evaluate(`(async()=>{
+      const intro=await evaluate(`(()=>{
         const doc=document.querySelector('#view-preview').contentDocument;
-        const art=doc.querySelector('.atlas-feature-art img');
-        await art.decode();
-        return {file:new URL(art.currentSrc).pathname.split('/').pop(),alt:art.alt,fit:doc.defaultView.getComputedStyle(art).objectFit};
+        const heading=[...doc.querySelectorAll('main h1')].find(node=>node.getClientRects().length);
+        return {hasTitle:!!heading?.textContent.trim(),images:doc.querySelectorAll('.atlas-feature img').length};
       })()`);
-      assert.deepEqual(artwork,{file:`signal-${pattern.key}-thumb.webp`,alt:'',fit:'contain'},'The feature uses its full, decorative Signal composition');
+      assert.deepEqual(intro,{hasTitle:true,images:0},'The working view leads with a compact, text-only introduction');
     } else {
       assert.ok(await evaluate("!!document.querySelector('#view-preview').contentDocument.querySelector('.atlas-evidence-heading [aria-hidden=true] .atlas-icon')"),'Profile sources share the decorative evidence mark');
     }
@@ -317,7 +320,7 @@ try {
   await screenshot('atlas-partner-mobile.png',true);
 
   await navigate('/',"!!document.querySelector('.atlas-masthead [data-atlas-view=directory] .signal-feature-symbol')");
-  assert.equal(await evaluate("getComputedStyle(document.querySelector('.atlas-feature-art')).display"),'none','Small screens give the space to search');
+  assert.ok(await evaluate("document.querySelector('.search-wrap').getBoundingClientRect().top < 450"),'Directory search is visible early on a narrow viewport');
   await assertNoOverflow('390px directory feature');
 
   await command('Network.setBlockedURLs',{urls:['*partner-profiles.json*']});

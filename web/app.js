@@ -93,7 +93,7 @@ function writeUrl() {
 }
 function syncControls() {
   controls.search.value=state.query; controls.entityKind.value=state.entityKind; controls.country.value=state.country; controls.includeUnknown.checked=state.includeUnknown;
-  controls.search.placeholder=state.view==='all'?'Search startups, people, partners, programmes…':'Search providers, programmes, benefits…';
+  controls.search.placeholder={all:'Search the Atlas',opportunities:'Search opportunities',partners:'Search partners',saved:'Search saved opportunities'}[state.view];
   controls.kind.value=state.kind; controls.access.value=state.access; controls.sort.value=state.sort;
   controls.partnerCountry.value=state.partnerCountry; controls.partnerProvider.value=state.partnerProvider; controls.partnerEvidence.value=state.partnerEvidence; controls.partnerLogo.checked=state.partnerLogo;
   syncFacets();

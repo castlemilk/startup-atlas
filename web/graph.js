@@ -4,6 +4,7 @@ import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName, neighborhood } from './graph-model.js';
 import { createForceSimulation, layoutBounds, layoutNetwork } from './graph-layout.js';
 import { renderIcon as icon } from './atlas-icons.js';
+import { animateAtlasChange } from './atlas-ui.js';
 
 const $=id=>document.getElementById(id);
 const entityKinds=['startup','partner','person','programme','provider'];
@@ -179,7 +180,17 @@ function select(id,writeHistory=true) {
   if(!store?.graph.entities.some(entity=>entity.id===id))return;
   const changed=selectedId!==id;
   selectedId=id;updateSelection();renderDetail();
-  if(writeHistory&&changed)writeState(true);
+  if(writeHistory&&changed){
+    writeState(true);
+    const detail=$('graph-detail'), heading=detail.querySelector('.detail-heading');
+    const links=[...svg.querySelectorAll('.network-link.is-selected')].slice(0,8);
+    animateAtlasChange(detail,timeline=>{
+      if(!heading?.isConnected)return;
+      timeline.fromTo(heading,{x:-7,opacity:.7},{x:0,opacity:1},0);
+      const visibleLinks=links.filter(link=>link.isConnected);
+      if(visibleLinks.length)timeline.fromTo(visibleLinks,{opacity:.45},{opacity:1},0);
+    });
+  }
 }
 function explore(id,writeHistory=true) {
   if(!store.graph.entities.some(entity=>entity.id===id)) {

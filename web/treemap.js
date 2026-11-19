@@ -3,13 +3,14 @@ import { openGraph } from './graph-store.js';
 import { entityHref } from './graph-model.js';
 import { logoFor, logoClassFor } from './logos.js';
 import { METRICS, companyContext, validYear, cohort, cohortNames, currencies, makeView, formatValue, treemap } from './treemap-model.js';
+import { animateAtlasChange, canAnimateAtlasChange } from './atlas-ui.js';
 
 const $ = id => document.getElementById(id);
 const controls = $('treemap-controls'), chart = $('treemap-chart'), detail = $('treemap-detail');
 const filterToggle = $('treemap-filter-toggle'), filterFields = $('treemap-filter-fields');
 const DEFAULT_PRESENTATION = 'cards';
 const titles = {valuation:'Recorded valuations', funding:'Funding announcements', companies:'Companies in the Atlas'};
-const palette = ['#dce5ff','#e1dcf5','#d9e8ed','#e5e8ef','#f0e3d9','#dcebe4'];
+const palette = ['#cfdfd5','#d7deee','#e9dac3','#d6e6e9','#eacfc4','#e4dce8'];
 let graph, view, state, storeMode, lastWidth = 0, cohortColors = new Map();
 const money = value => formatValue(value, state.metric, state.currency);
 const safeImageUrl = value => /^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(value || '') ? value : sourceUrl(value);
@@ -200,7 +201,7 @@ function render() {
   status.textContent = `${storeMode === 'fallback' ? 'Showing the published JSON backup. ' : ''}${state.metric === 'companies' ? 'Company count includes records without financial data.' : 'Historical figures, not current values. Unknown or non-comparable amounts are excluded.'}`;
   status.classList.toggle('sr-only', isCards && storeMode !== 'fallback');
   $('treemap-legend').innerHTML = isMap
-    ? `<span>Area = ${state.metric === 'companies' ? 'company count' : 'recorded value'} · Founding decade:</span> ${view.groups.map(group => `<span class="treemap-legend-item"><i aria-hidden="true" style="background:${cohortColors.get(group.id)}"></i>${esc(group.name)}</span>`).join('')}`
+    ? `<span>Area = ${state.metric === 'companies' ? 'company count' : 'recorded value'} · Founding decade:</span> ${view.groups.map(group => `<span class="treemap-legend-item"><i aria-hidden="true" style="--tile-color:${cohortColors.get(group.id)}"></i>${esc(group.name)}</span>`).join('')}`
     : isCards ? 'Cards use an editorial layout. Read the amount and its source for each company.'
     : state.metric === 'companies' ? 'Companies in alphabetical order' : 'Rows ordered by recorded value';
   showPresentation(state.presentation);
@@ -218,9 +219,41 @@ function render() {
   draw();
   showDetail(selectedRow);
 }
+function tilePositions(surface) {
+  return [...surface.querySelectorAll('button[data-company], button[data-period]')].slice(0, 36).flatMap(tile => {
+    const rect = tile.getBoundingClientRect();
+    if (!rect.width || !rect.height || rect.bottom < 0 || rect.top > innerHeight) return [];
+    const key = tile.dataset.company || 'period:' + tile.dataset.period;
+    return [{key, tile, rect}];
+  });
+}
+function animateTilePositions(surface, before) {
+  const moves = [], arrivals = [];
+  for (const {key, tile, rect} of tilePositions(surface)) {
+    const old = before.get(key);
+    if (!old) { arrivals.push(tile); continue; }
+    const x = old.left - rect.left, y = old.top - rect.top;
+    if (Math.abs(x) > 1 || Math.abs(y) > 1) moves.push({tile, x, y});
+  }
+  if (!moves.length && !arrivals.length) return;
+  animateAtlasChange(surface, timeline => {
+    for (const {tile, x, y} of moves) {
+      if (tile.isConnected) timeline.fromTo(tile, {x,y}, {x:0,y:0,duration:.34}, 0);
+    }
+    const visibleArrivals = arrivals.filter(tile => tile.isConnected);
+    if (visibleArrivals.length) timeline.fromTo(visibleArrivals, {opacity:.68}, {opacity:1,stagger:{amount:.08}}, 0);
+  });
+}
 function change(next, replace = false, preserveSelection = false) {
+  const surface = state.presentation === 'cards' ? $('treemap-cards') : state.presentation === 'map' ? chart : null;
+  const changesLayout = !replace && ['metric','currency','group','period'].some(key => key in next && next[key] !== state[key]);
+  const staysOnSurface = !next.presentation || next.presentation === state.presentation;
+  const before = changesLayout && staysOnSurface && surface && canAnimateAtlasChange(surface)
+    ? new Map(tilePositions(surface).map(({key, rect}) => [key, rect]))
+    : null;
   state = {...state, ...next, company:preserveSelection ? state.company : ''};
   syncControls(); render(); writeState(replace);
+  if (before) animateTilePositions(surface, before);
 }
 controls.addEventListener('submit', event => event.preventDefault());
 filterToggle.addEventListener('click', () => {

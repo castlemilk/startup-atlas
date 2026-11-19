@@ -1,12 +1,12 @@
 # Atlas token reference
 
-The working design system includes a searchable reference for all 65 canonical `--atlas-*` tokens, an opaque colour-pair contrast checker, and JSON/CSS exports of the current computed values. The operational palette is light Signal: porcelain, graphite, cobalt and self-hosted Geist typography. Open `design-system.html#token-reference` in the published site.
+The working design system includes a searchable reference for all 65 canonical `--atlas-*` tokens, a colour-pair contrast checker, and JSON/CSS exports of the computed Signal defaults. Open `design-system.html#token-reference` in the published site. The live explorer previews show the scoped editorial values.
 
 ## Ownership
 
-`web/design-tokens.css` remains the only runtime value owner. `DESIGN.md` explains its intent and exact mapping. Shared components consume the variables through `web/atlas-ui.css`, `web/atlas-sdk.css` and the established route styles. The stylesheet declares the SDK layer; Atlas does not import the optional SDK default theme. [UI-SDK.md](UI-SDK.md) records behaviour and adapter ownership.
+`web/design-tokens.css` owns the defaults. `web/atlas-ui.css` owns the scoped editorial finish for operational pages. [DESIGN.md](../DESIGN.md) records both mappings. Shared components consume the variables, and [UI-SDK.md](UI-SDK.md) records behaviour and adapter ownership.
 
-`web/design-aesthetic-tokens.css` remains scoped to the direction workbench, including dark and alternative material/geometry comparisons. Those exploratory values do not override the light operational theme. Historical artwork and its prompt palette retain their original provenance.
+`web/design-aesthetic-tokens.css` is scoped to the direction workbench, including dark and alternative material/geometry comparisons. Historical artwork and its palette retain their original provenance.
 
 `web/design-token-reference.js` contains metadata: token names, groups, labels and usage guidance. It deliberately contains no duplicate palette, type scale, duration or spacing values. The reference reads `getComputedStyle(document.documentElement)` for the rendered values, copy actions, contrast calculation and exports. If a token changes in canonical CSS, its displayed value changes with it.
 
