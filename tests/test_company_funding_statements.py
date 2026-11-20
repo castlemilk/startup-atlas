@@ -60,6 +60,16 @@ CULTURE_AMP_SERIES_A_OPENING = (
     f'{CULTURE_AMP_CUSTOMERS} today announced that it has closed $6.3 million in Series A funding.'
 )
 CULTURE_AMP_SERIES_A_HEADLINE = 'Culture Amp Secures $6.3 Million In Series A Funding To Grow Culture-First Companies'
+CULTURE_AMP_SERIES_B = (
+    'https://www.prnewswire.com/news-releases/people-analytics-platform-snags-10-million-in-series-b-funding-'
+    'led-by-index-ventures-300231274.html'
+)
+# Reconstruction preserves the issuer wire's dateline, apposition and closed-round wording.
+CULTURE_AMP_REPORTED_CLOSE = (
+    'SAN FRANCISCO, March 7, 2016 /PRNewswire/ --\N{NO-BREAK SPACE}Culture Amp, '
+    'the people analytics company for workplace feedback, announced today that it has closed '
+    'a $10 million Series B round.'
+)
 CULTURE_AMP_SERIES_D = 'https://www.cultureamp.com/blog/series-d-funding-announcement'
 # Opening sentence of the issuer's reviewed Series D release.
 CULTURE_AMP_FIRST_PERSON = (
@@ -609,6 +619,112 @@ class CompanyFundingStatementTests(unittest.TestCase):
             }
             for capture in captures
         ])
+
+    def test_reported_close_requires_an_asserted_named_series_in_both_word_orders(self):
+        lead = ('round_lead', ['round_mention'])
+        no_lead = ('unmatched', [])
+        for opening in (CULTURE_AMP_REPORTED_CLOSE,
+                        CULTURE_AMP_REPORTED_CLOSE.replace('announced today', 'today announced')):
+            with self.subTest(opening=opening):
+                self.assertEqual(classify(opening, {'culture amp'}), lead)
+                for excerpt in (
+                    f'“{opening}”',
+                    f'Another publisher quoted “{opening}”',
+                    opening[:-1] + '?',
+                    opening.replace('it has closed', '“it has closed') + '”',
+                    opening.replace('Culture Amp, the people analytics company for workplace feedback,',
+                                    'Another Corp, a vendor for Culture Amp,'),
+                    opening.replace('Series B round.', 'Series B edition.'),
+                    opening.replace('Series B round.', 'planned Series B round.'),
+                ):
+                    with self.subTest(excerpt=excerpt):
+                        self.assertEqual(classify(excerpt, {'culture amp'}), no_lead)
+                intent = opening.replace('has closed', 'plans to close')
+                self.assertEqual(classify(intent, {'culture amp'}), ('context', ['prospective_or_negated']))
+        self.assertEqual(
+            classify('Culture Amp today announced that it has closed its seed round.', {'culture amp'}),
+            ('early_round_lead', ['round_mention', 'early_stage_mention']),
+        )
+
+    def test_reported_close_correction_binds_the_adjacent_issuer_action_and_series(self):
+        lead = ('round_lead', ['round_mention'])
+        corrected = ('context', ['prospective_or_negated'])
+        denial = 'Culture Amp did not close the Series B funding round.'
+        for opening in (CULTURE_AMP_REPORTED_CLOSE,
+                        CULTURE_AMP_REPORTED_CLOSE.replace('announced today', 'today announced')):
+            for subsequent, expected in (
+                (denial, corrected),
+                ("Culture Amp didn't close the Series B funding round.", corrected),
+                ('Culture Amp didn’t close the Series B funding round.', corrected),
+                ('Culture Amp has not actually closed the funding.', corrected),
+                (denial.replace('Series B', 'Series D'), lead),
+                (denial.replace('Culture Amp', 'Another Corp'), lead),
+                (denial.replace('Culture Amp', 'We'), lead),
+                ('Culture Amp did not close a $10 million Series B round.', corrected),
+                ('Culture Amp didn’t close a $10 million Series B round.', corrected),
+                ('Culture Amp did not close a $20 million Series B round.', lead),
+                ('Culture Amp did not close a US$10 million Series B round.', lead),
+                ('Culture Amp did not close a $10m Series B round.', lead),
+                ('Culture Amp did not close a $10 million Series B round?', lead),
+                ('Another Corp did not close a $10 million Series B round.', lead),
+                (denial[:-1] + '?', lead),
+                (f'“{denial}”', lead),
+                (f'The company discussed other activity. {denial}', lead),
+                ('The legal close date was not disclosed.', lead),
+                (f'{denial} Culture Amp closed its Series D.',
+                 ('mixed_financing_lead', ['round_mention', 'prospective_or_negated'])),
+            ):
+                with self.subTest(opening=opening, subsequent=subsequent):
+                    self.assertEqual(classify(f'{opening} {subsequent}', {'culture amp'}), expected)
+
+    def test_reported_close_keeps_amount_valuation_and_date_as_separate_evidence(self):
+        excerpt = CULTURE_AMP_REPORTED_CLOSE[:-1] + ' at a $20 million valuation.'
+        capture = {
+            'url': CULTURE_AMP_SERIES_B,
+            'excerpt': excerpt,
+            'acquisition': 'reviewer_paraphrase',
+            'retrieved_on': '2026-11-20',
+            'dates': {'published': '2016-03-07'},
+        }
+        document, = saved_results([capture, capture], 'cultureamp.com', {'culture amp'})
+        self.assertTrue(document['review_required'])
+        self.assertEqual(document['bucket'], 'mixed_financing_lead')
+        self.assertEqual(document['observations'], [{
+            **capture,
+            'dates': {'published': {'value': '2016-03-07', 'precision': 'day'}},
+            'bucket': 'mixed_financing_lead',
+            'signals': ['round_mention', 'valuation'],
+        }])
+
+    def test_later_reported_close_requires_plain_unquoted_context(self):
+        close = 'Culture Amp today announced that it has closed a $10 million Series B round.'
+        preface = 'The company released its annual update.'
+        correction = 'Culture Amp did not close the Series B funding round.'
+        lead = ('round_lead', ['round_mention'])
+        no_lead = ('unmatched', [])
+        for excerpt, expected in (
+            (f'{preface} {close}', lead),
+            (f'Culture Amp released its annual update. {close}', lead),
+            (f'Culture Amp’s annual update covered hiring. {preface} {close}', lead),
+            (f'A spokesperson said “no comment.” {close}', lead),
+            (f'A spokesperson said "no comment." {close}', lead),
+            (f'{preface} {close} A spokesperson said “Other news follows.”', lead),
+            (f'A spokesperson said “no comment. {close} Read the release.”', no_lead),
+            (f'A spokesperson said “no comment.” {close} Culture Amp didn’t close the Series B funding round.',
+             ('context', ['prospective_or_negated'])),
+            (f'{preface} {close} {correction}', ('context', ['prospective_or_negated'])),
+            (f'{preface} {close} {correction.replace("Series B", "Series D")}', lead),
+            (f'{preface} {close} {correction.replace("Culture Amp", "Another Corp")}', lead),
+            (f'{preface} “{close}”', no_lead),
+            (f'A journalist wrote, “{preface} {close} These are the details.”', no_lead),
+            (f'{preface} {close} This concludes the quotation.”', no_lead),
+            (f'{preface} {close[:-1]}?', no_lead),
+            (f'The reporter asked: {preface} {close}', no_lead),
+            (f'Did the company announce this? {close}', no_lead),
+            (f'The following is a hypothetical situation. {close}', no_lead),
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, {'culture amp'}), expected)
 
     def test_synthesia_revenue_and_strategic_investment_are_distinct_review_cues(self):
         cases = (

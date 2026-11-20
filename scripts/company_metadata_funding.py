@@ -78,22 +78,39 @@ ISSUER_ROUND_DATELINE = re.compile(
     r'|[A-Z][A-Z -]{1,40}--\(BUSINESS WIRE\)--) '
 )
 ISSUER_NAME = r"\w[\w &'’.-]{0,119}?"
+RAW_ROUND_TERMS = r'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){1,24})'
+NAMED_SERIES_TERMS = ROUND_MODIFIERS + rf' (?P<series>{SERIES.pattern})'
 # The coordinated platform descriptor is attested for this issuer in both release versions.
 ISSUER_TODAY_REPORT = re.compile(
     rf'(?:(?P<described_issuer>Culture Amp), the People & Culture Platform,|(?P<issuer>{ISSUER_NAME}))'
-    r' announced today (?:that )?it has raised'
-    r'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){1,24})[.!]',
+    rf' announced today (?:that )?it has raised{RAW_ROUND_TERMS}[.!]',
     re.I,
 )
 ISSUER_ROUND_TERMS = re.compile(
-    ROUND_MODIFIERS + rf' (?P<series>{SERIES.pattern})(?: (?:funding round|round(?: of funding)?))?'
+    NAMED_SERIES_TERMS + r'(?: (?:funding round|round(?: of funding)?))?'
 )
+PRNEWSWIRE_DATELINE = r'(?-i:[A-Z][A-Z -]{1,40}, [A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2}) /PRNewswire/ -- '
+ANNOUNCED_CLOSING = r'(?:announced today|today announced) (?:that )?it has closed'
+NORMALIZED_CLOSING_PREFIX = re.compile(rf'(?:(?:has|had|today|recently) )*{ANNOUNCED_CLOSING}\b')
+ISSUER_CLOSING_REPORT = re.compile(
+    rf'(?:{PRNEWSWIRE_DATELINE})?(?:People Analytics company )?'
+    rf'(?P<issuer>{ISSUER_NAME})(?:{ISSUER_APPOSITION.pattern})?'
+    rf' {ANNOUNCED_CLOSING}{RAW_ROUND_TERMS}[.!]',
+    re.I,
+)
+QUOTATION_MARK = re.compile(r"""["“”„‟«»‹›‘‛\x60]|(?<!\w)['’]|['’](?!\w)""")
+QUOTATION_PAIRS = {('"', '"'), ('“', '”'), ("'", "'"), ('‘', '’'), ('«', '»'), ('‹', '›')}
+CLOSING_STATEMENT_BREAK = re.compile(
+    rf'(?:{ISSUER_FINANCIAL_BREAK.pattern}|(?<=[.!?]["”\'’»›])\s+)', re.I,
+)
+CLOSING_DECLARATIVE_END = re.compile(r'[.!]["”\'’»›]?$')
+CLOSING_PREFACE_BOUNDARY = re.compile(r'[:?？]|\b(?:asked|quoted|wondered|hypothetical)\b', re.I)
 CUSTOMER_NAME = r'(?-i:[A-Z][\w&-]{0,39}(?: [A-Z][\w&-]{0,39}){0,3})'
 WIRE_SERIES_FUNDING = rf'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){{0,24}} {SERIES.pattern} funding(?: round)?)'
 WIRE_ACTIONS = r'close|raise|secure'
 # Keep the customer list inside the named issuer's relative clause.
 ISSUER_CUSTOMER_REPORT = re.compile(
-    r'(?:(?-i:[A-Z][A-Z -]{1,40}, [A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2}) /PRNewswire/ -- )?'
+    rf'(?:{PRNEWSWIRE_DATELINE})?'
     rf'(?:People Analytics company )?(?P<issuer>{ISSUER_NAME}), which counts {CUSTOMER_NAME}'
     rf'(?:, {CUSTOMER_NAME}){{0,6}}(?:,? and {CUSTOMER_NAME})? among (?:its customers|the companies using its platform),'
     rf' (?:today )?announced (?:that )?it has (?P<action>{WIRE_ACTIONS})d{WIRE_SERIES_FUNDING}[.!]',
@@ -105,7 +122,7 @@ ISSUER_FUNDING_HEADLINE = re.compile(
     re.I,
 )
 ISSUER_WIRE_TERMS = re.compile(
-    r'(?!.*\bplanned\b)' + ROUND_MODIFIERS + rf' (?P<series>{SERIES.pattern}) funding(?: round)?'
+    r'(?!.*\bplanned\b)' + NAMED_SERIES_TERMS + r' funding(?: round)?'
 )
 ISSUER_FIRST_PERSON_REPORT = re.compile(
     r'(?:It is with this success that )?I am proud to announce our(?: latest)?'
@@ -116,8 +133,14 @@ CORRECTION_DETERMINERS = r'a|an|any|the|that'
 CORRECTION_SERIES = rf'(?P<series>{SERIES.pattern})(?: (?:funding(?: round)?|round(?: of funding)?))?'
 ISSUER_ROUND_CORRECTION = re.compile(
     rf'(?P<issuer>{ISSUER_NAME}) '
-    rf'(?:did not (?P<simple_action>{WIRE_ACTIONS})|has not (?:actually )?(?P<perfect_action>{WIRE_ACTIONS})d) '
+    rf'(?:did not (?P<simple_action>{WIRE_ACTIONS})|didn[\'’]t (?P<contracted_close>close)'
+    rf'|has not (?:actually )?(?P<perfect_action>{WIRE_ACTIONS})d) '
     rf'(?:(?:(?:{CORRECTION_DETERMINERS}|its) )?{CORRECTION_SERIES}|the funding)[.!]',
+    re.I,
+)
+ISSUER_REPEATED_CLOSE_DENIAL = re.compile(
+    rf'(?P<issuer>{ISSUER_NAME}) (?:did not close|didn[\'’]t close|has not (?:actually )?closed)'
+    rf'{RAW_ROUND_TERMS}[.!]',
     re.I,
 )
 ISSUER_FIRST_PERSON_CORRECTION = re.compile(
@@ -182,6 +205,10 @@ SCOPED_CONTEXT_SUFFIX = re.compile(
     rf'|plus (?:(?:an?|the) )?(?:(?:separate|additional|further) )?(?:{AMOUNT} )?'
     rf'(?:{FUND_AWARD}|(?:public |government )?grant(?: (?:by|from) {NAMED_FUND})?))'
 )
+ISSUER_CLOSING_TERMS = re.compile(
+    r'(?!.*\bplanned\b)' + NAMED_SERIES_TERMS
+    + rf'(?: (?:funding(?: round)?|round(?: of funding)?|{SCOPED_CONTEXT_SUFFIX.pattern}))?'
+)
 REPORTED_COMPLETION = re.compile(r'(?:(?:was|has been|had been) )?(?:completed|closed|announced)\b')
 ROUND_COMPLETION = re.compile(r'(?:(?:was|has been|had been) )?(?:completed|closed)\b')
 EXTERNAL_ROUND_PURPOSE = re.compile(
@@ -243,6 +270,9 @@ def associated_round(clause, mention, names):
         if not found:
             continue
         after_name = after_name.strip()
+        # Normalization loses quotation and question marks. These openings need the raw assertion check.
+        if mention.re is SERIES and NORMALIZED_CLOSING_PREFIX.match(after_name):
+            continue
         # Only the recipient can use the month/year exception for an investment.
         if (ISSUER_ACTION.fullmatch(after_name) and not EXTERNAL_ROUND_PURPOSE.match(suffix)
                 and (not investment_in or RECEIPT_ACTION.search(after_name))):
@@ -265,9 +295,59 @@ def prospective_clause(clause):
     return False
 
 
+def round_correction(following, issuer, series, asserted_action, *, first_person=False, closing_terms=None):
+    if not following:
+        return False
+    statement = following[0]
+    correction = ISSUER_ROUND_CORRECTION.fullmatch(statement)
+    if correction:
+        denied_action = (
+            correction['simple_action'] or correction['contracted_close'] or correction['perfect_action']
+        ).casefold()
+        # A denial of raising funds still retracts the funding claim. Closing and securing are distinct assertions.
+        if name_key(correction['issuer']) != issuer or denied_action not in ('raise', asserted_action):
+            correction = None
+    # "We" stays bound to the issuer only in a direct correction of a bound first-person opening.
+    if correction is None and first_person:
+        if statement.casefold() == 'i misspoke.' and len(following) > 1:
+            statement = following[1]
+        correction = ISSUER_FIRST_PERSON_CORRECTION.fullmatch(statement)
+    if correction and (correction['series'] is None or name_key(correction['series']) == series):
+        return True
+    if closing_terms is None:
+        return False
+    # Bind only the repeated wording. Normalizing the amount could erase its currency qualifier.
+    repeated = ISSUER_REPEATED_CLOSE_DENIAL.fullmatch(statement)
+    return bool(repeated and name_key(repeated['issuer']) == issuer and repeated['terms'] == closing_terms)
+
+
+def issuer_closing_round(excerpt, names):
+    """Review complete closing assertions in the unquoted part of a saved excerpt."""
+    statements = [' '.join(part.split()) for part in CLOSING_STATEMENT_BREAK.split(excerpt)]
+    quotations = [tuple(QUOTATION_MARK.findall(statement)) for statement in statements]
+    unresolved_quotation = any(marks and marks not in QUOTATION_PAIRS for marks in quotations)
+    round_mention = corrected = False
+    for index, statement in enumerate(statements):
+        match = ISSUER_CLOSING_REPORT.fullmatch(ISSUER_ROUND_DATELINE.sub('', statement))
+        if match and (issuer := name_key(match['issuer'])) in names and not prospective_clause(statement):
+            terms = ISSUER_CLOSING_TERMS.fullmatch(' ' + name_key(match['terms']))
+            if terms:
+                if round_correction(
+                    statements[index + 1:index + 2], issuer, terms['series'], 'close', closing_terms=match['terms'],
+                ):
+                    corrected = True
+                else:
+                    round_mention = True
+        # Cross only complete prefacing statements. A quote that spans a split leaves later scope unresolved.
+        if (unresolved_quotation or not CLOSING_DECLARATIVE_END.search(statement)
+                or CLOSING_PREFACE_BOUNDARY.search(statement)):
+            break
+    return round_mention, corrected
+
+
 def opening_issuer_round(statements, names, reviewed_round):
     # Match the full asserted opening before punctuation or coordination is removed.
-    opening, *following = (' '.join(statement.split()) for statement in statements)
+    opening, *following = statements
     terms_pattern = ISSUER_ROUND_TERMS
     reviewed_stage = None
     asserted_action = 'raise'
@@ -292,22 +372,8 @@ def opening_issuer_round(statements, names, reviewed_round):
     terms = terms_pattern.fullmatch(' ' + name_key(match['terms']))
     if not terms or (reviewed_stage is not None and terms['series'] != reviewed_stage):
         return False, False
-    if not following:
-        return True, False
-    statement = following[0]
-    correction = ISSUER_ROUND_CORRECTION.fullmatch(statement)
-    if correction:
-        denied_action = (correction['simple_action'] or correction['perfect_action']).casefold()
-        # A denial of raising funds still retracts the funding claim. Closing and securing are distinct assertions.
-        if name_key(correction['issuer']) != issuer or denied_action not in ('raise', asserted_action):
-            correction = None
-    # "We" stays bound to the issuer only in a direct correction of a bound first-person opening.
-    if correction is None and reviewed_stage is not None:
-        if statement.casefold() == 'i misspoke.' and len(following) > 1:
-            statement = following[1]
-        correction = ISSUER_FIRST_PERSON_CORRECTION.fullmatch(statement)
-    corrected = bool(
-        correction and (correction['series'] is None or name_key(correction['series']) == terms['series'])
+    corrected = round_correction(
+        following, issuer, terms['series'], asserted_action, first_person=reviewed_stage is not None,
     )
     return not (headline_only or corrected), corrected
 
@@ -368,16 +434,19 @@ def classify(excerpt, names, *, reviewed_round=None):
     matching = [part for part in clauses if any(includes_name(part, name) for name in names)]
     if not matching and reviewed_round is None:
         return 'unmatched', []
-    statements = ISSUER_FINANCIAL_BREAK.split(excerpt.lstrip(), maxsplit=3)
+    opening_text = excerpt.lstrip()
+    raw_statements = ISSUER_FINANCIAL_BREAK.split(opening_text, maxsplit=3)
+    statements = [' '.join(part.split()) for part in raw_statements]
     opening_round, opening_corrected = opening_issuer_round(statements, names, reviewed_round)
-    if not (matching or opening_round or opening_corrected):
+    closing_round, closing_corrected = issuer_closing_round(opening_text, names)
+    if not (matching or opening_round or opening_corrected or closing_round or closing_corrected):
         return 'unmatched', []
     subjects = ' '.join(matching)
     support = chips_support_clauses(excerpt, names) if 'chips' in excerpt.casefold() else {}
     # A retracted opening supplies context. Later independent round statements can still qualify.
     round_candidates = matching
     if opening_corrected:
-        remainder = excerpt.lstrip()[len(statements[0]):].lstrip()
+        remainder = opening_text[len(raw_statements[0]):].lstrip()
         round_candidates = [clause for clause in CLAUSE_BREAK.split(remainder) if clause in matching]
     round_clauses = [
         clause for clause in round_candidates
@@ -387,14 +456,14 @@ def classify(excerpt, names, *, reviewed_round=None):
     round_mention = early or any(
         associated_round(clause, match, names) for clause in round_clauses
         for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
-    ) or opening_round
+    ) or opening_round or closing_round
     context = [label for label, pattern in CONTEXT.items() if pattern.search(excerpt)]
     if support:
         if 'grant_or_public_support' not in context:
             context.append('grant_or_public_support')
         context.extend(sorted(set(support.values())))
     context.extend(issuer_financial_signals(excerpt, names))
-    if opening_corrected or any(prospective_clause(clause) for clause in matching):
+    if opening_corrected or closing_corrected or any(prospective_clause(clause) for clause in matching):
         context.append('prospective_or_negated')
     signals = (['early_stage_mention'] if early else []) + context
     if round_mention:
