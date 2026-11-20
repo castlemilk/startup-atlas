@@ -91,7 +91,8 @@ ISSUER_ROUND_TERMS = re.compile(
 )
 PRNEWSWIRE_DATELINE = r'(?-i:[A-Z][A-Z -]{1,40}, [A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2}) /PRNewswire/ -- '
 RAISE_REPORT = r'announced (?:yesterday )?(?:that )?it has raised'
-RAISE_AMOUNT_NUMBER = r'[0-9]{1,9}(?:,[0-9]{3}){0,3}(?:\.[0-9]{1,3})? (?:million|billion)'
+STATED_AMOUNT_NUMBER = r'[0-9]{1,9}(?:,[0-9]{3}){0,3}(?:\.[0-9]{1,3})?'
+RAISE_AMOUNT_NUMBER = rf'{STATED_AMOUNT_NUMBER} (?:million|billion)'
 STATED_RAISE_AMOUNT = rf'(?:(?:US|USD|AU|AUD|CA|CAD)?\${RAISE_AMOUNT_NUMBER}|{RAISE_AMOUNT_NUMBER} dollars)'
 TRAILING_RAISE_TERMS = rf'(?:a|its|the) (?P<series>{SERIES.pattern}) round of (?P<amount>{STATED_RAISE_AMOUNT})'
 NORMALIZED_RAISE_PREFIX = re.compile(rf'{RAISE_REPORT} (?:a|its|the)')
@@ -425,6 +426,12 @@ POSSESSIVE_SEED_PLAN = re.compile(
     rf'{SEED_CLOSE_ADVERB}(?:close|complete|be (?:closing|completing))'
     rf'|anticipat(?:e|es|ed|ing) {SEED_CLOSE_ADVERB}(?:closing|completing)) '
     rf"(?P<issuer>{ISSUER_NAME})['’]s{RAW_ROUND_TERMS}?$",
+    re.I,
+)
+CONTRIBUTION_AMOUNT = rf'(?:{NUMBERED_SERIES_AMOUNT}|(?:{CURRENCY}|a)?\${STATED_AMOUNT_NUMBER}[kmb]?)'
+SEED_CONTRIBUTION = re.compile(
+    rf"\bcontributed(?: (?:a combined |a total of )?{CONTRIBUTION_AMOUNT})? "
+    rf"(?:to|towards?) (?P<issuer>{ISSUER_NAME})['’]s(?: {CONTRIBUTION_AMOUNT})?$",
     re.I,
 )
 INVESTMENT_MONTH_QUALIFIER = re.compile(
@@ -822,9 +829,16 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
         # A bound possessive correction can otherwise match as "company's Series B".
         and (not report_retractions or ' '.join(clause.split()) not in report_retractions)
     ]
-    early = seed_close or report_seed or any(
-        associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause)
-    )
+    early = seed_close or report_seed
+    has_contribution = False
+    early_mentions = ((clause, match) for clause in round_clauses for match in EARLY.finditer(clause))
+    for clause, match in early_mentions:
+        contribution = SEED_CONTRIBUTION.search(' '.join(clause[:match.start()].split()))
+        if contribution and name_key(contribution['issuer']) in names:
+            has_contribution = True
+        elif associated_round(clause, match, names):
+            early = True
+            break
     round_mention = early or any(
         associated_round(clause, match, names) for clause in round_clauses
         for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
@@ -848,7 +862,7 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
         if context:
             return 'mixed_financing_lead', signals
         return ('early_round_lead' if early else 'round_lead'), signals
-    if BACKING.search(subjects):
+    if has_contribution or BACKING.search(subjects):
         signals.append('backing_context')
     return ('context' if signals else 'unmatched'), signals
 

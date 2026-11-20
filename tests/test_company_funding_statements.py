@@ -1575,6 +1575,38 @@ class CompanyFundingStatementTests(unittest.TestCase):
             with self.subTest(excerpt=excerpt):
                 self.assertIn('round_mention', classify(excerpt, names)[1])
 
+    def test_seed_contributions_stay_in_backing_context(self):
+        for excerpt in (
+            'Individual investors contributed $600,000 to Ready Company’s seed round.',
+            'Northstar contributed a combined A$600,000 to Ready Company’s pre-seed financing round.',
+            'Northstar contributed US$0.6 million to Ready Company’s seed investment.',
+            'Northstar contributed $600,000 toward Ready Company’s seed round.',
+            'Northstar contributed a total of $600,000 to Ready Company’s seed round.',
+            'Northstar contributed $600,000 to Ready Company’s $8.6 million seed round.',
+            'Northstar contributed to Ready Company’s seed round.',
+            'Northstar contributed $600,000 to Ready Company’s seed round. Bright Labs closed its seed round.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, {'ready company'}), ('context', ['backing_context']))
+
+    def test_seed_contributions_preserve_independent_full_round_closings(self):
+        partial = 'Northstar contributed $600,000 to Ready Company’s seed round.'
+        issuer_close = 'Ready Company closed its $8.6 million seed round.'
+        investors_close = 'Investors completed Ready Company’s seed round.'
+        expected = ('early_round_lead', ['round_mention', 'early_stage_mention'])
+        for excerpt in (
+            issuer_close,
+            investors_close,
+            f'{partial} {issuer_close}',
+            f'{issuer_close} {partial}',
+            f'{partial[:-1]} and {issuer_close}',
+            f'{partial[:-1]} and a separate syndicate completed Ready Company’s seed round.',
+            f'Northstar contributed a total of $600,000 toward Ready Company’s $8.6 million seed round. {issuer_close}',
+            'Northstar contributed $600,000 to Bright Labs’ pilot and Ready Company closed its seed round.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, {'ready company'}), expected)
+
     def test_later_seed_close_requires_a_named_saved_assertion(self):
         names = {'ready company'}
         agreement = 'Investors agreed to close Ready Company’s seed round next week. '
