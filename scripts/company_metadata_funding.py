@@ -330,6 +330,25 @@ SCOPED_CONTEXT_SUFFIX = re.compile(
     rf'|plus (?:(?:an?|the) )?(?:(?:separate|additional|further) )?(?:{AMOUNT} )?'
     rf'(?:{FUND_AWARD}|(?:public |government )?grant(?: (?:by|from) {NAMED_FUND})?))'
 )
+SERIES_EXTENSION_TAIL = re.compile(
+    r"(?:-[1-9][0-9]?)?[\"”'’]?(?:\s+(?:funding|financing|investment))?(?:\s+round)?\s+"
+    r'(?:extension|expanded|extended|(?:has|had)(?: not(?: yet)?)? (?:expanded|been (?:expanded|extended))'
+    r'|(?:was|were)(?: not)? (?:expanded|extended)|(?:will|would) (?:expand|be (?:expanded|extended))'
+    r'|did not expand)\b',
+    re.I,
+)
+EXTENSION_AMOUNT = rf'(?:{NUMBERED_SERIES_AMOUNT}|A\${RAISE_AMOUNT_NUMBER})'
+ROUND_EXTENSION_REPORT = re.compile(
+    rf'(?:[\w-]{{1,40}}-based )?(?P<issuer>{ISSUER_NAME})'
+    r'(?:, (?:an?|the)(?: [\w-]+){1,24},)? '
+    r'(?:(?:has|had|today) )?'
+    rf'(?:(?:{REPORT_ACTION}|{ROUND_ACTION}) (?:that )?(?:(?:a|its|the) )?'
+    rf'{SERIES.pattern}{SERIES_EXTENSION_TAIL.pattern}'
+    rf'|(?:closed|completed|secured) (?:a )?{EXTENSION_AMOUNT}'
+    rf'(?:(?: \(approximately {EXTENSION_AMOUNT}\))? from {NAMED_FUND} as part of a {EXTENSION_AMOUNT})?'
+    rf' extension to (?:its|the) {SERIES.pattern}(?:-[1-9][0-9]?)? (?:financing|funding|investment round|round)\b)',
+    re.I,
+)
 ISSUER_CLOSING_TERMS = re.compile(
     r'(?!.*\bplanned\b)' + NAMED_SERIES_TERMS
     + rf'(?: (?:funding(?: round)?|round(?: of funding)?|{SCOPED_CONTEXT_SUFFIX.pattern}))?'
@@ -377,6 +396,8 @@ def former_names(aliases, current, host, owners, evidence):
 def associated_round(clause, mention, names):
     subject = clause[:mention.start()]
     tail = clause[mention.end():]
+    if mention.re is SERIES and SERIES_EXTENSION_TAIL.match(tail):
+        return False
     suffix = name_key(tail)
     if any(pattern.search(subject) for pattern in CONTEXT.values()):
         return False
@@ -703,6 +724,11 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
         if 'grant_or_public_support' not in context:
             context.append('grant_or_public_support')
         context.extend(sorted(set(support.values())))
+    for clause in matching:
+        extension = ROUND_EXTENSION_REPORT.match(' '.join(clause.split()))
+        if extension and name_key(extension['issuer']) in names:
+            context.append('round_extension_context')
+            break
     context.extend(issuer_financial_signals(excerpt, names))
     if opening_corrected or report_corrected or any(prospective_clause(clause) for clause in matching):
         context.append('prospective_or_negated')
