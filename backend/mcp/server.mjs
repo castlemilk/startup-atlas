@@ -7,6 +7,7 @@ import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprot
 import { CatalogueStore } from './store.mjs';
 import { PartnerStore } from './partners.mjs';
 import { StartupStore } from './startups.mjs';
+import { CrawlRegistry, CRAWL_MODES, CRAWL_STATUSES } from './crawls.mjs';
 import { startupEditSchema, startupIdSchema } from '../hosted/src/startup-edit.mjs';
 import { EntryError, opportunitySchema, provenanceSchema } from '../../scripts/catalogue-entries.mjs';
 
@@ -29,11 +30,15 @@ const tools = [
   { name: 'atlas_get_opportunity', description: 'Read a full opportunity and, for MCP additions, its recorded provenance.', inputSchema: { ...schema({ id: { type: 'string', pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$' } }), required: ['id'] }, annotations: readonly },
   { name: 'atlas_validate_opportunity', description: 'Validate a proposed public opportunity, provenance, dates, HTTPS links, geography and duplicates without writing. Returns expectedRevision for adding. This validates structure, not the truth of source claims.', inputSchema: { ...schema(candidate), required: ['entry', 'provenance'] }, annotations: readonly },
   { name: 'atlas_add_opportunity', description: 'Persist one reviewed opportunity in this local repository. Requires --write and the revision returned by validation. Add-only and safe to retry with identical content. Never commits, pushes, publishes, fetches sources or changes existing entries. Do not include private application details.', inputSchema: { ...schema({ ...candidate, expectedRevision: { type: 'string', pattern: '^[a-f0-9]{64}$' } }), required: ['entry', 'provenance', 'expectedRevision'] }, annotations: { ...readonly, readOnlyHint: false } },
+  { name: 'atlas_list_crawl_runs', description: 'List recorded crawl runs from data/crawl-runs.json, optionally filtered by mode, source, status or start date. Read-only; the registry is advisory and never triggers a crawl.', inputSchema: schema({ mode: { type: 'string', enum: CRAWL_MODES }, source_id: { type: 'string', maxLength: 200 }, status: { type: 'string', enum: CRAWL_STATUSES }, since: { type: 'string', maxLength: 100 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: readonly },
+  { name: 'atlas_get_crawl_run', description: 'Read the full record for one crawl run ID, including its outcome, coverage reference and linked publication PR.', inputSchema: { ...schema({ run_id: { type: 'string', pattern: '^crawl-[0-9]{8}-[a-z0-9-]+-[0-9]{2}$' } }), required: ['run_id'] }, annotations: readonly },
+  { name: 'atlas_get_crawl_claims', description: 'List current crawl claims per source, derived from claimed and running runs. A claim whose lease has expired is reported as stale, never as live.', inputSchema: schema({ mode: { type: 'string', enum: CRAWL_MODES }, source_id: { type: 'string', maxLength: 200 } }), annotations: readonly },
 ];
 
 export function createServer(store) {
   const partners = new PartnerStore(store.root, {writeEnabled:store.writeEnabled});
   const startups = new StartupStore(store.root, {writeEnabled:store.writeEnabled});
+  const crawls = new CrawlRegistry(store.root);
   const server = new Server({ name: 'startup-atlas', version: '1.0.0' }, { capabilities: { tools: {} } });
   server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));
   server.setRequestHandler(CallToolRequestSchema, async ({ params }) => {
@@ -58,6 +63,9 @@ export function createServer(store) {
         case 'atlas_get_opportunity': result = await store.get(args.id); break;
         case 'atlas_validate_opportunity': result = await store.validate(args.entry, args.provenance); break;
         case 'atlas_add_opportunity': result = await store.add(args.entry, args.provenance, args.expectedRevision); break;
+        case 'atlas_list_crawl_runs': result = await crawls.list(args); break;
+        case 'atlas_get_crawl_run': result = await crawls.get(args.run_id); break;
+        case 'atlas_get_crawl_claims': result = await crawls.claims(args); break;
       }
       return { content: [{ type: 'text', text: JSON.stringify(result) }], structuredContent: result };
     } catch (error) {

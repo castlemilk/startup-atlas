@@ -31,7 +31,7 @@ const decoded = result => JSON.parse(result.content[0].text);
 test('official MCP client discovers tools, reads, validates, adds and retries over real stdio', async t => {
   const { client, dir } = await connect(t, true);
   const { tools } = await client.listTools();
-  assert.equal(tools.length, 13);
+  assert.equal(tools.length, 16);
   assert.equal(tools.find(x => x.name === 'atlas_add_opportunity').annotations.readOnlyHint, false);
   assert.ok(tools.filter(x => !['atlas_add_opportunity','atlas_upsert_partner','atlas_apply_startup_edit'].includes(x.name)).every(x => x.annotations.readOnlyHint));
   const baseline = JSON.parse(await readFile(path.join(dir, 'data/opportunities-added.json'), 'utf8')).entries.length;
