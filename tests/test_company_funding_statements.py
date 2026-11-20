@@ -107,6 +107,14 @@ LINKED_ARTICLE_CONTINUATION = (
     'A board appointment was announced.',
     'The announcement concluded the session.',
 )
+# Reconstruction preserves the descriptor, completion verb, numbered stage and trailing amount.
+DIRAQ_A2_COMPLETION = (
+    'Diraq, a research company in optical measurements, today announced the successful completion '
+    'of a Series A-2 capital raise of USD $15 million.'
+)
+DIRAQ_A2_EXPANSION = (
+    'Diraq expanded its existing Series A-2 investment round to US$22 million, including the initial close.'
+)
 CHIPS_MAY = (
     'https://www.nist.gov/news-events/news/2026/05/'
     'department-commerce-announces-letters-intent-9-companies-2-billion'
@@ -282,12 +290,13 @@ GUARD_CASES = (
 
 class CompanyFundingStatementTests(unittest.TestCase):
     @staticmethod
-    def first_person_review(captures, *, cited=CULTURE_AMP_SERIES_D, other_companies=(), other_rounds=()):
-        company = {
-            'name': 'Culture Amp', 'website': 'https://www.cultureamp.com/',
-            'funding_rounds': [{'id': 'culture-amp-2018-series-d', 'stage': 'Series D', 'source': cited},
-                               *other_rounds],
-        }
+    def first_person_review(captures, *, cited=CULTURE_AMP_SERIES_D, other_companies=(), other_rounds=(), company=None):
+        if company is None:
+            company = {
+                'name': 'Culture Amp', 'website': 'https://www.cultureamp.com/',
+                'funding_rounds': [{'id': 'culture-amp-2018-series-d', 'stage': 'Series D', 'source': cited},
+                                   *other_rounds],
+            }
         revision, plan_id = 'a' * 40, 'issuer-release-test'
         overlay = json.dumps({'startups': [company, *other_companies]}).encode()
         report = {
@@ -305,6 +314,113 @@ class CompanyFundingStatementTests(unittest.TestCase):
             (folder / 'manifest.json').write_text(json.dumps(request))
             result = prepare_funding_review(report, folder / 'overlay.json', folder / 'manifest.json', {})
         return result['companies'][0]
+
+    def diraq_completion_review(self, captures, *, opening=DIRAQ_A2_COMPLETION, event_changes=None, other_companies=()):
+        article = REVIEWED_ISSUER_ARTICLES['Diraq']
+        event = {'id': article['round_id'], 'source': article['round_source'], 'stage': article['stage'],
+                 **article['round_terms'], **(event_changes or {})}
+        company = {'name': 'Diraq', 'website': 'https://www.diraq.com/', 'funding_rounds': [event]}
+        capture = {'url': article['url'], 'excerpt': opening, 'acquisition': 'page_excerpt',
+                   'retrieved_on': '2026-11-20'}
+        attestation = {**article, 'opening_sha256': digest(opening.encode())}
+        with patch.dict(REVIEWED_ISSUER_ARTICLES, {'Diraq': attestation}):
+            return self.first_person_review([{**capture, **item} for item in captures], company=company,
+                                            other_companies=other_companies)
+
+    def test_numbered_completion_requires_the_exact_saved_issuer_page_and_cited_round(self):
+        article = REVIEWED_ISSUER_ARTICLES['Diraq']
+        report = self.diraq_completion_review([{}, {}])
+        document, = report['results']
+        self.assertTrue(document['on_issuer_host'])
+        self.assertTrue(document['review_required'])
+        self.assertEqual(report['prior_rounds'], 'published')
+        self.assertEqual(document['observations'], [{
+            'url': article['url'], 'excerpt': DIRAQ_A2_COMPLETION, 'acquisition': 'page_excerpt',
+            'retrieved_on': '2026-11-20', 'bucket': 'round_lead', 'signals': ['round_mention'],
+        }])
+        self.assertNotIn('round_mention', classify(DIRAQ_A2_COMPLETION, {'diraq'})[1])
+        for capture, record in (
+            ({'url': article['url'] + '#summary'}, {}),
+            ({'url': article['url'] + '?from=search'}, {}),
+            ({'url': article['url'].replace('www.diraq.com', 'diraq.com')}, {}),
+            ({'url': article['round_source']}, {}),
+            ({'acquisition': 'reviewer_paraphrase'}, {}),
+            ({'acquisition': 'search_result'}, {}),
+            ({'excerpt': DIRAQ_A2_COMPLETION.replace('today', 'yesterday')}, {}),
+            ({}, {'id': 'diraq-earlier-round'}),
+            ({}, {'stage': 'Series A'}),
+            ({}, {'currency': 'AUD'}),
+            ({}, {'amount': 22000000}),
+            ({}, {'source': article['round_source'] + '#copy'}),
+        ):
+            with self.subTest(capture=capture, record=record):
+                result, = self.diraq_completion_review([capture], event_changes=record)['results']
+                self.assertNotIn('round_mention', result['observations'][0]['signals'])
+        competitor = {'name': 'Acme', 'website': 'https://acme.example/',
+                      'funding_rounds': [{'id': 'other-a2', 'source': article['round_source']}]}
+        result, = self.diraq_completion_review([{}], other_companies=[competitor])['results']
+        self.assertNotIn('round_mention', result['observations'][0]['signals'])
+
+    def test_numbered_completion_requires_an_asserted_named_round_and_literal_amount(self):
+        opening = DIRAQ_A2_COMPLETION
+        for excerpt in (
+            opening.replace('Diraq,', 'OtherCo,'),
+            opening.replace('successful completion', 'intention to complete'),
+            opening.replace('announced', 'has not announced'),
+            opening.replace('Series A-2', 'Series A'),
+            opening.replace('Series A-2', 'Series A-3'),
+            opening.replace('USD $15', 'USD $22'),
+            opening.replace('USD $15', 'US$15'),
+            opening[:-1] + '?',
+            f'“{opening}”',
+            DIRAQ_A2_EXPANSION,
+        ):
+            with self.subTest(excerpt=excerpt):
+                result, = self.diraq_completion_review([{}], opening=excerpt)['results']
+                self.assertNotIn('round_mention', result['observations'][0]['signals'])
+
+    def test_numbered_completion_binds_explicit_retractions_to_the_same_round(self):
+        opening = DIRAQ_A2_COMPLETION
+        denial = 'Diraq did not complete the Series A-2 capital raise of USD $15 million.'
+        qualified = denial.replace('did not complete', 'did not successfully complete')
+        possessive = 'Correction: Diraq’s USD $15 million Series A-2 round did not close.'
+        perfect = possessive.replace('did not close', 'has not yet closed')
+        board = 'One director joined the board.'
+        research = 'The raise will support the company’s research and development.'
+        for following, expected in (
+            (denial, False),
+            (qualified, False),
+            (denial.replace('did not', 'did not in fact'), False),
+            (denial.replace('complete', 'announce the successful completion of'), False),
+            ('Diraq has not yet closed the Series A-2 round.', False),
+            (possessive, False),
+            (f'{board} {possessive}', False),
+            (perfect, False),
+            (f'{research} {perfect}', False),
+            (denial.replace('Diraq', 'Acme'), True),
+            (denial.replace('Series A-2', 'Series A'), True),
+            (denial.replace('Series A-2', 'Series A-3'), True),
+            (denial.replace('USD $15', 'USD $22'), True),
+            (denial.replace('USD $15', 'US$15'), True),
+            (denial.replace('complete', 'secure'), True),
+            (qualified.replace('Diraq', 'Acme'), True),
+            (qualified.replace('Series A-2', 'Series A-3'), True),
+            (qualified.replace('USD $15', 'USD $22'), True),
+            (f'{research} {perfect.replace("USD $15", "USD $22")}', True),
+            (f'{board} {possessive.replace("Series A-2", "Series A-3")}', True),
+            (f'“{denial}”', True),
+            (denial[:-1] + '?', True),
+            (f'“{qualified}”', True),
+            (perfect[:-1] + '?', True),
+            ('The legal close date was not disclosed.', True),
+            (f'{denial} Diraq completed a US$20 million Series A.', True),
+        ):
+            with self.subTest(following=following):
+                result, = self.diraq_completion_review([{'excerpt': f'{opening} {following}'}])['results']
+                row, = result['observations']
+                self.assertEqual('round_mention' in row['signals'], expected)
+                if not expected:
+                    self.assertIn('prospective_or_negated', row['signals'])
 
     def test_first_person_round_uses_exact_reviewed_page_and_deduplicates(self):
         capture = {'url': CULTURE_AMP_SERIES_D, 'excerpt': CULTURE_AMP_FIRST_PERSON,
