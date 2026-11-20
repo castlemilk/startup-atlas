@@ -90,12 +90,13 @@ ISSUER_ROUND_TERMS = re.compile(
 )
 CUSTOMER_NAME = r'(?-i:[A-Z][\w&-]{0,39}(?: [A-Z][\w&-]{0,39}){0,3})'
 WIRE_SERIES_FUNDING = rf'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){{0,24}} {SERIES.pattern} funding(?: round)?)'
+WIRE_ACTIONS = r'close|raise|secure'
 # Keep the customer list inside the named issuer's relative clause.
 ISSUER_CUSTOMER_REPORT = re.compile(
     r'(?:(?-i:[A-Z][A-Z -]{1,40}, [A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2}) /PRNewswire/ -- )?'
     rf'(?:People Analytics company )?(?P<issuer>{ISSUER_NAME}), which counts {CUSTOMER_NAME}'
     rf'(?:, {CUSTOMER_NAME}){{0,6}}(?:,? and {CUSTOMER_NAME})? among (?:its customers|the companies using its platform),'
-    rf' (?:today )?announced (?:that )?it has (?:closed|raised|secured){WIRE_SERIES_FUNDING}[.!]',
+    rf' (?:today )?announced (?:that )?it has (?P<action>{WIRE_ACTIONS})d{WIRE_SERIES_FUNDING}[.!]',
     re.I,
 )
 # The headline already qualifies through legacy matching. Use this form only to bind a correction.
@@ -114,7 +115,8 @@ ISSUER_FIRST_PERSON_REPORT = re.compile(
 CORRECTION_DETERMINERS = r'a|an|any|the|that'
 CORRECTION_SERIES = rf'(?P<series>{SERIES.pattern})(?: (?:funding(?: round)?|round(?: of funding)?))?'
 ISSUER_ROUND_CORRECTION = re.compile(
-    rf'(?P<issuer>{ISSUER_NAME}) (?:did not raise|has not (?:actually )?raised) '
+    rf'(?P<issuer>{ISSUER_NAME}) '
+    rf'(?:did not (?P<simple_action>{WIRE_ACTIONS})|has not (?:actually )?(?P<perfect_action>{WIRE_ACTIONS})d) '
     rf'(?:(?:(?:{CORRECTION_DETERMINERS}|its) )?{CORRECTION_SERIES}|the funding)[.!]',
     re.I,
 )
@@ -268,15 +270,18 @@ def opening_issuer_round(statements, names, reviewed_round):
     opening, *following = (' '.join(statement.split()) for statement in statements)
     terms_pattern = ISSUER_ROUND_TERMS
     reviewed_stage = None
+    asserted_action = 'raise'
     headline_only = False
     if match := ISSUER_TODAY_REPORT.fullmatch(ISSUER_ROUND_DATELINE.sub('', opening)):
         issuer = name_key(match['issuer'] or match['described_issuer'])
     elif match := ISSUER_CUSTOMER_REPORT.fullmatch(opening):
         issuer = name_key(match['issuer'])
         terms_pattern = ISSUER_WIRE_TERMS
+        asserted_action = match['action'].casefold()
     elif following and (match := ISSUER_FUNDING_HEADLINE.fullmatch(opening)):
         issuer = name_key(match['issuer'])
         terms_pattern = ISSUER_WIRE_TERMS
+        asserted_action = 'secure'
         headline_only = True
     elif reviewed_round and (match := ISSUER_FIRST_PERSON_REPORT.fullmatch(opening)):
         issuer, reviewed_stage = reviewed_round
@@ -291,8 +296,11 @@ def opening_issuer_round(statements, names, reviewed_round):
         return True, False
     statement = following[0]
     correction = ISSUER_ROUND_CORRECTION.fullmatch(statement)
-    if correction and name_key(correction['issuer']) != issuer:
-        correction = None
+    if correction:
+        denied_action = (correction['simple_action'] or correction['perfect_action']).casefold()
+        # A denial of raising funds still retracts the funding claim. Closing and securing are distinct assertions.
+        if name_key(correction['issuer']) != issuer or denied_action not in ('raise', asserted_action):
+            correction = None
     # "We" stays bound to the issuer only in a direct correction of a bound first-person opening.
     if correction is None and reviewed_stage is not None:
         if statement.casefold() == 'i misspoke.' and len(following) > 1:

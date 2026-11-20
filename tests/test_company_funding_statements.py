@@ -340,6 +340,8 @@ class CompanyFundingStatementTests(unittest.TestCase):
             ('Acme did not raise the Series D funding.', lead),
             ('The legal close date was not disclosed.', lead),
             ("We haven't disclosed the legal close date.", lead),
+            ('Culture Amp did not close the Series D funding round.', lead),
+            ('We have not closed the Series D funding round.', lead),
             ('We did not raise the Series D funding for Acme.', lead),
             ('We did not raise the Series D funding?', lead),
             ('“We did not raise the Series D funding.”', lead),
@@ -549,6 +551,40 @@ class CompanyFundingStatementTests(unittest.TestCase):
             ):
                 with self.subTest(opening=opening, following=following):
                     self.assertEqual(classify(f'  {opening}\n{following}', {'culture amp'}), expected)
+
+    def test_wire_completion_correction_matches_the_asserted_action(self):
+        lead = ('round_lead', ['round_mention'])
+        corrected = ('context', ['prospective_or_negated'])
+        closed = CULTURE_AMP_SERIES_A_OPENING
+        raised = closed.replace('has closed', 'has raised')
+        secured = closed.replace('has closed', 'has secured')
+        denied_close = 'Culture Amp did not close the Series A funding round.'
+        denied_funding_close = 'Culture Amp has not actually closed the funding.'
+        denied_secured_round = 'Culture Amp has not secured its Series A.'
+        for opening, following, expected in (
+            (closed, denied_close, corrected),
+            (closed, denied_funding_close, corrected),
+            (secured, denied_secured_round, corrected),
+            (secured, 'Culture Amp did not secure the funding.', corrected),
+            (f'{CULTURE_AMP_SERIES_A_HEADLINE}.', denied_secured_round, corrected),
+            (closed, denied_secured_round, lead),
+            (secured, denied_close, lead),
+            (raised, denied_close, lead),
+            (raised, denied_funding_close, lead),
+            (raised, denied_secured_round, lead),
+            (CULTURE_AMP_DIRECT, 'Culture Amp did not close the Series E funding round.', lead),
+            (closed, 'Culture Amp did not close the Series B funding round.', lead),
+            (closed, 'Another Corp has not closed the funding.', lead),
+            (closed, 'We did not close the Series A funding round.', lead),
+            (closed, 'Culture Amp did not disclose the Series A legal close date.', lead),
+            (closed, f'{denied_close[:-1]}?', lead),
+            (closed, f'“{denied_close}”', lead),
+            (closed, f'The issuer made another announcement. {denied_close}', lead),
+            (closed, f'{denied_close} Culture Amp closed its Series D.',
+             ('mixed_financing_lead', ['round_mention', 'prospective_or_negated'])),
+        ):
+            with self.subTest(opening=opening, following=following):
+                self.assertEqual(classify(f'{opening} {following}', {'culture amp'}), expected)
 
     def test_wire_headline_and_opening_stay_in_one_review_only_document(self):
         captures = [
