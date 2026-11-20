@@ -70,6 +70,11 @@ CULTURE_AMP_REPORTED_CLOSE = (
     'the people analytics company for workplace feedback, announced today that it has closed '
     'a $10 million Series B round.'
 )
+RELATIVE_WIRE_DATELINE = 'BOSTON, May 9, 2017 /PRNewswire/ --\N{NO-BREAK SPACE}HR Tech World:\N{NO-BREAK SPACE}'
+RELATIVE_WIRE_ASSERTION = (
+    'Ready Company announced yesterday that it has raised a Series C round of $21 Million led by Alder Ventures.'
+)
+RELATIVE_WIRE_REPORT = RELATIVE_WIRE_DATELINE + RELATIVE_WIRE_ASSERTION
 CULTURE_AMP_SERIES_D = 'https://www.cultureamp.com/blog/series-d-funding-announcement'
 # Opening sentence of the issuer's reviewed Series D release.
 CULTURE_AMP_FIRST_PERSON = (
@@ -725,6 +730,95 @@ class CompanyFundingStatementTests(unittest.TestCase):
         ):
             with self.subTest(excerpt=excerpt):
                 self.assertEqual(classify(excerpt, {'culture amp'}), expected)
+
+    def test_relative_wire_raises_require_a_named_assertion(self):
+        wire = RELATIVE_WIRE_REPORT
+        shortened = wire.replace(' announced yesterday ', ' announced ')
+        declarative = RELATIVE_WIRE_ASSERTION.replace(' announced yesterday ', ' announced ')
+        for excerpt in (
+            wire,
+            shortened,
+            RELATIVE_WIRE_ASSERTION,
+            f'The company released its annual update. {shortened}',
+            f'A spokesperson said “no comment.” {shortened}',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, {'ready company'}), ('round_lead', ['round_mention']))
+        for excerpt in (
+            f'“{shortened}”',
+            f'{shortened[:-1]}?',
+            f'A source wrote, “Some background. {shortened} Here are the details.”',
+            f'{shortened} That concluded the quotation.”',
+            f'Did the company confirm this? {shortened}',
+            f'HR Tech World programme: {RELATIVE_WIRE_ASSERTION}',
+            f'HR Tech World: {RELATIVE_WIRE_ASSERTION.replace(" announced yesterday ", " announced ")}',
+            shortened.replace('HR Tech World:', 'Another Conference:'),
+            shortened.replace('Ready Company announced', 'Another Corp, a vendor for Ready Company, announced'),
+            wire.replace('has raised', 'plans to raise'),
+            f'{wire[:-1]} If Confirmed.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertNotIn('round_mention', classify(excerpt, {'ready company'})[1])
+        for excerpt in (
+            declarative.replace('$21 Million led by Alder Ventures', '21 million dollars'),
+            declarative.replace('led by Alder Ventures', 'to expand its business'),
+            declarative.replace('Alder Ventures', 'alder ventures'),
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, {'ready company'}), ('round_lead', ['round_mention']))
+                self.assertNotIn('round_mention', classify(f'“{excerpt}”', {'ready company'})[1])
+                self.assertNotIn('round_mention', classify(f'{excerpt[:-1]}?', {'ready company'})[1])
+
+    def test_relative_wire_raise_correction_binds_issuer_stage_action_and_stated_amount(self):
+        denial = 'Ready Company did not raise the Series C funding.'
+        corrected = ('context', ['prospective_or_negated', 'backing_context'])
+        retained = ('round_lead', ['round_mention'])
+        mixed = ('mixed_financing_lead', ['round_mention', 'prospective_or_negated'])
+        for following, expected in (
+            (denial, corrected),
+            ('Ready Company didn’t raise the Series C funding round.', corrected),
+            ("Ready Company didn't raise the Series C funding round.", corrected),
+            ('Ready Company has not actually raised the funding.', corrected),
+            ('Ready Company did not raise a Series C round of $21 million.', corrected),
+            ('Ready Company didn’t raise $21 Million in its Series C funding round.', corrected),
+            ('Ready Company did not raise a Series C round of $31 million.', mixed),
+            ('Ready Company did not raise a Series C round of US$21 Million.', mixed),
+            (denial.replace('Series C', 'Series D'), mixed),
+            (denial.replace('Ready Company', 'Another Corp'), retained),
+            (denial.replace('raise', 'close'), retained),
+            ('The exact close date was not disclosed.', retained),
+            (denial[:-1] + '?', mixed),
+            (f'“{denial}”', mixed),
+            (f'{denial} Ready Company closed its Series D.', mixed),
+            (f'{denial} Ready Company announced yesterday that it has raised a Series D round of $50 million.', mixed),
+        ):
+            with self.subTest(following=following):
+                self.assertEqual(classify(f'{RELATIVE_WIRE_REPORT} {following}', {'ready company'}), expected)
+
+    def test_relative_wire_review_preserves_supplied_dates_and_holds_search_results(self):
+        capture = {
+            'url': 'https://www.prnewswire.com/example',
+            'excerpt': RELATIVE_WIRE_REPORT,
+            'acquisition': 'page_excerpt',
+            'retrieved_on': '2026-11-20',
+        }
+        for extra, expected_dates in (
+            ({}, {}),
+            ({'dates': {'published': '2017-05-09'}},
+             {'dates': {'published': {'value': '2017-05-09', 'precision': 'day'}}}),
+        ):
+            document, = saved_results([{**capture, **extra}], 'ready.example', {'ready company'})
+            self.assertTrue(document['review_required'])
+            self.assertEqual(document['observations'], [{
+                **capture, **expected_dates, 'bucket': 'round_lead', 'signals': ['round_mention'],
+            }])
+        for excerpt in (capture['excerpt'], capture['excerpt'].replace(' announced yesterday ', ' announced ')):
+            document, = saved_results(
+                [{**capture, 'excerpt': excerpt, 'acquisition': 'search_result'}], 'ready.example', {'ready company'},
+            )
+            self.assertTrue(document['review_required'])
+            self.assertEqual(document['bucket'], 'context')
+            self.assertNotIn('round_mention', document['observations'][0]['signals'])
 
     def test_synthesia_revenue_and_strategic_investment_are_distinct_review_cues(self):
         cases = (

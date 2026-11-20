@@ -90,6 +90,18 @@ ISSUER_ROUND_TERMS = re.compile(
     NAMED_SERIES_TERMS + r'(?: (?:funding round|round(?: of funding)?))?'
 )
 PRNEWSWIRE_DATELINE = r'(?-i:[A-Z][A-Z -]{1,40}, [A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2}) /PRNewswire/ -- '
+RAISE_REPORT = r'announced (?:yesterday )?(?:that )?it has raised'
+RAISE_AMOUNT_NUMBER = r'[0-9]{1,9}(?:,[0-9]{3}){0,3}(?:\.[0-9]{1,3})? (?:million|billion)'
+STATED_RAISE_AMOUNT = rf'(?:(?:US|USD|AU|AUD|CA|CAD)?\${RAISE_AMOUNT_NUMBER}|{RAISE_AMOUNT_NUMBER} dollars)'
+TRAILING_RAISE_TERMS = rf'(?:a|its|the) (?P<series>{SERIES.pattern}) round of (?P<amount>{STATED_RAISE_AMOUNT})'
+NORMALIZED_RAISE_PREFIX = re.compile(rf'{RAISE_REPORT} (?:a|its|the)')
+ISSUER_RAISE_REPORT = re.compile(
+    rf'(?:{PRNEWSWIRE_DATELINE}HR Tech World: )?(?P<issuer>{ISSUER_NAME}) '
+    rf'{RAISE_REPORT} {TRAILING_RAISE_TERMS}'
+    r'(?: led by (?![^.!?]*\b(?:if|unless|pending|subject to)\b)'
+    r'[A-Z][\w&-]{0,39}(?: [A-Z][\w&-]{0,39}){0,5}| to expand its (?:business|operations))?[.!]',
+    re.I,
+)
 ANNOUNCED_CLOSING = r'(?:announced today|today announced) (?:that )?it has closed'
 NORMALIZED_CLOSING_PREFIX = re.compile(rf'(?:(?:has|had|today|recently) )*{ANNOUNCED_CLOSING}\b')
 ISSUER_CLOSING_REPORT = re.compile(
@@ -143,6 +155,17 @@ ISSUER_REPEATED_CLOSE_DENIAL = re.compile(
     rf'{RAW_ROUND_TERMS}[.!]',
     re.I,
 )
+ISSUER_QUANTIFIED_RAISE_DENIAL = re.compile(
+    rf'(?P<issuer>{ISSUER_NAME}) (?:(?:did not|didn[\'’]t) raise|has not (?:actually )?raised) '
+    rf'(?:{TRAILING_RAISE_TERMS}|(?:(?:a|its|the) )?(?P<leading_amount>{STATED_RAISE_AMOUNT}) '
+    rf'(?:in )?(?:(?:a|its|the) )?(?P<leading_series>{SERIES.pattern}) (?:funding )?round)[.!]',
+    re.I,
+)
+ISSUER_CONTRACTED_RAISE_DENIAL = re.compile(
+    rf'(?P<issuer>{ISSUER_NAME}) didn[\'’]t (?:actually )?raise '
+    rf'(?:(?:(?:{CORRECTION_DETERMINERS}|its) )?{CORRECTION_SERIES}|the funding)[.!]',
+    re.I,
+)
 ISSUER_FIRST_PERSON_CORRECTION = re.compile(
     r"(?:I misspoke: )?we (?:(?:did not|didn['’]t) (?:actually )?raise"
     r"|(?:have not|haven['’]t) (?:actually )?raised) "
@@ -167,6 +190,7 @@ ISSUER_FINANCIAL_CONTEXT = re.compile(
     re.I,
 )
 AMOUNT = rf'(?:(?:{CURRENCY}|a) ?)?\d+(?: \d+){{0,3}}(?: ?(?:[kmb]|thousand|million|billion))?'
+NORMALIZED_TRAILING_AMOUNT = re.compile(rf'round of {AMOUNT}\b')
 COMMERCE = r'(?:washington d c )?(?:the )?(?:u s )?(?:department of )?commerce'
 CHIPS_INTENT_FRAME = re.compile(
     rf'{COMMERCE} (?:today )?(?:signed|announced (?:today )?the signing of) '
@@ -271,7 +295,10 @@ def associated_round(clause, mention, names):
             continue
         after_name = after_name.strip()
         # Normalization loses quotation and question marks. These openings need the raw assertion check.
-        if mention.re is SERIES and NORMALIZED_CLOSING_PREFIX.match(after_name):
+        if mention.re is SERIES and (
+            NORMALIZED_CLOSING_PREFIX.match(after_name)
+            or (NORMALIZED_RAISE_PREFIX.fullmatch(after_name) and NORMALIZED_TRAILING_AMOUNT.match(suffix))
+        ):
             continue
         # Only the recipient can use the month/year exception for an investment.
         if (ISSUER_ACTION.fullmatch(after_name) and not EXTERNAL_ROUND_PURPOSE.match(suffix)
@@ -321,26 +348,50 @@ def round_correction(following, issuer, series, asserted_action, *, first_person
     return bool(repeated and name_key(repeated['issuer']) == issuer and repeated['terms'] == closing_terms)
 
 
-def issuer_closing_round(excerpt, names):
-    """Review complete closing assertions in the unquoted part of a saved excerpt."""
+def reported_raise_denial(following, issuer, series, amount):
+    if round_correction(following, issuer, series, 'raise'):
+        return True
+    if not following:
+        return False
+    if denial := ISSUER_CONTRACTED_RAISE_DENIAL.fullmatch(following[0]):
+        return name_key(denial['issuer']) == issuer and (
+            denial['series'] is None or name_key(denial['series']) == series
+        )
+    if not (denial := ISSUER_QUANTIFIED_RAISE_DENIAL.fullmatch(following[0])):
+        return False
+    # Compare the stated amount without converting symbols, units or currencies.
+    return (
+        name_key(denial['issuer']) == issuer
+        and name_key(denial['series'] or denial['leading_series']) == series
+        and (denial['amount'] or denial['leading_amount']).casefold() == amount.casefold()
+    )
+
+
+def issuer_reported_rounds(excerpt, names, *, allow_raise):
+    """Review complete named financing assertions within their sentence scope."""
     statements = [' '.join(part.split()) for part in CLOSING_STATEMENT_BREAK.split(excerpt)]
     quotations = [tuple(QUOTATION_MARK.findall(statement)) for statement in statements]
     unresolved_quotation = any(marks and marks not in QUOTATION_PAIRS for marks in quotations)
     round_mention = corrected = False
     for index, statement in enumerate(statements):
+        following = statements[index + 1:index + 2]
+        denied = None
         match = ISSUER_CLOSING_REPORT.fullmatch(ISSUER_ROUND_DATELINE.sub('', statement))
         if match and (issuer := name_key(match['issuer'])) in names and not prospective_clause(statement):
             terms = ISSUER_CLOSING_TERMS.fullmatch(' ' + name_key(match['terms']))
             if terms:
-                if round_correction(
-                    statements[index + 1:index + 2], issuer, terms['series'], 'close', closing_terms=match['terms'],
-                ):
-                    corrected = True
-                else:
-                    round_mention = True
+                denied = round_correction(following, issuer, terms['series'], 'close', closing_terms=match['terms'])
+        raised = ISSUER_RAISE_REPORT.fullmatch(statement) if allow_raise and not unresolved_quotation else None
+        if raised and (issuer := name_key(raised['issuer'])) in names and not prospective_clause(statement):
+            series = name_key(raised['series'])
+            denied = reported_raise_denial(following, issuer, series, raised['amount'])
+        if denied is not None:
+            corrected |= denied
+            round_mention |= not denied
         # Cross only complete prefacing statements. A quote that spans a split leaves later scope unresolved.
+        body_start = raised.start('issuer') if raised else 0
         if (unresolved_quotation or not CLOSING_DECLARATIVE_END.search(statement)
-                or CLOSING_PREFACE_BOUNDARY.search(statement)):
+                or CLOSING_PREFACE_BOUNDARY.search(statement, body_start)):
             break
     return round_mention, corrected
 
@@ -429,7 +480,7 @@ def chips_support_clauses(excerpt, names):
     return support
 
 
-def classify(excerpt, names, *, reviewed_round=None):
+def classify(excerpt, names, *, reviewed_round=None, search_result=False):
     clauses = CLAUSE_BREAK.split(excerpt)
     matching = [part for part in clauses if any(includes_name(part, name) for name in names)]
     if not matching and reviewed_round is None:
@@ -438,8 +489,8 @@ def classify(excerpt, names, *, reviewed_round=None):
     raw_statements = ISSUER_FINANCIAL_BREAK.split(opening_text, maxsplit=3)
     statements = [' '.join(part.split()) for part in raw_statements]
     opening_round, opening_corrected = opening_issuer_round(statements, names, reviewed_round)
-    closing_round, closing_corrected = issuer_closing_round(opening_text, names)
-    if not (matching or opening_round or opening_corrected or closing_round or closing_corrected):
+    report_round, report_corrected = issuer_reported_rounds(opening_text, names, allow_raise=not search_result)
+    if not (matching or opening_round or opening_corrected or report_round or report_corrected):
         return 'unmatched', []
     subjects = ' '.join(matching)
     support = chips_support_clauses(excerpt, names) if 'chips' in excerpt.casefold() else {}
@@ -456,14 +507,14 @@ def classify(excerpt, names, *, reviewed_round=None):
     round_mention = early or any(
         associated_round(clause, match, names) for clause in round_clauses
         for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
-    ) or opening_round or closing_round
+    ) or opening_round or report_round
     context = [label for label, pattern in CONTEXT.items() if pattern.search(excerpt)]
     if support:
         if 'grant_or_public_support' not in context:
             context.append('grant_or_public_support')
         context.extend(sorted(set(support.values())))
     context.extend(issuer_financial_signals(excerpt, names))
-    if opening_corrected or closing_corrected or any(prospective_clause(clause) for clause in matching):
+    if opening_corrected or report_corrected or any(prospective_clause(clause) for clause in matching):
         context.append('prospective_or_negated')
     signals = (['early_stage_mention'] if early else []) + context
     if round_mention:
@@ -492,7 +543,7 @@ def saved_results(captures, host, names, *, reviewed_rounds=None):
         if dates and acquisition == 'search_result':
             raise ValueError('Date observations require saved document evidence')
         reviewed_round = reviewed_rounds.get(url) if reviewed_rounds and acquisition == 'page_excerpt' else None
-        bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round)
+        bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round, search_result=acquisition == 'search_result')
         observation = {**capture, 'bucket': bucket, 'signals': signals}
         if dates:
             observation['dates'] = {label: date_observation(day) for label, day in dates.items()}
