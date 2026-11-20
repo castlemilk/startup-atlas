@@ -178,8 +178,8 @@ CORRECTION_DETERMINERS = r'a|an|any|the|that'
 CORRECTION_SERIES = rf'(?P<series>{SERIES.pattern})(?: (?:funding(?: round)?|round(?: of funding)?))?'
 NOMINAL_CLOSING_CORRECTION = re.compile(
     rf'(?:Correction: )?(?P<issuer>{ISSUER_NAME}) '
-    r"(?:(?:did not|didn['’]t) (?:actually )?(?:close|announce the closing of)"
-    r"|has not (?:actually )?(?:closed|announced the closing of)) "
+    r"(?:(?:actually )?(?:did not|didn['’]t) (?:actually )?(?:close|announce the closing of)"
+    r"|(?:ha[sd] not|ha[sd]n['’]t|never) (?:actually )?(?:closed|announced the closing of)) "
     rf'(?:the funding|(?:(?:{CORRECTION_DETERMINERS}|its) )?'
     rf'(?:(?P<leading_amount>{STATED_RAISE_AMOUNT}) )?{CORRECTION_SERIES}'
     rf'(?: of (?P<trailing_amount>{STATED_RAISE_AMOUNT}))?)[.!]',
@@ -428,16 +428,28 @@ def reported_raise_denial(following, issuer, series, amount, *, first_person=Fal
 
 
 def nominal_closing_denied(following, issuer, report):
-    if not following:
-        return False
-    denial = NOMINAL_CLOSING_CORRECTION.fullmatch(following[0])
-    if not denial or name_key(denial['issuer']) != issuer:
-        return False
-    if denial['series'] is not None and name_key(denial['series']) != name_key(report['series']):
-        return False
-    # Compare written amounts without interpreting currency symbols or multipliers.
-    amounts = [denial[key].casefold() for key in ('leading_amount', 'trailing_amount') if denial[key]]
-    return amounts in ([], [report['amount'].casefold()])
+    series = name_key(report['series'])
+    reported_amount = [report['amount'].casefold()]
+    for offset, statement in enumerate(following):
+        if offset:
+            # Cross one unrelated sentence only for a labelled correction repeating the terms.
+            intervening = following[0]
+            if (not statement.casefold().startswith('correction: ')
+                    or not CLOSING_DECLARATIVE_END.search(intervening)
+                    or CLOSING_PREFACE_BOUNDARY.search(intervening)
+                    or QUOTATION_MARK.search(intervening)
+                    or any(pattern.search(intervening) for pattern in (EARLY, SERIES, FINANCING_ROUND))):
+                break
+        denial = NOMINAL_CLOSING_CORRECTION.fullmatch(statement)
+        if not denial or name_key(denial['issuer']) != issuer:
+            continue
+        if denial['series'] is not None and name_key(denial['series']) != series:
+            continue
+        # Compare written amounts without interpreting currency symbols or multipliers.
+        amounts = [denial[key].casefold() for key in ('leading_amount', 'trailing_amount') if denial[key]]
+        if amounts == reported_amount or (not offset and not amounts):
+            return True
+    return False
 
 
 def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
@@ -461,7 +473,7 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
             denied = reported_raise_denial(following, issuer, series, raised['amount'])
         nominal = NOMINAL_CLOSING_REPORT.fullmatch(statement) if saved_assertion else None
         if nominal and (issuer := name_key(nominal['issuer'])) in names:
-            denied = nominal_closing_denied(following, issuer, nominal)
+            denied = nominal_closing_denied(statements[index + 1:index + 3], issuer, nominal)
         if denied is not None:
             corrected |= denied
             round_mention |= not denied

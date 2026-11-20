@@ -922,17 +922,22 @@ class CompanyFundingStatementTests(unittest.TestCase):
             with self.subTest(excerpt=excerpt):
                 self.assertEqual('round_mention' in classify(excerpt, {'culture amp'})[1], eligible)
 
-    def test_nominal_close_holds_only_for_a_matching_adjacent_retraction(self):
+    def test_nominal_close_holds_for_a_matching_retraction(self):
         opening = CULTURE_AMP_NOMINAL_CLOSE
         denial = 'Culture Amp did not close the Series B funding round.'
         amount_denial = 'Culture Amp didn’t actually close the US$10 million Series B round.'
+        tagged = 'Correction: Culture Amp did not close a US$10 million Series B round.'
+        intervening = 'A director will join the board.'
         cases = (
             (denial, False),
             (f'Correction: {denial}', False),
             (amount_denial, False),
             ('Culture Amp has not actually closed the funding.', False),
+            ('Culture Amp actually did not close the Series B funding round.', False),
+            ('Culture Amp hasn’t closed a US$10 million Series B round.', False),
             ('Culture Amp did not close a Series B round of US$10 million.', False),
             ('Culture Amp did not announce the closing of a US$10 million Series B round.', False),
+            (f'{intervening} {tagged}', False),
             (denial.replace('Series B', 'Series D'), True),
             (denial.replace('Culture Amp', 'Acme'), True),
             (denial.replace('Culture Amp', 'We'), True),
@@ -945,6 +950,11 @@ class CompanyFundingStatementTests(unittest.TestCase):
             (denial[:-1] + '?', True),
             ('The legal close date was not disclosed.', True),
             (f'A company issued an unrelated update. {denial}', True),
+            (f'{intervening} {tagged.replace("Series B", "Series D")}', True),
+            (f'{intervening} {tagged.replace("US$10", "US$20")}', True),
+            (f'{intervening} Correction: {denial}', True),
+            (f'Acme closed its Series A round. {tagged}', True),
+            (f'“{intervening}” {tagged}', True),
         )
         for following, eligible in cases:
             with self.subTest(following=following):
