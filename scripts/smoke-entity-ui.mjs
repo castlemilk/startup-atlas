@@ -53,7 +53,7 @@ if(person){
   }
 }else{
   assert.match(root.innerHTML,/<h1>Canva<\/h1>/);
-  assert.match(root.innerHTML,/<h2>People<\/h2>/);
+  assert.match(root.innerHTML,/<h2>People &amp; connections<\/h2>/);
   assert.match(root.innerHTML,/<h3>Founders<\/h3>/);
   for(const name of ['Melanie Perkins','Cliff Obrecht','Cameron Adams'])assert.match(root.innerHTML,new RegExp(name));
   assert.match(root.innerHTML,/<h2>Company overview<\/h2>/);

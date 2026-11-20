@@ -3,7 +3,7 @@ import { logoFor, logoClassFor } from './logos.js?v=3';
 import { partnerRelationships } from './relationships.js';
 import { openGraph } from './graph-store.js';
 import { entityBadge, icon, renderEntityRow } from './atlas-ui.js';
-import { entityDetails, entityHref, startupSourceCoverage } from './graph-model.js';
+import { entityDetails, entityHref, slug, startupSourceCoverage } from './graph-model.js';
 import { countryName, filterCompanies, hasCompanyScope, indexCompanies, readExploration, writeExploration } from './atlas-exploration.js';
 import { mountExploration } from './atlas-explorer-controls.js';
 
@@ -29,7 +29,13 @@ const companySorts = [
 const opportunitySorts = [['recommended','Featured first'],['name','Name A–Z']];
 const companyFilterReset = { countries:[], sector:'', stage:'' };
 const pageSize = 12;
+const paddedCanvaWordmark='https://cdn.prod.website-files.com/65dd072aa7402b211d7d6ccf/65deeccca712cb796025a2bd_Canva.png';
 const presentationControl = byId('directory-presentation');
+const densityControl = byId('directory-density-view');
+const companyOptions = byId('directory-company-options');
+const scopeControls = byId('directory-scope-controls');
+const mobileOptions = byId('directory-mobile-options');
+const optionsViewport = window.matchMedia('(max-width: 650px)');
 const panel = byId('directory-inspector');
 const inspectorSeat = byId('directory-inspector-seat');
 const inspectorSheet = byId('directory-inspector-sheet');
@@ -38,7 +44,7 @@ const sheetViewport = window.matchMedia('(max-width: 960px)');
 let state = { ...defaults }, data = null, visible = pageSize;
 let searchEntry = false;
 let sheetSuspended = false;
-let renderedSelection = '';
+let renderedSelection = null;
 let sortSignature = '';
 let queryMatches = [];
 let previousQuery;
@@ -52,6 +58,7 @@ let graphStore=null;
 try { graphStore=await openGraph(); } catch { /* Keep the catalogue usable. */ }
 const sourceCoverage = graphStore ? startupSourceCoverage(graphStore.graph) : new Map();
 const entitiesById = new Map(graphStore?.graph.entities.map(entity=>[entity.id, entity]));
+const partnersByName = new Map(graphStore?.graph.entities.filter(entity=>entity.kind==='partner').map(entity=>[entity.name, entity]));
 const companies = graphStore?.graph.entities.filter(entity=>entity.kind==='startup') ?? [];
 const dimensions = graphStore ? indexCompanies(graphStore.graph) : new Map();
 const connectionCounts = new Map();
@@ -61,8 +68,9 @@ for (const {from,to} of graphStore?.graph.edges ?? []) {
 const showCompanyFilters = () => Boolean(graphStore && state.view === 'all' && ['all','startup'].includes(state.entityKind));
 const isCompanyView = () => showCompanyFilters() && (state.entityKind==='startup' || hasCompanyScope(state));
 const explorationHost = byId('directory-exploration');
+const fieldsHost = byId('directory-exploration-fields');
 const exploration = explorationHost.ownerDocument && graphStore ? mountExploration(explorationHost, {
-  companies, dimensions, onChange:partial=>update(partial), showDensity:false,
+  companies, dimensions, onChange:partial=>update(partial), showDensity:false, fieldsHost,
 }) : null;
 async function publicDocument(name) {
   if (graphStore) return graphStore.document(name);
@@ -92,7 +100,18 @@ function syncFacets() {
   if (typeof CustomEvent !== 'undefined') document.dispatchEvent?.(new CustomEvent('atlas:controls-sync'));
 }
 function focusFacet(key) {
+  if (key==='entityKind' && optionsViewport.matches && mobileOptions.api) mobileOptions.open=true;
   (byId(controls[key].id+'-control') || byId(controls[key].id+'-trigger') || controls[key]).focus();
+}
+
+function placeDirectoryOptions() {
+  const mobile=Boolean(optionsViewport.matches && mobileOptions.api);
+  const menu=byId('directory-options-panel-body');
+  const scopeSeat=mobile ? menu : byId('directory-scope-controls-seat');
+  const optionsSeat=mobile ? menu : byId('directory-company-options-seat');
+  if (!mobile && mobileOptions.open) mobileOptions.open=false;
+  if (scopeControls.parentElement!==scopeSeat) scopeSeat.append?.(scopeControls);
+  if (companyOptions.parentElement!==optionsSeat) optionsSeat.append?.(companyOptions);
 }
 
 function stateFromUrl() {
@@ -102,7 +121,12 @@ function stateFromUrl() {
   // Existing opportunity-filter links predate the All tab.
   else if (['country','kind','access','unknown'].some(key=>params.has(key))) s.view='opportunities';
   const type=params.get('type'); if (type && [...controls.entityKind.options].some(option=>option.value===type)) s.entityKind=type;
-  s.coverage = params.get('coverage') === '1';
+  const companyLanding=[...params.keys()].every(key=>key==='embed');
+  if (companyLanding) {
+    s.entityKind='startup';
+    s.sort='name';
+  }
+  s.coverage=params.has('coverage') ? params.get('coverage')==='1' : companyLanding && !optionsViewport.matches;
   if (params.has('columns')) s.columns = [...companyColumns.keys()].filter(key=>params.get('columns').split(',').includes(key));
   if (companySorts.some(([value])=>value===params.get('sort'))) s.sort=params.get('sort');
   const country = params.get('country'); if (country && (country === 'all' || Object.hasOwn(marketNames,country))) s.country = country;
@@ -119,7 +143,7 @@ function writeUrl(mode) {
   const legacyOpportunityScope=state.country!=='all' || state.kind!=='all' || state.access!=='all' || state.includeUnknown;
   for (const [key, value] of [
     ['shown',visible>pageSize ? visible : ''],['view',state.view===defaults.view && !legacyOpportunityScope ? '' : state.view],
-    ['type',state.entityKind==='all' ? '' : state.entityKind],['coverage',state.coverage ? '1' : ''],
+    ['type',state.view==='all' || state.entityKind!=='all' ? state.entityKind : ''],['coverage',state.coverage ? '1' : ''],
     ['columns',state.columns?.join(',') ?? null],['sort',state.sort==='recommended' ? '' : state.sort],
     ['country',state.country==='all' ? '' : state.country],['kind',state.kind==='all' ? '' : state.kind],
     ['access',state.access==='all' ? '' : state.access],['unknown',state.includeUnknown ? '1' : ''],
@@ -154,7 +178,7 @@ function activeColumns() {
 
 function syncControls() {
   controls.search.value=state.query; controls.entityKind.value=state.entityKind; controls.country.value=state.country; controls.includeUnknown.checked=state.includeUnknown;
-  controls.search.placeholder={all:isCompanyView()?'Search companies':'Search the Atlas',opportunities:'Search opportunities',partners:'Search partners',saved:'Search saved opportunities'}[state.view];
+  controls.search.placeholder={all:isCompanyView()?'Filter companies':'Search the Atlas',opportunities:'Search opportunities',partners:'Search partners',saved:'Search saved opportunities'}[state.view];
   controls.kind.value=state.kind; controls.access.value=state.access;
   const sorts=state.view==='all' ? (isCompanyView() ? companySorts : entitySorts) : opportunitySorts;
   const signature=sorts[0][1]+sorts.length;
@@ -164,6 +188,7 @@ function syncControls() {
   }
   controls.sort.value=sorts.some(([value])=>value===state.sort) ? state.sort : 'recommended';
   controls.density.value=state.density;
+  densityControl.setAttribute('value',state.density);
   const columns=activeColumns();
   for (const key of companyColumns.keys()) byId('column-'+key).checked=columns.includes(key);
   controls.partnerCountry.value=state.partnerCountry; controls.partnerProvider.value=state.partnerProvider; controls.partnerEvidence.value=state.partnerEvidence; controls.partnerLogo.checked=state.partnerLogo;
@@ -270,7 +295,9 @@ function identityMark(item, {inspector=false}={}) {
   const initials=item.name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
   const image=sourceUrl(item.logo) || logoFor(item.name);
   const mark=inspector ? 'directory-inspector-mark' : 'entity-row-mark';
-  return `<span class="${mark}${image?' has-logo':''}" aria-hidden="true"><span>${esc(initials)}</span>${image?`<img class="entity-row-image" src="${esc(image)}" alt="" ${inspector?'':'loading="lazy"'} decoding="async" referrerpolicy="no-referrer">`:''}</span>`;
+  const portfolioLogo=image && item.logo_source==='https://www.airtree.vc/companies';
+  const framing=image===paddedCanvaWordmark ? ' directory-canva-mark' : portfolioLogo ? ' directory-portfolio-logo' : '';
+  return `<span class="${mark}${image?' has-logo':''}${framing}" aria-hidden="true"><span>${esc(initials)}</span>${image?`<img class="entity-row-image" src="${esc(image)}" alt="" ${inspector?'':'loading="lazy"'} decoding="async" referrerpolicy="no-referrer">`:''}</span>`;
 }
 
 function companyHeader(key, label, span=1) {
@@ -284,11 +311,9 @@ function renderCompanyRow(item, columns, showCoverage) {
   const fields=columns.map(key=>`<td class="directory-company-value" data-column="${key}">${esc(companyValue(item,key) ?? (key==='headquarters' ? countryName('unknown') : 'Not recorded'))}</td>`).join('');
   const coverage=showCoverage?Array.from(evidenceColumns,([key,label])=>{
     const count=companyValue(item,key);
-    return `<td class="directory-coverage-cell" data-coverage-column="${key}"><dl class="directory-evidence-counts"><div data-level="${Math.min(count ?? 0,3)}"><dt>${label}</dt><dd>${count ?? 'Unknown'}</dd></div></dl></td>`;
+    return `<td class="directory-coverage-cell" data-coverage-column="${key}"><dl class="directory-evidence-counts"><div data-level="${Math.min(count ?? 0,3)}" data-sources="${count ?? 0}"><dt>${label}</dt><dd>${count ?? 'Unknown'}</dd></div></dl></td>`;
   }).join(''):'';
-  const location=companyValue(item,'headquarters');
-  const mobileDetail=[...(columns.includes('headquarters')||showCoverage ? [location ?? countryName('unknown')] : []),
-    ...columns.filter(key=>key!=='headquarters').map(key=>companyValue(item,key)).filter(Boolean)].join(' · ');
+  const mobileDetail=companyValue(item,'headquarters') ?? countryName('unknown');
   return `<tr role="row" class="entity-row directory-company-row" data-kind="startup" data-entity-id="${esc(item.id)}" data-selected="${selected}">
     <td class="directory-compare-cell"><button type="button" class="directory-compare-toggle" data-atlas-compare="${esc(item.id)}" data-company-name="${esc(item.name)}" aria-label="Compare ${esc(item.name)}" aria-pressed="false"><span>${icon('check')}</span></button></td>
     <td class="entity-row-main"><div class="directory-row-identity">${identityMark(item)}<div><h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3>${mobileDetail?`<p class="directory-mobile-meta">${esc(mobileDetail)}</p>`:''}</div></div></td>
@@ -303,7 +328,9 @@ function renderCompanyTable(items, showCoverage) {
   const headers=columns.map(key=>companyHeader(key,companyColumns.get(key),span)).join('');
   const evidence=showCoverage?`<th scope="colgroup" colspan="3">Evidence coverage</th>`:'';
   const evidenceHeader=showCoverage?`<tr>${Array.from(evidenceColumns,([key,label])=>companyHeader(key,label)).join('')}</tr>`:'';
-  return `<div class="directory-table-frame"><table class="directory-table" role="table" aria-label="Company results">
+  const columnGroups=`<colgroup><col class="directory-check-column"><col class="directory-identity-column">${columns.map(()=>'<col class="directory-data-column">').join('')}</colgroup>${showCoverage?'<colgroup class="directory-evidence-columns" span="3"></colgroup>':''}<colgroup><col class="directory-explore-column"></colgroup>`;
+  return `<div class="directory-table-frame"><table class="directory-table${showCoverage&&columns.length===1?' directory-evidence-table':''}" role="table" aria-label="Company results">
+    ${columnGroups}
     <thead><tr><th class="directory-compare-heading" scope="col" rowspan="${span}"><span class="sr-only">Compare</span></th>${companyHeader('name','Company',span)}${headers}${evidence}<th class="directory-actions-heading" scope="col" rowspan="${span}"><span class="sr-only">Explore</span></th></tr>${evidenceHeader}</thead>
     <tbody role="rowgroup">${items.map(item=>renderCompanyRow(item,columns,showCoverage)).join('')}</tbody>
   </table></div>`;
@@ -336,24 +363,35 @@ function renderInspectorRecord(entity) {
   const people=connections.map(({other,label,source})=>`<li><div><a href="${esc(entityHref(other))}">${esc(other.name)}</a><span>${esc(label)}</span></div>${inspectorSource(source,'Evidence')}</li>`).join('');
   const companyInfo=dimensions.get(id);
   const country=companyInfo?.country ? [companyInfo.city,countryName(companyInfo.country)].filter(Boolean).join(', ') : '';
-  const overviewFacts=facts.filter(fact=>['headquarters','product launched','founded'].includes(fact.label.toLowerCase())).slice(0,3);
+  const launch=facts.find(fact=>fact.label.toLowerCase()==='product launched');
+  const launchYears=launch?.value.match(/\b[12]\d{3}\b/g) ?? [];
+  const launchYear=launchYears.length===1 ? launchYears[0] : '';
+  const overviewFacts=company ? facts.filter(fact=>fact.label.toLowerCase()==='founded').slice(0,1) : facts.slice(0,3);
   const funding=details.rounds.filter(round=>sourceUrl(round.source)).map(round=>({
     label:round.stage || 'Funding announcement', value:round.announced_on || 'Announcement date not recorded', source:round.source,
   }));
-  const claims=[...facts, ...(company ? connections.map(({other,source})=>({label:'Founding relationship',value:other.name,source})) : []), ...funding];
+  const founding=new Map();
+  for (const {other,source} of company ? connections : []) {
+    const founders=founding.get(source) ?? new Set();
+    founders.add(other.name);
+    founding.set(source,founders);
+  }
+  const founderClaims=Array.from(founding,([source,founders])=>({label:founders.size===1?'Founder':'Founders',value:[...founders].join(', '),source}));
+  const claims=[...(launch?[launch]:[]), ...founderClaims, ...facts.filter(fact=>fact!==launch), ...funding];
   const profileSource=inspectorSource(entity.source,'Profile source');
   const peopleLabel=company?'People':'Connections';
+  const defaultTab=company && state.coverage && !sheetViewport.matches ? 'sources' : 'overview';
   return `<div class="directory-inspector-top">
-    <div class="directory-inspector-identity">${identityMark(entity,{inspector:true})}<div><h2 id="directory-inspector-heading" tabindex="-1">${esc(name)}</h2><p>${entityBadge(kind)}${companyInfo?.sector?`<span>${esc(companyInfo.sector)}</span>`:''}</p></div></div>
+    <div class="directory-inspector-identity">${identityMark(entity,{inspector:true})}<div><h2 id="directory-inspector-heading" tabindex="-1">${esc(name)}</h2><p>${company?'Company':entityBadge(kind)}${companyInfo?.sector?`<span> · ${esc(companyInfo.sector)}</span>`:''}</p></div></div>
     <button type="button" id="close-directory-inspector" class="atlas-button directory-inspector-close" aria-label="Close record inspection">${icon('close')}</button>
   </div>
-  ${country?`<p class="directory-inspector-location">${icon('location')} ${esc(country)}</p>`:''}
+  ${country||launchYear?`<div class="directory-inspector-meta">${country?`<span>${icon('location')} ${esc(country)}</span>`:''}${launchYear?`<span>${icon('calendar')} Launched ${esc(launchYear)}</span>`:''}</div>`:''}
   <div class="directory-inspector-scroll">
     <div class="directory-inspector-outside" id="directory-inspector-outside" role="status" hidden>
       <strong>Outside current results</strong><p id="directory-exclusion-reason"></p>
       <div><button type="button" id="directory-adjust-filters" class="atlas-button">Adjust filters</button><button type="button" class="atlas-button" data-clear-directory-selection>Clear selection</button></div>
     </div>
-    <ui-tabs class="directory-inspector-tabs" default-value="overview" aria-label="Record details">
+    <ui-tabs class="directory-inspector-tabs" default-value="${defaultTab}" aria-label="Record details">
       <ui-tabs-list aria-label="Record details">
         <ui-tabs-tab value="overview"><button type="button">Overview</button></ui-tabs-tab>
         <ui-tabs-tab value="people"><button type="button">${peopleLabel}</button></ui-tabs-tab>
@@ -362,14 +400,16 @@ function renderInspectorRecord(entity) {
       <ui-tabs-panel value="overview"><div class="directory-inspector-section">
         <p class="directory-inspector-summary">${esc(entity.summary || 'Further profile details are being researched.')}</p>
         ${overviewFacts.length?`<dl class="directory-inspector-facts">${overviewFacts.map(inspectorClaim).join('')}</dl>`:''}
-        ${company&&founderPreview.length?`<h3>Founders</h3><ul class="directory-inspector-founder-preview">${founderPreview.map(person=>`<li><a href="${esc(entityHref(person))}">${esc(person.name)}</a></li>`).join('')}</ul>`:''}
+        ${company&&founderPreview.length?`<h3>Founders</h3><ul class="directory-inspector-founder-preview">${founderPreview.map(person=>`<li><a href="${esc(entityHref(person))}">${icon('person')}${esc(person.name)}</a></li>`).join('')}</ul>`:''}
       </div></ui-tabs-panel>
       <ui-tabs-panel value="people"><div class="directory-inspector-section">
         <h3>${company?'Recorded founders':'Recorded connections'}</h3>
         ${people?`<ul class="directory-inspector-people">${people}</ul>`:`<p>${company?'Founder details':'Sourced connections'} have not been recorded.</p>`}
       </div></ui-tabs-panel>
       <ui-tabs-panel value="sources"><div class="directory-inspector-section">
-        ${claims.length?`<dl class="directory-inspector-facts">${claims.map(inspectorClaim).join('')}</dl>`:''}
+        ${claims.length?`<dl class="directory-inspector-facts">${claims.slice(0,2).map(inspectorClaim).join('')}</dl>`:''}
+        ${claims.length||profileSource?`<p class="directory-source-available">${icon('source')}<span><strong>Source available</strong> Read the original document for context.</span></p>`:''}
+        ${claims.length>2?`<dl class="directory-inspector-facts">${claims.slice(2).map(inspectorClaim).join('')}</dl>`:''}
         ${profileSource || (claims.length===0?'<p>No source links have been recorded.</p>':'')}
       </div></ui-tabs-panel>
     </ui-tabs>
@@ -382,6 +422,21 @@ function renderInspectorRecord(entity) {
 }
 
 let resultIds = new Set();
+let exportRecords = null;
+document.addEventListener('atlas:export-records',event=>{
+  if (exportRecords && event.detail) event.detail.records=exportRecords;
+});
+
+function exportRows(matches) {
+  if (state.view==='all') return graphStore ? matches : null;
+  if (state.view==='partners') return matches.map(name=>{
+    const entity=partnersByName.get(name);
+    const reviewed=Object.hasOwn(data.reviewedPartners,name) ? data.reviewedPartners[name] : null;
+    return {id:entity?.id ?? `partner:${slug(name)}`,name,kind:'partner',source:sourceUrl(entity?.source || reviewed?.source) || ''};
+  });
+  return matches.map(item=>({id:`programme:${item.id}`,name:item.name,kind:'programme',source:sourceUrl(item.url) || ''}));
+}
+
 function exclusionReason(entity) {
   if (state.entityKind!=='all' && entity.kind!==state.entityKind) return 'This record is outside the selected entity type.';
   if (isCompanyView() && entity.kind!=='startup') return 'The applied company filters show company records.';
@@ -391,15 +446,16 @@ function exclusionReason(entity) {
 
 function syncInspectorPlacement() {
   const enabled=Boolean(graphStore && state.view==='all' && state.selected);
+  const reserved=isCompanyView() && !sheetViewport.matches;
   const modal=Boolean(enabled && sheetViewport.matches && inspectorSheet.api);
   const open=modal && !sheetSuspended;
   if (!open && inspectorSheet.open) inspectorSheet.open=false;
-  inspectorSeat.hidden=!enabled || modal;
-  panel.hidden=!enabled;
+  inspectorSeat.hidden=(!enabled && !reserved) || modal;
+  panel.hidden=!enabled && !reserved;
   const seat=modal?inspectorSheetContent:inspectorSeat;
   if (seat.append && panel.parentElement!==seat) seat.append(panel);
   if (open && !inspectorSheet.open) inspectorSheet.open=true;
-  document.querySelector('.directory-layout').classList.toggle('has-inspection', enabled && !modal);
+  document.querySelector('.directory-layout').classList.toggle('has-inspection', reserved || (enabled && !modal));
   byId('directory-inspector-reopen').hidden=!modal || open;
 }
 
@@ -413,7 +469,9 @@ function renderInspector({moveFocus=false}={}) {
   const entity=entitiesById.get(id);
   if (id!==renderedSelection) {
     renderedSelection=id;
-    panel.innerHTML=entity ? renderInspectorRecord(entity) : id ? `<div class="directory-inspector-top"><h2 id="directory-inspector-heading" tabindex="-1">Record unavailable</h2><button type="button" id="close-directory-inspector" class="atlas-button directory-inspector-close" aria-label="Close record inspection">${icon('close')}</button></div><p>This record is missing from the current Atlas snapshot.</p>` : '';
+    panel.innerHTML=entity ? renderInspectorRecord(entity) : id
+      ? `<div class="directory-inspector-top"><h2 id="directory-inspector-heading" tabindex="-1">Record unavailable</h2><button type="button" id="close-directory-inspector" class="atlas-button directory-inspector-close" aria-label="Close record inspection">${icon('close')}</button></div><p>This record is missing from the current Atlas snapshot.</p>`
+      : '<div class="directory-inspector-empty"><h2>Company details</h2><p>Inspect a company to see its record and sources.</p></div>';
     watchImages(panel);
   }
   if (entity) {
@@ -442,6 +500,19 @@ function watchImages(owner) {
 const opportunityFilters={country:'all',includeUnknown:false,kind:'all',access:'all'};
 const partnerFilters={partnerProvider:'all',partnerEvidence:'all',partnerLogo:false,partnerCountry:'all'};
 
+function updateDirectoryHeading() {
+  const titles={all:'Directory',opportunities:'Opportunities',partners:'Partner index',saved:'Saved opportunities'};
+  const subtitles={
+    all:'Search companies, people, programmes and partners.',
+    opportunities:'Find sourced credits and founder programmes.',
+    partners:'Explore organisations and their published connections.',
+    saved:'Return to opportunities you saved in this browser.',
+  };
+  const company=isCompanyView();
+  byId('directory-heading').textContent=company ? (optionsViewport.matches?'Companies':'Company directory') : titles[state.view];
+  byId('directory-subtitle').textContent=company ? 'Find a company. Inspect the evidence.' : subtitles[state.view];
+}
+
 function render({moveInspectionFocus=false}={}) {
   if (!data) return;
   syncControls();
@@ -461,17 +532,20 @@ function render({moveInspectionFocus=false}={}) {
     : queryMatches.filter(item=>state.entityKind==='all'||item.kind===state.entityKind)) : [];
   const entities=orderEntities(matches, controls.sort.value);
   const leads=isPartners ? filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships,name=>!!logoFor(name),mappedLocations,data.partnerProfiles) : null;
-  const result=isAll ? {total:entities.length,rows:entities.slice(0,visible)}
-    : isPartners ? {total:leads.length,rows:leads.slice(0,visible)} : opportunityRows(data.opportunities,state,saved,visible);
-  const shown=result.rows, total=result.total;
+  const filtered=isAll ? entities : isPartners ? leads : opportunityRows(data.opportunities,state,saved,data.opportunities.length).rows;
+  const shown=filtered.slice(0,visible), total=filtered.length;
+  exportRecords=exportRows(filtered);
   resultIds=new Set(matches.map(item=>item.id));
   document.querySelector('.filters').hidden=isPartners||isAll;
   byId('entity-filter').hidden=!isAll;
   byId('partner-filter-controls').hidden=!isPartners;
   explorationHost.hidden=!showCompanyFilters();
+  fieldsHost.hidden=!showCompanyFilters();
   if (showCompanyFilters()) exploration?.update(state,queryMatches);
   layout.classList.toggle('partner-view',isPartners);
   layout.classList.toggle('all-view',isAll);
+  layout.classList.toggle('directory-company-view',companyView);
+  layout.classList.toggle('directory-company-results',companyView && total>0);
   layout.dataset.density=state.density;
   byId('entity-columns').hidden=!isAll || !total || companyView;
   byId('directory-company-options').hidden=!companyView;
@@ -484,10 +558,10 @@ function render({moveInspectionFocus=false}={}) {
   if (!isAll) byId('directory-note').innerHTML=isPartners
     ? '<p><strong>Provider-listed</strong> means a provider source names the organisation. Self-reported relationships and historical leads are labelled separately. Mapped locations describe selected offices or programmes.</p>'
     : '<p>Confirm eligibility and award conditions in the original source. A location marked <strong>to verify</strong> needs further research.</p>';
-  byId('directory-heading').textContent=companyView?'Company directory':'Directory';
+  updateDirectoryHeading();
   byId('result-title').textContent=companyView?'Companies':isAll?'Records':isPartners?'Partner index':state.view==='saved'?'Saved opportunities':'Researched opportunities';
   byId('result-count').textContent=isAll&&!graphStore ? 'Unavailable' : `${total} ${total===1?'result':'results'}`;
-  byId('graph-search-shortcut').hidden=!isAll;
+  byId('graph-search-shortcut').hidden=!isAll || companyView;
   byId('graph-search-shortcut').href=graphHref();
   byId('result-columns').hidden=isAll || isPartners || !total;
   byId('saved-count').textContent=String(saved.size);
@@ -515,7 +589,7 @@ function render({moveInspectionFocus=false}={}) {
   }
   byId('result-range').textContent=total ? `Showing ${shown.length} of ${total} results` : '';
   byId('load-more').hidden=visible>=total;
-  byId('load-more').textContent=`Load more · ${Math.min(pageSize,Math.max(0,total-visible))} of ${Math.max(0,total-visible)} remaining ↓`;
+  byId('load-more').textContent='Load more ↓';
   watchImages(results);
   renderInspector({moveFocus:moveInspectionFocus});
   if (focusedInspection) focusInspectionTrigger(focusedInspection);
@@ -524,6 +598,7 @@ function render({moveInspectionFocus=false}={}) {
 
 function update(partial,{keepRange=false,historyMode='push',inspectOnly=false,moveFocus=false}={}) {
   searchEntry=false;
+  if (mobileOptions.open && partial.view && partial.view!==state.view) mobileOptions.open=false;
   Object.assign(state,partial);
   if (!keepRange) visible=pageSize;
   writeUrl(historyMode);
@@ -611,7 +686,14 @@ controls.includeUnknown.addEventListener('change',event=>update({includeUnknown:
 controls.kind.addEventListener('change',event=>update({kind:event.target.value}));
 controls.access.addEventListener('change',event=>update({access:event.target.value}));
 controls.sort.addEventListener('change',event=>update({sort:event.target.value},{keepRange:true}));
-controls.density.addEventListener('change',event=>update({density:event.target.value},{keepRange:true}));
+function changeDensity(value) {
+  if (['comfortable','compact'].includes(value) && state.density!==value) update({density:value},{keepRange:true});
+}
+controls.density.addEventListener('change',event=>changeDensity(event.target.value));
+densityControl.addEventListener('valuechange',event=>changeDensity(event.detail.value));
+densityControl.addEventListener('click',event=>{
+  if (!densityControl.api) changeDensity(event.target.closest('[data-density-value]')?.dataset.densityValue);
+});
 for (const key of companyColumns.keys()) {
   byId('column-'+key).addEventListener('change',event=>{
     const columns=new Set(activeColumns());
@@ -700,6 +782,11 @@ byId('directory-inspector-reopen').addEventListener('click',()=>{
 sheetViewport.addEventListener?.('change',()=>{
   if (data) syncInspectorPlacement();
 });
+optionsViewport.addEventListener?.('change',()=>{
+  placeDirectoryOptions();
+  if (data) updateDirectoryHeading();
+});
+window.customElements?.whenDefined('ui-popover').then(placeDirectoryOptions);
 window.customElements?.whenDefined('ui-dialog').then(()=>{
   if (data) syncInspectorPlacement();
 });

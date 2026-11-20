@@ -2,7 +2,7 @@
 
 This document defines the information architecture, data requirements and next implementation slices for the directory, treemaps, relationship graph, startup profiles and partner/VC profiles. It complements the visual decisions in [DESIGN.md](../DESIGN.md) and the interaction ownership in [UX-CONTRACT.md](../UX-CONTRACT.md).
 
-The five source [interface wireframes, 01–05](../web/design-lab.html?collection=source#gallery), are the visual authority for these views: shared forest masthead, paper page, white research panels, serif entity names, adjacent inspection and terracotta selection. Their generated names, figures and example relationships remain illustrative; runtime data and behaviour follow the contracts below.
+The [approved editorial wireframes](design/editorial/README.md) govern the explorers and company profile. A slim paper masthead, separate view toolbar, serif identity, adjacent inspection and rust selection carry across them. Reviewed Atlas records supply the live names, figures and relationships.
 
 [Direction studies 06–10](VIEW-DIRECTION-STUDIES.md) extend that language into founder dossiers, funding-event detail, startup comparison and browser-local research collections, plus a more elevated list/search treatment. These four new journeys and one visual refinement are proposals with explicit prerequisites, not additional deployed capabilities or runtime token changes.
 
@@ -21,20 +21,20 @@ The existing static architecture remains appropriate for this work: native ES mo
 | Area | Existing or delivered in this pass | Subsequent work |
 | --- | --- | --- |
 | Foundations | Shared token stylesheet, wireframe-aligned masthead, serif identity rows, selected-state primitives and design-system catalogue. Existing route markup remains native HTML and JavaScript. | Maintain wireframe parity and token reuse as additional components are introduced. |
-| Directory | Cross-entity search, entity-kind filter, opportunity and partner-specific filters, explicit Load more, URL query/filter/`shown` state, local record inspection and browser-local saved opportunities. | Selected-record deep links, exact scroll restoration, saved entity collections, comparison and source-backed startup facets. |
-| Treemap | Startup tiles, metric/currency controls, founding-decade grouping, drill-down, evidence inspector, ranked-list equivalent and shareable route state. | Additional sourced grouping dimensions, selected-tile URL state, cross-view scope transfer and partner-scoped distributions. |
-| Graph | Focused one/two-hop neighbourhood, force layout, dragging and keyboard movement, type filters, evidence list and joined inspection panel. A dark root, terracotta selection, sparse source-backed captions and separate rerooting preserve context. | Persisted layout/pins and viewport history, incremental expansion, omitted-connection browsing and relationship-type filters. |
+| Directory | Cross-entity search, startup facets, opportunity and partner filters, URL-addressed selection, incremental results, evidence coverage and company comparison. | Richer sourced facts and saved collections. |
+| Treemap | Startup tiles, measure/currency controls, location drill-down, evidence inspector, ranked-list equivalent and shareable selection and scope. | Additional sourced measures and partner-scoped distributions. |
+| Graph | Focused one/two-hop neighbourhood, force layout, dragging and keyboard movement, type filters, evidence list and inspection panel. White cards, rust selection, source-backed captions and separate rerooting preserve context. | Incremental expansion, omitted-connection browsing and relationship-type filters. |
 | Startup explorer | Founders, sourced company facts, connections, funding events and articles; clearer section hierarchy and shared visual primitives. | Structured operating geography/sectors/status, event participants, ownership history and independently sourced comparable-company discovery. |
 | Partner/VC explorer | Identity/type, researched company and people samples, selected-company inspection, programme/provider relationships and review notes. | Partner-scoped company filtering and treemap/graph lenses, selected-company deep links, sourced investment thesis, fund identities, relationship/date filters and structured portfolio coverage. |
 | Return context | Shared view links propagate query; internal profile links capture their source route in allowlisted per-tab session storage, including supported query/filter/displayed-range state. | Exact list scroll restoration, full filter adaptation across views, cross-tab context transfer and full graph viewport restoration. |
 
-The current saved-opportunities feature is local to the browser. It does not imply that startups, people, searches or graph arrangements can already be saved. No comparison, export, contact, application or data-editing action should appear as operational until its behaviour is implemented.
+Saved opportunities, companies, explorer views, comparisons and notes are stored in the current browser. Save view keeps the explorer URL. Graph pins and camera remain session-local.
 
 ## Information architecture
 
 ### Global and contextual navigation
 
-The shared forest masthead contains **List & search**, **Treemap** and **Graph** navigation. It uses links and `aria-current="page"`; it is not an ARIA tab widget because it changes documents. Operational pages use one masthead rather than repeating a second route bar in the body. A profile section navigation is a set of anchors into that document, not a promise that content has been independently fetched.
+The shared masthead contains site navigation and global search. The explorer heading contains **Treemap**, **Graph** and **List** links with `aria-current="page"` on the active destination. **Save view** stores the scoped view URL in this browser, and **Export** downloads the current record set. Profile section navigation uses anchors into the current document.
 
 ### Responsive composition
 
@@ -128,7 +128,7 @@ Show the plotted count, excluded count and reason beside the measure. A sum of h
 
 **Job:** explain a selected neighbourhood and enable a deliberate next step through its evidence.
 
-The graph follows the wireframe's pale dot-grid canvas, dark forest root card, serif names, named kind chips and terracotta inspected outline. The inspector is joined to the canvas, while search, type, depth and list controls share one toolbar. Force direction improves spacing and local structure without continuously disturbing reading. Internal layout groups guide placement; visible cluster boundaries are not drawn as additional relationship evidence.
+The graph uses a solid paper canvas, white cards, serif names and a rust selection outline. The top tray contains company facets and search. Type, depth, list and pin controls sit above the graph, with camera controls below it. Founders enter from the left and organisations from the right where the recorded neighbourhood permits. The white inspector begins with the entity’s identity and a sourced relationship.
 
 ### Root, selection and layout
 

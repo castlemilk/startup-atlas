@@ -29,28 +29,59 @@
   <header class="atlas-masthead" data-atlas-masthead="directory"></header>
   <main>
     <section class="workspace" id="directory" aria-labelledby="directory-heading">
-      <header class="directory-heading">
-        <h1 id="directory-heading" tabindex="-1">Directory</h1>
-        <ui-segmented-control id="directory-scope" class="mode-switch" aria-label="Directory view" default-value="all">
-          <ui-segmented-control-item as-child value="all"><button type="button" id="tab-all" data-view="all" class="mode active">All <span id="all-tab-count">—</span></button></ui-segmented-control-item>
-          <ui-segmented-control-item as-child value="opportunities"><button type="button" id="tab-opportunities" data-view="opportunities" class="mode">Opportunities <span id="opportunity-tab-count">—</span></button></ui-segmented-control-item>
-          <ui-segmented-control-item as-child value="partners"><button type="button" id="tab-partners" data-view="partners" class="mode">Partner index <span id="partner-tab-count">—</span></button></ui-segmented-control-item>
-          <ui-segmented-control-item as-child value="saved"><button type="button" id="tab-saved" data-view="saved" class="mode saved-mode">Saved opportunities <span id="saved-count">0</span></button></ui-segmented-control-item>
-        </ui-segmented-control>
+      <header class="atlas-explorer-heading directory-heading">
+        <div class="directory-heading-copy">
+          <h1 id="directory-heading" tabindex="-1">Company directory</h1>
+          <p id="directory-subtitle">Find a company. Inspect the evidence.</p>
+        </div>
+        <div data-atlas-explorer-actions="directory"></div>
       </header>
-      <div class="directory-layout" id="directory-panel" role="region" aria-labelledby="tab-all">
+      <div class="directory-layout" id="directory-panel" role="region" aria-label="Directory results">
         <div class="directory-toolbar">
+          <div id="directory-exploration-fields" class="directory-exploration-fields" hidden></div>
           <div class="search-field">
             <div class="search-field-control search-wrap">
               <svg class="search-field-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.25"></circle><path d="m15.3 15.3 4.2 4.2"></path></svg>
-              <label class="directory-search-label" for="search">Search the directory</label>
-              <input id="search" type="search" placeholder="Search the Atlas" autocomplete="off">
+              <label class="directory-search-label sr-only" for="search">Search the directory</label>
+              <input id="search" type="search" placeholder="Filter companies" autocomplete="off">
               <button id="clear-search" class="search-field-clear clear-search" type="button" aria-label="Clear search" data-atlas-clear-for="search" hidden>×</button>
             </div>
           </div>
-        <div class="entity-filter" id="entity-filter"><label class="sr-only" for="entity-kind">Entity type</label><select id="entity-kind"><option value="all">All types</option><option value="startup">Startups</option><option value="person">People</option><option value="partner">Partners</option><option value="provider">Providers</option><option value="programme">Programmes</option></select></div>
+          <div id="directory-company-options-seat">
+            <div class="directory-company-options" id="directory-company-options" hidden>
+              <ui-popover id="directory-columns">
+                <ui-popover-trigger><button type="button" class="atlas-button directory-columns-trigger"><svg class="atlas-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01"/></svg>Columns</button></ui-popover-trigger>
+                <ui-popover-content class="directory-columns-panel" align="end" side-offset="6" collision-padding="12" keep-mounted hidden>
+                  <ui-popover-title>Visible columns</ui-popover-title>
+                  <label><input type="checkbox" id="column-headquarters" data-company-column="headquarters"> Headquarters</label>
+                  <label><input type="checkbox" id="column-sector" data-company-column="sector"> Sector</label>
+                  <label><input type="checkbox" id="column-stage" data-company-column="stage"> Recorded stage</label>
+                  <label><input type="checkbox" id="column-source-check" data-company-column="source-check"> Last profile fact review</label>
+                  <button type="button" id="reset-directory-columns" class="atlas-button">Restore defaults</button>
+                </ui-popover-content>
+              </ui-popover>
+              <div class="directory-density-field">
+                <select id="directory-density" aria-label="Row density" data-atlas-native="select" hidden><option value="comfortable">Editorial</option><option value="compact">Compact</option></select>
+                <ui-segmented-control id="directory-density-view" class="directory-presentation directory-density" aria-label="Row density" default-value="comfortable">
+                  <ui-segmented-control-item as-child value="comfortable"><button type="button" data-density-value="comfortable">Editorial</button></ui-segmented-control-item>
+                  <ui-segmented-control-item as-child value="compact"><button type="button" data-density-value="compact">Compact</button></ui-segmented-control-item>
+                </ui-segmented-control>
+              </div>
+              <ui-segmented-control id="directory-presentation" class="directory-presentation" aria-label="Company result view" default-value="details" hidden>
+                <ui-segmented-control-item as-child value="details"><button type="button" id="company-view-details" data-company-view="details">Details</button></ui-segmented-control-item>
+                <ui-segmented-control-item as-child value="coverage"><button type="button" id="company-view-coverage" data-company-view="coverage">Coverage</button></ui-segmented-control-item>
+              </ui-segmented-control>
+            </div>
+          </div>
+          <ui-popover id="directory-mobile-options" class="directory-mobile-options">
+            <ui-popover-trigger><button type="button" class="atlas-button" id="directory-options-trigger" aria-label="Directory options"><svg class="atlas-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h.01M12 12h.01M19 12h.01" stroke-width="3"/></svg></button></ui-popover-trigger>
+            <ui-popover-content class="directory-options-panel" align="end" side-offset="6" collision-padding="12" keep-mounted hidden>
+              <ui-popover-title>Directory options</ui-popover-title>
+              <div id="directory-options-panel-body"></div>
+            </ui-popover-content>
+          </ui-popover>
         <aside class="filters" aria-label="Filter opportunities">
-          <div class="filter-heading"><h3>Refine your search</h3><button type="button" class="text-button" id="reset-filters">Reset</button></div>
+          <div class="filter-heading"><h2>Refine your search</h2><button type="button" class="text-button" id="reset-filters">Reset</button></div>
           <div class="filter-group market-filter"><label for="country">Your market</label><p>Named markets and worldwide programmes.</p><select id="country"><option value="all">All locations</option><option value="AU">Australia</option><option value="NZ">New Zealand</option><option value="US">United States</option><option value="GB">United Kingdom</option><option value="CA">Canada</option><option value="IN">India</option><option value="SG">Singapore</option><option value="JP">Japan</option><option value="KR">South Korea</option><option value="BR">Brazil</option><option value="ZA">South Africa</option><option value="FR">France</option></select><label class="check-label"><input type="checkbox" id="include-unknown"> <span>Include locations to verify</span></label></div>
           <div class="filter-group"><label for="kind">What are you looking for?</label><select id="kind"><option value="all">All resource types</option><option>AI model credits</option><option>Cloud credits</option><option>GPU &amp; inference</option><option>Developer tools</option><option>Data &amp; analytics</option><option>Business tools</option><option>Founder programmes</option><option>Funding finders</option></select></div>
           <div class="filter-group"><label for="access">How to access</label><select id="access"><option value="all">All pathways</option><option>Direct</option><option>Partner referral</option><option>Community</option><option>Investment</option></select></div>
@@ -65,43 +96,32 @@
             <label class="partner-logo-toggle"><input type="checkbox" id="partner-logo"><span>Logo available</span></label>
           </div>
         </section>
-        <div id="directory-exploration" class="directory-exploration" hidden></div>
         </div>
         <div class="directory-results-chrome">
-          <div class="filter-bar" id="active-filter-bar" hidden><div class="filter-bar-head"><span class="filter-bar-title">Active filters <strong id="active-filter-count"></strong></span><button type="button" class="filter-bar-clear" id="clear-active-filters">Clear filters</button></div><ul class="filter-bar-chips" id="active-filter-chips" aria-label="Active filters"></ul></div>
-          <div class="result-bar">
-            <div class="directory-result-summary"><span class="result-label" id="result-title">Records</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span><a class="graph-search-shortcut" id="graph-search-shortcut" href="./graph.html">Explore the graph ↗</a><button class="atlas-button" type="button" id="directory-inspector-reopen" hidden>View selection</button></div>
-            <div class="directory-display-options">
-              <div class="directory-company-options" id="directory-company-options" hidden>
-                <ui-popover id="directory-columns">
-                  <ui-popover-trigger><button type="button" class="atlas-button directory-columns-trigger">Columns</button></ui-popover-trigger>
-                  <ui-popover-content class="directory-columns-panel" align="end" side-offset="6" collision-padding="12" keep-mounted hidden>
-                    <ui-popover-title>Visible columns</ui-popover-title>
-                    <label><input type="checkbox" id="column-headquarters" data-company-column="headquarters"> Headquarters</label>
-                    <label><input type="checkbox" id="column-sector" data-company-column="sector"> Sector</label>
-                    <label><input type="checkbox" id="column-stage" data-company-column="stage"> Recorded stage</label>
-                    <label><input type="checkbox" id="column-source-check" data-company-column="source-check"> Last profile fact review</label>
-                    <button type="button" id="reset-directory-columns" class="atlas-button">Restore defaults</button>
-                  </ui-popover-content>
-                </ui-popover>
-                <div class="directory-density-field"><label class="sr-only" for="directory-density">Row density</label><select id="directory-density"><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select></div>
-                <ui-segmented-control id="directory-presentation" class="directory-presentation" aria-label="Company result view" default-value="details" hidden>
-                  <ui-segmented-control-item as-child value="details"><button type="button" id="company-view-details" data-company-view="details">Details</button></ui-segmented-control-item>
-                  <ui-segmented-control-item as-child value="coverage"><button type="button" id="company-view-coverage" data-company-view="coverage">Coverage</button></ui-segmented-control-item>
-                </ui-segmented-control>
-              </div>
+          <div id="directory-exploration" class="directory-exploration" hidden></div>
+          <div id="directory-scope-controls-seat">
+            <div class="directory-scope-controls" id="directory-scope-controls">
+              <ui-segmented-control id="directory-scope" class="mode-switch" aria-label="Directory view" default-value="all">
+                <ui-segmented-control-item as-child value="all"><button type="button" id="tab-all" data-view="all" class="mode active">All <span id="all-tab-count">—</span></button></ui-segmented-control-item>
+                <ui-segmented-control-item as-child value="opportunities"><button type="button" id="tab-opportunities" data-view="opportunities" class="mode">Opportunities <span id="opportunity-tab-count">—</span></button></ui-segmented-control-item>
+                <ui-segmented-control-item as-child value="partners"><button type="button" id="tab-partners" data-view="partners" class="mode">Partner index <span id="partner-tab-count">—</span></button></ui-segmented-control-item>
+                <ui-segmented-control-item as-child value="saved"><button type="button" id="tab-saved" data-view="saved" class="mode saved-mode">Saved opportunities <span id="saved-count">0</span></button></ui-segmented-control-item>
+              </ui-segmented-control>
+              <div class="entity-filter" id="entity-filter"><label class="sr-only" for="entity-kind">Entity type</label><select id="entity-kind"><option value="all">All types</option><option value="startup">Startups</option><option value="person">People</option><option value="partner">Partners</option><option value="provider">Providers</option><option value="programme">Programmes</option></select></div>
               <div class="directory-sort-field"><label class="sort-label" for="sort">Sort</label><select id="sort"><option value="recommended">Featured first</option><option value="name">Name A–Z</option></select></div>
             </div>
           </div>
+          <div class="filter-bar" id="active-filter-bar" hidden><div class="filter-bar-head"><span class="filter-bar-title">Active filters <strong id="active-filter-count"></strong></span><button type="button" class="filter-bar-clear" id="clear-active-filters">Clear filters</button></div><ul class="filter-bar-chips" id="active-filter-chips" aria-label="Active filters"></ul></div>
+          <div class="directory-result-summary" id="directory-result-summary"><span class="result-label" id="result-title">Records</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span><a class="graph-search-shortcut" id="graph-search-shortcut" href="./graph.html">Explore the graph ↗</a><button class="atlas-button" type="button" id="directory-inspector-reopen" hidden>View selection</button></div>
         </div>
         <div class="results">
           <div class="inline-note" id="directory-note" hidden></div>
           <div class="directory-evidence-legend" id="directory-evidence-legend" hidden>
             <h2>Evidence coverage</h2>
             <ul aria-label="Source count scale">
-              <li><i data-level="1" aria-hidden="true"></i>1 source</li>
-              <li><i data-level="2" aria-hidden="true"></i>2 sources</li>
               <li><i data-level="3" aria-hidden="true"></i>3+ sources</li>
+              <li><i data-level="2" aria-hidden="true"></i>2 sources</li>
+              <li><i data-level="1" aria-hidden="true"></i>1 source</li>
               <li><i data-level="0" aria-hidden="true"></i>Unknown</li>
             </ul>
             <p>Distinct source links per column</p>
@@ -109,10 +129,13 @@
           <div class="result-columns" id="result-columns" aria-hidden="true"><span>Opportunity</span><span>Resource</span><span>Location</span><span>Benefit</span><span>Status &amp; source</span><span></span></div>
           <div class="directory-entity-columns" id="entity-columns" aria-hidden="true" hidden><span>Entity &amp; evidence</span><span>Type</span><span>Explore</span></div>
           <div id="results-list" class="cards" aria-busy="true"><p class="loading">Loading directory…</p></div>
-          <p id="result-range" class="atlas-result-range" role="status"></p>
-          <div class="load-more-wrap"><button id="load-more" class="load-more" type="button" hidden>Load more <span aria-hidden="true">↓</span></button></div>
+          <div class="directory-result-footer">
+            <div class="load-more-wrap"><button id="load-more" class="load-more" type="button" hidden>Load more <span aria-hidden="true">↓</span></button></div>
+            <p id="result-range" class="atlas-result-range" role="status"></p>
+          </div>
         </div>
         <div id="directory-inspector-seat" hidden><aside id="directory-inspector" class="directory-inspector" aria-label="Inspected record" hidden></aside></div>
+        <div data-atlas-compare-tray></div>
       </div>
       <nav class="directory-context-links" aria-label="More ways to explore"><a href="#atlas">Browse places &amp; organisations ↓</a><a href="./docs/partner-index.html">A–Z partner index ↗</a></nav>
     </section>

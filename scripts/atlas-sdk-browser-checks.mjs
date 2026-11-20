@@ -71,7 +71,7 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await assertAgentChange('Search the directory','Canva');
   await traceNative('#entity-kind','change','type');
   const allTypes=await choose('Entity type',/^All types$/);
-  await until(()=>evaluate("document.querySelector('#entity-kind').value==='all'&&!new URLSearchParams(location.search).has('type')"),'Agent selection did not update the directory type');
+  await until(()=>evaluate("document.querySelector('#entity-kind').value==='all'&&new URLSearchParams(location.search).get('type')==='all'"),'Agent selection did not update the directory type');
   assert.equal(await nativeCount('type'),1,'One SDK select action must dispatch one native change event');
   await assertAgentChange('Entity type',allTypes.value);
   const trigger='ui-select[data-native-id="entity-kind"] .atlas-select-trigger';

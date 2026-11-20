@@ -319,14 +319,14 @@ try {
   await assertNoOverflow('390px partner profile');
   await screenshot('atlas-partner-mobile.png',true);
 
-  await navigate('/',"!!document.querySelector('.atlas-masthead [data-atlas-view=directory][aria-current=page] .signal-feature-symbol')");
+  await navigate('/',"!!document.querySelector('[data-atlas-explorer-actions] [data-atlas-view=directory][aria-current=page]')");
   const masthead=await evaluate(`(()=>{
     const bar=document.querySelector('.atlas-masthead');
     return {
       brand:getComputedStyle(bar.querySelector('.atlas-wordmark')).fontFamily,
       body:getComputedStyle(document.body).fontFamily,
       paper:getComputedStyle(bar).backgroundColor,
-      selected:getComputedStyle(bar.querySelector('[aria-current=page]')).backgroundColor
+      selected:getComputedStyle(document.querySelector('[data-atlas-explorer-actions] [aria-current=page]')).backgroundColor
     };
   })()`);
   assert.match(masthead.brand,/^"?Atlas Newsreader/);

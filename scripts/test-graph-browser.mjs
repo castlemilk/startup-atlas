@@ -96,20 +96,35 @@ try {
         const shell=element.querySelector('.node-shell').getBBox(),label=element.querySelector('.node-label').getBBox(),kind=element.querySelector('.node-kind').getBBox();
         return {id:element.dataset.node,rect:rect(element),shell:{x:shell.x,y:shell.y,width:shell.width,height:shell.height},label:{x:label.x,y:label.y,width:label.width,height:label.height},kind:{x:kind.x,y:kind.y,width:kind.width,height:kind.height},font:getComputedStyle(element.querySelector('.node-label')).fontFamily};
       });
+      const canvas=svg.closest('.network-canvas'),rail=document.querySelector('#graph-detail');
+      const rootShell=getComputedStyle(root.querySelector('.node-shell'));
       return {title:document.querySelector('h1').textContent,mastheads:document.querySelectorAll('[data-atlas-masthead="graph"]').length,
-        activeRoute:document.querySelector('.atlas-masthead [data-atlas-view="graph"]')?.getAttribute('aria-current'),bodyNavigation:document.querySelectorAll('main [data-atlas-navigation]').length,
-        toolbarOwnsControls:['graph-query','graph-depth','graph-list-toggle','graph-filters'].every(id=>document.getElementById(id).closest('.explorer-toolbar')),
-        rootFill:getComputedStyle(root.querySelector('.node-shell')).fill,rootText:getComputedStyle(root.querySelector('.node-label')).fill,ink:color('--atlas-ink'),onAction:color('--atlas-on-action'),
+        activeRoute:document.querySelector('[data-atlas-explorer-actions] [data-atlas-view="graph"]')?.getAttribute('aria-current'),mastheadViews:document.querySelectorAll('.atlas-masthead [data-atlas-view]').length,
+        toolbarOwnsControls:['graph-depth','graph-list-toggle','graph-filters','graph-pin'].every(id=>document.getElementById(id).closest('.network-toolbar')),
+        scopeOwnsControls:['graph-query','atlas-hq-value','atlas-sector','atlas-stage'].every(id=>document.getElementById(id).closest('.graph-filter-tray')),
+        rootFill:rootShell.fill,rootStroke:rootShell.stroke,accent:color('--atlas-accent'),surface:color('--atlas-surface'),rootText:getComputedStyle(root.querySelector('.node-label')).fill,ink:color('--atlas-ink'),
+        noGrid:getComputedStyle(canvas).backgroundImage==='none',canvas:rect(canvas),rail:rect(rail),
+        mark:rect(rail.querySelector('.detail-mark')),railTitle:rect(rail.querySelector('h2')),
         dock:[...document.querySelectorAll('.network-scale button')].map(rect),captions,nodes,list:document.querySelector('#graph-list').textContent};
     })()`);
-    assert.equal(presentation.title,'Follow the connections.');
+    assert.equal(presentation.title,'Canva / Relationships');
     assert.equal(presentation.mastheads,1,'Graph must use one shared masthead');
-    assert.equal(presentation.activeRoute,'page','The masthead must identify the graph route');
-    assert.equal(presentation.bodyNavigation,0,'Graph must not repeat the masthead navigation');
-    assert.equal(presentation.toolbarOwnsControls,true,'Search, types, depth and connections belong to one toolbar');
-    assert.equal(presentation.rootFill,presentation.ink,'The map root must use the forest identity card');
-    assert.equal(presentation.rootText,presentation.onAction,'The dark root must have contrasting name text');
+    assert.equal(presentation.activeRoute,'page','The page toolbar must identify the graph route');
+    assert.equal(presentation.mastheadViews,0,'The masthead must leave explorer views to the page toolbar');
+    assert.equal(presentation.toolbarOwnsControls,true,'Relationship controls belong beside the graph');
+    assert.equal(presentation.scopeOwnsControls,true,'Search and company facets share the warm tray');
+    assert.equal(presentation.rootFill,presentation.surface,'The map root must be a white identity card');
+    assert.equal(presentation.rootText,presentation.ink,'Graph titles use forest ink');
+    if(viewport==='desktop') {
+      assert.equal(presentation.rootStroke,presentation.accent,'The selected root has a rust outline');
+      assert.ok(presentation.rail.x>presentation.canvas.x+presentation.canvas.width,'The inspector must sit beside the chart');
+      assert.ok(presentation.mark.width>=150&&presentation.mark.y<presentation.railTitle.y,'A company wordmark leads the inspector');
+      const root=presentation.nodes.find(node=>node.id==='startup:canva');
+      assert.ok(presentation.nodes.filter(node=>node.id.startsWith('person:')).every(node=>node.rect.x<root.rect.x),'Founders sit to the left of the selected company');
+    }
+    assert.equal(presentation.noGrid,true,'The graph uses a solid paper canvas');
     assert.ok(presentation.dock.every(button=>Math.abs(button.y-presentation.dock[0].y)<=1),viewport+' camera controls must form a horizontal dock');
+    assert.ok(presentation.dock[0].y>=presentation.canvas.y+presentation.canvas.height,'Camera controls belong below the canvas');
     for(const node of presentation.nodes){
       assert.match(node.font,/^"?Atlas Newsreader/i,'Graph identity names must share the editorial display typeface');
       for(const [name,box] of [['name',node.label],['kind',node.kind]]){
@@ -151,7 +166,7 @@ try {
     })()`).catch(()=>'<unavailable>'),exceptions,browserMessages,
   });
   await command('Page.enable');await command('Runtime.enable');
-  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
+  await command('Emulation.setDeviceMetricsOverride',{width:1586,height:992,deviceScaleFactor:1,mobile:false});
   await command('Page.navigate',{url:`${address}/graph.html?entity=startup%3Acanva`});
   try {
     await until(()=>evaluate("!!document.querySelector('[data-node=\"person:melanie-perkins\"]') && document.querySelector('#graph-detail h2')?.textContent==='Canva'"),'Graph did not render');
@@ -185,7 +200,10 @@ try {
   await command('Input.dispatchKeyEvent',{type:'keyUp',key:'ArrowRight',code:'ArrowRight',windowsVirtualKeyCode:39});
   const keyboard=await evaluate(`${nodeExpression}.getAttribute('transform')`);
   assert.notEqual(keyboard,moved,'Arrow keys must move the focused node');
+  await evaluate("document.querySelector('.network-types summary').click()");
+  assert.equal(await evaluate("document.querySelector('#graph-filters').checkVisibility()"),true,'Entity types exposes the existing type controls');
   await evaluate("document.querySelector('#graph-filters button[data-kind=person]').click();document.querySelector('#graph-filters button[data-kind=person]').click()");
+  await evaluate("document.querySelector('.network-types summary').click()");
   const restored=await evaluate(`${nodeExpression}.getAttribute('transform')`);
   const coordinates=value=>value.match(/-?\d+(?:\.\d+)?/g).map(Number);
   const keyboardPosition=coordinates(keyboard);
@@ -229,6 +247,10 @@ try {
   await evaluate("document.querySelector('#graph-fit').click()");
   assert.deepEqual(await evaluate("[...document.querySelectorAll('.network-node')].map(node=>[node.dataset.node,node.getAttribute('transform')])"),placedNodes,'Fit view must preserve manual node positions');
   assert.notEqual(await evaluate("document.querySelector('#graph-canvas').getAttribute('viewBox')"),inspectedViewBox,'Fit view must adjust the panned and zoomed viewport');
+  assert.equal(await evaluate("document.querySelector('#graph-zoom-number').textContent"),'100%');
+  assert.equal(await evaluate("document.querySelector('#graph-pin').getAttribute('aria-pressed')"),'true','A manually moved selection shows its pinned state');
+  await evaluate("document.querySelector('#graph-pin').click()");
+  assert.equal(await evaluate("document.querySelector('#graph-pin').getAttribute('aria-pressed')"),'false','The toolbar can release a pinned node');
   await evaluate("document.querySelector('#graph-list-toggle').click()");
   assert.equal(await evaluate("document.querySelector('#graph-list').hidden"),false);
   assert.ok(await evaluate("document.querySelectorAll('#graph-list a[href^=\"https://\"]').length")>0,'List must show evidence links');

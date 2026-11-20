@@ -54,11 +54,25 @@ export function createProfileEvidence(subject) {
     return claims.push({ label, value, citations, fields, note }) - 1;
   }
 
-  function action(id, label = 'Sources') {
+  function previewContent(claim) {
+    const citation = claim.citations[0];
+    const publisher = citation.publisher || (sourceUrl(citation.url) && new URL(citation.url).hostname.replace(/^www\./, ''));
+    return `<span class="profile-source-preview-icon">${icon('source')}</span><span class="profile-source-preview-copy"><strong>${esc(claim.label)}</strong><small>${esc(publisher || citationLabel(citation))}${citationDates(citation)}</small></span>${icon('arrow')}`;
+  }
+
+  function action(id, label = 'Sources', format = '') {
     const claim = claims[id];
     if (!claim) return '';
     const fallback = claim.citations.find(item => sourceUrl(item.url));
-    return `<span class="profile-proof" data-profile-claim="${id}">${profileSource(fallback?.url, label, 'profile-proof-direct') || '<span class="profile-citation-unavailable">Source link unavailable</span>'}</span>`;
+    const href = sourceUrl(fallback?.url);
+    const markup = format === 'preview' ? previewContent(claim)
+      : format === 'compact' ? `${icon('source')}<span class="sr-only">${esc(label)}</span>` : esc(label);
+    return `<span class="profile-proof${format ? ` profile-proof-${format}` : ''}" data-profile-claim="${id}"${format ? ` data-claim-format="${format}"` : ''}>${href ? `<a class="profile-proof-direct" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${markup}</a>` : '<span class="profile-citation-unavailable">Source link unavailable</span>'}</span>`;
+  }
+
+  function preview(ids) {
+    const visible = [...new Set(ids)].filter(id => claims[id]);
+    return visible.length ? `<ul class="profile-source-preview">${visible.map(id => `<li>${action(id, 'Source', 'preview')}</li>`).join('')}</ul>` : '';
   }
 
   function index() {
@@ -94,7 +108,10 @@ export function createProfileEvidence(subject) {
         const trigger = document.createElement('ui-dialog-trigger');
         trigger.setAttribute('for', panelId);
         trigger.payload = claim;
-        trigger.innerHTML = `<button class="profile-source-action" type="button" aria-label="Sources for ${esc(claim.label)}">${icon('source')}<span>Sources</span></button>`;
+        const format = holder.dataset.claimFormat;
+        const buttonContent = format === 'preview' ? previewContent(claim) : `${icon('source')}<span${format === 'compact' ? ' class="sr-only"' : ''}>Sources</span>`;
+        trigger.innerHTML = `<button class="profile-source-action" type="button" aria-label="Sources for ${esc(claim.label)}">${buttonContent}</button>`;
+        for (const fallback of holder.children) fallback.hidden = true;
         holder.prepend(trigger);
       }
     });
@@ -121,5 +138,5 @@ export function createProfileEvidence(subject) {
     enhance(scope);
   }
 
-  return { add, action, index, dialog, enhance, install };
+  return { add, action, preview, index, dialog, enhance, install };
 }
