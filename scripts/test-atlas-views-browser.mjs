@@ -201,9 +201,9 @@ try {
   await assertActionContrast('.ds-intro .atlas-button-primary');
   assert.match(await text('#ds-snapshot'),new RegExp(`${graph.entities.length} entity records`));
   const patterns=[
-    {key:'search',art:'discover',path:'/',ready:"d.querySelector('#entity-kind')?.value==='startup'&&d.querySelectorAll('#results-list .entity-row').length>0"},
-    {key:'treemap',art:'evidence',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='funding'&&d.querySelector('#treemap-currency')?.value==='USD'"},
-    {key:'graph',art:'connect',path:'/graph.html',ready:"d.querySelectorAll('.network-node').length>0&&d.querySelector('#graph-detail h2')?.textContent==='Canva'"},
+    {key:'search',path:'/',ready:"d.querySelector('#entity-kind')?.value==='startup'&&d.querySelectorAll('#results-list .entity-row').length>0"},
+    {key:'treemap',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='funding'&&d.querySelector('#treemap-currency')?.value==='USD'"},
+    {key:'graph',path:'/graph.html',ready:"d.querySelectorAll('.network-node').length>0&&d.querySelector('#graph-detail h2')?.textContent==='Canva'"},
     {key:'startup',path:'/entity.html',ready:"d.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#entity-profile h1')?.textContent==='Canva'"},
     {key:'partner',path:'/partner.html',ready:"d.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#profile h1')?.textContent==='Airtree'"}
   ];
@@ -215,14 +215,17 @@ try {
     assert.equal(await evaluate("document.querySelectorAll('[data-pattern][aria-selected=true]').length"),1);
     assert.equal(await evaluate("new URL(document.querySelector('#pattern-open').href).pathname"),pattern.path);
     assert.ok(await evaluate("document.querySelector('#view-preview').title.length>0"),'Iframe needs an accessible title');
-    if (pattern.art) {
-      const artwork=await evaluate(`(async()=>{
+    assert.equal(await evaluate(`(()=>{
+      const doc=document.querySelector('#view-preview').contentDocument;
+      return doc.defaultView.getComputedStyle(doc.body).getPropertyValue('--atlas-paper').trim();
+    })()`),'#fcf9f2','Live previews use the same palette as the full explorer');
+    if (['search','treemap','graph'].includes(pattern.key)) {
+      const intro=await evaluate(`(()=>{
         const doc=document.querySelector('#view-preview').contentDocument;
-        const art=doc.querySelector('.atlas-feature-art img');
-        await art.decode();
-        return {file:new URL(art.currentSrc).pathname.split('/').pop(),alt:art.alt,fit:doc.defaultView.getComputedStyle(art).objectFit};
+        const heading=[...doc.querySelectorAll('main h1')].find(node=>node.getClientRects().length);
+        return {hasTitle:!!heading?.textContent.trim(),images:doc.querySelectorAll('.atlas-feature img').length};
       })()`);
-      assert.deepEqual(artwork,{file:`illustration-${pattern.art}-thumb.webp`,alt:'',fit:'contain'},'Each view uses its original editorial illustration');
+      assert.deepEqual(intro,{hasTitle:true,images:0},'The working view leads with a compact, text-only introduction');
     } else {
       assert.ok(await evaluate("!!document.querySelector('#view-preview').contentDocument.querySelector('.atlas-evidence-heading [aria-hidden=true] .atlas-icon')"),'Profile sources share the decorative evidence mark');
     }
@@ -316,19 +319,19 @@ try {
   await assertNoOverflow('390px partner profile');
   await screenshot('atlas-partner-mobile.png',true);
 
-  await navigate('/',"!!document.querySelector('.atlas-masthead [data-atlas-view=directory][aria-current=page]')");
+  await navigate('/',"!!document.querySelector('.atlas-masthead [data-atlas-view=directory][aria-current=page] .signal-feature-symbol')");
   const masthead=await evaluate(`(()=>{
-    const selected=document.querySelector('.atlas-masthead [aria-current=page]');
+    const bar=document.querySelector('.atlas-masthead');
     return {
-      brand:getComputedStyle(document.querySelector('.atlas-wordmark')).fontFamily,
-      paper:getComputedStyle(document.querySelector('.atlas-view-bar')).backgroundColor,
-      underline:getComputedStyle(selected).borderBottomColor
+      brand:getComputedStyle(bar.querySelector('.atlas-wordmark')).fontFamily,
+      paper:getComputedStyle(bar).backgroundColor,
+      selected:getComputedStyle(bar.querySelector('[aria-current=page]')).backgroundColor
     };
   })()`);
   assert.match(masthead.brand,/Georgia/);
-  assert.equal(masthead.paper,'rgb(247, 243, 234)');
-  assert.equal(masthead.underline,'rgb(157, 69, 38)');
-  assert.equal(await evaluate("getComputedStyle(document.querySelector('.atlas-feature-art')).display"),'none','Small screens give the space to search');
+  assert.equal(masthead.paper,'rgb(252, 249, 242)');
+  assert.equal(masthead.selected,'rgb(18, 43, 34)');
+  assert.ok(await evaluate("document.querySelector('.search-wrap').getBoundingClientRect().top < 450"),'Directory search is visible early on a narrow viewport');
   await assertNoOverflow('390px directory feature');
 
   await command('Network.setBlockedURLs',{urls:['*partner-profiles.json*']});

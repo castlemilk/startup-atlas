@@ -251,6 +251,7 @@ footer a:focus-visible { outline-color: var(--atlas-on-action); }
 }
 @media(max-width: 380px) {
   .atlas-wordmark { font-size: 1.3rem; gap: 10px; }
+  .atlas-masthead .atlas-view-nav .signal-feature-symbol { display: none; }
   .atlas-brand-bar .atlas-system-link { padding-inline: 2px; }
   .atlas-brand-bar .atlas-system-link .atlas-icon { display: none; }
 }
@@ -278,3 +279,105 @@ footer a:focus-visible { outline-color: var(--atlas-on-action); }
 .entity-row[data-selected="true"] { border-radius: var(--atlas-radius-row); outline: 1px solid var(--atlas-accent); outline-offset: -1px; }
 .atlas-result-range, .atlas-coverage strong { font-family: var(--atlas-font-mono); font-variant-numeric: tabular-nums; }
 @media(prefers-reduced-motion:reduce) { .atlas-button:active { transform: none; } }
+
+/* The research routes share the editorial finish. Signal specimens retain their
+   own palette and demonstrate the original controls in the design catalogue. */
+:root:has(> body:is(.atlas-directory-page,.atlas-treemap-page,.atlas-graph-page,.atlas-entity-page,.atlas-partner-page)) {
+  --atlas-ink: #122b22;
+  --atlas-action: #a23e18;
+  --atlas-action-hover: #7d2d13;
+  --atlas-muted: #535f55;
+  --atlas-paper: #fcf9f2;
+  --atlas-canvas: #f7f4ed;
+  --atlas-surface: #fffefa;
+  --atlas-border: #dfd9cd;
+  --atlas-border-strong: #88877b;
+  --atlas-soft: #eeebe2;
+  --atlas-accent: var(--atlas-action);
+  --atlas-selection-soft: #f8ece1;
+  --atlas-focus: var(--atlas-action);
+  --atlas-startup: #285a52;
+  --atlas-startup-soft: #e9f1ed;
+  --atlas-partner: #344981;
+  --atlas-partner-soft: #edf0f8;
+  --atlas-person: #77501d;
+  --atlas-person-soft: #f7eedf;
+  --atlas-programme: #8a4028;
+  --atlas-programme-soft: #f6eae3;
+  --atlas-provider: #456047;
+  --atlas-provider-soft: #edf1e9;
+  --atlas-font-display: Georgia, "Times New Roman", serif;
+  --atlas-radius-control: 6px;
+  --atlas-radius-row: 7px;
+  --atlas-radius-panel: 9px;
+  --atlas-radius-feature: 10px;
+  --atlas-face-top: var(--atlas-surface);
+  --atlas-face-bottom: var(--atlas-surface);
+  --atlas-action-top: var(--atlas-action);
+  --atlas-action-bottom: var(--atlas-action);
+  --atlas-action-border: var(--atlas-action);
+  --atlas-shadow-panel: none;
+  --atlas-shadow-control: none;
+  --atlas-shadow-inset: none;
+  --atlas-scroll-thumb: #9b9a8d;
+  --atlas-scroll-hover: #767a6e;
+  --atlas-scroll-active: #575e53;
+  --atlas-scroll-track: var(--atlas-soft);
+}
+
+body:is(.atlas-directory-page,.atlas-treemap-page,.atlas-graph-page,.atlas-entity-page,.atlas-partner-page) .atlas-masthead {
+  min-height: 62px;
+  gap: 22px;
+  background: var(--atlas-paper);
+  color: var(--atlas-ink);
+  border-color: var(--atlas-border);
+  box-shadow: none;
+}
+
+.atlas-masthead[data-atlas-masthead] .atlas-wordmark {
+  gap: 13px;
+  padding-right: 22px;
+  border-color: var(--atlas-border);
+  color: var(--atlas-ink);
+  font-size: 25px;
+  font-weight: 400;
+  font-style: italic;
+}
+.atlas-masthead[data-atlas-masthead] .atlas-diamond-mark { grid-template-columns: repeat(2, 6px); gap: 2px; }
+.atlas-masthead[data-atlas-masthead] .atlas-diamond-mark i { width: 6px; height: 6px; border-radius: 1px; background: var(--atlas-action); }
+.atlas-masthead[data-atlas-masthead] .atlas-view-nav a { color: var(--atlas-ink); }
+.atlas-masthead[data-atlas-masthead] .atlas-view-nav a:hover { background: var(--atlas-soft); color: var(--atlas-ink); }
+.atlas-masthead[data-atlas-masthead] .atlas-view-nav a[aria-current="page"] {
+  background: var(--atlas-ink);
+  border-color: var(--atlas-ink);
+  color: var(--atlas-on-action);
+  box-shadow: none;
+}
+.atlas-masthead[data-atlas-masthead] a:focus-visible { outline-color: var(--atlas-focus); }
+
+.atlas-feature-editorial {
+  display: block;
+  margin: 0 0 var(--atlas-space-6);
+  padding: 0 0 var(--atlas-space-4);
+  border: 0;
+  border-bottom: 1px solid var(--atlas-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.atlas-feature-editorial h1 {
+  font: 400 clamp(2.3rem, 4.1vw, 4.05rem)/1.04 var(--atlas-font-display);
+  letter-spacing: -.04em;
+}
+.atlas-feature-editorial h1 em { font-weight: inherit; color: var(--atlas-accent); }
+.atlas-feature-editorial p { max-width: 65ch; }
+.atlas-feature-editorial .atlas-feature-link { margin-top: 2px; }
+
+body:is(.atlas-directory-page,.atlas-treemap-page,.atlas-graph-page,.atlas-entity-page,.atlas-partner-page)
+  .atlas-button:is(.atlas-button-primary,.atlas-button-accent):not(:disabled):not([aria-disabled="true"]) { box-shadow: none; }
+
+@media (max-width: 650px) {
+  body:is(.atlas-directory-page,.atlas-treemap-page,.atlas-graph-page,.atlas-entity-page,.atlas-partner-page) .atlas-masthead { gap: 8px; }
+  .atlas-masthead[data-atlas-masthead] .atlas-wordmark { padding-right: 0; }
+  .atlas-feature-editorial { margin-bottom: var(--atlas-space-4); }
+}

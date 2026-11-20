@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111318"><meta name="description" content="Explore the people, companies and programmes connected across Startup Atlas.">
+<meta name="theme-color" content="#fcf9f2"><meta name="description" content="Explore the people, companies and programmes connected across Startup Atlas.">
 <title>Follow the connections — Startup Atlas</title>
 <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./graph.css">
 <script defer src="./vendor/sql.js/sql-wasm.js"></script><script type="module" src="./graph.js"></script>
@@ -14,12 +14,11 @@
 <a class="skip-link" href="#graph-main">Skip to explorer</a>
 <header class="atlas-masthead" data-atlas-masthead="graph"></header>
 <main id="graph-main" class="explorer-shell">
-  <header class="atlas-feature">
+  <header class="atlas-feature atlas-feature-editorial">
     <div class="atlas-feature-copy">
-      <h1>Follow the connections.</h1>
+      <h1>Follow the <em>connections.</em></h1>
       <p>Explore recorded relationships between companies, people and organisations.</p>
     </div>
-    <div class="atlas-feature-art" aria-hidden="true"><img src="./assets/design-lab/illustration-connect-thumb.webp" width="512" height="512" alt="" decoding="async"></div>
   </header>
   <div class="explorer-toolbar">
     <div class="explorer-search-wrap"><form novalidate id="graph-search" class="explorer-search"><label class="visually-hidden" for="graph-query">Search the knowledge graph</label><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="graph-query" type="search" autocomplete="off" placeholder="Search people, startups, partners…" maxlength="200"><button type="button" class="atlas-clear" data-atlas-clear-for="graph-query" aria-label="Clear graph search" hidden><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><button type="submit">Search</button></form><div id="graph-results" class="explorer-results" aria-live="polite" hidden></div></div>
@@ -28,11 +27,11 @@
   </div>
   <p id="graph-status" class="explorer-status" role="status"></p>
   <div class="explorer-workspace">
-    <section class="network-panel" aria-labelledby="network-heading"><div class="network-header"><h2 id="network-heading">A closer look</h2><p>Inspect a card. Follow its evidence.</p></div>
+    <section class="network-panel" aria-labelledby="network-heading"><div class="network-header"><h2 id="network-heading">Connections</h2><p id="graph-count" role="status"></p></div>
       <p class="network-mobile-guide">The map is an overview on small screens. Zoom in to inspect a card, or use the <strong>connections list</strong> for a readable view of the same relationships.</p>
       <div class="network-canvas"><svg id="graph-canvas" viewBox="0 0 1200 720" role="group" aria-label="Interactive relationship graph" aria-describedby="graph-instructions"><text x="600" y="360" text-anchor="middle">Loading the graph…</text></svg><div class="network-scale" role="group" aria-label="Graph zoom"><button id="graph-zoom-in" type="button" aria-label="Zoom in">+</button><button id="graph-zoom-out" type="button" aria-label="Zoom out">−</button><button id="graph-fit" type="button" aria-label="Fit view"><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button><button id="graph-reset" type="button" aria-label="Reset graph layout"><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg></button></div><span class="network-coordinate" aria-hidden="true">DRAG TO EXPLORE</span></div>
       <p id="graph-instructions" class="visually-hidden">Select a node to inspect it without changing the map. Use Explore from here to make it the centre. Drag nodes or use arrow keys to move them; drag the background to pan. Reset restores the automatic layout. The list shows the same visible connections and sources.</p>
-      <div class="network-footer"><div class="network-legend"><span><i class="legend-startup"></i> Startup</span><span><i class="legend-partner"></i> Partner</span><span><i class="legend-person"></i> Person</span><span><i class="legend-programme"></i> Programme</span><span><i class="legend-provider"></i> Provider</span></div><p id="graph-count" role="status"></p></div>
+      <div class="network-footer"><div class="network-legend"><span><i class="legend-startup"></i> Startup</span><span><i class="legend-partner"></i> Partner</span><span><i class="legend-person"></i> Person</span><span><i class="legend-programme"></i> Programme</span><span><i class="legend-provider"></i> Provider</span></div></div>
       <div id="graph-list" class="network-list" hidden></div>
     </section>
     <aside id="graph-detail" class="explorer-detail" aria-live="polite"><p>Loading the selected profile…</p></aside>

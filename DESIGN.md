@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: "Startup Atlas"
-description: "Source-backed startup research with the original editorial field-guide palette."
+description: "Source-backed startup research with an editorial explorer and Signal design reference."
 colors:
   primary: "#19382b"
   masthead: "#16382a"
@@ -33,7 +33,7 @@ rounded:
   feature: "16px"
 spacing:
   page-max: "1640px"
-  graph-gap: "20px"
+  graph-gap: "14px"
   scale: "4px 8px 12px 16px 24px 32px 48px"
 ---
 
@@ -41,13 +41,13 @@ spacing:
 
 ## Overview
 
-Startup Atlas is an open research guide for founders exploring programmes, people, companies and the organisations that connect them. The operational views use the original wireframes’ forest masthead, warm paper, rust selection and serif display. Self-hosted Geist carries controls and evidence text. Geist Mono identifies comparable dates and quantities. The engraved map, notebook and relationship illustrations give each explorer view its own accent. Preserve evidence-led reading order and avoid decorative networks that imply unsupported relationships.
+Startup Atlas is an open research guide for founders exploring programmes, people, companies and the organisations that connect them. The research routes use warm paper, forest navigation, rust actions and serif display type. Self-hosted Geist Sans and Geist Mono serve as interface and data faces. The design catalogue embeds the operational routes as live previews.
 
 The current site is English-language and has desktop and mobile layouts. Global browsing is supported; location does not imply programme eligibility. The shared system now connects list/search, treemap, graph, startup and partner/VC views. [UX-CONTRACT.md](UX-CONTRACT.md) owns interaction rules and migration gaps; [explorer view specifications](docs/EXPLORER-VIEWS.md) describe detailed layouts, data requirements and subsequent work.
 
 ### Accepted wireframe reference
 
-The five existing interface wireframes are the accepted source of truth for **visual hierarchy and composition**. The design system builds on those studies. Implement their common masthead, panel hierarchy, density, identity emphasis, selected-row treatment and adjacent evidence placement through shared components. Their forest, paper and rust palette now guides the operational finish. Use the separate Signal workbench to compare alternate materials and illustration styles.
+The [approved editorial handoff](docs/design/editorial/README.md) sets the design target for the next implementation stages. The five earlier interface wireframes guide the existing route layouts. The ranked treemap uses the original logo-board composition with ranked figures, compact controls and conditional marks.
 
 | Wireframe | Accepted composition |
 | --- | --- |
@@ -57,17 +57,26 @@ The five existing interface wireframes are the accepted source of truth for **vi
 | [04 · Startup](web/assets/design-lab/04-startup.webp) | Founder-first company dossier, aligned facts and chronology, and a top-aligned source rail. |
 | [05 · Partner / VC](web/assets/design-lab/05-partner.webp) | Full identity band, company-sample exploration with selection detail, and people/evidence alongside it. |
 
-Authority remains separated by concern: the wireframes own composition; the editorial palette and materials follow the original studies; `web/design-tokens.css` owns exact runtime values; `UX-CONTRACT.md` owns observable behaviour; reviewed source records own facts and relationship meaning. Names, amounts, sectors, dates, affiliations and chart/network geometry illustrated in a wireframe must never be copied into factual product data. A depicted control becomes operational only when its behaviour and required data exist. Unsupported thesis, saved-research, sector-filter and broader timeline concepts remain in the proposal layer.
+The wireframes guide composition and [UX-CONTRACT.md](UX-CONTRACT.md) governs behaviour. Reviewed source records supply names, amounts, dates and relationships. The concept screens illustrate appearance, including controls and numbers from a fictional dataset. Production views use real evidence and existing interactions.
 
 ## Runtime ownership and mapping
 
-This is an **existing runtime canonical** system. [web/design-tokens.css](web/design-tokens.css) owns token values; this document records their intent and current exact mapping. The YAML front matter is a descriptive subset, not a separate generated theme. No build step generates CSS from this file. Change durable visual decisions in both the canonical stylesheet and this document in the same changeset.
+[web/design-tokens.css](web/design-tokens.css) owns the shared defaults described by the front matter and the tables below. [web/atlas-ui.css](web/atlas-ui.css) scopes the current editorial values to the directory, treemap, graph, entity and partner documents. Route and component styles consume those tokens.
+
+| Explorer role | Runtime value |
+| --- | --- |
+| Paper, canvas, working surface | `#fcf9f2`, `#f7f4ed`, `#fffefa` |
+| Text, muted text | `#122b22`, `#535f55` |
+| Action and focus, hover, selection wash | `#a23e18`, `#7d2d13`, `#f8ece1` |
+| Panel rules, control boundaries, control tray | `#dfd9cd`, `#88877b`, `#eeebe2` |
+| Display type | Georgia, Times New Roman, serif |
+| Control, row, panel and feature radii | 6px, 7px, 9px and 10px |
 
 | Layer | Owner | Responsibility |
 | --- | --- | --- |
 | Foundations | `web/design-tokens.css` | Palette, type families/scale, spacing, radii, layout references, motion, overlay shadow and scrollbar colours. |
 | Shared presentation | `web/atlas-ui.css` | Operational masthead, actions, entity badges, view/section navigation, coverage, emptiness, search clear, inspectable directory rows, selection/focus and global scrollbar treatment. |
-| Shared behaviour/rendering | `web/atlas-ui.js` | `icon`, `entityBadge`, `renderEntityRow`, `renderViewNavigation`, `renderAtlasMasthead`, `safeAtlasReturn` and progressive section/navigation/clear/return-context helpers. |
+| Shared behaviour/rendering | `web/atlas-ui.js` | `icon`, `entityBadge`, `renderEntityRow`, `renderViewNavigation`, `renderAtlasMasthead`, `safeAtlasReturn`, optional interaction motion and section/navigation/clear/return-context helpers. |
 | UI SDK integration | `web/atlas-sdk.js`, `web/atlas-sdk.css` | Web Component behaviour, native state adapters, dynamic controls and local agent access; see [UI-SDK.md](docs/UI-SDK.md). |
 | Domain composition | `web/directory.css`, `web/graph.css`, `web/treemap.css`, `web/entity.css`, `web/profile.css` | Wireframe-derived result/inspector geometry, visualization workspaces and profile dossiers. Route controllers own inspection; common visual values consume Atlas tokens. |
 | Catalogue | `web/design-system.html`, `web/design-system.css`, `web/design-system.js` | Connected implementation reference, live view previews, foundations and sourced research examples. |
@@ -144,13 +153,13 @@ Small badge text and graph annotations are supplementary. Core names, actions an
 
 The operational views share a 1640px maximum shell. Their panel arrangements follow the five wireframes and retain route-specific reading order.
 
-Directory, Treemap and Graph use the shared `.atlas-feature` with the original map, notebook and relationship illustrations. The art sits beside the heading on wide screens. Narrow screens give the space to the title and controls. Profile headers keep the record identity in view, and a common source-document symbol identifies the source section on company, person, programme, provider and partner profiles.
+Directory, Map/List and Graph use a compact ruled introduction so search and working content start higher. Treemap Cards starts with the selected measure, coverage and the existing ranked board rule. The Signal symbols remain in navigation. Profile headers keep the record identity in view and a common source-document symbol identifies the source section.
 
 | View | Wide composition | Responsive changes |
 | --- | --- | --- |
-| List & search | Flexible results, 350px inspector and 24px gap inside one white research panel. | Inspector reduces to 310px at 1200px; stacks at 900px. Other directory scopes retain their list layouts. |
-| Treemap | Flexible chart or list and a 29% evidence rail with a 310px minimum. | Rail stacks at the existing narrow layout breakpoint. |
-| Graph | Flexible network and 360px inspector, with a 20px gap between restrained working surfaces. | Inspector reduces to 300px at 1150px; stacks at 820px. |
+| List & search | Flexible results, 350px inspector and 22px gap inside one research panel. | Inspector reduces to 310px at 1200px; stacks at 900px. Other directory scopes retain their list layouts. |
+| Treemap | Flexible chart/list and 350px evidence rail. | Rail reduces to 310px at 1200px; stacks at 820px. |
+| Graph | Flexible network and 360px inspector, with a 14px gap between working surfaces. | Inspector reduces to 300px at 1150px; stacks at 820px. |
 | Startup dossier | Flexible white dossier beside a 320px neutral sources rail, with 24px gap. | Facts/funding and hero actions stack at 1250px; evidence follows the dossier at 1000px. |
 | Partner / VC dossier | Full identity band, flexible company panel and 320px people/evidence rail, with 24px gap. | Inner company inspector stacks at 1200px; the outer rail stacks at 1000px. |
 
@@ -229,6 +238,8 @@ Graph cards support pointer dragging and arrow-key movement. **Fit view** change
 ### Motion
 
 The shared motion tokens are `--atlas-duration-fast: 140ms`, `--atlas-duration-normal: 240ms` and `--atlas-ease: cubic-bezier(.2,.8,.2,1)`. Controls use short colour/surface transitions. Graph force movement serves spacing and exploration, not ambience. Under reduced motion, the duration tokens become `0ms`, shared control transitions stop and the graph reaches its settled result without prolonged animation. Preserve every action and final state.
+
+After explicit Graph selection, the inspector identity and its visible connections acknowledge the new selection. A Treemap metric or grouping change can move visible tiles from their prior positions or fade in new tiles. These short enhancements use the existing self-hosted GSAP core after interaction. The route updates immediately and remains usable without the runtime. Reduced motion, document hiding and interrupted updates settle without leaving temporary styles behind.
 
 ## Living catalogue and review
 

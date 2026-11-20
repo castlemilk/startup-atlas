@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111318">
+  <meta name="theme-color" content="#fcf9f2">
   <meta name="description" content="Explore startup credits, founder programmes and an index of partner leads, with sourced conditions and geographic context.">
   <title>Startup Atlas — credits, programmes & partners</title>
   <link rel="stylesheet" href="./styles.css?v=2">
@@ -29,12 +29,11 @@
   <header class="atlas-masthead" data-atlas-masthead="directory"></header>
   <main>
     <section class="workspace" id="directory" aria-labelledby="directory-heading">
-      <header class="atlas-feature">
+      <header class="atlas-feature atlas-feature-editorial">
         <div class="atlas-feature-copy">
-          <h1 id="directory-heading" tabindex="-1">Find your next connection.</h1>
+          <h1 id="directory-heading" tabindex="-1">Find your next <em>connection.</em></h1>
           <p>Search companies, founders, programmes and partners.</p>
         </div>
-        <div class="atlas-feature-art" aria-hidden="true"><img src="./assets/design-lab/illustration-discover-thumb.webp" width="512" height="512" alt="" decoding="async"></div>
       </header>
       <ui-segmented-control id="directory-scope" class="mode-switch" aria-label="Directory view" default-value="all"><ui-segmented-control-item as-child value="all"><button type="button" id="tab-all" data-view="all" class="mode active">All <span id="all-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="opportunities"><button type="button" id="tab-opportunities" data-view="opportunities" class="mode">Opportunities <span id="opportunity-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="partners"><button type="button" id="tab-partners" data-view="partners" class="mode">Partner index <span id="partner-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="saved"><button type="button" id="tab-saved" data-view="saved" class="mode saved-mode"><span aria-hidden="true">♡</span> Saved <span id="saved-count">0</span></button></ui-segmented-control-item></ui-segmented-control>
       <div class="directory-layout" id="directory-panel" role="region" aria-labelledby="tab-all">
