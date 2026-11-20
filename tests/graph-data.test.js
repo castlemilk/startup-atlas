@@ -1,7 +1,35 @@
 import {readFile} from 'node:fs/promises';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { entityDetails, neighborhood, searchSnapshot, teamPersonId } from '../web/graph-model.js';
+import { entityDetails, neighborhood, searchSnapshot, startupSourceCoverage, teamPersonId } from '../web/graph-model.js';
+
+test('coverage counts distinct source documents for each type of startup evidence',()=>{
+  const coverage=startupSourceCoverage({
+    entities:[
+      {id:'startup:one',kind:'startup',source:'https://company.example/about#overview',profile_facts:[
+        {label:'Founded',value:'2014',source:'https://company.example/about#history'},
+        {label:'Office',value:'Melbourne',source:'https://company.example/office'},
+        {label:'Sector',value:'',source:'https://company.example/news'},
+      ]},
+      {id:'startup:two',kind:'startup',source:'http://company.example/'},
+      {id:'person:one',kind:'person'},
+      {id:'person:two',kind:'person'},
+      {id:'partner:one',kind:'partner'},
+    ],
+    edges:[
+      {from:'person:one',to:'startup:one',kind:'founded',source:'https://company.example/team'},
+      {from:'person:two',to:'startup:one',kind:'founded',source:'https://company.example/team'},
+      {from:'person:two',to:'startup:one',kind:'team_member',source:'https://company.example/new-hire'},
+      {from:'partner:one',to:'startup:one',kind:'founded',source:'https://partner.example/'},
+    ],
+    funding_rounds:[
+      {startup_id:'startup:one',source:'https://company.example/round'},
+      {startup_id:'startup:one',source:'https://company.example/round#details'},
+      {startup_id:'startup:one',source:''},
+    ],
+  });
+  assert.deepEqual([...coverage],[['startup:one',{profile:2,founders:1,funding:1}],['startup:two',{profile:0,founders:0,funding:0}]]);
+});
 
 test('generated graph keeps startup, founder and historical funding evidence connected',async()=>{
   const graph=JSON.parse(await readFile(new URL('../data/graph.json',import.meta.url),'utf8'));

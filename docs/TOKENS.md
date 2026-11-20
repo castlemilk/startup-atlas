@@ -4,7 +4,7 @@ The working design system includes a searchable reference for the canonical `--a
 
 ## Ownership
 
-`web/design-tokens.css` owns the defaults. `web/atlas-ui.css` owns the scoped editorial finish for operational pages. [DESIGN.md](../DESIGN.md) records both mappings. Shared components consume the variables, and [UI-SDK.md](UI-SDK.md) records behaviour and adapter ownership.
+`web/design-tokens.css` owns the defaults and the scoped editorial tokens for operational pages. [DESIGN.md](../DESIGN.md) records both mappings. Shared components consume the variables, and [UI-SDK.md](UI-SDK.md) records behaviour and adapter ownership.
 
 `web/design-aesthetic-tokens.css` is scoped to the direction workbench, including dark and alternative material/geometry comparisons. Historical artwork and its palette retain their original provenance.
 
