@@ -23,11 +23,11 @@ The displayed range is retained in the route's `shown` parameter. Opening a prof
 
 ## Compare a measure without losing its meaning
 
-1. Choose **Company count**, **Funding announcement**, **Recorded valuation** or **Market cap**. Market cap uses dated public-market observations for listed companies with source evidence.
+1. Choose **Company value** to compare listed companies by their latest sourced market cap and private companies by their latest sourced valuation. The view opens grouped by technology type. **Company count**, **Funding announcement**, **Recorded valuation** and **Market cap** are also available as separate measures.
 2. For a financial measure, choose a single currency. Atlas does not convert or combine currencies. Only positive, dated, comparable numeric records contribute to the chart.
 3. Use **Group by** to compare technology types, primary sectors, headquarters, funding stages, founding decades or individual companies. **Colour by** is independent. Select a country or a founding decade to drill into its companies and use the breadcrumb to return.
 4. Switch between **Treemap**, **Cards** and **Ranked list** for the same filtered records. Area encodes the selected measure only in Treemap. Company count orders individual companies alphabetically in Cards/List.
-5. Select a company and read **Figure** for the recorded date and source. Market-cap estimates show the closing price, share count and date of the share count. **Company** gives broader profile context and the source for its technology type. The displayed total sums the shown observations, which can have different dates.
+5. In Company value, look for **Market cap** or **Private valuation** on a tile. Select it and read **Figure** for the date, source and calculation or valuation event. **Overview** shows ownership evidence, technology type, profile facts, founders, funding history and links as available. The displayed total sums observations that can have different dates.
 6. Expand the missing-figure disclosure to inspect companies without a comparable figure. Switch to **Company count** to include them on the map.
 
 **Share view** copies the current company-view URL with filters, presentation and selected company. If clipboard access fails, copy the address bar. A link to a financial view may later show newer published research; it is not an immutable financial snapshot. Browser Back/Forward restores supported URL state, not exact scroll position.

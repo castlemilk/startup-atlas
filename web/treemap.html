@@ -32,7 +32,7 @@
       <div id="treemap-location-fields" class="treemap-facet-fields"></div>
       <div class="treemap-representation" id="treemap-filter-fields">
         <label class="treemap-select-field" for="treemap-group"><span>Group by</span><select disabled id="treemap-group"><option value="technology">Technology type</option><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="city">Headquarters city</option><option value="stage">Funding stage</option><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
-        <label class="treemap-select-field" for="treemap-metric"><span>Size by</span><select disabled id="treemap-metric"><option value="companies">Company count</option><option value="funding">Funding announcement</option><option value="valuation">Recorded valuation</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
+        <label class="treemap-select-field" for="treemap-metric"><span>Size by</span><select disabled id="treemap-metric"><option value="companies">Company count</option><option value="company-value" disabled>Company value</option><option value="funding">Funding announcement</option><option value="valuation">Recorded valuation</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
         <label class="treemap-select-field" for="treemap-colour"><span>Colour by</span><select disabled id="treemap-colour"><option value="technology">Technology type</option><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="freshness">Profile fact review</option><option value="none">None</option><option value="decade">Founding decade</option></select></label>
         <label class="treemap-select-field" for="treemap-currency" id="treemap-currency-field" hidden><span>Currency</span><select disabled id="treemap-currency"><option value="USD">Not applicable</option></select></label>
         <div class="treemap-density-setting">
@@ -92,6 +92,7 @@
   <section id="method" class="treemap-method" aria-labelledby="method-heading">
     <h2 id="method-heading">How to read the treemap</h2>
     <div>
+      <p><strong>Company value.</strong> Listed companies use their latest sourced market cap. Privately held companies use their latest sourced company valuation. Each tile identifies its figure and date. The map uses one currency at a time and can include observations from different dates.</p>
       <p><strong>Public market cap.</strong> Dated values for publicly listed companies in the selected currency. An estimate uses the closing price and the disclosed shares with economic rights. Each figure shows its sources and dates.</p>
       <p><strong>Recorded valuation.</strong> The latest dated, positive numeric valuation for each company in the selected currency. Each observation retains its announcement date and original source.</p>
       <p><strong>Funding announcement.</strong> The latest dated, positive numeric event amount in the selected currency. Events can include secondary transfers and other financing. The chart measures individual announcements.</p>

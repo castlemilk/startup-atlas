@@ -293,6 +293,148 @@
         "share_terms_source": "https://www.sec.gov/Archives/edgar/data/2099039/000119312526282911/d17323d20f.htm"
       },
       "note": "Uses Class A ordinary shares outside treasury. The voting-only Class B shares have a nominal liquidation preference."
+    },
+    {
+      "startup_id": "startup:uipath",
+      "ticker": "PATH",
+      "exchange": "NYSE",
+      "observed_on": "2026-11-20",
+      "currency": "USD",
+      "amount": 5711863282.64,
+      "source": "https://ir.uipath.com/stock-info/historical-data",
+      "calculation": {
+        "close": 10.96,
+        "shares": 521155409,
+        "shares_as_of": "2026-09-03",
+        "shares_source": "https://ir.uipath.com/financials/sec-filings/content/0001734722-26-000050/path-20260731.htm",
+        "share_terms_source": "https://ir.uipath.com/financials/sec-filings/content/0001734722-26-000012/path-20260131.htm"
+      },
+      "note": "Uses 456,464,703 Class A and 64,690,706 Class B common shares from the issuer's September filing. Each Class B share converts into one Class A share."
+    },
+    {
+      "startup_id": "startup:wise",
+      "ticker": "WSE",
+      "exchange": "Nasdaq",
+      "observed_on": "2026-11-20",
+      "currency": "USD",
+      "amount": 10858083955.25,
+      "source": "https://owners.wise.com/stock-information/stock-performance",
+      "calculation": {
+        "close": 10.85,
+        "shares": 1000745065,
+        "shares_as_of": "2026-11-19",
+        "shares_source": "https://wise.gcs-web.com/news-releases/news-release-details/total-voting-rights-65",
+        "share_terms_source": "https://www.sec.gov/Archives/edgar/data/2099039/000119312526282911/d17323d20f.htm"
+      },
+      "note": "Uses Class A ordinary shares outside treasury. The voting-only Class B shares have a nominal liquidation preference."
+    }
+  ],
+  "ownership": {
+    "startup:airwallex": {
+      "status": "private",
+      "observed_on": "2026-06-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/2085091/000089418926022643/rvi.htm",
+      "detail": "An investor filing records private preferred shares in Airwallex (Cayman) Limited."
+    },
+    "startup:canva": {
+      "status": "private",
+      "observed_on": "2026-06-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/2085091/000089418926022643/rvi.htm",
+      "detail": "An investor filing records its private Class A investment in the Canva group."
+    },
+    "startup:eucalyptus": {
+      "status": "subsidiary",
+      "observed_on": "2026-06-01",
+      "source": "https://www.sec.gov/Archives/edgar/data/1773751/000177375126000246/hims-20260930.htm",
+      "detail": "Hims & Hers reports completing its acquisition on June 1, 2026. Its purchase consideration and parent company market cap are separate figures."
+    },
+    "startup:psiquantum": {
+      "status": "private",
+      "observed_on": "2025-09-10",
+      "source": "https://www.qao.qld.gov.au/reports-resources/reports-parliament/managing-queenslands-finances-2025",
+      "detail": "The Queensland Audit Office records the Series E conversion of government notes into company equity and the resulting post-money valuation."
+    },
+    "startup:q-ctrl": {
+      "status": "private",
+      "observed_on": "2026-11-12",
+      "source": "https://q-ctrl.com/blog/q-ctrl-secures-us-290-million-series-c-funding-led-by-salesforce-ventures-to-accelerate-the-convergence-of-quantum-and-ai",
+      "detail": "Q-CTRL describes itself as privately held. The Series C announcement confirms unicorn status and the amount raised without giving a numeric valuation."
+    },
+    "startup:revolut": {
+      "status": "private",
+      "observed_on": "2026-11-21",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/12743269",
+      "detail": "Companies House identifies Revolut Group Holdings Ltd as an active private limited company."
+    },
+    "startup:synthesia": {
+      "status": "private",
+      "observed_on": "2026-11-12",
+      "source": "https://www.synthesia.io/post/synthesia-is-named-to-the-inaugural-2026-ai-100",
+      "detail": "The issuer confirms its participation in a ranking for independent, privately held companies and reiterates its Series E value."
+    },
+    "startup:uipath": {
+      "status": "public",
+      "observed_on": "2026-11-20",
+      "source": "https://ir.uipath.com/stock-info/historical-data",
+      "detail": "UiPath provides historical data for its NYSE-listed Class A common stock under PATH."
+    },
+    "startup:wayve": {
+      "status": "private",
+      "observed_on": "2026-07-08",
+      "source": "https://www.londonstockexchange.com/en/press-releases/2026/wayve-completes-its-first-transaction-private-securities-market-offering-liquidity-employees",
+      "detail": "London Stock Exchange records Wayve’s employee tender on its private securities market."
+    },
+    "startup:wise": {
+      "status": "public",
+      "observed_on": "2026-11-20",
+      "source": "https://owners.wise.com/stock-information/stock-performance",
+      "detail": "Wise Group plc trades on Nasdaq as WSE and retains a secondary London listing. Atlas uses the Nasdaq listing for its USD market cap."
+    }
+  },
+  "private_valuations": [
+    {
+      "id": "canva-2025-investor-secondary",
+      "startup_id": "startup:canva",
+      "announced_on": "2025-08-25",
+      "stage": "Investor-led secondary share sale",
+      "valuation": 42000000000,
+      "valuation_currency": "USD",
+      "source": "https://www.sidley.com/en/newslanding/newsannouncements/2025/08/sidley-represents-canva-in-investor-secondary",
+      "note": "Canva’s counsel disclosed an approximate company valuation on August 25. The figure is the reported secondary transaction valuation.",
+      "approximate": true
+    },
+    {
+      "id": "psiquantum-2025-series-e-valuation",
+      "startup_id": "startup:psiquantum",
+      "announced_on": "2025-09-10",
+      "stage": "Series E post-money valuation",
+      "valuation": 7000000000,
+      "valuation_currency": "USD",
+      "source": "https://www.psiquantum.com/news-import/psiquantum-1b-fundraise",
+      "note": "The Queensland Audit Office confirms the US-dollar post-money valuation. PsiQuantum’s later AMD investment announcement did not disclose a new valuation.",
+      "supporting_source": "https://www.qao.qld.gov.au/reports-resources/reports-parliament/managing-queenslands-finances-2025"
+    },
+    {
+      "id": "revolut-2026-secondary-valuation",
+      "startup_id": "startup:revolut",
+      "announced_on": "2026-11-04",
+      "stage": "Completed secondary share sale",
+      "valuation": 115000000000,
+      "valuation_currency": "USD",
+      "source": "https://www.revolut.com/en-US/news/revolut_completes_fundraising_process_establishing_115_billion_valuation/",
+      "note": "Revolut announced the completed transaction. Investor SoftBank describes it as a secondary share transaction.",
+      "supporting_source": "https://group.softbank/media/Project/sbg/sbg/pdf/ir/presentations/2026/investor-svf_q2fy2026_01_en.pdf"
+    },
+    {
+      "id": "wayve-2026-series-d-valuation",
+      "startup_id": "startup:wayve",
+      "announced_on": "2026-02-25",
+      "stage": "Series D post-money valuation",
+      "valuation": 8600000000,
+      "valuation_currency": "USD",
+      "source": "https://wayve.ai/press/series-d/",
+      "note": "Wayve’s closing announcement states the post-money value. The later employee tender cited the Series D valuation without publishing a new company value.",
+      "supporting_source": "https://www.lw.com/en/news/latham-advises-wayve-as-the-uk-self-driving-firm-deploy-its-global-autonomy-platform"
     }
   ]
 }

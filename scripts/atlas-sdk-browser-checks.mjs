@@ -143,6 +143,15 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await act('Reset exploration','press');
   await until(()=>evaluate("document.querySelector('#treemap-metric').value==='companies'&&document.querySelector('#treemap-query').value===''&&!document.querySelector('#treemap-chart').hidden&&document.querySelector('#treemap-cards').hidden"),'SDK reset did not restore the company-count map');
   await assertOneTabStop('.treemap-view-switch');
+  await choose('Group by',/^Headquarters country$/);
+  await choose('Size by',/^Company value$/);
+  await until(()=>evaluate(`(()=>{
+    const params=new URLSearchParams(location.search);
+    const chart=document.querySelector('#treemap-chart');
+    return params.get('metric')==='company-value'&&params.get('group')==='technology'
+      &&!!chart.querySelector('[data-company="startup:wise"] [data-figure-basis="market-cap"]')
+      &&!!chart.querySelector('[data-company="startup:revolut"] [data-figure-basis="valuation"]');
+  })()`),'SDK company value choice did not plot both figure types');
   await choose('Size by',/^Market cap$/);
   await choose('Group by',/^Headquarters country$/);
   await choose('Group by',/^Technology type$/);
