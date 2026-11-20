@@ -138,6 +138,11 @@ ISSUER_ROUND_CORRECTION = re.compile(
     rf'(?:(?:(?:{CORRECTION_DETERMINERS}|its) )?{CORRECTION_SERIES}|the funding)[.!]',
     re.I,
 )
+ISSUER_REPEATED_CLOSE_DENIAL = re.compile(
+    rf'(?P<issuer>{ISSUER_NAME}) (?:did not close|didn[\'’]t close|has not (?:actually )?closed)'
+    rf'{RAW_ROUND_TERMS}[.!]',
+    re.I,
+)
 ISSUER_FIRST_PERSON_CORRECTION = re.compile(
     r"(?:I misspoke: )?we (?:(?:did not|didn['’]t) (?:actually )?raise"
     r"|(?:have not|haven['’]t) (?:actually )?raised) "
@@ -290,7 +295,7 @@ def prospective_clause(clause):
     return False
 
 
-def round_correction(following, issuer, series, asserted_action, *, first_person=False):
+def round_correction(following, issuer, series, asserted_action, *, first_person=False, closing_terms=None):
     if not following:
         return False
     statement = following[0]
@@ -307,7 +312,13 @@ def round_correction(following, issuer, series, asserted_action, *, first_person
         if statement.casefold() == 'i misspoke.' and len(following) > 1:
             statement = following[1]
         correction = ISSUER_FIRST_PERSON_CORRECTION.fullmatch(statement)
-    return bool(correction and (correction['series'] is None or name_key(correction['series']) == series))
+    if correction and (correction['series'] is None or name_key(correction['series']) == series):
+        return True
+    if closing_terms is None:
+        return False
+    # Bind only the repeated wording. Normalizing the amount could erase its currency qualifier.
+    repeated = ISSUER_REPEATED_CLOSE_DENIAL.fullmatch(statement)
+    return bool(repeated and name_key(repeated['issuer']) == issuer and repeated['terms'] == closing_terms)
 
 
 def issuer_closing_round(excerpt, names):
@@ -321,7 +332,9 @@ def issuer_closing_round(excerpt, names):
         if match and (issuer := name_key(match['issuer'])) in names and not prospective_clause(statement):
             terms = ISSUER_CLOSING_TERMS.fullmatch(' ' + name_key(match['terms']))
             if terms:
-                if round_correction(statements[index + 1:index + 2], issuer, terms['series'], 'close'):
+                if round_correction(
+                    statements[index + 1:index + 2], issuer, terms['series'], 'close', closing_terms=match['terms'],
+                ):
                     corrected = True
                 else:
                     round_mention = True
