@@ -444,6 +444,11 @@ class CompanyFundingStatementTests(unittest.TestCase):
             'Ready Company announced its Series A-2 had expanded to an undisclosed amount.',
             STAGE_FIRST_EXTENSION.replace('had expanded', 'would expand'),
             STAGE_FIRST_EXTENSION.replace('had expanded', 'had not expanded'),
+            STAGE_FIRST_EXTENSION.replace('had expanded', 'has now expanded'),
+            STAGE_FIRST_EXTENSION.replace('had expanded', 'was later extended'),
+            STAGE_FIRST_EXTENSION.replace('had expanded', 'will later be extended'),
+            STAGE_FIRST_EXTENSION.replace('had expanded', 'has  now expanded'),
+            STAGE_FIRST_EXTENSION.replace('had expanded', 'was later extended')[:-1] + '?',
             STAGE_FIRST_EXTENSION[:-1] + '?',
             ISSUER_EXTENSION,
             INVESTOR_EXTENSION,
@@ -451,6 +456,8 @@ class CompanyFundingStatementTests(unittest.TestCase):
             with self.subTest(excerpt=excerpt):
                 self.assertEqual(classify(excerpt, {'ready company'}), context)
         self.assertNotIn('round_mention', classify(f'“{STAGE_FIRST_EXTENSION}”', {'ready company'})[1])
+        quoted_timing = STAGE_FIRST_EXTENSION.replace('had expanded', 'has now expanded')
+        self.assertNotIn('round_mention', classify(f'“{quoted_timing}”', {'ready company'})[1])
         other_issuer = STAGE_FIRST_EXTENSION.replace('Ready Company', 'Acme').replace(
             'the February close', 'an investment from Ready Company',
         )
@@ -460,7 +467,9 @@ class CompanyFundingStatementTests(unittest.TestCase):
         initial = 'Ready Company closed a US$20 million Series A.'
         other = 'Acme closed a US$8 million Series B.'
         self.assertEqual(classify(initial, {'ready company'}), ('round_lead', ['round_mention']))
-        for excerpt in (f'{initial} {STAGE_FIRST_EXTENSION}', f'{STAGE_FIRST_EXTENSION} {initial}'):
+        later = STAGE_FIRST_EXTENSION.replace('had expanded', 'was later extended')
+        for excerpt in (f'{initial} {STAGE_FIRST_EXTENSION}', f'{STAGE_FIRST_EXTENSION} {initial}',
+                        f'{later} {initial}'):
             with self.subTest(excerpt=excerpt):
                 self.assertEqual(
                     classify(excerpt, {'ready company'}),

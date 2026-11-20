@@ -332,8 +332,10 @@ SCOPED_CONTEXT_SUFFIX = re.compile(
 )
 SERIES_EXTENSION_TAIL = re.compile(
     r"(?:-[1-9][0-9]?)?[\"”'’]?(?:\s+(?:funding|financing|investment))?(?:\s+round)?\s+"
-    r'(?:extension|expanded|extended|(?:has|had)(?: not(?: yet)?)? (?:expanded|been (?:expanded|extended))'
-    r'|(?:was|were)(?: not)? (?:expanded|extended)|(?:will|would) (?:expand|be (?:expanded|extended))'
+    r'(?:extension|expanded|extended'
+    r'|(?:has|had)(?:\s+not(?:\s+yet)?)?(?:\s+(?:now|later))?\s+(?:expanded|been\s+(?:expanded|extended))'
+    r'|(?:was|were)(?:\s+not)?(?:\s+(?:now|later))?\s+(?:expanded|extended)'
+    r'|(?:will|would)(?:\s+(?:now|later))?\s+(?:expand|be\s+(?:expanded|extended))'
     r'|did not expand)\b',
     re.I,
 )
