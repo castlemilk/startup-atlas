@@ -99,6 +99,14 @@ saved page or its paraphrase, keyed by `published`, `announced` or `closed`, wit
 precision. Keep an unknown date absent. The report retains distinct assertions
 when it groups repeated URLs.
 
+For a saved index entry explicitly presented as coverage, keep the index URL
+as `url` and use `coverage_listing` with the exact linked HTTPS `article_url`.
+Keep the displayed index date as optional `listed_on` inside that object,
+using its given precision. Omit `dates` on this capture. The index entry
+appears as review context even on the issuer's own website. Capture the
+linked article separately with its own source dates and excerpt. The
+review does not fetch the article or assign transaction dates to the listing.
+
 For a former name, add up to four `former_names` entries with `name` and the
 `evidence_id` cited by the committed alias decision. Use the issuer's saved
 evidence of the name change. The report links that exact evidence digest and

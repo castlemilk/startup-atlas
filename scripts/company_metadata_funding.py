@@ -882,8 +882,9 @@ def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_artic
         raise ValueError('Expected at most 32 saved captures per company')
     documents = defaultdict(dict)
     for capture in captures:
-        fields(capture, ('url', 'excerpt', 'acquisition', 'retrieved_on'), ('dates',))
+        fields(capture, ('url', 'excerpt', 'acquisition', 'retrieved_on'), ('dates', 'coverage_listing'))
         url = source_url(capture['url'])
+        document_url = site_url(url)
         excerpt = text(capture['excerpt'], 'saved excerpt', 1500)
         acquisition = capture['acquisition']
         if acquisition not in ('page_excerpt', 'reviewer_paraphrase', 'search_result'):
@@ -892,15 +893,29 @@ def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_artic
         dates = fields(capture.get('dates', {}), (), ('published', 'announced', 'closed'))
         if dates and acquisition == 'search_result':
             raise ValueError('Date observations require saved document evidence')
-        reviewed_round = reviewed_rounds.get(url) if reviewed_rounds and acquisition == 'page_excerpt' else None
-        reviewed_article = reviewed_articles.get(url) if reviewed_articles and acquisition == 'page_excerpt' else None
-        bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round, reviewed_article=reviewed_article,
-                                   search_result=acquisition == 'search_result')
-        observation = {**capture, 'bucket': bucket, 'signals': signals}
+        observation = dict(capture)
+        if 'coverage_listing' in capture:
+            if acquisition == 'search_result' or 'dates' in capture:
+                raise ValueError('Coverage listings require a saved index capture with dates only in listed_on')
+            listing = fields(capture['coverage_listing'], ('article_url',), ('listed_on',))
+            article_url = source_url(listing['article_url'])
+            if site_url(article_url) == document_url:
+                raise ValueError('A coverage listing needs a separate article URL')
+            observation['coverage_listing'] = {'article_url': article_url}
+            if 'listed_on' in listing:
+                observation['coverage_listing']['listed_on'] = date_observation(listing['listed_on'])
+            # The index supplies discovery context. The article needs its own capture.
+            bucket, signals = 'context', ['coverage_listing']
+        else:
+            reviewed_round = reviewed_rounds.get(url) if reviewed_rounds and acquisition == 'page_excerpt' else None
+            reviewed_article = reviewed_articles.get(url) if reviewed_articles and acquisition == 'page_excerpt' else None
+            bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round, reviewed_article=reviewed_article,
+                                       search_result=acquisition == 'search_result')
+        observation.update(bucket=bucket, signals=signals)
         if dates:
             observation['dates'] = {label: date_observation(day) for label, day in dates.items()}
         # Collapse repeated URL hits while keeping distinct captures and source assertions.
-        documents[site_url(url)][observation_key(observation)] = observation
+        documents[document_url][observation_key(observation)] = observation
 
     results = []
     for url, observations in documents.items():
