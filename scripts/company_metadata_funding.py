@@ -404,11 +404,13 @@ ROUND_COMPLETION = re.compile(r'(?:(?:was|has been|had been) )?(?:completed|clos
 EXTERNAL_ROUND_PURPOSE = re.compile(
     r'^(?:for\b|on behalf of\b|(?:investment|funding|financing) in\b|to (?:finance|fund|support|back)\b)'
 )
+SEED_CLOSE_ADVERB = r'(?:(?:jointly|soon|later|likely|successfully) )?'
 POSSESSIVE_SEED_PLAN = re.compile(
-    r'^.*\b(?:(?:plan(?:s|ned|ning)?|intend(?:s|ed|ing)?|expect(?:s|ed|ing)?'
-    r'|aim(?:s|ed|ing)?|hop(?:e|es|ed|ing)|intentions?|due|scheduled|set) to'
+    r'^.*\b(?:(?:(?:plan(?:s|ned|ning)?|intend(?:s|ed|ing)?|expect(?:s|ed|ing)?'
+    r'|aim(?:s|ed|ing)?|hop(?:e|es|ed|ing)|prepar(?:e|es|ed|ing)|intentions?|due|scheduled|set) to'
     r'|will|would|may|might|could|can|should) '
-    r'(?:(?:jointly|soon|later|likely) )?(?:close|complete|be (?:closing|completing)) '
+    rf'{SEED_CLOSE_ADVERB}(?:close|complete|be (?:closing|completing))'
+    rf'|anticipat(?:e|es|ed|ing) {SEED_CLOSE_ADVERB}(?:closing|completing)) '
     rf"(?P<issuer>{ISSUER_NAME})['’]s{RAW_ROUND_TERMS}?$",
     re.I,
 )
