@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "design_system_version": "1.1",
+  "packaged_on": "2026-11-20",
+  "status": "approved-design-target",
+  "scope": "Visual references and proposed interaction contracts; not runtime acceptance or startup data",
+  "specification": "design-system.md",
+  "foundation": "foundation.css",
+  "gallery": "README.md",
+  "implementation_handoff": "HANDOFF.md",
+  "sources": "source-fixture.json",
+  "reference": {
+    "path": "references/stitch-design.md",
+    "original_export": "stitch_startup_ecosystem_knowledge_graph.zip",
+    "original_path": "stitch_startup_ecosystem_knowledge_graph/startup_atlas_editorial_intelligence/DESIGN.md",
+    "sha256": "1d68e24c4363e576522ee0ab297ac4c092821b9352a50e4071613c06eae41559"
+  },
+  "assets": [
+    {
+      "path": "wireframes/explorer-treemap.png",
+      "title": "Explorer treemap",
+      "group": "explorer",
+      "status": "selected-reference",
+      "source_filename": "exec-45ab6bb6-fb75-4908-b7ce-ec1d00fd7adf.png",
+      "generation": "image_gen",
+      "sha256": "02540e4ce29ca9e66c014fe630cce51cf165bdf04a3a3064f27c3565493bc4c8",
+      "bytes": 1750826,
+      "width": 1586,
+      "height": 992,
+      "prompt_reference": null
+    },
+    {
+      "path": "wireframes/explorer-graph.png",
+      "title": "Knowledge graph",
+      "group": "explorer",
+      "status": "selected-reference",
+      "source_filename": "exec-5bd21d6b-05a5-465c-99c7-687b94c237ee.png",
+      "generation": "image_gen",
+      "sha256": "7ce94fcc2b5a18854988b556945ecfde13169ee9f758c0324399f26bf02fafdc",
+      "bytes": 1623895,
+      "width": 1586,
+      "height": 992,
+      "prompt_reference": null
+    },
+    {
+      "path": "wireframes/directory-evidence-coverage.png",
+      "title": "Directory and evidence coverage",
+      "group": "explorer",
+      "status": "selected-reference",
+      "source_filename": "exec-328f1338-e2b8-4ba4-a5de-15c66777c68d.png",
+      "generation": "image_gen",
+      "sha256": "0283dc5ea895fb3d430c0e65006df0f2086f593804dfc4dfe5a895e845efc818",
+      "bytes": 1561749,
+      "width": 1586,
+      "height": 992,
+      "prompt_reference": null
+    },
+    {
+      "path": "wireframes/country-multiselect.png",
+      "title": "Country multiselect, refined",
+      "group": "filters-and-system",
+      "status": "selected-reference",
+      "source_filename": "exec-33b67cba-a379-4a42-971e-9bb342d80ec2.png",
+      "generation": "image_gen",
+      "sha256": "7093a1eea02c9e2640e6c00a2af1894e019f41d569019738c5363b54ec88fa59",
+      "bytes": 1776574,
+      "width": 1586,
+      "height": 992,
+      "prompt_reference": {
+        "document": "design-system.md",
+        "section": "18. Image generation catalogue",
+        "subject": "Country multiselect; country correction"
+      }
+    },
+    {
+      "path": "wireframes/country-city-drilldown.png",
+      "title": "Country to city drilldown",
+      "group": "filters-and-system",
+      "status": "selected-reference",
+      "source_filename": "exec-1337304c-9688-4f4b-bf81-65533fba1c50.png",
+      "generation": "image_gen",
+      "sha256": "37f91499565db07e6c4d4861297cbcd0306c76e06d291f8e987c48b3df25973d",
+      "bytes": 1716453,
+      "width": 1585,
+      "height": 992,
+      "prompt_reference": {
+        "document": "design-system.md",
+        "section": "18. Image generation catalogue",
+        "subject": "Country and city drilldown"
+      }
+    },
+    {
+      "path": "wireframes/group-size-colour-controls.png",
+      "title": "Group, size and colour controls",
+      "group": "filters-and-system",
+      "status": "selected-reference",
+      "source_filename": "exec-3ec5637a-6c03-4c7f-970c-9615f8e6d3c0.png",
+      "generation": "image_gen",
+      "sha256": "0b3ac708de120f77ed0c79ee866e224a5a02bcb746bfd4f968c8b22fbccddc68",
+      "bytes": 1642256,
+      "width": 1585,
+      "height": 992,
+      "prompt_reference": {
+        "document": "design-system.md",
+        "section": "18. Image generation catalogue",
+        "subject": "Dropdown system"
+      }
+    },
+    {
+      "path": "wireframes/filter-result-states.png",
+      "title": "Filter and result states",
+      "group": "filters-and-system",
+      "status": "selected-reference",
+      "source_filename": "exec-0da69bf7-eb5f-495d-9f48-13054ebd7060.png",
+      "generation": "image_gen",
+      "sha256": "2c1132a5b3aa098d9267cf58d402f199af554b5fba3fdac089c657da1925f00e",
+      "bytes": 1653017,
+      "width": 1585,
+      "height": 992,
+      "prompt_reference": {
+        "document": "design-system.md",
+        "section": "18. Image generation catalogue",
+        "subject": "Result states"
+      }
+    },
+    {
+      "path": "wireframes/mobile-explorer.png",
+      "title": "Mobile explorer",
+      "group": "filters-and-system",
+      "status": "selected-reference",
+      "source_filename": "exec-1eadfa68-5389-4a04-bb37-93fb65030757.png",
+      "generation": "image_gen",
+      "sha256": "0878d012ce0b0b547fdeae924053e2e5a01ebf37d613690496a13a378a1c6cf4",
+      "bytes": 1460201,
+      "width": 1585,
+      "height": 992,
+      "prompt_reference": {
+        "document": "design-system.md",
+        "section": "18. Image generation catalogue",
+        "subject": "Mobile exploration"
+      }
+    },
+    {
+      "path": "wireframes/core-components.png",
+      "title": "Core components",
+      "group": "filters-and-system",
+      "status": "selected-reference",
+      "source_filename": "exec-93a812c4-0741-42f0-b87e-95f7e584e0a4.png",
+      "generation": "image_gen",
+      "sha256": "de5062f0521ba8d41f051391fb27aed7fce44d553887cdc2fca82dba30e1d8d6",
+      "bytes": 1751400,
+      "width": 1585,
+      "height": 992,
+      "prompt_reference": {
+        "document": "design-system.md",
+        "section": "18. Image generation catalogue",
+        "subject": "Core system board"
+      }
+    },
+    {
+      "path": "wireframes/company-overview.png",
+      "title": "Company overview",
+      "group": "company",
+      "status": "selected-reference",
+      "source_filename": "exec-1ea1911d-22b7-4b3e-afca-e1ae8825c626.png",
+      "generation": "image_gen",
+      "sha256": "aff7369b71b24da5526e21c7c2057550005d28178a8c58562aff6029f47811fc",
+      "bytes": 1479958,
+      "width": 1536,
+      "height": 1024,
+      "prompt_reference": null
+    },
+    {
+      "path": "wireframes/company-people-relationships.png",
+      "title": "Company people and relationships, refined",
+      "group": "company",
+      "status": "selected-reference",
+      "source_filename": "exec-741a4572-b2f8-4970-b712-588950534272.png",
+      "generation": "image_gen",
+      "sha256": "e15e244e1d7d827193b8e6b4e19432d1c70c779da329c09864d57a66e7f0bdd4",
+      "bytes": 1735166,
+      "width": 1536,
+      "height": 1024,
+      "prompt_reference": null
+    },
+    {
+      "path": "wireframes/company-funding-evidence.png",
+      "title": "Company funding and evidence, refined",
+      "group": "company",
+      "status": "selected-reference",
+      "source_filename": "exec-2c01da14-192b-4fb0-b7cd-4c8d63b2b7b6.png",
+      "generation": "image_gen",
+      "sha256": "255105f097d207de1429bdc645de4f75ec725dff13eeb556f2e042e4a57ab21e",
+      "bytes": 1744078,
+      "width": 1536,
+      "height": 1024,
+      "prompt_reference": null
+    },
+    {
+      "path": "wireframes/company-mobile.png",
+      "title": "Mobile company profile, refined",
+      "group": "company",
+      "status": "selected-reference",
+      "source_filename": "exec-c1336e20-2324-493b-85dd-5fe68168884c.png",
+      "generation": "image_gen",
+      "sha256": "ac9337c778d6848223deb31009d95cbe7ca44a5281815baed60b9c0ac2234697",
+      "bytes": 1795875,
+      "width": 1536,
+      "height": 1024,
+      "prompt_reference": null
+    }
+  ]
+}

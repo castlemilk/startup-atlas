@@ -142,7 +142,50 @@ try {
   assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>!control.disabled)"),true,'Loaded funding controls must be available');
   assert.equal(await evaluate("document.querySelector('#treemap-metric').value"),'funding');
   assert.match(await text('#treemap-subtitle'),/event amount/);
+  const defaultFunding=makeView(snapshot,{metric:'funding',currency:'USD'});
+  assert.equal(await evaluate("document.querySelector('#treemap-chart').hidden"),true);
+  assert.equal(await evaluate("document.querySelector('#treemap-cards').hidden"),false);
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"),'cards');
+  assert.deepEqual(await cardIds(),defaultFunding.rows.map(row=>row.id));
+  assert.equal(await text('#treemap-board-title'),'Funding announcements');
+  assert.match(await text('#treemap-board-summary'),new RegExp(`^${defaultFunding.rows.length} of ${defaultFunding.filteredCount} matching companies shown$`));
+  assert.equal(await evaluate("document.querySelector('#treemap-board-heading').getBoundingClientRect().bottom<document.querySelector('#treemap-controls').getBoundingClientRect().top"),true,'The ranking header must precede the toolbar');
+  assert.equal(await evaluate("document.querySelector('#treemap-filter-fields').hidden&&document.querySelector('#treemap-filter-toggle').getAttribute('aria-expanded')==='false'"),true,'The default board starts with collapsed filters');
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-workspace img[src^=https]').length"),0,'Cards must use only bundled images');
+  const textOnlyCards = await evaluate(`[...document.querySelectorAll('#treemap-cards [data-company]')].filter(card=>!card.querySelector('img')).map(card=>({
+    id:card.dataset.company, name:card.querySelector('.treemap-card-word').textContent,
+    repeatedName:card.querySelector('.treemap-card-name').getClientRects().length>0,
+    initials:!!card.querySelector('.treemap-logo')
+  }))`);
+  assert.ok(textOnlyCards.length>0,'The default board must exercise companies without a bundled mark');
+  for (const card of textOnlyCards) {
+    assert.equal(card.name,defaultFunding.rows.find(row=>row.id===card.id).entity.name);
+    assert.equal(card.repeatedName||card.initials,false);
+  }
+  const boardLayout=await evaluate(`(()=>{
+    const cards=[...document.querySelectorAll('#treemap-cards [data-company]')];
+    return cards.slice(0,7).map(card=>{
+      const {top,width}=card.getBoundingClientRect();
+      return {top,width,featured:card.classList.contains('featured'),mark:card.querySelector('.treemap-card-media').getBoundingClientRect().height};
+    });
+  })()`);
+  assert.equal(boardLayout.length,7);
+  assert.ok(boardLayout.slice(0,3).every(card=>card.featured&&card.top===boardLayout[0].top));
+  assert.ok(boardLayout[0].width>boardLayout[1].width&&boardLayout[0].mark>boardLayout[4].mark);
+  assert.ok(boardLayout.slice(3).every(card=>!card.featured&&card.top===boardLayout[3].top));
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-cards .compact-tail').length"),(defaultFunding.rows.length-3)%4);
   await screenshot('funding-default-desktop.png');
+  await navigate('?view=map');
+  assert.equal(await evaluate("document.querySelector('#treemap-chart').hidden"),false);
+  await navigate('?metric=companies&view=cards');
+  assert.equal(await evaluate("document.querySelector('#treemap-cards').hidden"),false);
+  assert.doesNotMatch(await text('#treemap-cards'),/(USD|AUD) \d/);
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-cards .treemap-card-rank').length"),0);
+  await evaluate("globalThis.cardLogoUnderTest=document.querySelector('#treemap-cards img[src*=revolut]')");
+  await until(()=>evaluate("cardLogoUnderTest?.naturalWidth>0&&!cardLogoUnderTest.hidden&&cardLogoUnderTest.getBoundingClientRect().height>=100"),'Cards must display available bundled logos at card scale');
+  assert.equal(await evaluate("cardLogoUnderTest.getAttribute('src')"),'./assets/logos/revolut.svg');
+  await evaluate("cardLogoUnderTest.src='/missing-card-mark.svg'");
+  await until(()=>evaluate("cardLogoUnderTest.hidden&&!cardLogoUnderTest.nextElementSibling.hidden&&cardLogoUnderTest.nextElementSibling.textContent==='Revolut'"),'A failed card image must show the typeset company name');
   await navigate('?metric=companies');
   assert.equal(await evaluate("document.querySelector('#treemap-metric').value"),'companies');
   assert.equal(await evaluate("document.querySelectorAll('.treemap-tile').length"),JSON.parse(await readFile('dist/data/graph.json','utf8')).entities.filter(entity=>entity.kind==='startup').length);
@@ -250,9 +293,11 @@ try {
   await until(()=>evaluate("logoUnderTest.complete&&!logoUnderTest.naturalWidth&&logoUnderTest.hidden&&!logoUnderTest.nextElementSibling.hidden"),'Failed logo must show initials');
   await click('#show-list');
   await click('#treemap-reset');
+  assert.equal(await evaluate("document.querySelector('#treemap-cards').hidden"),false);
+  await click('#show-map');
   await evaluate("(()=>{const e=document.querySelector('#treemap-query');e.value='no company matches this';e.dispatchEvent(new Event('input',{bubbles:true}));})()");
   assert.match(await text('#treemap-chart'),/No companies match/);
-  await click('#treemap-reset');await change('treemap-metric','valuation');await change('treemap-currency','USD');
+  await click('#treemap-reset');await click('#show-map');await change('treemap-metric','valuation');await change('treemap-currency','USD');
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await until(()=>evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().width<390"),'Mobile did not resize');
   assert.equal(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),true,'No horizontal overflow on mobile');
@@ -275,6 +320,8 @@ try {
   await click('#show-cards');
   assert.deepEqual(await cardIds(),valuation.rows.map(row=>row.id),'Mobile cards must preserve the valuation rows');
   assert.equal(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),true,'Cards must not overflow at 390px');
+  await evaluate("scrollTo({top:0,behavior:'instant'})");
+  assert.ok(await evaluate("document.querySelector('#treemap-cards .treemap-card').getBoundingClientRect().top<innerHeight/2"),'The lead card must begin in the upper half of the 390px viewport');
   await screenshot('cards-valuation-mobile.png',true);
   await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
   await evaluate("scrollTo({top:0,behavior:'instant'})");
@@ -322,9 +369,9 @@ try {
   await navigate('');assert.match(await text('#treemap-status'),/could not be loaded/);
   assert.equal(await evaluate("document.querySelector('#treemap-metric').disabled"),true);
   assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>control.disabled)"),true);
-  assert.match(await text('#treemap-chart'),/Reload this view/);
+  assert.match(await text('#treemap-cards'),/Reload this view/);
   await command('Network.setBlockedURLs',{urls:[]});
-  await click('#treemap-chart a');
+  await click('#treemap-cards a');
   await until(()=>evaluate("document.querySelector('#treemap-metric')?.disabled===false"),'Reload recovery did not restore controls');
   await settled();
   assert.match(await text('#treemap-status'),/Historical figures/);

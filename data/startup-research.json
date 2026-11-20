@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-11-19",
+  "reviewed": "2026-11-20",
   "startups": [
     {
       "name": "Canva",
@@ -750,7 +750,7 @@
     {
       "name": "Culture Amp",
       "source": "https://www.cultureamp.com/company/announcements/global-employee-experience-leader-culture-amp-raises-100-million",
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-20",
       "founders": [
         {
           "name": "Didier Elzinga",
@@ -783,7 +783,6 @@
           "source": "https://invest.vic.gov.au/understand-the-market/explore-investment-success-stories/culture-amp-launches-global-headquarters-and-asia-pacific-engineering-hub"
         }
       ],
-      "founded_year": 2009,
       "profile_facts": [
         {
           "key": "people-global-reported-2017",
@@ -794,10 +793,45 @@
         },
         {
           "key": "founding-year-source-context",
-          "label": "Founding-year provenance",
-          "value": "Invest Victoria's historical profile states founded in 2009. The separate 2021 company funding release says Since 2011 without explicitly defining a founding date.",
+          "label": "Founding year reported by Invest Victoria",
+          "value": "Invest Victoria’s historical profile gives 2009 as Culture Amp’s founding year. Accounts also give 2011, so Atlas has no single reconciled founding year.",
           "source": "https://invest.vic.gov.au/understand-the-market/explore-investment-success-stories/culture-amp-launches-global-headquarters-and-asia-pacific-engineering-hub",
-          "reviewed_at": "2026-11-13"
+          "reviewed_at": "2026-11-20"
+        },
+        {
+          "key": "early-funding-date-provenance",
+          "label": "Early funding chronology",
+          "value": "Blackbird's portfolio lists 2014 as its investment year. Culture Amp named Blackbird in its March 4, 2015 Series A announcement. The exact transaction date and its relation to the Series A remain unresolved.",
+          "source": "https://www.blackbird.vc/portfolio/culture-amp",
+          "reviewed_at": "2026-11-20"
+        },
+        {
+          "key": "founder-reported-start-2009",
+          "label": "Founder’s account of the company’s start",
+          "value": "Didier Elzinga wrote on 31 May 2017 that Culture Amp started in 2009.",
+          "source": "https://www.linkedin.com/pulse/what-id-do-differently-i-had-start-culture-amp-again-didier-elzinga",
+          "reviewed_at": "2026-11-20"
+        },
+        {
+          "key": "company-reported-founding-2011",
+          "label": "Founding year reported by Culture Amp",
+          "value": "Culture Amp’s 4 March 2015 Series A announcement gives 2011 as its founding year.",
+          "source": "https://www.prnewswire.com/news-releases/culture-amp-secures-63-million-in-series-a-funding-to-grow-culture-first-companies-300044471.html",
+          "reviewed_at": "2026-11-20"
+        },
+        {
+          "key": "launch-year-2011",
+          "label": "Company-reported launch",
+          "value": "Culture Amp’s official biography of Didier Elzinga dates the company’s launch to 2011.",
+          "source": "https://www.cultureamp.com/contributors/didier-elzinga",
+          "reviewed_at": "2026-11-20"
+        },
+        {
+          "key": "australian-abn-active-2009",
+          "label": "Australian Business Number status",
+          "value": "The Australian Business Register lists Culture Amp Pty Ltd’s ABN 12 138 600 987 as active from 31 July 2009.",
+          "source": "https://abr.business.gov.au/AbnHistory/View?id=12138600987",
+          "reviewed_at": "2026-11-20"
         }
       ],
       "funding_rounds": [
@@ -809,10 +843,68 @@
           "currency": "USD",
           "source": "https://www.cultureamp.com/company/announcements/global-employee-experience-leader-culture-amp-raises-100-million",
           "note": "Announced 29 July 2021; closing date unknown. Led by TDM Growth Partners and Sequoia Capital China, with Salesforce Ventures, Felicis Ventures, Blackbird Ventures, Index Ventures, Sapphire Ventures, Skip Capital, Grok Ventures and Global Founders Capital. Participant identities remain unresolved."
+        },
+        {
+          "id": "culture-amp-2019-series-e",
+          "stage": "Series E",
+          "announced_on": "2019-09-03",
+          "amount": 82000000,
+          "currency": "USD",
+          "amount_text": "USD 82 million",
+          "source": "https://www.nasdaq.com/press-release/culture-amp-raises-$82m-usd-in-global-funding-to-double-down-on-its-leadership",
+          "note": "Culture Amp named Sequoia Capital China as lead. The Nasdaq syndication of the company’s Business Wire release is timestamped 3 September 2019 at 10:00 a.m. EDT, which was 4 September in Melbourne. The company’s release carries the 4 September 2019 Melbourne dateline and its web page displays 4 September 2020. The legal close date remains unknown."
+        },
+        {
+          "id": "culture-amp-2018-series-d",
+          "stage": "Series D",
+          "announced_on": "2018-07-19",
+          "amount": 40000000,
+          "currency": "USD",
+          "amount_text": "USD 40 million",
+          "source": "https://www.cultureamp.com/blog/series-d-funding-announcement",
+          "note": "The issuer named Blackbird Ventures as lead and Felicis Ventures, Index Ventures, Sapphire Ventures, Skip Capital, Grok Ventures and Hostplus as participants. The issuer page labels July 19, 2018 as updated. Index Ventures published its confirmation of the round and its participation that day, supporting the announcement date. The legal close date remains unknown."
+        },
+        {
+          "id": "culture-amp-2015-series-a",
+          "stage": "Series A",
+          "announced_on": "2015-03-04",
+          "amount": 6300000,
+          "currency": "USD",
+          "amount_text": "USD 6.3 million",
+          "source": "https://www.prnewswire.com/news-releases/culture-amp-secures-63-million-in-series-a-funding-to-grow-culture-first-companies-300044471.html",
+          "note": "On March 4, 2015, Culture Amp announced that the round had closed. Its release named Felicis Ventures, Index Ventures and Blackbird Ventures as leads. TechCrunch described Felicis as lead and Index and Blackbird as participants. The CEO’s later account emphasized Felicis and named the other two as investors. SmartCompany’s March 4 interview coverage gives the denomination in US dollars. The issuer release uses an unqualified dollar sign. The exact close date and valuation remain unknown."
+        },
+        {
+          "id": "culture-amp-2016-series-b",
+          "stage": "Series B",
+          "announced_on": "2016-03-07",
+          "amount": 10000000,
+          "currency": "USD",
+          "amount_text": "USD 10 million",
+          "source": "https://www.prnewswire.com/news-releases/people-analytics-platform-snags-10-million-in-series-b-funding-led-by-index-ventures-300231274.html",
+          "note": "Culture Amp announced on March 7, 2016 that its Series B had closed. The issuer named Index Ventures as lead and Felicis Ventures and Blackbird Ventures as participants. The exact close date is unknown. Startup Daily's March 11, 2016 report and SmartCompany's March 8, 2016 coverage identify the currency as USD. The issuer uses an unqualified dollar sign."
+        },
+        {
+          "id": "culture-amp-2017-series-c",
+          "stage": "Series C",
+          "announced_on": "2017-06-14",
+          "amount": 20000000,
+          "currency": "USD",
+          "amount_text": "USD 20 million",
+          "source": "https://www.prnewswire.com/news-releases/culture-amp-announces-new-funding-to-empower-companies-everywhere-to-put-culture-first-300474440.html",
+          "note": "Culture Amp announced the Series C at HR Tech World in San Francisco on June 14, 2017 local time. The issuer wire published June 15 at 07:00 ET reports the previous day's announcement and names Sapphire Ventures as lead, with Index Ventures, Felicis Ventures and Blackbird Ventures participating. Didier Elzinga's June 23 account and lead-investor counsel Bird & Bird specify US$20 million. The exact legal close date is unknown."
         }
       ],
       "description": "Employee-experience platform for workplace feedback and people development.",
-      "website": "https://www.cultureamp.com/"
+      "website": "https://www.cultureamp.com/",
+      "articles": [
+        {
+          "title": "Culture Amp announces Series C funding",
+          "url": "https://www.prnewswire.com/news-releases/culture-amp-announces-new-funding-to-empower-companies-everywhere-to-put-culture-first-300474440.html",
+          "published_on": "2017-06-15",
+          "kind": "funding announcement"
+        }
+      ]
     },
     {
       "name": "Quantum Brilliance",
@@ -1044,7 +1136,7 @@
     {
       "name": "Synthesia",
       "source": "https://www.synthesia.io/about",
-      "reviewed_at": "2026-11-15",
+      "reviewed_at": "2026-11-19",
       "founders": [
         {
           "name": "Victor Riparbelli",
@@ -1076,6 +1168,40 @@
           "currency": "USD",
           "valuation": 4000000000,
           "valuation_currency": "USD"
+        },
+        {
+          "id": "synthesia-2023-series-c",
+          "stage": "Series C",
+          "announced_on": "2023-06-13",
+          "amount_text": "US$90 million",
+          "source": "https://www.ldv.co/blog/congratulations-to-synthesia-on-their-90m-series-c-led-by-accel-at-a-1b-valuation",
+          "amount": 90000000,
+          "currency": "USD",
+          "valuation": 1000000000,
+          "valuation_currency": "USD",
+          "note": "LDV reported the Series C on 13 June 2023. Accel's same-day investment announcement corroborates the timing: https://www.accel.com/news/ai-generated-video-for-the-enterprise-our-investment-in-synthesia. Accel's counsel confirmed US$90 million, a US$1 billion valuation and Accel as lead on 20 June: https://www.goodwinlaw.com/en/news-and-events/news/2023/06/announcements-accel-leads-investment-into-synthesia. The legal close date and valuation basis are unspecified. Counsel names NVentures, Kleiner Perkins, GV, FirstMark Capital and MMC as participants."
+        },
+        {
+          "id": "synthesia-2025-series-d",
+          "stage": "Series D",
+          "announced_on": "2025-01-15",
+          "amount_text": "US$180 million",
+          "source": "https://www.synthesia.io/post/synthesia-secures-180m-in-series-d-funding",
+          "amount": 180000000,
+          "currency": "USD",
+          "valuation": 2100000000,
+          "valuation_currency": "USD",
+          "note": "Synthesia announced the successful close on 15 January 2025. The exact legal close date is unspecified. Issuer counsel confirmed US$180 million, a US$2.1 billion valuation and NEA as lead on 16 January: https://www.lw.com/en/news/latham-advises-synthesia-on-us180-million-series-fundraising. The valuation basis is unspecified. The issuer names WiL (World Innovation Lab), Atlassian Ventures, PSP Growth, GV, MMC Ventures and FirstMark as participants."
+        },
+        {
+          "id": "synthesia-2021-series-a",
+          "stage": "Series A",
+          "announced_on": "2021-04-20",
+          "amount_text": "USD 12.5 million",
+          "source": "https://api.mattturck.com/synthesia/",
+          "amount": 12500000,
+          "currency": "USD",
+          "note": "FirstMark deal lead Matt Turck reported the Series A and FirstMark as lead. Slator attributes the April 20 announcement and USD 12.5 million amount to Synthesia: https://slator.com/ai-video-startup-synthesia-raises-usd-12-5m-for-multilingual-avatars/. CEO Victor Riparbelli described the financing as all equity in an interview: https://www.londontechwatch.com/2021/04/synthesia-ai-powered-video-generation-platform-victor-riparbelli/. The legal close date and valuation are unspecified."
         }
       ],
       "description": "AI video-creation platform for businesses.",

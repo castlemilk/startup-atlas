@@ -121,7 +121,7 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await audit('Treemap',['Find a company','Size by','Currency','Group by','Presentation']);
   await act('Find a company','setValue',['Canva']);
   await until(()=>evaluate("new URLSearchParams(location.search).get('q')==='Canva'&&document.querySelectorAll('.treemap-tile').length===1"),'Agent treemap search did not filter companies');
-  await choose('Presentation',/^Ranked list$/);
+  await choose('Presentation',/^List$/);
   await until(()=>evaluate("new URLSearchParams(location.search).get('view')==='list'&&!document.querySelector('#treemap-list').hidden"),'Agent presentation change did not reveal rankings');
   await assertOneTabStop('.treemap-view-switch');
   await evaluate("document.querySelector('#show-list').focus()");
@@ -129,10 +129,16 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await until(()=>evaluate("new URLSearchParams(location.search).get('view')==='cards'&&!document.querySelector('#treemap-cards').hidden"),'SDK presentation arrow did not reveal cards');
   assert.equal(await evaluate('document.activeElement.id'),'show-cards');
   await assertOneTabStop('.treemap-view-switch');
+  await evaluate("document.querySelector('#treemap-filter-toggle').focus()");
+  await press('Enter','Enter',13);
+  await until(()=>evaluate("!document.querySelector('#treemap-filter-fields').hidden&&document.querySelector('#treemap-filter-toggle').getAttribute('aria-expanded')==='true'"),'The Filters button did not expand with Enter');
   await choose('Size by',/^Company count$/);
   await until(()=>evaluate("document.querySelector('#treemap-metric').value==='companies'&&new URLSearchParams(location.search).get('metric')==='companies'"),'Agent metric did not update the chart measure');
+  await act('Filters','press');
+  await until(()=>evaluate("document.querySelector('#treemap-filter-fields').hidden&&document.querySelector('#treemap-metric').value==='companies'"),'Collapsing filters lost the applied measure');
+  await act('Filters','press');
   await act('Reset','press');
-  await until(()=>evaluate("document.querySelector('#treemap-metric').value==='funding'&&document.querySelector('#treemap-query').value===''&&!document.querySelector('#treemap-chart').hidden"),'SDK reset did not restore all real treemap controls');
+  await until(()=>evaluate("document.querySelector('#treemap-metric').value==='funding'&&document.querySelector('#treemap-query').value===''&&!document.querySelector('#treemap-cards').hidden&&document.querySelector('#treemap-chart').hidden"),'SDK reset did not restore the default funding cards');
   await assertOneTabStop('.treemap-view-switch');
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   const metricTrigger='ui-select[data-native-id="treemap-metric"] .atlas-select-trigger';

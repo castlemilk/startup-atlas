@@ -45,6 +45,94 @@ EVIDENCE_PATTERNS = {
     'restrictions':re.compile(r'\b(exclud\w*|not cover\w*|not eligible|restrictions?|limitations?|cannot|non.transfer\w*|overage\w*|bill\w*)\b',re.I),
     'application':re.compile(r'\b(apply|application|deadline|referral|partner|enrol\w*|admission|waitlist)\b',re.I),
 }
+MAX_HEADCOUNT_MENTIONS = 12
+MAX_HEADCOUNT_CONTEXT = 360
+HEADCOUNT_INTEGER = r'(?:[0-9]{1,3}(?:,[0-9]{3}){1,2}|[0-9]{1,8})'
+HEADCOUNT_NUMBER = rf'{HEADCOUNT_INTEGER}(?:k)?\+?'
+HEADCOUNT_MEASURE = r'(?:(?:group|full[- ]time|part[- ]time) )?(?:employees|staff(?: members)?|workers|people)'
+HEADCOUNT_MENTION = re.compile(
+    rf'(?<![\w.,])(?:between {HEADCOUNT_NUMBER} and {HEADCOUNT_NUMBER}'
+    rf'|(?:more than |over |at least |approximately |about |around |fewer than |less than )?'
+    rf'{HEADCOUNT_NUMBER}(?:\s*(?:to|[–—-])\s*{HEADCOUNT_NUMBER})?)\s+'
+    rf'(?P<measure>{HEADCOUNT_MEASURE})\b'
+    r'(?! (?:positions?|postings?|openings?|roles?|vacancies)\b)',
+    re.I,
+)
+HEADCOUNT_PREDICATE = re.compile(
+    r'\b(?:currently )?(?:(?:has|have|had|reported|reports) )?(?:(?P<possessive>its) |(?:a|our) )?'
+    r'(?:(?:global|local) )?(?P<workforce>team|workforce|headcount) (?:of|is|was|reached)\s*$'
+    r'|\b(?:currently )?(?:(?P<employment>employ(?:s|ed)?)|has|have|had|reports?|reported'
+    r'|states?|stated|says|said)\s*$',
+    re.I,
+)
+HEADCOUNT_POSSESSIVE_SUBJECT = re.compile(r"['’]s$", re.I)
+HEADCOUNT_NON_ASSERTED = re.compile(r"\b(?:not|never|no longer|without|if|unless|whether)\b|n['’]t\b", re.I)
+HEADCOUNT_QUESTION = re.compile(r"""\?["'”’]*(?:\s|$)""")
+HEADCOUNT_UNBOUND_SUBJECTS = {'', 'i', 'we', 'you', 'it', 'he', 'she', 'they', 'the company'}
+HEADCOUNT_EXCLUDED = re.compile(
+    r'\b(?:jobs?|hires?|hired|hiring|laid off|layoffs?|recruitment|recruiting|eligible|eligibility'
+    r'|applicants?|visitors?|attendees?|will|would|forecast\w*|target\w*'
+    r'|(?:plans?|planning|aims?|expects?|intends?|expected) to|(?:could|may|might) (?:have|employ))\b',
+    re.I,
+)
+HEADCOUNT_FUTURE_CLAUSE = re.compile(
+    r'(?:,\s+(?:(?:and|but|with) )?| (?:and|but|with) )'
+    r'(?=(?:(?:it|the company) )?(?:also )?(?:(?:has )?plans? to|is planning to|aims? to|'
+    r'expects? to|intends? to|will)\b)',
+    re.I,
+)
+HEADCOUNT_EXTERNAL = re.compile(
+    r'\b(?:(?:labou?r|staffing|employment|recruitment|temp) agenc(?:y|ies)'
+    r'|(?:agency|vendor|third[- ]party)[- ](?:supplied|provided)'
+    r'|(?:supplied|provided|seconded|employed|assigned) by)\b',
+    re.I,
+)
+HEADCOUNT_FROM = re.compile(r'^\s+(?:from|through|on loan from|seconded from)\b', re.I)
+HEADCOUNT_GROWTH_NUMBER = (
+    rf'(?:{HEADCOUNT_NUMBER}|zero|one|two|three|four|five|six|seven|eight|nine|ten|'
+    r'eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen)'
+)
+HEADCOUNT_GROWTH = re.compile(
+    r"\bwe(?:['’]ve| have| had)? (?:grew|grown|expanded|increased) "
+    r'(?:(?:our |the )?(?:team|workforce|staff) )?from '
+    rf'(?:(?:a (?:team|workforce|staff) of|just|only) )?{HEADCOUNT_GROWTH_NUMBER}'
+    rf'(?: (?P<starting_measure>{HEADCOUNT_MEASURE}))?'
+    r'(?: in (?:[A-Za-z]{3,9} )?[0-9]{4})?'
+    rf' to (?:more than |over |about |nearly )?{HEADCOUNT_GROWTH_NUMBER}'
+    rf'(?: (?P<ending_measure>{HEADCOUNT_MEASURE}))?(?![\w+])',
+    re.I,
+)
+HEADCOUNT_OPERATIONS = re.compile(r'^\s+(?:across|within|in) (?:[\w-]+ ){0,6}operations\b', re.I)
+HEADCOUNT_AS_OF = re.compile(
+    r'^as of (?:(?:[0-9]{1,2} )?[A-Za-z]{3,9} [0-9]{4}|[0-9]{4}(?:-[0-9]{2}){0,2}),\s+', re.I,
+)
+HEADCOUNT_POSSESSIVE_TEAM = re.compile(
+    r"^(?P<owner>[\w&.-]+(?: [\w&.-]+){0,7})['’]s "
+    rf'(?P<quantity>{HEADCOUNT_INTEGER}\+ team)(?= (?:brings together|works|operates|spans|is based)\b)',
+    re.I,
+)
+HEADCOUNT_OTHER_POPULATION = (
+    r'(?:(?:(?:PhD|doctoral|postgraduate|graduate|undergraduate|research) )?students'
+    r'|(?:(?:independent|external|temporary) )?contractors|consultants|interns|apprentices|volunteers)'
+)
+HEADCOUNT_MIXED_SUFFIX = re.compile(
+    r'^(?:'
+    rf'(?:,? and |, )(?:{HEADCOUNT_MEASURE}|{HEADCOUNT_OTHER_POPULATION})\b'
+    rf'|,? including (?:{HEADCOUNT_NUMBER} )?{HEADCOUNT_OTHER_POPULATION}\b'
+    r'){1,4}',
+    re.I,
+)
+HEADCOUNT_PLACE = r'(?-i:[A-Z][\w-]*(?: [A-Z][\w-]*){0,3})'
+HEADCOUNT_GLOBAL_TEAM = re.compile(
+    rf'(?:founded in {HEADCOUNT_PLACE}, )?'
+    r'(?P<owner>(?-i:[A-Z][\w&.-]*(?: [A-Z][\w&.-]*){0,7})) has '
+    rf'(?P<quantity>(?:(?:more than|over|at least) {HEADCOUNT_INTEGER}|{HEADCOUNT_INTEGER}\+) team members globally)'
+    # An operations list can describe locations, but cannot absorb mixed populations.
+    rf'(?:, with operations in (?!.*\b(?:{HEADCOUNT_MEASURE}|{HEADCOUNT_OTHER_POPULATION}|teams?)\b)'
+    rf'{HEADCOUNT_PLACE}(?:(?:, (?:and )?| and ){HEADCOUNT_PLACE}){{0,7}})?'
+    r'[.!]?',
+    re.I,
+)
 API = 'https://www.wikidata.org/w/api.php'
 PROPERTIES = {'P856':'official_website','P17':'country','P159':'headquarters','P571':'inception',
               'P112':'founder','P31':'instance_of','P452':'industry','P154':'logo_file','P127':'owned_by','P1128':'employees',
@@ -260,6 +348,7 @@ class PageParser(HTMLParser):
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
         self._inactive=[]
         self._ld=False; self._ldbuf=[]; self.structured=[]; self.text=[]; self.logo_images=[]; self.images=[]
+        self.paragraphs = []
         self._brand_regions=[]; self._anchor_homes=[]; self._footer_depth=0
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
         self.article_markup=ArticleMarkup(base)
@@ -321,6 +410,8 @@ class PageParser(HTMLParser):
         if not self._hidden and tag in ('h1','h2','h3','h4'): self._heading_links=[]
         if not self._hidden and tag in ('title','h1','h2','h3','h4','a','p'):
             self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links),'label':(a.get('aria-label') or a.get('title') or '')[:160]})
+            if tag == 'p':
+                self._captures[-1]['visible_text'] = []
     def handle_endtag(self,tag):
         tag=tag.lower()
         if self._inactive:
@@ -352,6 +443,10 @@ class PageParser(HTMLParser):
         capture=next((entry for entry in reversed(self._captures) if entry['tag']==tag),None)
         if capture is not None:
             self._captures.remove(capture)
+            if tag == 'p' and len(self.paragraphs) < 256:
+                paragraph = ''.join(capture['visible_text'])
+                if len(paragraph) <= 1000:
+                    self.paragraphs.append(paragraph)
             value=' '.join(' '.join(capture['text']).split())[:300]
             if tag=='a' and not value: value=capture.get('label','')
             if tag=='title' and not self.title: self.title=value
@@ -375,7 +470,10 @@ class PageParser(HTMLParser):
         if self._ld and sum(map(len,self._ldbuf))<50_000: self._ldbuf.append(data)
         if not self._hidden and self._table_depth==1 and self._cell is not None and len(self._cell['text'])<100:
             self._cell['text'].append(data[:500])
-        for capture in self._captures: capture['text'].append(data)
+        for capture in self._captures:
+            capture['text'].append(data)
+            if not self._hidden and capture['tag'] == 'p':
+                capture['visible_text'].append(data)
         for context in self._contexts[-3:]:
             if len(context['text'])<100: context['text'].append(data[:500])
         if not self._hidden and len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
@@ -425,6 +523,91 @@ def extract_amount_mentions(parts,url):
                 seen.add(key); found.append({'mention':match.group(0),'context':line[:240],'source':url})
             if len(found)>=30: return found
     return found
+
+def extract_headcount_mentions(parts, url, company_name=None):
+    """Keep staff or team quantities and their complete sentence as review evidence."""
+    found = []
+    seen = set()
+    for part in parts:
+        for sentence in re.split(r'(?<=[.!?;])\s+', clean_capture_line(part)):
+            if len(sentence) > MAX_HEADCOUNT_CONTEXT or HEADCOUNT_QUESTION.search(sentence):
+                continue
+            clause = HEADCOUNT_FUTURE_CLAUSE.split(sentence, maxsplit=1)[0]
+            if HEADCOUNT_EXCLUDED.search(clause) or HEADCOUNT_EXTERNAL.search(clause):
+                continue
+            growth_quotes = [
+                growth for growth in HEADCOUNT_GROWTH.finditer(clause)
+                if growth['starting_measure'] or growth['ending_measure']
+            ]
+            # First-person growth quotes preserve the change as unbound evidence.
+            quantities = [
+                (growth.group(), False) for growth in growth_quotes
+                if company_name is None and not HEADCOUNT_NON_ASSERTED.search(clause[:growth.start()])
+                and not HEADCOUNT_FROM.match(clause[growth.end():])
+            ]
+            team_clause = HEADCOUNT_AS_OF.sub('', clause)
+            team = HEADCOUNT_POSSESSIVE_TEAM.match(team_clause) or HEADCOUNT_GLOBAL_TEAM.fullmatch(team_clause)
+            if team and not HEADCOUNT_NON_ASSERTED.search(clause):
+                owner = team['owner'].casefold()
+                if owner not in HEADCOUNT_UNBOUND_SUBJECTS and (company_name is None or owner == company_name.casefold()):
+                    quantities.append((team['quantity'], True))
+            for mention in HEADCOUNT_MENTION.finditer(clause):
+                suffix = clause[mention.end():]
+                if (HEADCOUNT_FROM.match(suffix)
+                        or any(growth.start() <= mention.start() < growth.end() for growth in growth_quotes)):
+                    continue
+                prefix = clause[:mention.start()]
+                predicate = HEADCOUNT_PREDICATE.search(prefix)
+                if predicate is None or HEADCOUNT_NON_ASSERTED.search(prefix):
+                    continue
+                subject = HEADCOUNT_AS_OF.sub('', prefix[:predicate.start()].strip())
+                possessive_subject = predicate['workforce'] and HEADCOUNT_POSSESSIVE_SUBJECT.search(subject)
+                if possessive_subject:
+                    subject = subject[:possessive_subject.start()]
+                subject = subject.casefold()
+                has_employer = subject not in HEADCOUNT_UNBOUND_SUBJECTS and bool(
+                    predicate['employment'] or predicate['possessive'] or possessive_subject
+                )
+                if company_name is not None and (
+                    not has_employer or subject != company_name.casefold()
+                ):
+                    continue
+                if (mention['measure'].casefold().endswith('people')
+                        and not (predicate['employment'] or predicate['workforce'])
+                        and not HEADCOUNT_OPERATIONS.match(suffix)):
+                    continue
+                # An immediate list or inclusion can bring other groups into the quantity.
+                mixed = HEADCOUNT_MIXED_SUFFIX.match(suffix)
+                if mixed:
+                    if company_name is None:
+                        quantities.append((mention.group() + mixed.group(), False))
+                    continue
+                quantities.append((mention.group(), has_employer))
+            for quantity, attributed in quantities:
+                key = (quantity, sentence)
+                if key in seen:
+                    continue
+                seen.add(key)
+                row = {'mention': quantity, 'context': sentence, 'source': url}
+                if not attributed:
+                    row['employer_attribution'] = 'unbound'
+                found.append(row)
+                if len(found) == MAX_HEADCOUNT_MENTIONS:
+                    return found
+    return found
+
+
+def company_headcount_mentions(company_name, page):
+    """Retain saved mentions with exact employment or team attribution."""
+    mentions = page.get('headcount_mentions', [])
+    if not isinstance(mentions, list) or len(mentions) > MAX_HEADCOUNT_MENTIONS:
+        return []
+    source = page['final_url']
+    contexts = [row['context'] for row in mentions
+                if isinstance(row, dict) and row.get('source') == source
+                and isinstance(row.get('context'), str) and len(row['context']) <= MAX_HEADCOUNT_CONTEXT]
+    return [row for row in extract_headcount_mentions(contexts, source, company_name) if row in mentions]
+
 
 def extract_page(body,url):
     parser=PageParser(url); parser.feed(body.decode('utf-8','replace'))
@@ -476,9 +659,11 @@ def extract_page(body,url):
     for image in generic: candidate(image['url'],'page-logo-image',{k:image[k] for k in ('home_link','in_header_or_nav','alt')})
     for key in ('og:image','twitter:image'):
         candidate(parser.meta.get(key),'social-image')
+    headcount = extract_headcount_mentions(parser.paragraphs or parser.text, url)
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
             'structured_data':parser.structured[:10],'links':links,'profile_links':profile_links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
             'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40], 'image_candidates':parser.images,
+            **({'headcount_mentions': headcount} if headcount else {}),
             'tables':parser.tables,'article_markup':parser.article_markup.evidence()}
 
 def follow_links(extracted,base,max_follow):
@@ -775,11 +960,13 @@ def company_profile_observation(company, page):
                     if key in subject} for subject in subjects
                    if structured_types(subject)&{'Organization','Corporation'}
                    and matches_organization(subject,company,source)]
+    headcount = company_headcount_mentions(company['name'], page)
     return {'company':company['name'],'kind':'company-profile','source_url':source,
             'checked_at':page['checked_at'],'review_required':True,
             'title':page.get('title',''),
             'description':metadata.get('description') or metadata.get('og:description',''),
             'structured_subjects':subjects,'organization_claims':organizations,
+            **({'headcount_mentions': headcount} if headcount else {}),
             'logo_candidates':page.get('logo_candidates',[])[:40],
             'identity_note':'Page subjects may include other organisations or people. Image alt text and sameAs links are source claims, not verified identities or employment.'}
 
@@ -1277,10 +1464,12 @@ def process_text_captures(captures):
         raw_lines=body.splitlines()
         labelled=[line for line in raw_lines if re.match(r'^L\d+:',line)]
         parts=labelled or raw_lines
+        headcount = extract_headcount_mentions(parts, url)
         rows.append({'name':str(doc.get('name',''))[:200],'url':url,'status':'provided_text',
                      'acquisition':str(doc.get('acquisition','provided excerpt'))[:120],
                      'captured_at':str(doc.get('captured_at',''))[:80],
-                     'coverage':'partial excerpt','evidence':extract_evidence(parts,url),'amount_mentions':extract_amount_mentions(parts,url)})
+                     'coverage':'partial excerpt','evidence':extract_evidence(parts,url),'amount_mentions':extract_amount_mentions(parts,url),
+                     **({'headcount_mentions': headcount} if headcount else {})})
     return {'version':1,'mode':'captures','generated_at':utc_now(),'results':rows,
             'warning':'Provided text excerpts were processed locally; they are not direct crawler fetches or complete page snapshots.'}
 

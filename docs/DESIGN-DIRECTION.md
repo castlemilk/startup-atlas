@@ -4,6 +4,8 @@ A practical handbook for extending Startup Atlas as an editorial field guide to 
 
 **Review baseline:** wireframe-based UI implementation, inspected on 16 November 2026. “Implemented” below describes the inspected code and its contracts. “Next” identifies further work, including its interaction or data prerequisites. Neither a direction board nor this document establishes that a particular revision has deployed.
 
+**20 November 2026 design target:** The approved [editorial handoff](design/editorial/README.md) consolidates thirteen selected wireframes and the v1.1 interaction specification. Its [implementation handoff](design/editorial/HANDOFF.md) distinguishes the selected direction from current runtime integration and acceptance.
+
 ## How to use the handbook
 
 Read the principles before choosing a composition. Use the appropriate view playbook to decide the reading order, next action and data boundaries. Then compare the proposed component with the working catalogue and the operational route. Generated illustrations support discussion; actual values and relationships come from the published research snapshot.

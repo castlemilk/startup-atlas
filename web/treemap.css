@@ -1,6 +1,7 @@
 .treemap-shell{max-width:var(--atlas-page-max);margin:auto;padding:32px 24px 64px}
 .treemap-eyebrow{font:500 11px/1.5 var(--atlas-font-mono);letter-spacing:.08em;color:var(--atlas-muted);margin:0 0 12px}
 .treemap-controls{display:flex;align-items:end;gap:14px;padding:18px;background:var(--atlas-surface);border:1px solid var(--atlas-border);border-radius:var(--atlas-radius-panel);box-shadow:0 1px 2px rgb(17 19 24 / 4%),0 5px 18px rgb(17 19 24 / 3%)}
+.treemap-filter-fields{display:contents}
 .treemap-controls label{display:grid;gap:8px;font-size:var(--atlas-text-xs);font-weight:600;color:var(--atlas-muted)}
 .treemap-controls select,.treemap-controls input{height:44px;padding:9px 12px;border:1px solid var(--atlas-border-strong);border-radius:var(--atlas-radius-control);background:linear-gradient(#fff,var(--atlas-face-bottom));color:var(--atlas-ink);min-width:0;font-size:var(--atlas-text-sm);box-shadow:inset 0 1px 0 #fff,0 1px 1px rgb(17 19 24 / 8%)}
 .treemap-controls input{background:linear-gradient(var(--atlas-soft),var(--atlas-canvas));box-shadow:inset 0 2px 3px rgb(17 19 24 / 5%),0 1px 0 #fff}
@@ -78,35 +79,135 @@
 .treemap-panel-actions .treemap-view-switch button{min-height:35px;white-space:nowrap}
 .treemap-share{display:inline-flex;align-items:center;gap:5px;min-height:40px;border:0;background:transparent;padding:8px 0;color:var(--atlas-action);font-size:11px;font-weight:700;white-space:nowrap;cursor:pointer}
 .treemap-share span{font-size:18px;line-height:1}.treemap-share:hover{text-decoration:underline;text-underline-offset:4px}
-.treemap-cards{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px;padding:0 18px 19px;align-items:stretch}
-.treemap-cards>p{grid-column:1/-1;padding:22px;font:15px/1.65 var(--atlas-font-body);color:var(--atlas-muted)}
-.treemap-card{grid-column:span 3;display:flex;flex-direction:column;align-items:stretch;gap:17px;min-width:0;min-height:245px;margin:0;padding:17px;border:1px solid var(--atlas-border);border-radius:var(--atlas-radius-panel);background:var(--atlas-surface);color:var(--atlas-ink);text-align:left;cursor:pointer;font:inherit;box-shadow:none}
-.treemap-card.featured{grid-column:span 4;min-height:285px;padding:21px}
-.treemap-card:hover{border-color:var(--atlas-border-strong);box-shadow:0 4px 12px rgb(17 19 24 / 6%)}
-.treemap-card[aria-pressed=true]{border-color:var(--atlas-accent);background:var(--atlas-selection-soft);box-shadow:inset 0 0 0 1px var(--atlas-accent)}
-.treemap-card:focus-visible{outline:3px solid var(--atlas-focus);outline-offset:3px}
-.treemap-card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;min-width:0;width:100%;padding:10px;border-radius:10px;background:var(--card-color,var(--atlas-soft))}
-.treemap-card-rank{display:grid;place-items:center;flex:none;min-width:25px;height:25px;padding:3px 4px;border:0;border-radius:6px;background:var(--atlas-surface);color:var(--atlas-ink);font:500 10px/1 var(--atlas-font-mono);font-variant-numeric:tabular-nums}
-.treemap-card-value{display:block;min-width:0;text-align:right;font-size:25px;font-weight:750;line-height:1.12;letter-spacing:-.035em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.treemap-card.featured .treemap-card-value{font-size:33px}
-.treemap-card-body{display:grid;gap:10px;min-width:0}
-.treemap-card .treemap-logo{width:51px;height:51px;margin:1px 0 4px;background:var(--atlas-surface);box-shadow:0 1px 2px rgb(17 19 24 / 4%);border-color:var(--atlas-border)}
-.treemap-card.featured .treemap-logo{width:65px;height:65px;font-size:24px;margin-bottom:8px}
-.treemap-card-name{display:block;font-family:var(--atlas-font-display);font-size:18px;font-weight:750;line-height:1.2;letter-spacing:-.025em;overflow-wrap:anywhere}
-.treemap-card.featured .treemap-card-name{font-size:24px}
-.treemap-card-summary{display:block;color:var(--atlas-muted);font-size:13px;font-weight:400;line-height:1.6;overflow-wrap:anywhere}
-.treemap-card-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px;min-width:0}
-.treemap-card-year{display:inline-flex;align-items:center;border:1px solid var(--atlas-border);border-radius:6px;background:var(--atlas-canvas);color:var(--atlas-muted);padding:5px 8px;font-size:10px;font-weight:650;line-height:1.3;overflow-wrap:anywhere}
-.treemap-card-date{color:var(--atlas-muted);font-size:10px;line-height:1.5;overflow-wrap:anywhere}
-.treemap-card-note{display:block;padding-top:10px;border-top:1px solid var(--atlas-border);color:var(--atlas-muted);font-size:10px;font-weight:400;line-height:1.55;overflow-wrap:anywhere}
-.treemap-card.count-company .treemap-card-value{font-size:10px;font-weight:700;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--atlas-muted)}
-@media(max-width:1200px){.treemap-cards{gap:10px}.treemap-card,.treemap-card.featured{grid-column:span 4;padding:16px;min-height:250px}.treemap-card.featured{min-height:275px}.treemap-card-value{font-size:23px}.treemap-card.featured .treemap-card-value{font-size:28px}.treemap-card.featured .treemap-card-name{font-size:21px}.treemap-card.featured .treemap-logo{width:58px;height:58px}}
-@media(max-width:1000px) and (min-width:761px){.treemap-card,.treemap-card.featured{grid-column:span 6}.treemap-card.featured:first-child{grid-column:1/-1;min-height:250px}.treemap-card.featured:first-child .treemap-card-value{font-size:35px}.treemap-card.featured:first-child .treemap-card-name{font-size:25px}}
-@media(max-width:760px){.treemap-panel-actions{justify-content:flex-start;gap:9px 15px}.treemap-panel-actions .treemap-view-switch button{min-height:36px}.treemap-cards{padding:0 11px 13px;gap:10px}.treemap-card,.treemap-card.featured{grid-column:span 4;padding:16px;min-height:250px}.treemap-card.featured .treemap-card-value{font-size:27px}.treemap-card-name,.treemap-card.featured .treemap-card-name{font-size:19px}.treemap-card.featured .treemap-logo{width:55px;height:55px}}
-@media(max-width:580px){.treemap-panel-actions{width:100%;justify-content:space-between;gap:8px}.treemap-panel-actions .treemap-view-switch button{padding-inline:9px;font-size:10px}.treemap-share{font-size:10px;min-height:38px}.treemap-card,.treemap-card.featured{grid-column:span 6;min-height:250px;padding:16px}.treemap-card.featured:first-child{grid-column:1/-1;min-height:265px;padding:20px}.treemap-card.featured:first-child .treemap-card-name{font-size:26px}.treemap-card.featured:first-child .treemap-card-value{font-size:35px}.treemap-card.featured:first-child .treemap-logo{width:67px;height:67px;font-size:24px}.treemap-card.featured:first-child.count-company .treemap-card-value{font-size:10px}.treemap-card-value,.treemap-card.featured .treemap-card-value{font-size:25px}.treemap-card-name,.treemap-card.featured .treemap-card-name{font-size:19px}}
-@media(max-width:420px){.treemap-panel-actions{justify-content:flex-start;gap:3px 12px}.treemap-panel-actions .treemap-view-switch{flex:1 1 auto;justify-content:space-between}.treemap-share{font-size:10px}.treemap-card,.treemap-card.featured,.treemap-card.featured:first-child{grid-column:1/-1;min-height:0;padding:20px;gap:16px}.treemap-card-value,.treemap-card.featured .treemap-card-value,.treemap-card.featured:first-child .treemap-card-value{font-size:32px}.treemap-card-name,.treemap-card.featured .treemap-card-name,.treemap-card.featured:first-child .treemap-card-name{font-size:23px}.treemap-card .treemap-logo,.treemap-card.featured .treemap-logo{width:58px;height:58px;font-size:21px}.treemap-card-summary{font-size:13px}.treemap-card-footer{padding-top:4px}.treemap-card.count-company .treemap-card-value,.treemap-card.featured:first-child.count-company .treemap-card-value{font-size:10px}}
-@media(prefers-reduced-motion:reduce){.treemap-card{transition:none!important}}
-.treemap-cards .treemap-card.count-company .treemap-card-value{font-size:10px}
+/* Company ranking board */
+.atlas-treemap-page[data-treemap-view=cards] {
+  --board-ink:#122345;
+  --board-muted:#51627b;
+  --board-surface:#fff;
+  --board-line:#e2e9f2;
+  --board-tint:#edf2fa;
+  --board-strong:#396cc2;
+  background:#fbfcfe;
+}
+[data-treemap-view=cards] .treemap-shell{max-width:1320px;padding-top:24px}
+[data-treemap-view=cards] .atlas-feature,
+[data-treemap-view=cards] .treemap-panel>.treemap-summary,
+[data-treemap-view=cards] .treemap-panel-heading:not(:has(.treemap-breadcrumb-button)),
+[data-treemap-view=cards] .treemap-panel-heading :is(h2,#treemap-subtitle){display:none}
+.treemap-board-heading{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:baseline;
+  gap:4px 20px;
+  padding-bottom:12px;
+  border-bottom:2px solid;
+  border-image:linear-gradient(90deg,#35aae8,#7448de) 1;
+}
+.treemap-board-heading h1{
+  margin:0;
+  color:var(--board-ink);
+  font:750 clamp(1.75rem,4vw,2.7rem)/1.12 var(--atlas-font-body);
+  letter-spacing:-.035em;
+}
+.treemap-board-heading .treemap-summary{justify-self:end;padding:0;color:var(--board-muted)}
+.treemap-board-heading p{grid-column:1/-1;margin:0;color:var(--board-muted);font-size:var(--atlas-text-xs);line-height:1.4}
+.treemap-board-heading p:empty,.treemap-board-heading .treemap-summary:empty{display:none}
+[data-treemap-view=cards] .treemap-controls{
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  margin-block:10px 12px;
+  padding:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+}
+[data-treemap-view=cards] .treemap-controls .treemap-view-switch{flex:none;width:auto}
+[data-treemap-view=cards] .treemap-controls .treemap-view-switch button{min-width:44px;padding-inline:9px}
+[data-treemap-view=cards] .treemap-controls .treemap-share{margin-inline-start:auto;white-space:normal}
+.treemap-filter-toggle{display:inline-flex;align-items:center;gap:7px}
+.treemap-filter-toggle::after{
+  content:'';
+  width:6px;
+  height:6px;
+  border-right:1.5px solid;
+  border-bottom:1.5px solid;
+  transform:translateY(-1px) rotate(45deg);
+}
+.treemap-filter-toggle[aria-expanded=true]::after{transform:translateY(2px) rotate(225deg)}
+[data-treemap-view=cards] .treemap-filter-fields{
+  display:flex;
+  flex:1 0 100%;
+  flex-wrap:wrap;
+  align-items:end;
+  gap:10px;
+  min-width:0;
+  padding:12px;
+  border:1px solid var(--atlas-border);
+  border-radius:var(--atlas-radius-control);
+  background:var(--atlas-surface);
+}
+[data-treemap-view=cards] .treemap-workspace{grid-template-columns:minmax(0,1fr);gap:18px}
+[data-treemap-view=cards] .treemap-panel{background:transparent;border:0;box-shadow:none;overflow:visible}
+[data-treemap-view=cards] .treemap-panel-heading{padding:0 0 8px}
+[data-treemap-view=cards] .treemap-panel-heading .treemap-eyebrow{margin:0}
+[data-treemap-view=cards] .treemap-panel-footer{border-color:var(--board-line);padding-inline:0}
+[data-treemap-view=cards] .treemap-detail{background:var(--board-surface);border-color:var(--board-line)}
+.treemap-cards{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:12px;padding-bottom:16px}
+.treemap-cards>p{grid-column:1/-1;padding:16px 0;color:var(--board-muted)}
+.treemap-card{grid-column:span 5;display:grid;grid-template-rows:auto minmax(76px,1fr) auto;gap:8px;min-width:0;min-height:213px;padding:13px;margin:0;border:1px solid var(--board-line);border-radius:12px;background:var(--board-surface);color:var(--board-ink);text-align:left;font:inherit;box-shadow:0 2px 8px rgb(24 56 100 / 5%)}
+.treemap-card.featured{grid-column:span 6;min-height:270px;padding:15px}
+.treemap-card.featured.board-leader{grid-column:span 8}
+.treemap-card:hover{border-color:var(--board-strong)}
+.treemap-card[aria-pressed=true]{border-color:var(--board-strong);box-shadow:inset 0 0 0 1px var(--board-strong)}
+.treemap-card:focus-visible{outline:3px solid var(--board-strong);outline-offset:2px}
+.treemap-card-top{display:flex;justify-content:space-between;align-items:center;gap:6px;min-width:0}
+.treemap-card-rank{display:grid;place-items:center;flex:none;min-width:26px;height:26px;padding-inline:5px;border-radius:50%;background:var(--board-tint);color:var(--board-ink);font:700 12px/1 var(--atlas-font-body)}
+.treemap-card-value{min-width:0;text-align:right;font:800 clamp(1.1rem,2.1vw,1.75rem)/1.15 var(--atlas-font-body);letter-spacing:-.035em;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.treemap-card.featured .treemap-card-value{font-size:clamp(1.3rem,2.5vw,2.1rem)}
+.treemap-card-media{display:grid;place-items:center;min-width:0;min-height:92px}
+.treemap-card-media img{width:100%;height:112px;object-fit:contain}
+.treemap-card-word{
+  font:750 clamp(1.4rem,2.7vw,2.2rem)/1.08 var(--atlas-font-body);
+  letter-spacing:-.035em;
+  text-align:center;
+  text-wrap:balance;
+  overflow-wrap:anywhere;
+}
+.treemap-card.featured .treemap-card-media{min-height:110px}
+.treemap-card.featured .treemap-card-media img{height:clamp(108px,11vw,158px)}
+.treemap-card.featured .treemap-card-word{font-size:clamp(2rem,4vw,3.2rem)}
+.treemap-card:has(.treemap-card-word:not([hidden])) .treemap-card-name{display:none}
+.treemap-card-body{display:grid;gap:3px;min-width:0;align-content:end}
+.treemap-card-name{font:750 1.01rem/1.25 var(--atlas-font-body);overflow-wrap:anywhere}
+.treemap-card.featured .treemap-card-name{font-size:1.2rem}
+.treemap-card-summary,.treemap-card-place{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--board-muted);font-size:var(--atlas-text-xs);line-height:1.4}
+.treemap-card-place{-webkit-line-clamp:1}
+.treemap-card-footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px 8px;margin-top:3px}
+.treemap-card-year{width:fit-content;border-radius:999px;background:var(--board-tint);color:#264b87;padding:4px 7px;font:650 11px/1.25 var(--atlas-font-body);white-space:nowrap}
+.treemap-card-date,.treemap-card-note{color:var(--board-muted);font-size:11px;line-height:1.4}
+.treemap-card.count-company,.treemap-card[data-period]{grid-template-rows:minmax(62px,1fr) auto;min-height:155px}
+.treemap-card[data-period]{grid-template-rows:auto 1fr}
+.treemap-card.solo-card{grid-column:1/-1}
+.treemap-card.compact-tail{min-height:165px;grid-template-rows:auto minmax(56px,1fr) auto}
+.treemap-card.single-tail{grid-column:1/-1;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) minmax(0,2fr);grid-template-rows:1fr;align-items:center;min-height:88px}
+.treemap-card.compact-tail .treemap-card-media{min-height:68px}
+.treemap-card.compact-tail .treemap-card-media img{height:68px}
+@media(max-width:900px){
+  .treemap-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .treemap-card,.treemap-card.featured{grid-column:auto}
+  .treemap-card.featured.board-leader{grid-column:1/-1}
+}
+@media(max-width:480px){
+  .treemap-board-heading{grid-template-columns:minmax(0,1fr)}
+  .treemap-board-heading .treemap-summary{justify-self:start}
+  .treemap-cards{grid-template-columns:minmax(0,1fr);gap:9px}
+  .treemap-card,.treemap-card.featured,.treemap-card.compact-tail,.treemap-card.single-tail{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;min-height:0;padding:12px}
+  .treemap-card.featured .treemap-card-media{min-height:84px}
+}
+@media(max-width:760px){.treemap-panel-actions{justify-content:flex-start;gap:9px 15px}.treemap-panel-actions .treemap-view-switch button{min-height:36px}}
+@media(max-width:580px){.treemap-panel-actions{width:100%;justify-content:space-between;gap:8px}.treemap-panel-actions .treemap-view-switch button{padding-inline:9px;font-size:10px}.treemap-share{font-size:10px;min-height:38px}}
+@media(max-width:420px){.treemap-panel-actions{justify-content:flex-start;gap:3px 12px}.treemap-panel-actions .treemap-view-switch{flex:1 1 auto;justify-content:space-between}.treemap-share{font-size:10px}}
 @media(max-width:760px){.treemap-detail{position:static}}
 
 .atlas-treemap-page .treemap-controls .atlas-search-control .atlas-clear{right:0}
@@ -132,4 +233,12 @@
   .atlas-treemap-page .treemap-controls .treemap-view-switch{flex:1 1 auto;width:auto}
   .atlas-treemap-page .treemap-controls .treemap-view-switch button{padding-inline:8px}
   .atlas-treemap-page .treemap-controls .treemap-share{flex:none;padding-inline:10px}
+}
+@media(max-width:650px){
+  .atlas-treemap-page[data-treemap-view=cards] .treemap-shell{padding-top:16px}
+  .atlas-treemap-page[data-treemap-view=cards] .treemap-controls{gap:6px;padding:0}
+  .atlas-treemap-page[data-treemap-view=cards] .treemap-controls :is(.treemap-share,.treemap-filter-toggle,.treemap-view-switch button){
+    padding-inline:7px;
+    font-size:var(--atlas-text-xs);
+  }
 }
