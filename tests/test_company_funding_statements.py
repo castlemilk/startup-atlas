@@ -382,24 +382,36 @@ class CompanyFundingStatementTests(unittest.TestCase):
     def test_numbered_completion_binds_explicit_retractions_to_the_same_round(self):
         opening = DIRAQ_A2_COMPLETION
         denial = 'Diraq did not complete the Series A-2 capital raise of USD $15 million.'
+        qualified = denial.replace('did not complete', 'did not successfully complete')
         possessive = 'Correction: Diraq’s USD $15 million Series A-2 round did not close.'
+        perfect = possessive.replace('did not close', 'has not yet closed')
         board = 'One director joined the board.'
+        research = 'The raise will support the company’s research and development.'
         for following, expected in (
             (denial, False),
+            (qualified, False),
             (denial.replace('did not', 'did not in fact'), False),
             (denial.replace('complete', 'announce the successful completion of'), False),
             ('Diraq has not yet closed the Series A-2 round.', False),
             (possessive, False),
             (f'{board} {possessive}', False),
+            (perfect, False),
+            (f'{research} {perfect}', False),
             (denial.replace('Diraq', 'Acme'), True),
             (denial.replace('Series A-2', 'Series A'), True),
             (denial.replace('Series A-2', 'Series A-3'), True),
             (denial.replace('USD $15', 'USD $22'), True),
             (denial.replace('USD $15', 'US$15'), True),
             (denial.replace('complete', 'secure'), True),
+            (qualified.replace('Diraq', 'Acme'), True),
+            (qualified.replace('Series A-2', 'Series A-3'), True),
+            (qualified.replace('USD $15', 'USD $22'), True),
+            (f'{research} {perfect.replace("USD $15", "USD $22")}', True),
             (f'{board} {possessive.replace("Series A-2", "Series A-3")}', True),
             (f'“{denial}”', True),
             (denial[:-1] + '?', True),
+            (f'“{qualified}”', True),
+            (perfect[:-1] + '?', True),
             ('The legal close date was not disclosed.', True),
             (f'{denial} Diraq completed a US$20 million Series A.', True),
         ):

@@ -219,7 +219,7 @@ NUMBERED_COMPLETION_CORRECTIONS = (
     re.compile(
         rf'(?:Correction: )?(?P<issuer>{ISSUER_NAME}) '
         r"(?:(?:actually )?(?:did not|didn['’]t) (?:(?:actually|in fact) )?"
-        r"(?:complete|close|announce the successful completion of)"
+        r"(?:(?:successfully )?complete|close|announce the successful completion of)"
         r"|(?:ha[sd] not|ha[sd]n['’]t|never) (?:(?:actually|yet) )?"
         r"(?:completed|closed|announced the successful completion of)) "
         rf'(?:the funding|(?:(?:{CORRECTION_DETERMINERS}|its) )?{NUMBERED_CORRECTION_TERMS})[.!]',
@@ -227,7 +227,7 @@ NUMBERED_COMPLETION_CORRECTIONS = (
     ),
     re.compile(
         rf"(?:Correction: )?(?P<issuer>{ISSUER_NAME})['’]s {NUMBERED_CORRECTION_TERMS} "
-        r"(?:did not|didn['’]t) (?:complete|close)[.!]",
+        r"(?:(?:did not|didn['’]t) (?:complete|close)|(?:has not|hasn['’]t) (?:yet )?closed)[.!]",
         re.I,
     ),
 )
