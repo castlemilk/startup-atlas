@@ -115,6 +115,20 @@ DIRAQ_A2_COMPLETION = (
 DIRAQ_A2_EXPANSION = (
     'Diraq expanded its existing Series A-2 investment round to US$22 million, including the initial close.'
 )
+STAGE_FIRST_EXTENSION = (
+    'Ready Company announced its Series A-2 had expanded to US$22 million, including the February close.'
+)
+# Reconstructions retain the issuer and investor statements' financing syntax.
+ISSUER_EXTENSION = (
+    'Ready Company, the Australian technology company developing new manufacturing tools, '
+    'has closed a US$4.3 million extension to its Series A financing, bringing total Series A funding '
+    'to more than US$14 million.'
+)
+INVESTOR_EXTENSION = (
+    'Harbour-based Ready Company has secured US$2 million (approximately A$2.8 million) '
+    'from the regional government fund as part of a US$4.3 million extension to its Series A financing, '
+    'bringing its total Series A funding to more than US$14 million.'
+)
 CHIPS_MAY = (
     'https://www.nist.gov/news-events/news/2026/05/'
     'department-commerce-announces-letters-intent-9-companies-2-billion'
@@ -421,6 +435,69 @@ class CompanyFundingStatementTests(unittest.TestCase):
                 self.assertEqual('round_mention' in row['signals'], expected)
                 if not expected:
                     self.assertIn('prospective_or_negated', row['signals'])
+
+    def test_round_extension_wording_remains_review_context(self):
+        context = ('context', ['round_extension_context'])
+        for excerpt in (
+            STAGE_FIRST_EXTENSION,
+            'Ready Company closed a Series A extension.',
+            'Ready Company announced its Series A-2 had expanded to an undisclosed amount.',
+            STAGE_FIRST_EXTENSION.replace('had expanded', 'would expand'),
+            STAGE_FIRST_EXTENSION.replace('had expanded', 'had not expanded'),
+            STAGE_FIRST_EXTENSION[:-1] + '?',
+            ISSUER_EXTENSION,
+            INVESTOR_EXTENSION,
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(classify(excerpt, {'ready company'}), context)
+        self.assertNotIn('round_mention', classify(f'“{STAGE_FIRST_EXTENSION}”', {'ready company'})[1])
+        other_issuer = STAGE_FIRST_EXTENSION.replace('Ready Company', 'Acme').replace(
+            'the February close', 'an investment from Ready Company',
+        )
+        self.assertNotIn('round_extension_context', classify(other_issuer, {'ready company'})[1])
+
+    def test_round_extension_does_not_hide_independent_round_statements(self):
+        initial = 'Ready Company closed a US$20 million Series A.'
+        other = 'Acme closed a US$8 million Series B.'
+        self.assertEqual(classify(initial, {'ready company'}), ('round_lead', ['round_mention']))
+        for excerpt in (f'{initial} {STAGE_FIRST_EXTENSION}', f'{STAGE_FIRST_EXTENSION} {initial}'):
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual(
+                    classify(excerpt, {'ready company'}),
+                    ('mixed_financing_lead', ['round_mention', 'round_extension_context']),
+                )
+        self.assertEqual(
+            classify(f'{STAGE_FIRST_EXTENSION} {other}', {'acme'}),
+            ('round_lead', ['round_mention']),
+        )
+        self.assertEqual(
+            classify(f'{STAGE_FIRST_EXTENSION} {other}', {'ready company'}),
+            ('context', ['round_extension_context']),
+        )
+
+    def test_round_extension_saved_review_retains_each_source(self):
+        sources = [
+            {'url': 'https://www.ready.example/extension', 'excerpt': ISSUER_EXTENSION,
+             'acquisition': 'reviewer_paraphrase', 'retrieved_on': '2026-11-20',
+             'dates': {'published': '2026-11-18'}},
+            {'url': 'https://www.investor.example/investment', 'excerpt': INVESTOR_EXTENSION,
+             'acquisition': 'reviewer_paraphrase', 'retrieved_on': '2026-11-20',
+             'dates': {'published': '2026-11-16'}},
+        ]
+        repeated = [sources[0], sources[1], sources[0]]
+        results = saved_results(repeated, 'www.ready.example', {'ready company'})
+        self.assertEqual(results, saved_results(repeated[::-1], 'www.ready.example', {'ready company'}))
+        self.assertEqual(len(results), 2)
+        documents = {document['url']: document for document in results}
+        for source in sources:
+            document = documents[source['url']]
+            self.assertTrue(document['review_required'])
+            self.assertEqual(document['observations'], [{
+                **source,
+                'dates': {'published': {'value': source['dates']['published'], 'precision': 'day'}},
+                'bucket': 'context',
+                'signals': ['round_extension_context'],
+            }])
 
     def test_first_person_round_uses_exact_reviewed_page_and_deduplicates(self):
         capture = {'url': CULTURE_AMP_SERIES_D, 'excerpt': CULTURE_AMP_FIRST_PERSON,
