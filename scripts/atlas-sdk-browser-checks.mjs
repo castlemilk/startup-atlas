@@ -181,9 +181,9 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   assert.equal(await evaluate("document.querySelector('#partner-company-detail .profile-detail-source a').href"),company.source,'Agent inspection retains the company relationship source');
   await audit('Updated partner explorer');
   await navigate('/entity.html?id=startup%3Acanva',ready("document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Canva'"));
-  await audit('Startup explorer',['Explore connections']);
+  await audit('Startup explorer',['Explore graph']);
   await assertNoOverflow('SDK startup explorer');
-  const profileAction=await component('Explore connections','press');
+  const profileAction=await component('Explore graph','press');
   await evaluate(`void window.atlasUIAgent.act(${JSON.stringify({steps:[{ref:profileAction.ref,action:'press'}]})})`);
   await until(()=>evaluate(ready("location.pathname.endsWith('/graph.html')&&document.querySelector('.network-node.is-root')?.dataset.node==='startup:canva'")),'The SDK profile action did not navigate to the same startup in the graph');
   console.log('UI SDK acceptance passed: named live controls, discoverable choices, agent query/selection/inspection, exactly-once native dispatch, keyboard Select dismissal and focus, single-tab-stop scopes, treemap presentations, graph controls, sourced partner inspection and mobile popup bounds.');

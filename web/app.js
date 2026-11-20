@@ -353,7 +353,7 @@ function renderInspectorRecord(entity) {
       <strong>Outside current results</strong><p id="directory-exclusion-reason"></p>
       <div><button type="button" id="directory-adjust-filters" class="atlas-button">Adjust filters</button><button type="button" class="atlas-button" data-clear-directory-selection>Clear selection</button></div>
     </div>
-    <ui-tabs class="directory-inspector-tabs" default-value="overview">
+    <ui-tabs class="directory-inspector-tabs" default-value="overview" aria-label="Record details">
       <ui-tabs-list aria-label="Record details">
         <ui-tabs-tab value="overview"><button type="button">Overview</button></ui-tabs-tab>
         <ui-tabs-tab value="people"><button type="button">${peopleLabel}</button></ui-tabs-tab>

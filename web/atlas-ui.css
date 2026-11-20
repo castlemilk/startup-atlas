@@ -21,7 +21,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 [hidden] { display: none !important; }
 .atlas-icon { display: inline-block; width: 18px; height: 18px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
 /* The operational routes share a compact masthead and an independent workspace. */
-.atlas-masthead { background: var(--atlas-paper); color: var(--atlas-ink); border-bottom: 1px solid var(--atlas-border); }
+.atlas-masthead { container: atlas-masthead / inline-size; background: var(--atlas-paper); color: var(--atlas-ink); border-bottom: 1px solid var(--atlas-border); }
 .atlas-brand-bar {
   display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center;
   gap: 16px; min-height: 60px;
@@ -304,18 +304,19 @@ body:is(.atlas-directory-page,.atlas-treemap-page,.atlas-graph-page,.atlas-entit
   .atlas-feature-editorial { margin-bottom: var(--atlas-space-4); }
 }
 
-@media (max-width: 900px) {
+@container atlas-masthead (max-width: 900px) {
   .atlas-brand-bar { grid-template-columns: minmax(0,1fr) auto; column-gap: 8px; row-gap: 2px; padding-block: 4px 8px; }
   .atlas-brand-actions { grid-column: 2; grid-row: 1; }
   .atlas-view-bar { grid-column: 1 / -1; grid-row: 2; }
   .atlas-masthead .atlas-view-nav a { padding-inline: 10px; }
 }
-@media (max-width: 520px) {
+@container atlas-masthead (max-width: 520px) {
   .atlas-system-link span { display: none; }
   .atlas-brand-actions :is(button,.atlas-system-link) { padding-inline: 6px; font-size: 12px; }
 }
-@media (max-width: 380px) {
+@container atlas-masthead (max-width: 380px) {
   .atlas-wordmark { font-size: 1.22rem; gap: 7px; }
+  .atlas-masthead .atlas-view-nav { flex-wrap: wrap; }
   .atlas-masthead .atlas-view-nav .signal-feature-symbol { display: none; }
 }
 
