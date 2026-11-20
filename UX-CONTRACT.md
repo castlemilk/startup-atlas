@@ -96,6 +96,8 @@ Treemap opens as a company-count map grouped and coloured by technology type. Ex
 
 Selecting Company value groups by technology type. Its tiles, cards and ranked list identify the company-specific basis as Market cap or Private valuation. Small tiles retain a matching shape in the chart key and a full accessible label. The inspector exposes the selected figure and the recorded ownership, full sourced profile facts, founders and funding history. Missing, non-standalone and different-currency records remain inspectable.
 
+Company logos sit directly on the treemap tiles. Reviewed paper-backed logos blend with the tile colour, and logo size follows the available space. Ranked cards give their bundled marks a larger, uncropped area.
+
 Company saves, saved explorer URLs, comparison membership and personal notes are browser-local. Writes update the displayed saved state after storage succeeds. The comparison panel loads recorded headquarters, sector, funding stage and the last recorded profile fact review. Exports contain the names, types, stable IDs and public sources of the active result set. Personal notes stay in the browser and out of explorer URLs and CSV files.
 
 Design lab URL state is `q` (bounded concept search), `view` (a concept ID or omitted for all), and `concept` (the open study). Opening a study adds a history entry; stepping between studies replaces that entry. Closing a study opened locally returns to the gallery state, while closing a direct link removes the concept parameter without leaving the site. Unknown view/concept values fall back safely. Concept filters and specimen controls do not query or mutate the research dataset.
