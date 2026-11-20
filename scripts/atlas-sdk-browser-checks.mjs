@@ -149,7 +149,7 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await until(()=>evaluate(`(()=>{
     const params=new URLSearchParams(location.search);
     return params.get('metric')==='market-cap'&&params.get('group')==='technology'
-      &&document.querySelector('.treemap-plot-group[aria-label="Financial software"] [data-company="startup:wise"]');
+      &&!!document.querySelector('.treemap-plot-group[aria-label="Financial software"] [data-company="startup:wise"]');
   })()`),'SDK choices did not plot public market cap by technology type');
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   const metricTrigger='ui-select[data-native-id="treemap-metric"] .atlas-select-trigger';
