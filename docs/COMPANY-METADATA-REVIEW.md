@@ -122,6 +122,19 @@ grant remains context. The report retains observations for claim review. Check t
 event scope, amounts, stage, dates and investor attribution. Use the existing
 source approval process before adding a suggested document to the crawl scope.
 
+Complete saved issuer excerpts that explicitly pair the new capital with the
+expanded series total can carry `round_extension_amounts` in review context.
+The roles are `new_capital` and `expanded_total` for the stated `series`.
+An amount in parentheses beside that total can carry `alternate_total` when
+each total has an explicit, distinct currency. US and USD denote the same
+currency, as do AU and AUD. A repeated or missing currency leaves the excerpt
+in review context with `ambiguous_extension_total` and no structured amount
+roles. The values retain the reported units, currency notation and qualifiers.
+A numbered fundraise needs the adjacent statement identifying
+it as an extension for the same issuer and series. Keep ambiguous and
+partial amounts in the original excerpt for review. These observations
+create no round and compute no difference, conversion or closing date.
+
 An explicitly attributed receipt of strategic investment can carry
 `strategic_investment` in the existing review signals. A separately stated
 annual recurring revenue milestone carries `annual_recurring_revenue`.

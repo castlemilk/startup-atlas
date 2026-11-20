@@ -135,6 +135,16 @@ INVESTOR_EXTENSION = (
     'from the regional government fund as part of a US$4.3 million extension to its Series A financing, '
     'bringing its total Series A funding to more than US$14 million.'
 )
+NUMBERED_EXTENSION_DISCLOSURE = (
+    'BOSTON, Jan 31, 2023 – Ready Company, a provider of planning software, today announced its Series B-1 '
+    'fundraise of $12.5 million USD, with participation from Cedar Ventures. This Series B extension brings '
+    'Ready Company’s total Series B raise to over $30 million USD, the largest among workflow software companies, '
+    'according to Market data.'
+)
+INLINE_EXTENSION_DISCLOSURE = (
+    'Boston, USA – October 8, 2024 – Ready Company, the leading provider of planning software, today announced '
+    'the successful expansion of its Series B Funding Round to USD $40M (AUD $59M), with USD $9M of new capital.'
+)
 CHIPS_MAY = (
     'https://www.nist.gov/news-events/news/2026/05/'
     'department-commerce-announces-letters-intent-9-companies-2-billion'
@@ -513,6 +523,94 @@ class CompanyFundingStatementTests(unittest.TestCase):
                 'bucket': 'context',
                 'signals': ['round_extension_context'],
             }])
+
+    def test_saved_issuer_expansion_keeps_new_capital_and_expanded_totals(self):
+        company = {'name': 'Ready Company', 'website': 'https://ready.example/'}
+        cases = (
+            (NUMBERED_EXTENSION_DISCLOSURE, {
+                'series': 'Series B', 'new_capital': '$12.5 million USD', 'expanded_total': 'over $30 million USD',
+            }),
+            (INLINE_EXTENSION_DISCLOSURE, {
+                'series': 'Series B', 'new_capital': 'USD $9M', 'expanded_total': 'USD $40M',
+                'alternate_total': 'AUD $59M',
+            }),
+            (INLINE_EXTENSION_DISCLOSURE.replace(' (AUD $59M)', ''), {
+                'series': 'Series B', 'new_capital': 'USD $9M', 'expanded_total': 'USD $40M',
+            }),
+            (INLINE_EXTENSION_DISCLOSURE.replace('USD $40M', '$40M USD'), {
+                'series': 'Series B', 'new_capital': 'USD $9M', 'expanded_total': '$40M USD',
+                'alternate_total': 'AUD $59M',
+            }),
+        )
+        for excerpt, amounts in cases:
+            with self.subTest(excerpt=excerpt):
+                capture = {'url': 'https://ready.example/news/extension', 'excerpt': excerpt,
+                           'retrieved_on': '2026-11-20', 'acquisition': 'page_excerpt'}
+                report = self.first_person_review([capture, capture], company=company)
+                self.assertEqual(report['repeated_url_hits'], 1)
+                result, = report['results']
+                self.assertTrue(result['review_required'])
+                self.assertEqual(result['bucket'], 'context')
+                self.assertEqual(result['observations'], [{
+                    **capture, 'round_extension_amounts': amounts,
+                    'bucket': 'context', 'signals': ['round_extension_context'],
+                }])
+
+    def test_expansion_amounts_need_matching_saved_issuer_assertions(self):
+        company = {'name': 'Ready Company', 'website': 'https://ready.example/'}
+        notice = INLINE_EXTENSION_DISCLOSURE
+        numbered = NUMBERED_EXTENSION_DISCLOSURE
+        capture = {'url': 'https://ready.example/news/extension', 'excerpt': notice,
+                   'retrieved_on': '2026-11-20', 'acquisition': 'page_excerpt'}
+        initial_close = 'Ready Company completed a US$15 million Series A.'
+        for change in (
+            {'excerpt': notice.replace('announced the successful expansion', 'plans a future expansion')},
+            {'excerpt': notice.replace('of new capital', 'of unrelated bookings')},
+            {'excerpt': notice.replace(', with USD $9M of new capital', '')},
+            {'excerpt': notice.replace('AUD $59M', 'AUD $59M in orders')},
+            {'excerpt': notice.replace('Ready Company', 'Other Company') + ' Ready Company was a customer.'},
+            {'excerpt': notice[:-1] + '?'},
+            {'excerpt': f'An observer said “{notice}”'},
+            {'excerpt': notice + ' Ready Company did not expand its Series B.'},
+            {'excerpt': numbered.replace('brings Ready Company’s total', 'brings Other Company’s total')},
+            {'excerpt': numbered.replace('total Series B raise', 'total Series C raise')},
+            {'excerpt': numbered.split(' This Series B extension', 1)[0]},
+            {'excerpt': f'{notice} {initial_close}'},
+            {'acquisition': 'search_result'},
+            {'acquisition': 'reviewer_paraphrase'},
+            {'url': 'https://wire.example/news/extension'},
+            {'coverage_listing': {'article_url': 'https://wire.example/news/extension'}},
+        ):
+            with self.subTest(change=change):
+                result, = self.first_person_review([{**capture, **change}], company=company)['results']
+                observation, = result['observations']
+                self.assertNotIn('round_extension_amounts', observation)
+                if 'coverage_listing' in change:
+                    self.assertEqual(observation['signals'], ['coverage_listing'])
+                elif change.get('excerpt', '').endswith(initial_close):
+                    self.assertIn('round_mention', observation['signals'])
+
+    def test_issuer_expansion_with_same_or_missing_currency_keeps_ambiguous_context(self):
+        company = {'name': 'Ready Company', 'website': 'https://ready.example/'}
+        for totals in (
+            'USD $40M (USD $59M)',
+            'USD $40M (usd $40M)',
+            'US$40M (USD $59M)',
+            'AU$40M (AUD $59M)',
+            '$40M USD (USD $59M)',
+            '$40M (AUD $59M)',
+        ):
+            with self.subTest(totals=totals):
+                excerpt = ('Ready Company announced the expansion of its Series B funding round to '
+                           f'{totals}, with USD $9M of new capital.')
+                capture = {'url': 'https://ready.example/news/extension', 'excerpt': excerpt,
+                           'retrieved_on': '2026-11-20', 'acquisition': 'page_excerpt'}
+                result, = self.first_person_review([capture], company=company)['results']
+                self.assertTrue(result['review_required'])
+                self.assertEqual(result['bucket'], 'context')
+                self.assertEqual(result['observations'], [{
+                    **capture, 'bucket': 'context', 'signals': ['round_extension_context', 'ambiguous_extension_total'],
+                }])
 
     def test_first_person_round_uses_exact_reviewed_page_and_deduplicates(self):
         capture = {'url': CULTURE_AMP_SERIES_D, 'excerpt': CULTURE_AMP_FIRST_PERSON,

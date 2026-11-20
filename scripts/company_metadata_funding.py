@@ -408,6 +408,30 @@ ROUND_EXTENSION_REPORT = re.compile(
     rf' extension to (?:its|the) {SERIES.pattern}(?:-[1-9][0-9]?)? (?:financing|funding|investment round|round)\b)',
     re.I,
 )
+EXTENSION_DATELINE = re.compile(
+    r'^[A-Z][A-Za-z -]{1,40}, [A-Z][A-Za-z -]{1,40} [—–-] '
+    r'[A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2} [—–-] '
+)
+EXTENSION_MILLIONS = rf'{STATED_AMOUNT_NUMBER}(?:M| million)'
+EXTENSION_CODE_AMOUNT = rf'{CURRENCY} ?\${EXTENSION_MILLIONS}'
+EXTENSION_LITERAL = rf'(?:{EXTENSION_CODE_AMOUNT}|\${EXTENSION_MILLIONS}(?: {CURRENCY})?)'
+EXTENSION_CURRENCY = re.compile(rf'^{CURRENCY}(?= ?\$)|(?<= ){CURRENCY}$', re.I)
+EXTENSION_SUBJECT = rf'(?P<issuer>{ISSUER_NAME})(?:{ISSUER_APPOSITION.pattern})? (?:today )?announced '
+EXPLICIT_EXPANSION = re.compile(
+    EXTENSION_SUBJECT
+    + rf'the (?:successful )?expansion of its (?P<series>{SERIES.pattern}) (?:funding|financing) round'
+    + rf' to (?P<expanded_total>{EXTENSION_LITERAL})(?: \((?P<alternate_total>{EXTENSION_CODE_AMOUNT})\))?'
+    + rf', with (?P<new_capital>{EXTENSION_LITERAL}) of new capital\.',
+    re.I,
+)
+NUMBERED_EXPANSION = re.compile(
+    EXTENSION_SUBJECT
+    + rf'its (?P<series>{SERIES.pattern})-[1-9][0-9]? fundraise of (?P<new_capital>{EXTENSION_LITERAL})'
+    + rf"(?:, with participation from {CAPITALIZED_NAME})?\. This (?P=series) extension brings "
+    + rf"(?P=issuer)['’]s total (?P=series) raise to (?P<expanded_total>(?:over |more than )?{EXTENSION_LITERAL})"
+    + rf'(?:, the largest among (?:[\w-]+ ){{1,8}}companies, according to {CAPITALIZED_NAME} data)?\.',
+    re.I,
+)
 ISSUER_CLOSING_TERMS = re.compile(
     r'(?!.*\bplanned\b)' + NAMED_SERIES_TERMS
     + rf'(?: (?:funding(?: round)?|round(?: of funding)?|{SCOPED_CONTEXT_SUFFIX.pattern}))?'
@@ -877,6 +901,31 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
     return ('context' if signals else 'unmatched'), signals
 
 
+def extension_currency(amount):
+    match = EXTENSION_CURRENCY.search(amount)
+    if not match:
+        return None
+    code = match[0].upper()
+    return {'US': 'USD', 'AU': 'AUD'}.get(code, code)
+
+
+def issuer_extension_amounts(excerpt, names):
+    """Return literal amount roles, an empty dict for ambiguous totals or None for no match."""
+    wording = EXTENSION_DATELINE.sub('', ISSUER_FINANCIAL_DATELINE.sub('', ' '.join(excerpt.split())))
+    if QUOTATION_MARK.search(wording):
+        return None
+    match = EXPLICIT_EXPANSION.fullmatch(wording) or NUMBERED_EXPANSION.fullmatch(wording)
+    if not match or name_key(match['issuer']) not in names:
+        return None
+    amounts = {key: value for key, value in match.groupdict().items() if key != 'issuer' and value is not None}
+    if alternate := amounts.get('alternate_total'):
+        primary_code = extension_currency(amounts['expanded_total'])
+        alternate_code = extension_currency(alternate)
+        if primary_code is None or alternate_code is None or primary_code == alternate_code:
+            return {}
+    return amounts
+
+
 def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_articles=None):
     if not isinstance(captures, list) or len(captures) > 32:
         raise ValueError('Expected at most 32 saved captures per company')
@@ -907,10 +956,19 @@ def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_artic
             # The index supplies discovery context. The article needs its own capture.
             bucket, signals = 'context', ['coverage_listing']
         else:
-            reviewed_round = reviewed_rounds.get(url) if reviewed_rounds and acquisition == 'page_excerpt' else None
-            reviewed_article = reviewed_articles.get(url) if reviewed_articles and acquisition == 'page_excerpt' else None
-            bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round, reviewed_article=reviewed_article,
-                                       search_result=acquisition == 'search_result')
+            amounts = (issuer_extension_amounts(excerpt, names)
+                       if acquisition == 'page_excerpt' and website_host(url) == host else None)
+            if amounts is not None:
+                bucket, signals = 'context', ['round_extension_context']
+                if amounts:
+                    observation['round_extension_amounts'] = amounts
+                else:
+                    signals.append('ambiguous_extension_total')
+            else:
+                reviewed_round = reviewed_rounds.get(url) if reviewed_rounds and acquisition == 'page_excerpt' else None
+                reviewed_article = reviewed_articles.get(url) if reviewed_articles and acquisition == 'page_excerpt' else None
+                bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round, reviewed_article=reviewed_article,
+                                           search_result=acquisition == 'search_result')
         observation.update(bucket=bucket, signals=signals)
         if dates:
             observation['dates'] = {label: date_observation(day) for label, day in dates.items()}
