@@ -1524,6 +1524,41 @@ class CompanyFundingStatementTests(unittest.TestCase):
                 if bucket == 'context':
                     self.assertNotIn('round_mention', signals)
 
+    def test_investor_plans_for_a_possessive_seed_stay_out_of_round_leads(self):
+        names = {'ready company'}
+        for excerpt in (
+            "The investors plan to close Ready Company's seed round if approval is granted.",
+            "Investors announced plans to complete Ready Company's seed round.",
+            'Northstar investors intend to complete Ready Company’s seed round.',
+            'Investors announced their intention to jointly complete Ready Company’s seed round.',
+            'Northstar was expected to close Ready Company’s seed investment.',
+            'Cedar Capital will close Ready Company’s US$3.2 million seed financing round.',
+            'Northstar might complete Ready Company’s pre-seed round if the board approves.',
+            'The investors are planning to jointly close Ready Company’s $3.2 million seed investment.',
+            'Investors are scheduled to complete Ready Company’s seed round.',
+            'Northstar investors will be closing Ready Company’s seed round next week.',
+            'Northstar plans to complete due diligence and will close Ready Company’s seed round.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertNotIn('round_mention', classify(excerpt, names)[1])
+
+    def test_possessive_seed_plan_guard_preserves_independent_completed_rounds(self):
+        names = {'ready company'}
+        for excerpt in (
+            'Northstar and Cedar today completed Ready Company’s seed round initiated the prior year.',
+            'Ready Company completed its seed round.',
+            'Northstar Capital completed Ready Company’s US$3.2 million seed financing round.',
+            'Northstar, which plans to complete distribution, completed Ready Company’s seed round.',
+            'After announcing plans to complete, Ready Company’s seed round was completed.',
+            'Ready Company’s seed funding round was completed after investors outlined plans to expand distribution.',
+            'Northstar plans to complete a trial. Investors completed Ready Company’s seed round.',
+            'Northstar expects to complete Bright Labs’ seed round. Ready Company completed its seed round.',
+            'Northstar plans to complete Ready Company’s seed round. Ready Company closed its Series A.',
+            'Northstar plans to complete Ready Company’s pre-seed round and Cedar completed Ready Company’s seed round.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertIn('round_mention', classify(excerpt, names)[1])
+
     def test_financing_scope_guards(self):
         for case, excerpt, expected in GUARD_CASES:
             with self.subTest(case=case):

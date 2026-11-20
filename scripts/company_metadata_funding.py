@@ -404,6 +404,14 @@ ROUND_COMPLETION = re.compile(r'(?:(?:was|has been|had been) )?(?:completed|clos
 EXTERNAL_ROUND_PURPOSE = re.compile(
     r'^(?:for\b|on behalf of\b|(?:investment|funding|financing) in\b|to (?:finance|fund|support|back)\b)'
 )
+POSSESSIVE_SEED_PLAN = re.compile(
+    r'^.*\b(?:(?:plan(?:s|ned|ning)?|intend(?:s|ed|ing)?|expect(?:s|ed|ing)?'
+    r'|aim(?:s|ed|ing)?|hop(?:e|es|ed|ing)|intentions?|due|scheduled|set) to'
+    r'|will|would|may|might|could|can|should) '
+    r'(?:(?:jointly|soon|later|likely) )?(?:close|complete|be (?:closing|completing)) '
+    rf"(?P<issuer>{ISSUER_NAME})['’]s{RAW_ROUND_TERMS}?$",
+    re.I,
+)
 INVESTMENT_MONTH_QUALIFIER = re.compile(
     r'\s+in\s+(?:january|february|march|april|may|june|july|august|september|october|november|december)'
     r'\s+(?:19|20)[0-9]{2}[.;]?\s*',
@@ -453,6 +461,8 @@ def associated_round(clause, mention, names):
     investment_in = mention.group().casefold().endswith('investment') and (suffix == 'in' or suffix.startswith('in '))
     if investment_in and not INVESTMENT_MONTH_QUALIFIER.fullmatch(tail):
         return False
+    # Use the last prospective predicate and retain punctuation at the issuer boundary.
+    seed_plan = POSSESSIVE_SEED_PLAN.fullmatch(' '.join(subject.split())) if mention.re is EARLY else None
     # A company inside another actor's unresolved aside cannot own the next verb.
     prefix = name_key(ISSUER_BOUNDARY.split(ISSUER_APPOSITION.sub(' ', subject))[-1])
     for name in names:
@@ -460,6 +470,8 @@ def associated_round(clause, mention, names):
             return True
         _, found, after_name = f' {prefix} '.rpartition(f' {name} ')
         if not found:
+            continue
+        if seed_plan and name_key(seed_plan['issuer']) == name:
             continue
         after_name = after_name.strip()
         # Normalization loses quotation and question marks. These openings need the raw assertion check.
