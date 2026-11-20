@@ -407,7 +407,8 @@ EXTERNAL_ROUND_PURPOSE = re.compile(
 SEED_CLOSE_ADVERB = r'(?:(?:jointly|soon|later|likely|successfully) )?'
 POSSESSIVE_SEED_PLAN = re.compile(
     r'^.*\b(?:(?:(?:plan(?:s|ned|ning)?|intend(?:s|ed|ing)?|expect(?:s|ed|ing)?'
-    r'|aim(?:s|ed|ing)?|hop(?:e|es|ed|ing)|prepar(?:e|es|ed|ing)|intentions?|due|scheduled|set) to'
+    r'|aim(?:s|ed|ing)?|hop(?:e|es|ed|ing)|prepar(?:e|es|ed|ing)|agree(?:s|d|ing)?'
+    r'|intentions?|due|scheduled|set) to'
     r'|will|would|may|might|could|can|should) '
     rf'{SEED_CLOSE_ADVERB}(?:close|complete|be (?:closing|completing))'
     rf'|anticipat(?:e|es|ed|ing) {SEED_CLOSE_ADVERB}(?:closing|completing)) '

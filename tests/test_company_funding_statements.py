@@ -1543,6 +1543,10 @@ class CompanyFundingStatementTests(unittest.TestCase):
             'Investors are preparing to close Ready Company’s seed round.',
             'Investors anticipated jointly completing Ready Company’s seed round.',
             'Investors are preparing to complete Ready Company’s US$3.2 million pre-seed round.',
+            'Investors agreed to close Ready Company’s seed round next week.',
+            'Investors had agreed to close Ready Company’s seed round.',
+            'Investors agree to jointly complete Ready Company’s US$3.2 million pre-seed round.',
+            'Investors agreed to close Ready Company’s seed round next week. Bright Labs closed its seed round.',
         ):
             with self.subTest(excerpt=excerpt):
                 self.assertNotIn('round_mention', classify(excerpt, names)[1])
@@ -1564,6 +1568,9 @@ class CompanyFundingStatementTests(unittest.TestCase):
             'Investors, who anticipate closing Bright Labs’ seed round, completed Ready Company’s seed round.',
             'After preparing to close, Ready Company’s seed round was completed.',
             'Investors expect to successfully close Bright Labs’ seed round. Ready Company completed its seed round.',
+            'Investors completed Ready Company’s seed round last month after agreeing to close.',
+            'Investors agreed to close Ready Company’s seed round next week. Ready Company closed its seed round a week later.',
+            'After investors agreed to close, Ready Company’s seed round was completed.',
         ):
             with self.subTest(excerpt=excerpt):
                 self.assertIn('round_mention', classify(excerpt, names)[1])
