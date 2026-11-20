@@ -2,6 +2,75 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { entityHref, kindName } from './graph-model.js';
 import { logoFor } from './logos.js';
 import { renderIcon } from './atlas-icons.js';
+import { featureSymbol } from './atlas-feature-symbols.js';
+
+const gsapVersion = '3.15.1';
+const gsapLoads = new WeakMap();
+const activeMotions = new WeakMap();
+const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
+
+function loadExplorerGsap(doc) {
+  if (gsapLoads.has(doc)) return gsapLoads.get(doc);
+  const view = doc.defaultView;
+  const request = new Promise((resolve, reject) => {
+    if (view.gsap) {
+      if (view.gsap.version === gsapVersion) resolve(view.gsap);
+      else reject(Error('Unexpected GSAP version'));
+      return;
+    }
+    const script = doc.createElement('script');
+    function finish() {
+      view.clearTimeout(timeout);
+      script.onload = script.onerror = null;
+      if (view.gsap?.version === gsapVersion) resolve(view.gsap);
+      else { script.remove(); reject(Error('GSAP unavailable')); }
+    }
+    const timeout = view.setTimeout(finish, 3000);
+    script.onload = script.onerror = finish;
+    script.src = new URL('./assets/design-lab/signal-motion-pilot/vendor/gsap.min.js', import.meta.url);
+    doc.head.append(script);
+  });
+  gsapLoads.set(doc, request);
+  request.catch(() => gsapLoads.delete(doc));
+  return request;
+}
+
+export function canAnimateAtlasChange(owner) {
+  const doc = owner.ownerDocument;
+  return owner.isConnected && !doc.hidden && !doc.defaultView.matchMedia(reducedMotionQuery).matches;
+}
+
+/** Enhance a completed update. The result and its controls are already usable. */
+export function animateAtlasChange(owner, populate) {
+  activeMotions.get(owner)?.();
+  if (!canAnimateAtlasChange(owner)) return;
+  const doc = owner.ownerDocument, view = doc.defaultView;
+  const requestedAt = view.performance.now();
+  const listeners = new view.AbortController();
+  let context;
+  function finish() {
+    if (activeMotions.get(owner) !== finish) return;
+    activeMotions.delete(owner);
+    listeners.abort();
+    context?.revert();
+  }
+  const options = {signal:listeners.signal};
+  activeMotions.set(owner, finish);
+  view.matchMedia(reducedMotionQuery).addEventListener('change', finish, options);
+  view.addEventListener('pagehide', finish, options);
+  doc.addEventListener('visibilitychange', () => { if (doc.hidden) finish(); }, options);
+  loadExplorerGsap(doc).then(gsap => {
+    if (activeMotions.get(owner) !== finish) return;
+    if (!canAnimateAtlasChange(owner) || view.performance.now() - requestedAt > 220) { finish(); return; }
+    let timeline;
+    context = gsap.context(() => {
+      timeline = gsap.timeline({ paused:true, defaults:{duration:.28,ease:'power3.out'}, onComplete:finish });
+      populate(timeline);
+    }, owner);
+    if (timeline.duration()) timeline.play();
+    else finish();
+  }).catch(finish);
+}
 
 export function icon(name) {
   return renderIcon(name);
@@ -17,16 +86,25 @@ export function renderEvidenceHeading() {
 
 export function renderViewNavigation(active) {
   const views = [
-    ['directory', './#directory', 'List & search'],
-    ['treemap', './treemap.html', 'Treemap'],
-    ['graph', './graph.html', 'Graph']
+    ['directory', './#directory', 'search', 'List & search'],
+    ['treemap', './treemap.html', 'treemap', 'Treemap'],
+    ['graph', './graph.html', 'graph', 'Graph']
   ];
-  return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</nav>`;
+  return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${featureSymbol(glyph, { size: 18 })}${label}</a>`).join('')}</nav>`;
 }
 
 /** One operational masthead, derived from the five Atlas wireframes. */
 export function renderAtlasMasthead(active = '') {
   return `<div class="atlas-brand-bar"><a class="atlas-wordmark" href="./" aria-label="Startup Atlas home"><span class="atlas-diamond-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startupatlas</span></a><a class="atlas-system-link" href="./design-system.html"${active === 'system' ? ' aria-current="page"' : ''}>${icon('system')}Design system</a></div><div class="atlas-view-bar">${renderViewNavigation(active)}</div>`;
+}
+
+function renderSourceCoverage({profile, founders, funding}) {
+  const cells = [['Profile', profile], ['Founders', founders], ['Funding', funding]];
+  return `<dl class="directory-evidence-counts" aria-label="Recorded sources">${cells.map(([label, count]) => {
+    // The Bklit heatmap scale is grouped at 3+ to match the Atlas coverage legend.
+    const level = Math.min(count, 3);
+    return `<div data-level="${level}"><dt>${label}</dt><dd>${count || 'Unknown'}</dd></div>`;
+  }).join('')}</dl>`;
 }
 
 /** Shared directory specimen; labels never imply verification beyond the source. */
@@ -38,7 +116,10 @@ export function renderEntityRow(item, connections = null, options = {}) {
   const count = Number.isInteger(connections) && connections >= 0 ? `<span>${connections} recorded ${connections === 1 ? 'connection' : 'connections'}</span>` : '';
   const inspectable = options.inspectable === true;
   const inspection = inspectable ? `<button type="button" class="entity-row-inspect" data-inspect-entity="${esc(item.id)}" aria-pressed="${options.selected === true}" aria-label="Inspect ${esc(item.name)}">${icon('search')}<span>Inspect</span></button>` : '';
-  return `<article class="entity-row${inspectable ? ' entity-row-inspectable' : ''}" data-kind="${esc(item.kind)}"${inspectable ? ` data-entity-id="${esc(item.id)}" data-selected="${options.selected === true}"` : ''}><span class="entity-row-mark${logo ? ' has-logo' : ''}" aria-hidden="true"><span>${esc(initials)}</span>${logo ? `<img class="entity-row-image" src="${esc(logo)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : ''}</span><div class="entity-row-main"><h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3><p>${esc(summary)}</p><div class="entity-row-meta">${count}${href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">Profile source</a>` : '<span>Source not recorded</span>'}</div></div><span class="entity-row-kind">${entityBadge(item.kind)}</span><div class="entity-row-actions">${inspection}<a class="entity-row-graph" href="./graph.html?entity=${encodeURIComponent(item.id)}" aria-label="Explore ${esc(item.name)} connections">Graph ${icon('graph')}</a></div></article>`;
+  const context = options.coverage
+    ? renderSourceCoverage(options.coverage)
+    : `<span class="entity-row-kind">${entityBadge(item.kind)}</span>`;
+  return `<article class="entity-row${inspectable ? ' entity-row-inspectable' : ''}" data-kind="${esc(item.kind)}"${inspectable ? ` data-entity-id="${esc(item.id)}" data-selected="${options.selected === true}"` : ''}><span class="entity-row-mark${logo ? ' has-logo' : ''}" aria-hidden="true"><span>${esc(initials)}</span>${logo ? `<img class="entity-row-image" src="${esc(logo)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : ''}</span><div class="entity-row-main"><h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3><p>${esc(summary)}</p><div class="entity-row-meta">${count}${href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">Profile source</a>` : '<span>Source not recorded</span>'}</div></div>${context}<div class="entity-row-actions">${inspection}<a class="entity-row-graph" href="./graph.html?entity=${encodeURIComponent(item.id)}" aria-label="Explore ${esc(item.name)} connections">Graph ${icon('graph')}</a></div></article>`;
 }
 
 /** Return context is confined to public Atlas routes on the same deployment. */

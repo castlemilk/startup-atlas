@@ -1,5 +1,7 @@
 // Shared graph operations. Only reviewed edges in the published snapshot are
 // traversed; visual proximity never creates a relationship.
+import { sourceUrl } from './logic.js';
+
 export const slug = name => name.normalize('NFKD').replace(/[^\x00-\x7f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 export const teamPersonId = (name,partner) => `person:${slug(name)}--${slug(partner)}`;
 export const entityHref = entity => entity.kind==='partner'
@@ -15,6 +17,37 @@ export function entityDetails(graph,id) {
   return {entity,edges,related:graph.entities.filter(item=>identities.has(item.id)),
     rounds:graph.funding_rounds.filter(item=>item.startup_id===id),
     articles:graph.articles.filter(item=>item.startup_id===id)};
+}
+
+export function startupSourceCoverage(graph) {
+  const sources = new Map();
+  const people = new Set();
+  function add(set, value) {
+    const url = sourceUrl(value);
+    if (url) set.add(url.split('#', 1)[0]);
+  }
+
+  for (const entity of graph.entities) {
+    if (entity.kind === 'person') people.add(entity.id);
+    if (entity.kind !== 'startup') continue;
+    const groups = { profile: new Set(), founders: new Set(), funding: new Set() };
+    add(groups.profile, entity.source);
+    for (const fact of Array.isArray(entity.profile_facts) ? entity.profile_facts : []) {
+      if (fact.label && fact.value) add(groups.profile, fact.source);
+    }
+    sources.set(entity.id, groups);
+  }
+  for (const edge of graph.edges) {
+    const company = sources.get(edge.to);
+    if (company && edge.kind === 'founded' && people.has(edge.from)) add(company.founders, edge.source);
+  }
+  for (const round of graph.funding_rounds) {
+    const company = sources.get(round.startup_id);
+    if (company) add(company.funding, round.source);
+  }
+  return new Map([...sources].map(([id, groups]) => [id, {
+    profile: groups.profile.size, founders: groups.founders.size, funding: groups.funding.size,
+  }]));
 }
 
 export function searchSnapshot(graph,query,limit=100) {
