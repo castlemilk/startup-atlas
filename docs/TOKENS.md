@@ -1,6 +1,6 @@
 # Atlas token reference
 
-The working design system includes a searchable reference for all 65 canonical `--atlas-*` tokens, an opaque colour-pair contrast checker, and JSON/CSS exports of the current computed values. The operational palette is light Signal: porcelain, graphite, cobalt and self-hosted Geist typography. Open `design-system.html#token-reference` in the published site.
+The working design system includes a searchable reference for the canonical `--atlas-*` tokens, an opaque colour-pair contrast checker, and JSON/CSS exports of the current computed values. The operational palette is light Signal: porcelain, graphite, cobalt and self-hosted Geist typography. Open `design-system.html#token-reference` in the published site.
 
 ## Ownership
 
@@ -69,7 +69,7 @@ The displayed ratio is rounded for readability. Pass/fail decisions use the unro
 
 These thresholds and qualifications come from [W3C Understanding Text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) and [W3C Understanding Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html). The checker evaluates this pair at full opacity. It does not establish complete component or page compliance, evaluate an image or gradient, or prove that every state has the correct semantics and focus treatment.
 
-Colour meaning remains distinct from contrast. A startup's foreground is not an approval state; a warning pair does not identify a programme. Surface and on-action share the current white value, while canvas and paper share porcelain; these remain separate roles. Raised faces add gradient endpoints, so check the actual background behind a label as well as its solid token pairs.
+Colour meaning remains distinct from contrast. A startup's foreground is not an approval state; a warning pair does not identify a programme. Use the contrast checker to verify the paper panels and the light text on dark actions separately. Raised faces add gradient endpoints, so check the actual background behind a label as well as its solid token pairs.
 
 ## Exports and handoff
 

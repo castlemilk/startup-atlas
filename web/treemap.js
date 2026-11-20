@@ -9,7 +9,7 @@ const controls = $('treemap-controls'), chart = $('treemap-chart'), detail = $('
 const filterToggle = $('treemap-filter-toggle'), filterFields = $('treemap-filter-fields');
 const DEFAULT_PRESENTATION = 'cards';
 const titles = {valuation:'Recorded valuations', funding:'Funding announcements', companies:'Companies in the Atlas'};
-const palette = ['#dce5ff','#e1dcf5','#d9e8ed','#e5e8ef','#f0e3d9','#dcebe4'];
+const palette = Array.from({length: 6}, (_, index) => `var(--atlas-map-${index + 1})`);
 let graph, view, state, storeMode, lastWidth = 0, cohortColors = new Map();
 const money = value => formatValue(value, state.metric, state.currency);
 const safeImageUrl = value => /^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(value || '') ? value : sourceUrl(value);
@@ -119,7 +119,7 @@ function draw() {
     const size = tile.width < 40 || tile.height < 40 ? 'micro tiny' : tile.width < 130 || tile.height < 85 ? 'tiny' : tile.width < 230 || tile.height < 160 ? 'compact' : '';
     const meta = grouped ? `${tile.count} ${tile.count === 1 ? 'company' : 'companies'} · Explore →` : tile.event ? `Announced ${tile.event.announced_on}` : validYear(tile.entity.founded_year) ? `Founded ${tile.entity.founded_year}` : 'Founding year not recorded';
     const label = `${name}, ${money(tile.value)}${grouped ? ', explore this founding decade' : tile.event ? ', announced ' + tile.event.announced_on : ''}`;
-    return `<button type="button" class="treemap-tile ${size} ${tile.width < 70 || tile.height < 70 ? 'mark-only' : ''} ${state.metric === 'companies' && !grouped ? 'count-company' : ''}" ${grouped ? `data-period="${esc(tile.id)}"` : `data-company="${esc(tile.id)}" aria-pressed="${state.company === tile.id}"`} aria-label="${esc(label)}" title="${esc(label)}" style="left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px;--tile-color:${color}"><span class="treemap-tile-inner"><span class="treemap-tile-top"><span class="treemap-rank">${String(index + 1).padStart(2, '0')}</span><span class="treemap-value">${esc(money(tile.value))}</span></span><span class="treemap-tile-identity">${grouped ? '' : mark(tile.entity)}<span><span class="treemap-tile-name">${esc(name)}</span><span class="treemap-tile-meta">${esc(meta)}</span></span></span></span></button>`;
+    return `<button type="button" class="treemap-tile ${size} ${tile.width < 70 || tile.height < 70 ? 'mark-only' : ''} ${state.metric === 'companies' && !grouped ? 'count-company' : ''}" ${grouped ? `data-period="${esc(tile.id)}"` : `data-company="${esc(tile.id)}" aria-pressed="${state.company === tile.id}"`} aria-label="${esc(label)}" title="${esc(label)}" style="left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px;--tile-color:${color}"><span class="treemap-tile-inner"><span class="treemap-tile-top"><span class="treemap-value">${esc(money(tile.value))}</span></span><span class="treemap-tile-identity">${grouped ? '' : mark(tile.entity)}<span><span class="treemap-tile-name">${esc(name)}</span><span class="treemap-tile-meta">${esc(meta)}</span></span></span></span></button>`;
   }).join('');
   watchImages(chart);
 }
