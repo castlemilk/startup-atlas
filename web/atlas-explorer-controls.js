@@ -61,6 +61,10 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
   </div>`;
   const find = selector=>host.querySelector(selector);
   const popup = find('ui-popover');
+  const narrow = doc.defaultView?.matchMedia?.('(max-width: 620px)');
+  const placePopup = () => popup.setAttribute('presentation',narrow?.matches ? 'sheet' : 'popover');
+  placePopup();
+  narrow?.addEventListener?.('change',placePopup);
   const trigger = find('.exploration-country-trigger');
   const panel = find('ui-popover-content');
   const search = find('#atlas-country-search');

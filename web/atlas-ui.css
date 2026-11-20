@@ -341,7 +341,7 @@ body:is(.atlas-directory-page,.atlas-treemap-page,.atlas-graph-page,.atlas-entit
   background: var(--atlas-surface); color: var(--atlas-ink); box-shadow: var(--atlas-shadow-overlay);
 }
 .exploration-popover:not(:defined) { position: absolute; top: 100%; left: 0; z-index: 20; }
-.exploration-popover[data-presentation="sheet"] { width: 100%; max-height: min(86dvh,600px); }
+.exploration-popover[data-presentation="sheet"] { width: 100%; max-height: min(86dvh,600px); --sheet-backdrop: rgb(18 43 34 / 32%); }
 .exploration-popover-head, .exploration-popover-foot { padding: 14px 16px; }
 .exploration-popover-head h2 { margin: 0 0 9px; font: 400 1.45rem/1.2 var(--atlas-font-display); }
 .exploration-popover-head p { margin: 8px 0 0; color: var(--atlas-muted); font-size: .75rem; }
@@ -417,4 +417,7 @@ body:is(.atlas-directory-page,.atlas-treemap-page,.atlas-graph-page,.atlas-entit
   .exploration-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
   .exploration-country { grid-column: 1 / -1; }
   .atlas-workspace-panel { padding: 16px; }
+}
+@media (max-width: 380px) {
+  .exploration-drill-field { grid-column: 1 / -1; }
 }

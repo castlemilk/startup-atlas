@@ -687,6 +687,12 @@ inspectorSheet.addEventListener('openchange',event=>{
   if (event.detail.value || !state.selected || !sheetViewport.matches || sheetSuspended || state.view!=='all') return;
   queueMicrotask(()=>{if (!inspectorSheet.open) clearSelection();});
 });
+inspectorSheet.addEventListener('openchangecomplete',event=>{
+  // History can restore focus after the modal opens. Put it inside the sheet once the opening has settled.
+  if (event.detail.value && inspectorSheet.open && !panel.contains(document.activeElement)) {
+    byId('directory-inspector-heading')?.focus({preventScroll:true});
+  }
+});
 byId('directory-inspector-reopen').addEventListener('click',()=>{
   sheetSuspended=false;
   renderInspector({moveFocus:true});

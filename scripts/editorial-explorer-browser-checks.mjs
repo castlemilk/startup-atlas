@@ -100,7 +100,7 @@ export async function checkEditorialExplorer({command,evaluate,navigate,until,cl
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:760,deviceScaleFactor:1,mobile:true});
   await navigate('/?type=startup#directory',directoryReady);
   await click(trigger);
-  await until(()=>evaluate(`document.querySelector('${popup}')?.checkVisibility()&&!!document.querySelector('${checkbox(company.country)}')`),'Narrow headquarters control did not open');
+  await until(()=>evaluate(`document.querySelector('${popup}')?.checkVisibility()&&document.querySelector('${popup}')?.dataset.presentation==='sheet'&&!!document.querySelector('${checkbox(company.country)}')`),'Narrow headquarters control did not open as a sheet');
   await assertNoOverflow('320px headquarters options');
   await screenshot('atlas-editorial-mobile-filter.png');
   await click('[data-draft-cancel]');
