@@ -123,15 +123,22 @@ export async function checkEditorialExplorer({command,evaluate,navigate,until,cl
 
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:760,deviceScaleFactor:1,mobile:true});
   await navigate('/?type=startup#directory',directoryReady);
+  assert.equal(await evaluate(`(()=>{
+    const views=document.querySelector('[data-atlas-explorer-actions] .atlas-view-nav').getBoundingClientRect();
+    const utilities=document.querySelector('.atlas-view-utilities').getBoundingClientRect();
+    return Math.abs(views.top-utilities.top)<3;
+  })()`),true,'View and utility actions fit on the same row at 320px');
+  assert.ok(await evaluate(`document.querySelector('${trigger}').getBoundingClientRect().height>=44`),'The mobile Filters button is touch-sized');
   await click(trigger);
   await until(()=>evaluate(`document.querySelector('${popup}')?.checkVisibility()&&document.querySelector('${popup}')?.dataset.presentation==='sheet'&&!!document.querySelector('${checkbox(company.country)}')`),'Narrow headquarters control did not open as a sheet');
+  await until(()=>evaluate(`(()=>{
+    const panel=document.querySelector('${popup}').getBoundingClientRect();
+    const action=document.querySelector('.exploration-apply').getBoundingClientRect();
+    return panel.left>=-1&&panel.right<=innerWidth+1&&panel.top>=-1&&panel.bottom<=innerHeight+1
+      &&action.width>0&&action.right<=innerWidth+1&&action.bottom<=innerHeight+1;
+  })()`),'The filter sheet and Apply button must fit after the opening transition');
   await assertNoOverflow('320px headquarters options');
   await screenshot('atlas-editorial-mobile-filter.png');
-  const drawerFits=await evaluate(`(()=>{
-    const panel=document.querySelector('${popup}').getBoundingClientRect(),action=document.querySelector('.exploration-apply').getBoundingClientRect();
-    return panel.left>=-1&&panel.right<=innerWidth+1&&action.right<=innerWidth+1&&action.bottom<=innerHeight+1;
-  })()`);
-  assert.equal(drawerFits,true,'The mobile sheet and Apply fit inside the screen');
   await evaluate("(()=>{const stage=document.querySelector('[data-draft-field=stage]');stage.value='unknown';stage.dispatchEvent(new Event('change',{bubbles:true}));})()");
   assert.equal(await value('stage'),null,'Mobile facet changes are staged');
   await click('[data-draft-cancel]');
