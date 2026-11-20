@@ -3,14 +3,16 @@ import { logoFor, logoClassFor } from './logos.js';
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName } from './graph-model.js';
 import { icon, renderEvidenceHeading } from './atlas-ui.js';
+import { countryName, indexCompanies } from './atlas-exploration.js';
 import { createProfileEvidence, profileSource, profileTime, recordedProfileDate } from './profile-evidence.js';
 
 const root = document.getElementById('entity-profile');
 const identity = new URLSearchParams(location.search).get('id') || '';
 const initials = name => name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
-const mark = entity => {
+const mark = (entity, hero = false) => {
   const image = sourceUrl(entity.logo) || logoFor(entity.name);
-  const classes = ['entity-mark', entity.kind === 'person' ? 'entity-mark-person' : '', logoClassFor(entity.name)].filter(Boolean).join(' ');
+  const classes = ['entity-mark', entity.kind === 'person' ? 'entity-mark-person' : '', logoClassFor(entity.name),
+    hero && entity.id === 'startup:canva' && image?.includes('_Canva.png') ? 'entity-mark-padded-wordmark' : ''].filter(Boolean).join(' ');
   return `<span class="${classes}" aria-hidden="true">${image ? `<img src="${esc(image)}" alt="" referrerpolicy="no-referrer"><span class="entity-mark-fallback" hidden>${esc(initials(entity.name))}</span>` : esc(initials(entity.name))}</span>`;
 };
 const heading = title => `<div class="entity-section-heading"><h2>${esc(title)}</h2></div>`;
@@ -42,7 +44,7 @@ function relationshipLabel(entity, edge, other) {
 
 function connectionRow({ other, label, meta = '', evidence, personAction = false, rowClass = 'entity-connection' }) {
   const href = esc(entityHref(other));
-  return `<article class="${rowClass}">${mark(other)}<div class="entity-connection-copy"><a data-atlas-profile-link href="${href}"${personAction ? ` aria-label="Open person ${esc(other.name)}"` : ''}>${esc(other.name)} ${icon('arrow')}</a><span>${esc(label)}${meta ? ` · ${esc(meta)}` : ''}</span></div><div class="entity-connection-source">${evidence}</div></article>`;
+  return `<article class="${rowClass}">${mark(other)}<div class="entity-connection-copy"><a data-atlas-profile-link href="${href}"${personAction ? ` aria-label="Open person ${esc(other.name)}"` : ''}>${esc(other.name)}${personAction ? `<span class="entity-person-action" aria-hidden="true">Open person ${icon('arrow')}</span>` : ` ${icon('arrow')}`}</a><span>${esc(label)}${meta ? ` · ${esc(meta)}` : ''}</span></div><div class="entity-connection-source">${evidence}</div></article>`;
 }
 
 function authoredDates(edge) {
@@ -63,7 +65,7 @@ function edgeDateText(edge, employment) {
   return dates.join(' · ');
 }
 
-function renderSharedFounders(graph, entity, founders, named, evidence, citation) {
+function sharedFounderRecords(graph, entity, founders, named, evidence, citation) {
   const byCompany = new Map();
   const people = new Set(founders.map(edge => edge.from));
   for (const edge of graph.edges) {
@@ -72,15 +74,31 @@ function renderSharedFounders(graph, entity, founders, named, evidence, citation
     partner.push(edge);
     byCompany.set(edge.to, partner);
   }
-  if (!byCompany.size) return '';
-  return `<div class="entity-subsection"><h3>Shared company history</h3><div class="entity-connections">${[...byCompany].map(([id, edges]) => {
+  return [...byCompany].map(([id, edges]) => {
     const other = named.get(id);
     const names = [...new Set(edges.map(edge => named.get(edge.from).name))];
     const label = `Shared ${names.length === 1 ? 'founder' : 'founders'}: ${new Intl.ListFormat('en-AU').format(names)}`;
     const sources = [...new Set(edges.map(edge => edge.source))].map(url => citation(url));
     const claim = evidence.add({ label: `Shared founders with ${other.name}`, value: label, sources });
-    return connectionRow({ other, label, evidence: evidence.action(claim), rowClass: 'entity-shared-company' });
-  }).join('')}</div></div>`;
+    return { other, label, evidence: evidence.action(claim), rowClass: 'entity-shared-company' };
+  });
+}
+
+function founderPreview(people) {
+  const founder = person => `<li><a class="entity-founder-preview-link" data-atlas-profile-link href="${esc(entityHref(person))}" aria-label="Open person ${esc(person.name)}">${mark(person)}<span><strong>${esc(person.name)}</strong><small>Founder</small></span>${icon('chevron-right')}</a></li>`;
+  return `<section class="entity-overview-block"><div class="entity-overview-block-head"><h3>Founders</h3><a class="profile-jump-link" href="#entity-founders">View people ${icon('arrow')}</a></div>${people.length ? `<ul class="entity-founder-preview">${people.slice(0, 3).map(founder).join('')}</ul>` : empty('Founding relationships have not been researched yet.')}</section>`;
+}
+
+function foundingDiagram(entity, founders, graphHref) {
+  if (!founders.length) return '';
+  return `<aside class="entity-people-rail" aria-label="Relationship explorer"><h3>Relationship explorer</h3><div class="entity-founder-network">
+    <h4>Founding relationships</h4><div class="entity-network-map">
+      <div class="entity-network-people">${founders.slice(0, 3).map(person => `<a data-atlas-profile-link href="${esc(entityHref(person))}">${mark(person)}<strong>${esc(person.name)}</strong></a>`).join('')}</div>
+      <div class="entity-network-predicate"><span>Founded</span></div>
+      <div class="entity-network-company">${mark(entity)}<strong>${esc(entity.name)}</strong></div>
+    </div>${founders.length > 3 ? `<p>Showing 3 of ${founders.length} recorded founders.</p>` : ''}
+    <a class="atlas-button atlas-button-primary" data-atlas-profile-graph="${esc(entity.id)}" href="${graphHref}">Open full graph ${icon('arrow')}</a>
+  </div></aside>`;
 }
 
 function programmeDetails(offer, unavailable) {
@@ -111,7 +129,9 @@ function fundingParticipants(round, named, evidence, citation) {
   return rows.length ? `<ul class="entity-participants">${rows.join('')}</ul>` : '<p>Participants have not been recorded for this event.</p>';
 }
 
-function roundRow({ round, title, date, dateLabel }, named, evidence, citation) {
+function recordRound(round, evidence, citation) {
+  const { date, label: dateLabel } = fundingDate(round);
+  const title = round.stage || 'Funding event';
   const amount = money(round.amount, round.currency, round.amount_text);
   const fields = [
     ['Event type', title],
@@ -120,8 +140,12 @@ function roundRow({ round, title, date, dateLabel }, named, evidence, citation) 
     ['Currency', round.currency || 'Not specified']
   ];
   const claim = evidence.add({ label: `${title} · reported amount`, value: amount, fields, sources: [citation(round.source)], note: round.note });
+  return { round, title, date, dateLabel, claim, amount, fields };
+}
+
+function roundRow({ round, title, date, dateLabel, amount, claim, fields }, named, evidence, citation) {
   const participants = fundingParticipants(round, named, evidence, citation);
-  return `<li><details class="entity-round"><summary><span class="entity-round-event"><strong>${esc(title)}</strong><span>${date ? `${esc(dateLabel)} · ${profileTime(date)}` : 'Event and announcement dates unrecorded'}</span></span><strong class="entity-round-amount">${esc(amount)}</strong>${icon('chevron-down')}</summary><div class="entity-round-detail"><dl class="entity-round-facts">${fields.slice(1).map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}${round.valuation != null ? `<div><dt>Historical valuation</dt><dd>${esc(money(round.valuation, round.valuation_currency))}</dd></div>` : ''}</dl>${round.note ? `<p>${esc(round.note)}</p>` : ''}<div class="entity-round-participants"><h3>Participants</h3>${participants}</div>${evidence.action(claim, 'Evidence')}</div></details></li>`;
+  return `<li><details class="entity-round" id="entity-round-${esc(round.id)}"><summary><span class="entity-round-event"><strong>${esc(title)}</strong><span>${date ? `${esc(dateLabel)} · ${profileTime(date)}` : 'Event and announcement dates unrecorded'}</span></span><strong class="entity-round-amount">${esc(amount)}</strong>${icon('chevron-down')}</summary><div class="entity-round-detail"><dl class="entity-round-facts">${fields.slice(1).map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}${round.valuation != null ? `<div><dt>Historical valuation</dt><dd>${esc(money(round.valuation, round.valuation_currency))}</dd></div>` : ''}</dl>${round.note ? `<p>${esc(round.note)}</p>` : ''}<div class="entity-round-participants"><h3>Participants</h3>${participants}</div>${evidence.action(claim, 'Evidence')}</div></details></li>`;
 }
 
 function articleRow({ article, title, date }, evidence, citation) {
@@ -132,11 +156,8 @@ function articleRow({ article, title, date }, evidence, citation) {
 }
 
 function companyTimeline(rounds, articles, named, evidence, citation) {
-  const entries = rounds.map(round => {
-    const { date, label: dateLabel } = fundingDate(round);
-    return { date, dateLabel, title: round.stage || 'Funding event', round };
-  });
-  const roundSources = new Set(rounds.map(round => sourceUrl(round.source)).filter(Boolean));
+  const entries = [...rounds];
+  const roundSources = new Set(rounds.map(entry => sourceUrl(entry.round.source)).filter(Boolean));
   for (const article of articles) {
     const url = sourceUrl(article.url);
     if (!url || (article.kind === 'funding announcement' && roundSources.has(url))) continue;
@@ -151,6 +172,39 @@ function companyTimeline(rounds, articles, named, evidence, citation) {
   return `<section class="entity-section" id="entity-funding">${heading('Funding history')}${coverage}
     ${dated.length ? `<ol class="entity-timeline">${dated.map(render).join('')}</ol>` : ''}
     ${undated.length ? `<h3 class="entity-undated-heading">Undated records</h3><ul class="entity-timeline entity-timeline-undated">${undated.map(render).join('')}</ul>` : ''}</section>`;
+}
+
+function fundingPreview(entry) {
+  if (!entry) return '';
+  const noCurrency = / \(currency unspecified\)$/i;
+  const shownAmount = entry.amount.replace(noCurrency, '');
+  const context = noCurrency.test(entry.amount) ? 'Currency unspecified in source' : '';
+  return `<section class="entity-overview-block entity-overview-funding"><h3>Funding snapshot</h3>
+    <p>${icon('source')}Recorded financing · ${esc(entry.dateLabel.toLowerCase())}</p>
+    <div class="entity-funding-sample"><strong>${profileTime(entry.date)}</strong><span>${esc(entry.title)}</span><strong class="entity-funding-sample-amount">${esc(shownAmount)}</strong>${context ? `<small>${esc(context)}</small>` : ''}<a class="profile-jump-link" href="#entity-funding" data-reveal-funding="entity-round-${esc(entry.round.id)}">Open funding ${icon('arrow')}</a></div>
+  </section>`;
+}
+
+function placeOverviewFacts() {
+  const facts = root.querySelector?.('.entity-overview-facts');
+  const slot = root.querySelector?.('.entity-mobile-facts');
+  if (!facts || !slot) return;
+  const desktop = facts.parentElement;
+  const more = facts.querySelector('.entity-more-facts');
+  const moreDesktop = more?.parentElement;
+  const moreMobile = root.querySelector('.entity-mobile-facts-extra');
+  const narrow = matchMedia('(max-width: 760px)');
+  function position() {
+    const target = narrow.matches ? slot : desktop;
+    if (facts.parentElement === target) return;
+    const active = document.activeElement;
+    const restore = facts.contains(active) || more?.contains(active);
+    target.prepend(facts);
+    if (more && moreMobile) (narrow.matches ? moreMobile : moreDesktop).append(more);
+    if (restore) active.focus({ preventScroll: true });
+  }
+  position();
+  narrow.addEventListener('change', position);
 }
 
 async function renderProfile() {
@@ -176,7 +230,7 @@ async function renderProfile() {
   };
   const summary = entity.summary || '';
   const summaryProof = evidence.add({ label: 'Profile description', value: summary || entity.name, sources: [citation(entity.source)] });
-  const imageProof = evidence.add({ label: 'Profile image', value: entity.name, sources: [citation(entity.logo_source)] });
+  evidence.add({ label: 'Profile image', value: entity.name, sources: [citation(entity.logo_source)] });
   const facts = (Array.isArray(entity.profile_facts) ? entity.profile_facts : []).filter(fact => fact.label && fact.value);
   const foundingYear = Number.isInteger(entity.founded_year) && entity.founded_year > 0 ? String(entity.founded_year) : '';
   if (foundingYear && !facts.some(fact => /^(?:founding year|founded)$/i.test(fact.label))) facts.unshift({ label: 'Founding year', value: foundingYear, source: entity.source });
@@ -185,9 +239,13 @@ async function renderProfile() {
   }) }));
   const places = recordedFacts.filter(fact => /^(?:reported )?headquarters$/i.test(fact.label) && sourceUrl(fact.source));
   const place = places.length === 1 ? places[0] : null;
-  const sector = recordedFacts.find(fact => /^(?:primary )?sector$/i.test(fact.label) && sourceUrl(fact.source));
-  const heroMetadata = [place ? `<span>${icon('location')}${esc(place.value)}</span>` : '', sector ? `<span>${esc(sector.value)}</span>` : ''].filter(Boolean).join('');
-  const website = profileSource(entity.website, 'Website', 'atlas-button');
+  const dimensions = isStartup ? indexCompanies({ entities: [entity], funding_rounds: [] }).get(entity.id) : null;
+  const websiteUrl = sourceUrl(entity.website);
+  const website = websiteUrl ? `<a href="${esc(websiteUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Website for ${esc(entity.name)}">${icon('external')}${esc(new URL(websiteUrl).hostname.replace(/^www\./, ''))}</a>` : '';
+  const datedPlace = place?.value.match(/^(.+?) \(reported in ((?:FY)?\d{4})\)$/i);
+  const placeLabel = datedPlace ? `${esc(datedPlace[1])} <small>${esc(datedPlace[2])}</small>` : esc(place?.value || '');
+  const heroMetadata = [place ? `<span aria-label="${esc(place.value)}">${icon('location')}${placeLabel}</span>` : '', website].filter(Boolean).join('');
+  const returnContext = [dimensions?.country ? countryName(dimensions.country) : '', dimensions?.sector].filter(Boolean).join(' / ');
   const socials = (Array.isArray(entity.socials) ? entity.socials : []).filter(item => sourceUrl(item.source)).map(item => profileSource(item.url, item.label)).join(' ');
   const shareProfile = graphLink(entity.id);
   const sectionLinks = [
@@ -202,7 +260,7 @@ async function renderProfile() {
     const label = relationshipLabel(entity, edge, other);
     const dates = authoredDates(edge);
     const sourceDate = recordedProfileDate(citation(edge.source).published_on);
-    const meta = [!role ? kindName(other.kind) : '', edgeDateText(edge, role), sourceDate ? `Source published ${sourceDate.label}` : ''].filter(Boolean).join(' · ');
+    const meta = [!role && !personAction ? kindName(other.kind) : '', edgeDateText(edge, role), sourceDate ? `Source published ${sourceDate.label}` : ''].filter(Boolean).join(' · ');
     const value = edge.kind === 'founded'
       ? `${named.get(edge.from).name} founded ${named.get(edge.to).name}`
       : label;
@@ -211,30 +269,63 @@ async function renderProfile() {
     return connectionRow({ other, label, meta, evidence: evidence.action(claim, 'Evidence'), personAction });
   }
 
-  const overview = isStartup ? `<section class="entity-section" id="entity-company">${heading('Company overview')}
-    <p class="entity-section-intro">${esc(summary || 'A company description has not been recorded.')}${evidence.action(summaryProof)}</p>
-    ${recordedFacts.length ? `<div class="entity-subsection"><h3>Company facts</h3><dl class="entity-facts">${recordedFacts.map(fact => `<div><dt>${esc(fact.label)}</dt><dd><span>${esc(fact.value)}</span><span class="entity-fact-source">${evidence.action(fact.proof) || '<span>Source not recorded</span>'}</span></dd></div>`).join('')}</dl></div>` : empty('Additional company facts have not been recorded.')}</section>` : '';
+  const founderPeople = [...new Map(founders.map(edge => [edge.from, named.get(edge.from)])).values()];
+  const sharedCompanies = sharedFounderRecords(store.graph, entity, founders, named, evidence, citation);
+  const sharedCompany = sharedCompanies[0];
+  const recordedRounds = rounds.map(round => recordRound(round, evidence, citation));
+  const historicSample = recordedRounds.filter(entry => entry.date && entry.claim !== null && (entry.round.amount != null || entry.round.amount_text))
+    .sort((a, b) => a.date.value.localeCompare(b.date.value))[0];
+  const graphAction = (className = '') => `<a class="atlas-button atlas-button-primary${className ? ` ${className}` : ''}" data-atlas-profile-graph="${esc(entity.id)}" href="${shareProfile}">${icon('graph')}Explore graph</a>`;
+  const companyActions = isStartup ? `<button type="button" class="atlas-button" data-atlas-save-company="${esc(entity.id)}" data-company-name="${esc(entity.name)}">${icon('plus')}<span data-atlas-action-label>Save</span></button><button type="button" class="atlas-button" data-atlas-compare="${esc(entity.id)}" data-company-name="${esc(entity.name)}">${icon('copy')}<span data-atlas-action-label>Compare</span></button>` : '';
+  const factMarks = { headquarters: 'location', 'product-launch': 'calendar', 'founding-year-source': 'calendar' };
+  const keyFacts = [...new Set([
+    recordedFacts.find(fact => /^(?:product launched|founding year|founded)$/i.test(fact.label)), place, ...recordedFacts,
+  ].filter(Boolean))].slice(0, 2);
+  const otherFacts = recordedFacts.filter(fact => !keyFacts.includes(fact));
+  const factRow = fact => `<div><dt>${icon(factMarks[fact.key] || 'source')} ${esc(fact.label)}</dt><dd><span>${esc(fact.value)}</span><span class="entity-fact-source">${evidence.action(fact.proof, 'Sources', 'compact') || '<span>Source not recorded</span>'}</span></dd></div>`;
+  const overviewFacts = `<section class="entity-overview-facts" aria-label="Company facts"><h3>Company facts</h3>
+    ${keyFacts.length ? `<dl class="entity-facts">${keyFacts.map(factRow).join('')}</dl>` : empty('Additional company facts have not been recorded.')}
+    ${website ? `<dl class="entity-facts"><div class="entity-fact-website"><dt>${icon('link')} Website</dt><dd>${website}</dd></div></dl>` : ''}
+    ${otherFacts.length ? `<div class="entity-facts-extra"><details class="entity-more-facts"><summary>More company facts ${icon('chevron-down')}</summary><dl class="entity-facts">${otherFacts.map(factRow).join('')}</dl></details></div>` : ''}</section>`;
+  const previewSources = evidence.preview([summaryProof, place?.proof, historicSample?.claim, ...recordedFacts.map(fact => fact.proof)].filter(id => id != null).slice(0, 3));
+  const overview = isStartup ? `<section class="entity-section entity-overview" id="entity-company">
+    <div class="entity-overview-main">${heading('Company overview')}
+      <div class="entity-overview-summary"><p>${esc(summary || 'A company description has not been recorded.')}</p>${evidence.action(summaryProof, 'Sources', 'compact')}</div>
+      <div class="entity-mobile-facts"></div>
+      ${founderPreview(founderPeople)}
+      ${graphAction('entity-overview-mobile-graph')}
+      <div class="entity-mobile-facts-extra"></div>
+      ${fundingPreview(historicSample)}
+      ${sharedCompany ? `<section class="entity-overview-block"><h3>Connected through founders</h3><div class="entity-overview-related">${mark(sharedCompany.other)}<strong>${esc(sharedCompany.other.name)}</strong><p>${esc(sharedCompany.label)}</p><a class="profile-jump-link" data-atlas-profile-link href="${esc(entityHref(sharedCompany.other))}">Open company ${icon('arrow')}</a></div></section>` : ''}
+    </div>
+    <aside class="entity-aside entity-overview-rail" aria-label="Company facts, sources and personal notes">${overviewFacts}
+      <section><div class="entity-overview-block-head"><h3>Sources</h3><a class="profile-jump-link entity-all-sources" href="#entity-sources">View all sources ${icon('arrow')}</a></div>${previewSources || empty('Source references are unavailable for this profile.')}</section>
+      <section data-atlas-notes="${esc(entity.id)}" aria-label="Private notes"></section>
+    </aside>
+  </section>` : '';
   const employmentSection = `<div class="entity-subsection"><h3>Employment roles</h3>${employment.length ? `<div class="entity-connections">${employment.map(edge => renderConnection(edge, { personAction: isStartup, role: true })).join('')}</div>` : empty('Employment roles and dates are unavailable in the published research.')}</div>`;
-  const people = isStartup ? `<section class="entity-section" id="entity-founders">${heading('People')}<div class="entity-subsection"><h3>Founders</h3>${founders.length ? `<div class="entity-connections">${founders.map(edge => renderConnection(edge, { personAction: true })).join('')}</div>` : empty('Founding relationships have not been researched yet.')}</div>${employmentSection}${renderSharedFounders(store.graph, entity, founders, named, evidence, citation)}</section>`
+  const people = isStartup ? `<section class="entity-section entity-people" id="entity-founders">${heading('People & connections')}<div class="entity-people-layout"><div><div class="entity-subsection"><h3>Founders</h3>${founders.length ? `<div class="entity-connections entity-founder-records">${founders.map(edge => renderConnection(edge, { personAction: true })).join('')}</div>` : empty('Founding relationships have not been researched yet.')}</div>${employmentSection}${sharedCompanies.length ? `<div class="entity-subsection"><h3>Shared company history</h3><div class="entity-connections">${sharedCompanies.map(connectionRow).join('')}</div></div>` : ''}</div>${foundingDiagram(entity, founderPeople, shareProfile)}</div></section>`
     : employment.length ? `<section class="entity-section" id="entity-employment">${employmentSection}</section>` : '';
-  const funding = isStartup ? companyTimeline(rounds, articles, named, evidence, citation) : '';
+  const funding = isStartup ? companyTimeline(recordedRounds, articles, named, evidence, citation) : '';
   const relationships = `<section class="entity-section" id="entity-connections">${heading('Relationships')}${otherEdges.length ? `<div class="entity-subsection"><h3>Related records</h3><div class="entity-connections">${otherEdges.map(edge => renderConnection(edge)).join('')}</div></div>` : empty('No further relationships are recorded in the published research.')}<a class="atlas-button" data-atlas-profile-graph="${esc(entity.id)}" href="${shareProfile}">${icon('graph')}Explore relationships</a></section>`;
   const references = `<section class="entity-section" id="entity-sources"><div class="entity-section-heading">${renderEvidenceHeading()}</div>${evidence.index()}</section>`;
-  const sidebar = isStartup
-    ? `<section><h2>Research coverage</h2><dl class="entity-coverage-list"><div><dt>Founders</dt><dd><a href="#entity-founders">${founders.length ? esc(count(founders.length, 'founder') + ' recorded') : 'Research unavailable'}</a></dd></div><div><dt>Funding</dt><dd><a href="#entity-funding">${rounds.length ? esc(count(rounds.length, 'event') + ' recorded') : 'History unavailable'}</a></dd></div><div><dt>Relationships</dt><dd><a href="#entity-connections">${otherEdges.length ? esc(count(otherEdges.length, 'related record')) : 'Coverage unavailable'}</a></dd></div></dl></section>`
-    : `<section><h2>Research coverage</h2><p>${esc(count(edges.length, 'recorded relationship'))}.</p></section>`;
-  const sourceRail = summaryProof !== null || imageProof !== null
-    ? `<section><h2>Profile evidence</h2><div class="entity-rail-evidence">${summaryProof !== null ? `<div><span>Profile description</span>${evidence.action(summaryProof, 'Profile source')}</div>` : ''}${imageProof !== null ? `<div><span>Profile image</span>${evidence.action(imageProof, 'Image source')}</div>` : ''}</div><a class="profile-jump-link" href="#entity-sources">Browse all sources ${icon('arrow')}</a></section>` : '';
-
-  root.innerHTML = `<div class="profile-return"><a class="profile-back" data-atlas-back href="./#directory">Open directory</a></div>
-    <header class="entity-hero"><div class="entity-hero-identity">${mark(entity)}<div class="entity-hero-copy"><p class="profile-kicker">${esc(isStartup ? 'Company' : kindName(entity.kind))}</p><h1>${esc(entity.name)}</h1><p>${esc(summary || 'Explore the connected records and evidence below.')}</p>${heroMetadata ? `<div class="entity-hero-meta">${heroMetadata}</div>` : ''}</div></div>
-    <div class="entity-actions">${website}${isStartup ? `<button type="button" class="atlas-button" data-atlas-save-company="${esc(entity.id)}" data-company-name="${esc(entity.name)}">Save</button><button type="button" class="atlas-button" data-atlas-compare="${esc(entity.id)}" data-company-name="${esc(entity.name)}">Compare</button>` : ''}<a class="atlas-button atlas-button-primary" data-atlas-profile-graph="${esc(entity.id)}" href="${shareProfile}">${icon('graph')}Explore graph</a></div>${socials ? `<div class="entity-external-links">${socials}</div>` : ''}</header>
-    <div class="profile-sticky"><span class="profile-compact-identity" aria-hidden="true">${mark(entity)}<span>${esc(entity.name)}</span></span><nav class="atlas-section-nav" aria-label="Profile sections">${sectionLinks.map(([id, label]) => `<a href="#${id}">${label}</a>`).join('')}</nav></div>
+  const compactBar = isStartup ? `<div class="entity-compact-bar"><a class="profile-back atlas-button" data-atlas-back href="./#directory">Open directory</a>
+    <div class="entity-compact-brand">${mark(entity, true)}<div><strong>${esc(entity.name)}</strong>${website}</div></div>
+    <div class="entity-actions">${companyActions}${graphAction()}</div></div>` : '';
+  root.innerHTML = `<div class="profile-return"><a class="profile-back" data-atlas-back href="./#directory">Open directory</a>${returnContext ? `<span class="profile-return-context">${esc(returnContext)}</span>` : ''}</div>
+    <header class="entity-hero${isStartup ? ' entity-company-hero' : ''}"><div class="entity-hero-identity">${mark(entity, isStartup)}<div class="entity-hero-copy"><p class="profile-kicker">${esc(isStartup ? 'Company' : kindName(entity.kind))}</p><h1>${esc(entity.name)}</h1><p>${esc(summary || 'Explore the connected records and evidence below.')}</p>${heroMetadata ? `<div class="entity-hero-meta">${heroMetadata}</div>` : ''}</div></div>
+    <div class="entity-actions">${companyActions}${graphAction('entity-hero-graph')}</div>${socials ? `<div class="entity-external-links">${socials}</div>` : ''}</header>
+    <div class="profile-sticky${isStartup ? ' entity-company-sticky' : ''}">${compactBar}<span class="profile-compact-identity" aria-hidden="true">${mark(entity)}<span>${esc(entity.name)}</span></span><nav class="atlas-section-nav" aria-label="Profile sections">${sectionLinks.map(([id, label]) => `<a href="#${id}">${label}</a>`).join('')}</nav></div>
     ${store.mode === 'fallback' ? '<p class="profile-notice" role="status">Showing the published backup while the database is unavailable.</p>' : ''}
-    <div class="entity-layout"><div class="entity-dossier">${programmeDetails(offer, programmeUnavailable)}${overview}${people}${funding}${relationships}${references}</div>
-    <aside class="entity-aside" aria-label="Research at a glance">${sidebar}${sourceRail}${isStartup ? `<section data-atlas-notes="${esc(entity.id)}" aria-label="Private notes"></section>` : ''}</aside></div>
+    <div class="entity-layout${isStartup ? ' entity-company-layout' : ''}"><div class="entity-dossier">${programmeDetails(offer, programmeUnavailable)}${overview}${people}${funding}${relationships}${references}</div>
+    ${!isStartup ? `<aside class="entity-aside" aria-label="Research at a glance"><section><h2>Research coverage</h2><p>${esc(count(edges.length, 'recorded relationship'))}.</p></section></aside>` : ''}</div>
     ${evidence.dialog()}`;
+  placeOverviewFacts();
   evidence.install(root);
+  root.querySelectorAll('[data-reveal-funding]').forEach(link => link.addEventListener('click', () => {
+    const round = document.getElementById(link.dataset.revealFunding);
+    if (round) round.open = true;
+  }));
   root.querySelectorAll('.entity-mark img').forEach(img => {
     function fallback() {
       img.hidden = true;

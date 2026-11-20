@@ -1,101 +1,206 @@
 .treemap-shell {
   max-width:var(--atlas-page-max);
   margin:auto;
-  padding:24px 24px 64px;
+  padding:12px var(--atlas-page-gutter,24px) 48px;
 }
 .treemap-shell [hidden] { display:none !important; }
 .treemap-intro { margin-bottom:16px; }
-.treemap-intro h1, .treemap-board-heading h1 {
+.treemap-intro h1 {
   margin:0;
   color:var(--atlas-ink);
-  font:500 clamp(2rem,4vw,3.15rem)/1.08 var(--atlas-font-display);
-  letter-spacing:-.035em;
+  font:500 clamp(2rem,3vw,2.75rem)/1.04 var(--atlas-font-display);
+  letter-spacing:-.028em;
 }
-.treemap-intro p, .treemap-board-heading p {
-  margin:4px 0 0;
+.treemap-intro p {
+  margin:5px 0 0;
   color:var(--atlas-muted);
   font-size:var(--atlas-text-sm);
-  line-height:1.5;
+  line-height:1.4;
 }
-.treemap-eyebrow { margin:0 0 8px; color:var(--atlas-muted); font-size:var(--atlas-text-xs); }
-.treemap-controls {
+.treemap-controls { min-width:0; margin:0 0 8px; }
+.treemap-control-panel {
   display:flex;
   flex-wrap:wrap;
   align-items:center;
-  gap:8px;
-  margin:0 0 12px;
-  min-width:0;
-}
-.treemap-control-panel {
-  flex:1 0 100%;
-  min-width:0;
+  gap:8px 12px;
+  padding:9px 10px;
   border:1px solid var(--atlas-border);
-  border-radius:var(--atlas-radius-panel);
-  background:var(--atlas-surface);
+  border-radius:var(--atlas-radius-control);
+  background:color-mix(in srgb,var(--atlas-soft) 70%,var(--atlas-paper));
+}
+.treemap-control-panel:not(:has(> :not([hidden]))) { display:none; }
+.treemap-facet-fields { min-width:0; flex:0 1 clamp(328px,29vw,428px); }
+.treemap-facet-fields .exploration-fields { padding:0; }
+@media (min-width:621px) {
+  .treemap-facet-fields .exploration-field {
+    position:relative;
+    border:1px solid var(--atlas-border);
+    border-radius:var(--atlas-radius-control);
+    background:var(--atlas-paper);
+  }
+  .treemap-facet-fields .exploration-field:focus-within { border-color:var(--atlas-focus); }
+  .treemap-facet-fields .exploration-label {
+    position:absolute;
+    z-index:1;
+    inset-block-start:5px;
+    inset-inline-start:10px;
+    font:500 11px/1.25 var(--atlas-font-body);
+    pointer-events:none;
+  }
+  .treemap-facet-fields .exploration-fields :is(select,.atlas-select-trigger,.exploration-country-trigger) {
+    min-height:46px;
+    padding:18px 8px 5px 10px;
+    border:0;
+    background:transparent;
+    box-shadow:none;
+    font-weight:650;
+  }
 }
 .treemap-representation {
   display:flex;
+  flex:1 1 500px;
+  min-width:0;
   flex-wrap:wrap;
-  align-items:end;
-  gap:10px;
-  min-width:0;
-  padding:12px;
-  border-bottom:1px solid var(--atlas-border);
+  align-items:center;
+  gap:8px;
 }
-.treemap-representation > label:not(.treemap-logo-control) {
-  display:grid;
-  gap:4px;
-  min-width:0;
-  color:var(--atlas-muted);
-  font-size:var(--atlas-text-xs);
-  font-weight:600;
+@media (min-width:1020px) {
+  .treemap-representation { padding-inline-start:12px; border-inline-start:1px solid var(--atlas-border-strong); }
 }
-.treemap-representation .query-control { flex:1 1 190px; }
-.treemap-representation :is(select,input[type=search]) {
-  width:100%;
-  height:44px;
-  padding:9px 12px;
-  border:1px solid var(--atlas-border-strong);
+.treemap-select-field {
+  position:relative;
+  display:block;
+  flex:1 1 98px;
+  min-width:0;
+  border:1px solid var(--atlas-border);
   border-radius:var(--atlas-radius-control);
-  background:var(--atlas-surface);
+  background:var(--atlas-paper);
+}
+.treemap-select-field > span:first-child {
+  position:absolute;
+  z-index:1;
+  inset-block-start:5px;
+  inset-inline-start:10px;
+  color:var(--atlas-muted);
+  font:500 11px/1.25 var(--atlas-font-body);
+  pointer-events:none;
+}
+.treemap-select-field:focus-within { border-color:var(--atlas-focus); }
+.treemap-select-field :is(select,.atlas-select-trigger) {
+  width:100%;
+  min-height:46px;
+  padding:18px 8px 5px 10px;
+  border:0;
+  border-radius:var(--atlas-radius-control);
+  background:transparent;
   color:var(--atlas-ink);
-  font-size:var(--atlas-text-sm);
+  font:650 13px/1.2 var(--atlas-font-body);
+  box-shadow:none;
 }
-.treemap-representation select:disabled { opacity:.65; }
-.treemap-representation .atlas-select-trigger { max-width:100%; }
-.treemap-representation .atlas-search-control .atlas-clear {
-  right:0;
-  width:44px;
-  height:44px;
-  padding:12px;
+.treemap-select-field :is(select,.atlas-select-trigger):disabled { color:var(--atlas-muted); }
+.treemap-select-field ui-select-value { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.treemap-select-field[for=treemap-currency-trigger] { flex-grow:.55; }
+.treemap-density-setting { flex:none; }
+.treemap-density-switch:not(:defined), .treemap-density-setting:has(.treemap-density-switch:defined) .treemap-native-density { display:none; }
+.treemap-density-switch {
+  display:flex;
+  overflow:hidden;
+  border:1px solid var(--atlas-border);
+  border-radius:var(--atlas-radius-control);
+  background:var(--atlas-paper);
 }
+.treemap-density-switch button { min-height:34px; padding:3px 8px; border:0; background:transparent; color:var(--atlas-ink); font:550 var(--atlas-text-xs)/1.25 var(--atlas-font-body); }
+.treemap-density-switch button[data-checked] { background:var(--atlas-startup-soft); font-weight:700; }
+.treemap-density-switch button:focus-visible { outline-offset:-3px; }
 .treemap-logo-control {
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:9px;
   min-height:44px;
-  padding:0 8px;
+  padding-inline:8px 2px;
   color:var(--atlas-ink);
-  font-size:var(--atlas-text-xs);
+  font:550 13px/1.2 var(--atlas-font-body);
   cursor:pointer;
 }
+.treemap-logo-control .atlas-sdk-checkbox {
+  position:relative;
+  width:36px;
+  height:21px;
+  border-radius:999px;
+  border-color:var(--atlas-muted);
+  background:var(--atlas-soft);
+}
+.treemap-logo-control .atlas-sdk-checkbox::after {
+  content:"";
+  position:absolute;
+  inset-block-start:2px;
+  inset-inline-start:2px;
+  width:15px;
+  height:15px;
+  border:1px solid var(--atlas-border);
+  border-radius:50%;
+  background:var(--atlas-surface);
+}
+.treemap-logo-control .atlas-sdk-checkbox[data-checked] {
+  background:var(--atlas-ink);
+  border-color:var(--atlas-ink);
+}
+.treemap-logo-control .atlas-sdk-checkbox[data-checked]::after { inset-inline-start:auto; inset-inline-end:2px; }
+.treemap-logo-control ui-checkbox-indicator { display:none; }
+#treemap-exploration.exploration-controls { margin:0; border:0; background:transparent; }
+#treemap-exploration .exploration-scope,
+#treemap-exploration .exploration-applied { padding-inline:0; border:0; }
+.treemap-canvas-toolbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:5px 16px;
+  margin-top:3px;
+}
+.treemap-panel-heading { min-width:0; }
+.treemap-panel-heading h2:focus { position:static; width:auto; height:auto; clip:auto; margin:0; }
+.treemap-panel-heading p { margin:0; color:var(--atlas-muted); font-size:var(--atlas-text-xs); line-height:1.5; }
+.treemap-summary {
+  display:flex;
+  flex-wrap:wrap;
+  gap:3px 12px;
+  color:var(--atlas-muted);
+  font-size:var(--atlas-text-xs);
+  font-variant-numeric:tabular-nums;
+}
+.treemap-summary:empty { display:none; }
+.treemap-summary strong { color:var(--atlas-ink); font-weight:650; }
+.treemap-view-tools { display:flex; flex-wrap:wrap; align-items:center; gap:6px; min-width:0; }
+.treemap-canvas-toolbar :is(.query-control, .query-control input) { min-width:0; }
+.treemap-canvas-toolbar .query-control { width:160px; max-width:100%; }
+.treemap-canvas-toolbar input[type=search] {
+  width:100%;
+  height:36px;
+  padding:6px 38px 6px 10px;
+  border:1px solid var(--atlas-border);
+  border-radius:var(--atlas-radius-control);
+  background:var(--atlas-surface);
+  color:var(--atlas-ink);
+  font-size:var(--atlas-text-xs);
+}
+.treemap-canvas-toolbar .atlas-clear { width:34px; height:34px; padding:8px; }
 .treemap-view-switch {
   display:flex;
   flex:none;
-  padding:3px;
+  padding:2px;
   border:1px solid var(--atlas-border);
   border-radius:var(--atlas-radius-control);
   background:var(--atlas-soft);
 }
 .treemap-view-switch button {
-  min-height:44px;
-  padding:8px 14px;
+  min-height:30px;
+  padding:5px 10px;
   border:1px solid transparent;
   border-radius:var(--atlas-radius-control);
   background:transparent;
   color:var(--atlas-muted);
-  font-size:var(--atlas-text-sm);
-  font-weight:650;
+  font:650 var(--atlas-text-xs)/1.2 var(--atlas-font-body);
 }
 .atlas-treemap-page .treemap-view-switch button:is([data-checked],[aria-checked=true]) {
   border-color:var(--atlas-ink);
@@ -103,10 +208,15 @@
   background:var(--atlas-ink);
   box-shadow:none;
 }
-.treemap-share { margin-inline-start:auto; }
-.treemap-control-panel .exploration-controls { margin:0; border:0; }
+.treemap-view-tools > :is(.atlas-button,ui-button .atlas-button) {
+  min-height:36px;
+  padding:5px 8px;
+  border-color:var(--atlas-border);
+  background:var(--atlas-paper);
+  font-size:var(--atlas-text-xs);
+}
 .treemap-filter-toggle::after {
-  content:'';
+  content:"";
   width:6px;
   height:6px;
   border-right:1.5px solid;
@@ -114,41 +224,19 @@
   transform:translateY(-1px) rotate(45deg);
 }
 .treemap-filter-toggle[aria-expanded=true]::after { transform:translateY(2px) rotate(225deg); }
-.treemap-status { margin:10px 0; color:var(--atlas-muted); font-size:var(--atlas-text-xs); line-height:1.55; }
-.treemap-workspace { display:grid; grid-template-columns:minmax(0,1fr) clamp(290px,25vw,350px); align-items:start; gap:16px; }
-.treemap-panel {
-  min-width:0;
-  border:1px solid var(--atlas-border);
-  border-radius:var(--atlas-radius-panel);
-  background:var(--atlas-surface);
-}
-.treemap-panel-heading { padding:16px 16px 8px; }
-.treemap-panel-heading h2 {
-  margin:0;
-  font:600 27px/1.2 var(--atlas-font-display);
-  letter-spacing:-.02em;
-}
-.treemap-panel-heading p:not(.treemap-eyebrow) {
-  margin:4px 0 0;
-  color:var(--atlas-muted);
-  font-size:var(--atlas-text-xs);
-  line-height:1.55;
-}
-.treemap-summary {
+.treemap-status { margin:8px 0; color:var(--atlas-muted); font-size:var(--atlas-text-xs); line-height:1.5; }
+.treemap-workspace { display:grid; grid-template-columns:minmax(0,1fr) clamp(290px,23vw,350px); align-items:start; gap:16px; }
+.treemap-panel { min-width:0; }
+.treemap-sibling-countries { margin-bottom:8px; }
+.treemap-sibling-countries nav {
   display:flex;
-  gap:8px 16px;
   flex-wrap:wrap;
-  padding:0 16px 12px;
-  color:var(--atlas-muted);
-  font-size:var(--atlas-text-xs);
-  font-variant-numeric:tabular-nums;
+  align-items:center;
+  gap:4px 14px;
+  border-bottom:1px solid var(--atlas-border);
 }
-.treemap-summary:empty { display:none; }
-.treemap-summary strong { color:var(--atlas-ink); font-weight:650; }
-.treemap-sibling-countries { margin:0 12px 8px; padding:4px 0; border-block:1px solid var(--atlas-border); }
-.treemap-sibling-countries nav { display:flex; flex-wrap:wrap; align-items:center; gap:4px 12px; }
 .treemap-sibling-countries [aria-current] { padding:8px; border-bottom:2px solid var(--atlas-action); font-size:var(--atlas-text-xs); font-weight:700; }
-.treemap-groups { margin:0 12px 8px; }
+.treemap-groups { margin-top:6px; }
 .treemap-groups ul { display:flex; flex-wrap:wrap; gap:6px; padding:0; margin:0; list-style:none; }
 .treemap-groups li {
   display:flex;
@@ -157,16 +245,16 @@
   align-items:center;
   gap:8px;
   min-width:0;
-  padding:4px 8px;
+  padding:2px 8px;
   border:1px solid var(--atlas-border);
-  border-radius:var(--atlas-radius-row);
+  border-radius:var(--atlas-radius-control);
   background:var(--atlas-soft);
 }
-.treemap-groups strong, .treemap-groups small { display:block; overflow-wrap:anywhere; }
-.treemap-groups strong { font-size:var(--atlas-text-sm); }
-.treemap-groups small { color:var(--atlas-muted); font-size:var(--atlas-text-xs); }
-.treemap-utility-button, .treemap-group-action, .treemap-breadcrumb-button,
-.treemap-clear-selection, .treemap-panel-links button {
+.treemap-group-title { display:flex; align-items:baseline; gap:4px 8px; flex-wrap:wrap; min-width:0; }
+.treemap-group-title strong, .treemap-group-title small { overflow-wrap:anywhere; }
+.treemap-group-title strong { font-size:13px; font-weight:730; }
+.treemap-group-title small { color:var(--atlas-ink); font-size:12px; font-variant-numeric:tabular-nums; }
+.treemap-utility-button, .treemap-group-action, .treemap-breadcrumb-button, .treemap-panel-links button {
   min-height:44px;
   padding:5px 6px;
   border:0;
@@ -177,190 +265,338 @@
   text-decoration:underline;
   text-underline-offset:3px;
 }
-.treemap-group-action { text-align:right; }
-.treemap-utility-button:hover, .treemap-group-action:hover, .treemap-breadcrumb-button:hover,
-.treemap-clear-selection:hover, .treemap-panel-links button:hover { color:var(--atlas-ink); }
+.treemap-group-action {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  flex:none;
+  min-height:31px;
+  padding:4px 9px;
+  border:1px solid var(--atlas-border);
+  color:var(--atlas-ink);
+  background:var(--atlas-paper);
+  text-decoration:none;
+}
+.treemap-group-action .atlas-icon { width:13px; height:13px; }
+.treemap-utility-button:hover, .treemap-breadcrumb-button:hover, .treemap-panel-links button:hover { color:var(--atlas-ink); }
+.treemap-group-action:hover { border-color:var(--atlas-ink); }
+.treemap-canvas-frame {
+  padding:5px;
+  border:1px solid var(--atlas-border);
+  border-radius:var(--atlas-radius-control);
+  background:color-mix(in srgb,var(--atlas-soft) 40%,var(--atlas-paper));
+}
 .treemap-chart {
   position:relative;
   min-height:68px;
-  height:510px;
-  margin:0 12px 12px;
+  height:clamp(430px,57vh,580px);
   overflow:hidden;
-  background:var(--atlas-canvas);
+  border-radius:2px;
+  background:var(--atlas-surface);
 }
 .treemap-chart > p { margin:0; padding:12px 16px; font-size:var(--atlas-text-sm); }
-.treemap-skeleton {
-  height:100%;
-  border:8px solid var(--atlas-canvas);
-  background:
-    linear-gradient(90deg, transparent 52%, var(--atlas-canvas) 52% 53%, transparent 53%),
-    linear-gradient(transparent 48%, var(--atlas-canvas) 48% 50%, transparent 50%),
-    var(--atlas-soft);
+.treemap-skeleton { height:100%; background:var(--atlas-soft); }
+.treemap-plot-group {
+  position:absolute;
+  overflow:hidden;
+  border-radius:4px;
+  outline:2px solid var(--atlas-surface);
+  outline-offset:-2px;
+  background:color-mix(in srgb,var(--treemap-group-tint) 68%,var(--atlas-surface));
 }
-.treemap-plot-group { position:absolute; outline:1px solid var(--atlas-border-strong); outline-offset:-1px; }
+.treemap-plot-heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:6px;
+  margin-inline:2px;
+  padding-inline:9px;
+  overflow:hidden;
+}
+.treemap-plot-heading .treemap-group-title strong { text-transform:uppercase; letter-spacing:.04em; }
+.treemap-plot-group-row .treemap-plot-heading .treemap-group-title strong { text-transform:none; letter-spacing:0; }
 .treemap-tile {
   position:absolute;
-  padding:2px;
+  padding:1px;
   border:0;
   background:transparent;
   color:var(--atlas-ink);
   text-align:left;
-  overflow:hidden;
 }
 .treemap-tile-inner {
+  position:relative;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
-  gap:8px;
+  justify-content:end;
+  align-items:start;
+  gap:5px;
   height:100%;
   container-type:inline-size;
-  padding:clamp(10px,1.5vw,20px);
-  border:1px solid color-mix(in srgb,var(--tile-color) 52%,var(--atlas-border-strong));
-  border-radius:var(--atlas-radius-row);
-  background:var(--tile-color);
   overflow:hidden;
+  padding:clamp(8px,1.05vw,16px);
+  border:1px solid var(--atlas-surface);
+  border-radius:4px;
+  background:var(--tile-color);
 }
 .treemap-tile:hover .treemap-tile-inner { border-color:var(--atlas-ink); }
 .treemap-tile:focus-visible { z-index:2; outline:0; }
-.treemap-tile:focus-visible .treemap-tile-inner { outline:2px dashed var(--atlas-focus); outline-offset:-6px; }
-.treemap-tile[aria-pressed=true] .treemap-tile-inner { border:3px solid var(--atlas-action); }
-.treemap-tile-top { display:flex; justify-content:flex-end; }
+.treemap-tile:focus-visible .treemap-tile-inner { outline:2px dashed var(--atlas-focus); outline-offset:-5px; }
+.treemap-tile[aria-pressed=true] .treemap-tile-inner { border:2px solid var(--atlas-action); }
+.treemap-tile-selection {
+  display:none;
+  position:absolute;
+  inset:0 auto auto 0;
+  padding:3px 7px;
+  border-bottom-right-radius:3px;
+  background:var(--atlas-action);
+  color:var(--atlas-on-action);
+  font:650 11px/1.1 var(--atlas-font-body);
+}
+.treemap-tile[aria-pressed=true]:not(.tiny) .treemap-tile-selection { display:block; }
+.treemap-tile[aria-pressed=true]:not(.tiny) .treemap-tile-inner { padding-top:22px; }
 .treemap-value {
-  font:650 clamp(16px,12cqi,33px)/1.15 var(--atlas-font-display);
-  letter-spacing:-.025em;
+  font:720 clamp(15px,9cqi,31px)/1.12 var(--atlas-font-body);
+  letter-spacing:-.035em;
   font-variant-numeric:tabular-nums;
 }
-.treemap-tile-identity { display:flex; flex:1; align-items:center; gap:12px; min-width:0; }
-.treemap-tile-identity > span:last-child { min-width:0; }
-.treemap-tile-name { display:block; font:650 clamp(17px,10cqi,27px)/1.16 var(--atlas-font-display); overflow-wrap:anywhere; }
-.treemap-tile-meta { display:block; margin-top:5px; font-size:var(--atlas-text-xs); line-height:1.4; }
+.treemap-tile-identity { display:flex; flex-direction:column; align-items:start; gap:7px; min-width:0; width:100%; }
+.treemap-tile-copy { display:block; min-width:0; width:100%; }
+.treemap-tile-name { display:block; font:680 clamp(15px,7cqi,23px)/1.13 var(--atlas-font-body); overflow-wrap:anywhere; }
+.treemap-tile-meta {
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  margin-top:3px;
+  color:var(--atlas-ink);
+  font-size:var(--atlas-text-xs);
+  line-height:1.3;
+}
 .treemap-logo {
   display:grid;
+  grid-template: minmax(0,1fr) / minmax(0,1fr);
   place-items:center;
   flex:none;
-  width:48px;
-  height:48px;
+  width:36px;
+  height:36px;
   overflow:hidden;
-  border:1px solid var(--atlas-border);
   border-radius:var(--atlas-radius-control);
-  background:var(--atlas-surface);
+  background:color-mix(in srgb,var(--atlas-surface) 80%,var(--atlas-soft));
   color:var(--atlas-ink);
-  font-size:17px;
-  font-weight:750;
+  font-size:14px;
+  font-weight:740;
 }
-.treemap-logo img { width:100%; height:100%; object-fit:contain; padding:6px; }
-.treemap-logo.logo-on-dark { background:#122b22; color:var(--atlas-on-action); }
+.treemap-logo img { display:block; width:100%; height:100%; min-width:0; min-height:0; object-fit:contain; }
+.treemap-logo.logo-on-dark { background:var(--atlas-ink); color:var(--atlas-on-action); }
 .treemap-logo.logo-wide { width:72px; }
+.treemap-tile .treemap-logo:has(img:not([hidden])) {
+  width:min(100%,230px);
+  height:clamp(32px,22cqi,90px);
+  background:transparent;
+}
+.treemap-tile .treemap-logo img { object-position:left center; }
+.treemap-tile .treemap-logo[data-padded-wordmark]:has(img:not([hidden])) { max-width:170px; }
+.treemap-tile .treemap-logo[data-padded-wordmark] img,
+.treemap-detail-identity > .treemap-logo[data-padded-wordmark] img { object-fit:cover; object-position:center; }
 .treemap-tile.compact .treemap-tile-inner { padding:8px; }
-.treemap-tile.compact .treemap-tile-identity { gap:6px; }
-.treemap-tile.compact .treemap-value { font-size:clamp(15px,1.4vw,21px); }
-.treemap-tile.compact .treemap-tile-name { font-size:17px; }
-.treemap-tile.tiny .treemap-tile-inner { padding:5px; justify-content:center; }
-.treemap-tile.tiny :is(.treemap-tile-top,.treemap-tile-meta), .count-company .treemap-tile-top { display:none; }
-.treemap-tile.tiny .treemap-tile-identity { justify-content:center; flex-direction:column; gap:4px; text-align:center; }
-.treemap-tile.tiny .treemap-tile-name { font:650 11px/1.2 var(--atlas-font-body); max-height:27px; overflow:hidden; }
-.treemap-tile.tiny.mark-only:has(.treemap-logo) .treemap-tile-identity > span:last-child { display:none; }
+.treemap-tile.compact .treemap-tile-identity { gap:5px; }
+.treemap-tile.compact .treemap-tile-name { font-size:15px; }
+.treemap-tile.compact .treemap-value { font-size:17px; }
+.treemap-tile.tiny .treemap-tile-inner { justify-content:center; padding:5px; }
+.treemap-tile.tiny .treemap-tile-identity { gap:4px; }
+.treemap-tile.tiny .treemap-value, .treemap-tile.tiny .treemap-tile-meta, .count-company.compact .treemap-tile-meta { display:none; }
+.treemap-tile.tiny .treemap-tile-name {
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  font:650 11px/1.17 var(--atlas-font-body);
+}
+.treemap-tile.tiny .treemap-logo { width:23px; height:23px; font-size:10px; }
+.treemap-tile.tiny .treemap-logo:has(img:not([hidden])) { width:100%; height:30px; }
+.treemap-tile.tiny.mark-only:has(.treemap-logo) .treemap-tile-copy { display:none; }
 .treemap-tile.micro { padding:0; }
 .treemap-tile.micro .treemap-tile-inner { padding:0; }
-.treemap-tile.micro .treemap-tile-identity, .count-company.compact .treemap-tile-meta { display:none; }
+.treemap-tile.micro .treemap-tile-identity { display:none; }
 .treemap-tile.micro:focus-visible .treemap-tile-inner { outline-offset:-2px; }
-.treemap-tile.compact .treemap-logo, .treemap-list .treemap-logo { width:30px; height:30px; font-size:11px; }
-.treemap-tile.compact .treemap-logo.logo-wide, .treemap-list .treemap-logo.logo-wide { width:42px; }
-.treemap-tile.tiny .treemap-logo { width:24px; height:24px; font-size:10px; }
-.treemap-tile.tiny .treemap-logo.logo-wide { width:32px; }
-.treemap-tile:is(.tiny,.compact) .treemap-logo img, .treemap-list .treemap-logo img { padding:3px; }
+.treemap-tile.compact .treemap-logo:not(:has(img:not([hidden]))) { width:30px; height:30px; font-size:12px; }
+.treemap-list .treemap-logo { width:42px; height:30px; font-size:12px; }
+.treemap-list .treemap-logo.logo-wide { width:60px; }
+.treemap-list .treemap-logo img { padding:2px; }
 .treemap-tile.count-company .treemap-tile-inner { justify-content:center; }
-.treemap-tile-disclosure { margin:0 12px 8px; color:var(--atlas-ink); font-size:var(--atlas-text-xs); line-height:1.5; overflow-wrap:anywhere; }
+.treemap-tile-disclosure { margin:4px 0 0; color:var(--atlas-ink); font-size:var(--atlas-text-xs); line-height:1.5; overflow-wrap:anywhere; }
 .treemap-panel-footer {
   display:flex;
   flex-wrap:wrap;
   justify-content:space-between;
-  align-items:start;
-  gap:8px 14px;
-  padding:12px 16px;
-  border-top:1px solid var(--atlas-border);
+  align-items:center;
+  gap:4px 10px;
+  padding:4px 2px 0;
   color:var(--atlas-muted);
   font-size:var(--atlas-text-xs);
-  line-height:1.5;
+  line-height:1.4;
 }
-.treemap-panel-links { display:flex; gap:8px 14px; align-items:center; flex-wrap:wrap; }
+.treemap-panel-links { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
 .treemap-panel-links a { display:inline-flex; align-items:center; min-height:44px; }
-.treemap-legend-scale { margin-top:6px; }
+.treemap-legend-scale { display:flex; flex-wrap:wrap; align-items:center; gap:3px 12px; }
 .treemap-legend-scale strong { color:var(--atlas-ink); }
-.treemap-legend-scale small { margin-inline-start:6px; }
-.treemap-legend-scale ul { display:flex; flex-wrap:wrap; gap:4px 12px; padding:0; margin:3px 0 0; list-style:none; }
+.treemap-legend-scale ul { display:flex; flex-wrap:wrap; gap:4px 12px; padding:0; margin:0; list-style:none; }
 .treemap-legend-item, .treemap-record-colour { display:inline-flex; align-items:center; gap:6px; }
 .treemap-legend-item i, .treemap-record-colour i {
   flex:none;
-  width:12px;
-  height:12px;
-  border:1px solid var(--atlas-border-strong);
+  width:16px;
+  height:13px;
+  border:1px solid var(--atlas-border);
   border-radius:2px;
   background:var(--tile-color);
 }
+.treemap-legend-scale[data-colour=freshness] i { width:24px; }
 .treemap-record-colour { color:var(--atlas-muted); font-size:var(--atlas-text-xs); }
+.treemap-detail-seat { position:sticky; top:12px; min-width:0; }
 .treemap-detail {
-  position:sticky;
-  top:16px;
-  max-height:calc(100dvh - 40px);
-  overflow:auto;
-  padding:20px;
+  display:flex;
+  flex-direction:column;
+  max-height:min(660px,calc(100dvh - 28px));
+  padding:14px 14px 12px;
   border:1px solid var(--atlas-border);
-  border-radius:var(--atlas-radius-panel);
+  border-radius:var(--atlas-radius-control);
   background:var(--atlas-surface);
   overflow-wrap:anywhere;
-  scroll-margin-top:16px;
 }
 .treemap-detail:focus-visible { outline:3px solid var(--atlas-focus); outline-offset:3px; }
-.treemap-detail-identity { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
-.treemap-detail-identity .treemap-logo { width:60px; height:60px; }
-.treemap-detail-identity .treemap-logo.logo-wide { width:84px; }
-.treemap-detail-identity p { margin:2px 0 0; }
-.treemap-detail h2 { margin:0; font:600 30px/1.16 var(--atlas-font-display); letter-spacing:-.025em; }
-.treemap-detail p { color:var(--atlas-muted); font-size:var(--atlas-text-sm); line-height:1.55; }
-.treemap-detail .treemap-detail-value {
-  margin:0 0 8px;
-  color:var(--atlas-ink);
-  font:600 33px/1.12 var(--atlas-font-display);
-  font-variant-numeric:tabular-nums;
+.treemap-detail-copy { min-height:0; overflow:auto; overscroll-behavior:contain; padding:1px 4px 0; }
+.treemap-detail-identity { position:relative; }
+.treemap-detail-identity > .treemap-logo { width:52px; height:52px; margin-bottom:10px; }
+.treemap-detail-identity > .treemap-logo:has(img:not([hidden])) {
+  width:min(84%,190px);
+  height:82px;
+  margin-bottom:8px;
+  background:transparent;
 }
-.treemap-detail .treemap-selection-status { margin:8px 0; font-size:var(--atlas-text-xs); color:var(--atlas-startup); }
-.treemap-outside { padding:8px; margin:12px 0; border:1px solid var(--atlas-border); background:var(--atlas-selection-soft); }
-.treemap-outside p { margin:0 0 6px; color:var(--atlas-ink); font-weight:650; }
-.treemap-detail dl { margin:14px 0; font-size:var(--atlas-text-sm); }
-.treemap-detail dl > div { display:flex; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px solid var(--atlas-border); }
-.treemap-detail dt { color:var(--atlas-muted); }
-.treemap-detail dd { margin:0; text-align:right; font-weight:650; font-variant-numeric:tabular-nums; }
-.treemap-detail .treemap-source { display:inline-flex; align-items:center; margin:6px 0; font-size:var(--atlas-text-sm); text-underline-offset:3px; }
-.treemap-detail .treemap-note { padding-left:10px; border-left:2px solid var(--atlas-border); font-size:var(--atlas-text-xs); }
-.treemap-detail-view { display:flex; gap:8px; margin:0 0 14px; border-bottom:1px solid var(--atlas-border); }
+.treemap-detail-identity > .treemap-logo img { object-position:left center; }
+.treemap-clear-selection {
+  position:absolute;
+  inset:0 0 auto auto;
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border:0;
+  border-radius:var(--atlas-radius-control);
+  background:transparent;
+  color:var(--atlas-ink);
+}
+.treemap-clear-selection:hover { background:var(--atlas-soft); }
+.treemap-detail h2 { margin:0; font:550 36px/1.08 var(--atlas-font-display); letter-spacing:-.026em; }
+.treemap-detail[data-inspected=""] h2 { font-size:25px; }
+.treemap-detail p { margin:6px 0; color:var(--atlas-muted); font-size:var(--atlas-text-sm); line-height:1.48; }
+.treemap-detail .treemap-detail-kind { margin:3px 0 8px; }
+.treemap-detail .treemap-detail-description { margin:6px 0 10px; color:var(--atlas-ink); }
+.treemap-detail-meta { display:flex; flex-wrap:wrap; gap:5px 8px; margin-bottom:12px; font-size:var(--atlas-text-xs); }
+.treemap-detail-meta > span { display:inline-flex; align-items:center; gap:4px; }
+.treemap-detail-meta .atlas-icon { width:14px; height:14px; }
+.treemap-detail .treemap-selection-status {
+  padding:2px 5px;
+  border-radius:var(--atlas-radius-control);
+  background:var(--atlas-startup-soft);
+  color:var(--atlas-ink);
+  font-weight:600;
+}
+.treemap-outside { margin:10px 0; padding:7px 8px; border:1px solid var(--atlas-border); background:var(--atlas-selection-soft); }
+.treemap-outside p { margin:0 0 5px; color:var(--atlas-ink); font-weight:650; }
+.treemap-detail-view {
+  display:flex;
+  margin:0 0 9px;
+  border:1px solid var(--atlas-border);
+  border-radius:var(--atlas-radius-control);
+  background:var(--atlas-soft);
+}
+.treemap-detail-view ui-tabs-tab { flex:1; }
 .treemap-detail-view button {
-  min-height:44px;
-  padding:8px 12px;
+  width:100%;
+  min-height:35px;
   border:0;
   border-bottom:2px solid transparent;
   background:transparent;
-  color:var(--atlas-muted);
-  font:650 var(--atlas-text-sm)/1.4 var(--atlas-font-body);
+  color:var(--atlas-ink);
+  font:550 var(--atlas-text-sm)/1.3 var(--atlas-font-body);
 }
-.treemap-detail-view button[aria-selected=true] { border-bottom-color:var(--atlas-ink); color:var(--atlas-ink); }
-.treemap-detail-view button:hover { background:var(--atlas-soft); }
-.treemap-detail-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:16px; }
-.treemap-detail-actions a, .treemap-clear-selection { grid-column:1/-1; }
-.treemap-detail-actions .atlas-button { padding-inline:7px; }
+.treemap-detail-view button[aria-selected=true] { border-bottom-color:var(--atlas-ink); background:var(--atlas-paper); font-weight:700; }
+.treemap-detail-view button:hover { background:var(--atlas-paper); }
+.treemap-detail .treemap-detail-value {
+  margin:0 0 5px;
+  color:var(--atlas-ink);
+  font:630 30px/1.13 var(--atlas-font-display);
+  font-variant-numeric:tabular-nums;
+}
+.treemap-detail dl { margin:10px 0; font-size:var(--atlas-text-sm); }
+.treemap-detail dl > div { display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px solid var(--atlas-border); }
+.treemap-detail dt { color:var(--atlas-muted); }
+.treemap-detail dd { margin:0; text-align:right; font-weight:650; font-variant-numeric:tabular-nums; }
+.treemap-detail .treemap-source { display:inline-flex; align-items:center; margin:4px 0; font-size:var(--atlas-text-xs); text-underline-offset:3px; }
+.treemap-detail .treemap-note { padding-inline-start:8px; border-inline-start:2px solid var(--atlas-border); font-size:var(--atlas-text-xs); }
+.treemap-detail-actions {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  flex:none;
+  gap:6px;
+  margin-top:8px;
+  padding-top:8px;
+  border-top:1px solid var(--atlas-border);
+}
+.treemap-detail-actions a { grid-column:1/-1; }
+.treemap-detail-actions .atlas-button { min-height:38px; padding:5px 7px; }
+.treemap-detail-actions .treemap-profile { min-height:44px; font-weight:700; }
+.treemap-detail-actions .atlas-icon { width:16px; height:16px; }
 .treemap-detail-actions [aria-pressed=true] { border-color:var(--atlas-action); background:var(--atlas-selection-soft); }
-.treemap-context { margin-top:14px; padding-top:12px; border-top:1px solid var(--atlas-border); }
-.treemap-context > summary { min-height:44px; align-content:center; font-size:var(--atlas-text-sm); font-weight:700; cursor:pointer; }
-.treemap-context p { font-size:var(--atlas-text-xs); }
-.treemap-context dl { margin:8px 0; }
+.treemap-context > summary {
+  min-height:38px;
+  align-content:center;
+  border-top:1px solid var(--atlas-border);
+  font-size:var(--atlas-text-xs);
+  font-weight:650;
+  cursor:pointer;
+}
 .treemap-context dl > div { display:block; }
 .treemap-context dd { text-align:left; font-weight:400; }
 .treemap-context dd :is(span,small) { display:block; color:var(--atlas-muted); font-size:var(--atlas-text-xs); }
-.treemap-founder { display:flex; gap:8px; align-items:center; margin:12px 0; }
-.treemap-founder .treemap-logo { width:36px; height:36px; border-radius:50%; font-size:12px; }
-.treemap-founder strong, .treemap-founder small { display:block; font-size:var(--atlas-text-xs); }
+.treemap-founders h3 { margin:0; font-size:var(--atlas-text-sm); font-weight:700; }
+.treemap-founder { display:flex; gap:8px; align-items:center; padding:6px 0; border-bottom:1px solid var(--atlas-border); }
+.treemap-founder:last-child { border-bottom:0; }
+.treemap-founder .treemap-logo { width:34px; height:34px; font-size:11px; }
+.treemap-founder .treemap-logo img { object-fit:cover; }
+.treemap-founder > div > a:first-child { color:var(--atlas-ink); font-size:var(--atlas-text-sm); font-weight:650; text-decoration:none; }
+.treemap-founder > div > a:first-child:hover { text-decoration:underline; }
+.treemap-founder small { display:block; color:var(--atlas-muted); font-size:var(--atlas-text-xs); }
 .treemap-founder .treemap-source + .treemap-source { margin-inline-start:8px; }
 .treemap-company-links { display:flex; gap:8px; flex-wrap:wrap; }
+.treemap-sheet-content {
+  position:fixed;
+  inset:auto 0 0;
+  width:min(100%,620px);
+  max-height:82dvh;
+  margin:0 auto;
+  padding:0;
+  overflow:hidden;
+  border:1px solid var(--atlas-border);
+  border-radius:8px 8px 0 0;
+  background:var(--atlas-surface);
+}
+.treemap-sheet-backdrop { position:fixed; inset:0; background:rgb(18 43 34 / 28%); }
+.treemap-sheet-content .treemap-detail {
+  max-height:min(82dvh,680px);
+  padding-bottom:max(12px,env(safe-area-inset-bottom));
+  border:0;
+}
+.treemap-sheet-content .treemap-detail::before {
+  content:"";
+  width:34px;
+  height:4px;
+  margin:0 auto 6px;
+  border-radius:8px;
+  flex:none;
+  background:var(--atlas-border-strong);
+}
 .treemap-list { max-height:540px; padding:0 16px 12px; overflow:auto; }
 .treemap-list ol { list-style:none; padding:0; margin:0; }
 .treemap-list li {
@@ -393,15 +629,21 @@
 .treemap-list a { display:block; padding:5px; }
 .treemap-list-value { text-align:right; font-variant-numeric:tabular-nums; }
 .treemap-missing {
-  margin:16px 0 0;
-  padding:8px 12px;
+  margin:8px 0 0;
+  padding:3px 9px;
   border:1px solid var(--atlas-border);
-  border-radius:var(--atlas-radius-panel);
-  background:var(--atlas-soft);
+  border-radius:var(--atlas-radius-control);
+  background:color-mix(in srgb,var(--atlas-soft) 55%,var(--atlas-paper));
   color:var(--atlas-ink);
   font-size:var(--atlas-text-sm);
 }
-.treemap-missing summary { min-height:44px; align-content:center; font-weight:650; cursor:pointer; }
+.treemap-missing summary { display:flex; align-items:center; gap:10px; min-height:44px; font-weight:650; cursor:pointer; }
+.treemap-missing summary::before { content:""; width:6px; height:6px; flex:none; border-right:1.5px solid; border-bottom:1.5px solid; transform:rotate(-45deg); }
+.treemap-missing[open] summary::before { transform:rotate(45deg); }
+.treemap-missing-preview { display:flex; gap:6px; align-items:center; overflow:hidden; }
+.treemap-missing-preview > span { display:flex; align-items:center; gap:6px; padding:4px 9px; border:1px solid var(--atlas-border); border-radius:var(--atlas-radius-control); background:var(--atlas-surface); white-space:nowrap; font-size:var(--atlas-text-xs); }
+.treemap-missing-preview .treemap-logo { width:28px; height:23px; font-size:9px; }
+.treemap-missing[open] .treemap-missing-preview { display:none; }
 .treemap-missing ul { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr)); gap:0 12px; padding:0; margin:0; list-style:none; }
 .treemap-missing li { display:flex; align-items:center; flex-wrap:wrap; gap:0 6px; border-top:1px solid var(--atlas-border); line-height:1.4; }
 .treemap-missing li span { color:var(--atlas-muted); font-size:var(--atlas-text-xs); }
@@ -412,6 +654,7 @@
 .treemap-method strong { color:var(--atlas-ink); }
 [data-treemap-density=compact] .treemap-list li { padding-block:4px; }
 [data-treemap-density=compact] .treemap-cards { gap:8px; }
+[data-treemap-density=compact] .treemap-chart { height:clamp(390px,50vh,520px); }
 [data-treemap-density=compact] .treemap-tile-inner { padding:6px; }
 [data-treemap-density=compact] .treemap-tile.micro .treemap-tile-inner { padding:0; }
 [data-treemap-density=compact] .treemap-groups li { padding-block:0; }
@@ -425,47 +668,13 @@
   --board-tint:var(--atlas-soft);
   --board-strong:var(--atlas-accent);
 }
-[data-treemap-view=cards] .treemap-shell{max-width:1320px;padding-top:24px}
-[data-treemap-view=cards] .treemap-panel>.treemap-summary,
+[data-treemap-view=cards] .treemap-shell{max-width:1320px}
 [data-treemap-view=cards] .treemap-panel-heading:not(:has(.treemap-breadcrumb-button)),
-[data-treemap-view=cards] .treemap-panel-heading :is(h2,#treemap-subtitle){display:none}
-.treemap-board-heading{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
-  align-items:baseline;
-  gap:4px 20px;
-  padding-bottom:12px;
-  border-bottom:1px solid var(--atlas-border);
-}
-.treemap-board-heading h1{
-  margin:0;
-  color:var(--board-ink);
-  font:400 clamp(1.9rem,4vw,3rem)/1.1 var(--atlas-font-display);
-  letter-spacing:-.035em;
-}
-.treemap-board-heading .treemap-summary{justify-self:end;padding:0;color:var(--board-muted)}
-.treemap-board-heading p{grid-column:1/-1;margin:0;color:var(--board-muted);font-size:var(--atlas-text-xs);line-height:1.4}
+[data-treemap-view=cards] .treemap-panel-heading .treemap-summary{display:none}
+.treemap-board-heading .treemap-summary{margin-top:3px;color:var(--board-muted)}
 .treemap-board-heading p:empty,.treemap-board-heading .treemap-summary:empty{display:none}
-[data-treemap-view=cards] .treemap-controls{
-  flex-wrap:wrap;
-  align-items:center;
-  gap:8px;
-  margin-block:10px 12px;
-  padding:0;
-  border:0;
-  background:transparent;
-}
-[data-treemap-view=cards] .treemap-controls .treemap-view-switch{flex:none;width:auto}
-[data-treemap-view=cards] .treemap-controls .treemap-view-switch button{min-width:44px;padding-inline:9px}
-[data-treemap-view=cards] .treemap-controls .treemap-share{margin-inline-start:auto;white-space:normal}
 [data-treemap-view=cards] .treemap-workspace{grid-template-columns:minmax(0,1fr);gap:18px}
-[data-treemap-view=cards] .treemap-panel{background:transparent;border:0;box-shadow:none;overflow:visible}
-[data-treemap-view=cards] .treemap-panel-heading{padding:0 0 8px}
-[data-treemap-view=cards] .treemap-panel-heading .treemap-eyebrow{margin:0}
-[data-treemap-view=cards] .treemap-groups{margin-inline:0}
-[data-treemap-view=cards] .treemap-detail{position:static;max-height:none}
-[data-treemap-view=cards] .treemap-panel-footer{border-color:var(--board-line);padding-inline:0}
-[data-treemap-view=cards] .treemap-detail{background:var(--board-surface);border-color:var(--board-line)}
+[data-treemap-view=cards] .treemap-detail-seat{position:static}
 .treemap-cards{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:12px;padding-bottom:16px}
 .treemap-cards>p{grid-column:1/-1;padding:16px 0;color:var(--board-muted)}
 .treemap-card{grid-column:span 5;display:grid;grid-template-rows:auto minmax(76px,1fr) auto;gap:8px;min-width:0;min-height:213px;padding:13px;margin:0;border:1px solid var(--board-line);border-radius:var(--atlas-radius-panel);background:var(--board-surface);color:var(--board-ink);text-align:left;font:inherit}
@@ -512,40 +721,56 @@
   .treemap-card.featured.board-leader{grid-column:1/-1}
 }
 @media(max-width:480px){
-  .treemap-board-heading{grid-template-columns:minmax(0,1fr)}
-  .treemap-board-heading .treemap-summary{justify-self:start}
   .treemap-cards{grid-template-columns:minmax(0,1fr);gap:9px}
   .treemap-card,.treemap-card.featured,.treemap-card.compact-tail,.treemap-card.single-tail{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;min-height:0;padding:12px}
   .treemap-card.featured .treemap-card-media{min-height:84px}
 }
 
+@media (min-width:1200px) {
+  .treemap-controls:not(:has(.exploration-applied:not([hidden]))) {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    gap:1px 14px;
+  }
+  .treemap-control-panel { grid-column:1/-1; }
+  .treemap-controls .treemap-canvas-toolbar { gap:5px 16px; }
+}
 @media (max-width:900px) {
   .treemap-workspace { grid-template-columns:minmax(0,1fr); }
-  .treemap-detail { position:static; max-height:none; }
+  .treemap-detail-seat { position:static; }
+  .treemap-detail-seat:has(.treemap-detail[data-inspected=""]) { display:none; }
 }
-@media (max-width:650px) {
-  .treemap-shell { padding:16px 12px 40px; }
-  .treemap-intro { margin-bottom:12px; }
-  .treemap-controls { gap:6px; }
-  .treemap-share, .treemap-filter-toggle { padding-inline:8px; font-size:var(--atlas-text-xs); }
+@media (max-width:720px) {
+  .treemap-shell { padding:12px 12px 36px; }
+  .treemap-intro { margin-bottom:8px; }
+  .treemap-intro h1 { font-size:clamp(1.9rem,7vw,2.3rem); }
+  .treemap-control-panel:not(:has(.treemap-representation:not([hidden]))) { padding:0; border:0; background:transparent; }
+  .treemap-facet-fields { flex-basis:100%; }
+  .treemap-controls:has(#treemap-filter-fields[hidden]) #treemap-exploration .exploration-drill-field { display:none; }
   .treemap-view-switch button { padding-inline:8px; font-size:var(--atlas-text-xs); }
-  .treemap-representation { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; padding:8px; }
-  .treemap-representation .query-control { grid-column:1/-1; }
-  .treemap-representation input[type=search] { font-size:16px; }
-  .treemap-panel-heading { padding:12px 12px 8px; }
-  .treemap-summary { padding-inline:12px; }
+  .treemap-representation { flex-basis:100%; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+  .treemap-canvas-toolbar { flex-direction:column; align-items:stretch; }
+  .treemap-view-tools { width:100%; }
+  .treemap-view-tools .query-control { flex:1 1 min(100%,138px); }
+  .treemap-canvas-toolbar input[type=search] { font-size:16px; }
   .treemap-groups li { flex-basis:180px; }
-  .treemap-chart, .treemap-groups, .treemap-sibling-countries { margin-inline:8px; }
+  .treemap-canvas-frame { padding:3px; }
+  .treemap-chart { height:clamp(465px,62vh,560px); }
   .treemap-tile-inner { padding:8px; }
-  .treemap-tile-identity { gap:6px; }
-  .treemap-tile.compact .treemap-tile-identity { flex-direction:column; align-items:start; justify-content:center; }
-  .treemap-panel-footer { padding:10px 12px; }
-  .treemap-detail { padding:14px; }
-  .treemap-detail h2 { font-size:27px; }
+  .treemap-detail { padding:11px; }
+  .treemap-detail h2 { font-size:32px; }
+  .treemap-detail-identity > .treemap-logo:has(img:not([hidden])) { height:62px; }
+  .treemap-missing-preview { display:none; }
   .treemap-list { padding:0 8px 10px; }
   .treemap-list li { grid-template-columns:20px minmax(0,1fr) auto; gap:5px; }
   .treemap-list button[data-company] { font-size:var(--atlas-text-sm); }
   .treemap-method { grid-template-columns:1fr; gap:12px; }
+}
+@media (pointer:coarse) {
+  .treemap-view-tools .atlas-button, .treemap-view-switch button, .treemap-canvas-toolbar input[type=search],
+  .treemap-density-switch button, .treemap-detail-view button, .treemap-detail-actions .atlas-button,
+  .treemap-groups .treemap-group-action { min-height:44px; }
 }
 @media (max-width:360px) {
   .treemap-view-switch button { padding-inline:6px; }

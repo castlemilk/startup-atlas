@@ -2,7 +2,6 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { entityHref, kindName } from './graph-model.js';
 import { logoFor } from './logos.js';
 import { renderIcon } from './atlas-icons.js';
-import { featureSymbol } from './atlas-feature-symbols.js';
 import { explorationHref, readExploration } from './atlas-exploration.js';
 import { installWorkspace } from './atlas-workspace.js';
 
@@ -88,23 +87,79 @@ export function renderEvidenceHeading() {
 
 export function renderViewNavigation(active) {
   const views = [
-    ['directory', './#directory', 'search', 'List & search'],
     ['treemap', './treemap.html', 'treemap', 'Treemap'],
-    ['graph', './graph.html', 'graph', 'Graph']
+    ['graph', './graph.html', 'graph', 'Graph'],
+    ['directory', './#directory', 'list', 'List'],
   ];
-  return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${featureSymbol(glyph, { size: 18 })}${label}</a>`).join('')}</nav>`;
+  return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${icon(glyph)}${label}</a>`).join('')}</nav>`;
 }
 
-/** One operational masthead, derived from the five Atlas wireframes. */
-export function renderAtlasMasthead(active = '') {
-  const workspace = ['directory','treemap','graph','entity','partner','profile'].includes(active);
-  return `<div class="atlas-brand-bar"><a class="atlas-wordmark" href="./" aria-label="Startup Atlas home"><span class="atlas-diamond-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup atlas</span></a><div class="atlas-view-bar">${renderViewNavigation(active)}</div><div class="atlas-brand-actions">
-    ${workspace ? `<div class="atlas-workspace-actions" data-atlas-workspace role="group" aria-label="Your workspace">
-      <ui-dialog-trigger for="atlas-workspace-dialog"><button type="button" data-atlas-panel="saved" aria-haspopup="dialog">Saved</button></ui-dialog-trigger>
-      <ui-dialog-trigger for="atlas-workspace-dialog"><button type="button" data-atlas-panel="compare" aria-haspopup="dialog">Compare</button></ui-dialog-trigger>
-    </div>` : ''}
-    <a class="atlas-system-link" href="./design-system.html" aria-label="Design system"${active === 'system' ? ' aria-current="page"' : ''}>${icon('system')}<span>Design system</span></a>
-  </div></div>`;
+export function renderAtlasMasthead(active = '', {viewSpecimen=true}={}) {
+  const exploring = ['directory','treemap','graph','entity','partner','profile'].includes(active);
+  const workspace = exploring && !viewSpecimen;
+  const ids = viewSpecimen ? 'atlas-specimen' : 'atlas';
+  const sources = active==='entity' ? '#entity-sources' : active==='partner' ? '#partner-sources' : './#method';
+  return `<div class="atlas-brand-bar"${workspace ? ' data-atlas-workspace' : ''}>
+    <a class="atlas-wordmark" href="./" aria-label="Startup Atlas home"><span class="atlas-diamond-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup atlas</span></a>
+    <div class="atlas-mobile-header-actions">
+      <button type="button" data-atlas-header-toggle="search" aria-label="Site search" aria-controls="${ids}-site-search" aria-expanded="false">${icon('search')}</button>
+      <button type="button" data-atlas-header-toggle="menu" aria-label="Site navigation" aria-controls="${ids}-main-nav ${ids}-nav-actions" aria-expanded="false"><span class="atlas-menu-icon" aria-hidden="true"></span></button>
+    </div>
+    <nav class="atlas-primary-nav" id="${ids}-main-nav" aria-label="Main navigation">
+      <a class="atlas-explore-link" href="./#directory"${exploring ? ' aria-current="true"' : ''}>Explore</a>
+      ${workspace ? '<ui-dialog-trigger for="atlas-workspace-dialog"><button type="button" data-atlas-panel="saved" aria-haspopup="dialog">Saved</button></ui-dialog-trigger>' : ''}
+      <a href="${sources}">Sources</a>
+    </nav>
+    <form class="atlas-site-search" id="${ids}-site-search" role="search" aria-label="Search the Atlas" action="./#directory" method="get">
+      <label for="${ids}-global-query" class="sr-only">Search the Atlas</label>
+      <button type="submit" aria-label="Find records">${icon('search')}</button>
+      <input name="q" id="${ids}-global-query" type="search" placeholder="Search companies, people, programmes" autocomplete="off" maxlength="200">
+      <input name="type" type="hidden" value="all">
+    </form>
+    <div class="atlas-brand-actions" id="${ids}-nav-actions">
+      ${workspace ? `<ui-dialog-trigger for="atlas-workspace-dialog"><button type="button" data-atlas-panel="compare" aria-haspopup="dialog">${icon('copy')}<span data-atlas-panel-label>Compare</span></button></ui-dialog-trigger>` : ''}
+      <a class="atlas-system-link" href="./design-system.html" aria-label="Design system"${active === 'system' ? ' aria-current="page"' : ''}>${icon('system')}</a>
+    </div>
+    ${viewSpecimen ? `<div class="atlas-view-bar">${renderViewNavigation(active)}</div>` : ''}
+  </div>`;
+}
+
+export function renderExplorerActions(active) {
+  return `${renderViewNavigation(active)}
+    <div class="atlas-view-utilities">
+      <button class="atlas-button" type="button" data-atlas-save-view>${icon('link')}<span data-atlas-action-label>Save view</span></button>
+      <button class="atlas-button" type="button" data-atlas-export="${esc(active)}">${icon('download')}<span>Export</span></button>
+    </div><p class="atlas-view-action-status" data-atlas-export-status role="status" hidden></p>`;
+}
+
+const csvField = value => {
+  const text = String(value ?? '');
+  return '"' + (/^\s*[=+\-@]/.test(text) ? "'" : '') + text.replaceAll('"','""') + '"';
+};
+
+function exportAtlasRecords(doc, button) {
+  const status = button.closest('[data-atlas-explorer-actions]').querySelector('[data-atlas-export-status]');
+  const result = {records:null};
+  doc.dispatchEvent(new CustomEvent('atlas:export-records',{detail:result}));
+  if (!result.records?.length) {
+    status.hidden = false;
+    status.textContent = result.records ? 'There are no matching records to export.' : 'Records are loading. Try exporting again.';
+    return;
+  }
+  const rows = [['Name','Type','Record ID','Source'],...result.records.map(record=>[
+    record.name,record.kind==='opportunity' ? 'Opportunity' : kindName(record.kind),record.id,sourceUrl(record.source) || '',
+  ])];
+  const blob = new Blob([rows.map(row=>row.map(csvField).join(',')).join('\r\n')+'\r\n'],{type:'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const link = doc.createElement('a');
+  link.href = url;
+  link.download = `startup-atlas-${button.dataset.atlasExport}.csv`;
+  doc.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  status.textContent = `Exported ${result.records.length} ${result.records.length===1 ? 'record' : 'records'}.`;
+  status.hidden = false;
 }
 
 function renderSourceCoverage({profile, founders, funding}) {
@@ -146,9 +201,10 @@ export function safeAtlasReturn(value, base) {
 export function installAtlasUI(doc = document) {
   const base = location.href;
   if (new URLSearchParams(location.search).get('embed') === '1') doc.body.classList.add('atlas-embedded');
-  for (const placeholder of doc.querySelectorAll('[data-atlas-masthead]')) placeholder.innerHTML = renderAtlasMasthead(placeholder.dataset.atlasMasthead);
+  for (const placeholder of doc.querySelectorAll('[data-atlas-masthead]')) placeholder.innerHTML = renderAtlasMasthead(placeholder.dataset.atlasMasthead,{viewSpecimen:false});
   for (const placeholder of doc.querySelectorAll('[data-atlas-navigation]')) placeholder.innerHTML = renderViewNavigation(placeholder.dataset.atlasNavigation);
-  installWorkspace(doc);
+  for (const placeholder of doc.querySelectorAll('[data-atlas-explorer-actions]')) placeholder.innerHTML = renderExplorerActions(placeholder.dataset.atlasExplorerActions);
+  installWorkspace(doc,safeAtlasReturn);
   const returnKey = 'atlas:return:' + location.pathname + location.search;
   const scrollKey = 'atlas:scroll:' + location.pathname + location.search;
   let returnScroll;
@@ -226,7 +282,29 @@ export function installAtlasUI(doc = document) {
     }
   };
   const queueRefresh = () => { if (!refreshQueued) { refreshQueued = true; queueMicrotask(refresh); } };
+  function toggleHeader(header,mode) {
+    for (const toggle of header.querySelectorAll('[data-atlas-header-toggle]')) {
+      const key=toggle.dataset.atlasHeaderToggle;
+      const open=key===mode && !header.hasAttribute('data-'+key+'-open');
+      header.toggleAttribute('data-'+key+'-open',open);
+      toggle.setAttribute('aria-expanded',String(open));
+      if (open && key==='search') header.querySelector('input[type="search"]').focus();
+    }
+  }
+  doc.addEventListener('keydown',event=>{
+    const header=event.target.closest?.('.atlas-brand-bar');
+    if (event.key!=='Escape' || !header) return;
+    const mode=header.hasAttribute('data-search-open') ? 'search' : header.hasAttribute('data-menu-open') ? 'menu' : '';
+    if (!mode) return;
+    event.preventDefault();
+    toggleHeader(header,'');
+    header.querySelector(`[data-atlas-header-toggle="${mode}"]`).focus();
+  });
   doc.addEventListener('click', event => {
+    const disclosure=event.target.closest('[data-atlas-header-toggle]');
+    if (disclosure) {toggleHeader(disclosure.closest('.atlas-brand-bar'),disclosure.dataset.atlasHeaderToggle);return;}
+    const exportButton=event.target.closest('[data-atlas-export]');
+    if (exportButton) {exportAtlasRecords(doc,exportButton);return;}
     const clear = event.target.closest('[data-atlas-clear-for]');
     if (clear && !clear.closest('ui-input-clear')) {
       const input = doc.getElementById(clear.dataset.atlasClearFor);

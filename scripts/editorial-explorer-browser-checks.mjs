@@ -41,6 +41,23 @@ export async function checkEditorialExplorer({command,evaluate,navigate,until,cl
   assert.equal(await value('selected'),'startup:canva');
   await click('.directory-company-row [data-atlas-compare="startup:canva"]');
   await until(()=>evaluate("document.querySelector('[data-atlas-panel=compare]').textContent==='Compare (1)'"),'Comparison was not added');
+  await until(()=>evaluate("document.querySelector('[data-atlas-compare-tray] [data-tray-remove]')?.textContent==='Canva'"),'The comparison tray did not show the selected company');
+
+  await evaluate(`document.addEventListener('click',event=>{
+    if(!event.target.matches('a[download]'))return;
+    event.preventDefault();
+    const name=event.target.download;
+    fetch(event.target.href).then(response=>response.text()).then(csv=>{window.atlasDownloaded={name,csv};});
+  },{capture:true});`);
+  await click('[data-atlas-export="directory"]');
+  const download=await until(()=>evaluate('window.atlasDownloaded'),'Export did not produce a CSV download');
+  assert.equal(download.name,'startup-atlas-directory.csv');
+  assert.match(download.csv,/"Canva","Startup","startup:canva","https:\/\//);
+  assert.equal(download.csv.trim().split('\n').length,2,'The CSV contains only the matching company and its headings');
+
+  const savedDirectory=await evaluate("(()=>{const url=new URL(location.href);url.searchParams.sort();return url.pathname+url.search+url.hash;})()");
+  await click('[data-atlas-save-view]');
+  assert.equal(await evaluate("document.querySelector('[data-atlas-save-view]').getAttribute('aria-pressed')"),'true');
   await click('[data-atlas-view=treemap]');
   await until(()=>evaluate("document.querySelector('#treemap-workspace')?.getAttribute('aria-busy')==='false'&&document.querySelector('#treemap-detail h2')?.textContent==='Canva'"),'Treemap did not retain the inspected company');
   assert.equal(await value('q'),'Canva');
@@ -50,7 +67,7 @@ export async function checkEditorialExplorer({command,evaluate,navigate,until,cl
   await screenshot('atlas-editorial-treemap-scope.png');
 
   await click('[data-atlas-view=graph]');
-  await until(()=>evaluate("document.querySelector('#graph-detail h2')?.textContent==='Canva'&&!!document.querySelector('#graph-exploration .exploration-country-trigger')"),'Graph did not retain the inspected company');
+  await until(()=>evaluate("document.querySelector('#graph-detail h2')?.textContent==='Canva'&&!!document.querySelector('#graph-location-fields .exploration-country-trigger')"),'Graph did not retain the inspected company');
   assert.equal(await value('city'),company.city);
   assert.deepEqual(await countries(),[company.country,'unknown']);
   assert.ok(await evaluate("!!document.querySelector('[data-node^=\"person:\"][data-context=true]')"),'Related people should remain available as graph context');
@@ -82,7 +99,7 @@ export async function checkEditorialExplorer({command,evaluate,navigate,until,cl
   assert.equal(await evaluate("new URL(document.querySelector('.entity-actions [data-atlas-profile-graph]').href).searchParams.get('q')"),'Canva');
   assert.equal(await evaluate("new URL(document.querySelector('.entity-actions [data-atlas-profile-graph]').href).searchParams.get('type')"),'startup');
   await click('[data-atlas-save-company="startup:canva"]');
-  await until(()=>evaluate("document.querySelector('[data-atlas-panel=saved]').textContent==='Saved (1)'"),'Saving the company did not update the workspace');
+  await until(()=>evaluate("document.querySelector('[data-atlas-panel=saved]').textContent==='Saved (2)'"),'Saving the company alongside the saved view did not update the workspace');
   await click('[data-atlas-notes] textarea');
   await command('Input.insertText',{text:'Review the original announcement.'});
   await click('[data-atlas-notes] button[type=submit]');
@@ -94,8 +111,15 @@ export async function checkEditorialExplorer({command,evaluate,navigate,until,cl
   assert.equal(await evaluate("document.querySelector('#graph-canvas').getAttribute('viewBox')"),box,'Profile return restores the graph camera');
   await click('[data-atlas-panel=saved]');
   await until(()=>evaluate("document.querySelector('.atlas-workspace-panel')?.checkVisibility()&&!!document.querySelector('.atlas-workspace-list a')"),'Saved companies did not survive navigation');
+  assert.equal(await evaluate("document.querySelector('[data-workspace-view]')?.getAttribute('href')"),savedDirectory,'Saved views keep the full scoped explorer URL');
   await click('.atlas-workspace-list a');
   await until(()=>evaluate("document.querySelector('[data-atlas-notes] textarea')?.value==='Review the original announcement.'"),'Saved note did not survive navigation');
+  await click('[data-atlas-panel=saved]');
+  await click('[data-workspace-view]');
+  await until(()=>evaluate(`${directoryReady}&&document.querySelector('[data-atlas-save-view]').getAttribute('aria-pressed')==='true'`),'Reopening the saved view did not restore its scope and bookmark state');
+  assert.equal(await value('q'),'Canva');
+  assert.equal(await value('city'),company.city);
+  assert.equal(await value('selected'),'startup:canva');
 
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:760,deviceScaleFactor:1,mobile:true});
   await navigate('/?type=startup#directory',directoryReady);
@@ -103,6 +127,28 @@ export async function checkEditorialExplorer({command,evaluate,navigate,until,cl
   await until(()=>evaluate(`document.querySelector('${popup}')?.checkVisibility()&&document.querySelector('${popup}')?.dataset.presentation==='sheet'&&!!document.querySelector('${checkbox(company.country)}')`),'Narrow headquarters control did not open as a sheet');
   await assertNoOverflow('320px headquarters options');
   await screenshot('atlas-editorial-mobile-filter.png');
+  const drawerFits=await evaluate(`(()=>{
+    const panel=document.querySelector('${popup}').getBoundingClientRect(),action=document.querySelector('.exploration-apply').getBoundingClientRect();
+    return panel.left>=-1&&panel.right<=innerWidth+1&&action.right<=innerWidth+1&&action.bottom<=innerHeight+1;
+  })()`);
+  assert.equal(drawerFits,true,'The mobile sheet and Apply fit inside the screen');
+  await evaluate("(()=>{const stage=document.querySelector('[data-draft-field=stage]');stage.value='unknown';stage.dispatchEvent(new Event('change',{bubbles:true}));})()");
+  assert.equal(await value('stage'),null,'Mobile facet changes are staged');
   await click('[data-draft-cancel]');
   assert.deepEqual(await countries(),[]);
+  assert.equal(await value('stage'),null,'Cancelling keeps the previous stage');
+  await click(trigger);
+  await until(()=>evaluate("document.querySelector('[data-draft-field=stage]')?.value===''"),'Dismissal did not discard the stage draft');
+  await evaluate("document.querySelector('[data-draft-field=stage]').value='unknown'");
+  await click('.exploration-apply');
+  assert.equal(await value('stage'),'unknown','Applying the sheet commits the stage draft');
+  await click('[data-atlas-header-toggle="menu"]');
+  assert.equal(await evaluate("document.querySelector('#atlas-main-nav').checkVisibility()&&document.querySelector('#atlas-nav-actions').checkVisibility()"),true,'The mobile menu reveals the workspace and main navigation');
+  await press('Escape','Escape',27);
+  assert.equal(await evaluate("!document.querySelector('#atlas-main-nav').checkVisibility()&&document.activeElement?.dataset.atlasHeaderToggle==='menu'"),true,'Escape hides mobile navigation and restores its focus');
+  await click('[data-atlas-header-toggle="search"]');
+  assert.equal(await evaluate('document.activeElement.id'),'atlas-global-query','The mobile global Search button focuses its field');
+  await command('Input.insertText',{text:'Melanie Perkins'});
+  await press('Enter','Enter',13);
+  await until(()=>evaluate("new URLSearchParams(location.search).get('q')==='Melanie Perkins'&&new URLSearchParams(location.search).get('type')==='all'&&document.querySelector('#results-list')?.textContent.includes('Melanie Perkins')"),'Global search did not find a person across catalogue types');
 }

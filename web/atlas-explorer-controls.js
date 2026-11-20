@@ -10,7 +10,7 @@ const ordered = (values,label) => [...new Set(values)].sort((a,b)=>a==='unknown'
 const option = (value,label) => `<option value="${esc(value)}">${esc(label)}</option>`;
 const allCompanies = () => true;
 
-export function mountExploration(host,{companies,dimensions,onChange,showDensity=true}) {
+export function mountExploration(host,{companies,dimensions,onChange,showDensity=true,fieldsHost}) {
   if (!host?.ownerDocument?.createElement) return {update(){},openCountries(){}};
   const doc = host.ownerDocument;
   const choices = [...dimensions.values()];
@@ -22,11 +22,16 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
       <span class="exploration-label" id="atlas-hq-label">Headquarters country</span>
       <ui-popover presentation="auto">
         <ui-popover-trigger><button type="button" class="exploration-country-trigger" aria-labelledby="atlas-hq-label atlas-hq-value">
-          <span id="atlas-hq-value">All locations</span>${renderIcon('chevron-down')}
+          <span class="exploration-mobile-label" id="atlas-mobile-filters">${renderIcon('filter')}<span>Filters</span></span>
+          <span id="atlas-hq-value">All locations</span><span class="exploration-country-chevron">${renderIcon('chevron-down')}</span>
         </button></ui-popover-trigger>
         <ui-popover-content class="exploration-popover" side="bottom" align="start" initial-focus="#atlas-country-search" hidden>
           <div class="exploration-popover-head">
-            <ui-popover-title as-child><h2>Headquarters country</h2></ui-popover-title>
+            <ui-popover-title as-child><h2 id="atlas-filter-title">Headquarters country</h2></ui-popover-title>
+            <div class="exploration-draft-fields">
+              ${['sector','stage'].map(key=>`<label>${key==='sector' ? 'Sector' : 'Stage'}<select data-draft-field="${key}"></select></label>`).join('')}
+            </div>
+            <span class="exploration-draft-country">Headquarters country</span>
             <label class="sr-only" for="atlas-country-search">Search country or code</label>
             <input id="atlas-country-search" type="search" placeholder="Search country or code" autocomplete="off">
             <p>Companies in current scope · Match any selected country</p>
@@ -45,10 +50,9 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
         </ui-popover-content>
       </ui-popover>
     </div>
-    ${['sector','stage'].map(key=>`<div class="exploration-field"><label class="exploration-label" for="atlas-${key}">${key==='sector' ? 'Sector' : 'Stage'}</label>
+    ${['sector','stage'].map(key=>`<div class="exploration-field exploration-desktop-field"><label class="exploration-label" for="atlas-${key}">${key==='sector' ? 'Sector' : 'Stage'}</label>
       <select id="atlas-${key}" data-exploration-field="${key}">${option('',key==='sector' ? 'All sectors' : 'All stages')}</select></div>`).join('')}
     ${showDensity ? '<div class="exploration-field"><label class="exploration-label" for="atlas-density">Density</label><select id="atlas-density" data-exploration-field="density"><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select></div>' : ''}
-    <div class="exploration-field exploration-drill-field"><label class="exploration-label" for="atlas-drill">Explore location</label><select id="atlas-drill"></select></div>
   </div>
   <div class="exploration-applied" hidden>
     <ul class="exploration-chips" aria-label="Applied company filters"></ul>
@@ -58,15 +62,19 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
   <div class="exploration-scope">
     <nav aria-label="Current ecosystem" class="exploration-breadcrumb"></nav>
     <p class="exploration-result-count" role="status"></p>
+    <div class="exploration-drill-field"><label class="exploration-label" for="atlas-drill">Explore location</label><select id="atlas-drill"></select></div>
   </div>`;
-  const find = selector=>host.querySelector(selector);
+  const row = host.querySelector('.exploration-fields');
+  if (fieldsHost) {
+    fieldsHost.prepend(row);
+    host.classList.add('exploration-controls-split');
+  }
+  const find = selector=>host.querySelector(selector) || row.querySelector(selector);
   const popup = find('ui-popover');
   const narrow = doc.defaultView?.matchMedia?.('(max-width: 620px)');
-  const placePopup = () => popup.setAttribute('presentation',narrow?.matches ? 'sheet' : 'popover');
-  placePopup();
-  narrow?.addEventListener?.('change',placePopup);
   const trigger = find('.exploration-country-trigger');
   const panel = find('ui-popover-content');
+  const title = find('#atlas-filter-title');
   const search = find('#atlas-country-search');
   const options = find('.exploration-country-options');
   const summary = find('.exploration-draft');
@@ -78,8 +86,19 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
   const clearFacets = find('[data-clear-facets]');
   const breadcrumb = find('.exploration-breadcrumb');
   const drill = find('#atlas-drill');
-  const fields = [...host.querySelectorAll('[data-exploration-field]')];
+  const fields = [...row.querySelectorAll('[data-exploration-field]')];
+  const draftFields = [...popup.querySelectorAll('[data-draft-field]')];
+  const mobileLabel = find('.exploration-mobile-label span');
   let nativePopup = false;
+
+  function placePopup() {
+    popup.setAttribute('presentation',narrow?.matches ? 'sheet' : 'popover');
+    trigger.setAttribute('aria-labelledby',narrow?.matches ? 'atlas-mobile-filters' : 'atlas-hq-label atlas-hq-value');
+    panel.setAttribute('initial-focus',narrow?.matches ? 'content' : '#atlas-country-search');
+    title.textContent = narrow?.matches ? 'Filters' : 'Headquarters country';
+  }
+  placePopup();
+  narrow?.addEventListener?.('change',placePopup);
 
   function openCountries() {
     if (popup.api) {
@@ -90,9 +109,12 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
     beginDraft();
     panel.hidden = false;
     panel.setAttribute('role','dialog');
-    panel.setAttribute('aria-label','Headquarters country');
+    panel.setAttribute('aria-labelledby',title.id);
     trigger.setAttribute('aria-expanded','true');
-    search.focus();
+    if (narrow?.matches) {
+      panel.tabIndex = -1;
+      panel.focus();
+    } else search.focus();
   }
 
   function closeCountries() {
@@ -105,19 +127,29 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
     }
   }
 
+  function draftFacets() {
+    return Object.fromEntries(draftFields.map(control=>[control.dataset.draftField,control.value]));
+  }
+
   function renderDraft() {
     const query = search.value.trim().toLowerCase();
+    const next = {...state,...draftFacets(),countries:[...draft]};
+    const counts = new Map();
+    for (const item of filterCompanies(routeMatches,dimensions,next,{ignoreCountry:true})) {
+      const code = dimensions.get(item.id)?.country || 'unknown';
+      counts.set(code,(counts.get(code) ?? 0)+1);
+    }
     let visible = 0;
     for (const row of options.children) {
       const key = row.dataset.hq;
       row.hidden = Boolean(query && !`${countryName(key)} ${key}`.toLowerCase().includes(query));
       if (!row.hidden) visible++;
-      const checkbox = row.querySelector('input');
-      checkbox.checked = draft.has(key);
+      row.querySelector('input').checked = draft.has(key);
+      row.querySelector('.exploration-option-count').textContent = format.format(counts.get(key) ?? 0);
     }
     empty.hidden = visible!==0;
-    clearDraft.disabled = draft.size===0;
-    const count = filterCompanies(routeMatches,dimensions,{...state,countries:[...draft]}).length;
+    clearDraft.disabled = draft.size===0 && !(narrow?.matches && (next.sector || next.stage));
+    const count = filterCompanies(routeMatches,dimensions,next).length;
     const selectedLabel = draft.size===1 ? '1 location selected' : `${draft.size} locations selected`;
     summary.textContent = `${selectedLabel} · ${companyCount(count)} ${count===1 ? 'matches' : 'match'}`;
     doc.dispatchEvent(new Event('atlas:controls-sync'));
@@ -125,11 +157,9 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
 
   function beginDraft() {
     draftScope = scopeKey(state);
-    const scoped = filterCompanies(routeMatches,dimensions,state,{ignoreCountry:true});
-    const counts = new Map();
-    for (const item of scoped) {
-      const code = dimensions.get(item.id)?.country || 'unknown';
-      counts.set(code,(counts.get(code) ?? 0)+1);
+    for (const control of draftFields) {
+      const field = fields.find(item=>item.dataset.explorationField===control.dataset.draftField);
+      setChoices(control,field.dataset.optionMarkup ?? field.innerHTML,field.value);
     }
     draft = new Set(state.countries);
     search.value = '';
@@ -137,7 +167,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
     finish.textContent = 'Apply filters';
     options.innerHTML = ordered([...countries,...draft],countryName).map(code=>`<li data-hq="${esc(code)}"><label for="atlas-hq-${esc(code)}">
       <input type="checkbox" id="atlas-hq-${esc(code)}" value="${esc(code)}" aria-label="${esc(countryName(code))}">
-      <span>${esc(countryName(code))}</span><span class="exploration-option-count">${format.format(counts.get(code) ?? 0)}</span></label></li>`).join('');
+      <span>${esc(countryName(code))}</span><span class="exploration-option-count"></span></label></li>`).join('');
     renderDraft();
   }
 
@@ -175,6 +205,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
     const appliedFacets = [...applied.map(code=>['country',code,`HQ: ${countryName(code)}`])];
     if (state.sector) appliedFacets.push(['sector',state.sector,facetLabel('sector',state.sector)]);
     if (state.stage) appliedFacets.push(['stage',state.stage,facetLabel('stage',state.stage)]);
+    mobileLabel.textContent = appliedFacets.length ? `Filters (${appliedFacets.length})` : 'Filters';
     const markup = appliedFacets.map(([key,value,label])=>`<li><button type="button" data-remove-facet="${key}" data-value="${esc(value)}" aria-label="Remove ${esc(label)}">${esc(label)}${renderIcon('close')}</button></li>`).join('');
     if (chips.dataset.rendered!==markup) {
       chips.innerHTML = markup;
@@ -226,15 +257,21 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
     if (nativePopup && event.key==='Escape') { event.preventDefault(); closeCountries(); }
   });
   search.addEventListener('input',renderDraft);
+  draftFields.forEach(control=>control.addEventListener('change',renderDraft));
   options.addEventListener('change',event=>{
     if (event.target.checked) draft.add(event.target.value);
     else draft.delete(event.target.value);
     renderDraft();
   });
-  clearDraft.addEventListener('click',()=>{draft.clear(); renderDraft(); search.focus();});
+  clearDraft.addEventListener('click',()=>{
+    draft.clear();
+    if (narrow?.matches) draftFields.forEach(control=>{control.value='';});
+    renderDraft();
+    search.focus();
+  });
   finish.addEventListener('click',()=>{
     try {
-      onChange({countries:[...draft]});
+      onChange(narrow?.matches ? {...draftFacets(),countries:[...draft]} : {countries:[...draft]});
       closeCountries();
     } catch {
       failed.hidden = false;

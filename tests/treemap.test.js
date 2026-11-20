@@ -85,6 +85,21 @@ test('nested groups preserve each company’s original share of the total area',
     assert.ok(Math.abs(tile.width * tile.height / (width * height) - tile.value / view.total) < 1e-8);
   }
 });
+test('editorial group headings preserve relative company areas in mosaic and city layouts', () => {
+  const groups = [
+    {id:'a', value:100, children:[{id:'a-1',value:75},{id:'a-2',value:25}]},
+    {id:'b', value:40, children:[{id:'b-1',value:40}]},
+  ];
+  for (const stacked of [false,true]) {
+    const chart = model.groupedTreemap(groups,600,480,{heading:36,stacked});
+    const tiles = chart.flatMap(group => group.tiles);
+    const area = tile => tile.width * tile.height;
+    const total = tiles.reduce((sum,tile) => sum + area(tile),0);
+    assert.ok(chart.every(group => group.headingHeight > 0 && group.tiles.every(tile => tile.y >= group.headingHeight)));
+    assert.ok(tiles.every(tile => Math.abs(area(tile)/total - tile.value/140)<1e-8));
+    if (stacked) assert.ok(chart.every(group => group.width===600 && group.headingHeight===36));
+  }
+});
 test('colour uses stable categories and ages only full, valid fact review dates', () => {
   const companies = graph.entities.slice(0,3);
   const dimensions = new Map([

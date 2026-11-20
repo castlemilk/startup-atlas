@@ -3,64 +3,92 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#fcf9f2"><meta name="description" content="Compare source-backed startup valuations, funding announcements and company counts in an interactive treemap.">
 <title>Startup treemaps — Startup Atlas</title>
-<link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./field-atlas.css"><link rel="stylesheet" href="./treemap.css">
+<link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./field-atlas.css">
 <script defer src="./vendor/sql.js/sql-wasm.js"></script><script type="module" src="./treemap.js"></script>
 <link rel="stylesheet" href="./design-tokens.css">
 <link rel="stylesheet" href="./atlas-ui.css">
 <script type="module" src="./atlas-ui.js"></script>
 <link rel="stylesheet" href="./atlas-sdk.css">
+<link rel="stylesheet" href="./treemap.css">
 <script type="module" src="./atlas-sdk.js"></script>
 </head><body class="atlas-treemap-page" data-treemap-view="map">
 <a class="skip-link" href="#treemap-main">Skip to treemap</a>
 <header class="atlas-masthead" data-atlas-masthead="treemap"></header>
 <main id="treemap-main" class="treemap-shell">
-  <header class="treemap-intro" id="treemap-intro">
-    <h1 id="treemap-page-title" tabindex="-1">Explore the ecosystem</h1>
-    <p id="treemap-page-context">Compare companies, funding announcements and recorded valuations.</p>
-  </header>
-  <header class="treemap-board-heading" id="treemap-board-heading" hidden>
-    <h1 id="treemap-board-title" tabindex="-1">Funding announcements</h1>
-    <div class="treemap-summary" id="treemap-board-summary"></div>
-    <p id="treemap-board-context"></p>
+  <header class="atlas-explorer-heading treemap-intro" id="treemap-intro">
+    <div id="treemap-page-heading">
+      <h1 id="treemap-page-title" tabindex="-1">Explore the ecosystem</h1>
+      <p id="treemap-page-context">Compare companies and their recorded figures.</p>
+    </div>
+    <div class="treemap-board-heading" id="treemap-board-heading" hidden>
+      <h1 id="treemap-board-title" tabindex="-1">Funding announcements</h1>
+      <p id="treemap-board-context"></p>
+      <div class="treemap-summary" id="treemap-board-summary"></div>
+    </div>
+    <div data-atlas-explorer-actions="treemap"></div>
   </header>
   <form novalidate id="treemap-controls" class="treemap-controls" aria-label="Treemap filters" aria-busy="true" aria-describedby="treemap-status">
-    <ui-segmented-control disabled id="treemap-presentation" class="treemap-view-switch" aria-label="Presentation" default-value="map">
-      <ui-segmented-control-item as-child value="map"><button disabled type="button" id="show-map" aria-label="Proportional map">Map</button></ui-segmented-control-item>
-      <ui-segmented-control-item as-child value="cards"><button disabled type="button" id="show-cards" aria-label="Ranked cards">Cards</button></ui-segmented-control-item>
-      <ui-segmented-control-item as-child value="list"><button disabled type="button" id="show-list" aria-label="Ranked list">List</button></ui-segmented-control-item>
-    </ui-segmented-control>
-    <button disabled type="button" id="treemap-share" class="treemap-share atlas-button">Share view</button><span id="treemap-share-status" class="sr-only" role="status"></span>
-    <button disabled type="button" id="treemap-filter-toggle" class="treemap-filter-toggle atlas-button" aria-expanded="false" aria-controls="treemap-filter-fields treemap-location-fields">Filters</button>
     <div class="treemap-control-panel">
+      <div id="treemap-location-fields" class="treemap-facet-fields"></div>
       <div class="treemap-representation" id="treemap-filter-fields">
-        <label class="query-control" for="treemap-query">Find a company<span class="atlas-search-control"><input disabled type="search" id="treemap-query" placeholder="Name or description" maxlength="200" autocomplete="off"><button disabled type="button" class="atlas-clear" data-atlas-clear-for="treemap-query" aria-label="Clear company search" hidden><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></span></label>
-        <label for="treemap-group">Group by<select disabled id="treemap-group"><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="city">Headquarters city</option><option value="stage">Funding stage</option><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
-        <label class="metric-control" for="treemap-metric">Size by<select disabled id="treemap-metric"><option value="companies">Company count</option><option value="funding">Funding announcement</option><option value="valuation">Recorded valuation</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
-        <label for="treemap-colour">Colour by<select disabled id="treemap-colour"><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="freshness">Profile fact review</option><option value="none">None</option><option value="decade">Founding decade</option></select></label>
-        <label for="treemap-currency" id="treemap-currency-field" hidden>Currency<select disabled id="treemap-currency"><option value="USD">Not applicable</option></select></label>
-        <label class="treemap-logo-control" for="treemap-logos"><input disabled id="treemap-logos" type="checkbox" checked> Show logos</label>
-        <button disabled type="button" id="treemap-reset" class="atlas-button">Reset exploration</button>
+        <label class="treemap-select-field" for="treemap-group"><span>Group by</span><select disabled id="treemap-group"><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="city">Headquarters city</option><option value="stage">Funding stage</option><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
+        <label class="treemap-select-field" for="treemap-metric"><span>Size by</span><select disabled id="treemap-metric"><option value="companies">Company count</option><option value="funding">Funding announcement</option><option value="valuation">Recorded valuation</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
+        <label class="treemap-select-field" for="treemap-colour"><span>Colour by</span><select disabled id="treemap-colour"><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="freshness">Profile fact review</option><option value="none">None</option><option value="decade">Founding decade</option></select></label>
+        <label class="treemap-select-field" for="treemap-currency" id="treemap-currency-field" hidden><span>Currency</span><select disabled id="treemap-currency"><option value="USD">Not applicable</option></select></label>
+        <div class="treemap-density-setting">
+          <label class="treemap-select-field treemap-native-density" for="atlas-density"><span>Density</span><select disabled id="atlas-density"><option value="comfortable">Editorial</option><option value="compact">Compact</option></select></label>
+          <ui-segmented-control disabled id="treemap-density" class="treemap-density-switch" aria-label="Density" default-value="comfortable">
+            <ui-segmented-control-item as-child value="comfortable"><button disabled type="button">Editorial</button></ui-segmented-control-item>
+            <ui-segmented-control-item as-child value="compact"><button disabled type="button">Compact</button></ui-segmented-control-item>
+          </ui-segmented-control>
+        </div>
+        <label class="treemap-logo-control" for="treemap-logos"><span>Logos</span><input disabled id="treemap-logos" type="checkbox" aria-label="Show logos" checked></label>
       </div>
-      <div id="treemap-exploration"></div>
+    </div>
+    <div id="treemap-exploration"></div>
+    <div class="treemap-canvas-toolbar">
+      <div class="treemap-panel-heading">
+        <p id="treemap-breadcrumb" class="treemap-eyebrow" hidden></p>
+        <h2 id="treemap-heading" class="sr-only" tabindex="-1">Company count</h2>
+        <p id="treemap-subtitle"></p>
+        <div id="treemap-summary" class="treemap-summary"></div>
+      </div>
+      <div class="treemap-view-tools">
+        <button disabled type="button" id="treemap-filter-toggle" class="treemap-filter-toggle atlas-button" aria-expanded="false" aria-controls="treemap-filter-fields">Filters</button>
+        <label class="query-control" for="treemap-query"><span class="sr-only">Find a company</span><span class="atlas-search-control"><input disabled type="search" id="treemap-query" placeholder="Find a company" maxlength="200" autocomplete="off"><button disabled type="button" class="atlas-clear" data-atlas-clear-for="treemap-query" aria-label="Clear company search" hidden><svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></span></label>
+        <ui-segmented-control disabled id="treemap-presentation" class="treemap-view-switch" aria-label="Presentation" default-value="map">
+          <ui-segmented-control-item as-child value="map"><button disabled type="button" id="show-map" aria-label="Proportional map">Map</button></ui-segmented-control-item>
+          <ui-segmented-control-item as-child value="cards"><button disabled type="button" id="show-cards" aria-label="Ranked cards">Cards</button></ui-segmented-control-item>
+          <ui-segmented-control-item as-child value="list"><button disabled type="button" id="show-list" aria-label="Ranked list">List</button></ui-segmented-control-item>
+        </ui-segmented-control>
+        <button disabled type="button" id="treemap-share" class="treemap-share atlas-button">Share view</button><span id="treemap-share-status" class="sr-only" role="status"></span>
+        <button disabled type="button" id="treemap-reset" class="atlas-button" aria-label="Reset exploration">Reset</button>
+        <button disabled type="button" id="treemap-inspector-reopen" class="atlas-button" hidden>Inspect selection</button>
+      </div>
     </div>
   </form>
   <p id="treemap-status" class="treemap-status" role="status">Loading the published company snapshot…</p>
   <div class="treemap-workspace" aria-busy="true" id="treemap-workspace">
     <section class="treemap-panel" id="treemap-panel" aria-labelledby="treemap-heading">
-      <div class="treemap-panel-heading"><div><p id="treemap-breadcrumb" class="treemap-eyebrow" hidden></p><h2 id="treemap-heading" tabindex="-1">Company count</h2><p id="treemap-subtitle"></p></div></div>
-      <div id="treemap-summary" class="treemap-summary"></div>
       <div id="treemap-sibling-countries" class="treemap-sibling-countries" hidden></div>
-      <div id="treemap-groups" class="treemap-groups" hidden></div>
       <p id="treemap-instructions" class="sr-only">Each rectangle is proportional to its company count. Select a company to read its evidence. Small tiles have equivalent controls in the ranked list.</p>
-      <div id="treemap-chart" class="treemap-chart" role="group" aria-label="Company treemap" aria-describedby="treemap-instructions"><div class="treemap-skeleton" aria-hidden="true"></div></div>
+      <div class="treemap-canvas-frame" id="treemap-canvas-frame"><div id="treemap-chart" class="treemap-chart" role="group" aria-label="Company treemap" aria-describedby="treemap-instructions"><div class="treemap-skeleton" aria-hidden="true"></div></div></div>
       <p id="treemap-tile-disclosure" class="treemap-tile-disclosure" aria-hidden="true" hidden></p>
       <div id="treemap-cards" class="treemap-cards" role="group" aria-label="Company cards" aria-describedby="treemap-instructions" hidden></div>
       <div id="treemap-list" class="treemap-list" role="group" aria-label="Ranked companies" aria-describedby="treemap-instructions" hidden></div>
-      <div class="treemap-panel-footer"><div id="treemap-legend"></div><div class="treemap-panel-links"><button type="button" data-treemap-presentation="list" hidden>Browse ranked list</button><a href="#method">Read the caveats ↗</a></div></div>
+      <div class="treemap-panel-footer"><div id="treemap-legend"></div><div class="treemap-panel-links"><button type="button" data-treemap-presentation="list" hidden>Ranked list</button><a href="#method">Method</a></div></div>
+      <div id="treemap-groups" class="treemap-groups" hidden></div>
     </section>
-    <aside id="treemap-detail" class="treemap-detail" tabindex="-1" aria-label="Selected company evidence"><p>Select a company to inspect its figure and source.</p></aside>
+    <div id="treemap-detail-seat" class="treemap-detail-seat"><aside id="treemap-detail" class="treemap-detail" tabindex="-1" aria-label="Selected company evidence"><p>Select a company to inspect its figure and source.</p></aside></div>
   </div>
-  <details id="treemap-missing" class="treemap-missing" hidden><summary id="treemap-missing-label"></summary><div id="treemap-missing-list"></div></details>
+  <ui-dialog id="treemap-inspector-sheet">
+    <ui-dialog-backdrop class="treemap-sheet-backdrop" hidden></ui-dialog-backdrop>
+    <ui-dialog-content id="treemap-sheet-content" class="treemap-sheet-content" initial-focus="#treemap-detail" final-focus="none" keep-mounted hidden>
+      <ui-dialog-title class="sr-only">Company inspection</ui-dialog-title>
+    </ui-dialog-content>
+  </ui-dialog>
+  <details id="treemap-missing" class="treemap-missing" hidden><summary id="treemap-missing-summary"><span id="treemap-missing-label"></span><span class="treemap-missing-preview" id="treemap-missing-preview" aria-hidden="true"></span></summary><div id="treemap-missing-list"></div></details>
+  <div data-atlas-compare-tray></div>
   <section id="method" class="treemap-method" aria-labelledby="method-heading">
     <h2 id="method-heading">How to read the treemap</h2>
     <div>

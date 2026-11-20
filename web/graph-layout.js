@@ -1,13 +1,13 @@
 // A deterministic, relationship-aware force layout. The graph is deliberately
 // small: the explorer bounds the visible neighbourhood before calling this.
-const WIDTH=1200, HEIGHT=720, ROOT={x:600,y:370};
+const WIDTH=1200, HEIGHT=650, ROOT={x:532,y:330};
 const GROUPS={
-  partners:{label:'PARTNERS',x:275,y:195},
-  programmes:{label:'PROGRAMMES',x:930,y:180},
-  startups:{label:'STARTUPS',x:255,y:535},
-  founders:{label:'FOUNDERS',x:930,y:495},
-  people:{label:'PEOPLE',x:945,y:330},
-  providers:{label:'PROVIDERS',x:630,y:635},
+  partners:{label:'PARTNERS',x:998,y:330},
+  programmes:{label:'PROGRAMMES',x:900,y:146},
+  startups:{label:'STARTUPS',x:530,y:570},
+  founders:{label:'FOUNDERS',x:179,y:318},
+  people:{label:'PEOPLE',x:245,y:517},
+  providers:{label:'PROVIDERS',x:970,y:562},
 };
 const kindGroup={partner:'partners',programme:'programmes',startup:'startups',person:'people',provider:'providers'};
 
@@ -27,8 +27,8 @@ function sizeFor(node,root) {
   const lines=labelLines(node.name);
   const longest=Math.max(...lines.map(line=>line.length),1);
   // The wireframes give names and type chips a readable identity-card footprint.
-  return {width:Math.max(root?240:204,Math.min(root?320:294,70+longest*(root?11.5:10))),
-    height:root?(lines.length>1?104:90):(lines.length>1?88:72),lines};
+  const height = (root ? 92 : 76) + (lines.length>1 ? 18 : 0) + (root && node.kind==='startup' ? 48 : 0);
+  return {width:Math.max(root?240:204,Math.min(root?320:294,70+longest*(root?11.5:10))),height,lines};
 }
 
 function groupFor(node,rootId,edges) {
@@ -67,11 +67,12 @@ export function layoutNetwork(view,rootId,pinned=new Map()) {
   for (const [key,items] of groups) {
     const zone=GROUPS[key];
     items.sort((a,b)=>a.level-b.level||a.name.localeCompare(b.name)||a.id.localeCompare(b.id));
-    const cols=items.length<=2?1:items.length<=6?2:3, rows=Math.ceil(items.length/cols);
+    const cols=items.length<=3?1:items.length<=8?2:3, rows=Math.ceil(items.length/cols);
     items.forEach((node,index)=>{
       const row=Math.floor(index/cols),col=index%cols;
       const x=zone.x+(col-(cols-1)/2)*192+(row%2?14:-8);
-      const y=zone.y+(row-(rows-1)/2)*76;
+      const spacing=items.length===3 ? 186 : 137;
+      const y=zone.y+(row-(rows-1)/2)*spacing;
       const pin=pinned.get(node.id),size=sizeFor(node,false);
       nodes.push({...node,...size,x:pin?.x??x,y:pin?.y??y,targetX:x,targetY:y,
         vx:0,vy:0,fixed:!!pin,group:key});

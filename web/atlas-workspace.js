@@ -8,19 +8,31 @@ const storageKey = 'atlas:workspace:v1';
 const startupId = /^startup:[a-z0-9][a-z0-9_-]{0,159}$/i;
 const defaultName = id=>id.slice('startup:'.length).replaceAll('-',' ');
 const actionSelector = '[data-atlas-save-company], [data-atlas-compare]';
-const newWorkspace = () => ({saved:{},compare:{},notes:{}});
+const newWorkspace = () => ({saved:{},compare:{},notes:{},views:{}});
 
-export function installWorkspace(doc) {
+export function installWorkspace(doc,safeReturn) {
   if (!doc.querySelector?.('[data-atlas-workspace]')) return;
   const view = doc.defaultView;
   let state = newWorkspace(), mode = 'saved', graph = null, dimensions = null;
   let loading = false, unavailable = false, fallbackOpener, companyScope;
+
+  function explorerLink(value) {
+    const safe = safeReturn(value,view.location.href);
+    if (!safe) return null;
+    const url = new URL(safe,view.location.href);
+    if (!['','index.html','graph.html','treemap.html'].includes(url.pathname.split('/').pop())) return null;
+    url.searchParams.delete('embed');
+    url.searchParams.sort();
+    return url.pathname + url.search + url.hash;
+  }
+
   function read() {
     try {
       const raw = JSON.parse(view.localStorage.getItem(storageKey) || 'null');
       for (const key of Object.keys(state)) {
         const records = raw?.[key];
-        state[key] = Object.fromEntries(Object.entries(records ?? {}).filter(([id,value])=>startupId.test(id) && typeof value==='string'));
+        state[key] = Object.fromEntries(Object.entries(records ?? {}).filter(([id,value])=>
+          typeof value==='string' && (key==='views' ? explorerLink(id)===id : startupId.test(id))));
       }
     } catch { /* Keep the active page state if storage is unavailable. */ }
   }
@@ -67,10 +79,29 @@ export function installWorkspace(doc) {
     }
     for (const button of doc.querySelectorAll('[data-atlas-panel]')) {
       const key = button.dataset.atlasPanel;
-      const count = Object.keys(state[key]).length;
+      const count = Object.keys(state[key]).length + (key==='saved' ? Object.keys(state.views).length : 0);
       const label = key==='saved' ? 'Saved' : 'Compare';
       const text = count ? `${label} (${count})` : label;
-      if (button.textContent!==text) button.textContent = text;
+      const target = button.querySelector('[data-atlas-panel-label]') || button;
+      if (target.textContent!==text) target.textContent = text;
+    }
+    const activeView = Object.hasOwn(state.views,explorerLink(view.location.href));
+    for (const button of doc.querySelectorAll('[data-atlas-save-view]')) {
+      button.setAttribute('aria-pressed',String(activeView));
+      const label = button.querySelector('[data-atlas-action-label]');
+      const text = activeView ? 'View saved' : 'Save view';
+      if (label.textContent!==text) label.textContent = text;
+    }
+    const comparing = Object.entries(state.compare);
+    for (const tray of doc.querySelectorAll('[data-atlas-compare-tray]')) {
+      tray.hidden = comparing.length===0;
+      const markup = comparing.length ? `<h2>Compare</h2><ul aria-label="Selected companies">${comparing.map(([id,name])=>
+        `<li><button type="button" data-tray-remove="${esc(id)}" aria-label="Remove ${esc(name)} from comparison"><span>${esc(name)}</span>${renderIcon('close')}</button></li>`
+      ).join('')}</ul><ui-dialog-trigger for="atlas-workspace-dialog"><button type="button" class="atlas-button" data-atlas-tray-compare aria-haspopup="dialog">Compare (${comparing.length})</button></ui-dialog-trigger>` : '';
+      if (tray.dataset.contents!==markup) {
+        tray.innerHTML = markup;
+        tray.dataset.contents = markup;
+      }
     }
     for (const field of doc.querySelectorAll('[data-atlas-notes]:not([data-notes-ready])')) {
       const id = field.dataset.atlasNotes;
@@ -98,9 +129,9 @@ export function installWorkspace(doc) {
 
   function render() {
     const active = detail.contains(doc.activeElement) ? doc.activeElement : null;
-    const control = active?.hasAttribute('data-workspace-remove') ? 'data-workspace-remove' : 'data-workspace-profile';
-    const activeId = active?.getAttribute(control);
-    title.textContent = mode==='compare' ? 'Compare companies' : 'Saved companies';
+    const control = ['data-workspace-remove','data-workspace-profile','data-workspace-view','data-workspace-view-remove'].find(attr=>active?.hasAttribute(attr));
+    const activeId = control ? active.getAttribute(control) : null;
+    title.textContent = mode==='compare' ? 'Compare companies' : 'Saved companies and views';
     const items = Object.entries(state[mode]);
     if (!items.length) {
       detail.innerHTML = `<p class="atlas-workspace-empty">${mode==='compare' ? 'Choose Compare on a company to add it here.' : 'Save a company to find it here again.'}</p>`;
@@ -123,7 +154,12 @@ export function installWorkspace(doc) {
             <button type="button" data-workspace-remove="${esc(id)}" aria-label="Remove ${esc(name)} from ${mode==='compare' ? 'comparison' : 'saved companies'}">Remove</button></li>`;
         }).join('')}</ul>`;
     }
-    if (active) (Array.from(detail.querySelectorAll(`[${control}]`)).find(entry=>entry.getAttribute(control)===activeId) || detail.querySelector('a') || close).focus();
+    if (mode==='saved' && Object.keys(state.views).length) {
+      detail.insertAdjacentHTML('beforeend',`<section class="atlas-saved-views"><h3>Saved views</h3><ul class="atlas-workspace-list" data-mode="saved">${Object.entries(state.views).map(([href,name])=>
+        `<li><h3><a data-workspace-view="${esc(href)}" href="${esc(href)}">${esc(name)}</a></h3><button type="button" data-workspace-view-remove="${esc(href)}" aria-label="Remove saved view ${esc(name)}">Remove</button></li>`
+      ).join('')}</ul></section>`);
+    }
+    if (control) (Array.from(detail.querySelectorAll(`[${control}]`)).find(entry=>entry.getAttribute(control)===activeId) || detail.querySelector('a') || close).focus();
   }
 
   function show(key,opener) {
@@ -173,23 +209,60 @@ export function installWorkspace(doc) {
     sync();
   }
 
+  function toggleView(button) {
+    const href = explorerLink(view.location.href);
+    if (!href) return;
+    read();
+    const views = {...state.views};
+    const exists = Object.hasOwn(views,href);
+    if (exists) delete views[href];
+    else {
+      const title = doc.querySelector('main h1')?.textContent.trim() || 'Explorer';
+      const query = new URL(href,view.location.href).searchParams.get('q');
+      views[href] = query && !title.includes(query) ? `${title} · ${query}` : title;
+    }
+    const feedback = button.closest('[data-atlas-explorer-actions]').querySelector('[data-atlas-export-status]');
+    feedback.textContent = save({...state,views}) ? (exists ? 'View removed from Saved.' : 'View added to Saved.') : 'Couldn’t save this view. Try again.';
+    feedback.hidden = false;
+    sync();
+  }
+
+  function removeItem(key,id) {
+    read();
+    const group = {...state[key]};
+    delete group[id];
+    return save({...state,[key]:group});
+  }
+
   doc.addEventListener('click',event=>{
-    const open = event.target.closest('[data-atlas-panel]');
-    if (open && show(open.dataset.atlasPanel,open)) event.stopPropagation();
+    const open = event.target.closest('[data-atlas-panel],[data-atlas-tray-compare]');
+    if (open && show(open.dataset.atlasPanel || 'compare',open)) event.stopPropagation();
   },{capture:true});
   doc.addEventListener('click',event=>{
     const button = event.target.closest(actionSelector);
     if (button) toggle(button);
-    const remove = event.target.closest('[data-workspace-remove]');
+    const saveView = event.target.closest('[data-atlas-save-view]');
+    if (saveView) toggleView(saveView);
+    const trayRemove = event.target.closest('[data-tray-remove]');
+    if (trayRemove) {
+      const tray = trayRemove.closest('[data-atlas-compare-tray]');
+      if (removeItem('compare',trayRemove.dataset.trayRemove)) {
+        status.textContent = 'Company removed from comparison';
+        sync();
+        const next = tray.querySelector('[data-tray-remove]') || [...doc.querySelectorAll('[data-atlas-compare],[data-atlas-panel="compare"],[data-atlas-save-view]')].find(button=>button.getClientRects().length);
+        next?.focus();
+      } else status.textContent = 'Couldn’t update your comparison. Try again.';
+    }
+    const remove = event.target.closest('[data-workspace-remove],[data-workspace-view-remove]');
     if (!remove) return;
-    read();
-    const group = {...state[mode]};
-    delete group[remove.dataset.workspaceRemove];
-    if (save({...state,[mode]:group})) { error.hidden = true; render(); sync(); }
-    else { error.hidden = false; error.textContent = 'Couldn’t remove this company. Try again.'; }
+    const viewLink = remove.dataset.workspaceViewRemove;
+    if (removeItem(viewLink ? 'views' : mode,viewLink || remove.dataset.workspaceRemove)) { error.hidden = true; render(); sync(); }
+    else { error.hidden = false; error.textContent = `Couldn’t remove this ${viewLink ? 'view' : 'company'}. Try again.`; }
   });
   doc.addEventListener('atlas:reset-exploration',()=>{read(); if (save({...state,compare:{}})) sync();});
   doc.addEventListener('atlas:company-scope',event=>{companyScope={ids:new Set(event.detail),host:event.target};});
+  doc.addEventListener('atlas:exploration-change',sync);
+  view.addEventListener('popstate',sync);
   view.addEventListener('storage',event=>{if (event.key===storageKey || event.key===null) {read(); sync(); render();}});
   view.addEventListener('pageshow',()=>{read(); sync();});
   new MutationObserver(sync).observe(doc.body,{subtree:true,childList:true});

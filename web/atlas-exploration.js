@@ -8,7 +8,7 @@ const countryOption = value => value === 'unknown' ? value : canonicalCountry(va
 export const countryName = code => canonicalCountry(code) ? names.of(code) || code : 'Country not recorded';
 const clean = (value, limit=160) => typeof value === 'string' ? value.trim().normalize('NFC').slice(0,limit) : '';
 const entityId = value => /^(?:startup|person|partner|provider|programme):[a-z0-9][a-z0-9_-]{0,159}$/i.test(value || '') ? value : '';
-const directoryType = value => ['startup','person','partner','provider','programme'].includes(value) ? value : '';
+const directoryType = value => ['all','startup','person','partner','provider','programme'].includes(value) ? value : '';
 const selection = ids => [...new Set(ids.map(countryOption).filter(Boolean))].sort();
 
 export function readExploration(params) {

@@ -144,12 +144,17 @@ try {
   assert.equal(await evaluate("document.querySelector('#treemap-currency-field').getClientRects().length"),0,'Company count must hide the currency field');
   assert.equal(await evaluate("document.querySelectorAll('#treemap-chart [data-company]').length"),snapshot.entities.filter(entity=>entity.kind==='startup').length);
   assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"),'map');
+  assert.equal(await evaluate(`(() => {
+    const country=document.querySelector('.exploration-country-trigger').getBoundingClientRect();
+    const size=document.querySelector('#treemap-metric').closest('label').getBoundingClientRect();
+    return country.x<size.x && Math.abs(country.top-size.top)<6 && document.querySelector('#treemap-chart').getBoundingClientRect().top<320;
+  })()`),true,'The desktop toolbar must put headquarters and chart settings in one row above the plot');
   await screenshot('company-count-default-desktop.png');
 
   await navigate('?view=cards&metric=funding');
   assert.equal(await evaluate("['metric','currency','group'].every(name=>!document.querySelector('#treemap-'+name).disabled)"),true,'Loaded funding controls must be available');
   assert.equal(await evaluate("document.querySelector('#treemap-metric').value"),'funding');
-  assert.match(await text('#treemap-subtitle'),/event amount/);
+  assert.match(await text('#treemap-board-context'),/event amount/);
   const defaultFunding=makeView(snapshot,{metric:'funding',currency:'USD'});
   assert.equal(await evaluate("document.querySelector('#treemap-chart').hidden"),true);
   assert.equal(await evaluate("document.querySelector('#treemap-cards').hidden"),false);
@@ -322,7 +327,7 @@ try {
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:844,deviceScaleFactor:1,mobile:true});
   await until(()=>evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().width<320"),'Small mobile did not resize');
   assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'No horizontal overflow at 320px');
-  const masthead=await evaluate("(()=>{const links=[...document.querySelectorAll('.atlas-masthead [data-atlas-view]')].map(a=>a.getBoundingClientRect()),brand=document.querySelector('.atlas-wordmark').getBoundingClientRect(),system=document.querySelector('.atlas-masthead .atlas-system-link').getBoundingClientRect();return {sameRow:Math.max(...links.map(r=>r.top))-Math.min(...links.map(r=>r.top))<1,brandClear:brand.right<=system.left||brand.bottom<=system.top||system.bottom<=brand.top};})()");
+  const masthead=await evaluate("(()=>{const links=[...document.querySelectorAll('[data-atlas-explorer-actions] [data-atlas-view]')].map(a=>a.getBoundingClientRect()),brand=document.querySelector('.atlas-wordmark').getBoundingClientRect(),system=document.querySelector('.atlas-masthead .atlas-system-link').getBoundingClientRect();return {sameRow:links.length===3&&Math.max(...links.map(r=>r.top))-Math.min(...links.map(r=>r.top))<1,brandClear:!system.width||brand.right<=system.left||brand.bottom<=system.top||system.bottom<=brand.top};})()");
   assert.ok(masthead.sameRow,'The three primary views should share one row at 320px');
   assert.ok(masthead.brandClear,'The home identity and design-system link must not overlap');
   await screenshot('company-logos-mobile-320.png');
@@ -339,11 +344,15 @@ try {
   assert.ok(await evaluate("document.querySelector('#treemap-cards .treemap-card').getBoundingClientRect().top<innerHeight/2"),'The lead card must begin in the upper half of the 390px viewport');
   await screenshot('cards-valuation-mobile.png',true);
   await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
-  await evaluate("scrollTo({top:0,behavior:'instant'})");
-  assert.equal(await evaluate("document.querySelector('#treemap-detail').getBoundingClientRect().top>innerHeight-120"),true,'The mobile evidence panel must start below the cards for this activation check');
+  assert.equal(await evaluate("document.querySelector('#treemap-inspector-sheet').open"),false);
+  await evaluate("document.querySelector('#treemap-cards [data-company=\"startup:canva\"]').focus()");
   await click('#treemap-cards [data-company="startup:canva"]');
-  await until(()=>evaluate("(()=>{const panel=document.querySelector('#treemap-detail'),r=panel.getBoundingClientRect();return panel.querySelector('h2')?.textContent==='Canva'&&document.activeElement===panel&&r.top>=-1&&r.top<innerHeight-120;})()"),'Activating a mobile card did not focus and reveal its offscreen evidence');
+  await until(()=>evaluate("(()=>{const panel=document.querySelector('#treemap-detail'),r=panel.getBoundingClientRect();return document.querySelector('#treemap-inspector-sheet').open&&panel.querySelector('h2')?.textContent==='Canva'&&panel.contains(document.activeElement)&&r.top>=-1&&r.top<innerHeight-120;})()"),'Selecting a mobile company must focus the bottom inspector sheet');
   await screenshot('cards-evidence-mobile.png');
+  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+  await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+  await until(()=>evaluate("!document.querySelector('#treemap-inspector-sheet').open&&document.activeElement?.dataset.company==='startup:canva'"),'Closing the inspector must restore focus to the company card');
+  assert.equal(await evaluate("new URLSearchParams(location.search).has('selected')"),false);
   await command('Emulation.setEmulatedMedia',{features:[]});
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:844,deviceScaleFactor:1,mobile:true});
   assert.equal(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),true,'Cards must not overflow at 320px');
@@ -429,11 +438,13 @@ try {
   await navigate('?metric=companies&group=country&colour=sector');
   await until(()=>evaluate("Boolean(document.querySelector('.exploration-country ui-popover')?.api)"),'Country control did not upgrade');
   const hqTrigger='.exploration-country-trigger', params=()=>evaluate('Object.fromEntries(new URLSearchParams(location.search))');
-  assert.match(await text('#treemap-groups'),/Country not recorded/);
+  assert.match((await text('#treemap-groups')) + (await text('#treemap-chart')),/Country not recorded/);
   assert.match(await text('#treemap-legend'),/Developer tools/);
   const weights=await evaluate(`(() => {
-    const chart=document.querySelector('#treemap-chart'), {width,height}=chart.getBoundingClientRect();
-    return [...chart.querySelectorAll('[data-company]')].map(tile=>parseFloat(tile.style.width)*parseFloat(tile.style.height)/(width*height));
+    const chart=document.querySelector('#treemap-chart');
+    const areas=[...chart.querySelectorAll('[data-company]')].map(tile=>parseFloat(tile.style.width)*parseFloat(tile.style.height));
+    const total=areas.reduce((sum,area)=>sum+area,0);
+    return areas.map(area=>area/total);
   })()`);
   assert.equal(weights.length,4);
   assert.ok(weights.every(weight=>Math.abs(weight-.25)<1e-6),'Grouping must preserve equal area per company');
@@ -472,17 +483,22 @@ try {
   assert.match(await text('.exploration-result-count'),/2 companies in this location.*3 companies match your filters/);
   assert.match(await text('#treemap-detail'),/Outside current results/);
   assert.equal(await evaluate("document.querySelector('[data-atlas-compare]').getAttribute('aria-pressed')"),'true');
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-chart .treemap-plot-group-row .treemap-plot-heading').length"),2,'Country drilldown displays each city with an inset heading');
+  assert.deepEqual(await evaluate("(()=>{const detail={};document.dispatchEvent(new CustomEvent('atlas:export-records',{detail}));return detail.records.map(row=>row.id).sort()})()"),[melbourne.id,sydney.id].sort(),'Export must use the exact current filtered company population');
 
   const cityGroup='[data-treemap-group=\'["AU","Sydney"]\']';
   await click(cityGroup);
   assert.equal((await params()).city,'Sydney');
   assert.equal(await evaluate("document.querySelectorAll('#treemap-chart [data-company]').length"),1);
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
-  await until(()=>evaluate("document.getElementById('treemap-location-fields').hidden"),'Mobile filter controls did not collapse');
+  await until(()=>evaluate("document.getElementById('treemap-filter-fields').hidden&&document.querySelector('#treemap-inspector-sheet').open"),'Mobile settings did not collapse or selected company sheet did not open');
+  await click('#treemap-detail [data-treemap-adjust]');
+  await until(()=>evaluate("!document.querySelector('#treemap-inspector-sheet').open&&document.querySelector('.exploration-country ui-popover').open"),'Adjust filters must open mobile filters without losing inspection');
+  await click('[data-draft-cancel]');
   assert.equal(await evaluate("document.querySelector('.exploration-applied').getClientRects().length>0 && document.querySelector('.exploration-scope').getClientRects().length>0"),true,'Collapsed filters must retain applied constraints and scope');
   await evaluate("document.querySelector('[data-clear-facets]').focus()");
   await click('[data-clear-facets]');
-  assert.equal(await evaluate('document.activeElement.id'),'treemap-filter-toggle','Clearing the last applied filter on mobile must focus the visible Filters control');
+  assert.equal(await evaluate("document.activeElement.matches('.exploration-country-trigger')"),true,'Clearing the last applied filter on mobile must focus the visible Filters control');
   assert.equal((await params()).city,'Sydney','Clear filters must preserve the drill path');
   assert.equal(await evaluate("new URLSearchParams(location.search).getAll('hq').length"),0);
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});

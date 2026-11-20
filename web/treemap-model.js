@@ -145,8 +145,31 @@ export function treemap(items, width, height) {
   return output;
 }
 
-export function groupedTreemap(groups, width, height) {
-  return treemap(groups,width,height).map(group => ({...group, tiles:treemap(group.children,group.width,group.height)}));
+export function groupedTreemap(groups, width, height, {heading=0,stacked=false} = {}) {
+  const eligible = groups.filter(group => positive(group.value));
+  if (!eligible.length || !(width > 0 && height > 0)) return [];
+  const stack = stacked && heading * eligible.length < height;
+  let regions;
+  if (stack) {
+    const available = height - heading * eligible.length;
+    const total = eligible.reduce((sum,group) => sum + group.value,0);
+    let y = 0;
+    regions = eligible.map(group => {
+      const region = {...group, x:0, y, width, height:heading + group.value / total * available};
+      y += region.height;
+      return region;
+    });
+  } else {
+    regions = treemap(eligible,width,height);
+  }
+  // Reserve the same area fraction in every mosaic group so company weights stay proportional.
+  const fraction = stack ? 0 : Math.min(.15, heading / Math.max(...regions.map(group => group.height)));
+  return regions.map(group => {
+    const headingHeight = stack ? heading : group.height * fraction;
+    const tiles = treemap(group.children,group.width,group.height - headingHeight)
+      .map(tile => ({...tile, y:tile.y + headingHeight}));
+    return {...group,headingHeight,tiles};
+  });
 }
 
 const neutral = 'var(--atlas-soft)';

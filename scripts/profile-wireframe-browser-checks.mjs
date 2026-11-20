@@ -4,17 +4,22 @@ import assert from 'node:assert/strict';
 export async function checkProfileWireframes({command, evaluate, navigate, until, click, press, screenshot, assertNoOverflow, partners, graph}) {
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await navigate('/entity.html?id=startup%3Acanva',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Canva'");
+  await evaluate('document.fonts.ready.then(()=>true)');
   await until(()=>evaluate("document.querySelector('.atlas-section-nav a')?.getAttribute('aria-current')==='location'"),'Startup entry should highlight the first main section, not the top-aligned source rail');
   assert.equal(await evaluate("document.querySelectorAll('.atlas-section-nav [aria-current=\"location\"]').length"),1,'A startup profile has one current section');
   const dossier = await evaluate(`(()=>{
-    const main=document.querySelector('.entity-dossier').getBoundingClientRect();
-    const evidence=document.querySelector('.entity-aside').getBoundingClientRect();
-    const facts=document.querySelector('#entity-company').getBoundingClientRect();
+    const main=document.querySelector('.entity-overview-main').getBoundingClientRect();
+    const evidence=document.querySelector('.entity-overview-rail').getBoundingClientRect();
+    const plate=document.querySelector('.entity-hero-identity > .entity-mark').getBoundingClientRect();
+    const facts=document.querySelector('.entity-overview-facts').getBoundingClientRect();
     const funding=document.querySelector('#entity-funding').getBoundingClientRect();
     const people=document.querySelector('#entity-founders').getBoundingClientRect();
-    return {beside:evidence.left>=main.right,aligned:Math.abs(evidence.top-main.top)<2,ordered:facts.bottom<=people.top&&people.bottom<=funding.top,sourceCount:document.querySelectorAll('#entity-company .entity-fact-source a').length};
+    return {beside:evidence.left>=main.right,aligned:Math.abs(evidence.top-main.top)<2,ordered:facts.bottom<=people.top&&people.bottom<=funding.top,firstFold:document.querySelector('.entity-overview-related').getBoundingClientRect().bottom<=innerHeight,founders:document.querySelectorAll('.entity-founder-preview li').length,sourceCount:document.querySelectorAll('#entity-company .entity-fact-source a').length,split:main.width/(main.width+evidence.width),plateRatio:plate.width/plate.height};
   })()`);
   assert.ok(dossier.beside&&dossier.aligned,'Startup evidence should align beside the overview below the full-width identity');
+  assert.ok(dossier.split >= .6 && dossier.split <= .66,'The overview and evidence rail should preserve the approved column proportion');
+  assert.ok(dossier.plateRatio >= 1.85,'The company mark uses a horizontal identity plate');
+  assert.ok(dossier.firstFold&&dossier.founders===3,'The published founders, historic funding snapshot and shared company are visible in the desktop overview');
   assert.ok(dossier.ordered,'Overview, people and funding follow the section navigation order');
   assert.ok(dossier.sourceCount>0,'The compact facts retain their individual sources');
   await assertNoOverflow('Wireframe startup dossier desktop');
@@ -35,6 +40,23 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   await press('Escape','Escape',27);
   await until(()=>evaluate(`!document.querySelector('.profile-evidence-panel[data-open]')&&document.activeElement.matches(${JSON.stringify(factAction)})`),'Escape did not close and restore focus to the exact claim');
   assert.ok(Math.abs(await evaluate('scrollY')-readingPosition)<=1,'Evidence dismissal preserves profile reading position');
+
+  const seed=graph.funding_rounds.find(round=>round.id==='canva-2013-seed');
+  await click('.entity-funding-sample a');
+  await until(()=>evaluate(`location.hash==='#entity-funding'&&document.getElementById(${JSON.stringify(`entity-round-${seed.id}`)}).open`),'Opening the snapshot should expand its exact funding event');
+  const seedAction='#entity-funding details[open] button[aria-label*="Seed round"]';
+  await until(()=>evaluate("(()=>{const y=document.querySelector('#entity-funding').getBoundingClientRect().top;const nav=document.querySelector('.atlas-section-nav').getBoundingClientRect();return y>=nav.bottom&&y<nav.bottom+28;})()"),'Funding heading did not settle below the sticky profile header');
+  await evaluate(`document.querySelector(${JSON.stringify(seedAction)}).focus({preventScroll:true})`);
+  await press('Enter','Enter',13);
+  await until(()=>evaluate("!!document.querySelector('.profile-evidence-panel[data-presentation=dialog][data-open]')"),'The funding evidence did not open beside the chronology');
+  assert.equal(await evaluate("document.querySelector('.profile-evidence-value').textContent"),seed.amount_text);
+  await screenshot('atlas-wireframe-desktop-claim-evidence.png');
+  await press('Escape','Escape',27);
+  await until(()=>evaluate("!document.querySelector('.profile-evidence-panel[data-open]')"),'Escape did not dismiss funding evidence');
+  await click('.atlas-section-nav a[href="#entity-founders"]');
+  await until(()=>evaluate("(()=>{const y=document.querySelector('#entity-founders').getBoundingClientRect().top;const nav=document.querySelector('.atlas-section-nav');return nav.querySelector('[aria-current=location]')?.getAttribute('href')==='#entity-founders'&&y>=nav.getBoundingClientRect().bottom&&y<nav.getBoundingClientRect().bottom+28;})()"),'People did not settle as the current section');
+  assert.equal(await evaluate("document.querySelectorAll('.entity-network-people a[data-atlas-profile-link]').length"),3,'The relationship preview links the recorded founders');
+  await screenshot('atlas-wireframe-people-desktop.png');
 
   await navigate('/partner.html?name=Airtree',"document.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('#partner-company-detail')");
   await until(()=>evaluate("document.querySelector('.atlas-section-nav a')?.getAttribute('aria-current')==='location'"),'Partner entry should highlight its first main section');
@@ -75,14 +97,26 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   await assertNoOverflow('Wireframe partner explorer narrow');
   await screenshot('atlas-wireframe-partner-mobile.png',true);
   await navigate('/entity.html?id=startup%3Acanva',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Canva'");
-  assert.ok(await evaluate("document.querySelector('.entity-aside').getBoundingClientRect().top>=document.querySelector('.entity-dossier').getBoundingClientRect().bottom"),'Narrow evidence follows the complete dossier in document flow');
+  await evaluate('document.fonts.ready.then(()=>true)');
+  assert.ok(await evaluate(`(()=>{
+    const fact=document.querySelector('.entity-mobile-facts .entity-overview-facts');
+    const preview=document.querySelector('.entity-founder-preview');
+    return !!fact && !!(fact.compareDocumentPosition(preview)&Node.DOCUMENT_POSITION_FOLLOWING) && fact.getBoundingClientRect().bottom<=preview.getBoundingClientRect().top;
+  })()`),'On mobile the source-linked facts precede founders in both visual and keyboard order');
+  assert.ok(await evaluate(`(()=>{
+    const rect=selector=>document.querySelector(selector).getBoundingClientRect();
+    const mark=rect('.entity-hero-identity .entity-mark'),title=rect('.entity-hero h1');
+    const save=rect('.entity-actions [data-atlas-save-company]'),compare=rect('.entity-actions [data-atlas-compare]');
+    const graph=rect('.entity-overview-mobile-graph');
+    return mark.bottom<=title.top+1 && Math.abs(save.top-compare.top)<1 && save.right<compare.left && graph.width>=300 && graph.height>=44 && graph.bottom<=innerHeight+1;
+  })()`),'The mobile profile stacks its identity, pairs the workspace actions, and exposes a full-width graph link');
   await assertNoOverflow('Wireframe startup dossier narrow');
-  await screenshot('atlas-wireframe-startup-mobile.png',true);
+  await screenshot('atlas-wireframe-startup-mobile.png');
+  await click('.entity-mobile-facts-extra summary');
+  assert.ok(await evaluate("document.querySelector('.entity-more-facts[open] .entity-facts').textContent.includes('Legal entity')"),'The compact overview preserves access to the additional company facts');
   await click('.atlas-section-nav a[href="#entity-funding"]');
   await until(()=>evaluate("document.querySelector('.atlas-section-nav [aria-current=location]')?.getAttribute('href')==='#entity-funding'"),'Funding did not become current');
-  const seed=graph.funding_rounds.find(round=>round.id==='canva-2013-seed');
   await click('#entity-funding .entity-timeline details summary');
-  const seedAction='#entity-funding details[open] button[aria-label*="Seed round"]';
   await click(seedAction);
   await until(()=>evaluate("(()=>{const sheet=document.querySelector('.profile-evidence-panel[data-presentation=sheet][data-open]')?.getBoundingClientRect();return sheet?.height>0&&Math.abs(sheet.bottom-innerHeight)<=1;})()"),'The mobile funding claim did not settle as a sheet');
   assert.equal(await evaluate("document.querySelector('.profile-evidence-value').textContent"),seed.amount_text);

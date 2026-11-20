@@ -27,6 +27,9 @@ colors:
   editorialAccent: "#c85a32"
   editorialAction: "#a84121"
   editorialBorder: "#e2ddd3"
+  editorialStartup: "#285a52"
+  editorialPartner: "#344981"
+  editorialPerson: "#77501d"
 typography:
   display:
     fontFamily: "Atlas Newsreader, Georgia, Times New Roman, serif"
@@ -57,15 +60,16 @@ The current site is English-language and has desktop and mobile layouts. Global 
 
 ### Accepted wireframe reference
 
-The [approved editorial handoff](docs/design/editorial/README.md) sets the design target for the next implementation stages. The five earlier interface wireframes guide the existing route layouts. The ranked treemap uses the original logo-board composition with ranked figures, compact controls and conditional marks.
+The [approved editorial handoff](docs/design/editorial/README.md) governs the explorer and company profile. The earlier partner board guides the organisation dossier.
 
 | Wireframe | Accepted composition |
 | --- | --- |
-| [01 · List & search](web/assets/design-lab/01-list-search.webp) | Search and scope above ruled results, with explicit inspection beside the list. |
-| [02 · Treemap](web/assets/design-lab/02-treemap.webp) | Measure and coverage above the chart, with a company/figure evidence rail. |
-| [03 · Graph](web/assets/design-lab/03-graph.webp) | One compact exploration workspace, dark root identity and an adjoining inspection rail. |
-| [04 · Startup](web/assets/design-lab/04-startup.webp) | Founder-first company dossier, aligned facts and chronology, and a top-aligned source rail. |
-| [05 · Partner / VC](web/assets/design-lab/05-partner.webp) | Full identity band, company-sample exploration with selection detail, and people/evidence alongside it. |
+| [Directory](docs/design/editorial/wireframes/directory-evidence-coverage.png) | Warm filter tray, ruled evidence table, company wordmark and source tabs in the inspector. |
+| [Treemap](docs/design/editorial/wireframes/explorer-treemap.png) | Compact measure controls, proportional tiles, prominent company marks and a figure evidence rail. |
+| [Graph](docs/design/editorial/wireframes/explorer-graph.png) | Solid paper canvas, white node cards, rust selection and a relationship evidence rail. |
+| [Company](docs/design/editorial/wireframes/company-overview.png) | Horizontal wordmark, underlined section navigation and a ruled dossier with a right-hand facts and sources rail. |
+| [Mobile explorer](docs/design/editorial/wireframes/mobile-explorer.png) and [mobile company](docs/design/editorial/wireframes/company-mobile.png) | Shorter masthead, compact results and sheets for filters, inspection and evidence. |
+| [Partner / VC](web/assets/design-lab/05-partner.webp) | Full identity band, company-sample exploration with selection detail, and people and evidence alongside it. |
 
 The wireframes guide composition and [UX-CONTRACT.md](UX-CONTRACT.md) governs behaviour. Reviewed source records supply names, amounts, dates and relationships. The concept screens illustrate appearance, including controls and numbers from a fictional dataset. Production views use real evidence and existing interactions.
 
@@ -101,13 +105,13 @@ The shared stylesheet follows the established route styles where its primitives/
 
 ### Directory evidence coverage
 
-Select Startups in the Directory, then choose Coverage. The rows report distinct HTTPS source documents for company details, founder connections and funding rounds. Fragment links to the same document count once per category. A cell with no recorded source reads “Unknown.” Company names and Inspect retain the same destinations as Details. The Coverage choice can be shared through the directory URL.
+On desktop, the unfiltered Directory opens in company Coverage. On mobile it opens in company Details. The Coverage rows report distinct HTTPS source documents for company details, founder connections and funding rounds. Fragment links to the same document count once per category. A cell with no recorded source reads “Unknown.” The Coverage choice can be shared through the directory URL.
 
 The Directory uses Gamma's Filter Bar chip treatment and the UI SDK's native search, select and segmented controls. The search label adapts [Bencho Label input](https://github.com/cabralorenzo/bencho/tree/84dfcee170171257a28631402d37ff34900bc773/blocks/label-input). Coverage cells and their legend adapt [Bklit's sequential heatmap](https://github.com/bklit/bklit-ui/tree/76299da6981e2494836be5ce842720a7fb057891/packages/ui/src/charts/heatmap), with exact counts in text and a distinct unknown state. The [Bencho licence](web/vendor/BENCHO-LICENSE.txt), [Bklit licence](web/vendor/BKLIT-LICENSE.txt) and [font sources](web/assets/fonts/editorial/sources.json) ship with the site.
 
 ## Colors
 
-Forest carries primary text, the masthead and the graph root. Light, warm panels sit on a paper canvas. Quiet source rails stay beside the record being examined. Rust marks actions, selected inspection and keyboard focus. Entity colours remain categorical and do not communicate verification or investment performance.
+Forest carries primary text and active view navigation. White records and warm filter trays sit on a paper canvas. Source rails sit beside the record being examined. Rust marks the main profile action and selected inspection, with a forest keyboard focus outline on editorial routes.
 
 | Runtime token | Exact value | Use |
 | --- | --- | --- |
@@ -211,7 +215,7 @@ Entity badges use small categorical marks, with the person mark circular. Compan
 
 | Primitive | Normative use |
 | --- | --- |
-| `renderAtlasMasthead` / `.atlas-masthead` | Forest brand bar with the four-diamond mark and serif wordmark, followed by a paper navigation bar. Embedded previews hide surrounding route chrome. |
+| `renderAtlasMasthead` / `.atlas-masthead` | Paper masthead with a rust asterisk, serif wordmark, Explore, Saved, Sources and global search. Explorer headings hold the view switch and view actions. Embedded previews hide the masthead. |
 | `.atlas-view-nav` | Real links for **List & search**, **Treemap**, **Graph** and the design catalogue. Current route uses `aria-current="page"`; these are not ARIA tabs. |
 | `.atlas-section-nav` | Anchors to real profile headings. All sections remain in document flow; shared progressive scroll tracking exposes `aria-current="location"` with a rust underline. |
 | `.atlas-button` / `.atlas-button-primary` / `.atlas-button-accent` | Neutral raised actions and rust primary and profile actions. Native button for an operation, anchor for a destination. |
@@ -239,7 +243,7 @@ Operational single-choice selectors use ui-sdk Select with native backing `<sele
 
 Shared `[data-atlas-view]` links carry the query, headquarters countries, sector, stage, country/city drill path, selected entity, density and graph anchor. The graph uses the snapshot's relationship context and keeps company counts separate. The directory records its displayed range with `shown`, from a default of 12 up to 1200. Filtering resets the range.
 
-Internal profile links capture the return route and scroll position in the same tab. `safeAtlasReturn` accepts the same deployment directory and public Atlas routes. The shared masthead opens Saved and Compare, each backed by browser-local storage. Company notes use the same browser-local workspace.
+Internal profile links capture the return route and scroll position in the same tab. `safeAtlasReturn` accepts the same deployment directory and public Atlas routes. Saved includes company bookmarks and scoped explorer links. Comparison and company notes use the same browser-local workspace. Export downloads a CSV of the active view’s matching records.
 
 Startup profiles show identity, company facts, founding and employment, funding chronology, portfolio links and recorded connections. Claims retain their source and date precision. Partner profiles expose their sourced organisation type, researched company sample and its inspector. Portfolio listings retain their own provenance alongside round participation when a source records it.
 
