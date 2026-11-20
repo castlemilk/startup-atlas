@@ -30,10 +30,12 @@ jobs:
       - name: Check CI routing
         if: steps.changes.outputs.ci == 'true'
         run: python3 -m unittest discover -s tests -p 'test_ci_paths.py'
+      - name: Generate catalogue and graph for selected checks
+        if: steps.changes.outputs.data == 'true' || steps.changes.outputs.web == 'true'
+        run: npm run data:generate
       - name: Validate changed data and provenance
         if: steps.changes.outputs.data == 'true'
         run: |
-          npm run data:generate
           node --test tests/catalogue.test.js tests/graph-data.test.js
           python3 -m unittest discover -s tests -p 'test_graph.py'
       - name: Check search, relationships and financial views
