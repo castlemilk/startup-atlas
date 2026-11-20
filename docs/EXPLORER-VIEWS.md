@@ -109,18 +109,19 @@ The canvas, ranked list, metric controls and selected-company evidence panel mus
 | Company count | Each matching startup has weight 1. | The population is Atlas records, not all companies in a market. |
 | Recorded valuation | Latest eligible dated positive numeric valuation for each startup in the selected currency, with an HTTPS source. | Historical observations on potentially different dates, not current valuations. |
 | Funding announcement amount | Latest eligible dated positive numeric event amount for each startup in the selected currency, with an HTTPS source. | An announced event amount, not cumulative funding or necessarily primary equity capital. Preserve instrument/secondary-transfer notes. |
+| Public market cap | Latest eligible positive market-cap observation for each listed company in the selected currency. | Give the listing, observation date and source. For estimates, show the closing price, economic shares used, the date of that share count and any share-class notes. |
 
 No parsing money out of free text, implicit FX conversion, overlapping-event summation or missing-to-zero substitution. Same-date ties use a deterministic event-ID ordering. If a newer event is ineligible for the selected measure/currency, retain the older comparable observation and explain that a newer unplotted event exists. All events remain on the profile.
 
-The initial metric is a **reviewed route decision**, not a permanent design-system token. [PR #116](https://github.com/castlemilk/startup-atlas/pull/116), merged in [5407337](https://github.com/castlemilk/startup-atlas/commit/5407337), establishes the funding-focused route default. Preserve that incoming behaviour and explicit metric deep links; test the default's coverage and empty state. A sparse financial view can be intentional when its title and coverage make the sample clear.
+The default view shows company count grouped and coloured by technology type. Explicit metric and presentation links retain their settings. Atlas publishes the [reviewed market-cap observations and technology sources](../data/treemap-evidence.json) with the graph in JSON and SQLite. Earlier snapshots can still display the company catalogue and its existing measures.
 
 ### Grouping and coverage
 
-Founding decade is presently the supported sourced grouping. Missing, invalid and placeholder-zero years belong to **Not recorded**. Do not substitute a product launch date for a founding date without a reviewed data decision.
+Technology type assigns a single sourced classification for each company's core product as described in its Atlas record. Companies without a reviewed classification appear in **Technology type not recorded**. Grouping also supports primary sector, headquarters country or city, funding stage, company and founding decade. Colour is an independent setting. Missing or invalid founding years belong to **Not recorded**.
 
 Compute coverage from [the loaded graph snapshot](../data/graph.json) with [the treemap model's eligibility rules](../web/treemap-model.js). The catalogue derives its entity/startup totals and comparable-funding example from that build; this specification does not pin a second set of counts that can drift as research is regenerated. When recording review evidence, associate measured counts with the build's source revision.
 
-Future sector, region or partner grouping needs explicit semantics first. Multiple sector labels cannot each receive the company's full weight in an additive total. Use a sourced primary classification or disclose fractional allocation. Portfolio intersections also need unique startup IDs to prevent double counting. A role record appearing as both partner and provider is not two independent organisations.
+Each company contributes its full weight to one group. Group headings reserve the same proportion of each box in the treemap mosaic, so a company's tile retains its proportion of the chart area across group boundaries.
 
 Show the plotted count, excluded count and reason beside the measure. A sum of historical valuation observations must not be labelled market value, current ecosystem value or investment performance. Source/date detail is available through tile focus or selection, not hover alone.
 

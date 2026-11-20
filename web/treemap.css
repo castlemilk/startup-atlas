@@ -313,7 +313,16 @@
   padding-inline:9px;
   overflow:hidden;
 }
+.treemap-plot-heading .treemap-group-title { line-height:1.2; }
+.treemap-plot-heading .treemap-group-title > * {
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
 .treemap-plot-heading .treemap-group-title strong { text-transform:uppercase; letter-spacing:.04em; }
+.treemap-plot-heading-compact .treemap-group-title strong { font-size:12px; text-transform:none; letter-spacing:0; }
+.treemap-plot-heading-compact .treemap-group-title small { display:none; }
 .treemap-plot-group-row .treemap-plot-heading .treemap-group-title strong { text-transform:none; letter-spacing:0; }
 .treemap-tile {
   position:absolute;

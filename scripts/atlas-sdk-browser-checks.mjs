@@ -143,6 +143,14 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await act('Reset exploration','press');
   await until(()=>evaluate("document.querySelector('#treemap-metric').value==='companies'&&document.querySelector('#treemap-query').value===''&&!document.querySelector('#treemap-chart').hidden&&document.querySelector('#treemap-cards').hidden"),'SDK reset did not restore the company-count map');
   await assertOneTabStop('.treemap-view-switch');
+  await choose('Size by',/^Market cap$/);
+  await choose('Group by',/^Headquarters country$/);
+  await choose('Group by',/^Technology type$/);
+  await until(()=>evaluate(`(()=>{
+    const params=new URLSearchParams(location.search);
+    return params.get('metric')==='market-cap'&&params.get('group')==='technology'
+      &&!!document.querySelector('.treemap-plot-group[aria-label="Financial software"] [data-company="startup:wise"]');
+  })()`),'SDK choices did not plot public market cap by technology type');
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   const metricTrigger='ui-select[data-native-id="treemap-metric"] .atlas-select-trigger';
   await click(metricTrigger);

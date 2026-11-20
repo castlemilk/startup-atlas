@@ -23,12 +23,12 @@ The displayed range is retained in the route's `shown` parameter. Opening a prof
 
 ## Compare a measure without losing its meaning
 
-1. Choose **Funding announcement**, **Recorded valuation** or **Company count**. Public market cap is not recorded; private valuations are not a substitute.
+1. Choose **Company count**, **Funding announcement**, **Recorded valuation** or **Market cap**. Market cap uses dated public-market observations for listed companies with source evidence.
 2. For a financial measure, choose a single currency. Atlas does not convert or combine currencies. Only positive, dated, comparable numeric records contribute to the chart.
-3. Use **Group by** to compare companies or founding decades. Select a decade to drill into its companies; use the breadcrumb to return.
-4. Switch between **Treemap**, **Cards** and **Ranked list** for the same filtered records. Area encodes the selected measure only in Treemap. Company count orders individual companies alphabetically in Cards/List rather than ranking financial performance.
-5. Select a company and read the **Figure** evidence, including its announcement date and any newer-unplotted notice. **Company** gives broader profile context. The displayed total is a sum of the displayed historical observations, not a same-date market valuation.
-6. Expand the excluded-company disclosure when present. No comparable amount does not mean no funding. Try Company count to include records without financial figures.
+3. Use **Group by** to compare technology types, primary sectors, headquarters, funding stages, founding decades or individual companies. **Colour by** is independent. Select a country or a founding decade to drill into its companies and use the breadcrumb to return.
+4. Switch between **Treemap**, **Cards** and **Ranked list** for the same filtered records. Area encodes the selected measure only in Treemap. Company count orders individual companies alphabetically in Cards/List.
+5. Select a company and read **Figure** for the recorded date and source. Market-cap estimates show the closing price, share count and date of the share count. **Company** gives broader profile context and the source for its technology type. The displayed total sums the shown observations, which can have different dates.
+6. Expand the missing-figure disclosure to inspect companies without a comparable figure. Switch to **Company count** to include them on the map.
 
 **Share view** copies the current company-view URL with filters, presentation and selected company. If clipboard access fails, copy the address bar. A link to a financial view may later show newer published research; it is not an immutable financial snapshot. Browser Back/Forward restores supported URL state, not exact scroll position.
 

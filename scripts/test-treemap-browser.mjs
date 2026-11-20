@@ -1,7 +1,7 @@
 // Browser-level treemap and ranked-card checks. Uses the Chrome already installed
 // on the GitHub Actions runner and Node's built-in CDP WebSocket client.
 import assert from 'node:assert/strict';
-import {makeView,formatValue} from '../dist/treemap-model.js';
+import {makeView,formatValue,indexTreemapEvidence} from '../dist/treemap-model.js';
 import {spawn} from 'node:child_process';
 import {createServer} from 'node:http';
 import {mkdtemp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
@@ -128,6 +128,11 @@ try {
     return {count:tiles.length,missing};
   })()`);
   const snapshot=JSON.parse(await readFile('dist/data/graph.json','utf8')), valuation=makeView(snapshot,{metric:'valuation',currency:'USD'});
+  const evidence=JSON.parse(await readFile('dist/data/treemap-evidence.json','utf8'));
+  const {technology,marketCaps}=indexTreemapEvidence(snapshot,evidence);
+  const market=makeView(snapshot,{metric:'market-cap',currency:'USD',marketCaps});
+  const defaultChoices=['companies','technology','technology'];
+  const chartChoices=()=>evaluate("['metric','group','colour'].map(name=>document.querySelector('#treemap-'+name).value)");
   // Hold snapshot requests to observe the real loading state before data resolves.
   await command('Fetch.enable',{patterns:[{urlPattern:'*atlas.sqlite*'},{urlPattern:'*data/graph.json*'}]});
   await command('Page.navigate',{url:address+'/treemap.html'});
@@ -139,17 +144,71 @@ try {
   await command('Fetch.disable');
   await settled();
   assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-busy')"),'false');
-  assert.deepEqual(await evaluate("['metric','group','colour'].map(name=>document.querySelector('#treemap-'+name).value)"),['companies','sector','sector']);
+  assert.deepEqual(await chartChoices(),defaultChoices);
   assert.equal(await evaluate("document.querySelector('#treemap-currency').disabled"),true,'Company count needs no currency');
   assert.equal(await evaluate("document.querySelector('#treemap-currency-field').getClientRects().length"),0,'Company count must hide the currency field');
   assert.equal(await evaluate("document.querySelectorAll('#treemap-chart [data-company]').length"),snapshot.entities.filter(entity=>entity.kind==='startup').length);
   assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"),'map');
+  assert.equal(await evaluate("document.querySelector('#treemap-chart [data-company=\"startup:psiquantum\"]').closest('.treemap-plot-group').getAttribute('aria-label')"),'Quantum technology');
+  assert.match(await text('#treemap-legend'),/Technology type/);
+  const clippedGroupHeadings=await evaluate(`Array.from(document.querySelectorAll('.treemap-plot-heading')).filter(heading=>{
+    const bounds=heading.getBoundingClientRect();
+    return Array.from(heading.querySelectorAll('.treemap-group-title > *')).some(label=>{
+      if(!label.getClientRects().length) return false;
+      const rect=label.getBoundingClientRect();
+      return rect.top<bounds.top-.5||rect.bottom>bounds.bottom+.5;
+    });
+  }).map(heading=>heading.closest('[aria-label]').getAttribute('aria-label'))`);
+  assert.deepEqual(clippedGroupHeadings,[],'Group headings must fit above their tiles');
   assert.equal(await evaluate(`(() => {
     const country=document.querySelector('.exploration-country-trigger').getBoundingClientRect();
     const size=document.querySelector('#treemap-metric').closest('label').getBoundingClientRect();
     return country.x<size.x && Math.abs(country.top-size.top)<6 && document.querySelector('#treemap-chart').getBoundingClientRect().top<320;
   })()`),true,'The desktop toolbar must put headquarters and chart settings in one row above the plot');
   await screenshot('company-count-default-desktop.png');
+
+  assert.equal(await evaluate("document.querySelector('#treemap-metric option[value=\"market-cap\"]').disabled"),false);
+  await change('treemap-metric','market-cap');
+  assert.deepEqual(await chartChoices(),['market-cap','technology','technology']);
+  assert.match(await text('#treemap-summary'),new RegExp(`${market.rows.length} of ${market.filteredCount} matching companies plotted`));
+  assert.match(await text('#treemap-missing-label'),new RegExp(`Market cap unavailable for ${market.missing.length} compan`));
+  const measurements=()=>evaluate(`Array.from(document.querySelectorAll('#treemap-chart ${companyTiles}'),tile=>{
+    const {width,height}=tile.getBoundingClientRect();
+    return {id:tile.dataset.company,area:width*height,group:tile.closest('.treemap-plot-group')?.getAttribute('aria-label')};
+  })`);
+  const verifyMarketArea=async(grouped)=>{
+    const tiles=await measurements();
+    assert.deepEqual(tiles.map(tile=>tile.id).sort(),market.rows.map(row=>row.id).sort());
+    const area=tiles.reduce((total,tile)=>total+tile.area,0);
+    for(const tile of tiles){
+      const row=market.rows.find(item=>item.id===tile.id);
+      assert.ok(tile.area>0&&Math.abs(tile.area/area-row.value/market.total)<.001,`${row.entity.name} must have its recorded share of the chart area`);
+      assert.equal(tile.group,grouped ? technology.get(tile.id)?.type || 'Technology type not recorded' : undefined);
+    }
+  };
+  await verifyMarketArea(true);
+  await change('treemap-group','company');
+  await verifyMarketArea(false);
+  assert.deepEqual(await chartChoices(),['market-cap','company','technology']);
+  await change('treemap-group','technology');
+  const wise=market.rows.find(row=>row.id==='startup:wise');
+  await click('#treemap-chart [data-company="startup:wise"]');
+  assert.ok((await text('#treemap-figure-panel')).includes(formatValue(wise.value,'market-cap','USD',false)));
+  assert.ok((await text('#treemap-figure-panel')).includes(wise.event.observed_on));
+  for(const [label,href] of [
+    ['Closing price source',wise.event.source], ['Dated exchange data',wise.event.calculation.close_data],
+    ['Shares outstanding source',wise.event.calculation.shares_source],
+  ]) assert.equal(await evaluate(`Array.from(document.querySelectorAll('#treemap-figure-panel a')).find(link=>link.textContent.trim()===${JSON.stringify(label+' ↗')})?.href`),href);
+  await screenshot('market-cap-technology-desktop.png');
+  await click('#show-list');
+  assert.deepEqual(await evaluate("Array.from(document.querySelectorAll('#treemap-list [data-company]'),button=>button.dataset.company)"),market.rows.map(row=>row.id));
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await navigate('?view=map&metric=market-cap&group=technology&colour=technology&selected=startup%3Awise');
+  await until(()=>evaluate("document.querySelector('#treemap-inspector-sheet').open&&document.querySelector('#treemap-figure-panel')?.getClientRects().length>0"),'Market-cap deep link must open the figure sheet');
+  assert.match(await text('#treemap-figure-panel'),/Shares used/);
+  assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'Market cap must fit on mobile');
+  await screenshot('market-cap-evidence-mobile.png');
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
 
   await navigate('?view=cards&metric=funding');
   assert.equal(await evaluate("['metric','currency','group'].every(name=>!document.querySelector('#treemap-'+name).disabled)"),true,'Loaded funding controls must be available');
@@ -313,7 +372,7 @@ try {
   await click('#show-list');
   await click('#treemap-reset');
   assert.equal(await evaluate("document.querySelector('#treemap-chart').hidden"),false);
-  assert.deepEqual(await evaluate("['metric','group','colour'].map(name=>document.querySelector('#treemap-'+name).value)"),['companies','sector','sector']);
+  assert.deepEqual(await chartChoices(),defaultChoices);
   await click('#show-map');
   await evaluate("(()=>{const e=document.querySelector('#treemap-query');e.value='no company matches this';e.dispatchEvent(new Event('input',{bubbles:true}));})()");
   assert.match(await text('#treemap-chart'),/No companies match/);
@@ -374,7 +433,8 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('#treemap-detail .treemap-founder img').length"),2);
   assert.match(await text('#treemap-detail'),/Financial context/);
   assert.match(await text('#treemap-detail'),/Public market cap/);
-  assert.match(await text('#treemap-detail'),/Not recorded in USD/);
+  assert.match(await text('#treemap-detail'),/No recorded public market cap/);
+  assert.match(await text('#treemap-detail'),/Semiconductors & connectivity/);
   assert.ok(await evaluate("Array.from(document.querySelectorAll('#treemap-detail .treemap-founder a')).some(a=>a.textContent.includes('Profile')&&a.href.includes('linkedin.com'))"),'Founder profile links must use recorded URLs');
   assert.ok(await evaluate("document.querySelector('#treemap-chart').getBoundingClientRect().height<=300"),'A single filtered company must not become an oversized empty tile');
   await screenshot('company-context-desktop.png');
@@ -387,8 +447,16 @@ try {
   assert.match(await text('#treemap-detail'),/12,200/);
   // Exercise progressive fallback by rejecting only the database request.
   await command('Network.enable');await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*']});
+  await navigate('?metric=market-cap&group=technology');
+  assert.match(await text('#treemap-status'),/JSON backup/);
+  await verifyMarketArea(true);
   await navigate('?metric=valuation');assert.match(await text('#treemap-status'),/JSON backup/);
   assert.equal(await evaluate("document.querySelectorAll('.treemap-tile').length"),valuation.rows.length);
+  await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*','*treemap-evidence.json*']});
+  await navigate('?metric=companies&group=technology');
+  assert.match(await text('#treemap-status'),/evidence is unavailable/);
+  assert.equal(await evaluate("document.querySelector('#treemap-metric option[value=\"market-cap\"]').disabled"),true);
+  assert.equal((await tileMarks(companyTiles)).count,market.filteredCount);
   await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*','*data/graph.json*']});
   await navigate('');assert.match(await text('#treemap-status'),/could not be loaded/);
   assert.equal(await evaluate("document.querySelector('#treemap-metric').disabled"),true);
@@ -517,11 +585,11 @@ try {
   await click('#treemap-reset');
   assert.equal((await params()).selected,undefined);
   assert.equal(await text('[data-atlas-panel="compare"]'),'Compare');
-  assert.deepEqual(await evaluate("['metric','group','colour'].map(name=>document.querySelector('#treemap-'+name).value)"),['companies','sector','sector']);
+  assert.deepEqual(await chartChoices(),defaultChoices);
   await command('Network.setBlockedURLs',{urls:[]});
 
   assert.deepEqual(exceptions,[],'Treemap must not raise unhandled JavaScript exceptions');
-  console.log('Treemap browser checks passed: proportional views, ranked cards, currencies, source caveats, country and city drilldown, independent colour, excluded selection and comparison, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
+  console.log('Treemap browser checks passed: proportional views, public market-cap evidence, technology grouping, ranked cards, currencies, source caveats, country and city drilldown, independent colour, excluded selection and comparison, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
 } catch(error) {
   await captureFailure('treemap-failed.png').catch(()=>{});throw error;
 } finally {

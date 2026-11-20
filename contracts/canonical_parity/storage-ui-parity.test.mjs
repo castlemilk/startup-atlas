@@ -130,9 +130,10 @@ test('graph projection defaults stay separate from authoritative record facts an
 
 test('allowlisted source documents preserve exact bytes and independent document digest', () => {
   const documents = rows(db, 'SELECT path, sha256, content FROM source_documents');
-  assert.equal(documents.length, 13);
+  const inputDir = join(temporary, 'fixture/public-inputs');
+  assert.deepEqual(documents.map(document => document.path).sort(), readdirSync(inputDir).sort());
   for (const document of documents) {
-    const bytes = readFileSync(join(temporary, 'fixture/public-inputs', document.path));
+    const bytes = readFileSync(join(inputDir, document.path));
     assert.equal(document.content, bytes.toString('utf8'), document.path);
     assert.equal(document.sha256, createHash('sha256').update(bytes).digest('hex'), document.path);
   }
@@ -232,7 +233,7 @@ test('REGRESSION actual openGraph database and fallback paths expose equal revis
     globalThis.initSqlJs = undefined;
     globalThis.fetch = async path => {
       const name = path.replace(/^\.\/data\//, '');
-      assert.ok(['graph.json', 'startup-research.json'].includes(name), path);
+      assert.ok(['graph.json', 'startup-research.json', 'treemap-evidence.json'].includes(name), path);
       return new Response(readFileSync(join(temporary, 'fixture/public-inputs', name)));
     };
     const fallbackModule = await import('../../web/graph-store.js?canonical-parity=fallback');
@@ -241,6 +242,7 @@ test('REGRESSION actual openGraph database and fallback paths expose equal revis
     assert.equal(database.graph.source_revision, fallback.graph.source_revision);
     for (const key of graphKeys) assert.deepEqual(database.graph[key], fallback.graph[key]);
     assert.deepEqual(await database.document('startup-research.json'), await fallback.document('startup-research.json'));
+    assert.deepEqual(await database.document('treemap-evidence.json'), await fallback.document('treemap-evidence.json'));
   } finally {
     for (const database of opened) database.close();
     globalThis.fetch = savedFetch;

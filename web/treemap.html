@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#fcf9f2"><meta name="description" content="Compare source-backed startup valuations, funding announcements and company counts in an interactive treemap.">
+<meta name="theme-color" content="#fcf9f2"><meta name="description" content="Compare companies by technology type, public market cap, recorded valuation or funding in the Startup Atlas treemap.">
 <title>Startup treemaps — Startup Atlas</title>
 <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./field-atlas.css">
 <script defer src="./vendor/sql.js/sql-wasm.js"></script><script type="module" src="./treemap.js"></script>
@@ -31,9 +31,9 @@
     <div class="treemap-control-panel">
       <div id="treemap-location-fields" class="treemap-facet-fields"></div>
       <div class="treemap-representation" id="treemap-filter-fields">
-        <label class="treemap-select-field" for="treemap-group"><span>Group by</span><select disabled id="treemap-group"><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="city">Headquarters city</option><option value="stage">Funding stage</option><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
+        <label class="treemap-select-field" for="treemap-group"><span>Group by</span><select disabled id="treemap-group"><option value="technology">Technology type</option><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="city">Headquarters city</option><option value="stage">Funding stage</option><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
         <label class="treemap-select-field" for="treemap-metric"><span>Size by</span><select disabled id="treemap-metric"><option value="companies">Company count</option><option value="funding">Funding announcement</option><option value="valuation">Recorded valuation</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
-        <label class="treemap-select-field" for="treemap-colour"><span>Colour by</span><select disabled id="treemap-colour"><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="freshness">Profile fact review</option><option value="none">None</option><option value="decade">Founding decade</option></select></label>
+        <label class="treemap-select-field" for="treemap-colour"><span>Colour by</span><select disabled id="treemap-colour"><option value="technology">Technology type</option><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="freshness">Profile fact review</option><option value="none">None</option><option value="decade">Founding decade</option></select></label>
         <label class="treemap-select-field" for="treemap-currency" id="treemap-currency-field" hidden><span>Currency</span><select disabled id="treemap-currency"><option value="USD">Not applicable</option></select></label>
         <div class="treemap-density-setting">
           <label class="treemap-select-field treemap-native-density" for="atlas-density"><span>Density</span><select disabled id="atlas-density"><option value="comfortable">Editorial</option><option value="compact">Compact</option></select></label>
@@ -92,10 +92,12 @@
   <section id="method" class="treemap-method" aria-labelledby="method-heading">
     <h2 id="method-heading">How to read the treemap</h2>
     <div>
+      <p><strong>Public market cap.</strong> Dated values for publicly listed companies in the selected currency. An estimate uses the closing price and the disclosed shares with economic rights. Each figure shows its sources and dates.</p>
       <p><strong>Recorded valuation.</strong> The latest dated, positive numeric valuation for each company in the selected currency. Each observation retains its announcement date and original source.</p>
       <p><strong>Funding announcement.</strong> The latest dated, positive numeric event amount in the selected currency. Events can include secondary transfers and other financing. The chart measures individual announcements.</p>
-      <p><strong>Company count.</strong> In the treemap, companies have equal area. Cards use fixed layout sizes. Country and city refer to recorded headquarters. Founding decades use recorded founding years.</p>
-      <p><strong>Coverage.</strong> Exact values require an announced date, a numeric figure and a stated currency. Currencies stay separate. Records with zero, undisclosed or unavailable figures are accessible below the results. Public-company market capitalisation is unavailable.</p>
+      <p><strong>Company count.</strong> In the treemap, companies have equal area. Cards use fixed layout sizes.</p>
+      <p><strong>Grouping.</strong> Technology type follows the core product described in each company's reviewed source. Each company contributes to one group. Country and city refer to recorded headquarters. Founding decades use recorded founding years.</p>
+      <p><strong>Coverage.</strong> Figures require a date, an amount, a stated currency and a source. Currencies stay separate. Records with zero, undisclosed or unavailable figures are accessible below the results.</p>
     </div>
   </section>
 </main>

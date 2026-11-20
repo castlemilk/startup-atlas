@@ -154,7 +154,7 @@ The following actions have deliberately different meanings:
 
 - **Clear filters:** remove facet constraints while retaining search text, the current drill breadcrumb, inspected entity and comparison membership.
 - **All ecosystems:** return the drill path to its root while preserving the search query, applied facets, inspected entity and comparison membership.
-- **Reset exploration:** clear search, facets, path, inspection and comparison membership, then restore the documented defaults: Treemap view, primary-sector grouping, equal company-count area, primary-sector colour and comfortable density. Use this label only for that full operation.
+- **Reset exploration:** clear search, facets, path, inspection and comparison membership, then restore the documented defaults of Treemap view, equal company-count area, technology type for grouping and colour, and comfortable density. Use this label only for that full operation.
 
 A compact scope summary makes combined restrictions visible. For example: “Australia · HQ countries: Australia, New Zealand · Seed.” If filters and drill path have no intersection, show both constraints and offer a precise recovery action.
 

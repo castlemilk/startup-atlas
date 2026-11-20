@@ -133,6 +133,9 @@ def verify():
                 raise ValueError(f'Design kit has missing or stale guidance: {name}')
     graph=json.loads(get('data/graph.json',5000000))
     catalogue=json.loads(get('data/catalogue.json',5000000))
+    treemap_evidence=get('data/treemap-evidence.json',5000000)
+    if treemap_evidence!=Path('data/treemap-evidence.json').read_bytes():
+        raise ValueError('Published treemap evidence differs from this revision')
     if graph.get('source_revision')!=REVISION: raise ValueError('Published graph revision has not caught up')
     binary=get('data/atlas.sqlite',15000000)
     if not binary.startswith(b'SQLite format 3\x00'): raise ValueError('Published graph database is not SQLite')
@@ -143,6 +146,9 @@ def verify():
             if db.execute('PRAGMA quick_check').fetchone()[0]!='ok':raise ValueError('Published SQLite integrity check failed')
             revision=db.execute("SELECT value FROM metadata WHERE key='source_revision'").fetchone()
             if not revision or revision[0]!=REVISION:raise ValueError('Published SQLite revision differs from the graph')
+            treemap_row=db.execute('SELECT content FROM source_documents WHERE path=?',('treemap-evidence.json',)).fetchone()
+            if not treemap_row or treemap_row[0].encode('utf-8')!=treemap_evidence:
+                raise ValueError('Published treemap evidence differs from the database')
             for table,key in [('entities','entities'),('edges','edges'),('funding_rounds','funding_rounds'),('articles','articles')]:
                 if db.execute(f'SELECT count(*) FROM {table}').fetchone()[0]!=len(graph[key]):raise ValueError(f'{table} count differs from the graph')
             rows=[json.loads(row[0]) for row in db.execute('SELECT data FROM opportunities ORDER BY id')]

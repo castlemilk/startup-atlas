@@ -140,9 +140,54 @@ test('cohort palette keys are stable across entity ordering and financial filter
 
 test('company context preserves separate funding and valuation observations without market-cap inference',()=>{
   const context=companyContext(graph,graph.entities[0],'USD');
-  assert.deepEqual(context.figures.map(item=>[item.metric,item.row.value]),[['funding',20],['valuation',20]]);
+  assert.deepEqual(context.figures.map(item=>[item.metric,item.row?.value]),[['funding',20],['valuation',20],['market-cap',undefined]]);
   assert.equal(Object.hasOwn(context,'marketCap'),false);
   assert.equal(companyContext(graph,graph.entities[1],'USD').figures[0].row,null);
+});
+
+test('public market cap selects the latest eligible close per currency and keeps missing companies off the map',()=>{
+  const quote = (startup_id,amount,observed_on='2026-11-19',currency='USD') =>
+    ({startup_id,amount,observed_on,currency,ticker:startup_id.toUpperCase(),exchange:'NYSE',source:'https://example.com/quote'});
+  const data = {
+    version:1,
+    technology:{
+      a:{type:'Quantum technology',detail:'Builds quantum processors.',source:'https://example.com/product'},
+      b:{type:'Business software',detail:'Builds automation tools.',source:'https://example.com/product'},
+      c:{type:'Guess',detail:'Unsourced.',source:'http://example.com/product'},
+    },
+    market_caps:[
+      quote('a',100,'2026-10-06'), quote('a',480), quote('a',900,'2026-11-20','GBP'), quote('b',240),
+      {...quote('c',700),calculation:{close:5,shares:50,shares_as_of:'2026-11-19',shares_source:'https://example.com/shares'}},
+      quote('a',0), quote('missing',1500), quote('b',400,'2026-02-30'), quote('b',700),
+    ],
+  };
+  const {marketCaps,technology} = model.indexTreemapEvidence(graph,data);
+  const dimensions = new Map([...technology].map(([id,fact])=>[id,{technology:fact.type}]));
+  assert.deepEqual(currencies(graph,'market-cap',marketCaps),['GBP','USD']);
+  const usd = makeView(graph,{metric:'market-cap',currency:'USD',group:'technology',marketCaps,dimensions});
+  assert.deepEqual(usd.rows.map(row=>[row.id,row.value,row.groupName]),[
+    ['a',480,'Quantum technology'], ['b',240,'Business software'],
+  ]);
+  assert.deepEqual(usd.missing.map(entity=>entity.id),['c']);
+  assert.equal(usd.rows[0].newerUnplotted,true);
+  const tiles = model.groupedTreemap(usd.groups,900,420,{heading:40}).flatMap(group=>group.tiles);
+  const areas = new Map(tiles.map(tile=>[tile.id,tile.width*tile.height]));
+  assert.ok(Math.abs(areas.get('a')/areas.get('b')-2)<1e-8);
+  assert.equal(makeView(graph,{metric:'market-cap',currency:'GBP',marketCaps}).missingFigures.get('b').reason,'not-comparable');
+  assert.equal(makeView(graph,{metric:'companies',group:'technology',dimensions}).groups.at(-1).name,'Technology type not recorded');
+});
+
+test('reviewed treemap evidence matches published identities and market-cap calculations',async()=>{
+  const published = JSON.parse(await readFile('data/graph.json','utf8'));
+  const evidence = JSON.parse(await readFile('data/treemap-evidence.json','utf8'));
+  const {technology,marketCaps} = model.indexTreemapEvidence(published,evidence);
+  assert.equal(technology.size,Object.keys(evidence.technology).length);
+  assert.equal(marketCaps.length,evidence.market_caps.length);
+  assert.equal(technology.get('startup:psiquantum').type,'Quantum technology');
+  assert.ok(new Set([...technology.values()].map(fact=>fact.type)).size>=10);
+  const usd = makeView(published,{metric:'market-cap',currency:'USD',marketCaps});
+  assert.ok(usd.rows.some(row=>row.id==='startup:wise'));
+  assert.ok(usd.rows.some(row=>row.id==='startup:uipath'));
 });
 test('context requires founder direction, person identity and HTTPS evidence; deduplicates without mutating',()=>{
   const person={id:'p',kind:'person',name:'Founder',logo:'https://example.com/photo',logo_source:'https://example.com/team',socials:[{label:'LinkedIn',url:'https://example.com/profile',source:'https://example.com/team'}]};

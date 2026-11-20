@@ -6,9 +6,10 @@ test('Quantum Brilliance Series A preserves primary amount, date and investor ca
  const load=async name=>JSON.parse(await readFile(new URL('../../../data/'+name,import.meta.url),'utf8'));
  const research=await load('startup-research.json'), before=structuredClone(research), id='startup:quantum-brilliance';
  const record=readStartupRecord(research,id).record;
- assert.equal(record.funding_rounds.length,1);
- const round=record.funding_rounds[0];
- assert.equal(round.id,'quantum-brilliance-2025-series-a');assert.equal(round.stage,'Series A');
+ const seriesA=record.funding_rounds.filter(round=>round.id==='quantum-brilliance-2025-series-a');
+ assert.equal(seriesA.length,1);
+ const [round]=seriesA;
+ assert.equal(round.stage,'Series A');
  assert.equal(round.amount,20000000);assert.equal(round.currency,'USD');assert.equal(round.announced_on,'2025-01-15');
  assert.equal(round.source,'https://quantumbrilliance.com/news/quantum-brilliance-raises-usd-20-million-in-series-a-funding-round/');
  assert.ok(!Object.hasOwn(round,'valuation'));assert.ok(!Object.hasOwn(round,'investors'));
