@@ -251,6 +251,7 @@ footer a:focus-visible { outline-color: var(--atlas-on-action); }
 }
 @media(max-width: 380px) {
   .atlas-wordmark { font-size: 1.3rem; gap: 10px; }
+  .atlas-masthead .atlas-view-nav .signal-feature-symbol { display: none; }
   .atlas-brand-bar .atlas-system-link { padding-inline: 2px; }
   .atlas-brand-bar .atlas-system-link .atlas-icon { display: none; }
 }
