@@ -157,6 +157,10 @@ try {
   assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"),'map');
   assert.equal(await evaluate("document.querySelector('#treemap-chart [data-company=\"startup:psiquantum\"]').closest('.treemap-plot-group').getAttribute('aria-label')"),'Quantum technology');
   assert.match(await text('#treemap-legend'),/Technology type/);
+  assert.deepEqual(await evaluate(`(() => {
+    const mark=document.querySelector('[data-company="startup:cauldron"] .treemap-logo');
+    return [mark.dataset.logoCanvas,getComputedStyle(mark).backgroundColor,getComputedStyle(mark.querySelector('img')).mixBlendMode];
+  })()`),['white','rgba(0, 0, 0, 0)','darken'],'White logo canvases must blend with the tile');
   const clippedGroupHeadings=await evaluate(`Array.from(document.querySelectorAll('.treemap-plot-heading')).filter(heading=>{
     const bounds=heading.getBoundingClientRect();
     return Array.from(heading.querySelectorAll('.treemap-group-title > *')).some(label=>{
@@ -218,6 +222,12 @@ try {
   await screenshot('market-cap-technology-desktop.png');
   await click('#show-list');
   assert.deepEqual(await evaluate("Array.from(document.querySelectorAll('#treemap-list [data-company]'),button=>button.dataset.company)"),market.rows.map(row=>row.id));
+  await click('#show-cards');
+  await until(()=>evaluate(`(() => {
+    const logo=document.querySelector('#treemap-cards [data-company="startup:wise"] .treemap-card-media img');
+    return !!logo&&!logo.hidden&&logo.getBoundingClientRect().height>=138&&getComputedStyle(logo).objectFit==='contain';
+  })()`),'Ranked company cards must show a larger, uncropped logo');
+  await screenshot('market-cap-logos-cards.png');
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await navigate('?view=map&metric=market-cap&group=technology&colour=technology&selected=startup%3Awise');
   await until(()=>evaluate("document.querySelector('#treemap-inspector-sheet').open&&document.querySelector('#treemap-figure-panel')?.getClientRects().length>0"),'Market-cap deep link must open the figure sheet');
@@ -233,6 +243,12 @@ try {
   assert.deepEqual(await chartChoices(),['company-value','technology','technology']);
   assert.match(await text('#treemap-summary'),new RegExp(`${values.rows.length} of ${values.filteredCount} matching companies plotted`));
   await verifyAreas(values,true);
+  assert.deepEqual(await evaluate(`(() => {
+    const mark=document.querySelector('#treemap-chart [data-company="startup:canva"] .treemap-logo');
+    const image=getComputedStyle(mark.querySelector('img'));
+    return [mark.dataset.logoCanvas,getComputedStyle(mark).backgroundColor,image.mixBlendMode,image.filter];
+  })()`),['cream','rgba(0, 0, 0, 0)','darken','brightness(1.13)'],'Cream logo canvases must blend with the tile');
+  await until(()=>evaluate("document.querySelector('#treemap-chart [data-company=\"startup:revolut\"] .treemap-logo img').getBoundingClientRect().height>100"),'The leading treemap mark should use the available height');
   await screenshot('company-value-desktop.png');
   await click('#treemap-chart [data-company="startup:wise"]');
   assert.match(await text('#treemap-figure-panel'),/Recorded public market cap.*Shares used/s);

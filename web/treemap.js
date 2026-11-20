@@ -46,13 +46,20 @@ const safeImageUrl = value => /^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test
 const safeImage = entity => safeImageUrl(logoFor(entity.name)) ||
   (state.presentation !== 'cards' && sourceUrl(entity.logo_source) ? safeImageUrl(entity.logo) : '') || '';
 const initials = name => name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
-const paddedWordmarks = new Set([
-  'https://cdn.prod.website-files.com/65dd072aa7402b211d7d6ccf/65deeccca712cb796025a2bd_Canva.png',
-  'https://cdn.prod.website-files.com/65dd072aa7402b211d7d6ccf/682e6024c5310854fd2e8771_Airwallex.png',
+const logoCanvases = new Map([
+  ['https://cdn.prod.website-files.com/65dd072aa7402b211d7d6ccf/65deeccca712cb796025a2bd_Canva.png', 'cream'],
+  ['https://cdn.prod.website-files.com/65dd072aa7402b211d7d6ccf/682e6024c5310854fd2e8771_Airwallex.png', 'cream'],
+  ['https://cdn.prod.website-files.com/65dd072aa7402b211d7d6ccf/65deebb3b1f92c263f5ae217_eucalyptus.png', 'cream'],
+  ['https://cdn.prod.website-files.com/65dd072aa7402b211d7d6ccf/65deeae7438d7008c86bcb61_go1.png', 'cream'],
+  ['https://cdn.prod.website-files.com/606fb05b65b92b81e55c6d25/64257e22d4819ad5c47dfe76_Portfolio-Cauldron-Logo-Lrg.jpg', 'white'],
+  ['https://cdn.prod.website-files.com/606fb05b65b92b81e55c6d25/63b64e9a0e651d1d03862588_Portfolio-Gilmour-Space-Logo-Lrg.jpg', 'white'],
+  ['https://cdn.prod.website-files.com/606fb05b65b92b81e55c6d25/61e7373efa113ef6ed2559dd_Portfolio-Loam-Logo-Lrg.jpg', 'white'],
+  ['https://cdn.prod.website-files.com/606fb05b65b92b81e55c6d25/64f9522a52d943ac73545d0b_Portfolio-uluu-Logo-Lrg.jpg', 'white'],
 ]);
 const mark = entity => {
   const image = safeImage(entity);
-  return `<span class="treemap-logo ${esc(logoClassFor(entity.name))}"${paddedWordmarks.has(image) ? ' data-padded-wordmark' : ''} aria-hidden="true">${image ? `<img src="${esc(image)}" alt="" hidden referrerpolicy="no-referrer">` : ''}<span>${esc(initials(entity.name))}</span></span>`;
+  const canvas = logoCanvases.get(image);
+  return `<span class="treemap-logo ${esc(logoClassFor(entity.name))}"${canvas ? ` data-logo-canvas="${canvas}"` : ''} aria-hidden="true">${image ? `<img src="${esc(image)}" alt="" hidden referrerpolicy="no-referrer">` : ''}<span>${esc(initials(entity.name))}</span></span>`;
 };
 const evidenceLink = (url, label) => sourceUrl(url) ? `<a class="treemap-source" href="${esc(sourceUrl(url))}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>` : '';
 function watchImages(root) {
