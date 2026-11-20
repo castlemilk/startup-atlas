@@ -966,6 +966,46 @@ class CompanyFundingStatementTests(unittest.TestCase):
         _, signals = classify(f'{opening} {denial} Culture Amp closed its Series D.', {'culture amp'})
         self.assertIn('round_mention', signals)
 
+    def test_nominal_close_exact_named_retraction_forms(self):
+        opening = 'Culture Amp has announced the closing of a US$10 million Series B round.'
+        not_yet = 'Culture Amp has not yet closed its US$10 million Series B round.'
+        in_fact = 'Culture Amp did not in fact close its US$10 million Series B round.'
+        possessive = 'Correction: Culture Amp’s US$10 million Series B round did not close.'
+        board = 'One director joined the board.'
+        cases = (
+            (not_yet, False),
+            (in_fact, False),
+            (possessive, False),
+            (f'{board} {possessive}', False),
+            (possessive.replace('’', "'"), False),
+            (not_yet.replace('Series B', 'Series D'), True),
+            (not_yet.replace('Culture Amp', 'OtherCo'), True),
+            (not_yet.replace('US$10', 'A$10'), True),
+            (in_fact.replace('US$10', 'US$20'), True),
+            (possessive.replace('Culture Amp', 'OtherCo'), True),
+            (possessive.replace('Series B', 'Series D'), True),
+            (possessive.replace('US$10', 'US$20'), True),
+            (possessive.replace('US$10', '$10'), True),
+            (f'{board} {possessive.replace("US$10", "US$20")}', True),
+            (f'“{not_yet}”', True),
+            (f'“{possessive}”', True),
+            (not_yet[:-1] + '?', True),
+            (possessive[:-1] + '?', True),
+            (f'{board} {possessive[:-1]}?', True),
+            (f'{board} The company issued an update. {possessive}', True),
+        )
+        for following, eligible in cases:
+            with self.subTest(following=following):
+                bucket, signals = classify(f'{opening} {following}', {'culture amp'})
+                if eligible:
+                    self.assertIn('round_mention', signals)
+                else:
+                    self.assertEqual((bucket, signals), ('context', ['prospective_or_negated']))
+        self.assertEqual(
+            classify(f'{opening} {possessive} Culture Amp closed its Series D.', {'culture amp'}),
+            ('mixed_financing_lead', ['round_mention', 'prospective_or_negated']),
+        )
+
     def test_nominal_close_preserves_third_party_provenance_and_deduplication(self):
         capture = {'url': CULTURE_AMP_STARTUP_DAILY, 'excerpt': CULTURE_AMP_NOMINAL_CLOSE,
                    'acquisition': 'reviewer_paraphrase', 'retrieved_on': '2026-11-20',

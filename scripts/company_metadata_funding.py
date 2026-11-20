@@ -176,13 +176,20 @@ ISSUER_FIRST_PERSON_REPORT = re.compile(
 )
 CORRECTION_DETERMINERS = r'a|an|any|the|that'
 CORRECTION_SERIES = rf'(?P<series>{SERIES.pattern})(?: (?:funding(?: round)?|round(?: of funding)?))?'
+NOMINAL_CORRECTION_TERMS = (
+    rf'(?:(?P<leading_amount>{STATED_RAISE_AMOUNT}) )?{CORRECTION_SERIES}'
+    rf'(?: of (?P<trailing_amount>{STATED_RAISE_AMOUNT}))?'
+)
 NOMINAL_CLOSING_CORRECTION = re.compile(
     rf'(?:Correction: )?(?P<issuer>{ISSUER_NAME}) '
-    r"(?:(?:actually )?(?:did not|didn['’]t) (?:actually )?(?:close|announce the closing of)"
-    r"|(?:ha[sd] not|ha[sd]n['’]t|never) (?:actually )?(?:closed|announced the closing of)) "
-    rf'(?:the funding|(?:(?:{CORRECTION_DETERMINERS}|its) )?'
-    rf'(?:(?P<leading_amount>{STATED_RAISE_AMOUNT}) )?{CORRECTION_SERIES}'
-    rf'(?: of (?P<trailing_amount>{STATED_RAISE_AMOUNT}))?)[.!]',
+    r"(?:(?:actually )?(?:did not|didn['’]t) (?:(?:actually|in fact) )?(?:close|announce the closing of)"
+    r"|(?:ha[sd] not|ha[sd]n['’]t|never) (?:(?:actually|yet) )?(?:closed|announced the closing of)) "
+    rf'(?:the funding|(?:(?:{CORRECTION_DETERMINERS}|its) )?{NOMINAL_CORRECTION_TERMS})[.!]',
+    re.I,
+)
+NOMINAL_POSSESSIVE_CLOSING_CORRECTION = re.compile(
+    rf"(?:Correction: )?(?P<issuer>{ISSUER_NAME})['’]s {NOMINAL_CORRECTION_TERMS} "
+    r"(?:did not|didn['’]t) close[.!]",
     re.I,
 )
 ISSUER_ROUND_CORRECTION = re.compile(
@@ -427,7 +434,7 @@ def reported_raise_denial(following, issuer, series, amount, *, first_person=Fal
     )
 
 
-def nominal_closing_denied(following, issuer, report):
+def nominal_closing_retraction(following, issuer, report):
     series = name_key(report['series'])
     reported_amount = [report['amount'].casefold()]
     for offset, statement in enumerate(following):
@@ -440,7 +447,8 @@ def nominal_closing_denied(following, issuer, report):
                     or QUOTATION_MARK.search(intervening)
                     or any(pattern.search(intervening) for pattern in (EARLY, SERIES, FINANCING_ROUND))):
                 break
-        denial = NOMINAL_CLOSING_CORRECTION.fullmatch(statement)
+        denial = (NOMINAL_CLOSING_CORRECTION.fullmatch(statement)
+                  or NOMINAL_POSSESSIVE_CLOSING_CORRECTION.fullmatch(statement))
         if not denial or name_key(denial['issuer']) != issuer:
             continue
         if denial['series'] is not None and name_key(denial['series']) != series:
@@ -448,8 +456,8 @@ def nominal_closing_denied(following, issuer, report):
         # Compare written amounts without interpreting currency symbols or multipliers.
         amounts = [denial[key].casefold() for key in ('leading_amount', 'trailing_amount') if denial[key]]
         if amounts == reported_amount or (not offset and not amounts):
-            return True
-    return False
+            return statement
+    return None
 
 
 def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
@@ -459,6 +467,7 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
     unresolved_quotation = any(marks and marks not in QUOTATION_PAIRS for marks in quotations)
     saved_assertion = allow_saved_reports and not unresolved_quotation
     round_mention = corrected = False
+    retractions = set()
     for index, statement in enumerate(statements):
         following = statements[index + 1:index + 2]
         denied = None
@@ -473,7 +482,10 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
             denied = reported_raise_denial(following, issuer, series, raised['amount'])
         nominal = NOMINAL_CLOSING_REPORT.fullmatch(statement) if saved_assertion else None
         if nominal and (issuer := name_key(nominal['issuer'])) in names:
-            denied = nominal_closing_denied(statements[index + 1:index + 3], issuer, nominal)
+            retraction = nominal_closing_retraction(statements[index + 1:index + 3], issuer, nominal)
+            denied = retraction is not None
+            if denied:
+                retractions.add(retraction)
         if denied is not None:
             corrected |= denied
             round_mention |= not denied
@@ -482,7 +494,7 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
         if (unresolved_quotation or not CLOSING_DECLARATIVE_END.search(statement)
                 or CLOSING_PREFACE_BOUNDARY.search(statement, body_start)):
             break
-    return round_mention, corrected
+    return round_mention, corrected, retractions
 
 
 def linked_issuer_round(excerpt, names, article):
@@ -610,7 +622,9 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
         linked_round, linked_corrected = linked_issuer_round(opening_text, names, reviewed_article)
         opening_round |= linked_round
         opening_corrected |= linked_corrected
-    report_round, report_corrected = issuer_reported_rounds(opening_text, names, allow_saved_reports=not search_result)
+    report_round, report_corrected, report_retractions = issuer_reported_rounds(
+        opening_text, names, allow_saved_reports=not search_result,
+    )
     if not (matching or opening_round or opening_corrected or report_round or report_corrected):
         return 'unmatched', []
     subjects = ' '.join(matching)
@@ -623,6 +637,8 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
     round_clauses = [
         clause for clause in round_candidates
         if clause not in support and not prospective_clause(clause)
+        # A bound possessive correction can otherwise match as "company's Series B".
+        and (not report_retractions or ' '.join(clause.split()) not in report_retractions)
     ]
     early = any(associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause))
     round_mention = early or any(
