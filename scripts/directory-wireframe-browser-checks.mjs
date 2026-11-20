@@ -46,6 +46,46 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await click('#tab-all');
   assert.equal(await evaluate("!!document.querySelector('#directory-inspector-heading')"),false,'Scope restoration must not silently reselect an old entity');
 
+  await until(()=>evaluate(ready),'Returning to the startup scope did not restore results');
+  await until(()=>evaluate("!!document.querySelector('#directory-presentation')?.api"),'Company result view did not upgrade');
+  const readyCount=await evaluate("document.querySelector('#result-count').textContent");
+  await click('#company-view-details');
+  await press('ArrowRight','ArrowRight',39);
+  assert.equal(await evaluate('document.activeElement.id'),'company-view-coverage');
+  assert.equal(await evaluate("new URLSearchParams(location.search).get('coverage')"),'1');
+  assert.equal(await evaluate("document.querySelector('#result-count').textContent"),readyCount);
+  assert.ok(await evaluate("!!document.querySelector('.directory-evidence-counts [data-level=\"0\"] dd')?.textContent.includes('Unknown')"));
+  const company=graph.entities.find(entity=>entity.id==='startup:canva');
+  const countDocuments=urls=>new Set(urls.filter(url=>/^https:\/\//.test(url)).map(url=>new URL(url).href.split('#')[0])).size;
+  const expected=[
+    countDocuments([company.source,...(company.profile_facts||[]).filter(fact=>fact.label&&fact.value).map(fact=>fact.source)]),
+    countDocuments(graph.edges.filter(edge=>edge.kind==='founded'&&edge.to===company.id&&graph.entities.some(person=>person.id===edge.from&&person.kind==='person')).map(edge=>edge.source)),
+    countDocuments(graph.funding_rounds.filter(round=>round.startup_id===company.id).map(round=>round.source)),
+  ].map(count=>count ? String(count) : 'Unknown');
+  const coverageCounts=()=>evaluate("[...document.querySelectorAll('[data-entity-id=\"startup:canva\"] .directory-evidence-counts dd')].map(cell=>cell.textContent)");
+  assert.deepEqual(await coverageCounts(),expected);
+  await click(inspect);
+  await click('#company-view-details');
+  assert.equal(await evaluate("document.querySelector('#directory-inspector-heading')?.textContent"),'Canva');
+  assert.equal(await evaluate("new URLSearchParams(location.search).has('coverage')"),false);
+  await click('#company-view-coverage');
+  assert.deepEqual(await coverageCounts(),expected);
+  await settleTop();await assertNoOverflow('Directory coverage desktop');await screenshot('editorial-coverage-desktop.png');
+
+  await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:800,deviceScaleFactor:1,mobile:true});
+  await navigate('/?type=startup&q=Canva&coverage=1#directory',ready);
+  assert.deepEqual(await coverageCounts(),expected);
+  assert.equal(await evaluate("document.querySelector('#company-view-coverage').getAttribute('aria-checked')"),'true');
+  await assertNoOverflow('320px directory evidence coverage');
+  await click('#search');
+  assert.equal(await evaluate("document.querySelector('label[for=search]').textContent.trim()"),'Search the directory');
+  assert.equal(await evaluate("getComputedStyle(document.querySelector('.directory-search-label')).transitionProperty"),'none');
+  await evaluate("document.querySelector('#search').blur()");
+  await evaluate("document.querySelector('#directory-evidence-legend').scrollIntoView({block:'center',behavior:'instant'})");
+  await screenshot('editorial-coverage-mobile.png');
+  await command('Emulation.setEmulatedMedia',{features:[]});
+
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await navigate('/?type=startup&q=Canva#directory',ready);
   await click(inspect);

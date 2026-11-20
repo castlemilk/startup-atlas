@@ -218,7 +218,7 @@ try {
     assert.equal(await evaluate(`(()=>{
       const doc=document.querySelector('#view-preview').contentDocument;
       return doc.defaultView.getComputedStyle(doc.body).getPropertyValue('--atlas-paper').trim();
-    })()`),'#fcf9f2','Live previews use the same palette as the full explorer');
+    })()`),'#f9f8f5','Live previews use the approved paper palette');
     if (['search','treemap','graph'].includes(pattern.key)) {
       const intro=await evaluate(`(()=>{
         const doc=document.querySelector('#view-preview').contentDocument;
@@ -324,12 +324,18 @@ try {
     const bar=document.querySelector('.atlas-masthead');
     return {
       brand:getComputedStyle(bar.querySelector('.atlas-wordmark')).fontFamily,
+      body:getComputedStyle(document.body).fontFamily,
       paper:getComputedStyle(bar).backgroundColor,
       selected:getComputedStyle(bar.querySelector('[aria-current=page]')).backgroundColor
     };
   })()`);
-  assert.match(masthead.brand,/Georgia/);
-  assert.equal(masthead.paper,'rgb(252, 249, 242)');
+  assert.match(masthead.brand,/^"?Atlas Newsreader/);
+  assert.match(masthead.body,/^"?Atlas Inter/);
+  assert.equal(await evaluate(`Promise.all([
+    document.fonts.load('400 32px "Atlas Newsreader"'),
+    document.fonts.load('400 14px "Atlas Inter"')
+  ]).then(sets=>sets.every(fonts=>fonts.some(font=>font.status==='loaded')))`),true,'Both editorial fonts must load from the build');
+  assert.equal(masthead.paper,'rgb(249, 248, 245)');
   assert.equal(masthead.selected,'rgb(18, 43, 34)');
   assert.ok(await evaluate("document.querySelector('.search-wrap').getBoundingClientRect().top < 450"),'Directory search is visible early on a narrow viewport');
   await assertNoOverflow('390px directory feature');

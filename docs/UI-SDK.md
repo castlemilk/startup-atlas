@@ -1,6 +1,6 @@
 # Atlas UI SDK integration
 
-The operational directory, treemap, knowledge graph and entity/partner profiles use **ui-sdk Web Components** with the light Signal design system. Atlas retains its static ESM architecture, route controllers and published research snapshots. The SDK supplies interaction behaviour; Atlas supplies layout, visual tokens and source-backed content.
+The operational directory, treemap, knowledge graph and entity/partner profiles use **ui-sdk Web Components** with Atlas's editorial tokens. Atlas retains its static ESM architecture, route controllers and published research snapshots. The SDK supplies interaction behaviour. Atlas supplies layout, visual tokens and source-backed content.
 
 ## Dependencies and workflow
 
@@ -20,7 +20,7 @@ The SDK's `server-rendering.md` describes the static HTML upgrade boundary: nati
 | --- | --- |
 | `web/atlas-sdk.js` | Component registration, native-control adapters, dynamic action enhancement and local agent instance |
 | `web/atlas-sdk.css` | Atlas-specific SDK part/state styling and layout integration |
-| `web/design-tokens.css` | Canonical light Signal colours, Geist families, radii, material/shadow roles and motion; declares `@layer ui-sdk` |
+| `web/design-tokens.css` | Shared tokens and editorial colours, Newsreader and Inter, radii and motion. Declares `@layer ui-sdk`. |
 | `web/atlas-ui.js` / `web/atlas-ui.css` | Shared navigation, entity rendering, safe profile return context and common presentation |
 | Existing route controllers | Search, filtering, URL/history state, record inspection, data loading, saved opportunities and visualization geometry |
 
@@ -33,7 +33,7 @@ The optional `@ui-sdk/core/web.css` is **not imported**. The light operational t
 | Input / Input Group / Clear | Directory, treemap and graph search fields | Real native input IDs, composition-safe input events, route query updates, named clear action and input focus restoration |
 | Select | Single-choice filters, sorting, graph depth and treemap measure/currency/grouping | Native backing `<select>` IDs, option values/disabled state, ordinary `change` events and existing URL/data logic |
 | Checkbox | Include unknown geography and Logo available options | Native checkbox IDs and checked state, one ordinary `change` event and route-driven synchronization |
-| Segmented Control | Directory scope and treemap Map/Cards/Ranked list presentation | One selected value, keyboard navigation, existing named controls and route-backed selection |
+| Segmented Control | Directory scope and Details/Coverage, treemap Map/Cards/Ranked list | One selected value, keyboard navigation and route-backed selection |
 | Tabs | Treemap Figure/Company inspection panels | Associated panels, keyboard selection and source-backed figure/company context |
 | Button | Inspect, close, reset, load more, navigation and other authored actions, including dynamically rendered controls | Existing native button/link destinations and handlers; one activation per action; disabled state and meaningful accessible names |
 | Agent | `window.atlasUIAgent`, created with `createAgent()` | Local discovery and operation of the same registered interface through `snapshot`, `query`, `act` and change observation |

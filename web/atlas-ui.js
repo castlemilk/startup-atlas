@@ -98,6 +98,15 @@ export function renderAtlasMasthead(active = '') {
   return `<div class="atlas-brand-bar"><a class="atlas-wordmark" href="./" aria-label="Startup Atlas home"><span class="atlas-diamond-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startupatlas</span></a><a class="atlas-system-link" href="./design-system.html"${active === 'system' ? ' aria-current="page"' : ''}>${icon('system')}Design system</a></div><div class="atlas-view-bar">${renderViewNavigation(active)}</div>`;
 }
 
+function renderSourceCoverage({profile, founders, funding}) {
+  const cells = [['Profile', profile], ['Founders', founders], ['Funding', funding]];
+  return `<dl class="directory-evidence-counts" aria-label="Recorded sources">${cells.map(([label, count]) => {
+    // The Bklit heatmap scale is grouped at 3+ to match the Atlas coverage legend.
+    const level = Math.min(count, 3);
+    return `<div data-level="${level}"><dt>${label}</dt><dd>${count || 'Unknown'}</dd></div>`;
+  }).join('')}</dl>`;
+}
+
 /** Shared directory specimen; labels never imply verification beyond the source. */
 export function renderEntityRow(item, connections = null, options = {}) {
   const initials = item.name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
@@ -107,7 +116,10 @@ export function renderEntityRow(item, connections = null, options = {}) {
   const count = Number.isInteger(connections) && connections >= 0 ? `<span>${connections} recorded ${connections === 1 ? 'connection' : 'connections'}</span>` : '';
   const inspectable = options.inspectable === true;
   const inspection = inspectable ? `<button type="button" class="entity-row-inspect" data-inspect-entity="${esc(item.id)}" aria-pressed="${options.selected === true}" aria-label="Inspect ${esc(item.name)}">${icon('search')}<span>Inspect</span></button>` : '';
-  return `<article class="entity-row${inspectable ? ' entity-row-inspectable' : ''}" data-kind="${esc(item.kind)}"${inspectable ? ` data-entity-id="${esc(item.id)}" data-selected="${options.selected === true}"` : ''}><span class="entity-row-mark${logo ? ' has-logo' : ''}" aria-hidden="true"><span>${esc(initials)}</span>${logo ? `<img class="entity-row-image" src="${esc(logo)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : ''}</span><div class="entity-row-main"><h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3><p>${esc(summary)}</p><div class="entity-row-meta">${count}${href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">Profile source</a>` : '<span>Source not recorded</span>'}</div></div><span class="entity-row-kind">${entityBadge(item.kind)}</span><div class="entity-row-actions">${inspection}<a class="entity-row-graph" href="./graph.html?entity=${encodeURIComponent(item.id)}" aria-label="Explore ${esc(item.name)} connections">Graph ${icon('graph')}</a></div></article>`;
+  const context = options.coverage
+    ? renderSourceCoverage(options.coverage)
+    : `<span class="entity-row-kind">${entityBadge(item.kind)}</span>`;
+  return `<article class="entity-row${inspectable ? ' entity-row-inspectable' : ''}" data-kind="${esc(item.kind)}"${inspectable ? ` data-entity-id="${esc(item.id)}" data-selected="${options.selected === true}"` : ''}><span class="entity-row-mark${logo ? ' has-logo' : ''}" aria-hidden="true"><span>${esc(initials)}</span>${logo ? `<img class="entity-row-image" src="${esc(logo)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : ''}</span><div class="entity-row-main"><h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3><p>${esc(summary)}</p><div class="entity-row-meta">${count}${href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">Profile source</a>` : '<span>Source not recorded</span>'}</div></div>${context}<div class="entity-row-actions">${inspection}<a class="entity-row-graph" href="./graph.html?entity=${encodeURIComponent(item.id)}" aria-label="Explore ${esc(item.name)} connections">Graph ${icon('graph')}</a></div></article>`;
 }
 
 /** Return context is confined to public Atlas routes on the same deployment. */

@@ -38,7 +38,14 @@
       <ui-segmented-control id="directory-scope" class="mode-switch" aria-label="Directory view" default-value="all"><ui-segmented-control-item as-child value="all"><button type="button" id="tab-all" data-view="all" class="mode active">All <span id="all-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="opportunities"><button type="button" id="tab-opportunities" data-view="opportunities" class="mode">Opportunities <span id="opportunity-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="partners"><button type="button" id="tab-partners" data-view="partners" class="mode">Partner index <span id="partner-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="saved"><button type="button" id="tab-saved" data-view="saved" class="mode saved-mode"><span aria-hidden="true">♡</span> Saved <span id="saved-count">0</span></button></ui-segmented-control-item></ui-segmented-control>
       <div class="directory-layout" id="directory-panel" role="region" aria-labelledby="tab-all">
         <div class="directory-toolbar">
-          <div class="search-field"><label class="sr-only" for="search">Search the directory</label><div class="search-field-control search-wrap"><svg class="search-field-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.25"></circle><path d="m15.3 15.3 4.2 4.2"></path></svg><input id="search" type="search" placeholder="Search providers, programmes, benefits…" autocomplete="off"><button id="clear-search" class="search-field-clear clear-search" type="button" aria-label="Clear search" data-atlas-clear-for="search" hidden>×</button></div></div>
+          <div class="search-field">
+            <div class="search-field-control search-wrap">
+              <svg class="search-field-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.25"></circle><path d="m15.3 15.3 4.2 4.2"></path></svg>
+              <label class="directory-search-label" for="search">Search the directory</label>
+              <input id="search" type="search" placeholder="Search the Atlas" autocomplete="off">
+              <button id="clear-search" class="search-field-clear clear-search" type="button" aria-label="Clear search" data-atlas-clear-for="search" hidden>×</button>
+            </div>
+          </div>
         <div class="entity-filter" id="entity-filter"><label class="sr-only" for="entity-kind">Entity type</label><select id="entity-kind"><option value="all">All types</option><option value="startup">Startups</option><option value="person">People</option><option value="partner">Partners</option><option value="provider">Providers</option><option value="programme">Programmes</option></select></div>
         <aside class="filters" aria-label="Filter opportunities">
           <div class="filter-heading"><h3>Refine your search</h3><button type="button" class="text-button" id="reset-filters">Reset</button></div>
@@ -59,8 +66,27 @@
         </div>
         <div class="results">
           <div class="filter-bar" id="active-filter-bar" hidden><div class="filter-bar-head"><span class="filter-bar-title">Active filters <strong id="active-filter-count"></strong></span><button type="button" class="filter-bar-clear" id="clear-active-filters">Clear filters</button></div><ul class="filter-bar-chips" id="active-filter-chips" aria-label="Active filters"></ul></div>
-          <div class="result-bar"><div><span class="result-label" id="result-title">RESEARCHED OPPORTUNITIES</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span><a class="graph-search-shortcut" id="graph-search-shortcut" href="./graph.html">Find startups &amp; people ↗</a> </div><label class="sort-label" for="sort">Sort <select id="sort"><option value="recommended">Featured first</option><option value="name">Name A–Z</option></select></label></div>
+          <div class="result-bar">
+            <div><span class="result-label" id="result-title">Research opportunities</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span><a class="graph-search-shortcut" id="graph-search-shortcut" href="./graph.html">Find startups &amp; people ↗</a></div>
+            <ui-segmented-control id="directory-presentation" class="directory-presentation" aria-label="Company result view" default-value="details" hidden>
+              <ui-segmented-control-item as-child value="details"><button type="button" id="company-view-details" data-company-view="details">Details</button></ui-segmented-control-item>
+              <ui-segmented-control-item as-child value="coverage"><button type="button" id="company-view-coverage" data-company-view="coverage">Coverage</button></ui-segmented-control-item>
+            </ui-segmented-control>
+            <label class="sort-label" for="sort">Sort <select id="sort"><option value="recommended">Featured first</option><option value="name">Name A–Z</option></select></label>
+          </div>
           <div class="inline-note" id="directory-note"><span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed. Check the original source for current conditions.</p></div>
+          <div class="directory-evidence-legend" id="directory-evidence-legend" hidden>
+            <div>
+              <h2>Evidence coverage</h2>
+              <p>Each cell counts distinct source links for that part of the record.</p>
+            </div>
+            <ul aria-label="Source count scale">
+              <li><i data-level="1" aria-hidden="true"></i>1 source</li>
+              <li><i data-level="2" aria-hidden="true"></i>2 sources</li>
+              <li><i data-level="3" aria-hidden="true"></i>3+ sources</li>
+              <li><i data-level="0" aria-hidden="true"></i>Unknown</li>
+            </ul>
+          </div>
           <div class="result-columns" id="result-columns" aria-hidden="true"><span>Opportunity</span><span>Resource</span><span>Location</span><span>Benefit</span><span>Status &amp; source</span><span></span></div>
           <div class="directory-entity-columns" id="entity-columns" aria-hidden="true" hidden><span>Entity &amp; evidence</span><span>Type</span><span>Explore</span></div>
           <div id="results-list" class="cards" aria-busy="true"><p class="loading">Loading directory…</p></div>

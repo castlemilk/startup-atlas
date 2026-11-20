@@ -3,7 +3,7 @@ import { logoFor, logoClassFor } from './logos.js?v=3';
 import { partnerRelationships } from './relationships.js';
 import { openGraph } from './graph-store.js';
 import { entityBadge, icon, renderEntityRow } from './atlas-ui.js';
-import { entityDetails, entityHref } from './graph-model.js';
+import { entityDetails, entityHref, startupSourceCoverage } from './graph-model.js';
 
 // The directory stays usable if an older browser cannot load the table model.
 let opportunityRows=(items,state,saved,visible)=>{
@@ -15,7 +15,8 @@ catch(error) { console.warn('Table model unavailable; using the built-in directo
 
 const byId = id => document.getElementById(id);
 const controls = { search: byId('search'), entityKind:byId('entity-kind'), country: byId('country'), includeUnknown: byId('include-unknown'), kind: byId('kind'), access: byId('access'), sort: byId('sort'), partnerCountry: byId('partner-country'), partnerProvider: byId('partner-provider'), partnerEvidence: byId('partner-evidence'), partnerLogo: byId('partner-logo') };
-const defaults = { view:'all', query:'', entityKind:'all', country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended', partnerCountry:'all', partnerProvider:'all', partnerEvidence:'all', partnerLogo:false };
+const defaults = { view:'all', query:'', entityKind:'all', coverage:false, country:'all', includeUnknown:false, kind:'all', access:'all', sort:'recommended', partnerCountry:'all', partnerProvider:'all', partnerEvidence:'all', partnerLogo:false };
+const presentationControl = byId('directory-presentation');
 let state = { ...defaults }, data = null, visible = 12;
 let inspectedEntity = '';
 let saved = new Set();
@@ -26,6 +27,8 @@ try { const stored = JSON.parse(localStorage.getItem('startup-atlas-saved') || '
 // read the same published revision. The old public JSON remains a fallback.
 let graphStore=null;
 try { graphStore=await openGraph(); } catch { /* Keep the catalogue usable. */ }
+const sourceCoverage = graphStore ? startupSourceCoverage(graphStore.graph) : new Map();
+const hasCoverageView = () => Boolean(graphStore && state.view === 'all' && state.entityKind === 'startup');
 async function publicDocument(name) {
   if (graphStore) return graphStore.document(name);
   const response=await fetch('./data/'+name,{cache:'no-cache'});
@@ -64,6 +67,7 @@ function stateFromUrl() {
   // Existing opportunity-filter links predate the All tab.
   else if (['country','kind','access','unknown'].some(key=>params.has(key))) s.view='opportunities';
   const type=params.get('type'); if (type && [...controls.entityKind.options].some(option=>option.value===type)) s.entityKind=type;
+  s.coverage = params.get('coverage') === '1';
   const country = params.get('country'); if (country && (country === 'all' || Object.hasOwn(marketNames,country))) s.country = country;
   for (const name of ['kind','access','sort']) {
     const value = params.get(name); if (value && [...controls[name].options].some(option => option.value === value)) s[name] = value;
@@ -79,6 +83,7 @@ function writeUrl() {
   if (state.view !== defaults.view) params.set('view',state.view);
   if (state.query) params.set('q',state.query);
   if (state.entityKind!=='all') params.set('type',state.entityKind);
+  if (state.coverage && state.view === 'all' && state.entityKind === 'startup') params.set('coverage','1');
   if (state.country !== 'all') params.set('country',state.country);
   if (state.kind !== 'all') params.set('kind',state.kind);
   if (state.access !== 'all') params.set('access',state.access);
@@ -167,9 +172,9 @@ function renderLead(name) {
   const links=reviewed?`<div class="lead-sources">${website?`<a href="${esc(website)}" target="_blank" rel="noopener noreferrer">Website ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Evidence source ↗</a>`:''}${reviewed.reviewed_at?`<span>Reviewed ${esc(reviewed.reviewed_at.slice(0,10))}</span>`:''}</div>`:'';
   return `<article class="card lead-card"><div class="identity">${avatarFor(name,'alt')}<div><h3><a class="partner-profile-link" href="./partner.html?name=${encodeURIComponent(name)}">${esc(name)}</a></h3><div class="provider">Partner index · research lead</div></div></div><p class="card-summary">${esc(description)}</p><div class="tags">${badge(reviewed?'Identity reviewed':related?'Research available':'Not assessed',(related||reviewed)?'accent':'warning')}${badge(providerListed?'Provider-listed':selfReported?'Self-reported':'Relationship to verify',providerListed?'accent':'neutral')}</div>${links}${providerLinks?`<div class="lead-sources">${providerLinks}</div>`:''}${action}</article>`;
 }
-function renderEntity(item) {
+function renderEntity(item, coverage) {
   const connections=graphStore?.graph.edges.filter(edge=>edge.from===item.id || edge.to===item.id).length;
-  return renderEntityRow(item,connections,{inspectable:true,selected:item.id===inspectedEntity});
+  return renderEntityRow(item,connections,{inspectable:true,selected:item.id===inspectedEntity,coverage});
 }
 
 function inspectorSource(value,label='Source') {
@@ -222,6 +227,8 @@ function render() {
   renderActiveFilters();
   const isPartners=state.view==='partners';
   const isAll=state.view==='all';
+  const canShowCoverage = hasCoverageView();
+  const showCoverage = canShowCoverage && state.coverage;
   const leads=isPartners?filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships,name=>!!logoFor(name),mappedLocations,data.partnerProfiles):null;
   const entities=isAll&&graphStore?graphStore.search(state.query,Math.max(100,graphStore.graph.entities.length)).filter(item=>state.entityKind==='all'||item.kind===state.entityKind):[];
   const result=isAll?{total:entities.length,rows:entities.slice(0,visible)}:isPartners?{total:leads.length,rows:leads.slice(0,visible)}:opportunityRows(data.opportunities,state,saved,visible);
@@ -233,9 +240,14 @@ function render() {
   document.querySelector('.directory-layout').classList.toggle('partner-view',isPartners);
   document.querySelector('.directory-layout').classList.toggle('all-view',isAll);
   byId('directory-inspector').hidden=!isAll;
-  byId('entity-columns').hidden=!isAll || !total;
+  byId('entity-columns').hidden=!isAll || !total || showCoverage;
+  presentationControl.hidden = !canShowCoverage;
+  presentationControl.setAttribute('value', showCoverage ? 'coverage' : 'details');
+  byId('directory-evidence-legend').hidden = !showCoverage || !total;
+  byId('results-list').classList.toggle('directory-coverage-view', showCoverage);
+  byId('directory-note').hidden = canShowCoverage;
   byId('directory-note').innerHTML=isAll?'<span aria-hidden="true">✳</span><p>Explore sourced profiles and connections. Some partner entries are research leads awaiting verification.</p>':isPartners?'<span aria-hidden="true">✳</span><p>Some names come from a historical screenshot and need verification. <strong>Provider-listed</strong> identifies a cited provider listing. Self-reported relationships are identified separately; neither guarantees access or credits. Mapped countries represent selected offices or programme locations, not geographic eligibility.</p>':'<span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed.</p>';
-  byId('result-title').textContent=isAll?'ALL OF THE ATLAS':isPartners?'PARTNER INDEX':state.view==='saved'?'SAVED OPPORTUNITIES':'RESEARCHED OPPORTUNITIES';
+  byId('result-title').textContent=canShowCoverage?'Companies':isAll?'All of the Atlas':isPartners?'Partner index':state.view==='saved'?'Saved opportunities':'Researched opportunities';
   byId('result-count').textContent=isAll&&!graphStore?'Unavailable':`${total} ${total===1?'result':'results'}`;
   byId('graph-search-shortcut').href='./graph.html'+(state.query?'?q='+encodeURIComponent(state.query):'');
   byId('graph-search-shortcut').textContent='Explore the graph ↗';
@@ -251,7 +263,7 @@ function render() {
     const explanation=noSaved?'Save an opportunity with its heart button to find it here later.':'Try another search or clear your filters to see more results.';
     byId('results-list').innerHTML=`<div class="empty-state"><h3>${noSaved?'Nothing saved yet':'No matches found'}</h3><p>${explanation}</p><div class="empty-state-actions"><button type="button" id="empty-action">${noSaved?'Browse opportunities':'Clear search and filters'}</button></div></div>`;
     byId('empty-action').addEventListener('click',()=>{update({...defaults,view:noSaved?'opportunities':state.view});controls.search.focus();});
-  } else byId('results-list').innerHTML=shown.map((item,i)=>isAll?renderEntity(item):isPartners?renderLead(item):renderCard(item,i)).join('');
+  } else byId('results-list').innerHTML=shown.map((item,i)=>isAll?renderEntity(item,showCoverage ? sourceCoverage.get(item.id) : null):isPartners?renderLead(item):renderCard(item,i)).join('');
   byId('result-range').textContent=total ? `Showing ${shown.length} of ${total} results` : '';
   byId('load-more').hidden=visible>=total;
   byId('load-more').textContent=`Load more · ${Math.min(12,total-visible)} of ${total-visible} remaining ↓`;
@@ -285,6 +297,17 @@ for (const button of viewButtons) {
   });
 }
 document.addEventListener('valuechange',event=>{if (event.target.id==='directory-scope') update({view:event.detail.value});},{capture:true});
+function changeCoverage(value) {
+  if (!hasCoverageView() || !['details','coverage'].includes(value)) return;
+  const coverage = value === 'coverage';
+  if (state.coverage === coverage) return;
+  state.coverage = coverage;
+  render();
+}
+presentationControl.addEventListener('valuechange', event => changeCoverage(event.detail.value));
+presentationControl.addEventListener('click', event => {
+  if (!presentationControl.api) changeCoverage(event.target.closest('[data-company-view]')?.dataset.companyView);
+});
 controls.search.addEventListener('input',event=>{if (!event.isComposing) update({query:event.target.value});});
 controls.search.addEventListener('compositionend',event=>update({query:event.target.value}));
 controls.entityKind.addEventListener('change',event=>update({entityKind:event.target.value}));

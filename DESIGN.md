@@ -41,7 +41,7 @@ spacing:
 
 ## Overview
 
-Startup Atlas is an open research guide for founders exploring programmes, people, companies and the organisations that connect them. The research routes use warm paper, forest navigation, rust actions and serif display type. Self-hosted Geist Sans and Geist Mono serve as interface and data faces. The design catalogue embeds the operational routes as live previews.
+Startup Atlas is an open research guide for founders exploring programmes, people, companies and the organisations that connect them. The research routes use paper, forest ink, rust actions and self-hosted Newsreader and Inter. The design catalogue embeds those routes as live previews.
 
 The current site is English-language and has desktop and mobile layouts. Global browsing is supported; location does not imply programme eligibility. The shared system now connects list/search, treemap, graph, startup and partner/VC views. [UX-CONTRACT.md](UX-CONTRACT.md) owns interaction rules and migration gaps; [explorer view specifications](docs/EXPLORER-VIEWS.md) describe detailed layouts, data requirements and subsequent work.
 
@@ -61,16 +61,16 @@ The wireframes guide composition and [UX-CONTRACT.md](UX-CONTRACT.md) governs be
 
 ## Runtime ownership and mapping
 
-[web/design-tokens.css](web/design-tokens.css) owns the shared defaults described by the front matter and the tables below. [web/atlas-ui.css](web/atlas-ui.css) scopes the current editorial values to the directory, treemap, graph, entity and partner documents. Route and component styles consume those tokens.
+[web/design-tokens.css](web/design-tokens.css) owns the shared defaults and the editorial values scoped to the directory, treemap, graph, entity and partner documents. Route and component styles consume those tokens.
 
 | Explorer role | Runtime value |
 | --- | --- |
-| Paper, canvas, working surface | `#fcf9f2`, `#f7f4ed`, `#fffefa` |
-| Text, muted text | `#122b22`, `#535f55` |
-| Action and focus, hover, selection wash | `#a23e18`, `#7d2d13`, `#f8ece1` |
-| Panel rules, control boundaries, control tray | `#dfd9cd`, `#88877b`, `#eeebe2` |
-| Display type | Georgia, Times New Roman, serif |
-| Control, row, panel and feature radii | 6px, 7px, 9px and 10px |
+| Paper and canvas, working surface | `#f9f8f5`, `#ffffff` |
+| Text, muted text | `#122b22`, `#60675d` |
+| Action, hover, selection wash, focus | `#a84121`, `#9f3d1d`, `#f5e7df`, `#1b382b` |
+| Panel rules, control boundaries, control tray | `#e2ddd3`, `#60675d`, `#efece4` |
+| Display and interface type | Newsreader and Inter |
+| Control, row, panel and feature radii | 4px, 2px, 2px and 2px |
 
 | Layer | Owner | Responsibility |
 | --- | --- | --- |
@@ -88,6 +88,12 @@ The wireframes guide composition and [UX-CONTRACT.md](UX-CONTRACT.md) governs be
 The compatibility aliases in the token stylesheet are `--ink → --atlas-ink`, `--muted → --atlas-muted`, `--line → --atlas-border`, `--focus → --atlas-focus`, `--navy → --atlas-ink` and `--blue → --atlas-action`. They bridge older static styles; new components use `--atlas-*` directly. Existing CSS files still contain some route-specific literals, particularly treemap colours and graph annotation fills. Those are migration work, not additional canonical palettes. Do not duplicate them into new controls.
 
 The shared stylesheet follows the established route styles where its primitives/adapters need to take precedence; route-specific catalogue composition may follow it. Verify computed styles rather than assuming a token declaration defeats a more specific legacy rule. There is no Tailwind or React theme provider. The reference can export computed JSON/CSS snapshots, including the current motion preference; these exports do not replace the canonical stylesheet or its media rules.
+
+### Directory evidence coverage
+
+Select Startups in the Directory, then choose Coverage. The rows report distinct HTTPS source documents for company details, founder connections and funding rounds. Fragment links to the same document count once per category. A cell with no recorded source reads “Unknown.” Company names and Inspect retain the same destinations as Details. The Coverage choice can be shared through the directory URL.
+
+The Directory uses Gamma's Filter Bar chip treatment and the UI SDK's native search, select and segmented controls. The search label adapts [Bencho Label input](https://github.com/cabralorenzo/bencho/tree/84dfcee170171257a28631402d37ff34900bc773/blocks/label-input). Coverage cells and their legend adapt [Bklit's sequential heatmap](https://github.com/bklit/bklit-ui/tree/76299da6981e2494836be5ce842720a7fb057891/packages/ui/src/charts/heatmap), with exact counts in text and a distinct unknown state. The [Bencho licence](web/vendor/BENCHO-LICENSE.txt), [Bklit licence](web/vendor/BKLIT-LICENSE.txt) and [font sources](web/assets/fonts/editorial/sources.json) ship with the site.
 
 ## Colors
 
