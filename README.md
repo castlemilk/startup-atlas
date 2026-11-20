@@ -1,5 +1,7 @@
 # Startup Atlas
 
+The approved [editorial design handoff](docs/design/editorial/README.md) brings together the explorer, filtering, component and company-profile wireframes, design-system specification and scoped CSS foundation.
+
 [Choose a view and follow an evidence-led research journey](docs/VIEW-USAGE.md): practical guidance for list/search, company comparisons, graphs and profiles.
 
 Browse the [partner index](docs/PARTNER-INDEX.md) for the original directory names, later source-backed additions, available logos and reviewed website links.
