@@ -102,6 +102,30 @@ ISSUER_RAISE_REPORT = re.compile(
     r'[A-Z][\w&-]{0,39}(?: [A-Z][\w&-]{0,39}){0,5}| to expand its (?:business|operations))?[.!]',
     re.I,
 )
+# Elzinga's issuer article links the reviewed wire in its opening sentence.
+# These attestations bind saved prose to one existing round, without approving fetches.
+REVIEWED_ISSUER_ARTICLES = {
+    'Culture Amp': {
+        'url': 'https://www.cultureamp.com/blog/culture-amp-raises-20-million-in-series-c-funding',
+        'round_id': 'culture-amp-2017-series-c',
+        'stage': 'Series C',
+        'round_source': (
+            'https://www.prnewswire.com/news-releases/'
+            'culture-amp-announces-new-funding-to-empower-companies-everywhere-to-put-culture-first-300474440.html'
+        ),
+        'opening_sha256': '090c3d4fdaad6b4934d5ebbb1795f72641012dee34a41ff47f1b56d99f97f2da',
+        'continuation_sha256': (
+            '36ddd0cfff154cbd9d5a886cf356a50436cb9f73a2a811db8fee6adc9cb45ce6',
+            '359d1086a19baa50aaad618f55a241afab200e48abeb6b4831409934e55d1e44',
+            '3d923a2bd33a7bb96032146950a26a2d4ed5ec8172521d01443c683b747a3d1f',
+        ),
+    },
+}
+ISSUER_LINKED_FIRST_PERSON = re.compile(
+    rf'Yesterday at [\w -]{{1,100}}, (?P<issuer>{ISSUER_NAME}) shared the news that we have raised '
+    rf'{TRAILING_RAISE_TERMS} led by [\w& -]{{1,100}}\.',
+    re.I,
+)
 ANNOUNCED_CLOSING = r'(?:announced today|today announced) (?:that )?it has closed'
 NORMALIZED_CLOSING_PREFIX = re.compile(rf'(?:(?:has|had|today|recently) )*{ANNOUNCED_CLOSING}\b')
 ISSUER_CLOSING_REPORT = re.compile(
@@ -155,10 +179,18 @@ ISSUER_REPEATED_CLOSE_DENIAL = re.compile(
     rf'{RAW_ROUND_TERMS}[.!]',
     re.I,
 )
+QUANTIFIED_RAISE_DENIAL_TERMS = (
+    rf'(?:{TRAILING_RAISE_TERMS}|(?:(?:a|its|the) )?(?P<leading_amount>{STATED_RAISE_AMOUNT}) '
+    rf'(?:in )?(?:(?:a|its|the) )?(?P<leading_series>{SERIES.pattern}) (?:funding(?: round)?|round))[.!]'
+)
 ISSUER_QUANTIFIED_RAISE_DENIAL = re.compile(
     rf'(?P<issuer>{ISSUER_NAME}) (?:(?:did not|didn[\'’]t) raise|has not (?:actually )?raised) '
-    rf'(?:{TRAILING_RAISE_TERMS}|(?:(?:a|its|the) )?(?P<leading_amount>{STATED_RAISE_AMOUNT}) '
-    rf'(?:in )?(?:(?:a|its|the) )?(?P<leading_series>{SERIES.pattern}) (?:funding )?round)[.!]',
+    + QUANTIFIED_RAISE_DENIAL_TERMS,
+    re.I,
+)
+ISSUER_QUANTIFIED_FIRST_PERSON_DENIAL = re.compile(
+    r"(?:I misspoke: )?we (?:(?:did not|didn['’]t) (?:actually )?raise"
+    r"|(?:have not|haven['’]t) (?:actually )?raised) " + QUANTIFIED_RAISE_DENIAL_TERMS,
     re.I,
 )
 ISSUER_CONTRACTED_RAISE_DENIAL = re.compile(
@@ -170,6 +202,11 @@ ISSUER_FIRST_PERSON_CORRECTION = re.compile(
     r"(?:I misspoke: )?we (?:(?:did not|didn['’]t) (?:actually )?raise"
     r"|(?:have not|haven['’]t) (?:actually )?raised) "
     rf'(?:(?:(?:{CORRECTION_DETERMINERS}|our) )?{CORRECTION_SERIES}|the funding)[.!]',
+    re.I,
+)
+ADJACENT_RAISE_DENIAL = re.compile(
+    rf"^(?P<subject>(?:I misspoke: )?{ISSUER_NAME}) "
+    r"(?:(?P<before>did not|didn['’]t) actually|actually (?P<after>did not|didn['’]t)) (?=raise )",
     re.I,
 )
 ISSUER_ARR = (
@@ -348,21 +385,26 @@ def round_correction(following, issuer, series, asserted_action, *, first_person
     return bool(repeated and name_key(repeated['issuer']) == issuer and repeated['terms'] == closing_terms)
 
 
-def reported_raise_denial(following, issuer, series, amount):
-    if round_correction(following, issuer, series, 'raise'):
+def reported_raise_denial(following, issuer, series, amount, *, first_person=False):
+    if round_correction(following, issuer, series, 'raise', first_person=first_person):
         return True
     if not following:
         return False
-    if denial := ISSUER_CONTRACTED_RAISE_DENIAL.fullmatch(following[0]):
+    statement = following[0]
+    if denial := ISSUER_CONTRACTED_RAISE_DENIAL.fullmatch(statement):
         return name_key(denial['issuer']) == issuer and (
             denial['series'] is None or name_key(denial['series']) == series
         )
-    if not (denial := ISSUER_QUANTIFIED_RAISE_DENIAL.fullmatch(following[0])):
-        return False
+    denial = ISSUER_QUANTIFIED_RAISE_DENIAL.fullmatch(statement)
+    if denial and name_key(denial['issuer']) != issuer:
+        denial = None
+    if first_person and not denial:
+        if statement.casefold() == 'i misspoke.' and len(following) > 1:
+            statement = following[1]
+        denial = ISSUER_QUANTIFIED_FIRST_PERSON_DENIAL.fullmatch(statement)
     # Compare the stated amount without converting symbols, units or currencies.
-    return (
-        name_key(denial['issuer']) == issuer
-        and name_key(denial['series'] or denial['leading_series']) == series
+    return bool(
+        denial and name_key(denial['series'] or denial['leading_series']) == series
         and (denial['amount'] or denial['leading_amount']).casefold() == amount.casefold()
     )
 
@@ -394,6 +436,34 @@ def issuer_reported_rounds(excerpt, names, *, allow_raise):
                 or CLOSING_PREFACE_BOUNDARY.search(statement, body_start)):
             break
     return round_mention, corrected
+
+
+def linked_issuer_round(excerpt, names, article):
+    # One opening, up to three original continuations and an adjacent correction.
+    statements = [' '.join(part.split()) for part in ISSUER_FINANCIAL_BREAK.split(excerpt, maxsplit=6)]
+    opening, *following = statements
+    issuer, stage, attestation = article
+    if digest(opening.encode()) != attestation['opening_sha256']:
+        return False, False
+    match = ISSUER_LINKED_FIRST_PERSON.fullmatch(opening)
+    if (not match or issuer not in names or name_key(match['issuer']) != issuer
+            or name_key(match['series']) != stage):
+        return False, False
+    for expected in attestation['continuation_sha256']:
+        if not following or digest(following[0].encode()) != expected:
+            break
+        following = following[1:]
+    if following:
+        if following[0].casefold().startswith('correction: '):
+            following[0] = following[0][len('correction: '):]
+        index = 1 if len(following) > 1 and following[0].casefold() == 'i misspoke.' else 0
+        statement = following[index]
+        # Reuse the same issuer, stage and amount checks after the explicit adverb.
+        if denial := ADJACENT_RAISE_DENIAL.match(statement):
+            negation = denial['before'] or denial['after']
+            following[index] = f"{denial['subject']} {negation} {statement[denial.end():]}"
+    corrected = reported_raise_denial(following, issuer, stage, match['amount'], first_person=True)
+    return not corrected, corrected
 
 
 def opening_issuer_round(statements, names, reviewed_round):
@@ -480,7 +550,7 @@ def chips_support_clauses(excerpt, names):
     return support
 
 
-def classify(excerpt, names, *, reviewed_round=None, search_result=False):
+def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, search_result=False):
     clauses = CLAUSE_BREAK.split(excerpt)
     matching = [part for part in clauses if any(includes_name(part, name) for name in names)]
     if not matching and reviewed_round is None:
@@ -489,6 +559,10 @@ def classify(excerpt, names, *, reviewed_round=None, search_result=False):
     raw_statements = ISSUER_FINANCIAL_BREAK.split(opening_text, maxsplit=3)
     statements = [' '.join(part.split()) for part in raw_statements]
     opening_round, opening_corrected = opening_issuer_round(statements, names, reviewed_round)
+    if reviewed_article and not search_result:
+        linked_round, linked_corrected = linked_issuer_round(opening_text, names, reviewed_article)
+        opening_round |= linked_round
+        opening_corrected |= linked_corrected
     report_round, report_corrected = issuer_reported_rounds(opening_text, names, allow_raise=not search_result)
     if not (matching or opening_round or opening_corrected or report_round or report_corrected):
         return 'unmatched', []
@@ -527,7 +601,7 @@ def classify(excerpt, names, *, reviewed_round=None, search_result=False):
     return ('context' if signals else 'unmatched'), signals
 
 
-def saved_results(captures, host, names, *, reviewed_rounds=None):
+def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_articles=None):
     if not isinstance(captures, list) or len(captures) > 32:
         raise ValueError('Expected at most 32 saved captures per company')
     documents = defaultdict(dict)
@@ -543,7 +617,9 @@ def saved_results(captures, host, names, *, reviewed_rounds=None):
         if dates and acquisition == 'search_result':
             raise ValueError('Date observations require saved document evidence')
         reviewed_round = reviewed_rounds.get(url) if reviewed_rounds and acquisition == 'page_excerpt' else None
-        bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round, search_result=acquisition == 'search_result')
+        reviewed_article = reviewed_articles.get(url) if reviewed_articles and acquisition == 'page_excerpt' else None
+        bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round, reviewed_article=reviewed_article,
+                                   search_result=acquisition == 'search_result')
         observation = {**capture, 'bucket': bucket, 'signals': signals}
         if dates:
             observation['dates'] = {label: date_observation(day) for label, day in dates.items()}
@@ -582,15 +658,18 @@ def next_action(fields):
 def reviewed_round_sources(record, host, catalogue, queue):
     """Bind first-person review cues to unambiguous reviewed issuer citations."""
     if not record or website_host(site_url(record.get('website'))) != host:
-        return {}
+        return {}, {}
     name = record['name']
     if any(
         other['name'] != name and (other_host := website_host(site_url(other.get('website'))))
         and other_host.removeprefix('www.') == host.removeprefix('www.')
         for other in (*catalogue.values(), *queue.values())
     ):
-        return {}
+        return {}, {}
     citations = defaultdict(list)
+    article = REVIEWED_ISSUER_ARTICLES.get(name)
+    wire_document = urlsplit(article['round_source']) if article else None
+    linked_wire_citations = []
     for company in catalogue.values():
         rounds = company.get('funding_rounds')
         if not isinstance(rounds, list):
@@ -603,6 +682,10 @@ def reviewed_round_sources(record, host, catalogue, queue):
             if website_host(page) == host and urlsplit(page).path != '/':
                 # Group fragments to check ambiguity. Attribution still requires the recorded URL.
                 citations[page].append((source, company['name'], event.get('stage')))
+            if wire_document and page:
+                document = urlsplit(page)
+                if (document.netloc, document.path) == (wire_document.netloc, wire_document.path):
+                    linked_wire_citations.append((source, company['name'], event.get('id'), event.get('stage')))
     results = {}
     for linked_rounds in citations.values():
         if len(linked_rounds) != 1:
@@ -610,7 +693,13 @@ def reviewed_round_sources(record, host, catalogue, queue):
         source, owner, stage = linked_rounds[0]
         if owner == name and isinstance(stage, str) and SERIES.fullmatch(stage):
             results[source] = (name_key(name), name_key(stage))
-    return results
+    articles = {}
+    if article and linked_wire_citations == [(article['round_source'], name, article['round_id'], article['stage'])]:
+        url = article['url']
+        cited_paths = {urlsplit(page).path for page in citations}
+        if website_host(url) == host and urlsplit(url).path not in cited_paths:
+            articles[url] = (name_key(name), name_key(article['stage']), article)
+    return results, articles
 
 
 def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
@@ -647,9 +736,10 @@ def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
             searches.extend({'name': alias['name'], 'terms': EARLY_TERMS, 'identity_source': alias['source_url']}
                             for alias in aliases)
         captures = company['captures']
+        reviewed_rounds, reviewed_articles = reviewed_round_sources(record, host, catalogue, rows)
         results = saved_results(
             captures, host, [name_key(name), *(name_key(alias['name']) for alias in aliases)],
-            reviewed_rounds=reviewed_round_sources(record, host, catalogue, rows),
+            reviewed_rounds=reviewed_rounds, reviewed_articles=reviewed_articles,
         )
         entries[name] = {
             'name': name, 'official_host': host, 'action': action, 'searches': searches,

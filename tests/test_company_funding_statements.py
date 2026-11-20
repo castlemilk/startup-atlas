@@ -4,8 +4,9 @@ import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
-from scripts.company_metadata_funding import classify, prepare_funding_review, saved_results
+from scripts.company_metadata_funding import REVIEWED_ISSUER_ARTICLES, classify, prepare_funding_review, saved_results
 from scripts.plan_company_profiles import digest
 from scripts.stage_early_investments import name_key
 
@@ -79,6 +80,23 @@ CULTURE_AMP_SERIES_D = 'https://www.cultureamp.com/blog/series-d-funding-announc
 # Opening sentence of the issuer's reviewed Series D release.
 CULTURE_AMP_FIRST_PERSON = (
     'It is with this success that I am proud to announce our latest US $40M Series D funding round.'
+)
+CULTURE_AMP_LINKED_ARTICLE = (
+    'https://www.cultureamp.com/blog/culture-amp-raises-20-million-in-series-c-funding'
+)
+CULTURE_AMP_SERIES_C_WIRE = (
+    'https://www.prnewswire.com/news-releases/'
+    'culture-amp-announces-new-funding-to-empower-companies-everywhere-to-put-culture-first-300474440.html'
+)
+# The issuer statement's structure with synthetic location and investor text.
+LINKED_ARTICLE_OPENING = (
+    'Yesterday at an industry meeting, Culture Amp shared the news that we have raised a Series C round '
+    'of $20 million led by Alder Ventures.'
+)
+LINKED_ARTICLE_CONTINUATION = (
+    'Our previous investors offered their support.',
+    'A board appointment was announced.',
+    'The announcement concluded the session.',
 )
 CHIPS_MAY = (
     'https://www.nist.gov/news-events/news/2026/05/'
@@ -308,6 +326,139 @@ class CompanyFundingStatementTests(unittest.TestCase):
             with self.subTest(change=change, provenance=provenance):
                 result, = self.first_person_review([{**capture, **change}], **provenance)['results']
                 self.assertEqual(result['bucket'], 'unmatched')
+
+    def linked_article_review(self, captures, *, attested=True, **options):
+        article = REVIEWED_ISSUER_ARTICLES['Culture Amp']
+        event = {'id': 'culture-amp-2017-series-c', 'stage': 'Series C', 'source': CULTURE_AMP_SERIES_C_WIRE}
+        events = options.pop('other_rounds', [event])
+        fixture_article = {
+            **article,
+            'opening_sha256': digest(LINKED_ARTICLE_OPENING.encode()),
+            'continuation_sha256': tuple(digest(sentence.encode()) for sentence in LINKED_ARTICLE_CONTINUATION),
+        }
+        capture = {
+            'url': CULTURE_AMP_LINKED_ARTICLE, 'acquisition': 'page_excerpt',
+            'retrieved_on': '2026-11-20', 'excerpt': LINKED_ARTICLE_OPENING,
+        }
+        with patch.dict(REVIEWED_ISSUER_ARTICLES, {'Culture Amp': fixture_article} if attested else {}, clear=True):
+            return self.first_person_review([{**capture, **item} for item in captures], other_rounds=events, **options)
+
+    def test_linked_article_needs_exact_citation_and_page_excerpt(self):
+        date = {'announced': '2017-06'}
+        capture = {'dates': date}
+        report = self.linked_article_review([capture, capture])
+        result, = report['results']
+        row, = result['observations']
+        self.assertEqual(report['repeated_url_hits'], 1)
+        self.assertTrue(result['review_required'])
+        self.assertEqual(row, {
+            'url': CULTURE_AMP_LINKED_ARTICLE, 'acquisition': 'page_excerpt', 'retrieved_on': '2026-11-20',
+            'excerpt': LINKED_ARTICLE_OPENING, 'bucket': 'round_lead', 'signals': ['round_mention'],
+            'dates': {'announced': {'value': '2017-06', 'precision': 'month'}},
+        })
+        event = {'id': 'culture-amp-2017-series-c', 'stage': 'Series C', 'source': CULTURE_AMP_SERIES_C_WIRE}
+        for change, options in (
+            ({'url': CULTURE_AMP_LINKED_ARTICLE + '?tracking=1'}, {}),
+            ({'url': CULTURE_AMP_LINKED_ARTICLE + '#comment'}, {}),
+            ({'url': CULTURE_AMP_LINKED_ARTICLE + '-repost'}, {}),
+            ({'url': CULTURE_AMP_LINKED_ARTICLE.replace('www.cultureamp.com', 'participant.example')}, {}),
+            ({'url': CULTURE_AMP_LINKED_ARTICLE.replace('www.cultureamp.com', 'cultureamp.com')}, {}),
+            ({'url': CULTURE_AMP_SERIES_D}, {}),
+            ({'acquisition': 'reviewer_paraphrase'}, {}),
+            ({'acquisition': 'search_result'}, {}),
+            ({}, {'attested': False}),
+            ({}, {'other_rounds': []}),
+            ({}, {'other_rounds': [{**event, 'id': 'other-series-c'}]}),
+            ({}, {'other_rounds': [{**event, 'stage': 'Series E'}]}),
+            ({}, {'other_rounds': [{**event, 'source': event['source'] + '#syndicate'}]}),
+            ({}, {'other_companies': [{'name': 'Acme', 'website': 'https://cultureamp.com/about'}]}),
+            ({}, {'other_companies': [{'name': 'Acme', 'website': 'https://acme.example/',
+                                       'funding_rounds': [{**event, 'id': 'acme-series-c'}]}]}),
+            ({}, {'other_rounds': [event, {**event, 'source': event['source'] + '#other'}]}),
+            ({}, {'other_rounds': [event, {**event, 'source': CULTURE_AMP_LINKED_ARTICLE + '?other=1'}]}),
+        ):
+            with self.subTest(change=change, options=options):
+                document, = self.linked_article_review([change], **options)['results']
+                self.assertEqual(document['bucket'], 'context')
+                self.assertEqual(document['observations'][0]['signals'], ['backing_context'])
+
+    def test_linked_article_corrections_and_attribution_are_bounded(self):
+        opening = LINKED_ARTICLE_OPENING
+        amended = ' '.join((opening, *LINKED_ARTICLE_CONTINUATION))
+        for excerpt, expected in (
+            (opening, True),
+            (amended, True),
+            (f'{opening} The legal close date was not disclosed.', True),
+            (f'{opening} We did not raise a Series E.', True),
+            (f'{opening} Acme did not raise the Series C funding.', True),
+            (f'{opening} We did not raise a $21 million Series C round.', True),
+            (f'{opening} We did not raise $21 million in Series C funding.', True),
+            (f'{opening} We did not raise a US$20 million Series C round.', True),
+            (f'{opening} We did not close the Series C.', True),
+            (f'{opening} “We did not raise a Series C.”', True),
+            (f'{opening} We did not raise a Series C?', True),
+            (f'{opening} We did not raise a Series C.', False),
+            (f'{opening} We did not raise any Series C funding.', False),
+            (f'{opening} We have not actually raised the funding.', False),
+            (f'{opening} Culture Amp didn’t raise the Series C funding round.', False),
+            (f'{opening} We did not raise a $20 million Series C round.', False),
+            (f'{opening} We did not raise $20 million in Series C funding.', False),
+            (f'{opening} We did not raise a Series C round of $20 million.', False),
+            (f'{opening} I misspoke: we haven’t raised a $20 million Series C round.', False),
+            (f'{opening} I misspoke. We didn’t raise a $20 million Series C round.', False),
+            (f'{amended} We did not raise a $20 million Series C round.', False),
+            (f'{amended} Correction: We did not raise $20 million in Series C funding.', False),
+            (f'Culture Amp did not raise a Series C round. {opening}', False),
+            (f'“{opening}”', False),
+            (f'A customer said, “{opening}”', False),
+            (opening[:-1] + '?', False),
+            (opening.replace('we have raised', 'we plan to raise'), False),
+            (opening.replace('we have raised', 'the customer has raised'), False),
+            (opening.replace('Series C', 'Series D'), False),
+            (opening.replace('$20 million', '$21 million'), False),
+        ):
+            with self.subTest(excerpt=excerpt):
+                document, = self.linked_article_review([{'excerpt': excerpt}])['results']
+                self.assertEqual('round_mention' in document['observations'][0]['signals'], expected)
+
+    def test_linked_article_does_not_authorize_a_separate_excerpt(self):
+        left, right = LINKED_ARTICLE_OPENING.split('we have', 1)
+        report = self.linked_article_review([
+            {'excerpt': left.strip()},
+            {'excerpt': 'We have' + right},
+            {'url': 'https://participant.example/news'},
+        ])
+        self.assertEqual(report['repeated_url_hits'], 1)
+        self.assertEqual(sum(len(doc['observations']) for doc in report['results']), 3)
+        self.assertTrue(all('round_mention' not in row['signals']
+                            for doc in report['results'] for row in doc['observations']))
+
+    def test_linked_article_binds_adjacent_actually_raise_denials(self):
+        corrections = (
+            ('Correction: Culture Amp did not actually raise the Series C funding.', False),
+            ('Culture Amp didn’t actually raise a $20 million Series C round.', False),
+            ('We actually did not raise a Series C round.', False),
+            ('I misspoke. We actually did not raise a $20 million Series C round.', False),
+            ('Correction: We didn’t actually raise a $21 million Series C round.', True),
+            ('Culture Amp didn’t actually raise a US$20 million Series C round.', True),
+            ('Correction: Culture Amp did not actually raise the Series D funding.', True),
+            ('Correction: Acme did not actually raise the Series C funding.', True),
+            ('Correction: Culture Amp did not actually close the Series C funding.', True),
+            ('“Correction: Culture Amp did not actually raise the Series C funding.”', True),
+            ('We actually did not raise a Series C round?', True),
+            ('We did not actually raise a Series C round for Acme.', True),
+            ('Other questions were asked. We actually did not raise a Series C round.', True),
+        )
+        openings = (LINKED_ARTICLE_OPENING, ' '.join((LINKED_ARTICLE_OPENING, *LINKED_ARTICLE_CONTINUATION)))
+        excerpts = {f'{opening} {correction}': lead for opening in openings for correction, lead in corrections}
+        document, = self.linked_article_review([{'excerpt': excerpt} for excerpt in excerpts])['results']
+        for row in document['observations']:
+            with self.subTest(excerpt=row['excerpt']):
+                if excerpts[row['excerpt']]:
+                    self.assertIn('round_mention', row['signals'])
+                else:
+                    self.assertEqual(row['bucket'], 'context')
+                    self.assertIn('prospective_or_negated', row['signals'])
 
     def test_bound_first_person_round_requires_asserted_scope(self):
         lead = ('round_lead', ['round_mention'])
