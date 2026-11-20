@@ -165,6 +165,7 @@ BUSINESS_WIRE_RELEASE = re.compile(r'/news/home/([0-9]{14})/en(?:/[^/]+)?/?')
 BUSINESS_WIRE_DATELINE = r'(?-i:[A-Z][A-Z -]{1,40}(?:, [A-Z][A-Za-z -]{1,40})?--\(BUSINESS WIRE\)--) ?'
 SEED_STAGE = r'(?:pre[- ]?seed|seed)'
 SEED_INSTRUMENT = r'(?:(?:funding|financing|investment)(?: round)?|round)'
+LATER_SEED_CLOSE = re.compile(rf'(?P<issuer>{ISSUER_NAME}) later closed its (?P<series>seed) round\.', re.I)
 SEED_WIRE_LEADER = rf"{CAPITALIZED_NAME}(?: founders['’])?(?: investment consortium)?"
 SEED_WIRE_CLOSE = re.compile(
     rf'{BUSINESS_WIRE_DATELINE}(?P<issuer>{ISSUER_NAME})'
@@ -231,8 +232,13 @@ SEED_CORRECTION_TERMS = (
     rf'(?: of (?P<trailing_amount>{STATED_RAISE_AMOUNT}))?'
 )
 SEED_CLOSE_DENIAL = (
-    r"(?:(?:did not|didn['’]t) close|(?:has not|hasn['’]t) (?:yet )?closed"
+    r"(?:(?:did not|didn['’]t) (?:later )?close|(?:has not|hasn['’]t) (?:yet )?closed"
     r"|(?:was (?:not(?: yet)?|never)|wasn['’]t) closed)(?: yet)?"
+)
+SEED_POSSESSIVE_CLOSE_CORRECTION = re.compile(
+    rf"(?:Correction: )?(?P<issuer>{ISSUER_NAME})['’]s {SEED_CORRECTION_TERMS} "
+    rf'{SEED_CLOSE_DENIAL}[.!]',
+    re.I,
 )
 SEED_CLOSE_CORRECTIONS = (
     re.compile(
@@ -244,11 +250,17 @@ SEED_CLOSE_CORRECTIONS = (
         rf'(?:the funding|(?:(?:{CORRECTION_DETERMINERS}|its) )?{SEED_CORRECTION_TERMS})(?: yet)?[.!]',
         re.I,
     ),
+    SEED_POSSESSIVE_CLOSE_CORRECTION,
+)
+LATER_SEED_CLOSE_CORRECTIONS = (
     re.compile(
-        rf"(?:Correction: )?(?P<issuer>{ISSUER_NAME})['’]s {SEED_CORRECTION_TERMS} "
-        rf'{SEED_CLOSE_DENIAL}[.!]',
+        rf'(?:Correction: )?(?P<issuer>{ISSUER_NAME}) '
+        r"(?:(?:did not|didn['’]t) (?:(?:actually|in fact) )?(?:later )?close"
+        r"|(?:ha[sd] not|ha[sd]n['’]t|never) (?:(?:actually|yet) )?closed) "
+        rf'(?:(?:{CORRECTION_DETERMINERS}|its) )?{SEED_CORRECTION_TERMS}(?: yet)?[.!]',
         re.I,
     ),
+    SEED_POSSESSIVE_CLOSE_CORRECTION,
 )
 SEED_DEFINITE_CORRECTION = re.compile(
     rf'Correction: the (?P<amount>{STATED_RAISE_AMOUNT}) (?P<series>{SEED_STAGE}) {SEED_INSTRUMENT} '
@@ -557,7 +569,7 @@ def reported_raise_denial(following, issuer, series, amount, *, first_person=Fal
 
 def closing_retraction(following, issuer, report, patterns):
     series = name_key(report['series'])
-    reported_amount = [report['amount'].casefold()]
+    stated_amount = report.groupdict().get('amount')
     for offset, statement in enumerate(following):
         if offset:
             # Cross one unrelated sentence only for a labelled correction repeating the terms.
@@ -579,7 +591,7 @@ def closing_retraction(following, issuer, report, patterns):
             continue
         # Compare written amounts without interpreting currency symbols or multipliers.
         amounts = [denial[key].casefold() for key in ('leading_amount', 'trailing_amount') if denial[key]]
-        if amounts == reported_amount or (not offset and not amounts):
+        if (not offset and not amounts) or (stated_amount and amounts == [stated_amount.casefold()]):
             return statement
     return None
 
@@ -590,7 +602,7 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
     quotations = [tuple(QUOTATION_MARK.findall(statement)) for statement in statements]
     unresolved_quotation = any(marks and marks not in QUOTATION_PAIRS for marks in quotations)
     saved_assertion = allow_saved_reports and not unresolved_quotation
-    round_mention = corrected = False
+    round_mention = early_mention = corrected = False
     retractions = set()
     for index, statement in enumerate(statements):
         following = statements[index + 1:index + 2]
@@ -613,6 +625,14 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
             denied = retraction is not None
             if denied:
                 retractions.add(retraction)
+        later_seed = LATER_SEED_CLOSE.fullmatch(statement) if saved_assertion else None
+        if later_seed and (issuer := name_key(later_seed['issuer'])) in names and not prospective_clause(statement):
+            retraction = closing_retraction(following, issuer, later_seed, LATER_SEED_CLOSE_CORRECTIONS)
+            denied = retraction is not None
+            if denied:
+                retractions.add(retraction)
+            else:
+                early_mention = True
         if denied is not None:
             corrected |= denied
             round_mention |= not denied
@@ -621,7 +641,7 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
         if (unresolved_quotation or not CLOSING_DECLARATIVE_END.search(statement)
                 or CLOSING_PREFACE_BOUNDARY.search(statement, body_start)):
             break
-    return round_mention, corrected, retractions
+    return round_mention, early_mention, corrected, retractions
 
 
 def cited_seed_close(statements, names, reviewed_round):
@@ -772,7 +792,7 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
     raw_statements = ISSUER_FINANCIAL_BREAK.split(opening_text, maxsplit=3)
     statements = [' '.join(part.split()) for part in raw_statements]
     opening_round, opening_corrected = opening_issuer_round(statements, names, reviewed_round)
-    report_round, report_corrected, report_retractions = issuer_reported_rounds(
+    report_round, report_seed, report_corrected, report_retractions = issuer_reported_rounds(
         opening_text, names, allow_saved_reports=not search_result,
     )
     seed_close = False
@@ -802,7 +822,7 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
         # A bound possessive correction can otherwise match as "company's Series B".
         and (not report_retractions or ' '.join(clause.split()) not in report_retractions)
     ]
-    early = seed_close or any(
+    early = seed_close or report_seed or any(
         associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause)
     )
     round_mention = early or any(
