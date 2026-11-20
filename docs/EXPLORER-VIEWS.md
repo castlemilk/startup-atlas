@@ -110,10 +110,13 @@ The canvas, ranked list, metric controls and selected-company evidence panel mus
 | Recorded valuation | Latest eligible dated positive numeric valuation for each startup in the selected currency, with an HTTPS source. | Historical observations on potentially different dates, not current valuations. |
 | Funding announcement amount | Latest eligible dated positive numeric event amount for each startup in the selected currency, with an HTTPS source. | An announced event amount, not cumulative funding or necessarily primary equity capital. Preserve instrument/secondary-transfer notes. |
 | Public market cap | Latest eligible positive market-cap observation for each listed company in the selected currency. | Give the listing, observation date and source. For estimates, show the closing price, economic shares used, the date of that share count and any share-class notes. |
+| Company value | Use the latest eligible market-cap observation for a verified listed company or the latest eligible valuation for a verified privately held company. Plot the figure when its reported currency matches the chosen currency. | Label the figure basis on each tile, card and list entry. Show the valuation event or market-cap calculation, date and sources in Figure. Name why a company is missing a comparable value. |
 
 No parsing money out of free text, implicit FX conversion, overlapping-event summation or missing-to-zero substitution. Same-date ties use a deterministic event-ID ordering. If a newer event is ineligible for the selected measure/currency, retain the older comparable observation and explain that a newer unplotted event exists. All events remain on the profile.
 
 The default view shows company count grouped and coloured by technology type. Explicit metric and presentation links retain their settings. Atlas publishes the [reviewed market-cap observations and technology sources](../data/treemap-evidence.json) with the graph in JSON and SQLite. Earlier snapshots can still display the company catalogue and its existing measures.
+
+Company value opens grouped by technology type. It selects one latest sourced positive figure across currencies before applying the currency choice, so an older USD valuation does not replace a newer AUD valuation. Standalone private valuations from reviewed transactions are stored alongside the ownership evidence. Funding amounts, valuation floors and acquisition prices are context for investigation. Subsidiaries, unresolved ownership and missing comparable figures remain inspectable in the excluded-company list. The Overview panel gives all available sourced profile facts, founders, funding announcements and links.
 
 ### Grouping and coverage
 

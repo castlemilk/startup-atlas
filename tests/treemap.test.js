@@ -177,17 +177,53 @@ test('public market cap selects the latest eligible close per currency and keeps
   assert.equal(makeView(graph,{metric:'companies',group:'technology',dimensions}).groups.at(-1).name,'Technology type not recorded');
 });
 
+test('company value uses the verified ownership basis and latest sourced figure in one currency',()=>{
+  const market = (id,amount,observed_on) => ({startup_id:id,amount,observed_on,currency:'USD',ticker:id.toUpperCase(),exchange:'NYSE',source:'https://example.com/market'});
+  const owner = status => ({status,observed_on:'2026-11-20',detail:'Ownership receipt.',source:'https://example.com/ownership'});
+  const supplemental = {...event('b-valuation','b','2026-10-08',15),stage:'Secondary share sale',approximate:true};
+  const fixture = {...graph,
+    entities:[...graph.entities,company('d'),company('e'),company('f')],
+    funding_rounds:[...graph.funding_rounds,event('d-usd','d','2025-01-02',30),event('d-aud','d','2026-01-02',60,'AUD'),event('e-private','e','2024-01-01',1000),event('f-unsure','f','2026-01-01',5000)],
+  };
+  const evidence = model.indexTreemapEvidence(fixture,{
+    version:1, ownership:{a:owner('public'),b:owner('private'),c:owner('public'),d:owner('private'),e:owner('subsidiary'),f:{...owner('private'),source:'http://example.com/guess'}},
+    market_caps:[market('a',28,'2026-11-19'),market('a',30,'2026-11-20'),market('b',200,'2026-11-20')],
+    private_valuations:[supplemental,{...supplemental,valuation:80}, {...supplemental,id:'undated',announced_on:''}],
+  });
+  assert.equal(evidence.privateValuations.length,1);
+  const companyValues = model.indexCompanyValues(fixture,evidence);
+  const dimensions = new Map([['a',{technology:'Quantum technology'}],['b',{technology:'Business software'}]]);
+  const usd = makeView(fixture,{metric:model.COMPANY_VALUE,currency:'USD',group:'technology',companyValues,dimensions});
+  assert.deepEqual(usd.rows.map(row=>[row.id,row.basis,row.value]),[['a','market-cap',30],['b','valuation',15]]);
+  assert.equal(usd.rows[0].event.observed_on,'2026-11-20');
+  assert.equal(usd.rows[1].event.approximate,true);
+  assert.deepEqual([...usd.missingFigures].map(([id,figure])=>[id,figure.reason]),[
+    ['c','value-not-recorded'],['d','different-currency'],['e','not-standalone'],['f','ownership-not-recorded'],
+  ]);
+  assert.equal(usd.missingFigures.get('d').currency,'AUD');
+  assert.deepEqual(currencies(fixture,model.COMPANY_VALUE,evidence.marketCaps,companyValues),['AUD','USD']);
+  assert.deepEqual(makeView(fixture,{metric:model.COMPANY_VALUE,currency:'AUD',companyValues}).rows.map(row=>[row.id,row.value]),[['d',60]]);
+  assert.equal(model.companyFigure(fixture,fixture.entities[1],model.COMPANY_VALUE,'USD',evidence.marketCaps,companyValues).event.id,supplemental.id);
+});
+
 test('reviewed treemap evidence matches published identities and market-cap calculations',async()=>{
   const published = JSON.parse(await readFile('data/graph.json','utf8'));
   const evidence = JSON.parse(await readFile('data/treemap-evidence.json','utf8'));
-  const {technology,marketCaps} = model.indexTreemapEvidence(published,evidence);
+  const indexed = model.indexTreemapEvidence(published,evidence);
+  const {technology,marketCaps,ownership,privateValuations} = indexed;
   assert.equal(technology.size,Object.keys(evidence.technology).length);
   assert.equal(marketCaps.length,evidence.market_caps.length);
+  assert.equal(ownership.size,Object.keys(evidence.ownership).length);
+  assert.equal(privateValuations.length,evidence.private_valuations.length);
   assert.equal(technology.get('startup:psiquantum').type,'Quantum technology');
   assert.ok(new Set([...technology.values()].map(fact=>fact.type)).size>=10);
   const usd = makeView(published,{metric:'market-cap',currency:'USD',marketCaps});
   assert.ok(usd.rows.some(row=>row.id==='startup:wise'));
   assert.ok(usd.rows.some(row=>row.id==='startup:uipath'));
+  const values = model.indexCompanyValues(published,indexed);
+  assert.equal(values.get('startup:wise').basis,'market-cap');
+  assert.equal(values.get('startup:revolut').basis,'valuation');
+  assert.equal(values.get('startup:eucalyptus').reason,'not-standalone');
 });
 test('context requires founder direction, person identity and HTTPS evidence; deduplicates without mutating',()=>{
   const person={id:'p',kind:'person',name:'Founder',logo:'https://example.com/photo',logo_source:'https://example.com/team',socials:[{label:'LinkedIn',url:'https://example.com/profile',source:'https://example.com/team'}]};

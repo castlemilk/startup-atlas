@@ -363,6 +363,24 @@
 }
 .treemap-tile[aria-pressed=true]:not(.tiny) .treemap-tile-selection { display:block; }
 .treemap-tile[aria-pressed=true]:not(.tiny) .treemap-tile-inner { padding-top:22px; }
+.treemap-figure-basis { display:inline-flex; align-items:center; gap:5px; color:var(--atlas-ink); font-size:var(--atlas-text-xs); line-height:1.2; }
+.treemap-figure-basis i { display:block; flex:none; width:8px; height:8px; border:1.5px solid currentColor; }
+.treemap-figure-basis[data-figure-basis=market-cap] i { background:currentColor; }
+.treemap-figure-basis[data-figure-basis=valuation] i { border-radius:50%; }
+.treemap-tile-inner > .treemap-figure-basis {
+  position:absolute;
+  inset:6px 6px auto auto;
+  padding:5px 8px;
+  border-radius:var(--atlas-radius-control);
+  background:var(--atlas-surface);
+  font-weight:650;
+  white-space:nowrap;
+}
+.treemap-tile:not(.tiny) .treemap-tile-inner:has(> .treemap-figure-basis) { padding-top:34px; }
+.treemap-tile.tiny .treemap-figure-basis { inset:2px 2px auto auto; padding:3px; }
+.treemap-tile.tiny .treemap-figure-basis > span { display:none; }
+.treemap-figure-key { display:flex; flex-wrap:wrap; gap:4px 12px; margin-top:6px; }
+.treemap-figure-key > span { display:inline-flex; align-items:center; gap:5px; }
 .treemap-value {
   font:720 clamp(15px,9cqi,31px)/1.12 var(--atlas-font-body);
   letter-spacing:-.035em;
@@ -428,6 +446,21 @@
 .treemap-tile.micro .treemap-tile-inner { padding:0; }
 .treemap-tile.micro .treemap-tile-identity { display:none; }
 .treemap-tile.micro:focus-visible .treemap-tile-inner { outline-offset:-2px; }
+.treemap-tile.treemap-value-column .treemap-tile-inner { justify-content:end; padding:36px 6px 7px; }
+.treemap-tile.treemap-value-column .treemap-figure-basis { inset:4px 4px auto; padding:4px 6px; white-space:normal; }
+.treemap-tile.treemap-value-column .treemap-figure-basis > span { display:inline; }
+.treemap-tile.treemap-value-column .treemap-value { display:block; font-size:14px; }
+.treemap-tile.treemap-value-column[aria-pressed=true] .treemap-tile-selection { display:none; }
+.treemap-tile.treemap-value-row .treemap-tile-inner { flex-direction:row; align-items:center; justify-content:start; gap:6px; padding:2px 6px; }
+.treemap-tile.treemap-value-row .treemap-tile-identity { display:block; width:auto; min-width:0; }
+.treemap-tile.treemap-value-row .treemap-tile-copy { display:block; }
+.treemap-tile.treemap-value-row .treemap-tile-name { overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font-size:var(--atlas-text-xs); }
+.treemap-tile.treemap-value-row .treemap-tile-inner > .treemap-figure-basis { position:static; order:1; flex:none; padding:0; background:transparent; }
+.treemap-tile.treemap-value-row .treemap-value { display:block; flex:none; font-size:var(--atlas-text-xs); white-space:nowrap; }
+.treemap-value-row .treemap-logo, .treemap-value-row .treemap-tile-selection { display:none; }
+@container (min-width:230px) {
+  .treemap-tile.treemap-value-row .treemap-figure-basis > span { display:inline; }
+}
 .treemap-tile.compact .treemap-logo:not(:has(img:not([hidden]))) { width:30px; height:30px; font-size:12px; }
 .treemap-list .treemap-logo { width:42px; height:30px; font-size:12px; }
 .treemap-list .treemap-logo.logo-wide { width:60px; }

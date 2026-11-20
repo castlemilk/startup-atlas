@@ -93,7 +93,9 @@ const treemapSource = JSON.parse(await readFile('data/treemap-evidence.json','ut
 const graphForTreemap = JSON.parse(await readFile('data/graph.json','utf8'));
 const treemapEvidence = indexTreemapEvidence(graphForTreemap,treemapSource);
 if (treemapSource.version !== 1 || treemapEvidence.technology.size !== Object.keys(treemapSource.technology).length ||
-    treemapEvidence.marketCaps.length !== treemapSource.market_caps.length) {
+    treemapEvidence.marketCaps.length !== treemapSource.market_caps.length ||
+    treemapEvidence.ownership.size !== Object.keys(treemapSource.ownership ?? {}).length ||
+    treemapEvidence.privateValuations.length !== (treemapSource.private_valuations ?? []).length) {
   throw new Error('Treemap evidence has an invalid, duplicate or unmatched record');
 }
 await cp('data/treemap-evidence.json','dist/data/treemap-evidence.json');

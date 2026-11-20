@@ -1,6 +1,7 @@
 import { countryName } from './atlas-exploration.js';
 
-export const METRICS = ['valuation', 'funding', 'market-cap', 'companies'];
+export const COMPANY_VALUE = 'company-value';
+export const METRICS = ['valuation', 'funding', 'market-cap', 'companies', COMPANY_VALUE];
 export const GROUPS = ['technology', 'sector', 'country', 'city', 'stage', 'company', 'decade'];
 export const COLOURS = ['technology', 'sector', 'country', 'freshness', 'none', 'decade'];
 export const validYear = value => Number.isInteger(value) && value >= 1800 && value <= new Date().getUTCFullYear();
@@ -23,8 +24,9 @@ const sourcedAmount = (record, metric) => source(record.source) && dated(dateOf(
 const observations = (graph, metric, marketCaps) => metric === marketCap ? marketCaps : graph.funding_rounds || [];
 
 export function indexTreemapEvidence(graph, document) {
-  const technology = new Map(), marketCaps = [];
-  if (document?.version !== 1) return {technology, marketCaps};
+  const technology = new Map(), marketCaps = [], ownership = new Map(), privateValuations = [];
+  const evidence = {technology, marketCaps, ownership, privateValuations};
+  if (document?.version !== 1) return evidence;
   const ids = new Set(graph.entities.filter(entity => entity.kind === 'startup').map(entity => entity.id));
   for (const [id, fact] of Object.entries(document.technology ?? {})) {
     if (ids.has(id) && typeof fact?.type === 'string' && fact.type.trim() &&
@@ -48,14 +50,29 @@ export function indexTreemapEvidence(graph, document) {
     seen.add(key);
     marketCaps.push(record);
   }
-  return {technology, marketCaps};
+  for (const [id, fact] of Object.entries(document.ownership ?? {})) {
+    if (ids.has(id) && ['public','private','subsidiary'].includes(fact?.status) && dated(fact.observed_on) &&
+        source(fact.source) && typeof fact.detail === 'string' && fact.detail.trim()) ownership.set(id, fact);
+  }
+  const valuationIds = new Set();
+  for (const record of Array.isArray(document.private_valuations) ? document.private_valuations : []) {
+    if (!ids.has(record?.startup_id) || !comparableEvent(record, 'valuation') ||
+        typeof record.id !== 'string' || !record.id.trim() || valuationIds.has(record.id) ||
+        typeof record.stage !== 'string' || !record.stage.trim() ||
+        (record.supporting_source !== undefined && !source(record.supporting_source)) ||
+        (record.approximate !== undefined && typeof record.approximate !== 'boolean')) continue;
+    valuationIds.add(record.id);
+    privateValuations.push(record);
+  }
+  return evidence;
 }
 
 export function comparableEvent(round, metric) {
   return sourcedAmount(round, metric) && positive(amountOf(round, metric));
 }
-export function currencies(graph, metric, marketCaps = []) {
+export function currencies(graph, metric, marketCaps = [], companyValues = new Map()) {
   if (metric === 'companies') return [];
+  if (metric === COMPANY_VALUE) return [...new Set([...companyValues.values()].flatMap(figure => figure.currency || []))].sort();
   return [...new Set(observations(graph, metric, marketCaps)
     .filter(round => sourcedAmount(round, metric) && (positive(amountOf(round, metric)) || amountOf(round, metric) === 0))
     .map(round => currencyOf(round, metric)))].sort();
@@ -87,7 +104,7 @@ function observation(events, metric, currency) {
   const sourced = events.filter(record => source(record.source)).sort((a,b) =>
     String(dateOf(b, metric) || '').localeCompare(String(dateOf(a, metric) || '')) ||
     String(a.id ?? a.ticker).localeCompare(String(b.id ?? b.ticker)));
-  const eligible = sourced.filter(record => sourcedAmount(record, metric) && currencyOf(record, metric) === currency);
+  const eligible = sourced.filter(record => sourcedAmount(record, metric) && (!currency || currencyOf(record, metric) === currency));
   const event = eligible.find(record => positive(amountOf(record, metric)));
   if (event) return {event, value:amountOf(event, metric), newerUnplotted:sourced.some(record => dateOf(record, metric) > dateOf(event, metric))};
   if (metric === marketCap) return {reason:sourced.length ? 'not-comparable' : 'unknown'};
@@ -101,27 +118,53 @@ function observation(events, metric, currency) {
   return {reason:sourced.length ? 'not-comparable' : 'unknown'};
 }
 
-export function companyFigure(graph, entity, metric, currency, marketCaps = []) {
+function observationsByCompany(records) {
+  const events = new Map();
+  for (const record of records) {
+    if (!events.has(record.startup_id)) events.set(record.startup_id, []);
+    events.get(record.startup_id).push(record);
+  }
+  return events;
+}
+
+export function indexCompanyValues(graph, {ownership, marketCaps, privateValuations}) {
+  const quotes = observationsByCompany(marketCaps);
+  const valuations = observationsByCompany([...(graph.funding_rounds || []), ...privateValuations]);
+  return new Map([...ownership].map(([id, fact]) => {
+    if (fact.status === 'subsidiary') return [id, {reason:'not-standalone'}];
+    const basis = fact.status === 'public' ? marketCap : 'valuation';
+    const events = basis === marketCap ? quotes : valuations;
+    const figure = observation(events.get(id) || [], basis);
+    return [id, figure.reason ? {basis, reason:'value-not-recorded'}
+      : {...figure, basis, currency:currencyOf(figure.event,basis)}];
+  }));
+}
+
+function companyValueFigure(companyValues, id, currency) {
+  const figure = companyValues.get(id);
+  if (!figure) return {reason:'ownership-not-recorded'};
+  if (figure.reason || figure.currency === currency) return figure;
+  return {basis:figure.basis, currency:figure.currency, event:figure.event, reason:'different-currency'};
+}
+
+export function companyFigure(graph, entity, metric, currency, marketCaps = [], companyValues = new Map()) {
   if (metric === 'companies') return {value:1};
+  if (metric === COMPANY_VALUE) return companyValueFigure(companyValues,entity.id,currency);
   return observation(observations(graph, metric, marketCaps).filter(record => record.startup_id === entity.id), metric, currency);
 }
 
-export function makeView(graph, {metric = 'valuation', currency = 'USD', query = '', period = 'all', group:grouping = 'decade', dimensions, companies = graph.entities, marketCaps = []} = {}) {
+export function makeView(graph, {metric = 'valuation', currency = 'USD', query = '', period = 'all', group:grouping = 'decade', dimensions, companies = graph.entities, marketCaps = [], companyValues = new Map()} = {}) {
   const population = matchingCompanies(companies, query).filter(entity => period === 'all' || cohort(entity) === period);
   const rows = [], missing = [], missingFigures = new Map(), groups = new Map();
-  const events = new Map();
-  if (metric !== 'companies') {
-    for (const round of observations(graph, metric, marketCaps)) {
-      if (!events.has(round.startup_id)) events.set(round.startup_id, []);
-      events.get(round.startup_id).push(round);
-    }
-  }
+  const events = observationsByCompany(metric === 'companies' || metric === COMPANY_VALUE ? [] : observations(graph,metric,marketCaps));
   for (const entity of population) {
     const key = groupFor(entity, grouping, dimensions?.get(entity.id));
     if (!groups.has(key.id)) groups.set(key.id, {...key, count:0, value:0, children:[]});
     const group = groups.get(key.id);
     group.count++;
-    const figure = metric === 'companies' ? {value:1} : observation(events.get(entity.id) || [], metric, currency);
+    const figure = metric === 'companies' ? {value:1}
+      : metric === COMPANY_VALUE ? companyValueFigure(companyValues,entity.id,currency)
+      : observation(events.get(entity.id) || [], metric, currency);
     if (figure.reason) {
       missing.push(entity);
       missingFigures.set(entity.id, figure);
@@ -259,6 +302,8 @@ export function companyContext(graph, entity, currency='USD', marketCaps = []) {
   return {
     facts:Array.isArray(entity.profile_facts) ? entity.profile_facts.filter(fact => fact.label && fact.value && source(fact.source)) : [],
     socials:socials(entity.socials), founders,
+    rounds:(graph.funding_rounds || []).filter(round => round.startup_id === entity.id && source(round.source))
+      .sort((a,b) => String(b.announced_on || '').localeCompare(String(a.announced_on || ''))),
     figures:['funding','valuation',marketCap].map(metric => {
       const figure = companyFigure(graph,entity,metric,currency,marketCaps);
       return {metric, row:figure.reason ? null : figure, reason:figure.reason, event:figure.event};

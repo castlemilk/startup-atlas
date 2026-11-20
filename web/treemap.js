@@ -3,8 +3,8 @@ import { openGraph } from './graph-store.js';
 import { entityHref, kindName } from './graph-model.js';
 import { logoFor, logoClassFor } from './logos.js';
 import {
-  COLOURS, GROUPS, METRICS, cohort, cohortNames, colourEncoding, companyContext, companyFigure, currencies,
-  formatValue, groupedTreemap, indexTreemapEvidence, makeView, treemap, validYear,
+  COLOURS, COMPANY_VALUE, GROUPS, METRICS, cohort, cohortNames, colourEncoding, companyContext, companyFigure, currencies,
+  formatValue, groupedTreemap, indexCompanyValues, indexTreemapEvidence, makeView, treemap, validYear,
 } from './treemap-model.js';
 import { animateAtlasChange, canAnimateAtlasChange, icon } from './atlas-ui.js';
 import { countryName, explorationHref, filterCompanies, hasCompanyScope, indexCompanies, readExploration, writeExploration } from './atlas-exploration.js';
@@ -24,18 +24,23 @@ const defaults = {
   presentation:'map', metric:'companies', currency:'USD', group:'technology', colour:'technology',
   period:'all', logos:true,
 };
-const titles = {valuation:'Recorded valuations', funding:'Funding announcements', 'market-cap':'Public market cap', companies:'Company count'};
+const titles = {valuation:'Recorded valuations', funding:'Funding announcements', 'market-cap':'Public market cap', companies:'Company count', [COMPANY_VALUE]:'Company value'};
 const figureNames = {valuation:'Recorded valuation', funding:'Funding announcement', 'market-cap':'Public market cap'};
+const valueBases = {'market-cap':'Market cap', valuation:'Private valuation'};
+const ownershipNames = {public:'Publicly listed', private:'Privately held', subsidiary:'Subsidiary'};
 const figureDate = (event,metric) => metric === 'market-cap' ? event.observed_on : event.announced_on;
 const dateLabel = metric => metric === 'market-cap' ? 'As of' : 'Announced';
 const datedFigure = (event,metric) => figureDate(event,metric) ? `${dateLabel(metric)} ${figureDate(event,metric)}` : '';
 const newerFigure = metric => metric === 'market-cap' ? 'Newer market-cap observation outside this currency' : 'Newer announcement not plotted';
 let graph, graphStore, view, state, exploration, dimensions, companies, entities, periods, colours;
-let technology, marketCaps, evidenceAvailable;
+let technology, ownership, marketCaps, companyValues, evidenceAvailable;
 let lastWidth = 0, lastHeight = 0, visibleCompanies = new Set(), queryCompanies = [];
 let previousQuery, searchMatches;
 let sheetSuspended = false;
 const money = value => formatValue(value, state.metric, state.currency);
+const figureAmount = (figure, compact = true) => `${figure.basis && figure.event?.approximate ? '≈ ' : ''}${formatValue(figure.value, figure.basis || state.metric, figure.currency || state.currency, compact)}`;
+const figureBadge = basis => basis ? `<span class="treemap-figure-basis" data-figure-basis="${basis}"><i aria-hidden="true"></i><span>${valueBases[basis]}</span></span>` : '';
+const availableCurrencies = metric => currencies(graph,metric,marketCaps,companyValues);
 const countLabel = count => formatValue(count, 'companies');
 const safeImageUrl = value => /^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(value || '') ? value : sourceUrl(value);
 const safeImage = entity => safeImageUrl(logoFor(entity.name)) ||
@@ -85,18 +90,18 @@ function showPresentation(presentation) {
   $('treemap-tile-disclosure').hidden = true;
 }
 function validCurrency(metric, requested) {
-  const available = currencies(graph, metric, marketCaps);
+  const available = availableCurrencies(metric);
   return available.includes(requested) ? requested : available.includes('USD') ? 'USD' : available[0] || 'USD';
 }
 function readState() {
   const params = new URLSearchParams(location.search);
   const presentation = presentationFrom(params);
-  const group = params.get('group'), colour = params.get('colour');
-  const modern = params.has('colour') || params.get('metric') === 'market-cap' || ['technology','sector','country','city','stage'].includes(group)
+  const group = params.get('group'), colour = params.get('colour'), requestedMetric = params.get('metric');
+  const modern = params.has('colour') || ['market-cap',COMPANY_VALUE].includes(requestedMetric) || ['technology','sector','country','city','stage'].includes(group)
     || ['hq','sector','stage','place','city','selected','density','logos'].some(key => params.has(key));
   // Historic share links omitted default grouping and colour.
   const legacy = !modern && (presentation !== 'map' || ['metric','period','company','currency'].some(key => params.has(key)));
-  const metric = METRICS.includes(params.get('metric')) ? params.get('metric') : legacy ? 'funding' : defaults.metric;
+  const metric = METRICS.includes(requestedMetric) ? requestedMetric : legacy ? 'funding' : defaults.metric;
   const shared = readExploration(params);
   const oldSelection = params.get('company');
   return {
@@ -132,7 +137,7 @@ function syncControls() {
   const presentation = $('treemap-presentation');
   if (presentation.getAttribute('value') !== state.presentation) presentation.setAttribute('value', state.presentation);
   $('treemap-metric').value = state.metric;
-  const available = currencies(graph, state.metric, marketCaps);
+  const available = availableCurrencies(state.metric);
   const currency = $('treemap-currency');
   const key = available.join(',');
   if (currency.dataset.options !== key) {
@@ -157,6 +162,8 @@ function syncControls() {
 function profileContext(entity) {
   const context = companyContext(graph, entity, state.currency, marketCaps);
   const technologyFact = technology.get(entity.id);
+  const owner = ownership.get(entity.id);
+  const companyValue = companyValues.get(entity.id);
   const links = [evidenceLink(entity.website,'Website'), ...context.socials.map(link => evidenceLink(link.url,link.label))].filter(Boolean).join('');
   const figures = context.figures.map(({metric,row,reason,event}) => {
     const date = event ? datedFigure(event, metric) : '';
@@ -165,15 +172,30 @@ function profileContext(entity) {
     return `<div><dt>${figureNames[metric]}</dt><dd>${value}${listing}${date ? `<span>${esc(date)}</span>` : ''}
       ${evidenceLink(event?.source,'Source')}${row?.newerUnplotted ? `<span>${newerFigure(metric)}</span>` : ''}</dd></div>`;
   }).join('');
-  const founders = context.founders.slice(0,3).map(({person,source,socials}) => `<article class="treemap-founder">${mark(person)}<div><a href="${esc(entityHref(person))}">${esc(person.name)}</a><small>Founder · ${evidenceLink(source,'Evidence')}</small>${evidenceLink(person.website,'Profile')}${socials.map(link => evidenceLink(link.url,link.label)).join('')}${person.logo ? evidenceLink(person.logo_source,'Photo source') : ''}</div></article>`).join('');
-  const facts = context.facts.slice(0,3).map(fact => `<div><dt>${esc(fact.label)}</dt><dd>${esc(fact.value)}${evidenceLink(fact.source,'Source')}${fact.reviewed_at ? `<small>Reviewed ${esc(fact.reviewed_at)}</small>` : ''}</dd></div>`).join('');
-  return `${technologyFact ? `<p class="treemap-note"><strong>Technology type</strong> ${esc(technologyFact.type)}<br>${esc(technologyFact.detail)} ${evidenceLink(technologyFact.source,'Technology source')}</p>` : ''}
+  const founders = context.founders.map(({person,source,socials}) => `<article class="treemap-founder">${mark(person)}<div><a href="${esc(entityHref(person))}">${esc(person.name)}</a><small>Founder · ${evidenceLink(source,'Evidence')}</small>${evidenceLink(person.website,'Profile')}${socials.map(link => evidenceLink(link.url,link.label)).join('')}${person.logo ? evidenceLink(person.logo_source,'Photo source') : ''}</div></article>`).join('');
+  const facts = context.facts.map(fact => `<div><dt>${esc(fact.label)}</dt><dd>${esc(fact.value)}${evidenceLink(fact.source,'Source')}${fact.reviewed_at ? `<small>Reviewed ${esc(fact.reviewed_at)}</small>` : ''}</dd></div>`).join('');
+  const rounds = context.rounds.map(round => {
+    const amount = Number.isFinite(round.amount) && round.currency ? formatValue(round.amount,'funding',round.currency) : round.amount_text;
+    const valuation = Number.isFinite(round.valuation) && round.valuation_currency ? `${formatValue(round.valuation,'valuation',round.valuation_currency)} valuation` : round.valuation_text;
+    const terms = [round.announced_on, amount, valuation].filter(Boolean).join(' · ');
+    return `<div><dt>${esc(round.stage || 'Funding announcement')}</dt><dd>${esc(terms || 'Terms unavailable')} ${evidenceLink(round.source,'Source')}${round.note ? `<small>${esc(round.note)}</small>` : ''}</dd></div>`;
+  }).join('');
+  const valueContext = companyValue?.event ? `<div><dt>${valueBases[companyValue.basis]}</dt><dd><strong>${esc(figureAmount(companyValue))}</strong> <span>${esc(datedFigure(companyValue.event,companyValue.basis))}</span> ${evidenceLink(companyValue.event.source,'Value source')}</dd></div>` : '';
+  return `<p class="treemap-note"><strong>Technology type</strong> ${esc(technologyFact?.type || 'Not recorded')}${technologyFact ? `<br>${esc(technologyFact.detail)} ${evidenceLink(technologyFact.source,'Technology source')}` : ''}</p>
+    ${owner ? `<p class="treemap-note"><strong>${ownershipNames[owner.status]}</strong> · ${esc(owner.observed_on)}<br>${esc(owner.detail)} ${evidenceLink(owner.source,'Ownership source')}</p>` : '<p>Ownership evidence not recorded.</p>'}
     <section class="treemap-founders"><h3>Founders</h3>${founders || '<p>Founder details are not recorded yet.</p>'}</section>
-    <details class="treemap-context"><summary>Financial context · ${esc(state.currency)}</summary><dl>${figures}</dl></details>
+    <details class="treemap-context"><summary>Financial context</summary><dl>${valueContext}${figures}</dl></details>
     ${facts ? `<details class="treemap-context"><summary>Company details · ${context.facts.length} sourced ${context.facts.length === 1 ? 'fact' : 'facts'}</summary><dl>${facts}</dl></details>` : ''}
+    ${rounds ? `<details class="treemap-context"><summary>Funding history · ${context.rounds.length} recorded</summary><dl>${rounds}</dl></details>` : ''}
     ${links ? `<div class="treemap-company-links">${links}</div>` : ''}`;
 }
 function missingFigureLabel(figure, metric = state.metric) {
+  if (metric === COMPANY_VALUE) {
+    if (figure.reason === 'ownership-not-recorded') return 'Ownership evidence not recorded';
+    if (figure.reason === 'not-standalone') return 'No standalone company value';
+    if (figure.reason === 'different-currency') return `Latest ${valueBases[figure.basis].toLowerCase()} is in ${figure.currency}`;
+    return figure.basis === 'market-cap' ? 'No sourced market cap' : 'No comparable private valuation';
+  }
   if (figure.reason === 'recorded-zero') return formatValue(0,metric,state.currency) + ' recorded';
   if (figure.reason === 'undisclosed') return metric === 'valuation' ? 'Valuation undisclosed' : 'Amount undisclosed';
   if (figure.reason === 'unknown') return {
@@ -185,11 +207,13 @@ function missingFigureLabel(figure, metric = state.metric) {
 }
 
 function figurePanel(figure, entity) {
-  const {event} = figure;
+  const {event, basis = state.metric} = figure;
+  const isCompanyValue = state.metric === COMPANY_VALUE;
   if (figure.reason) {
     return `<p class="treemap-detail-value">${esc(missingFigureLabel(figure))}</p>
-      ${event?.announced_on ? `<p>Announced ${esc(event.announced_on)}</p>` : ''}
-      ${evidenceLink(event?.source,'Read the announcement')}`;
+      ${event ? `<p>${esc(datedFigure(event,basis))}</p>` : ''}
+      ${evidenceLink(event?.source,isCompanyValue ? 'Value source' : 'Read the announcement')}
+      ${isCompanyValue ? evidenceLink(ownership.get(entity.id)?.source,'Ownership source') : ''}`;
   }
   if (state.metric === 'companies') {
     const context = {
@@ -199,7 +223,7 @@ function figurePanel(figure, entity) {
     };
     return `<p class="treemap-detail-value">One company</p><p>${context[state.presentation]}</p>${evidenceLink(entity.source,'Read the profile source')}`;
   }
-  if (state.metric === 'market-cap') {
+  if (basis === 'market-cap') {
     const calculation = event.calculation;
     const price = calculation ? formatValue(calculation.close,state.metric,state.currency,false) : '';
     const shares = calculation ? new Intl.NumberFormat('en').format(calculation.shares) : '';
@@ -219,17 +243,18 @@ function figurePanel(figure, entity) {
       ${evidenceLink(calculation?.shares_source,'Shares outstanding source')}
       ${evidenceLink(calculation?.share_terms_source,'Share-class rights')}`;
   }
-  return `<p class="treemap-detail-value">${esc(money(figure.value))}</p>
-    <p>${state.metric === 'valuation' ? 'Historical announced valuation' : 'Recorded announcement amount'}</p>
+  return `<p class="treemap-detail-value">${esc(figureAmount(figure))}</p>
+    <p>${isCompanyValue ? 'Private valuation' : basis === 'valuation' ? 'Historical announced valuation' : 'Recorded announcement amount'}</p>
     <dl>
-      <div><dt>Recorded figure</dt><dd>${esc(formatValue(figure.value,state.metric,state.currency,false))}</dd></div>
+      <div><dt>${isCompanyValue ? 'Valuation' : 'Recorded figure'}</dt><dd>${esc(figureAmount(figure,false))}</dd></div>
       <div><dt>Announced</dt><dd>${esc(event.announced_on)}</dd></div>
       <div><dt>Event</dt><dd>${esc(event.stage || 'Not recorded')}</dd></div>
       <div><dt>Currency</dt><dd>${esc(state.currency)}</dd></div>
     </dl>
-    ${figure.newerUnplotted ? '<p class="treemap-note">A newer announcement exists in this profile but is not plotted for this metric and currency.</p>' : ''}
+    ${figure.newerUnplotted ? `<p class="treemap-note">${isCompanyValue ? 'A newer announcement did not supply a sourced valuation.' : 'A newer announcement exists in this profile but is not plotted for this metric and currency.'}</p>` : ''}
     ${event.note ? `<p class="treemap-note">${esc(event.note)}</p>` : ''}
-    ${evidenceLink(event.source,'Read the announcement')}`;
+    ${evidenceLink(event.source,isCompanyValue ? 'Valuation source' : 'Read the announcement')}
+    ${evidenceLink(event.supporting_source,'Supporting source')}`;
 }
 
 function showDetail() {
@@ -248,7 +273,7 @@ function showDetail() {
   }
   const isCompany = entity.kind === 'startup';
   const inResults = visibleCompanies.has(state.selected);
-  const figure = isCompany ? companyFigure(graph,entity,state.metric,state.currency,marketCaps) : null;
+  const figure = isCompany ? companyFigure(graph,entity,state.metric,state.currency,marketCaps,companyValues) : null;
   const place = dimensions.get(entity.id);
   const locationLabel = place?.country ? [place.city,countryName(place.country)].filter(Boolean).join(', ') : '';
   const founded = validYear(entity.founded_year) ? `Founded ${entity.founded_year}` : '';
@@ -309,25 +334,29 @@ function emptyResults() {
 const tileBounds = tile => `left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px`;
 const bucketView = () => state.group === 'decade' && state.period === 'all' && state.colour === 'decade';
 function tileMarkup(tile, aggregate = false) {
-  const {entity, event} = tile;
+  const {entity, event, basis} = tile;
   const name = aggregate ? tile.name : entity.name;
   const colour = colours.forCompany(aggregate ? tile.children[0].entity : entity);
   const size = tile.width < 40 || tile.height < 40 ? 'micro tiny'
     : tile.width < 112 || tile.height < 80 ? 'tiny' : tile.width < 220 || tile.height < 150 ? 'compact' : '';
+  const valueLayout = !basis ? '' : tile.width >= 180 && tile.height >= 22 && tile.height < 64 ? ' treemap-value-row'
+    : tile.width >= 70 && tile.width < 132 && tile.height >= 116 ? ' treemap-value-column' : '';
   const meta = aggregate ? `${countLabel(tile.count)} · Explore ↗`
-    : event ? datedFigure(event,state.metric)
+    : event ? datedFigure(event,basis || state.metric)
     : entity.summary || (validYear(entity.founded_year) ? `Founded ${entity.founded_year}` : '');
   const description = aggregate
     ? `Explore ${name}, ${money(tile.value)}`
-    : [name, money(tile.value), event ? meta : '', colour.detail || colour.name].filter(Boolean).join(', ');
+    : [name, valueBases[basis], figureAmount(tile), event ? meta : '', colour.detail || colour.name].filter(Boolean).join(', ');
   const target = aggregate ? `data-period="${esc(tile.id)}"`
     : `data-company="${esc(tile.id)}" aria-pressed="${state.selected === tile.id}" aria-controls="treemap-detail"`;
-  return `<button type="button" class="treemap-tile ${size}${tile.width < 70 || tile.height < 70 ? ' mark-only' : ''}${state.metric === 'companies' && !aggregate ? ' count-company' : ''}"
-    ${target} aria-label="${esc(description)}" style="${tileBounds(tile)};--tile-color:${colour.fill}">
+  const markOnly = !valueLayout && (tile.width < 70 || tile.height < 70);
+  return `<button type="button" class="treemap-tile ${size}${valueLayout}${markOnly ? ' mark-only' : ''}${state.metric === 'companies' && !aggregate ? ' count-company' : ''}"
+    ${target} aria-label="${esc(description)}"${basis ? ` title="${esc(description)}"` : ''} style="${tileBounds(tile)};--tile-color:${colour.fill}">
     <span class="treemap-tile-inner">
       ${aggregate ? '' : '<span class="treemap-tile-selection" aria-hidden="true">Selected</span>'}
+      ${figureBadge(basis)}
       <span class="treemap-tile-identity">${aggregate || !state.logos ? '' : mark(entity)}<span class="treemap-tile-copy"><span class="treemap-tile-name">${esc(name)}</span>${meta ? `<span class="treemap-tile-meta">${esc(meta)}</span>` : ''}</span></span>
-      ${aggregate || state.metric !== 'companies' ? `<span class="treemap-value">${esc(money(tile.value))}</span>` : ''}
+      ${aggregate || state.metric !== 'companies' ? `<span class="treemap-value">${esc(figureAmount(tile))}</span>` : ''}
     </span>
   </button>`;
 }
@@ -414,12 +443,13 @@ function drawCards() {
     const dimensionsForCompany = dimensions.get(item.id);
     const place = dimensionsForCompany?.country
       ? [dimensionsForCompany.city,countryName(dimensionsForCompany.country)].filter(Boolean).join(', ') : '';
-    const value = companyCount ? '' : money(item.value);
+    const value = companyCount ? '' : figureAmount(item);
     const year = !grouped && validYear(item.entity.founded_year) ? `est. ${item.entity.founded_year}` : '';
-    const date = grouped ? 'Explore decade ↗' : item.event ? datedFigure(item.event,state.metric) : 'View evidence ↗';
+    const metric = item.basis || state.metric;
+    const date = grouped ? 'Explore decade ↗' : item.event ? datedFigure(item.event,metric) : 'View evidence ↗';
     const summary = grouped ? countLabel(item.count) : item.entity.summary || 'Company description not recorded.';
-    const label = [name,value,item.event ? date : grouped ? 'Explore this founding decade' : 'Inspect company',
-      item.newerUnplotted ? newerFigure(state.metric) : ''].filter(Boolean).join(', ');
+    const label = [name,value,valueBases[item.basis],item.event ? date : grouped ? 'Explore this founding decade' : 'Inspect company',
+      item.newerUnplotted ? newerFigure(metric) : ''].filter(Boolean).join(', ');
     let variant = companyCount ? ' count-company' : '';
     if (isRanked && index < 3) variant = index === 0 ? ' featured board-leader' : ' featured';
     if (tailSize && index >= items.length - tailSize) variant = tailSize === 1 ? ' compact-tail single-tail' : ' compact-tail';
@@ -430,9 +460,10 @@ function drawCards() {
       ${grouped ? '' : cardMedia(item.entity)}
       <span class="treemap-card-body"><span class="treemap-card-name">${esc(name)}</span><span class="treemap-card-summary">${esc(summary)}</span>
         ${place ? `<span class="treemap-card-place">${esc(place)}</span>` : ''}
+        ${figureBadge(item.basis)}
         <span class="treemap-card-footer"><span class="treemap-card-date">${esc(date)}</span>${year ? `<span class="treemap-card-year">${esc(year)}</span>` : ''}</span>
         ${!grouped && state.colour !== 'decade' ? colourMark(item.entity) : ''}
-        ${item.newerUnplotted ? `<span class="treemap-card-note">${newerFigure(state.metric)}</span>` : ''}
+        ${item.newerUnplotted ? `<span class="treemap-card-note">${newerFigure(metric)}</span>` : ''}
       </span>
     </button>`;
   }).join('');
@@ -445,12 +476,13 @@ function drawRankedList() {
       <button type="button" data-company="${esc(row.id)}" aria-pressed="${state.selected === row.id}" aria-controls="treemap-detail">
         ${state.logos ? mark(row.entity) : ''}<span>${esc(row.entity.name)}</span>
       </button>
-      <small>${row.event ? esc(datedFigure(row.event,state.metric)) : state.group !== 'company' ? esc(row.groupName) : ''}</small>
+      ${figureBadge(row.basis)}
+      <small>${row.event ? esc(datedFigure(row.event,row.basis || state.metric)) : state.group !== 'company' ? esc(row.groupName) : ''}</small>
       ${state.colour !== 'decade' ? colourMark(row.entity) : ''}
       <a data-atlas-profile-link href="${esc(entityHref(row.entity))}">Full profile ↗</a>
-    </div><div class="treemap-list-value"><strong>${esc(money(row.value))}</strong>
-      ${row.event ? evidenceLink(row.event.source,state.metric === 'market-cap'
-        ? row.event.calculation ? 'Closing price source' : 'Market cap source' : 'Announcement') : ''}
+    </div><div class="treemap-list-value"><strong>${esc(figureAmount(row))}</strong>
+      ${row.event ? evidenceLink(row.event.source,(row.basis || state.metric) === 'market-cap'
+        ? row.event.calculation ? 'Closing price source' : 'Market cap source' : row.basis ? 'Valuation source' : 'Announcement') : ''}
     </div></li>`).join('')}</ol>` : emptyResults();
   watchImages(list);
 }
@@ -514,16 +546,22 @@ function renderLegend() {
   const plotted = new Set(view.rows.map(row => colours.forCompany(row.entity).id));
   const entries = colours.entries.filter(entry => state.colour === 'freshness' && entry.id !== 'unknown' || plotted.has(entry.id));
   const showColour = entries.length && (isMap || state.colour !== 'decade');
+  const basisKey = state.metric === COMPANY_VALUE && view.rows.length ? `<div class="treemap-figure-key">
+    ${Object.keys(valueBases).map(basis => {
+      const count = view.rows.filter(row => row.basis === basis).length;
+      return `<span>${figureBadge(basis)} <span>${count}</span></span>`;
+    }).join('')}
+  </div>` : '';
   legend.innerHTML = `${showColour ? `
     <div class="treemap-legend-scale" data-colour="${state.colour}">
       <strong>${esc(colours.label)}</strong>
       ${colours.asOf ? `<small>As of ${esc(colours.asOf)}</small>` : ''}
       <ul>${entries.map(entry => `<li class="treemap-legend-item"><i aria-hidden="true" style="--tile-color:${entry.fill}"></i>${esc(entry.name)}</li>`).join('')}</ul>
-    </div>` : `<span>${esc(context)}</span>`}`;
+    </div>` : `<span>${esc(context)}</span>`}${basisKey}`;
 }
 function renderMissing() {
   $('treemap-missing').hidden = !view.missing.length;
-  const measure = {valuation:'Valuation', funding:'Funding amount', 'market-cap':'Market cap'}[state.metric];
+  const measure = {valuation:'Valuation', funding:'Funding amount', 'market-cap':'Market cap', [COMPANY_VALUE]:'Company value'}[state.metric];
   $('treemap-missing-label').textContent = `${measure} unavailable for ${countLabel(view.missing.length)} in ${state.currency}`;
   const preview = $('treemap-missing-preview');
   preview.innerHTML = view.missing.slice(0,4).map(entity => `<span>${state.logos ? mark(entity) : ''}${esc(entity.name)}</span>`).join('');
@@ -542,7 +580,7 @@ function render() {
   }
   queryCompanies = filterCompanies(searchMatches,dimensions,state,{ignoreDrill:true});
   const scoped = filterCompanies(queryCompanies,dimensions,state);
-  view = makeView(graph,{...state, query:'', dimensions, companies:scoped, marketCaps});
+  view = makeView(graph,{...state, query:'', dimensions, companies:scoped, marketCaps, companyValues});
   visibleCompanies = new Set([...view.rows.map(row => row.id), ...view.missing.map(entity => entity.id)]);
   colours = colourEncoding(state.colour,companies,dimensions);
   const isMap = state.presentation === 'map', isCards = state.presentation === 'cards';
@@ -557,7 +595,8 @@ function render() {
     : isCards
       ? 'Cards use an editorial layout; card area does not encode value or company count. Select a card to read its evidence.'
       : 'Select a company in the list to read its evidence. Financial figures are ranked by recorded value; company counts use alphabetical order.';
-  const latest = state.metric === 'market-cap' ? `Recorded ${state.currency} market cap for listed companies.`
+  const latest = state.metric === COMPANY_VALUE ? `Market caps and private valuations · ${state.currency}`
+    : state.metric === 'market-cap' ? `Recorded ${state.currency} market cap for listed companies.`
     : `Latest dated ${state.currency} ${state.metric === 'valuation' ? 'valuation' : 'event amount'} per company.`;
   $('treemap-subtitle').textContent = isCards ? '' : state.metric !== 'companies' ? latest : isMap
     ? 'Area · One unit per company' : 'Companies in alphabetical order.';
@@ -573,7 +612,10 @@ function render() {
     ? hasPeriod ? `<span><strong>${esc(countLabel(view.filteredCount))}</strong> in this group · ${esc(countLabel(queryCompanies.length))} match your filters</span>` : ''
     : coverage + (view.rows.length ? `<span><strong>${esc(money(view.total))}</strong> sum of displayed historical figures</span>` : '');
   const status = $('treemap-status');
+  const valueUnavailable = state.metric === COMPANY_VALUE && !ownership.size;
   const statusMessage = state.metric === 'companies' ? 'Company count includes records without financial data.'
+    : valueUnavailable ? 'Company value evidence is unavailable.'
+    : state.metric === COMPANY_VALUE ? 'Figures can have different observation dates.'
     : state.metric === 'market-cap' ? 'Dated public-market observations in the selected currency.'
     : 'Historical figures from the selected currency.';
   status.textContent = [
@@ -581,7 +623,7 @@ function render() {
     evidenceAvailable ? '' : 'Technology and public market-cap evidence is unavailable.',
     statusMessage,
   ].filter(Boolean).join(' ');
-  status.classList.toggle('sr-only', graphStore.mode !== 'fallback' && evidenceAvailable);
+  status.classList.toggle('sr-only', graphStore.mode !== 'fallback' && evidenceAvailable && !valueUnavailable);
   showPresentation(state.presentation);
   exploration.update(state,searchMatches,hasPeriod ? entity => cohort(entity) === state.period : undefined);
   if (!isMap) renderGroups();
@@ -710,8 +752,10 @@ filterToggle.addEventListener('click', () => {
 controls.addEventListener('change', event => {
   if (!state) return;
   const {id, value, checked} = event.target;
-  if (id === 'treemap-metric' && METRICS.includes(value)) change({metric:value, currency:validCurrency(value,state.currency)});
-  else if (id === 'treemap-currency' && currencies(graph,state.metric,marketCaps).includes(value)) change({currency:value});
+  if (id === 'treemap-metric' && METRICS.includes(value)) change({
+    metric:value, currency:validCurrency(value,state.currency), ...(value === COMPANY_VALUE ? {group:'technology'} : {}),
+  });
+  else if (id === 'treemap-currency' && availableCurrencies(state.metric).includes(value)) change({currency:value});
   else if (id === 'treemap-group' && GROUPS.includes(value)) change({group:value});
   else if (id === 'treemap-colour' && COLOURS.includes(value)) change({colour:value});
   else if (id === 'atlas-density' && ['comfortable','compact'].includes(value)) change({density:value});
@@ -824,7 +868,9 @@ try {
   let evidence;
   try { evidence = await graphStore.document('treemap-evidence.json'); } catch { /* Older snapshots can still show the other measures. */ }
   evidenceAvailable = evidence?.version === 1;
-  ({technology,marketCaps} = indexTreemapEvidence(graph,evidence));
+  const researched = indexTreemapEvidence(graph,evidence);
+  ({technology,ownership,marketCaps} = researched);
+  companyValues = indexCompanyValues(graph,researched);
   for (const [id, fact] of technology) dimensions.get(id).technology = fact.type;
   periods = new Set(cohortNames(graph));
   $('treemap-presentation').removeAttribute('disabled');
@@ -833,6 +879,7 @@ try {
   const marketOption = $('treemap-metric').querySelector('option[value="market-cap"]');
   marketOption.disabled = !marketCaps.length;
   if (marketCaps.length) marketOption.textContent = 'Market cap';
+  $('treemap-metric').querySelector(`option[value="${COMPANY_VALUE}"]`).disabled = !availableCurrencies(COMPANY_VALUE).length;
   exploration = mountExploration($('treemap-exploration'),{
     companies,dimensions,fieldsHost,showDensity:false,onChange:next => {
       if ('drillCountry' in next && next.drillCountry && state.group === 'country') enterCountry(next.drillCountry);

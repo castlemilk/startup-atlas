@@ -1,7 +1,7 @@
 // Browser-level treemap and ranked-card checks. Uses the Chrome already installed
 // on the GitHub Actions runner and Node's built-in CDP WebSocket client.
 import assert from 'node:assert/strict';
-import {makeView,formatValue,indexTreemapEvidence} from '../dist/treemap-model.js';
+import {makeView,formatValue,indexCompanyValues,indexTreemapEvidence} from '../dist/treemap-model.js';
 import {spawn} from 'node:child_process';
 import {createServer} from 'node:http';
 import {mkdtemp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
@@ -31,11 +31,14 @@ const chrome=spawn(process.env.CHROME_BIN||'google-chrome',[
   '--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-extensions','--no-first-run',
   '--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'
 ],{stdio:['ignore','ignore','pipe']});
-let socket, spawnError, chromeExit, chromeLog='';
+let socket, spawnError, chromeExit, chromeLog='', chromePort=0;
 let captureFailure=async()=>{}, readDiagnostics=async()=>({state:'unavailable'});
 chrome.on('error',error=>{spawnError=error;});
 chrome.on('exit',(code,signal)=>{chromeExit=`Chrome exited (${code ?? signal})`;});
-chrome.stderr.on('data',chunk=>{chromeLog=(chromeLog+chunk.toString()).slice(-5000);});
+chrome.stderr.on('data',chunk=>{
+  chromeLog=(chromeLog+chunk.toString()).slice(-5000);
+  chromePort ||= Number(chromeLog.match(/^DevTools listening on ws:\/\/127\.0\.0\.1:(\d+)\/devtools\/browser\//m)?.[1]) || 0;
+});
 
 async function until(fn,message,attempts=100) {
   for(let i=0;i<attempts;i++) {
@@ -50,7 +53,7 @@ async function until(fn,message,attempts=100) {
 try {
   // Cold CI runners can take longer to start Chrome; allow 45 seconds only here.
   // Page interactions retain the normal polling budget.
-  const port=await until(async()=>Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start',450);
+  const port=await until(async()=>chromePort||Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start',450);
   const target=await until(async()=>{
     const targets=await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
     return targets.find(item=>item.type==='page');
@@ -129,8 +132,11 @@ try {
   })()`);
   const snapshot=JSON.parse(await readFile('dist/data/graph.json','utf8')), valuation=makeView(snapshot,{metric:'valuation',currency:'USD'});
   const evidence=JSON.parse(await readFile('dist/data/treemap-evidence.json','utf8'));
-  const {technology,marketCaps}=indexTreemapEvidence(snapshot,evidence);
+  const indexedEvidence=indexTreemapEvidence(snapshot,evidence);
+  const {technology,marketCaps}=indexedEvidence;
   const market=makeView(snapshot,{metric:'market-cap',currency:'USD',marketCaps});
+  const companyValues=indexCompanyValues(snapshot,indexedEvidence);
+  const values=makeView(snapshot,{metric:'company-value',currency:'USD',companyValues});
   const defaultChoices=['companies','technology','technology'];
   const chartChoices=()=>evaluate("['metric','group','colour'].map(name=>document.querySelector('#treemap-'+name).value)");
   // Hold snapshot requests to observe the real loading state before data resolves.
@@ -174,21 +180,31 @@ try {
   assert.match(await text('#treemap-missing-label'),new RegExp(`Market cap unavailable for ${market.missing.length} compan`));
   const measurements=()=>evaluate(`Array.from(document.querySelectorAll('#treemap-chart ${companyTiles}'),tile=>{
     const {width,height}=tile.getBoundingClientRect();
-    return {id:tile.dataset.company,area:width*height,group:tile.closest('.treemap-plot-group')?.getAttribute('aria-label')};
+    const badge=tile.querySelector('[data-figure-basis]');
+    const valueLayout=tile.matches('.treemap-value-row,.treemap-value-column');
+    return {id:tile.dataset.company,area:width*height,group:tile.closest('.treemap-plot-group')?.getAttribute('aria-label'),
+      basis:badge?.dataset.figureBasis, markerVisible:!!badge?.firstElementChild?.getClientRects().length,label:tile.getAttribute('aria-label'),
+      valuesVisible:!valueLayout||['.treemap-tile-name','.treemap-value'].every(selector=>tile.querySelector(selector).getClientRects().length>0)};
   })`);
-  const verifyMarketArea=async(grouped)=>{
+  const verifyAreas=async(figures,grouped)=>{
     const tiles=await measurements();
-    assert.deepEqual(tiles.map(tile=>tile.id).sort(),market.rows.map(row=>row.id).sort());
+    assert.deepEqual(tiles.map(tile=>tile.id).sort(),figures.rows.map(row=>row.id).sort());
     const area=tiles.reduce((total,tile)=>total+tile.area,0);
     for(const tile of tiles){
-      const row=market.rows.find(item=>item.id===tile.id);
-      assert.ok(tile.area>0&&Math.abs(tile.area/area-row.value/market.total)<.001,`${row.entity.name} must have its recorded share of the chart area`);
+      const row=figures.rows.find(item=>item.id===tile.id);
+      assert.ok(tile.area>0&&Math.abs(tile.area/area-row.value/figures.total)<.001,`${row.entity.name} must have its recorded share of the chart area`);
       assert.equal(tile.group,grouped ? technology.get(tile.id)?.type || 'Technology type not recorded' : undefined);
+      if(row.basis){
+        assert.equal(tile.basis,row.basis);
+        assert.ok(tile.markerVisible,`${row.entity.name} must visibly identify its figure`);
+        assert.ok(tile.valuesVisible,`${row.entity.name} must show its name and amount in its tile layout`);
+        assert.match(tile.label,row.basis==='market-cap' ? /Market cap/ : /Private valuation/);
+      }
     }
   };
-  await verifyMarketArea(true);
+  await verifyAreas(market,true);
   await change('treemap-group','company');
-  await verifyMarketArea(false);
+  await verifyAreas(market,false);
   assert.deepEqual(await chartChoices(),['market-cap','company','technology']);
   await change('treemap-group','technology');
   const wise=market.rows.find(row=>row.id==='startup:wise');
@@ -208,6 +224,43 @@ try {
   assert.match(await text('#treemap-figure-panel'),/Shares used/);
   assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'Market cap must fit on mobile');
   await screenshot('market-cap-evidence-mobile.png');
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+
+  await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+  await navigate('?metric=companies&group=company&colour=technology');
+  assert.equal(await evaluate("document.querySelector('#treemap-metric option[value=\"company-value\"]').disabled"),false);
+  await change('treemap-metric','company-value');
+  assert.deepEqual(await chartChoices(),['company-value','technology','technology']);
+  assert.match(await text('#treemap-summary'),new RegExp(`${values.rows.length} of ${values.filteredCount} matching companies plotted`));
+  await verifyAreas(values,true);
+  await screenshot('company-value-desktop.png');
+  await click('#treemap-chart [data-company="startup:wise"]');
+  assert.match(await text('#treemap-figure-panel'),/Recorded public market cap.*Shares used/s);
+  await click('#treemap-chart [data-company="startup:revolut"]');
+  const revolut=companyValues.get('startup:revolut');
+  assert.match(await text('#treemap-figure-panel'),/Private valuation.*Completed secondary share sale/s);
+  assert.ok((await text('#treemap-figure-panel')).includes(formatValue(revolut.value,'valuation','USD',false)));
+  assert.ok(await evaluate(`Array.from(document.querySelectorAll('#treemap-figure-panel a')).some(a=>a.href===${JSON.stringify(revolut.event.source)})`));
+  await click('#treemap-company-tab');
+  assert.match(await text('#treemap-company-panel'),/Privately held.*12,200.*REVOLUT LTD legal incorporation/s);
+  const profile=snapshot.entities.find(entity=>entity.id==='startup:revolut');
+  assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-company-panel details')).find(panel=>panel.textContent.includes('sourced facts')).querySelectorAll('dt').length"),profile.profile_facts.length);
+  await click('#show-list');
+  assert.deepEqual(await evaluate("Array.from(document.querySelectorAll('#treemap-list [data-company]'),button=>button.dataset.company)"),values.rows.map(row=>row.id));
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-list [data-figure-basis]').length"),values.rows.length);
+  await click('#show-cards');
+  assert.deepEqual(await cardIds(),values.rows.map(row=>row.id));
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-cards [data-figure-basis]').length"),values.rows.length);
+  await click('#treemap-missing summary');
+  await click('#treemap-missing [data-company="startup:eucalyptus"]');
+  assert.match(await text('#treemap-figure-panel'),/No standalone company value/);
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await navigate('?metric=company-value&selected=startup%3Arevolut');
+  await until(()=>evaluate("document.querySelector('#treemap-inspector-sheet').open&&document.querySelector('#treemap-figure-panel')?.getClientRects().length>0"),'Company value deep link must open the private valuation sheet');
+  assert.match(await text('#treemap-figure-panel'),/Private valuation/);
+  assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'Company value must fit on mobile');
+  await screenshot('company-value-evidence-mobile.png');
+  await command('Emulation.setEmulatedMedia',{features:[]});
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
 
   await navigate('?view=cards&metric=funding');
@@ -449,7 +502,10 @@ try {
   await command('Network.enable');await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*']});
   await navigate('?metric=market-cap&group=technology');
   assert.match(await text('#treemap-status'),/JSON backup/);
-  await verifyMarketArea(true);
+  await verifyAreas(market,true);
+  await navigate('?metric=company-value');
+  assert.match(await text('#treemap-status'),/JSON backup/);
+  await verifyAreas(values,true);
   await navigate('?metric=valuation');assert.match(await text('#treemap-status'),/JSON backup/);
   assert.equal(await evaluate("document.querySelectorAll('.treemap-tile').length"),valuation.rows.length);
   await command('Network.setBlockedURLs',{urls:['*atlas.sqlite*','*treemap-evidence.json*']});
@@ -589,7 +645,7 @@ try {
   await command('Network.setBlockedURLs',{urls:[]});
 
   assert.deepEqual(exceptions,[],'Treemap must not raise unhandled JavaScript exceptions');
-  console.log('Treemap browser checks passed: proportional views, public market-cap evidence, technology grouping, ranked cards, currencies, source caveats, country and city drilldown, independent colour, excluded selection and comparison, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
+  console.log('Treemap browser checks passed: proportional views, Company value basis and evidence, public market cap, technology grouping, ranked cards, currencies, source caveats, country and city drilldown, independent colour, excluded selection and comparison, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
 } catch(error) {
   await captureFailure('treemap-failed.png').catch(()=>{});throw error;
 } finally {
