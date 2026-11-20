@@ -253,6 +253,64 @@ class CompanyMetadataRollupTests(unittest.TestCase):
         reordered = self.reconcile(pair, funding_review=self.funding_manifest(list(reversed(companies))))['funding_review']
         self.assertEqual(funding['companies'], reordered['companies'])
 
+    def test_funding_review_keeps_coverage_listing_and_article_dates_separate(self):
+        pair = self.bundle('coverage', FIRST, [(COMPANY, 'identity', 'reviewed')])
+        self.commit(pair)
+        article_url = 'https://press.example/early-funding?ref=index#report'
+        headline = 'Ready Company closes its pre-seed round.'
+        listing = self.capture('press?page=2', headline, coverage_listing={
+            'article_url': article_url, 'listed_on': '2021-09-21',
+        })
+        undated = {**listing, 'coverage_listing': {'article_url': article_url}}
+        article = self.capture('', headline, url=article_url, dates={'published': '2021-09-27'})
+        release = self.capture('news/seed', 'Ready Company announced a seed round.', dates={'announced': '2022-11-15'})
+        captures = [listing, article, release, listing, undated]
+        baseline = self.reconcile(pair)
+        journal = pair[1].read_bytes()
+        manifest = self.funding_manifest([{'name': COMPANY, 'captures': captures}])
+        result = self.reconcile(pair, funding_review=manifest)
+        company, = result.pop('funding_review')['companies']
+        self.assertEqual(result, baseline)
+        self.assertEqual(pair[1].read_bytes(), journal)
+        self.assertEqual(company['repeated_url_hits'], 2)
+        by_url = {row['url']: row for row in company['results']}
+        archive = by_url[listing['url']]
+        self.assertTrue(archive['on_issuer_host'])
+        self.assertTrue(archive['review_required'])
+        self.assertEqual(archive['bucket'], 'context')
+        expected = {**listing, 'bucket': 'context', 'signals': ['coverage_listing'],
+                    'coverage_listing': {'article_url': article_url,
+                                         'listed_on': {'value': '2021-09-21', 'precision': 'day'}}}
+        self.assertIn(expected, archive['observations'])
+        self.assertIn({**undated, 'bucket': 'context', 'signals': ['coverage_listing']}, archive['observations'])
+        self.assertEqual(len(archive['observations']), 2)
+        for url, role, value in ((article_url.partition('#')[0], 'published', '2021-09-27'),
+                                 (release['url'], 'announced', '2022-11-15')):
+            source = by_url[url]
+            self.assertEqual(source['bucket'], 'early_round_lead')
+            capture, = source['observations']
+            self.assertEqual(capture['dates'], {role: {'value': value, 'precision': 'day'}})
+            self.assertNotIn('coverage_listing', capture)
+
+    def test_funding_review_rejects_invalid_coverage_listing_provenance(self):
+        pair = self.bundle('coverage', FIRST, [(COMPANY, 'identity', 'reviewed')])
+        self.commit(pair)
+        listing = self.capture('press?page=2', 'Ready Company closes its seed round.', coverage_listing={
+            'article_url': 'https://press.example/story',
+        })
+        for changes, error in (
+            ({'acquisition': 'search_result'}, 'saved index capture'),
+            ({'dates': {'announced': '2022-10-16'}}, 'dates only in listed_on'),
+            ({'coverage_listing': {'article_url': listing['url'] + '#story'}}, 'separate article URL'),
+            ({'coverage_listing': {'article_url': 'http://press.example/story'}}, 'HTTPS'),
+            ({'coverage_listing': {'listed_on': '2021-09-21'}}, 'Expected fields article_url'),
+            ({'coverage_listing': {**listing['coverage_listing'], 'listed_on': '2021-02-30'}}, 'day .*range'),
+        ):
+            with self.subTest(changes=changes):
+                manifest = self.funding_manifest([{'name': COMPANY, 'captures': [{**listing, **changes}]}])
+                with self.assertRaisesRegex(ValueError, error):
+                    self.reconcile(pair, funding_review=manifest)
+
     def test_saved_financing_leads_keep_other_event_scopes_visible(self):
         cases = [
             ('Ready Company won a grant for seed production.', 'context', 'grant_or_public_support'),
