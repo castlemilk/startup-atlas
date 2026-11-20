@@ -203,7 +203,7 @@ try {
   assert.match(await text('#ds-snapshot'),new RegExp(`${graph.entities.length} entity records`));
   const patterns=[
     {key:'search',path:'/',ready:"d.querySelector('#entity-kind')?.value==='startup'&&d.querySelectorAll('#results-list .entity-row').length>0"},
-    {key:'treemap',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='companies'&&d.querySelector('#treemap-group')?.value==='sector'"},
+    {key:'treemap',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='companies'&&d.querySelector('#treemap-group')?.value==='technology'"},
     {key:'graph',path:'/graph.html',ready:"d.querySelectorAll('.network-node').length>0&&d.querySelector('#graph-detail h2')?.textContent==='Canva'"},
     {key:'startup',path:'/entity.html',ready:"d.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#entity-profile h1')?.textContent==='Canva'"},
     {key:'partner',path:'/partner.html',ready:"d.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#profile h1')?.textContent==='Airtree'"}

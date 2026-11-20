@@ -105,6 +105,7 @@ def build_fixture(output):
         'program-sources.json': fixture['collection']['registry'],
         'startup-news-sources.json': {'sources': []},
         'startup-research.json': inputs['research'],
+        'treemap-evidence.json': {'version': 1, 'technology': {}, 'market_caps': []},
     }
     if set(documents) != set(database_builder.PUBLIC_DATA_FILES):
         raise AssertionError('Review synthetic fixtures when the public input allowlist changes')

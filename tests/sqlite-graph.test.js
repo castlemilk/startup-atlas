@@ -28,6 +28,7 @@ test('SQLite WASM searches the graph and preserves sourced startup records',asyn
     const catalogue=JSON.parse(readFileSync('data/catalogue.json','utf8'));
     assert.deepEqual(getPublicDocument(db,'catalogue.json'),catalogue);
     assert.deepEqual(getPublicDocument(db,'map-locations.json'),JSON.parse(readFileSync('data/map-locations.json','utf8')));
+    assert.deepEqual(getPublicDocument(db,'treemap-evidence.json'),JSON.parse(readFileSync('data/treemap-evidence.json','utf8')));
     assert.throws(()=>getPublicDocument(db,'missing.json'),/unavailable/);
     assert.ok(getGraph(db).entities.some(x=>x.id==='person:melanie-perkins'));
     assert.deepEqual(searchGraph(db,'☃'),[]);

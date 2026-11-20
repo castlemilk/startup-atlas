@@ -7,6 +7,7 @@ import { build } from 'esbuild';
 import { atlasIcons, exportIcon } from '../web/atlas-icons.js';
 import { featureSymbols, exportFeatureSymbol } from '../web/atlas-feature-symbols.js';
 import { assets as designAssets } from '../web/design-handbook.js';
+import { indexTreemapEvidence } from '../web/treemap-model.js';
 
 // These documents are authored against repository paths, then served together
 // under docs/. Resolve links after assets are copied so the published files work.
@@ -88,6 +89,14 @@ for (const file of designFiles.filter(file=>/\.(html|js)$/.test(file))) {
 }
 await cp('data/catalogue.json','dist/data/catalogue.json');
 await cp('data/graph.json','dist/data/graph.json');
+const treemapSource = JSON.parse(await readFile('data/treemap-evidence.json','utf8'));
+const graphForTreemap = JSON.parse(await readFile('data/graph.json','utf8'));
+const treemapEvidence = indexTreemapEvidence(graphForTreemap,treemapSource);
+if (treemapSource.version !== 1 || treemapEvidence.technology.size !== Object.keys(treemapSource.technology).length ||
+    treemapEvidence.marketCaps.length !== treemapSource.market_caps.length) {
+  throw new Error('Treemap evidence has an invalid, duplicate or unmatched record');
+}
+await cp('data/treemap-evidence.json','dist/data/treemap-evidence.json');
 await cp('data/partners-reviewed.json','dist/data/partners-reviewed.json');
 await cp('data/partner-profiles.json','dist/data/partner-profiles.json');
 await cp('data/map-locations.json','dist/data/map-locations.json');

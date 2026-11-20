@@ -17,7 +17,7 @@ PUBLIC_DATA_FILES = (
     'catalogue.json', 'graph.json', 'land.geojson', 'map-locations.json',
     'opportunities-added.json', 'partner-leads.json', 'partner-logo-seeds.csv',
     'partner-profiles.json', 'partner-sources.json', 'partners-reviewed.json',
-    'program-sources.json', 'startup-news-sources.json', 'startup-research.json',
+    'program-sources.json', 'startup-news-sources.json', 'startup-research.json', 'treemap-evidence.json',
 )
 
 
