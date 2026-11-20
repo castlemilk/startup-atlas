@@ -15,6 +15,7 @@ Read repository `AGENTS.md` and `docs/AGENT-RUNBOOK.md`; inspect current main, o
 4. Do not request or inspect robots.txt, as directed by the owner. Preserve HTTPS and approved-host checks, public-address checks, rate limits, 429 stop handling, byte/time limits and opaque staging. Never bypass access challenges.
 5. Distinguish discovered candidates, captured bytes, reviewed assets and published logos. Inspect image content, identity, provenance and usage terms; a page can contain portfolio logos or social graphics. Publish only a reviewed asset mapped explicitly to the exact directory name. Record source and review date; do not infer a provider affiliation from a name or logo.
 6. Review metadata and geography against primary evidence. An office or programme location is not programme eligibility. Keep unknown and historical screenshot associations explicitly unverified.
+7. Before starting a crawl, record it as described in `docs/CRAWL-COORDINATION.md`: run ID, mode, sources, base revision and where the artifact will land. The coordination registry is advisory only — a claim does not authorise fetching a source and never overrides a transport guard.
 
 ## MCP and publication
 
