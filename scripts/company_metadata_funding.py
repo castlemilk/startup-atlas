@@ -102,8 +102,8 @@ ISSUER_RAISE_REPORT = re.compile(
     r'[A-Z][\w&-]{0,39}(?: [A-Z][\w&-]{0,39}){0,5}| to expand its (?:business|operations))?[.!]',
     re.I,
 )
-# Elzinga's issuer article links the reviewed wire in its opening sentence.
-# These attestations bind saved prose to one existing round, without approving fetches.
+# These attestations bind an issuer article's saved prose to one existing round.
+# They apply only to offline review of saved excerpts.
 REVIEWED_ISSUER_ARTICLES = {
     'Culture Amp': {
         'url': 'https://www.cultureamp.com/blog/culture-amp-raises-20-million-in-series-c-funding',
@@ -120,10 +120,29 @@ REVIEWED_ISSUER_ARTICLES = {
             '3d923a2bd33a7bb96032146950a26a2d4ed5ec8172521d01443c683b747a3d1f',
         ),
     },
+    'Diraq': {
+        'url': 'https://www.diraq.com/newsdesk/diraq-secures-usd-15-million-in-series-a-2-funding',
+        'round_id': 'diraq-2024-series-a-2',
+        'stage': 'Series A-2',
+        'round_source': (
+            'https://www.quantonation.com/news/'
+            'diraq-secures-usd-15-million-in-series-a-2-funding-to-advance-fault-tolerant-quantum-computing-development'
+        ),
+        'round_terms': {'amount': 15000000, 'currency': 'USD'},
+        'opening_sha256': '6f1a986f99802631840d22ea22340283bdea99c88d3e57a52fe3cf861583f9de',
+        'completion_amount': 'USD $15 million',
+    },
 }
 ISSUER_LINKED_FIRST_PERSON = re.compile(
     rf'Yesterday at [\w -]{{1,100}}, (?P<issuer>{ISSUER_NAME}) shared the news that we have raised '
     rf'{TRAILING_RAISE_TERMS} led by [\w& -]{{1,100}}\.',
+    re.I,
+)
+NUMBERED_SERIES = r'series [a-h]-[1-9][0-9]?'
+NUMBERED_SERIES_AMOUNT = rf'(?:{STATED_RAISE_AMOUNT}|(?:US|USD|AU|AUD|CA|CAD) \${RAISE_AMOUNT_NUMBER})'
+ISSUER_LINKED_COMPLETION = re.compile(
+    rf'(?P<issuer>{ISSUER_NAME})(?:{ISSUER_APPOSITION.pattern})? today announced the successful completion of '
+    rf'(?:a|its|the) (?P<series>{NUMBERED_SERIES}) capital raise of (?P<amount>{NUMBERED_SERIES_AMOUNT})[.!]',
     re.I,
 )
 ANNOUNCED_CLOSING = r'(?:announced today|today announced) (?:that )?it has closed'
@@ -191,6 +210,26 @@ NOMINAL_POSSESSIVE_CLOSING_CORRECTION = re.compile(
     rf"(?:Correction: )?(?P<issuer>{ISSUER_NAME})['’]s {NOMINAL_CORRECTION_TERMS} "
     r"(?:did not|didn['’]t) close[.!]",
     re.I,
+)
+NUMBERED_CORRECTION_TERMS = (
+    rf'(?:(?P<leading_amount>{NUMBERED_SERIES_AMOUNT}) )?(?P<series>{NUMBERED_SERIES})'
+    rf'(?: (?:capital raise|funding(?: round)?|round))?(?: of (?P<trailing_amount>{NUMBERED_SERIES_AMOUNT}))?'
+)
+NUMBERED_COMPLETION_CORRECTIONS = (
+    re.compile(
+        rf'(?:Correction: )?(?P<issuer>{ISSUER_NAME}) '
+        r"(?:(?:actually )?(?:did not|didn['’]t) (?:(?:actually|in fact) )?"
+        r"(?:complete|close|announce the successful completion of)"
+        r"|(?:ha[sd] not|ha[sd]n['’]t|never) (?:(?:actually|yet) )?"
+        r"(?:completed|closed|announced the successful completion of)) "
+        rf'(?:the funding|(?:(?:{CORRECTION_DETERMINERS}|its) )?{NUMBERED_CORRECTION_TERMS})[.!]',
+        re.I,
+    ),
+    re.compile(
+        rf"(?:Correction: )?(?P<issuer>{ISSUER_NAME})['’]s {NUMBERED_CORRECTION_TERMS} "
+        r"(?:did not|didn['’]t) (?:complete|close)[.!]",
+        re.I,
+    ),
 )
 ISSUER_ROUND_CORRECTION = re.compile(
     rf'(?P<issuer>{ISSUER_NAME}) '
@@ -434,7 +473,7 @@ def reported_raise_denial(following, issuer, series, amount, *, first_person=Fal
     )
 
 
-def nominal_closing_retraction(following, issuer, report):
+def closing_retraction(following, issuer, report, patterns):
     series = name_key(report['series'])
     reported_amount = [report['amount'].casefold()]
     for offset, statement in enumerate(following):
@@ -447,8 +486,11 @@ def nominal_closing_retraction(following, issuer, report):
                     or QUOTATION_MARK.search(intervening)
                     or any(pattern.search(intervening) for pattern in (EARLY, SERIES, FINANCING_ROUND))):
                 break
-        denial = (NOMINAL_CLOSING_CORRECTION.fullmatch(statement)
-                  or NOMINAL_POSSESSIVE_CLOSING_CORRECTION.fullmatch(statement))
+        denial = None
+        for pattern in patterns:
+            denial = pattern.fullmatch(statement)
+            if denial:
+                break
         if not denial or name_key(denial['issuer']) != issuer:
             continue
         if denial['series'] is not None and name_key(denial['series']) != series:
@@ -482,7 +524,10 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
             denied = reported_raise_denial(following, issuer, series, raised['amount'])
         nominal = NOMINAL_CLOSING_REPORT.fullmatch(statement) if saved_assertion else None
         if nominal and (issuer := name_key(nominal['issuer'])) in names:
-            retraction = nominal_closing_retraction(statements[index + 1:index + 3], issuer, nominal)
+            retraction = closing_retraction(
+                statements[index + 1:index + 3], issuer, nominal,
+                (NOMINAL_CLOSING_CORRECTION, NOMINAL_POSSESSIVE_CLOSING_CORRECTION),
+            )
             denied = retraction is not None
             if denied:
                 retractions.add(retraction)
@@ -498,16 +543,22 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
 
 
 def linked_issuer_round(excerpt, names, article):
-    # One opening, up to three original continuations and an adjacent correction.
+    # The exact opening binds the assertion before any nearby correction is considered.
     statements = [' '.join(part.split()) for part in ISSUER_FINANCIAL_BREAK.split(excerpt, maxsplit=6)]
     opening, *following = statements
     issuer, stage, attestation = article
-    if digest(opening.encode()) != attestation['opening_sha256']:
-        return False, False
+    if issuer not in names or digest(opening.encode()) != attestation['opening_sha256']:
+        return False, False, None
+    if amount := attestation.get('completion_amount'):
+        report = ISSUER_LINKED_COMPLETION.fullmatch(opening)
+        if (not report or name_key(report['issuer']) != issuer or name_key(report['series']) != stage
+                or report['amount'] != amount):
+            return False, False, None
+        retraction = closing_retraction(following[:2], issuer, report, NUMBERED_COMPLETION_CORRECTIONS)
+        return retraction is None, retraction is not None, retraction
     match = ISSUER_LINKED_FIRST_PERSON.fullmatch(opening)
-    if (not match or issuer not in names or name_key(match['issuer']) != issuer
-            or name_key(match['series']) != stage):
-        return False, False
+    if not match or name_key(match['issuer']) != issuer or name_key(match['series']) != stage:
+        return False, False, None
     for expected in attestation['continuation_sha256']:
         if not following or digest(following[0].encode()) != expected:
             break
@@ -522,7 +573,7 @@ def linked_issuer_round(excerpt, names, article):
             negation = denial['before'] or denial['after']
             following[index] = f"{denial['subject']} {negation} {statement[denial.end():]}"
     corrected = reported_raise_denial(following, issuer, stage, match['amount'], first_person=True)
-    return not corrected, corrected
+    return not corrected, corrected, None
 
 
 def opening_issuer_round(statements, names, reviewed_round):
@@ -618,13 +669,15 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
     raw_statements = ISSUER_FINANCIAL_BREAK.split(opening_text, maxsplit=3)
     statements = [' '.join(part.split()) for part in raw_statements]
     opening_round, opening_corrected = opening_issuer_round(statements, names, reviewed_round)
-    if reviewed_article and not search_result:
-        linked_round, linked_corrected = linked_issuer_round(opening_text, names, reviewed_article)
-        opening_round |= linked_round
-        opening_corrected |= linked_corrected
     report_round, report_corrected, report_retractions = issuer_reported_rounds(
         opening_text, names, allow_saved_reports=not search_result,
     )
+    if reviewed_article and not search_result:
+        linked_round, linked_corrected, linked_retraction = linked_issuer_round(opening_text, names, reviewed_article)
+        opening_round |= linked_round
+        opening_corrected |= linked_corrected
+        if linked_retraction:
+            report_retractions.add(linked_retraction)
     if not (matching or opening_round or opening_corrected or report_round or report_corrected):
         return 'unmatched', []
     subjects = ' '.join(matching)
@@ -748,7 +801,7 @@ def reviewed_round_sources(record, host, catalogue, queue):
             if wire_document and page:
                 document = urlsplit(page)
                 if (document.netloc, document.path) == (wire_document.netloc, wire_document.path):
-                    linked_wire_citations.append((source, company['name'], event.get('id'), event.get('stage')))
+                    linked_wire_citations.append((company['name'], event))
     results = {}
     for linked_rounds in citations.values():
         if len(linked_rounds) != 1:
@@ -757,10 +810,14 @@ def reviewed_round_sources(record, host, catalogue, queue):
         if owner == name and isinstance(stage, str) and SERIES.fullmatch(stage):
             results[source] = (name_key(name), name_key(stage))
     articles = {}
-    if article and linked_wire_citations == [(article['round_source'], name, article['round_id'], article['stage'])]:
+    if len(linked_wire_citations) == 1:
+        owner, event = linked_wire_citations[0]
+        expected = {'source': article['round_source'], 'id': article['round_id'], 'stage': article['stage'],
+                    **article.get('round_terms', {})}
         url = article['url']
         cited_paths = {urlsplit(page).path for page in citations}
-        if website_host(url) == host and urlsplit(url).path not in cited_paths:
+        if (owner == name and all(event.get(key) == value for key, value in expected.items())
+                and website_host(url) == host and urlsplit(url).path not in cited_paths):
             articles[url] = (name_key(name), name_key(article['stage']), article)
     return results, articles
 
