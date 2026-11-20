@@ -109,7 +109,7 @@ Forest carries primary text, the masthead and the graph root. Light, warm panels
 | `--atlas-accent` | `#a54b29` | Rust active-route and section emphasis, inspected outlines and highlighted profile destinations. |
 | `--atlas-selection-soft` | `#f6e5d7` | Pale clay fill for inspected rows, paired with a contrasting outline/marker and explicit state. |
 | `--atlas-focus` | `#963f23` | Keyboard focus, kept distinct from category meaning. |
-| `--atlas-on-action` | `#fffdf5` | Text on dark action/navigation surfaces. |
+| `--atlas-on-action` | `#ffffff` | Text on dark action/navigation surfaces. |
 
 ### Categorical and state pairs
 
