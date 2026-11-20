@@ -31,11 +31,14 @@ const chrome=spawn(process.env.CHROME_BIN||'google-chrome',[
   '--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-extensions','--no-first-run',
   '--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'
 ],{stdio:['ignore','ignore','pipe']});
-let socket, spawnError, chromeExit, chromeLog='';
+let socket, spawnError, chromeExit, chromeLog='', chromePort=0;
 let captureFailure=async()=>{}, readDiagnostics=async()=>({state:'unavailable'});
 chrome.on('error',error=>{spawnError=error;});
 chrome.on('exit',(code,signal)=>{chromeExit=`Chrome exited (${code ?? signal})`;});
-chrome.stderr.on('data',chunk=>{chromeLog=(chromeLog+chunk.toString()).slice(-5000);});
+chrome.stderr.on('data',chunk=>{
+  chromeLog=(chromeLog+chunk.toString()).slice(-5000);
+  chromePort ||= Number(chromeLog.match(/^DevTools listening on ws:\/\/127\.0\.0\.1:(\d+)\/devtools\/browser\//m)?.[1]) || 0;
+});
 
 async function until(fn,message,attempts=100) {
   for(let i=0;i<attempts;i++) {
@@ -50,7 +53,7 @@ async function until(fn,message,attempts=100) {
 try {
   // Cold CI runners can take longer to start Chrome; allow 45 seconds only here.
   // Page interactions retain the normal polling budget.
-  const port=await until(async()=>Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start',450);
+  const port=await until(async()=>chromePort||Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start',450);
   const target=await until(async()=>{
     const targets=await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
     return targets.find(item=>item.type==='page');
@@ -642,7 +645,7 @@ try {
   await command('Network.setBlockedURLs',{urls:[]});
 
   assert.deepEqual(exceptions,[],'Treemap must not raise unhandled JavaScript exceptions');
-  console.log('Treemap browser checks passed: proportional views, public market-cap evidence, technology grouping, ranked cards, currencies, source caveats, country and city drilldown, independent colour, excluded selection and comparison, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
+  console.log('Treemap browser checks passed: proportional views, Company value basis and evidence, public market cap, technology grouping, ranked cards, currencies, source caveats, country and city drilldown, independent colour, excluded selection and comparison, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
 } catch(error) {
   await captureFailure('treemap-failed.png').catch(()=>{});throw error;
 } finally {
