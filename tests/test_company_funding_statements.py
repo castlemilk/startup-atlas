@@ -534,6 +534,13 @@ class CompanyFundingStatementTests(unittest.TestCase):
                 'series': 'Series B', 'new_capital': 'USD $9M', 'expanded_total': 'USD $40M',
                 'alternate_total': 'AUD $59M',
             }),
+            (INLINE_EXTENSION_DISCLOSURE.replace(' (AUD $59M)', ''), {
+                'series': 'Series B', 'new_capital': 'USD $9M', 'expanded_total': 'USD $40M',
+            }),
+            (INLINE_EXTENSION_DISCLOSURE.replace('USD $40M', '$40M USD'), {
+                'series': 'Series B', 'new_capital': 'USD $9M', 'expanded_total': '$40M USD',
+                'alternate_total': 'AUD $59M',
+            }),
         )
         for excerpt, amounts in cases:
             with self.subTest(excerpt=excerpt):
@@ -582,6 +589,28 @@ class CompanyFundingStatementTests(unittest.TestCase):
                     self.assertEqual(observation['signals'], ['coverage_listing'])
                 elif change.get('excerpt', '').endswith(initial_close):
                     self.assertIn('round_mention', observation['signals'])
+
+    def test_issuer_expansion_with_same_or_missing_currency_keeps_ambiguous_context(self):
+        company = {'name': 'Ready Company', 'website': 'https://ready.example/'}
+        for totals in (
+            'USD $40M (USD $59M)',
+            'USD $40M (usd $40M)',
+            'US$40M (USD $59M)',
+            'AU$40M (AUD $59M)',
+            '$40M USD (USD $59M)',
+            '$40M (AUD $59M)',
+        ):
+            with self.subTest(totals=totals):
+                excerpt = ('Ready Company announced the expansion of its Series B funding round to '
+                           f'{totals}, with USD $9M of new capital.')
+                capture = {'url': 'https://ready.example/news/extension', 'excerpt': excerpt,
+                           'retrieved_on': '2026-11-20', 'acquisition': 'page_excerpt'}
+                result, = self.first_person_review([capture], company=company)['results']
+                self.assertTrue(result['review_required'])
+                self.assertEqual(result['bucket'], 'context')
+                self.assertEqual(result['observations'], [{
+                    **capture, 'bucket': 'context', 'signals': ['round_extension_context', 'ambiguous_extension_total'],
+                }])
 
     def test_first_person_round_uses_exact_reviewed_page_and_deduplicates(self):
         capture = {'url': CULTURE_AMP_SERIES_D, 'excerpt': CULTURE_AMP_FIRST_PERSON,

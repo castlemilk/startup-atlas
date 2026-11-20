@@ -415,6 +415,7 @@ EXTENSION_DATELINE = re.compile(
 EXTENSION_MILLIONS = rf'{STATED_AMOUNT_NUMBER}(?:M| million)'
 EXTENSION_CODE_AMOUNT = rf'{CURRENCY} ?\${EXTENSION_MILLIONS}'
 EXTENSION_LITERAL = rf'(?:{EXTENSION_CODE_AMOUNT}|\${EXTENSION_MILLIONS}(?: {CURRENCY})?)'
+EXTENSION_CURRENCY = re.compile(rf'^{CURRENCY}(?= ?\$)|(?<= ){CURRENCY}$', re.I)
 EXTENSION_SUBJECT = rf'(?P<issuer>{ISSUER_NAME})(?:{ISSUER_APPOSITION.pattern})? (?:today )?announced '
 EXPLICIT_EXPANSION = re.compile(
     EXTENSION_SUBJECT
@@ -900,15 +901,29 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
     return ('context' if signals else 'unmatched'), signals
 
 
+def extension_currency(amount):
+    match = EXTENSION_CURRENCY.search(amount)
+    if not match:
+        return None
+    code = match[0].upper()
+    return {'US': 'USD', 'AU': 'AUD'}.get(code, code)
+
+
 def issuer_extension_amounts(excerpt, names):
-    """Retain literal amounts where a complete issuer disclosure binds both roles."""
+    """Return literal amount roles, an empty dict for ambiguous totals or None for no match."""
     wording = EXTENSION_DATELINE.sub('', ISSUER_FINANCIAL_DATELINE.sub('', ' '.join(excerpt.split())))
     if QUOTATION_MARK.search(wording):
         return None
     match = EXPLICIT_EXPANSION.fullmatch(wording) or NUMBERED_EXPANSION.fullmatch(wording)
     if not match or name_key(match['issuer']) not in names:
         return None
-    return {key: value for key, value in match.groupdict().items() if key != 'issuer' and value is not None}
+    amounts = {key: value for key, value in match.groupdict().items() if key != 'issuer' and value is not None}
+    if alternate := amounts.get('alternate_total'):
+        primary_code = extension_currency(amounts['expanded_total'])
+        alternate_code = extension_currency(alternate)
+        if primary_code is None or alternate_code is None or primary_code == alternate_code:
+            return {}
+    return amounts
 
 
 def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_articles=None):
@@ -943,9 +958,12 @@ def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_artic
         else:
             amounts = (issuer_extension_amounts(excerpt, names)
                        if acquisition == 'page_excerpt' and website_host(url) == host else None)
-            if amounts:
-                observation['round_extension_amounts'] = amounts
+            if amounts is not None:
                 bucket, signals = 'context', ['round_extension_context']
+                if amounts:
+                    observation['round_extension_amounts'] = amounts
+                else:
+                    signals.append('ambiguous_extension_total')
             else:
                 reviewed_round = reviewed_rounds.get(url) if reviewed_rounds and acquisition == 'page_excerpt' else None
                 reviewed_article = reviewed_articles.get(url) if reviewed_articles and acquisition == 'page_excerpt' else None
