@@ -2,6 +2,7 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { entityHref, kindName } from './graph-model.js';
 import { logoFor } from './logos.js';
 import { renderIcon } from './atlas-icons.js';
+import { featureSymbol } from './atlas-feature-symbols.js';
 
 const gsapVersion = '3.15.1';
 const gsapLoads = new WeakMap();
