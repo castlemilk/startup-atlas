@@ -429,9 +429,14 @@ POSSESSIVE_SEED_PLAN = re.compile(
     re.I,
 )
 CONTRIBUTION_AMOUNT = rf'(?:{NUMBERED_SERIES_AMOUNT}|(?:{CURRENCY}|a)?\${STATED_AMOUNT_NUMBER}[kmb]?)'
-SEED_CONTRIBUTION = re.compile(
-    rf"\bcontributed(?: (?:a combined |a total of )?{CONTRIBUTION_AMOUNT})? "
-    rf"(?:to|towards?) (?P<issuer>{ISSUER_NAME})['’]s(?: {CONTRIBUTION_AMOUNT})?$",
+SEED_CONTRIBUTION_TERMS = (
+    rf"contributed(?: (?:a combined |a total of |a further |an additional )?{CONTRIBUTION_AMOUNT})? "
+    rf"(?:to|towards?|as part of) (?P<issuer>{ISSUER_NAME})['’]s(?: {CONTRIBUTION_AMOUNT})?"
+)
+SEED_CONTRIBUTION = re.compile(rf'\b{SEED_CONTRIBUTION_TERMS}$', re.I)
+RELATIVE_SEED_CLOSE = re.compile(
+    rf"(?!\b(?:assume|imagine|suppose)\b){CAPITALIZED_NAME} {SEED_CONTRIBUTION_TERMS} "
+    rf"(?P<series>{SEED_STAGE}) round, which (?P<closer>{ISSUER_NAME}) (?:closed(?: later)?|later closed)\.",
     re.I,
 )
 INVESTMENT_MONTH_QUALIFIER = re.compile(
@@ -632,9 +637,14 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
             denied = retraction is not None
             if denied:
                 retractions.add(retraction)
-        later_seed = LATER_SEED_CLOSE.fullmatch(statement) if saved_assertion else None
-        if later_seed and (issuer := name_key(later_seed['issuer'])) in names and not prospective_clause(statement):
-            retraction = closing_retraction(following, issuer, later_seed, LATER_SEED_CLOSE_CORRECTIONS)
+        seed_report = LATER_SEED_CLOSE.fullmatch(statement) if saved_assertion else None
+        if saved_assertion and index == 0 and seed_report is None:
+            relative = RELATIVE_SEED_CLOSE.fullmatch(statement)
+            if (relative and name_key(relative['closer']) == name_key(relative['issuer'])
+                    and not SEED_WIRE_CONDITION.search(statement) and not CLOSING_PREFACE_BOUNDARY.search(statement)):
+                seed_report = relative
+        if seed_report and (issuer := name_key(seed_report['issuer'])) in names and not prospective_clause(statement):
+            retraction = closing_retraction(following, issuer, seed_report, LATER_SEED_CLOSE_CORRECTIONS)
             denied = retraction is not None
             if denied:
                 retractions.add(retraction)
