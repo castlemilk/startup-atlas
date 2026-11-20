@@ -59,6 +59,7 @@ const designFiles=['design-tokens.css','atlas-ui.css','atlas-ui.js','atlas-icons
 designFiles.push('design-component-specs.js','design-workbench.js','design-workbench.css','design-token-reference.js','design-token-reference.css','design-recipes.js','design-recipes.css');
 designFiles.push('design-aesthetic.html','design-aesthetic.css','design-aesthetic.js','design-aesthetic-tokens.css','design-aesthetic-data.js','atlas-feature-symbols.js');
 designFiles.push('signal-controls.js','signal-controls.css','atlas-sdk.js','atlas-sdk.css');
+designFiles.push('atlas-exploration.js','atlas-explorer-controls.js','atlas-workspace.js','profile-evidence.js');
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
 for (const file of ['analytics.js','analytics-config.js','treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 await build({entryPoints:['web/atlas-sdk.js'],outfile:'dist/atlas-sdk.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof',define:{'process.env.NODE_ENV':'"production"'}});

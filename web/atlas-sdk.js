@@ -1,6 +1,8 @@
 import '@ui-sdk/web/button';
 import '@ui-sdk/web/checkbox';
+import '@ui-sdk/web/dialog';
 import '@ui-sdk/web/input';
+import '@ui-sdk/web/popover';
 import '@ui-sdk/web/select';
 import '@ui-sdk/web/segmented-control';
 import '@ui-sdk/web/tabs';
@@ -128,7 +130,7 @@ export function installAtlasSDK(doc = document) {
     }
     for (const native of doc.querySelectorAll('input[type="checkbox"][id]:not([data-atlas-native])')) enhanceCheckbox(native);
     for (const native of doc.querySelectorAll('button, a.atlas-button, .atlas-view-nav a')) {
-      if (native.closest('ui-button,ui-input-clear,ui-select,ui-segmented-control,ui-tabs-tab') || native.matches('[role="tab"]')) continue;
+      if (native.closest('ui-button,ui-dialog-trigger,ui-dialog-close,ui-input-clear,ui-popover-trigger,ui-popover-close,ui-select,ui-segmented-control,ui-tabs-tab') || native.matches('[role="tab"]')) continue;
       enhanceButton(native);
     }
     for (const [native, entry] of selections) {

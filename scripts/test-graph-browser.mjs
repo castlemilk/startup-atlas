@@ -237,7 +237,7 @@ try {
   await screenshot('desktop.png');
   await evaluate("document.querySelector('#graph-detail [data-explore=\"person:melanie-perkins\"]').click()");
   assert.equal(await evaluate("new URLSearchParams(location.search).get('entity')"),'person:melanie-perkins','Explore from here must change the root explicitly');
-  assert.equal(await evaluate("new URLSearchParams(location.search).has('selected')"),false);
+  assert.equal(await evaluate("new URLSearchParams(location.search).get('selected')"),'person:melanie-perkins');
   assert.equal(await evaluate("document.querySelector('.network-node.is-root').dataset.node"),'person:melanie-perkins');
   assert.ok(await evaluate("!!document.querySelector('[data-node=\"startup:fusion-books\"]')"),'The new neighbourhood must include the founder’s other sourced venture');
   await screenshot('desktop-explored.png');

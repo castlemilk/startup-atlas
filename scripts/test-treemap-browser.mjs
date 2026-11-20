@@ -139,7 +139,15 @@ try {
   await command('Fetch.disable');
   await settled();
   assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-busy')"),'false');
-  assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>!control.disabled)"),true,'Loaded funding controls must be available');
+  assert.deepEqual(await evaluate("['metric','group','colour'].map(name=>document.querySelector('#treemap-'+name).value)"),['companies','sector','sector']);
+  assert.equal(await evaluate("document.querySelector('#treemap-currency').disabled"),true,'Company count needs no currency');
+  assert.equal(await evaluate("document.querySelector('#treemap-currency-field').getClientRects().length"),0,'Company count must hide the currency field');
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-chart [data-company]').length"),snapshot.entities.filter(entity=>entity.kind==='startup').length);
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"),'map');
+  await screenshot('company-count-default-desktop.png');
+
+  await navigate('?view=cards&metric=funding');
+  assert.equal(await evaluate("['metric','currency','group'].every(name=>!document.querySelector('#treemap-'+name).disabled)"),true,'Loaded funding controls must be available');
   assert.equal(await evaluate("document.querySelector('#treemap-metric').value"),'funding');
   assert.match(await text('#treemap-subtitle'),/event amount/);
   const defaultFunding=makeView(snapshot,{metric:'funding',currency:'USD'});
@@ -191,6 +199,7 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('.treemap-tile').length"),JSON.parse(await readFile('dist/data/graph.json','utf8')).entities.filter(entity=>entity.kind==='startup').length);
   await screenshot('companies-desktop.png');
   await change('treemap-metric','valuation');
+  assert.equal(await evaluate("document.querySelector('#treemap-currency-field').getClientRects().length>0"),true,'Valuations must expose their currency field');
   assert.match(await text('#treemap-summary'),new RegExp(formatValue(valuation.total,'valuation','USD').replaceAll('.', '\\.')));
   assert.equal(await evaluate("document.querySelectorAll('.treemap-tile').length"),valuation.rows.length);
   await click('[data-company="startup:canva"]');
@@ -258,15 +267,20 @@ try {
 
   await change('treemap-metric','companies');await change('treemap-group','decade');
   assert.ok(await evaluate("document.querySelectorAll('[data-period]').length>=3"));
-  await click('[data-period="2010s"]');assert.match(await text('#treemap-breadcrumb'),/2010S/);
-  await evaluate('history.back()');await until(()=>evaluate("document.querySelector('#treemap-breadcrumb').textContent==='ALL COMPANIES'"),'Back did not restore cohort');
-  await evaluate('history.forward()');await until(()=>evaluate("document.querySelector('#treemap-breadcrumb').textContent.includes('2010S')"),'Forward did not restore cohort');
+  await click('[data-period="2010s"]');assert.match(await text('#treemap-breadcrumb'),/2010s/);
+  await click('.exploration-country-trigger');
+  await until(()=>evaluate("Boolean(document.querySelector('.exploration-option-count'))"),'Cohort country choices did not appear');
+  assert.equal(await evaluate("[...document.querySelectorAll('.exploration-option-count')].reduce((total, option)=>total+Number(option.textContent),0)"),
+    makeView(snapshot,{metric:'companies',period:'2010s'}).filteredCount,'Country counts must respect the selected founding decade');
+  await click('[data-draft-cancel]');
+  await evaluate('history.back()');await until(()=>evaluate("document.querySelector('#treemap-breadcrumb').textContent==='All ecosystems'"),'Back did not restore cohort');
+  await evaluate('history.forward()');await until(()=>evaluate("document.querySelector('#treemap-breadcrumb').textContent.includes('2010s')"),'Forward did not restore cohort');
   await click('[data-period="all"]');
   await click('#show-cards');
   const companyView=makeView(snapshot,{metric:'companies'});
   assert.deepEqual(await evaluate("Array.from(document.querySelectorAll('#treemap-cards [data-period]'),card=>card.dataset.period)"),companyView.groups.map(group=>group.id),'Grouped cards must preserve the existing founding-decade view');
   await click('#treemap-cards [data-period="2010s"]');
-  assert.match(await text('#treemap-breadcrumb'),/2010S/);
+  assert.match(await text('#treemap-breadcrumb'),/2010s/);
   assert.deepEqual(await cardIds(),makeView(snapshot,{metric:'companies',period:'2010s'}).rows.map(row=>row.id),'A decade card must drill down to the same companies as its map');
   await click('#treemap-cards [data-company]');
   assert.match(await text('#treemap-figure-panel'),/card area does not encode company count/);
@@ -293,7 +307,8 @@ try {
   await until(()=>evaluate("logoUnderTest.complete&&!logoUnderTest.naturalWidth&&logoUnderTest.hidden&&!logoUnderTest.nextElementSibling.hidden"),'Failed logo must show initials');
   await click('#show-list');
   await click('#treemap-reset');
-  assert.equal(await evaluate("document.querySelector('#treemap-cards').hidden"),false);
+  assert.equal(await evaluate("document.querySelector('#treemap-chart').hidden"),false);
+  assert.deepEqual(await evaluate("['metric','group','colour'].map(name=>document.querySelector('#treemap-'+name).value)"),['companies','sector','sector']);
   await click('#show-map');
   await evaluate("(()=>{const e=document.querySelector('#treemap-query');e.value='no company matches this';e.dispatchEvent(new Event('input',{bubbles:true}));})()");
   assert.match(await text('#treemap-chart'),/No companies match/);
@@ -369,12 +384,12 @@ try {
   await navigate('');assert.match(await text('#treemap-status'),/could not be loaded/);
   assert.equal(await evaluate("document.querySelector('#treemap-metric').disabled"),true);
   assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>control.disabled)"),true);
-  assert.match(await text('#treemap-cards'),/Reload this view/);
+  assert.match(await text('#treemap-chart'),/Reload this view/);
   await command('Network.setBlockedURLs',{urls:[]});
-  await click('#treemap-cards a');
+  await click('#treemap-chart a');
   await until(()=>evaluate("document.querySelector('#treemap-metric')?.disabled===false"),'Reload recovery did not restore controls');
   await settled();
-  assert.match(await text('#treemap-status'),/Historical figures/);
+  assert.match(await text('#treemap-status'),/Company count/);
 
   // A fixed set of equal-area tiles exercises both size classes as the catalogue grows.
   const fixtureCompanies=Array.from({length:24},(_,index)=>({
@@ -395,10 +410,102 @@ try {
     return marks.count>0 ? marks : null;
   },'The fixed mobile layout did not produce small company tiles');
   assert.deepEqual(small.missing,[],'Mobile small company tiles must retain marks');
+
+  // Geography and profile fact reviews use a fixture separate from the released records.
+  const source='https://example.com/company-evidence';
+  const located=(key,name,headquarters,sector)=>({
+    id:`startup:${key}`,kind:'startup',name,source,
+    profile_facts:[...(headquarters ? [{label:'Headquarters',value:headquarters,source,reviewed_at:'2025-09-10'}] : []),
+      ...(sector ? [{label:'Primary sector',value:sector,source}] : [])],
+  });
+  const sydney=located('scope-sydney','Sydney Fixture','Sydney, Australia','Developer tools');
+  const melbourne=located('scope-melbourne','Melbourne Fixture','Melbourne, Australia','Energy');
+  const auckland=located('scope-auckland','Auckland Fixture','Auckland, New Zealand','Developer tools');
+  const unknown=located('scope-unknown','Unknown Fixture','','');
+  const figure=(entity,amount,currency)=>({id:entity.id,startup_id:entity.id,stage:'Seed',amount,currency,announced_on:'2025-09-10',source});
+  markFixture=JSON.stringify({version:snapshot.version,entities:[sydney,melbourne,auckland,unknown],edges:[],articles:[],
+    funding_rounds:[figure(sydney,70,'AUD'),figure(melbourne,30,'AUD'),figure(auckland,40,'USD'),figure(unknown,0,'AUD')]});
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+  await navigate('?metric=companies&group=country&colour=sector');
+  await until(()=>evaluate("Boolean(document.querySelector('.exploration-country ui-popover')?.api)"),'Country control did not upgrade');
+  const hqTrigger='.exploration-country-trigger', params=()=>evaluate('Object.fromEntries(new URLSearchParams(location.search))');
+  assert.match(await text('#treemap-groups'),/Country not recorded/);
+  assert.match(await text('#treemap-legend'),/Developer tools/);
+  const weights=await evaluate(`(() => {
+    const chart=document.querySelector('#treemap-chart'), {width,height}=chart.getBoundingClientRect();
+    return [...chart.querySelectorAll('[data-company]')].map(tile=>parseFloat(tile.style.width)*parseFloat(tile.style.height)/(width*height));
+  })()`);
+  assert.equal(weights.length,4);
+  assert.ok(weights.every(weight=>Math.abs(weight-.25)<1e-6),'Grouping must preserve equal area per company');
+  await change('treemap-colour','freshness');
+  assert.equal((await params()).group,'country');
+  assert.match(await text('#treemap-legend'),/Days since last recorded fact review.*181\+ days.*Review date not recorded/s);
+  assert.equal(await evaluate(`(() => {
+    const tile=document.querySelector('#treemap-chart [data-company="startup:scope-sydney"] .treemap-tile-inner');
+    const swatch=[...document.querySelectorAll('.treemap-legend-item')].find(item=>item.textContent==='181+ days').querySelector('i');
+    return getComputedStyle(tile).backgroundColor===getComputedStyle(swatch).backgroundColor;
+  })()`),true,'Review age and legend must use the same tile fill');
+
+  await click(hqTrigger);
+  await until(()=>evaluate("Boolean(document.querySelector('#atlas-hq-AU-control'))"),'Country choices did not appear');
+  await click('#atlas-hq-AU-control');
+  assert.equal(await evaluate("new URLSearchParams(location.search).getAll('hq').length"),0,'A country draft must not narrow treemap results');
+  await click('[data-draft-cancel]');
+  await click(hqTrigger);
+  await until(()=>evaluate("Boolean(document.querySelector('#atlas-hq-AU-control'))"),'Reopened country choices were unavailable');
+  assert.equal(await evaluate("document.querySelector('#atlas-hq-AU').checked"),false);
+  await click('#atlas-hq-AU-control');
+  await click('#atlas-hq-NZ-control');
+  await click('.exploration-apply');
+  assert.deepEqual(await evaluate("new URLSearchParams(location.search).getAll('hq')"),['AU','NZ']);
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-chart [data-company]').length"),3,'Apply must match either country');
+  await click('#treemap-chart [data-company="startup:scope-auckland"]');
+  await click('[data-atlas-compare="startup:scope-auckland"]');
+  assert.match(await text('[data-atlas-panel="compare"]'),/\(1\)/);
+
+  await click('[data-treemap-group="AU"]');
+  const countryPath=await params();
+  assert.equal(countryPath.place,'AU');
+  assert.equal(countryPath.group,'city');
+  assert.equal(countryPath.selected,'startup:scope-auckland');
+  assert.equal(countryPath.colour,'freshness');
+  assert.match(await text('.exploration-result-count'),/2 companies in this location.*3 companies match your filters/);
+  assert.match(await text('#treemap-detail'),/Outside current results/);
+  assert.equal(await evaluate("document.querySelector('[data-atlas-compare]').getAttribute('aria-pressed')"),'true');
+
+  const cityGroup='[data-treemap-group=\'["AU","Sydney"]\']';
+  await click(cityGroup);
+  assert.equal((await params()).city,'Sydney');
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-chart [data-company]').length"),1);
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await until(()=>evaluate("document.getElementById('treemap-location-fields').hidden"),'Mobile filter controls did not collapse');
+  assert.equal(await evaluate("document.querySelector('.exploration-applied').getClientRects().length>0 && document.querySelector('.exploration-scope').getClientRects().length>0"),true,'Collapsed filters must retain applied constraints and scope');
+  await evaluate("document.querySelector('[data-clear-facets]').focus()");
+  await click('[data-clear-facets]');
+  assert.equal(await evaluate('document.activeElement.id'),'treemap-filter-toggle','Clearing the last applied filter on mobile must focus the visible Filters control');
+  assert.equal((await params()).city,'Sydney','Clear filters must preserve the drill path');
+  assert.equal(await evaluate("new URLSearchParams(location.search).getAll('hq').length"),0);
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+  await click('[data-drill-parent="all"]');
+  assert.equal((await params()).place,undefined);
+  assert.equal((await params()).selected,'startup:scope-auckland');
+  assert.match(await text('[data-atlas-panel="compare"]'),/\(1\)/);
+
+  await change('treemap-metric','funding');
+  await change('treemap-currency','AUD');
+  assert.match(await text('#treemap-summary'),/2 of 4 matching companies plotted.*AUD 100/);
+  assert.match(await text('#treemap-missing'),/AUD 0 recorded/);
+  await click('#treemap-missing summary');
+  await click('#treemap-missing [data-company="startup:scope-unknown"]');
+  assert.match(await text('#treemap-figure-panel'),/AUD 0 recorded.*2025-09-10/s);
+  await click('#treemap-reset');
+  assert.equal((await params()).selected,undefined);
+  assert.equal(await text('[data-atlas-panel="compare"]'),'Compare');
+  assert.deepEqual(await evaluate("['metric','group','colour'].map(name=>document.querySelector('#treemap-'+name).value)"),['companies','sector','sector']);
   await command('Network.setBlockedURLs',{urls:[]});
 
   assert.deepEqual(exceptions,[],'Treemap must not raise unhandled JavaScript exceptions');
-  console.log('Treemap browser checks passed: proportional views, ranked cards, currencies, source caveats, grouped drilldown, shared selection/history, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
+  console.log('Treemap browser checks passed: proportional views, ranked cards, currencies, source caveats, country and city drilldown, independent colour, excluded selection and comparison, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
 } catch(error) {
   await captureFailure('treemap-failed.png').catch(()=>{});throw error;
 } finally {

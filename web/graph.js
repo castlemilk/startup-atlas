@@ -5,6 +5,8 @@ import { entityDetails, entityHref, kindName, neighborhood } from './graph-model
 import { createForceSimulation, layoutBounds, layoutNetwork } from './graph-layout.js';
 import { renderIcon as icon } from './atlas-icons.js';
 import { animateAtlasChange } from './atlas-ui.js';
+import { filterCompanies, indexCompanies, readExploration, writeExploration, countryName } from './atlas-exploration.js';
+import { mountExploration } from './atlas-explorer-controls.js';
 
 const $=id=>document.getElementById(id);
 const entityKinds=['startup','partner','person','programme','provider'];
@@ -14,6 +16,9 @@ let store, rootId, selectedId, depth=1, zoom=1, listVisible=false, searchTimer, 
 let layout, bounds, simulation, frame=null, pan={x:0,y:0}, gesture=null, suppressClick=false;
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
 const pinned=new Map();
+let scope=readExploration(new URLSearchParams(location.search));
+let dimensions, controls, currentView;
+let searchMatches=[], searchedQuery, visibleCompanies=new Set();
 const initials=name=>name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
 const imageUrl=value=>sourceUrl(value)||(/^\.\/assets\/logos\/[a-z0-9-]+\.(?:svg|png)$/i.test(value||'')?value:'');
 const entityImage=entity=>imageUrl(entity.logo)||imageUrl(logoFor(entity.name));
@@ -26,7 +31,8 @@ function renderNode(node) {
   const kind=kindName(node.kind).toUpperCase(),kindY=nameY+(node.lines.length-1)*lineHeight+23;
   const label=node.lines.map((line,index)=>'<tspan x="'+nameX+'" dy="'+(index?lineHeight:0)+'">'+esc(line)+'</tspan>').join('');
   const img=url?'<image href="'+esc(url)+'" x="'+(iconX-16)+'" y="-16" width="32" height="32" preserveAspectRatio="xMidYMid meet"></image>':'';
-  return '<g class="network-node'+(root?' is-root':'')+(selected?' is-selected':'')+'" data-node="'+esc(node.id)+'" data-kind="'+esc(node.kind)+'" role="button" tabindex="0" aria-pressed="'+String(selected)+'" aria-label="'+esc(kindName(node.kind)+': '+node.name+'. Press Enter to inspect; use arrow keys to move')+'" transform="translate('+node.x.toFixed(1)+' '+node.y.toFixed(1)+')"><rect class="node-shell" x="'+x+'" y="'+y+'" width="'+node.width+'" height="'+node.height+'" rx="8"></rect><rect class="node-avatar" x="'+(iconX-20)+'" y="-20" width="40" height="40" rx="7"></rect><text class="node-initials" x="'+iconX+'"'+(url?' visibility="hidden"':'')+'>'+esc(initials(node.name))+'</text>'+img+'<text class="node-label" y="'+nameY+'">'+label+'</text><rect class="node-kind-bg" x="'+nameX+'" y="'+(kindY-13)+'" width="'+(kind.length*6.4+14)+'" height="18" rx="5"></rect><text class="node-kind" x="'+(nameX+7)+'" y="'+kindY+'">'+esc(kind)+'</text><circle class="node-port" cx="'+x+'" cy="0" r="3"></circle><circle class="node-port" cx="'+(-x)+'" cy="0" r="3"></circle></g>';
+  const context=node.kind!=='startup'||!visibleCompanies.has(node.id);
+  return '<g class="network-node'+(root?' is-root':'')+(selected?' is-selected':'')+'" data-node="'+esc(node.id)+'" data-kind="'+esc(node.kind)+'" data-context="'+context+'" role="button" tabindex="0" aria-pressed="'+String(selected)+'" aria-label="'+esc(kindName(node.kind)+': '+node.name+(context?' · Relationship context':'')+'. Press Enter to inspect; use arrow keys to move')+'" transform="translate('+node.x.toFixed(1)+' '+node.y.toFixed(1)+')"><rect class="node-shell" x="'+x+'" y="'+y+'" width="'+node.width+'" height="'+node.height+'" rx="8"></rect><rect class="node-avatar" x="'+(iconX-20)+'" y="-20" width="40" height="40" rx="7"></rect><text class="node-initials" x="'+iconX+'"'+(url?' visibility="hidden"':'')+'>'+esc(initials(node.name))+'</text>'+img+'<text class="node-label" y="'+nameY+'">'+label+'</text><rect class="node-kind-bg" x="'+nameX+'" y="'+(kindY-13)+'" width="'+(kind.length*6.4+14)+'" height="18" rx="5"></rect><text class="node-kind" x="'+(nameX+7)+'" y="'+kindY+'">'+esc(kind)+'</text><circle class="node-port" cx="'+x+'" cy="0" r="3"></circle><circle class="node-port" cx="'+(-x)+'" cy="0" r="3"></circle></g>';
 }
 function edgePoints(a,b) {
   const dx=b.x-a.x,dy=b.y-a.y, horizontal=Math.abs(dx)/(a.width+b.width)>Math.abs(dy)/(a.height+b.height);
@@ -76,6 +82,26 @@ function applyZoom() {
   const w=bounds.width/zoom,h=bounds.height/zoom;
   $('graph-canvas').setAttribute('viewBox',[bounds.x+(bounds.width-w)/2+pan.x,bounds.y+(bounds.height-h)/2+pan.y,w,h].join(' '));
 }
+function cameraKey() {
+  return 'atlas:graph-camera:'+rootId+':'+depth+':'+entityKinds.filter(kind=>kinds.has(kind)).join(',')+':'+Boolean(compact?.matches);
+}
+function saveCamera() {
+  if (!rootId) return;
+  try { sessionStorage.setItem(cameraKey(),JSON.stringify({zoom,pan,pinned:[...pinned]})); } catch { /* Camera remains available on this page. */ }
+}
+function restoreCamera() {
+  zoom=1;pan={x:0,y:0};pinned.clear();
+  if (!rootId) return;
+  try {
+    const camera=JSON.parse(sessionStorage.getItem(cameraKey()) || 'null');
+    if (!camera) return;
+    if (Number.isFinite(camera.zoom) && camera.zoom>=.7 && camera.zoom<=1.7) zoom=camera.zoom;
+    if (Number.isFinite(camera.pan?.x) && Number.isFinite(camera.pan?.y)) pan=camera.pan;
+    for (const [id,point] of camera.pinned || []) {
+      if (Number.isFinite(point?.x) && Number.isFinite(point?.y)) pinned.set(id,point);
+    }
+  } catch { /* Use the default camera when storage is unavailable. */ }
+}
 function updateGeometry() {
   const svg=$('graph-canvas'), byId=new Map(layout.nodes.map(node=>[node.id,node]));
   for(const element of svg.querySelectorAll('.network-node')) {const node=byId.get(element.dataset.node);if(node)element.setAttribute('transform',`translate(${node.x} ${node.y})`);}
@@ -111,43 +137,66 @@ window.addEventListener('pagehide',stopSimulation);
 function renderMap() {
   stopSimulation();
   const view=neighborhood(store.graph,rootId,{depth,kinds,limit:compact?.matches?(depth===1?10:13):(depth===1?19:25)});
+  currentView=view;
   layout=layoutNetwork(view,rootId,pinned);bounds=layoutBounds(layout);simulation=createForceSimulation(layout,pinned);
   const byId=new Map(layout.nodes.map(node=>[node.id,node]));
-  const lines=layout.edges.map((edge,index)=>'<path class="network-link" data-edge="'+index+'" d="'+edgePath(byId.get(edge.from),byId.get(edge.to))+'"></path>').join('');
-  $('graph-canvas').innerHTML='<g aria-hidden="true">'+lines+layout.edges.map(renderEdgeCaption).join('')+'</g>'+layout.nodes.map(renderNode).join('');
+  const lines=layout.edges.map((edge,index)=>'<path class="network-link" data-edge="'+index+'" marker-end="url(#graph-arrow)" d="'+edgePath(byId.get(edge.from),byId.get(edge.to))+'"></path>').join('');
+  $('graph-canvas').innerHTML='<defs><marker id="graph-arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path fill="context-stroke" d="M0 0 L8 4 L0 8 Z"></path></marker></defs><g aria-hidden="true">'+lines+layout.edges.map(renderEdgeCaption).join('')+'</g>'+layout.nodes.map(renderNode).join('');
   $('graph-canvas').querySelectorAll('.network-node image').forEach(img=>img.addEventListener('error',()=>{img.setAttribute('visibility','hidden');img.previousElementSibling?.removeAttribute('visibility');}));
-  $('graph-count').textContent=view.nodes.length+' entities · '+view.edges.length+' connections'+(view.truncated?' · limited neighbourhood':'');
   const root=store.graph.entities.find(entity=>entity.id===rootId);
   if($('network-heading'))$('network-heading').textContent='Around '+root.name;
-  applyZoom();renderList(view);updateSelection();
+  applyZoom();renderGraphScope();updateSelection();
+}
+function renderGraphScope() {
+  if (!currentView) return;
+  const companyCount=currentView.nodes.filter(node=>visibleCompanies.has(node.id) && kinds.has('startup')).length;
+  const label=companyCount===1?'1 company in scope':companyCount+' companies in scope';
+  $('graph-count').textContent=label+' · '+currentView.edges.length+' connections'+(currentView.truncated?' · limited neighbourhood':'');
+  for (const node of $('graph-canvas').querySelectorAll('.network-node')) {
+    const entity=currentView.nodes.find(item=>item.id===node.dataset.node);
+    const contextual=!visibleCompanies.has(entity.id)||!kinds.has('startup');
+    node.setAttribute('data-context',String(contextual));
+    node.setAttribute('aria-label',kindName(entity.kind)+': '+entity.name+(contextual?' · Relationship context':'')+'. Press Enter to inspect; use arrow keys to move');
+  }
+  renderList(currentView);
 }
 function renderList(view) {
   const names=new Map(view.nodes.map(item=>[item.id,item]));
   const items=view.edges.map(edge=>{
     const from=names.get(edge.from),to=names.get(edge.to);if(!from||!to)return '';
     const source=sourceUrl(edge.source);
-    return '<li><button type="button" data-select="'+esc(from.id)+'">'+esc(from.name)+'</button><span>→ '+esc(relationshipText(edge))+' →</span><button type="button" data-select="'+esc(to.id)+'">'+esc(to.name)+'</button>'+(source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Evidence ↗</a>':'')+'</li>';
+    const nodeButton=entity=>'<button type="button" data-select="'+esc(entity.id)+'"'+(visibleCompanies.has(entity.id)?'':' data-context="true"')+'>'+esc(entity.name)+'</button>';
+    return '<li>'+nodeButton(from)+'<span>→ '+esc(relationshipText(edge))+' →</span>'+nodeButton(to)+(source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Evidence ↗</a>':'')+'</li>';
   }).filter(Boolean);
   $('graph-list').innerHTML='<h3>Visible connections</h3>'+(view.truncated?'<p class="detail-caption">This map shows a limited neighbourhood. Open a profile to see all its reviewed connections, or explore from another entity.</p>':'')+(items.length?'<ul>'+items.join('')+'</ul>':'<p class="detail-empty">No connections match the selected types.</p>');
   $('graph-list').hidden=!listVisible;
 }
 function relationshipText(edge) {
-  return edge.description || ({founded:'founded',supports:'lists in portfolio',team_member:'team member at',offers:'offers'}[edge.kind] || 'Connected to');
+  if (edge.kind==='offers') return 'offers';
+  if (edge.kind==='founded') return 'founded';
+  if (edge.kind==='supports' && (!edge.description || edge.description==='Listed in portfolio')) return 'lists in portfolio';
+  return edge.description || (edge.kind==='team_member' ? 'team member at' : 'connected to');
 }
 function writeState(push=false) {
   if(!rootId)return;
   const params=new URLSearchParams(location.search);
   params.delete('startup');params.set('entity',rootId);
-  if(selectedId && selectedId!==rootId)params.set('selected',selectedId);else params.delete('selected');
+  if (selectedId) params.delete('inspection');else params.set('inspection','none');
+  scope={...scope,graphAnchor:rootId,selected:selectedId || ''};
+  writeExploration(params,scope);
   if(depth===2)params.set('depth','2');else params.delete('depth');
   if(kinds.size===entityKinds.length)params.delete('types');else params.set('types',entityKinds.filter(kind=>kinds.has(kind)).join(','));
-  const query=$('graph-query').value.trim();
-  if(query)params.set('q',query);else params.delete('q');
   if(listVisible)params.set('list','1');else params.delete('list');
   const method=push?'pushState':'replaceState';
-  history[method]?.(null,'','?'+params.toString());
+  if ('?'+params.toString()!==location.search) history[method]?.(null,'','?'+params.toString()+(location.hash || ''));
+  document.dispatchEvent(new CustomEvent('atlas:exploration-change',{detail:{...scope}}));
 }
 function updateSelection() {
+  const canCenter=layout?.nodes.some(node=>node.id===selectedId);
+  const center=$('graph-center');
+  if (center) center.disabled=!canCenter;
+  const inspectionLink=document.querySelector?.('.network-inspector-link');
+  if (inspectionLink) inspectionLink.hidden=!selectedId;
   for(const element of $('graph-canvas').querySelectorAll('.network-node')) {
     const selected=element.dataset.node===selectedId;
     element.classList.toggle('is-selected',selected);element.setAttribute('aria-pressed',String(selected));
@@ -158,6 +207,10 @@ function updateSelection() {
   updateEdgeCaptions();
 }
 function renderDetail() {
+  if (!selectedId) {
+    $('graph-detail').innerHTML='<h2>Inspect a connection</h2><p class="detail-empty">Select a node or a record in the connections list to see its sources.</p>';
+    return;
+  }
   const details=entityDetails(store.graph,selectedId), entity=details.entity, names=new Map(details.related.map(item=>[item.id,item]));
   const visibleIds=new Set(layout?.nodes.map(node=>node.id)||[]);
   const related=details.edges.map(edge=>{
@@ -171,13 +224,24 @@ function renderDetail() {
   const summary=entity.summary || 'This entry is connected to the sources and organisations below. More details are being researched.';
   const source=evidence(entity.source,'Profile source')+evidence(entity.website,entity.kind==='person'?'Professional profile':'Website')+evidence(entity.logo_source,'Image source');
   const isRoot=selectedId===rootId;
-  const selectionNote=isRoot?'Map centred here.':visibleIds.has(selectedId)?'Selected within this map.':'Selected outside this map.';
+  const outOfScope=entity.kind==='startup'&&!visibleCompanies.has(selectedId);
+  const selectionNote=outOfScope?'Outside current results':isRoot?'Map centred here.':visibleIds.has(selectedId)?'Selected within this map.':'Selected outside this map.';
   const inspectAction=isRoot?'':'<button class="detail-explore atlas-button" type="button" data-explore="'+esc(entity.id)+'">Explore from here</button>';
-  $('graph-detail').innerHTML='<div class="detail-heading">'+logo+'<div><h2>'+esc(entity.name)+'</h2><p class="detail-kind atlas-badge" data-kind="'+esc(entity.kind)+'">'+esc(kindName(entity.kind))+'</p></div></div><p class="detail-selection-note" data-selection="'+(isRoot?'root':visibleIds.has(selectedId)?'within':'outside')+'">'+selectionNote+'</p><p class="detail-summary">'+esc(summary)+'</p><div class="detail-actions"><a class="detail-open atlas-button atlas-button-accent" data-atlas-profile-link href="'+esc(entityHref(entity))+'">'+icon('external')+'Open profile</a>'+inspectAction+'</div><section class="detail-section"><h3>Researched connections <span>'+details.edges.length+'</span></h3>'+(related.length?'<ul class="detail-related">'+related.slice(0,8).join('')+'</ul>'+(related.length>8?'<p class="detail-caption">Showing 8 of '+related.length+' researched connections. Open the profile for the complete researched list.</p>':''):'<p class="detail-empty">No reviewed connections yet.</p>')+'</section>'+(entity.kind==='startup'?'<section class="detail-section"><h3>Funding announcements</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not disclosed')+' · historical announcement</span>'+evidence(round.source,'Announcement source')+'</div>').join(''):'<p class="detail-empty">Funding has not been researched yet.</p>')+'</section>':'')+(source?'<section class="detail-section"><h3>Sources</h3>'+source+'</section>':'');
+  const company=dimensions.get(selectedId);
+  const headquarters=company?.country ? [company.city,countryName(company.country)].filter(Boolean).join(', ') : 'Not recorded';
+  const recovery=outOfScope?'<div class="graph-recovery"><button type="button" data-graph-adjust>Adjust filters</button><button type="button" data-graph-clear>Clear selection</button></div>':'';
+  const actions=company?'<div class="graph-workspace-actions" data-company-name="'+esc(entity.name)+'"><button type="button" class="atlas-button" data-atlas-save-company="'+esc(entity.id)+'">Save</button><button type="button" class="atlas-button" data-atlas-compare="'+esc(entity.id)+'">Compare</button></div>':'';
+  const facts=company?'<dl class="graph-company-facts"><div><dt>Headquarters</dt><dd>'+esc(headquarters)+'</dd></div><div><dt>Primary sector</dt><dd>'+esc(company.sector || 'Not recorded')+'</dd></div></dl>':'';
+  $('graph-detail').innerHTML=`<div class="detail-heading">${logo}<div><h2>${esc(entity.name)}</h2><p class="detail-kind atlas-badge" data-kind="${esc(entity.kind)}">${esc(kindName(entity.kind))}</p></div></div>
+    <p class="detail-selection-note" data-selection="${outOfScope?'excluded':isRoot?'root':visibleIds.has(selectedId)?'within':'outside'}">${selectionNote}</p>${recovery}
+    ${facts}<p class="detail-summary">${esc(summary)}</p><div class="detail-actions"><a class="detail-open atlas-button atlas-button-accent" data-atlas-profile-link href="${esc(entityHref(entity))}">${icon('external')}Open profile</a>${inspectAction}</div>${actions}
+    <section class="detail-section"><h3>Recorded connections <span>${details.edges.length}</span></h3>${related.length?'<ul class="detail-related">'+related.slice(0,8).join('')+'</ul>'+(related.length>8?'<p class="detail-caption">Showing 8 of '+related.length+' recorded connections. Open the profile for the complete list.</p>':''):'<p class="detail-empty">No reviewed connections yet.</p>'}</section>
+    ${company?'<section class="detail-section"><h3>Funding announcements</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not disclosed')+' · historical announcement</span>'+evidence(round.source,'Announcement source')+'</div>').join(''):'<p class="detail-empty">No recorded funding announcements.</p>')+'</section>':''}
+    ${source?'<section class="detail-section"><h3>Sources</h3>'+source+'</section>':''}`;
   $('graph-detail').querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;if(img.nextElementSibling)img.nextElementSibling.hidden=false;}));
 }
 function select(id,writeHistory=true) {
-  if(!store?.graph.entities.some(entity=>entity.id===id))return;
+  if(id&&!store?.graph.entities.some(entity=>entity.id===id))return;
   const changed=selectedId!==id;
   selectedId=id;updateSelection();renderDetail();
   if(writeHistory&&changed){
@@ -194,30 +258,57 @@ function select(id,writeHistory=true) {
 }
 function explore(id,writeHistory=true) {
   if(!store.graph.entities.some(entity=>entity.id===id)) {
-    stopSimulation();layout=null;bounds=null;rootId=null;selectedId=null;
+    stopSimulation();layout=null;bounds=null;currentView=null;rootId=null;selectedId=null;
     $('graph-detail').innerHTML='<p class="detail-empty">This entry is not in the published graph. Search for another organisation.</p>';
     $('graph-canvas').innerHTML='<text x="460" y="320" text-anchor="middle">Entry not found</text>';
     $('graph-count').textContent='0 entities shown';
     return;
   }
-  rootId=id;selectedId=id;zoom=1;pan={x:0,y:0};pinned.clear();
+  if (rootId!==id) { if (writeHistory) saveCamera();rootId=id;restoreCamera(); }
+  selectedId=id;
   renderMap();renderDetail();
   if(writeHistory)writeState(true);
 }
+function updateScope(next) {
+  if (searchedQuery!==next.query) {
+    searchMatches=store.search(next.query,store.graph.entities.length);
+    searchedQuery=next.query;
+  }
+  visibleCompanies=new Set(filterCompanies(searchMatches,dimensions,next).map(company=>company.id));
+  scope=next;
+  controls?.update(scope,searchMatches);
+  const shell=$('graph-main');
+  if (shell) shell.dataset.density=scope.density;
+}
+function changeScope(patch) {
+  updateScope({...scope,...patch});
+  renderGraphScope();
+  if (rootId) renderDetail();
+  if (!$('graph-results').hidden) renderSearchResults();
+  writeState(true);
+}
+function renderSearchResults() {
+  const box=$('graph-results');
+  if(!scope.query){box.hidden=true;box.innerHTML='';return;}
+  const results=searchMatches.filter(item=>kinds.has(item.kind)&&(item.kind!=='startup'||visibleCompanies.has(item.id))).slice(0,100);
+  box.innerHTML=results.length?results.map(item=>'<button class="explorer-result" type="button" data-explore="'+esc(item.id)+'"><strong>'+esc(item.name)+'</strong><small>'+esc(kindName(item.kind))+(item.kind==='startup'?'':' · Context')+'</small></button>').join(''):'<p>No matching entries. Try another name, adjust the company filters or show more entity types.</p>';
+  box.hidden=false;
+}
 function renderSearch() {
   if(!store)return;
-  const query=$('graph-query').value.trim();
-  writeState();
-  if(!query){$('graph-results').hidden=true;$('graph-results').innerHTML='';return;}
   try {
-    const results=store.search(query).filter(item=>kinds.has(item.kind));
-    $('graph-results').innerHTML=results.length?results.map(item=>'<button class="explorer-result" type="button" data-explore="'+esc(item.id)+'"><strong>'+esc(item.name)+'</strong><small>'+esc(kindName(item.kind))+'</small></button>').join(''):'<p>No matching entries. Try another name or show more entity types.</p>';
-    $('graph-results').hidden=false;
+    updateScope({...scope,query:$('graph-query').value.trim()});
+    renderSearchResults();
+    renderGraphScope();
+    if (rootId) renderDetail();
+    writeState();
   } catch {
     $('graph-results').innerHTML='<p>Search is unavailable. Try again.</p>';$('graph-results').hidden=false;
   }
 }
 function selectFromEvent(event) {
+  if(event.target.closest('[data-graph-adjust]')?.hasAttribute?.('data-graph-adjust')) {controls?.openCountries();return;}
+  if(event.target.closest('[data-graph-clear]')?.hasAttribute?.('data-graph-clear')) {select(null);$('graph-detail').focus();return;}
   const target=event.target.closest('[data-select], [data-explore]');if(!target)return;
   $('graph-results').hidden=true;
   if(target.dataset.explore){explore(target.dataset.explore);$('graph-canvas').querySelector('.network-node.is-root')?.focus({preventScroll:true});}
@@ -269,6 +360,7 @@ svg.addEventListener('pointermove',event=>{
 function finishGesture(event) {
   if(!gesture||gesture.pointer!==event.pointerId)return;
   const completed=gesture;gesture=null;
+  if(completed.moved)saveCamera();
   if(event.type==='pointercancel')return;
   if(completed.moved||completed.node){
     suppressClick=true;setTimeout(()=>{suppressClick=false;},0);
@@ -285,50 +377,72 @@ svg.addEventListener('keydown',event=>{
   if(!direction)return;event.preventDefault();
   const node=layout.nodes.find(item=>item.id===element.dataset.node),step=event.shiftKey?50:20;
   node.x+=direction[0]*step;node.y+=direction[1]*step;pinned.set(node.id,{x:node.x,y:node.y});
-  element.setAttribute('transform',`translate(${node.x} ${node.y})`);updateGeometry();reheat();
+  element.setAttribute('transform',`translate(${node.x} ${node.y})`);updateGeometry();reheat();saveCamera();
 });
 $('graph-filters').addEventListener('click',event=>{
   const button=event.target.closest('button[data-kind]');if(!button||!store)return;
   const kind=button.dataset.kind;if(!entityKinds.includes(kind))return;
+  saveCamera();
   if(kinds.has(kind))kinds.delete(kind);else kinds.add(kind);
   button.setAttribute('aria-pressed',String(kinds.has(kind)));
-  if(rootId){renderMap();renderDetail();writeState();}
-  if(!$('graph-results').hidden)renderSearch();
+  if(rootId){restoreCamera();renderMap();renderDetail();writeState();}
+  if(!$('graph-results').hidden)renderSearchResults();
 });
-$('graph-depth').addEventListener('change',event=>{depth=Number(event.target.value)===2?2:1;if(store&&rootId){renderMap();renderDetail();writeState();}});
+$('graph-depth').addEventListener('change',event=>{
+  const next=Number(event.target.value)===2?2:1;
+  if (depth!==next) { saveCamera();depth=next;restoreCamera(); }
+  if(store&&rootId){renderMap();renderDetail();writeState();}
+});
 $('graph-list-toggle').addEventListener('click',()=>{listVisible=!listVisible;syncListVisibility();writeState();});
 function syncListVisibility() {
   $('graph-list-toggle').setAttribute('aria-pressed',String(listVisible));
   $('graph-list-toggle').querySelector('span').textContent=listVisible?'Hide connections':'Connections list';
   $('graph-list').hidden=!listVisible;
 }
-$('graph-zoom-in').addEventListener('click',()=>{zoom=Math.min(1.7,zoom+.2);applyZoom();});
-$('graph-zoom-out').addEventListener('click',()=>{zoom=Math.max(.7,zoom-.2);applyZoom();});
-$('graph-fit')?.addEventListener('click',()=>{if(!layout)return;bounds=layoutBounds(layout);zoom=1;pan={x:0,y:0};applyZoom();});
-$('graph-reset').addEventListener('click',()=>{zoom=1;pan={x:0,y:0};pinned.clear();if(store&&rootId)renderMap();});
+$('graph-zoom-in').addEventListener('click',()=>{zoom=Math.min(1.7,zoom+.2);applyZoom();saveCamera();});
+$('graph-zoom-out').addEventListener('click',()=>{zoom=Math.max(.7,zoom-.2);applyZoom();saveCamera();});
+$('graph-fit')?.addEventListener('click',()=>{if(!layout)return;bounds=layoutBounds(layout);zoom=1;pan={x:0,y:0};applyZoom();saveCamera();});
+$('graph-center')?.addEventListener('click',()=>{
+  const selected=layout?.nodes.find(node=>node.id===selectedId);
+  if (!selected || !bounds) return;
+  pan={x:selected.x-bounds.x-bounds.width/2,y:selected.y-bounds.y-bounds.height/2};
+  applyZoom();saveCamera();
+});
+$('graph-reset').addEventListener('click',()=>{zoom=1;pan={x:0,y:0};pinned.clear();if(store&&rootId)renderMap();saveCamera();});
 function restoreFromUrl() {
   if(!store)return;
   clearTimeout(searchTimer);
-  const params=new URLSearchParams(location.search),nextRoot=params.get('entity')||params.get('startup')||'startup:canva';
+  const params=new URLSearchParams(location.search),nextScope=readExploration(params);
+  const nextRoot=params.get('entity')||params.get('startup')||nextScope.graphAnchor||nextScope.selected||'startup:canva';
   const nextDepth=params.get('depth')==='2'?2:1;
   const nextKinds=params.has('types')?params.get('types').split(',').filter(kind=>entityKinds.includes(kind)):entityKinds;
   const mapChanged=depth!==nextDepth || nextKinds.length!==kinds.size || nextKinds.some(kind=>!kinds.has(kind));
+  if (mapChanged || nextRoot!==rootId) saveCamera();
   depth=nextDepth;kinds.clear();nextKinds.forEach(kind=>kinds.add(kind));
   $('graph-depth').value=String(depth);
   for(const button of $('graph-filters').querySelectorAll('button[data-kind]'))button.setAttribute('aria-pressed',String(kinds.has(button.dataset.kind)));
   listVisible=params.get('list')==='1';syncListVisibility();
-  $('graph-query').value=params.get('q')||'';
+  $('graph-query').value=nextScope.query;
+  updateScope(nextScope);
   if(nextRoot!==rootId)explore(nextRoot,false);
-  else if(mapChanged)renderMap();
-  if(rootId)select(params.get('selected')&&store.graph.entities.some(entity=>entity.id===params.get('selected'))?params.get('selected'):rootId,false);
-  if($('graph-query').value)renderSearch();else {$('graph-results').hidden=true;$('graph-results').innerHTML='';}
+  else if(mapChanged){restoreCamera();renderMap();}
+  else renderGraphScope();
+  const selected=params.get('inspection')==='none' ? null
+    : store.graph.entities.some(entity=>entity.id===nextScope.selected) ? nextScope.selected : rootId;
+  if(rootId)select(selected,false);
+  renderSearchResults();
+  writeState();
 }
 window.addEventListener('popstate',restoreFromUrl);
-compact?.addEventListener?.('change',()=>{if(store&&rootId){renderMap();renderDetail();}});
+compact?.addEventListener?.('change',()=>{if(store&&rootId){restoreCamera();renderMap();renderDetail();}});
 
 try {
   store=await openGraph();
   if(store.mode==='fallback')$('graph-status').textContent='Showing the published backup while the database is unavailable.';
+  dimensions=indexCompanies(store.graph);
+  const host=$('graph-exploration');
+  controls=mountExploration(host,{companies:store.graph.entities,dimensions,onChange:changeScope});
+  if (host) host.hidden=false;
   restoreFromUrl();
 } catch {
   $('graph-status').textContent='The graph could not be loaded. Refresh to try again.';

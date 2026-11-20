@@ -134,15 +134,15 @@ test('SDK enhancement is idempotent and exposes a dynamic action through one exi
 
 test('SDK select preserves disabled choices and native disabled controls', async () => {
   await mountPage('treemap');
-  assertNamedComponents(['Size by', 'Currency', 'Group by', 'Find a company', 'Presentation', 'Filters', 'Reset', 'Share view']);
+  assertNamedComponents(['Size by', 'Currency', 'Group by', 'Find a company', 'Presentation', 'Filters', 'Reset exploration', 'Share view']);
   const native = document.querySelector('#treemap-metric');
   const select = document.querySelector('ui-select[data-native-id="treemap-metric"]');
   const disabled = select.querySelector('ui-select-item[value="market-cap"]');
   assert.equal(disabled.hasAttribute('disabled'), true);
   const rejected = await atlasUIAgent.act({ steps: [{ ref: 'Size by', action: 'setValue', args: ['Market cap (not recorded)'] }] });
   await settleAtlasDOM();
-  assert.equal(native.value, 'valuation');
-  assert.equal(select.value, 'valuation');
+  assert.equal(native.value, 'companies');
+  assert.equal(select.value, 'companies');
   assert.equal(rejected.ok, false, 'An agent must not choose a disabled option');
   native.disabled = true;
   await settleAtlasDOM();
@@ -293,10 +293,10 @@ test('treemap loading preserves every disabled native and SDK control until data
   share.addEventListener('click', () => { counts.share++; });
   for (const step of [
     { ref: 'Find a company', action: 'setValue', args: ['Canva'] },
-    { ref: 'Size by', action: 'setValue', args: ['Company count'] },
+    { ref: 'Size by', action: 'setValue', args: ['Funding announcement'] },
     { ref: 'Presentation', action: 'setValue', args: ['List'] },
     { ref: 'Filters', action: 'press' },
-    { ref: 'Reset', action: 'press' },
+    { ref: 'Reset exploration', action: 'press' },
     { ref: 'Share view', action: 'press' },
   ]) {
     const result = await atlasUIAgent.act({ steps: [step] });
@@ -304,8 +304,8 @@ test('treemap loading preserves every disabled native and SDK control until data
   }
   assert.deepEqual(counts, { input: 0, metric: 0, presentation: 0, reset: 0, share: 0 });
   assert.equal(input.value, '');
-  assert.equal(metric.value, 'valuation');
-  assert.equal(presentation.value, 'cards');
+  assert.equal(metric.value, 'companies');
+  assert.equal(presentation.value, 'map');
   await enableTreemapControls();
   for (const control of controls.querySelectorAll('input,select,button')) {
     assert.equal(control.disabled, false, `${control.id || control.getAttribute('aria-label')} must enable after loading`);
@@ -314,15 +314,15 @@ test('treemap loading preserves every disabled native and SDK control until data
   assert.equal(document.querySelector('ui-select-item[value="market-cap"]').hasAttribute('disabled'), true);
   const result = await atlasUIAgent.act({ steps: [
     { ref: 'Find a company', action: 'setValue', args: ['Canva'] },
-    { ref: 'Size by', action: 'setValue', args: ['Company count'] },
+    { ref: 'Size by', action: 'setValue', args: ['Funding announcement'] },
     { ref: 'Presentation', action: 'setValue', args: ['List'] },
-    { ref: 'Reset', action: 'press' },
+    { ref: 'Reset exploration', action: 'press' },
     { ref: 'Share view', action: 'press' },
   ] });
   assert.equal(result.ok, true, result.error?.message);
   await settleAtlasDOM();
   assert.deepEqual(counts, { input: 1, metric: 1, presentation: 1, reset: 1, share: 1 });
   assert.equal(input.value, 'Canva');
-  assert.equal(metric.value, 'companies');
+  assert.equal(metric.value, 'funding');
   assert.equal(presentation.value, 'list');
 });

@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fcf9f2">
-  <meta name="description" content="Explore startup credits, founder programmes and an index of partner leads, with sourced conditions and geographic context.">
-  <title>Startup Atlas — credits, programmes & partners</title>
+  <meta name="theme-color" content="#f9f8f5">
+  <meta name="description" content="Search companies, people, founder programmes and partners. Inspect the published evidence behind each record.">
+  <title>Directory — Startup Atlas</title>
   <link rel="stylesheet" href="./styles.css?v=2">
   <link rel="stylesheet" href="./gamma-components.css">
   <link rel="stylesheet" href="./globe.css?v=3">
@@ -15,12 +15,12 @@
   <script defer src="./vendor/sql.js/sql-wasm.js"></script>
   <script type="module" src="./app.js?v=8"></script>
   <script type="module" src="./globe.js?v=8"></script>
-<link rel="stylesheet" href="./design-tokens.css">
-<link rel="stylesheet" href="./atlas-ui.css">
-<script type="module" src="./atlas-ui.js"></script>
-<link rel="stylesheet" href="./directory.css">
-<link rel="stylesheet" href="./atlas-sdk.css">
-<script type="module" src="./atlas-sdk.js"></script>
+  <link rel="stylesheet" href="./design-tokens.css">
+  <link rel="stylesheet" href="./atlas-ui.css">
+  <script type="module" src="./atlas-ui.js"></script>
+  <link rel="stylesheet" href="./directory.css">
+  <link rel="stylesheet" href="./atlas-sdk.css">
+  <script type="module" src="./atlas-sdk.js"></script>
   <script src="./analytics-config.js" defer></script>
   <script src="./analytics.js" defer></script>
 </head>
@@ -29,13 +29,15 @@
   <header class="atlas-masthead" data-atlas-masthead="directory"></header>
   <main>
     <section class="workspace" id="directory" aria-labelledby="directory-heading">
-      <header class="atlas-feature atlas-feature-editorial">
-        <div class="atlas-feature-copy">
-          <h1 id="directory-heading" tabindex="-1">Find your next <em>connection.</em></h1>
-          <p>Search companies, founders, programmes and partners.</p>
-        </div>
+      <header class="directory-heading">
+        <h1 id="directory-heading" tabindex="-1">Directory</h1>
+        <ui-segmented-control id="directory-scope" class="mode-switch" aria-label="Directory view" default-value="all">
+          <ui-segmented-control-item as-child value="all"><button type="button" id="tab-all" data-view="all" class="mode active">All <span id="all-tab-count">—</span></button></ui-segmented-control-item>
+          <ui-segmented-control-item as-child value="opportunities"><button type="button" id="tab-opportunities" data-view="opportunities" class="mode">Opportunities <span id="opportunity-tab-count">—</span></button></ui-segmented-control-item>
+          <ui-segmented-control-item as-child value="partners"><button type="button" id="tab-partners" data-view="partners" class="mode">Partner index <span id="partner-tab-count">—</span></button></ui-segmented-control-item>
+          <ui-segmented-control-item as-child value="saved"><button type="button" id="tab-saved" data-view="saved" class="mode saved-mode">Saved opportunities <span id="saved-count">0</span></button></ui-segmented-control-item>
+        </ui-segmented-control>
       </header>
-      <ui-segmented-control id="directory-scope" class="mode-switch" aria-label="Directory view" default-value="all"><ui-segmented-control-item as-child value="all"><button type="button" id="tab-all" data-view="all" class="mode active">All <span id="all-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="opportunities"><button type="button" id="tab-opportunities" data-view="opportunities" class="mode">Opportunities <span id="opportunity-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="partners"><button type="button" id="tab-partners" data-view="partners" class="mode">Partner index <span id="partner-tab-count">—</span></button></ui-segmented-control-item><ui-segmented-control-item as-child value="saved"><button type="button" id="tab-saved" data-view="saved" class="mode saved-mode"><span aria-hidden="true">♡</span> Saved <span id="saved-count">0</span></button></ui-segmented-control-item></ui-segmented-control>
       <div class="directory-layout" id="directory-panel" role="region" aria-labelledby="tab-all">
         <div class="directory-toolbar">
           <div class="search-field">
@@ -63,29 +65,46 @@
             <label class="partner-logo-toggle"><input type="checkbox" id="partner-logo"><span>Logo available</span></label>
           </div>
         </section>
+        <div id="directory-exploration" class="directory-exploration" hidden></div>
         </div>
-        <div class="results">
+        <div class="directory-results-chrome">
           <div class="filter-bar" id="active-filter-bar" hidden><div class="filter-bar-head"><span class="filter-bar-title">Active filters <strong id="active-filter-count"></strong></span><button type="button" class="filter-bar-clear" id="clear-active-filters">Clear filters</button></div><ul class="filter-bar-chips" id="active-filter-chips" aria-label="Active filters"></ul></div>
           <div class="result-bar">
-            <div><span class="result-label" id="result-title">Research opportunities</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span><a class="graph-search-shortcut" id="graph-search-shortcut" href="./graph.html">Find startups &amp; people ↗</a></div>
-            <ui-segmented-control id="directory-presentation" class="directory-presentation" aria-label="Company result view" default-value="details" hidden>
-              <ui-segmented-control-item as-child value="details"><button type="button" id="company-view-details" data-company-view="details">Details</button></ui-segmented-control-item>
-              <ui-segmented-control-item as-child value="coverage"><button type="button" id="company-view-coverage" data-company-view="coverage">Coverage</button></ui-segmented-control-item>
-            </ui-segmented-control>
-            <label class="sort-label" for="sort">Sort <select id="sort"><option value="recommended">Featured first</option><option value="name">Name A–Z</option></select></label>
-          </div>
-          <div class="inline-note" id="directory-note"><span aria-hidden="true">✳</span><p>Locations marked <strong>to verify</strong> have no confirmed country eligibility in this research. An award is never guaranteed. Check the original source for current conditions.</p></div>
-          <div class="directory-evidence-legend" id="directory-evidence-legend" hidden>
-            <div>
-              <h2>Evidence coverage</h2>
-              <p>Each cell counts distinct source links for that part of the record.</p>
+            <div class="directory-result-summary"><span class="result-label" id="result-title">Records</span><span class="result-count" id="result-count" aria-live="polite">Loading…</span><a class="graph-search-shortcut" id="graph-search-shortcut" href="./graph.html">Explore the graph ↗</a><button class="atlas-button" type="button" id="directory-inspector-reopen" hidden>View selection</button></div>
+            <div class="directory-display-options">
+              <div class="directory-company-options" id="directory-company-options" hidden>
+                <ui-popover id="directory-columns">
+                  <ui-popover-trigger><button type="button" class="atlas-button directory-columns-trigger">Columns</button></ui-popover-trigger>
+                  <ui-popover-content class="directory-columns-panel" align="end" side-offset="6" collision-padding="12" keep-mounted hidden>
+                    <ui-popover-title>Visible columns</ui-popover-title>
+                    <label><input type="checkbox" id="column-headquarters" data-company-column="headquarters"> Headquarters</label>
+                    <label><input type="checkbox" id="column-sector" data-company-column="sector"> Sector</label>
+                    <label><input type="checkbox" id="column-stage" data-company-column="stage"> Recorded stage</label>
+                    <label><input type="checkbox" id="column-source-check" data-company-column="source-check"> Last profile fact review</label>
+                    <button type="button" id="reset-directory-columns" class="atlas-button">Restore defaults</button>
+                  </ui-popover-content>
+                </ui-popover>
+                <div class="directory-density-field"><label class="sr-only" for="directory-density">Row density</label><select id="directory-density"><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select></div>
+                <ui-segmented-control id="directory-presentation" class="directory-presentation" aria-label="Company result view" default-value="details" hidden>
+                  <ui-segmented-control-item as-child value="details"><button type="button" id="company-view-details" data-company-view="details">Details</button></ui-segmented-control-item>
+                  <ui-segmented-control-item as-child value="coverage"><button type="button" id="company-view-coverage" data-company-view="coverage">Coverage</button></ui-segmented-control-item>
+                </ui-segmented-control>
+              </div>
+              <div class="directory-sort-field"><label class="sort-label" for="sort">Sort</label><select id="sort"><option value="recommended">Featured first</option><option value="name">Name A–Z</option></select></div>
             </div>
+          </div>
+        </div>
+        <div class="results">
+          <div class="inline-note" id="directory-note" hidden></div>
+          <div class="directory-evidence-legend" id="directory-evidence-legend" hidden>
+            <h2>Evidence coverage</h2>
             <ul aria-label="Source count scale">
               <li><i data-level="1" aria-hidden="true"></i>1 source</li>
               <li><i data-level="2" aria-hidden="true"></i>2 sources</li>
               <li><i data-level="3" aria-hidden="true"></i>3+ sources</li>
               <li><i data-level="0" aria-hidden="true"></i>Unknown</li>
             </ul>
+            <p>Distinct source links per column</p>
           </div>
           <div class="result-columns" id="result-columns" aria-hidden="true"><span>Opportunity</span><span>Resource</span><span>Location</span><span>Benefit</span><span>Status &amp; source</span><span></span></div>
           <div class="directory-entity-columns" id="entity-columns" aria-hidden="true" hidden><span>Entity &amp; evidence</span><span>Type</span><span>Explore</span></div>
@@ -93,7 +112,7 @@
           <p id="result-range" class="atlas-result-range" role="status"></p>
           <div class="load-more-wrap"><button id="load-more" class="load-more" type="button" hidden>Load more <span aria-hidden="true">↓</span></button></div>
         </div>
-        <aside id="directory-inspector" class="directory-inspector" aria-label="Inspected record" hidden><div class="directory-inspector-empty"><h2>A closer look.</h2><p>Select Inspect beside a record to explore its sourced details here.</p></div></aside>
+        <div id="directory-inspector-seat" hidden><aside id="directory-inspector" class="directory-inspector" aria-label="Inspected record" hidden></aside></div>
       </div>
       <nav class="directory-context-links" aria-label="More ways to explore"><a href="#atlas">Browse places &amp; organisations ↓</a><a href="./docs/partner-index.html">A–Z partner index ↗</a></nav>
     </section>
@@ -119,6 +138,12 @@
     </section>
     <section class="method" id="method"><div><div class="section-kicker">ABOUT THE INDEX</div><h2>Useful leads.<br><em>Clear caveats.</em></h2></div><div><p>Startup Atlas combines a researched selection of credit and founder programmes with an index of organisations from public sources and an earlier partner list. The index is a starting point for discovery, not a claim that every listed organisation has an active provider partnership.</p><p>Amounts are ceilings or conditional awards, not cash in hand. Eligibility, deadlines and terms change; follow the original sources and confirm the details before applying. We don’t submit applications or track your business data.</p><a href="https://github.com/castlemilk/startup-atlas" target="_blank" rel="noopener noreferrer">View the source and suggest an update <span aria-hidden="true">↗</span></a></div></section>
   </main>
+  <ui-dialog id="directory-inspector-sheet">
+    <ui-dialog-backdrop class="directory-sheet-backdrop" hidden></ui-dialog-backdrop>
+    <ui-dialog-content id="directory-sheet-content" class="directory-sheet-content" initial-focus="#directory-inspector-heading" final-focus="none" keep-mounted hidden>
+      <ui-dialog-title class="sr-only">Record inspection</ui-dialog-title>
+    </ui-dialog-content>
+  </ui-dialog>
   <footer><span class="footer-brand">startup<span>atlas</span></span><span>Built for the people building what comes next.</span><span>RESEARCHED 11 NOV 2026</span></footer>
   <noscript><p class="noscript">This directory needs JavaScript to search. The underlying <a href="./data/catalogue.json">catalogue data</a> is available directly.</p></noscript>
 </body>
