@@ -11,6 +11,7 @@ import {checkDesignWorkbench} from './design-workbench-browser-checks.mjs';
 import {checkDirectoryWireframes} from './directory-wireframe-browser-checks.mjs';
 import {checkProfileWireframes} from './profile-wireframe-browser-checks.mjs';
 import {checkAtlasSdk} from './atlas-sdk-browser-checks.mjs';
+import {checkEditorialExplorer} from './editorial-explorer-browser-checks.mjs';
 import {contrastRatio} from '../web/design-token-reference.js';
 
 const root=resolve('dist');
@@ -202,7 +203,7 @@ try {
   assert.match(await text('#ds-snapshot'),new RegExp(`${graph.entities.length} entity records`));
   const patterns=[
     {key:'search',path:'/',ready:"d.querySelector('#entity-kind')?.value==='startup'&&d.querySelectorAll('#results-list .entity-row').length>0"},
-    {key:'treemap',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='funding'&&d.querySelector('#treemap-currency')?.value==='USD'"},
+    {key:'treemap',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='companies'&&d.querySelector('#treemap-group')?.value==='sector'"},
     {key:'graph',path:'/graph.html',ready:"d.querySelectorAll('.network-node').length>0&&d.querySelector('#graph-detail h2')?.textContent==='Canva'"},
     {key:'startup',path:'/entity.html',ready:"d.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#entity-profile h1')?.textContent==='Canva'"},
     {key:'partner',path:'/partner.html',ready:"d.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#profile h1')?.textContent==='Airtree'"}
@@ -278,7 +279,7 @@ try {
   await screenshot('atlas-startup-desktop.png');
   await click('.atlas-section-nav a[href="#entity-funding"]');
   await until(()=>evaluate("location.hash==='#entity-funding'"),'Funding section navigation did not update the fragment');
-  await until(()=>evaluate("document.querySelector('.atlas-section-nav a[href=\"#entity-funding\"]').getAttribute('aria-current')==='location'"),'Funding anchor should remain current beside the parallel facts section and source rail');
+  await until(()=>evaluate("document.querySelector('.atlas-section-nav a[href=\"#entity-funding\"]').getAttribute('aria-current')==='location'"),'Funding anchor should mark the current section');
   assert.equal(await text('[data-atlas-back]'),'Back to search results','Section links must not replace the originating return with a self-link');
   assert.match(await text('#entity-funding'),/Historical announcements/);
   await click('[data-atlas-back]');
@@ -306,8 +307,7 @@ try {
   await navigate('/entity.html?id='+encodeURIComponent(missingFunding.id),"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'");
   assert.equal(await text('#entity-profile h1'),missingFunding.name);
   assert.equal(await evaluate("document.querySelectorAll('#entity-funding .entity-round').length"),0);
-  assert.match(await text('#entity-funding'),/Funding has not been researched yet/);
-  assert.match(await text('#entity-funding'),/does not mean the company has raised no funding/);
+  assert.match(await text('#entity-funding'),/No recorded funding/);
 
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await navigate('/entity.html?id=startup%3Acanva',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('#entity-profile h1')?.textContent==='Canva'");
@@ -319,14 +319,14 @@ try {
   await assertNoOverflow('390px partner profile');
   await screenshot('atlas-partner-mobile.png',true);
 
-  await navigate('/',"!!document.querySelector('.atlas-masthead [data-atlas-view=directory][aria-current=page] .signal-feature-symbol')");
+  await navigate('/',"!!document.querySelector('[data-atlas-explorer-actions] [data-atlas-view=directory][aria-current=page]')");
   const masthead=await evaluate(`(()=>{
     const bar=document.querySelector('.atlas-masthead');
     return {
       brand:getComputedStyle(bar.querySelector('.atlas-wordmark')).fontFamily,
       body:getComputedStyle(document.body).fontFamily,
       paper:getComputedStyle(bar).backgroundColor,
-      selected:getComputedStyle(bar.querySelector('[aria-current=page]')).backgroundColor
+      selected:getComputedStyle(document.querySelector('[data-atlas-explorer-actions] [aria-current=page]')).backgroundColor
     };
   })()`);
   assert.match(masthead.brand,/^"?Atlas Newsreader/);
@@ -351,6 +351,7 @@ try {
   await checkProfileWireframes({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,partners,graph});
 
   await checkAtlasSdk({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,partners});
+  await checkEditorialExplorer({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph});
 
   assert.deepEqual(exceptions,[],'Explorer views must not raise unhandled JavaScript exceptions');
   assert.deepEqual(browserMessages.filter(message=>message.level==='error'),[],'Explorer views must not log application errors');

@@ -104,7 +104,7 @@ const definitions = [
     use:'The specimen highlights the chosen route and links to the real Atlas views. Open a route to inspect its current implementation.',
     avoid:'Do not use tab semantics for navigation to another page, or promise that every filter transfers across views.',
     keyboard:'Every destination is a native link. The selected example exposes aria-current; normal browser navigation and new-tab behaviour remain available.',
-    integration:'Operational routes use one data-atlas-masthead header, mounted by installAtlasUI. renderViewNavigation also supports standalone reference specimens. Supported query propagation remains shared; domain filters stay route-owned.'
+    integration:'Operational routes mount one masthead through installAtlasUI. Its links preserve company search, facets, drill path and inspection across explorers. Opportunity and partner filters stay with the Directory.'
   }
 ];
 

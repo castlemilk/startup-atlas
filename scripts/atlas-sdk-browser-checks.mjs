@@ -71,7 +71,7 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await assertAgentChange('Search the directory','Canva');
   await traceNative('#entity-kind','change','type');
   const allTypes=await choose('Entity type',/^All types$/);
-  await until(()=>evaluate("document.querySelector('#entity-kind').value==='all'&&!new URLSearchParams(location.search).has('type')"),'Agent selection did not update the directory type');
+  await until(()=>evaluate("document.querySelector('#entity-kind').value==='all'&&new URLSearchParams(location.search).get('type')==='all'"),'Agent selection did not update the directory type');
   assert.equal(await nativeCount('type'),1,'One SDK select action must dispatch one native change event');
   await assertAgentChange('Entity type',allTypes.value);
   const trigger='ui-select[data-native-id="entity-kind"] .atlas-select-trigger';
@@ -111,13 +111,16 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await act('Inspect Canva','press');
   await until(()=>evaluate("document.querySelector('#directory-inspector-heading')?.textContent==='Canva'"),'Agent Inspect did not open the sourced record');
   assert.equal(await nativeCount('inspect'),1,'SDK Button must activate the native Inspect button once');
-  assert.equal(await evaluate('location.href'),directoryUrl,'Agent inspection preserves search context');
+  const inspectedUrl=new URL(await evaluate('location.href'));
+  assert.equal(inspectedUrl.searchParams.get('selected'),'startup:canva','Agent inspection persists the selected company');
+  inspectedUrl.searchParams.delete('selected');
+  assert.equal(inspectedUrl.href,directoryUrl,'Agent inspection preserves search context');
   await audit('Inspected directory',['Close record inspection']);
   await act('Close record inspection','press');
   assert.equal(await evaluate('document.activeElement.dataset.inspectEntity'),'startup:canva','Agent close restores the originating Inspect button');
   await settleTop();await assertNoOverflow('SDK directory desktop');await screenshot('atlas-sdk-directory-desktop.png');
 
-  await navigate('/treemap.html?metric=funding&currency=USD',ready("document.querySelector('#treemap-workspace')?.getAttribute('aria-busy')==='false'"));
+  await navigate('/treemap.html?view=map&metric=funding&currency=USD',ready("document.querySelector('#treemap-workspace')?.getAttribute('aria-busy')==='false'"));
   await audit('Treemap',['Find a company','Size by','Currency','Group by','Presentation']);
   await act('Find a company','setValue',['Canva']);
   await until(()=>evaluate("new URLSearchParams(location.search).get('q')==='Canva'&&document.querySelectorAll('.treemap-tile').length===1"),'Agent treemap search did not filter companies');
@@ -137,8 +140,8 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await act('Filters','press');
   await until(()=>evaluate("document.querySelector('#treemap-filter-fields').hidden&&document.querySelector('#treemap-metric').value==='companies'"),'Collapsing filters lost the applied measure');
   await act('Filters','press');
-  await act('Reset','press');
-  await until(()=>evaluate("document.querySelector('#treemap-metric').value==='funding'&&document.querySelector('#treemap-query').value===''&&!document.querySelector('#treemap-cards').hidden&&document.querySelector('#treemap-chart').hidden"),'SDK reset did not restore the default funding cards');
+  await act('Reset exploration','press');
+  await until(()=>evaluate("document.querySelector('#treemap-metric').value==='companies'&&document.querySelector('#treemap-query').value===''&&!document.querySelector('#treemap-chart').hidden&&document.querySelector('#treemap-cards').hidden"),'SDK reset did not restore the company-count map');
   await assertOneTabStop('.treemap-view-switch');
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   const metricTrigger='ui-select[data-native-id="treemap-metric"] .atlas-select-trigger';
@@ -178,9 +181,9 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   assert.equal(await evaluate("document.querySelector('#partner-company-detail .profile-detail-source a').href"),company.source,'Agent inspection retains the company relationship source');
   await audit('Updated partner explorer');
   await navigate('/entity.html?id=startup%3Acanva',ready("document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Canva'"));
-  await audit('Startup explorer',['Explore connections']);
+  await audit('Startup explorer',['Explore graph']);
   await assertNoOverflow('SDK startup explorer');
-  const profileAction=await component('Explore connections','press');
+  const profileAction=await component('Explore graph','press');
   await evaluate(`void window.atlasUIAgent.act(${JSON.stringify({steps:[{ref:profileAction.ref,action:'press'}]})})`);
   await until(()=>evaluate(ready("location.pathname.endsWith('/graph.html')&&document.querySelector('.network-node.is-root')?.dataset.node==='startup:canva'")),'The SDK profile action did not navigate to the same startup in the graph');
   console.log('UI SDK acceptance passed: named live controls, discoverable choices, agent query/selection/inspection, exactly-once native dispatch, keyboard Select dismissal and focus, single-tab-stop scopes, treemap presentations, graph controls, sourced partner inspection and mobile popup bounds.');

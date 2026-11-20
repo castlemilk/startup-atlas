@@ -2,7 +2,8 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { entityHref, kindName } from './graph-model.js';
 import { logoFor } from './logos.js';
 import { renderIcon } from './atlas-icons.js';
-import { featureSymbol } from './atlas-feature-symbols.js';
+import { explorationHref, readExploration } from './atlas-exploration.js';
+import { installWorkspace } from './atlas-workspace.js';
 
 const gsapVersion = '3.15.1';
 const gsapLoads = new WeakMap();
@@ -86,16 +87,79 @@ export function renderEvidenceHeading() {
 
 export function renderViewNavigation(active) {
   const views = [
-    ['directory', './#directory', 'search', 'List & search'],
     ['treemap', './treemap.html', 'treemap', 'Treemap'],
-    ['graph', './graph.html', 'graph', 'Graph']
+    ['graph', './graph.html', 'graph', 'Graph'],
+    ['directory', './#directory', 'list', 'List'],
   ];
-  return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${featureSymbol(glyph, { size: 18 })}${label}</a>`).join('')}</nav>`;
+  return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${icon(glyph)}${label}</a>`).join('')}</nav>`;
 }
 
-/** One operational masthead, derived from the five Atlas wireframes. */
-export function renderAtlasMasthead(active = '') {
-  return `<div class="atlas-brand-bar"><a class="atlas-wordmark" href="./" aria-label="Startup Atlas home"><span class="atlas-diamond-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startupatlas</span></a><a class="atlas-system-link" href="./design-system.html"${active === 'system' ? ' aria-current="page"' : ''}>${icon('system')}Design system</a></div><div class="atlas-view-bar">${renderViewNavigation(active)}</div>`;
+export function renderAtlasMasthead(active = '', {viewSpecimen=true}={}) {
+  const exploring = ['directory','treemap','graph','entity','partner','profile'].includes(active);
+  const workspace = exploring && !viewSpecimen;
+  const ids = viewSpecimen ? 'atlas-specimen' : 'atlas';
+  const sources = active==='entity' ? '#entity-sources' : active==='partner' ? '#partner-sources' : './#method';
+  return `<div class="atlas-brand-bar"${workspace ? ' data-atlas-workspace' : ''}>
+    <a class="atlas-wordmark" href="./" aria-label="Startup Atlas home"><span class="atlas-diamond-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>startup atlas</span></a>
+    <div class="atlas-mobile-header-actions">
+      <button type="button" data-atlas-header-toggle="search" aria-label="Site search" aria-controls="${ids}-site-search" aria-expanded="false">${icon('search')}</button>
+      <button type="button" data-atlas-header-toggle="menu" aria-label="Site navigation" aria-controls="${ids}-main-nav ${ids}-nav-actions" aria-expanded="false"><span class="atlas-menu-icon" aria-hidden="true"></span></button>
+    </div>
+    <nav class="atlas-primary-nav" id="${ids}-main-nav" aria-label="Main navigation">
+      <a class="atlas-explore-link" href="./#directory"${exploring ? ' aria-current="true"' : ''}>Explore</a>
+      ${workspace ? '<ui-dialog-trigger for="atlas-workspace-dialog"><button type="button" data-atlas-panel="saved" aria-haspopup="dialog">Saved</button></ui-dialog-trigger>' : ''}
+      <a href="${sources}">Sources</a>
+    </nav>
+    <form class="atlas-site-search" id="${ids}-site-search" role="search" aria-label="Search the Atlas" action="./#directory" method="get">
+      <label for="${ids}-global-query" class="sr-only">Search the Atlas</label>
+      <button type="submit" aria-label="Find records">${icon('search')}</button>
+      <input name="q" id="${ids}-global-query" type="search" placeholder="Search companies, people, programmes" autocomplete="off" maxlength="200">
+      <input name="type" type="hidden" value="all">
+    </form>
+    <div class="atlas-brand-actions" id="${ids}-nav-actions">
+      ${workspace ? `<ui-dialog-trigger for="atlas-workspace-dialog"><button type="button" data-atlas-panel="compare" aria-haspopup="dialog">${icon('copy')}<span data-atlas-panel-label>Compare</span></button></ui-dialog-trigger>` : ''}
+      <a class="atlas-system-link" href="./design-system.html" aria-label="Design system"${active === 'system' ? ' aria-current="page"' : ''}>${icon('system')}</a>
+    </div>
+    ${viewSpecimen ? `<div class="atlas-view-bar">${renderViewNavigation(active)}</div>` : ''}
+  </div>`;
+}
+
+export function renderExplorerActions(active) {
+  return `${renderViewNavigation(active)}
+    <div class="atlas-view-utilities">
+      <button class="atlas-button" type="button" data-atlas-save-view>${icon('link')}<span data-atlas-action-label>Save view</span></button>
+      <button class="atlas-button" type="button" data-atlas-export="${esc(active)}">${icon('download')}<span>Export</span></button>
+    </div><p class="atlas-view-action-status" data-atlas-export-status role="status" hidden></p>`;
+}
+
+const csvField = value => {
+  const text = String(value ?? '');
+  return '"' + (/^\s*[=+\-@]/.test(text) ? "'" : '') + text.replaceAll('"','""') + '"';
+};
+
+function exportAtlasRecords(doc, button) {
+  const status = button.closest('[data-atlas-explorer-actions]').querySelector('[data-atlas-export-status]');
+  const result = {records:null};
+  doc.dispatchEvent(new CustomEvent('atlas:export-records',{detail:result}));
+  if (!result.records?.length) {
+    status.hidden = false;
+    status.textContent = result.records ? 'There are no matching records to export.' : 'Records are loading. Try exporting again.';
+    return;
+  }
+  const rows = [['Name','Type','Record ID','Source'],...result.records.map(record=>[
+    record.name,record.kind==='opportunity' ? 'Opportunity' : kindName(record.kind),record.id,sourceUrl(record.source) || '',
+  ])];
+  const blob = new Blob([rows.map(row=>row.map(csvField).join(',')).join('\r\n')+'\r\n'],{type:'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const link = doc.createElement('a');
+  link.href = url;
+  link.download = `startup-atlas-${button.dataset.atlasExport}.csv`;
+  doc.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  status.textContent = `Exported ${result.records.length} ${result.records.length===1 ? 'record' : 'records'}.`;
+  status.hidden = false;
 }
 
 function renderSourceCoverage({profile, founders, funding}) {
@@ -119,7 +183,7 @@ export function renderEntityRow(item, connections = null, options = {}) {
   const context = options.coverage
     ? renderSourceCoverage(options.coverage)
     : `<span class="entity-row-kind">${entityBadge(item.kind)}</span>`;
-  return `<article class="entity-row${inspectable ? ' entity-row-inspectable' : ''}" data-kind="${esc(item.kind)}"${inspectable ? ` data-entity-id="${esc(item.id)}" data-selected="${options.selected === true}"` : ''}><span class="entity-row-mark${logo ? ' has-logo' : ''}" aria-hidden="true"><span>${esc(initials)}</span>${logo ? `<img class="entity-row-image" src="${esc(logo)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : ''}</span><div class="entity-row-main"><h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3><p>${esc(summary)}</p><div class="entity-row-meta">${count}${href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">Profile source</a>` : '<span>Source not recorded</span>'}</div></div>${context}<div class="entity-row-actions">${inspection}<a class="entity-row-graph" href="./graph.html?entity=${encodeURIComponent(item.id)}" aria-label="Explore ${esc(item.name)} connections">Graph ${icon('graph')}</a></div></article>`;
+  return `<article class="entity-row${inspectable ? ' entity-row-inspectable' : ''}" data-kind="${esc(item.kind)}"${inspectable ? ` data-entity-id="${esc(item.id)}" data-selected="${options.selected === true}"` : ''}><span class="entity-row-mark${logo ? ' has-logo' : ''}" aria-hidden="true"><span>${esc(initials)}</span>${logo ? `<img class="entity-row-image" src="${esc(logo)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : ''}</span><div class="entity-row-main"><h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3><p>${esc(summary)}</p><div class="entity-row-meta">${count}${href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">Profile source</a>` : '<span>Source not recorded</span>'}</div></div>${context}<div class="entity-row-actions">${inspection}<a class="entity-row-graph" href="${esc(options.graphHref || `./graph.html?entity=${encodeURIComponent(item.id)}`)}" aria-label="Explore ${esc(item.name)} connections">Graph ${icon('graph')}</a></div></article>`;
 }
 
 /** Return context is confined to public Atlas routes on the same deployment. */
@@ -137,12 +201,24 @@ export function safeAtlasReturn(value, base) {
 export function installAtlasUI(doc = document) {
   const base = location.href;
   if (new URLSearchParams(location.search).get('embed') === '1') doc.body.classList.add('atlas-embedded');
-  for (const placeholder of doc.querySelectorAll('[data-atlas-masthead]')) placeholder.innerHTML = renderAtlasMasthead(placeholder.dataset.atlasMasthead);
+  for (const placeholder of doc.querySelectorAll('[data-atlas-masthead]')) placeholder.innerHTML = renderAtlasMasthead(placeholder.dataset.atlasMasthead,{viewSpecimen:false});
   for (const placeholder of doc.querySelectorAll('[data-atlas-navigation]')) placeholder.innerHTML = renderViewNavigation(placeholder.dataset.atlasNavigation);
+  for (const placeholder of doc.querySelectorAll('[data-atlas-explorer-actions]')) placeholder.innerHTML = renderExplorerActions(placeholder.dataset.atlasExplorerActions);
+  installWorkspace(doc,safeAtlasReturn);
+  const returnKey = 'atlas:return:' + location.pathname + location.search;
+  const scrollKey = 'atlas:scroll:' + location.pathname + location.search;
+  let returnScroll;
+  try {
+    returnScroll = JSON.parse(sessionStorage.getItem(scrollKey) || 'null');
+    sessionStorage.removeItem(scrollKey);
+  } catch { /* Browser storage can be disabled. */ }
+  let exploration;
   let sectionFrame = 0;
   const updateSections = () => {
     sectionFrame = 0;
     for (const nav of doc.querySelectorAll('.atlas-section-nav')) {
+      const sticky = nav.closest('.profile-sticky');
+      if (sticky) sticky.toggleAttribute('data-stuck',sticky.getBoundingClientRect().top<=1);
       const entries = Array.from(nav.querySelectorAll('a[href^="#"]')).map(link => ({link, section:doc.getElementById(link.getAttribute('href').slice(1))})).filter(entry => entry.section && !entry.section.hidden).map(entry => ({...entry, top:entry.section.getBoundingClientRect().top}));
       // Profile sections can sit in parallel columns. Use their visual position,
       // with the followed anchor resolving sections that share the same row.
@@ -169,28 +245,66 @@ export function installAtlasUI(doc = document) {
       const input = doc.getElementById(button.dataset.atlasClearFor);
       button.hidden = !input?.value;
     }
-    const query = doc.getElementById('search')?.value || doc.getElementById('graph-query')?.value || doc.getElementById('treemap-query')?.value || '';
     const params = new URLSearchParams(location.search);
+    let context;
+    try { context = JSON.parse(sessionStorage.getItem(returnKey) || 'null'); } catch { /* Browser storage can be disabled. */ }
+    const destination = context && safeAtlasReturn(context.href, base);
+    exploration = readExploration(params);
+    const search = doc.getElementById('search') || doc.getElementById('graph-query') || doc.getElementById('treemap-query');
+    if (search) exploration.query = search.value;
+    const profileId = params.get('id');
+    if (destination && !search) {
+      exploration = readExploration(context.filters ? new URLSearchParams(context.filters) : new URL(destination,base).searchParams);
+    }
+    if (profileId && !search) exploration.selected = profileId;
     for (const link of doc.querySelectorAll('[data-atlas-view]')) {
       const next = new URL(link.dataset.atlasBase, base);
-      if (query) next.searchParams.set('q', query);
       if (link.dataset.atlasView === 'graph') {
-        const entity = params.get('entity') || params.get('id');
+        const entity = exploration.graphAnchor || params.get('entity') || exploration.selected;
         if (entity) next.searchParams.set('entity', entity);
       }
-      const href = next.pathname + next.search + next.hash;
+      const href = explorationHref(next,base,exploration);
       if (link.getAttribute('href') !== href) link.setAttribute('href', href);
     }
-    let context;
-    try { context = JSON.parse(sessionStorage.getItem('atlas:return:' + location.pathname + location.search) || 'null'); } catch { /* Storage is optional. */ }
-    const destination = context && safeAtlasReturn(context.href, base);
+    for (const link of doc.querySelectorAll('[data-atlas-profile-graph]')) {
+      const root = link.dataset.atlasProfileGraph;
+      const href = explorationHref(`./graph.html?entity=${encodeURIComponent(root)}`,base,{...exploration,graphAnchor:root,selected:root});
+      if (link.getAttribute('href')!==href) link.setAttribute('href',href);
+    }
     if (destination && typeof context.label === 'string') for (const link of doc.querySelectorAll('[data-atlas-back]')) {
       if (link.getAttribute('href') !== destination) link.setAttribute('href', destination);
       if (link.textContent !== context.label) link.textContent = context.label;
     }
+    if (returnScroll && Number.isFinite(returnScroll.y) && doc.documentElement.scrollHeight - innerHeight >= returnScroll.y - 2) {
+      const {x,y} = returnScroll;
+      returnScroll = null;
+      requestAnimationFrame(()=>window.scrollTo({left:x,top:y,behavior:'instant'}));
+    }
   };
   const queueRefresh = () => { if (!refreshQueued) { refreshQueued = true; queueMicrotask(refresh); } };
+  function toggleHeader(header,mode) {
+    for (const toggle of header.querySelectorAll('[data-atlas-header-toggle]')) {
+      const key=toggle.dataset.atlasHeaderToggle;
+      const open=key===mode && !header.hasAttribute('data-'+key+'-open');
+      header.toggleAttribute('data-'+key+'-open',open);
+      toggle.setAttribute('aria-expanded',String(open));
+      if (open && key==='search') header.querySelector('input[type="search"]').focus();
+    }
+  }
+  doc.addEventListener('keydown',event=>{
+    const header=event.target.closest?.('.atlas-brand-bar');
+    if (event.key!=='Escape' || !header) return;
+    const mode=header.hasAttribute('data-search-open') ? 'search' : header.hasAttribute('data-menu-open') ? 'menu' : '';
+    if (!mode) return;
+    event.preventDefault();
+    toggleHeader(header,'');
+    header.querySelector(`[data-atlas-header-toggle="${mode}"]`).focus();
+  });
   doc.addEventListener('click', event => {
+    const disclosure=event.target.closest('[data-atlas-header-toggle]');
+    if (disclosure) {toggleHeader(disclosure.closest('.atlas-brand-bar'),disclosure.dataset.atlasHeaderToggle);return;}
+    const exportButton=event.target.closest('[data-atlas-export]');
+    if (exportButton) {exportAtlasRecords(doc,exportButton);return;}
     const clear = event.target.closest('[data-atlas-clear-for]');
     if (clear && !clear.closest('ui-input-clear')) {
       const input = doc.getElementById(clear.dataset.atlasClearFor);
@@ -198,8 +312,18 @@ export function installAtlasUI(doc = document) {
       return;
     }
     const link = event.target.closest('a[href]');
-    if (!link || link.hasAttribute('data-atlas-back')) return;
+    if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const target = new URL(link.href, base);
+    if (link.hasAttribute('data-atlas-back')) {
+      if (!safeAtlasReturn(target,base)) return;
+      try {
+        const context = JSON.parse(sessionStorage.getItem(returnKey) || 'null');
+        if (context?.scroll && safeAtlasReturn(context.href,base)===target.pathname+target.search+target.hash) {
+          sessionStorage.setItem('atlas:scroll:' + target.pathname + target.search,JSON.stringify(context.scroll));
+        }
+      } catch { /* Ordinary navigation still works. */ }
+      return;
+    }
     if (target.origin !== location.origin || !/(?:entity|partner)\.html$/.test(target.pathname)) return;
     // Section anchors do not start a new profile journey or replace its origin.
     if (target.pathname + target.search === location.pathname + location.search) return;
@@ -207,10 +331,12 @@ export function installAtlasUI(doc = document) {
     if (!from) return;
     const page = location.pathname.split('/').pop();
     const label = page === 'graph.html' ? 'Back to graph' : page === 'treemap.html' ? 'Back to treemap' : ['entity.html','partner.html'].includes(page) ? 'Back to ' + doc.title.split(' — ')[0] : page === 'design-system.html' ? 'Back to design system' : page === 'design-lab.html' ? 'Back to design lab' : page === 'design-direction.html' ? 'Back to design direction' : page === 'design-assets.html' ? 'Back to asset library' : 'Back to search results';
-    try { sessionStorage.setItem('atlas:return:' + target.pathname + target.search, JSON.stringify({href:from,label})); } catch { /* Plain links remain available. */ }
+    const filters = new URL(explorationHref('./',base,exploration),base).search;
+    try { sessionStorage.setItem('atlas:return:' + target.pathname + target.search, JSON.stringify({href:from,label,filters,scroll:{x:window.scrollX,y:window.scrollY}})); } catch { /* Plain links remain available. */ }
   });
   doc.addEventListener('input', queueRefresh);
   doc.addEventListener('change', queueRefresh);
+  doc.addEventListener('atlas:exploration-change', queueRefresh);
   window.addEventListener('popstate', queueRefresh);
   window.addEventListener('pageshow', queueRefresh);
   new MutationObserver(queueRefresh).observe(doc.body, {childList:true, subtree:true});

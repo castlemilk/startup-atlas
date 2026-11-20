@@ -9,6 +9,7 @@ from scripts.collection_coverage import ConflictError
 from scripts.crawl import company_profile_observation, extract_page
 from scripts.plan_company_profiles import build_plan, digest
 from scripts.review_company_metadata import DIMENSIONS, review
+from scripts.rollup_company_metadata import rollup
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -130,6 +131,183 @@ class CompanyMetadataReviewTests(unittest.TestCase):
     def profile_candidate(kind, **extra):
         return {'company': COMPANY, 'kind': kind, 'source_url': SEED, 'checked_at': AS_OF,
                 'review_required': True, **extra}
+
+    def social_receipt(self, links=None, *, review_date='2026-11-17', **changes):
+        pinned = json.loads(self.overlay.read_bytes())
+        stored = [
+            {'label': 'LinkedIn', 'url': 'https://www.linkedin.com/company/psiquantum-ltd',
+             'source': SEED, 'reviewed_at': review_date},
+            {'label': 'X', 'url': 'https://x.com/PsiQuantum', 'source': SEED, 'reviewed_at': review_date},
+        ]
+        pinned['startups'][0]['socials'] = stored
+        self.write(self.overlay, pinned)
+        self.batch['plan_id'] = build_plan(self.overlay, self.approved, REVISION, limit=100)['plan_id']
+        return {
+            'version': 1, 'name': COMPANY, 'revision': REVISION, 'startup_id': 'startup:psiquantum',
+            'source_url': SEED, 'observed_on': '2026-11-18', 'reviewed_since': '2026-11-17',
+            'acquisition': 'issuer_anchor_capture', 'evidence': 'Saved issuer links and their recorded roles.',
+            'links': links if links is not None else [
+                {'label': row['label'], 'url': row['url'], 'role': 'company'} for row in stored
+            ],
+            **changes,
+        }
+
+    def test_company_socials_keep_exact_issuer_links_and_dedup_literal_variants(self):
+        receipt = self.social_receipt()
+        aliases = [
+            {'label': 'Twitter', 'url': 'https://twitter.com/psiquantum/', 'role': 'company'},
+            {'label': 'LinkedIn', 'url': receipt['links'][0]['url'] + '/', 'role': 'company'},
+        ]
+        receipt['links'] = [*aliases, *receipt['links']]
+        self.evidence('company-socials', 'company_social_review', receipt)
+        first = self.run_review()
+        decision, = first['decisions']
+        self.assertEqual((decision['dimension'], decision['disposition']), ('company_socials', 'reviewed'))
+        detail = decision['company_social_review']
+        self.assertEqual(detail['coverage'], 'partial')
+        self.assertEqual(detail['counts'], {'reviewed': 2, 'duplicate': 2, 'held': 0, 'rejected': 0})
+        self.assertEqual([row['url'] for row in detail['links']], [row['url'] for row in receipt['links']])
+        self.assertEqual([row.get('duplicate_of') for row in detail['links']],
+                         [receipt['links'][3]['url'], receipt['links'][2]['url'], None, None])
+        self.assertTrue(all(row['source_url'] == SEED and row['role'] == 'company' for row in detail['links']))
+        self.assertEqual(first['coverage']['catalogue']['by_field']['company_socials']['reviewed'], 1)
+        self.assertEqual(first['coverage']['catalogue']['possible_field_cells'], 2 * (len(DIMENSIONS) + 1))
+        self.assertEqual(self.run_review()['decisions'], first['decisions'])
+
+    def test_company_socials_distinguish_non_profiles_uncertain_ownership_and_unsupported_links(self):
+        receipt = self.social_receipt()
+        receipt['links'] = [
+            {'label': 'Founder', 'url': 'https://www.linkedin.com/in/fixture', 'role': 'founder'},
+            {'label': 'Founder', 'url': 'https://www.linkedin.com/in/fixture', 'role': 'company'},
+            {'label': 'Share', 'url': 'https://twitter.com/intent/tweet?url=https://example.org/', 'role': 'company'},
+            {'label': 'Publisher widget', 'url': 'https://x.com/Publisher', 'role': 'incidental'},
+            {'label': 'X', 'url': 'https://x.com/PsiQuantumLabs', 'role': 'other_organisation'},
+            {'label': 'Lookalike', 'url': 'https://www.linkedin.com/company/psiquantum-labs', 'role': 'company'},
+            {'label': 'Unfamiliar platform', 'url': 'https://social.example.org/@psiquantum', 'role': 'company'},
+            {'label': 'X', 'url': 'https://x.com/PsiQuantum'},
+            {'label': 'X', 'url': 'https://x.com@elsewhere.example.org/PsiQuantum', 'role': 'company'},
+        ]
+        self.evidence('company-socials', 'company_social_review', receipt)
+        report = self.run_review()
+        decision, = report['decisions']
+        self.assertEqual(decision['disposition'], 'candidate')
+        detail = decision['company_social_review']
+        self.assertEqual(detail['coverage'], 'unknown')
+        self.assertEqual(detail['counts'], {'reviewed': 0, 'duplicate': 0, 'held': 3, 'rejected': 6})
+        self.assertEqual([row['reason'] for row in detail['links']],
+                         ['founder', 'non_profile_url', 'non_profile_url', 'incidental', 'other_organisation',
+                          'no_exact_issuer_review', 'unsupported_profile_url', 'ownership_unconfirmed',
+                          'unsafe_profile_url'])
+        self.assertEqual(report['queue'][-1]['fields']['founder_socials'], 'unsearched')
+
+    def test_company_socials_hold_stale_missing_and_foreign_evidence(self):
+        cases = [
+            ({'source_url': 'https://www.psiquantum.example.org/'}, 'issuer_source_mismatch'),
+            ({'source_url': SEED + 'different-document'}, 'no_exact_issuer_review'),
+            ({'observed_on': None}, 'missing_observation_date'),
+            ({'observed_on': '2026-11-16'}, 'stale_observation'),
+            ({'reviewed_since': '2026-11-18'}, 'stale_review'),
+            ({'review_date': None}, 'missing_review_date'),
+            ({'review_date': '2026-11-20'}, 'future_review_date'),
+        ]
+        for index, (changes, reason) in enumerate(cases):
+            with self.subTest(reason=reason):
+                self.ledger = self.root / f'social-{index}.sqlite'
+                self.batch['evidence'] = []
+                self.evidence('company-socials', 'company_social_review', self.social_receipt(**changes))
+                decision, = self.run_review()['decisions']
+                self.assertEqual(decision['disposition'], 'candidate')
+                self.assertEqual(decision['company_social_review']['coverage'], 'unknown')
+                self.assertTrue(all(row['reason'] == reason for row in decision['company_social_review']['links']))
+
+    def test_company_socials_require_exact_identity_and_typed_evidence(self):
+        wrong = self.social_receipt(startup_id='startup:another-company')
+        self.evidence('company-socials', 'company_social_review', wrong)
+        with self.assertRaisesRegex(ValueError, 'exact canonical startup'):
+            self.run_review()
+        self.batch['evidence'] = []
+        self.evidence('generic-review', 'review', {'assertion': 'Company accounts'})
+        self.decision('company_socials', 'reviewed', ['generic-review'])
+        with self.assertRaisesRegex(ValueError, 'Unknown or duplicate explicit field decision'):
+            self.run_review()
+        self.batch['decisions'] = []
+        self.batch['evidence'] = []
+        self.evidence('company-socials', 'company_social_review', self.social_receipt())
+        del self.batch['identity_snapshot']
+        with self.assertRaisesRegex(ValueError, 'pinned identity snapshot'):
+            self.run_review()
+        self.assertFalse(self.ledger.exists())
+
+    def test_company_socials_roll_up_with_legacy_and_newer_stale_checkpoints(self):
+        receipt = self.social_receipt()
+        self.evidence('legacy', 'review', {'claims': ['Identity']})
+        self.decision('identity', 'reviewed', ['legacy'])
+        legacy, legacy_ledger = self.batch_path, self.ledger
+        self.assertNotIn('company_socials', self.run_review()['coverage']['catalogue']['by_field'])
+
+        self.batch['evidence'], self.batch['decisions'] = [], []
+        self.batch['as_of'] = '2026-11-19T04:00:00Z'
+        self.batch_path, self.ledger = self.root / 'social-fresh.json', self.root / 'social-fresh.sqlite'
+        self.evidence('fresh', 'company_social_review', receipt)
+        fresh, fresh_ledger = self.batch_path, self.ledger
+        self.run_review()
+
+        self.batch['evidence'] = []
+        self.batch['as_of'] = '2026-11-19T04:30:00Z'
+        self.batch_path, self.ledger = self.root / 'social-other.json', self.root / 'social-other.sqlite'
+        self.evidence('empty', 'company_social_review', {**receipt, 'source_url': SEED + 'news', 'links': []})
+        other = self.batch_path, self.ledger
+        self.run_review()
+        separate = rollup(self.overlay, self.approved, REVISION, [(fresh, fresh_ledger), other])
+        self.assertEqual(separate['coverage']['catalogue']['by_field']['company_socials']['reviewed'], 1)
+
+        self.batch['evidence'] = []
+        self.batch['as_of'] = '2026-11-19T05:00:00Z'
+        self.batch_path, self.ledger = self.root / 'social-stale.json', self.root / 'social-stale.sqlite'
+        self.evidence('stale', 'company_social_review', {**receipt, 'reviewed_since': '2026-11-19'})
+        self.run_review()
+        combined = rollup(self.overlay, self.approved, REVISION,
+                          [(legacy, legacy_ledger), (fresh, fresh_ledger), other, (self.batch_path, self.ledger)])
+        states = combined['coverage']['catalogue']['by_field']['company_socials']
+        self.assertEqual((states['candidate'], states['reviewed']), (1, 0))
+        observed = next(row for row in combined['observations'] if row['dimension'] == 'company_socials')
+        self.assertEqual([row['disposition'] for row in observed['history']], ['reviewed', 'searched_unknown', 'candidate'])
+        self.assertEqual(observed['effective_batch_sha256'], observed['history'][-1]['batch_sha256'])
+        self.assertEqual(observed['history'][-1]['company_social_review']['source_hold'], 'stale_observation')
+
+    def test_company_socials_empty_inspected_archive_is_searched_unknown(self):
+        self.evidence('empty', 'company_social_review', self.social_receipt(links=[]))
+        decision, = self.run_review()['decisions']
+        self.assertEqual(decision['disposition'], 'searched_unknown')
+        self.assertEqual(decision['company_social_review']['coverage'], 'unknown')
+
+    def test_company_socials_keep_whole_company_checkpoints_within_event_budget(self):
+        template = self.social_receipt(links=[])
+        companies = [{'name': f'Company {index}', 'website': f'https://example-{index}.org/'}
+                     for index in range(4)]
+        self.write(self.overlay, {'startups': companies})
+        self.approved.write_text('partner,official_website,approved\nCompany 0,https://example-0.org/,yes\n',
+                                 encoding='utf-8')
+        self.batch['plan_id'] = build_plan(self.overlay, self.approved, REVISION, limit=100)['plan_id']
+        self.graph['entities'] = [
+            {'id': f'startup:company-{index}', 'kind': 'startup', **row}
+            for index, row in enumerate(companies)
+        ]
+        self.pin_graph()
+        for index, company in enumerate(companies):
+            name = company['name']
+            social = {**template, 'name': name, 'source_url': company['website'],
+                      'startup_id': f'startup:company-{index}'}
+            self.evidence(f'social-{index}', 'company_social_review', social, name=name)
+            self.evidence(f'ordinary-{index}', 'review', {'claims': ['Pending review']}, name=name)
+            for dimension in DIMENSIONS:
+                self.decision(dimension, 'candidate', [f'ordinary-{index}'], name=name)
+        first = self.run_review(limit=4)
+        self.assertEqual(len(first['checkpoint']['applied_companies']), 3)
+        self.assertEqual(first['checkpoint']['remaining_companies'], 1)
+        resumed = self.run_review(limit=4)
+        self.assertEqual(resumed['checkpoint']['committed_field_cells'], 4 * (len(DIMENSIONS) + 1))
+        self.assertEqual(resumed['checkpoint']['remaining_companies'], 0)
 
     def stage_early(self, **overrides):
         folder = self.root / 'early'

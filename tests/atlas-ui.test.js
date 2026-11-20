@@ -75,7 +75,7 @@ test('profile section navigation preserves the originating search return', async
     };
     const environment = {
       location,
-      window:{addEventListener(name, callback) { events.set('window:' + name, callback); }},
+      window:{scrollX:0, scrollY:340, addEventListener(name, callback) { events.set('window:' + name, callback); }},
       MutationObserver:class { observe() {} },
       sessionStorage:{getItem:key => storage.get(key) ?? null, setItem:(key, value) => storage.set(key, value)}
     };
@@ -98,7 +98,9 @@ test('profile section navigation preserves the originating search return', async
     clickLink(related.href);
     assert.deepEqual(JSON.parse(storage.get('atlas:return:' + related.pathname + related.search)), {
       href:location.pathname + location.search,
-      label:'Back to ' + fixture.title
+      label:'Back to ' + fixture.title,
+      filters:fixture.route.startsWith('entity') ? '?q=canva&selected=startup%3Acanva' : '?q=canva',
+      scroll:{x:0,y:340}
     });
   }
 });

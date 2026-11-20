@@ -100,16 +100,8 @@
 .dc-demo-navigation .atlas-view-nav { margin-bottom: 12px; gap: 5px; }
 .dc-demo-navigation .atlas-view-nav .atlas-system-link { margin-left: 0; }
 .dc-demo-navigation .atlas-view-nav a { font-size: var(--atlas-text-xs); padding-inline: 11px; }
-.dc-demo-navigation { container: atlas-navigation / inline-size; }
-.dc-demo-navigation .dc-masthead { padding: 18px; gap: 18px; border-radius: var(--atlas-radius-control); margin-bottom: 14px; }
+.dc-demo-navigation .dc-masthead { border-radius: var(--atlas-radius-control); margin-bottom: 14px; }
 .dc-demo-navigation .dc-masthead .atlas-view-nav { margin: 0; }
-.dc-demo-navigation .dc-masthead .atlas-wordmark { font-size: 27px; }
-@container atlas-navigation (max-width: 650px) {
-  .dc-demo-navigation .dc-masthead { flex-wrap: wrap; }
-  .dc-demo-navigation .dc-masthead .atlas-wordmark { border: 0; padding: 0; }
-  .dc-demo-navigation .dc-masthead .atlas-view-nav { flex-basis: 100%; }
-  .dc-demo-navigation .dc-masthead .atlas-system-link { position: static; flex-basis: auto; width: auto; margin: 0; }
-}
 
 @media(max-width:1150px) {
   .dc-workspace { grid-template-columns: 205px minmax(0,1fr); gap: var(--atlas-space-6); }

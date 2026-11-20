@@ -22,6 +22,12 @@ QUASAR_ISSUER = (
     'csiro-spin-out-quasars-world-first-space-domain-awareness-launch-to-revolutionise-space-industry/'
 )
 QUASAR = 'Quasar Satellite Technologies'
+SEED_WIRE_CITATION = 'https://www.businesswire.com/news/home/20990101000001/en/Example-Release'
+SEED_WIRE_OPENING = (
+    'MELBOURNE, Australia--(BUSINESS WIRE)--Ready Company, a venture-backed engineering startup, '
+    'today announced closing a USD$3.2 million seed investment co-led by the Northstar founders’ '
+    'and Example Capital investment consortium.'
+)
 EASYCEP_ISSUER = (
     'https://easycep.com/blog/easycep-turkiye-nin-ilk-yenilenmis-elektronik-urun-'
     'pazaryeri-olarak-9-milyon-liralik-tohum-yatirimini-aldi-49'
@@ -1230,6 +1236,125 @@ class CompanyFundingStatementTests(unittest.TestCase):
         for origin in ('page_excerpt', 'search_result'):
             self.assertNotIn('round_mention', observations[origin]['signals'])
 
+    def test_cited_seed_wire_close_requires_a_complete_named_assertion(self):
+        opening = SEED_WIRE_OPENING
+        citation = ('ready company', 'seed')
+        self.assertEqual(classify(opening, {'ready company'}, reviewed_round=citation),
+                         ('early_round_lead', ['round_mention', 'early_stage_mention']))
+        self.assertEqual(classify(opening, {'ready company'})[0], 'context')
+        self.assertEqual(classify('Ready Company raised USD$3.2 million in seed funding.', {'ready company'})[0],
+                         'early_round_lead')
+        for excerpt in (
+            opening[:-1] + '?',
+            f'“{opening}”',
+            f'A reporter recalled, “{opening}”',
+            f'Reprinted for historical context. {opening}',
+            opening.replace('announced closing', 'announced plans to close'),
+            opening.replace('announced closing', 'did not announce closing'),
+            opening.replace('today announced closing', 'expects to close'),
+            opening.replace('today announced closing', 'today announced it may close'),
+            opening[:-1] + ' if regulators approve.',
+            opening.replace('Example Capital', 'If Approved'),
+            opening.replace('Example Capital', 'Pending Approval'),
+            opening.replace('Ready Company,', 'Another Corporation,'),
+            opening.replace('Ready Company,', 'Ready Company Labs,'),
+            opening.replace('Ready Company, a venture-backed engineering startup,',
+                            'Another Corporation, a supplier to Ready Company,'),
+            opening.replace('Ready Company, a venture-backed engineering startup,',
+                            'Ready Company’s subsidiary Northstar,'),
+            opening.replace('a venture-backed engineering startup', 'a subsidiary engineering startup'),
+            opening.replace('a venture-backed engineering startup', 'a portfolio company of Northstar'),
+            opening.replace('seed investment', 'seed investment in Northstar'),
+            opening.replace('seed investment', 'seed funding grant'),
+            opening.replace('seed investment', 'seed investment extension'),
+            opening.replace('seed investment', 'pre-seed investment'),
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertNotIn('round_mention', classify(excerpt, {'ready company'}, reviewed_round=citation)[1])
+
+    def test_cited_seed_wire_close_holds_a_retraction_of_the_same_event(self):
+        opening = SEED_WIRE_OPENING
+        citation = ('ready company', 'seed')
+        denial = 'Ready Company did not close a USD$3.2 million seed investment.'
+        correction = 'Correction: Ready Company’s USD$3.2 million seed investment has not yet closed.'
+        passive = 'Correction: Ready Company’s USD$3.2 million seed investment was not closed.'
+        definite = 'Correction: The USD$3.2 million seed investment did not close.'
+        for following in (
+            denial,
+            denial.replace('did not close', 'didn’t actually close'),
+            denial.replace('did not close', 'did not announce closing'),
+            denial.replace('did not close', 'did not raise'),
+            'Ready Company has not yet closed its seed round.',
+            'Ready Company has not closed its USD$3.2 million seed investment yet.',
+            'Ready Company has not actually closed the funding.',
+            correction,
+            f'The board also issued an update. {correction}',
+            passive,
+            'Correction: Ready Company’s seed round was never closed.',
+            definite,
+        ):
+            with self.subTest(following=following):
+                bucket, signals = classify(f'{opening} {following}', {'ready company'}, reviewed_round=citation)
+                self.assertEqual(bucket, 'context')
+                self.assertIn('prospective_or_negated', signals)
+                self.assertNotIn('round_mention', signals)
+        for following in (
+            denial.replace('Ready Company', 'Another Corporation'),
+            denial.replace('seed investment', 'pre-seed investment'),
+            denial.replace('USD$3.2', 'USD$7.2'),
+            denial.replace('USD$3.2', 'A$3.2'),
+            'Ready Company has not closed its USD$7.2 million seed investment yet.',
+            passive.replace('USD$3.2', 'USD$7.2'),
+            passive.replace('Ready Company', 'Another Corporation'),
+            passive.replace('seed investment', 'pre-seed investment'),
+            definite.replace('USD$3.2', 'USD$7.2'),
+            definite.replace('USD$3.2', '$3.2'),
+            definite.replace('seed investment', 'pre-seed investment'),
+            f'“{definite}”',
+            definite[:-1] + '?',
+            definite.removeprefix('Correction: '),
+            f'The board also issued an update. {definite}',
+            f'“{denial}”',
+            denial[:-1] + '?',
+            'The legal close date was not disclosed.',
+            f'Another Corporation closed its Series C round. {correction}',
+        ):
+            with self.subTest(following=following):
+                self.assertIn('round_mention', classify(f'{opening} {following}', {'ready company'},
+                                                       reviewed_round=citation)[1])
+
+    def test_seed_wire_close_keeps_saved_page_authority_and_provenance(self):
+        event = {'id': 'ready-company-seed', 'stage': 'Seed', 'source': SEED_WIRE_CITATION}
+        company = {'name': 'Ready Company', 'website': 'https://ready.example/', 'funding_rounds': [event]}
+        capture = {'url': SEED_WIRE_CITATION, 'excerpt': SEED_WIRE_OPENING, 'acquisition': 'page_excerpt',
+                   'retrieved_on': '2026-11-20', 'dates': {'published': '2021-08-25'}}
+        paraphrase = {**capture, 'acquisition': 'reviewer_paraphrase'}
+        lookup = {key: value for key, value in capture.items() if key != 'dates'} | {'acquisition': 'search_result'}
+        variants = [
+            {**capture, 'url': 'https://news.example/old-release'},
+            {**capture, 'url': SEED_WIRE_CITATION.replace('000001', '000002')},
+            {**capture, 'url': SEED_WIRE_CITATION + '#opening'},
+            {**capture, 'url': SEED_WIRE_CITATION + '?ref=story'},
+        ]
+        report = self.first_person_review([capture, capture, paraphrase, lookup, *variants], company=company)
+        leads = [result for result in report['results'] if result['bucket'] == 'early_round_lead']
+        lead, = leads
+        self.assertTrue(lead['review_required'])
+        self.assertFalse(lead['on_issuer_host'])
+        self.assertEqual(lead['url'], SEED_WIRE_CITATION)
+        assertions = [row for row in lead['observations'] if 'round_mention' in row['signals']]
+        reviewed, = assertions
+        self.assertEqual(reviewed, {**capture, 'bucket': 'early_round_lead',
+                                   'dates': {'published': {'value': '2021-08-25', 'precision': 'day'}},
+                                   'signals': ['round_mention', 'early_stage_mention']})
+
+        duplicate = {'name': 'Other Company', 'website': 'https://other.example/',
+                     'funding_rounds': [{**event, 'stage': 'Series A', 'source': SEED_WIRE_CITATION + '?ref=other'}]}
+        ambiguous = self.first_person_review([capture], company=company, other_companies=[duplicate])
+        self.assertEqual(ambiguous['results'][0]['bucket'], 'context')
+        wrong_stage = {**company, 'funding_rounds': [{**event, 'stage': 'Pre-seed'}]}
+        self.assertEqual(self.first_person_review([capture], company=wrong_stage)['results'][0]['bucket'], 'context')
+
     def test_relative_wire_raises_require_a_named_assertion(self):
         wire = RELATIVE_WIRE_REPORT
         shortened = wire.replace(' announced yesterday ', ' announced ')
@@ -1398,6 +1523,106 @@ class CompanyFundingStatementTests(unittest.TestCase):
                 self.assertTrue(set(required_signals).issubset(signals), signals)
                 if bucket == 'context':
                     self.assertNotIn('round_mention', signals)
+
+    def test_investor_plans_for_a_possessive_seed_stay_out_of_round_leads(self):
+        names = {'ready company'}
+        for excerpt in (
+            "The investors plan to close Ready Company's seed round if approval is granted.",
+            "Investors announced plans to complete Ready Company's seed round.",
+            'Northstar investors intend to complete Ready Company’s seed round.',
+            'Investors announced their intention to jointly complete Ready Company’s seed round.',
+            'Northstar was expected to close Ready Company’s seed investment.',
+            'Cedar Capital will close Ready Company’s US$3.2 million seed financing round.',
+            'Northstar might complete Ready Company’s pre-seed round if the board approves.',
+            'The investors are planning to jointly close Ready Company’s $3.2 million seed investment.',
+            'Investors are scheduled to complete Ready Company’s seed round.',
+            'Northstar investors will be closing Ready Company’s seed round next week.',
+            'Northstar plans to complete due diligence and will close Ready Company’s seed round.',
+            'Investors anticipate closing Ready Company’s seed round next month.',
+            'Investors expect to successfully close Ready Company’s seed round.',
+            'Investors are preparing to close Ready Company’s seed round.',
+            'Investors anticipated jointly completing Ready Company’s seed round.',
+            'Investors are preparing to complete Ready Company’s US$3.2 million pre-seed round.',
+            'Investors agreed to close Ready Company’s seed round next week.',
+            'Investors had agreed to close Ready Company’s seed round.',
+            'Investors agree to jointly complete Ready Company’s US$3.2 million pre-seed round.',
+            'Investors agreed to close Ready Company’s seed round next week. Bright Labs closed its seed round.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertNotIn('round_mention', classify(excerpt, names)[1])
+
+    def test_possessive_seed_plan_guard_preserves_independent_completed_rounds(self):
+        names = {'ready company'}
+        for excerpt in (
+            'Northstar and Cedar today completed Ready Company’s seed round initiated the prior year.',
+            'Ready Company completed its seed round.',
+            'Northstar Capital completed Ready Company’s US$3.2 million seed financing round.',
+            'Northstar, which plans to complete distribution, completed Ready Company’s seed round.',
+            'After announcing plans to complete, Ready Company’s seed round was completed.',
+            'Ready Company’s seed funding round was completed after investors outlined plans to expand distribution.',
+            'Northstar plans to complete a trial. Investors completed Ready Company’s seed round.',
+            'Northstar expects to complete Bright Labs’ seed round. Ready Company completed its seed round.',
+            'Northstar plans to complete Ready Company’s seed round. Ready Company closed its Series A.',
+            'Northstar plans to complete Ready Company’s pre-seed round and Cedar completed Ready Company’s seed round.',
+            'Investors completed Ready Company’s seed round last month after preparing for the close.',
+            'Investors, who anticipate closing Bright Labs’ seed round, completed Ready Company’s seed round.',
+            'After preparing to close, Ready Company’s seed round was completed.',
+            'Investors expect to successfully close Bright Labs’ seed round. Ready Company completed its seed round.',
+            'Investors completed Ready Company’s seed round last month after agreeing to close.',
+            'Investors agreed to close Ready Company’s seed round next week. Ready Company closed its seed round a week later.',
+            'After investors agreed to close, Ready Company’s seed round was completed.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                self.assertIn('round_mention', classify(excerpt, names)[1])
+
+    def test_later_seed_close_requires_a_named_saved_assertion(self):
+        names = {'ready company'}
+        agreement = 'Investors agreed to close Ready Company’s seed round next week. '
+        completion = 'Ready Company later closed its seed round.'
+        expected = ('early_round_lead', ['round_mention', 'early_stage_mention'])
+        for prefix in ('', agreement):
+            with self.subTest(prefix=prefix):
+                self.assertEqual(classify(prefix + completion, names), expected)
+                self.assertNotIn('round_mention', classify(prefix + completion, names, search_result=True)[1])
+                closed_quote = f'An analyst said “no comment.” {completion}'
+                self.assertEqual(classify(prefix + closed_quote, names), expected)
+            for excerpt in (
+                'Ready Company will later close its seed round.',
+                'Ready Company plans to later close its seed round.',
+                'Bright Labs later closed its seed round.',
+                'Ready Company did not later close its seed round.',
+                f'“{completion}”',
+                f'An analyst wrote “Here is a possible outcome. {completion} More follows.”',
+                completion[:-1] + '?',
+                'If Ready Company later closed its seed round, investors would join.',
+            ):
+                with self.subTest(prefix=prefix, excerpt=excerpt):
+                    self.assertNotIn('round_mention', classify(prefix + excerpt, names)[1])
+
+    def test_later_seed_close_respects_adjacent_same_issuer_closing_retractions(self):
+        agreement = 'Investors agreed to close Ready Company’s seed round next week. '
+        completion = 'Ready Company later closed its seed round.'
+        cases = (
+            ('Ready Company did not close its seed round.', False),
+            ('Ready Company didn’t later close its seed round.', False),
+            ('Ready Company did not in fact later close its seed round.', False),
+            ('Ready Company has not yet closed its seed round.', False),
+            ('Correction: Ready Company’s seed round was never closed.', False),
+            ('Correction: Ready Company’s seed round did not later close.', False),
+            ('Bright Labs did not close its seed round.', True),
+            ('Ready Company did not close its pre-seed round.', True),
+            ('Correction: Ready Company’s pre-seed round did not later close.', True),
+            ('Ready Company did not announce closing its seed round.', True),
+            ('“Ready Company did not close its seed round.”', True),
+            ('Did Ready Company not close its seed round?', True),
+            ('The legal close date was not disclosed.', True),
+        )
+        for prefix in ('', agreement):
+            for correction, is_lead in cases:
+                with self.subTest(prefix=prefix, correction=correction):
+                    bucket, signals = classify(f'{prefix}{completion} {correction}', {'ready company'})
+                    self.assertEqual(bucket, 'early_round_lead' if is_lead else 'context')
+                    self.assertEqual('round_mention' in signals, is_lead)
 
     def test_financing_scope_guards(self):
         for case, excerpt, expected in GUARD_CASES:

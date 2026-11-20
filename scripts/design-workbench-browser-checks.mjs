@@ -234,6 +234,10 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
   await choose('#component-variant','masthead');
   await assertNoOverflow('390px wireframe masthead specimen');
   assert.ok(await evaluate("(()=>{const h=document.querySelector('#component-preview .atlas-masthead');return h.scrollWidth<=h.clientWidth+1;})()"),'The masthead must wrap within the narrow specimen');
+  await click('#component-preview [data-atlas-header-toggle="menu"]');
+  assert.equal(await evaluate("document.querySelector('#component-preview .atlas-primary-nav').checkVisibility()"),true,'The dynamically rendered specimen opens its mobile navigation');
+  await press('Escape','Escape',27);
+  assert.equal(await evaluate("document.querySelector('#component-preview .atlas-primary-nav').checkVisibility()"),false,'The specimen closes its mobile navigation');
   await capture('.dc-inspector','atlas-workbench-masthead-mobile.png');
   await choose('#dr-recipe','partner');
   await click('[data-dr-mode="narrow"]');

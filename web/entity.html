@@ -1,18 +1,22 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#fcf9f2"><meta name="description" content="Explore the people, startups and programmes connected across Startup Atlas.">
+<meta name="theme-color" content="#f9f8f5"><meta name="description" content="Explore the people, startups and programmes connected across Startup Atlas.">
 <title>Profile — Startup Atlas</title>
-<link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./profile.css"><link rel="stylesheet" href="./entity.css">
+<link rel="stylesheet" href="./styles.css">
 <script defer src="./vendor/sql.js/sql-wasm.js"></script><script type="module" src="./entity.js"></script>
 <link rel="stylesheet" href="./design-tokens.css">
 <link rel="stylesheet" href="./atlas-ui.css">
+<link rel="stylesheet" href="./profile.css"><link rel="stylesheet" href="./entity.css">
 <script type="module" src="./atlas-ui.js"></script>
 <link rel="stylesheet" href="./atlas-sdk.css">
 <script type="module" src="./atlas-sdk.js"></script>
 </head><body class="atlas-entity-page">
 <a class="skip-link" href="#entity-profile">Skip to profile</a>
-<header class="atlas-masthead" data-atlas-masthead=""></header>
-<main id="entity-profile" class="profile-shell entity-shell" aria-busy="true"><p role="status">Loading profile…</p></main>
+<header class="atlas-masthead" data-atlas-masthead="entity"></header>
+<main id="entity-profile" class="profile-shell entity-shell" aria-busy="true">
+  <div class="profile-return"><a class="profile-back" data-atlas-back href="./#directory">Open directory</a></div>
+  <div class="profile-loading"><h1>Profile</h1><p role="status">Loading profile…</p></div>
+</main>
 <footer><span class="footer-brand">startup<span>atlas</span></span><span>Built for the people building what comes next.</span></footer>
 </body></html>

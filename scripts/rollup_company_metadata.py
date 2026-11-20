@@ -12,21 +12,23 @@ try:
     from .collection_coverage import Ledger
     from .company_metadata_evidence import site_url
     from .company_metadata_funding import prepare_funding_review
+    from .company_metadata_socials import COMPANY_SOCIALS
     from .plan_company_profiles import CrawlError, website_host
     from .stage_early_investments import load_json
     from .review_company_metadata import (
-        DIMENSIONS, coverage_counts, decision_outcome, decision_proof, load_bundle,
-        load_review_plan, make_config, processed_cells, saved_artifact,
+        coverage_counts, decision_outcome, decision_proof, load_bundle,
+        load_review_plan, make_config, processed_cells, review_dimensions, saved_artifact,
     )
 except ImportError:
     from collection_coverage import Ledger
     from company_metadata_evidence import site_url
     from company_metadata_funding import prepare_funding_review
+    from company_metadata_socials import COMPANY_SOCIALS
     from plan_company_profiles import CrawlError, website_host
     from stage_early_investments import load_json
     from review_company_metadata import (
-        DIMENSIONS, coverage_counts, decision_outcome, decision_proof, load_bundle,
-        load_review_plan, make_config, processed_cells, saved_artifact,
+        coverage_counts, decision_outcome, decision_proof, load_bundle,
+        load_review_plan, make_config, processed_cells, review_dimensions, saved_artifact,
     )
 
 
@@ -133,29 +135,38 @@ def rollup(overlay, approved, revision, checkpoints, *, funding_review=None):
             history = histories[key]
             if history and history[-1]['review_as_of'] == batch['review_as_of']:
                 raise ValueError(f'Distinct batches committed {key[0]} / {key[1]} at the same review time')
-            history.append({'batch_sha256': sha, 'review_as_of': batch['review_as_of'],
-                            'disposition': decision['disposition'], 'decision_sha256': decision_proof(sha, decision)['sha256'],
-                            'evidence': decision['evidence']})
+            observation = {'batch_sha256': sha, 'review_as_of': batch['review_as_of'],
+                           'disposition': decision['disposition'], 'decision_sha256': decision_proof(sha, decision)['sha256'],
+                           'evidence': decision['evidence']}
+            if key[1] == COMPANY_SOCIALS:
+                observation['company_social_review'] = decision['company_social_review']
+            history.append(observation)
 
-    effective = {key: max(history, key=lambda row: (PRIORITY[row['disposition']], row['review_as_of']))
-                 for key, history in histories.items()}
+    effective = {}
+    for key, history in histories.items():
+        current = history
+        if key[1] == COMPANY_SOCIALS:
+            # Refresh the same source without losing separate issuer evidence.
+            current = {row['company_social_review']['source_url']: row for row in history}.values()
+        effective[key] = max(current, key=lambda row: (PRIORITY[row['disposition']], row['review_as_of']))
+    dimensions = review_dimensions(histories)
 
     def field_status(name, dimension):
         return effective.get((name, dimension), {}).get('disposition', 'unsearched')
 
     catalogue = [{'name': row['source_record_name'], 'seed_state': row['seed_state']} for row in plan['items']]
     staged_rows = sorted(staged.values(), key=lambda row: row['name'])
-    queue = [{**row, 'fields': {field: field_status(row['name'], field) for field in DIMENSIONS}}
+    queue = [{**row, 'fields': {field: field_status(row['name'], field) for field in dimensions}}
              for row in catalogue + staged_rows]
     report = {
         'version': 1, 'offline_only': True, 'revision': revision, 'plan_id': plan['plan_id'],
         'input_hashes': {key: plan[key] for key in ('overlay_sha256', 'seeds_sha256')},
         'identity_sha256': next(iter(identity_digests), None), 'review_as_of': receipts[-1]['review_as_of'],
         'coverage': {
-            'catalogue': coverage_counts([row['name'] for row in catalogue], field_status),
+            'catalogue': coverage_counts([row['name'] for row in catalogue], field_status, dimensions),
             'approved_seed_ready': coverage_counts([row['name'] for row in catalogue
-                                                    if row['seed_state'] == 'approved_seed_ready'], field_status),
-            'staged_candidates': coverage_counts([row['name'] for row in staged_rows], field_status),
+                                                    if row['seed_state'] == 'approved_seed_ready'], field_status, dimensions),
+            'staged_candidates': coverage_counts([row['name'] for row in staged_rows], field_status, dimensions),
             'seed_states': plan['population']['seed_states'], 'external_source_population': 'unknown',
         },
         'batches': receipts, 'queue': queue, 'committed_field_cells': len(histories),
