@@ -442,7 +442,7 @@ function watchImages(owner) {
 const opportunityFilters={country:'all',includeUnknown:false,kind:'all',access:'all'};
 const partnerFilters={partnerProvider:'all',partnerEvidence:'all',partnerLogo:false,partnerCountry:'all'};
 
-function render() {
+function render({moveInspectionFocus=false}={}) {
   if (!data) return;
   syncControls();
   renderActiveFilters();
@@ -517,7 +517,7 @@ function render() {
   byId('load-more').hidden=visible>=total;
   byId('load-more').textContent=`Load more · ${Math.min(pageSize,Math.max(0,total-visible))} of ${Math.max(0,total-visible)} remaining ↓`;
   watchImages(results);
-  renderInspector();
+  renderInspector({moveFocus:moveInspectionFocus});
   if (focusedInspection) focusInspectionTrigger(focusedInspection);
   explorationChanged();
 }
@@ -704,12 +704,13 @@ const visibleFromUrl=()=>{
 window.addEventListener('popstate',()=>{
   const next=stateFromUrl();
   const priorSelection=state.selected;
+  const reopenInspection=Boolean(next.selected && next.selected!==priorSelection && sheetViewport.matches);
   const restoreInspectionFocus=priorSelection && !next.selected && panel.contains?.(document.activeElement);
   if (next.selected!==state.selected) sheetSuspended=false;
   searchEntry=false;
   state=next;
   visible=visibleFromUrl();
-  render();
+  render({moveInspectionFocus:reopenInspection});
   if (restoreInspectionFocus) focusInspectionTrigger(priorSelection);
 });
 state=stateFromUrl(); visible=visibleFromUrl(); syncControls();
