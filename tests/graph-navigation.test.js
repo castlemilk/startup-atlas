@@ -92,7 +92,7 @@ test('inspecting graph entities preserves the map and explicit exploration reroo
     assert.equal(canvas.getAttribute('viewBox'),viewBox,'Back within the same root keeps the viewport');
     click('graph-detail',{explore:'person:melanie-perkins'});
     assert.equal(new URLSearchParams(location.search).get('entity'),'person:melanie-perkins');
-    assert.equal(new URLSearchParams(location.search).has('selected'),false);
+    assert.equal(new URLSearchParams(location.search).get('selected'),'person:melanie-perkins');
     assert.match(elements.get('network-heading').textContent,/Around Melanie Perkins/);
     assert.notEqual(canvas.innerHTML,mapMarkup);
     assert.match(canvas.innerHTML,/data-node="startup:fusion-books"/);

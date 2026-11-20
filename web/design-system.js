@@ -41,7 +41,7 @@ const patterns = {
     next:'Add richer structured facets as sourced fields become available, and shareable links to a selected record within a search.'
   },
   treemap: {
-    route:'./treemap.html?metric=funding&currency=USD', title:'Treemap view preview', caption:'Live treemap · recorded USD funding announcements',
+    route:'./treemap.html', title:'Treemap view preview', caption:'Live treemap · company count by primary sector',
     question:'How does the researched set compare?', purpose:'Compare a defined measure, inspect its source and switch to a ranked list when a tile is too small to read.',
     interaction:'Change metric, currency or founding-decade grouping. Select a tile, switch between Figure and Company evidence, then open the full profile.',
     contract:'Area is linear. Monetary observations use one currency. Dates remain visible; an unknown is excluded and counted, never assigned zero.',

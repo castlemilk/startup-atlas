@@ -36,12 +36,12 @@ if(person){
 }else if(psiquantum){
   const {window:{document}}=new JSDOM(root.innerHTML);
   assert.equal(document.querySelector('h1').textContent,'PsiQuantum');
-  assert.equal(document.querySelector('a[href="#entity-funding"]').textContent,'Timeline');
+  assert.equal(document.querySelector('a[href="#entity-funding"]').textContent,'Funding');
   const timeline=document.querySelector('#entity-funding');
   const dates=[...timeline.querySelectorAll('ol time')].map(time=>time.dateTime);
   assert.deepEqual(dates,[...dates].sort());
   assert.ok(dates.includes('2024-04-30') && dates.includes('2025-02-26'));
-  assert.match(timeline.textContent,/Public funding announcement/);
+  assert.match(timeline.textContent,/Announcement date/);
   assert.match(timeline.textContent,/Technical milestone/);
   assert.equal(timeline.querySelectorAll('a[href="https://www.psiquantum.com/news-import/psiquantum-1b-fundraise"]').length,1);
   const graph=JSON.parse(await readFile('dist/data/graph.json'));
@@ -53,9 +53,11 @@ if(person){
   }
 }else{
   assert.match(root.innerHTML,/<h1>Canva<\/h1>/);
-  assert.match(root.innerHTML,/<h2>Founders<\/h2>/);
+  assert.match(root.innerHTML,/<h2>People<\/h2>/);
+  assert.match(root.innerHTML,/<h3>Founders<\/h3>/);
   for(const name of ['Melanie Perkins','Cliff Obrecht','Cameron Adams'])assert.match(root.innerHTML,new RegExp(name));
-  assert.match(root.innerHTML,/<h2>Company details<\/h2>/);
+  assert.match(root.innerHTML,/<h2>Company overview<\/h2>/);
+  assert.match(root.innerHTML,/<h3>Company facts<\/h3>/);
   assert.match(root.innerHTML,/26 August 2013/);
   assert.match(root.innerHTML,/\$3 million \(currency unspecified\)/);
   assert.match(root.innerHTML,/entity\.html\?id=person%3Amelanie-perkins/);

@@ -19,11 +19,19 @@ colors:
   person: "#76582a"
   programme: "#76521b"
   provider: "#275a62"
+  editorialInk: "#122b22"
+  editorialPaper: "#f9f8f5"
+  editorialSurface: "#ffffff"
+  editorialToolbar: "#efece4"
+  editorialMuted: "#60675d"
+  editorialAccent: "#c85a32"
+  editorialAction: "#a84121"
+  editorialBorder: "#e2ddd3"
 typography:
   display:
-    fontFamily: "Georgia, Times New Roman, serif"
+    fontFamily: "Atlas Newsreader, Georgia, Times New Roman, serif"
   interface:
-    fontFamily: "Atlas Geist, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontFamily: "Atlas Inter, Atlas Geist, system-ui, -apple-system, Segoe UI, sans-serif"
   utility:
     fontFamily: "Atlas Geist Mono, ui-monospace, SFMono-Regular, Consolas, monospace"
 rounded:
@@ -31,6 +39,8 @@ rounded:
   row: "8px"
   panel: "12px"
   feature: "16px"
+  editorialControl: "4px"
+  editorialPanel: "2px"
 spacing:
   page-max: "1640px"
   graph-gap: "14px"
@@ -135,12 +145,12 @@ Keep entity kind separate from research status and chart measure. A programme's 
 
 ## Typography
 
-Georgia carries the wordmark, headings and entity names. Self-hosted Geist Sans carries controls and research copy. Geist Mono carries commands, token names, dates and compact data annotations. Numerical comparisons and coverage counts use tabular figures. Font assets and their upstream licence/provenance are included under `web/assets/fonts`.
+Self-hosted Atlas Newsreader carries the editorial wordmark and headings. Atlas Inter carries the operational controls and research copy. The Signal catalogue base retains Georgia and Atlas Geist. Atlas Geist Mono carries command and token specimens. Numerical comparisons and coverage counts use tabular figures. Font assets and licences are included under `web/assets/fonts`.
 
 | Token | Exact runtime value | Role |
 | --- | --- | --- |
-| `--atlas-font-display` | `Georgia, "Times New Roman", serif` | Wordmark, page/section headings, prominent entity/row/card names and narrative statements. |
-| `--atlas-font-body` | `"Atlas Geist", system-ui, -apple-system, "Segoe UI", sans-serif` | Interface and research content. |
+| `--atlas-font-display` | `"Atlas Newsreader", Georgia, "Times New Roman", serif` | Editorial wordmark, page headings and entity identity. |
+| `--atlas-font-body` | `"Atlas Inter", system-ui, -apple-system, "Segoe UI", sans-serif` | Operational interface and research content. |
 | `--atlas-font-mono` | `"Atlas Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace` | Commands, token/code specimens, dates and compact numerical annotations. |
 | `--atlas-text-xs` | `0.75rem` | Compact coverage and secondary navigation. |
 | `--atlas-text-sm` | `0.8125rem` | Controls and compact metadata. |
@@ -151,7 +161,7 @@ At a 16px root size the shared interface scale is 12/13/15/18px. Route styles co
 
 ### Density
 
-The operational views use a compact research density; the microsite density switch remains a specimen control. Primary interface actions, Inspect buttons and masthead links have 44px minimum targets. Directory rows retain 18px vertical/12px horizontal padding, a 48px identity column and 16px gaps at desktop widths. Profile facts use 15px vertical padding, relationship rows 16px, and major dossier sections approximately 28–32px separation. Narrow layouts preserve complete names, descriptions, evidence and separate inspection/navigation actions.
+The explorers offer comfortable and compact density. Primary interface actions, Inspect buttons and masthead links use 44px minimum targets. Narrow layouts keep identity, source evidence and navigation available, using a sheet where the working view needs a focused task.
 
 Small badge text and graph annotations are supplementary. Core names, actions and sources remain reachable in readable list/profile alternatives. Do not truncate the accessible entity name when a graph card wraps its visible label, and do not use tiny type to force a large network into one screen.
 
@@ -166,10 +176,10 @@ Directory, Map/List and Graph use a compact ruled introduction so search and wor
 | List & search | Flexible results, 350px inspector and 22px gap inside one research panel. | Inspector reduces to 310px at 1200px; stacks at 900px. Other directory scopes retain their list layouts. |
 | Treemap | Flexible chart/list and 350px evidence rail. | Rail reduces to 310px at 1200px; stacks at 820px. |
 | Graph | Flexible network and 360px inspector, with a 14px gap between working surfaces. | Inspector reduces to 300px at 1150px; stacks at 820px. |
-| Startup dossier | Flexible white dossier beside a 320px neutral sources rail, with 24px gap. | Facts/funding and hero actions stack at 1250px; evidence follows the dossier at 1000px. |
+| Startup dossier | Overview, people, funding and connections in reading order, alongside a coverage rail. | The record stacks, its section links stay reachable and claim evidence opens in a sheet. |
 | Partner / VC dossier | Full identity band, flexible company panel and 320px people/evidence rail, with 24px gap. | Inner company inspector stacks at 1200px; the outer rail stacks at 1000px. |
 
-The compact profile treatment applies at 600px. Startup facts and funding chronology share the wide overview only when sufficient reading width is available. Profile reading remains in document flow; selected-company inspection does not introduce a nested full-page scroller.
+Profile reading stays in document flow. Each claim opens its own source and qualifiers, with focus returning to that claim on dismissal.
 
 | Token group | Exact mapping |
 | --- | --- |
@@ -227,19 +237,19 @@ Operational single-choice selectors use ui-sdk Select with native backing `<sele
 
 ### Navigation and profile continuity
 
-Shared `[data-atlas-view]` links carry the current query to the next view, and graph navigation can retain a known entity context. Query propagation does not imply identical matching rules or full filter transfer across all views. The directory records the displayed result range as `shown`: 12 is the default; a valid integer greater than 12 is restored up to 1200. Filtering resets the range. Do not promise exact scroll restoration.
+Shared `[data-atlas-view]` links carry the query, headquarters countries, sector, stage, country/city drill path, selected entity, density and graph anchor. The graph uses the snapshot's relationship context and keeps company counts separate. The directory records its displayed range with `shown`, from a default of 12 up to 1200. Filtering resets the range.
 
-Internal profile entry links capture their return route in per-tab `sessionStorage`. `safeAtlasReturn` accepts only the same origin/deployment directory and an explicit public-route allowlist. Return links retain supported query/filter/range state; direct entries and unavailable storage keep stable fallback links. This is navigation context, not an account or saved research workspace.
+Internal profile links capture the return route and scroll position in the same tab. `safeAtlasReturn` accepts the same deployment directory and public Atlas routes. The shared masthead opens Saved and Compare, each backed by browser-local storage. Company notes use the same browser-local workspace.
 
-Startup profiles lead with identity, coverage and founders, then company facts, actual funding-event chronology and connections; sources align beside the whole dossier on wide screens and follow it on narrow screens. Funding chronology does not invent broader company milestones. Partner profiles use the sourced organisation type and lead with a researched company sample and adjacent selected-company inspector. People and sources occupy the outer rail; programmes/supporters remain in document flow. Historical qualifiers stay close to claims. A sample is not the full portfolio, and a portfolio listing is not a round investment.
+Startup profiles show identity, company facts, founding and employment, funding chronology, portfolio links and recorded connections. Claims retain their source and date precision. Partner profiles expose their sourced organisation type, researched company sample and its inspector. Portfolio listings retain their own provenance alongside round participation when a source records it.
 
-Directory and partner company rows separate **Inspect** from profile/source navigation. Inspection is one transient local selection, not bulk selection or a saved research list. Directory selection clears when its record leaves the displayed result set; Close returns focus to its Inspect button when available. Narrow inspection focuses the detail heading. The partner inspector repeats only recorded identity, relationship, evidence and real profile/graph destinations. The treemap inspector uses genuine Figure/Company tabs to separate the plotted observation from sourced company context.
+Directory and partner company rows offer distinct **Inspect**, profile and source actions. A directory or treemap selection stays available outside the filtered results with a recovery action. Close returns focus to the invoking control when available. The treemap inspector's Figure and Company tabs pair the plotted observation with sourced company context.
 
 ### Graph inspection and movement
 
 Click or Enter/Space inspects a visible node without reconstructing the network. **Explore from here** explicitly changes root; choosing a search result starts a new root neighbourhood. An inspected related entity that is not in the rendered map is labelled **Outside current map**. **Open profile** remains a real link. The connection list exposes the same visible relationships with sources.
 
-Graph cards support pointer dragging and arrow-key movement. **Fit view** changes the camera without clearing positions; **Reset layout** clears manual placement and restores the automatic arrangement. A capped neighbourhood discloses that it is limited. Root/selection, depth, types, query and list visibility have route state; persistent camera/pin arrangements across reload are future work.
+Graph cards support pointer dragging and arrow-key movement. **Fit view** contains the neighbourhood, **Center selection** brings a visible node to the middle, and **Reset graph layout** restores automatic placement. The same tab retains camera and node placements by neighbourhood. The toolbar reports company scope separately from contextual relationship nodes.
 
 ### Motion
 

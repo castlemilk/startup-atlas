@@ -106,7 +106,7 @@ try {
     assert.deepEqual(canvas.nodes.map(node=>[node.dataset.node,node.attributes.transform]),positions,'Fit view must retain node positions');
     click('graph-detail',{explore:'person:melanie-perkins'});
     assert.equal(new URLSearchParams(selectedUrl).get('entity'),'person:melanie-perkins','Explicit exploration changes root');
-    assert.equal(new URLSearchParams(selectedUrl).has('selected'),false);
+    assert.equal(new URLSearchParams(selectedUrl).get('selected'),'person:melanie-perkins');
     assert.match(canvas.innerHTML,/data-node="startup:fusion-books"/);
     assert.match(elements.get('network-heading').textContent,/Around Melanie Perkins/);
     elements.get('graph-query').value='Airwallex';

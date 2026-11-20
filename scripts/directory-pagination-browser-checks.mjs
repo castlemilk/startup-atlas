@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 
 /** Loading another batch should continue reading at its first native profile link. */
 export async function checkDirectoryPagination({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph}) {
-  const rows='#results-list > article';
-  const ready="document.body.dataset.atlasSdk==='ready'&&document.querySelector('#results-list')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('#results-list > article')";
+  const rows=':is(#results-list > article, #results-list .directory-company-row)';
+  const ready=`document.body.dataset.atlasSdk==='ready'&&document.querySelector('#results-list')?.getAttribute('aria-busy')==='false'&&!!document.querySelector(${JSON.stringify(rows)})`;
   const count=()=>evaluate(`document.querySelectorAll(${JSON.stringify(rows)}).length`);
   const viewport=(width)=>command('Emulation.setDeviceMetricsOverride',{width,height:width===1440?1050:844,deviceScaleFactor:1,mobile:width<900});
   async function loadMore({keyboard=false}={}) {
@@ -29,12 +29,13 @@ export async function checkDirectoryPagination({command,evaluate,navigate,until,
   }
 
   await viewport(1440);
-  await navigate('/?type=startup#directory',ready);
+  await navigate('/?type=startup&selected=startup%3Acanva#directory',ready);
   assert.equal(await count(),12);
   const firstNew=await loadMore({keyboard:true});
+  assert.equal(await evaluate("document.querySelector('#directory-inspector-heading')?.textContent"),'Canva','Pagination must retain the inspected company');
   await assertNoOverflow('Directory continuation desktop');await screenshot('directory-load-more-desktop.png');
   await press('Tab','Tab',9);
-  assert.ok(await evaluate(`document.activeElement.closest('article')===document.querySelector(${JSON.stringify(firstNew)})`),'Tab must continue through the new record instead of skipping to the footer');
+  assert.ok(await evaluate(`document.activeElement.closest(${JSON.stringify(rows)})===document.querySelector(${JSON.stringify(firstNew)})`),'Tab must continue through the new record instead of skipping to the footer');
   await press('Tab','Tab',9,8);
   const destination=await evaluate('({href:document.activeElement.getAttribute("href"),name:document.activeElement.textContent})');
   assert.match(destination.href,/entity\.html\?id=startup%3A/,'The new reading position retains a native company destination');

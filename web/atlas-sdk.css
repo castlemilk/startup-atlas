@@ -3,7 +3,7 @@ ui-select:not(:defined), ui-select-content:not(:defined) { display: none; }
 .atlas-sdk-select { display: flex; min-width: 0; }
 .atlas-select-trigger { display: inline-flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px; border: 1px solid var(--atlas-border-strong); border-radius: var(--atlas-radius-control); color: var(--atlas-ink); background: linear-gradient(var(--atlas-face-top),var(--atlas-face-bottom)); box-shadow: var(--atlas-shadow-control); font: 500 13px/1.4 var(--atlas-font-body); text-align: start; transition: box-shadow var(--atlas-duration-fast) var(--atlas-ease), border-color var(--atlas-duration-fast) var(--atlas-ease); }
 .atlas-select-trigger:hover { border-color: var(--atlas-ink); }
-.atlas-select-trigger[data-open] { border-color: var(--atlas-accent); box-shadow: var(--atlas-shadow-inset), 0 0 0 1px var(--atlas-accent); }
+.atlas-select-trigger[data-open] { border-color: var(--atlas-accent); box-shadow: var(--atlas-shadow-inset); }
 .atlas-select-trigger ui-select-value { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .atlas-select-chevron { display: inline-flex; flex: none; }
 .atlas-select-chevron .atlas-icon { width: 15px; height: 15px; }
