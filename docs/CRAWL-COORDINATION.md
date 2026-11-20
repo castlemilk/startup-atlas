@@ -1,8 +1,8 @@
 # Crawl coordination
 
-This is a coordination contract only. It adds no code, no MCP tools, no
-workflow and no registry file. The registry and the MCP read tools that query
-it land in a follow-on PR; claim and write tools are a later PR again.
+This document is a coordination contract. The registry and the MCP read
+tools that query it are part of this contract; claim and write tools are a
+later PR.
 
 ## Why
 
@@ -110,9 +110,9 @@ Rules:
 
 1. **Record before you start.** A crawl must be recorded before it runs,
    with its run ID, mode, sources, base revision (the 40-character main
-   commit the run is based on) and where the artifact will land. Until the
-   registry file lands, record the same fields in the crawl snapshot's
-   notes and in the description of any PR that publishes from it.
+   commit the run is based on) and where the artifact will land. Records
+   live in `data/crawl-runs.json` (append-only); until claim tools exist,
+   append the record through the normal branch/review workflow.
 2. **Leases, not locks.** A claim lasts a bounded time (default 30 minutes
    for a partners run) and can be extended by a heartbeat. Expiry never
    deletes history: it only makes the claim recoverable by another worker,
@@ -146,12 +146,20 @@ Rules:
 
 ## Where the registry lives
 
-The follow-on PR adds a committed, append-only JSON registry,
-`data/crawl-runs.json`, and read-only MCP tools over it
-(`atlas_list_crawl_runs`, `atlas_get_crawl_run`, `atlas_get_crawl_claims`).
+The registry is a committed, append-only JSON file,
+`data/crawl-runs.json`, read through `backend/mcp/crawls.mjs`
+(`CrawlRegistry`: read and schema-validate only, no writes) and queried
+with the read-only MCP tools `atlas_list_crawl_runs`,
+`atlas_get_crawl_run` and `atlas_get_crawl_claims` (see
+[the MCP tools](MCP.md#crawl-runs-read-only)). Its first entry is the
+20 Nov 2026 partners run: 5 sources attempted, 0 fetched, DNS-blocked —
+an honest first entry, not a successful crawl. Per-source revisions are
+the SHA-256 of the file that defines that source (for the partners run,
+`data/partner-sources.json` for all five sources).
+
 Claim and write tools (`atlas_claim_crawl`, `atlas_update_crawl_run`,
 `atlas_release_crawl_claim`, `atlas_recover_crawl_run`) are a separate,
-later PR, after the read path is reviewed and merged.
+later PR, after this read path is reviewed and merged.
 
 Two existing pieces are deliberately not the coordination store:
 
@@ -183,8 +191,9 @@ not MCP-queryable).
   saved outcomes, and separately acquired primary-source research.
 - On 20 Nov 2026 a local partners run attempted all 5 partner sources
   and fetched 0: every source skipped with "host resolved to a
-  non-public address". It is recorded as the first registry entry in the
-  follow-on PR — an honest first entry, not a successful crawl.
+  non-public address". It is the first entry in `data/crawl-runs.json`
+  (`crawl-20261120-partners-01`) — an honest first entry, not a
+  successful crawl.
 - Do not base a PR on a stale checkout. The checkout this contract was
   written from had fallen 28 commits behind main; rebase to current main
   and re-check open PRs and the Pages run before raising anything.
