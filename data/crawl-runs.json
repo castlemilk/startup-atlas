@@ -1,0 +1,53 @@
+{
+  "runs": [
+    {
+      "args": {
+        "follow": 0
+      },
+      "artifact_url": null,
+      "catalogue_revision": "0b0637f42d315c8be5dba75fda90e2e37e7ad051",
+      "claimed_at": "2026-11-20T03:35:18Z",
+      "claimed_by": "muse",
+      "finished_at": "2026-11-20T03:35:18Z",
+      "lease_expires_at": "2026-11-20T04:05:18Z",
+      "mode": "partners",
+      "outcome": {
+        "candidates_discovered": 0,
+        "coverage_reference": "research/crawl/partners-20261120T033518Z.json",
+        "notes": "All 5 sources skipped: host resolved to a non-public address. Local sandbox DNS resolves public hosts to non-public addresses, so the crawler refused to fetch them. No candidates were discovered and nothing was published.",
+        "sources_attempted": 5,
+        "sources_failed": 5,
+        "sources_succeeded": 0
+      },
+      "published_pr": null,
+      "review_status": "unreviewed",
+      "run_id": "crawl-20261120-partners-01",
+      "run_url": null,
+      "scope": {
+        "seed_file": "data/partner-sources.json",
+        "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "source_ids": [
+          "github-for-startups-partners",
+          "aws-activate-featured",
+          "launchvic-ai-preaccelerators",
+          "henson-microsoft-network",
+          "innovation-bay-australia-vc"
+        ]
+      },
+      "snapshot_sha256": "3b7743ae775c7ff836a0ee884ca4dae85048c48519ef9b22adf61d9c354b9c36",
+      "source_revisions": {
+        "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "started_at": "2026-11-20T03:35:18Z",
+      "status": "failed",
+      "superseded_by": null,
+      "supersedes": null,
+      "version": 1
+    }
+  ],
+  "version": 1
+}

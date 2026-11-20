@@ -55,6 +55,22 @@ conflict/recovery cases and the separate hosted draft-PR workflow.
 - `atlas_validate_opportunity`: validate a proposed entry and its provenance without writing. Returns the revision required for adding.
 - `atlas_add_opportunity`: append a validated entry to `data/opportunities-added.json`. Requires `--write` and `expectedRevision`. Does not overwrite, commit, push or deploy.
 
+### Crawl runs (read-only)
+
+- `atlas_list_crawl_runs`: list recorded crawl runs from `data/crawl-runs.json`, optionally filtered by `mode`, `source_id`, `status` or `since`.
+- `atlas_get_crawl_run`: read the full record for one run ID, including its outcome, coverage reference and linked publication PR.
+- `atlas_get_crawl_claims`: list current crawl claims per source, derived from claimed and running runs. A claim whose lease has expired is reported as `stale`, never as live.
+
+The registry is a committed, append-only JSON file: one record per run, never
+rewriting history, capped at the last 200 runs with older runs archived to
+`research/crawl/` packets. It is advisory only — a claim does not authorise
+fetching a source and never overrides a transport guard — and it never
+triggers a crawl. There are no claim or write tools yet; recording a run
+happens by appending a validated record through the normal branch/review
+workflow. See [the crawl coordination contract](CRAWL-COORDINATION.md) for
+the run/claim schema, lease handling and the claim → run → review → propose
+→ publish sequence.
+
 Example request to your MCP-enabled assistant:
 
 > Find whether Example Foundation is already in Startup Atlas. Review its official programme terms, prepare an entry with the current intake, country eligibility and restrictions, then validate it before adding it to this checkout. Do not claim the site is published until the release workflow passes.
