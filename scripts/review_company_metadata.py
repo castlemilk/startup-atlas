@@ -14,6 +14,7 @@ try:
         INTERPRETED_FIELDS, canonical_startup, founder_subject, reviewed_alias, site_url, source_url,
         staged_company_inventory, startup_index, validate_publication_claim, validate_search_log,
     )
+    from .company_metadata_socials import COMPANY_SOCIALS, company_social_review
     from .crawl import company_headcount_mentions, require_scoped_launcher
     from .plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from .replay_company_profiles import compile_replay, utc
@@ -24,6 +25,7 @@ except ImportError:
         INTERPRETED_FIELDS, canonical_startup, founder_subject, reviewed_alias, site_url, source_url,
         staged_company_inventory, startup_index, validate_publication_claim, validate_search_log,
     )
+    from company_metadata_socials import COMPANY_SOCIALS, company_social_review
     from crawl import company_headcount_mentions, require_scoped_launcher
     from plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from replay_company_profiles import compile_replay, utc
@@ -50,7 +52,7 @@ REQUIRED_EVIDENCE = {
 }
 EVIDENCE_KINDS = {
     *REQUIRED_EVIDENCE.values(), 'company_profile_packet', 'early_investment_manifest',
-    'identity_alias', 'publication_claim',
+    'identity_alias', 'publication_claim', 'company_social_review',
 }
 STAGED_EVIDENCE_KINDS = {'review', 'search_log', 'blocked_receipt'}
 PUBLIC_PATHS = {
@@ -137,7 +139,7 @@ def public_value(readback, dimension, path):
 
 def load_identity_index(batch, plan, overlay, root):
     if 'identity_snapshot' not in batch:
-        return {}, None
+        return {}, {}, None
     snapshot = fields(batch['identity_snapshot'], ('path', 'sha256', 'snapshot_kind'))
     if snapshot['snapshot_kind'] not in ('built', 'published'):
         raise ValueError('Expected a built or published graph identity snapshot')
@@ -145,9 +147,10 @@ def load_identity_index(batch, plan, overlay, root):
     overlay_raw = read_input(overlay)
     if digest(overlay_raw) != plan['overlay_sha256']:
         raise ValueError('Overlay changed while binding canonical startup identities')
-    official_sites = {row['name']: row.get('website') for row in load_json(overlay_raw)['startups']}
+    companies = {row['name']: row for row in load_json(overlay_raw)['startups']}
+    official_sites = {name: row.get('website') for name, row in companies.items()}
     startups = startup_index(load_json(graph_raw), plan['revision'])
-    return official_sites, startups
+    return companies, official_sites, startups
 
 
 def bind_readbacks(readbacks, aliases, artifacts, batch, official_sites, startups):
@@ -233,7 +236,7 @@ def load_bundle(batch_path, plan, overlay, approved):
         raise ValueError('Batch must match the exact inventory plan, revision and UTC review timestamp')
     reviewer = text(batch['reviewer'], 'reviewer')
     root = batch_path.resolve().parent
-    official_sites, startups = load_identity_index(batch, plan, overlay, root)
+    companies, official_sites, startups = load_identity_index(batch, plan, overlay, root)
     staged = {}
     if 'candidate_inventory' in batch:
         if startups is None:
@@ -244,7 +247,7 @@ def load_bundle(batch_path, plan, overlay, approved):
     names = {row['source_record_name'] for row in plan['items']}
     names.update(staged)
     artifacts, readbacks, early, profiles, candidates = {}, {}, {}, {}, defaultdict(set)
-    aliases, search_logs, publication_claims = {}, {}, {}
+    aliases, search_logs, publication_claims, social_decisions = {}, {}, {}, {}
     if not isinstance(batch['evidence'], list) or len(batch['evidence']) > MAX_ARTIFACTS:
         raise ValueError(f'Batch supports at most {MAX_ARTIFACTS} saved evidence artifacts')
     total_bytes = 0
@@ -279,6 +282,18 @@ def load_bundle(batch_path, plan, overlay, approved):
             search_logs[key] = saved
         elif kind == 'publication_claim':
             publication_claims[key] = saved
+        elif kind == 'company_social_review':
+            if startups is None or name in social_decisions:
+                raise ValueError('Company social review needs one receipt per startup and a pinned identity snapshot')
+            startup_id, canonical_site = canonical_startup(name, official_sites[name], startups)
+            disposition, detail = company_social_review(saved, companies[name], revision, at, startup_id, canonical_site)
+            if entry.get('source_url', detail['source_url']) != detail['source_url']:
+                raise ValueError('Company social receipt and evidence entry must cite the same source')
+            social_decisions[name] = {
+                'name': name, 'dimension': COMPANY_SOCIALS, 'disposition': disposition, 'evidence': [key],
+                'note': 'Saved company links only. External account coverage is unknown.',
+                'company_social_review': detail,
+            }
         elif kind == 'company_profile_packet':
             replay = compile_replay(overlay, approved, path, revision, at)
             if (replay['packet_sha256'] != entry['sha256']
@@ -357,7 +372,13 @@ def load_bundle(batch_path, plan, overlay, approved):
         decisions.setdefault((name, dimension), {'name': name, 'dimension': dimension,
             'disposition': 'candidate', 'evidence': sorted(ids),
             'note': 'Saved source observation awaits claim review.'})
+    decisions.update(((name, COMPANY_SOCIALS), decision) for name, decision in social_decisions.items())
     return at, reviewer, digest(raw), artifacts, decisions, candidates, batch, staged
+
+
+def review_dimensions(decisions):
+    # A pre-existing saved bundle keeps its exact ledger scopes and coverage denominator.
+    return (*DIMENSIONS, COMPANY_SOCIALS) if any(field == COMPANY_SOCIALS for _, field in decisions) else DIMENSIONS
 
 
 def make_config(plan, at, batch_sha, decisions, staged, staged_ref):
@@ -378,9 +399,9 @@ def make_config(plan, at, batch_sha, decisions, staged, staged_ref):
             'scopes': [{'id': dimension, 'source_id': 'saved-company-metadata', 'host': 'saved-inputs.invalid',
                         'entity_kind': 'company_source_record', 'dimension': dimension,
                         'temporal_scope': 'saved-batch-review', 'source_revision': batch_sha,
-                        'parser_version': parser_version,
+                        'parser_version': 'company-social-review-v1' if dimension == COMPANY_SOCIALS else parser_version,
                         'eligibility_rule': eligibility,
-                        'population': population, 'freshness_seconds': None} for dimension in DIMENSIONS]}
+                        'population': population, 'freshness_seconds': None} for dimension in review_dimensions(decisions)]}
 
 
 def decision_proof(batch_sha, decision):
@@ -432,12 +453,12 @@ def load_review_plan(overlay, approved, revision):
     return plan
 
 
-def coverage_counts(members, field_status):
+def coverage_counts(members, field_status, dimensions=DIMENSIONS):
     result = {}
-    for dimension in DIMENSIONS:
+    for dimension in dimensions:
         counts = Counter(field_status(name, dimension) for name in members)
         result[dimension] = {status: counts[status] for status in DISPOSITIONS}
-    return {'companies': len(members), 'possible_field_cells': len(members) * len(DIMENSIONS), 'by_field': result}
+    return {'companies': len(members), 'possible_field_cells': len(members) * len(dimensions), 'by_field': result}
 
 
 def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
@@ -445,6 +466,7 @@ def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
         raise ValueError(f'Limit must be 1 to {MAX_COMPANIES} companies per checkpoint')
     plan = load_review_plan(overlay, approved, revision)
     at, reviewer, batch_sha, artifacts, decisions, candidates, batch, staged = load_bundle(batch_path, plan, overlay, approved)
+    dimensions = review_dimensions(decisions)
     config = make_config(plan, at, batch_sha, decisions, staged, batch.get('candidate_inventory'))
     names = [row['source_record_name'] for row in plan['items']]
     ready = {row['source_record_name'] for row in plan['items'] if row['seed_state'] == 'approved_seed_ready'}
@@ -466,7 +488,15 @@ def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
             raise ValueError('Checkpoint contains fields outside this batch')
         pending = sorted({name for name, _ in decisions.keys() - done},
                          key=lambda name: (name not in ready, name in staged, name))
-        selected = pending[:limit]
+        selected, touched, field_count = [], set(), 0
+        for name in pending[:limit]:
+            fields_for_company = grouped[name]
+            next_fields = touched | {field for field, _ in fields_for_company}
+            next_count = field_count + len(fields_for_company)
+            if 3 * next_count + len(next_fields) > MAX_EVENTS:
+                break
+            selected.append(name)
+            touched, field_count = next_fields, next_count
         if selected:
             snapshot = commit_company_batch(ledger, snapshot, selected, grouped, at, batch_sha)
             done = processed_cells(snapshot)
@@ -478,11 +508,11 @@ def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
             'plan_id': plan['plan_id'], 'input_hashes': {key: plan[key] for key in ('overlay_sha256', 'seeds_sha256')},
             'batch_sha256': batch_sha, 'evidence': [artifacts[key] for key in sorted(artifacts)],
             'identity_snapshot': batch.get('identity_snapshot'),
-            'coverage': {'catalogue': coverage_counts(names, field_status),
-                         'approved_seed_ready': coverage_counts(ready, field_status),
+            'coverage': {'catalogue': coverage_counts(names, field_status, dimensions),
+                         'approved_seed_ready': coverage_counts(ready, field_status, dimensions),
                          'seed_states': plan['population']['seed_states'], 'external_source_population': 'unknown'},
             'queue': [{'name': row['source_record_name'], 'seed_state': row['seed_state'],
-                       'fields': {field: field_status(row['source_record_name'], field) for field in DIMENSIONS}}
+                       'fields': {field: field_status(row['source_record_name'], field) for field in dimensions}}
                       for row in plan['items']],
             'checkpoint': {'sequence': snapshot['sequence'], 'applied_companies': selected,
                            'committed_field_cells': len(done), 'saved_batch_field_cells': len(decisions),
@@ -492,10 +522,10 @@ def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
                           for key in sorted(done)]}
     if staged:
         report['candidate_inventory'] = batch['candidate_inventory']
-        report['coverage']['staged_candidates'] = coverage_counts(staged, field_status)
+        report['coverage']['staged_candidates'] = coverage_counts(staged, field_status, dimensions)
         report['queue'].extend({
             'name': name, 'candidate_id': staged[name]['id'], 'seed_state': 'staged_unpublished',
-            'fields': {field: field_status(name, field) for field in DIMENSIONS},
+            'fields': {field: field_status(name, field) for field in dimensions},
         } for name in sorted(staged))
     return report
 
