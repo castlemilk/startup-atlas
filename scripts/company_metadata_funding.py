@@ -141,14 +141,23 @@ CLOSING_STATEMENT_BREAK = re.compile(
 )
 CLOSING_DECLARATIVE_END = re.compile(r'[.!]["”\'’»›]?$')
 CLOSING_PREFACE_BOUNDARY = re.compile(r'[:?？]|\b(?:asked|quoted|wondered|hypothetical)\b', re.I)
-CUSTOMER_NAME = r'(?-i:[A-Z][\w&-]{0,39}(?: [A-Z][\w&-]{0,39}){0,3})'
+CAPITALIZED_NAME = r'(?-i:[A-Z][\w&-]{0,39}(?: [A-Z][\w&-]{0,39}){0,3})'
+NOMINAL_CLOSING_REPORT = re.compile(
+    rf'(?:(?-i:[A-Z][a-z-]{{1,30}}) employee engagement startup )?(?P<issuer>{ISSUER_NAME}) '
+    rf'(?:has )?announced the closing of (?:a|its|the) (?P<amount>{STATED_RAISE_AMOUNT}) '
+    rf'(?P<series>{SERIES.pattern}) (?:funding )?round'
+    rf'(?:, led by (?![^.!?]*\b(?:if|unless|pending|subject to)\b)(?:existing investors? )?{CAPITALIZED_NAME}'
+    rf'(?: with participation from {CAPITALIZED_NAME}(?:, {CAPITALIZED_NAME}){{0,4}}'
+    rf'(?:,? and {CAPITALIZED_NAME})?)?)?[.!]',
+    re.I,
+)
 WIRE_SERIES_FUNDING = rf'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){{0,24}} {SERIES.pattern} funding(?: round)?)'
 WIRE_ACTIONS = r'close|raise|secure'
 # Keep the customer list inside the named issuer's relative clause.
 ISSUER_CUSTOMER_REPORT = re.compile(
     rf'(?:{PRNEWSWIRE_DATELINE})?'
-    rf'(?:People Analytics company )?(?P<issuer>{ISSUER_NAME}), which counts {CUSTOMER_NAME}'
-    rf'(?:, {CUSTOMER_NAME}){{0,6}}(?:,? and {CUSTOMER_NAME})? among (?:its customers|the companies using its platform),'
+    rf'(?:People Analytics company )?(?P<issuer>{ISSUER_NAME}), which counts {CAPITALIZED_NAME}'
+    rf'(?:, {CAPITALIZED_NAME}){{0,6}}(?:,? and {CAPITALIZED_NAME})? among (?:its customers|the companies using its platform),'
     rf' (?:today )?announced (?:that )?it has (?P<action>{WIRE_ACTIONS})d{WIRE_SERIES_FUNDING}[.!]',
     re.I,
 )
@@ -167,6 +176,15 @@ ISSUER_FIRST_PERSON_REPORT = re.compile(
 )
 CORRECTION_DETERMINERS = r'a|an|any|the|that'
 CORRECTION_SERIES = rf'(?P<series>{SERIES.pattern})(?: (?:funding(?: round)?|round(?: of funding)?))?'
+NOMINAL_CLOSING_CORRECTION = re.compile(
+    rf'(?:Correction: )?(?P<issuer>{ISSUER_NAME}) '
+    r"(?:(?:did not|didn['’]t) (?:actually )?(?:close|announce the closing of)"
+    r"|has not (?:actually )?(?:closed|announced the closing of)) "
+    rf'(?:the funding|(?:(?:{CORRECTION_DETERMINERS}|its) )?'
+    rf'(?:(?P<leading_amount>{STATED_RAISE_AMOUNT}) )?{CORRECTION_SERIES}'
+    rf'(?: of (?P<trailing_amount>{STATED_RAISE_AMOUNT}))?)[.!]',
+    re.I,
+)
 ISSUER_ROUND_CORRECTION = re.compile(
     rf'(?P<issuer>{ISSUER_NAME}) '
     rf'(?:did not (?P<simple_action>{WIRE_ACTIONS})|didn[\'’]t (?P<contracted_close>close)'
@@ -409,11 +427,25 @@ def reported_raise_denial(following, issuer, series, amount, *, first_person=Fal
     )
 
 
-def issuer_reported_rounds(excerpt, names, *, allow_raise):
+def nominal_closing_denied(following, issuer, report):
+    if not following:
+        return False
+    denial = NOMINAL_CLOSING_CORRECTION.fullmatch(following[0])
+    if not denial or name_key(denial['issuer']) != issuer:
+        return False
+    if denial['series'] is not None and name_key(denial['series']) != name_key(report['series']):
+        return False
+    # Compare written amounts without interpreting currency symbols or multipliers.
+    amounts = [denial[key].casefold() for key in ('leading_amount', 'trailing_amount') if denial[key]]
+    return amounts in ([], [report['amount'].casefold()])
+
+
+def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
     """Review complete named financing assertions within their sentence scope."""
     statements = [' '.join(part.split()) for part in CLOSING_STATEMENT_BREAK.split(excerpt)]
     quotations = [tuple(QUOTATION_MARK.findall(statement)) for statement in statements]
     unresolved_quotation = any(marks and marks not in QUOTATION_PAIRS for marks in quotations)
+    saved_assertion = allow_saved_reports and not unresolved_quotation
     round_mention = corrected = False
     for index, statement in enumerate(statements):
         following = statements[index + 1:index + 2]
@@ -423,10 +455,13 @@ def issuer_reported_rounds(excerpt, names, *, allow_raise):
             terms = ISSUER_CLOSING_TERMS.fullmatch(' ' + name_key(match['terms']))
             if terms:
                 denied = round_correction(following, issuer, terms['series'], 'close', closing_terms=match['terms'])
-        raised = ISSUER_RAISE_REPORT.fullmatch(statement) if allow_raise and not unresolved_quotation else None
+        raised = ISSUER_RAISE_REPORT.fullmatch(statement) if saved_assertion else None
         if raised and (issuer := name_key(raised['issuer'])) in names and not prospective_clause(statement):
             series = name_key(raised['series'])
             denied = reported_raise_denial(following, issuer, series, raised['amount'])
+        nominal = NOMINAL_CLOSING_REPORT.fullmatch(statement) if saved_assertion else None
+        if nominal and (issuer := name_key(nominal['issuer'])) in names:
+            denied = nominal_closing_denied(following, issuer, nominal)
         if denied is not None:
             corrected |= denied
             round_mention |= not denied
@@ -563,7 +598,7 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
         linked_round, linked_corrected = linked_issuer_round(opening_text, names, reviewed_article)
         opening_round |= linked_round
         opening_corrected |= linked_corrected
-    report_round, report_corrected = issuer_reported_rounds(opening_text, names, allow_raise=not search_result)
+    report_round, report_corrected = issuer_reported_rounds(opening_text, names, allow_saved_reports=not search_result)
     if not (matching or opening_round or opening_corrected or report_round or report_corrected):
         return 'unmatched', []
     subjects = ' '.join(matching)

@@ -71,6 +71,15 @@ CULTURE_AMP_REPORTED_CLOSE = (
     'the people analytics company for workplace feedback, announced today that it has closed '
     'a $10 million Series B round.'
 )
+CULTURE_AMP_STARTUP_DAILY = (
+    'https://www.startupdaily.net/other/'
+    'facebook-acquires-masquerade-wework-raises-430-million-16-billion-valuation-plantminer-raises-3-5-million/'
+)
+# Startup Daily's subject and transaction wording with synthetic investor names.
+CULTURE_AMP_NOMINAL_CLOSE = (
+    'Melbourne employee engagement startup Culture Amp has announced the closing of a US$10 million Series B round, '
+    'led by existing investors Alder Ventures with participation from Birch Capital and Cedar Ventures.'
+)
 RELATIVE_WIRE_DATELINE = 'BOSTON, May 9, 2017 /PRNewswire/ --\N{NO-BREAK SPACE}HR Tech World:\N{NO-BREAK SPACE}'
 RELATIVE_WIRE_ASSERTION = (
     'Ready Company announced yesterday that it has raised a Series C round of $21 Million led by Alder Ventures.'
@@ -881,6 +890,93 @@ class CompanyFundingStatementTests(unittest.TestCase):
         ):
             with self.subTest(excerpt=excerpt):
                 self.assertEqual(classify(excerpt, {'culture amp'}), expected)
+
+    def test_nominal_close_requires_an_asserted_round_of_the_named_company(self):
+        opening = CULTURE_AMP_NOMINAL_CLOSE
+        subject = 'Melbourne employee engagement startup Culture Amp'
+        bare = opening.replace(subject, 'Culture Amp').split(', led by')[0] + '.'
+        preface = 'The companies published a weekly update.'
+        cases = (
+            (opening, True),
+            (bare, True),
+            (f'{preface} {opening}', True),
+            (f'A spokesperson said “No comment.” {opening}', True),
+            (f'A spokesperson said “No comment. {opening}”', False),
+            (f'“{opening}”', False),
+            (opening[:-1] + '?', False),
+            (f'A reporter asked: {opening}', False),
+            (f'Was the round completed? {opening}', False),
+            (f'An unnamed source speculated that {bare}', False),
+            (opening.replace(subject, 'Acme, a supplier to Culture Amp,'), False),
+            (opening.replace(subject, f'Acme profiled {subject}'), False),
+            (opening.replace('the closing of', 'plans to complete'), False),
+            (opening.replace('the closing of', 'the planned closing of'), False),
+            (opening.replace('has announced', 'has not announced'), False),
+            (opening.replace('Series B round', 'Series B product line'), False),
+            ('Culture Amp has announced the closing of a US$10 million office project.', False),
+            (bare[:-1] + ' on behalf of Acme.', False),
+            (bare[:-1] + ' if its shareholders approve.', False),
+            (bare[:-1] + ', led by Alder If Approved.', False),
+        )
+        for excerpt, eligible in cases:
+            with self.subTest(excerpt=excerpt):
+                self.assertEqual('round_mention' in classify(excerpt, {'culture amp'})[1], eligible)
+
+    def test_nominal_close_holds_only_for_a_matching_adjacent_retraction(self):
+        opening = CULTURE_AMP_NOMINAL_CLOSE
+        denial = 'Culture Amp did not close the Series B funding round.'
+        amount_denial = 'Culture Amp didn’t actually close the US$10 million Series B round.'
+        cases = (
+            (denial, False),
+            (f'Correction: {denial}', False),
+            (amount_denial, False),
+            ('Culture Amp has not actually closed the funding.', False),
+            ('Culture Amp did not close a Series B round of US$10 million.', False),
+            ('Culture Amp did not announce the closing of a US$10 million Series B round.', False),
+            (denial.replace('Series B', 'Series D'), True),
+            (denial.replace('Culture Amp', 'Acme'), True),
+            (denial.replace('Culture Amp', 'We'), True),
+            (denial.replace('close', 'secure'), True),
+            (amount_denial.replace('US$10', 'US$20'), True),
+            (amount_denial.replace('US$10', '$10'), True),
+            (amount_denial.replace('US$10 million', 'US$10m'), True),
+            ('Culture Amp did not close a Series B round of US$20 million.', True),
+            (f'“{denial}”', True),
+            (denial[:-1] + '?', True),
+            ('The legal close date was not disclosed.', True),
+            (f'A company issued an unrelated update. {denial}', True),
+        )
+        for following, eligible in cases:
+            with self.subTest(following=following):
+                bucket, signals = classify(f'{opening} {following}', {'culture amp'})
+                self.assertEqual('round_mention' in signals, eligible)
+                if not eligible:
+                    self.assertEqual(bucket, 'context')
+                    self.assertIn('prospective_or_negated', signals)
+        _, signals = classify(f'{opening} {denial} Culture Amp closed its Series D.', {'culture amp'})
+        self.assertIn('round_mention', signals)
+
+    def test_nominal_close_preserves_third_party_provenance_and_deduplication(self):
+        capture = {'url': CULTURE_AMP_STARTUP_DAILY, 'excerpt': CULTURE_AMP_NOMINAL_CLOSE,
+                   'acquisition': 'reviewer_paraphrase', 'retrieved_on': '2026-11-20',
+                   'dates': {'published': '2016-03-11'}}
+        search = {key: value for key, value in capture.items() if key != 'dates'}
+        search['acquisition'] = 'search_result'
+        unrelated = {**capture, 'acquisition': 'page_excerpt', 'excerpt': CULTURE_AMP_FIRST_PERSON}
+        review = self.first_person_review([capture, capture, search, unrelated])
+        document, = review['results']
+        self.assertEqual(review['prior_rounds'], 'published')
+        self.assertFalse(document['on_issuer_host'])
+        self.assertTrue(document['review_required'])
+        self.assertEqual(document['bucket'], 'round_lead')
+        self.assertEqual(len(document['observations']), 3)
+        observations = {row['acquisition']: row for row in document['observations']}
+        self.assertEqual(observations['reviewer_paraphrase'], {
+            **capture, 'dates': {'published': {'value': '2016-03-11', 'precision': 'day'}},
+            'bucket': 'round_lead', 'signals': ['round_mention'],
+        })
+        for origin in ('page_excerpt', 'search_result'):
+            self.assertNotIn('round_mention', observations[origin]['signals'])
 
     def test_relative_wire_raises_require_a_named_assertion(self):
         wire = RELATIVE_WIRE_REPORT
