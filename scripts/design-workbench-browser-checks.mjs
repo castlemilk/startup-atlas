@@ -1,7 +1,7 @@
 // Exercises the reference as a user: native controls, local specimens and real exports.
 // The existing Atlas browser harness supplies Chrome, screenshots and diagnostics.
 import assert from 'node:assert/strict';
-import { tokenMetadata } from '../web/design-token-reference.js';
+import { contrastRatio, tokenMetadata } from '../web/design-token-reference.js';
 
 export async function checkDesignWorkbench({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow}) {
   const text=selector=>evaluate(`document.querySelector(${JSON.stringify(selector)})?.textContent||''`);
@@ -154,7 +154,13 @@ export async function checkDesignWorkbench({command,evaluate,navigate,until,clic
   await click('#token-expand');
   assert.equal(await evaluate("[...document.querySelectorAll('#token-grid details')].every(item=>!item.open)"),true);
 
-  assert.ok(Math.abs(Number(await evaluate("document.querySelector('#contrast-ratio').dataset.ratio"))-18.58123177089014)<1e-10);
+  const pair=await evaluate(`(()=>{
+    const style=getComputedStyle(document.documentElement);
+    return ['#contrast-foreground','#contrast-background'].map(id=>style.getPropertyValue(document.querySelector(id).value).trim());
+  })()`);
+  const ratio=Number(await evaluate("document.querySelector('#contrast-ratio').dataset.ratio"));
+  assert.ok(Math.abs(ratio-contrastRatio(...pair))<1e-10);
+  assert.ok(ratio>=7,'The default text and surface pair must meet AAA contrast');
   await capture('.dt-contrast','atlas-contrast-desktop.png');
   await choose('#contrast-foreground','--atlas-surface');
   assert.equal(await text('#contrast-ratio'),'1.00:1');

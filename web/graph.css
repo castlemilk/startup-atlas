@@ -63,7 +63,7 @@
 .network-node[data-kind=provider] .node-avatar{fill:var(--atlas-provider-soft);stroke:var(--atlas-border)}
 .network-node .node-port{fill:var(--atlas-surface);stroke:var(--atlas-border-strong);stroke-width:1.2}
 .network-node .node-initials{font:700 13px var(--atlas-font-body);fill:var(--atlas-ink);text-anchor:middle;dominant-baseline:central}
-.network-node .node-label{font:650 18px var(--atlas-font-body);letter-spacing:-.025em;fill:var(--atlas-ink);text-anchor:start;stroke:none}
+.network-node .node-label{font:650 17px var(--atlas-font-display);letter-spacing:-.025em;fill:var(--atlas-ink);text-anchor:start;stroke:none}
 .network-node.is-root .node-label{fill:var(--atlas-on-action);font-size:21px}
 .network-node .node-kind-bg{fill:var(--atlas-startup-soft)}
 .network-node[data-kind=partner] .node-kind-bg{fill:var(--atlas-partner-soft)}

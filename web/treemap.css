@@ -24,17 +24,16 @@
 .treemap-chart{position:relative;height:510px;margin:0 12px 12px;overflow:hidden;background:var(--atlas-canvas);border-radius:var(--atlas-radius-control)}
 .treemap-chart>p{padding:32px;font:18px/1.6 var(--atlas-font-display)}
 .treemap-tile{position:absolute;padding:3px;border:0;background:transparent;text-align:left;overflow:hidden;color:var(--atlas-ink)}
-.treemap-tile-inner{display:flex;flex-direction:column;justify-content:space-between;height:100%;padding:clamp(10px,1.7vw,24px);border:1px solid color-mix(in srgb,var(--tile-color) 72%,var(--atlas-ink));border-radius:var(--atlas-radius-control);background:color-mix(in srgb,var(--tile-color) 44%,var(--atlas-surface));overflow:hidden}
+.treemap-tile-inner{display:flex;flex-direction:column;justify-content:space-between;gap:8px;height:100%;container-type:inline-size;padding:clamp(10px,1.7vw,24px);border:1px solid color-mix(in srgb,var(--tile-color) 72%,var(--atlas-ink));border-radius:var(--atlas-radius-control);background:color-mix(in srgb,var(--tile-color) 44%,var(--atlas-surface));overflow:hidden}
 .treemap-tile:hover .treemap-tile-inner{border-color:var(--atlas-ink);box-shadow:inset 0 0 0 1px var(--atlas-ink)}
 .treemap-tile:focus-visible{outline:0;z-index:2}.treemap-tile:focus-visible .treemap-tile-inner{outline:3px dashed var(--atlas-focus);outline-offset:-5px}
 .treemap-tile[aria-pressed=true] .treemap-tile-inner{box-shadow:inset 0 0 0 3px var(--atlas-accent)}
-.treemap-tile-top{display:flex;justify-content:space-between;gap:12px;align-items:start}
-.treemap-rank{font:500 11px/1.4 var(--atlas-font-mono);color:var(--atlas-ink);font-variant-numeric:tabular-nums}
-.treemap-value{font:650 clamp(19px,2.6vw,38px)/1.1 var(--atlas-font-display);letter-spacing:-.045em;white-space:nowrap;font-variant-numeric:tabular-nums}
-.treemap-tile-identity{display:flex;align-items:center;gap:14px;min-width:0}.treemap-tile-identity>span:last-child{min-width:0}
+.treemap-tile-top{display:flex;justify-content:flex-end}
+.treemap-value{font:650 clamp(16px,12cqi,35px)/1.15 var(--atlas-font-display);letter-spacing:-.03em;text-align:right;font-variant-numeric:tabular-nums}
+.treemap-tile-identity{display:flex;flex:1;align-items:center;gap:14px;min-width:0}.treemap-tile-identity>span:last-child{min-width:0}.treemap-tile[data-company]:not(.compact,.tiny) .treemap-tile-identity>span:last-child{border-inline-start:1px solid var(--atlas-border-strong);padding-inline-start:14px}
 .treemap-logo{display:grid;place-items:center;flex:none;width:54px;height:54px;background:var(--atlas-surface);border:1px solid var(--atlas-border);border-radius:var(--atlas-radius-control);overflow:hidden;font-size:19px;font-weight:750}
 .treemap-logo img{width:100%;height:100%;object-fit:contain;padding:7px}.treemap-logo img[hidden],.treemap-logo span[hidden]{display:none}
-.treemap-tile-name{font:650 clamp(18px,1.8vw,28px)/1.16 var(--atlas-font-display);letter-spacing:-.035em;overflow-wrap:anywhere;display:block}
+.treemap-tile-name{font:650 clamp(17px,10cqi,29px)/1.16 var(--atlas-font-display);letter-spacing:-.026em;overflow-wrap:anywhere;display:block}
 .treemap-tile-meta{font-size:var(--atlas-text-xs);line-height:1.5;display:block;margin-top:8px}
 .treemap-tile.compact .treemap-tile-inner{padding:11px}.treemap-tile.compact .treemap-logo{display:grid;width:30px;height:30px;border-radius:5px;font-size:11px}.treemap-tile.compact .treemap-logo img{padding:3px}
 .treemap-tile.compact .treemap-value{font-size:clamp(15px,1.4vw,21px)}.treemap-tile.compact .treemap-tile-name{font-size:18px}.treemap-tile.compact .treemap-tile-meta{font-size:11px;margin-top:5px}.treemap-tile.compact .treemap-tile-identity{gap:8px}
@@ -212,8 +211,8 @@
 .atlas-treemap-page .treemap-controls .atlas-search-control .atlas-clear{right:0}
 .atlas-treemap-page .treemap-controls button:active{translate:0 1px;box-shadow:inset 0 1px 2px rgb(17 19 24 / 10%)}
 .atlas-treemap-page .treemap-list li>span,.atlas-treemap-page .treemap-list-value strong{font-family:var(--atlas-font-mono);font-variant-numeric:tabular-nums}
-.atlas-treemap-page .treemap-detail .treemap-profile{background:linear-gradient(#315efb,#2349d9);border-color:#2448c5;box-shadow:inset 0 1px 0 rgb(255 255 255 / 24%),0 2px 0 #173798}
-.atlas-treemap-page .treemap-detail .treemap-profile:hover{background:linear-gradient(#3c67ff,#2850e2)}
+.atlas-treemap-page .treemap-detail .treemap-profile{background:linear-gradient(var(--atlas-action-top),var(--atlas-action-bottom));border-color:var(--atlas-action-border);box-shadow:inset 0 1px 0 rgb(255 255 255 / 24%),0 2px 0 var(--atlas-action-border)}
+.atlas-treemap-page .treemap-detail .treemap-profile:hover{background:linear-gradient(var(--atlas-action-top),var(--atlas-action-bottom))}
 @media(max-width:650px){.atlas-treemap-page .treemap-controls input{font-size:16px}.atlas-treemap-page .treemap-controls{border-radius:14px}.atlas-treemap-page .treemap-detail h2{font-size:28px}.atlas-treemap-page .treemap-detail .treemap-detail-value{font-size:32px}}
 @media(forced-colors:active){.treemap-card[aria-pressed=true],.treemap-list button[aria-pressed=true]{outline:2px solid Highlight}.treemap-tile[aria-pressed=true] .treemap-tile-inner{border:3px solid Highlight}.treemap-controls button,.treemap-controls select,.treemap-controls input{box-shadow:none}}
 

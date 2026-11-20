@@ -47,7 +47,8 @@ EVIDENCE_PATTERNS = {
 }
 MAX_HEADCOUNT_MENTIONS = 12
 MAX_HEADCOUNT_CONTEXT = 360
-HEADCOUNT_NUMBER = r'(?:[0-9]{1,3}(?:,[0-9]{3}){1,2}|[0-9]{1,8})(?:k)?\+?'
+HEADCOUNT_INTEGER = r'(?:[0-9]{1,3}(?:,[0-9]{3}){1,2}|[0-9]{1,8})'
+HEADCOUNT_NUMBER = rf'{HEADCOUNT_INTEGER}(?:k)?\+?'
 HEADCOUNT_MEASURE = r'(?:(?:group|full[- ]time|part[- ]time) )?(?:employees|staff(?: members)?|workers|people)'
 HEADCOUNT_MENTION = re.compile(
     rf'(?<![\w.,])(?:between {HEADCOUNT_NUMBER} and {HEADCOUNT_NUMBER}'
@@ -104,6 +105,33 @@ HEADCOUNT_GROWTH = re.compile(
 HEADCOUNT_OPERATIONS = re.compile(r'^\s+(?:across|within|in) (?:[\w-]+ ){0,6}operations\b', re.I)
 HEADCOUNT_AS_OF = re.compile(
     r'^as of (?:(?:[0-9]{1,2} )?[A-Za-z]{3,9} [0-9]{4}|[0-9]{4}(?:-[0-9]{2}){0,2}),\s+', re.I,
+)
+HEADCOUNT_POSSESSIVE_TEAM = re.compile(
+    r"^(?P<owner>[\w&.-]+(?: [\w&.-]+){0,7})['’]s "
+    rf'(?P<quantity>{HEADCOUNT_INTEGER}\+ team)(?= (?:brings together|works|operates|spans|is based)\b)',
+    re.I,
+)
+HEADCOUNT_OTHER_POPULATION = (
+    r'(?:(?:(?:PhD|doctoral|postgraduate|graduate|undergraduate|research) )?students'
+    r'|(?:(?:independent|external|temporary) )?contractors|consultants|interns|apprentices|volunteers)'
+)
+HEADCOUNT_MIXED_SUFFIX = re.compile(
+    r'^(?:'
+    rf'(?:,? and |, )(?:{HEADCOUNT_MEASURE}|{HEADCOUNT_OTHER_POPULATION})\b'
+    rf'|,? including (?:{HEADCOUNT_NUMBER} )?{HEADCOUNT_OTHER_POPULATION}\b'
+    r'){1,4}',
+    re.I,
+)
+HEADCOUNT_PLACE = r'(?-i:[A-Z][\w-]*(?: [A-Z][\w-]*){0,3})'
+HEADCOUNT_GLOBAL_TEAM = re.compile(
+    rf'(?:founded in {HEADCOUNT_PLACE}, )?'
+    r'(?P<owner>(?-i:[A-Z][\w&.-]*(?: [A-Z][\w&.-]*){0,7})) has '
+    rf'(?P<quantity>(?:(?:more than|over|at least) {HEADCOUNT_INTEGER}|{HEADCOUNT_INTEGER}\+) team members globally)'
+    # An operations list can describe locations, but cannot absorb mixed populations.
+    rf'(?:, with operations in (?!.*\b(?:{HEADCOUNT_MEASURE}|{HEADCOUNT_OTHER_POPULATION}|teams?)\b)'
+    rf'{HEADCOUNT_PLACE}(?:(?:, (?:and )?| and ){HEADCOUNT_PLACE}){{0,7}})?'
+    r'[.!]?',
+    re.I,
 )
 API = 'https://www.wikidata.org/w/api.php'
 PROPERTIES = {'P856':'official_website','P17':'country','P159':'headquarters','P571':'inception',
@@ -497,7 +525,7 @@ def extract_amount_mentions(parts,url):
     return found
 
 def extract_headcount_mentions(parts, url, company_name=None):
-    """Keep staff quantities and their complete sentence as review evidence."""
+    """Keep staff or team quantities and their complete sentence as review evidence."""
     found = []
     seen = set()
     for part in parts:
@@ -517,6 +545,12 @@ def extract_headcount_mentions(parts, url, company_name=None):
                 if company_name is None and not HEADCOUNT_NON_ASSERTED.search(clause[:growth.start()])
                 and not HEADCOUNT_FROM.match(clause[growth.end():])
             ]
+            team_clause = HEADCOUNT_AS_OF.sub('', clause)
+            team = HEADCOUNT_POSSESSIVE_TEAM.match(team_clause) or HEADCOUNT_GLOBAL_TEAM.fullmatch(team_clause)
+            if team and not HEADCOUNT_NON_ASSERTED.search(clause):
+                owner = team['owner'].casefold()
+                if owner not in HEADCOUNT_UNBOUND_SUBJECTS and (company_name is None or owner == company_name.casefold()):
+                    quantities.append((team['quantity'], True))
             for mention in HEADCOUNT_MENTION.finditer(clause):
                 suffix = clause[mention.end():]
                 if (HEADCOUNT_FROM.match(suffix)
@@ -542,14 +576,20 @@ def extract_headcount_mentions(parts, url, company_name=None):
                         and not (predicate['employment'] or predicate['workforce'])
                         and not HEADCOUNT_OPERATIONS.match(suffix)):
                     continue
+                # An immediate list or inclusion can bring other groups into the quantity.
+                mixed = HEADCOUNT_MIXED_SUFFIX.match(suffix)
+                if mixed:
+                    if company_name is None:
+                        quantities.append((mention.group() + mixed.group(), False))
+                    continue
                 quantities.append((mention.group(), has_employer))
-            for quantity, has_employer in quantities:
+            for quantity, attributed in quantities:
                 key = (quantity, sentence)
                 if key in seen:
                     continue
                 seen.add(key)
                 row = {'mention': quantity, 'context': sentence, 'source': url}
-                if not has_employer:
+                if not attributed:
                     row['employer_attribution'] = 'unbound'
                 found.append(row)
                 if len(found) == MAX_HEADCOUNT_MENTIONS:
@@ -558,7 +598,7 @@ def extract_headcount_mentions(parts, url, company_name=None):
 
 
 def company_headcount_mentions(company_name, page):
-    """Retain saved mentions whose sentence explicitly names the company as subject."""
+    """Retain saved mentions with exact employment or team attribution."""
     mentions = page.get('headcount_mentions', [])
     if not isinstance(mentions, list) or len(mentions) > MAX_HEADCOUNT_MENTIONS:
         return []

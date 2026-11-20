@@ -319,7 +319,18 @@ try {
   await assertNoOverflow('390px partner profile');
   await screenshot('atlas-partner-mobile.png',true);
 
-  await navigate('/',"!!document.querySelector('.atlas-masthead [data-atlas-view=directory] .signal-feature-symbol')");
+  await navigate('/',"!!document.querySelector('.atlas-masthead [data-atlas-view=directory][aria-current=page] .signal-feature-symbol')");
+  const masthead=await evaluate(`(()=>{
+    const bar=document.querySelector('.atlas-masthead');
+    return {
+      brand:getComputedStyle(bar.querySelector('.atlas-wordmark')).fontFamily,
+      paper:getComputedStyle(bar).backgroundColor,
+      selected:getComputedStyle(bar.querySelector('[aria-current=page]')).backgroundColor
+    };
+  })()`);
+  assert.match(masthead.brand,/Georgia/);
+  assert.equal(masthead.paper,'rgb(252, 249, 242)');
+  assert.equal(masthead.selected,'rgb(18, 43, 34)');
   assert.ok(await evaluate("document.querySelector('.search-wrap').getBoundingClientRect().top < 450"),'Directory search is visible early on a narrow viewport');
   await assertNoOverflow('390px directory feature');
 

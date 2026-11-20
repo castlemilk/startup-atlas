@@ -3,33 +3,34 @@ version: alpha
 name: "Startup Atlas"
 description: "Source-backed startup research with an editorial explorer and Signal design reference."
 colors:
-  primary: "#111318"
-  action: "#315efb"
-  canvas: "#fafafc"
-  paper: "#fafafc"
-  surface: "#ffffff"
-  border: "#dfe3e8"
-  textMuted: "#626975"
-  accent: "#315efb"
-  selection: "#eef2ff"
-  focus: "#315efb"
-  startup: "#3156ae"
-  partner: "#6251a7"
-  person: "#86501f"
-  programme: "#855e18"
-  provider: "#21677a"
+  primary: "#19382b"
+  masthead: "#16382a"
+  action: "#9d4526"
+  canvas: "#f7f3ea"
+  paper: "#f3ede1"
+  surface: "#fdfbf6"
+  border: "#d8d1c1"
+  textMuted: "#635f54"
+  accent: "#a54b29"
+  selection: "#f6e5d7"
+  focus: "#963f23"
+  startup: "#31513b"
+  partner: "#6b4d6b"
+  person: "#76582a"
+  programme: "#76521b"
+  provider: "#275a62"
 typography:
   display:
-    fontFamily: "Atlas Geist, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Georgia, Times New Roman, serif"
   interface:
     fontFamily: "Atlas Geist, system-ui, -apple-system, Segoe UI, sans-serif"
   utility:
     fontFamily: "Atlas Geist Mono, ui-monospace, SFMono-Regular, Consolas, monospace"
 rounded:
-  control: "10px"
-  row: "12px"
-  panel: "18px"
-  feature: "24px"
+  control: "8px"
+  row: "8px"
+  panel: "12px"
+  feature: "16px"
 spacing:
   page-max: "1640px"
   graph-gap: "14px"
@@ -40,13 +41,13 @@ spacing:
 
 ## Overview
 
-Startup Atlas is an open research guide for founders exploring programmes, people, companies and the organisations that connect them. The research routes use an editorial finish from the Stitch studies: warm paper, deep forest navigation, rust selection and serif display type. Self-hosted Geist Sans and Geist Mono remain the interface and data faces. The design reference keeps its light Signal foundations and embeds the operational routes as live previews.
+Startup Atlas is an open research guide for founders exploring programmes, people, companies and the organisations that connect them. The research routes use warm paper, forest navigation, rust actions and serif display type. Self-hosted Geist Sans and Geist Mono serve as interface and data faces. The design catalogue embeds the operational routes as live previews.
 
 The current site is English-language and has desktop and mobile layouts. Global browsing is supported; location does not imply programme eligibility. The shared system now connects list/search, treemap, graph, startup and partner/VC views. [UX-CONTRACT.md](UX-CONTRACT.md) owns interaction rules and migration gaps; [explorer view specifications](docs/EXPLORER-VIEWS.md) describe detailed layouts, data requirements and subsequent work.
 
 ### Accepted wireframe reference
 
-The five interface wireframes establish visual hierarchy and composition. The Stitch editorial directory, knowledge graph, treemap and entity studies inform type, colour and surface density. The ranked treemap uses the original logo-board composition with the ranked figures, compact controls and conditional marks. These references share a masthead, deliberate identity placement and adjacent evidence.
+The [approved editorial handoff](docs/design/editorial/README.md) sets the design target for the next implementation stages. The five earlier interface wireframes guide the existing route layouts. The ranked treemap uses the original logo-board composition with ranked figures, compact controls and conditional marks.
 
 | Wireframe | Accepted composition |
 | --- | --- |
@@ -60,7 +61,7 @@ The wireframes guide composition and [UX-CONTRACT.md](UX-CONTRACT.md) governs be
 
 ## Runtime ownership and mapping
 
-This is an **existing runtime canonical** system. [web/design-tokens.css](web/design-tokens.css) owns the Signal defaults described by the front matter and the tables below. [web/atlas-ui.css](web/atlas-ui.css) scopes the editorial overrides to the directory, treemap, graph, entity and partner documents. The overridden values flow through the shared and route components. Change durable visual decisions in their owning stylesheet and this document.
+[web/design-tokens.css](web/design-tokens.css) owns the shared defaults described by the front matter and the tables below. [web/atlas-ui.css](web/atlas-ui.css) scopes the current editorial values to the directory, treemap, graph, entity and partner documents. Route and component styles consume those tokens.
 
 | Explorer role | Runtime value |
 | --- | --- |
@@ -90,24 +91,25 @@ The shared stylesheet follows the established route styles where its primitives/
 
 ## Colors
 
-Graphite carries primary text, the masthead and the graph root. Porcelain is the light page canvas; white panels contain working results, charts and dossiers. Neutral wells and quiet source rails establish adjacent context. Cobalt identifies actions, selected inspection and keyboard focus. Entity colours remain categorical and do not communicate verification or investment performance.
+Forest carries primary text, the masthead and the graph root. Light, warm panels sit on a paper canvas. Quiet source rails stay beside the record being examined. Rust marks actions, selected inspection and keyboard focus. Entity colours remain categorical and do not communicate verification or investment performance.
 
 | Runtime token | Exact value | Use |
 | --- | --- | --- |
-| `--atlas-ink` | `#111318` | Primary text, graphite header and graph root identity. |
-| `--atlas-action` | `#315efb` | Primary action and source/navigation links. |
-| `--atlas-action-hover` | `#2349d9` | Primary action hover. |
-| `--atlas-muted` | `#626975` | Supporting copy, metadata and placeholders. Replaces the lighter former text value. |
-| `--atlas-canvas` | `#fafafc` | Porcelain working canvas. |
-| `--atlas-paper` | `#fafafc` | Light page and evidence canvas; retained as a distinct compatibility role. |
-| `--atlas-surface` | `#ffffff` | Content panels and controls. |
-| `--atlas-border` | `#dfe3e8` | Quiet separators and panel boundaries. |
-| `--atlas-border-strong` | `#7d899b` | Control boundaries and stronger rules. |
-| `--atlas-soft` | `#f0f2f6` | Hover, grouped controls and quiet selected context. |
-| `--atlas-accent` | `#315efb` | Cobalt active-route/section emphasis, inspected outlines and highlighted profile destinations. |
-| `--atlas-selection-soft` | `#eef2ff` | Pale cobalt fill for inspected rows, paired with a contrasting outline/marker and explicit state. |
-| `--atlas-focus` | `#315efb` | Keyboard focus, kept distinct from category meaning. |
-| `--atlas-on-action` | `#ffffff` | Text on dark action/navigation surfaces. |
+| `--atlas-ink` | `#19382b` | Primary text and the graph root identity. |
+| `--atlas-masthead` | `#16382a` | The forest brand bar. |
+| `--atlas-action` | `#9d4526` | Primary action and source/navigation links. |
+| `--atlas-action-hover` | `#80361f` | Primary action hover. |
+| `--atlas-muted` | `#635f54` | Supporting copy, metadata and placeholders. Replaces the lighter former text value. |
+| `--atlas-canvas` | `#f7f3ea` | Warm base for navigation and reading surfaces. |
+| `--atlas-paper` | `#f3ede1` | Light page and evidence canvas; retained as a distinct compatibility role. |
+| `--atlas-surface` | `#fdfbf6` | Content panels and controls. |
+| `--atlas-border` | `#d8d1c1` | Quiet separators and panel boundaries. |
+| `--atlas-border-strong` | `#8c8c76` | Control boundaries and stronger rules. |
+| `--atlas-soft` | `#ebeade` | Hover, grouped controls and quiet selected context. |
+| `--atlas-accent` | `#a54b29` | Rust active-route and section emphasis, inspected outlines and highlighted profile destinations. |
+| `--atlas-selection-soft` | `#f6e5d7` | Pale clay fill for inspected rows, paired with a contrasting outline/marker and explicit state. |
+| `--atlas-focus` | `#963f23` | Keyboard focus, kept distinct from category meaning. |
+| `--atlas-on-action` | `#fffdf5` | Text on dark action/navigation surfaces. |
 
 ### Categorical and state pairs
 
@@ -115,11 +117,11 @@ Dark categorical colours are for text/marks; their pale partners are backgrounds
 
 | Meaning | Foreground token and value | Background token and value |
 | --- | --- | --- |
-| Startup | `--atlas-startup: #3156ae` | `--atlas-startup-soft: #eaf0ff` |
-| Partner | `--atlas-partner: #6251a7` | `--atlas-partner-soft: #f0edfc` |
-| Person | `--atlas-person: #86501f` | `--atlas-person-soft: #f9eedf` |
-| Programme | `--atlas-programme: #855e18` | `--atlas-programme-soft: #faf0db` |
-| Provider | `--atlas-provider: #21677a` | `--atlas-provider-soft: #e6f3f6` |
+| Startup | `--atlas-startup: #31513b` | `--atlas-startup-soft: #dce7ce` |
+| Partner | `--atlas-partner: #6b4d6b` | `--atlas-partner-soft: #efdfeb` |
+| Person | `--atlas-person: #76582a` | `--atlas-person-soft: #eee4ce` |
+| Programme | `--atlas-programme: #76521b` | `--atlas-programme-soft: #f4e7c8` |
+| Provider | `--atlas-provider: #275a62` | `--atlas-provider-soft: #d9eaeb` |
 | Warning/partial data | `--atlas-warning: #855c14` | `--atlas-warning-soft: #faf0db` |
 | Error/unavailable | `--atlas-danger: #ad3b39` | `--atlas-danger-soft: #fceceb` |
 
@@ -127,11 +129,11 @@ Keep entity kind separate from research status and chart measure. A programme's 
 
 ## Typography
 
-Self-hosted Geist Sans carries the wordmark, headings, entity names, controls and research copy. The hierarchy preserves the wireframes while replacing their original serif material. Geist Mono carries commands, token names, dates and compact data annotations. Numerical comparisons and coverage counts use tabular figures. Font assets and their upstream licence/provenance are included under `web/assets/fonts`.
+Georgia carries the wordmark, headings and entity names. Self-hosted Geist Sans carries controls and research copy. Geist Mono carries commands, token names, dates and compact data annotations. Numerical comparisons and coverage counts use tabular figures. Font assets and their upstream licence/provenance are included under `web/assets/fonts`.
 
 | Token | Exact runtime value | Role |
 | --- | --- | --- |
-| `--atlas-font-display` | `"Atlas Geist", "Helvetica Neue", Arial, sans-serif` | Wordmark, page/section headings, prominent entity/row/card names and narrative statements. |
+| `--atlas-font-display` | `Georgia, "Times New Roman", serif` | Wordmark, page/section headings, prominent entity/row/card names and narrative statements. |
 | `--atlas-font-body` | `"Atlas Geist", system-ui, -apple-system, "Segoe UI", sans-serif` | Interface and research content. |
 | `--atlas-font-mono` | `"Atlas Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace` | Commands, token/code specimens, dates and compact numerical annotations. |
 | `--atlas-text-xs` | `0.75rem` | Compact coverage and secondary navigation. |
@@ -167,17 +169,17 @@ The compact profile treatment applies at 600px. Startup facts and funding chrono
 | --- | --- |
 | Spacing | `--atlas-space-1: 4px`, `--atlas-space-2: 8px`, `--atlas-space-3: 12px`, `--atlas-space-4: 16px`, `--atlas-space-6: 24px`, `--atlas-space-8: 32px`, `--atlas-space-12: 48px` |
 | Page and graph inspector | `--atlas-page-max: 1640px`, `--atlas-panel-width: 360px`; other rail widths are documented route geometry. |
-| Corners | `--atlas-radius-control: 10px`, `--atlas-radius-row: 12px`, `--atlas-radius-panel: 18px`, `--atlas-radius-feature: 24px` |
+| Corners | `--atlas-radius-control: 8px`, `--atlas-radius-row: 8px`, `--atlas-radius-panel: 12px`, `--atlas-radius-feature: 16px` |
 
 Keep search, depth, filters, zoom, profile navigation and equivalent lists usable at narrow widths. View navigation wraps; profile section links stay normal anchors. The document owns page scrolling. Only the visualization or bounded list owns its internal overflow. The graph may be panned and zoomed without trapping page scroll outside its canvas.
 
-The shared scrollbar baseline applies to application-owned overflow regions. It uses `--atlas-scroll-thumb: #929aa8`, `--atlas-scroll-hover: #6f7989`, `--atlas-scroll-active: #505c70` and `--atlas-scroll-track: #f0f2f6`. The engine fallback is 10px wide with a 2px track-coloured inset; standards-based styling uses a thin scrollbar. Forced colours return scrollbar colour to `auto`. Do not hide scrollbars to simplify a screenshot.
+The shared scrollbar baseline applies to application-owned overflow regions. It uses `--atlas-scroll-thumb: #96947e`, `--atlas-scroll-hover: #73735f`, `--atlas-scroll-active: #545946` and `--atlas-scroll-track: #ebeade`. The engine fallback is 10px wide with a 2px track-coloured inset; standards-based styling uses a thin scrollbar. Forced colours return scrollbar colour to `auto`. Do not hide scrollbars to simplify a screenshot.
 
 ## Elevation & Depth
 
-Use shallow, role-based elevation: raised actions, inset input wells, restrained panel depth and a stronger floating-overlay shadow. Neutral faces run from `--atlas-face-top: #ffffff` to `--atlas-face-bottom: #e9edf3`; primary faces use `--atlas-action-top: #315efb`, `--atlas-action-bottom: #2349d9` and `--atlas-action-border: #2448c5`. `--atlas-shadow-control`, `--atlas-shadow-inset`, `--atlas-shadow-pressed`, `--atlas-shadow-panel` and `--atlas-shadow-overlay` own the exact material recipes in canonical CSS.
+Use shallow, role-based elevation: raised actions, inset input wells, restrained panel depth and a stronger floating-overlay shadow. Neutral faces run from `--atlas-face-top: #fdfcf8` to `--atlas-face-bottom: #f0ebdf`; primary faces use `--atlas-action-top: #a44c2c`, `--atlas-action-bottom: #963f22` and `--atlas-action-border: #88411f`. `--atlas-shadow-control`, `--atlas-shadow-inset`, `--atlas-shadow-pressed`, `--atlas-shadow-panel` and `--atlas-shadow-overlay` own the exact material recipes in canonical CSS.
 
-The graph root has a graphite fill and light name; inspection has a cobalt outline; keyboard focus retains a separate dashed treatment. Directory and partner selection combines pale cobalt fill with a contrasting outline/marker and explicit state on the Inspect action. Root, selection and focus remain distinct. Press feedback moves a control face 1px without reflowing its neighbours; reduced motion removes the travel.
+The graph root has a forest fill and a light name, with a rust outline for inspection and a dashed keyboard focus ring. Directory and partner selection uses a pale clay fill and an explicit Inspect state. Root, selection and focus remain distinct. Press feedback moves a control face 1px without reflowing its neighbours; reduced motion removes the travel.
 
 Cluster shapes are quiet spatial context, not evidence of new relationships. Graph labels and connected paths remain readable during interaction; do not obscure them with decorative depth, glow or large atmospheric effects.
 
@@ -193,10 +195,10 @@ Entity badges use small categorical marks, with the person mark circular. Compan
 
 | Primitive | Normative use |
 | --- | --- |
-| `renderAtlasMasthead` / `.atlas-masthead` | One graphite operational masthead with the four-diamond mark, Geist wordmark and a single real-route navigation row. Embedded previews hide surrounding route chrome. |
+| `renderAtlasMasthead` / `.atlas-masthead` | Forest brand bar with the four-diamond mark and serif wordmark, followed by a paper navigation bar. Embedded previews hide surrounding route chrome. |
 | `.atlas-view-nav` | Real links for **List & search**, **Treemap**, **Graph** and the design catalogue. Current route uses `aria-current="page"`; these are not ARIA tabs. |
-| `.atlas-section-nav` | Anchors to real profile headings. All sections remain in document flow; shared progressive scroll tracking exposes `aria-current="location"` with a cobalt underline. |
-| `.atlas-button` / `.atlas-button-primary` / `.atlas-button-accent` | Neutral raised actions and cobalt primary/profile-destination emphasis. Native button for an operation, anchor for a destination. |
+| `.atlas-section-nav` | Anchors to real profile headings. All sections remain in document flow; shared progressive scroll tracking exposes `aria-current="location"` with a rust underline. |
+| `.atlas-button` / `.atlas-button-primary` / `.atlas-button-accent` | Neutral raised actions and rust primary and profile actions. Native button for an operation, anchor for a destination. |
 | `.atlas-badge[data-kind]` | Named entity kind with a categorical foreground/background pair. `data-tone` represents warning/error separately. |
 | `.atlas-coverage` | Readable researched/available counts and uncertainty, with emphasized tabular figures. |
 | `.atlas-empty` | Specific no-results, unresearched, partial, unavailable or loading content; preserve the difference in copy. |
@@ -249,7 +251,7 @@ Foundation swatches read the runtime CSS values. The **Sourced examples** sectio
 
 ### Implementation workbench
 
-The working reference shares the microsite navigation and canonical Signal foundations, while preserving historical direction studies as labelled artwork. A task index and section navigation connect the component workbench, live views, composition recipes, foundations, sourced examples and handoff guidance. The reference remains usable when the research snapshot fails to load.
+The working reference shares the microsite navigation and canonical editorial foundations, while preserving historical direction studies as labelled artwork. A task index and section navigation connect the component workbench, live views, composition recipes, foundations, sourced examples and handoff guidance. The reference remains usable when the research snapshot fails to load.
 
 The nine component entries cover actions, entity badges, entity rows, search/clear, source disclosure, claims/coverage, relationships, research states and view navigation. Shared primitives use the existing renderers and CSS. Higher-level specimens are labelled compositions and name their behaviour owner. Fictional profile links open local specimen details; the navigation specimen clearly links to operational routes. Copy and download follow the current preview markup, including local state changes. The downloaded fragment names its CSS and behaviour dependencies and does not claim to be a standalone explorer. [The component guide](docs/COMPONENTS.md) records this boundary.
 
