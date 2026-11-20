@@ -88,6 +88,24 @@ ISSUER_TODAY_REPORT = re.compile(
 ISSUER_ROUND_TERMS = re.compile(
     ROUND_MODIFIERS + rf' (?P<series>{SERIES.pattern})(?: (?:funding round|round(?: of funding)?))?'
 )
+CUSTOMER_NAME = r'(?-i:[A-Z][\w&-]{0,39}(?: [A-Z][\w&-]{0,39}){0,3})'
+WIRE_SERIES_FUNDING = rf'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){{0,24}} {SERIES.pattern} funding(?: round)?)'
+# Keep the customer list inside the named issuer's relative clause.
+ISSUER_CUSTOMER_REPORT = re.compile(
+    r'(?:(?-i:[A-Z][A-Z -]{1,40}, [A-Z][a-z]{2,8} [0-9]{1,2}, (?:19|20)[0-9]{2}) /PRNewswire/ -- )?'
+    rf'(?:People Analytics company )?(?P<issuer>{ISSUER_NAME}), which counts {CUSTOMER_NAME}'
+    rf'(?:, {CUSTOMER_NAME}){{0,6}}(?:,? and {CUSTOMER_NAME})? among (?:its customers|the companies using its platform),'
+    rf' (?:today )?announced (?:that )?it has (?:closed|raised|secured){WIRE_SERIES_FUNDING}[.!]',
+    re.I,
+)
+# The headline already qualifies through legacy matching. Use this form only to bind a correction.
+ISSUER_FUNDING_HEADLINE = re.compile(
+    rf'(?P<issuer>{ISSUER_NAME}) secures{WIRE_SERIES_FUNDING}(?: to grow culture-first companies)?[.!]',
+    re.I,
+)
+ISSUER_WIRE_TERMS = re.compile(
+    r'(?!.*\bplanned\b)' + ROUND_MODIFIERS + rf' (?P<series>{SERIES.pattern}) funding(?: round)?'
+)
 ISSUER_FIRST_PERSON_REPORT = re.compile(
     r'(?:It is with this success that )?I am proud to announce our(?: latest)?'
     rf'(?P<terms>(?: [\w$-]+(?:[.,][\w$-]+)*){{0,24}} {SERIES.pattern} funding round)[.!]',
@@ -245,21 +263,28 @@ def prospective_clause(clause):
     return False
 
 
-def opening_issuer_round(excerpt, names, reviewed_round):
+def opening_issuer_round(statements, names, reviewed_round):
     # Match the full asserted opening before punctuation or coordination is removed.
-    opening, *following = ISSUER_FINANCIAL_BREAK.split(' '.join(excerpt.split()), maxsplit=3)
-    match = ISSUER_TODAY_REPORT.fullmatch(ISSUER_ROUND_DATELINE.sub('', opening))
+    opening, *following = (' '.join(statement.split()) for statement in statements)
+    terms_pattern = ISSUER_ROUND_TERMS
     reviewed_stage = None
-    if match:
+    headline_only = False
+    if match := ISSUER_TODAY_REPORT.fullmatch(ISSUER_ROUND_DATELINE.sub('', opening)):
         issuer = name_key(match['issuer'] or match['described_issuer'])
-    elif reviewed_round:
+    elif match := ISSUER_CUSTOMER_REPORT.fullmatch(opening):
+        issuer = name_key(match['issuer'])
+        terms_pattern = ISSUER_WIRE_TERMS
+    elif following and (match := ISSUER_FUNDING_HEADLINE.fullmatch(opening)):
+        issuer = name_key(match['issuer'])
+        terms_pattern = ISSUER_WIRE_TERMS
+        headline_only = True
+    elif reviewed_round and (match := ISSUER_FIRST_PERSON_REPORT.fullmatch(opening)):
         issuer, reviewed_stage = reviewed_round
-        match = ISSUER_FIRST_PERSON_REPORT.fullmatch(opening)
     else:
         return False, False
-    if not match or issuer not in names or prospective_clause(opening):
+    if issuer not in names or prospective_clause(opening):
         return False, False
-    terms = ISSUER_ROUND_TERMS.fullmatch(' ' + name_key(match['terms']))
+    terms = terms_pattern.fullmatch(' ' + name_key(match['terms']))
     if not terms or (reviewed_stage is not None and terms['series'] != reviewed_stage):
         return False, False
     if not following:
@@ -276,7 +301,7 @@ def opening_issuer_round(excerpt, names, reviewed_round):
     corrected = bool(
         correction and (correction['series'] is None or name_key(correction['series']) == terms['series'])
     )
-    return not corrected, corrected
+    return not (headline_only or corrected), corrected
 
 
 def issuer_financial_signals(excerpt, names):
@@ -335,13 +360,19 @@ def classify(excerpt, names, *, reviewed_round=None):
     matching = [part for part in clauses if any(includes_name(part, name) for name in names)]
     if not matching and reviewed_round is None:
         return 'unmatched', []
-    opening_round, opening_corrected = opening_issuer_round(excerpt, names, reviewed_round)
+    statements = ISSUER_FINANCIAL_BREAK.split(excerpt.lstrip(), maxsplit=3)
+    opening_round, opening_corrected = opening_issuer_round(statements, names, reviewed_round)
     if not (matching or opening_round or opening_corrected):
         return 'unmatched', []
     subjects = ' '.join(matching)
     support = chips_support_clauses(excerpt, names) if 'chips' in excerpt.casefold() else {}
+    # A retracted opening supplies context. Later independent round statements can still qualify.
+    round_candidates = matching
+    if opening_corrected:
+        remainder = excerpt.lstrip()[len(statements[0]):].lstrip()
+        round_candidates = [clause for clause in CLAUSE_BREAK.split(remainder) if clause in matching]
     round_clauses = [
-        clause for clause in matching
+        clause for clause in round_candidates
         if clause not in support and not prospective_clause(clause)
     ]
     early = any(associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause))
