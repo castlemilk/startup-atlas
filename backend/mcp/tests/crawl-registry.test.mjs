@@ -9,8 +9,11 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 import { CrawlRegistry } from '../crawls.mjs';
 
 const repo = fileURLToPath(new URL('../../../', import.meta.url));
-const seed = JSON.parse(await readFile(path.join(repo, 'data/crawl-runs.json'), 'utf8'));
-const seedRun = seed.runs[0];
+// The registry is append-only: freeze the original 20 Nov seed entry as the
+// fixture so later run records do not break these tests.
+const live = JSON.parse(await readFile(path.join(repo, 'data/crawl-runs.json'), 'utf8'));
+const seedRun = live.runs.find(run => run.run_id === 'crawl-20261120-partners-01');
+const seed = { version: 1, runs: [seedRun] };
 
 const run = (overrides = {}) => {
   const copy = JSON.parse(JSON.stringify(seedRun));
@@ -105,6 +108,9 @@ const decoded = result => JSON.parse(result.content[0].text);
 test('official MCP client discovers the crawl tools and reads the registry over real stdio', async t => {
   const dir = await mkdtemp(path.join(tmpdir(), 'atlas-crawl-protocol-'));
   await cp(path.join(repo, 'data'), path.join(dir, 'data'), { recursive: true });
+  // Serve the frozen single-run seed fixture, not the live registry, so this
+  // test stays deterministic as run records are appended.
+  await writeFile(path.join(dir, 'data/crawl-runs.json'), JSON.stringify(seed));
   await mkdir(path.join(dir, 'scripts'));
   await cp(path.join(repo, 'scripts/make-data.py'), path.join(dir, 'scripts/make-data.py'));
   const transport = new StdioClientTransport({ command: process.execPath, args: [path.join(repo, 'backend/mcp/server.mjs'), '--repo', dir], stderr: 'pipe' });
