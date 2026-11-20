@@ -257,6 +257,36 @@ try {
   assert.match(await text('#treemap-figure-panel'),/Private valuation.*Completed secondary share sale/s);
   assert.ok((await text('#treemap-figure-panel')).includes(formatValue(revolut.value,'valuation','USD',false)));
   assert.ok(await evaluate(`Array.from(document.querySelectorAll('#treemap-figure-panel a')).some(a=>a.href===${JSON.stringify(revolut.event.source)})`));
+  await command('Emulation.setDeviceMetricsOverride',{width:901,height:680,deviceScaleFactor:1,mobile:false});
+  await navigate('?metric=company-value&selected=startup%3Arevolut');
+  assert.equal(await evaluate(`['group','metric','colour'].every(name=>{
+    const value=document.querySelector('#treemap-'+name+'-trigger ui-select-value');
+    return value.clientWidth>0 && value.scrollWidth<=value.clientWidth;
+  })`),true,'The selected measure and grouping labels must fit at the column breakpoint');
+  assert.equal(await evaluate(`(() => {
+    const copy=document.querySelector('.treemap-detail-copy');
+    const source=document.querySelector('#treemap-figure-panel a');
+    return getComputedStyle(copy).overflowY==='visible' && copy.scrollHeight<=copy.clientHeight+1
+      && source.getBoundingClientRect().bottom<=copy.getBoundingClientRect().bottom+1
+      && document.documentElement.scrollWidth<=innerWidth;
+  })()`),true,'The desktop rail must fit at the column breakpoint and put evidence in normal page flow');
+  assert.equal(await evaluate(`(() => {
+    const missing=document.querySelector('#treemap-missing');
+    const footer=document.querySelector('.treemap-panel-footer');
+    const groups=document.querySelector('#treemap-groups');
+    const end=Math.max(footer.getBoundingClientRect().bottom,groups.getBoundingClientRect().bottom);
+    return missing.closest('#treemap-panel')!==null && missing.getBoundingClientRect().top-end<=12
+      && !groups.textContent.includes('No comparable figures');
+  })()`),true,'The coverage disclosure must stay with the plot without duplicating unplotted groups');
+  await evaluate("document.querySelector('#treemap-chart [data-company=\"startup:revolut\"]').focus()");
+  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,nativeVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});
+  await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  assert.equal(await evaluate('document.activeElement.id'),'treemap-detail','Keyboard inspection must go directly from the tile to its evidence');
+  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+  await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+  assert.equal(await evaluate('document.activeElement.dataset.company'),'startup:revolut','Escape must return to the invoking company');
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+  await click('#treemap-chart [data-company="startup:revolut"]');
   await click('#treemap-company-tab');
   assert.match(await text('#treemap-company-panel'),/Privately held.*12,200.*REVOLUT LTD legal incorporation/s);
   const profile=snapshot.entities.find(entity=>entity.id==='startup:revolut');
@@ -276,6 +306,30 @@ try {
   assert.match(await text('#treemap-figure-panel'),/Private valuation/);
   assert.equal(await evaluate('document.documentElement.scrollWidth<=innerWidth'),true,'Company value must fit on mobile');
   await screenshot('company-value-evidence-mobile.png');
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:480,deviceScaleFactor:1,mobile:true});
+  await navigate('?metric=company-value&view=list&selected=startup%3Arevolut');
+  await until(()=>evaluate("document.querySelector('#treemap-inspector-sheet').open&&document.activeElement.id==='treemap-detail'"),'The figure sheet must open and focus the inspector on a short phone');
+  await evaluate('document.fonts.ready.then(()=>true)');
+  assert.equal(await evaluate(`(() => {
+    const sheet=document.querySelector('#treemap-sheet-content');
+    const copy=document.querySelector('.treemap-detail-copy');
+    const figure=document.querySelector('#treemap-figure-panel');
+    // Exercise an unbroken evidence value and larger text in a short sheet.
+    figure.querySelector('dd').textContent='USD '+ '1234567890'.repeat(5);
+    figure.style.fontSize='150%';
+    figure.querySelector('dl').style.fontSize='inherit';
+    return document.documentElement.scrollWidth<=320 && sheet.scrollWidth===sheet.clientWidth
+      && sheet.scrollHeight>sheet.clientHeight && getComputedStyle(copy).overflowY==='visible';
+  })()`),true,'A short sheet must use one vertical scroller and reflow long evidence without horizontal scrolling');
+  const focusedSource=await evaluate(`(() => {
+    const source=document.querySelector('#treemap-figure-panel a');
+    const sheet=document.querySelector('#treemap-sheet-content');
+    source.focus();
+    const bounds=sheet.getBoundingClientRect(), link=source.getBoundingClientRect();
+    return {focused:source===document.activeElement,scroll:sheet.scrollTop,top:link.top-bounds.top,bottom:link.bottom-bounds.bottom};
+  })()`);
+  assert.ok(focusedSource.focused && focusedSource.scroll>0 && focusedSource.top>=0 && focusedSource.bottom<=1,
+    `A focused evidence link must scroll into the visible sheet: ${JSON.stringify(focusedSource)}`);
   await command('Emulation.setEmulatedMedia',{features:[]});
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
 

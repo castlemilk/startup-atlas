@@ -178,7 +178,7 @@ Directory, Map/List and Graph use a compact ruled introduction so search and wor
 | View | Wide composition | Responsive changes |
 | --- | --- | --- |
 | List & search | Flexible results, 350px inspector and 22px gap inside one research panel. | Inspector reduces to 310px at 1200px; stacks at 900px. Other directory scopes retain their list layouts. |
-| Treemap | Flexible chart/list and 350px evidence rail. | Rail reduces to 310px at 1200px; stacks at 820px. |
+| Treemap | Flexible chart/list and a 290–350px evidence rail in normal page flow. Cards use the full-width board. | At 900px and below, the evidence opens in one vertically scrollable sheet. |
 | Graph | Flexible network and 360px inspector, with a 14px gap between working surfaces. | Inspector reduces to 300px at 1150px; stacks at 820px. |
 | Startup dossier | Overview, people, funding and connections in reading order, alongside a coverage rail. | The record stacks, its section links stay reachable and claim evidence opens in a sheet. |
 | Partner / VC dossier | Full identity band, flexible company panel and 320px people/evidence rail, with 24px gap. | Inner company inspector stacks at 1200px; the outer rail stacks at 1000px. |

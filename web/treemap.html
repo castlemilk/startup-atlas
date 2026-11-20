@@ -78,6 +78,7 @@
       <div id="treemap-list" class="treemap-list" role="group" aria-label="Ranked companies" aria-describedby="treemap-instructions" hidden></div>
       <div class="treemap-panel-footer"><div id="treemap-legend"></div><div class="treemap-panel-links"><button type="button" data-treemap-presentation="list" hidden>Ranked list</button><a href="#method">Method</a></div></div>
       <div id="treemap-groups" class="treemap-groups" hidden></div>
+      <details id="treemap-missing" class="treemap-missing" hidden><summary id="treemap-missing-summary"><span id="treemap-missing-label"></span></summary><div id="treemap-missing-list"></div></details>
     </section>
     <div id="treemap-detail-seat" class="treemap-detail-seat"><aside id="treemap-detail" class="treemap-detail" tabindex="-1" aria-label="Selected company evidence"><p>Select a company to inspect its figure and source.</p></aside></div>
   </div>
@@ -87,7 +88,6 @@
       <ui-dialog-title class="sr-only">Company inspection</ui-dialog-title>
     </ui-dialog-content>
   </ui-dialog>
-  <details id="treemap-missing" class="treemap-missing" hidden><summary id="treemap-missing-summary"><span id="treemap-missing-label"></span><span class="treemap-missing-preview" id="treemap-missing-preview" aria-hidden="true"></span></summary><div id="treemap-missing-list"></div></details>
   <div data-atlas-compare-tray></div>
   <section id="method" class="treemap-method" aria-labelledby="method-heading">
     <h2 id="method-heading">How to read the treemap</h2>

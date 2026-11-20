@@ -213,14 +213,19 @@ function missingFigureLabel(figure, metric = state.metric) {
   return 'No comparable figure in ' + state.currency;
 }
 
+function figureSources(...links) {
+  const markup = links.join('');
+  return markup ? `<div class="treemap-figure-sources">${markup}</div>` : '';
+}
+
 function figurePanel(figure, entity) {
   const {event, basis = state.metric} = figure;
   const isCompanyValue = state.metric === COMPANY_VALUE;
   if (figure.reason) {
     return `<p class="treemap-detail-value">${esc(missingFigureLabel(figure))}</p>
       ${event ? `<p>${esc(datedFigure(event,basis))}</p>` : ''}
-      ${evidenceLink(event?.source,isCompanyValue ? 'Value source' : 'Read the announcement')}
-      ${isCompanyValue ? evidenceLink(ownership.get(entity.id)?.source,'Ownership source') : ''}`;
+      ${figureSources(evidenceLink(event?.source,isCompanyValue ? 'Value source' : 'Read the announcement'),
+        isCompanyValue ? evidenceLink(ownership.get(entity.id)?.source,'Ownership source') : '')}`;
   }
   if (state.metric === 'companies') {
     const context = {
@@ -228,7 +233,7 @@ function figurePanel(figure, entity) {
       cards:'Cards use an editorial layout; card area does not encode company count.',
       list:'Each company counts equally in the list.',
     };
-    return `<p class="treemap-detail-value">One company</p><p>${context[state.presentation]}</p>${evidenceLink(entity.source,'Read the profile source')}`;
+    return `<p class="treemap-detail-value">One company</p><p>${context[state.presentation]}</p>${figureSources(evidenceLink(entity.source,'Read the profile source'))}`;
   }
   if (basis === 'market-cap') {
     const calculation = event.calculation;
@@ -245,10 +250,10 @@ function figurePanel(figure, entity) {
       </dl>
       ${event.note ? `<p class="treemap-note">${esc(event.note)}</p>` : ''}
       ${figure.newerUnplotted ? `<p class="treemap-note">${newerFigure(state.metric)}.</p>` : ''}
-      ${evidenceLink(event.source,calculation ? 'Closing price source' : 'Market cap source')}
-      ${evidenceLink(calculation?.close_data,'Dated exchange data')}
-      ${evidenceLink(calculation?.shares_source,'Shares outstanding source')}
-      ${evidenceLink(calculation?.share_terms_source,'Share-class rights')}`;
+      ${figureSources(evidenceLink(event.source,calculation ? 'Closing price source' : 'Market cap source'),
+        evidenceLink(calculation?.close_data,'Dated exchange data'),
+        evidenceLink(calculation?.shares_source,'Shares outstanding source'),
+        evidenceLink(calculation?.share_terms_source,'Share-class rights'))}`;
   }
   return `<p class="treemap-detail-value">${esc(figureAmount(figure))}</p>
     <p>${isCompanyValue ? 'Private valuation' : basis === 'valuation' ? 'Historical announced valuation' : 'Recorded announcement amount'}</p>
@@ -256,12 +261,11 @@ function figurePanel(figure, entity) {
       <div><dt>${isCompanyValue ? 'Valuation' : 'Recorded figure'}</dt><dd>${esc(figureAmount(figure,false))}</dd></div>
       <div><dt>Announced</dt><dd>${esc(event.announced_on)}</dd></div>
       <div><dt>Event</dt><dd>${esc(event.stage || 'Not recorded')}</dd></div>
-      <div><dt>Currency</dt><dd>${esc(state.currency)}</dd></div>
     </dl>
     ${figure.newerUnplotted ? `<p class="treemap-note">${isCompanyValue ? 'A newer announcement did not supply a sourced valuation.' : 'A newer announcement exists in this profile but is not plotted for this metric and currency.'}</p>` : ''}
     ${event.note ? `<p class="treemap-note">${esc(event.note)}</p>` : ''}
-    ${evidenceLink(event.source,isCompanyValue ? 'Valuation source' : 'Read the announcement')}
-    ${evidenceLink(event.supporting_source,'Supporting source')}`;
+    ${figureSources(evidenceLink(event.source,isCompanyValue ? 'Valuation source' : 'Read the announcement'),
+      evidenceLink(event.supporting_source,'Supporting source'))}`;
 }
 
 function showDetail() {
@@ -269,7 +273,8 @@ function showDetail() {
     button.setAttribute('aria-pressed', String(button.dataset.company === state.selected));
   });
   const entity = entities.get(state.selected);
-  const previousTab = detail.dataset.inspected === state.selected ? detail.querySelector('ui-tabs')?.value : '';
+  const sameCompany = detail.dataset.inspected === state.selected;
+  const previousTab = sameCompany ? detail.querySelector('ui-tabs')?.value : '';
   detail.dataset.inspected = state.selected;
   if (!entity) {
     detail.innerHTML = state.selected
@@ -284,26 +289,26 @@ function showDetail() {
   const place = dimensions.get(entity.id);
   const locationLabel = place?.country ? [place.city,countryName(place.country)].filter(Boolean).join(', ') : '';
   const founded = validYear(entity.founded_year) ? `Founded ${entity.founded_year}` : '';
-  const scope = inResults
-    ? '<span class="treemap-selection-status" data-selection="inside">In current results</span>'
+  const scope = inResults ? ''
     : `<div class="treemap-outside" data-selection="outside">
          <p>Outside current results</p>
          ${isCompany ? '<button type="button" class="atlas-button" data-treemap-adjust>Adjust filters</button>' : ''}
        </div>`;
   detail.innerHTML = `
     <div class="treemap-detail-copy">
-    <div class="treemap-detail-identity">${mark(entity)}
-      <button type="button" class="treemap-clear-selection" data-treemap-clear-selection aria-label="Clear selection">${icon('close')}</button>
-      <h2>${esc(entity.name)}</h2>
-      <p class="treemap-detail-kind">${esc(isCompany ? ['Company',place?.technology || place?.sector].filter(Boolean).join(' · ') : kindName(entity.kind))}</p>
+      <div class="treemap-detail-heading">${mark(entity)}
+        <div>
+          <h2>${esc(entity.name)}</h2>
+          <p class="treemap-detail-kind">${esc(isCompany ? ['Company',place?.technology || place?.sector].filter(Boolean).join(' · ') : kindName(entity.kind))}</p>
+        </div>
+        <button type="button" class="treemap-clear-selection" data-treemap-clear-selection aria-label="Clear selection">${icon('close')}</button>
+      </div>
       ${entity.summary ? `<p class="treemap-detail-description">${esc(entity.summary)}</p>` : ''}
-      <div class="treemap-detail-meta">
+      ${locationLabel || founded ? `<div class="treemap-detail-meta">
         ${locationLabel ? `<span>${icon('location')}${esc(locationLabel)}</span>` : ''}
         ${founded ? `<span>${icon('calendar')}${esc(founded)}</span>` : ''}
-        ${inResults ? scope : ''}
-      </div>
-      ${inResults ? '' : scope}
-    </div>
+      </div>` : ''}
+      ${scope}
     ${isCompany ? `
       <ui-tabs default-value="${previousTab || (state.metric === 'companies' ? 'company' : 'figure')}" aria-label="Company inspection">
         <ui-tabs-list class="treemap-detail-view" aria-label="Company inspection">
@@ -318,7 +323,7 @@ function showDetail() {
       : evidenceLink(entity.source,'Read the profile source')}
     </div>
     <div class="treemap-detail-actions" data-company-name="${esc(entity.name)}">
-      <a class="treemap-profile atlas-button atlas-button-accent" data-atlas-profile-link href="${esc(entityHref(entity))}">Open profile ${icon('external')}</a>
+      <a class="treemap-profile atlas-button atlas-button-accent" data-atlas-profile-link href="${esc(entityHref(entity))}">Open profile</a>
       <a class="atlas-button treemap-graph-link" href="${esc(explorationHref('./graph.html?entity=' + encodeURIComponent(entity.id),location.href,state))}">${icon('graph')} Show in graph</a>
       ${isCompany ? `<button type="button" class="atlas-button" data-atlas-compare="${esc(entity.id)}" aria-pressed="false"><span data-atlas-action-label>Compare</span></button>
       <button type="button" class="atlas-button" data-atlas-save-company="${esc(entity.id)}" aria-pressed="false"><span data-atlas-action-label>Save company</span></button>` : ''}
@@ -326,6 +331,7 @@ function showDetail() {
     <p class="sr-only" role="status">Inspecting ${esc(entity.name)}.</p>`;
   watchImages(detail);
   syncInspectorPlacement();
+  if (!sameCompany) sheetContent.scrollTop = 0;
 }
 
 function emptyResults() {
@@ -518,11 +524,13 @@ function groupActionButton(group, action) {
 }
 function renderGroups(groups = view.groups) {
   const host = $('treemap-groups');
-  host.hidden = state.group === 'company' || !groups.length;
-  host.innerHTML = host.hidden ? '' : `<ul aria-label="Company groups">${groups.map(group => {
+  const rows = state.group === 'company' ? '' : groups.map(group => {
     const action = groupAction(group);
+    if (!group.children.length && !action) return '';
     return `<li>${groupTitle(group)}${action ? groupActionButton(group,action) : ''}</li>`;
-  }).join('')}</ul>`;
+  }).join('');
+  host.hidden = !rows;
+  host.innerHTML = rows ? `<ul aria-label="Company groups">${rows}</ul>` : '';
 }
 
 function renderSiblings() {
@@ -570,9 +578,6 @@ function renderMissing() {
   $('treemap-missing').hidden = !view.missing.length;
   const measure = {valuation:'Valuation', funding:'Funding amount', 'market-cap':'Market cap', [COMPANY_VALUE]:'Company value'}[state.metric];
   $('treemap-missing-label').textContent = `${measure} unavailable for ${countLabel(view.missing.length)} in ${state.currency}`;
-  const preview = $('treemap-missing-preview');
-  preview.innerHTML = view.missing.slice(0,4).map(entity => `<span>${state.logos ? mark(entity) : ''}${esc(entity.name)}</span>`).join('');
-  watchImages(preview);
   $('treemap-missing-list').innerHTML = view.missing.length
     ? `<ul>${view.missing.map(entity => `<li><button type="button" class="treemap-utility-button" data-company="${esc(entity.id)}" aria-controls="treemap-detail" aria-pressed="${state.selected === entity.id}">${esc(entity.name)}</button>
        <span>${esc(missingFigureLabel(view.missingFigures.get(entity.id)))}</span></li>`).join('')}</ul>`
@@ -725,7 +730,7 @@ function syncInspectorPlacement() {
   $('treemap-inspector-reopen').hidden = !useSheet || open;
   if (open && !inspectorSheet.open) inspectorSheet.open = true;
 }
-function inspect(id) {
+function inspect(id, fromKeyboard) {
   if (!entities.has(id)) return;
   state.selected = id;
   sheetSuspended = false;
@@ -733,8 +738,9 @@ function inspect(id) {
   writeState();
   if (inspectorSheet.open) return;
   const bounds = detail.getBoundingClientRect();
-  if (bounds.top < 0 || bounds.top > innerHeight - 120) {
-    detail.focus({preventScroll:true});
+  const needsScroll = bounds.top < 0 || bounds.top > innerHeight - 120;
+  if (fromKeyboard || needsScroll) detail.focus({preventScroll:true});
+  if (needsScroll) {
     detail.scrollIntoView({block:'start', behavior:reducedMotion.matches ? 'instant' : 'smooth'});
   }
 }
@@ -815,7 +821,7 @@ main.addEventListener('click', event => {
   else if (action.treemapGroup) activateGroup(action.treemapGroup);
   else if (action.treemapCountry) enterCountry(action.treemapCountry);
   else if (action.treemapPath === 'root') change({drillCountry:'', drillCity:'', period:'all'});
-  else if (action.company) inspect(action.company);
+  else if (action.company) inspect(action.company,event.detail === 0 && button === document.activeElement);
   else if ('treemapClearSelection' in action) clearSelection();
   else if ('treemapAdjust' in action) adjustFilters();
   else if ('treemapCount' in action) change({metric:'companies'});
