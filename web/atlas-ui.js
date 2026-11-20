@@ -89,7 +89,7 @@ export function renderViewNavigation(active) {
   const views = [
     ['treemap', './treemap.html', 'treemap', 'Treemap'],
     ['graph', './graph.html', 'graph', 'Graph'],
-    ['directory', './#directory', 'list', 'List'],
+    ['directory', './#directory', 'list', active === 'treemap' ? 'Directory' : 'List'],
   ];
   return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${icon(glyph)}${label}</a>`).join('')}</nav>`;
 }
