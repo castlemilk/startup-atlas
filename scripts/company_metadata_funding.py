@@ -230,6 +230,10 @@ SEED_CORRECTION_TERMS = (
     rf'(?:(?P<leading_amount>{STATED_RAISE_AMOUNT}) )?(?P<series>{SEED_STAGE})(?: {SEED_INSTRUMENT})?'
     rf'(?: of (?P<trailing_amount>{STATED_RAISE_AMOUNT}))?'
 )
+SEED_CLOSE_DENIAL = (
+    r"(?:(?:did not|didn['’]t) close|(?:has not|hasn['’]t) (?:yet )?closed"
+    r"|(?:was (?:not(?: yet)?|never)|wasn['’]t) closed)(?: yet)?"
+)
 SEED_CLOSE_CORRECTIONS = (
     re.compile(
         rf'(?:Correction: )?(?P<issuer>{ISSUER_NAME}) '
@@ -242,9 +246,14 @@ SEED_CLOSE_CORRECTIONS = (
     ),
     re.compile(
         rf"(?:Correction: )?(?P<issuer>{ISSUER_NAME})['’]s {SEED_CORRECTION_TERMS} "
-        r"(?:(?:did not|didn['’]t) close|(?:has not|hasn['’]t) (?:yet )?closed)(?: yet)?[.!]",
+        rf'{SEED_CLOSE_DENIAL}[.!]',
         re.I,
     ),
+)
+SEED_DEFINITE_CORRECTION = re.compile(
+    rf'Correction: the (?P<amount>{STATED_RAISE_AMOUNT}) (?P<series>{SEED_STAGE}) {SEED_INSTRUMENT} '
+    rf'{SEED_CLOSE_DENIAL}[.!]',
+    re.I,
 )
 NUMBERED_CORRECTION_TERMS = (
     rf'(?:(?P<leading_amount>{NUMBERED_SERIES_AMOUNT}) )?(?P<series>{NUMBERED_SERIES})'
@@ -612,6 +621,12 @@ def cited_seed_close(statements, names, reviewed_round):
             or SEED_WIRE_INDIRECT_SUBJECT.search(report['description'] or '')):
         return False, None
     retraction = closing_retraction(following[:2], issuer, report, SEED_CLOSE_CORRECTIONS)
+    if retraction is None and following:
+        # Without a named issuer, require an immediate labelled correction repeating the literal terms.
+        correction = SEED_DEFINITE_CORRECTION.fullmatch(following[0])
+        if (correction and name_key(correction['series']) == stage
+                and correction['amount'].casefold() == report['amount'].casefold()):
+            retraction = following[0]
     return retraction is None, retraction
 
 

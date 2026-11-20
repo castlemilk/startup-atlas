@@ -1277,6 +1277,8 @@ class CompanyFundingStatementTests(unittest.TestCase):
         citation = ('ready company', 'seed')
         denial = 'Ready Company did not close a USD$3.2 million seed investment.'
         correction = 'Correction: Ready Company’s USD$3.2 million seed investment has not yet closed.'
+        passive = 'Correction: Ready Company’s USD$3.2 million seed investment was not closed.'
+        definite = 'Correction: The USD$3.2 million seed investment did not close.'
         for following in (
             denial,
             denial.replace('did not close', 'didn’t actually close'),
@@ -1287,6 +1289,9 @@ class CompanyFundingStatementTests(unittest.TestCase):
             'Ready Company has not actually closed the funding.',
             correction,
             f'The board also issued an update. {correction}',
+            passive,
+            'Correction: Ready Company’s seed round was never closed.',
+            definite,
         ):
             with self.subTest(following=following):
                 bucket, signals = classify(f'{opening} {following}', {'ready company'}, reviewed_round=citation)
@@ -1299,6 +1304,16 @@ class CompanyFundingStatementTests(unittest.TestCase):
             denial.replace('USD$3.2', 'USD$7.2'),
             denial.replace('USD$3.2', 'A$3.2'),
             'Ready Company has not closed its USD$7.2 million seed investment yet.',
+            passive.replace('USD$3.2', 'USD$7.2'),
+            passive.replace('Ready Company', 'Another Corporation'),
+            passive.replace('seed investment', 'pre-seed investment'),
+            definite.replace('USD$3.2', 'USD$7.2'),
+            definite.replace('USD$3.2', '$3.2'),
+            definite.replace('seed investment', 'pre-seed investment'),
+            f'“{definite}”',
+            definite[:-1] + '?',
+            definite.removeprefix('Correction: '),
+            f'The board also issued an update. {definite}',
             f'“{denial}”',
             denial[:-1] + '?',
             'The legal close date was not disclosed.',
