@@ -161,6 +161,21 @@ CLOSING_STATEMENT_BREAK = re.compile(
 CLOSING_DECLARATIVE_END = re.compile(r'[.!]["”\'’»›]?$')
 CLOSING_PREFACE_BOUNDARY = re.compile(r'[:?？]|\b(?:asked|quoted|wondered|hypothetical)\b', re.I)
 CAPITALIZED_NAME = r'(?-i:[A-Z][\w&-]{0,39}(?: [A-Z][\w&-]{0,39}){0,3})'
+BUSINESS_WIRE_RELEASE = re.compile(r'/news/home/([0-9]{14})/en(?:/[^/]+)?/?')
+BUSINESS_WIRE_DATELINE = r'(?-i:[A-Z][A-Z -]{1,40}(?:, [A-Z][A-Za-z -]{1,40})?--\(BUSINESS WIRE\)--) ?'
+SEED_STAGE = r'(?:pre[- ]?seed|seed)'
+SEED_INSTRUMENT = r'(?:(?:funding|financing|investment)(?: round)?|round)'
+SEED_WIRE_LEADER = rf"{CAPITALIZED_NAME}(?: founders['’])?(?: investment consortium)?"
+SEED_WIRE_CLOSE = re.compile(
+    rf'{BUSINESS_WIRE_DATELINE}(?P<issuer>{ISSUER_NAME})'
+    r'(?P<description>, (?:an?|the) (?:[\w-]+ ){0,8}(?:company|start[- ]?up),)?'
+    rf' (?:today announced|announced(?: today)?) closing (?:a|its|the) (?P<amount>{STATED_RAISE_AMOUNT}) '
+    rf'(?P<series>{SEED_STAGE}) {SEED_INSTRUMENT}'
+    rf'(?: (?:co-)?led by (?:the )?{SEED_WIRE_LEADER}(?: and {SEED_WIRE_LEADER})?)?[.!]',
+    re.I,
+)
+SEED_WIRE_CONDITION = re.compile(r'\b(?:if|unless|pending|subject to|provided that|conditional(?:ly)?|assuming)\b', re.I)
+SEED_WIRE_INDIRECT_SUBJECT = re.compile(r'\b(?:subsidiar(?:y|ies)|affiliates?|portfolio|parent)\b', re.I)
 NOMINAL_CLOSING_REPORT = re.compile(
     rf'(?:(?-i:[A-Z][a-z-]{{1,30}}) employee engagement startup )?(?P<issuer>{ISSUER_NAME}) '
     rf'(?:has )?announced the closing of (?:a|its|the) (?P<amount>{STATED_RAISE_AMOUNT}) '
@@ -210,6 +225,26 @@ NOMINAL_POSSESSIVE_CLOSING_CORRECTION = re.compile(
     rf"(?:Correction: )?(?P<issuer>{ISSUER_NAME})['’]s {NOMINAL_CORRECTION_TERMS} "
     r"(?:did not|didn['’]t) close[.!]",
     re.I,
+)
+SEED_CORRECTION_TERMS = (
+    rf'(?:(?P<leading_amount>{STATED_RAISE_AMOUNT}) )?(?P<series>{SEED_STAGE})(?: {SEED_INSTRUMENT})?'
+    rf'(?: of (?P<trailing_amount>{STATED_RAISE_AMOUNT}))?'
+)
+SEED_CLOSE_CORRECTIONS = (
+    re.compile(
+        rf'(?:Correction: )?(?P<issuer>{ISSUER_NAME}) '
+        r"(?:(?:actually )?(?:did not|didn['’]t) (?:(?:actually|in fact) )?"
+        r"(?:close|raise|announce (?:the closing of|closing))"
+        r"|(?:ha[sd] not|ha[sd]n['’]t|never) (?:(?:actually|yet) )?"
+        r"(?:closed|raised|announced (?:the closing of|closing))) "
+        rf'(?:the funding|(?:(?:{CORRECTION_DETERMINERS}|its) )?{SEED_CORRECTION_TERMS})(?: yet)?[.!]',
+        re.I,
+    ),
+    re.compile(
+        rf"(?:Correction: )?(?P<issuer>{ISSUER_NAME})['’]s {SEED_CORRECTION_TERMS} "
+        r"(?:(?:did not|didn['’]t) close|(?:has not|hasn['’]t) (?:yet )?closed)(?: yet)?[.!]",
+        re.I,
+    ),
 )
 NUMBERED_CORRECTION_TERMS = (
     rf'(?:(?P<leading_amount>{NUMBERED_SERIES_AMOUNT}) )?(?P<series>{NUMBERED_SERIES})'
@@ -565,6 +600,21 @@ def issuer_reported_rounds(excerpt, names, *, allow_saved_reports):
     return round_mention, corrected, retractions
 
 
+def cited_seed_close(statements, names, reviewed_round):
+    """Read an asserted wire opening only for its exact, unambiguous seed citation."""
+    opening, *following = statements
+    issuer, stage = reviewed_round
+    if issuer not in names or not re.fullmatch(SEED_STAGE, stage):
+        return False, None
+    report = SEED_WIRE_CLOSE.fullmatch(opening)
+    if (not report or name_key(report['issuer']) != issuer or name_key(report['series']) != stage
+            or SEED_WIRE_CONDITION.search(opening) or prospective_clause(opening)
+            or SEED_WIRE_INDIRECT_SUBJECT.search(report['description'] or '')):
+        return False, None
+    retraction = closing_retraction(following[:2], issuer, report, SEED_CLOSE_CORRECTIONS)
+    return retraction is None, retraction
+
+
 def linked_issuer_round(excerpt, names, article):
     # The exact opening binds the assertion before any nearby correction is considered.
     statements = [' '.join(part.split()) for part in ISSUER_FINANCIAL_BREAK.split(excerpt, maxsplit=6)]
@@ -695,13 +745,19 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
     report_round, report_corrected, report_retractions = issuer_reported_rounds(
         opening_text, names, allow_saved_reports=not search_result,
     )
+    seed_close = False
+    if reviewed_round and not search_result:
+        seed_close, seed_retraction = cited_seed_close(statements, names, reviewed_round)
+        opening_corrected |= seed_retraction is not None
+        if seed_retraction:
+            report_retractions.add(seed_retraction)
     if reviewed_article and not search_result:
         linked_round, linked_corrected, linked_retraction = linked_issuer_round(opening_text, names, reviewed_article)
         opening_round |= linked_round
         opening_corrected |= linked_corrected
         if linked_retraction:
             report_retractions.add(linked_retraction)
-    if not (matching or opening_round or opening_corrected or report_round or report_corrected):
+    if not (matching or opening_round or opening_corrected or report_round or report_corrected or seed_close):
         return 'unmatched', []
     subjects = ' '.join(matching)
     support = chips_support_clauses(excerpt, names) if 'chips' in excerpt.casefold() else {}
@@ -716,7 +772,9 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
         # A bound possessive correction can otherwise match as "company's Series B".
         and (not report_retractions or ' '.join(clause.split()) not in report_retractions)
     ]
-    early = any(associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause))
+    early = seed_close or any(
+        associated_round(clause, match, names) for clause in round_clauses for match in EARLY.finditer(clause)
+    )
     round_mention = early or any(
         associated_round(clause, match, names) for clause in round_clauses
         for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
@@ -810,7 +868,7 @@ def reviewed_round_sources(record, host, catalogue, queue):
         for other in (*catalogue.values(), *queue.values())
     ):
         return {}, {}
-    citations = defaultdict(list)
+    citations, wire_citations = defaultdict(list), defaultdict(list)
     article = REVIEWED_ISSUER_ARTICLES.get(name)
     wire_document = urlsplit(article['round_source']) if article else None
     linked_wire_citations = []
@@ -823,6 +881,10 @@ def reviewed_round_sources(record, host, catalogue, queue):
                 continue
             source = event.get('source')
             page = site_url(source)
+            if page and (wire := urlsplit(page)).hostname in ('businesswire.com', 'www.businesswire.com'):
+                if release := BUSINESS_WIRE_RELEASE.fullmatch(wire.path):
+                    # Alternative paths, query strings and fragments can cite the same release.
+                    wire_citations[release[1]].append((source, company['name'], event.get('stage')))
             if website_host(page) == host and urlsplit(page).path != '/':
                 # Group fragments to check ambiguity. Attribution still requires the recorded URL.
                 citations[page].append((source, company['name'], event.get('stage')))
@@ -836,6 +898,13 @@ def reviewed_round_sources(record, host, catalogue, queue):
             continue
         source, owner, stage = linked_rounds[0]
         if owner == name and isinstance(stage, str) and SERIES.fullmatch(stage):
+            results[source] = (name_key(name), name_key(stage))
+    for linked_rounds in wire_citations.values():
+        if len(linked_rounds) != 1:
+            continue
+        source, owner, stage = linked_rounds[0]
+        if (owner == name and isinstance(stage, str) and re.fullmatch(SEED_STAGE, stage, re.I)
+                and not (urlsplit(source).query or urlsplit(source).fragment)):
             results[source] = (name_key(name), name_key(stage))
     articles = {}
     if len(linked_wire_citations) == 1:
