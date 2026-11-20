@@ -9,8 +9,22 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   const ready=`${directoryReady}&&!!document.querySelector(${JSON.stringify(inspect)})`;
   const type=async(selector,value)=>{await click(selector);await press('a','KeyA',65,2);await command('Input.insertText',{text:value});};
   const settleTop=()=>evaluate("(async()=>{scrollTo({top:0,behavior:'instant'});await new Promise(requestAnimationFrame);await new Promise(requestAnimationFrame);})()");
+  async function checkGlobeLegibility() {
+    const {width,labels,sweep}=await evaluate(`(()=>{
+      const selectors=['#globe-count','#globe-hint','.globe-list-heading span:first-child','.globe-list-heading span:last-child'];
+      const labels=selectors.map(selector=>{
+        const label=document.querySelector(selector);
+        return {selector,size:parseFloat(getComputedStyle(label).fontSize),visible:label.checkVisibility()};
+      });
+      const backdrop=getComputedStyle(document.getElementById('atlas'),'::after');
+      return {width:innerWidth,labels,sweep:backdrop.animationName!=='none'&&backdrop.animationIterationCount.split(',').includes('infinite')};
+    })()`);
+    for(const label of labels) assert.ok(label.visible&&label.size>=12,`${width}px ${label.selector} should be visible at 12px or larger`);
+    assert.equal(sweep,false,`${width}px Places section should have no repeating background sweep`);
+  }
   await command('Emulation.setDeviceMetricsOverride',{width:1586,height:992,deviceScaleFactor:1,mobile:false});
   await navigate('/#directory',ready);
+  await checkGlobeLegibility();
   assert.equal(await evaluate("document.querySelector('#entity-kind').value"),'startup','The desktop landing should open the company directory');
   assert.equal(await evaluate("document.querySelector('#company-view-coverage').getAttribute('aria-checked')"),'true');
   assert.equal(await evaluate("(()=>{const detail={};document.dispatchEvent(new CustomEvent('atlas:export-records',{detail}));return detail.records.length;})()"),graph.entities.filter(entity=>entity.kind==='startup').length,'Export includes every matching company before pagination');
@@ -139,9 +153,11 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await evaluate("document.querySelector('#directory-evidence-legend').scrollIntoView({block:'center',behavior:'instant'})");
   await screenshot('editorial-coverage-mobile.png');
   await command('Emulation.setEmulatedMedia',{features:[]});
+  await checkGlobeLegibility();
 
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await navigate('/#directory',ready);
+  await checkGlobeLegibility();
   assert.equal(await evaluate("document.querySelector('#directory-heading').textContent"),'Companies');
   assert.equal(await evaluate("document.querySelector('#company-view-details').getAttribute('aria-checked')"),'true','Mobile lands on the compact record list');
   await click('#directory-options-trigger');
