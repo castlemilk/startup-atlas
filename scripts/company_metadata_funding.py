@@ -204,6 +204,11 @@ ISSUER_FIRST_PERSON_CORRECTION = re.compile(
     rf'(?:(?:(?:{CORRECTION_DETERMINERS}|our) )?{CORRECTION_SERIES}|the funding)[.!]',
     re.I,
 )
+ADJACENT_RAISE_DENIAL = re.compile(
+    rf"^(?P<subject>(?:I misspoke: )?{ISSUER_NAME}) "
+    r"(?:(?P<before>did not|didn['’]t) actually|actually (?P<after>did not|didn['’]t)) (?=raise )",
+    re.I,
+)
 ISSUER_ARR = (
     r'(?:reach(?:es|ed)|surpass(?:es|ed)) (?:over |more than )?'
     r'(?:US)?\$[0-9]+(?:\.[0-9]+)?(?: ?(?:million|billion|[mb]))? in '
@@ -448,8 +453,15 @@ def linked_issuer_round(excerpt, names, article):
         if not following or digest(following[0].encode()) != expected:
             break
         following = following[1:]
-    if following and following[0].casefold().startswith('correction: '):
-        following[0] = following[0][len('correction: '):]
+    if following:
+        if following[0].casefold().startswith('correction: '):
+            following[0] = following[0][len('correction: '):]
+        index = 1 if len(following) > 1 and following[0].casefold() == 'i misspoke.' else 0
+        statement = following[index]
+        # Reuse the same issuer, stage and amount checks after the explicit adverb.
+        if denial := ADJACENT_RAISE_DENIAL.match(statement):
+            negation = denial['before'] or denial['after']
+            following[index] = f"{denial['subject']} {negation} {statement[denial.end():]}"
     corrected = reported_raise_denial(following, issuer, stage, match['amount'], first_person=True)
     return not corrected, corrected
 

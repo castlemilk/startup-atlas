@@ -433,6 +433,33 @@ class CompanyFundingStatementTests(unittest.TestCase):
         self.assertTrue(all('round_mention' not in row['signals']
                             for doc in report['results'] for row in doc['observations']))
 
+    def test_linked_article_binds_adjacent_actually_raise_denials(self):
+        corrections = (
+            ('Correction: Culture Amp did not actually raise the Series C funding.', False),
+            ('Culture Amp didn’t actually raise a $20 million Series C round.', False),
+            ('We actually did not raise a Series C round.', False),
+            ('I misspoke. We actually did not raise a $20 million Series C round.', False),
+            ('Correction: We didn’t actually raise a $21 million Series C round.', True),
+            ('Culture Amp didn’t actually raise a US$20 million Series C round.', True),
+            ('Correction: Culture Amp did not actually raise the Series D funding.', True),
+            ('Correction: Acme did not actually raise the Series C funding.', True),
+            ('Correction: Culture Amp did not actually close the Series C funding.', True),
+            ('“Correction: Culture Amp did not actually raise the Series C funding.”', True),
+            ('We actually did not raise a Series C round?', True),
+            ('We did not actually raise a Series C round for Acme.', True),
+            ('Other questions were asked. We actually did not raise a Series C round.', True),
+        )
+        openings = (LINKED_ARTICLE_OPENING, ' '.join((LINKED_ARTICLE_OPENING, *LINKED_ARTICLE_CONTINUATION)))
+        excerpts = {f'{opening} {correction}': lead for opening in openings for correction, lead in corrections}
+        document, = self.linked_article_review([{'excerpt': excerpt} for excerpt in excerpts])['results']
+        for row in document['observations']:
+            with self.subTest(excerpt=row['excerpt']):
+                if excerpts[row['excerpt']]:
+                    self.assertIn('round_mention', row['signals'])
+                else:
+                    self.assertEqual(row['bucket'], 'context')
+                    self.assertIn('prospective_or_negated', row['signals'])
+
     def test_bound_first_person_round_requires_asserted_scope(self):
         lead = ('round_lead', ['round_mention'])
         excluded = ('unmatched', [])
