@@ -279,7 +279,10 @@ Crawl → review queue → convert → stage → publish → PR → live readbac
    rejected rights cannot prepare for public use.
 5. **Publish.** `scripts/publish_asset.py` (with `--dry-run` first) copies the
    verified bytes, writes the public manifest and updates `web/logos.js` or
-   the person's photo field. It refuses unprepared assets, unknown names and
+   the entity's image field. Company and technology-provider logos attach to
+   the exact reviewed record in `data/startup-research.json`. Their published
+   URLs resolve to local assets in the built graph and profile previews.
+   The publisher refuses unprepared assets, unknown names and
    conflicting bytes. Never hand-edit the map for a reviewed asset; the
    script derives the path from the validated subject.
 6. **Verify live.** After merge and Pages deploy, fetch the published bytes

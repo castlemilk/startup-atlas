@@ -596,6 +596,27 @@ try {
   })()`),'Landscape must show the Loom canvas in the first viewport');
   await assertLoomLabels(3);
 
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  const alloovium='startup:alloovium';
+  const founderIds=['person:zander-schweitzer','person:cielo-nicolosi','person:omar-elloumi'];
+  const connections=neighborhood(graph,alloovium,{depth:1,limit:Infinity});
+  for (const id of [...founderIds,'partner:y-combinator','partner:lyra-capital','provider:microsoft','provider:procore']) {
+    assert.ok(connections.edges.some(edge=>(edge.from===id||edge.to===id)&&sourceUrl(edge.source)),`Missing sourced connection for ${id}`);
+  }
+  await command('Page.navigate',{url:`${address}/graph.html?entity=${encodeURIComponent(alloovium)}&list=1`});
+  await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${alloovium}'`),'Alloovium did not load in the mobile graph');
+  await evaluate("document.querySelector('#graph-loom-canvas').scrollIntoView({block:'center',behavior:'instant'})");
+  await until(()=>evaluate(`(() => {
+    return ${JSON.stringify([alloovium,...founderIds])}.every(id=>{
+      const img=document.querySelector('#graph-loom-controls [data-node="'+id+'"] .network-loom-mark[data-logo="loaded"] img');
+      return img?.naturalWidth>0 && new URL(img.src).origin===location.origin &&
+        getComputedStyle(img).objectFit===(id.startsWith('person:')?'cover':'contain');
+    });
+  })()`),'The company mark and all three founder portraits must render from the built site');
+  assert.deepEqual(await evaluate(listSources),connections.edges.map(edge=>sourceUrl(edge.source)).filter(Boolean).sort());
+  assert.equal(await evaluate("document.documentElement.scrollWidth<=innerWidth"),true);
+  await screenshot('graph-alloovium-artwork-mobile.png');
+
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
   console.log('Chrome graph checks passed for visible context wires, artwork fallback, mobile Fit, sourced traversal and SVG fallback');
 } catch(error) {

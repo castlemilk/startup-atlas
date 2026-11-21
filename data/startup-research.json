@@ -1,5 +1,13 @@
 {
   "reviewed": "2026-11-20",
+  "technology_providers": [
+    {
+      "name": "Procore",
+      "description": "Construction management software for owners and contractors.",
+      "website": "https://www.procore.com/",
+      "source": "https://www.procore.com/press"
+    }
+  ],
   "startups": [
     {
       "name": "Canva",
@@ -294,19 +302,85 @@
     },
     {
       "name": "Alloovium",
-      "description": "Construction knowledge and document workspace.",
-      "website": "https://www.alloovium.com/",
-      "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+      "description": "Construction operations software for voice updates, document search and project checks.",
+      "website": "https://alloovium.com/",
+      "source": "https://alloovium.com/",
       "founders": [
         {
           "name": "Zander Schweitzer",
-          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
+          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "profile_url": "https://www.ycombinator.com/founders/zander-schweitzer",
+          "photo_url": "https://castlemilk.github.io/startup-atlas/assets/portraits/zander-schweitzer.png",
+          "photo_source": "https://lyracap.vc/network/alloovium"
         },
         {
           "name": "Cielo Nicolosi",
-          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
+          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "profile_url": "https://www.ycombinator.com/founders/cielo-nicolosi",
+          "photo_url": "https://castlemilk.github.io/startup-atlas/assets/portraits/cielo-nicolosi.png",
+          "photo_source": "https://lyracap.vc/network/alloovium"
+        },
+        {
+          "name": "Omar Elloumi",
+          "source": "https://www.ycombinator.com/companies/alloovium",
+          "profile_url": "https://www.ycombinator.com/founders/omar-elloumi",
+          "photo_url": "https://castlemilk.github.io/startup-atlas/assets/portraits/omar-elloumi.png",
+          "photo_source": "https://lyracap.vc/network/alloovium"
         }
-      ]
+      ],
+      "relationships": [
+        {
+          "target_id": "partner:y-combinator",
+          "kind": "participated_in",
+          "description": "Summer 2026 accelerator batch",
+          "source": "https://www.ycombinator.com/companies/alloovium"
+        },
+        {
+          "target_id": "partner:lyra-capital",
+          "kind": "listed_in_portfolio",
+          "description": "Listed in Lyra Capital’s portfolio",
+          "source": "https://lyracap.vc/network/alloovium"
+        },
+        {
+          "target_id": "provider:microsoft",
+          "kind": "integrates_with",
+          "description": "Microsoft SharePoint document sync",
+          "source": "https://www.ycombinator.com/launches/RK0-alloovium-automating-compliance-for-major-construction-projects"
+        },
+        {
+          "target_id": "provider:procore",
+          "kind": "integrates_with",
+          "description": "Procore document sync",
+          "source": "https://www.ycombinator.com/launches/RK0-alloovium-automating-compliance-for-major-construction-projects"
+        }
+      ],
+      "socials": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/company/alloovium",
+          "source": "https://alloovium.com/"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Alloovium previews its construction workflow and document sync",
+          "url": "https://www.ycombinator.com/launches/RK0-alloovium-automating-compliance-for-major-construction-projects",
+          "kind": "company announcement"
+        },
+        {
+          "title": "Startmate profiles Alloovium and its original founding team",
+          "url": "https://www.startmate.com/writing/construction-runs-on-paperwork-alloovium-wants-to-change-that",
+          "kind": "accelerator profile"
+        },
+        {
+          "title": "Zander Schweitzer describes building Alloovium during Launch Club",
+          "url": "https://www.startmate.com/writing/building-smarter-from-the-ground-up-in-conversation-with-zander-schweitzer-alloovium",
+          "published_on": "2025-11-24",
+          "kind": "founder interview"
+        }
+      ],
+      "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/alloovium.png",
+      "logo_source": "https://alloovium.com/"
     },
     {
       "name": "Ascenda",
@@ -322,7 +396,9 @@
           "name": "Hamada Els",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
         }
-      ]
+      ],
+      "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/ascenda.svg",
+      "logo_source": "https://www.ascenda.one/"
     },
     {
       "name": "Brainwaves",
@@ -342,7 +418,9 @@
           "name": "Tom McKenzie",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
         }
-      ]
+      ],
+      "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/brainwaves.svg",
+      "logo_source": "https://getbrainwaves.com/"
     },
     {
       "name": "cascayd",
@@ -358,7 +436,9 @@
           "name": "Will O’Brien",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
         }
-      ]
+      ],
+      "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/cascayd.png",
+      "logo_source": "https://cascayd.app/"
     },
     {
       "name": "CheckGen",
@@ -394,7 +474,9 @@
           "name": "Randula Ariyawanse",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
         }
-      ]
+      ],
+      "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/crosscourtai.png",
+      "logo_source": "https://crosscourtai.com/"
     },
     {
       "name": "Deeligence",
@@ -419,7 +501,9 @@
           "source": "https://launchvic.org/case-studies/the-legaltech-startup-revolutionising-due-diligence-with-ai/",
           "note": "LaunchVic reports that Deeligence announced this round in early 2024, including backing from its Alice Anderson Fund. Exact announcement and closing dates, currency, stage and lead status are not specified by this source. This is not an exhaustive participant list; the fund name is not resolved to a canonical graph identity."
         }
-      ]
+      ],
+      "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/deeligence.svg",
+      "logo_source": "https://www.deeligence.com/"
     },
     {
       "name": "Neuralindex",
@@ -439,7 +523,9 @@
           "name": "Son Duong",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
         }
-      ]
+      ],
+      "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/neuralindex.svg",
+      "logo_source": "https://neuralindex.ai/"
     },
     {
       "name": "Guin",
@@ -979,7 +1065,9 @@
         },
         {
           "name": "Marcus Doherty",
-          "source": "https://www.industry.gov.au/science-technology-and-innovation/science-engagement/prime-ministers-prizes-science/alumni/andrew-horsley"
+          "source": "https://www.industry.gov.au/science-technology-and-innovation/science-engagement/prime-ministers-prizes-science/alumni/andrew-horsley",
+          "photo_url": "https://castlemilk.github.io/startup-atlas/assets/portraits/marcus-doherty.png",
+          "photo_source": "https://quantumbrilliance.com/about-us/"
         },
         {
           "name": "Mark Luo",
@@ -1285,7 +1373,9 @@
           "source": "https://www.lw.com/en/news/latham-watkins-advises-synthesia-on-us200-million-series-e-and-secondary-transaction",
           "reviewed_at": "2026-11-15"
         }
-      ]
+      ],
+      "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/synthesia.svg",
+      "logo_source": "https://www.synthesia.io/"
     },
     {
       "name": "Eucalyptus",
@@ -1668,7 +1758,9 @@
           "source": "https://www.squarepeg.vc/portfolio/cuttable",
           "reviewed_at": "2026-11-15"
         }
-      ]
+      ],
+      "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/cuttable.svg",
+      "logo_source": "https://www.cuttable.com/"
     },
     {
       "name": "Strongroom AI",
@@ -1758,7 +1850,9 @@
           "source": "https://puralink.com/news/",
           "note": "The company news archive dates the announcement 17 September 2025 and names Peak XV Partners as lead. This is the publication date, not a verified closing date. The linked detail at https://puralink.com/news/pre-seed-round/ names Side Stage Ventures, Startmate, NZVC, Wollemi Capital Group, Ashik Ahmed, Matt Jones and Matthew Dellavedova among backers. This is not an exhaustive list. Names are not resolved to canonical graph identities; customer and development-support mentions are not treated as round participation."
         }
-      ]
+      ],
+      "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/puralink.svg",
+      "logo_source": "https://puralink.com/"
     },
     {
       "name": "PI.EXCHANGE",

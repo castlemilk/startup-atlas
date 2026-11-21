@@ -497,11 +497,12 @@ def convert_image(data, source_format):
             if not 1 <= image.size[0] <= MAX_DIMENSION or not 1 <= image.size[1] <= MAX_DIMENSION \
                     or image.size[0] * image.size[1] > MAX_PIXELS:
                 _fail('INVALID_IMAGE', 'conversion', 'Decoded dimensions exceed the asset policy.')
-            if image.mode in ('RGBA', 'LA', 'PA') or (image.mode == 'P' and 'transparency' in image.info):
+            if image.mode in ('RGBA', 'LA', 'PA') or 'transparency' in image.info:
                 converted = image.convert('RGBA')
             else:
                 converted = image.convert('RGB')
             width, height = converted.size
+            converted.info.clear()
             buffer = io.BytesIO()
             converted.save(buffer, format='PNG')
             png_bytes = buffer.getvalue()

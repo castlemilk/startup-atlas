@@ -161,6 +161,8 @@ Loom draws arrows in the source-to-target direction. The [Loom theme](../web/gra
 
 [Graph artwork](../web/graph-artwork.js) uses the recorded logo or portrait and the existing curated organisation logo lookup. Keep pale wordmarks on a dark surface, fit logos within their bounds, and crop portraits to their round frame. Add asset-specific treatments for the exact reviewed file, as with the LaunchVic footer wordmark. The node and inspector show initials until artwork loads and whenever it is unavailable.
 
+Run `npm run data:generate` followed by `npm run audit:images -- --graph` to find nodes using initials. The report groups nodes by kind and ranks gaps by sourced connection count. It checks local file presence and counts remote references, which need separate browser verification. For each new image, check the exact subject and usage terms on the official source, then use the [reviewed asset intake](MCP-ASSETS.md#published-pipeline). Verify decoded artwork in the graph and inspector at desktop and mobile widths.
+
 The present snapshot has no structured `invested_in_round` edges. A future funding-event node or investor participation filter requires event-specific evidence, endpoint rules and date/currency semantics. Relationships should eventually support valid-from/to and dispute/history states, as described in the [knowledge graph roadmap](KNOWLEDGE-GRAPH-ROADMAP.md).
 
 ## Startup explorer
