@@ -47,7 +47,9 @@ A `searched_unknown` decision cites a `search_log` with `version: 1`, `name`, `r
 
 These checks bind reviewed receipts to the selected data and preserve the review provenance. They validate saved inputs offline. The reviewer supplies the archive and verifies its source context.
 
-Automatic founder-role candidates require an exact founder and bio URL from the current readback. Replay also requires the same role and issuer affiliation on the saved page's matching structured Person. The original wording stays with the source evidence, including former titles and advisory roles. A candidate with missing or mismatched evidence stays outside automatic role coverage. Earlier checkpoints with changed decisions require a fresh ledger.
+Automatic founder-role candidates require an exact founder and bio URL from the current readback. The same role and issuer affiliation must appear on the saved page's matching structured Person. When present in the capture, the Person identifier, page and canonical references must agree with the bio document. Affiliation identifiers must agree with the reviewed issuer site and explicit affiliation types must be Organization or Corporation. Local node fragments can qualify an already bound document. The collector's newsroom gate also applies during role replay.
+
+One source title may include former and advisory roles. Repeated copies of that title count once. Distinct titles on the same eligible saved founder page produce a `conflict` with the saved packet as evidence. An explicit review decision keeps its existing precedence. The replay leaves title chronology to the reviewer and depends on the references retained in the archive. Earlier checkpoints whose founder-role decisions change require a fresh ledger.
 
 The queue lists dispositions per company and field, plus counts for the full supplied overlay and the approved-ready subset. Each field in each cohort has the cohort's company count as its denominator. The 19 fields cover company identity, aliases, description, sectors, geography, founding, news, milestones, dated headcount, founders, founder roles, bios, professional socials, portrait candidates, portrait rights, investors, rounds, round participants and early financing.
 
@@ -58,7 +60,7 @@ The queue lists dispositions per company and field, plus counts for the full sup
 | `reviewed` | An explicit source-backed review has been recorded. |
 | `published` | The indicated value was observed in the exact saved hosted revision. |
 | `searched_unknown` | A saved bounded search did not yield a supported claim. |
-| `conflict` | The saved review records competing or unresolved claims. |
+| `conflict` | Exact saved observations disagree, or an explicit review records competing or unresolved claims. |
 | `blocked` | A saved receipt explains the access or rights hold. |
 | `not_applicable` | The saved review explains why the field does not apply. |
 

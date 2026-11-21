@@ -1,6 +1,7 @@
 import { opportunitySchema, provenanceSchema, EntryError } from '../../../scripts/catalogue-entries.mjs';
 import { GitHubOAuth } from './oauth.mjs';
 import { GitHubCatalogue } from './github.mjs';
+import { coverageDashboard, coverageStyles } from './coverage.mjs';
 import { startupRecordSchema } from './startup-record.mjs';
 import { startupEditSchema, startupIdSchema } from './startup-edit.mjs';
 import { GitHubClientConfig, saveSetup, setupForm } from './setup.mjs';
@@ -36,9 +37,9 @@ export const tools = [
 // Chromium checks form-action on POST redirects. Permit the fixed provider only
 // on the credential-free Connect page; setup and disconnect stay self-only.
 // CSP skips the path check after redirects, allowing GitHub's login path too.
-const page = (body, status = 200, { allowGitHubRedirect = false } = {}) => new Response(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Startup Atlas MCP</title><style>
+const page = (body, status = 200, { allowGitHubRedirect = false, title = 'Startup Atlas MCP', styles = '' } = {}) => new Response(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title}</title><style>
 *{box-sizing:border-box}body{font:17px/1.6 system-ui;background:#101717;color:#edf6f2;max-width:48rem;margin:5vh auto;padding:2rem}h1{font-size:1.6rem;letter-spacing:-.03em;margin:0 0 1.6rem}h2{font-size:1.25rem;line-height:1.3;margin:0 0 .8rem}p{margin:.7rem 0 1rem}a{color:#b3e5cc;text-underline-offset:.2em;overflow-wrap:anywhere}button,.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.7rem 1.1rem;font:inherit;font-weight:600;background:#c7eddb;color:#13231c;border:1px solid transparent;border-radius:.5rem;cursor:pointer;text-decoration:none;text-align:center}button:hover,.button:hover{background:#dcf5e9}.secondary{background:transparent;color:#c7eddb;border-color:#607b6d}.secondary:hover{background:#24392e}small,.muted{color:#b3c5bc}small{display:block;font-size:.875rem}form{margin:2rem 0}label,input{display:block}input{width:100%;margin:.5rem 0 1rem;padding:.7rem;font:inherit;border:1px solid #829b8f;border-radius:.4rem;background:#182521;color:inherit}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #b3e5cc;outline-offset:4px}.connection-card{border:1px solid #58846b;border-radius:1rem;padding:1.5rem;background:#182b22}.status-heading{display:flex;align-items:center;gap:1rem}.status-icon{display:flex;align-items:center;justify-content:center;flex:0 0 2.75rem;height:2.75rem;border-radius:50%;background:#c7eddb;color:#13231c;font-size:1.5rem;font-weight:700}.eyebrow{color:#b3e5cc;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 .3rem}.status-heading h2{font-size:1.75rem;letter-spacing:-.025em;margin:0}.connection-card>p:last-child{margin-bottom:0}.account{margin-top:1.25rem}.repository{margin:1.25rem 0 0;padding-top:1rem;border-top:1px solid #385442}.repository dt{font-size:.8rem;color:#b3c5bc}.repository dd{margin:.2rem 0 0;font-weight:600}.actions{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.2rem 0 0}.next-steps{margin:2rem 0}.prompts{list-style:none;padding:0;display:grid;gap:.75rem}.prompts li{padding:1rem 1.2rem;background:#182521;border:1px solid #344e41;border-radius:.65rem}.prompts h3{font-size:.8rem;color:#b3c5bc;margin:0 0 .3rem}.prompts p{margin:0;overflow-wrap:anywhere}.review-note{font-size:.95rem;color:#c4d8cc}.connection-controls{border-top:1px solid #344e41;padding-top:1.3rem;margin-top:1.5rem}.connection-controls form{margin:0 0 1rem}@media(max-width:520px){body{margin:0 auto;padding:1.5rem 1rem}h1{font-size:1.4rem}.connection-card{padding:1.2rem}.status-heading{gap:.75rem}.status-heading h2{font-size:1.5rem}.actions{flex-direction:column}.actions .button{width:100%}}
-</style></head><body><main><h1>Startup Atlas MCP</h1>${body}</main></body></html>`, { status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Content-Security-Policy': `default-src 'none'; style-src 'unsafe-inline'; form-action 'self'${allowGitHubRedirect ? ' https://github.com/login/oauth/authorize' : ''}; base-uri 'none'; frame-ancestors 'none'`, 'Referrer-Policy': 'same-origin', 'X-Content-Type-Options': 'nosniff' } });
+${styles}</style></head><body><main><h1>Startup Atlas MCP</h1>${body}</main></body></html>`, { status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Content-Security-Policy': `default-src 'none'; style-src 'unsafe-inline'; form-action 'self'${allowGitHubRedirect ? ' https://github.com/login/oauth/authorize' : ''}; base-uri 'none'; frame-ancestors 'none'`, 'Referrer-Policy': 'same-origin', 'X-Content-Type-Options': 'nosniff' } });
 
 const connectedPanel = status => `
 <section class="connection-card" aria-labelledby="connection-title">
@@ -48,7 +49,7 @@ const connectedPanel = status => `
   </div>
   ${status.githubLogin === REPOSITORY.split('/')[0] ? `<p class="account">Connected as <a href="https://github.com/${REPOSITORY.split('/')[0]}"><strong>@${REPOSITORY.split('/')[0]}</strong></a>. Your GitHub account was verified during authorization.</p>` : '<p class="account">Your GitHub connection is saved for this private Site.</p>'}
   <dl class="repository"><dt>Connected repository</dt><dd><a href="https://github.com/${REPOSITORY}">${REPOSITORY}</a></dd></dl>
-  <div class="actions"><a class="button" href="https://castlemilk.github.io/startup-atlas/">Open Startup Atlas</a><a class="button secondary" href="https://github.com/${REPOSITORY}/pulls">Review pull requests</a></div>
+  <div class="actions"><a class="button" href="https://castlemilk.github.io/startup-atlas/">Open Startup Atlas</a><a class="button secondary" href="/coverage">Evidence coverage</a><a class="button secondary" href="https://github.com/${REPOSITORY}/pulls">Review pull requests</a></div>
 </section>
 <section class="next-steps" aria-labelledby="next-title">
   <h2 id="next-title">Try it in your chat</h2>
@@ -111,6 +112,17 @@ export function createWorker({ fetcher = globalThis.fetch.bind(globalThis) } = {
         const status = await oauth.status(user);
         const saved = url.searchParams.get('setup') === 'saved' ? '<p>Your existing GitHub App client secret was saved encrypted for your Site account. Saving it did not authorize a new GitHub connection.</p>' : '';
         return page(`${saved}${status.connected ? connectedPanel(status) : '<p>A private, OAuth-connected tool for adding evidence-backed opportunities to Startup Atlas.</p><p>Repository: <strong>' + REPOSITORY + '</strong></p><p>Connect the private GitHub App installed on Startup Atlas only. It needs Contents and Pull requests read/write plus renewable OAuth access. It does not request administration or workflow permissions.</p><form method="post" action="/auth/github/start"><button>Connect GitHub</button></form><small>OAuth credentials stay encrypted on the server. Writes are limited by this application to reviewed catalogue and startup data files; GitHub’s underlying permissions cover repository contents. Nothing is automatically merged or published.</small>'}`, 200, { allowGitHubRedirect: !status.connected });
+      }
+      if (url.pathname === '/coverage' && request.method === 'GET') {
+        const options = { title:'Evidence coverage — Startup Atlas', styles:coverageStyles };
+        try {
+          const catalogue = new GitHubCatalogue(await (await connectedOAuth()).access(user), { fetcher });
+          return page(coverageDashboard(await catalogue.graphSnapshot(),url.searchParams),200,options);
+        } catch (error) {
+          const connectionNeeded = error instanceof ServiceError && ['SETUP_REQUIRED','CONNECT_GITHUB'].includes(error.code);
+          const message = connectionNeeded ? 'Connect GitHub to review evidence coverage.' : 'The coverage report is temporarily unavailable.';
+          return page(`<section class="coverage-dashboard"><h2>Evidence coverage</h2><p>${message}</p><a href="/">Return to connection</a>${connectionNeeded?'':' · <a href="/coverage">Try again</a>'}</section>`,connectionNeeded?error.status:503,options);
+        }
       }
       if (url.pathname === '/mcp' && request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, { Allow: 'POST' });
       if (url.pathname !== '/mcp') return json({ error: 'Not found' }, 404);

@@ -20,25 +20,27 @@ const index=indexCompanies({entities,funding_rounds:[
   funding(au,'Series A','2025-07-02'),funding(au,'Series B','2026-01-03',{source:'http://example.com'}),
   funding(nz,'Seed','2025-01-03'),funding(nz,'Funding round (stage undisclosed)','2026-01-04'),
   funding(gb,'Seed','2026-03-09'),funding(gb,'Series A','2026-03-09'),
-]});
+]},new Map([[au.id,{type:'Design & media'}],[gb.id,{type:'Financial software'}]]));
 const scope=(query='')=>readExploration(new URLSearchParams(query));
 const ids=items=>items.map(item=>item.id);
 
 test('company dimensions use only sourced and consistent headquarters, sector and dated funding claims',()=>{
-  assert.deepEqual(index.get(au.id),{country:'AU',city:'Sydney',sector:'Design',stage:'Series A',newestFactReview:'2026-11-13'});
-  assert.deepEqual(index.get(nz.id),{country:'NZ',city:'',sector:'Design',stage:'',newestFactReview:''});
+  assert.deepEqual(index.get(au.id),{country:'AU',city:'Sydney',technology:'Design & media',sector:'Design',stage:'Series A',newestFactReview:'2026-11-13'});
+  assert.deepEqual(index.get(nz.id),{country:'NZ',city:'',technology:'',sector:'Design',stage:'',newestFactReview:''});
   assert.equal(index.get(gb.id).stage,'','different stages on the latest date remain unclassified');
-  for (const entity of [contested,unknown]) assert.deepEqual(index.get(entity.id),{country:'',city:'',sector:'',stage:'',newestFactReview:''});
+  for (const entity of [contested,unknown]) assert.deepEqual(index.get(entity.id),{country:'',city:'',technology:'',sector:'',stage:'',newestFactReview:''});
   assert.equal(index.has(person.id),false);
 });
 
-test('countries combine with OR and location, stage and sector combine with AND',()=>{
+test('countries combine with OR and location, technology, stage and sector combine with AND',()=>{
   assert.deepEqual(ids(filterCompanies(entities,index,scope())),ids([au,nz,gb,contested,unknown]));
   const selected=scope('hq=AU&hq=NZ&sector=Design&place=AU&city=Sydney');
   assert.deepEqual(ids(filterCompanies(entities,index,selected)),[au.id]);
   assert.deepEqual(ids(filterCompanies(entities,index,selected,{ignoreDrill:true})),ids([au,nz]));
   assert.deepEqual(ids(filterCompanies(entities,index,scope('hq=AU&hq=NZ&sector=Finance&stage=Seed'))),[]);
   assert.deepEqual(ids(filterCompanies(entities,index,scope('hq=unknown&sector=unknown'))),ids([contested,unknown]));
+  assert.deepEqual(ids(filterCompanies(entities,index,scope('technology=Design+%26+media&sector=Design'))),[au.id]);
+  assert.deepEqual(ids(filterCompanies(entities,index,scope('technology=unknown&hq=NZ'))),[nz.id]);
   assert.deepEqual(ids(filterCompanies(entities,index,scope('place=NZ&city=unknown'))),[nz.id]);
 });
 
@@ -50,7 +52,7 @@ test('a state or province in a sourced headquarters string is never treated as t
 });
 
 test('view links round-trip facets and inspection and preserve the destination route state',()=>{
-  const state=scope('q=design&hq=AU&hq=AU&hq=bogus&hq=unknown&place=AU&city=Sydney&sector=Design&stage=Seed&selected=startup:au&anchor=startup:gb&type=startup&density=compact');
+  const state=scope('q=design&hq=AU&hq=AU&hq=bogus&hq=unknown&place=AU&city=Sydney&technology=Design+%26+media&sector=Design&stage=Seed&selected=startup:au&anchor=startup:gb&type=startup&density=compact');
   assert.deepEqual(state.countries,['AU','unknown']);
   assert.deepEqual(readExploration(writeExploration(new URLSearchParams(),state)),state);
   const target=explorationHref('./graph.html?depth=2#graph-main','https://example.com/startup-atlas/treemap.html',state);

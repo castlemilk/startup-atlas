@@ -1,0 +1,73 @@
+@font-face { font-family: "Atlas Inter"; src: url("./assets/inter-variable.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Atlas Newsreader"; src: url("./assets/newsreader-variable.woff2") format("woff2"); font-weight: 200 800; }
+
+.atlas-stage > .ss-stage {
+  --stage-ink: #122b22;
+  --stage-muted: #525f55;
+  --stage-line: #dfd9ce;
+  --stage-paper: #faf8f3;
+  --stage-display: "Atlas Newsreader", Georgia, serif;
+  --stage-body: "Atlas Inter", sans-serif;
+  background: linear-gradient(145deg,#ece8dd 6%,#e8eee6 94%);
+  border: 1px solid #e0dccf;
+  border-radius: 6px;
+  color: var(--stage-ink);
+  font-family: var(--stage-body);
+}
+.atlas-stage .atlas-stage-list {
+  position: absolute;
+  inset: 24px auto auto 25px;
+  width: 555px;
+  border: 1px solid var(--stage-line);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 12px 30px #25392d16;
+}
+.atlas-stage-list .ss-window__bar { color: var(--stage-muted); background: var(--stage-paper); }
+.atlas-stage-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 19px 18px 13px; }
+.atlas-stage-title { color: var(--stage-ink); font: 490 30px/1 var(--stage-display); }
+.atlas-stage-views { display: flex; align-items: center; gap: 12px; color: var(--stage-muted); font: 520 13px/1 var(--stage-body); }
+.atlas-stage-views b { padding: 8px 11px; color: white; background: var(--stage-ink); border-radius: 3px; }
+.atlas-stage-column-head { display: grid; grid-template-columns: 203px 1fr; padding: 8px 18px; border-block: 1px solid var(--stage-line); background: var(--stage-paper); color: var(--stage-muted); font: 640 12px/1.25 var(--stage-body); }
+.atlas-stage .atlas-stage-row {
+  grid-template-columns: 32px 150px 1fr;
+  gap: 10px;
+  min-height: 52px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--stage-line);
+  border-radius: 0;
+}
+.atlas-stage .atlas-stage-row:last-child { border-bottom: 0; }
+.atlas-stage .atlas-stage-row[data-selected] { background: #f5e7df; }
+.atlas-stage .atlas-stage-logo { background: transparent; border-radius: 0; }
+.atlas-stage .atlas-stage-logo img { object-fit: contain; }
+.atlas-stage-row .ss-row__title { color: var(--stage-ink); font: 650 15px/1.25 var(--stage-body); }
+.atlas-stage .atlas-stage-row .atlas-stage-technology { justify-self: start; color: var(--stage-muted); font: 480 13px/1.3 var(--stage-body); }
+.atlas-stage-inspector {
+  position: absolute;
+  inset: 163px 24px auto auto;
+  display: grid;
+  width: 235px;
+  padding: 18px 20px;
+  border: 1px solid var(--stage-line);
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 12px 32px #263b2f24;
+}
+.atlas-stage-selected { color: var(--stage-ink); font: 500 32px/1 var(--stage-display); }
+.atlas-stage-type { margin-top: 3px; color: var(--stage-muted); font: 480 13px/1.4 var(--stage-body); }
+.atlas-stage-founders { margin-top: 13px; padding-top: 10px; border-top: 1px solid var(--stage-line); }
+.atlas-stage-founders-label { color: var(--stage-muted); font: 620 12px/1.35 var(--stage-body); }
+.atlas-stage-founders ul { display: grid; gap: 5px; margin: 6px 0 0; padding: 0; list-style: none; font: 570 13px/1.35 var(--stage-body); }
+
+.atlas-stage [data-layout="compact"] .atlas-stage-list { inset: 12px auto auto 12px; width: 304px; }
+.atlas-stage [data-layout="compact"] .atlas-stage-header { padding: 10px 11px 8px; }
+.atlas-stage [data-layout="compact"] .atlas-stage-title { font-size: 25px; }
+.atlas-stage [data-layout="compact"] .atlas-stage-column-head { grid-template-columns: 130px 1fr; padding: 6px 11px; }
+.atlas-stage [data-layout="compact"] .atlas-stage-row { grid-template-columns: 30px 84px 1fr; gap: 8px; min-height: 41px; padding: 5px 11px; }
+.atlas-stage [data-layout="compact"] .ss-row__title { font-size: 13px; }
+.atlas-stage [data-layout="compact"] .atlas-stage-inspector { inset: 110px 10px auto auto; width: 151px; padding: 10px 12px; }
+.atlas-stage [data-layout="compact"] .atlas-stage-selected { font-size: 24px; }
+.atlas-stage [data-layout="compact"] .atlas-stage-type { font-size: 11px; }
+.atlas-stage [data-layout="compact"] .atlas-stage-founders { margin-top: 7px; padding-top: 6px; }
+.atlas-stage [data-layout="compact"] .atlas-stage-founders ul { gap: 3px; margin-top: 4px; font-size: 11px; }

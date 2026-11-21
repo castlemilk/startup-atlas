@@ -34,7 +34,7 @@ if('ResizeObserver' in window)new ResizeObserver(queueSectionNavigation).observe
 queueSectionNavigation();
 const patterns = {
   search: {
-    route:'./?type=startup#directory', title:'List and search view preview', caption:'Live directory · startup records',
+    route:'./list.html?type=startup', title:'List and search view preview', caption:'Live directory · startup records',
     question:'Which entities should I explore?', purpose:'Search across startups, people, partners, providers and programmes, then follow a result into its profile or graph.',
     interaction:'Search and narrow by entity type. Inspect a row beside the results, then open its profile or graph while keeping a route back to the search.',
     contract:'Results describe the researched snapshot. A matching name or logo does not verify an organisation or relationship.',
@@ -117,7 +117,7 @@ $('entity-badges').innerHTML=['startup','person','partner','provider','programme
 
 function showState(state) {
   const specimens={
-    ready:'<h3>Research is available.</h3><p>The specimen has recovered. Keep the next action visible and preserve the exploration context.</p><a class="atlas-button" href="./?type=startup#directory">Browse startup records</a>',
+    ready:'<h3>Research is available.</h3><p>The specimen has recovered. Keep the next action visible and preserve the exploration context.</p><a class="atlas-button" href="./list.html?type=startup">Browse startup records</a>',
     empty:'<h3>No companies match this search.</h3><p>Try another name or clear the active filters. The wider research snapshot is still available.</p><button class="atlas-button" type="button" data-reset-specimen>Clear specimen filters</button>',
     partial:'<h3>Some research is unavailable.</h3><p>The profile is available, but the company sample could not be loaded. An unavailable dataset does not mean there are no companies.</p><span class="atlas-badge" data-tone="warning">Partial data</span>',
     error:'<h3>The research snapshot could not be loaded.</h3><p>Keep the search context visible and offer a clear way to retry.</p><button class="atlas-button" type="button" data-reset-specimen>Retry specimen</button>',

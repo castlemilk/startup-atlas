@@ -124,7 +124,7 @@ async function renderProfile() {
     ])
   ]);
   if (!Array.isArray(catalogue.partnerLeads) || !catalogue.partnerLeads.includes(name)) {
-    root.innerHTML = '<div class="profile-return"><a class="profile-back" data-atlas-back href="./?view=partners#directory">All partners</a></div><div class="atlas-empty"><h1>Partner not found</h1><p>Return to the directory and choose an organisation from the research index.</p><a class="atlas-button" href="./?view=partners#directory">Browse partners</a></div>';
+    root.innerHTML = '<div class="profile-return"><a class="profile-back" data-atlas-back href="./list.html?view=partners">All partners</a></div><div class="atlas-empty"><h1>Partner not found</h1><p>Return to the directory and choose an organisation from the research index.</p><a class="atlas-button" href="./list.html?view=partners">Browse partners</a></div>';
     return;
   }
 
@@ -190,7 +190,7 @@ async function renderProfile() {
   const website = websiteUrl ? `<a href="${esc(websiteUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Website for ${esc(name)}">${icon('external')}${esc(new URL(websiteUrl).hostname.replace(/^www\./, ''))}</a>` : '';
   const externalProfiles = socials(detail.socials);
 
-  root.innerHTML = `<div class="profile-return"><a class="profile-back" data-atlas-back href="./?view=partners#directory">All partners</a></div>
+  root.innerHTML = `<div class="profile-return"><a class="profile-back" data-atlas-back href="./list.html?view=partners">All partners</a></div>
     <header class="profile-hero"><div class="profile-brand">${mark(name, null, 'profile-logo', { eager: true })}<div class="profile-identity"><div class="profile-nameplate"><h1>${esc(name)}</h1><p class="profile-type">${esc(detail.type || 'Organisation')}</p></div><div class="profile-context"><p class="profile-intro">${esc(record?.description || 'This organisation is in the research index. Identity and activity research is pending.')}</p>${locationText || website ? `<div class="profile-hero-meta">${locationText ? `<span class="profile-geography">${icon('location')}${esc(locationText)}</span>` : ''}${website}</div>` : ''}</div></div></div>
     <div class="profile-actions"><a class="atlas-button atlas-button-primary" data-atlas-profile-graph="${esc(graphId)}" href="${graphHref}">${icon('graph')}Explore graph</a>${externalProfiles ? `<div class="profile-socials">${externalProfiles}</div>` : ''}</div></header>
     <div class="profile-sticky"><span class="profile-compact-identity" aria-hidden="true">${mark(name, null, 'profile-item-mark company')}<span>${esc(name)}</span></span><nav class="atlas-section-nav" aria-label="Profile sections"><a href="#partner-companies">Companies</a><a href="#partner-people">People</a>${sponsors.length ? '<a href="#partner-supporters">Supporters</a>' : ''}<a href="#partner-programmes">Programmes</a><a href="#partner-sources">Sources</a></nav></div>
@@ -210,6 +210,6 @@ async function renderProfile() {
 }
 
 try { await renderProfile(); } catch {
-  root.innerHTML = '<div class="profile-return"><a class="profile-back" data-atlas-back href="./?view=partners#directory">All partners</a></div><div class="atlas-empty"><h1>Profile unavailable</h1><p>The directory could not be loaded.</p><a class="atlas-button" href="">Retry</a> <a class="atlas-button" href="./?view=partners#directory">Browse partners</a></div>';
+  root.innerHTML = '<div class="profile-return"><a class="profile-back" data-atlas-back href="./list.html?view=partners">All partners</a></div><div class="atlas-empty"><h1>Profile unavailable</h1><p>The directory could not be loaded.</p><a class="atlas-button" href="">Retry</a> <a class="atlas-button" href="./list.html?view=partners">Browse partners</a></div>';
 }
 root.setAttribute('aria-busy', 'false');

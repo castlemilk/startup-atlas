@@ -7,7 +7,7 @@ export const designRecipes = [
     id: 'search', title: 'List & search', icon: 'list',
     question: 'Find a record, then follow its evidence.',
     summary: 'A document-scrolling result list pairs complete matching counts and a bounded visible range with a sourced record inspector in the All view.',
-    route: './?type=startup#directory', owner: 'web/app.js', styles: 'web/directory.css + shared directory styles',
+    route: './list.html?type=startup', owner: 'web/app.js', styles: 'web/directory.css + shared directory styles',
     wide: 'Keep the shared masthead and search controls above a flexible result column and 350px inspector, reduced to 310px at 1200px. The count starts the result column; the globe follows the directory.',
     narrow: 'At 900px, stack the inspector after the results and range continuation. Wrap filters and secondary row metadata; Inspect moves focus to the detail heading and Close returns it to the originating row.',
     scroll: 'The document owns scrolling. Load more reveals another bounded result range; it does not create a nested page scroller.',
@@ -246,7 +246,7 @@ export function mountDesignRecipes(root) {
     <div class="dr-toolbar">
       <label class="dr-recipe-select" for="dr-recipe"><span>Explorer recipe</span><select id="dr-recipe">${designRecipes.map(recipe => `<option value="${recipe.id}">${esc(recipe.title)}</option>`).join('')}</select></label>
       <div class="dr-mode"><span>Composition</span><div class="dr-mode-buttons" role="group" aria-label="Recipe composition width"><button type="button" data-dr-mode="wide" aria-pressed="true">Wide</button><button type="button" data-dr-mode="narrow" aria-pressed="false">Narrow</button></div></div>
-      <a id="dr-route" class="atlas-button" href="./?type=startup#directory">Open working view ${icon('arrow')}</a>
+      <a id="dr-route" class="atlas-button" href="./list.html?type=startup">Open working view ${icon('arrow')}</a>
     </div>
     <div class="dr-intro"><div><h3 id="dr-question"></h3><p id="dr-summary"></p></div><p class="dr-schematic-label">Composition schematic<br><span>Select a region to inspect its contract.</span></p></div>
     <div class="dr-board">

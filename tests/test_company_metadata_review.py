@@ -8,7 +8,7 @@ from unittest.mock import patch
 from scripts.collection_coverage import ConflictError
 from scripts.crawl import company_profile_observation, extract_page
 from scripts.plan_company_profiles import build_plan, digest
-from scripts.review_company_metadata import DIMENSIONS, review
+from scripts.review_company_metadata import DIMENSIONS, review, saved_role_observations
 from scripts.rollup_company_metadata import rollup
 
 
@@ -399,6 +399,36 @@ class CompanyMetadataReviewTests(unittest.TestCase):
                     self.run_review()
                 self.assertFalse(self.ledger.exists())
 
+    def save_founder_role_bundle(self, label, subjects, claim, *, head='', known_founder=True):
+        bio = SEED + 'founder'
+        html = ('<head>' + head + '</head><script type="application/ld+json">'
+                + json.dumps({'@graph': subjects}) + '</script>').encode('utf-8')
+        packet = self.profile_packet([
+            {**self.profile_candidate('professional-bio', name='Fixture Founder',
+                                      candidate_url=bio, **claim),
+             'source_url': bio},
+            self.profile_candidate('company-profile', description='Independent source context'),
+        ])
+        packet['results'][0]['pages'].append({'url': bio, 'final_url': bio,
+            'status': 'ok', 'http_status': 200, 'checked_at': AS_OF, **extract_page(html, bio)})
+        readback = self.readback()
+        if not known_founder:
+            readback['relationships'][0]['kind'] = 'employment'
+        self.batch['evidence'] = []
+        self.ledger = self.root / f'{label}.sqlite'
+        self.evidence('profile', 'company_profile_packet', packet)
+        self.evidence('live', 'published_readback', readback)
+
+    def assert_founder_role_status(self, result, expected):
+        states = next(row['fields'] for row in result['queue'] if row['name'] == COMPANY)
+        self.assertEqual(states['description'], 'candidate')
+        self.assertEqual(states['founders'], 'unsearched')
+        self.assertEqual(states['founder_roles'], expected)
+        if expected == 'conflict':
+            role_review = next(row for row in result['decisions'] if row['dimension'] == 'founder_roles')
+            self.assertEqual(role_review['evidence'], ['profile'])
+            self.assertEqual(role_review['candidate_inputs'], [])
+
     def test_saved_founder_roles_require_the_same_person_page_issuer_and_title(self):
         official_bio = SEED + 'founder'
         claimed_role = 'Co-founder and former CTO'
@@ -420,29 +450,80 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         )
         for label, subjects, overrides, known_founder, expected in cases:
             with self.subTest(case=label):
-                html = ('<script type="application/ld+json">'
-                        + json.dumps({'@graph': subjects}) + '</script>').encode('utf-8')
                 claim = {'role': claimed_role, 'affiliation': person['worksFor'], **overrides}
-                packet = self.profile_packet([
-                    {**self.profile_candidate('professional-bio', name='Fixture Founder',
-                                              candidate_url=official_bio, **claim),
-                     'source_url': official_bio},
-                    self.profile_candidate('company-profile', description='Independent source context'),
-                ])
-                packet['results'][0]['pages'].append({'url': official_bio, 'final_url': official_bio,
-                    'status': 'ok', 'http_status': 200, 'checked_at': AS_OF, **extract_page(html, official_bio)})
-                readback = self.readback()
-                if not known_founder:
-                    readback['relationships'][0]['kind'] = 'employment'
-                self.batch['evidence'] = []
-                self.ledger = self.root / f'{label}.sqlite'
-                self.evidence('profile', 'company_profile_packet', packet)
-                self.evidence('live', 'published_readback', readback)
-                result = self.run_review()
-                states = next(row['fields'] for row in result['queue'] if row['name'] == COMPANY)
-                self.assertEqual(states['description'], 'candidate')
-                self.assertEqual(states['founders'], 'unsearched')
-                self.assertEqual(states['founder_roles'], expected)
+                self.save_founder_role_bundle(label, subjects, claim, known_founder=known_founder)
+                self.assert_founder_role_status(self.run_review(), expected)
+
+    def test_saved_founder_role_page_evidence_and_conflicting_titles(self):
+        bio = SEED + 'founder'
+        issuer = {'name': COMPANY, 'url': SEED}
+        person = {'@type': 'Person', 'name': 'Fixture Founder', 'url': bio,
+                  'worksFor': issuer, 'jobTitle': 'Co-founder and current CEO'}
+        advisor = {**person, 'jobTitle': 'No longer CEO; independent advisor'}
+        anchored = {**person, '@id': '#person',
+                    'mainEntityOfPage': {'@type': 'ProfilePage', '@id': bio + '#profile', 'url': bio},
+                    'worksFor': {**issuer, '@type': 'Organization', '@id': SEED + '#organization'}}
+        article = {'@type': 'NewsArticle', 'url': bio, 'publisher': issuer, 'headline': 'Issuer news'}
+        foreign_document = 'https://another.example/team/other-person'
+        canonical = f'<link rel="canonical" href="{bio}">'
+        changed_canonical = f'<link rel="canonical" href="{SEED}other-bio">'
+        cases = (
+            ('same_page_fragments_and_canonical', anchored, [], canonical, 'candidate'),
+            ('same_title_duplicate', person, [person], '', 'candidate'),
+            ('unrelated_subject_has_different_title', person, [{**advisor, 'name': 'Other Person'}], '', 'candidate'),
+            ('bio_with_unbound_article', person, [{**article, 'url': SEED + 'separate-story'}], '', 'candidate'),
+            ('external_person_id', {**person, '@id': foreign_document + '#person'}, [], '', 'unsearched'),
+            ('different_main_entity_page', {**person, 'mainEntityOfPage': SEED + 'other-bio'},
+             [], '', 'unsearched'),
+            ('contradictory_main_entity_references',
+             {**person, 'mainEntityOfPage': {'url': bio, '@id': foreign_document + '#profile'}},
+             [], '', 'unsearched'),
+            ('other_issuer_id', {**person, 'worksFor': {**issuer, '@id': 'https://another.example/#organization'}},
+             [], '', 'unsearched'),
+            ('person_typed_issuer', {**person, 'worksFor': {**issuer, '@type': 'Person'}}, [], '', 'unsearched'),
+            ('issuer_has_conflicting_types',
+             {**person, 'worksFor': {**issuer, '@type': ['Person', 'Organization']}}, [], '', 'unsearched'),
+            ('canonical_points_at_different_bio', person, [], changed_canonical, 'unsearched'),
+            ('canonical_points_at_other_host', person, [],
+             f'<link rel="canonical" href="{foreign_document}">', 'unsearched'),
+            ('two_different_canonicals', person, [], canonical + changed_canonical, 'unsearched'),
+            ('og_document_points_at_different_bio', person, [],
+             f'<meta property="og:url" content="{SEED}other-bio">', 'unsearched'),
+            ('issuer_newsroom_page', person, [article], '', 'unsearched'),
+            ('competing_ceo_role', person, [advisor], '', 'conflict'),
+            ('competing_advisor_role', advisor, [person], '', 'conflict'),
+        )
+        for label, subject, others, head, expected in cases:
+            with self.subTest(case=label):
+                claim = {'role': subject['jobTitle'], 'affiliation': subject['worksFor']}
+                self.save_founder_role_bundle(label, [subject, *others], claim, head=head)
+                self.assert_founder_role_status(self.run_review(), expected)
+
+    def test_founder_role_conflict_requires_fresh_checkpoint_when_decision_changes(self):
+        bio = SEED + 'founder'
+        affiliation = {'name': COMPANY, 'url': SEED}
+        role = 'Co-founder and current CEO'
+        person = {'@type': 'Person', 'name': 'Fixture Founder', 'url': bio,
+                  'worksFor': affiliation, 'jobTitle': role}
+        advisor = {**person, 'jobTitle': 'No longer CEO; independent advisor'}
+        self.save_founder_role_bundle('conflicting_titles', [person, advisor],
+                                     {'role': role, 'affiliation': affiliation})
+
+        # Model the previous replay, which could commit the first title as a candidate.
+        with patch('scripts.review_company_metadata.saved_role_observations',
+                   side_effect=lambda *args: saved_role_observations(*args)[:1]):
+            self.assert_founder_role_status(self.run_review(), 'candidate')
+        earlier = self.ledger.read_bytes()
+        with self.assertRaisesRegex(ValueError, 'founder role decision changed'):
+            self.run_review()
+        self.assertEqual(self.ledger.read_bytes(), earlier)
+
+        self.ledger = self.root / 'fresh-ledger.sqlite'
+        fresh = self.run_review()
+        self.assert_founder_role_status(fresh, 'conflict')
+        resumed = self.run_review()
+        self.assertEqual(fresh['decisions'], resumed['decisions'])
+        self.assertEqual(fresh['checkpoint']['sequence'], resumed['checkpoint']['sequence'])
 
     def test_actual_issuer_excerpt_is_candidate_and_never_a_round(self):
         self.evidence('live', 'published_readback', self.readback())

@@ -342,13 +342,13 @@ async function renderProfile() {
   const relationships = `<section class="entity-section" id="entity-connections">${heading('Relationships')}${otherEdges.length ? `<div class="entity-subsection">${focusedDossier ? '' : '<h3>Related records</h3>'}<div class="entity-connections">${otherEdges.map(edge => renderConnection(edge)).join('')}</div></div>` : empty('No further relationships are recorded in the published research.')}${focusedDossier ? '' : `<a class="atlas-button" data-atlas-profile-graph="${esc(entity.id)}" href="${shareProfile}">${icon('graph')}Explore relationships</a>`}</section>`;
   const programme = programmeDetails(offer, programmeUnavailable, evidence, citation);
   const references = `<section class="entity-section${focusedDossier ? ' entity-dossier-sources' : ''}" id="entity-sources"><div class="entity-section-heading">${renderEvidenceHeading()}</div>${focusedDossier ? `<p class="entity-evidence-coverage">${esc(count(edges.length, 'recorded relationship'))}</p>` : ''}${evidence.index()}</section>`;
-  const compactBar = isStartup ? `<div class="entity-compact-bar"><a class="profile-back atlas-button" data-atlas-back href="./#directory">Open directory</a>
+  const compactBar = isStartup ? `<div class="entity-compact-bar"><a class="profile-back atlas-button" data-atlas-back href="./list.html">Open list</a>
     <div class="entity-compact-brand">${mark(entity, true)}<div><strong>${esc(entity.name)}</strong>${website}</div></div>
     <div class="entity-actions">${companyActions}${graphAction()}</div></div>` : '';
   const type = esc(isStartup ? 'Company' : kindName(entity.kind));
   const title = `<h1>${esc(entity.name)}</h1>`;
   root.classList?.toggle('entity-evidence-dossier', focusedDossier);
-  root.innerHTML = `<div class="profile-return"><a class="profile-back" data-atlas-back href="./#directory">Open directory</a>${returnContext ? `<span class="profile-return-context">${esc(returnContext)}</span>` : ''}</div>
+  root.innerHTML = `<div class="profile-return"><a class="profile-back" data-atlas-back href="./list.html">Open list</a>${returnContext ? `<span class="profile-return-context">${esc(returnContext)}</span>` : ''}</div>
     <header class="entity-hero${isStartup ? ' entity-company-hero' : ''}"><div class="entity-hero-identity">${mark(entity, isStartup)}<div class="entity-hero-copy">${focusedDossier ? `${title}<p class="entity-dossier-type">${type}</p>` : `<p class="profile-kicker">${type}</p>${title}`}${summary || !focusedDossier ? `<p>${esc(summary || 'Explore the connected records and evidence below.')}</p>` : ''}${heroMetadata ? `<div class="entity-hero-meta">${heroMetadata}</div>` : ''}</div></div>
     <div class="entity-actions">${companyActions}${graphAction('entity-hero-graph')}</div>${socials ? `<div class="entity-external-links">${socials}</div>` : ''}</header>
     <div class="profile-sticky${isStartup ? ' entity-company-sticky' : focusedDossier ? ' entity-dossier-sticky' : ''}">${compactBar}<span class="profile-compact-identity" aria-hidden="true">${mark(entity)}<span>${esc(entity.name)}</span></span><nav class="atlas-section-nav" aria-label="Profile sections">${sectionLinks.map(([id, label]) => `<a href="#${id}">${label}</a>`).join('')}</nav></div>
@@ -376,6 +376,6 @@ async function renderProfile() {
 }
 
 try { await renderProfile(); } catch {
-  root.innerHTML = '<div class="profile-return"><a class="profile-back" data-atlas-back href="./#directory">Open directory</a></div><div class="atlas-empty"><h1>Profile unavailable</h1><p>This profile could not be found or loaded.</p><a class="atlas-button" href="">Retry</a> <a class="atlas-button" href="./graph.html">Open knowledge graph</a></div>';
+  root.innerHTML = '<div class="profile-return"><a class="profile-back" data-atlas-back href="./list.html">Open list</a></div><div class="atlas-empty"><h1>Profile unavailable</h1><p>This profile could not be found or loaded.</p><a class="atlas-button" href="">Retry</a> <a class="atlas-button" href="./graph.html">Open knowledge graph</a></div>';
 }
 root.setAttribute('aria-busy', 'false');
