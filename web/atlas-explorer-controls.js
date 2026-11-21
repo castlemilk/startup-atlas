@@ -1,11 +1,12 @@
-import { countryName, filterCompanies, hasCompanyScope } from './atlas-exploration.js';
+import { companyFacets, countryName, filterCompanies, hasCompanyScope } from './atlas-exploration.js';
 import { renderIcon } from './atlas-icons.js';
 import { escapeHtml as esc } from './logic.js';
 
 const format = new Intl.NumberFormat('en');
 const companyCount = count => `${format.format(count)} ${count===1 ? 'company' : 'companies'}`;
 const cityName = value => value==='unknown' ? 'City not recorded' : value;
-const facetLabel = (key,value) => value==='unknown' ? `${key==='sector' ? 'Sector' : 'Stage'} not recorded` : value;
+const facetByKey = new Map(companyFacets.map(facet=>[facet.key,facet]));
+const facetLabel = (key,value) => value==='unknown' ? `${facetByKey.get(key).label} not recorded` : value;
 const ordered = (values,label) => [...new Set(values)].sort((a,b)=>a==='unknown' ? 1 : b==='unknown' ? -1 : label(a).localeCompare(label(b)));
 const option = (value,label) => `<option value="${esc(value)}">${esc(label)}</option>`;
 const allCompanies = () => true;
@@ -29,7 +30,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
           <div class="exploration-popover-head">
             <ui-popover-title as-child><h2 id="atlas-filter-title">Headquarters country</h2></ui-popover-title>
             <div class="exploration-draft-fields">
-              ${['sector','stage'].map(key=>`<label>${key==='sector' ? 'Sector' : 'Stage'}<select data-draft-field="${key}"></select></label>`).join('')}
+              ${companyFacets.map(({key,label})=>`<label>${label}<select data-draft-field="${key}"></select></label>`).join('')}
             </div>
             <span class="exploration-draft-country">Headquarters country</span>
             <label class="sr-only" for="atlas-country-search">Search country or code</label>
@@ -50,8 +51,8 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
         </ui-popover-content>
       </ui-popover>
     </div>
-    ${['sector','stage'].map(key=>`<div class="exploration-field exploration-desktop-field"><label class="exploration-label" for="atlas-${key}">${key==='sector' ? 'Sector' : 'Stage'}</label>
-      <select id="atlas-${key}" data-exploration-field="${key}">${option('',key==='sector' ? 'All sectors' : 'All stages')}</select></div>`).join('')}
+    ${companyFacets.map(({key,label,all})=>`<div class="exploration-field exploration-desktop-field"><label class="exploration-label" for="atlas-${key}">${label}</label>
+      <select id="atlas-${key}" data-exploration-field="${key}">${option('',all)}</select></div>`).join('')}
     ${showDensity ? '<div class="exploration-field"><label class="exploration-label" for="atlas-density">Density</label><select id="atlas-density" data-exploration-field="density"><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select></div>' : ''}
   </div>
   <div class="exploration-applied" hidden>
@@ -148,7 +149,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
       row.querySelector('.exploration-option-count').textContent = format.format(counts.get(key) ?? 0);
     }
     empty.hidden = visible!==0;
-    clearDraft.disabled = draft.size===0 && !(narrow?.matches && (next.sector || next.stage));
+    clearDraft.disabled = draft.size===0 && !(narrow?.matches && companyFacets.some(({key})=>next[key]));
     const count = filterCompanies(routeMatches,dimensions,next).length;
     const selectedLabel = draft.size===1 ? '1 location selected' : `${draft.size} locations selected`;
     summary.textContent = `${selectedLabel} · ${companyCount(count)} ${count===1 ? 'matches' : 'match'}`;
@@ -179,7 +180,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
     control.value = value;
   }
 
-  const scopeKey = ({query,countries,sector,stage,drillCountry,drillCity,period})=>JSON.stringify([query,countries,sector,stage,drillCountry,drillCity,period]);
+  const scopeKey = state=>JSON.stringify([state.query,state.countries,...companyFacets.map(({key})=>state[key]),state.drillCountry,state.drillCity,state.period]);
   function focusLocation() {
     const target=doc.getElementById('atlas-drill-trigger') || drill;
     (target.getClientRects().length ? target : trigger).focus();
@@ -200,11 +201,10 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
       }
       const selected = state[key] || '';
       const values = ordered([...choices.map(item=>item[key]).filter(Boolean),'unknown',...(selected ? [selected] : [])],value=>facetLabel(key,value));
-      setChoices(control,option('',key==='sector' ? 'All sectors' : 'All stages') + values.map(value=>option(value,facetLabel(key,value))).join(''),selected);
+      setChoices(control,option('',facetByKey.get(key).all) + values.map(value=>option(value,facetLabel(key,value))).join(''),selected);
     }
     const appliedFacets = [...applied.map(code=>['country',code,`HQ: ${countryName(code)}`])];
-    if (state.sector) appliedFacets.push(['sector',state.sector,facetLabel('sector',state.sector)]);
-    if (state.stage) appliedFacets.push(['stage',state.stage,facetLabel('stage',state.stage)]);
+    for (const {key} of companyFacets) if (state[key]) appliedFacets.push([key,state[key],facetLabel(key,state[key])]);
     mobileLabel.textContent = appliedFacets.length ? `Filters (${appliedFacets.length})` : 'Filters';
     const markup = appliedFacets.map(([key,value,label])=>`<li><button type="button" data-remove-facet="${key}" data-value="${esc(value)}" aria-label="Remove ${esc(label)}">${esc(label)}${renderIcon('close')}</button></li>`).join('');
     if (chips.dataset.rendered!==markup) {
@@ -286,7 +286,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
     onChange(key==='country' ? {countries:state.countries.filter(code=>code!==item.dataset.value)} : {[key]:''});
     (chips.querySelector('button') || trigger).focus();
   });
-  clearFacets.addEventListener('click',()=>{onChange({countries:[],sector:'',stage:''});trigger.focus();});
+  clearFacets.addEventListener('click',()=>{onChange({countries:[],...Object.fromEntries(companyFacets.map(({key})=>[key,'']))});trigger.focus();});
   breadcrumb.addEventListener('click',event=>{
     const link = event.target.closest('[data-drill-parent]');
     if (!link) return;

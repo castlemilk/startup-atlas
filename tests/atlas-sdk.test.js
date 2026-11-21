@@ -6,7 +6,7 @@ import { setupAtlasDOM, settleAtlasDOM } from './support/atlas-sdk-dom.js';
 const dom = setupAtlasDOM();
 const { installAtlasSDK, atlasUIAgent } = await import('../web/atlas-sdk.js');
 const pages = new Map();
-for (const name of ['index', 'treemap']) {
+for (const name of ['list', 'treemap']) {
   const source = await readFile(new URL(`../web/${name}.html`, import.meta.url), 'utf8');
   const parsed = new window.DOMParser().parseFromString(source, 'text/html');
   pages.set(name, parsed.body.innerHTML);
@@ -43,7 +43,7 @@ function assertNamedComponents(required) {
   return components;
 }
 
-beforeEach(async () => { await mountPage('index'); });
+beforeEach(async () => { await mountPage('list'); });
 after(() => { installation?.destroy(); dom.window.close(); });
 
 test('SDK search changes preserve the native input contract exactly once', async () => {

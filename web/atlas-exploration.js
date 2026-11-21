@@ -11,13 +11,19 @@ const entityId = value => /^(?:startup|person|partner|provider|programme):[a-z0-
 const directoryType = value => ['all','startup','person','partner','provider','programme'].includes(value) ? value : '';
 const selection = ids => [...new Set(ids.map(countryOption).filter(Boolean))].sort();
 
+export const companyFacets = [
+  {key:'technology',label:'Technology type',all:'All technologies'},
+  {key:'sector',label:'Sector',all:'All sectors'},
+  {key:'stage',label:'Stage',all:'All stages'},
+];
+const facetValues = get => Object.fromEntries(companyFacets.map(({key})=>[key,get(key)]));
+
 export function readExploration(params) {
   const drillCountry = countryOption(params.get('place'));
   return {
     query:clean(params.get('q'),200),
     countries:selection(params.getAll('hq')),
-    sector:clean(params.get('sector')),
-    stage:clean(params.get('stage')),
+    ...facetValues(key=>clean(params.get(key))),
     drillCountry,
     drillCity:drillCountry && drillCountry!=='unknown' ? clean(params.get('city')) : '',
     selected:entityId(params.get('selected')),
@@ -32,7 +38,7 @@ export function writeExploration(params,state) {
   for (const code of selection(state.countries ?? [])) params.append('hq',code);
   const place = countryOption(state.drillCountry);
   for (const [key,value] of [
-    ['q',clean(state.query,200)], ['sector',clean(state.sector)], ['stage',clean(state.stage)],
+    ['q',clean(state.query,200)], ...Object.entries(facetValues(key=>clean(state[key]))),
     ['place',place], ['city',place && place!=='unknown' ? clean(state.drillCity) : ''],
     ['selected',entityId(state.selected)], ['anchor',entityId(state.graphAnchor)],
     ['type',directoryType(state.entityKind ?? state.directoryType)], ['density',state.density==='compact' ? 'compact' : ''],
@@ -74,7 +80,7 @@ function headquarters(facts) {
   return {country,city:cities.size===1 ? [...cities][0] : ''};
 }
 
-export function indexCompanies(graph) {
+export function indexCompanies(graph, technology = new Map()) {
   const rounds = new Map();
   for (const round of graph.funding_rounds ?? []) {
     if (!sourceUrl(round.source) || !sourceDate(round.announced_on)) continue;
@@ -93,6 +99,7 @@ export function indexCompanies(graph) {
     if (explicitSector) sectorFacts.add(explicitSector);
     index.set(company.id,{
       ...headquarters(facts),
+      technology:technology.get(company.id)?.type || '',
       sector:sectorFacts.size===1 ? [...sectorFacts][0] : '',
       stage:recordedStage(rounds.get(company.id)?.stage),
       newestFactReview:facts.map(fact=>sourceDate(fact.reviewed_at)).sort().at(-1) || '',
@@ -102,7 +109,7 @@ export function indexCompanies(graph) {
 }
 
 export function hasCompanyScope(state) {
-  return Boolean(state.countries?.length || state.sector || state.stage || state.drillCountry || state.drillCity);
+  return Boolean(state.countries?.length || companyFacets.some(({key})=>state[key]) || state.drillCountry || state.drillCity);
 }
 
 export function filterCompanies(entities,index,state,{ignoreCountry=false,ignoreDrill=false}={}) {
@@ -112,11 +119,27 @@ export function filterCompanies(entities,index,state,{ignoreCountry=false,ignore
     const company = index.get(entity.id) ?? {};
     const country = company.country || 'unknown';
     return (ignoreCountry || !countries.size || countries.has(country))
-      && (!state.sector || state.sector===(company.sector || 'unknown'))
-      && (!state.stage || state.stage===(company.stage || 'unknown'))
+      && companyFacets.every(({key})=>!state[key] || state[key]===(company[key] || 'unknown'))
       && (ignoreDrill || ((!state.drillCountry || state.drillCountry===country)
         && (!state.drillCity || state.drillCity===(company.city || 'unknown'))));
   });
+}
+
+const oldListParameters = [
+  'view', 'q', 'type', 'hq', 'sector', 'stage', 'technology', 'place', 'city', 'selected',
+  'coverage', 'columns', 'sort', 'density', 'shown', 'country', 'kind', 'access', 'unknown',
+  'provider', 'evidence', 'logo', 'mappedCountry',
+];
+
+export function legacyListUrl(url) {
+  if (!['','index.html'].includes(url.pathname.split('/').pop())) return null;
+  if (!['#directory','#atlas'].includes(url.hash) && !oldListParameters.some(key=>url.searchParams.has(key))) return null;
+  const list=new URL('./list.html',url);
+  list.search=url.search;
+  list.searchParams.delete('coverage');
+  if (list.searchParams.has('shown') && !list.searchParams.has('type')) list.searchParams.set('type','all');
+  list.hash=url.hash;
+  return list;
 }
 
 export function explorationHref(path,base,state=readExploration(new URL(base).searchParams)) {

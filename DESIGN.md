@@ -103,11 +103,13 @@ The compatibility aliases in the token stylesheet are `--ink → --atlas-ink`, `
 
 The shared stylesheet follows the established route styles where its primitives/adapters need to take precedence; route-specific catalogue composition may follow it. Verify computed styles rather than assuming a token declaration defeats a more specific legacy rule. There is no Tailwind or React theme provider. The reference can export computed JSON/CSS snapshots, including the current motion preference; these exports do not replace the canonical stylesheet or its media rules.
 
-### Directory evidence coverage
+### Landing and company list
 
-On desktop, the unfiltered Directory opens in company Coverage. On mobile it opens in company Details. The Coverage rows report distinct HTTPS source documents for company details, founder connections and funding rounds. Fragment links to the same document count once per category. A cell with no recorded source reads “Unknown.” The Coverage choice can be shared through the directory URL.
+The homepage leads into List, Graph and Treemap. Its [StageShow composition](docs/design/landing-stage/README.md) uses the editorial tokens and sourced company records. Desktop and mobile use different compositions.
 
-The Directory uses Gamma's Filter Bar chip treatment and the UI SDK's native search, select and segmented controls. The search label adapts [Bencho Label input](https://github.com/cabralorenzo/bencho/tree/84dfcee170171257a28631402d37ff34900bc773/blocks/label-input). Coverage cells and their legend adapt [Bklit's sequential heatmap](https://github.com/bklit/bklit-ui/tree/76299da6981e2494836be5ce842720a7fb057891/packages/ui/src/charts/heatmap), with exact counts in text and a distinct unknown state. The [Bencho licence](web/vendor/BENCHO-LICENSE.txt), [Bklit licence](web/vendor/BKLIT-LICENSE.txt) and [font sources](web/assets/fonts/editorial/sources.json) ship with the site.
+List shows technology type, headquarters and recorded stage by default. The Columns menu adds fields from [the column registry](web/company-columns.js). Mobile rows show the same selected fields under the company name. The List uses Gamma's Filter Bar chip treatment and the UI SDK's native search, select and segmented controls. The search label adapts [Bencho Label input](https://github.com/cabralorenzo/bencho/tree/84dfcee170171257a28631402d37ff34900bc773/blocks/label-input).
+
+Individual profiles retain their citations. The signed-in backend's Evidence coverage view counts distinct profile, founder and funding source documents per company. Fragment links to the same document count once per category.
 
 ## Colors
 

@@ -8,12 +8,20 @@ This guide describes the static interfaces at the Signal baseline, not proposed 
 
 | Your question | Start here | Next action | Do not infer |
 | --- | --- | --- | --- |
-| Which records match my search? | [List and search](https://castlemilk.github.io/startup-atlas/?type=startup#directory) | Narrow the entity kind, inspect a record, then open its profile. | A match is not an eligibility decision or a complete market census. |
+| Which records match my search? | [List and search](https://castlemilk.github.io/startup-atlas/list.html) | Narrow the entity kind, inspect a record, then open its profile. | A match is not an eligibility decision or a complete market census. |
 | How large are comparable recorded figures? | [Funding treemap in USD](https://castlemilk.github.io/startup-atlas/treemap.html?metric=funding&currency=USD) | Choose one measure and currency, then inspect the figure and its announcement. | Latest recorded event amount is not total funding raised or current company value. |
 | Can I read the same figures without interpreting area? | [Company cards](https://castlemilk.github.io/startup-atlas/treemap.html?metric=funding&currency=USD&view=cards) or [ranked list](https://castlemilk.github.io/startup-atlas/treemap.html?metric=funding&currency=USD&view=list) | Select a company to open its evidence; use Company for broader context. | Card size is editorial, not proportional. Financial ordering is not a quality score. |
 | What sourced relationships surround an entity? | [Knowledge graph](https://castlemilk.github.io/startup-atlas/graph.html?entity=startup%3Acanva) | Inspect a node, read the relationship and source, then choose Explore from here if you want a new root. | Proximity, line placement or portfolio membership does not prove investment in a particular round. |
 | What is known about a company or person? | [Startup profile](https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva) | Follow the applicable Founders, Company, Funding, Connections and Sources sections. | An unresearched section means unknown, not absent or zero. |
 | What organisations, people and programmes are associated with a partner? | [Partner profile](https://castlemilk.github.io/startup-atlas/partner.html?name=Airtree) | Inspect a researched company or follow a person/programme and its evidence. | A researched sample is not the firm's entire portfolio; a provider relationship does not guarantee credits. |
+
+## Choose fields and filter the company list
+
+[Open the List](https://castlemilk.github.io/startup-atlas/list.html) to browse companies by technology type, headquarters, sector or recorded funding stage. The view switcher carries those filters to the Graph and Treemap. Use **Columns** to show fields such as founders, sourced connections and company value. On phones, find **Columns** under the options button. Selected fields appear under each company name. Open the inspector or profile to read the original sources.
+
+[The column registry](../web/company-columns.js) defines each field's label, value and optional sort. The selected fields, density and sort are recorded in the List URL. Company value shows the currency, figure type and date for each sourced observation.
+
+The hosted backend's signed-in **Evidence coverage** page reports profile, founder and funding source counts with a missing-area filter. See the [backend notes](../backend/hosted/README.md) for the route and what counts as a source.
 
 ## Continue through search results
 

@@ -4,7 +4,7 @@ import { entityHref, kindName } from './graph-model.js';
 import { logoFor, logoClassFor } from './logos.js';
 import {
   COLOURS, COMPANY_VALUE, GROUPS, METRICS, cohort, cohortNames, colourEncoding, companyContext, companyFigure, currencies,
-  formatValue, groupedTreemap, indexCompanyValues, indexTreemapEvidence, makeView, treemap, validYear,
+  formatValue, groupedTreemap, indexCompanyValues, loadTreemapEvidence, makeView, treemap, validYear,
 } from './treemap-model.js';
 import { animateAtlasChange, canAnimateAtlasChange, icon } from './atlas-ui.js';
 import { countryName, explorationHref, filterCompanies, hasCompanyScope, indexCompanies, readExploration, writeExploration } from './atlas-exploration.js';
@@ -890,14 +890,10 @@ try {
   graph = graphStore.graph;
   entities = new Map(graph.entities.map(entity => [entity.id,entity]));
   companies = graph.entities.filter(entity => entity.kind === 'startup');
-  dimensions = indexCompanies(graph);
-  let evidence;
-  try { evidence = await graphStore.document('treemap-evidence.json'); } catch { /* Older snapshots can still show the other measures. */ }
-  evidenceAvailable = evidence?.version === 1;
-  const researched = indexTreemapEvidence(graph,evidence);
-  ({technology,ownership,marketCaps} = researched);
+  const researched = await loadTreemapEvidence(graphStore);
+  ({technology,ownership,marketCaps,available:evidenceAvailable} = researched);
   companyValues = indexCompanyValues(graph,researched);
-  for (const [id, fact] of technology) dimensions.get(id).technology = fact.type;
+  dimensions = indexCompanies(graph,technology);
   periods = new Set(cohortNames(graph));
   $('treemap-presentation').removeAttribute('disabled');
   $('treemap-density').removeAttribute('disabled');
@@ -923,7 +919,7 @@ try {
 } catch {
   $('treemap-status').textContent = 'The company snapshot could not be loaded. Reload this page to try again.';
   showPresentation(presentationFrom(new URLSearchParams(location.search)));
-  const unavailable = '<p>The treemap is temporarily unavailable. <a href="">Reload this view</a> or <a href="./">return to the directory</a>.</p>';
+  const unavailable = '<p>The treemap is temporarily unavailable. <a href="">Reload this view</a> or <a href="./list.html">return to the list</a>.</p>';
   for (const panel of [chart, $('treemap-cards'), $('treemap-list')]) panel.innerHTML = unavailable;
   detail.innerHTML = '<p>Company evidence will appear when the snapshot is available.</p>';
   $('treemap-presentation').setAttribute('disabled', '');

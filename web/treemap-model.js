@@ -23,6 +23,13 @@ const dateOf = (record, metric) => metric === marketCap ? record.observed_on : r
 const sourcedAmount = (record, metric) => source(record.source) && dated(dateOf(record, metric)) && validCurrency(currencyOf(record, metric));
 const observations = (graph, metric, marketCaps) => metric === marketCap ? marketCaps : graph.funding_rounds || [];
 
+export async function loadTreemapEvidence(store) {
+  let document;
+  try { document = await store.document('treemap-evidence.json'); }
+  catch { /* Older snapshots can still show the other measures. */ }
+  return {...indexTreemapEvidence(store.graph,document), available:document?.version===1};
+}
+
 export function indexTreemapEvidence(graph, document) {
   const technology = new Map(), marketCaps = [], ownership = new Map(), privateValuations = [];
   const evidence = {technology, marketCaps, ownership, privateValuations};
