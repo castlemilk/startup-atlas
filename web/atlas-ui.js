@@ -87,9 +87,9 @@ export function renderEvidenceHeading() {
 
 export function renderViewNavigation(active) {
   const views = [
-    ['treemap', './treemap.html', 'treemap', 'Treemap'],
+    ['directory', './list.html', 'list', 'List'],
     ['graph', './graph.html', 'graph', 'Graph'],
-    ['directory', './#directory', 'list', active === 'treemap' ? 'Directory' : 'List'],
+    ['treemap', './treemap.html', 'treemap', 'Treemap'],
   ];
   return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${icon(glyph)}${label}</a>`).join('')}</nav>`;
 }
@@ -106,11 +106,11 @@ export function renderAtlasMasthead(active = '', {viewSpecimen=true}={}) {
       <button type="button" data-atlas-header-toggle="menu" aria-label="Site navigation" aria-controls="${ids}-main-nav ${ids}-nav-actions" aria-expanded="false"><span class="atlas-menu-icon" aria-hidden="true"></span></button>
     </div>
     <nav class="atlas-primary-nav" id="${ids}-main-nav" aria-label="Main navigation">
-      <a class="atlas-explore-link" href="./#directory"${exploring ? ' aria-current="true"' : ''}>Explore</a>
+      <a class="atlas-explore-link" href="./list.html"${exploring ? ' aria-current="true"' : ''}>Explore</a>
       ${workspace ? '<ui-dialog-trigger for="atlas-workspace-dialog"><button type="button" data-atlas-panel="saved" aria-haspopup="dialog">Saved</button></ui-dialog-trigger>' : ''}
       <a href="${sources}">Sources</a>
     </nav>
-    <form class="atlas-site-search" id="${ids}-site-search" role="search" aria-label="Search the Atlas" action="./#directory" method="get">
+    <form class="atlas-site-search" id="${ids}-site-search" role="search" aria-label="Search the Atlas" action="./list.html" method="get">
       <label for="${ids}-global-query" class="sr-only">Search the Atlas</label>
       <button type="submit" aria-label="Find records">${icon('search')}</button>
       <input name="q" id="${ids}-global-query" type="search" placeholder="Search companies, people, programmes" autocomplete="off" maxlength="200">
@@ -193,7 +193,7 @@ export function safeAtlasReturn(value, base) {
     const folder = current.pathname.slice(0, current.pathname.lastIndexOf('/') + 1);
     if (target.origin !== current.origin || !target.pathname.startsWith(folder)) return null;
     const route = target.pathname.slice(folder.length);
-    if (!['', 'index.html', 'entity.html', 'partner.html', 'graph.html', 'treemap.html', 'design-system.html', 'design-lab.html', 'design-direction.html', 'design-assets.html'].includes(route)) return null;
+    if (!['', 'index.html', 'list.html', 'entity.html', 'partner.html', 'graph.html', 'treemap.html', 'design-system.html', 'design-lab.html', 'design-direction.html', 'design-assets.html'].includes(route)) return null;
     return target.pathname + target.search + target.hash;
   } catch { return null; }
 }

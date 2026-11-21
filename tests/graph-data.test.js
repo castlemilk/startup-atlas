@@ -1,7 +1,8 @@
+import { startupSourceCoverage } from '../backend/hosted/src/coverage.mjs';
 import {readFile} from 'node:fs/promises';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { entityDetails, neighborhood, searchSnapshot, startupSourceCoverage, teamPersonId } from '../web/graph-model.js';
+import { entityDetails, neighborhood, searchSnapshot, teamPersonId } from '../web/graph-model.js';
 
 test('coverage counts distinct source documents for each type of startup evidence',()=>{
   const coverage=startupSourceCoverage({

@@ -201,12 +201,36 @@ try {
   await command('Page.enable');await command('Runtime.enable');await command('Network.enable');
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
 
+  const landingReady="document.querySelector('.landing-preview img')?.naturalWidth>0&&!!document.querySelector('.atlas-wordmark')";
+  await navigate('/',landingReady);
+  assert.deepEqual(await evaluate("[...document.querySelectorAll('.landing-views strong')].map(heading=>heading.textContent)"),['List','Graph','Treemap']);
+  assert.match(await evaluate("document.querySelector('.landing-preview img').currentSrc"),/atlas-list-wide\.webp$/);
+  assert.ok(await evaluate("document.querySelector('.skip-link').getBoundingClientRect().bottom<0"),'Skip link must stay out of view until focused');
+  assert.equal(await evaluate("getComputedStyle(document.querySelector('.landing-footer')).backgroundColor"),'rgba(0, 0, 0, 0)','Source links must be readable on the paper background');
+  await assertNoOverflow('Desktop landing');
+  await screenshot('atlas-landing-desktop.png');
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await until(()=>evaluate("document.querySelector('.landing-preview img').currentSrc.endsWith('atlas-list-compact.webp')"),'Landing did not select the compact StageShow artwork');
+  await assertNoOverflow('Mobile landing');
+  await screenshot('atlas-landing-mobile.png',true);
+  await click('.landing-primary');
+  await until(()=>evaluate("location.pathname==='/list.html'&&!!document.querySelector('[data-column=technology]')"),'Landing CTA did not open the company list');
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
+  await navigate('/list.html?type=startup&q=Canva&technology=Design+%26+media&columns=technology,founders,value',"!!document.querySelector('[data-entity-id=\"startup:canva\"] td[data-column=founders]')");
+  assert.match(await text('[data-entity-id="startup:canva"] td[data-column=founders]'),/Melanie Perkins/);
+  assert.match(await text('[data-entity-id="startup:canva"] td[data-column=value]'),/USD.*Private valuation/);
+  await click('[data-atlas-view=graph]');
+  await until(()=>evaluate("location.pathname==='/graph.html'&&document.querySelector('#graph-count')?.textContent.startsWith('1 company in scope')"),'Graph did not keep the List technology filter');
+  await click('[data-atlas-view=treemap]');
+  await until(()=>evaluate("location.pathname==='/treemap.html'&&!!document.querySelector('#treemap-chart [data-company=\"startup:canva\"]')"),'Treemap did not keep the filtered company');
+  assert.equal(await evaluate("new URLSearchParams(location.search).get('technology')"),'Design & media');
+
   // Every catalogue tab must load its actual route and meaningful data in the iframe.
   await navigate('/design-system.html',"document.querySelector('#entity-specimen')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('#entity-specimen .entity-row')");
   await assertActionContrast('.ds-intro .atlas-button-primary');
   assert.match(await text('#ds-snapshot'),new RegExp(`${graph.entities.length} entity records`));
   const patterns=[
-    {key:'search',path:'/',ready:"d.querySelector('#entity-kind')?.value==='startup'&&d.querySelectorAll('#results-list .entity-row').length>0"},
+    {key:'search',path:'/list.html',ready:"d.querySelector('#entity-kind')?.value==='startup'&&d.querySelectorAll('#results-list .entity-row').length>0"},
     {key:'treemap',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='companies'&&d.querySelector('#treemap-group')?.value==='technology'"},
     {key:'graph',path:'/graph.html',ready:"d.querySelectorAll('.network-node').length>0&&d.querySelector('#graph-detail h2')?.textContent==='Canva'"},
     {key:'startup',path:'/entity.html',ready:"d.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#entity-profile h1')?.textContent==='Canva'"},
@@ -324,7 +348,7 @@ try {
   await assertNoOverflow('390px partner profile');
   await screenshot('atlas-partner-mobile.png',true);
 
-  await navigate('/',"!!document.querySelector('[data-atlas-explorer-actions] [data-atlas-view=directory][aria-current=page]')");
+  await navigate('/list.html',"!!document.querySelector('[data-atlas-explorer-actions] [data-atlas-view=directory][aria-current=page]')");
   const masthead=await evaluate(`(()=>{
     const bar=document.querySelector('.atlas-masthead');
     return {

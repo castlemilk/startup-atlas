@@ -141,7 +141,9 @@ function createCanvasGlobe(geojson) {
 }
 
 function createGlobe(geojson,THREE) {
-  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
+  const context=canvas.getContext('webgl2',{alpha:true,antialias:true,powerPreference:'low-power'});
+  if (!context) throw new Error('WebGL unavailable');
+  const renderer=new THREE.WebGLRenderer({canvas,context,alpha:true,antialias:true,powerPreference:'low-power'});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1,2));
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(34,1,0.1,30);camera.position.set(0,0,3.8);

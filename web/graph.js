@@ -9,6 +9,7 @@ import { renderIcon as icon } from './atlas-icons.js';
 import { animateAtlasChange } from './atlas-ui.js';
 import { filterCompanies, indexCompanies, readExploration, writeExploration, countryName } from './atlas-exploration.js';
 import { mountExploration } from './atlas-explorer-controls.js';
+import { loadTreemapEvidence } from './treemap-model.js';
 
 const $=id=>document.getElementById(id);
 const entityKinds=['startup','partner','person','programme','provider'];
@@ -693,7 +694,8 @@ document.addEventListener('pointerdown',event=>{
 try {
   store=await openGraph();
   if(store.mode==='fallback')$('graph-status').textContent='Showing the published backup while the database is unavailable.';
-  dimensions=indexCompanies(store.graph);
+  const {technology}=await loadTreemapEvidence(store);
+  dimensions=indexCompanies(store.graph,technology);
   const host=$('graph-exploration');
   controls=mountExploration(host,{companies:store.graph.entities,dimensions,onChange:changeScope,fieldsHost:$('graph-location-fields'),
     narrowQuery:'(max-width: 620px), (max-width: 760px) and (max-height: 540px)'});
