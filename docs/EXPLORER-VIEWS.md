@@ -42,7 +42,7 @@ The shared masthead contains site navigation and global search. The explorer hea
 | --- | --- | --- |
 | Directory / All | Result list and a 350px adjacent inspector; the rail becomes 310px at 1200px and below. | Stack at 900px and below; inspection moves focus to the detail heading. |
 | Treemap | Measure-led canvas and a 350px evidence inspector; the rail becomes 310px at 1200px and below. | Stack at 820px and below; the ranked list remains an equivalent inspection route. |
-| Graph | Canvas joins a 360px inspector without a gap; the rail becomes 300px at 1150px and below. | Stack at 820px and below, retaining the horizontal camera dock and connections list. |
+| Graph | The canvas sits alongside the evidence inspector with a 14px gap. | Stack at 920px and below. Short landscape screens move company facets into Filters to bring the canvas into view sooner. |
 | Startup and partner profiles | A 1640px maximum shell, a 340px context rail and a 24px column gap. | Stack the context rail at 1000px and below. The partner company inspector follows the selected row at widths of 1200px or less or heights of 540px or less. |
 
 The document owns page scrolling. These dimensions do not impose a fixed-height application shell or hide long research sections.
@@ -136,19 +136,19 @@ The graph uses a paper canvas, coloured organisation and person markers, and rus
 
 ### Root, selection and layout
 
-The **root** defines the neighbourhood. Click, tap, or press Enter/Space on a node to follow its connections and open its inspection. Related records, the connections list and search results give the same route. **Open profile** navigates to the full entity page. Shared links can restore a separate inspected record. Keyboard focus retains a distinct dashed treatment, and Back restores the prior neighbourhood.
+The **root** defines the neighbourhood. Click, tap, or press Enter/Space on a node to follow its connections and open its inspection. Related records, the connections list and search results give the same route. **Open profile** navigates to the full entity page. Shared links can restore a separate inspected record. Keyboard focus retains a distinct dashed treatment. **Previous view** and browser Back restore the prior neighbourhood and its selection.
 
 `entity` encodes the root. `selected` is omitted when it is the root; `depth=2` overrides the one-hop default; `types` contains comma-separated active kinds, with an empty value meaning no non-root types and omission meaning all kinds. `q` preserves the search and `list=1` opens the connection list. Selection-only Back within the same root and unchanged depth/type filters preserves the current geometry and camera. Changing the root or depth/type filters can recompute the layout; reload also recomputes it. Do not describe this as persistent graph arrangements.
 
 Dragging pins a node according to the route's existing layout model; keyboard movement supplies a non-drag alternative. **Fit view** changes the camera. **Reset layout** restores arrangement and must not be described as a camera-only action. Reduced motion removes prolonged settling animation while preserving the result. Pointer panning stays inside the canvas without trapping page scrolling outside it.
 
-Depth is one or two hops. Each view includes every recorded connection matching that depth and the selected entity types. The list provides the same connections and sources for dense maps. The inspector exposes all recorded direct relationships, including routes to another neighbourhood when a type filter hides one on the map.
+Depth is one or two hops. Each view includes every recorded connection matching that depth and the selected entity types. Loom uses rings to spread crowded and narrow neighbourhoods. Names appear when there is room around the projected markers, with the root, focused node and nearer neighbours given priority. Zooming in reveals additional names. The list provides the same connections and sources for dense maps. The inspector exposes all recorded direct relationships, including routes to another neighbourhood when a type filter hides one on the map.
 
 ### Relationship semantics
 
 Render the real predicate in the inspector or connection list: **founded**, **listed in portfolio**, **team member**, **offers programme**, **programme relationship** or a sourced equivalent. Do not turn a `supports` edge into an investment-in-round claim. A venture firm's team membership does not prove that person led a company's investment. Visual edge direction and text must agree.
 
-Loom draws arrows in the source-to-target direction. In the SVG view, shorter relationship captions appear where there is room and retain the full wording in a title. The list and inspector carry the full predicate and source on both renderers.
+Loom draws arrows in the source-to-target direction, reserving arrows for the selected node's links in crowded maps. In the SVG view, shorter relationship captions appear where there is room and retain the full wording in a title. The list and inspector carry the full predicate and source on both renderers. Following a direct connection with a recorded source brings that edge and source to the top of the inspector.
 
 The present snapshot has no structured `invested_in_round` edges. A future funding-event node or investor participation filter requires event-specific evidence, endpoint rules and date/currency semantics. Relationships should eventually support valid-from/to and dispute/history states, as described in the [knowledge graph roadmap](KNOWLEDGE-GRAPH-ROADMAP.md).
 
