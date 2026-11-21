@@ -201,10 +201,15 @@ export function installWorkspace(doc,safeReturn) {
     const name = button.closest('[data-company-name]')?.dataset.companyName || defaultName(id);
     if (active) delete group[id];
     else group[id] = name;
+    const inlineError=button.closest('.directory-compare-cell') && doc.querySelector('[data-atlas-workspace-inline-error]');
+    if (inlineError) inlineError.hidden=true;
     const oldError = button.nextElementSibling;
     if (oldError?.matches('.atlas-workspace-action-error')) oldError.remove();
     if (!save({...state,[kind]:group})) {
-      button.insertAdjacentHTML('afterend','<span class="atlas-workspace-action-error" role="alert">Couldn’t update your workspace. Try again.</span>');
+      if (inlineError) {
+        inlineError.hidden=false;
+        inlineError.textContent='Couldn’t update your workspace. Try again.';
+      } else button.insertAdjacentHTML('afterend','<span class="atlas-workspace-action-error" role="alert">Couldn’t update your workspace. Try again.</span>');
       return;
     }
     status.textContent = kind==='saved' ? (active ? 'Company removed from saved companies' : 'Company saved') : (active ? 'Company removed from comparison' : 'Company added to comparison');

@@ -51,15 +51,16 @@ test('graph activation follows relationships while shared links can inspect inde
     };
   }
   for(const id of ['graph-search','graph-query','graph-results','graph-detail','graph-status','graph-canvas','graph-count','graph-list','graph-filters','graph-depth','graph-list-toggle','graph-zoom-in','graph-zoom-out','graph-reset','graph-fit','network-heading'])elements.set(id,element());
+  for(const id of ['graph-back-to-companies','graph-company-group','graph-company-groups','graph-company-overview','graph-neighborhood','graph-overview-heading','graph-overview-count','graph-title'])elements.set(id,element());
   elements.get('graph-filters').filters=['startup','partner','person','programme','provider'].map(kind=>element({kind}));
   const previous={};
   for(const key of ['document','window','location','history','fetch'])previous[key]=globalThis[key];
   globalThis.document=Object.assign(new EventTarget(),{getElementById:id=>elements.get(id),hidden:false});
   globalThis.window={addEventListener:(name,fn)=>windowEvents.set(name,fn)};
-  globalThis.location={search:'?entity=startup%3Acanva'};
+  globalThis.location={pathname:'/graph.html',search:'?entity=startup%3Acanva'};
   globalThis.history={
-    pushState(_state,_title,url){historyEntries.push(url);globalThis.location.search=url;},
-    replaceState(_state,_title,url){globalThis.location.search=url;}
+    pushState(_state,_title,url){historyEntries.push(url);this.replaceState(_state,_title,url);},
+    replaceState(_state,_title,url){globalThis.location.search=new URL(url,'https://example.com').search;}
   };
   globalThis.fetch=async path=>path==='./data/graph.json'?Response.json(graph):new Response('',{status:404});
   const click=(id,dataset)=>elements.get(id).handlers.click({target:{closest:()=>({dataset})}});

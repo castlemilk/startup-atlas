@@ -49,15 +49,21 @@
           </div>
           <div id="directory-company-options-seat">
             <div class="directory-company-options" id="directory-company-options" hidden>
-              <ui-popover id="directory-columns">
-                <ui-popover-trigger><button type="button" class="atlas-button directory-columns-trigger"><svg class="atlas-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01"/></svg>Columns</button></ui-popover-trigger>
-                <ui-popover-content class="directory-columns-panel" align="end" side-offset="6" collision-padding="12" keep-mounted hidden>
-                  <ui-popover-title>Visible columns</ui-popover-title>
+              <ui-popover id="directory-columns" presentation="auto">
+                <ui-popover-trigger><button type="button" class="atlas-button directory-columns-trigger" aria-expanded="false" aria-controls="directory-columns-panel"><svg class="atlas-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01"/></svg>Columns</button></ui-popover-trigger>
+                <ui-popover-content id="directory-columns-panel" class="directory-columns-panel" aria-labelledby="directory-columns-title" align="end" side-offset="6" collision-padding="12" keep-mounted hidden>
+                  <div class="directory-columns-heading">
+                    <ui-popover-title id="directory-columns-title">Visible columns</ui-popover-title>
+                    <p id="directory-column-count" role="status"></p>
+                  </div>
                   <div id="directory-column-choices"></div>
-                  <button type="button" id="reset-directory-columns" class="atlas-button">Restore defaults</button>
+                  <div class="directory-columns-actions">
+                    <button type="button" id="reset-directory-columns" class="atlas-button">Restore defaults</button>
+                    <ui-popover-close><button type="button" class="atlas-button atlas-button-accent">Done</button></ui-popover-close>
+                  </div>
                 </ui-popover-content>
               </ui-popover>
-              <div class="directory-density-field">
+              <div id="directory-density-field" class="directory-density-field">
                 <select id="directory-density" aria-label="Row density" data-atlas-native="select" hidden><option value="comfortable">Editorial</option><option value="compact">Compact</option></select>
                 <ui-segmented-control id="directory-density-view" class="directory-presentation directory-density" aria-label="Row density" default-value="comfortable">
                   <ui-segmented-control-item as-child value="comfortable"><button type="button" data-density-value="comfortable">Editorial</button></ui-segmented-control-item>
@@ -67,7 +73,7 @@
             </div>
           </div>
           <ui-popover id="directory-mobile-options" class="directory-mobile-options">
-            <ui-popover-trigger><button type="button" class="atlas-button" id="directory-options-trigger" aria-label="Directory options"><svg class="atlas-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h.01M12 12h.01M19 12h.01" stroke-width="3"/></svg></button></ui-popover-trigger>
+            <ui-popover-trigger><button type="button" class="atlas-button" id="directory-options-trigger" aria-label="Directory options"><svg class="atlas-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h.01M12 12h.01M19 12h.01" stroke-width="3"/></svg>Options</button></ui-popover-trigger>
             <ui-popover-content class="directory-options-panel" align="end" side-offset="6" collision-padding="12" keep-mounted hidden>
               <ui-popover-title>Directory options</ui-popover-title>
               <div id="directory-options-panel-body"></div>
@@ -95,7 +101,7 @@
           <div id="directory-scope-controls-seat">
             <div class="directory-scope-controls" id="directory-scope-controls">
               <ui-segmented-control id="directory-scope" class="mode-switch" aria-label="Directory view" default-value="all">
-                <ui-segmented-control-item as-child value="all"><button type="button" id="tab-all" data-view="all" class="mode active">All <span id="all-tab-count">—</span></button></ui-segmented-control-item>
+                <ui-segmented-control-item as-child value="all"><button type="button" id="tab-all" data-view="all" class="mode active">Records <span id="all-tab-count">—</span></button></ui-segmented-control-item>
                 <ui-segmented-control-item as-child value="opportunities"><button type="button" id="tab-opportunities" data-view="opportunities" class="mode">Opportunities <span id="opportunity-tab-count">—</span></button></ui-segmented-control-item>
                 <ui-segmented-control-item as-child value="partners"><button type="button" id="tab-partners" data-view="partners" class="mode">Partner index <span id="partner-tab-count">—</span></button></ui-segmented-control-item>
                 <ui-segmented-control-item as-child value="saved"><button type="button" id="tab-saved" data-view="saved" class="mode saved-mode">Saved opportunities <span id="saved-count">0</span></button></ui-segmented-control-item>
@@ -111,6 +117,12 @@
           <div class="inline-note" id="directory-note" hidden></div>
           <div class="result-columns" id="result-columns" aria-hidden="true"><span>Opportunity</span><span>Resource</span><span>Location</span><span>Benefit</span><span>Status &amp; source</span><span></span></div>
           <div class="directory-entity-columns" id="entity-columns" aria-hidden="true" hidden><span>Entity &amp; evidence</span><span>Type</span><span>Explore</span></div>
+          <div class="directory-workspace-error" data-atlas-workspace-inline-error role="alert" hidden></div>
+          <div id="directory-table-scroll" class="directory-table-scroll" hidden>
+            <span>Scroll for more columns</span>
+            <button type="button" class="atlas-button" id="directory-columns-prev" aria-label="Previous columns" aria-controls="directory-table-frame"><svg class="atlas-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button>
+            <button type="button" class="atlas-button" id="directory-columns-next" aria-label="Next columns" aria-controls="directory-table-frame"><svg class="atlas-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
+          </div>
           <div id="results-list" class="cards" aria-busy="true"><p class="loading">Loading directory…</p></div>
           <div class="directory-result-footer">
             <div class="load-more-wrap"><button id="load-more" class="load-more" type="button" hidden>Load more <span aria-hidden="true">↓</span></button></div>

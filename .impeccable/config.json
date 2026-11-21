@@ -1,0 +1,18 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "web/design-system.html",
+          "web/list.html"
+        ],
+        "createdAt": "2026-11-21T12:09:24.084Z",
+        "reason": "Rendered List and design catalogue use light paper backgrounds. WebKit computed styles, including the open column picker, show no matching glow or shadow color."
+      }
+    ]
+  }
+}

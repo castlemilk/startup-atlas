@@ -134,6 +134,17 @@ function observationsByCompany(records) {
   return events;
 }
 
+export function indexFundingFigures(graph) {
+  const figures = new Map();
+  for (const [id, events] of observationsByCompany(graph.funding_rounds || [])) {
+    const figure = observation(events, 'funding');
+    if (!figure.reason || figure.reason === 'recorded-zero') {
+      figures.set(id, {...figure, basis:'funding', currency:figure.event.currency});
+    }
+  }
+  return figures;
+}
+
 export function indexCompanyValues(graph, {ownership, marketCaps, privateValuations}) {
   const quotes = observationsByCompany(marketCaps);
   const valuations = observationsByCompany([...(graph.funding_rounds || []), ...privateValuations]);
