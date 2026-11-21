@@ -179,9 +179,10 @@ function fundingPreview(entry) {
   const noCurrency = / \(currency unspecified\)$/i;
   const shownAmount = entry.amount.replace(noCurrency, '');
   const context = noCurrency.test(entry.amount) ? 'Currency unspecified in source' : '';
+  const amountStyle = shownAmount.length > 28 ? ' entity-funding-sample-description' : '';
   return `<section class="entity-overview-block entity-overview-funding"><h3>Funding snapshot</h3>
     <p>${icon('source')}Recorded financing · ${esc(entry.dateLabel.toLowerCase())}</p>
-    <div class="entity-funding-sample"><strong>${profileTime(entry.date)}</strong><span>${esc(entry.title)}</span><strong class="entity-funding-sample-amount">${esc(shownAmount)}</strong>${context ? `<small>${esc(context)}</small>` : ''}<a class="profile-jump-link" href="#entity-funding" data-reveal-funding="entity-round-${esc(entry.round.id)}">Open funding ${icon('arrow')}</a></div>
+    <div class="entity-funding-sample"><strong>${profileTime(entry.date)}</strong><span>${esc(entry.title)}</span><strong class="entity-funding-sample-amount${amountStyle}">${esc(shownAmount)}</strong>${context ? `<small>${esc(context)}</small>` : ''}<a class="profile-jump-link" href="#entity-funding" data-reveal-funding="entity-round-${esc(entry.round.id)}">Open funding ${icon('arrow')}</a></div>
   </section>`;
 }
 
@@ -193,7 +194,7 @@ function placeOverviewFacts() {
   const more = facts.querySelector('.entity-more-facts');
   const moreDesktop = more?.parentElement;
   const moreMobile = root.querySelector('.entity-mobile-facts-extra');
-  const narrow = matchMedia('(max-width: 760px)');
+  const narrow = matchMedia('(max-width: 960px)');
   function position() {
     const target = narrow.matches ? slot : desktop;
     if (facts.parentElement === target) return;
@@ -205,6 +206,14 @@ function placeOverviewFacts() {
   }
   position();
   narrow.addEventListener('change', position);
+}
+
+function measureCompanyNavigation() {
+  const nav = root.querySelector('.entity-company-sticky .atlas-section-nav');
+  if (!nav) return;
+  const sync = () => root.style.setProperty('--profile-nav-height', `${nav.offsetHeight}px`);
+  sync();
+  if (typeof ResizeObserver === 'function') new ResizeObserver(sync).observe(nav);
 }
 
 async function renderProfile() {
@@ -282,7 +291,7 @@ async function renderProfile() {
     recordedFacts.find(fact => /^(?:product launched|founding year|founded)$/i.test(fact.label)), place, ...recordedFacts,
   ].filter(Boolean))].slice(0, 2);
   const otherFacts = recordedFacts.filter(fact => !keyFacts.includes(fact));
-  const factRow = fact => `<div><dt>${icon(factMarks[fact.key] || 'source')} ${esc(fact.label)}</dt><dd><span>${esc(fact.value)}</span><span class="entity-fact-source">${evidence.action(fact.proof, 'Sources', 'compact') || '<span>Source not recorded</span>'}</span></dd></div>`;
+  const factRow = fact => `<div${fact.value.length > 72 ? ' class="entity-fact-long"' : ''}><dt>${icon(factMarks[fact.key] || 'source')} <span>${esc(fact.label)}</span></dt><dd><span>${esc(fact.value)}</span><span class="entity-fact-source">${evidence.action(fact.proof, 'Sources', 'compact') || '<span>Source not recorded</span>'}</span></dd></div>`;
   const overviewFacts = `<section class="entity-overview-facts" aria-label="Company facts"><h3>Company facts</h3>
     ${keyFacts.length ? `<dl class="entity-facts">${keyFacts.map(factRow).join('')}</dl>` : empty('Additional company facts have not been recorded.')}
     ${website ? `<dl class="entity-facts"><div class="entity-fact-website"><dt>${icon('link')} Website</dt><dd>${website}</dd></div></dl>` : ''}
@@ -321,6 +330,7 @@ async function renderProfile() {
     ${!isStartup ? `<aside class="entity-aside" aria-label="Research at a glance"><section><h2>Research coverage</h2><p>${esc(count(edges.length, 'recorded relationship'))}.</p></section></aside>` : ''}</div>
     ${evidence.dialog()}`;
   placeOverviewFacts();
+  measureCompanyNavigation();
   evidence.install(root);
   root.querySelectorAll('[data-reveal-funding]').forEach(link => link.addEventListener('click', () => {
     const round = document.getElementById(link.dataset.revealFunding);

@@ -177,10 +177,10 @@ Directory, Map/List and Graph use a compact ruled introduction so search and wor
 
 | View | Wide composition | Responsive changes |
 | --- | --- | --- |
-| List & search | Flexible results, 350px inspector and 22px gap inside one research panel. | Inspector reduces to 310px at 1200px; stacks at 900px. Other directory scopes retain their list layouts. |
+| List & search | Flexible results and a roughly 70/30 split with a document-flow inspector. Short result sets fit their content. | Below 1170px, results use the full width and the inspector opens as a single-scroll sheet. At 800px and below, secondary settings move into Options. |
 | Treemap | Flexible chart/list and a 290–350px evidence rail in normal page flow. Cards use the full-width board. | At 900px and below, the evidence opens in one vertically scrollable sheet. |
-| Graph | Flexible network and 360px inspector, with a 14px gap between working surfaces. | Inspector reduces to 300px at 1150px; stacks at 820px. |
-| Startup dossier | Overview, people, funding and connections in reading order, alongside a coverage rail. | The record stacks, its section links stay reachable and claim evidence opens in a sheet. |
+| Graph | Flexible network and a 302–358px inspector with a 14px gap. Evidence follows document flow. | At 920px and below, the rail follows the map. Opening an offscreen connections list reveals its heading and links. |
+| Startup dossier | Overview, people, funding and connections in reading order, alongside a coverage rail. | At 960px and below, company facts use the main column. Section links wrap and claim evidence opens in a sheet at phone widths. |
 | Partner / VC dossier | Full identity band, flexible company panel and 320px people/evidence rail, with 24px gap. | Inner company inspector stacks at 1200px; the outer rail stacks at 1000px. |
 
 Profile reading stays in document flow. Each claim opens its own source and qualifiers, with focus returning to that claim on dismissal.

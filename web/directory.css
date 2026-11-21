@@ -49,7 +49,7 @@
 
 .atlas-directory-page .mode-switch { padding: 0; border: 0; background: transparent; }
 .directory-presentation {
-  padding: 1px;
+  padding: 4px;
   border: 1px solid var(--atlas-border);
   background: var(--atlas-paper);
 }
@@ -102,7 +102,7 @@
   --directory-row-target: 44px;
   --directory-row-height: 58px;
   --directory-cell-inset: 14px;
-  --directory-panel-height: clamp(480px, calc(100dvh - 366px), 670px);
+  --directory-panel-height: clamp(280px, 70dvh, 670px);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 12px 20px;
@@ -138,6 +138,7 @@
 .directory-exploration-fields .exploration-field { flex: 1 1 0; min-width: 0; }
 .directory-exploration-fields .exploration-country { flex: 1.12 1 0; }
 .directory-exploration-fields .exploration-field > :is(ui-select, select) { width: 100%; }
+.atlas-directory-page :is(.directory-toolbar, .directory-scope-controls) .atlas-select-trigger ui-select-value { white-space: normal; overflow-wrap: anywhere; }
 .directory-exploration.exploration-controls { margin: 0; border: 0; background: transparent; min-width: 0; }
 .directory-exploration :is(.exploration-scope,.exploration-applied) { padding: 0; }
 .directory-mobile-options { display: none; }
@@ -288,18 +289,17 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  height: var(--directory-panel-height);
+  max-height: var(--directory-panel-height);
   border: 1px solid var(--atlas-border);
   border-radius: 5px;
   background: var(--atlas-surface);
-  overflow: hidden;
+  overflow: clip;
 }
 .directory-company-results #results-list {
   position: relative;
-  display: block;
-  flex: 1 1 0;
+  display: flex;
+  flex: 0 1 auto;
   min-height: 0;
-  overflow: hidden;
 }
 .directory-company-results .directory-result-footer {
   position: relative;
@@ -397,7 +397,7 @@
 :is(.entity-row-mark, .directory-inspector-mark).has-logo span { visibility: hidden; }
 .atlas-directory-page .entity-row .entity-row-mark img, .directory-inspector-mark img { width: 100%; height: 100%; padding: 4px; object-fit: contain; }
 
-.directory-table-frame { position: relative; width: 100%; height: 100%; overflow: auto; background: var(--atlas-surface); }
+.directory-table-frame { position: relative; width: 100%; overflow: auto; background: var(--atlas-surface); }
 .directory-table { width: 100%; border-collapse: separate; border-spacing: 0; text-align: start; color: var(--atlas-ink); }
 .directory-table .directory-check-column { width: 6%; }
 .directory-table .directory-explore-column { width: 8%; }
@@ -557,30 +557,24 @@
 
 #directory-inspector-seat { align-self: start; min-width: 0; }
 .directory-inspector {
-  display: flex;
-  flex-direction: column;
   min-width: 0;
-  max-height: var(--directory-panel-height, 670px);
   padding: 18px;
   border: 1px solid var(--atlas-border);
   border-radius: 5px;
   background: var(--atlas-surface);
-  overflow: hidden;
   overflow-wrap: anywhere;
   scroll-margin-top: 16px;
 }
 
-.directory-company-results #directory-inspector-seat .directory-inspector { height: var(--directory-panel-height); }
 .directory-inspector-empty {
-  margin: auto 4px;
-  text-align: center;
   color: var(--atlas-muted);
   font-size: 14px;
 }
-.directory-inspector-empty h2 { color: var(--atlas-ink); }
-.directory-inspector-empty p { margin: 8px auto 0; max-width: 27ch; }
+.directory-inspector .directory-inspector-empty h2 { color: var(--atlas-ink); font-size: 26px; }
+.directory-inspector-empty p { margin: 8px 0 0; }
 .directory-inspector-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-.directory-inspector-identity { display: grid; justify-items: start; gap: 6px; min-width: 0; }
+.directory-inspector-identity { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.directory-inspector-identity > div { min-width: 0; }
 .directory-inspector-identity p {
   margin: 0;
   color: var(--atlas-muted);
@@ -588,8 +582,8 @@
 }
 .directory-inspector .directory-inspector-mark {
   grid-template: minmax(0,1fr) / minmax(0,1fr);
-  width: min(178px, 100%);
-  height: 54px;
+  width: clamp(52px, 8vw, 108px);
+  height: 48px;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -603,13 +597,12 @@
   object-position: center;
 }
 .directory-table .directory-company-row .directory-canva-mark img { transform: scale(1.35); }
-.directory-inspector .directory-inspector-mark.directory-canva-mark { width: 173px; max-width: 100%; height: 58px; }
 .directory-inspector .directory-inspector-mark.directory-canva-mark img { transform: scale(1.56); }
 .directory-inspector-mark:not(.has-logo) > span {
   display: grid;
   place-items: center;
-  width: 49px;
-  height: 49px;
+  width: 48px;
+  height: 48px;
   border: 1px solid var(--atlas-border);
   border-radius: var(--atlas-radius-control);
   background: var(--atlas-paper);
@@ -620,17 +613,18 @@
 
 .directory-inspector .directory-inspector-close { flex: none; width: 44px; min-height: 44px; padding: 0; background: transparent; border-color: transparent; box-shadow: none; }
 .directory-inspector .directory-inspector-close:hover { background: var(--atlas-soft); color: var(--atlas-accent); }
-.directory-inspector h2 { margin: 0 0 3px; font: 450 42px/.99 var(--atlas-font-display); letter-spacing: -.025em; }
+.directory-inspector h2 { margin: 0 0 4px; font: 500 34px/1.08 var(--atlas-font-display); letter-spacing: -.025em; }
 .directory-inspector h3 { margin: 0 0 8px; font: 650 15px/1.25 var(--atlas-font-body); }
 .directory-inspector-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 12px; margin: 10px 0 0; font-size: 14px; }
 .directory-inspector-meta span { display: inline-flex; align-items: center; gap: 5px; }
 .directory-inspector-meta span+span { padding-inline-start: 12px; border-inline-start: 1px solid var(--atlas-border); }
 .directory-inspector-meta .atlas-icon { width: 17px; height: 17px; color: var(--atlas-ink); }
-.directory-inspector-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; margin-top: 14px; }
+.directory-inspector-scroll { margin-top: 12px; }
 .directory-inspector-tabs:not(:defined) ui-tabs-list { display: none; }
 .directory-inspector-tabs ui-tabs-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 4px;
   border: 1px solid var(--atlas-border);
   border-radius: var(--atlas-radius-control);
   background: color-mix(in srgb, var(--atlas-soft) 65%, var(--atlas-surface));
@@ -673,23 +667,11 @@
 .directory-inspector-founder-preview a { display: inline-flex; align-items: center; gap: 8px; color: var(--atlas-ink); font-weight: 600; text-decoration: none; }
 .directory-inspector-founder-preview a:hover { text-decoration: underline; }
 .directory-inspector-founder-preview a .atlas-icon { box-sizing: content-box; width: 15px; height: 15px; padding: 5px; border-radius: 3px; background: var(--atlas-soft); }
-.directory-inspector-section .directory-source-available {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 11px;
-  margin-bottom: 7px;
-  border-radius: var(--atlas-radius-control);
-  background: #edf2e8;
-}
-.directory-source-available .atlas-icon { flex: none; margin-top: 2px; }
-.directory-source-available strong { display: block; }
-
-.directory-inspector-actions { display: grid; flex: none; gap: 6px; padding-top: 10px; border-top: 1px solid var(--atlas-border); }
-.directory-inspector-actions .atlas-button { width: 100%; box-shadow: none; }
+.directory-inspector-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-top: 12px; border-top: 1px solid var(--atlas-border); }
+.directory-inspector-actions .atlas-button { min-width: 0; min-height: 44px; padding: 6px 8px; text-align: center; box-shadow: none; }
+.directory-inspector-actions .atlas-icon { flex: none; }
 .directory-inspector-actions a:not(.atlas-button-primary) { background: var(--atlas-paper); }
-.directory-inspector-workspace { display: flex; justify-content: center; gap: 8px; }
-.directory-inspector-workspace .atlas-button { width: auto; min-height: 30px; padding: 4px 9px; border-color: transparent; background: transparent; color: var(--atlas-muted); }
+.directory-inspector-workspace { grid-column: 1/-1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .directory-inspector-workspace .atlas-button:hover { color: var(--atlas-ink); background: var(--atlas-soft); }
 .directory-inspector-workspace [aria-pressed="true"] { color: var(--atlas-accent); text-decoration: underline; text-underline-offset: 3px; }
 
@@ -698,7 +680,7 @@
   gap: 6px;
   padding: 10px;
   margin-bottom: 10px;
-  border-inline-start: 3px solid var(--atlas-accent);
+  border: 1px solid var(--atlas-border);
   background: var(--atlas-selection-soft);
   font-size: 14px;
 }
@@ -709,10 +691,12 @@
   position: fixed;
   inset: auto 0 0;
   width: min(100%, 620px);
-  max-height: min(75dvh, 650px);
+  max-height: min(82dvh, 680px);
   margin: 0 auto;
   padding: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-padding-block: 12px;
   border: 1px solid var(--atlas-border);
   border-radius: 10px 10px 0 0;
   background: var(--atlas-surface);
@@ -720,13 +704,10 @@
 }
 .directory-sheet-backdrop { position: fixed; inset: 0; background: rgb(18 43 34 / 32%); }
 .directory-sheet-content .directory-inspector {
-  max-height: min(75dvh, 650px);
-  padding: 15px 16px max(8px, env(safe-area-inset-bottom));
+  padding: 16px 16px max(16px, env(safe-area-inset-bottom));
   border: 0;
 }
-.directory-sheet-content .directory-inspector h2 { font-size: 34px; }
-.directory-sheet-content .directory-inspector-identity p { display: none; }
-.directory-sheet-content .directory-inspector-actions { background: var(--atlas-surface); }
+.directory-sheet-content .directory-inspector h2 { font-size: 30px; }
 .directory-context-links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; margin-top: 16px; font: 500 13px/1.4 var(--atlas-font-body); text-underline-offset: 3px; }
 .atlas-embedded .directory-context-links { display: none; }
 
@@ -865,26 +846,14 @@
   .directory-company-view .directory-exploration .exploration-scope { flex-wrap: wrap; }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1169px) {
   .atlas-directory-page .directory-layout.has-inspection { grid-template-columns: minmax(0, 1fr); }
   .directory-inspector-tabs ui-tabs-tab button { min-height: 44px; }
 }
 
-@media (max-width: 650px) {
-  .atlas-directory-page .workspace { padding-block: 13px 30px; }
-  .atlas-directory-page .directory-heading { flex-direction: column; align-items: stretch; text-align: start; margin-bottom: 10px; gap: 6px; }
-  .directory-heading h1 { font-size: 31px; }
-  .directory-heading p { display: none; }
-  .directory-heading [data-atlas-explorer-actions] { width: 100%; }
-  .directory-heading [data-atlas-explorer-actions] .atlas-view-nav { flex: 1; }
-  .directory-heading [data-atlas-explorer-actions] .atlas-view-nav a { justify-content: center; flex: 1; }
-  .atlas-directory-page .directory-layout { gap: 10px; }
-  .atlas-directory-page .directory-layout .directory-toolbar { gap: 6px; padding: 0; border: 0; background: transparent; }
-  .atlas-directory-page .directory-toolbar .search-field { flex: 1 1 100px; }
-  .directory-exploration-fields { flex: 0 1 auto; max-width: 100%; }
-  .atlas-directory-page .directory-toolbar .search-wrap input { font-size: 16px; }
-  .atlas-directory-page .directory-toolbar .filters { display: grid; flex-basis: 100%; }
-  .atlas-directory-page .directory-toolbar .filter-group { min-width: 0; }
+@media (max-width: 800px) {
+  .atlas-directory-page .directory-toolbar .search-field { flex-basis: 150px; }
+  .directory-exploration-fields { flex-basis: 330px; }
   .directory-mobile-options:defined { display: block; flex: none; }
   #directory-options-trigger { width: 44px; padding: 0; min-height: 44px; }
   .directory-options-panel {
@@ -910,7 +879,23 @@
   .directory-options-panel .directory-company-options { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--atlas-border); gap: 6px; }
   .directory-options-panel .directory-company-options > * + * { margin-inline-start: 0; }
   .directory-options-panel .directory-columns-trigger { min-height: 44px; }
+}
 
+@media (max-width: 650px) {
+  .atlas-directory-page .workspace { padding-block: 13px 30px; }
+  .atlas-directory-page .directory-heading { flex-direction: column; align-items: stretch; text-align: start; margin-bottom: 10px; gap: 6px; }
+  .directory-heading h1 { font-size: 31px; }
+  .directory-heading p { display: none; }
+  .directory-heading [data-atlas-explorer-actions] { width: 100%; }
+  .directory-heading [data-atlas-explorer-actions] .atlas-view-nav { flex: 1; }
+  .directory-heading [data-atlas-explorer-actions] .atlas-view-nav a { justify-content: center; flex: 1; }
+  .atlas-directory-page .directory-layout { gap: 10px; }
+  .atlas-directory-page .directory-layout .directory-toolbar { gap: 6px; padding: 0; border: 0; background: transparent; }
+  .atlas-directory-page .directory-toolbar .search-field { flex: 1 1 100px; }
+  .directory-exploration-fields { flex: 0 1 auto; max-width: 100%; }
+  .atlas-directory-page .directory-toolbar .search-wrap input { font-size: 16px; }
+  .atlas-directory-page .directory-toolbar .filters { display: grid; flex-basis: 100%; }
+  .atlas-directory-page .directory-toolbar .filter-group { min-width: 0; }
   .directory-results-chrome .directory-exploration { width: 100%; }
   .directory-exploration .exploration-scope { justify-content: space-between; flex-wrap: nowrap; }
   .directory-exploration .exploration-scope .exploration-result-count { margin-inline-start: auto; text-align: end; min-width: 0; }
@@ -928,7 +913,7 @@
   .atlas-directory-page article.entity-row .entity-row-kind { grid-column: 2; }
   .atlas-directory-page article.entity-row .entity-row-actions { grid-column: 2; justify-content: flex-start; }
   .atlas-directory-page article.entity-row .entity-row-graph { min-height: 44px; padding: 6px; }
-  .directory-layout.directory-company-results .results { display: block; height: auto; border: 0; background: transparent; overflow: visible; }
+  .directory-layout.directory-company-results .results { display: block; max-height: none; border: 0; background: transparent; overflow: visible; }
   .directory-company-results .directory-result-footer { border: 0; padding-inline: 0; background: transparent; }
   .directory-company-results #results-list { display: block; flex: none; overflow: visible; }
   .directory-table-frame { height: auto; overflow: visible; background: transparent; }
@@ -976,12 +961,9 @@
   .directory-evidence-counts [data-level="0"] { margin: 0; }
   .directory-evidence-legend { padding: 8px 0; background: transparent; }
   .directory-evidence-legend p { display: none; }
-  .directory-inspector .directory-inspector-mark { width: min(138px,100%); height: 46px; }
-  .directory-inspector .directory-inspector-mark.directory-canva-mark { width: 140px; height: 47px; }
   .directory-inspector-meta { margin-top: 5px; gap: 4px 8px; }
   .directory-inspector-meta span+span { padding-inline-start: 8px; }
   .directory-inspector-scroll { margin-top: 8px; }
-  .directory-inspector-workspace .atlas-button { min-height: 44px; }
   .atlas-directory-page .intro { padding-block: 28px 32px; gap: 24px; }
   .atlas-directory-page .intro .globe-panel { grid-template-columns: 1fr; padding: 12px; gap: 0; }
   .atlas-directory-page .intro .globe-stage { height: min(105vw, 400px); }
