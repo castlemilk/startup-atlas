@@ -659,7 +659,7 @@ try {
     await command('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:true});
     await until(()=>evaluate("!!document.querySelector('.graph-company-cluster-label[data-fit-group]')"),'Phone Fit must reserve label slots for each group');
     const groups=await evaluate("[...new Set([...document.querySelectorAll('#graph-company-nodes [data-node]')].map(node=>node.dataset.group))]");
-    await checkCompanyMap({groupLabels:groups});
+    await until(()=>checkCompanyMap({groupLabels:groups}),`Phone Fit did not finish laying out all companies at ${width}px`);
     await evaluate("document.querySelector('#graph-company-loom').scrollIntoView({block:'center',behavior:'instant'})");
     await screenshot(`graph-all-companies-${width}.png`);
   }
