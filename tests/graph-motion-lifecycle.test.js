@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 
 const source=readFileSync(new URL('../web/graph.js',import.meta.url),'utf8');
-const helper=source.slice(source.indexOf('function stopSimulation()'),source.indexOf('\nfunction renderMap()'));
+const helper=source.slice(source.indexOf('function stopSimulation()'),source.indexOf('\nfunction mapControls()'));
 function fixture(){
   const events=new Map(),queue=new Map();let next=1,ticks=0,draws=0;
   const listen=target=>(name,fn)=>events.set(target+':'+name,fn);

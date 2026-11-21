@@ -253,9 +253,9 @@ Directory and partner company rows offer distinct **Inspect**, profile and sourc
 
 Click or Enter/Space follows a node to its neighbourhood. Search results and linked entities do the same. **Previous view** and browser Back restore the preceding view. The inspector leads with the source for the relationship followed when that edge is recorded. Shared links may open a distinct inspection selection. **Open profile** goes to the full record, and the connections list includes the evidence for each relationship.
 
-Loom draws the paper map and directional connections. The map places names clear of nearby markers, using paper behind each name to keep wires from crossing the text. Light wordmarks use a dark surface and fit within their marker. Crowded maps reveal more names as users zoom, and the complete neighbourhood remains available in the connections list. The SVG map is available when WebGL2 is unavailable.
+Loom draws the paper map and directional connections. The map places names clear of nearby markers, using paper behind each name to keep wires from crossing the text. Light wordmarks use a dark surface and fit within their marker. Busy mobile maps start with a labelled overview of sourced direct neighbours. **Full map** shows the whole diagram, and the connections list retains every matching relationship and its source. The SVG map is available when WebGL2 is unavailable. [Mobile Fit configuration and checks](docs/EXPLORER-VIEWS.md#maintaining-mobile-fit)
 
-Graph cards support pointer dragging and arrow-key movement. **Fit view** contains the neighbourhood, **Center selection** brings a visible node to the middle, and **Reset graph layout** restores automatic placement. The same tab retains camera and node placements by neighbourhood. The toolbar reports company scope separately from contextual relationship nodes.
+Graph cards support pointer dragging and arrow-key movement. **Fit view** frames the current map presentation, **Center selection** brings a visible node to the middle, and **Reset graph layout** restores automatic placement. The same tab retains camera and node placements by neighbourhood and presentation. The toolbar reports company scope separately from contextual relationship nodes.
 
 ### Motion
 

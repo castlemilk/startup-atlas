@@ -89,10 +89,13 @@
           <canvas id="graph-loom-canvas" aria-hidden="true" hidden></canvas>
           <div id="graph-loom-controls" class="network-loom-controls" role="group" aria-label="Interactive relationship graph" aria-describedby="graph-instructions" hidden></div>
         </div>
-        <p id="graph-instructions" class="visually-hidden">Activate a node to follow its relationships. Previous view returns to the previous neighbourhood. Drag nodes or move them with arrow keys. Drag the background to pan. Zoom in for more labels. The connections list includes the recorded sources. Reset restores the automatic layout.</p>
+        <p id="graph-instructions" class="visually-hidden">Activate a node to follow its relationships. Previous view returns to the previous neighbourhood. Drag nodes or move them with arrow keys. Drag the background to pan. Full map shows the whole neighbourhood when available. The connections list includes the recorded sources. Reset restores the automatic layout.</p>
         <div class="network-footer">
           <div class="network-map-context">
-            <p id="graph-count" role="status"></p>
+            <div class="network-map-summary">
+              <p id="graph-count" role="status"></p>
+              <button id="graph-full-map" class="atlas-button" type="button" aria-pressed="false" aria-controls="graph-loom-controls" hidden>Full map</button>
+            </div>
             <div class="network-legend" aria-label="Map key">
               <span><i class="legend-startup"></i> Company in scope</span>
               <span><i class="legend-person"></i> Person</span>

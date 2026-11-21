@@ -4,6 +4,7 @@ import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName, neighborhood } from './graph-model.js';
 import { createForceSimulation, layoutBounds, layoutNetwork } from './graph-layout.js';
 import { mountLoom } from './graph-loom.js';
+import { mainConnections, mobileFit, mobileFitHeight } from './graph-mobile-fit.js';
 import { renderIcon as icon } from './atlas-icons.js';
 import { animateAtlasChange } from './atlas-ui.js';
 import { filterCompanies, indexCompanies, readExploration, writeExploration, countryName } from './atlas-exploration.js';
@@ -13,13 +14,14 @@ const $=id=>document.getElementById(id);
 const entityKinds=['startup','partner','person','programme','provider'];
 const kinds=new Set(entityKinds);
 const compact=window.matchMedia?.('(max-width: 600px)');
+const mobileOverview=window.matchMedia?.(mobileFit.media);
 let store, rootId, selectedId, depth=1, zoom=1, listVisible=false, searchTimer, composing=false;
 let layout, bounds, simulation, frame=null, pan={x:0,y:0}, gesture=null, suppressClick=false;
 let loom, loomViewport, loomUnavailable=false, renderedCameraKey;
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
 const pinned=new Map();
 let scope=readExploration(new URLSearchParams(location.search));
-let dimensions, controls, currentView;
+let dimensions, controls, currentView, mapView, fullMap=false;
 let searchMatches=[], searchedQuery, visibleCompanies=new Set();
 const initials=name=>name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
 const imageUrl=value=>sourceUrl(value)||(/^\.\/assets\/logos\/[a-z0-9-]+\.(?:svg|png)$/i.test(value||'')?value:'');
@@ -112,19 +114,19 @@ function reportZoom(zoomPercent) {
   const percent = `${zoomPercent}%`;
   if (readout && readout.textContent!==percent) readout.textContent = percent;
 }
-function cameraKey() {
-  return 'atlas:graph-camera:'+rootId+':'+depth+':'+entityKinds.filter(kind=>kinds.has(kind)).join(',')+':'+Boolean(compact?.matches);
+function cameraKey(overview) {
+  return 'atlas:graph-camera:'+rootId+':'+depth+':'+entityKinds.filter(kind=>kinds.has(kind)).join(',')+':'+Boolean(compact?.matches)+(overview?':main-connections':'');
 }
 function saveCamera() {
   if (!renderedCameraKey) return;
   syncPin();
   try { sessionStorage.setItem(renderedCameraKey,JSON.stringify({zoom,pan,loom:loom?.savedViewport(),pinned:[...pinned]})); } catch { /* Camera remains available on this page. */ }
 }
-function restoreCamera() {
+function restoreCamera(overview, reset=false) {
   zoom=1;pan={x:0,y:0};loomViewport=null;pinned.clear();
-  if (!rootId) return;
+  if (reset) return;
   try {
-    const camera=JSON.parse(sessionStorage.getItem(cameraKey()) || 'null');
+    const camera=JSON.parse(sessionStorage.getItem(cameraKey(overview)) || 'null');
     if (!camera) return;
     if (Number.isFinite(camera.zoom) && camera.zoom>=.7 && camera.zoom<=1.7) zoom=camera.zoom;
     if (Number.isFinite(camera.pan?.x) && Number.isFinite(camera.pan?.y)) pan=camera.pan;
@@ -185,17 +187,19 @@ function resetLoom() {
   $('graph-loom-controls').hidden=true;
   $('graph-canvas').removeAttribute('hidden');
   canvas.parentElement.dataset.renderer='svg';
+  canvas.parentElement.style.removeProperty('--graph-fit-height');
 }
 
-function renderLoom(view,dense) {
+function renderLoom(view,dense,overview) {
   const canvas=$('graph-loom-canvas');
   if (!canvas || loomUnavailable) return;
   const controls=$('graph-loom-controls');
+  if (overview) canvas.parentElement.style.setProperty('--graph-fit-height',`${mobileFitHeight(view.nodes.length-1)}px`);
   canvas.hidden=false;
   controls.hidden=false;
   $('graph-canvas').setAttribute('hidden','');
   try {
-    loom=mountLoom({canvas,controls,view,root:rootId,dense,kinds:entityKinds,pins:pinned,viewport:loomViewport,
+    loom=mountLoom({canvas,controls,view,root:rootId,dense,overview,kinds:entityKinds,pins:pinned,viewport:loomViewport,
       image:entityImage,traverse:traverseMap,rememberPin,reportZoom});
     canvas.parentElement.dataset.renderer='loom';
   } catch {
@@ -204,27 +208,40 @@ function renderLoom(view,dense) {
   }
 }
 
-function renderMap() {
+function renderMap({resetCamera=false}={}) {
+  const previousViewport=loom?.savedViewport();
   stopSimulation();
   resetLoom();
   const view=neighborhood(store.graph,rootId,{depth,kinds,limit:Infinity});
   const dense=view.nodes.length>25;
+  const fitted=mobileOverview?.matches && !loomUnavailable ? mainConnections(view,rootId) : null;
+  const useOverview=Boolean(fitted) && !fullMap;
   currentView=view;
+  mapView=useOverview ? fitted : view;
   layout=null;bounds=null;simulation=null;
-  renderLoom(view,dense);
+  if (resetCamera || renderedCameraKey!==cameraKey(useOverview)) restoreCamera(useOverview,resetCamera);
+  else loomViewport=previousViewport;
+  renderLoom(mapView,dense && !useOverview,useOverview);
   if (!loom) {
+    mapView=view;
+    if (useOverview) restoreCamera(false,resetCamera);
     layout=layoutNetwork(view,rootId,pinned);
     bounds=layoutBounds(layout);
     simulation=createForceSimulation(layout,pinned);
     renderSvgMap();
   }
-  renderedCameraKey=cameraKey();
+  renderedCameraKey=cameraKey(mapView!==currentView);
+  const toggle=$('graph-full-map');
+  if (toggle) {
+    toggle.hidden=!(loom && fitted);
+    toggle.setAttribute('aria-pressed',String(!toggle.hidden && fullMap));
+  }
   const root=store.graph.entities.find(entity=>entity.id===rootId);
   if($('network-heading'))$('network-heading').textContent='Around '+root.name;
   if($('graph-title'))$('graph-title').textContent=`${root.name} / Relationships`;
   const guide=document.querySelector?.('.network-map-guide');
   if (guide) {
-    guide.dataset.dense=String(Boolean(loom) && dense);
+    guide.dataset.dense=String(Boolean(loom) && dense && mapView===currentView);
     guide.textContent=guide.dataset.dense==='true' ? 'Zoom for names or open the connections list.' : 'Tap a node to follow its connections.';
   }
   renderGraphScope();updateSelection();
@@ -245,7 +262,8 @@ function renderGraphScope() {
   if (!currentView) return;
   const companyCount=currentView.nodes.filter(node=>visibleCompanies.has(node.id) && kinds.has('startup')).length;
   const label=companyCount===1?'1 company in scope':companyCount+' companies in scope';
-  $('graph-count').textContent=label+' · '+currentView.edges.length+' connections';
+  $('graph-count').textContent=mapView===currentView ? label+' · '+currentView.edges.length+' connections'
+    : `${mapView.nodes.length-1} direct neighbours shown · ${currentView.edges.length} connections in list`;
   const nodes=new Map(currentView.nodes.map(node=>[node.id,node]));
   for (const node of mapControls().querySelectorAll('.network-node')) {
     const entity=nodes.get(node.dataset.node);
@@ -263,7 +281,7 @@ function renderList(view) {
     const nodeButton=entity=>'<button type="button" data-select="'+esc(entity.id)+'"'+(visibleCompanies.has(entity.id)?'':' data-context="true"')+'>'+esc(entity.name)+'</button>';
     return '<li>'+nodeButton(from)+'<span>→ '+esc(relationshipText(edge))+' →</span>'+nodeButton(to)+(source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Evidence ↗</a>':'')+'</li>';
   }).filter(Boolean);
-  $('graph-list').innerHTML='<div class="network-list-heading"><h3 tabindex="-1">Visible connections</h3><a href="#graph-list-toggle">Back to map</a></div>'+(items.length?'<ul>'+items.join('')+'</ul>':'<p class="detail-empty">No connections match the selected types.</p>');
+  $('graph-list').innerHTML='<div class="network-list-heading"><h3 tabindex="-1">All matching connections</h3><a href="#graph-list-toggle">Back to map</a></div>'+(items.length?'<ul>'+items.join('')+'</ul>':'<p class="detail-empty">No connections match the selected types.</p>');
   $('graph-list').hidden=!listVisible;
 }
 function relationshipText(edge) {
@@ -303,11 +321,11 @@ function writeState(push=false, previous=rootId, followed=null) {
 function syncPin() {
   const button = $('graph-pin');
   if (!button) return;
-  button.disabled = !currentView?.nodes.some(node=>node.id===selectedId);
+  button.disabled = !mapView?.nodes.some(node=>node.id===selectedId);
   button.setAttribute('aria-pressed',String(!button.disabled && pinned.has(selectedId)));
 }
 function updateSelection() {
-  const canCenter=currentView?.nodes.some(node=>node.id===selectedId);
+  const canCenter=mapView?.nodes.some(node=>node.id===selectedId);
   const center=$('graph-center');
   if (center) center.disabled=!canCenter;
   syncPin();
@@ -329,13 +347,15 @@ function renderDetail() {
     return;
   }
   const details=entityDetails(store.graph,selectedId), entity=details.entity, names=new Map(details.related.map(item=>[item.id,item]));
-  const visibleIds=new Set(currentView?.nodes.map(node=>node.id)||[]);
+  const visibleIds=new Set(mapView?.nodes.map(node=>node.id));
+  const listedIds=new Set(currentView?.nodes.map(node=>node.id));
   const orderedEdges = [...details.edges].sort((a,b)=>Number(b.kind==='founded')-Number(a.kind==='founded'));
   const related=orderedEdges.map(edge=>{
     const other=names.get(edge.from===selectedId?edge.to:edge.from);if(!other)return '';
     const image=entityImage(other);
     const icon=image?'<img src="'+esc(image)+'" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="detail-mark-fallback" hidden>'+esc(initials(other.name))+'</span>':esc(initials(other.name));
-    return '<li><span class="detail-mini '+(image ? logoClassFor(other.name) : '')+'" aria-hidden="true">'+icon+'</span><div class="detail-connection-copy"><button type="button" data-select="'+esc(other.id)+'">'+esc(other.name)+'</button><small>'+esc(relationshipText(edge))+'</small>'+(visibleIds.has(other.id)?'':'<small class="detail-outside">Outside current map</small>')+evidence(edge.source,'Relationship source')+'</div></li>';
+    const location=listedIds.has(other.id) ? 'In connections list' : 'Outside current map';
+    return '<li><span class="detail-mini '+(image ? logoClassFor(other.name) : '')+'" aria-hidden="true">'+icon+'</span><div class="detail-connection-copy"><button type="button" data-select="'+esc(other.id)+'">'+esc(other.name)+'</button><small>'+esc(relationshipText(edge))+'</small>'+(visibleIds.has(other.id)?'':'<small class="detail-outside">'+location+'</small>')+evidence(edge.source,'Relationship source')+'</div></li>';
   }).filter(Boolean);
   const url=entityImage(entity),rounds=[...details.rounds].sort((a,b)=>(b.announced_on||'').localeCompare(a.announced_on||''));
   const logo = `<span class="detail-mark${entity.kind==='person' ? ' person' : ''}${url ? ' has-logo '+logoClassFor(entity.name) : ''}${paddedCanvaMark(url) ? ' padded-mark' : ''}" aria-hidden="true">${url
@@ -345,7 +365,7 @@ function renderDetail() {
   const source=evidence(entity.source,'Profile source')+evidence(entity.website,entity.kind==='person'?'Professional profile':'Website')+evidence(entity.logo_source,'Image source');
   const isRoot=selectedId===rootId;
   const outOfScope=entity.kind==='startup'&&!visibleCompanies.has(selectedId);
-  const selectionNote=outOfScope?'Outside current results':isRoot?'Map centred here.':visibleIds.has(selectedId)?'Selected within this map.':'Selected outside this map.';
+  const selectionNote=outOfScope?'Outside current results':isRoot?'Map centred here.':visibleIds.has(selectedId)?'Selected within this map.':listedIds.has(selectedId)?'Selected in the connections list.':'Selected outside this map.';
   const inspectAction=isRoot?'':'<button class="detail-explore atlas-button" type="button" data-explore="'+esc(entity.id)+'">Explore from here</button>';
   const company=dimensions.get(selectedId);
   const headquarters=company?.country ? [company.city,countryName(company.country)].filter(Boolean).join(', ') : 'Not recorded';
@@ -388,7 +408,8 @@ function select(id,writeHistory=true) {
 }
 function explore(id,writeHistory=true,followed=null) {
   if(!store.graph.entities.some(entity=>entity.id===id)) {
-    stopSimulation();resetLoom();layout=null;bounds=null;currentView=null;rootId=null;selectedId=null;renderedCameraKey=null;
+    stopSimulation();resetLoom();layout=null;bounds=null;currentView=null;mapView=null;rootId=null;selectedId=null;renderedCameraKey=null;
+    if($('graph-full-map'))$('graph-full-map').hidden=true;
     $('graph-detail').innerHTML='<p class="detail-empty">This entry is not in the published graph. Search for another organisation.</p>';
     $('graph-canvas').innerHTML='<text x="460" y="320" text-anchor="middle">Entry not found</text>';
     $('graph-count').textContent='0 entities shown';
@@ -397,7 +418,7 @@ function explore(id,writeHistory=true,followed=null) {
     return;
   }
   const previous=rootId;
-  if (rootId!==id) { if (writeHistory) saveCamera();rootId=id;restoreCamera(); }
+  if (rootId!==id) { if (writeHistory) saveCamera();rootId=id; }
   selectedId=id;
   renderMap();
   if(writeHistory)writeState(true,previous,followed);
@@ -547,12 +568,12 @@ $('graph-filters').addEventListener('click',event=>{
   saveCamera();
   if(kinds.has(kind))kinds.delete(kind);else kinds.add(kind);
   button.setAttribute('aria-pressed',String(kinds.has(kind)));
-  if(rootId){restoreCamera();renderMap();renderDetail();writeState();}
+  if(rootId){renderMap();renderDetail();writeState();}
   if(!$('graph-results').hidden)renderSearchResults();
 });
 $('graph-depth').addEventListener('change',event=>{
   const next=Number(event.target.value)===2?2:1;
-  if (depth!==next) { saveCamera();depth=next;restoreCamera(); }
+  if (depth!==next) {saveCamera();depth=next;}
   if(store&&rootId){renderMap();renderDetail();writeState();}
 });
 $('graph-list-toggle').addEventListener('click',()=>{
@@ -580,6 +601,11 @@ function changeZoom(delta) {
 $('graph-zoom-in').addEventListener('click',()=>changeZoom(.2));
 $('graph-zoom-out').addEventListener('click',()=>changeZoom(-.2));
 $('graph-back')?.addEventListener('click',()=>history.back());
+$('graph-full-map')?.addEventListener('click',()=>{
+  if (!rootId) return;
+  saveCamera();fullMap=!fullMap;
+  renderMap();renderDetail();
+});
 $('graph-fit')?.addEventListener('click',()=>{
   if(!currentView)return;
   if (loom) loom.fit();
@@ -588,7 +614,7 @@ $('graph-fit')?.addEventListener('click',()=>{
 });
 function centerNode(id) {
   if (loom) {
-    if (currentView.nodes.some(node=>node.id===id)) { loom.center(id);saveCamera(); }
+    if (mapView.nodes.some(node=>node.id===id)) { loom.center(id);saveCamera(); }
     return;
   }
   const node=layout?.nodes.find(node=>node.id===id);
@@ -599,7 +625,7 @@ function centerNode(id) {
 $('graph-center')?.addEventListener('click',()=>centerNode(selectedId));
 $('graph-pin')?.addEventListener('click',()=>{
   if (loom) {
-    if (currentView.nodes.some(node=>node.id===selectedId)) loom.setPin(selectedId,pinned.has(selectedId));
+    if (mapView.nodes.some(node=>node.id===selectedId)) loom.setPin(selectedId,pinned.has(selectedId));
     return;
   }
   const selected = layout?.nodes.find(node=>node.id===selectedId);
@@ -608,7 +634,7 @@ $('graph-pin')?.addEventListener('click',()=>{
   else pinned.set(selected.id,{x:selected.x,y:selected.y});
   saveCamera();
 });
-$('graph-reset').addEventListener('click',()=>{zoom=1;pan={x:0,y:0};loomViewport=null;pinned.clear();if(store&&rootId)renderMap();saveCamera();});
+$('graph-reset').addEventListener('click',()=>{if(store&&rootId){renderMap({resetCamera:true});saveCamera();}});
 function restoreFromUrl() {
   if(!store)return;
   const active=document.activeElement;
@@ -628,7 +654,7 @@ function restoreFromUrl() {
   $('graph-query').value=nextScope.query;
   updateScope(nextScope);
   if(nextRoot!==rootId)explore(nextRoot,false);
-  else if(mapChanged){restoreCamera();renderMap();}
+  else if(mapChanged)renderMap();
   else renderGraphScope();
   const selected=params.get('inspection')==='none' ? null
     : store.graph.entities.some(entity=>entity.id===nextScope.selected) ? nextScope.selected : rootId;
@@ -643,7 +669,14 @@ window.addEventListener('pagehide',event=>{
   saveCamera();
   if (!event.persisted) loom.destroy();
 });
-compact?.addEventListener?.('change',()=>{if(store&&rootId){saveCamera();restoreCamera();renderMap();renderDetail();}});
+function resizeMap() {
+  if (!store || !rootId) return;
+  const focusedId=mapControls().contains?.(document.activeElement) ? document.activeElement?.dataset?.node : null;
+  saveCamera();renderMap();renderDetail();
+  if (focusedId) focusMapNode(mapView.nodes.some(node=>node.id===focusedId) ? focusedId : rootId);
+}
+compact?.addEventListener?.('change',resizeMap);
+mobileOverview?.addEventListener?.('change',resizeMap);
 
 document.addEventListener('atlas:export-records',event=>{
   if (!currentView) return;
