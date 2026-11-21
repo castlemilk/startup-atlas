@@ -107,28 +107,18 @@ appears as review context even on the issuer's own website. Capture the
 linked article separately with its own source dates and excerpt. The
 review does not fetch the article or assign transaction dates to the listing.
 
-For a former name, add up to four `former_names` entries with the exact former
-`name` and an `evidence_id` cited by the committed alias decision. Record the
-following fields in its saved review evidence.
+Funding review uses the canonical inventory name. The manifest may include up
+to four `former_names` references, each with the exact former `name` and its
+`evidence_id`. A reference can expand searches or capture matching only with
+independently pinned issuer evidence that binds both company names to the
+committed identity review. The existing pin covers the exact archived Arkeus
+rebrand batch, issuer URL and evidence digest.
 
-```json
-{
-  "role": "former_name",
-  "name": "Ready Company",
-  "alias_name": "Old Company",
-  "support": "Old Company rebranded as Ready Company."
-}
-```
-
-The evidence `name` is the current inventory name, and `alias_name` is the
-complete former company name. Review both against the cited issuer source.
-Use a complete issuer statement or reviewed paraphrase of the name change.
-The handoff holds untyped evidence, name mismatches and statements that lack
-explicit name-change wording. It preserves the historical Arkeus rebrand
-receipt using its exact source and evidence digest. Other identity and
-programme observations remain in the saved review. The report links the
-admitted evidence digest and prioritises issuer pages with explicit early-stage
-financing language. A lead
+The offline report lists other requests in `held_former_names` and continues the
+canonical review. The saved identity and programme observations remain available
+in their original bundle. The batch reviewer, role and name fields are
+reviewer-supplied. The bundle digest checks file integrity. Independent issuer
+evidence is still required before a new name can expand funding review. A lead
 needs wording that ties the round to the company. Keep phrasing that leaves the
 issuer or purpose unclear available for source review. Grants,
 contracts, valuations and portfolio backing can be useful context. A mixed

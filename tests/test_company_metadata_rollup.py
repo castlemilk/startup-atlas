@@ -203,6 +203,12 @@ class CompanyMetadataRollupTests(unittest.TestCase):
         return {'url': SITE + path, 'excerpt': excerpt, 'retrieved_on': '2026-11-19',
                 'acquisition': 'page_excerpt', **changes}
 
+    @staticmethod
+    def former_name_pin(batch_path, evidence_id, former):
+        raw = batch_path.read_bytes()
+        evidence = next(entry for entry in json.loads(raw)['evidence'] if entry['id'] == evidence_id)
+        return {(evidence['name'], digest(raw), evidence['source_url'], evidence['sha256']): former}
+
     def test_funding_followup_surfaces_early_leads_without_changing_coverage(self):
         pair = self.bundle('financing', FIRST, [
             (COMPANY, 'identity', 'reviewed'), (COMPANY, 'aliases', 'reviewed'),
@@ -224,7 +230,9 @@ class CompanyMetadataRollupTests(unittest.TestCase):
         ], 'former_names': [{'name': 'Old Company', 'evidence_id': 'evidence-1'}]},
                      {'name': STAGED, 'captures': []}, {'name': OTHER, 'captures': []}]
         journal_before = pair[1].read_bytes()
-        result = self.reconcile(pair, funding_review=self.funding_manifest(companies))
+        pin = self.former_name_pin(pair[0], 'evidence-1', 'Old Company')
+        with patch.dict('scripts.rollup_company_metadata.PINNED_FORMER_NAMES', pin, clear=True):
+            result = self.reconcile(pair, funding_review=self.funding_manifest(companies))
         funding = result.pop('funding_review')
         self.assertEqual(before, result)
         self.assertEqual(journal_before, pair[1].read_bytes())
@@ -251,106 +259,99 @@ class CompanyMetadataRollupTests(unittest.TestCase):
         self.assertEqual(by_name[OTHER]['action'], 'blocked')
         self.assertEqual(by_name[OTHER]['searches'], [])
         companies[0]['captures'].reverse()
-        reordered = self.reconcile(pair, funding_review=self.funding_manifest(list(reversed(companies))))['funding_review']
-        self.assertEqual(funding['companies'], reordered['companies'])
+        with patch.dict('scripts.rollup_company_metadata.PINNED_FORMER_NAMES', pin, clear=True):
+            reordered = self.reconcile(pair, funding_review=self.funding_manifest(list(reversed(companies))))
+        self.assertEqual(funding['companies'], reordered['funding_review']['companies'])
 
-    def test_funding_review_requires_a_bound_former_name_receipt(self):
-        nomination = 'Ready Company named Old Company as a grant nominee.'
-        name_change = 'Ready Company was formerly known as Old Company.'
-        missing = 'committed alias review'
-        explicit = 'explicit name change'
-
-        def attested(alias='Old Company', **changes):
-            return {'role': 'former_name', 'name': COMPANY, 'alias_name': alias, **changes}
-
-        cases = [
-            ('Old Company', nomination, {'role': 'nominee'}, missing),
-            ('Old Company', nomination, {}, missing),
-            ('Old Company', nomination, attested(), explicit),
-            ('Old Company', name_change, attested(role='nominee'), missing),
-            ('Old Company', name_change, attested(name=OTHER), missing),
-            ('Old Company', name_change, attested('Old Company Holdings'), missing),
-            ('Old Company', name_change, attested('old company'), missing),
-            ('Old Company', name_change, attested(source_url='https://elsewhere.example/rename'), missing),
-            ('Old Company', name_change, {'role': 'former_name'}, missing),
-            ('Old Company', name_change, {}, missing),
-            ('Old Company', 'Former grant nominees: Ready Company and Old Company.', attested(), explicit),
-            ('Old Company', 'Ready Company named its nominees. Old Company rebranded as Other Co.',
-             attested(), explicit),
-            ('Old Company', 'The nominee wrote “Ready Company was formerly known as Old Company.”',
-             attested(), explicit),
-            ('Old Company', name_change[:-1] + '?', attested(), explicit),
-            ('Old Company', name_change + ' Correction: Old Company was only a nominee.', attested(), explicit),
-            ('Old Company', 'Ready Company was formerly known as Old Company Holdings.', attested(), explicit),
-            ('Old Company', 'Ready Company (formerly Old Company)', attested(), explicit),
-            ('a programme finalist', 'Ready Company (formerly a programme finalist)', {}, missing),
-            ('a programme finalist', 'Ready Company was formerly known as a programme finalist.', {}, missing),
-            ('a programme finalist for the 2024 cohort',
-             'Ready Company was formerly known as a programme finalist for the 2024 cohort.', {}, missing),
-            ('the programme finalist at Demo Day',
-             'Ready Company (formerly known as the programme finalist at Demo Day)', {}, missing),
-            ('A Funding Beneficiary', 'READY COMPANY WAS PREVIOUSLY KNOWN AS A FUNDING BENEFICIARY.', {}, missing),
-            ('the winner at Demo Day', 'Ready Company (previously known as the winner at Demo Day)', {}, missing),
-            ('an accelerator alumnus', '“Ready Company was previously known as an accelerator alumnus.”', {}, missing),
-            ('Old Company', name_change, attested(), None),
-            ('Old Company', 'Ready Company (formerly known as Old Company)', attested(), None),
-            ('Old Company', 'Old Company rebranded as Ready Company.', attested(), None),
-            ('Old Company', 'On 16 February 2023 the company described Old Company’s change of brand to '
-             'Ready Company. ABN history separately confirms continuity of legal entity.', attested(), None),
-            ('Nominee for Growth Pty Ltd', 'Nominee for Growth Pty Ltd changed its name to Ready Company.',
-             attested('Nominee for Growth Pty Ltd'), None),
-        ]
-        cases.extend((alias, f'{COMPANY} was previously known as {alias}.', {}, missing) for alias in (
-            'a funding beneficiary', 'an accelerator alumnus', 'the winner at Demo Day',
-            'an alum of the 2024 cohort', 'the 2024 grant awardee',
+    def test_funding_review_keeps_unpinned_former_names_as_context(self):
+        cases = [(label, f'Ready Company was formerly known as {label}.') for label in (
+            'the award winner', 'an accelerator cohort member', 'the shortlisted company',
+            'the pilot partner', 'a programme finalist',
+        )]
+        cases.extend((
+            ('THE AWARD WINNER', 'READY COMPANY WAS FORMERLY KNOWN AS THE AWARD WINNER.'),
+            ('the pilot partner', 'Ready Company (formerly known as the pilot partner)'),
+            ('the award winner', '“Ready Company was formerly known as the award winner.”'),
+            ('a funding beneficiary', 'Ready Company was previously known as a funding beneficiary.'),
+            (OTHER, 'Ready Company was formerly known as Second Company.'),
+            ('Nominee for Growth Pty Ltd', 'Nominee for Growth Pty Ltd changed its name to Ready Company.'),
         ))
-        for i, (alias, support, details, error) in enumerate(cases):
-            with self.subTest(alias=alias, support=support, details=details):
+        for i, (alias, wording) in enumerate(cases):
+            with self.subTest(alias=alias, wording=wording):
                 pair = self.bundle(f'former-{i}', FIRST, [(COMPANY, 'identity', 'reviewed'),
-                    (COMPANY, 'aliases', 'reviewed')], alias_proof={'support': support, **details})
+                    (COMPANY, 'aliases', 'reviewed')], alias_proof={
+                        'role': 'former_name', 'name': COMPANY, 'alias_name': alias, 'support': wording,
+                    })
                 self.commit(pair)
-                before = self.reconcile(pair)
+                coverage = self.reconcile(pair)
                 journal = pair[1].read_bytes()
                 archive = self.capture('seed', alias + ' closed a seed round.', url='https://archive.example/old')
-                company = {'name': COMPANY, 'captures': [
-                    archive, self.capture('nominees', 'Ready Company was named as a nominee for a grant.'),
-                ]}
+                canonical = self.capture('seed', 'Ready Company closed a seed round.')
+                grant = self.capture('nominees', 'Ready Company was named as a nominee for a grant.')
+                reference = {'name': alias, 'evidence_id': 'evidence-1'}
                 request = self.funding_manifest([{
-                    **company, 'former_names': [{'name': alias, 'evidence_id': 'evidence-1'}],
+                    'name': COMPANY, 'former_names': [reference], 'captures': [archive, canonical, grant],
                 }])
-                if error:
-                    with self.assertRaisesRegex(ValueError, error):
-                        self.reconcile(pair, funding_review=request)
-                    request = self.funding_manifest([company])
-                report = self.reconcile(pair, funding_review=request)
-                entry, = report.pop('funding_review')['companies']
-                self.assertEqual(report, before)
-                self.assertEqual(pair[1].read_bytes(), journal)
-                self.assertEqual({row['url']: row['bucket'] for row in entry['results']}, {
-                    SITE + 'nominees': 'context', archive['url']: 'unmatched' if error else 'early_round_lead',
+                result = self.reconcile(pair, funding_review=request)
+                company, = result.pop('funding_review')['companies']
+                self.assertEqual([row['name'] for row in company['searches']], [COMPANY])
+                self.assertEqual(company['former_names'], [])
+                self.assertEqual(company['held_former_names'], [
+                    {**reference, 'reason': 'Independently pinned issuer evidence is required'},
+                ])
+                self.assertEqual({row['url']: row['bucket'] for row in company['results']}, {
+                    archive['url']: 'unmatched', canonical['url']: 'early_round_lead', grant['url']: 'context',
                 })
-                self.assertEqual([row['name'] for row in entry['former_names']], [] if error else [alias])
-                self.assertEqual(len(entry['searches']), 1 if error else 2)
+                self.assertEqual(result, coverage)
+                self.assertEqual(pair[1].read_bytes(), journal)
 
-    def test_legacy_former_name_receipt_requires_the_exact_evidence_digest(self):
-        proof = {'support': 'Old Company rebranded as Ready Company.'}
+    def test_former_name_pin_binds_the_original_batch_source_digest_and_name(self):
+        alias = 'Nominee for Growth Pty Ltd'
+        proof = {'role': 'former_name', 'name': COMPANY, 'alias_name': alias,
+                 'support': f'{alias} changed its name to Ready Company.'}
         observations = [(COMPANY, 'identity', 'reviewed'), (COMPANY, 'aliases', 'reviewed')]
-        original = self.bundle('legacy', FIRST, observations, alias_proof=proof)
+        original = self.bundle('original', FIRST, observations, alias_proof=proof)
         modified = self.bundle('modified', SECOND, observations, alias_proof={**proof, 'note': 'New receipt'})
-        self.commit(original)
-        self.commit(modified)
-        content = original[0].with_name('evidence-1.json').read_bytes()
-        legacy = {(COMPANY, SITE + 'news/rename', digest(content)): 'Old Company'}
-        request = self.funding_manifest([{
-            'name': COMPANY, 'former_names': [{'name': 'Old Company', 'evidence_id': 'evidence-1'}],
-            'captures': [self.capture('seed', 'Old Company closed a seed round.')],
-        }])
-        with patch.dict('scripts.rollup_company_metadata.LEGACY_FORMER_NAMES', legacy, clear=True):
-            entry, = self.reconcile(original, funding_review=request)['funding_review']['companies']
-            self.assertEqual(entry['results'][0]['bucket'], 'early_round_lead')
-            self.assertEqual(entry['former_names'][0]['sha256'], digest(content))
-            with self.assertRaisesRegex(ValueError, 'committed alias review'):
-                self.reconcile(modified, funding_review=request)
+        repacked = self.bundle('repacked', THIRD, observations, alias_proof=proof)
+        for pair in (original, modified, repacked):
+            self.commit(pair)
+        archive = self.capture('archive', f'{alias} closed a seed round.')
+
+        def funding(pair, references):
+            request = self.funding_manifest([{
+                'name': COMPANY, 'former_names': references, 'captures': [archive],
+            }])
+            company, = self.reconcile(pair, funding_review=request)['funding_review']['companies']
+            return company
+
+        pin = self.former_name_pin(original[0], 'evidence-1', alias)
+        reference = {'name': alias, 'evidence_id': 'evidence-1'}
+        with patch.dict('scripts.rollup_company_metadata.PINNED_FORMER_NAMES', pin, clear=True):
+            accepted = funding(original, [reference])
+            self.assertEqual(accepted['results'][0]['bucket'], 'early_round_lead')
+            self.assertEqual([row['name'] for row in accepted['searches']], [COMPANY, alias])
+            self.assertNotIn('held_former_names', accepted)
+            for held in (funding(modified, [reference]), funding(repacked, [reference]),
+                         funding(original, [{**reference, 'name': 'Nominee-for Growth Pty Ltd'}])):
+                self.assertEqual(held['former_names'], [])
+                self.assertEqual(held['results'][0]['bucket'], 'unmatched')
+                self.assertEqual([row['name'] for row in held['searches']], [COMPANY])
+                self.assertIn('held_former_names', held)
+
+            other = {**reference, 'evidence_id': 'evidence-0'}
+            mixed = funding(original, [reference, other])
+            self.assertEqual(mixed, funding(original, [other, reference]))
+            self.assertEqual(mixed['former_names'], accepted['former_names'])
+            self.assertEqual(mixed['held_former_names'][0]['evidence_id'], 'evidence-0')
+
+        (name, batch_sha, source, proof_sha), = pin
+        wrong_source = {(name, batch_sha, source + '-copy', proof_sha): alias}
+        with patch.dict('scripts.rollup_company_metadata.PINNED_FORMER_NAMES', wrong_source, clear=True):
+            self.assertEqual(funding(original, [reference])['results'][0]['bucket'], 'unmatched')
+        conflicting = {(name, batch_sha, source, proof_sha): OTHER}
+        with patch.dict('scripts.rollup_company_metadata.PINNED_FORMER_NAMES', conflicting, clear=True):
+            with self.assertRaisesRegex(ValueError, 'ambiguous'):
+                funding(original, [{**reference, 'name': OTHER}])
 
     def test_funding_review_keeps_coverage_listing_and_article_dates_separate(self):
         pair = self.bundle('coverage', FIRST, [(COMPANY, 'identity', 'reviewed')])
@@ -461,14 +462,10 @@ class CompanyMetadataRollupTests(unittest.TestCase):
             return self.funding_manifest([{'name': name, 'captures': captures or [],
                                            'former_names': former_names or []}], **binding)
 
-        former = {'name': 'Old Company', 'evidence_id': 'evidence-1'}
         for manifest, error in [
             (lambda: request(revision='b' * 40), 'exact inventory plan'),
             (lambda: request(name=OTHER), 'reviewed company identity'),
-            (lambda: request(former_names=[{**former, 'evidence_id': 'evidence-0'}]),
-             'committed alias review'),
-            (lambda: request(former_names=[{**former, 'name': OTHER}]),
-             'ambiguous'),
+            (lambda: request(former_names=[{'name': '...', 'evidence_id': 'evidence-1'}]), 'identify a company'),
             (lambda: request(captures=[self.capture('public', 'Ready Company raised seed funding.',
                                                     url='http://ready.example/news')]), 'public HTTPS'),
             (lambda: request(captures=[self.capture('snippet', 'Ready Company raised seed funding.',

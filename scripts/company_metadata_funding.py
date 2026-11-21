@@ -490,44 +490,28 @@ def includes_name(passage, normalized_name):
     return bool(normalized_name) and f' {normalized_name} ' in f' {name_key(passage)} '
 
 
-def supports_former_name(support, current, former):
-    """Require an affirmative statement tying the two complete company names together."""
-    current = re.escape(' '.join(current.split()))
-    former = re.escape(' '.join(former.split()))
-    former_wording = r'(?:formerly|previously) (?:known as|called|named)'
-    statements = (
-        rf'{current} was {former_wording} {former}',
-        rf'{current} \({former_wording} {former}\)',
-        rf'{former} (?:rebranded as|was renamed to|changed its name to|is now known as) {current}',
-        # Preserve the existing dated rebrand paraphrase with its registry corroboration.
-        rf"(?:On [0-9]{{1,2}} [A-Za-z]+ [0-9]{{4}},? )?the company described {former}['’]s "
-        rf"change of (?:brand|name) to {current}(?:\. ABN history separately confirms continuity of legal entity)?",
-    )
-    return re.fullmatch(r'(?:' + '|'.join(statements) + r')\.?', ' '.join(support.split()), re.I) is not None
-
-
 def former_names(aliases, current, host, owners, evidence):
     if not isinstance(aliases, list) or len(aliases) > 4:
         raise ValueError('Expected at most four reviewed former names')
-    names = []
+    names, held = [], []
     for alias in aliases:
         fields(alias, ('name', 'evidence_id'))
         label = text(alias['name'], 'former name', 256)
         key = name_key(label)
         evidence_id = text(alias['evidence_id'], 'alias evidence ID', 64)
-        if not key or key in owners:
-            raise ValueError('Former name is ambiguous in the reviewed company inventory')
+        if not key:
+            raise ValueError('Former name must identify a company')
         artifact = evidence.get((current, evidence_id, label))
-        if artifact is None:
-            raise ValueError('Former name requires evidence from the committed alias review that binds both names')
-        support = text(artifact['support'], 'former-name evidence', 1500)
-        if website_host(artifact['source_url']) != host:
-            raise ValueError('Former name lacks support from the reviewed issuer site')
-        if not supports_former_name(support, current, label):
-            raise ValueError('Former name needs an explicit name change in the reviewed issuer evidence')
+        if artifact is None or website_host(artifact['source_url']) != host:
+            held.append({**alias, 'reason': 'Independently pinned issuer evidence is required'})
+            continue
+        if key in owners:
+            raise ValueError('Former name is ambiguous in the reviewed company inventory')
         owners.add(key)
         names.append({**alias, **artifact})
-    return sorted(names, key=lambda item: item['name'])
+    names.sort(key=lambda item: item['name'])
+    held.sort(key=lambda item: (item['name'], item['evidence_id']))
+    return names, held
 
 
 def associated_round(clause, mention, names):
@@ -1140,7 +1124,7 @@ def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
         host = website_host(site_url(row.get('website') or record.get('website')))
         if not host:
             raise ValueError('Funding review needs the reviewed official website')
-        aliases = former_names(company.get('former_names', []), name, host, owners, alias_evidence)
+        aliases, held = former_names(company.get('former_names', []), name, host, owners, alias_evidence)
         action = next_action(row['fields'])
         searches = []
         if action == 'search_early_history':
@@ -1160,5 +1144,7 @@ def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
             'unique_urls_by_bucket': {bucket: sum(result['bucket'] == bucket for result in results) for bucket in BUCKETS},
             'results': results,
         }
+        if held:
+            entries[name]['held_former_names'] = held
     return {'manifest_sha256': digest(raw), 'external_source_population': 'unknown',
             'review_required': True, 'companies': [entries[name] for name in sorted(entries)]}
