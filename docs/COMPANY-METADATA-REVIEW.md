@@ -108,9 +108,15 @@ linked article separately with its own source dates and excerpt. The
 review does not fetch the article or assign transaction dates to the listing.
 
 For a former name, add up to four `former_names` entries with `name` and the
-`evidence_id` cited by the committed alias decision. Use the issuer's saved
-evidence of the name change. The report links that exact evidence digest and
-prioritises issuer pages with explicit early-stage financing language. A lead
+`evidence_id` cited by the committed alias decision. Use a complete issuer
+statement or reviewed paraphrase that connects the exact former and current names in the correct
+direction, such as “Old Company rebranded as Ready Company.” A bare “formerly” title or a past programme role
+requires a separate statement of the former company name. When the saved
+evidence specifies a `role`, use `former_name` for a name change. Grant nominees,
+trading names and other relationships can remain in the saved review. An
+unsupported former-name request is held before search hints or financing leads
+are generated. The report links the admitted evidence digest and prioritises
+issuer pages with explicit early-stage financing language. A lead
 needs wording that ties the round to the company. Keep phrasing that leaves the
 issuer or purpose unclear available for source review. Grants,
 contracts, valuations and portfolio backing can be useful context. A mixed

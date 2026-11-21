@@ -51,7 +51,7 @@ class CompanyMetadataRollupTests(unittest.TestCase):
             'identity_note': 'Verified saved regulator record and official site.', **changes,
         }
 
-    def bundle(self, key, at, observations, *, staged=None, graph=None):
+    def bundle(self, key, at, observations, *, staged=None, graph=None, alias_proof=None):
         folder = self.root / key
         folder.mkdir()
         batch = {'version': 1, 'revision': REVISION, 'plan_id': self.plan['plan_id'],
@@ -74,7 +74,7 @@ class CompanyMetadataRollupTests(unittest.TestCase):
                 ]}
             source = {}
             if field == 'aliases' and name == COMPANY:
-                payload = {'support': 'Old Company rebranded as Ready Company.'}
+                payload = {'support': 'Old Company rebranded as Ready Company.'} if alias_proof is None else alias_proof
                 source = {'source_url': SITE + 'news/rename'}
             sha = self.write(folder / (key + '.json'), payload)
             batch['evidence'].append({'id': key, 'name': name, 'kind': kind, 'path': key + '.json',
@@ -252,6 +252,64 @@ class CompanyMetadataRollupTests(unittest.TestCase):
         companies[0]['captures'].reverse()
         reordered = self.reconcile(pair, funding_review=self.funding_manifest(list(reversed(companies))))['funding_review']
         self.assertEqual(funding['companies'], reordered['companies'])
+
+    def test_former_name_review_holds_nominees_and_requires_an_explicit_transition(self):
+        nomination = 'Ready Company named Old Company as a grant nominee.'
+        name_change = 'Ready Company was formerly known as Old Company.'
+        missing = 'committed alias review'
+        explicit = 'explicit name change'
+        cases = [
+            ('Old Company', nomination, {'role': 'nominee'}, missing),
+            ('Old Company', nomination, {}, explicit),
+            ('Old Company', nomination, {'role': 'former_name'}, explicit),
+            ('Old Company', name_change, {'role': 'nominee'}, missing),
+            ('Old Company', 'Former grant nominees: Ready Company and Old Company.', {}, explicit),
+            ('Old Company', 'Ready Company named its nominees. Old Company rebranded as Other Co.', {}, explicit),
+            ('Old Company', 'The nominee wrote “Ready Company was formerly known as Old Company.”', {}, explicit),
+            ('Old Company', name_change[:-1] + '?', {}, explicit),
+            ('Old Company', name_change + ' Correction: Old Company was only a nominee.', {}, explicit),
+            ('Old Company', 'Ready Company was formerly known as Old Company Holdings.', {}, explicit),
+            ('Old Company', 'Ready Company (formerly Old Company)', {}, explicit),
+            ('a programme finalist', 'Ready Company (formerly a programme finalist)', {}, explicit),
+            ('a programme finalist', 'Ready Company was formerly known as a programme finalist.', {}, explicit),
+            ('a programme finalist for the 2024 cohort',
+             'Ready Company was formerly known as a programme finalist for the 2024 cohort.', {}, explicit),
+            ('the programme finalist at Demo Day',
+             'Ready Company (formerly known as the programme finalist at Demo Day)', {}, explicit),
+            ('Old Company', name_change, {}, None),
+            ('Old Company', 'Ready Company (formerly known as Old Company)', {}, None),
+            ('Old Company', 'Old Company rebranded as Ready Company.', {'role': 'former_name'}, None),
+            ('Old Company', 'On 16 February 2023 the company described Old Company’s change of brand to '
+             'Ready Company. ABN history separately confirms continuity of legal entity.', {}, None),
+            ('Nominee Systems Pty Ltd', 'Nominee Systems Pty Ltd changed its name to Ready Company.', {}, None),
+        ]
+        for i, (alias, support, details, error) in enumerate(cases):
+            with self.subTest(alias=alias, support=support, details=details):
+                pair = self.bundle(f'former-{i}', FIRST, [(COMPANY, 'identity', 'reviewed'),
+                    (COMPANY, 'aliases', 'reviewed')], alias_proof={'support': support, **details})
+                self.commit(pair)
+                before = self.reconcile(pair)
+                journal = pair[1].read_bytes()
+                archive = self.capture('seed', alias + ' closed a seed round.', url='https://archive.example/old')
+                company = {'name': COMPANY, 'captures': [
+                    archive, self.capture('nominees', 'Ready Company was named as a nominee for a grant.'),
+                ]}
+                request = self.funding_manifest([{
+                    **company, 'former_names': [{'name': alias, 'evidence_id': 'evidence-1'}],
+                }])
+                if error:
+                    with self.assertRaisesRegex(ValueError, error):
+                        self.reconcile(pair, funding_review=request)
+                    request = self.funding_manifest([company])
+                report = self.reconcile(pair, funding_review=request)
+                entry, = report.pop('funding_review')['companies']
+                self.assertEqual(report, before)
+                self.assertEqual(pair[1].read_bytes(), journal)
+                self.assertEqual({row['url']: row['bucket'] for row in entry['results']}, {
+                    SITE + 'nominees': 'context', archive['url']: 'unmatched' if error else 'early_round_lead',
+                })
+                self.assertEqual([row['name'] for row in entry['former_names']], [] if error else [alias])
+                self.assertEqual(len(entry['searches']), 1 if error else 2)
 
     def test_funding_review_keeps_coverage_listing_and_article_dates_separate(self):
         pair = self.bundle('coverage', FIRST, [(COMPANY, 'identity', 'reviewed')])

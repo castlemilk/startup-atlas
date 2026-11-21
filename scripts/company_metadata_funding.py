@@ -490,6 +490,26 @@ def includes_name(passage, normalized_name):
     return bool(normalized_name) and f' {normalized_name} ' in f' {name_key(passage)} '
 
 
+def supports_former_name(support, current, former):
+    """Require an affirmative statement tying the two complete company names together."""
+    # A previous programme role can occupy the same grammatical position as a name.
+    role_description = r'\b(?:nominee|finalist|applicant|recipient)s?(?:$| (?:for|in|at|of) )'
+    if re.search(role_description, name_key(former)):
+        return False
+    current = re.escape(' '.join(current.split()))
+    former = re.escape(' '.join(former.split()))
+    former_wording = r'(?:formerly|previously) (?:known as|called|named)'
+    statements = (
+        rf'{current} was {former_wording} {former}',
+        rf'{current} \({former_wording} {former}\)',
+        rf'{former} (?:rebranded as|was renamed to|changed its name to|is now known as) {current}',
+        # Preserve the existing dated rebrand paraphrase with its registry corroboration.
+        rf"(?:On [0-9]{{1,2}} [A-Za-z]+ [0-9]{{4}},? )?the company described {former}['’]s "
+        rf"change of (?:brand|name) to {current}(?:\. ABN history separately confirms continuity of legal entity)?",
+    )
+    return re.fullmatch(r'(?:' + '|'.join(statements) + r')\.?', ' '.join(support.split()), re.I) is not None
+
+
 def former_names(aliases, current, host, owners, evidence):
     if not isinstance(aliases, list) or len(aliases) > 4:
         raise ValueError('Expected at most four reviewed former names')
@@ -502,9 +522,10 @@ def former_names(aliases, current, host, owners, evidence):
         if artifact is None:
             raise ValueError('Former name requires evidence from the committed alias review')
         support = text(artifact['support'], 'former-name evidence', 1500)
-        if (not key or key in owners or website_host(artifact['source_url']) != host
-                or not includes_name(support, key) or not includes_name(support, name_key(current))):
+        if not key or key in owners or website_host(artifact['source_url']) != host:
             raise ValueError('Former name is ambiguous or lacks support from the reviewed issuer site')
+        if not supports_former_name(support, current, label):
+            raise ValueError('Former name needs an explicit name change in the reviewed issuer evidence')
         owners.add(key)
         names.append({**alias, **artifact})
     return sorted(names, key=lambda item: item['name'])

@@ -94,7 +94,10 @@ def committed_alias_evidence(effective, batches):
             if entry['kind'] not in ('review', 'identity_alias') or 'source_url' not in entry:
                 continue
             _, raw = saved_artifact(batch['root'], entry)
-            support = load_json(raw).get('support')
+            saved = load_json(raw)
+            if saved.get('role', 'former_name') != 'former_name':
+                continue
+            support = saved.get('support')
             if isinstance(support, str):
                 evidence[name, key] = {'source_url': entry['source_url'], 'support': support,
                                        'sha256': entry['sha256'], 'batch_sha256': decision['batch_sha256']}
