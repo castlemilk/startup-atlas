@@ -209,7 +209,7 @@ function placeOverviewFacts() {
 }
 
 function measureCompanyNavigation() {
-  const nav = root.querySelector('.entity-company-sticky .atlas-section-nav');
+  const nav = root.querySelector?.('.entity-company-sticky .atlas-section-nav');
   if (!nav) return;
   const sync = () => root.style.setProperty('--profile-nav-height', `${nav.offsetHeight}px`);
   sync();
