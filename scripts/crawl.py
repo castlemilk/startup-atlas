@@ -1256,6 +1256,49 @@ def logo_resolution(body, kind):
         return {'width':width,'height':height,'quality':'small raster' if max(width,height)<128 else 'raster'}
     return {'quality':'vector' if kind=='svg' else 'unknown'}
 
+def logo_candidate_priority(item):
+    """Rank logo candidates so the real logo is fetched before favicons.
+
+    Structured and metadata logos first, then header/home-link page logos,
+    then other page logos, then site icons. The previous sort only demoted
+    .ico site-icons, so under --logo-limit the first candidates fetched were
+    usually favicons and the structured logo stayed not_fetched.
+    """
+    kind = item.get('kind')
+    if kind in ('structured-logo', 'metadata-logo'):
+        return (0, 0)
+    if kind == 'page-logo-image':
+        evidence = item.get('evidence') or {}
+        return (1, 0) if evidence.get('home_link') or evidence.get('in_header_or_nav') else (2, 0)
+    if kind == 'site-icon':
+        return (3, 1) if urlsplit(item['url']).path.lower().endswith('.ico') else (3, 0)
+    return (3, 0)
+
+
+def fetch_image_bytes(transport, url):
+    """Fetch one image through the transport guards and identify its format.
+
+    Returns (body, kind, final_url). Raises CrawlError on any failure. The
+    caller owns the host decision: only call with a URL whose host is the
+    page's own host or an explicitly approved asset host.
+    """
+    status, headers, body, final = transport.request(
+        url, urlsplit(url).hostname,
+        accept='image/svg+xml,image/png,image/webp,image/jpeg,image/gif')
+    if status != 200:
+        raise CrawlError(f'HTTP {status}')
+    head = body[:2048].lstrip().lower()
+    kind = ('ico' if len(body) >= 6 and body[:4] == b'\x00\x00\x01\x00' and body[4:6] != b'\x00\x00'
+            else 'png' if body.startswith(b'\x89PNG\r\n\x1a\n')
+            else 'jpeg' if body.startswith(b'\xff\xd8\xff')
+            else 'gif' if body.startswith((b'GIF87a', b'GIF89a'))
+            else 'webp' if body[:4] == b'RIFF' and body[8:12] == b'WEBP'
+            else 'svg' if b'<svg' in head and not head.startswith(b'<!doctype html') else '')
+    if not kind:
+        raise CrawlError('Response is not a recognised image')
+    return body, kind, final
+
+
 def stage_partner_logos(snapshot,args,transport):
     """Capture candidate bytes from the reviewed site or its explicitly approved asset hosts.
 
@@ -1269,7 +1312,7 @@ def stage_partner_logos(snapshot,args,transport):
             # Bound retries even if a site supplies many duplicate or broken images.
             max_attempts=min(args.logo_limit*3,15)
             # Prefer higher-resolution alternatives before legacy favicons under the capture limit.
-            candidates=sorted(page.get('logo_candidates',[]),key=lambda item: item.get('kind')=='site-icon' and urlsplit(item['url']).path.lower().endswith('.ico'))
+            candidates=sorted(page.get('logo_candidates',[]),key=logo_candidate_priority)
             for item in candidates:
                 row={'partner':entry['name'],'page':page['final_url'],**item,'status':'not_fetched'}
                 if entry.get('crawl_scope') is not None: row['reason']='Scoped document approval does not authorize asset downloads'
@@ -1280,12 +1323,8 @@ def stage_partner_logos(snapshot,args,transport):
                 else:
                     attempts+=1
                     try:
-                        status,headers,body,final=transport.request(item['url'],urlsplit(item['url']).hostname,accept='image/svg+xml,image/png,image/webp,image/jpeg,image/gif')
-                        if status!=200: raise CrawlError(f'HTTP {status}')
+                        body, kind, final = fetch_image_bytes(transport, item['url'])
                         # Store as opaque bytes: never execute, inline, or publish without review.
-                        head=body[:2048].lstrip().lower()
-                        kind=('ico' if len(body)>=6 and body[:4]==b'\x00\x00\x01\x00' and body[4:6]!=b'\x00\x00' else 'png' if body.startswith(b'\x89PNG\r\n\x1a\n') else 'jpeg' if body.startswith(b'\xff\xd8\xff') else 'gif' if body.startswith((b'GIF87a',b'GIF89a')) else 'webp' if body[:4]==b'RIFF' and body[8:12]==b'WEBP' else 'svg' if b'<svg' in head and not head.startswith(b'<!doctype html') else '')
-                        if not kind: raise CrawlError('Response is not a recognised image')
                         digest=hashlib.sha256(body).hexdigest()
                         if digest in seen_digests:
                             row.update(status='duplicate',final_url=final,format=kind,sha256=digest,reason='Identical bytes already captured for this page')
@@ -1297,6 +1336,65 @@ def stage_partner_logos(snapshot,args,transport):
                 rows.append(row)
     return {'version':1,'mode':'logos','generated_at':utc_now(),'results':snapshot['results'],'candidates':rows,
             'warning':'Untrusted candidate files require identity, license and safety review before publishing. A favicon or social image may not be the partner logo.'}
+
+
+def stage_headshots(result, scopes, args, transport):
+    """Fetch portrait bytes for professional-bio headshot candidates.
+
+    Runs after crawl_company_profiles: each professional-bio candidate with a
+    headshot_candidate is fetched through the same transport guards as logos
+    (approved host, public address, throttle, 429 stop). Files are opaque
+    .bin research artefacts, never served or published without review.
+    LinkedIn and other social hosts are never fetched, and scoped document
+    approval never authorizes an asset download.
+    """
+    rows = []
+    folder = args.out / 'portrait-files'
+    folder.mkdir(parents=True, exist_ok=True)
+    for candidate in list(result.get('candidates', [])):
+        headshot = candidate.get('headshot_candidate')
+        if not headshot:
+            continue
+        company = candidate.get('company')
+        url = headshot.get('candidate_url')
+        row = {'company': company, 'name': candidate.get('name'), 'role': candidate.get('role'),
+               'kind': 'portrait', 'candidate_url': url, 'source_url': headshot.get('source_url'),
+               'checked_at': candidate.get('checked_at'), 'status': 'not_fetched',
+               'review_required': True}
+        host = (urlsplit(url).hostname or '').lower() if url else ''
+        if scopes.get(company) is not None:
+            row['reason'] = 'Scoped document approval does not authorize asset downloads'
+        elif host in ('linkedin.com', 'www.linkedin.com'):
+            row['reason'] = 'Social hosts are never fetched as headshots'
+        elif headshot.get('reason') == 'External asset host requires separate review':
+            row['reason'] = 'External asset host requires separate review'
+        elif not url:
+            row['reason'] = 'No portrait URL was recorded for this person'
+        else:
+            try:
+                body, kind, final = fetch_image_bytes(transport, url)
+                digest = hashlib.sha256(body).hexdigest()
+                (folder / (digest + '.bin')).write_bytes(body)
+                row.update(status='captured', final_url=final, format=kind, sha256=digest,
+                           bytes=len(body), file=str(folder / (digest + '.bin')),
+                           resolution=logo_resolution(body, kind))
+            except (CrawlError, ValueError, OSError) as exc:
+                row.update(status='skipped', reason=str(exc))
+        rows.append(row)
+    return rows
+
+
+def crawl_portraits(args, transport):
+    """Company-profile crawl plus portrait-byte staging for its bio candidates."""
+    startups = json.loads((ROOT / 'data/startup-research.json').read_text(encoding='utf-8'))['startups']
+    result = crawl_company_profiles(startups, args, transport)
+    result['mode'] = 'portraits'
+    scopes = {row['name']: row.get('crawl_scope') for row in result['results']}
+    result['candidates'].extend(stage_headshots(result, scopes, args, transport))
+    result['warning'] = ('Research-only page observations and unreviewed portrait bytes, '
+                         'not verified headshots. Review each subject, role and asset '
+                         'provenance before publication. No image is published by this mode.')
+    return result
 
 def crawl_program_directories(registry,args,transport):
     sources=registry['sources']
@@ -1644,7 +1742,7 @@ def write_review_csv(path,data):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos','partner-candidates','profiles','company-profiles','news'])
+    p.add_argument('mode',choices=['sites','discover','programs','partners','captures','apply-reviewed','logos','partner-candidates','profiles','company-profiles','portraits','news'])
     p.add_argument('--limit',type=int,default=0,help='Maximum records (0 = all)')
     p.add_argument('--delay',type=float,default=1.0,help='Minimum seconds between requests to one host (at least 1)')
     p.add_argument('--follow',type=int,default=2,help='Same-host related pages per starting page, 0–5')
@@ -1664,7 +1762,7 @@ def main(argv=None):
     if args.mode=='apply-reviewed' and not args.approved: p.error('apply-reviewed requires --approved PATH')
     if args.mode=='partner-candidates' and (not args.approved or not args.snapshot): p.error('partner-candidates requires --approved and --snapshot')
     if args.mode=='captures' and not args.captures: p.error('captures requires --captures PATH')
-    if args.mode in ('logos','profiles','company-profiles') and not args.approved: p.error(f'{args.mode} requires --approved PATH')
+    if args.mode in ('logos','profiles','company-profiles','portraits') and not args.approved: p.error(f'{args.mode} requires --approved PATH')
     if args.leads and args.mode!='discover': p.error('--leads is only valid with discover')
     if args.mode=='partners' and args.approved: p.error('partners uses curated directory seeds, not --approved')
     if args.partners_only and (args.mode not in ('sites','logos') or not args.approved): p.error('--partners-only requires sites or logos --approved PATH')
@@ -1702,6 +1800,7 @@ def main(argv=None):
         if args.mode=='news': data=crawl_startup_news(json.loads(STARTUP_NEWS_SOURCES.read_text(encoding='utf-8')),args,transport)
         elif args.mode=='profiles': data=crawl_profiles(catalogue,args,transport)
         elif args.mode=='company-profiles': data=crawl_company_profiles(json.loads((ROOT/'data/startup-research.json').read_text(encoding='utf-8'))['startups'],args,transport)
+        elif args.mode=='portraits': data=crawl_portraits(args,transport)
         elif args.mode=='sites': data=crawl_sites(catalogue,args,transport)
         elif args.mode=='logos': data=stage_partner_logos(crawl_sites(catalogue,args,transport),args,transport)
         elif args.mode=='discover': data=discover(catalogue,args,transport)
@@ -1710,6 +1809,7 @@ def main(argv=None):
     if globals().get('__implementation__'): data['implementation']=__implementation__
     path=args.out/f'{args.mode}-{stamp()}.json'; write_json(path,data); write_json(args.out/f'latest-{args.mode}.json',data)
     if args.mode=='profiles': print(f"Prepared {len(data['candidates'])} unreviewed profile leads")
+    if args.mode=='portraits': print(f"Prepared {sum(1 for row in data['candidates'] if row.get('kind')=='portrait')} unreviewed portrait leads")
     if args.mode=='news': print(f"Prepared {len(data['candidates'])} unreviewed news leads")
     if args.mode=='discover':
         review=args.out/f'partner-review-{stamp()}.csv'; write_review_csv(review,data); print(f'Review candidates: {review}')
@@ -1722,7 +1822,7 @@ def main(argv=None):
     if args.mode=='partners':
         review=args.out/f'partner-directory-review-{stamp()}.csv'; write_partner_directory_review_csv(review,data); print(f"Review {len(data['candidates'])} directory leads: {review}")
         for note in data['notes']: print(f"{note['source_url']}: {note['message']}",file=sys.stderr)
-    if args.mode in ('profiles','company-profiles','news','programs'):
+    if args.mode in ('profiles','company-profiles','portraits','news','programs'):
         coverage=data['coverage']
         print(f"Page fetch coverage: {coverage['fetch_status']}; {coverage['pages_succeeded']}/{coverage['pages_attempted']} attempted pages fetched; {coverage['pages_skipped_or_failed']} skipped or failed.")
     print(f'Snapshot: {path}')

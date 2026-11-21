@@ -22,9 +22,11 @@ jobs:
         run: python3 scripts/crawl.py news --follow 2
         continue-on-error: true
       - name: Stage approved partner logos
-        run: python3 scripts/crawl.py logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 2
+        run: python3 scripts/crawl.py logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 3
       - name: Discover team and portfolio leads
         run: python3 scripts/crawl.py profiles --approved data/partner-logo-seeds.csv --follow 2 --limit 32
+      - name: Stage founder and team portraits
+        run: python3 scripts/crawl.py portraits --approved data/company-profile-seeds.csv --follow 2
       - name: Prepare partner metadata for review
         run: python3 scripts/crawl.py partner-candidates --approved data/partner-logo-seeds.csv --snapshot research/crawl/latest-logos.json
       - name: Summarize outputs
@@ -33,7 +35,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import json
-          for mode in ('partners', 'programs', 'news', 'logos', 'profiles'):
+          for mode in ('partners', 'programs', 'news', 'logos', 'profiles', 'portraits'):
               path = Path('research/crawl') / f'latest-{mode}.json'
               if not path.exists():
                   print(f'{mode}: no snapshot')
@@ -44,6 +46,9 @@ jobs:
                   print(f"  {row.get('name')}: " + ', '.join(p.get('status', 'unknown') for p in row.get('pages', [])))
               for item in data.get('candidates', []) if mode == 'logos' else []:
                   print(f"  {item.get('partner')}: {item.get('kind')} {item.get('status')} {item.get('url')} {item.get('reason', '')}")
+              for item in data.get('candidates', []) if mode == 'portraits' else []:
+                  if item.get('kind') == 'portrait':
+                      print(f"  {item.get('company')}: portrait {item.get('name')} {item.get('status')} {item.get('candidate_url')} {item.get('reason', '')}")
               for note in data.get('notes', []):
                   print(f"  note: {note}")
           PY

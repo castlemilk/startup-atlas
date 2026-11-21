@@ -129,6 +129,8 @@ for (const file of await (await import('node:fs/promises')).readdir(queryDir)) {
 }
 await cp('node_modules/@tanstack/query-core/LICENSE','dist/vendor/TANSTACK-QUERY-LICENSE.txt');
 await cp('web/assets/logos','dist/assets/logos',{recursive:true});
+if (existsSync('web/assets/portraits')) await cp('web/assets/portraits','dist/assets/portraits',{recursive:true});
+if (existsSync('web/assets/manifests')) await cp('web/assets/manifests','dist/assets/manifests',{recursive:true});
 await cp('web/assets/design-lab','dist/assets/design-lab',{recursive:true});
 if (existsSync('web/assets/fonts')) await cp('web/assets/fonts','dist/assets/fonts',{recursive:true});
 await mkdir('dist/assets/design-icons',{recursive:true});

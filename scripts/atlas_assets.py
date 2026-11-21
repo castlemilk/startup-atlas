@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 """Offline image review and private staging; no network, MCP or record writes.
 
-This prototype accepts a deliberately small PNG subset. It validates the complete
-PNG/zlib stream, not all image formats or every conceivable decoder vulnerability.
-Provenance is caller attestation: a digest binds its text, but does not authenticate
-the reviewer, prove identity, clear rights or authorize publication.
+This prototype accepts a deliberately small PNG subset, a safety-checked SVG
+subset, and Pillow conversions from WebP, ICO, JPEG, GIF and non-strict PNG
+into strict PNG. It validates the complete PNG/zlib stream, not all image
+formats or every conceivable decoder vulnerability. Provenance is caller
+attestation: a digest binds its text, but does not authenticate the reviewer,
+prove identity, clear rights or authorize publication.
+
+A conversion preserves the original digest alongside the derivative digest;
+it never relabels a file or strips licence-bearing metadata to make it pass.
+SVG is published only after the safety checks in inspect_svg; it is never
+rasterized by this helper, which has no approved SVG rasterizer.
 
 An explicit private store must be outside Git checkouts. Immutable blobs are
 deduplicated independently from review manifests. A durable intent precedes writes;
@@ -18,6 +25,7 @@ import argparse
 import binascii
 import datetime as dt
 import hashlib
+import io
 import ipaddress
 import json
 import os
@@ -28,6 +36,7 @@ import stat
 import struct
 import sys
 from urllib.parse import unquote, urlsplit
+import xml.etree.ElementTree as ET
 import zlib
 
 
@@ -234,6 +243,110 @@ def inspect_png(data, declared_mime='image/png', observed_mime=None, expected_sh
             'validation': 'png-rgb8-v0'}
 
 
+def _svg_dimension(value):
+    """Parse an SVG length (number, optionally with a px suffix) or return None."""
+    if value is None:
+        return None
+    text = value.strip()
+    if text.endswith('px'):
+        text = text[:-2]
+    try:
+        number = float(text)
+    except ValueError:
+        return None
+    if number != number or number in (float('inf'), float('-inf')):
+        return None
+    return number
+
+
+# Tags and attributes that can execute code, embed foreign content or fetch
+# remote resources. The same rules are enforced for published files by
+# tests/logos.test.js; keep both in sync.
+_SVG_FORBIDDEN_TAGS = {'script', 'foreignobject', 'image', 'iframe', 'object',
+                       'embed', 'link', 'meta', 'base', 'audio', 'video'}
+# <use> is allowed only with a local fragment href; the attribute check below
+# rejects every other reference. <image> stays forbidden: a published SVG must
+# not smuggle in raster bytes that the vector checks cannot see.
+_SVG_FORBIDDEN_ATTRS = ('on',)
+_SVG_MAX_ELEMENTS = 2000
+
+
+def inspect_svg(data, declared_mime='image/svg+xml', observed_mime=None, expected_sha256=None):
+    """Safety-check an SVG as static vector bytes; never rasterize or fetch it.
+
+    Accepts well-formed SVG with a root <svg>, bounded dimensions and only
+    local fragment references. Rejects scripts, foreign content, event-handler
+    attributes, external references, stylesheets/imports, DOCTYPE/entity
+    declarations and embedded raster images. Dimensions come from width/height
+    attributes, falling back to the viewBox.
+    """
+    data = _image_bytes(data)
+    if declared_mime != 'image/svg+xml' or (observed_mime is not None and observed_mime != 'image/svg+xml'):
+        _fail('MIME_MISMATCH', 'mime', 'Declared and available observed MIME must each be image/svg+xml.')
+    if expected_sha256 is not None and (type(expected_sha256) is not str or not HEX.fullmatch(expected_sha256)):
+        _fail('VALIDATION_ERROR', 'expected_sha256', 'Expected a lower-case SHA-256 hex digest.')
+    digest = _digest(data)
+    if expected_sha256 is not None and digest != expected_sha256:
+        _fail('DIGEST_MISMATCH', 'expected_sha256', 'Supplied bytes do not match the expected digest.')
+    lowered = data.lower()
+    if b'<!doctype' in lowered or b'<!entity' in lowered:
+        _fail('UNSUPPORTED_IMAGE', 'svg', 'DOCTYPE and entity declarations are rejected.')
+    if b'<script' in lowered or b'javascript:' in lowered:
+        _fail('UNSUPPORTED_IMAGE', 'svg', 'Script content is rejected.')
+    try:
+        root = ET.fromstring(data)
+    except ET.ParseError:
+        _fail('INVALID_SVG', 'svg', 'SVG is not well-formed XML.')
+    tag = root.tag.rsplit('}', 1)[-1].lower()
+    if tag != 'svg':
+        _fail('UNSUPPORTED_IMAGE', 'svg', 'Root element must be <svg>.')
+    width = _svg_dimension(root.get('width'))
+    height = _svg_dimension(root.get('height'))
+    if (width is None or height is None) and root.get('viewBox'):
+        try:
+            parts = [float(part) for part in root.get('viewBox').split()]
+        except ValueError:
+            parts = []
+        if len(parts) == 4 and parts[2] > 0 and parts[3] > 0:
+            width, height = parts[2], parts[3]
+    if width is None or height is None:
+        _fail('INVALID_SVG', 'dimensions', 'SVG needs width/height attributes or a viewBox.')
+    if not 1 <= width <= MAX_DIMENSION or not 1 <= height <= MAX_DIMENSION or width * height > MAX_PIXELS:
+        _fail('INVALID_SVG', 'dimensions', f'Dimensions must be 1–{MAX_DIMENSION}, with at most {MAX_PIXELS} pixels.')
+    elements = 0
+    for element in root.iter():
+        elements += 1
+        if elements > _SVG_MAX_ELEMENTS:
+            _fail('INVALID_SVG', 'svg', f'SVG exceeds {_SVG_MAX_ELEMENTS} elements.')
+        name = element.tag.rsplit('}', 1)[-1].lower()
+        if name in _SVG_FORBIDDEN_TAGS:
+            _fail('UNSUPPORTED_IMAGE', 'svg', f'<{name}> is not allowed in a published SVG.')
+        for key, value in element.attrib.items():
+            attr = key.rsplit('}', 1)[-1].lower()
+            if attr.startswith(_SVG_FORBIDDEN_ATTRS):
+                _fail('UNSUPPORTED_IMAGE', 'svg', f'Event-handler attribute {attr} is not allowed.')
+            if attr in ('href', 'xlink:href', 'src'):
+                if not value.startswith('#'):
+                    _fail('UNSUPPORTED_IMAGE', 'svg', 'Only local fragment references are allowed.')
+            if attr == 'style' and ('url(' in value.lower() or '@import' in value.lower() or 'http' in value.lower()):
+                _fail('UNSUPPORTED_IMAGE', 'svg', 'External references in inline styles are not allowed.')
+        if name == 'style':
+            style = (element.text or '').lower()
+            if 'url(' in style or '@import' in style or 'http' in style:
+                _fail('UNSUPPORTED_IMAGE', 'svg', 'External references in <style> are not allowed.')
+    return {'asset_id': 'asset:sha256:' + digest, 'sha256': digest, 'bytes': len(data),
+            'mime': 'image/svg+xml', 'declared_mime': declared_mime, 'observed_mime': observed_mime,
+            'width': int(width), 'height': int(height), 'bit_depth': None, 'color_type': None,
+            'validation': 'svg-safe-v0'}
+
+
+def inspect_image(data, declared_mime='image/png', observed_mime=None, expected_sha256=None):
+    """Dispatch to the PNG or SVG inspector by declared MIME."""
+    if declared_mime == 'image/svg+xml':
+        return inspect_svg(data, declared_mime, observed_mime, expected_sha256)
+    return inspect_png(data, declared_mime, observed_mime, expected_sha256)
+
+
 def _validate_blob(blob):
     _object(blob, ('asset_id', 'sha256', 'bytes', 'mime', 'declared_mime', 'observed_mime',
                    'width', 'height', 'bit_depth', 'color_type', 'validation'), 'blob')
@@ -244,6 +357,12 @@ def _validate_blob(blob):
             _fail('VALIDATION_ERROR', 'blob.' + key, 'Invalid measured integer.')
     if blob['width'] * blob['height'] > MAX_PIXELS:
         _fail('VALIDATION_ERROR', 'blob.dimensions', 'Pixel limit exceeded.')
+    if blob['validation'] == 'svg-safe-v0':
+        if blob['mime'] != 'image/svg+xml' or blob['declared_mime'] != 'image/svg+xml' or blob['observed_mime'] not in (None, 'image/svg+xml'):
+            _fail('VALIDATION_ERROR', 'blob', 'Unsupported SVG validation profile or MIME metadata.')
+        if blob['bit_depth'] is not None or blob['color_type'] is not None:
+            _fail('VALIDATION_ERROR', 'blob', 'SVG blobs carry no PNG bit depth or colour type.')
+        return
     if type(blob['bit_depth']) is not int or blob['bit_depth'] != 8 or type(blob['color_type']) is not int or blob['color_type'] not in (2, 6):
         _fail('VALIDATION_ERROR', 'blob', 'Unsupported measured PNG parameters.')
     if blob['mime'] != 'image/png' or blob['declared_mime'] != 'image/png' or blob['observed_mime'] not in (None, 'image/png') or blob['validation'] != 'png-rgb8-v0':
@@ -259,7 +378,7 @@ def validate_provenance(provenance, blob, now=None):
         _fail('VALIDATION_ERROR', 'now', 'The reference clock must be a timezone-aware datetime.')
     _object(provenance, ('subject_id', 'role', 'source_page', 'source_asset_url', 'final_url',
                         'approved_asset_host', 'host_evidence_url', 'acquired_at', 'acquisition',
-                        'source_kind', 'identity', 'rights'), 'provenance', ('redirects',))
+                        'source_kind', 'identity', 'rights'), 'provenance', ('redirects', 'conversion'))
     subject = _text(provenance['subject_id'], 'subject_id', 240)
     if not SUBJECT_ID.fullmatch(subject):
         _fail('VALIDATION_ERROR', 'subject_id', 'Supply the exact existing canonical-shaped subject ID; no name-to-ID inference is performed.')
@@ -293,7 +412,11 @@ def validate_provenance(provenance, blob, now=None):
     _object(rights, ('decision', 'basis', 'evidence_url', 'evidence', 'attribution', 'reviewer',
                      'reviewed_at', 'public_repository', 'public_website'), 'rights')
     _choice(rights['decision'], ('approved', 'unknown', 'rejected'), 'rights.decision')
-    _choice(rights['basis'], ('owned', 'licence', 'permission', 'unresolved'), 'rights.basis')
+    # 'nominative' is display of the subject's own published brand mark (or a
+    # person's own published portrait) with attribution and a source link,
+    # without implying endorsement and without a located licence or permission.
+    # The owner approves that use by merging the publishing PR.
+    _choice(rights['basis'], ('owned', 'licence', 'permission', 'nominative', 'unresolved'), 'rights.basis')
     rights_reviewed = rights['decision'] in ('approved', 'rejected')
     _text(rights['evidence'], 'rights.evidence', 4000, rights_reviewed)
     _text(rights['reviewer'], 'rights.reviewer', 200, rights_reviewed)
@@ -309,6 +432,20 @@ def validate_provenance(provenance, blob, now=None):
             _fail('VALIDATION_ERROR', 'rights.' + key, 'Expected an explicit boolean.')
         if rights[key] and rights['decision'] != 'approved':
             _fail('VALIDATION_ERROR', 'rights.' + key, 'Unresolved or rejected rights cannot assert public use approval.')
+    conversion = provenance.get('conversion')
+    if conversion is not None:
+        _object(conversion, ('original_sha256', 'original_format', 'derivative_sha256',
+                             'transformation', 'tool'), 'conversion')
+        if type(conversion['original_sha256']) is not str or not HEX.fullmatch(conversion['original_sha256']):
+            _fail('VALIDATION_ERROR', 'conversion.original_sha256', 'Expected a lower-case SHA-256 hex digest.')
+        if conversion['derivative_sha256'] != blob['sha256']:
+            _fail('VALIDATION_ERROR', 'conversion.derivative_sha256', 'The derivative digest must match the validated bytes.')
+        _choice(conversion['original_format'], ('png', 'webp', 'ico', 'jpeg', 'gif'), 'conversion.original_format')
+        _choice(conversion['transformation'], ('png-strict-reencode', 'webp-to-png', 'ico-to-png',
+                                               'jpeg-to-png', 'gif-to-png'), 'conversion.transformation')
+        _text(conversion['tool'], 'conversion.tool', 200)
+        if blob['mime'] != 'image/png':
+            _fail('VALIDATION_ERROR', 'conversion', 'A conversion record belongs to a PNG derivative.')
     manifest = {'schema': SCHEMA, 'blob': blob, 'provenance': provenance}
     encoded = _canonical_bytes(manifest)
     if len(encoded) > MAX_MANIFEST_BYTES:
@@ -323,11 +460,62 @@ def validate_asset(data, provenance, declared_mime='image/png', observed_mime=No
     references needed to inspect an interrupted first write, without touching a
     store or assuming that any previous stage operation completed.
     """
-    blob = inspect_png(data, declared_mime, observed_mime, expected_sha256)
+    blob = inspect_image(data, declared_mime, observed_mime, expected_sha256)
     manifest = validate_provenance(provenance, blob)
     return {'schema': 'atlas.asset-validation.v0', 'asset_id': blob['asset_id'],
             'asset_revision': 'sha256:' + _digest(_canonical_bytes(manifest)),
             'state': 'validated', 'published': False, 'manifest': manifest}
+
+
+_CONVERT_FORMATS = {'png': 'PNG', 'webp': 'WEBP', 'ico': 'ICO', 'jpeg': 'JPEG', 'gif': 'GIF'}
+_CONVERT_TRANSFORMATIONS = {'png': 'png-strict-reencode', 'webp': 'webp-to-png', 'ico': 'ico-to-png',
+                            'jpeg': 'jpeg-to-png', 'gif': 'gif-to-png'}
+
+
+def convert_image(data, source_format):
+    """Decode a raster image and re-encode it as strict PNG.
+
+    Pixels are preserved; the container is rebuilt with only IHDR, IDAT and
+    IEND chunks, so real-world PNGs with ancillary chunks or interlacing pass
+    the strict validator. Returns (png_bytes, conversion_record) where the
+    record binds the original digest to the derivative digest. SVG is rejected:
+    this helper has no approved SVG rasterizer.
+    """
+    try:
+        from PIL import Image
+    except ImportError:
+        _fail('UNSUPPORTED_IMAGE', 'conversion', 'Pillow is required to convert raster images; it is not installed.')
+    if source_format not in _CONVERT_FORMATS:
+        _fail('UNSUPPORTED_IMAGE', 'conversion', 'Conversion supports PNG, WebP, ICO, JPEG and GIF only; SVG needs a separately reviewed rasterizer.')
+    data = _image_bytes(data)
+    original_sha256 = _digest(data)
+    try:
+        with Image.open(io.BytesIO(data)) as image:
+            if image.format != _CONVERT_FORMATS[source_format]:
+                _fail('UNSUPPORTED_IMAGE', 'conversion', f'Decoded format {image.format} does not match declared {source_format}.')
+            image.load()
+            if not 1 <= image.size[0] <= MAX_DIMENSION or not 1 <= image.size[1] <= MAX_DIMENSION \
+                    or image.size[0] * image.size[1] > MAX_PIXELS:
+                _fail('INVALID_IMAGE', 'conversion', 'Decoded dimensions exceed the asset policy.')
+            if image.mode in ('RGBA', 'LA', 'PA') or (image.mode == 'P' and 'transparency' in image.info):
+                converted = image.convert('RGBA')
+            else:
+                converted = image.convert('RGB')
+            width, height = converted.size
+            buffer = io.BytesIO()
+            converted.save(buffer, format='PNG')
+            png_bytes = buffer.getvalue()
+    except AssetError:
+        raise
+    except Exception:
+        _fail('INVALID_IMAGE', 'conversion', 'Source bytes could not be decoded.')
+    blob = inspect_png(png_bytes)
+    record = {'original_sha256': original_sha256, 'original_format': source_format,
+              'derivative_sha256': blob['sha256'], 'derivative_bytes': blob['bytes'],
+              'width': width, 'height': height,
+              'transformation': _CONVERT_TRANSFORMATIONS[source_format],
+              'tool': 'Pillow ' + Image.__version__}
+    return png_bytes, record
 
 
 def _absolute(path):
@@ -513,7 +701,7 @@ class StageStore:
                 _write_new(intent_path, intent)
             except FileExistsError:
                 _fail('STAGE_BUSY', 'asset_revision', 'Another writer owns this intent. Inspect its result before retrying.')
-            blob_path = self.root / 'blobs' / (blob['sha256'] + '.png')
+            blob_path = self.root / 'blobs' / (blob['sha256'] + ('.svg' if blob['mime'] == 'image/svg+xml' else '.png'))
             try:
                 _write_new(blob_path, data)
             except FileExistsError:
@@ -551,8 +739,8 @@ class StageStore:
             _validate_blob(manifest['blob'])
             if manifest['blob']['asset_id'] != asset_id:
                 _fail('ASSET_REVISION_MISMATCH', 'asset_reference', 'The review belongs to a different byte identity.')
-            data = _read_file(self.root / 'blobs' / (digest + '.png'), MAX_BYTES)
-            blob = inspect_png(data, manifest['blob']['declared_mime'], manifest['blob']['observed_mime'], digest)
+            data = _read_file(self.root / 'blobs' / (digest + ('.svg' if manifest['blob']['mime'] == 'image/svg+xml' else '.png')), MAX_BYTES)
+            blob = inspect_image(data, manifest['blob']['declared_mime'], manifest['blob']['observed_mime'], digest)
             canonical_manifest = validate_provenance(manifest['provenance'], blob)
             if manifest_bytes != _canonical_bytes(canonical_manifest):
                 _fail('INTEGRITY_ERROR', 'manifest', 'Stored metadata differs from measured bytes or canonical provenance.')
@@ -568,6 +756,21 @@ class StageStore:
             _fail('NOT_FOUND', 'asset_reference', 'No complete receipt and verified objects exist for this exact asset revision.')
         except OSError as exc:
             _fail('UNSAFE_STORE', 'store', f'Stored objects could not be read safely ({exc.__class__.__name__}).')
+
+    def read_bytes(self, asset_id, asset_revision):
+        """Return the exact verified bytes for a staged asset.
+
+        Re-reads the stored blob after get() has verified the receipt,
+        manifest and byte digest, so a later adapter copies measured bytes.
+        """
+        packet = self.get(asset_id, asset_revision)
+        blob = packet['manifest']['blob']
+        digest = blob['sha256']
+        extension = '.svg' if blob['mime'] == 'image/svg+xml' else '.png'
+        data = _read_file(self.root / 'blobs' / (digest + extension), MAX_BYTES)
+        if _digest(data) != digest:
+            _fail('INTEGRITY_ERROR', 'blob', 'Stored bytes do not match the manifest digest.')
+        return data
 
     def prepare_public_export(self, asset_id, asset_revision, *, subject_id, role):
         """Return a pathless, verified packet; never write or authorize publication.
@@ -635,6 +838,10 @@ def main(argv=None):
             command.add_argument('--provenance', required=True)
         if name == 'stage':
             command.add_argument('--store', required=True)
+    convert = commands.add_parser('convert')
+    convert.add_argument('--file', required=True)
+    convert.add_argument('--from', required=True, dest='source_format', choices=tuple(_CONVERT_FORMATS))
+    convert.add_argument('--out', required=True)
     for name in ('get', 'prepare'):
         command = commands.add_parser(name)
         command.add_argument('--store', required=True)
@@ -645,12 +852,32 @@ def main(argv=None):
             command.add_argument('--role', required=True, choices=('logo', 'portrait'))
     try:
         args = parser.parse_args(argv)
-        if args.command in ('inspect', 'validate', 'stage'):
+        if args.command == 'convert':
+            data = _input_file(args.file, MAX_BYTES)
+            png_bytes, record = convert_image(data, args.source_format)
+            out = _absolute(args.out)
+            parent = _directory_fd(out.parent)
+            try:
+                fd = os.open(out.name, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600, dir_fd=parent)
+            finally:
+                os.close(parent)
+            try:
+                view = memoryview(png_bytes)
+                while view:
+                    count = os.write(fd, view)
+                    if count <= 0:
+                        raise OSError('Short write while converting an asset.')
+                    view = view[count:]
+                os.fsync(fd)
+            finally:
+                os.close(fd)
+            result = {'converted': True, 'out': str(out), **record}
+        elif args.command in ('inspect', 'validate', 'stage'):
             data = _input_file(args.file, MAX_BYTES)
             options = {'declared_mime': args.declared_mime, 'observed_mime': args.observed_mime,
                        'expected_sha256': args.expected_sha256}
             if args.command == 'inspect':
-                result = inspect_png(data, **options)
+                result = inspect_image(data, **options)
             else:
                 provenance = _json_bytes(_input_file(args.provenance, MAX_MANIFEST_BYTES))
                 if args.command == 'validate':

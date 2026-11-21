@@ -637,8 +637,10 @@ class WorkflowTests(unittest.TestCase):
                 {'url':'https://cdn.example.com/logo.png','kind':'structured-logo','source':'https://example.com/','same_host':False,'review_required':True},
                 {'url':'https://example.com/share.png','kind':'social-image','source':'https://example.com/','same_host':True,'review_required':True}]}]}]}
             transport=Fake();result=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=3),transport)
-            self.assertEqual([r['status'] for r in result['candidates']],['captured','duplicate','not_fetched','not_fetched'])
-            self.assertTrue(Path(result['candidates'][0]['file']).name.endswith('.bin'))
+            by_url={r['url']:r['status'] for r in result['candidates']}
+            self.assertEqual(by_url,{'https://example.com/logo.png':'captured','https://example.com/blocked.png':'duplicate','https://cdn.example.com/logo.png':'not_fetched','https://example.com/share.png':'not_fetched'})
+            captured=next(r for r in result['candidates'] if r['url']=='https://example.com/logo.png')
+            self.assertTrue(Path(captured['file']).name.endswith('.bin'))
             self.assertIn('https://example.com/blocked.png',transport.calls)
             self.assertFalse(any('/robots.txt' in url for url in transport.calls))
             self.assertNotIn('https://cdn.example.com/logo.png',transport.calls)
@@ -716,6 +718,45 @@ class WorkflowTests(unittest.TestCase):
             snapshot={'results':[{'name':'Example','pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[item('favicon.ico'),item('brand.svg')]}]}]}
             rows=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=1),Fake())['candidates']
             self.assertEqual([(row['url'].rsplit('/',1)[-1],row['status']) for row in rows],[('brand.svg','captured'),('favicon.ico','not_fetched')])
+
+    def test_capture_limit_prefers_structured_logo_over_favicons(self):
+        # Regression: the first candidates under --logo-limit were favicons,
+        # so the structured logo stayed not_fetched (Wing VC in Nov 2026).
+        class Fake:
+            delay=1
+            def request(self,url,*args,**kwargs):
+                return 200,{},b'\x89PNG\r\n\x1a\nexample',url
+        with tempfile.TemporaryDirectory() as tmp:
+            def item(path,kind):
+                return {'url':'https://example.com/'+path,'kind':kind,'source':'https://example.com/','same_host':True}
+            snapshot={'results':[{'name':'Example','pages':[{'status':'ok','final_url':'https://example.com/','logo_candidates':[
+                item('favicon.png','site-icon'),item('touch.png','site-icon'),item('brand.png','structured-logo'),item('header.png','page-logo-image')]}]}]}
+            rows=crawl.stage_partner_logos(snapshot,types.SimpleNamespace(out=Path(tmp),logo_limit=1),Fake())['candidates']
+            self.assertEqual([(row['url'].rsplit('/',1)[-1],row['status']) for row in rows],
+                             [('brand.png','captured'),('header.png','not_fetched'),('favicon.png','not_fetched'),('touch.png','not_fetched')])
+
+    def test_headshot_staging_fetches_only_approved_portrait_hosts(self):
+        class Fake:
+            delay=1
+            def request(self,url,allowed_host=None,*args,**kwargs):
+                if 'linkedin.com' in url: raise AssertionError('LinkedIn must never be fetched')
+                return 200,{},b'\x89PNG\r\n\x1a\nexample',url
+        bio={'company':'Example Co','name':'Alex Example','role':'Founder','checked_at':'2026-11-21T00:00:00Z',
+             'headshot_candidate':{'candidate_url':'https://example.com/team/alex.png','source_url':'https://example.com/team','status':'not_fetched'}}
+        external=dict(bio,headshot_candidate={'candidate_url':'https://cdn.other.com/alex.png','source_url':'https://example.com/team','status':'not_fetched','reason':'External asset host requires separate review'})
+        social=dict(bio,headshot_candidate={'candidate_url':'https://www.linkedin.com/in/alex','source_url':'https://example.com/team','status':'not_fetched'})
+        scoped=dict(bio,headshot_candidate={'candidate_url':'https://example.com/team/alex.png','source_url':'https://example.com/team','status':'not_fetched'})
+        result={'candidates':[bio,external,social,scoped]}
+        scopes={'Example Co':{'version':1,'allowed_urls':['https://example.com/team'],'denied_urls':[],'max_follow':1}}
+        with tempfile.TemporaryDirectory() as tmp:
+            rows=crawl.stage_headshots({'candidates':[bio,external,social]}, {}, types.SimpleNamespace(out=Path(tmp)), Fake())
+            self.assertEqual([row['status'] for row in rows],['captured','not_fetched','not_fetched'])
+            self.assertEqual(rows[0]['format'],'png')
+            self.assertTrue(Path(rows[0]['file']).name.endswith('.bin'))
+            self.assertEqual(rows[1]['reason'],'External asset host requires separate review')
+            self.assertEqual(rows[2]['reason'],'Social hosts are never fetched as headshots')
+            scoped_rows=crawl.stage_headshots(result, scopes, types.SimpleNamespace(out=Path(tmp)), Fake())
+            self.assertEqual(scoped_rows[-1]['reason'],'Scoped document approval does not authorize asset downloads')
 
     def test_approved_asset_host_rejects_urls_and_local_names(self):
         with tempfile.TemporaryDirectory() as tmp:
