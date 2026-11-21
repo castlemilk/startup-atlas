@@ -432,6 +432,18 @@ NUMBERED_EXPANSION = re.compile(
     + rf'(?:, the largest among (?:[\w-]+ ){{1,8}}companies, according to {CAPITALIZED_NAME} data)?\.',
     re.I,
 )
+ISSUER_INVESTOR_UPDATE = re.compile(
+    rf'(?P<issuer>{ISSUER_NAME})(?:, (?:a|the) (?:global )?leader in developing'
+    r'(?-i:(?: (?!for\b|with\b)[a-z][a-z-]*){1,24}),)? (?:today )?announced the addition of '
+    rf'(?P<investor>{CAPITALIZED_NAME}) as a new investor in (?:its|their) '
+    rf'(?:(?P<existing>existing) |record-setting )?{SERIES.pattern} funding round'
+    rf'(?:, which has raised (?P<raised_amount>{EXTENSION_LITERAL}))?\.',
+    re.I,
+)
+UNCLEAR_INVESTOR_LABEL = re.compile(
+    r'^(?:no|not|none)\b|\b(?:and|or|nor|undisclosed|unidentified|unknown|unnamed)\b'
+    r'|^(?:(?:a|an|named|new) )*investors?$'
+)
 ISSUER_CLOSING_TERMS = re.compile(
     r'(?!.*\bplanned\b)' + NAMED_SERIES_TERMS
     + rf'(?: (?:funding(?: round)?|round(?: of funding)?|{SCOPED_CONTEXT_SUFFIX.pattern}))?'
@@ -926,6 +938,19 @@ def issuer_extension_amounts(excerpt, names):
     return amounts
 
 
+def issuer_investor_update(excerpt, names):
+    """Recognise a complete named issuer statement about an investor joining its round."""
+    wording = ISSUER_FINANCIAL_DATELINE.sub('', ' '.join(excerpt.split()))
+    if QUOTATION_MARK.search(wording):
+        return False
+    update = ISSUER_INVESTOR_UPDATE.fullmatch(wording)
+    if not update or name_key(update['issuer']) not in names:
+        return False
+    if UNCLEAR_INVESTOR_LABEL.search(name_key(update['investor'])):
+        return False
+    return bool(update['existing'] or re.search(r'[1-9]', update['raised_amount'] or ''))
+
+
 def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_articles=None):
     if not isinstance(captures, list) or len(captures) > 32:
         raise ValueError('Expected at most 32 saved captures per company')
@@ -956,8 +981,8 @@ def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_artic
             # The index supplies discovery context. The article needs its own capture.
             bucket, signals = 'context', ['coverage_listing']
         else:
-            amounts = (issuer_extension_amounts(excerpt, names)
-                       if acquisition == 'page_excerpt' and website_host(url) == host else None)
+            issuer_excerpt = acquisition == 'page_excerpt' and website_host(url) == host
+            amounts = issuer_extension_amounts(excerpt, names) if issuer_excerpt else None
             if amounts is not None:
                 bucket, signals = 'context', ['round_extension_context']
                 if amounts:
@@ -969,6 +994,9 @@ def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_artic
                 reviewed_article = reviewed_articles.get(url) if reviewed_articles and acquisition == 'page_excerpt' else None
                 bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round, reviewed_article=reviewed_article,
                                            search_result=acquisition == 'search_result')
+                if (issuer_excerpt and bucket == 'context' and 'backing_context' in signals
+                        and issuer_investor_update(excerpt, names)):
+                    signals.append('existing_round_investor_update')
         observation.update(bucket=bucket, signals=signals)
         if dates:
             observation['dates'] = {label: date_observation(day) for label, day in dates.items()}

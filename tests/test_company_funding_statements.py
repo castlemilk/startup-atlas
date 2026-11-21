@@ -145,6 +145,14 @@ INLINE_EXTENSION_DISCLOSURE = (
     'Boston, USA – October 8, 2024 – Ready Company, the leading provider of planning software, today announced '
     'the successful expansion of its Series B Funding Round to USD $40M (AUD $59M), with USD $9M of new capital.'
 )
+INVESTOR_UPDATE_DISCLOSURE = (
+    'BOSTON, MASSACHUSETTS, July 25, 2023 – Ready Company, a global leader in developing workflow tools '
+    'through cloud software, today announced the addition of Cedar Ventures as a new investor in their '
+    'record-setting Series B funding round, which has raised $50 million USD.'
+)
+EXISTING_ROUND_DISCLOSURE = (
+    'Ready Company announced the addition of Cedar Ventures as a new investor in its existing Series B funding round.'
+)
 CHIPS_MAY = (
     'https://www.nist.gov/news-events/news/2026/05/'
     'department-commerce-announces-letters-intent-9-companies-2-billion'
@@ -611,6 +619,97 @@ class CompanyFundingStatementTests(unittest.TestCase):
                 self.assertEqual(result['observations'], [{
                     **capture, 'bucket': 'context', 'signals': ['round_extension_context', 'ambiguous_extension_total'],
                 }])
+
+    def test_saved_issuer_investor_update_adds_only_a_context_signal(self):
+        company = {'name': 'Ready Company', 'website': 'https://ready.example/'}
+        for excerpt in (
+            INVESTOR_UPDATE_DISCLOSURE,
+            EXISTING_ROUND_DISCLOSURE,
+            EXISTING_ROUND_DISCLOSURE.replace('Cedar Ventures', 'Cedar Ventures LLC'),
+            INVESTOR_UPDATE_DISCLOSURE.replace('$50 million USD', 'USD $0.001M'),
+            EXISTING_ROUND_DISCLOSURE[:-1] + ', which has raised $0 million USD.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                capture = {'url': 'https://ready.example/news/investor', 'excerpt': excerpt,
+                           'retrieved_on': '2026-11-21', 'acquisition': 'page_excerpt',
+                           'dates': {'published': '2023-07-25'}}
+                report = self.first_person_review([capture, capture], company=company)
+                self.assertEqual(report['repeated_url_hits'], 1)
+                result, = report['results']
+                self.assertTrue(result['review_required'])
+                self.assertEqual(result['bucket'], 'context')
+                self.assertEqual(result['observations'], [{
+                    **capture, 'dates': {'published': {'value': '2023-07-25', 'precision': 'day'}}, 'bucket': 'context',
+                    'signals': ['backing_context', 'existing_round_investor_update'],
+                }])
+
+    def test_investor_update_cue_requires_a_complete_issuer_page_statement(self):
+        company = {'name': 'Ready Company', 'website': 'https://ready.example/'}
+        opening = EXISTING_ROUND_DISCLOSURE
+        capture = {'url': 'https://ready.example/news/investor', 'excerpt': opening,
+                   'retrieved_on': '2026-11-21', 'acquisition': 'page_excerpt'}
+        for change in (
+            {'url': 'https://wire.example/news/investor'},
+            {'acquisition': 'search_result'},
+            {'acquisition': 'reviewer_paraphrase'},
+            {'excerpt': f'The newspaper reported “{opening}”'},
+            {'excerpt': opening[:-1] + '?'},
+            {'excerpt': opening.replace('announced the addition of', 'advised on the addition of')},
+            {'excerpt': opening.replace('its existing', 'its client’s existing')},
+            {'excerpt': opening.replace('Ready Company announced',
+                                        'Ready Company, a global leader in developing legal services for its clients, announced')},
+            {'excerpt': opening.replace('announced', 'plans to announce')},
+            {'excerpt': opening.replace('announced', 'did not announce')},
+            {'excerpt': opening.replace('Ready Company', 'Other Company') + ' Ready Company was mentioned.'},
+            {'excerpt': opening.replace('existing ', '')},
+            {'excerpt': opening.replace('its existing', 'the existing')},
+            {'excerpt': opening[:-1] + ', subject to approval.'},
+            {'excerpt': opening + ' The company later denied that Cedar Ventures had joined.'},
+        ):
+            with self.subTest(change=change):
+                evidence = {**capture, **change}
+                result, = self.first_person_review([evidence], company=company)['results']
+                bucket, signals = classify(evidence['excerpt'], {'ready company'},
+                                           search_result=evidence['acquisition'] == 'search_result')
+                self.assertEqual(result['bucket'], bucket)
+                self.assertEqual(result['observations'], [{**evidence, 'bucket': bucket, 'signals': signals}])
+
+    def test_issuer_investor_update_needs_clear_label_and_evidence_of_existing_round(self):
+        company = {'name': 'Ready Company', 'website': 'https://ready.example/'}
+        existing = EXISTING_ROUND_DISCLOSURE
+        for excerpt in (
+            existing.replace('Cedar Ventures', 'No Named Investor'),
+            existing.replace('Cedar Ventures', 'Cedar Ventures Or Pine'),
+            existing.replace('Cedar Ventures', 'A New Investor'),
+            existing.replace('Cedar Ventures', 'Undisclosed Investor'),
+            existing.replace('Cedar Ventures', 'Cedar And Pine LLC'),
+            existing.replace('its existing', 'its')[:-1] + ', which has raised $0 million USD.',
+            existing.replace('its existing', 'its')[:-1] + ', which has raised USD $0.000M.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                capture = {'url': 'https://ready.example/news/investor', 'excerpt': excerpt,
+                           'retrieved_on': '2026-11-21', 'acquisition': 'page_excerpt'}
+                result, = self.first_person_review([capture], company=company)['results']
+                self.assertTrue(result['review_required'])
+                self.assertEqual(result['bucket'], 'context')
+                self.assertEqual(result['observations'], [{
+                    **capture, 'bucket': 'context', 'signals': ['backing_context'],
+                }])
+
+    def test_investor_update_cue_preserves_initial_round_and_extension_output(self):
+        company = {'name': 'Ready Company', 'website': 'https://ready.example/'}
+        initial = 'Ready Company completed a US$15 million Series A.'
+        for excerpt, expected in ((initial, 'round_lead'), (INLINE_EXTENSION_DISCLOSURE, 'context')):
+            capture = {'url': 'https://ready.example/news/financing', 'excerpt': excerpt,
+                       'retrieved_on': '2026-11-21', 'acquisition': 'page_excerpt'}
+            result, = self.first_person_review([capture], company=company)['results']
+            row, = result['observations']
+            self.assertEqual(result['bucket'], expected)
+            if excerpt == initial:
+                self.assertEqual(row['signals'], ['round_mention'])
+            else:
+                self.assertEqual(row['signals'], ['round_extension_context'])
+                self.assertEqual(row['round_extension_amounts']['new_capital'], 'USD $9M')
 
     def test_first_person_round_uses_exact_reviewed_page_and_deduplicates(self):
         capture = {'url': CULTURE_AMP_SERIES_D, 'excerpt': CULTURE_AMP_FIRST_PERSON,
