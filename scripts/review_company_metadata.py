@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 import re
 import sqlite3
+from urllib.parse import unquote
 
 try:
     from .collection_coverage import ConflictError, Ledger, MAX_EVENTS
@@ -185,14 +186,22 @@ def bind_readbacks(readbacks, aliases, artifacts, batch, official_sites, startup
     return by_company, canonical_sites, alias_proofs
 
 
-def saved_node_ref(value, source):
-    if not isinstance(value, str) or not value or len(value) > 2048 or value != value.strip():
+def reference_document(value, source):
+    if not isinstance(value, str) or not value or len(value) > 2048:
         return None
-    url, separator, fragment = value.partition('#')
+    return evidence_url(value.partition('#')[0] or source, source)
+
+
+def saved_node_ref(value, source):
+    document = reference_document(value, source)
+    if document is None or value != value.strip():
+        return None
+    _, separator, fragment = value.partition('#')
+    # Decode once in the fragment only. Reserved and malformed escapes remain unbound.
+    fragment = unquote(fragment)
     if separator and not re.fullmatch(r'[A-Za-z0-9._~-]+', fragment):
         return None
-    document = evidence_url(url or source, source)
-    return (document, fragment) if document else None
+    return document, fragment
 
 
 def matches_document_ref(value, source, document):
@@ -260,13 +269,18 @@ def saved_role_observations(record, page):
     primary_entities = set()
     for subject in subjects:
         entity = None
-        if ('ProfilePage' in structured_types(subject) and 'mainEntity' in subject
-                and matches_document_ref(subject.get('url', subject.get('@id')), source, document)):
-            entity = subject['mainEntity']
-            ref = saved_node_ref(entity.get('@id') if isinstance(entity, dict) else entity, source)
-            if ref is None or ref[0] != document or not matches_identity_references(subject, source, document):
-                return []
-            primary_entities.add(ref)
+        if 'ProfilePage' in structured_types(subject):
+            references = [subject[key] for key in ('url', '@id') if key in subject]
+            if any(reference_document(value, source) == document for value in references):
+                if (not all(matches_document_ref(value, source, document) for value in references)
+                        or not matches_identity_references(subject, source, document)):
+                    return []
+                if 'mainEntity' in subject:
+                    entity = subject['mainEntity']
+                    ref = saved_node_ref(entity.get('@id') if isinstance(entity, dict) else entity, source)
+                    if ref is None or ref[0] != document:
+                        return []
+                    primary_entities.add(ref)
         for node in (subject, subject.get('worksFor'), entity):
             if isinstance(node, dict) and (ref := saved_node_ref(node.get('@id'), source)):
                 declarations[ref].append(node)

@@ -560,6 +560,43 @@ class CompanyMetadataReviewTests(unittest.TestCase):
                 self.save_founder_role_bundle(label, subjects, claim, main_entity=main_entity)
                 self.assert_founder_role_status(self.run_review(), expected)
 
+    def test_saved_founder_role_profile_document_and_fragment_agreement(self):
+        bio = SEED + 'founder'
+        other_bio = SEED + 'other-bio'
+        issuer = {'name': COMPANY, 'url': SEED}
+        founder = {'@type': 'Person', '@id': '#founder', 'name': 'Fixture Founder', 'url': bio,
+                   'jobTitle': 'Co-founder', 'worksFor': issuer}
+        other = {**founder, '@id': '#other', 'name': 'Different Person', 'jobTitle': 'Advisor'}
+        profile = {'@type': 'ProfilePage', '@id': bio + '#profile', 'url': bio}
+        cases = (
+            ('current_profile_id_with_foreign_url', [founder, other, {**profile, 'url': other_bio}],
+             '#other', 'unsearched'),
+            ('current_profile_id_with_foreign_url_without_main_entity',
+             [founder, {**profile, 'url': other_bio}], None, 'unsearched'),
+            ('current_profile_url_with_foreign_id',
+             [founder, other, {**profile, '@id': other_bio + '#profile'}], '#other', 'unsearched'),
+            ('current_document_with_unsupported_profile_fragment',
+             [founder, other, {**profile, '@id': bio + '#profile%2Fbad', 'url': other_bio}],
+             '#other', 'unsearched'),
+            ('both_profile_refs_name_an_unrelated_document',
+             [founder, {**profile, '@id': other_bio + '#profile', 'url': other_bio}],
+             other_bio + '#other', 'candidate'),
+            ('agreeing_profile_refs_without_main_entity', [founder, profile], None, 'candidate'),
+            ('percent_encoded_id_conflicts_with_literal_id',
+             [founder, {**other, '@id': '#%66ounder'}], None, 'unsearched'),
+            ('percent_encoded_id_matches_profile_reference',
+             [{**founder, '@id': '#%66ounder'}, profile], '#founder', 'candidate'),
+            ('reserved_fragment_escape_is_unbound',
+             [{**founder, '@id': '#founder%2Fother'}], None, 'unsearched'),
+            ('percent_encoded_document_path_is_unbound',
+             [{**founder, '@id': SEED + '%66ounder#founder'}], None, 'unsearched'),
+        )
+        claim = {'role': founder['jobTitle'], 'affiliation': issuer}
+        for label, subjects, main_entity, expected in cases:
+            with self.subTest(case=label):
+                self.save_founder_role_bundle(label, subjects, claim, main_entity=main_entity)
+                self.assert_founder_role_status(self.run_review(), expected)
+
     def test_actual_issuer_excerpt_is_candidate_and_never_a_round(self):
         self.evidence('live', 'published_readback', self.readback())
         self.stage_early()
