@@ -282,6 +282,8 @@ Crawl → review queue → convert → stage → publish → PR → live readbac
    the entity's image field. Company and technology-provider logos attach to
    the exact reviewed record in `data/startup-research.json`. Their published
    URLs resolve to local assets in the built graph and profile previews.
+   Use the exact reviewed name, including punctuation such as `T:0`.
+   The asset path uses the subject slug, such as `t-0.svg`.
    Programme operators use the exact organisation name in the catalogue.
    For a founder recorded under multiple companies, use `--founder-of` with
    the reviewed startup name that owns the portrait reference.

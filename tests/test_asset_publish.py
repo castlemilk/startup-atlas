@@ -159,6 +159,19 @@ class PublishTests(unittest.TestCase):
         self.assertIn("const darkTiles = new Set(['Existing',\"Example Ventures\"]);", text)
         self.assertIn("const wideMarks = new Set([\"Example Ventures\"]);", text)
 
+    def test_colon_in_reviewed_name_preserved_with_safe_logo_path(self):
+        records = self.repo / "data" / "startup-research.json"
+        records.write_text(json.dumps({"startups": [{"name": "T:0"}]}))
+        receipt = self.stage(source=provenance(subject_id="startup:t-0"))
+        status, result = self.run_publish(receipt, "T:0", "startup:t-0", "logo")
+        self.assertEqual(status, 0, result)
+        self.assertEqual(result["result"]["target"], "web/assets/logos/t-0.png")
+        self.assertEqual(json.loads(records.read_text())["startups"][0], {
+            "name": "T:0",
+            "logo": publish.SITE_ORIGIN + "/assets/logos/t-0.png",
+            "logo_source": "https://example.com/brand",
+        })
+
     def test_dry_run_writes_nothing(self):
         receipt = self.stage()
         status, result = self.run_publish(receipt, "Example Ventures", "partner:example-ventures",

@@ -47,6 +47,9 @@ const logos = Object.freeze({
   "Rampersand":"rampersand.png",
   "Boab AI":"boab-ai.png",
   "Temporal":"temporal",
+  "MedTech Actuator":"medtech-actuator",
+  "Cicada Innovations":"cicada-innovations.png",
+  "CoLabs Australia":"colabs-australia.png",
 });
 export function logoFor(name) {
   const slug=Object.hasOwn(logos,name)?logos[name]:null;
@@ -58,8 +61,8 @@ export const logoEntries=Object.freeze(Object.entries(logos));
 export const paddedCanvaMark=url=>url.endsWith('/65deeccca712cb796025a2bd_Canva.png');
 
 // White marks use dark tiles; wordmarks need more horizontal space.
-const darkTiles = new Set(['8VC','Accel','Bain Capital Ventures','Bessemer','CRV',"Airtree","Square Peg","Seedcamp","Investible","Rampersand","Arkeus","iBnkVault","Vixia","Temporal"]);
-const wideMarks = new Set(['Blackbird Ventures','Antler','Startmate','Flybridge',"Airtree","Square Peg","Artesian","Brandon Capital","Seedcamp","Investible","Boson Ventures","Rampersand","Synthesia","Brainwaves","Neuralindex","Deeligence","Ascenda","Boab AI","Temporal","Quantum Brilliance","Strongroom AI","Arkeus","FlowGo","iBnkVault","Thermal Dawn","Vixia"]);
+const darkTiles = new Set(['8VC','Accel','Bain Capital Ventures','Bessemer','CRV',"Airtree","Square Peg","Seedcamp","Investible","Rampersand","Arkeus","iBnkVault","Vixia","Temporal","MedTech Actuator","ENA Respiratory","Cicada Innovations"]);
+const wideMarks = new Set(['Blackbird Ventures','Antler','Startmate','Flybridge',"Airtree","Square Peg","Artesian","Brandon Capital","Seedcamp","Investible","Boson Ventures","Rampersand","Synthesia","Brainwaves","Neuralindex","Deeligence","Ascenda","Boab AI","Temporal","Quantum Brilliance","Strongroom AI","Arkeus","FlowGo","iBnkVault","Thermal Dawn","Vixia","Superstat","CheckGen","Goterra","Wiingman","Cicada Innovations"]);
 export function logoClassFor(name) {
   return [darkTiles.has(name)?'logo-on-dark':'',wideMarks.has(name)?'logo-wide':''].filter(Boolean).join(' ');
 }
