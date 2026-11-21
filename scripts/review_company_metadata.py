@@ -6,7 +6,9 @@ import argparse
 from collections import Counter, defaultdict
 import json
 from pathlib import Path
+import re
 import sqlite3
+from urllib.parse import unquote
 
 try:
     from .collection_coverage import ConflictError, Ledger, MAX_EVENTS
@@ -15,7 +17,10 @@ try:
         staged_company_inventory, startup_index, validate_publication_claim, validate_search_log,
     )
     from .company_metadata_socials import COMPANY_SOCIALS, company_social_review
-    from .crawl import company_headcount_mentions, require_scoped_launcher
+    from .crawl import (
+        company_headcount_mentions, evidence_text, evidence_url, matches_organization, newsroom_observation,
+        professional_bio_observations, require_scoped_launcher, structured_types,
+    )
     from .plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from .replay_company_profiles import compile_replay, utc
     from .stage_early_investments import fields, load_json, matching, stage, text
@@ -26,7 +31,10 @@ except ImportError:
         staged_company_inventory, startup_index, validate_publication_claim, validate_search_log,
     )
     from company_metadata_socials import COMPANY_SOCIALS, company_social_review
-    from crawl import company_headcount_mentions, require_scoped_launcher
+    from crawl import (
+        company_headcount_mentions, evidence_text, evidence_url, matches_organization, newsroom_observation,
+        professional_bio_observations, require_scoped_launcher, structured_types,
+    )
     from plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from replay_company_profiles import compile_replay, utc
     from stage_early_investments import fields, load_json, matching, stage, text
@@ -178,15 +186,145 @@ def bind_readbacks(readbacks, aliases, artifacts, batch, official_sites, startup
     return by_company, canonical_sites, alias_proofs
 
 
-def profile_dimensions(packet, replay, company, founders):
+def reference_document(value, source):
+    if not isinstance(value, str) or not value or len(value) > 2048:
+        return None
+    return evidence_url(value.partition('#')[0] or source, source)
+
+
+def saved_node_ref(value, source):
+    document = reference_document(value, source)
+    if document is None or value != value.strip():
+        return None
+    _, separator, fragment = value.partition('#')
+    # Decode once in the fragment only. Reserved and malformed escapes remain unbound.
+    fragment = unquote(fragment)
+    if separator and not re.fullmatch(r'[A-Za-z0-9._~-]+', fragment):
+        return None
+    return document, fragment
+
+
+def matches_document_ref(value, source, document):
+    # An inline node identifier is additional context for the already bound document.
+    ref = saved_node_ref(value, source)
+    return ref is not None and ref[0] == document
+
+
+def matches_identity_references(subject, source, document):
+    if '@id' in subject and not matches_document_ref(subject['@id'], source, document):
+        return False
+    if 'mainEntityOfPage' not in subject:
+        return True
+    page = subject['mainEntityOfPage']
+    if isinstance(page, dict):
+        types = structured_types(page)
+        if '@type' in page and (not types or types - {'WebPage', 'ProfilePage'}):
+            return False
+        refs = [page[key] for key in ('url', '@id') if key in page]
+    else:
+        refs = [page]
+    return bool(refs) and all(matches_document_ref(ref, source, document) for ref in refs)
+
+
+def consistent_node_declarations(node, declarations, source, document, allowed_types):
+    ref = saved_node_ref(node.get('@id'), source)
+    name = evidence_text(node.get('name')).casefold()
+    for other in declarations.get(ref, ()):
+        types = structured_types(other)
+        if (('@type' in other and (not types or types - allowed_types))
+                or ('name' in other and evidence_text(other['name']).casefold() != name)
+                or ('url' in other and evidence_url(other['url'], source) != document)
+                or not matches_identity_references(other, source, document)):
+            return False
+    return True
+
+
+def saved_role_observations(record, page):
+    subjects = page.get('structured_data')
+    links = page.get('links', [])
+    markup = page.get('article_markup', {})
+    metadata = page.get('metadata', {})
+    if (not isinstance(subjects, list) or len(subjects) > 10
+            or any(not isinstance(subject, dict) for subject in subjects)
+            or not isinstance(links, list) or len(links) > 250
+            or any(not isinstance(link, dict) or not isinstance(link.get('rel', ''), str) for link in links)
+            or not isinstance(markup, dict) or not isinstance(markup.get('date_evidence', []), list)
+            or not isinstance(metadata, dict)):
+        return []
+    source = page['final_url']
+    document = evidence_url(source, source)
+    issuer_document = evidence_url(record['website'], source)
+    if document is None or issuer_document is None:
+        return []
+    canonicals = [link.get('url') for link in links if 'canonical' in link.get('rel', '').lower().split()]
+    if markup.get('canonical_hint') is not None:
+        canonicals.append(markup['canonical_hint'])
+    if 'og:url' in metadata:
+        canonicals.append(metadata['og:url'])
+    if any(evidence_url(ref, source) != document for ref in canonicals) or newsroom_observation(record, page):
+        return []
+
+    # Compare explicit declarations in this saved page only. Missing fields supply no identity.
+    declarations = defaultdict(list)
+    primary_entities = set()
+    for subject in subjects:
+        entity = None
+        if 'ProfilePage' in structured_types(subject):
+            references = [subject[key] for key in ('url', '@id') if key in subject]
+            if any(reference_document(value, source) == document for value in references):
+                if (not all(matches_document_ref(value, source, document) for value in references)
+                        or not matches_identity_references(subject, source, document)):
+                    return []
+                if 'mainEntity' in subject:
+                    entity = subject['mainEntity']
+                    ref = saved_node_ref(entity.get('@id') if isinstance(entity, dict) else entity, source)
+                    if ref is None or ref[0] != document:
+                        return []
+                    primary_entities.add(ref)
+        for node in (subject, subject.get('worksFor'), entity):
+            if isinstance(node, dict) and (ref := saved_node_ref(node.get('@id'), source)):
+                declarations[ref].append(node)
+
+    eligible = []
+    names = {row['name'].casefold() for row in record['founders']}
+    issuer_types = {'Organization', 'Corporation'}
+    for subject in subjects:
+        issuer = subject.get('worksFor')
+        if (structured_types(subject) != {'Person'}
+                or evidence_text(subject.get('name')).casefold() not in names
+                or evidence_url(subject.get('url'), source) != document
+                or not matches_organization(issuer, record, source)):
+            continue
+        types = structured_types(issuer)
+        if '@type' in issuer and (not types or types - issuer_types):
+            continue
+        if (not matches_identity_references(subject, source, document)
+                or not matches_identity_references(issuer, source, issuer_document)):
+            continue
+        if primary_entities and primary_entities != {saved_node_ref(subject.get('@id'), source)}:
+            continue
+        if (not consistent_node_declarations(subject, declarations, source, document, {'Person'})
+                or not consistent_node_declarations(issuer, declarations, source, issuer_document, issuer_types)):
+            return []
+        eligible.append(subject)
+    if len({saved_node_ref(subject['@id'], source) for subject in eligible if '@id' in subject}) > 1:
+        return []
+    # Keep the collector's exact name, bio document and named issuer checks on each Person.
+    return list(professional_bio_observations(record, {**page, 'structured_data': eligible}, ()))
+
+
+def profile_dimensions(packet, replay, company, founders, website):
     if len(replay['observations']) != 1 or replay['observations'][0]['source_record_name'] != company:
         raise ValueError('Saved company-profile packet must be for one approved company')
-    pages = {(row['final_url'], row['checked_at']): row for row in packet['results'][0]['pages']
-             if row['status'] == 'ok'}
+    captures = [((row['final_url'], row['checked_at']), row) for row in packet['results'][0]['pages']
+                if row['status'] == 'ok']
+    pages = dict(captures)
+    captured = Counter(locator for locator, _ in captures)
     candidates = packet.get('candidates', [])
     if not isinstance(candidates, list) or len(candidates) > 500:
         raise ValueError('Expected bounded saved profile candidates')
     dimensions = set()
+    role_conflict = False
     for candidate in candidates:
         if (not isinstance(candidate, dict) or candidate.get('company') != company
                 or not isinstance(candidate.get('source_url'), str)
@@ -218,11 +356,25 @@ def profile_dimensions(packet, replay, company, founders):
             candidate.get('name') == name and candidate.get('candidate_url') == candidate['source_url'] == url
             for name, url in founders
         ):
+            role = candidate.get('role')
+            locator = candidate['source_url'], candidate['checked_at']
+            if role and website and captured[locator] == 1:
+                record = {'name': company, 'website': website, 'founders': [{'name': candidate['name']}]}
+                observations = saved_role_observations(record, pages[locator])
+                if any(row['role'] == role and row['candidate_url'] == candidate['candidate_url']
+                       and row['affiliation'] == candidate.get('affiliation') for row in observations):
+                    titles = {row['role'] for row in observations if row['role']}
+                    if len(titles) == 1:
+                        dimensions.add('founder_roles')
+                    else:
+                        role_conflict = True
             dimensions.update(field for field, key in (
-                ('founder_roles', 'role'), ('founder_bios', 'bio'), ('founder_socials', 'social_candidates'),
+                ('founder_bios', 'bio'), ('founder_socials', 'social_candidates'),
                 ('portrait_candidates', 'headshot_candidate'),
             ) if candidate.get(key))
-    return dimensions
+    if role_conflict:
+        dimensions.discard('founder_roles')
+    return dimensions, role_conflict
 
 
 def load_bundle(batch_path, plan, overlay, approved):
@@ -308,6 +460,7 @@ def load_bundle(batch_path, plan, overlay, approved):
             early[key] = (result['startup_id'], has_observations or bool(result['observations']))
 
     by_company, canonical_sites, alias_proofs = bind_readbacks(readbacks, aliases, artifacts, batch, official_sites, startups)
+    conflicting_roles = defaultdict(set)
     for key, (saved, replay) in profiles.items():
         name = artifacts[key]['name']
         public = by_company.get(name, {})
@@ -316,8 +469,11 @@ def load_bundle(batch_path, plan, overlay, approved):
         founders = [(person['name'], person['website']) for person in public.get('related_entities', [])
                     if person.get('kind') == 'person' and person.get('id') in founder_ids
                     and person.get('name') and website_host(person.get('website'))]
-        for dimension in profile_dimensions(saved, replay, name, founders):
+        observed, role_conflict = profile_dimensions(saved, replay, name, founders, official_sites.get(name))
+        for dimension in observed:
             candidates[name, dimension].add(key)
+        if role_conflict:
+            conflicting_roles[name].add(key)
     for key, (startup_id, has_observations) in early.items():
         name = artifacts[key]['name']
         if by_company.get(name, {}).get('startup', {}).get('id') != startup_id:
@@ -368,6 +524,10 @@ def load_bundle(batch_path, plan, overlay, approved):
                 if item in search_logs:
                     validate_search_log(search_logs[item], name, dimension, revision, at)
         decisions[key] = decision
+    for name, ids in conflicting_roles.items():
+        decisions.setdefault((name, 'founder_roles'), {'name': name, 'dimension': 'founder_roles',
+            'disposition': 'conflict', 'evidence': sorted(ids),
+            'note': 'The same saved founder page reports distinct titles. Review the original observations.'})
     for (name, dimension), ids in candidates.items():
         decisions.setdefault((name, dimension), {'name': name, 'dimension': dimension,
             'disposition': 'candidate', 'evidence': sorted(ids),
@@ -486,6 +646,10 @@ def review(overlay, approved, revision, batch_path, ledger_path, limit=1):
         done = processed_cells(snapshot)
         if not done <= decisions.keys():
             raise ValueError('Checkpoint contains fields outside this batch')
+        role_items = snapshot['state']['scopes']['founder_roles']['items']
+        for name, item in role_items.items():
+            if item['discovery_evidence'] != [decision_proof(batch_sha, decisions[name, 'founder_roles'])]:
+                raise ValueError('Checkpoint founder role decision changed; replay with a fresh ledger')
         pending = sorted({name for name, _ in decisions.keys() - done},
                          key=lambda name: (name not in ready, name in staged, name))
         selected, touched, field_count = [], set(), 0
