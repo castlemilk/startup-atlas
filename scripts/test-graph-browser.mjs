@@ -482,12 +482,11 @@ try {
     assert.ok(await evaluate("document.documentElement.scrollWidth<=innerWidth"),`Overview must fit the ${width}px document`);
   }
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:740,deviceScaleFactor:1,mobile:true});
-  assert.ok(await evaluate("document.documentElement.scrollWidth<=innerWidth"),'Loom must fit the mobile document');
-  assert.ok(await evaluate(`(() => {
+  await until(()=>evaluate(`(() => {
     const dock=document.querySelector('.network-scale'), bounds=dock.getBoundingClientRect();
-    return [...dock.querySelectorAll('button,output')].every(control=>{
+    return innerWidth===320 && document.documentElement.scrollWidth<=innerWidth && [...dock.querySelectorAll('button,output')].every(control=>{
       const rect=control.getBoundingClientRect();
-      return rect.bottom<=bounds.top+45 && rect.right<=innerWidth;
+      return rect.bottom<=bounds.top+45 && rect.right<=innerWidth && (control.tagName!=='BUTTON' || rect.height>=44);
     });
   })()`),'The camera controls must fit on one row at 320px');
   await evaluate("document.querySelector('#graph-zoom-in').click();document.querySelector('#graph-fit').click()");
