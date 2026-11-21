@@ -47,6 +47,8 @@ A `searched_unknown` decision cites a `search_log` with `version: 1`, `name`, `r
 
 These checks bind reviewed receipts to the selected data and preserve the review provenance. They validate saved inputs offline. The reviewer supplies the archive and verifies its source context.
 
+Automatic founder-role candidates require an exact founder and bio URL from the current readback. Replay also requires the same role and issuer affiliation on the saved page's matching structured Person. The original wording stays with the source evidence, including former titles and advisory roles. A candidate with missing or mismatched evidence stays outside automatic role coverage. Earlier checkpoints with changed decisions require a fresh ledger.
+
 The queue lists dispositions per company and field, plus counts for the full supplied overlay and the approved-ready subset. Each field in each cohort has the cohort's company count as its denominator. The 19 fields cover company identity, aliases, description, sectors, geography, founding, news, milestones, dated headcount, founders, founder roles, bios, professional socials, portrait candidates, portrait rights, investors, rounds, round participants and early financing.
 
 | Disposition | Meaning for this batch |

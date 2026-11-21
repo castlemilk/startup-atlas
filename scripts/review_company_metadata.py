@@ -15,7 +15,7 @@ try:
         staged_company_inventory, startup_index, validate_publication_claim, validate_search_log,
     )
     from .company_metadata_socials import COMPANY_SOCIALS, company_social_review
-    from .crawl import company_headcount_mentions, require_scoped_launcher
+    from .crawl import company_headcount_mentions, professional_bio_observations, require_scoped_launcher
     from .plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from .replay_company_profiles import compile_replay, utc
     from .stage_early_investments import fields, load_json, matching, stage, text
@@ -26,7 +26,7 @@ except ImportError:
         staged_company_inventory, startup_index, validate_publication_claim, validate_search_log,
     )
     from company_metadata_socials import COMPANY_SOCIALS, company_social_review
-    from crawl import company_headcount_mentions, require_scoped_launcher
+    from crawl import company_headcount_mentions, professional_bio_observations, require_scoped_launcher
     from plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from replay_company_profiles import compile_replay, utc
     from stage_early_investments import fields, load_json, matching, stage, text
@@ -178,7 +178,7 @@ def bind_readbacks(readbacks, aliases, artifacts, batch, official_sites, startup
     return by_company, canonical_sites, alias_proofs
 
 
-def profile_dimensions(packet, replay, company, founders):
+def profile_dimensions(packet, replay, company, founders, website):
     if len(replay['observations']) != 1 or replay['observations'][0]['source_record_name'] != company:
         raise ValueError('Saved company-profile packet must be for one approved company')
     pages = {(row['final_url'], row['checked_at']): row for row in packet['results'][0]['pages']
@@ -218,8 +218,19 @@ def profile_dimensions(packet, replay, company, founders):
             candidate.get('name') == name and candidate.get('candidate_url') == candidate['source_url'] == url
             for name, url in founders
         ):
+            role = candidate.get('role')
+            page = pages[candidate['source_url'], candidate['checked_at']]
+            subjects = page.get('structured_data')
+            if (role and website and isinstance(subjects, list) and len(subjects) <= 10
+                    and all(isinstance(subject, dict) for subject in subjects)):
+                # Replay the collector's issuer and Person binding against the saved page.
+                record = {'name': company, 'website': website, 'founders': [{'name': candidate['name']}]}
+                if any(row['role'] == role and row['candidate_url'] == candidate['candidate_url']
+                       and row['affiliation'] == candidate.get('affiliation')
+                       for row in professional_bio_observations(record, page, ())):
+                    dimensions.add('founder_roles')
             dimensions.update(field for field, key in (
-                ('founder_roles', 'role'), ('founder_bios', 'bio'), ('founder_socials', 'social_candidates'),
+                ('founder_bios', 'bio'), ('founder_socials', 'social_candidates'),
                 ('portrait_candidates', 'headshot_candidate'),
             ) if candidate.get(key))
     return dimensions
@@ -316,7 +327,7 @@ def load_bundle(batch_path, plan, overlay, approved):
         founders = [(person['name'], person['website']) for person in public.get('related_entities', [])
                     if person.get('kind') == 'person' and person.get('id') in founder_ids
                     and person.get('name') and website_host(person.get('website'))]
-        for dimension in profile_dimensions(saved, replay, name, founders):
+        for dimension in profile_dimensions(saved, replay, name, founders, official_sites.get(name)):
             candidates[name, dimension].add(key)
     for key, (startup_id, has_observations) in early.items():
         name = artifacts[key]['name']

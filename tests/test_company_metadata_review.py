@@ -399,6 +399,51 @@ class CompanyMetadataReviewTests(unittest.TestCase):
                     self.run_review()
                 self.assertFalse(self.ledger.exists())
 
+    def test_saved_founder_roles_require_the_same_person_page_issuer_and_title(self):
+        official_bio = SEED + 'founder'
+        claimed_role = 'Co-founder and former CTO'
+        person = {'@type': 'Person', 'name': 'Fixture Founder', 'url': official_bio,
+                  'worksFor': {'name': COMPANY, 'url': SEED}, 'jobTitle': claimed_role}
+        outsider = {**person, 'worksFor': {'name': COMPANY, 'url': 'https://other.example/'}}
+        advisor = {**person, 'jobTitle': 'Advisor'}
+        cases = (
+            ('exact_cofounder_role', [person], {}, True, 'candidate'),
+            ('known_founder_now_advisor', [advisor], {'role': 'Advisor'}, True, 'candidate'),
+            ('same_name_different_issuer', [outsider], {}, True, 'unsearched'),
+            ('advisor_relabelled_cofounder', [advisor], {}, True, 'unsearched'),
+            ('role_only_on_other_issuer', [advisor, outsider], {}, True, 'unsearched'),
+            ('candidate_affiliation_changed', [person], {'affiliation': outsider['worksFor']}, True, 'unsearched'),
+            ('wrong_person_page', [{**person, 'url': SEED + 'another-bio'}], {}, True, 'unsearched'),
+            ('same_role_on_another_person', [{**person, 'name': 'Another Person'}], {}, True, 'unsearched'),
+            ('missing_structured_person', [], {}, True, 'unsearched'),
+            ('executive_without_founded_edge', [person], {}, False, 'unsearched'),
+        )
+        for label, subjects, overrides, known_founder, expected in cases:
+            with self.subTest(case=label):
+                html = ('<script type="application/ld+json">'
+                        + json.dumps({'@graph': subjects}) + '</script>').encode('utf-8')
+                claim = {'role': claimed_role, 'affiliation': person['worksFor'], **overrides}
+                packet = self.profile_packet([
+                    {**self.profile_candidate('professional-bio', name='Fixture Founder',
+                                              candidate_url=official_bio, **claim),
+                     'source_url': official_bio},
+                    self.profile_candidate('company-profile', description='Independent source context'),
+                ])
+                packet['results'][0]['pages'].append({'url': official_bio, 'final_url': official_bio,
+                    'status': 'ok', 'http_status': 200, 'checked_at': AS_OF, **extract_page(html, official_bio)})
+                readback = self.readback()
+                if not known_founder:
+                    readback['relationships'][0]['kind'] = 'employment'
+                self.batch['evidence'] = []
+                self.ledger = self.root / f'{label}.sqlite'
+                self.evidence('profile', 'company_profile_packet', packet)
+                self.evidence('live', 'published_readback', readback)
+                result = self.run_review()
+                states = next(row['fields'] for row in result['queue'] if row['name'] == COMPANY)
+                self.assertEqual(states['description'], 'candidate')
+                self.assertEqual(states['founders'], 'unsearched')
+                self.assertEqual(states['founder_roles'], expected)
+
     def test_actual_issuer_excerpt_is_candidate_and_never_a_round(self):
         self.evidence('live', 'published_readback', self.readback())
         self.stage_early()
