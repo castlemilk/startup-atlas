@@ -6,8 +6,8 @@ import { entityBadge, icon, renderEntityRow } from './atlas-ui.js';
 import { entityDetails, entityHref, slug } from './graph-model.js';
 import { companyFacets, countryName, filterCompanies, hasCompanyScope, indexCompanies, readExploration, writeExploration } from './atlas-exploration.js';
 import { mountExploration } from './atlas-explorer-controls.js';
-import { companyColumns, defaultCompanyColumns, compareCompanyRecords, indexCompanyMetadata } from './company-columns.js';
-import { indexCompanyValues, loadTreemapEvidence } from './treemap-model.js';
+import { companyColumnGroups, companyColumns, defaultCompanyColumns, compareCompanyRecords, indexCompanyMetadata } from './company-columns.js';
+import { loadTreemapEvidence } from './treemap-model.js';
 
 // The directory stays usable if an older browser cannot load the table model.
 let opportunityRows=(items,state,saved,visible)=>{
@@ -27,6 +27,7 @@ const companyFilterReset = {countries:[],...Object.fromEntries(companyFacets.map
 const pageSize = 12;
 const paddedCanvaWordmark='https://cdn.prod.website-files.com/65dd072aa7402b211d7d6ccf/65deeccca712cb796025a2bd_Canva.png';
 const densityControl = byId('directory-density-view');
+const densityField = byId('directory-density-field');
 const companyOptions = byId('directory-company-options');
 const scopeControls = byId('directory-scope-controls');
 const mobileOptions = byId('directory-mobile-options');
@@ -36,6 +37,11 @@ const inspectorSeat = byId('directory-inspector-seat');
 const inspectorSheet = byId('directory-inspector-sheet');
 const inspectorSheetContent = byId('directory-sheet-content');
 const sheetViewport = window.matchMedia('(max-width: 1169px)');
+const scrollControls = byId('directory-table-scroll');
+const previousColumns = byId('directory-columns-prev');
+const nextColumns = byId('directory-columns-next');
+let tableFrame, resultPage, autoPageUntil=0;
+const tableObserver = typeof ResizeObserver==='function' ? new ResizeObserver(syncTableScroll) : null;
 let state = { ...defaults }, data = null, visible = pageSize;
 let searchEntry = false;
 let sheetSuspended = false;
@@ -56,7 +62,7 @@ const partnersByName = new Map(graphStore?.graph.entities.filter(entity=>entity.
 const companies = graphStore?.graph.entities.filter(entity=>entity.kind==='startup') ?? [];
 const research = graphStore ? await loadTreemapEvidence(graphStore) : null;
 const dimensions = graphStore ? indexCompanies(graphStore.graph,research.technology) : new Map();
-const companyMetadata = graphStore ? indexCompanyMetadata(graphStore.graph,dimensions,indexCompanyValues(graphStore.graph,research)) : new Map();
+const companyMetadata = graphStore ? indexCompanyMetadata(graphStore.graph,dimensions,research) : new Map();
 const connectionCounts = new Map();
 for (const {from,to} of graphStore?.graph.edges ?? []) {
   for (const id of new Set([from,to])) connectionCounts.set(id, (connectionCounts.get(id) ?? 0) + 1);
@@ -66,7 +72,7 @@ const isCompanyView = () => showCompanyFilters() && (state.entityKind==='startup
 const explorationHost = byId('directory-exploration');
 const fieldsHost = byId('directory-exploration-fields');
 const exploration = explorationHost.ownerDocument && graphStore ? mountExploration(explorationHost, {
-  companies, dimensions, onChange:partial=>update(partial), showDensity:false, fieldsHost,
+  companies, dimensions, onChange:partial=>update(partial), showDensity:false, hideEmptySector:true, fieldsHost,
 }) : null;
 async function publicDocument(name) {
   if (graphStore) return graphStore.document(name);
@@ -104,10 +110,10 @@ function placeDirectoryOptions() {
   const mobile=Boolean(optionsViewport.matches && mobileOptions.api);
   const menu=byId('directory-options-panel-body');
   const scopeSeat=mobile ? menu : byId('directory-scope-controls-seat');
-  const optionsSeat=mobile ? menu : byId('directory-company-options-seat');
+  const densitySeat=mobile ? menu : companyOptions;
   if (!mobile && mobileOptions.open) mobileOptions.open=false;
   if (scopeControls.parentElement!==scopeSeat) scopeSeat.append?.(scopeControls);
-  if (companyOptions.parentElement!==optionsSeat) optionsSeat.append?.(companyOptions);
+  if (densityField.parentElement!==densitySeat) densitySeat.append?.(densityField);
 }
 
 function stateFromUrl() {
@@ -183,6 +189,7 @@ function syncControls() {
   densityControl.setAttribute('value',state.density);
   const columns=activeColumns();
   for (const key of companyColumns.keys()) byId('column-'+key).checked=columns.includes(key);
+  byId('directory-column-count').textContent=`${columns.length} of ${companyColumns.size} shown`;
   controls.partnerCountry.value=state.partnerCountry; controls.partnerProvider.value=state.partnerProvider; controls.partnerEvidence.value=state.partnerEvidence; controls.partnerLogo.checked=state.partnerLogo;
   syncFacets();
   byId('clear-search').hidden=!state.query;
@@ -274,20 +281,31 @@ function identityMark(item, {inspector=false}={}) {
 }
 
 function companyHeader(key, label, sortable=true) {
+  const column=companyColumns.get(key);
   const active=state.sort===key || (key==='name' && state.sort==='name-desc');
-  const descending=state.sort==='name-desc' || companyColumns.get(key)?.descending;
+  const descending=state.sort==='name-desc' || column?.descending || column?.compare;
+  const direction=column?.compare ? 'other' : descending ? 'descending' : 'ascending';
   const heading=sortable ? `<button type="button" class="directory-column-sort" data-directory-sort="${key}">${esc(label)}${active?icon(descending?'chevron-down':'chevron-up'):''}</button>` : esc(label);
-  return `<th scope="col"${active?` aria-sort="${descending?'descending':'ascending'}"`:''}>${heading}</th>`;
+  const style=key==='name' ? ' class="directory-identity-heading"' : ` data-column="${key}"${column.kind?` data-column-kind="${column.kind}"`:''}`;
+  return `<th scope="col"${style}${active?` aria-sort="${direction}"`:''}>${heading}</th>`;
+}
+
+function renderCompanyCell(key,column,metadata,name) {
+  const value=column.read(metadata);
+  const note=value!=null ? column.note?.(value,metadata) : null;
+  const source=value!=null && sourceUrl(column.source?.(value,metadata));
+  const text=value==null ? 'Not recorded' : column.kind==='people'
+    ? value.map(person=>`<a href="${esc(entityHref(person))}">${esc(person.name)}</a>`).join(', ')
+    : esc(column.format ? column.format(value) : value);
+  const sourceLink=source ? `<a href="${esc(source)}" target="_blank" rel="noopener noreferrer" aria-label="Source for ${esc(name)} ${esc(column.label.toLowerCase())}">Source</a>` : '';
+  return `<td role="cell" class="directory-company-value" data-column="${key}"${column.kind?` data-column-kind="${column.kind}"`:''}>
+    <span class="directory-cell-label">${esc(column.label)}</span><span class="${value==null?'directory-missing':'directory-cell-value'}">${text}</span>${note || sourceLink?`<small class="directory-cell-note">${note?esc(note):''}${note && sourceLink?' · ':''}${sourceLink}</small>`:''}</td>`;
 }
 
 function renderCompanyRow(item, columns) {
   const selected=item.id===state.selected;
   const metadata=companyMetadata.get(item.id);
-  const fields=columns.map(([key,column])=>{
-    const value=column.read(metadata);
-    const note=column.note?.(metadata);
-    return `<td role="cell" class="directory-company-value" data-column="${key}"><span class="directory-cell-label">${esc(column.label)}</span><span${value===null?' class="directory-missing"':''}>${esc(value ?? 'Not recorded')}</span>${note?`<small class="directory-cell-note">${esc(note)}</small>`:''}</td>`;
-  }).join('');
+  const fields=columns.map(([key,column])=>renderCompanyCell(key,column,metadata,item.name)).join('');
   return `<tr role="row" class="entity-row directory-company-row" data-kind="startup" data-entity-id="${esc(item.id)}" data-selected="${selected}">
     <td class="directory-compare-cell"><button type="button" class="directory-compare-toggle" data-atlas-compare="${esc(item.id)}" data-company-name="${esc(item.name)}" aria-label="Compare ${esc(item.name)}" aria-pressed="false"><span>${icon('check')}</span></button></td>
     <td role="cell" class="entity-row-main"><div class="directory-row-identity">${identityMark(item)}<h3><a href="${esc(entityHref(item))}">${esc(item.name)}</a></h3></div></td>
@@ -296,14 +314,36 @@ function renderCompanyRow(item, columns) {
   </tr>`;
 }
 
-function renderCompanyTable(items) {
-  const columns=activeColumns().map(key=>[key,companyColumns.get(key)]);
+function renderCompanyTable(rows, columns) {
   const headers=columns.map(([key,column])=>companyHeader(key,column.label,Boolean(column.sort))).join('');
-  return `<div class="directory-table-frame" data-columns="${columns.length}" role="region" aria-label="Scrollable company results" tabindex="0"><table class="directory-table" role="table" aria-label="Company results">
+  return `<div id="directory-table-frame" class="directory-table-frame" role="region" aria-label="Company results table" tabindex="0"><table class="directory-table" role="table" aria-label="Company results">
     <colgroup><col class="directory-check-column"><col class="directory-identity-column">${columns.map(()=>'<col class="directory-data-column">').join('')}<col class="directory-explore-column"></colgroup>
     <thead><tr><th class="directory-compare-heading" scope="col"><span class="sr-only">Compare</span></th>${companyHeader('name','Company')}${headers}<th class="directory-actions-heading" scope="col"><span class="sr-only">Explore</span></th></tr></thead>
-    <tbody role="rowgroup">${items.map(item=>renderCompanyRow(item,columns)).join('')}</tbody>
+    <tbody role="rowgroup">${rows}</tbody>
   </table></div>`;
+}
+
+function syncTableScroll() {
+  const overflow=tableFrame && tableFrame.scrollWidth-tableFrame.clientWidth>1;
+  scrollControls.hidden=!overflow;
+  if (!tableFrame) return;
+  tableFrame.toggleAttribute?.('data-wide',Boolean(overflow));
+  tableFrame.tabIndex=overflow || tableFrame.scrollHeight-tableFrame.clientHeight>1 ? 0 : -1;
+  previousColumns.setAttribute('aria-disabled',String(!overflow || tableFrame.scrollLeft<1));
+  nextColumns.setAttribute('aria-disabled',String(!overflow || tableFrame.scrollLeft+tableFrame.clientWidth>=tableFrame.scrollWidth-1));
+}
+
+function mountCompanyTable(frame,scrollLeft) {
+  tableObserver?.disconnect();
+  tableFrame=frame;
+  if (frame) {
+    frame.scrollLeft=scrollLeft;
+    frame.addEventListener('scroll',syncTableScroll,{passive:true});
+    tableObserver?.observe(frame);
+    const table=frame.querySelector('.directory-table');
+    if (table && tableObserver) tableObserver.observe(table);
+  }
+  syncTableScroll();
 }
 
 function inspectorSource(value, label) {
@@ -488,6 +528,7 @@ function render({moveInspectionFocus=false}={}) {
   const isAll=state.view==='all';
   const companyView=isCompanyView();
   const results=byId('results-list');
+  const scrollLeft=tableFrame?.scrollLeft || 0;
   const focusedInspection=results.contains?.(document.activeElement) ? document.activeElement.dataset.inspectEntity : '';
   const layout=document.querySelector('.directory-layout');
   if (isAll && graphStore && previousQuery!==state.query) {
@@ -500,6 +541,9 @@ function render({moveInspectionFocus=false}={}) {
   const leads=isPartners ? filterLeads(data.partnerLeads,state,data.reviewedPartners,partnerRelationships,name=>!!logoFor(name),mappedLocations,data.partnerProfiles) : null;
   const filtered=isAll ? entities : isPartners ? leads : opportunityRows(data.opportunities,state,saved,data.opportunities.length).rows;
   const shown=filtered.slice(0,visible), total=filtered.length;
+  const columns=companyView ? activeColumns().map(key=>[key,companyColumns.get(key)]) : [];
+  const renderItem=companyView ? item=>renderCompanyRow(item,columns)
+    : isAll ? renderEntity : isPartners ? renderLead : renderCard;
   exportRecords=exportRows(filtered);
   resultIds=new Set(matches.map(item=>item.id));
   document.querySelector('.filters').hidden=isPartners||isAll;
@@ -514,7 +558,8 @@ function render({moveInspectionFocus=false}={}) {
   layout.classList.toggle('directory-company-results',companyView && total>0);
   layout.dataset.density=state.density;
   byId('entity-columns').hidden=!isAll || !total || companyView;
-  byId('directory-company-options').hidden=!companyView;
+  companyOptions.hidden=densityField.hidden=!companyView;
+  byId('all-tab-count').hidden=companyView;
   if (!companyView && byId('directory-columns').open) byId('directory-columns').open=false;
   byId('directory-note').hidden=isAll;
   if (!isAll) byId('directory-note').innerHTML=isPartners
@@ -546,12 +591,13 @@ function render({moveInspectionFocus=false}={}) {
       controls.search.focus();
     });
   } else {
-    results.innerHTML=companyView ? renderCompanyTable(shown)
-      : shown.map((item,i)=>isAll ? renderEntity(item) : isPartners ? renderLead(item) : renderCard(item,i)).join('');
+    const rows=shown.map(renderItem).join('');
+    results.innerHTML=companyView ? renderCompanyTable(rows,columns) : rows;
   }
-  byId('result-range').textContent=total ? `Showing ${shown.length} of ${total} results` : '';
-  byId('load-more').hidden=visible>=total;
-  byId('load-more').textContent='Load more ↓';
+  mountCompanyTable(companyView && total ? results.querySelector('.directory-table-frame') : null,scrollLeft);
+  resultPage={items:filtered,renderItem,target:companyView && total ? results.querySelector('tbody') : results};
+  autoPageUntil=0;
+  syncResultRange();
   watchImages(results);
   renderInspector({moveFocus:moveInspectionFocus});
   if (focusedInspection) focusInspectionTrigger(focusedInspection);
@@ -646,7 +692,14 @@ densityControl.addEventListener('valuechange',event=>changeDensity(event.detail.
 densityControl.addEventListener('click',event=>{
   if (!densityControl.api) changeDensity(event.target.closest('[data-density-value]')?.dataset.densityValue);
 });
-byId('directory-column-choices').innerHTML=[...companyColumns].map(([key,column])=>`<label><input type="checkbox" id="column-${key}" data-company-column="${key}"> ${esc(column.label)}</label>`).join('');
+byId('directory-column-choices').innerHTML=[...companyColumnGroups].map(([group,label])=>
+  `<fieldset><legend>${esc(label)}</legend>${[...companyColumns].filter(([,column])=>column.group===group).map(([key,column])=>
+    `<label><input type="checkbox" id="column-${key}" data-company-column="${key}"> ${esc(column.label)}</label>`).join('')}</fieldset>`).join('');
+for (const [button,direction] of [[previousColumns,-1],[nextColumns,1]]) {
+  button.addEventListener('click',()=>{
+    if (tableFrame && button.getAttribute('aria-disabled')!=='true') tableFrame.scrollBy({left:direction*Math.max(180,tableFrame.clientWidth/2)});
+  });
+}
 for (const key of companyColumns.keys()) {
   byId('column-'+key).addEventListener('change',event=>{
     const columns=new Set(activeColumns());
@@ -656,6 +709,25 @@ for (const key of companyColumns.keys()) {
   });
 }
 byId('reset-directory-columns').addEventListener('click',()=>update({columns:null},{keepRange:true}));
+const columnsPopup=byId('directory-columns');
+const columnsPanel=byId('directory-columns-panel');
+function setNativeColumns(open) {
+  const trigger=columnsPopup.querySelector('.directory-columns-trigger');
+  columnsPanel.hidden=!open;
+  trigger.setAttribute('aria-expanded',String(open));
+  if (open) {
+    columnsPanel.setAttribute('role','dialog');
+    columnsPanel.querySelector('input')?.focus();
+  } else trigger.focus();
+}
+columnsPopup.addEventListener('click',event=>{
+  if (columnsPopup.api) return;
+  if (event.target.closest('.directory-columns-trigger')) setNativeColumns(columnsPanel.hidden);
+  else if (event.target.closest('ui-popover-close')) setNativeColumns(false);
+});
+columnsPopup.addEventListener('keydown',event=>{
+  if (!columnsPopup.api && !columnsPanel.hidden && event.key==='Escape') setNativeColumns(false);
+});
 controls.partnerCountry.addEventListener('change',event=>update({partnerCountry:event.target.value}));
 controls.partnerProvider.addEventListener('change',event=>update({partnerProvider:event.target.value}));
 controls.partnerEvidence.addEventListener('change',event=>update({partnerEvidence:event.target.value}));
@@ -671,21 +743,47 @@ byId('clear-active-filters').addEventListener('click',()=>{
   clearLegacyFilters();
   focusFacet(state.view==='all'?'entityKind':state.view==='partners'?'partnerProvider':'country');
 });
-byId('load-more').addEventListener('click',()=>{
-  const results=byId('results-list');
-  const rows='.entity-row,.card';
-  const firstNewIndex=results.querySelectorAll(rows).length;
+function syncResultRange() {
+  const total=resultPage?.items.length || 0;
+  byId('result-range').textContent=total ? `Showing ${Math.min(visible,total)} of ${total} results` : '';
+  byId('load-more').hidden=visible>=total;
+}
+
+function appendPage({moveFocus=false}={}) {
+  if (!resultPage || visible>=resultPage.items.length) return;
+  const {items,renderItem,target}=resultPage;
+  const first=visible;
+  const next=items.slice(first,first+pageSize);
+  target.insertAdjacentHTML('beforeend',next.map((item,index)=>renderItem(item,first+index)).join(''));
   visible+=pageSize;
-  update({},{keepRange:true});
-  // Continue reading at the first new record, including the final batch when
-  // Load more disappears. Ordinary search/history renders must not move focus.
-  const firstNewRow=results.querySelectorAll(rows)[firstNewIndex];
-  const profileLink=firstNewRow?.querySelector('h3 a[href]');
-  if (profileLink) {
-    profileLink.focus({preventScroll:true});
-    firstNewRow.scrollIntoView({block:'start',behavior:'instant'});
+  autoPageUntil=0;
+  writeUrl(moveFocus ? 'push' : 'replace');
+  syncResultRange();
+  for (const row of [...target.children].slice(first)) watchImages(row);
+  explorationChanged();
+  if (moveFocus) {
+    const row=target.children[first];
+    row?.querySelector('h3 a[href]')?.focus({preventScroll:true});
+    row?.scrollIntoView({block:'start',inline:'nearest',behavior:'instant'});
   }
+}
+
+byId('load-more').addEventListener('click',()=>appendPage({moveFocus:true}));
+function armAutoPage() { autoPageUntil=performance.now()+1400; }
+window.addEventListener('wheel',event=>{ if (event.deltaY>0) armAutoPage(); },{passive:true});
+window.addEventListener('touchmove',armAutoPage,{passive:true});
+window.addEventListener('keydown',event=>{
+  if (['ArrowDown','PageDown','End',' '].includes(event.key) && !event.target.closest?.('input,select,textarea,button,[contenteditable]')) armAutoPage();
 });
+window.addEventListener('scroll',event=>{
+  if (performance.now()>autoPageUntil || !resultPage || visible>=resultPage.items.length) return;
+  if (event.target===tableFrame) {
+    if (tableFrame.scrollTop+tableFrame.clientHeight>=tableFrame.scrollHeight-96) appendPage();
+  } else if (event.target===document && (!tableFrame || tableFrame.scrollHeight<=tableFrame.clientHeight+1)) {
+    const last=resultPage.target.lastElementChild?.getBoundingClientRect();
+    if (last && last.bottom<=innerHeight+96 && last.bottom>0) appendPage();
+  }
+},{capture:true,passive:true});
 byId('results-list').addEventListener('click',event=>{
   const saveButton=event.target.closest('[data-save]');
   if (saveButton) { save(saveButton.dataset.save); return; }
@@ -699,7 +797,7 @@ byId('results-list').addEventListener('click',event=>{
   if (sortButton) {
     const key=sortButton.dataset.directorySort;
     update({sort:key==='name' && state.sort==='name' ? 'name-desc' : key},{keepRange:true});
-    byId('results-list').querySelector(`[data-directory-sort="${key}"]`)?.focus({preventScroll:true});
+    requestAnimationFrame(()=>byId('results-list').querySelector(`[data-directory-sort="${key}"]`)?.focus({preventScroll:true}));
     return;
   }
   const button=event.target.closest('[data-inspect-entity]');

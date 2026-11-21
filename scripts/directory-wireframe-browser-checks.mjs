@@ -112,7 +112,8 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await click('#atlas-hq-AU-control');
   assert.equal(await evaluate("new URLSearchParams(location.search).has('hq')"),false,'A country draft must not commit filters');
   await click('.exploration-apply');
-  assert.equal(await evaluate("new URLSearchParams(location.search).get('hq')"),'AU');
+  assert.deepEqual(await evaluate("new URLSearchParams(location.search).getAll('hq')"),['AU']);
+  assert.equal(await evaluate("document.querySelectorAll('[data-remove-facet=country]').length"),1,'Native and enhanced inputs must add the same country once');
   assert.ok(await evaluate("(()=>{const values=[...document.querySelectorAll('.directory-company-row td[data-column=headquarters]')];return values.length>0&&values.every(cell=>cell.lastElementChild.textContent.endsWith('Australia'));})()"));
 
   await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
@@ -136,9 +137,9 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   assert.equal(await evaluate("document.querySelector('#directory-heading').textContent"),'Companies');
   await click('#directory-options-trigger');
   assert.ok(await evaluate("document.querySelector('#directory-options-panel-body #directory-scope').checkVisibility()"),'Catalogue scopes remain available in mobile Options');
+  await press('Escape','Escape',27);
   await click('.directory-columns-trigger');
   await click('#column-founders-control');
-  await press('Escape','Escape',27);
   await press('Escape','Escape',27);
   assert.ok(await evaluate("document.querySelector('[data-entity-id=\"startup:canva\"] td[data-column=founders]').checkVisibility()"),'Choosing a mobile column must reveal its metadata');
   await settleTop();await screenshot('wireframe-directory-mobile.png');

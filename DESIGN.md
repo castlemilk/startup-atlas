@@ -107,7 +107,7 @@ The shared stylesheet follows the established route styles where its primitives/
 
 The homepage leads into List, Graph and Treemap. Its [StageShow composition](docs/design/landing-stage/README.md) uses the editorial tokens and sourced company records. Desktop and mobile use different compositions.
 
-List shows technology type, headquarters and recorded stage by default. The Columns menu adds fields from [the column registry](web/company-columns.js). Mobile rows show the same selected fields under the company name. The List uses Gamma's Filter Bar chip treatment and the UI SDK's native search, select and segmented controls. The search label adapts [Bencho Label input](https://github.com/cabralorenzo/bencho/tree/84dfcee170171257a28631402d37ff34900bc773/blocks/label-input).
+List shows technology type, headquarters and recorded stage by default. The Columns menu groups fields from [the column registry](web/company-columns.js). Mobile rows show the same selected fields under the company name. The desktop table keeps company identity and actions visible while additional columns scroll inside the results frame. The next page appends at the end of the visible results. The List uses Gamma's Filter Bar chip treatment and the UI SDK's native search, select and segmented controls. The search label adapts [Bencho Label input](https://github.com/cabralorenzo/bencho/tree/84dfcee170171257a28631402d37ff34900bc773/blocks/label-input).
 
 Individual profiles retain their citations. The signed-in backend's Evidence coverage view counts distinct profile, founder and funding source documents per company. Fragment links to the same document count once per category.
 

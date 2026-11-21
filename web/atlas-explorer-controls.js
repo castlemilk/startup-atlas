@@ -11,10 +11,11 @@ const ordered = (values,label) => [...new Set(values)].sort((a,b)=>a==='unknown'
 const option = (value,label) => `<option value="${esc(value)}">${esc(label)}</option>`;
 const allCompanies = () => true;
 
-export function mountExploration(host,{companies,dimensions,onChange,showDensity=true,fieldsHost,narrowQuery='(max-width: 620px)'}) {
+export function mountExploration(host,{companies,dimensions,onChange,showDensity=true,hideEmptySector=false,fieldsHost,narrowQuery='(max-width: 620px)'}) {
   if (!host?.ownerDocument?.createElement) return {update(){},openCountries(){}};
   const doc = host.ownerDocument;
   const choices = [...dimensions.values()];
+  const visibleFacets = companyFacets.filter(({key})=>key!=='sector' || !hideEmptySector || choices.some(item=>item.sector));
   const countries = ordered([...choices.map(item=>item.country).filter(Boolean),'unknown'],countryName);
   let state = {countries:[],density:'comfortable'}, matches = companies, routeMatches = companies, draft = new Set(), draftScope;
   host.classList.add('exploration-controls');
@@ -30,7 +31,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
           <div class="exploration-popover-head">
             <ui-popover-title as-child><h2 id="atlas-filter-title">Headquarters country</h2></ui-popover-title>
             <div class="exploration-draft-fields">
-              ${companyFacets.map(({key,label})=>`<label>${label}<select data-draft-field="${key}"></select></label>`).join('')}
+              ${visibleFacets.map(({key,label})=>`<label>${label}<select data-draft-field="${key}"></select></label>`).join('')}
             </div>
             <span class="exploration-draft-country">Headquarters country</span>
             <label class="sr-only" for="atlas-country-search">Search country or code</label>
@@ -51,7 +52,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
         </ui-popover-content>
       </ui-popover>
     </div>
-    ${companyFacets.map(({key,label,all})=>`<div class="exploration-field exploration-desktop-field"><label class="exploration-label" for="atlas-${key}">${label}</label>
+    ${visibleFacets.map(({key,label,all})=>`<div class="exploration-field exploration-desktop-field"><label class="exploration-label" for="atlas-${key}">${label}</label>
       <select id="atlas-${key}" data-exploration-field="${key}">${option('',all)}</select></div>`).join('')}
     ${showDensity ? '<div class="exploration-field"><label class="exploration-label" for="atlas-density">Density</label><select id="atlas-density" data-exploration-field="density"><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select></div>' : ''}
   </div>
@@ -259,8 +260,12 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
   search.addEventListener('input',renderDraft);
   draftFields.forEach(control=>control.addEventListener('change',renderDraft));
   options.addEventListener('change',event=>{
-    if (event.target.checked) draft.add(event.target.value);
-    else draft.delete(event.target.value);
+    const input=event.target;
+    if (!input.matches?.('input[type=checkbox]')) return;
+    const code=input.closest('[data-hq]')?.dataset.hq;
+    if (!code) return;
+    if (input.checked) draft.add(code);
+    else draft.delete(code);
     renderDraft();
   });
   clearDraft.addEventListener('click',()=>{

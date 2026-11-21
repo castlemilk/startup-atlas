@@ -90,7 +90,7 @@ The first row-level hierarchy is identity, concise description and kind. Show so
 
 The **All** scope searches startups, people, partners, providers and programmes. The **Opportunities** scope owns eligibility, resource and access-path filters. The **Partner index** owns reviewed identity/provider-evidence and recorded-location filters. These scopes must not inherit incompatible hidden restrictions. The current country vocabulary has distinct meanings: an opportunity market is not a partner's office location.
 
-The current list renders 12 results initially and adds 12 with **Load more**. Preserve explicit bounded rendering. Counts come from all matching records before slicing. `shown` records the displayed range in the URL: restoration accepts an integer greater than 12, capped at 1200; absent/invalid values use 12. Filtering resets the range. Reload, Back/Forward and a captured profile return can restore the range without claiming exact scroll restoration.
+The List renders 12 results at a time. Near the end, a user scroll appends the next batch in place. **Load more** appends the same batch and moves keyboard focus to the first new profile link. The table owns scrolling on wider screens. At 720px and below, labelled company cards continue in the page flow. Counts describe all matching records. The URL records the displayed range in `shown` and supports reload, history and profile return. Filtering starts a new range.
 
 Search must expose a clear action when nonempty, work during international text composition, and avoid announcing every keystroke excessively. Exact-name results should lead. Native selectors own graph/treemap and entity-kind choice; the existing directory facets use authored `details`/`summary` menus in `web/app.js`. Verify the authored menu's Escape/focus behaviour as well as the native popup. Do not promise typo tolerance for every scope: SQLite/JSON graph search and the opportunity/partner search paths have different current implementations.
 
@@ -131,6 +131,8 @@ Show the plotted count, excluded count and reason beside the measure. A sum of h
 ## Relationship graph
 
 **Job:** explain a selected neighbourhood and enable a deliberate next step through its evidence.
+
+Graph opens on the matching companies grouped by primary sector, with technology type when a primary sector is unavailable. **Group by** switches to headquarters country and records that choice in `group=country`. Companies with missing group data have their own section. Selecting a company opens its Loom neighbourhood, and **Companies** returns to the overview. A link with an existing graph root opens that neighbourhood directly.
 
 The graph uses a paper canvas, coloured organisation and person markers, and rust selection. The self-hosted [Loom](https://castlemilk.github.io/loom/) renderer draws directional connections. The compatibility SVG shows the same records with identity cards and edge captions. Company facets and search sit in the top tray. Type, depth, list and pin controls sit above the graph, with camera controls below. The inspector begins with the entity’s identity and a sourced relationship.
 

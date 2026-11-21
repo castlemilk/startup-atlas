@@ -207,10 +207,17 @@ try {
   const response=await fetch('./data/map-locations.json',{cache:'no-cache'});if(!response.ok)throw new Error('Locations unavailable');
   locations=await response.json();if(!Array.isArray(locations)||!locations.length)throw new Error('No locations');
   $('globe-count').textContent=`${locations.length} places · curated sample`;
-  updateLoading('Mapping the coastline…');
-  await nextPaint();
   list.innerHTML=locations.map(location=>`<button type="button" data-location="${esc(location.id)}" aria-pressed="false">${esc(location.city)}</button>`).join('');
   showLocation(locations.find(location=>location.id==='london')||locations[0],false);
+  if ('IntersectionObserver' in window) await new Promise(resolve=>{
+    const observer=new IntersectionObserver(entries=>{
+      if (!entries.some(entry=>entry.isIntersecting)) return;
+      observer.disconnect();
+      resolve();
+    },{rootMargin:'280px'});
+    observer.observe(stage);
+  });
+  updateLoading('Mapping the coastline…');
   try {
     const land=await fetch('./data/land.geojson');if(!land.ok)throw new Error('Map unavailable');
     const geojson=await land.json();

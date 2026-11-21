@@ -102,7 +102,7 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await until(()=>evaluate("!new URLSearchParams(location.search).has('view')"),'SDK scope arrow did not return to All');
   await choose('Directory view',/^Partner index/);
   await until(()=>evaluate("new URLSearchParams(location.search).get('view')==='partners'&&!!document.querySelector('.lead-card')"),'Agent scope change did not render partner results');
-  await choose('Directory view',/^All(?:\s|$)/);
+  await choose('Directory view',/^Records(?:\s|$)/);
   await choose('Entity type',/^Startups$/);
   await act('Search the directory','setValue',['Canva']);
   await until(()=>evaluate("!!document.querySelector('[data-inspect-entity=\"startup:canva\"]')"),'Canva result did not recover');

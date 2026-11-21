@@ -13,6 +13,7 @@ import {checkProfileWireframes} from './profile-wireframe-browser-checks.mjs';
 import {checkAtlasSdk} from './atlas-sdk-browser-checks.mjs';
 import {checkEditorialExplorer} from './editorial-explorer-browser-checks.mjs';
 import {contrastRatio} from '../web/design-token-reference.js';
+import {companyColumns} from '../web/company-columns.js';
 
 const root=resolve('dist');
 const graph=JSON.parse(await readFile(join(root,'data/graph.json'),'utf8'));
@@ -211,6 +212,7 @@ try {
   await screenshot('atlas-landing-desktop.png');
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await until(()=>evaluate("document.querySelector('.landing-preview img').currentSrc.endsWith('atlas-list-compact.webp')"),'Landing did not select the compact StageShow artwork');
+  assert.ok(await evaluate("document.querySelector('.landing-views a:last-child').getBoundingClientRect().bottom < document.querySelector('.landing-preview').getBoundingClientRect().top"),'Mobile navigation precedes the preview');
   await assertNoOverflow('Mobile landing');
   await screenshot('atlas-landing-mobile.png',true);
   await click('.landing-primary');
@@ -220,10 +222,70 @@ try {
   assert.match(await text('[data-entity-id="startup:canva"] td[data-column=founders]'),/Melanie Perkins/);
   assert.match(await text('[data-entity-id="startup:canva"] td[data-column=value]'),/USD.*Private valuation/);
   await click('[data-atlas-view=graph]');
-  await until(()=>evaluate("location.pathname==='/graph.html'&&document.querySelector('#graph-count')?.textContent.startsWith('1 company in scope')"),'Graph did not keep the List technology filter');
+  await until(()=>evaluate("location.pathname==='/graph.html' && [...document.querySelectorAll('.graph-company-group h3')].length===1 && !!document.querySelector('[data-graph-company=\"startup:canva\"]')"),'Graph did not keep the List technology filter');
   await click('[data-atlas-view=treemap]');
   await until(()=>evaluate("location.pathname==='/treemap.html'&&!!document.querySelector('#treemap-chart [data-company=\"startup:canva\"]')"),'Treemap did not keep the filtered company');
   assert.equal(await evaluate("new URLSearchParams(location.search).get('technology')"),'Design & media');
+
+  const columns=[...companyColumns.keys()].join(',');
+  const companyListReady="document.querySelector('#results-list')?.getAttribute('aria-busy')==='false' && !!document.querySelector('.directory-table-frame')";
+  await navigate('/list.html?type=startup&columns='+columns,companyListReady);
+  await until(()=>evaluate("!document.querySelector('#directory-table-scroll').hidden"),'Wide tables must advertise horizontal scroll');
+  const pinnedX=await evaluate("document.querySelector('.directory-company-row .entity-row-main').getBoundingClientRect().left");
+  await click('#directory-columns-next');
+  await until(()=>evaluate("document.querySelector('.directory-table-frame').scrollLeft>100"),'Next columns must scroll the table');
+  assert.equal(await evaluate("document.querySelector('.directory-company-row .entity-row-main').getBoundingClientRect().left"),pinnedX,'Company identity stays in view');
+  await assertNoOverflow('Desktop all company columns');
+  await screenshot('atlas-list-wide-columns.png');
+  await navigate('/list.html',companyListReady);
+  const canScroll=await evaluate("(()=>{const frame=document.querySelector('.directory-table-frame');return frame.scrollHeight>frame.clientHeight;})()");
+  assert.equal(canScroll,true,'The default table must give all loaded rows a real scroll range');
+  await evaluate("document.querySelector('#search').focus({preventScroll:true})");
+  const wheel=await evaluate("(()=>{const frame=document.querySelector('.directory-table-frame').getBoundingClientRect();return {x:Math.round(frame.left+frame.width/2),y:Math.round(frame.top+50)};})()");
+  await command('Input.dispatchMouseEvent',{type:'mouseWheel',...wheel,deltaX:0,deltaY:1200});
+  await until(()=>evaluate("document.querySelectorAll('.directory-company-row').length===24"),'Scroll should append another page of companies');
+  assert.equal(await evaluate('document.activeElement.id'),'search','Automatic continuation preserves focus');
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('shown')"),'24');
+  await navigate('/list.html?type=startup&q=Wise&columns=market-cap,ownership,listing,private-valuation,funding,founders',companyListReady);
+  assert.match(await text('[data-entity-id="startup:wise"] [data-column=market-cap]'),/USD.*\d{4}-\d{2}-\d{2}/s);
+  assert.match(await text('[data-entity-id="startup:wise"] [data-column=listing]'),/WSE/);
+  assert.ok(await evaluate("!!document.querySelector('[data-entity-id=\"startup:wise\"] [data-column=market-cap] a[href^=\"https:\"]')"),'Market cap links to its source');
+  await evaluate("document.querySelector('[data-directory-sort=market-cap]').focus()");
+  await press('Enter','Enter',13);
+  await until(()=>evaluate("document.activeElement?.dataset.directorySort==='market-cap'&&new URL(location.href).searchParams.get('sort')==='market-cap'"),'Sorting must restore focus to the current header');
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await navigate('/list.html?type=startup&q=Canva&columns='+columns,companyListReady);
+  assert.equal(await evaluate("document.querySelector('[data-entity-id=\"startup:canva\"] [data-column=founders] a[href*=melanie-perkins]').textContent"),'Melanie Perkins');
+  assert.match(await text('[data-entity-id="startup:canva"] [data-column=private-valuation]'),/USD/);
+  await click('.directory-columns-trigger');
+  await until(()=>evaluate("document.querySelector('#directory-columns').open"),'Mobile opens Columns directly');
+  await assertNoOverflow('Mobile columns menu');
+  await press('Escape','Escape',27);
+  await assertNoOverflow('Mobile all company columns');
+  await screenshot('atlas-list-mobile-columns.png');
+  await navigate('/list.html',companyListReady);
+  const mobileToolbar=await evaluate(`(()=>{
+    const bounds=selector=>document.querySelector(selector).getBoundingClientRect();
+    return {searchBottom:bounds('#search').bottom,filters:bounds('.exploration-country-trigger').top,
+      columns:bounds('.directory-columns-trigger').top,options:bounds('#directory-options-trigger').top};
+  })()`);
+  assert.ok(mobileToolbar.searchBottom<mobileToolbar.filters,'Search gets a full row on mobile');
+  assert.equal(mobileToolbar.columns,mobileToolbar.options,'Mobile options stay in the action row');
+  const mobileScroll=await evaluate("Math.ceil(document.querySelector('.directory-company-row:last-child').getBoundingClientRect().bottom-innerHeight+64)");
+  await command('Input.dispatchMouseEvent',{type:'mouseWheel',x:185,y:465,deltaX:0,deltaY:mobileScroll});
+  await until(()=>evaluate("document.querySelectorAll('.directory-company-row').length===24"),'Mobile page scroll should append another batch');
+  await navigate('/graph.html',"document.querySelector('#graph-company-overview')?.hidden===false");
+  assert.equal(await evaluate("document.querySelectorAll('[data-graph-company]').length"),startups.length,'Graph defaults to every published company');
+  assert.ok(await evaluate("document.querySelectorAll('.graph-company-group').length>1"),'Sector or technology groups should be visible');
+  await evaluate("(()=>{const group=document.querySelector('#graph-company-group');group.value='country';group.dispatchEvent(new Event('change',{bubbles:true}));})()");
+  assert.match(await text('#graph-company-groups'),/Australia/);
+  await assertNoOverflow('Mobile grouped Graph overview');
+  await screenshot('atlas-graph-company-overview.png');
+  await click('[data-graph-company="startup:canva"]');
+  await until(()=>evaluate("document.querySelector('#graph-detail h2')?.textContent==='Canva'&&!document.querySelector('#graph-neighborhood').hidden"),'A company opens its graph');
+  await evaluate('history.back()');
+  await until(()=>evaluate("!document.querySelector('#graph-company-overview').hidden && new URL(location.href).searchParams.get('group')==='country'"),'Back returns to the chosen overview grouping');
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
 
   // Every catalogue tab must load its actual route and meaningful data in the iframe.
   await navigate('/design-system.html',"document.querySelector('#entity-specimen')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('#entity-specimen .entity-row')");

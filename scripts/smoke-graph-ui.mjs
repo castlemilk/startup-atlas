@@ -43,14 +43,14 @@ function element(dataset={}) {
     viewBox:{baseVal:{width:1200,height:720}},setPointerCapture(){}
   };
 }
-for(const id of ['graph-search','graph-query','graph-results','graph-detail','graph-status','graph-canvas','graph-count','graph-list','graph-filters','graph-depth','graph-list-toggle','graph-zoom-in','graph-zoom-out','graph-fit','graph-reset','network-heading'])elements.set(id,element());
+for(const id of ['graph-search','graph-query','graph-results','graph-detail','graph-status','graph-canvas','graph-count','graph-list','graph-filters','graph-depth','graph-list-toggle','graph-zoom-in','graph-zoom-out','graph-fit','graph-reset','network-heading','graph-title','graph-neighborhood','graph-company-overview','graph-overview-heading','graph-company-group','graph-company-groups','graph-overview-count','graph-back-to-companies'])elements.set(id,element());
 globalThis.document=Object.assign(new EventTarget(),{getElementById:id=>elements.get(id),hidden:false});
 globalThis.window={addEventListener:(name,callback)=>windowEvents.set(name,callback)};
-globalThis.location={search:mode==='query'?'?q=Melanie%20Perkins':'?startup=startup%3Acanva'};
+globalThis.location={pathname:'/graph.html',search:mode==='query'?'?q=Melanie%20Perkins':'?startup=startup%3Acanva'};
 let selectedUrl;
 globalThis.history={
-  pushState(_state,_title,url){selectedUrl=url;location.search=url;},
-  replaceState(_state,_title,url){location.search=url;}
+  pushState(_state,_title,url){selectedUrl=new URL(url,'https://atlas.test').search;location.search=selectedUrl;},
+  replaceState(_state,_title,url){location.search=new URL(url,'https://atlas.test').search;}
 };
 let sqliteReads=0,jsonReads=0;
 globalThis.fetch=async url=>{
@@ -66,6 +66,11 @@ try {
     assert.match(elements.get('graph-detail').innerHTML,/temporarily unavailable/);
   } else {
     const canvas=elements.get('graph-canvas'),detail=elements.get('graph-detail');
+    if(mode==='query') {
+      assert.equal(elements.get('graph-neighborhood').hidden,true);
+      assert.match(elements.get('graph-company-groups').innerHTML,/data-graph-company="startup:canva"/);
+      click('graph-results',{select:'startup:canva'});
+    }
     assert.match(detail.innerHTML,/<h2>Canva<\/h2>/);
     assert.match(canvas.innerHTML,/data-node="person:melanie-perkins"/);
     assert.match(canvas.innerHTML,/class="network-link"/);

@@ -22,7 +22,7 @@ let loom, loomViewport, loomUnavailable=false, renderedCameraKey;
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
 const pinned=new Map();
 let scope=readExploration(new URLSearchParams(location.search));
-let dimensions, controls, currentView, mapView, fullMap=false;
+let dimensions, controls, currentView, mapView, fullMap=false, companyGroup='sector';
 let searchMatches=[], searchedQuery, visibleCompanies=new Set();
 const evidence=(url,label='Source')=>{const safe=sourceUrl(url);return safe?'<a class="detail-source" href="'+esc(safe)+'" target="_blank" rel="noopener noreferrer">'+esc(label)+' ↗</a>':'';};
 const money=(value,currency,amountText)=>{if(value==null||!currency)return amountText || 'Amount not recorded';try{return new Intl.NumberFormat('en-AU',{style:'currency',currency,maximumFractionDigits:0}).format(Number(value));}catch{return String(value)+' '+currency;}};
@@ -256,7 +256,44 @@ function renderSvgMap() {
   }));
   applyZoom();
 }
+function renderCompanyOverview() {
+  const groups=new Map();
+  for (const entity of searchMatches) {
+    if (!visibleCompanies.has(entity.id)) continue;
+    const dimension=dimensions.get(entity.id);
+    const label=companyGroup==='country' ? countryName(dimension?.country)
+      : dimension?.sector || dimension?.technology || 'Sector not recorded';
+    if (!groups.has(label)) groups.set(label,[]);
+    groups.get(label).push(entity);
+  }
+  const byName=(a,b)=>a.name.localeCompare(b.name) || a.id.localeCompare(b.id);
+  const sections=[...groups].sort(([left],[right])=>Number(left.endsWith('not recorded'))-Number(right.endsWith('not recorded')) || left.localeCompare(right));
+  const board=$('graph-company-groups');
+  $('graph-overview-count').textContent=`${visibleCompanies.size} ${visibleCompanies.size===1 ? 'company' : 'companies'} in scope`;
+  board.innerHTML=sections.length ? sections.map(([label,items],index)=>`<section class="graph-company-group" aria-labelledby="graph-company-group-${index}">
+    <h3 id="graph-company-group-${index}">${esc(label)} <span>${items.length}</span></h3>
+    <ul>${items.sort(byName).map(entity=>{
+      const params=writeExploration(new URLSearchParams(),{...scope,selected:entity.id,graphAnchor:entity.id});
+      params.set('entity',entity.id);
+      if (companyGroup==='country') params.set('group',companyGroup);
+      return `<li><a class="graph-company-link" data-graph-company="${esc(entity.id)}" href="./graph.html?${esc(params.toString())}">${detailArtwork(entity,true)}<span>${esc(entity.name)}</span></a></li>`;
+    }).join('')}</ul>
+  </section>`).join('') : '<p class="detail-empty">No companies match these filters. Adjust the filters or try another search.</p>';
+  board.querySelectorAll('img').forEach(img=>showGraphArtwork(img,img.nextElementSibling));
+}
+
+function showCompanyOverview() {
+  if (rootId) saveCamera();
+  stopSimulation();resetLoom();layout=null;bounds=null;currentView=null;mapView=null;
+  rootId=null;selectedId=null;renderedCameraKey=null;fullMap=false;
+  $('graph-neighborhood').hidden=true;
+  $('graph-company-overview').hidden=false;
+  $('graph-title').textContent='Relationships';
+  renderCompanyOverview();
+}
+
 function renderGraphScope() {
+  if (!$('graph-company-overview').hidden) { renderCompanyOverview(); return; }
   if (!currentView) return;
   const companyCount=currentView.nodes.filter(node=>visibleCompanies.has(node.id) && kinds.has('startup')).length;
   const label=companyCount===1?'1 company in scope':companyCount+' companies in scope';
@@ -297,21 +334,23 @@ function syncGraphPrevious() {
   button.setAttribute('aria-label',entity && previous!==rootId ? 'Previous view: '+entity.name : 'Previous view');
 }
 function writeState(push=false, previous=rootId, followed=null) {
-  if(!rootId)return;
+  if (!rootId && $('graph-company-overview').hidden) return;
   const params=new URLSearchParams(location.search);
-  params.delete('startup');params.set('entity',rootId);
-  if (selectedId) params.delete('inspection');else params.set('inspection','none');
-  scope={...scope,graphAnchor:rootId,selected:selectedId || ''};
+  params.delete('startup');
+  if (rootId) params.set('entity',rootId); else params.delete('entity');
+  if (rootId && !selectedId) params.set('inspection','none'); else params.delete('inspection');
+  if (companyGroup==='country') params.set('group',companyGroup); else params.delete('group');
+  scope={...scope,graphAnchor:rootId || '',selected:selectedId || ''};
   writeExploration(params,scope);
   if(depth===2)params.set('depth','2');else params.delete('depth');
   if(kinds.size===entityKinds.length)params.delete('types');else params.set('types',entityKinds.filter(kind=>kinds.has(kind)).join(','));
   if(listVisible)params.set('list','1');else params.delete('list');
   const method=push?'pushState':'replaceState';
-  const next='?'+params.toString();
+  const next=params.size ? '?'+params.toString() : '';
   if (next!==location.search) {
     const state=push ? { ...history.state, atlasGraphPrevious:previous,
       atlasGraphFrom:previous!==rootId ? followed : history.state?.atlasGraphFrom } : history.state;
-    history[method]?.(state,'',next+(location.hash || ''));
+    history[method]?.(state,'',location.pathname+next+(location.hash || ''));
   }
   syncGraphPrevious();
   document.dispatchEvent(new CustomEvent('atlas:exploration-change',{detail:{...scope}}));
@@ -405,6 +444,8 @@ function select(id,writeHistory=true) {
   }
 }
 function explore(id,writeHistory=true,followed=null) {
+  $('graph-company-overview').hidden=true;
+  $('graph-neighborhood').hidden=false;
   if(!store.graph.entities.some(entity=>entity.id===id)) {
     stopSimulation();resetLoom();layout=null;bounds=null;currentView=null;mapView=null;rootId=null;selectedId=null;renderedCameraKey=null;
     if($('graph-full-map'))$('graph-full-map').hidden=true;
@@ -599,6 +640,24 @@ function changeZoom(delta) {
 $('graph-zoom-in').addEventListener('click',()=>changeZoom(.2));
 $('graph-zoom-out').addEventListener('click',()=>changeZoom(-.2));
 $('graph-back')?.addEventListener('click',()=>history.back());
+$('graph-back-to-companies').addEventListener('click',()=>{
+  const previous=rootId;
+  showCompanyOverview();
+  writeState(true,previous);
+  $('graph-overview-heading').focus();
+});
+$('graph-company-group').addEventListener('change',event=>{
+  companyGroup=event.target.value;
+  renderCompanyOverview();
+  writeState(true);
+});
+$('graph-company-groups').addEventListener('click',event=>{
+  const link=event.target.closest('[data-graph-company]');
+  if (!link || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  traverse(link.dataset.graphCompany,event.detail===0,null);
+  $('network-heading').scrollIntoView({block:'nearest',behavior:'instant'});
+});
 $('graph-full-map')?.addEventListener('click',()=>{
   if (!rootId) return;
   saveCamera();fullMap=!fullMap;
@@ -640,7 +699,9 @@ function restoreFromUrl() {
   const previous=$('graph-back');
   clearTimeout(searchTimer);
   const params=new URLSearchParams(location.search),nextScope=readExploration(params);
-  const nextRoot=params.get('entity')||params.get('startup')||nextScope.graphAnchor||nextScope.selected||'startup:canva';
+  const nextRoot=params.get('entity')||params.get('startup')||nextScope.graphAnchor||nextScope.selected||null;
+  companyGroup=params.get('group')==='country' ? 'country' : 'sector';
+  $('graph-company-group').value=companyGroup;
   const nextDepth=params.get('depth')==='2'?2:1;
   const nextKinds=params.has('types')?params.get('types').split(',').filter(kind=>entityKinds.includes(kind)):entityKinds;
   const mapChanged=depth!==nextDepth || nextKinds.length!==kinds.size || nextKinds.some(kind=>!kinds.has(kind));
@@ -651,7 +712,8 @@ function restoreFromUrl() {
   listVisible=params.get('list')==='1';syncListVisibility();
   $('graph-query').value=nextScope.query;
   updateScope(nextScope);
-  if(nextRoot!==rootId)explore(nextRoot,false);
+  if (!nextRoot) showCompanyOverview();
+  else if(nextRoot!==rootId)explore(nextRoot,false);
   else if(mapChanged)renderMap();
   else renderGraphScope();
   const selected=params.get('inspection')==='none' ? null
@@ -659,7 +721,10 @@ function restoreFromUrl() {
   if(rootId)select(selected,false);
   renderSearchResults();
   writeState();
-  if (rootId && (restoreMapFocus || (active===previous && previous?.hidden))) focusMapNode(rootId);
+  if (restoreMapFocus || (active===previous && previous?.hidden)) {
+    if (rootId) focusMapNode(rootId);
+    else $('graph-overview-heading').focus({preventScroll:true});
+  }
 }
 window.addEventListener('popstate',restoreFromUrl);
 window.addEventListener('pagehide',event=>{
@@ -677,6 +742,10 @@ compact?.addEventListener?.('change',resizeMap);
 mobileOverview?.addEventListener?.('change',resizeMap);
 
 document.addEventListener('atlas:export-records',event=>{
+  if (!$('graph-company-overview').hidden) {
+    event.detail.records=searchMatches.filter(node=>visibleCompanies.has(node.id));
+    return;
+  }
   if (!currentView) return;
   event.detail.records = currentView.nodes.filter(node=>kinds.has(node.kind) && (node.kind!=='startup' || visibleCompanies.has(node.id)));
 });

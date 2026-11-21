@@ -44,7 +44,20 @@
     </div>
     <div id="graph-exploration" hidden></div>
     <p id="graph-status" class="explorer-status" role="status"></p>
-    <div class="explorer-workspace">
+    <section id="graph-company-overview" class="graph-company-overview" aria-labelledby="graph-overview-heading" hidden>
+      <header class="graph-company-overview-header">
+        <div>
+          <h2 id="graph-overview-heading" tabindex="-1">Companies</h2>
+          <p><span id="graph-overview-count" role="status"></span> · Select a company to follow its connections.</p>
+        </div>
+        <div class="graph-overview-group-field">
+          <label for="graph-company-group">Group by</label>
+          <select id="graph-company-group"><option value="sector">Sector / technology type</option><option value="country">Headquarters country</option></select>
+        </div>
+      </header>
+      <div id="graph-company-groups" class="graph-company-groups"></div>
+    </section>
+    <div id="graph-neighborhood" class="explorer-workspace">
       <section class="network-panel" aria-labelledby="network-heading">
         <div class="network-toolbar">
           <details class="network-types">
@@ -78,9 +91,13 @@
               <h2 id="network-heading">Connections</h2>
               <p class="network-map-guide">Tap a node to follow its connections.</p>
             </div>
+            <button id="graph-back-to-companies" type="button" class="atlas-button" aria-label="Company overview">
+              <svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01"/></svg>
+              <span>Companies</span>
+            </button>
             <button id="graph-back" type="button" hidden>
               <svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg>
-              Previous view
+              <span>Previous view</span>
             </button>
           </div>
         </div>
