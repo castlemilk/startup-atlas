@@ -712,6 +712,13 @@ class SVGValidationTests(AssetAssertions):
         result = assets.inspect_svg(data)
         self.assertEqual(result['validation'], 'svg-safe-v0')
 
+    def test_style_can_reference_a_local_gradient_without_allowing_a_network_reference(self):
+        gradient = b'<defs><linearGradient id="mark"/></defs>'
+        styles = b'<style>.brand { fill: url(#mark); }</style>'
+        self.assertEqual(assets.inspect_svg(svg_fixture(gradient + styles))['validation'], 'svg-safe-v0')
+        external = b'<style>.other { fill: url(//example.com/mark.svg#paint); }</style>'
+        self.assertAssetError(assets.inspect_svg, svg_fixture(gradient + styles + external))
+
     def test_svg_dispatches_by_declared_mime(self):
         result = assets.inspect_image(svg_fixture(), declared_mime='image/svg+xml')
         self.assertEqual(result['validation'], 'svg-safe-v0')
