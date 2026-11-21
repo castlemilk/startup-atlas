@@ -74,12 +74,16 @@ export function buildConfig(env = process.env, argv = process.argv.slice(2)) {
   const baseUrl = (env.ATLAS_HTTP_BASE_URL ?? `http://${host}:${port}`).replace(/\/$/, '');
   return {
     root, writeEnabled, host, port, baseUrl,
-    googleClientId: env.GOOGLE_CLIENT_ID ?? '',
-    googleClientSecret: env.GOOGLE_CLIENT_SECRET ?? '',
-    googleAuthUrl: env.GOOGLE_AUTH_URL ?? GOOGLE_AUTH_URL_DEFAULT,
-    googleTokenUrl: env.GOOGLE_TOKEN_URL ?? GOOGLE_TOKEN_URL_DEFAULT,
-    googleJwksUrl: env.GOOGLE_JWKS_URL ?? GOOGLE_JWKS_URL,
-    googleTokeninfoUrl: env.GOOGLE_TOKENINFO_URL ?? GOOGLE_TOKENINFO_URL,
+    // ATLAS_GOOGLE_* is the primary name: DeepHost's runtime strips any
+    // GOOGLE_* variable from a handler worker's environment (its reserved
+    // prefix list), so GOOGLE_CLIENT_ID set in the console never reaches
+    // the process. GOOGLE_* remains as the local-dev fallback.
+    googleClientId: env.ATLAS_GOOGLE_CLIENT_ID ?? env.GOOGLE_CLIENT_ID ?? '',
+    googleClientSecret: env.ATLAS_GOOGLE_CLIENT_SECRET ?? env.GOOGLE_CLIENT_SECRET ?? '',
+    googleAuthUrl: env.ATLAS_GOOGLE_AUTH_URL ?? env.GOOGLE_AUTH_URL ?? GOOGLE_AUTH_URL_DEFAULT,
+    googleTokenUrl: env.ATLAS_GOOGLE_TOKEN_URL ?? env.GOOGLE_TOKEN_URL ?? GOOGLE_TOKEN_URL_DEFAULT,
+    googleJwksUrl: env.ATLAS_GOOGLE_JWKS_URL ?? env.GOOGLE_JWKS_URL ?? GOOGLE_JWKS_URL,
+    googleTokeninfoUrl: env.ATLAS_GOOGLE_TOKENINFO_URL ?? env.GOOGLE_TOKENINFO_URL ?? GOOGLE_TOKENINFO_URL,
     allowedEmails: parseEmailAllowList(env.ATLAS_GOOGLE_ALLOWED_EMAILS),
     writeEmails: parseEmailAllowList(env.ATLAS_GOOGLE_WRITE_EMAILS),
     fetchImpl: fetch,
@@ -88,7 +92,7 @@ export function buildConfig(env = process.env, argv = process.argv.slice(2)) {
 
 function validateConfig(config) {
   const problems = [];
-  if (!config.googleClientId) problems.push('GOOGLE_CLIENT_ID is not set.');
+  if (!config.googleClientId) problems.push('ATLAS_GOOGLE_CLIENT_ID (or GOOGLE_CLIENT_ID) is not set.');
   if (!config.allowedEmails) problems.push('ATLAS_GOOGLE_ALLOWED_EMAILS is not set (an unset list allows nobody).');
   if (problems.length > 0) throw new Error(`HTTP MCP server is not configured: ${problems.join(' ')}`);
 }

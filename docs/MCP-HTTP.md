@@ -93,8 +93,8 @@ Environment variables:
 
 | Variable | Required | What it does |
 | --- | --- | --- |
-| `GOOGLE_CLIENT_ID` | yes | OAuth client ID from step 1. Also the expected audience of Google ID tokens. |
-| `GOOGLE_CLIENT_SECRET` | yes for the OAuth flow | Client secret from step 1. Without it, `/oauth/*` returns 503 and only direct Google ID-token Bearer auth works. |
+| `ATLAS_GOOGLE_CLIENT_ID` | yes | OAuth client ID from step 1. Also the expected audience of Google ID tokens. `GOOGLE_CLIENT_ID` is the local fallback — DeepHost's runtime strips every `GOOGLE_*` variable from a handler worker, so on DeepHost the `ATLAS_GOOGLE_*` name must be used. |
+| `ATLAS_GOOGLE_CLIENT_SECRET` | yes for the OAuth flow | Client secret from step 1. Without it, `/oauth/*` returns 503 and only direct Google ID-token Bearer auth works. `GOOGLE_CLIENT_SECRET` is the local fallback, stripped on DeepHost the same way. |
 | `ATLAS_HTTP_BASE_URL` | yes for OAuth | Public origin, no trailing slash, e.g. `https://mcp.example.com`. Used for the issuer, redirect URIs and resource metadata. Defaults to `http://127.0.0.1:<port>`. |
 | `ATLAS_GOOGLE_ALLOWED_EMAILS` | yes | Comma-separated Google account emails allowed to call any tool. Unset or empty allows nobody (fail-closed). |
 | `ATLAS_GOOGLE_WRITE_EMAILS` | for writes | Comma-separated emails allowed to use the three write tools (also needs `--write`). Unset means no HTTP writes at all. |
@@ -103,8 +103,8 @@ Environment variables:
 | `ATLAS_HTTP_PORT` | no | Bind port, default `3000`. |
 | `GOOGLE_AUTH_URL`, `GOOGLE_TOKEN_URL`, `GOOGLE_JWKS_URL`, `GOOGLE_TOKENINFO_URL` | no | Google endpoint overrides; only needed for tests. Defaults are Google's production URLs. |
 
-The server exits at startup if `GOOGLE_CLIENT_ID` or
-`ATLAS_GOOGLE_ALLOWED_EMAILS` is missing. `--repo <path>` selects another
+The server exits at startup if `ATLAS_GOOGLE_CLIENT_ID` (or its
+`GOOGLE_CLIENT_ID` fallback) or `ATLAS_GOOGLE_ALLOWED_EMAILS` is missing. `--repo <path>` selects another
 compatible checkout, as with stdio.
 
 ## 3. Connect a client
