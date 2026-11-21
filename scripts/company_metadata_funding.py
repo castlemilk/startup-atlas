@@ -492,10 +492,6 @@ def includes_name(passage, normalized_name):
 
 def supports_former_name(support, current, former):
     """Require an affirmative statement tying the two complete company names together."""
-    # A previous programme role can occupy the same grammatical position as a name.
-    role_description = r'\b(?:nominee|finalist|applicant|recipient)s?(?:$| (?:for|in|at|of) )'
-    if re.search(role_description, name_key(former)):
-        return False
     current = re.escape(' '.join(current.split()))
     former = re.escape(' '.join(former.split()))
     former_wording = r'(?:formerly|previously) (?:known as|called|named)'
@@ -518,12 +514,15 @@ def former_names(aliases, current, host, owners, evidence):
         fields(alias, ('name', 'evidence_id'))
         label = text(alias['name'], 'former name', 256)
         key = name_key(label)
-        artifact = evidence.get((current, text(alias['evidence_id'], 'alias evidence ID', 64)))
+        evidence_id = text(alias['evidence_id'], 'alias evidence ID', 64)
+        if not key or key in owners:
+            raise ValueError('Former name is ambiguous in the reviewed company inventory')
+        artifact = evidence.get((current, evidence_id, label))
         if artifact is None:
-            raise ValueError('Former name requires evidence from the committed alias review')
+            raise ValueError('Former name requires evidence from the committed alias review that binds both names')
         support = text(artifact['support'], 'former-name evidence', 1500)
-        if not key or key in owners or website_host(artifact['source_url']) != host:
-            raise ValueError('Former name is ambiguous or lacks support from the reviewed issuer site')
+        if website_host(artifact['source_url']) != host:
+            raise ValueError('Former name lacks support from the reviewed issuer site')
         if not supports_former_name(support, current, label):
             raise ValueError('Former name needs an explicit name change in the reviewed issuer evidence')
         owners.add(key)

@@ -36,6 +36,12 @@ MAX_BATCHES = 20
 PRIORITY = {'blocked': 0, 'searched_unknown': 0, 'candidate': 1,
             'reviewed': 2, 'published': 2, 'conflict': 2, 'not_applicable': 2}
 
+# The saved Arkeus rebrand review predates typed former-name receipts.
+LEGACY_FORMER_NAMES = {
+    ('Arkeus', 'https://arkeus.com/news/arkeus-rebrand',
+     '011a8ba7cbbf257ea285cf5da15b6a9445fde519d9597695858609c9b0e52ae3'): 'IAS Asia Pacific',
+}
+
 
 def committed_decisions(snapshot, decisions, batch_sha, at):
     done = processed_cells(snapshot)
@@ -95,12 +101,17 @@ def committed_alias_evidence(effective, batches):
                 continue
             _, raw = saved_artifact(batch['root'], entry)
             saved = load_json(raw)
-            if saved.get('role', 'former_name') != 'former_name':
+            source = entry['source_url']
+            if saved.get('source_url', source) != source:
                 continue
+            if saved.get('role') == 'former_name' and saved.get('name') == name:
+                former = saved.get('alias_name')
+            else:
+                former = LEGACY_FORMER_NAMES.get((name, source, entry['sha256']))
             support = saved.get('support')
-            if isinstance(support, str):
-                evidence[name, key] = {'source_url': entry['source_url'], 'support': support,
-                                       'sha256': entry['sha256'], 'batch_sha256': decision['batch_sha256']}
+            if isinstance(former, str) and isinstance(support, str):
+                evidence[name, key, former] = {'source_url': source, 'support': support,
+                                               'sha256': entry['sha256'], 'batch_sha256': decision['batch_sha256']}
     return evidence
 
 

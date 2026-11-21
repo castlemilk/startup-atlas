@@ -74,7 +74,8 @@ class CompanyMetadataRollupTests(unittest.TestCase):
                 ]}
             source = {}
             if field == 'aliases' and name == COMPANY:
-                payload = {'support': 'Old Company rebranded as Ready Company.'} if alias_proof is None else alias_proof
+                payload = {'role': 'former_name', 'name': COMPANY, 'alias_name': 'Old Company',
+                           'support': 'Old Company rebranded as Ready Company.'} if alias_proof is None else alias_proof
                 source = {'source_url': SITE + 'news/rename'}
             sha = self.write(folder / (key + '.json'), payload)
             batch['evidence'].append({'id': key, 'name': name, 'kind': kind, 'path': key + '.json',
@@ -253,36 +254,56 @@ class CompanyMetadataRollupTests(unittest.TestCase):
         reordered = self.reconcile(pair, funding_review=self.funding_manifest(list(reversed(companies))))['funding_review']
         self.assertEqual(funding['companies'], reordered['companies'])
 
-    def test_former_name_review_holds_nominees_and_requires_an_explicit_transition(self):
+    def test_funding_review_requires_a_bound_former_name_receipt(self):
         nomination = 'Ready Company named Old Company as a grant nominee.'
         name_change = 'Ready Company was formerly known as Old Company.'
         missing = 'committed alias review'
         explicit = 'explicit name change'
+
+        def attested(alias='Old Company', **changes):
+            return {'role': 'former_name', 'name': COMPANY, 'alias_name': alias, **changes}
+
         cases = [
             ('Old Company', nomination, {'role': 'nominee'}, missing),
-            ('Old Company', nomination, {}, explicit),
-            ('Old Company', nomination, {'role': 'former_name'}, explicit),
-            ('Old Company', name_change, {'role': 'nominee'}, missing),
-            ('Old Company', 'Former grant nominees: Ready Company and Old Company.', {}, explicit),
-            ('Old Company', 'Ready Company named its nominees. Old Company rebranded as Other Co.', {}, explicit),
-            ('Old Company', 'The nominee wrote “Ready Company was formerly known as Old Company.”', {}, explicit),
-            ('Old Company', name_change[:-1] + '?', {}, explicit),
-            ('Old Company', name_change + ' Correction: Old Company was only a nominee.', {}, explicit),
-            ('Old Company', 'Ready Company was formerly known as Old Company Holdings.', {}, explicit),
-            ('Old Company', 'Ready Company (formerly Old Company)', {}, explicit),
-            ('a programme finalist', 'Ready Company (formerly a programme finalist)', {}, explicit),
-            ('a programme finalist', 'Ready Company was formerly known as a programme finalist.', {}, explicit),
+            ('Old Company', nomination, {}, missing),
+            ('Old Company', nomination, attested(), explicit),
+            ('Old Company', name_change, attested(role='nominee'), missing),
+            ('Old Company', name_change, attested(name=OTHER), missing),
+            ('Old Company', name_change, attested('Old Company Holdings'), missing),
+            ('Old Company', name_change, attested('old company'), missing),
+            ('Old Company', name_change, attested(source_url='https://elsewhere.example/rename'), missing),
+            ('Old Company', name_change, {'role': 'former_name'}, missing),
+            ('Old Company', name_change, {}, missing),
+            ('Old Company', 'Former grant nominees: Ready Company and Old Company.', attested(), explicit),
+            ('Old Company', 'Ready Company named its nominees. Old Company rebranded as Other Co.',
+             attested(), explicit),
+            ('Old Company', 'The nominee wrote “Ready Company was formerly known as Old Company.”',
+             attested(), explicit),
+            ('Old Company', name_change[:-1] + '?', attested(), explicit),
+            ('Old Company', name_change + ' Correction: Old Company was only a nominee.', attested(), explicit),
+            ('Old Company', 'Ready Company was formerly known as Old Company Holdings.', attested(), explicit),
+            ('Old Company', 'Ready Company (formerly Old Company)', attested(), explicit),
+            ('a programme finalist', 'Ready Company (formerly a programme finalist)', {}, missing),
+            ('a programme finalist', 'Ready Company was formerly known as a programme finalist.', {}, missing),
             ('a programme finalist for the 2024 cohort',
-             'Ready Company was formerly known as a programme finalist for the 2024 cohort.', {}, explicit),
+             'Ready Company was formerly known as a programme finalist for the 2024 cohort.', {}, missing),
             ('the programme finalist at Demo Day',
-             'Ready Company (formerly known as the programme finalist at Demo Day)', {}, explicit),
-            ('Old Company', name_change, {}, None),
-            ('Old Company', 'Ready Company (formerly known as Old Company)', {}, None),
-            ('Old Company', 'Old Company rebranded as Ready Company.', {'role': 'former_name'}, None),
+             'Ready Company (formerly known as the programme finalist at Demo Day)', {}, missing),
+            ('A Funding Beneficiary', 'READY COMPANY WAS PREVIOUSLY KNOWN AS A FUNDING BENEFICIARY.', {}, missing),
+            ('the winner at Demo Day', 'Ready Company (previously known as the winner at Demo Day)', {}, missing),
+            ('an accelerator alumnus', '“Ready Company was previously known as an accelerator alumnus.”', {}, missing),
+            ('Old Company', name_change, attested(), None),
+            ('Old Company', 'Ready Company (formerly known as Old Company)', attested(), None),
+            ('Old Company', 'Old Company rebranded as Ready Company.', attested(), None),
             ('Old Company', 'On 16 February 2023 the company described Old Company’s change of brand to '
-             'Ready Company. ABN history separately confirms continuity of legal entity.', {}, None),
-            ('Nominee Systems Pty Ltd', 'Nominee Systems Pty Ltd changed its name to Ready Company.', {}, None),
+             'Ready Company. ABN history separately confirms continuity of legal entity.', attested(), None),
+            ('Nominee for Growth Pty Ltd', 'Nominee for Growth Pty Ltd changed its name to Ready Company.',
+             attested('Nominee for Growth Pty Ltd'), None),
         ]
+        cases.extend((alias, f'{COMPANY} was previously known as {alias}.', {}, missing) for alias in (
+            'a funding beneficiary', 'an accelerator alumnus', 'the winner at Demo Day',
+            'an alum of the 2024 cohort', 'the 2024 grant awardee',
+        ))
         for i, (alias, support, details, error) in enumerate(cases):
             with self.subTest(alias=alias, support=support, details=details):
                 pair = self.bundle(f'former-{i}', FIRST, [(COMPANY, 'identity', 'reviewed'),
@@ -310,6 +331,26 @@ class CompanyMetadataRollupTests(unittest.TestCase):
                 })
                 self.assertEqual([row['name'] for row in entry['former_names']], [] if error else [alias])
                 self.assertEqual(len(entry['searches']), 1 if error else 2)
+
+    def test_legacy_former_name_receipt_requires_the_exact_evidence_digest(self):
+        proof = {'support': 'Old Company rebranded as Ready Company.'}
+        observations = [(COMPANY, 'identity', 'reviewed'), (COMPANY, 'aliases', 'reviewed')]
+        original = self.bundle('legacy', FIRST, observations, alias_proof=proof)
+        modified = self.bundle('modified', SECOND, observations, alias_proof={**proof, 'note': 'New receipt'})
+        self.commit(original)
+        self.commit(modified)
+        content = original[0].with_name('evidence-1.json').read_bytes()
+        legacy = {(COMPANY, SITE + 'news/rename', digest(content)): 'Old Company'}
+        request = self.funding_manifest([{
+            'name': COMPANY, 'former_names': [{'name': 'Old Company', 'evidence_id': 'evidence-1'}],
+            'captures': [self.capture('seed', 'Old Company closed a seed round.')],
+        }])
+        with patch.dict('scripts.rollup_company_metadata.LEGACY_FORMER_NAMES', legacy, clear=True):
+            entry, = self.reconcile(original, funding_review=request)['funding_review']['companies']
+            self.assertEqual(entry['results'][0]['bucket'], 'early_round_lead')
+            self.assertEqual(entry['former_names'][0]['sha256'], digest(content))
+            with self.assertRaisesRegex(ValueError, 'committed alias review'):
+                self.reconcile(modified, funding_review=request)
 
     def test_funding_review_keeps_coverage_listing_and_article_dates_separate(self):
         pair = self.bundle('coverage', FIRST, [(COMPANY, 'identity', 'reviewed')])

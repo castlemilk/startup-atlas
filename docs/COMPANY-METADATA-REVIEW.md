@@ -107,16 +107,28 @@ appears as review context even on the issuer's own website. Capture the
 linked article separately with its own source dates and excerpt. The
 review does not fetch the article or assign transaction dates to the listing.
 
-For a former name, add up to four `former_names` entries with `name` and the
-`evidence_id` cited by the committed alias decision. Use a complete issuer
-statement or reviewed paraphrase that connects the exact former and current names in the correct
-direction, such as “Old Company rebranded as Ready Company.” A bare “formerly” title or a past programme role
-requires a separate statement of the former company name. When the saved
-evidence specifies a `role`, use `former_name` for a name change. Grant nominees,
-trading names and other relationships can remain in the saved review. An
-unsupported former-name request is held before search hints or financing leads
-are generated. The report links the admitted evidence digest and prioritises
-issuer pages with explicit early-stage financing language. A lead
+For a former name, add up to four `former_names` entries with the exact former
+`name` and an `evidence_id` cited by the committed alias decision. Record the
+following fields in its saved review evidence.
+
+```json
+{
+  "role": "former_name",
+  "name": "Ready Company",
+  "alias_name": "Old Company",
+  "support": "Old Company rebranded as Ready Company."
+}
+```
+
+The evidence `name` is the current inventory name, and `alias_name` is the
+complete former company name. Review both against the cited issuer source.
+Use a complete issuer statement or reviewed paraphrase of the name change.
+The handoff holds untyped evidence, name mismatches and statements that lack
+explicit name-change wording. It preserves the historical Arkeus rebrand
+receipt using its exact source and evidence digest. Other identity and
+programme observations remain in the saved review. The report links the
+admitted evidence digest and prioritises issuer pages with explicit early-stage
+financing language. A lead
 needs wording that ties the round to the company. Keep phrasing that leaves the
 issuer or purpose unclear available for source review. Grants,
 contracts, valuations and portfolio backing can be useful context. A mixed
