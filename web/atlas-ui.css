@@ -234,6 +234,13 @@ footer a:focus-visible { outline-color: var(--atlas-on-action); }
 .entity-row h3 a:hover { text-decoration: underline; text-decoration-color: var(--atlas-accent); }
 .entity-row p { max-width: 75ch; line-height: 1.6; }
 .entity-row-mark { background: var(--atlas-surface); border-color: var(--atlas-border); border-radius: var(--atlas-radius-control); }
+/* These portraits place the face above the centre of the original frame. */
+:is(.network-loom-mark.person, .detail-mark.person, .detail-mini.person, .entity-mark-person) img:is(
+  [src$="/portraits/casey-ellis.png"],
+  [src$="/portraits/ed-ring.png"]
+) {
+  object-position: center top;
+}
 .entity-row-main { min-width: 0; }
 .entity-row-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; min-width: 0; }
 .entity-row-inspect { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-height: 38px; padding: 7px 8px; border: 1px solid var(--atlas-border-strong); border-radius: var(--atlas-radius-control); background: var(--atlas-surface); color: var(--atlas-ink); font: 600 12px/1.3 var(--atlas-font-body); }
