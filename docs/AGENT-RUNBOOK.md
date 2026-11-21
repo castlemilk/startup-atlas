@@ -24,6 +24,16 @@ Use the read-only registry tools (`atlas_list_crawl_runs`, `atlas_get_crawl_run`
 
 Worked example: the 20 Nov 2026 partners run `crawl-20261120-partners-01` (5 sources, 0 fetched, DNS-blocked) is the first registry entry. A follow-on partners run would first check `atlas_get_crawl_claims` (that run's lease has long expired, so its sources are free), record `crawl-20261121-partners-01` with the current main revision and the five partner source IDs, dispatch the Partner research crawl workflow, then record the outcome and artifact URL before any candidate is reviewed.
 
+As of 21 Nov 2026, `crawl-20261121-partners-03` (4,705 candidates) is partly reviewed: all 30 partner-update candidates and all 160 news + programs candidates are resolved; 1,564 partner candidates remain, of which 70 are already in `data/partner-leads.json`, 19 are already reviewed, and 1,494 are new names. Logos (312) and profiles (2,639) from the same run are still unreviewed.
+
+### Local MCP write loop (validate → upsert)
+
+The local stdio MCP can be driven directly over JSON-RPC (`node backend/mcp/server.mjs --repo <checkout> --write`, then `initialize` and `tools/call`): proven 21 Nov 2026 when `a16z` was validated and upserted in the agent's own loop and published as PR #320, rendering live on the site.
+
+- `atlas_upsert_partner` requires the name to already be in `data/partner-leads.json`. Validate returns `NOT_FOUND` ("resolve and add the lead through the research workflow first") for any other name — new crawl candidates must become leads before the MCP will write them.
+- The snapshot revision is computed from the checkout's data files. Sync the checkout's data files from remote main before validating, or the revision and merge base go stale (remote main had gained Lyra Capital and Y Combinator after the local base on 21 Nov 2026).
+- `npm test` regenerates `data/graph.json` and `backend/internal/graph/snapshot.json` from reviewed data. These are build outputs — do not commit them in data PRs; the Pages build regenerates them from the merged data.
+
 Run `npm run crawl -- partners --follow 0` to discover directory leads and `npm run crawl -- logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 3` to stage candidates. Approved websites can omit a Wikidata ID for crawling; identity import still requires one. Allow additional CDN hosts only when independently identified on the official organisation page. Candidate order prioritises structured/metadata logos and header logos over favicons, so the limit fetches the real logo first. For headshots, run `npm run crawl -- portraits --approved data/company-profile-seeds.csv --follow 2`: it runs the company-profiles crawl and then fetches portrait bytes for professional-bio headshot candidates under the same host rules. Publication of any captured logo or portrait goes through the reviewed asset pipeline in `docs/MCP-ASSETS.md` (`atlas_assets.py` review gate → `scripts/publish_asset.py`); unreviewed captures never enter Git.
 
 ### Currency normalisation
@@ -63,6 +73,15 @@ Read `metadata_coverage` independently of the search rows. It counts unique requ
 ## Private MCP and GitHub OAuth
 
 The Site uses Sites identity at the MCP boundary and a separate, repository-scoped GitHub App OAuth connection. Use `atlas_get_connection`, then read/search tools to confirm real access. The repository implements hosted partner update proposals; confirm the deployed Site version and live tool discovery before claiming the tools are available. Local stdio also provides reviewed partner metadata updates.
+
+### Hosted MCP on DeepHost
+
+The HTTP MCP is also hosted at `https://gamma-systems-pty-ltd-startup-atlas-mcp.apps.deephost.benebsworth.com` (DeepHost app `startup-atlas-mcp`, branch `mcp/http-google-oauth`, PR #300 — unmerged as of 21 Nov 2026; the hosted app runs off the branch). It is read-only: no write allow-list is set, and writes would only change the server's ephemeral checkout anyway.
+
+- Google OAuth is configured with `ATLAS_GOOGLE_*` environment variables, not `GOOGLE_*`: the DeepHost runtime strips every `GOOGLE_`-prefixed variable from handler workers, so the server reads `ATLAS_GOOGLE_CLIENT_ID` / `ATLAS_GOOGLE_CLIENT_SECRET` first (with `GOOGLE_*` as a local fallback).
+- DeepHost runs a framework `node` app as a handler, not a long-lived server: the repo needs a root `server.js` exporting the MCP handler. See `docs/MCP-HTTP.md` on the PR #300 branch for the contract.
+- End-to-end OAuth test passed 21 Nov 2026 on a phone: dynamic client registration, Google sign-in + consent as the allowed account, token issue (Bearer, 3600s, refresh token), MCP `initialize` answering `startup-atlas 1.0.0` / protocol `2025-03-26`, and `tools/list` returning all 16 tools.
+- Known findings: the app's 10-minute login session can expire during a slow consent step (the callback then returns "Unknown or expired login session" — retry from `/oauth/authorize`); `tools/list` needs the `Mcp-Session-Id` header from `initialize` (standard streamable-HTTP sessions); `/oauth/register` has no CORS support, so a browser-based client cannot register cross-origin (native MCP clients are unaffected).
 
 Cloudflare Workers rejects `redirect: 'error'` for fetch. Use `redirect: 'manual'` and reject non-success responses; never forward credentials across redirects. Workers' native fetch needs its global receiver; use the existing `globalThis.fetch.bind(globalThis)` defaults. Node-only mocks can miss both issues. Preserve the workerd and receiver-checking tests, single-use OAuth state, encrypted storage, token-specific revocation and uncertain-write handling.
 
