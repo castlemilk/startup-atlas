@@ -45,6 +45,18 @@ const countLabel = count => formatValue(count, 'companies');
 const safeImageUrl = value => /^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(value || '') ? value : sourceUrl(value);
 const safeImage = entity => safeImageUrl(logoFor(entity.name)) ||
   (state.presentation !== 'cards' && sourceUrl(entity.logo_source) ? safeImageUrl(entity.logo) : '') || '';
+// Cards can use these already published marks while the graph still cites the reviewed asset and issuer.
+const reviewedCardMarks = new Map([
+  ['startup:synthesia', {file:'synthesia.svg', source:'https://www.synthesia.io/'}],
+  ['startup:culture-amp', {file:'culture-amp.svg', source:'https://www.cultureamp.com/company/media-kit'}],
+  ['startup:quantum-brilliance', {file:'quantum-brilliance.svg', source:'https://quantumbrilliance.com/'}],
+]);
+function reviewedCardLogo(entity) {
+  const mark = reviewedCardMarks.get(entity.id);
+  if (entity.kind !== 'startup' || !mark || entity.logo_source !== mark.source ||
+      entity.logo !== 'https://castlemilk.github.io/startup-atlas/assets/logos/' + mark.file) return '';
+  return './assets/logos/' + mark.file;
+}
 const initials = name => name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
 const logoCanvases = new Map([
   ['https://cdn.prod.website-files.com/65dd072aa7402b211d7d6ccf/65deeccca712cb796025a2bd_Canva.png', 'cream'],
@@ -171,7 +183,8 @@ function profileContext(entity) {
   const technologyFact = technology.get(entity.id);
   const owner = ownership.get(entity.id);
   const companyValue = companyValues.get(entity.id);
-  const links = [evidenceLink(entity.website,'Website'), ...context.socials.map(link => evidenceLink(link.url,link.label))].filter(Boolean).join('');
+  const logoSource = state.presentation === 'cards' && reviewedCardLogo(entity) ? evidenceLink(entity.logo_source,'Logo source') : '';
+  const links = [evidenceLink(entity.website,'Website'), logoSource, ...context.socials.map(link => evidenceLink(link.url,link.label))].filter(Boolean).join('');
   const figures = context.figures.map(({metric,row,reason,event}) => {
     const date = event ? datedFigure(event, metric) : '';
     const value = row ? `<strong>${esc(formatValue(row.value,metric,state.currency,false))}</strong>` : esc(missingFigureLabel({reason},metric));
@@ -431,7 +444,7 @@ function draw() {
   focusCopy(previous,chart);
 }
 function cardMedia(entity) {
-  const image = state.logos ? logoFor(entity.name) : '';
+  const image = state.logos ? logoFor(entity.name) || reviewedCardLogo(entity) : '';
   return `<span class="treemap-card-media" aria-hidden="true">
     ${image ? `<img src="${esc(image)}" alt="" hidden>` : ''}
     <span class="treemap-card-word">${esc(entity.name)}</span>

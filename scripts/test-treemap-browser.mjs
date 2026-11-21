@@ -2,6 +2,7 @@
 // on the GitHub Actions runner and Node's built-in CDP WebSocket client.
 import assert from 'node:assert/strict';
 import {makeView,formatValue,indexCompanyValues,indexTreemapEvidence} from '../dist/treemap-model.js';
+import {logoFor} from '../dist/logos.js';
 import {spawn} from 'node:child_process';
 import {createServer} from 'node:http';
 import {mkdtemp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
@@ -347,6 +348,29 @@ try {
   assert.equal(await evaluate("document.querySelector('#treemap-board-heading').getBoundingClientRect().bottom<document.querySelector('#treemap-controls').getBoundingClientRect().top"),true,'The ranking header must precede the toolbar');
   assert.equal(await evaluate("document.querySelector('#treemap-filter-fields').hidden&&document.querySelector('#treemap-filter-toggle').getAttribute('aria-expanded')==='false'"),true,'The default board starts with collapsed filters');
   assert.equal(await evaluate("document.querySelectorAll('#treemap-workspace img[src^=https]').length"),0,'Cards must use only bundled images');
+  const reviewedFundingMarks = new Map([
+    ['startup:synthesia','./assets/logos/synthesia.svg'],
+    ['startup:culture-amp','./assets/logos/culture-amp.svg'],
+    ['startup:quantum-brilliance','./assets/logos/quantum-brilliance.svg'],
+  ]);
+  const expectedFundingCards = defaultFunding.rows.map((row,index)=>({
+    id:row.id, rank:String(index+1), amount:formatValue(row.value,'funding','USD'),
+    mark:logoFor(row.entity.name) || reviewedFundingMarks.get(row.id) || null,
+  }));
+  const fundingCards=()=>evaluate(`Array.from(document.querySelectorAll('#treemap-cards [data-company]'), card=>({
+    id:card.dataset.company, rank:card.querySelector('.treemap-card-rank').textContent,
+    amount:card.querySelector('.treemap-card-value').textContent, mark:card.querySelector('img')?.getAttribute('src') ?? null
+  }))`);
+  assert.deepEqual(await fundingCards(),expectedFundingCards);
+  const markSelector = id => `#treemap-cards [data-company="${id}"] img`;
+  const loadFundingMarks = async()=>{
+    for (const [id,path] of reviewedFundingMarks) {
+      await until(()=>evaluate(`(()=>{const img=document.querySelector(${JSON.stringify(markSelector(id))});
+        return img?.getAttribute('src')===${JSON.stringify(path)}&&img.naturalWidth>0&&!img.hidden&&img.nextElementSibling.hidden;})()`),
+      `Reviewed funding mark did not load for ${id}`);
+    }
+  };
+  await loadFundingMarks();
   const textOnlyCards = await evaluate(`[...document.querySelectorAll('#treemap-cards [data-company]')].filter(card=>!card.querySelector('img')).map(card=>({
     id:card.dataset.company, name:card.querySelector('.treemap-card-word').textContent,
     repeatedName:card.querySelector('.treemap-card-name').getClientRects().length>0,
@@ -361,15 +385,41 @@ try {
     const cards=[...document.querySelectorAll('#treemap-cards [data-company]')];
     return cards.slice(0,7).map(card=>{
       const {top,width}=card.getBoundingClientRect();
-      return {top,width,featured:card.classList.contains('featured'),mark:card.querySelector('.treemap-card-media').getBoundingClientRect().height};
+      return {top,width,featured:card.classList.contains('featured')};
     });
   })()`);
   assert.equal(boardLayout.length,7);
   assert.ok(boardLayout.slice(0,3).every(card=>card.featured&&card.top===boardLayout[0].top));
-  assert.ok(boardLayout[0].width>boardLayout[1].width&&boardLayout[0].mark>boardLayout[4].mark);
+  assert.ok(boardLayout[0].width>boardLayout[1].width,'The lead card must be wider than the other featured cards');
   assert.ok(boardLayout.slice(3).every(card=>!card.featured&&card.top===boardLayout[3].top));
   assert.equal(await evaluate("document.querySelectorAll('#treemap-cards .compact-tail').length"),(defaultFunding.rows.length-3)%4);
   await screenshot('funding-default-desktop.png');
+  for (const row of defaultFunding.rows) {
+    await click(`#treemap-cards [data-company="${row.id}"]`);
+    const sources=await evaluate("Array.from(document.querySelectorAll('#treemap-figure-panel a'), link=>link.href)");
+    assert.ok(sources.includes(new URL(row.event.source).href),`Funding evidence must stay available for ${row.id}`);
+    if (!reviewedFundingMarks.has(row.id)) continue;
+    await click('#treemap-company-tab');
+    await until(()=>evaluate(`Array.from(document.querySelectorAll('#treemap-company-panel a')).some(link=>
+      link.textContent.includes('Logo source')&&link.href===${JSON.stringify(row.entity.logo_source)}&&link.getClientRects().length>0)`),
+    `Reviewed logo attribution must be discoverable for ${row.id}`);
+  }
+  await click('#treemap-detail [data-treemap-clear-selection]');
+  const failingMark=JSON.stringify(markSelector('startup:synthesia'));
+  await evaluate(`document.querySelector(${failingMark}).src='/missing-reviewed-mark.svg'`);
+  await until(()=>evaluate(`(()=>{const img=document.querySelector(${failingMark});
+    return img.hidden&&!img.nextElementSibling.hidden&&img.nextElementSibling.textContent==='Synthesia';})()`),
+  'A failed reviewed funding mark must show the typeset company name');
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await navigate('?view=cards&metric=funding');
+  await loadFundingMarks();
+  assert.deepEqual(await fundingCards(),expectedFundingCards);
+  assert.equal(await evaluate(`(()=>{const cards=Array.from(document.querySelectorAll('#treemap-cards [data-company]'),
+    card=>card.getBoundingClientRect());return document.documentElement.scrollWidth<=innerWidth&&
+    cards.every((card,index)=>card.left===cards[0].left&&card.width===cards[0].width&&
+      (index===0||card.top>cards[index-1].top));})()`),true,'Funding Cards must form one full-width column at 390px');
+  await screenshot('funding-default-mobile.png',true);
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
   await navigate('?view=map');
   assert.equal(await evaluate("document.querySelector('#treemap-chart').hidden"),false);
   await navigate('?metric=companies&view=cards');
