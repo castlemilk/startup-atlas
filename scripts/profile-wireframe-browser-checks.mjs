@@ -82,6 +82,20 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   await assertNoOverflow('Wireframe partner explorer desktop');
   await screenshot('atlas-wireframe-partner-desktop.png');
 
+  const startmateReady="document.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('#partner-company-detail')";
+  const lastCompany=partners.Startmate.companies.length-1;
+  await navigate('/partner.html?name=Startmate',startmateReady);
+  await click(`[data-company-index="${lastCompany}"]`);
+  assert.equal(await evaluate("document.querySelector('#partner-company-title')?.textContent"),partners.Startmate.companies[lastCompany].name);
+  assert.ok(await evaluate(`(()=>{
+    const panel=document.querySelector('#partner-company-detail').getBoundingClientRect();
+    const bar=document.querySelector('.profile-sticky').getBoundingClientRect();
+    const button=document.querySelector('[data-company-index="${lastCompany}"]');
+    return scrollY>700&&panel.top>=bar.bottom&&panel.bottom<=innerHeight&&document.activeElement===button;
+  })()`),'Last-row desktop inspection keeps the detail and focused row in view');
+  await assertNoOverflow('Wide Startmate portfolio');
+  await screenshot('atlas-partner-last-row-desktop.png');
+
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await navigate('/partner.html?name=Airtree',"document.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('#partner-company-detail')");
   await click(`[data-company-index="${companyIndex}"]`);
@@ -96,6 +110,51 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   assert.ok(narrowInspection.actionVisible,'Stacked inspection immediately reveals its company-profile action in the viewport');
   await assertNoOverflow('Wireframe partner explorer narrow');
   await screenshot('atlas-wireframe-partner-mobile.png',true);
+
+  const sample=partners.Startmate.companies[1];
+  const inspect='[data-company-index="1"]';
+  const source='#partner-company-detail .profile-source-action';
+  for (const [width,height] of [[320,740],[568,320]]) {
+    await command('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:true});
+    await navigate('/partner.html?name=Startmate',startmateReady);
+    assert.ok(await evaluate(`(()=>{
+      const nav=document.querySelector('.atlas-section-nav');
+      const links=[...nav.querySelectorAll('a')];
+      const bounds=nav.getBoundingClientRect();
+      return links.length===5&&nav.scrollWidth<=nav.clientWidth+1&&links.every(link=>{
+        const r=link.getBoundingClientRect();
+        return r.left>=bounds.left-1&&r.right<=bounds.right+1&&r.height>=44;
+      });
+    })()`),`All Startmate sections fit at ${width}px`);
+    await click(inspect);
+    assert.equal(await evaluate("document.querySelector('#partner-company-title')?.textContent"),sample.name);
+    assert.ok(await evaluate(`(()=>{
+      const panel=document.querySelector('#partner-company-detail');
+      const bounds=panel.getBoundingClientRect();
+      const nav=document.querySelector('.profile-sticky');
+      const top=getComputedStyle(nav).position==='sticky'?Math.max(0,nav.getBoundingClientRect().bottom):0;
+      return panel.previousElementSibling?.dataset.companyRow==='1'&&document.activeElement?.id==='partner-company-title'&&bounds.top>=top-1&&bounds.bottom<=innerHeight+1;
+    })()`),`The whole Startmate inspector opens beside its selected row at ${width}×${height}`);
+    await until(()=>evaluate(`!!document.querySelector(${JSON.stringify(source)})`),'The selected portfolio evidence did not upgrade');
+    await press('Tab','Tab',9);
+    assert.equal(await evaluate(`document.activeElement.matches(${JSON.stringify(source)})`),true,'Relationship evidence is the next control after the detail heading');
+    await press('Enter','Enter',13);
+    await until(()=>evaluate("!!document.querySelector('.profile-evidence-panel[data-open]')"),'The selected portfolio claim did not open');
+    assert.equal(await evaluate("document.querySelector('.profile-evidence-value').textContent"),sample.relationship || 'Listed in portfolio');
+    assert.equal(await evaluate("document.querySelector('.profile-evidence-citations a').href"),sample.source);
+    await press('Escape','Escape',27);
+    await until(()=>evaluate(`!document.querySelector('.profile-evidence-panel[data-open]')&&document.activeElement.matches(${JSON.stringify(source)})`),'Closing portfolio evidence restores its exact trigger');
+    await press('Tab','Tab',9,8);
+    await until(()=>evaluate(`(()=>{
+      const button=document.querySelector(${JSON.stringify(inspect)});
+      const r=button.getBoundingClientRect();
+      return document.activeElement===button&&button.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));
+    })()`),'Reverse Tab returns to the visible selected company');
+    await assertNoOverflow(`Startmate portfolio at ${width}px`);
+    await screenshot(`atlas-partner-selected-row-${width}.png`);
+  }
+
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await navigate('/entity.html?id=startup%3Acanva',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Canva'");
   await evaluate('document.fonts.ready.then(()=>true)');
   assert.ok(await evaluate(`(()=>{

@@ -181,7 +181,7 @@ Directory, Map/List and Graph use a compact ruled introduction so search and wor
 | Treemap | Flexible chart/list and a 290–350px evidence rail in normal page flow. Cards use the full-width board. | At 900px and below, the evidence opens in one vertically scrollable sheet. |
 | Graph | Flexible network and a 302–358px inspector with a 14px gap. Evidence follows document flow. | At 920px and below, the rail follows the map. Opening an offscreen connections list reveals its heading and links. |
 | Startup dossier | Overview, people, funding and connections in reading order, alongside a coverage rail. | At 960px and below, company facts use the main column. Section links wrap and claim evidence opens in a sheet at phone widths. |
-| Partner / VC dossier | Full identity band, flexible company panel and 320px people/evidence rail, with 24px gap. | Inner company inspector stacks at 1200px; the outer rail stacks at 1000px. |
+| Partner / VC dossier | Full identity band, company sample with a sticky inspector, and a separate research and evidence rail. | The inspector follows the selected row at 1200px or below, or at 540px height or below. The outer rail stacks at 1000px. Section links wrap within the available width. |
 
 Profile reading stays in document flow. Each claim opens its own source and qualifiers, with focus returning to that claim on dismissal.
 

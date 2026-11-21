@@ -299,7 +299,8 @@ try {
   await navigate('/partner.html?name=Airtree',"document.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('#profile h1')?.textContent==='Airtree'");
   assert.equal(await evaluate("document.querySelectorAll('#partner-companies .profile-item').length"),partners.Airtree.companies.length);
   assert.equal(await evaluate("document.querySelectorAll('#partner-people .profile-item').length"),partners.Airtree.people.length);
-  assert.match(await text('.profile-coverage'),/selected sample, not the organisation/);
+  assert.match(await text('#partner-companies .profile-sample'),/Selected portfolio sample/);
+  assert.equal(await evaluate("document.querySelector('#partner-companies .profile-sample time')?.dateTime"),partners.Airtree.checked);
   const readingOrder=await evaluate("(()=>{const companies=document.querySelector('#partner-companies'),people=document.querySelector('#partner-people'),a=companies.getBoundingClientRect(),b=people.getBoundingClientRect();return {dom:!!(companies.compareDocumentPosition(people)&Node.DOCUMENT_POSITION_FOLLOWING),visual:a.top<b.top-1||(Math.abs(a.top-b.top)<=1&&a.left<b.left)};})()");
   assert.deepEqual(readingOrder,{dom:true,visual:true},'Companies should precede people in the DOM and visual reading order');
   await assertActionContrast('.profile-actions .atlas-button-primary');

@@ -43,7 +43,7 @@ The shared masthead contains site navigation and global search. The explorer hea
 | Directory / All | Result list and a 350px adjacent inspector; the rail becomes 310px at 1200px and below. | Stack at 900px and below; inspection moves focus to the detail heading. |
 | Treemap | Measure-led canvas and a 350px evidence inspector; the rail becomes 310px at 1200px and below. | Stack at 820px and below; the ranked list remains an equivalent inspection route. |
 | Graph | Canvas joins a 360px inspector without a gap; the rail becomes 300px at 1150px and below. | Stack at 820px and below, retaining the horizontal camera dock and connections list. |
-| Startup and partner profiles | A 1640px maximum shell, a 340px context rail and a 24px column gap. | Stack the context rail at 1000px and below. The partner company inspector stacks within its section at 1200px and below. |
+| Startup and partner profiles | A 1640px maximum shell, a 340px context rail and a 24px column gap. | Stack the context rail at 1000px and below. The partner company inspector follows the selected row at widths of 1200px or less or heights of 540px or less. |
 
 The document owns page scrolling. These dimensions do not impose a fixed-height application shell or hide long research sections.
 
