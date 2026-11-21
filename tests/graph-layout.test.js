@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {neighborhood} from '../web/graph-model.js';
+import {mainConnections, mobileFit} from '../web/graph-mobile-fit.js';
 import {createForceSimulation,groupBounds,labelLines,layoutBounds,layoutNetwork} from '../web/graph-layout.js';
 
 function assertSeparated(nodes) {
@@ -12,6 +13,25 @@ function assertSeparated(nodes) {
     assert.ok(overlapX<=0||overlapY<=0,`${a.name} overlaps ${b.name}`);
   }
 }
+
+test('mobile Fit samples sourced direct relationship kinds without changing the full neighbourhood', () => {
+  const root = { id:'root', level:0 };
+  const groups = ['team_member', 'founded', 'supports'];
+  const direct = groups.flatMap(kind => Array.from({length:4}, (_, i) => ({id:`${kind}-${i}`, level:1, kind})));
+  const unsourced = {id:'unsourced', level:1};
+  const secondHop = {id:'second-hop', level:2};
+  const edges = direct.map(node => ({from:node.id, to:root.id, kind:node.kind, source:'https://example.com/relationship'}));
+  edges.push({from:unsourced.id, to:root.id, kind:'offers'},
+    {from:direct[0].id, to:secondHop.id, kind:'supports', source:'https://example.com/second-hop'});
+  const view = {nodes:[root, unsourced, ...direct, secondHop], edges};
+  const original = structuredClone(view);
+  const fitted = mainConnections(view, root.id);
+  assert.deepEqual(fitted.nodes.map(node => node.id), ['root','founded-0','team_member-0','supports-0','founded-1','team_member-1']);
+  assert.equal(fitted.edges.length, mobileFit.neighbours);
+  assert.ok(fitted.edges.every(edge => edge.to === root.id && edge.source));
+  assert.deepEqual(view, original);
+  assert.equal(mainConnections({nodes:[root, ...direct.slice(0, 3)], edges:edges.slice(0, 3)},root.id),null);
+});
 
 test('Canva layout groups sourced partners and founders without label collisions',async()=>{
   const graph=JSON.parse(await readFile(new URL('../data/graph.json',import.meta.url),'utf8'));

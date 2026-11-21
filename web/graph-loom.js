@@ -1,5 +1,6 @@
 import { createWireGraph } from 'loom-core/wires';
 import { graphOrigin, layoutNetwork } from './graph-layout.js';
+import { mobileFit, mobileFitLabel, mobileFitPositions } from './graph-mobile-fit.js';
 import { logoClassFor, paddedCanvaMark } from './logos.js';
 
 const steps = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
@@ -68,6 +69,12 @@ function overlaps(a, b) {
     a.y < b.y + b.height + 3 && a.y + a.height + 3 > b.y;
 }
 
+function hasLabelRoom(box, width, height, occupied, placed) {
+  return box.x >= frameInset && box.y >= frameInset && box.x + box.width <= width - frameInset &&
+    box.y + box.height <= height - frameInset && !occupied.some(node => overlaps(box, node)) &&
+    !placed.some(label => overlaps(box, label));
+}
+
 function placeLabel(item, width, height, occupied, placed, textWidth) {
   const { x, y, radius } = item;
   const labelWidth = Math.min(textWidth, Math.max(72, Math.min(176, width * .48)));
@@ -83,14 +90,13 @@ function placeLabel(item, width, height, occupied, placed, textWidth) {
     [clampX(centeredX - shift), bottom], [clampX(centeredX + shift), bottom],
     [clampX(centeredX - shift), top], [clampX(centeredX + shift), top], [right, bottom], [left, bottom], [right, top], [left, top]];
   for (const [labelX, labelY] of candidates) {
-    if (labelX < frameInset || labelY < frameInset || labelX + labelWidth > width - frameInset || labelY + labelHeight > height - frameInset) continue;
     const box = { x: labelX, y: labelY, width: labelWidth, height: labelHeight };
-    if (!occupied.some(node => overlaps(box, node)) && !placed.some(label => overlaps(box, label))) return box;
+    if (hasLabelRoom(box, width, height, occupied, placed)) return box;
   }
   return null;
 }
 
-function graphTheme(canvas, root, kinds) {
+function graphTheme(canvas, root, kinds, overview) {
   const style = getComputedStyle(canvas);
   const color = name => style.getPropertyValue(`--atlas-${name}`).trim();
   const kind = Object.fromEntries(kinds.map(name => [name, color(name)]));
@@ -100,7 +106,7 @@ function graphTheme(canvas, root, kinds) {
     radii: { hub: 27, content: 19 }, plateAlpha: .94,
     nodes: { artwork: false, fill: .82, resolve: node => ({
       shape: node.kind === 'person' ? 'circle' : 'rounded-square',
-      radius: node.id === root ? 42 : 30,
+      radius: overview ? (node.id === root ? mobileFit.rootRadius : mobileFit.neighbourRadius) : (node.id === root ? 42 : 30),
       color: node.id === root ? color('ink') : kind[node.kind]
     }) },
     wires: { routing: 'patch', color: color('border-strong'), width: 1.3, opacity: .52, hotWidth: 2.2 },
@@ -108,11 +114,12 @@ function graphTheme(canvas, root, kinds) {
   };
 }
 
-export function mountLoom({ canvas, controls, view, root, dense, kinds, pins, viewport, image, traverse, rememberPin, reportZoom }) {
-  const nodes = arrangeNodes(view, root, canvas, dense).map(node => ({ ...node, pinned: false }));
+export function mountLoom({ canvas, controls, view, root, dense, overview, kinds, pins, viewport, image, traverse, rememberPin, reportZoom }) {
+  const anchors = overview ? mobileFitPositions(view.nodes, canvas.clientWidth) : arrangeNodes(view, root, canvas, dense);
+  const nodes = anchors.map(node => ({ ...node, pinned: false }));
   const links = view.edges.map(edge => ({ source: edge.from, target: edge.to, kind: edge.kind }));
   const graph = createWireGraph(canvas, {
-    nodes, links, theme: graphTheme(canvas, root, kinds), sim: 'main',
+    nodes, links, theme: graphTheme(canvas, root, kinds, overview), sim: 'main',
     layout: { anchor: node => node, blend: 1, pinOnDrag: true },
     wireEffects: { direction: 'arrow', scope: dense ? 'selected' : 'all' }
   });
@@ -132,7 +139,9 @@ export function mountLoom({ canvas, controls, view, root, dense, kinds, pins, vi
     const mark = marking(node, image);
     const label = document.createElement('span');
     label.className = 'network-loom-label';
-    label.textContent = label.title = node.name;
+    const name = document.createElement('span');
+    name.textContent = label.title = node.name;
+    label.append(name);
     label.setAttribute('aria-hidden', 'true');
     label.hidden = true;
     button.append(mark, label);
@@ -161,7 +170,14 @@ export function mountLoom({ canvas, controls, view, root, dense, kinds, pins, vi
   }));
   controls.replaceChildren(...[...controlsById.values()].map(entry => entry.wrapper));
   for (const [id, point] of pins) if (controlsById.has(id)) graph.pin(id, point);
-  graph.fit(true);
+  function fitCamera() {
+    if (overview && ![...pins.keys()].some(id => controlsById.has(id))) {
+      graph.setViewport({ ...graph.getViewport(), ...graphOrigin, z: 0, zoom: 1 });
+    } else {
+      graph.fit(true);
+    }
+  }
+  fitCamera();
   let fittedZoom = graph.getViewport().zoom;
   if (viewport) graph.setViewport({ ...viewport, zoom: fittedZoom * viewport.zoom });
 
@@ -198,12 +214,16 @@ export function mountLoom({ canvas, controls, view, root, dense, kinds, pins, vi
     }
     visible.sort((a, b) => a.priority - b.priority);
     for (const point of visible) {
-      const box = placeLabel(point, width, height, occupied, placed, point.item.textWidth);
+      const preferred = overview && mobileFitLabel(point, width);
+      const inColumn = preferred && preferred.width >= 64 && hasLabelRoom(preferred, width, height, occupied, placed);
+      const box = inColumn ? preferred : placeLabel(point, width, height, occupied, placed, point.item.textWidth);
       if (!box) continue;
       const { label } = point.item;
       label.style.left = `${box.x - point.offsetX}px`;
       label.style.top = `${box.y - point.offsetY}px`;
       label.style.width = `${box.width}px`;
+      label.style.height = `${box.height}px`;
+      label.classList.toggle('is-fit-label', Boolean(inColumn));
       shown.add(label);
       placed.push(box);
     }
@@ -218,9 +238,18 @@ export function mountLoom({ canvas, controls, view, root, dense, kinds, pins, vi
   graph.on('nodeclick', id => queueMicrotask(() => traverse(id, false)));
   graph.on('nodedrop', id => rememberPin(id, graph.getPosition(id)));
   graph.on('hover', id => { hovered = id; graph.invalidate(); });
+  let lastWidth = canvas.clientWidth;
+  const resize = overview && typeof ResizeObserver === 'function' && new ResizeObserver(() => {
+    const width = canvas.clientWidth;
+    if (width === lastWidth) return;
+    lastWidth = width;
+    const positions = new Map(mobileFitPositions(view.nodes, width).map(node => [node.id, node]));
+    graph.setLayout({ anchor: node => positions.get(node.id) });
+  });
+  resize && resize.observe(canvas);
 
   return {
-    destroy() { destroyed = true; graph.destroy(); controls.replaceChildren(); },
+    destroy() { destroyed = true; if (resize) resize.disconnect(); graph.destroy(); controls.replaceChildren(); },
     savedViewport() {
       const current = graph.getViewport();
       return { ...current, zoom: current.zoom / fittedZoom };
@@ -228,7 +257,7 @@ export function mountLoom({ canvas, controls, view, root, dense, kinds, pins, vi
     select(id) { selected = id; graph.select(controlsById.has(id) ? id : null); graph.invalidate(); },
     focusControl(id) { controlsById.get(id)?.button.focus({ preventScroll: true }); },
     center,
-    fit() { graph.fit(true); fittedZoom = graph.getViewport().zoom; updateControls(graph.getFrame()); },
+    fit() { fitCamera(); fittedZoom = graph.getViewport().zoom; updateControls(graph.getFrame()); },
     zoom(delta) {
       const current = graph.getViewport();
       const relative = Math.max(.65, Math.min(4, current.zoom / fittedZoom * (delta > 0 ? 1.2 : 1 / 1.2)));

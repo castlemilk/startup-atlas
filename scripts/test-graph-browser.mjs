@@ -7,6 +7,8 @@ import {mkdtemp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {extname, join, resolve, sep} from 'node:path';
 import {setTimeout as delay} from 'node:timers/promises';
+import {neighborhood} from '../web/graph-model.js';
+import {sourceUrl} from '../web/logic.js';
 
 const root=resolve('dist'), profile=await mkdtemp(join(tmpdir(),'atlas-chrome-'));
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-graph-screenshots');
@@ -86,20 +88,28 @@ try {
         'Graph control button must remain a compact operable target between 24px and 60px; '+detail);
     }
   }
-  async function assertLoomLabels(minimum) {
+  async function assertLoomLabels(minimum, fitted=false) {
     const labels=await evaluate(`(() => {
       const canvas=document.querySelector('#graph-loom-canvas').getBoundingClientRect();
       const labels=[...document.querySelectorAll('.network-loom-label:not([hidden])')];
       const bounds=labels.map(label=>label.getBoundingClientRect());
+      const markers=[...document.querySelectorAll('#graph-loom-controls .network-node')].map(node=>node.getBoundingClientRect());
       const intersects=(a,b)=>a.left<b.right && a.right>b.left && a.top<b.bottom && a.bottom>b.top;
       return {count:labels.length,
         clipped:bounds.flatMap((rect,index)=>rect.left<canvas.left || rect.right>canvas.right || rect.top<canvas.top || rect.bottom>canvas.bottom
           ? [{name:labels[index].textContent, rect:rect.toJSON(), canvas:canvas.toJSON()}] : []),
-        overlapping:bounds.some((rect,index)=>bounds.slice(index+1).some(other=>intersects(rect,other)))};
+        overlapping:bounds.some((rect,index)=>bounds.slice(index+1).some(other=>intersects(rect,other))),
+        fitted:labels.filter(label=>label.classList.contains('is-fit-label') && label.clientHeight>=44 &&
+          label.firstElementChild.scrollHeight<=label.firstElementChild.clientHeight+2).length,
+        coversMarker:bounds.some(rect=>markers.some(marker=>intersects(rect,marker)))};
     })()`);
     assert.ok(labels.count>=minimum,`Expected at least ${minimum} readable Loom labels: ${JSON.stringify(labels)}`);
     assert.deepEqual(labels.clipped,[],'Loom labels must fit inside the stage');
     assert.equal(labels.overlapping,false,'Visible Loom labels must not overlap');
+    if (fitted) {
+      assert.equal(labels.fitted,minimum,'Every node in the mobile overview needs a readable touch-sized label');
+      assert.equal(labels.coversMarker,false,'Overview labels must clear every glyph');
+    }
   }
   async function assertWireframePresentation(viewport) {
     const presentation=await evaluate(`(()=>{
@@ -409,6 +419,7 @@ try {
   })()`),'Keyboard focus must bring a partly clipped Loom node fully into view');
   assert.equal(await evaluate("document.querySelector('#graph-zoom-number').textContent"),'100%','Keyboard reveal must retain the current zoom');
   await evaluate("document.querySelector('#graph-fit').click()");
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
   await until(()=>evaluate(`(() => {
     const mark=document.querySelector('${airtreeNode} .network-loom-mark');
     const img=mark.querySelector('img');
@@ -451,11 +462,26 @@ try {
 
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:740,deviceScaleFactor:1,mobile:true});
   await command('Page.navigate',{url:`${address}/graph.html?entity=partner%3Astartmate&depth=2&list=1`});
-  const startmateEdges=graph.edges.filter(edge=>edge.from==='partner:startmate'||edge.to==='partner:startmate');
+  const startmate='partner:startmate';
+  const neighbourhood=neighborhood(graph,startmate,{depth:2,limit:Infinity});
+  const startmateEdges=neighbourhood.edges.filter(edge=>edge.from===startmate||edge.to===startmate);
+  const expectedSources=neighbourhood.edges.map(edge=>sourceUrl(edge.source)).filter(Boolean).sort();
+  const listSources="[...document.querySelectorAll('#graph-list li a')].map(link=>link.href).sort()";
+  const loomNodeCount="document.querySelectorAll('#graph-loom-controls .network-node').length";
   await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='partner:startmate'`),'The dense mobile Loom map did not load');
   assert.ok(startmateEdges.length>19,'The Startmate test must exceed the old node cap');
   assert.equal(await evaluate("document.querySelectorAll('#graph-detail .detail-related li').length"),startmateEdges.length);
-  assert.ok(await evaluate("document.querySelectorAll('#graph-list li').length")>=startmateEdges.length,'The mobile list retains the entire neighbourhood');
+  assert.equal(await evaluate("document.querySelectorAll('#graph-list li').length"),neighbourhood.edges.length,'The mobile list retains the entire neighbourhood');
+  assert.deepEqual(await evaluate(listSources),expectedSources,'The overview list must retain every matched source');
+  assert.equal(await evaluate(loomNodeCount),6,'Mobile Fit should show the root and five direct neighbours');
+  for(const [width,height] of [[320,740],[390,844],[667,375]]) {
+    await command('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:true});
+    await evaluate('document.fonts.ready.then(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))))');
+    await assertLoomLabels(6,true);
+    assert.equal(await evaluate("document.querySelector('#graph-zoom-number').textContent"),'100%');
+    assert.ok(await evaluate("document.documentElement.scrollWidth<=innerWidth"),`Overview must fit the ${width}px document`);
+  }
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:740,deviceScaleFactor:1,mobile:true});
   assert.ok(await evaluate("document.documentElement.scrollWidth<=innerWidth"),'Loom must fit the mobile document');
   assert.ok(await evaluate(`(() => {
     const dock=document.querySelector('.network-scale'), bounds=dock.getBoundingClientRect();
@@ -464,12 +490,40 @@ try {
       return rect.bottom<=bounds.top+45 && rect.right<=innerWidth;
     });
   })()`),'The camera controls must fit on one row at 320px');
+  await evaluate("document.querySelector('#graph-zoom-in').click();document.querySelector('#graph-fit').click()");
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+  await assertLoomLabels(6,true);
+  await evaluate("document.querySelector('#graph-loom-canvas').scrollIntoView({block:'center',behavior:'instant'})");
+  await screenshot('graph-loom-mobile-fit.png');
+  await evaluate("document.querySelector('#graph-full-map').click()");
+  await until(()=>evaluate(`${loomNodeCount}===${neighbourhood.nodes.length}`),'Full map must draw the complete neighbourhood');
+  assert.equal(await evaluate("document.querySelector('#graph-full-map').getAttribute('aria-pressed')"),'true');
+  assert.deepEqual(await evaluate(listSources),expectedSources,'Changing the map view must keep the list sources');
   await evaluate("[0,1,2,3].forEach(()=>document.querySelector('#graph-zoom-in').click())");
   await until(()=>evaluate("parseInt(document.querySelector('#graph-zoom-number').textContent,10)>200"),'The dense graph needs enough zoom to reveal its names');
   await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
   await assertLoomLabels(2);
+  await evaluate("document.querySelector('#graph-full-map').click()");
+  await until(()=>evaluate(`${loomNodeCount}===6 && document.querySelectorAll('.network-loom-label.is-fit-label:not([hidden])').length===6`),'Turning off Full map must restore all labels in the mobile overview');
+  await assertLoomLabels(6,true);
 
   await command('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});
+  await evaluate("document.querySelector('#graph-loom-canvas').scrollIntoView({block:'center',behavior:'instant'})");
+  const overviewTap=await until(()=>evaluate(`(() => {
+    const label=document.querySelector('#graph-loom-controls .network-node:not(.is-root) .network-loom-label.is-fit-label');
+    const rect=label?.getBoundingClientRect();if (!rect) return false;
+    const x=rect.x+rect.width/2,y=rect.y+rect.height/2;
+    return document.elementFromPoint(x,y)===label && {id:label.closest('button').dataset.node,x,y};
+  })()`),'The mobile overview label must be tappable');
+  const overviewEdge=startmateEdges.find(edge=>edge.from===overviewTap.id||edge.to===overviewTap.id);
+  await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:overviewTap.x,y:overviewTap.y}]});
+  await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  await until(()=>evaluate(`document.querySelector('#graph-loom-controls .is-root')?.dataset.node===${JSON.stringify(overviewTap.id)}`),'Tapping a name must open the next neighbourhood');
+  assert.equal(await evaluate("document.querySelector('.detail-relation-evidence a').href"),sourceUrl(overviewEdge.source));
+  await evaluate("document.querySelector('#graph-back').click()");
+  await until(()=>evaluate(`document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${startmate}'`),'Previous view must restore the mobile overview');
+  assert.deepEqual(await evaluate(listSources),expectedSources);
+
   await command('Page.navigate',{url:`${address}/graph.html?entity=person%3Amelanie-perkins`});
   await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${person}'`),'The touch traversal fixture did not render');
   await evaluate("document.querySelector('#graph-loom-canvas').scrollIntoView({block:'center',behavior:'instant'})");
@@ -492,7 +546,7 @@ try {
   await assertLoomLabels(3);
 
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
-  console.log('Chrome graph checks passed for SVG fallback, Loom labels and wordmarks, source-aware traversal and history, and responsive connections');
+  console.log('Chrome graph checks passed for mobile Fit labels, the full sourced list, map switching, traversal, history, and SVG fallback');
 } catch(error) {
   console.error('Interaction diagnostics:',JSON.stringify(await readDiagnostics().catch(()=>({state:'unavailable'}))));
   await captureFailure('failed-interaction.png').catch(()=>{});
