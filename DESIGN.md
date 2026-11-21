@@ -251,7 +251,7 @@ Directory and partner company rows offer distinct **Inspect**, profile and sourc
 
 ### Graph inspection and movement
 
-Click or Enter/Space inspects a visible node without reconstructing the network. **Explore from here** explicitly changes root; choosing a search result starts a new root neighbourhood. An inspected related entity that is not in the rendered map is labelled **Outside current map**. **Open profile** remains a real link. The connection list exposes the same visible relationships with sources.
+Click or Enter/Space follows a node to its neighbourhood. Search results and linked entities do the same. Back restores the preceding view. Loom draws the paper map and directional connections, with the existing SVG map available when WebGL2 is unavailable. Shared links may open a distinct inspection selection. **Open profile** goes to the full record, and the connections list includes the evidence for each relationship.
 
 Graph cards support pointer dragging and arrow-key movement. **Fit view** contains the neighbourhood, **Center selection** brings a visible node to the middle, and **Reset graph layout** restores automatic placement. The same tab retains camera and node placements by neighbourhood. The toolbar reports company scope separately from contextual relationship nodes.
 

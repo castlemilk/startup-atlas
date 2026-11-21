@@ -65,8 +65,12 @@
 .profile-compact-identity .entity-mark { width: 29px; height: 29px; font-size: 12px; }
 .entity-compact-bar { display: none; }
 .entity-shell:has(.entity-company-sticky) { --profile-anchor-offset: calc(var(--profile-nav-height, 52px) + var(--profile-compact-height, 0px)); }
-.profile-shell .entity-company-sticky .atlas-section-nav { flex-wrap: wrap; overflow: visible; }
-.entity-company-sticky .atlas-section-nav a { max-inline-size: 100%; overflow-wrap: anywhere; }
+.entity-shell.entity-evidence-dossier { --profile-anchor-offset: var(--profile-nav-height, 51px); }
+.profile-shell :is(.entity-company-sticky,.entity-dossier-sticky) .atlas-section-nav { flex-wrap: wrap; overflow: visible; }
+:is(.entity-company-sticky,.entity-dossier-sticky) .atlas-section-nav a { max-inline-size: 100%; overflow-wrap: anywhere; }
+.entity-evidence-dossier .profile-return { padding-bottom: 8px; }
+.entity-evidence-dossier .entity-hero h1 { margin-top: 0; }
+.entity-evidence-dossier .entity-hero-copy > .entity-dossier-type { margin-bottom: 6px; font-size: 13px; }
 
 .entity-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 310px); align-items: start; gap: clamp(24px, 4vw, 52px); padding-top: 20px; }
 .entity-company-layout { display: block; }
@@ -84,6 +88,15 @@
 .entity-subsection + .entity-subsection { margin-top: 25px; }
 .entity-subsection > h3, .entity-undated-heading { margin: 0 0 8px; color: var(--atlas-ink); font: 530 clamp(24px, 2.25vw, 32px)/1.15 var(--atlas-font-display); }
 .entity-section > .atlas-button { margin-top: 16px; }
+.entity-dossier-sources { padding-inline-start: clamp(18px, 3vw, 27px); border-inline-start: 1px solid var(--atlas-border); }
+.entity-dossier-sources .entity-section-heading h2 { font-size: clamp(26px, 2.25vw, 34px); }
+.entity-evidence-coverage { margin: 8px 0 0; color: var(--atlas-muted); font-size: 13px; }
+.entity-evidence-dossier .profile-source-index p { max-width: 58ch; }
+.entity-evidence-dossier .profile-source-index strong a { display: inline-flex; align-items: center; min-height: 28px; }
+.entity-programme-source { display: flex; align-items: center; flex-wrap: wrap; gap: 0 14px; padding-block: 4px; color: var(--atlas-muted); font-size: 13px; }
+.entity-programme-source a { display: inline-flex; align-items: center; min-height: 44px; color: var(--atlas-action); font-weight: 600; text-underline-offset: 4px; }
+.entity-programme-facts dd > span:first-child { max-width: 62ch; }
+.entity-programme-facts .profile-proof-compact :is(.profile-source-action,.profile-proof-direct) { width: 44px; min-height: 44px; }
 
 .entity-overview { display: grid; grid-template-columns: minmax(0, 1.72fr) minmax(0, 1fr); align-items: start; gap: clamp(20px, 1.7vw, 26px); }
 .entity-overview-main { min-width: 0; }
@@ -271,6 +284,7 @@
 @media (max-width: 840px) {
   .entity-layout { grid-template-columns: minmax(0, 1fr); }
   .entity-aside:not(.entity-overview-rail) { padding: 20px 0 0; border-top: 1px solid var(--atlas-border); border-left: 0; }
+  .entity-dossier-sources { padding-inline-start: 0; border-inline-start: 0; }
   #entity-funding { max-width: none; }
 }
 @media (max-width: 760px) {
@@ -328,6 +342,10 @@
   .entity-mobile-facts .entity-overview-facts .entity-facts > div { grid-template-columns: minmax(102px, .65fr) minmax(0, 1fr); min-height: 44px; }
   .entity-mobile-facts .entity-overview-facts .entity-facts > .entity-fact-long { grid-template-columns: minmax(0, 1fr); gap: 2px; padding-block: 8px; }
   .entity-mobile-facts-extra .entity-facts > .entity-fact-long { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .entity-programme-facts > .entity-programme-long { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .entity-programme-facts > .entity-programme-long .entity-fact-source { align-self: start; }
+  .entity-evidence-dossier .profile-source-index strong a,
+  .entity-evidence-dossier .entity-connection-copy a, .entity-evidence-dossier .entity-external-links a { display: inline-flex; align-items: center; min-height: 44px; }
   .entity-mobile-facts .entity-facts dt .atlas-icon { width: 15px; height: 15px; }
   .entity-mobile-facts .entity-facts dd:has(.entity-fact-source) { grid-template-columns: minmax(0, 1fr) 44px; }
   .entity-hero-meta > span + a { padding-left: 0; border-left: 0; }
@@ -346,6 +364,14 @@
 }
 @media (max-height: 540px) {
   .entity-shell:has(.entity-company-sticky) { --profile-anchor-offset: 12px; }
-  .entity-company-sticky { position: relative; }
-  .entity-company-sticky[data-stuck] .profile-compact-identity { display: none; }
+  .entity-shell.entity-evidence-dossier { --profile-anchor-offset: 0px; }
+  :is(.entity-company-sticky,.entity-dossier-sticky) { position: relative; }
+  :is(.entity-company-sticky,.entity-dossier-sticky)[data-stuck] .profile-compact-identity { display: none; }
+  .entity-evidence-dossier .entity-hero { padding-block: 10px; gap: 8px 14px; }
+  .entity-evidence-dossier .entity-hero h1 { font-size: clamp(27px, 5.4vw, 42px); }
+  .entity-evidence-dossier .entity-hero-meta { margin-top: 4px; }
+  .entity-evidence-dossier .entity-layout { padding-top: 12px; }
+}
+@media (min-width: 520px) and (max-height: 540px) {
+  .entity-evidence-dossier .entity-hero { grid-template-columns: minmax(0, 1fr) auto; }
 }

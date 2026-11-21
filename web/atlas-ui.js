@@ -227,6 +227,7 @@ export function installAtlasUI(doc = document) {
       if (current?.top <= threshold) current = entries.filter(entry => entry.top <= threshold).sort((a,b) => b.top-a.top)[0] || current;
       const followed = entries.find(entry => entry.link.getAttribute('href') === location.hash);
       if (followed && ((followed.top >= 0 && followed.top <= threshold) || (current && Math.abs(followed.top-current.top) < 2))) current = followed;
+      if (sticky?.classList.contains('entity-dossier-sticky') && followed && followed.top >= -1 && followed.top < innerHeight) current = followed;
       for (const entry of entries) {
         if (entry === current) entry.link.setAttribute('aria-current','location');
         else entry.link.removeAttribute('aria-current');

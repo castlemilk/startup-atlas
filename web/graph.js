@@ -3,6 +3,7 @@ import { logoFor } from './logos.js';
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName, neighborhood } from './graph-model.js';
 import { createForceSimulation, layoutBounds, layoutNetwork } from './graph-layout.js';
+import { mountLoom } from './graph-loom.js';
 import { renderIcon as icon } from './atlas-icons.js';
 import { animateAtlasChange } from './atlas-ui.js';
 import { filterCompanies, indexCompanies, readExploration, writeExploration, countryName } from './atlas-exploration.js';
@@ -14,6 +15,7 @@ const kinds=new Set(entityKinds);
 const compact=window.matchMedia?.('(max-width: 600px)');
 let store, rootId, selectedId, depth=1, zoom=1, listVisible=false, searchTimer, composing=false;
 let layout, bounds, simulation, frame=null, pan={x:0,y:0}, gesture=null, suppressClick=false;
+let loom, loomViewport, loomUnavailable=false, renderedCameraKey;
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
 const pinned=new Map();
 let scope=readExploration(new URLSearchParams(location.search));
@@ -45,7 +47,7 @@ function renderNode(node) {
     ? `<svg x="${x+18}" y="${y+7}" width="${node.width-36}" height="67" viewBox="${cropsPadding ? '18 36.75 64 26.5' : '0 0 100 100'}"><image href="${esc(url)}" width="100" height="100" preserveAspectRatio="xMidYMid meet"></image></svg>`
     : `<image href="${esc(url)}" x="${iconX-18}" y="-18" width="36" height="36" preserveAspectRatio="xMidYMid meet"></image>`;
   const context = node.kind!=='startup'||!visibleCompanies.has(node.id);
-  const accessible = `${kindName(node.kind)}: ${node.name}${context ? ' · Relationship context' : ''}. Press Enter to inspect; use arrow keys to move`;
+  const accessible = `${kindName(node.kind)}: ${node.name}${context ? ' · Relationship context' : ''}. Press Enter to follow connections; use arrow keys to move`;
   return `<g class="network-node${root ? ' is-root' : ''}${selected ? ' is-selected' : ''}" data-node="${esc(node.id)}" data-kind="${esc(node.kind)}" data-context="${context}" role="button" tabindex="0" aria-pressed="${selected}" aria-label="${esc(accessible)}" transform="translate(${node.x.toFixed(1)} ${node.y.toFixed(1)})">
     <rect class="node-shell" x="${x}" y="${y}" width="${node.width}" height="${node.height}" rx="6"></rect>
     <g class="node-avatar-plate"${branded && url ? ' visibility="hidden"' : ''}>
@@ -103,28 +105,32 @@ function applyZoom() {
   if(!bounds)return;
   const w=bounds.width/zoom,h=bounds.height/zoom;
   $('graph-canvas').setAttribute('viewBox',[bounds.x+(bounds.width-w)/2+pan.x,bounds.y+(bounds.height-h)/2+pan.y,w,h].join(' '));
+  reportZoom(Math.round(zoom*100));
+}
+function reportZoom(zoomPercent) {
   const readout = $('graph-zoom-number');
-  const percent = `${Math.round(zoom*100)}%`;
+  const percent = `${zoomPercent}%`;
   if (readout && readout.textContent!==percent) readout.textContent = percent;
 }
 function cameraKey() {
   return 'atlas:graph-camera:'+rootId+':'+depth+':'+entityKinds.filter(kind=>kinds.has(kind)).join(',')+':'+Boolean(compact?.matches);
 }
 function saveCamera() {
-  if (!rootId) return;
+  if (!renderedCameraKey) return;
   syncPin();
-  try { sessionStorage.setItem(cameraKey(),JSON.stringify({zoom,pan,pinned:[...pinned]})); } catch { /* Camera remains available on this page. */ }
+  try { sessionStorage.setItem(renderedCameraKey,JSON.stringify({zoom,pan,loom:loom?.savedViewport(),pinned:[...pinned]})); } catch { /* Camera remains available on this page. */ }
 }
 function restoreCamera() {
-  zoom=1;pan={x:0,y:0};pinned.clear();
+  zoom=1;pan={x:0,y:0};loomViewport=null;pinned.clear();
   if (!rootId) return;
   try {
     const camera=JSON.parse(sessionStorage.getItem(cameraKey()) || 'null');
     if (!camera) return;
     if (Number.isFinite(camera.zoom) && camera.zoom>=.7 && camera.zoom<=1.7) zoom=camera.zoom;
     if (Number.isFinite(camera.pan?.x) && Number.isFinite(camera.pan?.y)) pan=camera.pan;
+    if (camera.loom?.zoom>0 && ['x','y','z','zoom','yaw','pitch'].every(key=>Number.isFinite(camera.loom[key]))) loomViewport=camera.loom;
     for (const [id,point] of camera.pinned || []) {
-      if (Number.isFinite(point?.x) && Number.isFinite(point?.y)) pinned.set(id,point);
+      if (Number.isFinite(point?.x) && Number.isFinite(point?.y)) pinned.set(id,{x:point.x,y:point.y,z:Number.isFinite(point.z)?point.z:0});
     }
   } catch { /* Use the default camera when storage is unavailable. */ }
 }
@@ -160,11 +166,59 @@ reducedMotion?.addEventListener?.('change',()=>{if(reducedMotion.matches)stopSim
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSimulation();});
 window.addEventListener('pagehide',stopSimulation);
 
+function mapControls() {
+  return loom ? $('graph-loom-controls') : $('graph-canvas');
+}
+
+function rememberPin(id, point) {
+  if (point) pinned.set(id, { x: point.x, y: point.y, z: point.z });
+  else pinned.delete(id);
+  saveCamera();
+}
+
+function resetLoom() {
+  loom?.destroy();
+  loom=null;
+  const canvas=$('graph-loom-canvas');
+  if (!canvas) return;
+  canvas.hidden=true;
+  $('graph-loom-controls').hidden=true;
+  $('graph-canvas').removeAttribute('hidden');
+  canvas.parentElement.dataset.renderer='svg';
+}
+
+function renderLoom(view) {
+  const canvas=$('graph-loom-canvas');
+  if (!canvas || loomUnavailable) return;
+  const controls=$('graph-loom-controls');
+  canvas.hidden=false;
+  controls.hidden=false;
+  $('graph-canvas').setAttribute('hidden','');
+  try {
+    loom=mountLoom({canvas,controls,layout:pinned.size ? layoutNetwork(view,rootId) : layout,
+      root:rootId,kinds:entityKinds,pins:pinned,viewport:loomViewport,image:entityImage,traverse,rememberPin,reportZoom});
+    canvas.parentElement.dataset.renderer='loom';
+  } catch {
+    loomUnavailable=true;
+    resetLoom();
+  }
+}
+
 function renderMap() {
   stopSimulation();
-  const view=neighborhood(store.graph,rootId,{depth,kinds,limit:compact?.matches?(depth===1?10:13):(depth===1?19:25)});
+  resetLoom();
+  const view=neighborhood(store.graph,rootId,{depth,kinds,limit:Infinity});
   currentView=view;
   layout=layoutNetwork(view,rootId,pinned);bounds=layoutBounds(layout);simulation=createForceSimulation(layout,pinned);
+  renderLoom(view);
+  if (!loom) renderSvgMap();
+  renderedCameraKey=cameraKey();
+  const root=store.graph.entities.find(entity=>entity.id===rootId);
+  if($('network-heading'))$('network-heading').textContent='Around '+root.name;
+  if($('graph-title'))$('graph-title').textContent=`${root.name} / Relationships`;
+  renderGraphScope();updateSelection();
+}
+function renderSvgMap() {
   const byId=new Map(layout.nodes.map(node=>[node.id,node]));
   const lines=layout.edges.map((edge,index)=>'<path class="network-link" data-edge="'+index+'" marker-end="url(#graph-arrow)" d="'+edgePath(byId.get(edge.from),byId.get(edge.to))+'"></path>').join('');
   $('graph-canvas').innerHTML='<defs><marker id="graph-arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path fill="context-stroke" d="M0 0 L8 4 L0 8 Z"></path></marker></defs><g aria-hidden="true">'+lines+layout.edges.map(renderEdgeCaption).join('')+'</g>'+layout.nodes.map(renderNode).join('');
@@ -174,21 +228,19 @@ function renderMap() {
     node.querySelector('.node-avatar-plate')?.removeAttribute('visibility');
     node.querySelector('.node-initials')?.removeAttribute('visibility');
   }));
-  const root=store.graph.entities.find(entity=>entity.id===rootId);
-  if($('network-heading'))$('network-heading').textContent='Around '+root.name;
-  if($('graph-title'))$('graph-title').textContent=`${root.name} / Relationships`;
-  applyZoom();renderGraphScope();updateSelection();
+  applyZoom();
 }
 function renderGraphScope() {
   if (!currentView) return;
   const companyCount=currentView.nodes.filter(node=>visibleCompanies.has(node.id) && kinds.has('startup')).length;
   const label=companyCount===1?'1 company in scope':companyCount+' companies in scope';
-  $('graph-count').textContent=label+' · '+currentView.edges.length+' connections'+(currentView.truncated?' · limited neighbourhood':'');
-  for (const node of $('graph-canvas').querySelectorAll('.network-node')) {
-    const entity=currentView.nodes.find(item=>item.id===node.dataset.node);
+  $('graph-count').textContent=label+' · '+currentView.edges.length+' connections';
+  const nodes=new Map(currentView.nodes.map(node=>[node.id,node]));
+  for (const node of mapControls().querySelectorAll('.network-node')) {
+    const entity=nodes.get(node.dataset.node);
     const contextual=!visibleCompanies.has(entity.id)||!kinds.has('startup');
     node.setAttribute('data-context',String(contextual));
-    node.setAttribute('aria-label',kindName(entity.kind)+': '+entity.name+(contextual?' · Relationship context':'')+'. Press Enter to inspect; use arrow keys to move');
+    node.setAttribute('aria-label',kindName(entity.kind)+': '+entity.name+(contextual?' · Relationship context':'')+'. Press Enter to follow connections; use arrow keys to move');
   }
   renderList(currentView);
 }
@@ -200,7 +252,7 @@ function renderList(view) {
     const nodeButton=entity=>'<button type="button" data-select="'+esc(entity.id)+'"'+(visibleCompanies.has(entity.id)?'':' data-context="true"')+'>'+esc(entity.name)+'</button>';
     return '<li>'+nodeButton(from)+'<span>→ '+esc(relationshipText(edge))+' →</span>'+nodeButton(to)+(source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Evidence ↗</a>':'')+'</li>';
   }).filter(Boolean);
-  $('graph-list').innerHTML='<div class="network-list-heading"><h3 tabindex="-1">Visible connections</h3><a href="#graph-list-toggle">Back to map</a></div>'+(view.truncated?'<p class="detail-caption">This map shows a limited neighbourhood. Open a profile to see all its reviewed connections, or explore from another entity.</p>':'')+(items.length?'<ul>'+items.join('')+'</ul>':'<p class="detail-empty">No connections match the selected types.</p>');
+  $('graph-list').innerHTML='<div class="network-list-heading"><h3 tabindex="-1">Visible connections</h3><a href="#graph-list-toggle">Back to map</a></div>'+(items.length?'<ul>'+items.join('')+'</ul>':'<p class="detail-empty">No connections match the selected types.</p>');
   $('graph-list').hidden=!listVisible;
 }
 function relationshipText(edge) {
@@ -236,10 +288,11 @@ function updateSelection() {
   syncPin();
   const inspectionLink=document.querySelector?.('.network-inspector-link');
   if (inspectionLink) inspectionLink.hidden=!selectedId;
-  for(const element of $('graph-canvas').querySelectorAll('.network-node')) {
+  for(const element of mapControls().querySelectorAll('.network-node')) {
     const selected=element.dataset.node===selectedId;
     element.classList.toggle('is-selected',selected);element.setAttribute('aria-pressed',String(selected));
   }
+  if (loom) { loom.select(selectedId);return; }
   layout?.edges.forEach((edge,index)=>{
     $('graph-canvas').querySelector('[data-edge="'+index+'"]')?.classList.toggle('is-selected',edge.from===selectedId || edge.to===selectedId);
   });
@@ -285,7 +338,7 @@ function renderDetail() {
     <p class="detail-selection-note" data-selection="${outOfScope?'excluded':isRoot?'root':visibleIds.has(selectedId)?'within':'outside'}">${selectionNote}</p>${recovery}
     ${facts}<p class="detail-summary">${esc(summary)}</p>${reviewedRelation}
     <div class="detail-actions"><a class="detail-open atlas-button atlas-button-accent" data-atlas-profile-link href="${esc(entityHref(entity))}">Open profile${icon('external')}</a>${inspectAction}${actions}</div>
-    <section class="detail-section"><h3>Recorded connections <span>${details.edges.length}</span></h3>${related.length?'<ul class="detail-related">'+related.slice(0,8).join('')+'</ul>'+(related.length>8?'<p class="detail-caption">Showing 8 of '+related.length+' recorded connections. Open the profile for the complete list.</p>':''):'<p class="detail-empty">No reviewed connections yet.</p>'}</section>
+    <section class="detail-section"><h3>Recorded connections <span>${details.edges.length}</span></h3>${related.length?'<ul class="detail-related">'+related.join('')+'</ul>':'<p class="detail-empty">No reviewed connections yet.</p>'}</section>
     ${company?'<section class="detail-section"><h3>Funding announcements</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not disclosed')+' · historical announcement</span>'+evidence(round.source,'Announcement source')+'</div>').join(''):'<p class="detail-empty">No recorded funding announcements.</p>')+'</section>':''}
     ${source?'<section class="detail-section"><h3>Sources</h3>'+source+'</section>':''}`;
   $('graph-detail').querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;if(img.nextElementSibling)img.nextElementSibling.hidden=false;}));
@@ -308,7 +361,7 @@ function select(id,writeHistory=true) {
 }
 function explore(id,writeHistory=true) {
   if(!store.graph.entities.some(entity=>entity.id===id)) {
-    stopSimulation();layout=null;bounds=null;currentView=null;rootId=null;selectedId=null;
+    stopSimulation();resetLoom();layout=null;bounds=null;currentView=null;rootId=null;selectedId=null;renderedCameraKey=null;
     $('graph-detail').innerHTML='<p class="detail-empty">This entry is not in the published graph. Search for another organisation.</p>';
     $('graph-canvas').innerHTML='<text x="460" y="320" text-anchor="middle">Entry not found</text>';
     $('graph-count').textContent='0 entities shown';
@@ -319,6 +372,18 @@ function explore(id,writeHistory=true) {
   selectedId=id;
   renderMap();renderDetail();
   if(writeHistory)writeState(true);
+}
+
+function traverse(id, focusMap=false) {
+  if (!store?.graph.entities.some(entity=>entity.id===id)) return;
+  if (id===rootId) select(id);
+  else explore(id);
+  if (focusMap) focusMapNode(id);
+}
+
+function focusMapNode(id) {
+  if (loom) loom.focusControl(id);
+  else $('graph-canvas').querySelector('.network-node.is-root')?.focus({preventScroll:true});
 }
 function updateScope(next) {
   if (searchedQuery!==next.query) {
@@ -362,11 +427,10 @@ function selectFromEvent(event) {
   if(event.target.closest('[data-graph-clear]')?.hasAttribute?.('data-graph-clear')) {select(null);$('graph-detail').focus();return;}
   const target=event.target.closest('[data-select], [data-explore]');if(!target)return;
   $('graph-results').hidden=true;
-  if(target.dataset.explore){explore(target.dataset.explore);$('graph-canvas').querySelector('.network-node.is-root')?.focus({preventScroll:true});}
-  else {
-    select(target.dataset.select);
-    if(event.currentTarget===$('graph-detail'))$('graph-detail').querySelector('.detail-open')?.focus({preventScroll:true});
-  }
+  const id=target.dataset.explore || target.dataset.select;
+  traverse(id,Boolean(target.dataset.explore));
+  if (event.currentTarget===$('graph-detail') && !target.dataset.explore) $('graph-detail').querySelector('.detail-open')?.focus({preventScroll:true});
+  if (event.currentTarget===$('graph-list')) $('graph-list').querySelector('h3')?.focus({preventScroll:true});
 }
 $('graph-search').addEventListener('submit',event=>{event.preventDefault();if(composing||event.isComposing)return;clearTimeout(searchTimer);renderSearch();});
 function queueSearch(event) {
@@ -422,15 +486,15 @@ function finishGesture(event) {
   if(event.type==='pointercancel')return;
   if(completed.moved||completed.node){
     suppressClick=true;setTimeout(()=>{suppressClick=false;},0);
-    if(!completed.moved)select(completed.node.id);
+    if(!completed.moved)traverse(completed.node.id);
   }
 }
 svg.addEventListener('pointerup',finishGesture);
 svg.addEventListener('pointercancel',finishGesture);
-svg.addEventListener('click',event=>{if(suppressClick){suppressClick=false;return;}const node=event.target.closest('[data-node]');if(node)select(node.dataset.node);});
+svg.addEventListener('click',event=>{if(suppressClick){suppressClick=false;return;}const node=event.target.closest('[data-node]');if(node)traverse(node.dataset.node);});
 svg.addEventListener('keydown',event=>{
   const element=event.target.closest('[data-node]');if(!element)return;
-  if(event.key==='Enter'||event.key===' '){event.preventDefault();select(element.dataset.node);return;}
+  if(event.key==='Enter'||event.key===' '){event.preventDefault();traverse(element.dataset.node,true);return;}
   const directions={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]},direction=directions[event.key];
   if(!direction)return;event.preventDefault();
   const node=layout.nodes.find(item=>item.id===element.dataset.node),step=event.shiftKey?50:20;
@@ -468,12 +532,23 @@ function syncListVisibility() {
   $('graph-list-toggle').querySelector('span').textContent=listVisible?'Hide connections':'Connections list';
   $('graph-list').hidden=!listVisible;
 }
-$('graph-zoom-in').addEventListener('click',()=>{zoom=Math.min(1.7,zoom+.2);applyZoom();saveCamera();});
-$('graph-zoom-out').addEventListener('click',()=>{zoom=Math.max(.7,zoom-.2);applyZoom();saveCamera();});
-$('graph-fit')?.addEventListener('click',()=>{if(!layout)return;bounds=layoutBounds(layout);zoom=1;pan={x:0,y:0};applyZoom();saveCamera();});
+function changeZoom(delta) {
+  if (loom) loom.zoom(delta);
+  else { zoom=Math.min(1.7,Math.max(.7,zoom+delta));applyZoom(); }
+  saveCamera();
+}
+$('graph-zoom-in').addEventListener('click',()=>changeZoom(.2));
+$('graph-zoom-out').addEventListener('click',()=>changeZoom(-.2));
+$('graph-fit')?.addEventListener('click',()=>{
+  if(!layout)return;
+  if (loom) loom.fit();
+  else {bounds=layoutBounds(layout);zoom=1;pan={x:0,y:0};applyZoom();}
+  saveCamera();
+});
 function centerNode(id) {
   const node=layout?.nodes.find(node=>node.id===id);
   if (!node || !bounds) return;
+  if (loom) {loom.center(id);return;}
   pan={x:node.x-bounds.x-bounds.width/2,y:node.y-bounds.y-bounds.height/2};
   applyZoom();saveCamera();
 }
@@ -481,11 +556,12 @@ $('graph-center')?.addEventListener('click',()=>centerNode(selectedId));
 $('graph-pin')?.addEventListener('click',()=>{
   const selected = layout?.nodes.find(node=>node.id===selectedId);
   if (!selected) return;
+  if (loom) {loom.setPin(selected.id,pinned.has(selected.id));return;}
   if (pinned.has(selected.id)) { pinned.delete(selected.id); reheat(); }
   else pinned.set(selected.id,{x:selected.x,y:selected.y});
   saveCamera();
 });
-$('graph-reset').addEventListener('click',()=>{zoom=1;pan={x:0,y:0};pinned.clear();if(store&&rootId)renderMap();saveCamera();});
+$('graph-reset').addEventListener('click',()=>{zoom=1;pan={x:0,y:0};loomViewport=null;pinned.clear();if(store&&rootId)renderMap();saveCamera();});
 function restoreFromUrl() {
   if(!store)return;
   clearTimeout(searchTimer);
@@ -511,7 +587,12 @@ function restoreFromUrl() {
   writeState();
 }
 window.addEventListener('popstate',restoreFromUrl);
-compact?.addEventListener?.('change',()=>{if(store&&rootId){restoreCamera();renderMap();renderDetail();}});
+window.addEventListener('pagehide',event=>{
+  if (!loom) return;
+  saveCamera();
+  if (!event.persisted) loom.destroy();
+});
+compact?.addEventListener?.('change',()=>{if(store&&rootId){saveCamera();restoreCamera();renderMap();renderDetail();}});
 
 document.addEventListener('atlas:export-records',event=>{
   if (!currentView) return;

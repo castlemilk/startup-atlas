@@ -75,11 +75,13 @@
             </button>
           </div>
         </div>
-        <p class="network-mobile-guide">Zoom in or open the <strong>Connections list</strong>.</p>
+        <p class="network-mobile-guide">Tap a node to follow its connections. Zoom in for a closer look.</p>
         <div class="network-canvas">
           <svg id="graph-canvas" viewBox="0 0 1200 720" role="group" aria-label="Interactive relationship graph" aria-describedby="graph-instructions"><text x="600" y="360" text-anchor="middle">Loading the graph…</text></svg>
+          <canvas id="graph-loom-canvas" aria-hidden="true" hidden></canvas>
+          <div id="graph-loom-controls" class="network-loom-controls" role="group" aria-label="Interactive relationship graph" aria-describedby="graph-instructions" hidden></div>
         </div>
-        <p id="graph-instructions" class="visually-hidden">Select a node to inspect it. Use Explore from here to centre the map on it. Drag nodes or move them with arrow keys. Drag the background to pan. Reset restores the automatic layout. The list shows the same connections and sources.</p>
+        <p id="graph-instructions" class="visually-hidden">Activate a node to follow its relationships. Back returns to the previous neighbourhood. Drag nodes or move them with arrow keys. Drag the background to pan. Reset restores the automatic layout. The connections list includes the recorded sources.</p>
         <div class="network-footer">
           <div class="network-map-context">
             <p id="graph-count" role="status"></p>
