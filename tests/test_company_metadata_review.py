@@ -399,10 +399,15 @@ class CompanyMetadataReviewTests(unittest.TestCase):
                     self.run_review()
                 self.assertFalse(self.ledger.exists())
 
-    def save_founder_role_bundle(self, label, subjects, claim, *, head='', known_founder=True):
+    def save_founder_role_bundle(self, label, subjects, claim, *, head='', known_founder=True, main_entity=None):
         bio = SEED + 'founder'
         html = ('<head>' + head + '</head><script type="application/ld+json">'
                 + json.dumps({'@graph': subjects}) + '</script>').encode('utf-8')
+        extracted = extract_page(html, bio)
+        if main_entity is not None:
+            # Model a saved packet which retained this explicit ProfilePage reference.
+            profile = next(row for row in extracted['structured_data'] if row.get('@type') == 'ProfilePage')
+            profile['mainEntity'] = main_entity
         packet = self.profile_packet([
             {**self.profile_candidate('professional-bio', name='Fixture Founder',
                                       candidate_url=bio, **claim),
@@ -410,7 +415,7 @@ class CompanyMetadataReviewTests(unittest.TestCase):
             self.profile_candidate('company-profile', description='Independent source context'),
         ])
         packet['results'][0]['pages'].append({'url': bio, 'final_url': bio,
-            'status': 'ok', 'http_status': 200, 'checked_at': AS_OF, **extract_page(html, bio)})
+            'status': 'ok', 'http_status': 200, 'checked_at': AS_OF, **extracted})
         readback = self.readback()
         if not known_founder:
             readback['relationships'][0]['kind'] = 'employment'
@@ -524,6 +529,36 @@ class CompanyMetadataReviewTests(unittest.TestCase):
         resumed = self.run_review()
         self.assertEqual(fresh['decisions'], resumed['decisions'])
         self.assertEqual(fresh['checkpoint']['sequence'], resumed['checkpoint']['sequence'])
+
+    def test_saved_founder_role_shared_node_and_profile_subject_bindings(self):
+        bio = SEED + 'founder'
+        issuer = {'@type': 'Organization', '@id': SEED + '#issuer', 'name': COMPANY, 'url': SEED}
+        founder = {'@type': 'Person', '@id': '#founder', 'name': 'Fixture Founder', 'url': '/founder',
+                   'jobTitle': 'Co-founder', 'worksFor': issuer}
+        other = {**founder, '@id': '#other', 'name': 'Different Person', 'jobTitle': 'Advisor'}
+        profile = {'@type': 'ProfilePage', '@id': bio + '#profile', 'url': bio}
+        unrelated_issuer = {**issuer, 'name': 'Another Company', 'url': 'https://another.example/'}
+        cases = (
+            ('shared_id_exact_duplicate', [founder, founder, issuer], None, 'candidate'),
+            ('distinct_person_ids', [founder, other], None, 'candidate'),
+            ('profile_main_entity_names_founder', [founder, other, profile], {'@id': bio + '#founder'}, 'candidate'),
+            ('shared_person_id', [founder, {**other, '@id': '#founder'}], None, 'unsearched'),
+            ('shared_person_id_absolute_and_reordered',
+             [{**other, '@id': bio + '#founder'}, founder, {k: v for k, v in founder.items() if k != '@id'}],
+             None, 'unsearched'),
+            ('two_ids_for_same_founder', [founder, {**founder, '@id': '#another-founder'}], None, 'unsearched'),
+            ('shared_issuer_id', [founder, unrelated_issuer], None, 'unsearched'),
+            ('profile_main_entity_names_other_person', [founder, other, profile], {'@id': bio + '#other'},
+             'unsearched'),
+            ('profile_main_entity_id_unresolved', [founder, profile], '#unretained', 'unsearched'),
+            ('profile_main_entity_conflicting_inline_name', [founder, profile],
+             {'@id': '#founder', 'name': 'Different Person'}, 'unsearched'),
+        )
+        claim = {'role': founder['jobTitle'], 'affiliation': issuer}
+        for label, subjects, main_entity, expected in cases:
+            with self.subTest(case=label):
+                self.save_founder_role_bundle(label, subjects, claim, main_entity=main_entity)
+                self.assert_founder_role_status(self.run_review(), expected)
 
     def test_actual_issuer_excerpt_is_candidate_and_never_a_round(self):
         self.evidence('live', 'published_readback', self.readback())

@@ -17,7 +17,7 @@ try:
     )
     from .company_metadata_socials import COMPANY_SOCIALS, company_social_review
     from .crawl import (
-        company_headcount_mentions, evidence_url, newsroom_observation,
+        company_headcount_mentions, evidence_text, evidence_url, matches_organization, newsroom_observation,
         professional_bio_observations, require_scoped_launcher, structured_types,
     )
     from .plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
@@ -31,7 +31,7 @@ except ImportError:
     )
     from company_metadata_socials import COMPANY_SOCIALS, company_social_review
     from crawl import (
-        company_headcount_mentions, evidence_url, newsroom_observation,
+        company_headcount_mentions, evidence_text, evidence_url, matches_organization, newsroom_observation,
         professional_bio_observations, require_scoped_launcher, structured_types,
     )
     from plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
@@ -185,14 +185,20 @@ def bind_readbacks(readbacks, aliases, artifacts, batch, official_sites, startup
     return by_company, canonical_sites, alias_proofs
 
 
-def matches_document_ref(value, source, document):
+def saved_node_ref(value, source):
     if not isinstance(value, str) or not value or len(value) > 2048 or value != value.strip():
-        return False
+        return None
     url, separator, fragment = value.partition('#')
     if separator and not re.fullmatch(r'[A-Za-z0-9._~-]+', fragment):
-        return False
+        return None
+    document = evidence_url(url or source, source)
+    return (document, fragment) if document else None
+
+
+def matches_document_ref(value, source, document):
     # An inline node identifier is additional context for the already bound document.
-    return evidence_url(url or source, source) == document
+    ref = saved_node_ref(value, source)
+    return ref is not None and ref[0] == document
 
 
 def matches_identity_references(subject, source, document):
@@ -209,6 +215,19 @@ def matches_identity_references(subject, source, document):
     else:
         refs = [page]
     return bool(refs) and all(matches_document_ref(ref, source, document) for ref in refs)
+
+
+def consistent_node_declarations(node, declarations, source, document, allowed_types):
+    ref = saved_node_ref(node.get('@id'), source)
+    name = evidence_text(node.get('name')).casefold()
+    for other in declarations.get(ref, ()):
+        types = structured_types(other)
+        if (('@type' in other and (not types or types - allowed_types))
+                or ('name' in other and evidence_text(other['name']).casefold() != name)
+                or ('url' in other and evidence_url(other['url'], source) != document)
+                or not matches_identity_references(other, source, document)):
+            return False
+    return True
 
 
 def saved_role_observations(record, page):
@@ -236,17 +255,46 @@ def saved_role_observations(record, page):
     if any(evidence_url(ref, source) != document for ref in canonicals) or newsroom_observation(record, page):
         return []
 
+    # Compare explicit declarations in this saved page only. Missing fields supply no identity.
+    declarations = defaultdict(list)
+    primary_entities = set()
+    for subject in subjects:
+        entity = None
+        if ('ProfilePage' in structured_types(subject) and 'mainEntity' in subject
+                and matches_document_ref(subject.get('url', subject.get('@id')), source, document)):
+            entity = subject['mainEntity']
+            ref = saved_node_ref(entity.get('@id') if isinstance(entity, dict) else entity, source)
+            if ref is None or ref[0] != document or not matches_identity_references(subject, source, document):
+                return []
+            primary_entities.add(ref)
+        for node in (subject, subject.get('worksFor'), entity):
+            if isinstance(node, dict) and (ref := saved_node_ref(node.get('@id'), source)):
+                declarations[ref].append(node)
+
     eligible = []
+    names = {row['name'].casefold() for row in record['founders']}
+    issuer_types = {'Organization', 'Corporation'}
     for subject in subjects:
         issuer = subject.get('worksFor')
-        if structured_types(subject) != {'Person'} or not isinstance(issuer, dict):
+        if (structured_types(subject) != {'Person'}
+                or evidence_text(subject.get('name')).casefold() not in names
+                or evidence_url(subject.get('url'), source) != document
+                or not matches_organization(issuer, record, source)):
             continue
         types = structured_types(issuer)
-        if '@type' in issuer and (not types or types - {'Organization', 'Corporation'}):
+        if '@type' in issuer and (not types or types - issuer_types):
             continue
-        if (matches_identity_references(subject, source, document)
-                and matches_identity_references(issuer, source, issuer_document)):
-            eligible.append(subject)
+        if (not matches_identity_references(subject, source, document)
+                or not matches_identity_references(issuer, source, issuer_document)):
+            continue
+        if primary_entities and primary_entities != {saved_node_ref(subject.get('@id'), source)}:
+            continue
+        if (not consistent_node_declarations(subject, declarations, source, document, {'Person'})
+                or not consistent_node_declarations(issuer, declarations, source, issuer_document, issuer_types)):
+            return []
+        eligible.append(subject)
+    if len({saved_node_ref(subject['@id'], source) for subject in eligible if '@id' in subject}) > 1:
+        return []
     # Keep the collector's exact name, bio document and named issuer checks on each Person.
     return list(professional_bio_observations(record, {**page, 'structured_data': eligible}, ()))
 
