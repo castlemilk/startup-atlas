@@ -499,8 +499,12 @@ try {
   await until(()=>evaluate(`${loomNodeCount}===${neighbourhood.nodes.length}`),'Full map must draw the complete neighbourhood');
   assert.equal(await evaluate("document.querySelector('#graph-full-map').getAttribute('aria-pressed')"),'true');
   assert.deepEqual(await evaluate(listSources),expectedSources,'Changing the map view must keep the list sources');
-  await evaluate("[0,1,2,3].forEach(()=>document.querySelector('#graph-zoom-in').click())");
-  await until(()=>evaluate("parseInt(document.querySelector('#graph-zoom-number').textContent,10)>200"),'The dense graph needs enough zoom to reveal its names');
+  const zoomPercent="parseInt(document.querySelector('#graph-zoom-number').textContent,10)";
+  for(let step=0;step<4;step++) {
+    const before=await evaluate(zoomPercent);
+    await evaluate("document.querySelector('#graph-zoom-in').click()");
+    await until(()=>evaluate(`${zoomPercent}>${before}`),'Each zoom step must reach the full map');
+  }
   await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
   await assertLoomLabels(2);
   await evaluate("document.querySelector('#graph-full-map').click()");
