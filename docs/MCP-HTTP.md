@@ -28,6 +28,29 @@ change that setup.
   Exposing it publicly needs a reverse proxy / TLS terminator in front —
   this server does not do TLS itself.
 
+## DeepHost hosting (handler mode, not a long-lived server)
+
+DeepHost's "node" framework does **not** run `npm start` and does not run
+a long-lived server process. Its runtime imports `server.js` at the
+artifact root once, takes its default export as a Node http handler
+`(req, res) => ...`, and serves every request itself over a unix socket.
+That file is the entrypoint: without it the app fails every request with
+"handler could not start", and no start script, bind host or `PORT`
+setting changes that — this was the cause of the outage on every build
+before `server.js` existed, including the builds that fixed the bind
+and dependency-install bugs.
+
+`server.js` exports the same handler `node backend/mcp/http-server.mjs`
+listens with locally (via the exported `createHandler()` in
+`backend/mcp/http-server.mjs`); only the `listen()` is skipped. The
+handler is built once at worker start, so a missing
+`GOOGLE_CLIENT_ID` / `ATLAS_GOOGLE_ALLOWED_EMAILS` still fails the
+worker at import time rather than per request. The `start` script in
+`package.json` is for local runs only; DeepHost never executes it.
+Deployments also need "Automatic deployments" enabled in the DeepHost
+console ("Deploy branch pushes") — it is off by default, and a push
+with it off deploys nothing and says nothing.
+
 ## 1. Google Cloud Console setup (Ben — do this once)
 
 No Google OAuth client exists yet for this server, and one cannot be

@@ -463,13 +463,18 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
   };
 }
 
-export async function main(argv = process.argv.slice(2), env = process.env) {
+export async function createHandler(env = process.env, argv = process.argv.slice(2)) {
   const config = buildConfig(env, argv);
   validateConfig(config);
   const store = new CatalogueStore(config.root, { writeEnabled: config.writeEnabled });
   await store.snapshot();
   clearJwksCache();
-  const handler = createHttpHandler(store, config);
+  return createHttpHandler(store, config);
+}
+
+export async function main(argv = process.argv.slice(2), env = process.env) {
+  const config = buildConfig(env, argv);
+  const handler = await createHandler(env, argv);
   const server = http.createServer(handler);
   await new Promise((resolve, reject) => {
     server.once('error', reject);
