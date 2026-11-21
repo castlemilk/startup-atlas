@@ -620,7 +620,9 @@ try {
   const companies=graph.entities.filter(entity=>entity.kind==='startup').map(entity=>entity.id).sort();
   const companyMapReady="document.querySelector('#graph-company-map')?.dataset.renderer==='loom'&&!document.querySelector('#graph-company-overview').hidden";
   async function checkCompanyMap({all=true,groupLabels=[]}={}) {
-    const map=await evaluate(`(()=>{
+    const map=await evaluate(`(async()=>{
+      // Loom projects the new anchors on the next paint after a resize or regroup.
+      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
       const canvas=document.querySelector('#graph-company-loom'), frame=canvas.getBoundingClientRect();
       const nodes=[...document.querySelectorAll('#graph-company-nodes [data-node]')];
       const labels=[...document.querySelectorAll('#graph-company-nodes :is(.network-loom-label,.graph-company-cluster-label):not([hidden])')];
@@ -666,7 +668,8 @@ try {
   await evaluate(`(()=>{
     const select=document.querySelector('#graph-company-group');select.value='country';select.dispatchEvent(new Event('change',{bubbles:true}));
   })()`);
-  await checkCompanyMap({groupLabels:['Australia','United Kingdom','Country not recorded']});
+  const countryLabels=['Australia','United Kingdom','Country not recorded'];
+  await until(()=>checkCompanyMap({groupLabels:countryLabels}),'Country Fit must show all companies and headquarters groups');
   assert.equal(await evaluate("new URL(location.href).searchParams.get('group')"),'country');
   await evaluate("document.querySelector('.graph-company-cluster-label[data-group=Australia]').click()");
   const canvaCompany="#graph-company-nodes [data-node='startup:canva']";
@@ -682,7 +685,7 @@ try {
   await until(()=>evaluate("document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='startup:canva'"),'Tapping a native company glyph must traverse into its relationship graph');
   await evaluate('history.back()');
   await until(()=>evaluate(`${companyMapReady}&&new URL(location.href).searchParams.get('group')==='country'`),'Back must restore the company Loom map and country grouping');
-  await checkCompanyMap({groupLabels:['Australia','United Kingdom','Country not recorded']});
+  await until(()=>checkCompanyMap({groupLabels:countryLabels}),'Back must restore the fitted country map');
 
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
   console.log('Chrome graph checks passed for all-company Loom Fit and grouping, phone traversal, context wires, artwork, mobile neighbourhood Fit and SVG fallback');
