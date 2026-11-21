@@ -200,7 +200,7 @@ function renderList(view) {
     const nodeButton=entity=>'<button type="button" data-select="'+esc(entity.id)+'"'+(visibleCompanies.has(entity.id)?'':' data-context="true"')+'>'+esc(entity.name)+'</button>';
     return '<li>'+nodeButton(from)+'<span>→ '+esc(relationshipText(edge))+' →</span>'+nodeButton(to)+(source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Evidence ↗</a>':'')+'</li>';
   }).filter(Boolean);
-  $('graph-list').innerHTML='<h3>Visible connections</h3>'+(view.truncated?'<p class="detail-caption">This map shows a limited neighbourhood. Open a profile to see all its reviewed connections, or explore from another entity.</p>':'')+(items.length?'<ul>'+items.join('')+'</ul>':'<p class="detail-empty">No connections match the selected types.</p>');
+  $('graph-list').innerHTML='<div class="network-list-heading"><h3 tabindex="-1">Visible connections</h3><a href="#graph-list-toggle">Back to map</a></div>'+(view.truncated?'<p class="detail-caption">This map shows a limited neighbourhood. Open a profile to see all its reviewed connections, or explore from another entity.</p>':'')+(items.length?'<ul>'+items.join('')+'</ul>':'<p class="detail-empty">No connections match the selected types.</p>');
   $('graph-list').hidden=!listVisible;
 }
 function relationshipText(edge) {
@@ -383,6 +383,13 @@ $('graph-results').addEventListener('click',selectFromEvent);
 $('graph-detail').addEventListener('click',selectFromEvent);
 $('graph-list').addEventListener('click',selectFromEvent);
 const svg=$('graph-canvas');
+svg.addEventListener('focusin',event=>{
+  const node=event.target.closest('.network-node:focus-visible');
+  if(!node) return;
+  const card=node.querySelector('.node-shell').getBoundingClientRect();
+  const view=svg.getBoundingClientRect();
+  if(card.left<view.left || card.right>view.right || card.top<view.top || card.bottom>view.bottom) centerNode(node.dataset.node);
+});
 function graphPoint(event,matrix=svg.getScreenCTM().inverse()) {
   const point=svg.createSVGPoint();point.x=event.clientX;point.y=event.clientY;
   return point.matrixTransform(matrix);
@@ -444,7 +451,18 @@ $('graph-depth').addEventListener('change',event=>{
   if (depth!==next) { saveCamera();depth=next;restoreCamera(); }
   if(store&&rootId){renderMap();renderDetail();writeState();}
 });
-$('graph-list-toggle').addEventListener('click',()=>{listVisible=!listVisible;syncListVisibility();writeState();});
+$('graph-list-toggle').addEventListener('click',()=>{
+  listVisible=!listVisible;
+  syncListVisibility();
+  writeState();
+  if (!listVisible) return;
+  const heading=$('graph-list').querySelector('h3');
+  const bounds=heading?.getBoundingClientRect();
+  if (bounds && (bounds.top<0 || bounds.bottom>innerHeight)) {
+    heading.focus({preventScroll:true});
+    heading.scrollIntoView({block:'start',behavior:'instant'});
+  }
+});
 function syncListVisibility() {
   $('graph-list-toggle').setAttribute('aria-pressed',String(listVisible));
   $('graph-list-toggle').querySelector('span').textContent=listVisible?'Hide connections':'Connections list';
@@ -453,12 +471,13 @@ function syncListVisibility() {
 $('graph-zoom-in').addEventListener('click',()=>{zoom=Math.min(1.7,zoom+.2);applyZoom();saveCamera();});
 $('graph-zoom-out').addEventListener('click',()=>{zoom=Math.max(.7,zoom-.2);applyZoom();saveCamera();});
 $('graph-fit')?.addEventListener('click',()=>{if(!layout)return;bounds=layoutBounds(layout);zoom=1;pan={x:0,y:0};applyZoom();saveCamera();});
-$('graph-center')?.addEventListener('click',()=>{
-  const selected=layout?.nodes.find(node=>node.id===selectedId);
-  if (!selected || !bounds) return;
-  pan={x:selected.x-bounds.x-bounds.width/2,y:selected.y-bounds.y-bounds.height/2};
+function centerNode(id) {
+  const node=layout?.nodes.find(node=>node.id===id);
+  if (!node || !bounds) return;
+  pan={x:node.x-bounds.x-bounds.width/2,y:node.y-bounds.y-bounds.height/2};
   applyZoom();saveCamera();
-});
+}
+$('graph-center')?.addEventListener('click',()=>centerNode(selectedId));
 $('graph-pin')?.addEventListener('click',()=>{
   const selected = layout?.nodes.find(node=>node.id===selectedId);
   if (!selected) return;

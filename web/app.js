@@ -35,12 +35,12 @@ const densityControl = byId('directory-density-view');
 const companyOptions = byId('directory-company-options');
 const scopeControls = byId('directory-scope-controls');
 const mobileOptions = byId('directory-mobile-options');
-const optionsViewport = window.matchMedia('(max-width: 650px)');
+const optionsViewport = window.matchMedia('(max-width: 800px)');
 const panel = byId('directory-inspector');
 const inspectorSeat = byId('directory-inspector-seat');
 const inspectorSheet = byId('directory-inspector-sheet');
 const inspectorSheetContent = byId('directory-sheet-content');
-const sheetViewport = window.matchMedia('(max-width: 960px)');
+const sheetViewport = window.matchMedia('(max-width: 1169px)');
 let state = { ...defaults }, data = null, visible = pageSize;
 let searchEntry = false;
 let sheetSuspended = false;
@@ -407,9 +407,7 @@ function renderInspectorRecord(entity) {
         ${people?`<ul class="directory-inspector-people">${people}</ul>`:`<p>${company?'Founder details':'Sourced connections'} have not been recorded.</p>`}
       </div></ui-tabs-panel>
       <ui-tabs-panel value="sources"><div class="directory-inspector-section">
-        ${claims.length?`<dl class="directory-inspector-facts">${claims.slice(0,2).map(inspectorClaim).join('')}</dl>`:''}
-        ${claims.length||profileSource?`<p class="directory-source-available">${icon('source')}<span><strong>Source available</strong> Read the original document for context.</span></p>`:''}
-        ${claims.length>2?`<dl class="directory-inspector-facts">${claims.slice(2).map(inspectorClaim).join('')}</dl>`:''}
+        ${claims.length?`<dl class="directory-inspector-facts">${claims.map(inspectorClaim).join('')}</dl>`:''}
         ${profileSource || (claims.length===0?'<p>No source links have been recorded.</p>':'')}
       </div></ui-tabs-panel>
     </ui-tabs>
@@ -473,6 +471,7 @@ function renderInspector({moveFocus=false}={}) {
       ? `<div class="directory-inspector-top"><h2 id="directory-inspector-heading" tabindex="-1">Record unavailable</h2><button type="button" id="close-directory-inspector" class="atlas-button directory-inspector-close" aria-label="Close record inspection">${icon('close')}</button></div><p>This record is missing from the current Atlas snapshot.</p>`
       : '<div class="directory-inspector-empty"><h2>Company details</h2><p>Inspect a company to see its record and sources.</p></div>';
     watchImages(panel);
+    inspectorSheetContent.scrollTop=0;
   }
   if (entity) {
     byId('directory-inspector-outside').hidden=resultIds.has(id);

@@ -33,7 +33,7 @@
         <form novalidate id="graph-search" class="explorer-search">
           <label class="visually-hidden" for="graph-query">Search the knowledge graph</label>
           <svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
-          <input id="graph-query" type="search" autocomplete="off" placeholder="Search this graph" maxlength="200">
+          <input id="graph-query" type="search" autocomplete="off" placeholder="Search" maxlength="200">
           <button type="button" class="atlas-clear" data-atlas-clear-for="graph-query" aria-label="Clear graph search" hidden>
             <svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
           </button>
@@ -65,7 +65,7 @@
           <div class="network-controls">
             <label for="graph-depth">Depth</label>
             <select id="graph-depth" aria-label="Connection depth"><option value="1">1 hop</option><option value="2">2 hops</option></select>
-            <button id="graph-list-toggle" type="button" aria-pressed="false">
+            <button id="graph-list-toggle" type="button" aria-pressed="false" aria-controls="graph-list">
               <svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01"/></svg>
               <span>Connections list</span>
             </button>
@@ -74,18 +74,20 @@
               <span>Pin selection</span>
             </button>
           </div>
-          <p id="graph-count" role="status"></p>
         </div>
-        <p class="network-mobile-guide">Zoom in on the map or switch to <strong>Connections list</strong>.</p>
+        <p class="network-mobile-guide">Zoom in or open the <strong>Connections list</strong>.</p>
         <div class="network-canvas">
           <svg id="graph-canvas" viewBox="0 0 1200 720" role="group" aria-label="Interactive relationship graph" aria-describedby="graph-instructions"><text x="600" y="360" text-anchor="middle">Loading the graph…</text></svg>
         </div>
         <p id="graph-instructions" class="visually-hidden">Select a node to inspect it. Use Explore from here to centre the map on it. Drag nodes or move them with arrow keys. Drag the background to pan. Reset restores the automatic layout. The list shows the same connections and sources.</p>
         <div class="network-footer">
-          <div class="network-legend" aria-label="Map key">
-            <span><i class="legend-startup"></i> Company in scope</span>
-            <span><i class="legend-person"></i> Person</span>
-            <span><i class="legend-partner"></i> Organisation</span>
+          <div class="network-map-context">
+            <p id="graph-count" role="status"></p>
+            <div class="network-legend" aria-label="Map key">
+              <span><i class="legend-startup"></i> Company in scope</span>
+              <span><i class="legend-person"></i> Person</span>
+              <span><i class="legend-partner"></i> Organisation</span>
+            </div>
           </div>
           <div class="network-scale" role="group" aria-label="Graph view">
             <button id="graph-zoom-out" type="button" aria-label="Zoom out">−</button>

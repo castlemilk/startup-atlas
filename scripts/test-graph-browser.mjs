@@ -300,6 +300,52 @@ try {
   assert.equal(await evaluate("new URLSearchParams(location.search).has('q')"),false);
   assert.equal(await evaluate("document.activeElement?.id"),'graph-query','Clear returns focus to the query');
 
+  await command('Emulation.setDeviceMetricsOverride',{width:1280,height:720,deviceScaleFactor:1,mobile:false});
+  await command('Page.navigate',{url:`${address}/graph.html?entity=startup%3Acanva&selected=person%3Acameron-adams`});
+  await until(()=>evaluate("document.querySelector('#graph-detail h2')?.textContent==='Cameron Adams'"),'The zoomed keyboard fixture did not load');
+  await evaluate(`(() => {
+    document.querySelector('#graph-fit').click();
+    for(let step=0;step<4;step++) document.querySelector('#graph-zoom-in').click();
+    document.querySelector('#graph-center').click();
+    document.querySelector('.network-node[data-node="person:cameron-adams"]').focus();
+  })()`);
+  const nodeCount=await evaluate(`(() => {
+    const nodes=[...document.querySelectorAll('.network-node')];
+    return nodes.length-1-nodes.indexOf(document.activeElement);
+  })()`);
+  assert.ok(nodeCount>=3,'The focused node must precede more nodes in the zoomed keyboard order');
+  for(let index=0;index<nodeCount;index++) {
+    await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+    await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+    const focused=await evaluate(`(() => {
+      const node=document.activeElement;
+      const card=node.querySelector('.node-shell')?.getBoundingClientRect();
+      const canvas=document.querySelector('#graph-canvas').getBoundingClientRect();
+      return {id:node.dataset.node || node.id,visible:!!card && card.left>=canvas.left-1 && card.right<=canvas.right+1
+        && card.top>=canvas.top-1 && card.bottom<=canvas.bottom+1};
+    })()`);
+    assert.ok(focused.visible,`Zoomed graph keyboard focus must reveal its node: ${JSON.stringify(focused)}`);
+  }
+  assert.equal(await evaluate("document.querySelector('#graph-detail h2').textContent"),'Cameron Adams');
+
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:480,deviceScaleFactor:1,mobile:true});
+  await command('Page.navigate',{url:`${address}/graph.html?entity=startup%3Acanva`});
+  await until(()=>evaluate("document.querySelector('#graph-detail h2')?.textContent==='Canva'&&document.querySelector('#graph-list').hidden"),'The short graph viewport did not settle');
+  await evaluate('document.fonts.ready.then(()=>true)');
+  assert.ok(await evaluate(`(() => {
+    const canvas=document.querySelector('.network-canvas').getBoundingClientRect();
+    return canvas.top<innerHeight-32 && document.documentElement.scrollWidth<=innerWidth;
+  })()`),'A short phone must see the canvas start without sideways overflow');
+  await evaluate("document.querySelector('#graph-list-toggle').focus()");
+  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});
+  await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  await until(()=>evaluate(`(() => {
+    const heading=document.querySelector('#graph-list h3');
+    const bounds=heading.getBoundingClientRect();
+    return document.activeElement===heading && bounds.top>=0 && bounds.bottom<innerHeight
+      && document.querySelector('.network-node.is-root').dataset.node==='startup:canva';
+  })()`),'Opening Connections list must reveal and focus the list while preserving the graph root');
+
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
   console.log('Chrome graph interaction smoke test passed at desktop and mobile sizes');
 } catch(error) {

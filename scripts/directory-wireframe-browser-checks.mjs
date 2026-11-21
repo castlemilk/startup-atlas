@@ -190,6 +190,33 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await press('Escape','Escape',27);
   await until(()=>evaluate("!new URLSearchParams(location.search).has('selected')"),'Dismissing the mobile inspector must clear the shareable selection');
 
+  await command('Emulation.setDeviceMetricsOverride',{width:961,height:700,deviceScaleFactor:1,mobile:false});
+  await navigate('/?type=startup&coverage=1#directory',ready);
+  assert.ok(await evaluate(`(() => {
+    const table=document.querySelector('.directory-table-frame');
+    const name=table.querySelector('.directory-company-row h3');
+    return table.clientWidth>=850 && table.scrollWidth<=table.clientWidth+1
+      && name.getBoundingClientRect().height<=2*parseFloat(getComputedStyle(name).lineHeight)+1;
+  })()`),'Coverage must keep readable company names and fit beside the inspector breakpoint');
+  await command('Emulation.setDeviceMetricsOverride',{width:568,height:320,deviceScaleFactor:1,mobile:true});
+  await navigate('/?type=startup&q=Canva&selected=startup%3Acanva#directory',ready);
+  await until(()=>evaluate("document.querySelector('#directory-inspector-sheet').open&&document.activeElement.id==='directory-inspector-heading'"),'Landscape inspection must focus the loaded record');
+  await evaluate('document.fonts.ready.then(()=>true)');
+  await click('.directory-inspector-tabs ui-tabs-tab[value="sources"] button');
+  const sourceLink='#directory-inspector .directory-claim-source a';
+  await evaluate(`document.querySelector(${JSON.stringify(sourceLink)}).focus()`);
+  await until(()=>evaluate(`(() => {
+    const sheet=document.querySelector('#directory-sheet-content');
+    const body=document.querySelector('.directory-inspector-scroll');
+    const link=document.activeElement;
+    const frame=sheet.getBoundingClientRect(), bounds=link.getBoundingClientRect();
+    return link.matches(${JSON.stringify(sourceLink)}) && bounds.top>=frame.top && bounds.bottom<=frame.bottom+1
+      && sheet.scrollHeight>sheet.clientHeight && sheet.scrollWidth<=sheet.clientWidth+1
+      && getComputedStyle(body).overflowY==='visible';
+  })()`),'A source must be visible and focusable using the single scroll area in a short sheet');
+  await press('Escape','Escape',27);
+  await until(()=>evaluate("document.activeElement?.dataset.inspectEntity==='startup:canva'"),'Closing the short sheet must restore focus to the result');
+
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await navigate('/treemap.html?metric=funding&currency=USD',"document.querySelector('#treemap-workspace')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('[data-company=\"startup:canva\"]')");
   await click('#treemap-chart [data-company="startup:canva"]');

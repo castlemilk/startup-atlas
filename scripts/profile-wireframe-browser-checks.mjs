@@ -127,6 +127,30 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   await until(()=>evaluate(`!document.querySelector('.profile-evidence-panel[data-open]')&&document.activeElement.matches(${JSON.stringify(seedAction)})`),'Closing the mobile funding claim did not restore focus');
   assert.ok(await evaluate("document.querySelector('#entity-funding details').open"),'Closing evidence preserves the expanded funding event');
 
+  await command('Emulation.setDeviceMetricsOverride',{width:841,height:700,deviceScaleFactor:1,mobile:false});
+  await navigate('/entity.html?id=startup%3Arevolut',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Revolut'");
+  assert.ok(await evaluate("document.querySelector('.entity-overview-facts').getBoundingClientRect().width>440"),'Company facts must use the available reading width on a tablet');
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:480,deviceScaleFactor:1,mobile:true});
+  await navigate('/entity.html?id=startup%3Acanva',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Canva'");
+  await evaluate('document.fonts.ready.then(()=>true)');
+  assert.ok(await evaluate(`(() => {
+    const nav=document.querySelector('.atlas-section-nav');
+    const frame=nav.getBoundingClientRect();
+    return nav.scrollWidth<=nav.clientWidth+1 && [...nav.querySelectorAll('a')].every(link=>{
+      const bounds=link.getBoundingClientRect();
+      return bounds.left>=frame.left-1 && bounds.right<=frame.right+1 && bounds.height>=44;
+    });
+  })()`),'Every company section link must fit and remain tappable at 320px');
+  await click('.atlas-section-nav a[href="#entity-sources"]');
+  await until(()=>evaluate(`(() => {
+    const nav=document.querySelector('.profile-sticky');
+    const top=document.querySelector('#entity-sources').getBoundingClientRect().top;
+    return location.hash==='#entity-sources' && top>=0 && top<innerHeight/2
+      && (getComputedStyle(nav).position!=='sticky' || top>=nav.getBoundingClientRect().bottom);
+  })()`),'Sources must open at a readable position below the section navigation');
+  await assertNoOverflow('Short 320px company dossier');
+
+  await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   for(const kind of ['person','programme','provider']) {
     const entity=graph.entities.find(item=>item.kind===kind);
     if(!entity)continue;
