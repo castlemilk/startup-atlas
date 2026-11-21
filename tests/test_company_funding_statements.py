@@ -622,7 +622,13 @@ class CompanyFundingStatementTests(unittest.TestCase):
 
     def test_saved_issuer_investor_update_adds_only_a_context_signal(self):
         company = {'name': 'Ready Company', 'website': 'https://ready.example/'}
-        for excerpt in (INVESTOR_UPDATE_DISCLOSURE, EXISTING_ROUND_DISCLOSURE):
+        for excerpt in (
+            INVESTOR_UPDATE_DISCLOSURE,
+            EXISTING_ROUND_DISCLOSURE,
+            EXISTING_ROUND_DISCLOSURE.replace('Cedar Ventures', 'Cedar Ventures LLC'),
+            INVESTOR_UPDATE_DISCLOSURE.replace('$50 million USD', 'USD $0.001M'),
+            EXISTING_ROUND_DISCLOSURE[:-1] + ', which has raised $0 million USD.',
+        ):
             with self.subTest(excerpt=excerpt):
                 capture = {'url': 'https://ready.example/news/investor', 'excerpt': excerpt,
                            'retrieved_on': '2026-11-21', 'acquisition': 'page_excerpt',
@@ -667,6 +673,28 @@ class CompanyFundingStatementTests(unittest.TestCase):
                                            search_result=evidence['acquisition'] == 'search_result')
                 self.assertEqual(result['bucket'], bucket)
                 self.assertEqual(result['observations'], [{**evidence, 'bucket': bucket, 'signals': signals}])
+
+    def test_issuer_investor_update_needs_clear_label_and_evidence_of_existing_round(self):
+        company = {'name': 'Ready Company', 'website': 'https://ready.example/'}
+        existing = EXISTING_ROUND_DISCLOSURE
+        for excerpt in (
+            existing.replace('Cedar Ventures', 'No Named Investor'),
+            existing.replace('Cedar Ventures', 'Cedar Ventures Or Pine'),
+            existing.replace('Cedar Ventures', 'A New Investor'),
+            existing.replace('Cedar Ventures', 'Undisclosed Investor'),
+            existing.replace('Cedar Ventures', 'Cedar And Pine LLC'),
+            existing.replace('its existing', 'its')[:-1] + ', which has raised $0 million USD.',
+            existing.replace('its existing', 'its')[:-1] + ', which has raised USD $0.000M.',
+        ):
+            with self.subTest(excerpt=excerpt):
+                capture = {'url': 'https://ready.example/news/investor', 'excerpt': excerpt,
+                           'retrieved_on': '2026-11-21', 'acquisition': 'page_excerpt'}
+                result, = self.first_person_review([capture], company=company)['results']
+                self.assertTrue(result['review_required'])
+                self.assertEqual(result['bucket'], 'context')
+                self.assertEqual(result['observations'], [{
+                    **capture, 'bucket': 'context', 'signals': ['backing_context'],
+                }])
 
     def test_investor_update_cue_preserves_initial_round_and_extension_output(self):
         company = {'name': 'Ready Company', 'website': 'https://ready.example/'}

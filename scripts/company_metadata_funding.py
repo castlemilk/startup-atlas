@@ -435,10 +435,14 @@ NUMBERED_EXPANSION = re.compile(
 ISSUER_INVESTOR_UPDATE = re.compile(
     rf'(?P<issuer>{ISSUER_NAME})(?:, (?:a|the) (?:global )?leader in developing'
     r'(?-i:(?: (?!for\b|with\b)[a-z][a-z-]*){1,24}),)? (?:today )?announced the addition of '
-    rf'{CAPITALIZED_NAME} as a new investor in (?:its|their) '
+    rf'(?P<investor>{CAPITALIZED_NAME}) as a new investor in (?:its|their) '
     rf'(?:(?P<existing>existing) |record-setting )?{SERIES.pattern} funding round'
-    rf'(?:, which (?P<raised>has raised) {EXTENSION_LITERAL})?\.',
+    rf'(?:, which has raised (?P<raised_amount>{EXTENSION_LITERAL}))?\.',
     re.I,
+)
+UNCLEAR_INVESTOR_LABEL = re.compile(
+    r'^(?:no|not|none)\b|\b(?:and|or|nor|undisclosed|unidentified|unknown|unnamed)\b'
+    r'|^(?:(?:a|an|named|new) )*investors?$'
 )
 ISSUER_CLOSING_TERMS = re.compile(
     r'(?!.*\bplanned\b)' + NAMED_SERIES_TERMS
@@ -940,7 +944,11 @@ def issuer_investor_update(excerpt, names):
     if QUOTATION_MARK.search(wording):
         return False
     update = ISSUER_INVESTOR_UPDATE.fullmatch(wording)
-    return bool(update and name_key(update['issuer']) in names and (update['existing'] or update['raised']))
+    if not update or name_key(update['issuer']) not in names:
+        return False
+    if UNCLEAR_INVESTOR_LABEL.search(name_key(update['investor'])):
+        return False
+    return bool(update['existing'] or re.search(r'[1-9]', update['raised_amount'] or ''))
 
 
 def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_articles=None):
