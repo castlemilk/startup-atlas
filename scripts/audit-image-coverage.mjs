@@ -2,10 +2,15 @@
 import { readFile } from 'node:fs/promises';
 import { logoFor } from '../web/logos.js';
 const read=async path=>JSON.parse(await readFile(new URL(path,import.meta.url),'utf8'));
-const [profiles,catalogue]=await Promise.all([read('../data/partner-profiles.json'),read('../data/catalogue.json')]);
+const [profiles,catalogue,research]=await Promise.all([read('../data/partner-profiles.json'),read('../data/catalogue.json'),read('../data/startup-research.json')]);
 const companyRows=Object.entries(profiles).flatMap(([partner,p])=>(p.companies||[]).map(c=>({partner,name:c.name,hasImage:!!logoFor(c.name)||!!(c.logo&&c.logo_source)})));
 const programRows=catalogue.opportunities.map(o=>({name:o.name,provider:o.org,hasImage:!!logoFor(o.org)}));
-for (const [label,rows] of [['companies',companyRows],['opportunities',programRows]]) {
+const partnerRows=Object.keys(profiles).map(name=>({name,hasImage:!!logoFor(name)}));
+const portraitRows=[
+  ...Object.entries(profiles).flatMap(([partner,p])=>(p.people||[]).map(person=>({partner,name:person.name,hasImage:!!(person.photo&&person.photo_source)}))),
+  ...research.startups.flatMap(s=>(s.founders||[]).map(f=>({company:s.name,name:f.name,hasImage:!!(f.photo_url&&f.photo_source)})))
+];
+for (const [label,rows] of [['companies',companyRows],['opportunities',programRows],['partners',partnerRows],['portraits',portraitRows]]) {
   const missing=rows.filter(r=>!r.hasImage);
   console.log(JSON.stringify({kind:label,total:rows.length,withImage:rows.length-missing.length,missing:missing.length,unresolved:missing},null,2));
 }
