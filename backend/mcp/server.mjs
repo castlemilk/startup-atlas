@@ -35,16 +35,25 @@ const tools = [
   { name: 'atlas_get_crawl_claims', description: 'List current crawl claims per source, derived from claimed and running runs. A claim whose lease has expired is reported as stale, never as live.', inputSchema: schema({ mode: { type: 'string', enum: CRAWL_MODES }, source_id: { type: 'string', maxLength: 200 } }), annotations: readonly },
 ];
 
-export function createServer(store) {
+export const WRITE_TOOLS = ['atlas_apply_startup_edit', 'atlas_upsert_partner', 'atlas_add_opportunity'];
+
+export function createServer(store, options = {}) {
   const partners = new PartnerStore(store.root, {writeEnabled:store.writeEnabled});
   const startups = new StartupStore(store.root, {writeEnabled:store.writeEnabled});
   const crawls = new CrawlRegistry(store.root);
   const server = new Server({ name: 'startup-atlas', version: '1.0.0' }, { capabilities: { tools: {} } });
   server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));
-  server.setRequestHandler(CallToolRequestSchema, async ({ params }) => {
+  server.setRequestHandler(CallToolRequestSchema, async ({ params }, extra) => {
     try {
       const tool = tools.find(item => item.name === params.name);
       if (!tool) throw new EntryError('UNKNOWN_TOOL', `Unknown tool ${params.name}`);
+      // The HTTP server supplies a write authorizer that checks the caller's
+      // authenticated identity; stdio has no caller identity, so --write alone
+      // decides there. A denied write never reaches the stores.
+      if (WRITE_TOOLS.includes(params.name) && typeof options.writeAuthorizer === 'function') {
+        const allowed = await options.writeAuthorizer(extra?.authInfo, params.name);
+        if (!allowed) throw new EntryError('WRITE_FORBIDDEN', 'This Google account is not allowed to write through the HTTP MCP server.');
+      }
       const args = params.arguments ?? {};
       if (!args || typeof args !== 'object' || Array.isArray(args)) throw new EntryError('VALIDATION_ERROR', 'Tool arguments must be an object.');
       for (const key of Object.keys(args)) if (!Object.hasOwn(tool.inputSchema.properties, key)) throw new EntryError('VALIDATION_ERROR', `Unexpected argument: ${key}`);
