@@ -91,10 +91,58 @@
         "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
       },
       "started_at": "2026-11-20T23:27:32Z",
-      "status": "claimed",
-      "superseded_by": null,
+      "status": "superseded",
+      "superseded_by": "crawl-20261121-partners-03",
       "supersedes": null,
       "version": 1
+    },
+    {
+      "version": 1,
+      "run_id": "crawl-20261121-partners-03",
+      "mode": "partners",
+      "scope": {
+        "source_ids": [
+          "github-for-startups-partners",
+          "aws-activate-featured",
+          "launchvic-ai-preaccelerators",
+          "henson-microsoft-network",
+          "innovation-bay-australia-vc"
+        ],
+        "seed_file": "data/partner-sources.json",
+        "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "args": {
+        "follow": 0
+      },
+      "catalogue_revision": "aa21f98b5cfad4508592c7a2d0f0433e338608a4",
+      "source_revisions": {
+        "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "claimed_by": "muse",
+      "claimed_at": "2026-11-21T01:21:45Z",
+      "lease_expires_at": "2026-11-21T01:51:45Z",
+      "status": "completed",
+      "started_at": "2026-11-21T01:21:45Z",
+      "finished_at": "2026-11-21T01:24:02Z",
+      "outcome": {
+        "sources_attempted": 90,
+        "sources_succeeded": 81,
+        "sources_failed": 0,
+        "candidates_discovered": 4705,
+        "coverage_reference": "partner-crawl-review artifact 14685285006 (snapshots partners-20261121T012145Z.json, programs-20261121T012202Z.json, news-20261121T012211Z.json, logos-20261121T012301Z.json, profiles-20261121T012357Z.json)",
+        "notes": "Recovery and outcome for crawl-20261121-partners-01 (claimed 2026-11-20T23:27:32Z, lease expired 2026-11-20T23:57:32Z, never dispatched). A recovery record crawl-20261121-partners-02 was prepared locally (claimed 2026-11-21T00:29:16Z, lease to 2026-11-21T00:59:16Z) but never reached main; this record re-issues the recovery at outcome time with a fresh 30-minute lease instead of reusing the stale one, and supersedes -01 per docs/CRAWL-COORDINATION.md. Dispatched as Partner research crawl workflow run #36 (ID 44849701218) on 21 Nov 2026 at 12:21 AEDT via browser, main aa21f98b5cfad4508592c7a2d0f0433e338608a4; succeeded in 2m 27s (total run 2m 31s), all 12 steps green. Artifact partner-crawl-review (ID 14685285006, 1,938,055 bytes, expires 2026-12-05). snapshot_sha256 is the SHA-256 of the downloaded partner-crawl-review artifact zip. Per-mode (failed = 0 everywhere; skipped is not failed): partners 5 attempted / 3 succeeded / 2 skipped (LaunchVic, Henson) / 1564 candidates; programs 17 / 13 / 4 skipped (Canada NRC IRAP, Innovative Solutions Canada AI governance, Ignite NT, Ignite NT guidelines) / 155; news 4 / 3 / 1 skipped (Canva, HTTP 403) / 5, pages 9 attempted / 8 succeeded / 1 skipped; logos 32 / 31 / 1 skipped (Illume Ventures, redirect leaves approved host) / 312; profiles 32 / 31 / 1 skipped (Illume Ventures) / 2639, pages 75 attempted / 73 succeeded / 2 skipped; partner-candidates 30 unreviewed partner update candidates. Totals: 90 attempted / 81 succeeded / 9 skipped / 0 failed / 4705 candidates (4675 mode candidates + 30 partner-update candidates). All candidates unreviewed; nothing published."
+      },
+      "snapshot_sha256": "07222a786a6d28eea1c70e5e490dc8f5d2771435a9b2faafec1fbaf774c6a81e",
+      "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44849701218/artifacts/14685285006",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44849701218",
+      "review_status": "unreviewed",
+      "published_pr": null,
+      "supersedes": "crawl-20261121-partners-01",
+      "superseded_by": null
     }
   ],
   "version": 1
