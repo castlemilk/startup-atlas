@@ -21,10 +21,12 @@ change that setup.
   environment. Tokens and OAuth state live only in the server's memory;
   restarting the server invalidates issued MCP tokens.
 - The server must be reachable by the client at a stable public HTTPS
-  origin for the OAuth flow (redirect URIs must match exactly). Running it
-  on `127.0.0.1` works for local clients; exposing it publicly needs a
-  reverse proxy / TLS terminator in front — this server does not do TLS
-  itself.
+  origin for the OAuth flow (redirect URIs must match exactly). It binds
+  `0.0.0.0` by default so a container platform's proxy can reach it, and
+  listens on the platform's `PORT` when set (otherwise `ATLAS_HTTP_PORT`,
+  default `3000`); for local-only use set `ATLAS_HTTP_HOST=127.0.0.1`.
+  Exposing it publicly needs a reverse proxy / TLS terminator in front —
+  this server does not do TLS itself.
 
 ## 1. Google Cloud Console setup (Ben — do this once)
 
@@ -73,7 +75,8 @@ Environment variables:
 | `ATLAS_HTTP_BASE_URL` | yes for OAuth | Public origin, no trailing slash, e.g. `https://mcp.example.com`. Used for the issuer, redirect URIs and resource metadata. Defaults to `http://127.0.0.1:<port>`. |
 | `ATLAS_GOOGLE_ALLOWED_EMAILS` | yes | Comma-separated Google account emails allowed to call any tool. Unset or empty allows nobody (fail-closed). |
 | `ATLAS_GOOGLE_WRITE_EMAILS` | for writes | Comma-separated emails allowed to use the three write tools (also needs `--write`). Unset means no HTTP writes at all. |
-| `ATLAS_HTTP_HOST` | no | Bind host, default `127.0.0.1`. |
+| `ATLAS_HTTP_HOST` | no | Bind host, default `0.0.0.0` (use `127.0.0.1` for local-only). |
+| `PORT` | no | Bind port, set by container platforms; takes precedence over `ATLAS_HTTP_PORT` when set. |
 | `ATLAS_HTTP_PORT` | no | Bind port, default `3000`. |
 | `GOOGLE_AUTH_URL`, `GOOGLE_TOKEN_URL`, `GOOGLE_JWKS_URL`, `GOOGLE_TOKENINFO_URL` | no | Google endpoint overrides; only needed for tests. Defaults are Google's production URLs. |
 

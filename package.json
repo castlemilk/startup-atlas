@@ -16,6 +16,7 @@
     "mcp": "node backend/mcp/server.mjs",
     "mcp:http": "node backend/mcp/http-server.mjs",
     "start": "node backend/mcp/http-server.mjs",
+    "postinstall": "npm --prefix backend/mcp ci",
     "test:mcp": "npm --prefix backend/mcp test",
     "audit:images": "node scripts/audit-image-coverage.mjs"
   },

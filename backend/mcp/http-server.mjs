@@ -61,8 +61,8 @@ const sha256Base64url = value => base64url(createHash('sha256').update(value).di
 export function buildConfig(env = process.env, argv = process.argv.slice(2)) {
   let root = fileURLToPath(new URL('../../', import.meta.url));
   let writeEnabled = false;
-  let host = env.ATLAS_HTTP_HOST ?? '127.0.0.1';
-  let port = Number(env.ATLAS_HTTP_PORT ?? 3000);
+  let host = env.ATLAS_HTTP_HOST ?? '0.0.0.0';
+  let port = Number(env.PORT ?? env.ATLAS_HTTP_PORT ?? 3000);
   for (let index = 0; index < argv.length; index++) {
     if (argv[index] === '--write') writeEnabled = true;
     else if (argv[index] === '--repo' && argv[index + 1]) root = path.resolve(argv[++index]);
@@ -70,7 +70,7 @@ export function buildConfig(env = process.env, argv = process.argv.slice(2)) {
     else if (argv[index] === '--host' && argv[index + 1]) host = argv[++index];
     else throw new Error('Usage: node backend/mcp/http-server.mjs [--repo /absolute/path/to/startup-atlas] [--write] [--host 127.0.0.1] [--port 3000]');
   }
-  if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('Invalid --port / ATLAS_HTTP_PORT.');
+  if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('Invalid --port / PORT / ATLAS_HTTP_PORT.');
   const baseUrl = (env.ATLAS_HTTP_BASE_URL ?? `http://${host}:${port}`).replace(/\/$/, '');
   return {
     root, writeEnabled, host, port, baseUrl,
