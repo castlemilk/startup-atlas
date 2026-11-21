@@ -31,7 +31,9 @@ The displayed range is retained in the route's `shown` parameter. Opening a prof
 
 ## Browse the graph by company group
 
-[Open Graph](https://castlemilk.github.io/startup-atlas/graph.html) to see every matching company on the Loom canvas. **Sector** groups by recorded primary sector or technology type. **Country** groups by headquarters. **Fit all** frames every marker. On phones, the fitted map gives each group a visible label. Tap a group name or use **Zoom to group** to read company names. Select a company to follow its sourced relationships and use **Companies** to return to the grouped map. Direct company links still open the relationship map. **Company list** provides the same companies as links and opens automatically when WebGL is unavailable.
+[Open Graph](https://castlemilk.github.io/startup-atlas/graph.html) to see every matching company on the Loom canvas. **Sector** groups by recorded primary sector or technology type. **Country** groups by headquarters. **Fit all** frames every marker. Choose a group to see its full membership with readable names and larger artwork. Long groups continue with ordinary page scrolling at Fit. The zoom controls show magnification relative to Fit.
+
+Select a company to follow sourced relationships. **Companies** and browser Back restore the group and, at the same canvas size, its camera. Direct company links open the relationship map. **Company list** jumps to the native links and opens automatically when WebGL is unavailable.
 
 ## Compare a measure without losing its meaning
 

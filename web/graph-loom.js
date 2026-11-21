@@ -1,9 +1,9 @@
 import { createWireGraph } from 'loom-core/wires';
-import { clusterLayout } from 'loom-core/clusters';
 import { attachAnnotations, compileTaxonomies } from 'loom-core/taxonomy';
 import { graphOrigin, layoutNetwork } from './graph-layout.js';
 import { mobileFit, mobileFitLabel, mobileFitPositions } from './graph-mobile-fit.js';
 import { graphArtwork, graphInitials, showGraphArtwork } from './graph-artwork.js';
+import { companyCaptionHeight, companyLayout } from './graph-company-layout.js';
 
 const steps = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
 const labelHeight = 24;
@@ -281,65 +281,21 @@ export function mountLoom({ canvas, controls, view, root, dense, overview, kinds
   };
 }
 
-function companyRows(groups) {
-  const rows = [];
-  let paired;
-  for (const group of groups) {
-    if (group[1].length > 12) { rows.push([group]); paired = undefined; }
-    else if (paired) { paired.push(group); paired = undefined; }
-    else { paired = [group]; rows.push(paired); }
-  }
-  return rows;
-}
-
-function placeCompanies(canvas, members, rows) {
-  const { clientWidth: width, clientHeight: height } = canvas;
-  if (width >= 580) return clusterLayout(members, node => node.group, {
-    spacing: 103, gap: 100, aspectRatio: width / Math.max(height, 1)
-  });
-
-  // Reserve a readable caption for every compact cluster before mapping CSS pixels to Loom world coordinates.
-  const zoom = .23, inset = 8, heading = 34, gap = 8, minBody = 28;
-  const weights = rows.map(row => Math.sqrt(Math.max(...row.map(([,companies]) => companies.length))));
-  const extra = Math.max(0, height - inset * 2 - rows.length * (heading + gap + minBody));
-  const weightTotal = weights.reduce((sum, weight) => sum + weight, 0);
-  const map = new Map(), captions = new Map(), groups = [];
-  let top = inset;
-  rows.forEach((row, index) => {
-    const body = minBody + extra * weights[index] / weightTotal;
-    const available = (width - inset * 2 - (row.length - 1) * gap) / row.length;
-    row.forEach(([id, companies], column) => {
-      const left = inset + column * (available + gap);
-      const center = { x: (left + available / 2) / zoom, y: (top + heading + body / 2) / zoom, z: 0 };
-      const across = Math.min(companies.length, Math.max(1, Math.floor((available - 24) / 17) + 1), Math.ceil(Math.sqrt(companies.length * 2.5)));
-      const down = Math.ceil(companies.length / across);
-      const dx = Math.min(25, (available - 25) / Math.max(1, across - 1)) / zoom;
-      const dy = Math.min(25, (body - 13) / Math.max(1, down - 1)) / zoom;
-      companies.forEach((company, offset) => {
-        const line = Math.floor(offset / across), count = Math.min(across, companies.length - line * across);
-        map.set(company.id, { x: center.x + (offset % across - (count - 1) / 2) * dx,
-          y: center.y + (line - (down - 1) / 2) * dy, z: 0 });
-      });
-      groups.push({ id, center, radius: Math.hypot(dx * (across - 1), dy * (down - 1)) / 2 });
-      captions.set(id, { x: left, y: top, width: available, height: 32 });
-    });
-    top += heading + body + gap;
-  });
-  return { groups, captions, anchor: node => map.get(node.id), viewport: { x: width / (2 * zoom), y: height / (2 * zoom), z: 0, zoom } };
-}
-
-export function mountCompanyLoom({ canvas, controls, boundaries, groups, edges, traverse, selectGroup }) {
+export function mountCompanyLoom({ canvas, controls, boundaries, groups, edges, reading, saved, traverse, selectGroup, reportZoom }) {
   const members = groups.flatMap(([group, companies]) => companies.map(company => ({ ...company, group })));
-  const rows = companyRows(groups);
-  canvas.parentElement.style.setProperty('--company-overview-rows', rows.length);
-  const place = () => placeCompanies(canvas, members, rows);
-  let clusters = place();
-  const nodes = members.map(node => ({ ...node, ...clusters.anchor(node), pinned: false }));
+  const stage = canvas.parentElement;
+  function place() {
+    const layout = companyLayout(groups, members, canvas.clientWidth, reading);
+    stage.style.setProperty('--company-map-height', `${layout.height}px`);
+    return layout;
+  }
+  let layout = place();
+  const nodes = members.map(node => ({ ...node, ...layout.anchor(node), pinned: false }));
   const links = edges.map(edge => ({ source: edge.from, target: edge.to, kind: edge.kind }));
   const theme = graphTheme(canvas, null, ['startup'], false);
   theme.nodes.resolve = () => ({ shape: 'rounded-square', radius: 25, color: theme.kind.startup });
   const graph = createWireGraph(canvas, { nodes, links, theme, sim: 'main',
-    layout: { anchor: clusters.anchor, blend: 1 }, wireEffects: { direction: 'arrow', scope: 'all' } });
+    layout: { anchor: layout.anchor, blend: 1 }, wireEffects: { direction: 'arrow', scope: 'all' } });
   canvas.tabIndex = -1;
 
   const taxonomy = compileTaxonomies({ nodes, links }, { taxonomies: [{ id: 'company', label: 'Company group', by: 'group' }] });
@@ -348,22 +304,24 @@ export function mountCompanyLoom({ canvas, controls, boundaries, groups, edges, 
     boundary: { color: theme.kind.startup, padding: 7, fillOpacity: .04, strokeOpacity: .44 },
     groupGesture: 'controls', tooltips: false });
 
-  const captions = new Map(groups.map(([group, companies]) => {
+  const captions = new Map((reading ? [] : groups).map(([group, companies]) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'graph-company-cluster-label';
     button.dataset.group = group;
-    const count = document.createElement('span');
-    count.textContent = ` · ${companies.length}`;
-    button.append(group, count);
+    const name = document.createElement('span'), count = document.createElement('span');
+    name.textContent = group;
+    count.className = 'graph-company-cluster-count';
+    count.textContent = String(companies.length);
+    button.append(name, count);
     button.setAttribute('aria-label', `Zoom to ${group}, ${companies.length} ${companies.length === 1 ? 'company' : 'companies'}`);
     button.addEventListener('click', event => selectGroup(group, event.detail === 0));
-    return [group, { button, indexes: groupIndexes.get(group) }];
+    return [group, { button, indexes: groupIndexes.get(group), textWidth: 0 }];
   }));
   const measure = document.createElement('canvas').getContext('2d');
   const family = getComputedStyle(controls).getPropertyValue('--atlas-font-body');
   const measureText = name => Math.ceil(measure?.measureText(name).width ?? name.length * 8) + 14;
-  let activeGroup = '', destroyed = false;
+  let fitted, destroyed = false, lastProjection, lastFocus;
   const entries = nodes.map(node => {
     const button = document.createElement('button');
     button.type = 'button';
@@ -374,7 +332,9 @@ export function mountCompanyLoom({ canvas, controls, boundaries, groups, edges, 
     const mark = marking(node);
     const label = document.createElement('span');
     label.className = 'network-loom-label';
-    label.textContent = label.title = node.name;
+    const name = document.createElement('span');
+    name.textContent = label.title = node.name;
+    label.append(name);
     label.setAttribute('aria-hidden', 'true');
     button.append(mark, label);
     button.addEventListener('click', event => traverse(node.id, event.detail === 0));
@@ -383,7 +343,7 @@ export function mountCompanyLoom({ canvas, controls, boundaries, groups, edges, 
       if (!button.matches(':focus-visible')) return;
       if (label.hidden || r.left < frame.left || r.top < frame.top || r.right > frame.right || r.bottom > frame.bottom) {
         const { x, y } = graph.getPosition(node.id), viewport = graph.getViewport();
-        graph.setViewport({ ...viewport, x, y, zoom: Math.max(.85, viewport.zoom) });
+        graph.setViewport({ ...viewport, x, y, zoom: Math.max(.9, viewport.zoom) });
       }
       graph.invalidate();
     });
@@ -393,80 +353,87 @@ export function mountCompanyLoom({ canvas, controls, boundaries, groups, edges, 
   });
   controls.replaceChildren(...[...captions.values()].map(entry => entry.button), ...entries.map(entry => entry.wrapper));
 
-  function updateControls({ points, width, height }) {
-    const occupied = [], placed = [], visible = [];
+  function updateControls({ points, width, height, projectionVersion }) {
+    const focused = document.activeElement;
+    if (projectionVersion !== undefined && lastProjection === projectionVersion && lastFocus === focused) return;
+    lastProjection = projectionVersion;
+    lastFocus = focused;
+    const viewport = graph.getViewport();
+    const atFit = ['zoom','x','y'].every(key => Math.abs(viewport[key] - fitted[key]) < .01);
+    const compactFit = atFit && layout.captions;
+    const readingFit = atFit && reading;
+    stage.toggleAttribute('data-panning', viewport.zoom > fitted.zoom + .015);
+    reportZoom(Math.round(viewport.zoom / fitted.zoom * 100));
+    const occupied = [], placed = [], visible = [], shown = new Set();
     const positions = entries.map((item, index) => {
-      const { button, mark, label } = item;
+      const { button, mark } = item;
       const [x, y, radius] = [points[index * 4], points[index * 4 + 1], points[index * 4 + 2]];
-      const hit = Math.max(12, radius), offsetX = x - hit, offsetY = y - hit;
+      const directHit = radius >= 17;
+      const hit = Math.max(directHit ? 22 : 12, radius), offsetX = x - hit, offsetY = y - hit;
       Object.assign(button.style, { left: `${offsetX}px`, top: `${offsetY}px`, width: `${hit * 2}px`, height: `${hit * 2}px` });
-      button.style.setProperty('--marker-size', `${Math.max(1, radius * 2 - 4)}px`);
-      mark.hidden = radius < 9;
-      label.hidden = true;
+      button.style.setProperty('--marker-size', `${Math.max(1, radius * 2 - 2)}px`);
+      button.toggleAttribute('data-company-hit', directHit);
+      mark.hidden = radius < 8;
       if (x + radius >= 0 && y + radius >= 0 && x - radius <= width && y - radius <= height) {
         occupied.push({ x: x - radius, y: y - radius, width: radius * 2, height: radius * 2 });
         visible.push({ item, x, y, radius, offsetX, offsetY });
       }
       return { x, y, radius };
     });
-    const viewport = graph.getViewport(), fitted = clusters.viewport;
-    const compactFit = fitted && ['zoom','x','y'].every(key => Math.abs(viewport[key] - fitted[key]) < .01);
     if (measure) measure.font = `640 13px ${family}`;
-    for (const [group, { button, indexes }] of captions) {
-      button.toggleAttribute('data-fit-group', Boolean(compactFit));
-      const slot = compactFit && clusters.captions.get(group);
+    for (const [group, caption] of captions) {
+      const { button, indexes } = caption;
+      button.toggleAttribute('data-fit-group', Boolean(compactFit && !layout.showNames));
+      const slot = compactFit && layout.captions.get(group);
       if (slot) {
         button.hidden = false;
         Object.assign(button.style, { left: `${slot.x}px`, top: `${slot.y}px`, width: `${slot.width}px` });
+        placed.push({ ...slot, height: companyCaptionHeight });
         continue;
       }
       const points = indexes.map(index => positions[index]);
       const left = Math.min(...points.map(p => p.x - p.radius)), right = Math.max(...points.map(p => p.x + p.radius));
       const top = Math.min(...points.map(p => p.y - p.radius)), bottom = Math.max(...points.map(p => p.y + p.radius));
-      const widthOfLabel = Math.min(measureText(button.textContent) + 6, width - 2 * frameInset);
-      const x = Math.max(frameInset, Math.min((left + right - widthOfLabel) / 2, width - widthOfLabel - frameInset));
-      const candidates = [top - 42, bottom + 12].map(y => ({ x, y, width: widthOfLabel, height: 32 }));
+      caption.textWidth ||= measureText(group + '  ' + button.lastElementChild.textContent) + 16;
+      const widthOfLabel = Math.min(caption.textWidth, width - 2 * frameInset);
+      const clampX = x => Math.max(frameInset, Math.min(x, width - widthOfLabel - frameInset));
+      const center = (left + right - widthOfLabel) / 2;
+      const xs = [center, left - 10, right - widthOfLabel + 10].map(clampX);
+      const topY = top - companyCaptionHeight - 6;
+      const candidates = [topY, bottom + 7].flatMap(y => xs.map(x => [x, y]));
+      candidates.push([left - widthOfLabel - 9, (top + bottom - companyCaptionHeight) / 2], [right + 9, (top + bottom - companyCaptionHeight) / 2]);
       const box = right >= 0 && left <= width && bottom >= 0 && top <= height &&
-        candidates.find(candidate => hasLabelRoom(candidate, width, height, occupied, placed));
+        candidates.map(([x,y]) => ({ x, y, width: widthOfLabel, height: companyCaptionHeight }))
+          .find(candidate => hasLabelRoom(candidate, width, height, occupied, placed));
       button.hidden = !box;
       if (box) {
         Object.assign(button.style, { left: `${box.x}px`, top: `${box.y}px`, width: `${box.width}px` });
         placed.push(box);
       }
     }
-    if (compactFit) return;
-    if (measure) measure.font = `600 12px ${family}`;
-    const focused = document.activeElement;
+    if (measure) measure.font = `600 13px ${family}`;
     visible.sort((a, b) => Number(b.item.button === focused) - Number(a.item.button === focused));
-    for (const point of visible) {
+    for (const point of compactFit && !layout.showNames ? [] : visible) {
       const { item, offsetX, offsetY } = point;
       item.textWidth ||= measureText(item.node.name);
-      const box = placeLabel(point, width, height, occupied, placed, item.textWidth);
+      const box = readingFit ? { x: point.x - layout.labelWidth / 2, y: point.y + point.radius + 6, width: layout.labelWidth, height: 46 }
+        : placeLabel(point, width, height, occupied, placed, item.textWidth);
       if (!box) continue;
-      Object.assign(item.label.style, { left: `${box.x - offsetX}px`, top: `${box.y - offsetY}px`, width: `${box.width}px` });
-      item.label.hidden = false;
+      item.label.toggleAttribute('data-reading-label', readingFit);
+      Object.assign(item.label.style, { left: `${box.x - offsetX}px`, top: `${box.y - offsetY}px`, width: `${box.width}px`, height: `${box.height}px` });
+      shown.add(item.label);
       placed.push(box);
     }
+    for (const { label } of entries) label.hidden = !shown.has(label);
   }
   function fit() {
-    activeGroup = '';
-    if (clusters.viewport) {
-      graph.setViewport({ ...graph.getViewport(), ...clusters.viewport });
-      return;
-    }
-    graph.fit(true);
-    const viewport = graph.getViewport();
-    graph.setViewport({ ...viewport, zoom: viewport.zoom * .90 });
+    graph.setViewport({ ...graph.getViewport(), ...layout.viewport });
+    fitted = graph.getViewport();
   }
-  function zoomToGroup(group) {
-    const cluster = clusters.groups.find(item => item.id === group);
-    if (!cluster) return fit();
-    activeGroup = group;
-    const span = 2 * (cluster.radius + 36);
-    const scale = Math.min(1.25, (canvas.clientWidth - 28) / span, (canvas.clientHeight - 65) / span);
-    graph.setViewport({ ...graph.getViewport(), ...cluster.center, zoom: Math.max(.82, scale) });
-  }
+  graph.resize();
   fit();
+  if (saved?.width === canvas.clientWidth && saved.height === canvas.clientHeight && saved.viewport?.zoom > 0 &&
+      ['x','y','z','yaw','pitch','zoom'].every(key => Number.isFinite(saved.viewport[key]))) graph.setViewport(saved.viewport);
   updateControls(graph.getFrame());
   graph.onFrame(updateControls);
   graph.on('nodeclick', id => queueMicrotask(() => { if (!destroyed) traverse(id, false); }));
@@ -474,24 +441,35 @@ export function mountCompanyLoom({ canvas, controls, boundaries, groups, edges, 
   document.fonts?.ready.then(() => {
     if (destroyed) return;
     for (const item of entries) item.textWidth = 0;
+    for (const caption of captions.values()) caption.textWidth = 0;
+    lastProjection = undefined;
     graph.invalidate();
   });
   let width = canvas.clientWidth, height = canvas.clientHeight;
   const resize = typeof ResizeObserver === 'function' && new ResizeObserver(() => {
     if (width === canvas.clientWidth && height === canvas.clientHeight) return;
+    layout = place();
     width = canvas.clientWidth;
     height = canvas.clientHeight;
-    clusters = place();
-    graph.setLayout({ anchor: clusters.anchor });
-    zoomToGroup(activeGroup);
+    lastProjection = undefined;
+    graph.resize();
+    graph.setLayout({ anchor: layout.anchor });
+    fit();
   });
   resize && resize.observe(canvas);
   return {
     destroy() { destroyed = true; if (resize) resize.disconnect(); graph.destroy(); controls.replaceChildren(); boundaries.replaceChildren(); },
-    zoomToGroup,
+    savedViewport() { return { width, height, viewport: graph.getViewport() }; },
+    focusNode(id) {
+      const button = entries.find(entry => entry.node.id === id)?.button;
+      button?.focus({ preventScroll: true });
+      return Boolean(button);
+    },
+    fit,
     zoom(delta) {
       const viewport = graph.getViewport();
-      const scale = Math.max(.10, Math.min(2.4, viewport.zoom * (delta > 0 ? 1.3 : 1 / 1.3)));
+      const scale = Math.max(fitted.zoom, Math.min(2.4, viewport.zoom * (delta > 0 ? 1.24 : 1 / 1.24)));
+      if (scale === fitted.zoom) { fit(); return; }
       graph.setViewport({ ...viewport, zoom: scale });
     }
   };

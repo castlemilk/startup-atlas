@@ -619,7 +619,7 @@ try {
 
   const companies=graph.entities.filter(entity=>entity.kind==='startup').map(entity=>entity.id).sort();
   const companyMapReady="document.querySelector('#graph-company-map')?.dataset.renderer==='loom'&&!document.querySelector('#graph-company-overview').hidden";
-  async function checkCompanyMap({all=true,groupLabels=[]}={}) {
+  async function checkCompanyMap({ids=companies,groupLabels=[],allNames=false}={}) {
     const map=await evaluate(`(async()=>{
       // Loom projects the new anchors on the next paint after a resize or regroup.
       await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
@@ -629,8 +629,8 @@ try {
       const boxes=labels.map(el=>el.getBoundingClientRect());
       const overlaps=(a,b)=>a.left<b.right && a.right>b.left && a.top<b.bottom && a.bottom>b.top;
       return {ids:nodes.map(node=>node.dataset.node).sort(), onCanvas:nodes.filter(node=>{
-        const r=node.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
-        return x>=frame.left && x<=frame.right && y>=frame.top && y<=frame.bottom;
+        const r=node.getBoundingClientRect();
+        return r.left>=frame.left-1 && r.right<=frame.right+1 && r.top>=frame.top-1 && r.bottom<=frame.bottom+1;
       }).length, groups:labels.filter(el=>el.dataset.group).map(el=>el.dataset.group),
       names:labels.filter(el=>el.classList.contains('network-loom-label')).map(el=>el.textContent),
       hasBoundaries:!!document.querySelector('#graph-company-boundaries svg path'),
@@ -640,8 +640,9 @@ try {
       overlap:boxes.some((box,i)=>boxes.slice(i+1).some(other=>overlaps(box,other))),
       readable:labels.every(el=>parseFloat(getComputedStyle(el).fontSize)>=12),overflow:document.documentElement.scrollWidth>innerWidth};
     })()`);
-    assert.deepEqual(map.ids,companies,'Every published company must be an actual node in the default Loom graph');
-    if (all) assert.equal(map.onCanvas,companies.length,'Fit all keeps every company marker in the viewport');
+    assert.deepEqual(map.ids,ids,'The Loom graph must contain every company in the current overview or group');
+    assert.equal(map.onCanvas,ids.length,'Every marker must be fully contained at Fit');
+    if (allNames) assert.equal(map.names.length,ids.length,'Every company name must be visible in group view');
     assert.ok(map.hasGL && map.hasBoundaries,'The company canvas should paint via Loom with rendered group outlines');
     assert.deepEqual(map.clip,[],'Visible labels must fit the canvas and their allocated width');
     assert.ok(map.readable && !map.overlap && !map.overflow,'Company labels should be readable without overlap or page overflow');
@@ -657,13 +658,27 @@ try {
   assert.ok(desktopCompanies.names.length>10,'A desktop Fit should include readable company names');
   await screenshot('graph-all-companies-desktop.png');
 
-  for (const [width,height] of [[390,844],[320,640]]) {
+  for (const [width,height] of [[844,390],[621,700],[390,844],[320,640]]) {
     await command('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:true});
     await until(()=>evaluate("!!document.querySelector('.graph-company-cluster-label[data-fit-group]')"),'Phone Fit must reserve label slots for each group');
     const groups=await evaluate("[...new Set([...document.querySelectorAll('#graph-company-nodes [data-node]')].map(node=>node.dataset.group))]");
     await until(()=>checkCompanyMap({groupLabels:groups}),`Phone Fit did not finish laying out all companies at ${width}px`);
     await evaluate("document.querySelector('#graph-company-loom').scrollIntoView({block:'center',behavior:'instant'})");
     await screenshot(`graph-all-companies-${width}.png`);
+    if (width===390) {
+      const start=await evaluate(`(()=>{
+        const canvas=document.querySelector('#graph-company-loom');
+        scrollTo({top:scrollY+canvas.getBoundingClientRect().top-135,behavior:'instant'});
+        const frame=canvas.getBoundingClientRect();
+        return {x:frame.left+4,y:frame.top+310,scrollY};
+      })()`);
+      await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:start.x,y:start.y}]});
+      for (const delta of [25,55,90,130]) await command('Input.dispatchTouchEvent',{
+        type:'touchMove',touchPoints:[{x:start.x,y:start.y-delta}]
+      });
+      await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+      await until(()=>evaluate(`scrollY>${start.scrollY+35}`),'A vertical swipe on the fitted map should scroll the phone page');
+    }
   }
   await evaluate(`(()=>{
     const select=document.querySelector('#graph-company-group');select.value='country';select.dispatchEvent(new Event('change',{bubbles:true}));
@@ -671,10 +686,25 @@ try {
   const countryLabels=['Australia','United Kingdom','Country not recorded'];
   await until(()=>checkCompanyMap({groupLabels:countryLabels}),'Country Fit must show all companies and headquarters groups');
   assert.equal(await evaluate("new URL(location.href).searchParams.get('group')"),'country');
+  const idsInGroup=group=>evaluate(`(()=>{
+    return [...document.querySelectorAll('#graph-company-nodes [data-node]')]
+      .filter(node=>node.dataset.group===${JSON.stringify(group)}).map(node=>node.dataset.node).sort();
+  })()`);
+  const dense=await idsInGroup('Country not recorded'), australian=await idsInGroup('Australia');
+  await evaluate("document.querySelector('.graph-company-cluster-label[data-group=\"Country not recorded\"]').click()");
+  await until(()=>checkCompanyMap({ids:dense,allNames:true}),'The dense country group must show every member and name');
+  assert.match(await evaluate("document.querySelector('#graph-company-guide').textContent"),new RegExp(`${dense.length} companies`));
+  await evaluate("document.querySelector('#graph-company-fit').click()");
+  await until(()=>checkCompanyMap({groupLabels:countryLabels}),'Fit all should restore the entire country map');
   await evaluate("document.querySelector('.graph-company-cluster-label[data-group=Australia]').click()");
   const canvaCompany="#graph-company-nodes [data-node='startup:canva']";
   await until(()=>evaluate(`!document.querySelector(${JSON.stringify(canvaCompany+' .network-loom-label')}).hidden`),'Zooming to Australia must make Canva’s name readable');
-  assert.ok((await checkCompanyMap({all:false})).names.includes('Canva'));
+  const australiaMap=await until(()=>checkCompanyMap({ids:australian,allNames:true}),'Australia must fit all its names after resizing the canvas');
+  assert.ok(australiaMap.names.includes('Canva'));
+  await until(()=>evaluate(`(()=>{
+    const logo=document.querySelector(${JSON.stringify(canvaCompany+' .network-loom-mark[data-logo=loaded] img')});
+    return logo?.naturalWidth>0 && logo.getBoundingClientRect().width>=40;
+  })()`),'Group view should render a readable full-size company mark');
   const companyPoint=await evaluate(`(()=>{
     document.querySelector('#graph-company-loom').scrollIntoView({block:'center',behavior:'instant'});
     const r=document.querySelector(${JSON.stringify(canvaCompany)}).getBoundingClientRect();
@@ -685,7 +715,15 @@ try {
   await until(()=>evaluate("document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='startup:canva'"),'Tapping a native company glyph must traverse into its relationship graph');
   await evaluate('history.back()');
   await until(()=>evaluate(`${companyMapReady}&&new URL(location.href).searchParams.get('group')==='country'`),'Back must restore the company Loom map and country grouping');
-  await until(()=>checkCompanyMap({groupLabels:countryLabels}),'Back must restore the fitted country map');
+  await until(()=>checkCompanyMap({ids:australian,allNames:true}),'Back must restore the company’s previous group');
+  assert.equal(await evaluate("document.querySelector('#graph-company-zoom-group').value"),'Australia');
+  await evaluate(`document.querySelector(${JSON.stringify(canvaCompany)}).focus({preventScroll:true})`);
+  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});
+  await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  await until(()=>evaluate("document.querySelector('#graph-detail h2')?.textContent==='Canva'"),'Keyboard traversal must open Canva');
+  await evaluate("document.querySelector('#graph-back-to-companies').click()");
+  await until(()=>evaluate("document.activeElement?.dataset.node==='startup:canva'&&!document.querySelector('#graph-company-map').hidden"),'Companies must return focus to the opening node');
+  await until(()=>checkCompanyMap({ids:australian,allNames:true}),'Focusable return must preserve the fitted company group');
 
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
   console.log('Chrome graph checks passed for all-company Loom Fit and grouping, phone traversal, context wires, artwork, mobile neighbourhood Fit and SVG fallback');
