@@ -493,21 +493,25 @@ def includes_name(passage, normalized_name):
 def former_names(aliases, current, host, owners, evidence):
     if not isinstance(aliases, list) or len(aliases) > 4:
         raise ValueError('Expected at most four reviewed former names')
-    names = []
+    names, held = [], []
     for alias in aliases:
         fields(alias, ('name', 'evidence_id'))
         label = text(alias['name'], 'former name', 256)
         key = name_key(label)
-        artifact = evidence.get((current, text(alias['evidence_id'], 'alias evidence ID', 64)))
-        if artifact is None:
-            raise ValueError('Former name requires evidence from the committed alias review')
-        support = text(artifact['support'], 'former-name evidence', 1500)
-        if (not key or key in owners or website_host(artifact['source_url']) != host
-                or not includes_name(support, key) or not includes_name(support, name_key(current))):
-            raise ValueError('Former name is ambiguous or lacks support from the reviewed issuer site')
+        evidence_id = text(alias['evidence_id'], 'alias evidence ID', 64)
+        if not key:
+            raise ValueError('Former name must identify a company')
+        artifact = evidence.get((current, evidence_id, label))
+        if artifact is None or website_host(artifact['source_url']) != host:
+            held.append({**alias, 'reason': 'Independently pinned issuer evidence is required'})
+            continue
+        if key in owners:
+            raise ValueError('Former name is ambiguous in the reviewed company inventory')
         owners.add(key)
         names.append({**alias, **artifact})
-    return sorted(names, key=lambda item: item['name'])
+    names.sort(key=lambda item: item['name'])
+    held.sort(key=lambda item: (item['name'], item['evidence_id']))
+    return names, held
 
 
 def associated_round(clause, mention, names):
@@ -1120,7 +1124,7 @@ def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
         host = website_host(site_url(row.get('website') or record.get('website')))
         if not host:
             raise ValueError('Funding review needs the reviewed official website')
-        aliases = former_names(company.get('former_names', []), name, host, owners, alias_evidence)
+        aliases, held = former_names(company.get('former_names', []), name, host, owners, alias_evidence)
         action = next_action(row['fields'])
         searches = []
         if action == 'search_early_history':
@@ -1140,5 +1144,7 @@ def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
             'unique_urls_by_bucket': {bucket: sum(result['bucket'] == bucket for result in results) for bucket in BUCKETS},
             'results': results,
         }
+        if held:
+            entries[name]['held_former_names'] = held
     return {'manifest_sha256': digest(raw), 'external_source_population': 'unknown',
             'review_required': True, 'companies': [entries[name] for name in sorted(entries)]}

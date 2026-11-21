@@ -51,7 +51,7 @@ class CompanyMetadataRollupTests(unittest.TestCase):
             'identity_note': 'Verified saved regulator record and official site.', **changes,
         }
 
-    def bundle(self, key, at, observations, *, staged=None, graph=None):
+    def bundle(self, key, at, observations, *, staged=None, graph=None, alias_proof=None):
         folder = self.root / key
         folder.mkdir()
         batch = {'version': 1, 'revision': REVISION, 'plan_id': self.plan['plan_id'],
@@ -74,7 +74,8 @@ class CompanyMetadataRollupTests(unittest.TestCase):
                 ]}
             source = {}
             if field == 'aliases' and name == COMPANY:
-                payload = {'support': 'Old Company rebranded as Ready Company.'}
+                payload = {'role': 'former_name', 'name': COMPANY, 'alias_name': 'Old Company',
+                           'support': 'Old Company rebranded as Ready Company.'} if alias_proof is None else alias_proof
                 source = {'source_url': SITE + 'news/rename'}
             sha = self.write(folder / (key + '.json'), payload)
             batch['evidence'].append({'id': key, 'name': name, 'kind': kind, 'path': key + '.json',
@@ -202,6 +203,12 @@ class CompanyMetadataRollupTests(unittest.TestCase):
         return {'url': SITE + path, 'excerpt': excerpt, 'retrieved_on': '2026-11-19',
                 'acquisition': 'page_excerpt', **changes}
 
+    @staticmethod
+    def former_name_pin(batch_path, evidence_id, former):
+        raw = batch_path.read_bytes()
+        evidence = next(entry for entry in json.loads(raw)['evidence'] if entry['id'] == evidence_id)
+        return {(evidence['name'], digest(raw), evidence['source_url'], evidence['sha256']): former}
+
     def test_funding_followup_surfaces_early_leads_without_changing_coverage(self):
         pair = self.bundle('financing', FIRST, [
             (COMPANY, 'identity', 'reviewed'), (COMPANY, 'aliases', 'reviewed'),
@@ -223,7 +230,9 @@ class CompanyMetadataRollupTests(unittest.TestCase):
         ], 'former_names': [{'name': 'Old Company', 'evidence_id': 'evidence-1'}]},
                      {'name': STAGED, 'captures': []}, {'name': OTHER, 'captures': []}]
         journal_before = pair[1].read_bytes()
-        result = self.reconcile(pair, funding_review=self.funding_manifest(companies))
+        pin = self.former_name_pin(pair[0], 'evidence-1', 'Old Company')
+        with patch.dict('scripts.rollup_company_metadata.PINNED_FORMER_NAMES', pin, clear=True):
+            result = self.reconcile(pair, funding_review=self.funding_manifest(companies))
         funding = result.pop('funding_review')
         self.assertEqual(before, result)
         self.assertEqual(journal_before, pair[1].read_bytes())
@@ -250,8 +259,99 @@ class CompanyMetadataRollupTests(unittest.TestCase):
         self.assertEqual(by_name[OTHER]['action'], 'blocked')
         self.assertEqual(by_name[OTHER]['searches'], [])
         companies[0]['captures'].reverse()
-        reordered = self.reconcile(pair, funding_review=self.funding_manifest(list(reversed(companies))))['funding_review']
-        self.assertEqual(funding['companies'], reordered['companies'])
+        with patch.dict('scripts.rollup_company_metadata.PINNED_FORMER_NAMES', pin, clear=True):
+            reordered = self.reconcile(pair, funding_review=self.funding_manifest(list(reversed(companies))))
+        self.assertEqual(funding['companies'], reordered['funding_review']['companies'])
+
+    def test_funding_review_keeps_unpinned_former_names_as_context(self):
+        cases = [(label, f'Ready Company was formerly known as {label}.') for label in (
+            'the award winner', 'an accelerator cohort member', 'the shortlisted company',
+            'the pilot partner', 'a programme finalist',
+        )]
+        cases.extend((
+            ('THE AWARD WINNER', 'READY COMPANY WAS FORMERLY KNOWN AS THE AWARD WINNER.'),
+            ('the pilot partner', 'Ready Company (formerly known as the pilot partner)'),
+            ('the award winner', '“Ready Company was formerly known as the award winner.”'),
+            ('a funding beneficiary', 'Ready Company was previously known as a funding beneficiary.'),
+            (OTHER, 'Ready Company was formerly known as Second Company.'),
+            ('Nominee for Growth Pty Ltd', 'Nominee for Growth Pty Ltd changed its name to Ready Company.'),
+        ))
+        for i, (alias, wording) in enumerate(cases):
+            with self.subTest(alias=alias, wording=wording):
+                pair = self.bundle(f'former-{i}', FIRST, [(COMPANY, 'identity', 'reviewed'),
+                    (COMPANY, 'aliases', 'reviewed')], alias_proof={
+                        'role': 'former_name', 'name': COMPANY, 'alias_name': alias, 'support': wording,
+                    })
+                self.commit(pair)
+                coverage = self.reconcile(pair)
+                journal = pair[1].read_bytes()
+                archive = self.capture('seed', alias + ' closed a seed round.', url='https://archive.example/old')
+                canonical = self.capture('seed', 'Ready Company closed a seed round.')
+                grant = self.capture('nominees', 'Ready Company was named as a nominee for a grant.')
+                reference = {'name': alias, 'evidence_id': 'evidence-1'}
+                request = self.funding_manifest([{
+                    'name': COMPANY, 'former_names': [reference], 'captures': [archive, canonical, grant],
+                }])
+                result = self.reconcile(pair, funding_review=request)
+                company, = result.pop('funding_review')['companies']
+                self.assertEqual([row['name'] for row in company['searches']], [COMPANY])
+                self.assertEqual(company['former_names'], [])
+                self.assertEqual(company['held_former_names'], [
+                    {**reference, 'reason': 'Independently pinned issuer evidence is required'},
+                ])
+                self.assertEqual({row['url']: row['bucket'] for row in company['results']}, {
+                    archive['url']: 'unmatched', canonical['url']: 'early_round_lead', grant['url']: 'context',
+                })
+                self.assertEqual(result, coverage)
+                self.assertEqual(pair[1].read_bytes(), journal)
+
+    def test_former_name_pin_binds_the_original_batch_source_digest_and_name(self):
+        alias = 'Nominee for Growth Pty Ltd'
+        proof = {'role': 'former_name', 'name': COMPANY, 'alias_name': alias,
+                 'support': f'{alias} changed its name to Ready Company.'}
+        observations = [(COMPANY, 'identity', 'reviewed'), (COMPANY, 'aliases', 'reviewed')]
+        original = self.bundle('original', FIRST, observations, alias_proof=proof)
+        modified = self.bundle('modified', SECOND, observations, alias_proof={**proof, 'note': 'New receipt'})
+        repacked = self.bundle('repacked', THIRD, observations, alias_proof=proof)
+        for pair in (original, modified, repacked):
+            self.commit(pair)
+        archive = self.capture('archive', f'{alias} closed a seed round.')
+
+        def funding(pair, references):
+            request = self.funding_manifest([{
+                'name': COMPANY, 'former_names': references, 'captures': [archive],
+            }])
+            company, = self.reconcile(pair, funding_review=request)['funding_review']['companies']
+            return company
+
+        pin = self.former_name_pin(original[0], 'evidence-1', alias)
+        reference = {'name': alias, 'evidence_id': 'evidence-1'}
+        with patch.dict('scripts.rollup_company_metadata.PINNED_FORMER_NAMES', pin, clear=True):
+            accepted = funding(original, [reference])
+            self.assertEqual(accepted['results'][0]['bucket'], 'early_round_lead')
+            self.assertEqual([row['name'] for row in accepted['searches']], [COMPANY, alias])
+            self.assertNotIn('held_former_names', accepted)
+            for held in (funding(modified, [reference]), funding(repacked, [reference]),
+                         funding(original, [{**reference, 'name': 'Nominee-for Growth Pty Ltd'}])):
+                self.assertEqual(held['former_names'], [])
+                self.assertEqual(held['results'][0]['bucket'], 'unmatched')
+                self.assertEqual([row['name'] for row in held['searches']], [COMPANY])
+                self.assertIn('held_former_names', held)
+
+            other = {**reference, 'evidence_id': 'evidence-0'}
+            mixed = funding(original, [reference, other])
+            self.assertEqual(mixed, funding(original, [other, reference]))
+            self.assertEqual(mixed['former_names'], accepted['former_names'])
+            self.assertEqual(mixed['held_former_names'][0]['evidence_id'], 'evidence-0')
+
+        (name, batch_sha, source, proof_sha), = pin
+        wrong_source = {(name, batch_sha, source + '-copy', proof_sha): alias}
+        with patch.dict('scripts.rollup_company_metadata.PINNED_FORMER_NAMES', wrong_source, clear=True):
+            self.assertEqual(funding(original, [reference])['results'][0]['bucket'], 'unmatched')
+        conflicting = {(name, batch_sha, source, proof_sha): OTHER}
+        with patch.dict('scripts.rollup_company_metadata.PINNED_FORMER_NAMES', conflicting, clear=True):
+            with self.assertRaisesRegex(ValueError, 'ambiguous'):
+                funding(original, [{**reference, 'name': OTHER}])
 
     def test_funding_review_keeps_coverage_listing_and_article_dates_separate(self):
         pair = self.bundle('coverage', FIRST, [(COMPANY, 'identity', 'reviewed')])
@@ -362,14 +462,10 @@ class CompanyMetadataRollupTests(unittest.TestCase):
             return self.funding_manifest([{'name': name, 'captures': captures or [],
                                            'former_names': former_names or []}], **binding)
 
-        former = {'name': 'Old Company', 'evidence_id': 'evidence-1'}
         for manifest, error in [
             (lambda: request(revision='b' * 40), 'exact inventory plan'),
             (lambda: request(name=OTHER), 'reviewed company identity'),
-            (lambda: request(former_names=[{**former, 'evidence_id': 'evidence-0'}]),
-             'committed alias review'),
-            (lambda: request(former_names=[{**former, 'name': OTHER}]),
-             'ambiguous'),
+            (lambda: request(former_names=[{'name': '...', 'evidence_id': 'evidence-1'}]), 'identify a company'),
             (lambda: request(captures=[self.capture('public', 'Ready Company raised seed funding.',
                                                     url='http://ready.example/news')]), 'public HTTPS'),
             (lambda: request(captures=[self.capture('snippet', 'Ready Company raised seed funding.',
