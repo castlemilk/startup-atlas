@@ -29,9 +29,13 @@
   background:color-mix(in srgb,var(--atlas-soft) 70%,var(--atlas-paper));
 }
 .treemap-control-panel:not(:has(> :not([hidden]))) { display:none; }
-.treemap-facet-fields { min-width:0; flex:0 1 clamp(328px,29vw,428px); }
+.treemap-facet-fields { min-width:0; flex:0 1 clamp(474px,36vw,565px); }
 .treemap-facet-fields .exploration-fields { padding:0; }
 @media (min-width:621px) {
+  .treemap-facet-fields .exploration-fields {
+    display:grid;
+    grid-template-columns:minmax(140px,1.2fr) minmax(126px,1.1fr) repeat(2,minmax(90px,1fr));
+  }
   .treemap-facet-fields .exploration-field {
     position:relative;
     border:1px solid var(--atlas-border);
