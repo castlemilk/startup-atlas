@@ -46,7 +46,7 @@ SITE_ORIGIN = "https://castlemilk.github.io/startup-atlas"
 PUBLIC_MANIFEST_SCHEMA = "atlas.asset-public-manifest.v0"
 MAX_PUBLIC_MANIFEST_BYTES = 32_768
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 .&'\-]{0,119}$")
+NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 .&':\-]{0,119}$")
 
 
 class PublishError(Exception):
