@@ -332,6 +332,7 @@ def inspect_svg(data, declared_mime='image/svg+xml', observed_mime=None, expecte
                 _fail('UNSUPPORTED_IMAGE', 'svg', 'External references in inline styles are not allowed.')
         if name == 'style':
             style = (element.text or '').lower()
+            style = re.sub(r'url\(\s*#[a-z0-9_.:-]+\s*\)', '', style)
             if 'url(' in style or '@import' in style or 'http' in style:
                 _fail('UNSUPPORTED_IMAGE', 'svg', 'External references in <style> are not allowed.')
     return {'asset_id': 'asset:sha256:' + digest, 'sha256': digest, 'bytes': len(data),

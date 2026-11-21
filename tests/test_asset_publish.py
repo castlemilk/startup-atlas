@@ -254,6 +254,33 @@ class PublishTests(unittest.TestCase):
         self.assertEqual(status, 1, result)
         self.assertFalse((self.repo / "web" / "assets" / "logos" / "example-co.png").exists())
 
+    def test_catalogue_logo_requires_the_exact_provider_name(self):
+        catalogue = self.repo / "data" / "catalogue.json"
+        catalogue.write_text(json.dumps({"opportunities": [{"org": "Example Cloud"}]}))
+        receipt = self.stage(source=provenance(subject_id="provider:example-cloud"))
+        status, result = self.run_publish(receipt, "Example Cloud", "provider:example-cloud", "logo")
+        self.assertEqual(status, 0, result)
+        self.assertIn('"Example Cloud":"example-cloud.png"', (self.repo / "web" / "logos.js").read_text())
+        unknown = self.stage(source=provenance(subject_id="provider:other-cloud"))
+        self.assertEqual(self.run_publish(unknown, "Other Cloud", "provider:other-cloud", "logo")[0], 1)
+        self.assertFalse((self.repo / "web" / "assets" / "logos" / "other-cloud.png").exists())
+
+    def test_founder_selection_updates_only_the_named_reviewed_startup(self):
+        path = self.repo / "data" / "startup-research.json"
+        research = json.loads(path.read_text())
+        research["startups"].append({"name": "Other Co", "founders": [
+            {"name": "Sam Sample", "source": "https://example.com/other-team"}]})
+        path.write_text(json.dumps(research))
+        receipt = self.stage(source=provenance(subject_id="person:sam-sample", role="portrait",
+                                               source_kind="labelled-portrait"))
+        args = (receipt, "Sam Sample", "person:sam-sample", "portrait")
+        self.assertEqual(self.run_publish(*args)[0], 1)
+        status, result = self.run_publish(*args, extra=["--founder-of", "Example Co"])
+        self.assertEqual(status, 0, result)
+        updated = json.loads(path.read_text())
+        self.assertIn("photo_url", updated["startups"][0]["founders"][0])
+        self.assertEqual(updated["startups"][1], research["startups"][1])
+
 
 if __name__ == "__main__":
     unittest.main()

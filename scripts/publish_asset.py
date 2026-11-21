@@ -138,7 +138,7 @@ def insert_js_set_entry(text, set_name, name):
 
 
 def publish(store, asset_id, asset_revision, name, subject_id, role, repo,
-            site_origin, dark_tile, wide, dry_run):
+            site_origin, dark_tile, wide, dry_run, founder_of=None):
     if not NAME.fullmatch(name):
         fail(f"Name {name!r} is not an accepted directory name.")
     packet = store.prepare_public_export(asset_id, asset_revision,
@@ -147,6 +147,8 @@ def publish(store, asset_id, asset_revision, name, subject_id, role, repo,
     blob = manifest["blob"]
     provenance = manifest["provenance"]
     slug = slugify(name)
+    if founder_of is not None and (role != "portrait" or subject_id != f"person:{slug}"):
+        fail("A founder record can only be selected for its canonical person portrait.")
     extension = ".svg" if blob["mime"] == "image/svg+xml" else ".png"
     data = store.read_bytes(asset_id, asset_revision)
     if hashlib.sha256(data).hexdigest() != blob["sha256"]:
@@ -168,15 +170,20 @@ def publish(store, asset_id, asset_revision, name, subject_id, role, repo,
             research = load_json(record_path)
             key = "startups" if kind == "startup" else "technology_providers"
             matches = [record for record in research.get(key, []) if record.get("name") == name]
-            if len(matches) != 1:
+            if len(matches) == 1:
+                organisation = matches[0]
+            elif kind == "provider" and not matches:
+                catalogue = load_json(repo / "data" / "catalogue.json")
+                if not any(offer.get("org") == name for offer in catalogue["opportunities"]):
+                    fail(f"{name!r} is not a reviewed technology or programme provider.")
+            else:
                 fail(f"{name!r} does not match a unique reviewed {kind} in {record_path.name}.")
-            organisation = matches[0]
         else:
             fail(f"Unsupported logo subject {subject_id!r}.")
     else:
         asset_dir = repo / "web" / "assets" / "portraits"
         record_path = None
-        profiles = load_json(repo / "data" / "partner-profiles.json")
+        profiles = load_json(repo / "data" / "partner-profiles.json") if founder_of is None else {}
         research = load_json(repo / "data" / "startup-research.json")
         hits = []
         for partner, entry in profiles.items():
@@ -184,6 +191,8 @@ def publish(store, asset_id, asset_revision, name, subject_id, role, repo,
                 if person.get("name") == name:
                     hits.append(("partner-profiles", partner, person))
         for startup in research.get("startups", []):
+            if founder_of is not None and startup["name"] != founder_of:
+                continue
             for founder in startup.get("founders", []):
                 if founder.get("name") == name:
                     hits.append(("startup-research", startup["name"], founder))
@@ -283,6 +292,7 @@ def main(argv=None):
     parser.add_argument("--name", required=True, help="Exact reviewed directory/person name.")
     parser.add_argument("--subject-id", required=True)
     parser.add_argument("--role", required=True, choices=("logo", "portrait"))
+    parser.add_argument("--founder-of", help="Exact reviewed startup name for a founder portrait.")
     parser.add_argument("--repo", default=".")
     parser.add_argument("--site-origin", default=SITE_ORIGIN)
     parser.add_argument("--dark-tile", action="store_true",
@@ -295,7 +305,7 @@ def main(argv=None):
         store = assets.StageStore(args.store)
         result = publish(store, args.asset_id, args.asset_revision, args.name,
                          args.subject_id, args.role, args.repo, args.site_origin,
-                         args.dark_tile, args.wide, args.dry_run)
+                         args.dark_tile, args.wide, args.dry_run, args.founder_of)
         print(json.dumps({"ok": True, "result": result}, sort_keys=True, ensure_ascii=False))
         return 0
     except (PublishError, assets.AssetError) as exc:
