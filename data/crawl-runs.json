@@ -47,6 +47,54 @@
       "superseded_by": null,
       "supersedes": null,
       "version": 1
+    },
+    {
+      "args": {
+        "follow": 0
+      },
+      "artifact_url": null,
+      "catalogue_revision": "943b7c5f7b14d07e2b0e6653a23244247a3e5844",
+      "claimed_at": "2026-11-20T23:27:32Z",
+      "claimed_by": "muse",
+      "finished_at": null,
+      "lease_expires_at": "2026-11-20T23:57:32Z",
+      "mode": "partners",
+      "outcome": {
+        "candidates_discovered": 0,
+        "coverage_reference": null,
+        "notes": "Claimed before dispatch: Partner research crawl workflow to be dispatched from main 943b7c5; artifact will land as partner-crawl-review (14-day retention). If dispatch is delayed past the lease, recover this run explicitly before running.",
+        "sources_attempted": 0,
+        "sources_failed": 0,
+        "sources_succeeded": 0
+      },
+      "published_pr": null,
+      "review_status": "unreviewed",
+      "run_id": "crawl-20261121-partners-01",
+      "run_url": null,
+      "scope": {
+        "seed_file": "data/partner-sources.json",
+        "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "source_ids": [
+          "github-for-startups-partners",
+          "aws-activate-featured",
+          "launchvic-ai-preaccelerators",
+          "henson-microsoft-network",
+          "innovation-bay-australia-vc"
+        ]
+      },
+      "snapshot_sha256": null,
+      "source_revisions": {
+        "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "started_at": "2026-11-20T23:27:32Z",
+      "status": "claimed",
+      "superseded_by": null,
+      "supersedes": null,
+      "version": 1
     }
   ],
   "version": 1
