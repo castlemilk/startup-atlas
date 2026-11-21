@@ -24,6 +24,16 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, unquote, urlencode, urljoin, urlsplit, urlunsplit
 from urllib.request import Request, HTTPRedirectHandler, build_opener
 
+try:
+    from scripts import currency as _currency
+except ImportError:  # run as scripts/crawl.py: scripts/ is on sys.path
+    try:
+        import currency as _currency
+    except ImportError:
+        # Standalone copy (scoped launcher): normalisation degrades
+        # gracefully and mentions carry normalised=None rather than failing.
+        _currency = None
+
 ROOT = Path(__file__).resolve().parents[1]
 CATALOGUE = ROOT / 'data/catalogue.json'
 PROGRAM_SOURCES = ROOT / 'data/program-sources.json'
@@ -512,7 +522,16 @@ def extract_evidence(parts,url):
         previous=line
     return {key:[entry for _,_,entry in sorted(value,key=lambda row:(-row[0],row[1]))[:8]] for key,value in output.items() if value}
 
-def extract_amount_mentions(parts,url):
+def extract_amount_mentions(parts,url,context_country=None,rate_bundle=None):
+    """Capture money mentions with a USD normalisation for each one.
+
+    The raw ``mention`` string is always kept verbatim. ``normalised`` adds
+    the parsed currency, value, USD conversion, FX rate, rate date and rate
+    source (see scripts/currency.py and docs/CURRENCY.md). A bare ``$`` with
+    no ``context_country`` stays ``ambiguous`` and is left unconverted rather
+    than guessed. Rates are fetched at most once per process (live
+    Frankfurter, else the committed fallback table) and never fail the crawl.
+    """
     pattern=re.compile(r'(?<!\w)(?:US\$|A\$|AU\$|S\$|USD\s*|AUD\s*|SGD\s*|[$£€])\s*\d[\d,.]*(?:\s*(?:million|billion|thousand|[kKmMbB]))?')
     found=[]; seen=set()
     for raw in parts:
@@ -520,7 +539,9 @@ def extract_amount_mentions(parts,url):
         for match in pattern.finditer(line):
             key=(match.group(0),line[:240])
             if key not in seen:
-                seen.add(key); found.append({'mention':match.group(0),'context':line[:240],'source':url})
+                seen.add(key); found.append({'mention':match.group(0),'context':line[:240],'source':url,
+                    'normalised':(_currency.normalise_mention(match.group(0),context_country=context_country,rate_bundle=rate_bundle)
+                                 if _currency is not None else None)})
             if len(found)>=30: return found
     return found
 
