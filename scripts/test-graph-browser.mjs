@@ -111,6 +111,36 @@ try {
       assert.equal(labels.coversMarker,false,'Overview labels must clear every glyph');
     }
   }
+  async function assertVisibleContextWires() {
+    const clip=await evaluate(`(() => {
+      const stage=document.querySelector('#graph-loom-canvas').getBoundingClientRect();
+      return {x:stage.left+scrollX,y:stage.top+scrollY,width:stage.width,height:stage.height,scale:1};
+    })()`);
+    const {data}=await command('Page.captureScreenshot',{format:'png',clip,captureBeyondViewport:true});
+    const pixels=await evaluate(`(async () => {
+      const source=document.querySelector('#graph-loom-canvas');
+      const bitmap=await createImageBitmap(await (await fetch('data:image/png;base64,${data}')).blob());
+      const canvas=document.createElement('canvas');
+      canvas.width=bitmap.width;canvas.height=bitmap.height;
+      const context=canvas.getContext('2d',{willReadFrequently:true});
+      const palette=getComputedStyle(source);
+      const [paper,wire]=['--atlas-paper','--atlas-border-strong'].map(token=>{
+        context.fillStyle=palette.getPropertyValue(token).trim();
+        context.fillRect(0,0,1,1);
+        return context.getImageData(0,0,1,1).data;
+      });
+      context.drawImage(bitmap,0,0);
+      const image=context.getImageData(8,8,canvas.width-16,canvas.height-16).data;
+      let count=0;
+      for(let i=0;i<image.length;i+=4) {
+        const alpha=(paper[0]-image[i])/(paper[0]-wire[0]);
+        if(alpha<.68||alpha>.98)continue;
+        if([1,2].every(channel=>Math.abs(image[i+channel]-(paper[channel]*(1-alpha)+wire[channel]*alpha))<=2)) count++;
+      }
+      return count;
+    })()`);
+    assert.ok(pixels>120,`Full map must paint visible context wires while the root is selected. Found ${pixels} pixels.`);
+  }
   async function assertWireframePresentation(viewport) {
     const presentation=await evaluate(`(()=>{
       const svg=document.querySelector('#graph-canvas'),root=svg.querySelector('.network-node.is-root');
@@ -461,6 +491,10 @@ try {
   assert.equal(await evaluate('document.activeElement.dataset.node'),person,'Back must restore keyboard focus to the map');
 
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:740,deviceScaleFactor:1,mobile:true});
+  const blockedPortrait='person:ben-simai--startmate';
+  const portraitUrl=graph.entities.find(entity=>entity.id===blockedPortrait).logo;
+  await command('Network.enable');
+  await command('Network.setBlockedURLs',{urls:[portraitUrl]});
   await command('Page.navigate',{url:`${address}/graph.html?entity=partner%3Astartmate&depth=2&list=1`});
   const startmate='partner:startmate';
   const neighbourhood=neighborhood(graph,startmate,{depth:2,limit:Infinity});
@@ -493,11 +527,21 @@ try {
   await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
   await assertLoomLabels(6,true);
   await evaluate("document.querySelector('#graph-loom-canvas').scrollIntoView({block:'center',behavior:'instant'})");
+  await until(()=>evaluate(`(() => {
+    const mark=document.querySelector('[data-node="${blockedPortrait}"] .network-loom-mark');
+    return mark?.dataset.logo==='unavailable' && !mark.querySelector('span').hidden && mark.textContent==='BS';
+  })()`),'A blocked portrait must leave visible initials in the graph');
+  assert.ok(await evaluate(`(() => {
+    const mark=document.querySelector('[data-node="provider:launchvic"] .network-loom-mark');
+    return mark?.classList.contains('logo-on-dark') && getComputedStyle(mark.querySelector('img')).objectFit==='contain';
+  })()`),'The published light LaunchVic wordmark must fit on a dark tile');
   await screenshot('graph-loom-mobile-fit.png');
   await evaluate("document.querySelector('#graph-full-map').click()");
   await until(()=>evaluate(`${loomNodeCount}===${neighbourhood.nodes.length}`),'Full map must draw the complete neighbourhood');
   assert.equal(await evaluate("document.querySelector('#graph-full-map').getAttribute('aria-pressed')"),'true');
   assert.deepEqual(await evaluate(listSources),expectedSources,'Changing the map view must keep the list sources');
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+  await assertVisibleContextWires();
   const zoomPercent="parseInt(document.querySelector('#graph-zoom-number').textContent,10)";
   for(let step=0;step<4;step++) {
     const before=await evaluate(zoomPercent);
@@ -523,9 +567,13 @@ try {
   await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
   await until(()=>evaluate(`document.querySelector('#graph-loom-controls .is-root')?.dataset.node===${JSON.stringify(overviewTap.id)}`),'Tapping a name must open the next neighbourhood');
   assert.equal(await evaluate("document.querySelector('.detail-relation-evidence a').href"),sourceUrl(overviewEdge.source));
+  if(overviewTap.id===blockedPortrait) {
+    await until(()=>evaluate("!!document.querySelector('.detail-mark[data-logo=unavailable] .detail-mark-fallback:not([hidden])')"),'A blocked portrait must leave initials in the inspector');
+  }
   await evaluate("document.querySelector('#graph-back').click()");
   await until(()=>evaluate(`document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${startmate}'`),'Previous view must restore the mobile overview');
   assert.deepEqual(await evaluate(listSources),expectedSources);
+  await command('Network.setBlockedURLs',{urls:[]});
 
   await command('Page.navigate',{url:`${address}/graph.html?entity=person%3Amelanie-perkins`});
   await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${person}'`),'The touch traversal fixture did not render');
@@ -549,7 +597,7 @@ try {
   await assertLoomLabels(3);
 
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
-  console.log('Chrome graph checks passed for mobile Fit labels, the full sourced list, map switching, traversal, history, and SVG fallback');
+  console.log('Chrome graph checks passed for visible context wires, artwork fallback, mobile Fit, sourced traversal and SVG fallback');
 } catch(error) {
   console.error('Interaction diagnostics:',JSON.stringify(await readDiagnostics().catch(()=>({state:'unavailable'}))));
   await captureFailure('failed-interaction.png').catch(()=>{});

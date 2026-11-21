@@ -1,5 +1,5 @@
 import { escapeHtml as esc, sourceUrl } from './logic.js';
-import { logoClassFor, logoFor, paddedCanvaMark } from './logos.js';
+import { graphArtwork, graphInitials, showGraphArtwork } from './graph-artwork.js';
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName, neighborhood } from './graph-model.js';
 import { createForceSimulation, layoutBounds, layoutNetwork } from './graph-layout.js';
@@ -23,16 +23,13 @@ const pinned=new Map();
 let scope=readExploration(new URLSearchParams(location.search));
 let dimensions, controls, currentView, mapView, fullMap=false;
 let searchMatches=[], searchedQuery, visibleCompanies=new Set();
-const initials=name=>name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
-const imageUrl=value=>sourceUrl(value)||(/^\.\/assets\/logos\/[a-z0-9-]+\.(?:svg|png)$/i.test(value||'')?value:'');
-const entityImage=entity=>imageUrl(entity.logo)||imageUrl(logoFor(entity.name));
 const evidence=(url,label='Source')=>{const safe=sourceUrl(url);return safe?'<a class="detail-source" href="'+esc(safe)+'" target="_blank" rel="noopener noreferrer">'+esc(label)+' ↗</a>':'';};
 const money=(value,currency,amountText)=>{if(value==null||!currency)return amountText || 'Amount not recorded';try{return new Intl.NumberFormat('en-AU',{style:'currency',currency,maximumFractionDigits:0}).format(Number(value));}catch{return String(value)+' '+currency;}};
 
 function renderNode(node) {
   const root = node.id===rootId;
   const selected = node.id===selectedId;
-  const url = entityImage(node);
+  const { url, classes, portrait } = graphArtwork(node);
   const x = -node.width/2, y = -node.height/2;
   const branded = root && node.kind==='startup';
   const iconX = branded ? 0 : x+30;
@@ -43,18 +40,18 @@ function renderNode(node) {
   const kind = node.kind==='startup' ? 'Company' : kindName(node.kind);
   const kindY = nameY+(node.lines.length-1)*lineHeight+21;
   const label = node.lines.map((line,index)=>`<tspan x="${nameX}" dy="${index ? lineHeight : 0}">${esc(line)}</tspan>`).join('');
-  const cropsPadding = paddedCanvaMark(url);
+  const cropsPadding = classes.includes('padded-mark');
   const logo = !url ? '' : branded
     ? `<svg x="${x+18}" y="${y+7}" width="${node.width-36}" height="67" viewBox="${cropsPadding ? '18 36.75 64 26.5' : '0 0 100 100'}"><image href="${esc(url)}" width="100" height="100" preserveAspectRatio="xMidYMid meet"></image></svg>`
-    : `<image href="${esc(url)}" x="${iconX-18}" y="-18" width="36" height="36" preserveAspectRatio="xMidYMid meet"></image>`;
+    : `<image${portrait ? ' class="node-portrait"' : ''} href="${esc(url)}" x="${iconX-18}" y="-18" width="36" height="36" preserveAspectRatio="xMidYMid ${portrait ? 'slice' : 'meet'}"></image>`;
   const context = node.kind!=='startup'||!visibleCompanies.has(node.id);
-  const avatarClass = url && logoClassFor(node.name).includes('logo-on-dark') ? ' logo-on-dark' : '';
+  const avatarClass = classes.includes('logo-on-dark') ? ' logo-on-dark' : '';
   const accessible = `${kindName(node.kind)}: ${node.name}${context ? ' · Relationship context' : ''}. Press Enter to follow connections; use arrow keys to move`;
   return `<g class="network-node${root ? ' is-root' : ''}${selected ? ' is-selected' : ''}" data-node="${esc(node.id)}" data-kind="${esc(node.kind)}" data-context="${context}" role="button" tabindex="0" aria-pressed="${selected}" aria-label="${esc(accessible)}" transform="translate(${node.x.toFixed(1)} ${node.y.toFixed(1)})">
     <rect class="node-shell" x="${x}" y="${y}" width="${node.width}" height="${node.height}" rx="6"></rect>
     <g class="node-avatar-plate${avatarClass}"${branded && url ? ' visibility="hidden"' : ''}>
-      <rect class="node-avatar" x="${iconX-20}" y="${iconY-20}" width="40" height="40" rx="5"></rect>
-      <text class="node-initials" x="${iconX}" y="${iconY}"${url && !branded ? ' visibility="hidden"' : ''}>${esc(initials(node.name))}</text>
+      <rect class="node-avatar" x="${iconX-20}" y="${iconY-20}" width="40" height="40" rx="${portrait ? 20 : 5}"></rect>
+      <text class="node-initials" x="${iconX}" y="${iconY}"${url && !branded ? ' visibility="hidden"' : ''}>${esc(graphInitials(node.name))}</text>
     </g>${logo}
     <text class="node-label" y="${nameY}">${label}</text>
     <text class="node-kind" x="${nameX}" y="${kindY}">${esc(kind)}</text>
@@ -200,7 +197,7 @@ function renderLoom(view,dense,overview) {
   $('graph-canvas').setAttribute('hidden','');
   try {
     loom=mountLoom({canvas,controls,view,root:rootId,dense,overview,kinds:entityKinds,pins:pinned,viewport:loomViewport,
-      image:entityImage,traverse:traverseMap,rememberPin,reportZoom});
+      traverse:traverseMap,rememberPin,reportZoom});
     canvas.parentElement.dataset.renderer='loom';
   } catch {
     loomUnavailable=true;
@@ -341,6 +338,11 @@ function updateSelection() {
   });
   updateEdgeCaptions();
 }
+function detailArtwork(entity, mini=false) {
+  const { url, classes }=graphArtwork(entity);
+  const image=url ? `<img src="${esc(url)}" alt="" decoding="async"${mini ? ' loading="lazy"' : ''} referrerpolicy="no-referrer">` : '';
+  return `<span class="${mini ? 'detail-mini' : 'detail-mark'}${url ? ' has-logo' : ''} ${classes}" aria-hidden="true">${image}<span class="detail-mark-fallback">${esc(graphInitials(entity.name))}</span></span>`;
+}
 function renderDetail() {
   if (!selectedId) {
     $('graph-detail').innerHTML='<h2>Inspect a connection</h2><p class="detail-empty">Select a node or a record in the connections list to see its sources.</p>';
@@ -352,15 +354,10 @@ function renderDetail() {
   const orderedEdges = [...details.edges].sort((a,b)=>Number(b.kind==='founded')-Number(a.kind==='founded'));
   const related=orderedEdges.map(edge=>{
     const other=names.get(edge.from===selectedId?edge.to:edge.from);if(!other)return '';
-    const image=entityImage(other);
-    const icon=image?'<img src="'+esc(image)+'" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="detail-mark-fallback" hidden>'+esc(initials(other.name))+'</span>':esc(initials(other.name));
     const location=listedIds.has(other.id) ? 'In connections list' : 'Outside current map';
-    return '<li><span class="detail-mini '+(image ? logoClassFor(other.name) : '')+'" aria-hidden="true">'+icon+'</span><div class="detail-connection-copy"><button type="button" data-select="'+esc(other.id)+'">'+esc(other.name)+'</button><small>'+esc(relationshipText(edge))+'</small>'+(visibleIds.has(other.id)?'':'<small class="detail-outside">'+location+'</small>')+evidence(edge.source,'Relationship source')+'</div></li>';
+    return '<li>'+detailArtwork(other,true)+'<div class="detail-connection-copy"><button type="button" data-select="'+esc(other.id)+'">'+esc(other.name)+'</button><small>'+esc(relationshipText(edge))+'</small>'+(visibleIds.has(other.id)?'':'<small class="detail-outside">'+location+'</small>')+evidence(edge.source,'Relationship source')+'</div></li>';
   }).filter(Boolean);
-  const url=entityImage(entity),rounds=[...details.rounds].sort((a,b)=>(b.announced_on||'').localeCompare(a.announced_on||''));
-  const logo = `<span class="detail-mark${entity.kind==='person' ? ' person' : ''}${url ? ' has-logo '+logoClassFor(entity.name) : ''}${paddedCanvaMark(url) ? ' padded-mark' : ''}" aria-hidden="true">${url
-    ? `<img src="${esc(url)}" alt="" referrerpolicy="no-referrer"><span class="detail-mark-fallback" hidden>${esc(initials(entity.name))}</span>`
-    : esc(initials(entity.name))}</span>`;
+  const rounds=[...details.rounds].sort((a,b)=>(b.announced_on||'').localeCompare(a.announced_on||''));
   const summary=entity.summary || 'This entry is connected to the sources and organisations below. More details are being researched.';
   const source=evidence(entity.source,'Profile source')+evidence(entity.website,entity.kind==='person'?'Professional profile':'Website')+evidence(entity.logo_source,'Image source');
   const isRoot=selectedId===rootId;
@@ -381,14 +378,14 @@ function renderDetail() {
     ? `<div class="detail-relation-evidence"><h3>${followed ? 'Relationship followed' : 'Relationship evidence'}</h3>
       <p><strong>${esc(nameOf(reviewed.from))}</strong> ${esc(relationshipText(reviewed))} <strong>${esc(nameOf(reviewed.to))}</strong></p>
       ${evidence(reviewed.source,'Read relationship source')}</div>` : '';
-  $('graph-detail').innerHTML=`<div class="detail-heading">${logo}<h2>${esc(entity.name)}</h2><p class="detail-kind">${icon(identityIcon)}${entity.kind==='startup' ? 'Company' : esc(kindName(entity.kind))}</p></div>
+  $('graph-detail').innerHTML=`<div class="detail-heading">${detailArtwork(entity)}<h2>${esc(entity.name)}</h2><p class="detail-kind">${icon(identityIcon)}${entity.kind==='startup' ? 'Company' : esc(kindName(entity.kind))}</p></div>
     <p class="detail-selection-note" data-selection="${outOfScope?'excluded':isRoot?'root':visibleIds.has(selectedId)?'within':'outside'}">${selectionNote}</p>${recovery}
     ${facts}<p class="detail-summary">${esc(summary)}</p>${reviewedRelation}
     <div class="detail-actions"><a class="detail-open atlas-button atlas-button-accent" data-atlas-profile-link href="${esc(entityHref(entity))}">Open profile${icon('external')}</a>${inspectAction}${actions}</div>
     <section class="detail-section"><h3>Recorded connections <span>${details.edges.length}</span></h3>${related.length?'<ul class="detail-related">'+related.join('')+'</ul>':'<p class="detail-empty">No reviewed connections yet.</p>'}</section>
     ${company?'<section class="detail-section"><h3>Funding announcements</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not disclosed')+' · historical announcement</span>'+evidence(round.source,'Announcement source')+'</div>').join(''):'<p class="detail-empty">No recorded funding announcements.</p>')+'</section>':''}
     ${source?'<section class="detail-section"><h3>Sources</h3>'+source+'</section>':''}`;
-  $('graph-detail').querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;if(img.nextElementSibling)img.nextElementSibling.hidden=false;}));
+  $('graph-detail').querySelectorAll('img').forEach(img=>showGraphArtwork(img,img.nextElementSibling));
 }
 function select(id,writeHistory=true) {
   if(id&&!store?.graph.entities.some(entity=>entity.id===id))return;
