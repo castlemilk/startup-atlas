@@ -212,6 +212,7 @@ export async function prepareStartupEdit(current,edit) {
   for(const startup of current.research.startups)known.add(`startup:${startupSlug(startup.name)}`);
   for(const name of current.leads)if(typeof name==='string')known.add(`partner:${startupSlug(name)}`);
   for(const offer of current.catalogue.opportunities)if(typeof offer.org==='string')known.add(`provider:${startupSlug(offer.org)}`);
+  for(const provider of current.research.technology_providers||[])known.add(`provider:${startupSlug(provider.name)}`);
   for(const [index,relationship] of (result.merged.relationships||[]).entries())if(relationship.target_id===edit.id || !known.has(relationship.target_id))fail('VALIDATION_ERROR','A relationship must target a different existing graph entity.',`/merged/relationships/${index}/target_id`,'Choose an exact existing target ID after independently reviewing the relationship.',{targetId:relationship.target_id});
   const validationToken=await sha256({schemaVersion:STARTUP_EDIT_VERSION,revision:current.head,intentDigest:result.intentDigest,nextRecordRevision:result.nextRecordRevision});
   return {...result,revision:current.head,validationToken,persisted:false,published:false};

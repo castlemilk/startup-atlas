@@ -1,5 +1,6 @@
 import { escapeHtml as esc, sourceUrl } from './logic.js';
-import { logoFor, logoClassFor } from './logos.js';
+import { logoClassFor } from './logos.js';
+import { graphArtwork } from './graph-artwork.js';
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName } from './graph-model.js';
 import { icon, renderEvidenceHeading } from './atlas-ui.js';
@@ -10,7 +11,7 @@ const root = document.getElementById('entity-profile');
 const identity = new URLSearchParams(location.search).get('id') || '';
 const initials = name => name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
 const mark = (entity, hero = false) => {
-  const image = sourceUrl(entity.logo) || logoFor(entity.name);
+  const { url: image } = graphArtwork(entity);
   const classes = ['entity-mark', entity.kind === 'person' ? 'entity-mark-person' : '', logoClassFor(entity.name),
     hero && entity.id === 'startup:canva' && image?.includes('_Canva.png') ? 'entity-mark-padded-wordmark' : ''].filter(Boolean).join(' ');
   return `<span class="${classes}" aria-hidden="true">${image ? `<img src="${esc(image)}" alt="" referrerpolicy="no-referrer"><span class="entity-mark-fallback" hidden>${esc(initials(entity.name))}</span>` : esc(initials(entity.name))}</span>`;

@@ -2,12 +2,22 @@ import { sourceUrl } from './logic.js';
 import { logoClassFor, logoFor, paddedCanvaMark } from './logos.js';
 
 const localArtwork = /^\.\/assets\/(?:logos\/[a-z0-9-]+\.(?:svg|png)|portraits\/[a-z0-9-]+\.(?:png|jpe?g|webp))$/i;
+const atlasPages = 'https://castlemilk.github.io/startup-atlas/';
 const launchVicWordmark = 'https://assets.launchvic.org/app/uploads/2026/01/15165324/logo-footer.svg';
+
+function artworkUrl(value) {
+  if (localArtwork.test(value)) return value;
+  const url = sourceUrl(value);
+  if (url?.startsWith(atlasPages)) {
+    const relative = './' + url.slice(atlasPages.length);
+    if (localArtwork.test(relative)) return relative;
+  }
+  return url;
+}
 
 export function graphArtwork(entity) {
   const portrait = entity.kind === 'person';
-  const url = (localArtwork.test(entity.logo) ? entity.logo : sourceUrl(entity.logo)) ||
-    (!portrait && logoFor(entity.name)) || '';
+  const url = artworkUrl(entity.logo) || (!portrait && logoFor(entity.name)) || '';
   const treatment = url === launchVicWordmark ? 'logo-on-dark logo-wide' : !portrait && url ? logoClassFor(entity.name) : '';
   const classes = [portrait && 'person', treatment, paddedCanvaMark(url) && 'padded-mark'].filter(Boolean).join(' ');
   return { url, classes, portrait };

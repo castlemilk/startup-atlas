@@ -748,6 +748,18 @@ class ConversionTests(AssetAssertions):
         self.assertEqual(assets.inspect_png(converted)['validation'], 'png-rgb8-v0')
 
     @unittest.skipUnless(HAS_PILLOW, 'Pillow is required for conversion tests')
+    def test_png_conversion_preserves_transparent_pixels_without_metadata_chunks(self):
+        source = _PillowImage.new('RGB', (2, 1))
+        source.putdata([(20, 40, 60), (5, 10, 15)])
+        buffer = io.BytesIO()
+        source.save(buffer, format='PNG', transparency=(20, 40, 60), dpi=(144, 144))
+        converted, _record = assets.convert_image(buffer.getvalue(), 'png')
+        assets.inspect_png(converted)
+        with _PillowImage.open(io.BytesIO(converted)) as image:
+            self.assertEqual(image.getpixel((0, 0)), (20, 40, 60, 0))
+            self.assertEqual(image.getpixel((1, 0)), (5, 10, 15, 255))
+
+    @unittest.skipUnless(HAS_PILLOW, 'Pillow is required for conversion tests')
     def test_webp_converts_to_strict_png(self):
         buffer = io.BytesIO()
         _PillowImage.new('RGB', (4, 2), (10, 20, 30)).save(buffer, format='WEBP')

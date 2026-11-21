@@ -1,14 +1,10 @@
-import {readFile,writeFile} from 'node:fs/promises';
+import {readdir,readFile,writeFile} from 'node:fs/promises';
 import {partnerRelationships} from '../web/relationships.js';
 import {logoFor} from '../web/logos.js';
 const path=new URL('../data/graph.json',import.meta.url);
 const graph=JSON.parse(await readFile(path,'utf8'));
 const slug=s=>s.normalize('NFKD').replace(/[^\x00-\x7f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const ids=new Set(graph.entities.map(e=>e.id));
-for(const entity of graph.entities){
-  const local=logoFor(entity.name);
-  if(!entity.logo && local){entity.logo=local;entity.logo_source='https://github.com/castlemilk/startup-atlas/blob/main/web/assets/logos/README.md';}
-}
 const known={AWS:'Amazon Web Services'};
 for(const [partner,relationships] of Object.entries(partnerRelationships)) {
   const partnerId='partner:'+slug(partner); if(!ids.has(partnerId)) continue;
@@ -19,6 +15,20 @@ for(const [partner,relationships] of Object.entries(partnerRelationships)) {
     const providerName=known[relation.provider]||relation.provider, providerId='provider:'+slug(providerName);
     if(!ids.has(providerId)){graph.entities.push({id:providerId,kind:'provider',name:providerName});ids.add(providerId);}
     graph.edges.push({from:providerId,to:partnerId,kind:'programme_relationship',description:relation.programme+' · '+relation.relationship,source:relation.source});
+  }
+}
+const manifests=new URL('../web/assets/manifests/',import.meta.url);
+const files=(await readdir(manifests)).filter(name=>name.endsWith('.json')).sort();
+const logoSources=new Map();
+for(const file of files){
+  const asset=JSON.parse(await readFile(new URL(file,manifests),'utf8'));
+  if(asset.role==='logo') logoSources.set(`${asset.name}\0${asset.target}`,asset.source_page);
+}
+for(const entity of graph.entities){
+  const local=entity.kind!=='person' && logoFor(entity.name);
+  if(!entity.logo && local){
+    entity.logo=local;
+    entity.logo_source=logoSources.get(`${entity.name}\0web/${local.slice(2)}`) || 'https://github.com/castlemilk/startup-atlas/blob/main/web/assets/logos/README.md';
   }
 }
 graph.entities.sort((a,b)=>a.id.localeCompare(b.id));

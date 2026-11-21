@@ -12,7 +12,8 @@ attachment never points at a missing or unreleased asset. A merge is the
 owner's approval of the public use attested in the manifest.
 
 Paths are derived by this script, never from caller filenames or URLs:
-logos go to web/assets/logos/<slug>.png|.svg with a web/logos.js map entry;
+logos go to web/assets/logos/<slug>.png|.svg with a reviewed record reference
+or a web/logos.js map entry for a partner;
 portraits go to web/assets/portraits/<slug>.png|.svg with the person's
 photo/photo_url field set to the published Pages URL. Manifests are public-safe
 (provenance attestations only, no private correspondence) at
@@ -152,12 +153,26 @@ def publish(store, asset_id, asset_revision, name, subject_id, role, repo,
         fail("Read bytes do not match the manifest digest.")
 
     repo = Path(repo).resolve()
+    organisation = None
     if role == "logo":
         asset_dir = repo / "web" / "assets" / "logos"
-        record_path = repo / "web" / "logos.js"
-        reviewed = load_json(repo / "data" / "partners-reviewed.json")
-        if name not in reviewed:
-            fail(f"{name!r} is not a reviewed partner in data/partners-reviewed.json.")
+        kind = subject_id.split(":", 1)[0]
+        if subject_id != f"{kind}:{slug}":
+            fail(f"{subject_id!r} does not identify {name!r}.")
+        if kind == "partner":
+            reviewed = load_json(repo / "data" / "partners-reviewed.json")
+            if name not in reviewed:
+                fail(f"{name!r} is not a reviewed partner in data/partners-reviewed.json.")
+        elif kind in ("startup", "provider"):
+            record_path = repo / "data" / "startup-research.json"
+            research = load_json(record_path)
+            key = "startups" if kind == "startup" else "technology_providers"
+            matches = [record for record in research.get(key, []) if record.get("name") == name]
+            if len(matches) != 1:
+                fail(f"{name!r} does not match a unique reviewed {kind} in {record_path.name}.")
+            organisation = matches[0]
+        else:
+            fail(f"Unsupported logo subject {subject_id!r}.")
     else:
         asset_dir = repo / "web" / "assets" / "portraits"
         record_path = None
@@ -180,6 +195,8 @@ def publish(store, asset_id, asset_revision, name, subject_id, role, repo,
     target_rel = target.relative_to(repo).as_posix()
     public_url = site_origin.rstrip("/") + "/assets/" + (
         "logos" if role == "logo" else "portraits") + "/" + slug + extension
+    if organisation is not None and organisation.get("logo") not in (None, "", public_url):
+        fail(f"Refusing to overwrite the reviewed logo for {name!r}.")
 
     public_manifest = {
         "schema": PUBLIC_MANIFEST_SCHEMA,
@@ -221,25 +238,32 @@ def publish(store, asset_id, asset_revision, name, subject_id, role, repo,
         wrote.append(manifest_path.relative_to(repo).as_posix())
 
     if role == "logo":
-        text = record_path.read_text(encoding="utf-8")
-        value = slug if extension == ".svg" else slug + ".png"
-        text, changed = insert_js_map_entry(text, name, value)
-        if dark_tile:
-            text, dark_changed = insert_js_set_entry(text, "darkTiles", name)
-            changed = changed or dark_changed
-        if wide:
-            text, wide_changed = insert_js_set_entry(text, "wideMarks", name)
-            changed = changed or wide_changed
-        if changed:
-            record_path.write_text(text, encoding="utf-8")
-            wrote.append("web/logos.js")
+        if organisation is not None:
+            source = provenance["source_page"]
+            if organisation.get("logo") != public_url or organisation.get("logo_source") != source:
+                organisation.update(logo=public_url, logo_source=source)
+                record_path.write_text(json.dumps(research, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+                wrote.append(record_path.relative_to(repo).as_posix())
+        if organisation is None or dark_tile or wide:
+            map_path = repo / "web" / "logos.js"
+            original = text = map_path.read_text(encoding="utf-8")
+            if organisation is None:
+                value = slug if extension == ".svg" else slug + ".png"
+                text, _ = insert_js_map_entry(text, name, value)
+            if dark_tile:
+                text, _ = insert_js_set_entry(text, "darkTiles", name)
+            if wide:
+                text, _ = insert_js_set_entry(text, "wideMarks", name)
+            if text != original:
+                map_path.write_text(text, encoding="utf-8")
+                wrote.append("web/logos.js")
     else:
         kind, owner, person = hits[0]
         if kind == "partner-profiles":
             person["photo"] = public_url
             person["photo_source"] = provenance["source_page"]
             path = repo / "data" / "partner-profiles.json"
-            path.write_text(json.dumps(profiles, indent=1, ensure_ascii=False) + "\n",
+            path.write_text(json.dumps(profiles, indent=2, ensure_ascii=False) + "\n",
                             encoding="utf-8")
         else:
             person["photo_url"] = public_url

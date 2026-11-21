@@ -237,6 +237,23 @@ class PublishTests(unittest.TestCase):
                          "https://castlemilk.github.io/startup-atlas/assets/portraits/sam-sample.png")
         self.assertEqual(founder["photo_source"], "https://example.com/brand")
 
+    def test_startup_logo_sets_attributed_asset_on_exact_record(self):
+        receipt = self.stage(data=SVG, source=provenance(subject_id="startup:example-co"),
+                             declared_mime="image/svg+xml")
+        status, result = self.run_publish(receipt, "Example Co", "startup:example-co", "logo")
+        self.assertEqual(status, 0, result)
+        record = json.loads((self.repo / "data" / "startup-research.json").read_text())["startups"][0]
+        self.assertEqual(record["logo"], "https://castlemilk.github.io/startup-atlas/assets/logos/example-co.svg")
+        self.assertEqual(record["logo_source"], "https://example.com/brand")
+        self.assertEqual((self.repo / "web" / "logos.js").read_text(), LOGOS_JS)
+        self.assertEqual(self.run_publish(receipt, "Example Co", "startup:example-co", "logo")[1]["result"]["wrote"], [])
+
+    def test_startup_logo_rejects_different_subject_before_writing(self):
+        receipt = self.stage(source=provenance(subject_id="startup:another-company"))
+        status, result = self.run_publish(receipt, "Example Co", "startup:another-company", "logo")
+        self.assertEqual(status, 1, result)
+        self.assertFalse((self.repo / "web" / "assets" / "logos" / "example-co.png").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

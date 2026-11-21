@@ -2,6 +2,8 @@
 
 The graph has separate startup, person, partner, provider and programme entities; source-attributed edges; funding events; and news links. `data/startup-research.json` is the reviewed startup overlay. Existing portfolio and provider records are incorporated without claiming that a portfolio listing is a funding round or that a screenshot proves an entitlement. IDs are `kind:slug` (programmes use their catalogue ID); identifier collisions fail the build instead of silently merging entities. People listed on a partner profile have firm-scoped IDs until their identities are explicitly reconciled, so a matching name alone does not merge them with a founder.
 
+The startup overlay’s `technology_providers` records give documented integrations a graph target with a name, description, official website and source. Use `integrates_with` for software connectivity and name the specific product or workflow in the description.
+
 ## Storage and search
 
 The public GitHub repository is the durable source of reviewed records. `npm run build` regenerates the graph and compiles it to `dist/data/atlas.sqlite` using Python's SQLite and FTS4. The explorer downloads this immutable snapshot and searches it locally with the self-hosted SQLite WebAssembly runtime; it does not send search queries to a paid service. Indexed text includes startup, partner, provider, person and programme names, sourced connections, funding stages and article titles. If WebAssembly or the database cannot load, the matching JSON snapshot supports navigation and search with a visible fallback notice.

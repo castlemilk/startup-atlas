@@ -33,6 +33,9 @@ def build_graph(profiles, leads, reviewed, catalogue, research):
     for name in leads:
         record = reviewed.get(name, {})
         add('partner', name, summary=record.get('description',''), website=record.get('website',''), source=record.get('source',''))
+    for provider in research.get('technology_providers', []):
+        add('provider', provider['name'], summary=provider['description'], website=provider['website'],
+            source=provider['source'], logo=provider.get('logo',''), logo_source=provider.get('logo_source',''))
     for offer in catalogue['opportunities']:
         provider_id=add('provider', offer['org'])
         # The catalogue identifies the programme operator; it does not imply
