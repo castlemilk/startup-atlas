@@ -918,11 +918,18 @@ def extract_profile_leads(partner, page, kind):
 
 def extract_profile_media_leads(partner, page, kind):
     """Keep labelled image and social URLs as unverified research, never as identity assertions."""
-    rows=[]
-    for image in page.get('image_candidates',[])[:100]:
-        rows.append({'partner':partner,'kind':'image','page_kind':kind,'name':image.get('alt',''),
-                     'candidate_url':image['url'],'source_url':page['final_url'],
+    rows=[]; seen_images=set()
+    for image in page.get('image_candidates',[]):
+        # This page already fixes the subject, source, time and kind. Keep
+        # distinct labels and URLs (including query variants) as evidence.
+        url=image['url']; label=image.get('alt','')
+        key=(url,label)
+        if key in seen_images: continue
+        seen_images.add(key)
+        rows.append({'partner':partner,'kind':'image','page_kind':kind,'name':label,
+                     'candidate_url':url,'source_url':page['final_url'],
                      'checked_at':page['checked_at'],'review_required':True})
+        if len(rows)>=100: break
     for item in page.get('links',[]):
         url=item.get('url',''); host=(urlsplit(url).hostname or '').lower()
         if any(host==h or host.endswith('.'+h) for h in ('linkedin.com','instagram.com','facebook.com','youtube.com','twitter.com','x.com')):

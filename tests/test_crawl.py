@@ -35,6 +35,30 @@ class ExtractionTests(unittest.TestCase):
         candidates=crawl.extract_profile_media_leads('Example',page,'people')
         self.assertEqual({x['kind'] for x in candidates},{'image','social'})
         self.assertTrue(all(x['source_url']=='https://example.com/team' and x['review_required'] for x in candidates))
+    def test_profile_media_dedupes_identical_image_leads_before_cap(self):
+        first = {'url': 'https://example.com/ada.jpg?size=large', 'alt': 'Ada Example'}
+        different_caption = {**first, 'alt': 'Different source caption'}
+        different_size = {**first, 'url': 'https://example.com/ada.jpg?size=small'}
+        page = {'final_url': 'https://example.com/team', 'checked_at': '2026-11-21',
+                'image_candidates': [first] * 100 + [different_caption, different_size],
+                'links': [{'url': 'https://www.linkedin.com/in/ada', 'text': 'LinkedIn'}]}
+        rows = crawl.extract_profile_media_leads('Example', page, 'people')
+        self.assertEqual([(row['kind'], row['candidate_url'], row['name']) for row in rows], [
+            ('image', first['url'], first['alt']),
+            ('image', different_caption['url'], different_caption['alt']),
+            ('image', different_size['url'], different_size['alt']),
+            ('social', 'https://www.linkedin.com/in/ada', 'LinkedIn'),
+        ])
+        other_page = {**page, 'final_url': 'https://example.com/about'}
+        other_rows = crawl.extract_profile_media_leads('Example', other_page, 'about')
+        self.assertEqual([row['source_url'] for row in other_rows], [other_page['final_url']] * 4)
+        self.assertTrue(all(row['review_required'] for row in rows + other_rows))
+        distinct_images = [{'url': f'https://example.com/{i}.png'} for i in range(101)]
+        many_rows = crawl.extract_profile_media_leads('Example', {**page, 'image_candidates': distinct_images}, 'people')
+        self.assertEqual(len(many_rows), 101)
+        self.assertEqual(many_rows[99]['candidate_url'], distinct_images[99]['url'])
+        self.assertEqual(many_rows[100]['kind'], 'social')
+
     def test_directory_coverage_counts_unmatched_and_failed_without_claiming_completeness(self):
         pages=[{'name':'Source','pages':[{'status':'ok','final_url':'https://example.com/'},{'status':'skipped'}]}]
         candidates=[{'source_name':'Source','existing_lead_exact':True},{'source_name':'Source','existing_lead_exact':False}]
