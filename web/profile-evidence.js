@@ -45,7 +45,7 @@ function citationMeta(citation) {
 
 const panelId = 'profile-claim-evidence';
 
-export function createProfileEvidence(subject) {
+export function createProfileEvidence(subject, { keepSourceVisible = false } = {}) {
   const claims = [];
 
   function add({ label, value, sources, fields = [], note = '' }) {
@@ -92,9 +92,10 @@ export function createProfileEvidence(subject) {
 
   function dialog() {
     return claims.length ? `<ui-dialog id="${panelId}">
-      <ui-dialog-content class="profile-evidence-panel" initial-focus="#profile-evidence-close" hidden>
+      <ui-dialog-content class="profile-evidence-panel${keepSourceVisible ? ' profile-evidence-with-source' : ''}" initial-focus="#profile-evidence-close" hidden>
         <div class="profile-evidence-head">${icon('source')}<ui-dialog-title>Claim evidence</ui-dialog-title><ui-dialog-close><button type="button" class="atlas-button" id="profile-evidence-close" aria-label="Close claim evidence">${icon('close')}</button></ui-dialog-close></div>
-        <div class="profile-evidence-scroll"><ui-dialog-description class="profile-evidence-claim"></ui-dialog-description><div data-profile-evidence-body></div></div>
+        <div class="profile-evidence-scroll"${keepSourceVisible ? ' tabindex="0" role="region" aria-label="Claim details"' : ''}><ui-dialog-description class="profile-evidence-claim"></ui-dialog-description><div data-profile-evidence-body></div></div>
+        ${keepSourceVisible ? '<div class="profile-evidence-footer" hidden></div>' : ''}
       </ui-dialog-content>
     </ui-dialog>` : '';
   }
@@ -122,6 +123,7 @@ export function createProfileEvidence(subject) {
     if (!control) return;
     const description = control.querySelector('ui-dialog-description');
     const body = control.querySelector('[data-profile-evidence-body]');
+    const footer = control.querySelector('.profile-evidence-footer');
     const narrow = matchMedia('(max-width: 640px)');
     const setPresentation = () => control.setAttribute('presentation', narrow.matches ? 'sheet' : 'dialog');
     setPresentation();
@@ -129,10 +131,16 @@ export function createProfileEvidence(subject) {
     control.addEventListener('payloadchange', event => {
       const claim = event.detail.value;
       if (!claim) return;
+      const citations = `<ul class="profile-evidence-citations">${claim.citations.map(citation => `<li><div class="profile-citation-copy"><strong>${esc(citationLabel(citation))}</strong><div class="profile-citation-meta">${citationMeta(citation)}</div></div>${profileSource(citation.url, 'Open original source', 'atlas-button atlas-button-primary') || '<p class="profile-citation-unavailable">Source link unavailable</p>'}</li>`).join('')}</ul>`;
+      const pinnedSource = footer && claim.citations.length === 1 && sourceUrl(claim.citations[0].url);
+      if (footer) {
+        footer.hidden = !pinnedSource;
+        footer.innerHTML = pinnedSource ? citations : '';
+      }
       description.textContent = claim.label;
-      body.innerHTML = `<p class="profile-evidence-value">${esc(claim.value)}</p><dl class="profile-evidence-fields"><div><dt>Profile</dt><dd>${esc(subject)}</dd></div>${claim.fields.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>
+      body.innerHTML = `<p class="profile-evidence-value"${keepSourceVisible && String(claim.value).length > 120 ? ' data-long' : ''}>${esc(claim.value)}</p><dl class="profile-evidence-fields"><div><dt>Profile</dt><dd>${esc(subject)}</dd></div>${claim.fields.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>
         ${claim.note ? `<p class="profile-evidence-note">${esc(claim.note)}</p>` : ''}
-        <ul class="profile-evidence-citations">${claim.citations.map(citation => `<li><strong>${esc(citationLabel(citation))}</strong><div class="profile-citation-meta">${citationMeta(citation)}</div>${profileSource(citation.url, 'Open original source', 'atlas-button atlas-button-primary') || '<p class="profile-citation-unavailable">Source link unavailable</p>'}</li>`).join('')}</ul>`;
+        ${pinnedSource ? '' : citations}`;
       control.querySelector('.profile-evidence-scroll').scrollTop = 0;
     });
     enhance(scope);

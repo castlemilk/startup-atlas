@@ -131,6 +131,13 @@
 .profile-source-index, .profile-evidence-citations { margin: 0; padding: 0; list-style: none; }
 .profile-evidence-citations li { margin-top: 10px; padding: 12px; border: 1px solid var(--atlas-border); border-radius: var(--atlas-radius-control); font-size: 14px; overflow-wrap: anywhere; }
 .profile-evidence-citations li > .atlas-button { min-height: 44px; margin-top: 10px; }
+.profile-evidence-panel.profile-evidence-with-source:not([hidden]) { grid-template-rows: auto minmax(0, 1fr) auto; }
+.profile-evidence-with-source .profile-evidence-value[data-long] { font: 500 15px/1.55 var(--atlas-font-body); }
+.profile-evidence-with-source .profile-evidence-scroll:focus-visible { outline-offset: -2px; }
+.profile-evidence-footer { padding: 8px 16px max(8px, env(safe-area-inset-bottom)); border-top: 1px solid var(--atlas-border); }
+.profile-evidence-footer .profile-evidence-citations li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0; padding: 0; border: 0; }
+.profile-evidence-footer .profile-citation-copy { flex: 1 1 118px; min-width: 0; }
+.profile-evidence-panel .profile-evidence-footer .profile-evidence-citations .atlas-button { width: auto; max-width: 100%; margin: 0; }
 .profile-source-index li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; padding-block: 14px; border-bottom: 1px solid var(--atlas-border); }
 .profile-source-index li > .atlas-icon { width: 16px; height: 16px; margin-top: 3px; color: var(--atlas-action); }
 .profile-source-index strong, .profile-source-index p { display: block; overflow-wrap: anywhere; }
@@ -272,4 +279,11 @@
 @media (forced-colors: active) {
   .profile-company-row[data-selected="true"] { border-color: Highlight; outline: 1px solid Highlight; }
   .profile-inspect[aria-pressed="true"] { border-color: Highlight; color: Highlight; }
+}
+@media (max-height: 540px) {
+  .profile-evidence-with-source[data-presentation="dialog"] { inset-block-start: 12px; max-height: calc(100dvh - 24px); }
+  .profile-evidence-with-source[data-presentation="sheet"] { max-height: calc(100dvh - 12px); }
+  .profile-evidence-panel.profile-evidence-with-source .profile-evidence-head { padding-block: 8px; }
+  .profile-evidence-panel.profile-evidence-with-source .profile-evidence-head::before { display: none; }
+  .profile-evidence-with-source .profile-evidence-scroll { padding-block: 12px; }
 }

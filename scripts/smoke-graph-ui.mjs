@@ -84,10 +84,12 @@ try {
     assert.match(detail.innerHTML,/200,000,000/);
     elements.get('graph-zoom-in').handlers.click();
     const mapMarkup=canvas.innerHTML,viewBox=canvas.attributes.viewBox;
-    click('graph-detail',{select:'person:melanie-perkins'});
+    const shared=new URLSearchParams(location.search);
+    shared.set('selected','person:melanie-perkins');
+    location.search='?'+shared.toString();windowEvents.get('popstate')();
     assert.match(detail.innerHTML,/<h2>Melanie Perkins<\/h2>/);
     assert.match(detail.innerHTML,/Canva/);
-    const selection=new URLSearchParams(selectedUrl);
+    const selection=new URLSearchParams(location.search);
     assert.equal(selection.get('entity'),'startup:canva','Inspection must retain the graph root');
     assert.equal(selection.get('selected'),'person:melanie-perkins');
     assert.equal(canvas.innerHTML,mapMarkup,'Inspection must retain the laid-out graph');
@@ -95,7 +97,8 @@ try {
     assert.equal(canvas.nodes.find(node=>node.dataset.node==='person:melanie-perkins').attributes['aria-pressed'],'true');
     assert.match(detail.innerHTML,/Relationship source/);
     const inspectedUrl=location.search;
-    click('graph-detail',{select:'startup:fusion-books'});
+    shared.set('selected','startup:fusion-books');
+    location.search='?'+shared.toString();windowEvents.get('popstate')();
     assert.match(detail.innerHTML,/Selected outside this map/);
     assert.equal(canvas.innerHTML,mapMarkup,'Off-map inspection must not replace the neighbourhood');
     location.search=inspectedUrl;windowEvents.get('popstate')();
@@ -104,8 +107,8 @@ try {
     const positions=canvas.nodes.map(node=>[node.dataset.node,node.attributes.transform]);
     elements.get('graph-fit').handlers.click();
     assert.deepEqual(canvas.nodes.map(node=>[node.dataset.node,node.attributes.transform]),positions,'Fit view must retain node positions');
-    click('graph-detail',{explore:'person:melanie-perkins'});
-    assert.equal(new URLSearchParams(selectedUrl).get('entity'),'person:melanie-perkins','Explicit exploration changes root');
+    click('graph-detail',{select:'person:melanie-perkins'});
+    assert.equal(new URLSearchParams(selectedUrl).get('entity'),'person:melanie-perkins','Following a relationship changes root');
     assert.equal(new URLSearchParams(selectedUrl).get('selected'),'person:melanie-perkins');
     assert.match(canvas.innerHTML,/data-node="startup:fusion-books"/);
     assert.match(elements.get('network-heading').textContent,/Around Melanie Perkins/);

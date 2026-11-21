@@ -24,7 +24,7 @@ const server=createServer(async(req,res)=>{
 await new Promise((resolveListen,reject)=>server.once('error',reject).listen(0,'127.0.0.1',resolveListen));
 const address=`http://127.0.0.1:${server.address().port}`;
 const chrome=spawn(process.env.CHROME_BIN||'google-chrome',[
-  '--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-extensions','--no-first-run',
+  '--headless=new','--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader','--disable-dev-shm-usage','--disable-background-networking','--disable-extensions','--no-first-run',
   '--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'
 ],{stdio:['ignore','ignore','pipe']});
 let socket, spawnError, chromeExit, chromeLog='';
@@ -166,6 +166,12 @@ try {
     })()`).catch(()=>'<unavailable>'),exceptions,browserMessages,
   });
   await command('Page.enable');await command('Runtime.enable');
+  const {identifier:fallbackScript}=await command('Page.addScriptToEvaluateOnNewDocument',{source:`(()=>{
+    const getContext=HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext=function(type,...options) {
+      return type==='webgl2'?null:getContext.call(this,type,...options);
+    };
+  })()`});
   await command('Emulation.setDeviceMetricsOverride',{width:1586,height:992,deviceScaleFactor:1,mobile:false});
   await command('Page.navigate',{url:`${address}/graph.html?entity=startup%3Acanva`});
   try {
@@ -218,10 +224,15 @@ try {
   await evaluate("document.querySelector('#graph-zoom-in').click()");
   const inspectedViewBox=await evaluate("document.querySelector('#graph-canvas').getAttribute('viewBox')");
   const placedNodes=await evaluate("[...document.querySelectorAll('.network-node')].map(node=>[node.dataset.node,node.getAttribute('transform')])");
+  async function restoreInspection(id) {
+    await evaluate(`(()=>{const url=new URL(location.href);url.searchParams.set('selected',${JSON.stringify(id)});
+      history.pushState(null,'',url);window.dispatchEvent(new PopStateEvent('popstate'));})()`);
+  }
+  await restoreInspection('person:melanie-perkins');
   await evaluate(`${nodeExpression}.focus({preventScroll:true})`);
-  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
-  await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
-  assert.equal(await evaluate("document.querySelector('#graph-detail h2').textContent"),'Melanie Perkins','Enter must inspect the focused node');
+  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'a',code:'KeyA',windowsVirtualKeyCode:65});
+  await command('Input.dispatchKeyEvent',{type:'keyUp',key:'a',code:'KeyA',windowsVirtualKeyCode:65});
+  assert.equal(await evaluate("document.querySelector('#graph-detail h2').textContent"),'Melanie Perkins','A saved selection highlights the named record');
   assert.equal(await evaluate("new URLSearchParams(location.search).get('entity')"),'startup:canva','Inspection must keep the map root');
   assert.equal(await evaluate("new URLSearchParams(location.search).get('selected')"),'person:melanie-perkins');
   assert.equal(await evaluate("document.querySelector('.network-node.is-root').dataset.node"),'startup:canva');
@@ -236,7 +247,7 @@ try {
   assert.deepEqual(await evaluate("[...document.querySelectorAll('.network-node')].map(node=>[node.dataset.node,node.getAttribute('transform')])"),placedNodes,'Inspection must retain manual placement and graph geometry');
   assert.ok(await evaluate("document.querySelectorAll('.network-link.is-selected').length")>0,'Inspection must identify adjacent edges');
   assert.ok(await evaluate("document.querySelectorAll('#graph-detail .detail-related a[href^=\"https://\"]').length")>0,'Inspector relationships must expose their evidence');
-  await evaluate("document.querySelector('#graph-detail [data-select=\"startup:fusion-books\"]').click()");
+  await restoreInspection('startup:fusion-books');
   assert.equal(await evaluate("document.querySelector('#graph-detail h2').textContent"),'Fusion Books');
   assert.match(await evaluate("document.querySelector('.detail-selection-note').textContent"),/outside this map/);
   assert.equal(await evaluate("new URLSearchParams(location.search).get('entity')"),'startup:canva','Inspecting an off-map relationship must retain the map');
@@ -257,8 +268,10 @@ try {
   await evaluate("document.querySelector('#graph-reset').click()");
   assert.deepEqual(coordinates(await evaluate(`${nodeExpression}.getAttribute('transform')`)).map(Math.round),coordinates(before).map(Math.round),'Reset must restore automatic placement');
   await screenshot('desktop.png');
-  await evaluate("document.querySelector('#graph-detail [data-explore=\"person:melanie-perkins\"]').click()");
-  assert.equal(await evaluate("new URLSearchParams(location.search).get('entity')"),'person:melanie-perkins','Explore from here must change the root explicitly');
+  await evaluate(`${nodeExpression}.focus({preventScroll:true})`);
+  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  assert.equal(await evaluate("new URLSearchParams(location.search).get('entity')"),'person:melanie-perkins','Enter follows the focused node to its neighbourhood');
   assert.equal(await evaluate("new URLSearchParams(location.search).get('selected')"),'person:melanie-perkins');
   assert.equal(await evaluate("document.querySelector('.network-node.is-root').dataset.node"),'person:melanie-perkins');
   assert.ok(await evaluate("!!document.querySelector('[data-node=\"startup:fusion-books\"]')"),'The new neighbourhood must include the founder’s other sourced venture');
@@ -346,8 +359,58 @@ try {
       && document.querySelector('.network-node.is-root').dataset.node==='startup:canva';
   })()`),'Opening Connections list must reveal and focus the list while preserving the graph root');
 
+  await command('Page.removeScriptToEvaluateOnNewDocument',{identifier:fallbackScript});
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+  await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+  await command('Page.navigate',{url:`${address}/graph.html?entity=startup%3Acanva`});
+  const loomReady="document.querySelector('.network-canvas')?.dataset.renderer==='loom'";
+  await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='startup:canva'`),'Loom did not render the real graph');
+  await evaluate("document.querySelector('#graph-loom-canvas').scrollIntoView({block:'center',behavior:'instant'})");
+  const person='person:melanie-perkins',next='startup:fusion-books';
+  const point=await until(()=>evaluate(`(()=>{
+    const rect=document.querySelector('#graph-loom-controls [data-node="${person}"]').getBoundingClientRect();
+    const x=rect.x+rect.width/2,y=rect.y+rect.height/2;
+    return document.elementFromPoint(x,y)?.id==='graph-loom-canvas'&&{x,y};
+  })()`),'Loom node is outside the clickable map');
+  await move('mousePressed',point.x,point.y,'left',1);
+  await move('mouseReleased',point.x,point.y,'left');
+  await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${person}'`),'Clicking a Loom node must follow the relationship');
+  assert.equal(await evaluate("document.querySelector('#graph-detail h2').textContent"),'Melanie Perkins');
+  assert.equal(await evaluate(`new URLSearchParams(location.search).get('entity')`),person);
+  assert.ok(await evaluate(`!!document.querySelector('#graph-detail [data-select="${next}"]')`),'The new neighbourhood exposes the next recorded relationship');
+  await screenshot('graph-loom-followed.png');
+  await evaluate(`document.querySelector('#graph-loom-controls [data-node="${next}"]').focus({preventScroll:true})`);
+  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});
+  await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  await until(()=>evaluate(`new URLSearchParams(location.search).get('entity')==='${next}'&&document.activeElement.dataset.node==='${next}'`),'Keyboard traversal did not focus the new Loom root');
+  await evaluate('history.back()');
+  await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${person}'`),'Back did not restore the prior Loom neighbourhood');
+
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:740,deviceScaleFactor:1,mobile:true});
+  await command('Page.navigate',{url:`${address}/graph.html?entity=partner%3Astartmate&list=1`});
+  const graph=JSON.parse(await readFile(join(root,'data','graph.json'),'utf8'));
+  const startmateEdges=graph.edges.filter(edge=>edge.from==='partner:startmate'||edge.to==='partner:startmate');
+  await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='partner:startmate'`),'The dense mobile Loom map did not load');
+  assert.ok(startmateEdges.length>19,'The Startmate test must exceed the old node cap');
+  assert.equal(await evaluate("document.querySelectorAll('#graph-detail .detail-related li').length"),startmateEdges.length);
+  assert.ok(await evaluate("document.querySelectorAll('#graph-list li').length")>=startmateEdges.length,'The mobile list retains the entire neighbourhood');
+  assert.ok(await evaluate("document.documentElement.scrollWidth<=innerWidth"),'Loom must fit the mobile document');
+
+  await command('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});
+  await command('Page.navigate',{url:`${address}/graph.html?entity=person%3Amelanie-perkins`});
+  await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${person}'`),'The touch traversal fixture did not render');
+  await evaluate("document.querySelector('#graph-loom-canvas').scrollIntoView({block:'center',behavior:'instant'})");
+  const touch=await until(()=>evaluate(`(()=>{
+    const rect=document.querySelector('#graph-loom-controls [data-node="${next}"]').getBoundingClientRect();
+    const x=rect.x+rect.width/2,y=rect.y+rect.height/2;
+    return document.elementFromPoint(x,y)?.id==='graph-loom-canvas'&&{x,y};
+  })()`),'Touch cannot reach the next Loom node');
+  await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[touch]});
+  await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${next}'`),'Tapping a Loom node did not follow its relationships');
+
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
-  console.log('Chrome graph interaction smoke test passed at desktop and mobile sizes');
+  console.log('Chrome graph checks passed for SVG fallback, Loom traversal, history, and complete mobile connections');
 } catch(error) {
   console.error('Interaction diagnostics:',JSON.stringify(await readDiagnostics().catch(()=>({state:'unavailable'}))));
   await captureFailure('failed-interaction.png').catch(()=>{});

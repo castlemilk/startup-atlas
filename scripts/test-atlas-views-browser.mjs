@@ -16,6 +16,7 @@ import {contrastRatio} from '../web/design-token-reference.js';
 
 const root=resolve('dist');
 const graph=JSON.parse(await readFile(join(root,'data/graph.json'),'utf8'));
+const catalogue=JSON.parse(await readFile(join(root,'data/catalogue.json'),'utf8'));
 const partners=JSON.parse(await readFile(join(root,'data/partner-profiles.json'),'utf8'));
 const startups=graph.entities.filter(entity=>entity.kind==='startup');
 const missingFunding=startups.find(entity=>!graph.funding_rounds.some(round=>round.startup_id===entity.id));
@@ -352,7 +353,7 @@ try {
   await screenshot('atlas-partner-partial.png');
   await command('Network.setBlockedURLs',{urls:[]});
 
-  await checkProfileWireframes({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,partners,graph});
+  await checkProfileWireframes({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,partners,graph,catalogue});
 
   await checkAtlasSdk({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,partners});
   await checkEditorialExplorer({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph});
