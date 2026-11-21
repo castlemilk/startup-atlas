@@ -3,7 +3,7 @@ import { graphArtwork, graphInitials, showGraphArtwork } from './graph-artwork.j
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName, neighborhood } from './graph-model.js';
 import { createForceSimulation, layoutBounds, layoutNetwork } from './graph-layout.js';
-import { mountLoom } from './graph-loom.js';
+import { mountCompanyLoom, mountLoom } from './graph-loom.js';
 import { mainConnections, mobileFit, mobileFitHeight } from './graph-mobile-fit.js';
 import { renderIcon as icon } from './atlas-icons.js';
 import { animateAtlasChange } from './atlas-ui.js';
@@ -19,6 +19,7 @@ const mobileOverview=window.matchMedia?.(mobileFit.media);
 let store, rootId, selectedId, depth=1, zoom=1, listVisible=false, searchTimer, composing=false;
 let layout, bounds, simulation, frame=null, pan={x:0,y:0}, gesture=null, suppressClick=false;
 let loom, loomViewport, loomUnavailable=false, renderedCameraKey;
+let companyLoom;
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
 const pinned=new Map();
 let scope=readExploration(new URLSearchParams(location.search));
@@ -270,7 +271,7 @@ function renderCompanyOverview() {
   const sections=[...groups].sort(([left],[right])=>Number(left.endsWith('not recorded'))-Number(right.endsWith('not recorded')) || left.localeCompare(right));
   const board=$('graph-company-groups');
   $('graph-overview-count').textContent=`${visibleCompanies.size} ${visibleCompanies.size===1 ? 'company' : 'companies'} in scope`;
-  board.innerHTML=sections.length ? sections.map(([label,items],index)=>`<section class="graph-company-group" aria-labelledby="graph-company-group-${index}">
+  board.innerHTML=sections.map(([label,items],index)=>`<section class="graph-company-group" aria-labelledby="graph-company-group-${index}">
     <h3 id="graph-company-group-${index}">${esc(label)} <span>${items.length}</span></h3>
     <ul>${items.sort(byName).map(entity=>{
       const params=writeExploration(new URLSearchParams(),{...scope,selected:entity.id,graphAnchor:entity.id});
@@ -278,8 +279,53 @@ function renderCompanyOverview() {
       if (companyGroup==='country') params.set('group',companyGroup);
       return `<li><a class="graph-company-link" data-graph-company="${esc(entity.id)}" href="./graph.html?${esc(params.toString())}">${detailArtwork(entity,true)}<span>${esc(entity.name)}</span></a></li>`;
     }).join('')}</ul>
-  </section>`).join('') : '<p class="detail-empty">No companies match these filters. Adjust the filters or try another search.</p>';
+  </section>`).join('');
   board.querySelectorAll('img').forEach(img=>showGraphArtwork(img,img.nextElementSibling));
+  renderCompanyMap(sections);
+}
+
+function renderCompanyMap(sections) {
+  const panel=$('graph-company-map');
+  if (!panel) return;
+  destroyCompanyMap();
+  delete panel.dataset.renderer;
+  const directory=$('graph-company-directory');
+  const mapTools=$('graph-company-map-tools');
+  const empty=sections.length===0;
+  directory.hidden=panel.hidden=mapTools.hidden=empty;
+  $('graph-company-empty').hidden=!empty;
+  if (empty) return;
+  const groupControl=$('graph-company-zoom-group');
+  groupControl.innerHTML='<option value="">All groups</option>'+sections.map(([label,items])=>
+    `<option value="${esc(label)}">${esc(label)} (${items.length})</option>`).join('');
+  groupControl.value='';
+  const edges=store.graph.edges.filter(edge=>visibleCompanies.has(edge.from) && visibleCompanies.has(edge.to) && sourceUrl(edge.source));
+  try {
+    companyLoom=mountCompanyLoom({canvas:$('graph-company-loom'),controls:$('graph-company-nodes'),
+      boundaries:$('graph-company-boundaries'),groups:sections,edges,traverse:openCompanyConnections,selectGroup:zoomCompanyGroup});
+    panel.dataset.renderer='loom';
+  } catch {
+    panel.hidden=mapTools.hidden=true;
+    directory.open=true;
+  }
+}
+
+function destroyCompanyMap() {
+  companyLoom?.destroy();
+  companyLoom=null;
+}
+
+function zoomCompanyGroup(group, moveFocus=false) {
+  const control=$('graph-company-zoom-group');
+  control.value=group;
+  companyLoom?.zoomToGroup(group);
+  document.dispatchEvent(new Event('atlas:controls-sync'));
+  if (moveFocus) ($('graph-company-zoom-group-trigger') || control).focus({preventScroll:true});
+}
+
+function openCompanyConnections(id, keyboard) {
+  traverse(id,keyboard,null);
+  $('network-heading').scrollIntoView({block:'nearest',behavior:'instant'});
 }
 
 function showCompanyOverview() {
@@ -444,6 +490,7 @@ function select(id,writeHistory=true) {
   }
 }
 function explore(id,writeHistory=true,followed=null) {
+  destroyCompanyMap();
   $('graph-company-overview').hidden=true;
   $('graph-neighborhood').hidden=false;
   if(!store.graph.entities.some(entity=>entity.id===id)) {
@@ -651,12 +698,15 @@ $('graph-company-group').addEventListener('change',event=>{
   renderCompanyOverview();
   writeState(true);
 });
+$('graph-company-zoom-group')?.addEventListener('change',event=>zoomCompanyGroup(event.target.value));
+$('graph-company-zoom-in')?.addEventListener('click',()=>companyLoom?.zoom(1));
+$('graph-company-zoom-out')?.addEventListener('click',()=>companyLoom?.zoom(-1));
+$('graph-company-fit')?.addEventListener('click',()=>zoomCompanyGroup(''));
 $('graph-company-groups').addEventListener('click',event=>{
   const link=event.target.closest('[data-graph-company]');
   if (!link || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
-  traverse(link.dataset.graphCompany,event.detail===0,null);
-  $('network-heading').scrollIntoView({block:'nearest',behavior:'instant'});
+  openCompanyConnections(link.dataset.graphCompany,event.detail===0);
 });
 $('graph-full-map')?.addEventListener('click',()=>{
   if (!rootId) return;
@@ -728,6 +778,7 @@ function restoreFromUrl() {
 }
 window.addEventListener('popstate',restoreFromUrl);
 window.addEventListener('pagehide',event=>{
+  if (!event.persisted) destroyCompanyMap();
   if (!loom) return;
   saveCamera();
   if (!event.persisted) loom.destroy();

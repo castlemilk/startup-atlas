@@ -160,7 +160,7 @@ try {
         rootFill:rootShell.fill,rootStroke:rootShell.stroke,accent:color('--atlas-accent'),surface:color('--atlas-surface'),rootText:getComputedStyle(root.querySelector('.node-label')).fill,ink:color('--atlas-ink'),
         noGrid:getComputedStyle(canvas).backgroundImage==='none',canvas:rect(canvas),rail:rect(rail),
         mark:rect(rail.querySelector('.detail-mark')),railTitle:rect(rail.querySelector('h2')),
-        dock:[...document.querySelectorAll('.network-scale button')].map(rect),captions,nodes,list:document.querySelector('#graph-list').textContent};
+        dock:[...svg.closest('.network-panel').querySelectorAll('.network-scale button')].map(rect),captions,nodes,list:document.querySelector('#graph-list').textContent};
     })()`);
     assert.equal(presentation.title,'Canva / Relationships');
     assert.equal(presentation.mastheads,1,'Graph must use one shared masthead');
@@ -517,7 +517,7 @@ try {
   }
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:740,deviceScaleFactor:1,mobile:true});
   await until(()=>evaluate(`(() => {
-    const dock=document.querySelector('.network-scale'), bounds=dock.getBoundingClientRect();
+    const dock=document.querySelector('.network-panel .network-scale'), bounds=dock.getBoundingClientRect();
     return innerWidth===320 && document.documentElement.scrollWidth<=innerWidth && [...dock.querySelectorAll('button,output')].every(control=>{
       const rect=control.getBoundingClientRect();
       return rect.bottom<=bounds.top+45 && rect.right<=innerWidth && (control.tagName!=='BUTTON' || rect.height>=44);
@@ -617,8 +617,75 @@ try {
   assert.equal(await evaluate("document.documentElement.scrollWidth<=innerWidth"),true);
   await screenshot('graph-alloovium-artwork-mobile.png');
 
+  const companies=graph.entities.filter(entity=>entity.kind==='startup').map(entity=>entity.id).sort();
+  const companyMapReady="document.querySelector('#graph-company-map')?.dataset.renderer==='loom'&&!document.querySelector('#graph-company-overview').hidden";
+  async function checkCompanyMap({all=true,groupLabels=[]}={}) {
+    const map=await evaluate(`(()=>{
+      const canvas=document.querySelector('#graph-company-loom'), frame=canvas.getBoundingClientRect();
+      const nodes=[...document.querySelectorAll('#graph-company-nodes [data-node]')];
+      const labels=[...document.querySelectorAll('#graph-company-nodes :is(.network-loom-label,.graph-company-cluster-label):not([hidden])')];
+      const boxes=labels.map(el=>el.getBoundingClientRect());
+      const overlaps=(a,b)=>a.left<b.right && a.right>b.left && a.top<b.bottom && a.bottom>b.top;
+      return {ids:nodes.map(node=>node.dataset.node).sort(), onCanvas:nodes.filter(node=>{
+        const r=node.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+        return x>=frame.left && x<=frame.right && y>=frame.top && y<=frame.bottom;
+      }).length, groups:labels.filter(el=>el.dataset.group).map(el=>el.dataset.group),
+      names:labels.filter(el=>el.classList.contains('network-loom-label')).map(el=>el.textContent),
+      hasBoundaries:!!document.querySelector('#graph-company-boundaries svg path'),
+      hasGL:canvas.getContext('webgl2')?.drawingBufferWidth>0,
+      clip:labels.filter((el,i)=>el.scrollWidth>el.clientWidth+1 || el.scrollHeight>el.clientHeight+1 ||
+        boxes[i].left<frame.left || boxes[i].right>frame.right || boxes[i].top<frame.top || boxes[i].bottom>frame.bottom).map(el=>el.textContent),
+      overlap:boxes.some((box,i)=>boxes.slice(i+1).some(other=>overlaps(box,other))),
+      readable:labels.every(el=>parseFloat(getComputedStyle(el).fontSize)>=12),overflow:document.documentElement.scrollWidth>innerWidth};
+    })()`);
+    assert.deepEqual(map.ids,companies,'Every published company must be an actual node in the default Loom graph');
+    if (all) assert.equal(map.onCanvas,companies.length,'Fit all keeps every company marker in the viewport');
+    assert.ok(map.hasGL && map.hasBoundaries,'The company canvas should paint via Loom with rendered group outlines');
+    assert.deepEqual(map.clip,[],'Visible labels must fit the canvas and their allocated width');
+    assert.ok(map.readable && !map.overlap && !map.overflow,'Company labels should be readable without overlap or page overflow');
+    for (const group of groupLabels) assert.ok(map.groups.includes(group),`Missing map label for ${group}`);
+    return map;
+  }
+  await command('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+  await command('Page.navigate',{url:`${address}/graph.html`});
+  await until(()=>evaluate(companyMapReady),'Default Graph must mount the company Loom canvas');
+  await evaluate('document.fonts.ready.then(()=>true)');
+  assert.equal(await evaluate("document.querySelector('#graph-company-group').value"),'sector');
+  const desktopCompanies=await checkCompanyMap({groupLabels:['Design & media','Financial software']});
+  assert.ok(desktopCompanies.names.length>10,'A desktop Fit should include readable company names');
+  await screenshot('graph-all-companies-desktop.png');
+
+  for (const [width,height] of [[390,844],[320,640]]) {
+    await command('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:true});
+    await until(()=>evaluate("!!document.querySelector('.graph-company-cluster-label[data-fit-group]')"),'Phone Fit must reserve label slots for each group');
+    const groups=await evaluate("[...new Set([...document.querySelectorAll('#graph-company-nodes [data-node]')].map(node=>node.dataset.group))]");
+    await checkCompanyMap({groupLabels:groups});
+    await evaluate("document.querySelector('#graph-company-loom').scrollIntoView({block:'center',behavior:'instant'})");
+    await screenshot(`graph-all-companies-${width}.png`);
+  }
+  await evaluate(`(()=>{
+    const select=document.querySelector('#graph-company-group');select.value='country';select.dispatchEvent(new Event('change',{bubbles:true}));
+  })()`);
+  await checkCompanyMap({groupLabels:['Australia','United Kingdom','Country not recorded']});
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('group')"),'country');
+  await evaluate("document.querySelector('.graph-company-cluster-label[data-group=Australia]').click()");
+  const canvaCompany="#graph-company-nodes [data-node='startup:canva']";
+  await until(()=>evaluate(`!document.querySelector(${JSON.stringify(canvaCompany+' .network-loom-label')}).hidden`),'Zooming to Australia must make Canva’s name readable');
+  assert.ok((await checkCompanyMap({all:false})).names.includes('Canva'));
+  const companyPoint=await evaluate(`(()=>{
+    document.querySelector('#graph-company-loom').scrollIntoView({block:'center',behavior:'instant'});
+    const r=document.querySelector(${JSON.stringify(canvaCompany)}).getBoundingClientRect();
+    return {x:r.left+r.width/2,y:r.top+r.height/2};
+  })()`);
+  await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[companyPoint]});
+  await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  await until(()=>evaluate("document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='startup:canva'"),'Tapping a native company glyph must traverse into its relationship graph');
+  await evaluate('history.back()');
+  await until(()=>evaluate(`${companyMapReady}&&new URL(location.href).searchParams.get('group')==='country'`),'Back must restore the company Loom map and country grouping');
+  await checkCompanyMap({groupLabels:['Australia','United Kingdom','Country not recorded']});
+
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
-  console.log('Chrome graph checks passed for visible context wires, artwork fallback, mobile Fit, sourced traversal and SVG fallback');
+  console.log('Chrome graph checks passed for all-company Loom Fit and grouping, phone traversal, context wires, artwork, mobile neighbourhood Fit and SVG fallback');
 } catch(error) {
   console.error('Interaction diagnostics:',JSON.stringify(await readDiagnostics().catch(()=>({state:'unavailable'}))));
   await captureFailure('failed-interaction.png').catch(()=>{});
