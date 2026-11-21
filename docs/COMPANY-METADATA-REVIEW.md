@@ -135,6 +135,12 @@ it as an extension for the same issuer and series. Keep ambiguous and
 partial amounts in the original excerpt for review. These observations
 create no round and compute no difference, conversion or closing date.
 
+A saved issuer-page announcement of a new investor joining its existing
+round can carry `existing_round_investor_update` alongside `backing_context`.
+The complete statement names the issuer and describes its round as existing
+or already having raised funds. The cue retains the original excerpt and
+date observations for manual review.
+
 An explicitly attributed receipt of strategic investment can carry
 `strategic_investment` in the existing review signals. A separately stated
 annual recurring revenue milestone carries `annual_recurring_revenue`.
