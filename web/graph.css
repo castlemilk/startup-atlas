@@ -37,11 +37,33 @@
 .graph-company-overview[hidden], .explorer-workspace[hidden] { display: none; }
 .graph-company-overview { min-width: 0; border: 1px solid var(--atlas-border); border-radius: var(--atlas-radius-panel); background: var(--atlas-surface); }
 .graph-company-overview-header { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 10px 20px; padding: 14px clamp(12px,2vw,24px); border-bottom: 1px solid var(--atlas-border); background: var(--atlas-paper); }
+.graph-company-overview-header > :first-child { margin-inline-end: auto; }
 .graph-company-overview-header h2 { margin: 0; color: var(--atlas-ink); font: 500 1.85rem/1.12 var(--atlas-font-display); }
 .graph-company-overview-header p { margin: 4px 0 0; color: var(--atlas-muted); font: 500 .8125rem/1.4 var(--atlas-font-body); }
+.atlas-graph-page:has(#graph-company-overview:not([hidden])) #graph-exploration .exploration-result-count { display: none; }
 .graph-overview-group-field { min-width: 0; }
 .graph-overview-group-field label { display: block; margin-bottom: 4px; color: var(--atlas-muted); font: 600 .8125rem/1.4 var(--atlas-font-body); }
 .graph-overview-group-field select { max-width: 100%; min-height: 44px; padding: 8px; border: 1px solid var(--atlas-border-strong); border-radius: var(--atlas-radius-control); background: var(--atlas-surface); color: var(--atlas-ink); }
+.graph-company-map-toolbar { display: flex; align-items: end; justify-content: space-between; gap: 8px 12px; }
+.graph-company-map-toolbar .graph-overview-group-field { flex: 1 1 220px; }
+.graph-company-map-toolbar :is(select,.atlas-sdk-select) { width: 100%; }
+.graph-company-map-toolbar .network-scale { flex: none; flex-wrap: nowrap; }
+.graph-company-map-toolbar .network-scale button { min-width: 44px; min-height: 44px; }
+#graph-company-fit { padding-inline: 10px; font: 600 .8125rem/1.15 var(--atlas-font-body); }
+.graph-company-canvas { --graph-canvas-height: clamp(340px, 59dvh, 690px); }
+.graph-company-boundaries { position: absolute; inset: 0; pointer-events: none; }
+.graph-company-cluster-label {
+  position: absolute; height: 32px; padding: 0 8px; border: 1px solid var(--atlas-border-strong); border-radius: var(--atlas-radius-control);
+  color: var(--atlas-ink); background: var(--atlas-surface); font: 640 13px/1.3 var(--atlas-font-body);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: auto;
+}
+.graph-company-cluster-label:hover { border-color: var(--atlas-action); color: var(--atlas-action); }
+.graph-company-cluster-label:focus-visible { outline-color: var(--atlas-focus); }
+.graph-company-cluster-label[data-fit-group] { padding: 0 5px; white-space: normal; overflow-wrap: anywhere; line-height: 1.15; }
+.graph-company-cluster-label[data-fit-group] span { display: none; }
+#graph-company-guide, #graph-company-empty { margin: 0; padding: 10px clamp(12px,2vw,24px); color: var(--atlas-muted); font: 500 13px/1.45 var(--atlas-font-body); }
+.graph-company-directory { border-top: 1px solid var(--atlas-border); }
+.graph-company-directory > summary { padding: 12px clamp(12px,2vw,24px); color: var(--atlas-ink); min-height: 44px; font: 630 14px/1.4 var(--atlas-font-body); cursor: pointer; }
 .graph-company-groups { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,280px),1fr)); gap: 20px 24px; padding: 14px clamp(12px,2vw,24px) 24px; }
 .graph-company-group { min-width: 0; }
 .graph-company-group h3 { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 0; padding: 8px 0; border-bottom: 1px solid var(--atlas-border); color: var(--atlas-ink); font: 520 1.2rem/1.25 var(--atlas-font-display); overflow-wrap: anywhere; }
@@ -55,7 +77,12 @@
 .graph-company-link .detail-mini[data-logo=loaded]:not(.logo-on-dark) { background: transparent; }
 #graph-back-to-companies { min-height: 40px; }
 @media (max-width: 620px) {
-  .graph-company-overview-header { align-items: start; }
+  .graph-company-overview-header { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 10px 8px; }
+  .graph-company-overview-header h2 { font-size: 1.55rem; }
+  .graph-company-map-toolbar { display: grid; grid-column: 1 / -1; grid-template-columns: minmax(0,1fr) auto; gap: 8px; }
+  .graph-company-map-toolbar .atlas-select-trigger { gap: 4px; padding-inline: 7px; }
+  .graph-company-canvas { --graph-canvas-height: max(clamp(295px, 52dvh, 480px), calc(74px * var(--company-overview-rows, 1) + 12px)); }
+  .graph-company-map-toolbar .network-scale { gap: 3px; }
   #graph-back-to-companies { min-height: 44px; }
 }
 .explorer-workspace{--graph-canvas-height:clamp(312px,min(36vw,60dvh),625px);display:grid;grid-template-columns:minmax(0,1fr) clamp(302px,23%,358px);gap:14px;align-items:start}
@@ -75,14 +102,14 @@
 #graph-back:hover{background:var(--atlas-soft)}
 #graph-back[hidden]{display:none}
 #graph-back .atlas-icon{width:16px;height:16px}
-.network-canvas{position:relative;overflow:hidden;overflow:clip;background:var(--atlas-paper);border-block:1px solid var(--atlas-border)}
-.network-canvas > :is(svg,canvas){display:block;width:100%;height:max(var(--graph-canvas-height),var(--graph-fit-height,0px));touch-action:none;cursor:grab;user-select:none}
-.network-canvas > [hidden]{display:none}
-.network-canvas > :is(svg,canvas):active{cursor:grabbing}
+:is(.network-canvas,.graph-company-canvas){position:relative;overflow:hidden;overflow:clip;background:var(--atlas-paper);border-block:1px solid var(--atlas-border)}
+:is(.network-canvas,.graph-company-canvas) > :is(svg,canvas){display:block;width:100%;height:max(var(--graph-canvas-height),var(--graph-fit-height,0px));touch-action:none;cursor:grab;user-select:none}
+:is(.network-canvas,.graph-company-canvas) > [hidden]{display:none}
+:is(.network-canvas,.graph-company-canvas) > :is(svg,canvas):active{cursor:grabbing}
 .network-loom-controls{position:absolute;inset:0;pointer-events:none}
 .network-loom-controls .network-node{position:absolute;inset:0 auto auto 0;padding:0;border:0;border-radius:8px;background:transparent;overflow:visible;pointer-events:none}
 .network-loom-controls .network-node:focus-visible{outline:3px dashed var(--atlas-focus);outline-offset:3px}
-.network-loom-mark{position:absolute;inset:50% auto auto 50%;translate:-50% -50%;display:grid;place-items:center;inline-size:var(--marker-size);block-size:var(--marker-size);overflow:hidden;border-radius:5px;background:var(--atlas-surface);color:var(--atlas-ink);font:650 12px/1 var(--atlas-font-body)}
+.network-loom-mark{position:absolute;inset:50% auto auto 50%;translate:-50% -50%;display:grid;place-items:center;inline-size:var(--marker-size);block-size:var(--marker-size);overflow:hidden;border-radius:var(--atlas-radius-control);background:var(--atlas-surface);color:var(--atlas-ink);font:650 12px/1 var(--atlas-font-body)}
 .network-loom-mark.logo-on-dark{background:var(--atlas-ink);color:var(--atlas-on-action)}
 .network-loom-mark img{position:absolute;inset:0;inline-size:100%;block-size:100%;padding:6%;object-fit:contain;opacity:0}
 .network-loom-mark.logo-wide img{padding-inline:4%}

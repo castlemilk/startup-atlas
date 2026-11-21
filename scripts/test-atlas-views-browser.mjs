@@ -281,6 +281,7 @@ try {
   assert.match(await text('#graph-company-groups'),/Australia/);
   await assertNoOverflow('Mobile grouped Graph overview');
   await screenshot('atlas-graph-company-overview.png');
+  if (!await evaluate("document.querySelector('#graph-company-directory').open")) await click('#graph-company-directory > summary');
   await click('[data-graph-company="startup:canva"]');
   await until(()=>evaluate("document.querySelector('#graph-detail h2')?.textContent==='Canva'&&!document.querySelector('#graph-neighborhood').hidden"),'A company opens its graph');
   await evaluate('history.back()');
