@@ -86,6 +86,21 @@ try {
         'Graph control button must remain a compact operable target between 24px and 60px; '+detail);
     }
   }
+  async function assertLoomLabels(minimum) {
+    const labels=await evaluate(`(() => {
+      const canvas=document.querySelector('#graph-loom-canvas').getBoundingClientRect();
+      const labels=[...document.querySelectorAll('.network-loom-label:not([hidden])')];
+      const bounds=labels.map(label=>label.getBoundingClientRect());
+      const intersects=(a,b)=>a.left<b.right && a.right>b.left && a.top<b.bottom && a.bottom>b.top;
+      return {count:labels.length,
+        clipped:bounds.flatMap((rect,index)=>rect.left<canvas.left || rect.right>canvas.right || rect.top<canvas.top || rect.bottom>canvas.bottom
+          ? [{name:labels[index].textContent, rect:rect.toJSON(), canvas:canvas.toJSON()}] : []),
+        overlapping:bounds.some((rect,index)=>bounds.slice(index+1).some(other=>intersects(rect,other)))};
+    })()`);
+    assert.ok(labels.count>=minimum,`Expected at least ${minimum} readable Loom labels: ${JSON.stringify(labels)}`);
+    assert.deepEqual(labels.clipped,[],'Loom labels must fit inside the stage');
+    assert.equal(labels.overlapping,false,'Visible Loom labels must not overlap');
+  }
   async function assertWireframePresentation(viewport) {
     const presentation=await evaluate(`(()=>{
       const svg=document.querySelector('#graph-canvas'),root=svg.querySelector('.network-node.is-root');
@@ -292,7 +307,7 @@ try {
   await until(()=>evaluate("!!document.querySelector('[data-node=\"startup:canva\"]')"),'Mobile graph did not render');
   await assertGraphControlSizes('mobile');
   await assertWireframePresentation('mobile');
-  assert.equal(await evaluate("getComputedStyle(document.querySelector('.network-mobile-guide')).display"),'block','Mobile users should see the map/list guidance');
+  assert.equal(await evaluate("getComputedStyle(document.querySelector('.network-map-guide')).display"),'block','Mobile users should see the map/list guidance');
   assert.ok(await evaluate("document.querySelector('#graph-list-toggle').getBoundingClientRect().height>=44"),'The mobile list toggle must have a touch-sized target');
   assert.ok(await evaluate("[...document.querySelectorAll('#graph-list li button')].every(button=>button.getBoundingClientRect().height>=44)"),'Mobile relationship controls must have touch-sized targets');
   assert.ok(await evaluate("[...document.querySelectorAll('#graph-list li')].every(row=>{const [from,to]=row.querySelectorAll('button'), relation=row.querySelector('span');return from.getBoundingClientRect().bottom<=relation.getBoundingClientRect().top+1 && relation.getBoundingClientRect().bottom<=to.getBoundingClientRect().top+1})"),'Mobile relationship rows must read from entity to predicate to entity');
@@ -364,9 +379,56 @@ try {
   await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
   await command('Page.navigate',{url:`${address}/graph.html?entity=startup%3Acanva`});
   const loomReady="document.querySelector('.network-canvas')?.dataset.renderer==='loom'";
+  const graph=JSON.parse(await readFile(join(root,'data','graph.json'),'utf8'));
+  const airtree='partner:airtree', person='person:melanie-perkins', next='startup:fusion-books';
   await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='startup:canva'`),'Loom did not render the real graph');
   await evaluate("document.querySelector('#graph-loom-canvas').scrollIntoView({block:'center',behavior:'instant'})");
-  const person='person:melanie-perkins',next='startup:fusion-books';
+  await evaluate('document.fonts.ready.then(()=>true)');
+  await assertLoomLabels(7);
+  const airtreeNode=`#graph-loom-controls [data-node="${airtree}"]`;
+  const pan=await evaluate(`(() => {
+    const canvas=document.querySelector('#graph-loom-canvas').getBoundingClientRect();
+    const rect=document.querySelector('${airtreeNode}').getBoundingClientRect();
+    return {x:canvas.left+canvas.width/4,y:canvas.top+24,dx:canvas.right-rect.right+rect.width/2};
+  })()`);
+  await move('mousePressed',pan.x,pan.y,'left',1);
+  await move('mouseMoved',pan.x+pan.dx,pan.y,'left',1);
+  await move('mouseReleased',pan.x+pan.dx,pan.y,'left');
+  await until(()=>evaluate(`(() => {
+    const canvas=document.querySelector('#graph-loom-canvas').getBoundingClientRect();
+    const rect=document.querySelector('${airtreeNode}').getBoundingClientRect();
+    return rect.left<canvas.right && rect.right>canvas.right;
+  })()`),'The focus test must pan Airtree partly out of view');
+  await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+  await command('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+  await evaluate(`document.querySelector('${airtreeNode}').focus({preventScroll:true})`);
+  await until(()=>evaluate(`(() => {
+    const node=document.querySelector('${airtreeNode}');
+    const canvas=document.querySelector('#graph-loom-canvas').getBoundingClientRect(), rect=node.getBoundingClientRect();
+    return document.activeElement===node && node.matches(':focus-visible') && rect.right<canvas.right-5 && rect.left>canvas.left+5;
+  })()`),'Keyboard focus must bring a partly clipped Loom node fully into view');
+  assert.equal(await evaluate("document.querySelector('#graph-zoom-number').textContent"),'100%','Keyboard reveal must retain the current zoom');
+  await evaluate("document.querySelector('#graph-fit').click()");
+  await until(()=>evaluate(`(() => {
+    const mark=document.querySelector('${airtreeNode} .network-loom-mark');
+    const img=mark.querySelector('img');
+    return mark.dataset.logo==='loaded' && mark.classList.contains('logo-on-dark') &&
+      img.naturalWidth/img.naturalHeight>3 && getComputedStyle(img).objectFit==='contain';
+  })()`),'The complete Airtree wordmark must load against its dark surface');
+  const namePoint=await until(()=>evaluate(`(() => {
+    const label=document.querySelector('${airtreeNode} .network-loom-label');
+    const rect=label.getBoundingClientRect(),x=rect.x+rect.width/2,y=rect.y+rect.height/2;
+    return !label.hidden && document.elementFromPoint(x,y)===label && {x,y};
+  })()`),'The Airtree name must be a usable traversal target');
+  await move('mousePressed',namePoint.x,namePoint.y,'left',1);
+  await move('mouseReleased',namePoint.x,namePoint.y,'left');
+  await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${airtree}'`),'Clicking the Airtree label must follow its links');
+  const airtreeEdge=graph.edges.find(edge=>edge.from===airtree && edge.to==='startup:canva');
+  assert.equal(await evaluate("document.querySelector('.detail-relation-evidence h3').textContent"),'Relationship followed');
+  assert.equal(await evaluate("document.querySelector('.detail-relation-evidence a').href"),airtreeEdge.source);
+  assert.equal(await evaluate("document.querySelector('#graph-back').getAttribute('aria-label')"),'Previous view: Canva');
+  await evaluate("document.querySelector('#graph-back').click()");
+  await until(()=>evaluate(`document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='startup:canva'`),'Previous view must restore Canva');
   const point=await until(()=>evaluate(`(()=>{
     const rect=document.querySelector('#graph-loom-controls [data-node="${person}"]').getBoundingClientRect();
     const x=rect.x+rect.width/2,y=rect.y+rect.height/2;
@@ -385,16 +447,27 @@ try {
   await until(()=>evaluate(`new URLSearchParams(location.search).get('entity')==='${next}'&&document.activeElement.dataset.node==='${next}'`),'Keyboard traversal did not focus the new Loom root');
   await evaluate('history.back()');
   await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${person}'`),'Back did not restore the prior Loom neighbourhood');
+  assert.equal(await evaluate('document.activeElement.dataset.node'),person,'Back must restore keyboard focus to the map');
 
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:740,deviceScaleFactor:1,mobile:true});
-  await command('Page.navigate',{url:`${address}/graph.html?entity=partner%3Astartmate&list=1`});
-  const graph=JSON.parse(await readFile(join(root,'data','graph.json'),'utf8'));
+  await command('Page.navigate',{url:`${address}/graph.html?entity=partner%3Astartmate&depth=2&list=1`});
   const startmateEdges=graph.edges.filter(edge=>edge.from==='partner:startmate'||edge.to==='partner:startmate');
   await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='partner:startmate'`),'The dense mobile Loom map did not load');
   assert.ok(startmateEdges.length>19,'The Startmate test must exceed the old node cap');
   assert.equal(await evaluate("document.querySelectorAll('#graph-detail .detail-related li').length"),startmateEdges.length);
   assert.ok(await evaluate("document.querySelectorAll('#graph-list li').length")>=startmateEdges.length,'The mobile list retains the entire neighbourhood');
   assert.ok(await evaluate("document.documentElement.scrollWidth<=innerWidth"),'Loom must fit the mobile document');
+  assert.ok(await evaluate(`(() => {
+    const dock=document.querySelector('.network-scale'), bounds=dock.getBoundingClientRect();
+    return [...dock.querySelectorAll('button,output')].every(control=>{
+      const rect=control.getBoundingClientRect();
+      return rect.bottom<=bounds.top+45 && rect.right<=innerWidth;
+    });
+  })()`),'The camera controls must fit on one row at 320px');
+  await evaluate("[0,1,2,3].forEach(()=>document.querySelector('#graph-zoom-in').click())");
+  await until(()=>evaluate("parseInt(document.querySelector('#graph-zoom-number').textContent,10)>200"),'The dense graph needs enough zoom to reveal its names');
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+  await assertLoomLabels(2);
 
   await command('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:1});
   await command('Page.navigate',{url:`${address}/graph.html?entity=person%3Amelanie-perkins`});
@@ -409,8 +482,17 @@ try {
   await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
   await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${next}'`),'Tapping a Loom node did not follow its relationships');
 
+  await command('Emulation.setDeviceMetricsOverride',{width:667,height:375,deviceScaleFactor:1,mobile:true});
+  await command('Page.navigate',{url:`${address}/graph.html?entity=${encodeURIComponent(person)}`});
+  await until(()=>evaluate(`${loomReady}&&document.querySelector('#graph-loom-controls .is-root')?.dataset.node==='${person}'`),'The landscape Loom map did not load');
+  assert.ok(await evaluate(`(() => {
+    const canvas=document.querySelector('#graph-loom-canvas').getBoundingClientRect();
+    return canvas.top<innerHeight-65 && document.documentElement.scrollWidth<=innerWidth;
+  })()`),'Landscape must show the Loom canvas in the first viewport');
+  await assertLoomLabels(3);
+
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
-  console.log('Chrome graph checks passed for SVG fallback, Loom traversal, history, and complete mobile connections');
+  console.log('Chrome graph checks passed for SVG fallback, Loom labels and wordmarks, source-aware traversal and history, and responsive connections');
 } catch(error) {
   console.error('Interaction diagnostics:',JSON.stringify(await readDiagnostics().catch(()=>({state:'unavailable'}))));
   await captureFailure('failed-interaction.png').catch(()=>{});

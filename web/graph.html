@@ -47,7 +47,6 @@
     <div class="explorer-workspace">
       <section class="network-panel" aria-labelledby="network-heading">
         <div class="network-toolbar">
-          <h2 class="visually-hidden" id="network-heading">Connections</h2>
           <details class="network-types">
             <summary>
               <svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 12l9 5 9-5M3 16l9 5 9-5"/></svg>
@@ -74,14 +73,23 @@
               <span>Pin selection</span>
             </button>
           </div>
+          <div class="network-neighbourhood">
+            <div>
+              <h2 id="network-heading">Connections</h2>
+              <p class="network-map-guide">Tap a node to follow its connections.</p>
+            </div>
+            <button id="graph-back" type="button" hidden>
+              <svg class="atlas-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg>
+              Previous view
+            </button>
+          </div>
         </div>
-        <p class="network-mobile-guide">Tap a node to follow its connections. Zoom in for a closer look.</p>
         <div class="network-canvas">
           <svg id="graph-canvas" viewBox="0 0 1200 720" role="group" aria-label="Interactive relationship graph" aria-describedby="graph-instructions"><text x="600" y="360" text-anchor="middle">Loading the graph…</text></svg>
           <canvas id="graph-loom-canvas" aria-hidden="true" hidden></canvas>
           <div id="graph-loom-controls" class="network-loom-controls" role="group" aria-label="Interactive relationship graph" aria-describedby="graph-instructions" hidden></div>
         </div>
-        <p id="graph-instructions" class="visually-hidden">Activate a node to follow its relationships. Back returns to the previous neighbourhood. Drag nodes or move them with arrow keys. Drag the background to pan. Reset restores the automatic layout. The connections list includes the recorded sources.</p>
+        <p id="graph-instructions" class="visually-hidden">Activate a node to follow its relationships. Previous view returns to the previous neighbourhood. Drag nodes or move them with arrow keys. Drag the background to pan. Zoom in for more labels. The connections list includes the recorded sources. Reset restores the automatic layout.</p>
         <div class="network-footer">
           <div class="network-map-context">
             <p id="graph-count" role="status"></p>

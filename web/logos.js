@@ -48,6 +48,9 @@ export function logoFor(name) {
 }
 export const logoEntries=Object.freeze(Object.entries(logos));
 
+// This approved Canva image includes wide margins around the wordmark.
+export const paddedCanvaMark=url=>url.endsWith('/65deeccca712cb796025a2bd_Canva.png');
+
 // White marks use dark tiles; wordmarks need more horizontal space.
 const darkTiles = new Set(['8VC','Accel','Bain Capital Ventures','Bessemer','CRV',"Airtree","Square Peg"]);
 const wideMarks = new Set(['Blackbird Ventures','Antler','Startmate','Flybridge',"Airtree","Square Peg","Artesian","Brandon Capital"]);

@@ -1,5 +1,5 @@
 import { escapeHtml as esc, sourceUrl } from './logic.js';
-import { logoFor } from './logos.js';
+import { logoClassFor, logoFor, paddedCanvaMark } from './logos.js';
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName, neighborhood } from './graph-model.js';
 import { createForceSimulation, layoutBounds, layoutNetwork } from './graph-layout.js';
@@ -24,7 +24,6 @@ let searchMatches=[], searchedQuery, visibleCompanies=new Set();
 const initials=name=>name.trim().split(/\s+/).slice(0,2).map(part=>part[0]||'').join('').toUpperCase();
 const imageUrl=value=>sourceUrl(value)||(/^\.\/assets\/logos\/[a-z0-9-]+\.(?:svg|png)$/i.test(value||'')?value:'');
 const entityImage=entity=>imageUrl(entity.logo)||imageUrl(logoFor(entity.name));
-const paddedCanvaMark=url=>url.endsWith('/65deeccca712cb796025a2bd_Canva.png');
 const evidence=(url,label='Source')=>{const safe=sourceUrl(url);return safe?'<a class="detail-source" href="'+esc(safe)+'" target="_blank" rel="noopener noreferrer">'+esc(label)+' ↗</a>':'';};
 const money=(value,currency,amountText)=>{if(value==null||!currency)return amountText || 'Amount not recorded';try{return new Intl.NumberFormat('en-AU',{style:'currency',currency,maximumFractionDigits:0}).format(Number(value));}catch{return String(value)+' '+currency;}};
 
@@ -47,10 +46,11 @@ function renderNode(node) {
     ? `<svg x="${x+18}" y="${y+7}" width="${node.width-36}" height="67" viewBox="${cropsPadding ? '18 36.75 64 26.5' : '0 0 100 100'}"><image href="${esc(url)}" width="100" height="100" preserveAspectRatio="xMidYMid meet"></image></svg>`
     : `<image href="${esc(url)}" x="${iconX-18}" y="-18" width="36" height="36" preserveAspectRatio="xMidYMid meet"></image>`;
   const context = node.kind!=='startup'||!visibleCompanies.has(node.id);
+  const avatarClass = url && logoClassFor(node.name).includes('logo-on-dark') ? ' logo-on-dark' : '';
   const accessible = `${kindName(node.kind)}: ${node.name}${context ? ' · Relationship context' : ''}. Press Enter to follow connections; use arrow keys to move`;
   return `<g class="network-node${root ? ' is-root' : ''}${selected ? ' is-selected' : ''}" data-node="${esc(node.id)}" data-kind="${esc(node.kind)}" data-context="${context}" role="button" tabindex="0" aria-pressed="${selected}" aria-label="${esc(accessible)}" transform="translate(${node.x.toFixed(1)} ${node.y.toFixed(1)})">
     <rect class="node-shell" x="${x}" y="${y}" width="${node.width}" height="${node.height}" rx="6"></rect>
-    <g class="node-avatar-plate"${branded && url ? ' visibility="hidden"' : ''}>
+    <g class="node-avatar-plate${avatarClass}"${branded && url ? ' visibility="hidden"' : ''}>
       <rect class="node-avatar" x="${iconX-20}" y="${iconY-20}" width="40" height="40" rx="5"></rect>
       <text class="node-initials" x="${iconX}" y="${iconY}"${url && !branded ? ' visibility="hidden"' : ''}>${esc(initials(node.name))}</text>
     </g>${logo}
@@ -187,7 +187,7 @@ function resetLoom() {
   canvas.parentElement.dataset.renderer='svg';
 }
 
-function renderLoom(view) {
+function renderLoom(view,dense) {
   const canvas=$('graph-loom-canvas');
   if (!canvas || loomUnavailable) return;
   const controls=$('graph-loom-controls');
@@ -195,8 +195,8 @@ function renderLoom(view) {
   controls.hidden=false;
   $('graph-canvas').setAttribute('hidden','');
   try {
-    loom=mountLoom({canvas,controls,layout:pinned.size ? layoutNetwork(view,rootId) : layout,
-      root:rootId,kinds:entityKinds,pins:pinned,viewport:loomViewport,image:entityImage,traverse,rememberPin,reportZoom});
+    loom=mountLoom({canvas,controls,view,root:rootId,dense,kinds:entityKinds,pins:pinned,viewport:loomViewport,
+      image:entityImage,traverse:traverseMap,rememberPin,reportZoom});
     canvas.parentElement.dataset.renderer='loom';
   } catch {
     loomUnavailable=true;
@@ -208,14 +208,25 @@ function renderMap() {
   stopSimulation();
   resetLoom();
   const view=neighborhood(store.graph,rootId,{depth,kinds,limit:Infinity});
+  const dense=view.nodes.length>25;
   currentView=view;
-  layout=layoutNetwork(view,rootId,pinned);bounds=layoutBounds(layout);simulation=createForceSimulation(layout,pinned);
-  renderLoom(view);
-  if (!loom) renderSvgMap();
+  layout=null;bounds=null;simulation=null;
+  renderLoom(view,dense);
+  if (!loom) {
+    layout=layoutNetwork(view,rootId,pinned);
+    bounds=layoutBounds(layout);
+    simulation=createForceSimulation(layout,pinned);
+    renderSvgMap();
+  }
   renderedCameraKey=cameraKey();
   const root=store.graph.entities.find(entity=>entity.id===rootId);
   if($('network-heading'))$('network-heading').textContent='Around '+root.name;
   if($('graph-title'))$('graph-title').textContent=`${root.name} / Relationships`;
+  const guide=document.querySelector?.('.network-map-guide');
+  if (guide) {
+    guide.dataset.dense=String(Boolean(loom) && dense);
+    guide.textContent=guide.dataset.dense==='true' ? 'Zoom for names or open the connections list.' : 'Tap a node to follow its connections.';
+  }
   renderGraphScope();updateSelection();
 }
 function renderSvgMap() {
@@ -261,7 +272,15 @@ function relationshipText(edge) {
   if (edge.kind==='supports' && (!edge.description || edge.description==='Listed in portfolio')) return 'lists in portfolio';
   return edge.description || (edge.kind==='team_member' ? 'team member at' : 'connected to');
 }
-function writeState(push=false) {
+function syncGraphPrevious() {
+  const button=$('graph-back');
+  if (!button) return;
+  const previous=history.state?.atlasGraphPrevious;
+  const entity=store.graph.entities.find(entity=>entity.id===previous);
+  button.hidden=!entity;
+  button.setAttribute('aria-label',entity && previous!==rootId ? 'Previous view: '+entity.name : 'Previous view');
+}
+function writeState(push=false, previous=rootId, followed=null) {
   if(!rootId)return;
   const params=new URLSearchParams(location.search);
   params.delete('startup');params.set('entity',rootId);
@@ -272,17 +291,23 @@ function writeState(push=false) {
   if(kinds.size===entityKinds.length)params.delete('types');else params.set('types',entityKinds.filter(kind=>kinds.has(kind)).join(','));
   if(listVisible)params.set('list','1');else params.delete('list');
   const method=push?'pushState':'replaceState';
-  if ('?'+params.toString()!==location.search) history[method]?.(null,'','?'+params.toString()+(location.hash || ''));
+  const next='?'+params.toString();
+  if (next!==location.search) {
+    const state=push ? { ...history.state, atlasGraphPrevious:previous,
+      atlasGraphFrom:previous!==rootId ? followed : history.state?.atlasGraphFrom } : history.state;
+    history[method]?.(state,'',next+(location.hash || ''));
+  }
+  syncGraphPrevious();
   document.dispatchEvent(new CustomEvent('atlas:exploration-change',{detail:{...scope}}));
 }
 function syncPin() {
   const button = $('graph-pin');
   if (!button) return;
-  button.disabled = !layout?.nodes.some(node=>node.id===selectedId);
+  button.disabled = !currentView?.nodes.some(node=>node.id===selectedId);
   button.setAttribute('aria-pressed',String(!button.disabled && pinned.has(selectedId)));
 }
 function updateSelection() {
-  const canCenter=layout?.nodes.some(node=>node.id===selectedId);
+  const canCenter=currentView?.nodes.some(node=>node.id===selectedId);
   const center=$('graph-center');
   if (center) center.disabled=!canCenter;
   syncPin();
@@ -304,16 +329,16 @@ function renderDetail() {
     return;
   }
   const details=entityDetails(store.graph,selectedId), entity=details.entity, names=new Map(details.related.map(item=>[item.id,item]));
-  const visibleIds=new Set(layout?.nodes.map(node=>node.id)||[]);
+  const visibleIds=new Set(currentView?.nodes.map(node=>node.id)||[]);
   const orderedEdges = [...details.edges].sort((a,b)=>Number(b.kind==='founded')-Number(a.kind==='founded'));
   const related=orderedEdges.map(edge=>{
     const other=names.get(edge.from===selectedId?edge.to:edge.from);if(!other)return '';
     const image=entityImage(other);
     const icon=image?'<img src="'+esc(image)+'" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="detail-mark-fallback" hidden>'+esc(initials(other.name))+'</span>':esc(initials(other.name));
-    return '<li><span class="detail-mini" aria-hidden="true">'+icon+'</span><div class="detail-connection-copy"><button type="button" data-select="'+esc(other.id)+'">'+esc(other.name)+'</button><small>'+esc(relationshipText(edge))+'</small>'+(visibleIds.has(other.id)?'':'<small class="detail-outside">Outside current map</small>')+evidence(edge.source,'Relationship source')+'</div></li>';
+    return '<li><span class="detail-mini '+(image ? logoClassFor(other.name) : '')+'" aria-hidden="true">'+icon+'</span><div class="detail-connection-copy"><button type="button" data-select="'+esc(other.id)+'">'+esc(other.name)+'</button><small>'+esc(relationshipText(edge))+'</small>'+(visibleIds.has(other.id)?'':'<small class="detail-outside">Outside current map</small>')+evidence(edge.source,'Relationship source')+'</div></li>';
   }).filter(Boolean);
   const url=entityImage(entity),rounds=[...details.rounds].sort((a,b)=>(b.announced_on||'').localeCompare(a.announced_on||''));
-  const logo = `<span class="detail-mark${entity.kind==='person' ? ' person' : ''}${url ? ' has-logo' : ''}${paddedCanvaMark(url) ? ' padded-mark' : ''}" aria-hidden="true">${url
+  const logo = `<span class="detail-mark${entity.kind==='person' ? ' person' : ''}${url ? ' has-logo '+logoClassFor(entity.name) : ''}${paddedCanvaMark(url) ? ' padded-mark' : ''}" aria-hidden="true">${url
     ? `<img src="${esc(url)}" alt="" referrerpolicy="no-referrer"><span class="detail-mark-fallback" hidden>${esc(initials(entity.name))}</span>`
     : esc(initials(entity.name))}</span>`;
   const summary=entity.summary || 'This entry is connected to the sources and organisations below. More details are being researched.';
@@ -328,10 +353,12 @@ function renderDetail() {
   const actions=company?'<div class="graph-workspace-actions" data-company-name="'+esc(entity.name)+'"><button type="button" class="atlas-button" data-atlas-save-company="'+esc(entity.id)+'">Save</button><button type="button" class="atlas-button" data-atlas-compare="'+esc(entity.id)+'">Compare</button></div>':'';
   const facts=company?'<dl class="graph-company-facts"><div><dt>Headquarters</dt><dd>'+esc(headquarters)+'</dd></div><div><dt>Primary sector</dt><dd>'+esc(company.sector || 'Not recorded')+'</dd></div></dl>':'';
   const identityIcon = {startup:'company',partner:'partners',person:'person',programme:'programme',provider:'provider'}[entity.kind] || 'company';
-  const reviewed = orderedEdges.find(edge=>sourceUrl(edge.source));
+  const from = isRoot && history.state?.atlasGraphFrom;
+  const followed = from && orderedEdges.find(edge=>(edge.from===from || edge.to===from) && sourceUrl(edge.source));
+  const reviewed = followed || orderedEdges.find(edge=>sourceUrl(edge.source));
   const nameOf = id => id===selectedId ? entity.name : names.get(id)?.name;
   const reviewedRelation = reviewed && nameOf(reviewed.from) && nameOf(reviewed.to)
-    ? `<div class="detail-relation-evidence"><h3>Relationship evidence</h3>
+    ? `<div class="detail-relation-evidence"><h3>${followed ? 'Relationship followed' : 'Relationship evidence'}</h3>
       <p><strong>${esc(nameOf(reviewed.from))}</strong> ${esc(relationshipText(reviewed))} <strong>${esc(nameOf(reviewed.to))}</strong></p>
       ${evidence(reviewed.source,'Read relationship source')}</div>` : '';
   $('graph-detail').innerHTML=`<div class="detail-heading">${logo}<h2>${esc(entity.name)}</h2><p class="detail-kind">${icon(identityIcon)}${entity.kind==='startup' ? 'Company' : esc(kindName(entity.kind))}</p></div>
@@ -359,26 +386,39 @@ function select(id,writeHistory=true) {
     });
   }
 }
-function explore(id,writeHistory=true) {
+function explore(id,writeHistory=true,followed=null) {
   if(!store.graph.entities.some(entity=>entity.id===id)) {
     stopSimulation();resetLoom();layout=null;bounds=null;currentView=null;rootId=null;selectedId=null;renderedCameraKey=null;
     $('graph-detail').innerHTML='<p class="detail-empty">This entry is not in the published graph. Search for another organisation.</p>';
     $('graph-canvas').innerHTML='<text x="460" y="320" text-anchor="middle">Entry not found</text>';
     $('graph-count').textContent='0 entities shown';
     if($('graph-title'))$('graph-title').textContent='Relationships';
+    if($('network-heading'))$('network-heading').textContent='Connections';
     return;
   }
+  const previous=rootId;
   if (rootId!==id) { if (writeHistory) saveCamera();rootId=id;restoreCamera(); }
   selectedId=id;
-  renderMap();renderDetail();
-  if(writeHistory)writeState(true);
+  renderMap();
+  if(writeHistory)writeState(true,previous,followed);
+  renderDetail();
 }
 
-function traverse(id, focusMap=false) {
+function traverse(id, focusMap=false, followed=rootId) {
   if (!store?.graph.entities.some(entity=>entity.id===id)) return;
   if (id===rootId) select(id);
-  else explore(id);
+  else explore(id,true,followed);
   if (focusMap) focusMapNode(id);
+}
+
+function traverseMap(id, focusMap=false) {
+  const canvas=$('graph-canvas').parentElement;
+  const before=canvas?.getBoundingClientRect();
+  traverse(id,focusMap);
+  if (before && before.top<innerHeight && before.bottom>0) {
+    const delta=canvas.getBoundingClientRect().top-before.top;
+    if (delta) window.scrollBy({top:delta,behavior:'instant'});
+  }
 }
 
 function focusMapNode(id) {
@@ -428,7 +468,7 @@ function selectFromEvent(event) {
   const target=event.target.closest('[data-select], [data-explore]');if(!target)return;
   $('graph-results').hidden=true;
   const id=target.dataset.explore || target.dataset.select;
-  traverse(id,Boolean(target.dataset.explore));
+  traverse(id,Boolean(target.dataset.explore),event.currentTarget===$('graph-results') ? null : rootId);
   if (event.currentTarget===$('graph-detail') && !target.dataset.explore) $('graph-detail').querySelector('.detail-open')?.focus({preventScroll:true});
   if (event.currentTarget===$('graph-list')) $('graph-list').querySelector('h3')?.focus({preventScroll:true});
 }
@@ -486,15 +526,15 @@ function finishGesture(event) {
   if(event.type==='pointercancel')return;
   if(completed.moved||completed.node){
     suppressClick=true;setTimeout(()=>{suppressClick=false;},0);
-    if(!completed.moved)traverse(completed.node.id);
+    if(!completed.moved)traverseMap(completed.node.id);
   }
 }
 svg.addEventListener('pointerup',finishGesture);
 svg.addEventListener('pointercancel',finishGesture);
-svg.addEventListener('click',event=>{if(suppressClick){suppressClick=false;return;}const node=event.target.closest('[data-node]');if(node)traverse(node.dataset.node);});
+svg.addEventListener('click',event=>{if(suppressClick){suppressClick=false;return;}const node=event.target.closest('[data-node]');if(node)traverseMap(node.dataset.node);});
 svg.addEventListener('keydown',event=>{
   const element=event.target.closest('[data-node]');if(!element)return;
-  if(event.key==='Enter'||event.key===' '){event.preventDefault();traverse(element.dataset.node,true);return;}
+  if(event.key==='Enter'||event.key===' '){event.preventDefault();traverseMap(element.dataset.node,true);return;}
   const directions={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]},direction=directions[event.key];
   if(!direction)return;event.preventDefault();
   const node=layout.nodes.find(item=>item.id===element.dataset.node),step=event.shiftKey?50:20;
@@ -539,24 +579,31 @@ function changeZoom(delta) {
 }
 $('graph-zoom-in').addEventListener('click',()=>changeZoom(.2));
 $('graph-zoom-out').addEventListener('click',()=>changeZoom(-.2));
+$('graph-back')?.addEventListener('click',()=>history.back());
 $('graph-fit')?.addEventListener('click',()=>{
-  if(!layout)return;
+  if(!currentView)return;
   if (loom) loom.fit();
   else {bounds=layoutBounds(layout);zoom=1;pan={x:0,y:0};applyZoom();}
   saveCamera();
 });
 function centerNode(id) {
+  if (loom) {
+    if (currentView.nodes.some(node=>node.id===id)) { loom.center(id);saveCamera(); }
+    return;
+  }
   const node=layout?.nodes.find(node=>node.id===id);
   if (!node || !bounds) return;
-  if (loom) {loom.center(id);return;}
   pan={x:node.x-bounds.x-bounds.width/2,y:node.y-bounds.y-bounds.height/2};
   applyZoom();saveCamera();
 }
 $('graph-center')?.addEventListener('click',()=>centerNode(selectedId));
 $('graph-pin')?.addEventListener('click',()=>{
+  if (loom) {
+    if (currentView.nodes.some(node=>node.id===selectedId)) loom.setPin(selectedId,pinned.has(selectedId));
+    return;
+  }
   const selected = layout?.nodes.find(node=>node.id===selectedId);
   if (!selected) return;
-  if (loom) {loom.setPin(selected.id,pinned.has(selected.id));return;}
   if (pinned.has(selected.id)) { pinned.delete(selected.id); reheat(); }
   else pinned.set(selected.id,{x:selected.x,y:selected.y});
   saveCamera();
@@ -564,6 +611,9 @@ $('graph-pin')?.addEventListener('click',()=>{
 $('graph-reset').addEventListener('click',()=>{zoom=1;pan={x:0,y:0};loomViewport=null;pinned.clear();if(store&&rootId)renderMap();saveCamera();});
 function restoreFromUrl() {
   if(!store)return;
+  const active=document.activeElement;
+  const restoreMapFocus=mapControls().contains?.(active);
+  const previous=$('graph-back');
   clearTimeout(searchTimer);
   const params=new URLSearchParams(location.search),nextScope=readExploration(params);
   const nextRoot=params.get('entity')||params.get('startup')||nextScope.graphAnchor||nextScope.selected||'startup:canva';
@@ -585,6 +635,7 @@ function restoreFromUrl() {
   if(rootId)select(selected,false);
   renderSearchResults();
   writeState();
+  if (rootId && (restoreMapFocus || (active===previous && previous?.hidden))) focusMapNode(rootId);
 }
 window.addEventListener('popstate',restoreFromUrl);
 window.addEventListener('pagehide',event=>{
@@ -614,7 +665,8 @@ try {
   if(store.mode==='fallback')$('graph-status').textContent='Showing the published backup while the database is unavailable.';
   dimensions=indexCompanies(store.graph);
   const host=$('graph-exploration');
-  controls=mountExploration(host,{companies:store.graph.entities,dimensions,onChange:changeScope,fieldsHost:$('graph-location-fields')});
+  controls=mountExploration(host,{companies:store.graph.entities,dimensions,onChange:changeScope,fieldsHost:$('graph-location-fields'),
+    narrowQuery:'(max-width: 620px), (max-width: 760px) and (max-height: 540px)'});
   if (host) host.hidden=false;
   restoreFromUrl();
 } catch {

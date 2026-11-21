@@ -10,7 +10,7 @@ const ordered = (values,label) => [...new Set(values)].sort((a,b)=>a==='unknown'
 const option = (value,label) => `<option value="${esc(value)}">${esc(label)}</option>`;
 const allCompanies = () => true;
 
-export function mountExploration(host,{companies,dimensions,onChange,showDensity=true,fieldsHost}) {
+export function mountExploration(host,{companies,dimensions,onChange,showDensity=true,fieldsHost,narrowQuery='(max-width: 620px)'}) {
   if (!host?.ownerDocument?.createElement) return {update(){},openCountries(){}};
   const doc = host.ownerDocument;
   const choices = [...dimensions.values()];
@@ -71,7 +71,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
   }
   const find = selector=>host.querySelector(selector) || row.querySelector(selector);
   const popup = find('ui-popover');
-  const narrow = doc.defaultView?.matchMedia?.('(max-width: 620px)');
+  const narrow = doc.defaultView?.matchMedia?.(narrowQuery);
   const trigger = find('.exploration-country-trigger');
   const panel = find('ui-popover-content');
   const title = find('#atlas-filter-title');
