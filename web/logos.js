@@ -34,7 +34,13 @@ const logos = Object.freeze({
   "Antler":"antler",
   "Startmate":"startmate",
   "Flybridge":"flybridge",
-  "Boxgroup":"boxgroup"
+  "Boxgroup":"boxgroup",
+  "Airtree":"airtree",
+  "Square Peg":"square-peg",
+  "USV":"usv.png",
+  "Madrona":"madrona.png",
+  "Artesian":"artesian.png",
+  "Brandon Capital":"brandon-capital.png",
 });
 export function logoFor(name) {
   const slug=Object.hasOwn(logos,name)?logos[name]:null;
@@ -43,8 +49,8 @@ export function logoFor(name) {
 export const logoEntries=Object.freeze(Object.entries(logos));
 
 // White marks use dark tiles; wordmarks need more horizontal space.
-const darkTiles = new Set(['8VC','Accel','Bain Capital Ventures','Bessemer','CRV']);
-const wideMarks = new Set(['Blackbird Ventures','Antler','Startmate','Flybridge']);
+const darkTiles = new Set(['8VC','Accel','Bain Capital Ventures','Bessemer','CRV',"Airtree","Square Peg"]);
+const wideMarks = new Set(['Blackbird Ventures','Antler','Startmate','Flybridge',"Airtree","Square Peg","Artesian","Brandon Capital"]);
 export function logoClassFor(name) {
   return [darkTiles.has(name)?'logo-on-dark':'',wideMarks.has(name)?'logo-wide':''].filter(Boolean).join(' ');
 }
