@@ -15,7 +15,9 @@ const readonly = { readOnlyHint: true, destructiveHint: false, idempotentHint: t
 const schema = properties => ({ type: 'object', properties, additionalProperties: false });
 const candidate = { entry: opportunitySchema, provenance: provenanceSchema };
 const partnerName={type:'string',minLength:1,maxLength:200};
-const partnerRecord={type:'object',additionalProperties:false,required:['website','description','source','reviewed_at'],properties:{website:{type:'string',format:'uri'},description:{type:'string',minLength:8,maxLength:500},source:{type:'string',format:'uri'},reviewed_at:{type:'string',pattern:'^[0-9]{4}-[0-9]{2}-[0-9]{2}$'}}};
+const amountNumber={anyOf:[{type:'number',minimum:0},{type:'object',additionalProperties:false,required:['low','high'],properties:{low:{type:'number',minimum:0},high:{type:'number',minimum:0}}}]};
+const partnerAmount={type:'object',additionalProperties:false,required:['original','currency','value','qualifier','assumption','usd','usd_display','rate','rate_date','rate_source','status'],properties:{original:{type:'string',minLength:1,maxLength:200},currency:{type:['string','null'],enum:['AUD','USD','EUR','GBP','JPY','SGD','CAD','NZD','HKD','CNY','INR',null]},value:{anyOf:[...amountNumber.anyOf,{type:'null'}]},qualifier:{type:['string','null'],enum:['approximate','minimum','maximum',null]},assumption:{type:['string','null'],maxLength:200},usd:{anyOf:[...amountNumber.anyOf,{type:'null'}]},usd_display:{type:['string','null'],maxLength:40},rate:{type:['number','null'],exclusiveMinimum:0},rate_date:{type:['string','null'],pattern:'^[0-9]{4}-[0-9]{2}-[0-9]{2}$'},rate_source:{type:['string','null'],enum:['frankfurter-live','fallback-table','no-rates',null]},status:{type:'string',enum:['converted','assumed','ambiguous','unconverted','unparsed']}}};
+const partnerRecord={type:'object',additionalProperties:false,required:['website','description','source','reviewed_at'],properties:{website:{type:'string',format:'uri'},description:{type:'string',minLength:8,maxLength:500},source:{type:'string',format:'uri'},reviewed_at:{type:'string',pattern:'^[0-9]{4}-[0-9]{2}-[0-9]{2}$'},amounts:{type:'array',maxItems:10,items:partnerAmount}}};
 const tools = [
   { name:'atlas_search_startup_records', description:'Search authoritative startup records in this local checkout. Returns local snapshot and record digests; does not fetch sources or read the published graph.', inputSchema:schema({query:{type:'string',maxLength:200},limit:{type:'integer',minimum:1,maximum:100}}), annotations:readonly },
   { name:'atlas_get_startup_record', description:'Read the complete editable source record by canonical startup ID from this local checkout. Its digest is an edit precondition, not a published revision.', inputSchema:{...schema({id:startupIdSchema}),required:['id']}, annotations:readonly },
@@ -35,16 +37,25 @@ const tools = [
   { name: 'atlas_get_crawl_claims', description: 'List current crawl claims per source, derived from claimed and running runs. A claim whose lease has expired is reported as stale, never as live.', inputSchema: schema({ mode: { type: 'string', enum: CRAWL_MODES }, source_id: { type: 'string', maxLength: 200 } }), annotations: readonly },
 ];
 
-export function createServer(store) {
+export const WRITE_TOOLS = ['atlas_apply_startup_edit', 'atlas_upsert_partner', 'atlas_add_opportunity'];
+
+export function createServer(store, options = {}) {
   const partners = new PartnerStore(store.root, {writeEnabled:store.writeEnabled});
   const startups = new StartupStore(store.root, {writeEnabled:store.writeEnabled});
   const crawls = new CrawlRegistry(store.root);
   const server = new Server({ name: 'startup-atlas', version: '1.0.0' }, { capabilities: { tools: {} } });
   server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));
-  server.setRequestHandler(CallToolRequestSchema, async ({ params }) => {
+  server.setRequestHandler(CallToolRequestSchema, async ({ params }, extra) => {
     try {
       const tool = tools.find(item => item.name === params.name);
       if (!tool) throw new EntryError('UNKNOWN_TOOL', `Unknown tool ${params.name}`);
+      // The HTTP server supplies a write authorizer that checks the caller's
+      // authenticated identity; stdio has no caller identity, so --write alone
+      // decides there. A denied write never reaches the stores.
+      if (WRITE_TOOLS.includes(params.name) && typeof options.writeAuthorizer === 'function') {
+        const allowed = await options.writeAuthorizer(extra?.authInfo, params.name);
+        if (!allowed) throw new EntryError('WRITE_FORBIDDEN', 'This Google account is not allowed to write through the HTTP MCP server.');
+      }
       const args = params.arguments ?? {};
       if (!args || typeof args !== 'object' || Array.isArray(args)) throw new EntryError('VALIDATION_ERROR', 'Tool arguments must be an object.');
       for (const key of Object.keys(args)) if (!Object.hasOwn(tool.inputSchema.properties, key)) throw new EntryError('VALIDATION_ERROR', `Unexpected argument: ${key}`);

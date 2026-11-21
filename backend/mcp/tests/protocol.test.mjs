@@ -93,3 +93,30 @@ test('partner writes require write-enabled mode', async t => {
   const write=await client.callTool({name:'atlas_upsert_partner',arguments:{name:'Airtree',record,expectedRevision:valid.revision}});
   assert.equal(write.isError,true); assert.equal(decoded(write).code,'READ_ONLY');
 });
+
+test('partner records accept normalised currency amounts and reject bad ones', async t => {
+  const {client,dir}=await connect(t,true);
+  const base={website:'https://example.com/',description:'Reviewed fixture description.',source:'https://example.com/about',reviewed_at:'2026-01-01'};
+  const converted={original:'A$1.05B',currency:'AUD',value:1050000000,qualifier:null,assumption:null,usd:693000000,usd_display:'US$693M',rate:0.66,rate_date:'2026-11-21',rate_source:'fallback-table',status:'converted'};
+  const ambiguous={original:'$4.5B',currency:null,value:4500000000,qualifier:null,assumption:null,usd:null,usd_display:null,rate:null,rate_date:'2026-11-21',rate_source:'fallback-table',status:'ambiguous'};
+  const record={...base,amounts:[converted,ambiguous]};
+  const first=decoded(await client.callTool({name:'atlas_validate_partner',arguments:{name:'Airtree',record}}));
+  assert.equal(first.persisted,false);
+  const saved=await client.callTool({name:'atlas_upsert_partner',arguments:{name:'Airtree',record,expectedRevision:first.revision}});
+  assert.equal(saved.isError,undefined);
+  const stored=JSON.parse(await readFile(path.join(dir,'data/partners-reviewed.json'),'utf8')).Airtree;
+  assert.deepEqual(stored.amounts,[converted,ambiguous]);
+  const badCases=[
+    {...record,amounts:[{...converted,extra:1}]},
+    {...record,amounts:[{...converted,usd:null}]},
+    {...record,amounts:[{...ambiguous,usd:100}]},
+    {...record,amounts:[{...converted,status:'guessed'}]},
+    {...record,amounts:[{...converted,currency:'XXX'}]},
+    {...record,amounts:'A$1.05B'},
+  ];
+  for (const bad of badCases) {
+    const result=await client.callTool({name:'atlas_validate_partner',arguments:{name:'Airtree',record:bad}});
+    assert.equal(result.isError,true);
+    assert.equal(decoded(result).code,'VALIDATION_ERROR');
+  }
+});
