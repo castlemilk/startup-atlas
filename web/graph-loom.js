@@ -1,7 +1,7 @@
 import { createWireGraph } from 'loom-core/wires';
 import { graphOrigin, layoutNetwork } from './graph-layout.js';
 import { mobileFit, mobileFitLabel, mobileFitPositions } from './graph-mobile-fit.js';
-import { logoClassFor, paddedCanvaMark } from './logos.js';
+import { graphArtwork, graphInitials, showGraphArtwork } from './graph-artwork.js';
 
 const steps = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
 const labelHeight = 24;
@@ -41,25 +41,23 @@ function arrangeNodes(view, root, canvas, dense) {
   return arranged;
 }
 
-function marking(node, image) {
+function marking(node) {
+  const { url, classes } = graphArtwork(node);
   const mark = document.createElement('span');
-  mark.className = `network-loom-mark ${logoClassFor(node.name)}`;
+  mark.className = `network-loom-mark ${classes}`;
   mark.setAttribute('aria-hidden', 'true');
   const letters = document.createElement('span');
-  letters.textContent = node.name.trim().split(/\s+/).slice(0, 2).map(word => Array.from(word)[0]).join('').toUpperCase();
+  letters.textContent = graphInitials(node.name);
   mark.append(letters);
-  const url = image(node);
   if (url) {
-    mark.classList.toggle('padded-mark', paddedCanvaMark(url));
     const img = document.createElement('img');
     img.alt = '';
-    img.loading = 'lazy';
+    img.loading = node.level === 0 ? 'eager' : 'lazy';
     img.referrerPolicy = 'no-referrer';
     img.decoding = 'async';
-    img.addEventListener('load', () => { mark.dataset.logo = 'loaded'; letters.hidden = true; }, { once: true });
-    img.addEventListener('error', () => img.remove(), { once: true });
     img.src = url;
     mark.append(img);
+    showGraphArtwork(img, letters);
   }
   return mark;
 }
@@ -96,32 +94,36 @@ function placeLabel(item, width, height, occupied, placed, textWidth) {
   return null;
 }
 
-function graphTheme(canvas, root, kinds, overview) {
+function graphTheme(canvas, root, kinds, overview, selected) {
   const style = getComputedStyle(canvas);
   const color = name => style.getPropertyValue(`--atlas-${name}`).trim();
   const kind = Object.fromEntries(kinds.map(name => [name, color(name)]));
+  const accent = color('action');
   return {
-    kind, ink: color('ink'), dim: color('muted'), bg: color('paper'), accent: color('action'),
+    kind, ink: color('ink'), dim: color('muted'), bg: color('paper'), accent,
     bezel: color('border'), font: style.getPropertyValue('--atlas-font-body'), fontSize: 15,
     radii: { hub: 27, content: 19 }, plateAlpha: .94,
     nodes: { artwork: false, fill: .82, resolve: node => ({
       shape: node.kind === 'person' ? 'circle' : 'rounded-square',
       radius: overview ? (node.id === root ? mobileFit.rootRadius : mobileFit.neighbourRadius) : (node.id === root ? 42 : 30),
-      color: node.id === root ? color('ink') : kind[node.kind]
+      color: node.id === selected ? accent : node.id === root ? color('ink') : kind[node.kind]
     }) },
-    wires: { routing: 'patch', color: color('border-strong'), width: 1.3, opacity: .52, hotWidth: 2.2 },
+    wires: {
+      routing: 'patch', color: color('border-strong'), width: 1.7, opacity: .84, hotWidth: 2.6,
+      resolve: link => link.source === selected || link.target === selected ? { color: accent, width: 2.6, opacity: .94 } : undefined
+    },
     labels: { visibility: 'none' }
   };
 }
 
-export function mountLoom({ canvas, controls, view, root, dense, overview, kinds, pins, viewport, image, traverse, rememberPin, reportZoom }) {
+export function mountLoom({ canvas, controls, view, root, dense, overview, kinds, pins, viewport, traverse, rememberPin, reportZoom }) {
   const anchors = overview ? mobileFitPositions(view.nodes, canvas.clientWidth) : arrangeNodes(view, root, canvas, dense);
   const nodes = anchors.map(node => ({ ...node, pinned: false }));
   const links = view.edges.map(edge => ({ source: edge.from, target: edge.to, kind: edge.kind }));
   const graph = createWireGraph(canvas, {
     nodes, links, theme: graphTheme(canvas, root, kinds, overview), sim: 'main',
     layout: { anchor: node => node, blend: 1, pinOnDrag: true },
-    wireEffects: { direction: 'arrow', scope: dense ? 'selected' : 'all' }
+    wireEffects: { direction: 'arrow', scope: 'all' }
   });
   function center(id) {
     const { x, y, z } = graph.getPosition(id);
@@ -136,7 +138,7 @@ export function mountLoom({ canvas, controls, view, root, dense, overview, kinds
     button.dataset.kind = node.kind;
     button.classList.toggle('is-root', node.id === root);
     button.setAttribute('aria-label', node.name);
-    const mark = marking(node, image);
+    const mark = marking(node);
     const label = document.createElement('span');
     label.className = 'network-loom-label';
     const name = document.createElement('span');
@@ -235,6 +237,8 @@ export function mountLoom({ canvas, controls, view, root, dense, overview, kinds
   }
   updateControls(graph.getFrame());
   graph.onFrame(updateControls);
+  // Atlas owns the selection so Loom never fades unrelated wires to 4.5%.
+  graph.on('select', id => { if (id !== null) graph.select(null); });
   graph.on('nodeclick', id => queueMicrotask(() => traverse(id, false)));
   graph.on('nodedrop', id => rememberPin(id, graph.getPosition(id)));
   graph.on('hover', id => { hovered = id; graph.invalidate(); });
@@ -254,7 +258,11 @@ export function mountLoom({ canvas, controls, view, root, dense, overview, kinds
       const current = graph.getViewport();
       return { ...current, zoom: current.zoom / fittedZoom };
     },
-    select(id) { selected = id; graph.select(controlsById.has(id) ? id : null); graph.invalidate(); },
+    select(id) {
+      if (id === selected) return;
+      selected = id;
+      graph.setTheme(graphTheme(canvas, root, kinds, overview, selected));
+    },
     focusControl(id) { controlsById.get(id)?.button.focus({ preventScroll: true }); },
     center,
     fit() { fitCamera(); fittedZoom = graph.getViewport().zoom; updateControls(graph.getFrame()); },

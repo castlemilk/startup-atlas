@@ -62,7 +62,7 @@ designFiles.push('design-aesthetic.html','design-aesthetic.css','design-aestheti
 designFiles.push('signal-controls.js','signal-controls.css','atlas-sdk.js','atlas-sdk.css');
 designFiles.push('atlas-exploration.js','atlas-explorer-controls.js','atlas-workspace.js','profile-evidence.js');
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
-const graphModules=['graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','graph-mobile-fit.js'];
+const graphModules=['graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','graph-mobile-fit.js','graph-artwork.js'];
 for (const file of ['analytics.js','analytics-config.js','treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css',...graphModules,'styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 await build({entryPoints:['web/atlas-sdk.js'],outfile:'dist/atlas-sdk.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof',define:{'process.env.NODE_ENV':'"production"'}});
 await build({entryPoints:['web/graph-loom.js'],outfile:'dist/graph-loom.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof'});
