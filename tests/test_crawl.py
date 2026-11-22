@@ -62,6 +62,26 @@ class ExtractionTests(unittest.TestCase):
         candidates=crawl.extract_profile_media_leads('Example',page,'people')
         self.assertEqual({x['kind'] for x in candidates},{'image','social'})
         self.assertTrue(all(x['source_url']=='https://example.com/team' and x['review_required'] for x in candidates))
+    def test_team_image_reused_alt_is_review_evidence_not_identity(self):
+        # FloodMapp /our-team reuses "Peter" beside several different named
+        # staff cards. Preserve the label and URLs, without promoting either
+        # role or portrait. A nearby, uniquely labelled image is unchanged.
+        source='https://example.com/our-team'
+        html=b'''<div><img alt="Peter" src="/juliette.webp"><p>Juliette Murphy</p></div>
+        <div><img alt=" peter " src="/ryan.webp"><p>Ryan Prosser</p></div>
+        <div><img alt="Ada Example" src="/ada.webp"><p>Ada Example</p></div>
+        <img alt="Ada Example" src="/ada.webp?size=large">
+        <img alt="Ada Example" src="/ada.webp">
+        <template><img alt="Ada Example" src="/inactive.webp"></template>'''
+        page={'final_url':source,'checked_at':'2026-11-22',**crawl.extract_page(html,source)}
+        rows=crawl.extract_profile_media_leads('Example',page,'people')
+        self.assertEqual([row['name'] for row in rows],['Peter',' peter ','Ada Example','Ada Example'])
+        self.assertEqual([row.get('label_distinct_image_paths') for row in rows],[2,2,None,None])
+        self.assertTrue(all(row['kind']=='image' and row['review_required'] for row in rows))
+        self.assertEqual(list(crawl.professional_bio_observations(
+            {'name':'Example','founders':[{'name':'Juliette Murphy'},{'name':'Ryan Prosser'}]},
+            page,set())),[])
+
     def test_profile_media_dedupes_identical_image_leads_before_cap(self):
         first = {'url': 'https://example.com/ada.jpg?size=large', 'alt': 'Ada Example'}
         different_caption = {**first, 'alt': 'Different source caption'}
