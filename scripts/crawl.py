@@ -1343,13 +1343,19 @@ def logo_capture_coverage(results, candidates):
         counts[status]+=1
         if status=='captured':
             digests.add(row['sha256'])
+    for old, new in (
+        ('sources_attempted','source_entries'),('pages_attempted','page_observations'),
+        ('pages_succeeded','successful_page_observations'),
+        ('pages_skipped_or_failed','failed_page_observations'),
+    ):
+        coverage[new]=coverage.pop(old)
     coverage['logo_candidates']={
         'observed':len(candidates),
         'capture_attempted':counts['captured']+counts['duplicate']+counts['skipped'],
         **counts,
         'distinct_captured_files':len(digests),
     }
-    coverage['note']=('Page fetch and candidate capture counts have separate denominators. '
+    coverage['note']=('Page observations may reuse a fetch result and do not count requests. '
         'Capture attempts count candidate processing, not HTTP exchanges. Candidate rows '
         'may repeat across pages; file counts are distinct by SHA-256. No bytes are reviewed or published here.')
     return coverage
