@@ -1114,16 +1114,28 @@ def extract_profile_leads(partner, page, kind):
 def extract_profile_media_leads(partner, page, kind):
     """Keep labelled image and social URLs as unverified research, never as identity assertions."""
     rows=[]; seen_images=set()
-    for image in page.get('image_candidates',[]):
+    images=page.get('image_candidates',[])
+    label_paths={}
+    for image in images:
+        label=evidence_text(image.get('alt'),160).casefold()
+        if label:
+            parts=urlsplit(image['url'])
+            label_paths.setdefault(label,set()).add((parts.netloc.lower(),parts.path))
+    for image in images:
         # This page already fixes the subject, source, time and kind. Keep
         # distinct labels and URLs (including query variants) as evidence.
         url=image['url']; label=image.get('alt','')
         key=(url,label)
         if key in seen_images: continue
         seen_images.add(key)
-        rows.append({'partner':partner,'kind':'image','page_kind':kind,'name':label,
-                     'candidate_url':url,'source_url':page['final_url'],
-                     'checked_at':page['checked_at'],'review_required':True})
+        row={'partner':partner,'kind':'image','page_kind':kind,'name':label,
+             'candidate_url':url,'source_url':page['final_url'],
+             'checked_at':page['checked_at'],'review_required':True}
+        # The raw label is not a person match. Signal reuse across observed
+        # image paths, not query/fragment variants or duplicate DOM nodes.
+        paths=len(label_paths.get(evidence_text(label,160).casefold(),()))
+        if paths>1: row['label_distinct_image_paths']=paths
+        rows.append(row)
         if len(rows)>=100: break
     for item in page.get('links',[]):
         url=item.get('url',''); host=(urlsplit(url).hostname or '').lower()
