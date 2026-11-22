@@ -101,6 +101,8 @@ Local sandbox DNS can fail even when GitHub and web connectors work. Do not clai
 
 The profiles collector already reads Startmate's approved portfolio index. On that exact host and index, the review name for a company detail link comes from its same-link `h3` with the `company-name` field, not from the URL slug or from flattened card text that includes descriptions and cohort tags. Repeated filter links cannot supply a name on their own, and conflicting marked names for the same URL are withheld. Results are capped at the existing 100 leads per page. They are reviewable company leads, not verified rounds, investment relationships or programme status. This does not follow company detail links or add any request scope.
 
+Profile reports record the number of eligible names within the already retained, at-most-500 links per successful team or portfolio page, how many of those are returned and how many the 100-lead cap omitted. See `profile_lead_coverage` per page and `coverage.profile_leads_by_kind` for the batch. A profile-link window at its limit can hide further names, and missing or failed page kinds are not counted as zero. These are counts of unreviewed source observations, not of unique companies across pages or of all companies from a source.
+
 ## Tests
 
 Use `npm test`, `npm run test:mcp`, `npm --prefix backend/hosted test` and the relevant builds as appropriate. Hosted OAuth also needs Workers-compatible verification, not solely mocks. Check the exact commit and deployment result; run a live read through the MCP after publishing.

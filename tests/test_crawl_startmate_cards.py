@@ -76,3 +76,58 @@ class StartmatePortfolioTests(unittest.TestCase):
           <a href="/portfolio-companies/conflict"><h3 fs-cmsfilter-field="company-name">Other identity</h3></a>
         ''')
         self.assertEqual([r['name'] for r in crawl.extract_profile_leads('Startmate', parsed, 'companies')], ['Ansight'])
+
+    def test_profiles_distinguish_lead_cap_from_a_fetch_or_a_scope_expansion(self):
+        import tempfile
+        import types
+
+        class Transport:
+            delay = 1
+
+            def __init__(self):
+                self.calls = []
+
+            def request(self, url, host):
+                self.calls.append((url, host))
+                if url == ROOT + '/':
+                    return 200, {'Content-Type': 'text/html'}, b'<a href="/portfolio">Portfolio</a>', url
+                if url == PORTFOLIO:
+                    cards = ''.join(
+                        f'<a href="/portfolio-companies/example-{i}">'
+                        f'<h3 fs-cmsfilter-field="company-name">Example {i}</h3><p>Card summary</p></a>'
+                        for i in range(102)
+                    )
+                    cards += '<a href="/portfolio-companies/unlabelled">Unlabelled card</a>'
+                    cards += '<a href="/portfolio-companies/example-101">Repeated filter item</a>'
+                    return 200, {'Content-Type': 'text/html'}, cards.encode(), url
+                raise AssertionError('Should not fetch company detail pages')
+
+        with tempfile.TemporaryDirectory() as tmp:
+            approved = Path(tmp) / 'partners.csv'
+            approved.write_text('partner,qid,official_website,approved\nStartmate,,https://www.startmate.com/,yes\n')
+            args = types.SimpleNamespace(approved=approved, partner=None, limit=0, follow=2)
+            transport = Transport()
+            report = crawl.crawl_profiles({'partnerLeads': ['Startmate']}, args, transport)
+        self.assertEqual(transport.calls, [(ROOT + '/', 'www.startmate.com'), (PORTFOLIO, 'www.startmate.com')])
+        self.assertEqual(report['coverage']['unreviewed_candidates'], 100)
+        self.assertNotIn('people', report['coverage']['profile_leads_by_kind'])
+        self.assertEqual(report['coverage']['profile_leads_by_kind']['companies'], {
+            'pages_measured': 1, 'eligible_within_retained_links': 102,
+            'returned': 100, 'omitted_by_lead_limit': 2, 'pages_at_profile_link_limit': 0,
+        })
+        self.assertEqual(report['results'][0]['pages'][1]['profile_lead_coverage'], {
+            'eligible_within_retained_links': 102, 'returned': 100, 'omitted_by_lead_limit': 2,
+            'profile_links_at_limit': False,
+        })
+
+    def test_profile_link_limit_does_not_claim_complete_coverage(self):
+        captured = page(''.join(
+            f'<a href="/portfolio-companies/index-card-{i}">'
+            f'<h3 fs-cmsfilter-field="company-name">Card {i}</h3></a>' for i in range(503)
+        ))
+        rows, counts = crawl.profile_lead_batch('Startmate', captured, 'companies')
+        self.assertEqual(len(rows), 100)
+        self.assertEqual(counts, {
+            'eligible_within_retained_links': 500, 'returned': 100, 'omitted_by_lead_limit': 400,
+            'profile_links_at_limit': True,
+        })
