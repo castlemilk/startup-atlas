@@ -2,7 +2,7 @@ import { escapeHtml as esc, sourceUrl } from './logic.js';
 import { logoClassFor } from './logos.js';
 import { graphArtwork } from './graph-artwork.js';
 import { openGraph } from './graph-store.js';
-import { entityDetails, entityHref, kindName } from './graph-model.js';
+import { entityDetails, entityHref, fundingTimelineArticles, kindName } from './graph-model.js';
 import { icon, renderEvidenceHeading } from './atlas-ui.js';
 import { companyLocationFacts, countryName, indexCompanies } from './atlas-exploration.js';
 import { createProfileEvidence, profileSource, profileTime, recordedProfileDate } from './profile-evidence.js';
@@ -178,10 +178,7 @@ function articleRow({ article, title, date }, evidence, citation) {
 
 function companyTimeline(rounds, articles, named, evidence, citation) {
   const entries = [...rounds];
-  const roundSources = new Set(rounds.map(entry => sourceUrl(entry.round.source)).filter(Boolean));
-  for (const article of articles) {
-    const url = sourceUrl(article.url);
-    if (!url || (article.kind === 'funding announcement' && roundSources.has(url))) continue;
+  for (const article of fundingTimelineArticles(articles, rounds.map(entry => entry.round))) {
     entries.push({ date: recordedProfileDate(article.published_on), title: article.title, article });
   }
   const dated = entries.filter(entry => entry.date).sort((a, b) => a.date.value.localeCompare(b.date.value));
@@ -189,7 +186,7 @@ function companyTimeline(rounds, articles, named, evidence, citation) {
   const render = entry => entry.round ? roundRow(entry, named, evidence, citation) : articleRow(entry, evidence, citation);
   const coverage = rounds.length
     ? '<p class="entity-section-intro">Historical announcements and recorded financing events. Amounts retain their recorded currencies. A lifetime fundraising total is unavailable.</p>'
-    : empty('No recorded funding announcements. The published research has no financing events for this company.');
+    : empty('The published research has no recorded financing events for this company.');
   return `<section class="entity-section" id="entity-funding">${heading('Funding history')}${coverage}
     ${dated.length ? `<ol class="entity-timeline">${dated.map(render).join('')}</ol>` : ''}
     ${undated.length ? `<h3 class="entity-undated-heading">Undated records</h3><ul class="entity-timeline entity-timeline-undated">${undated.map(render).join('')}</ul>` : ''}</section>`;

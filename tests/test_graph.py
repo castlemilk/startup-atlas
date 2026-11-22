@@ -94,6 +94,27 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(len(data['edges']),2)
         self.assertEqual(data['funding_rounds'][0]['currency'],'AUD')
         self.assertTrue(all(x['source'].startswith('https://') for x in data['edges']))
+    def test_derived_funding_links_do_not_claim_to_be_announcements(self):
+        # The exact Goterra draft initially mislabelled both retrospective
+        # counsel's credentials and the intermediary's closed-offer record.
+        sources = [
+            'https://img.legalvision.com.au/wp-content/uploads/2022/09/01194909/Capital-Raising-Capability-Statement.pdf',
+            'https://www.onmarket.com.au/for-companies/past-transactions/',
+            'https://tenacious.ventures/insights/investment-notes-goterra',
+        ]
+        explicit = {'title': 'Explicit investor announcement', 'url': sources[2],
+                    'published_on': '2020-04-14', 'kind': 'funding announcement'}
+        startup = {'name': 'Goterra', 'funding_rounds': [
+            {'id': f'fixture-{i}', 'stage': stage, 'source': source}
+            for i, (stage, source) in enumerate(zip(('Seed', 'Equity crowdfunding', 'Series A'), sources))
+        ], 'articles': [explicit]}
+        result = graph.build_graph({}, [], {}, {'opportunities': []}, {'startups': [startup]})
+        self.assertEqual(len(result['articles']), 3)
+        articles = {a['url']: a for a in result['articles']}
+        self.assertEqual([articles[url]['kind'] for url in sources], ['funding source', 'funding source', 'funding announcement'])
+        self.assertEqual(articles[sources[2]], {'startup_id': 'startup:goterra', **explicit})
+        self.assertEqual([articles[url]['published_on'] for url in sources], ['', '', '2020-04-14'])
+
     def test_distinct_names_cannot_silently_collapse_into_same_id(self):
         profiles={'P':{'companies':[{'name':'A&B','source':'https://example.com/'},{'name':'A B','source':'https://example.com/'}]}}
         with self.assertRaises(ValueError):graph.build_graph(profiles,['P'],{}, {'opportunities':[]},{'startups':[]})
