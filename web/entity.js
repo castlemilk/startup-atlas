@@ -4,7 +4,7 @@ import { graphArtwork } from './graph-artwork.js';
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName } from './graph-model.js';
 import { icon, renderEvidenceHeading } from './atlas-ui.js';
-import { countryName, indexCompanies } from './atlas-exploration.js';
+import { companyLocationFacts, countryName, indexCompanies } from './atlas-exploration.js';
 import { createProfileEvidence, profileSource, profileTime, recordedProfileDate } from './profile-evidence.js';
 
 const root = document.getElementById('entity-profile');
@@ -268,7 +268,7 @@ async function renderProfile() {
   const recordedFacts = facts.map(fact => ({ ...fact, proof: evidence.add({
     label: fact.label, value: fact.value, sources: [citation(fact.source, { reviewed_at: fact.reviewed_at })]
   }) }));
-  const places = recordedFacts.filter(fact => /^(?:reported )?headquarters$/i.test(fact.label) && sourceUrl(fact.source));
+  const places = companyLocationFacts(recordedFacts);
   const place = places.length === 1 ? places[0] : null;
   const dimensions = isStartup ? indexCompanies({ entities: [entity], funding_rounds: [] }).get(entity.id) : null;
   const websiteUrl = sourceUrl(entity.website);
@@ -308,7 +308,7 @@ async function renderProfile() {
     .sort((a, b) => a.date.value.localeCompare(b.date.value))[0];
   const graphAction = (className = '') => `<a class="atlas-button atlas-button-primary${className ? ` ${className}` : ''}" data-atlas-profile-graph="${esc(entity.id)}" href="${shareProfile}">${icon('graph')}Explore graph</a>`;
   const companyActions = isStartup ? `<button type="button" class="atlas-button" data-atlas-save-company="${esc(entity.id)}" data-company-name="${esc(entity.name)}">${icon('plus')}<span data-atlas-action-label>Save</span></button><button type="button" class="atlas-button" data-atlas-compare="${esc(entity.id)}" data-company-name="${esc(entity.name)}">${icon('copy')}<span data-atlas-action-label>Compare</span></button>` : '';
-  const factMarks = { headquarters: 'location', 'product-launch': 'calendar', 'founding-year-source': 'calendar' };
+  const factMarks = { headquarters: 'location', 'co-headquarters': 'location', 'business-base': 'location', 'product-launch': 'calendar', 'founding-year-source': 'calendar' };
   const keyFacts = [...new Set([
     recordedFacts.find(fact => /^(?:product launched|founding year|founded)$/i.test(fact.label)), place, ...recordedFacts,
   ].filter(Boolean))].slice(0, 2);
