@@ -97,6 +97,10 @@ The public site deploys through the repository's Pages workflow. The private MCP
 
 Local sandbox DNS can fail even when GitHub and web connectors work. Do not claim a local crawl succeeded from connector access, bypass network controls, expose short-lived credentials, deploy an old Site version as if it included new code, or send source credentials to a third party. If the Site source host is unavailable, finish independent work, report the exact blocker, and resume publication from an authorized network-enabled environment. The connector and hosted MCP may each have independent GitHub authorizations.
 
+### Startmate portfolio company cards
+
+The profiles collector already reads Startmate's approved portfolio index. On that exact host and index, the review name for a company detail link comes from its same-link `h3` with the `company-name` field, not from the URL slug or from flattened card text that includes descriptions and cohort tags. Repeated filter links cannot supply a name on their own, and conflicting marked names for the same URL are withheld. Results are capped at the existing 100 leads per page. They are reviewable company leads, not verified rounds, investment relationships or programme status. This does not follow company detail links or add any request scope.
+
 ## Tests
 
 Use `npm test`, `npm run test:mcp`, `npm --prefix backend/hosted test` and the relevant builds as appropriate. Hosted OAuth also needs Workers-compatible verification, not solely mocks. Check the exact commit and deployment result; run a live read through the MCP after publishing.

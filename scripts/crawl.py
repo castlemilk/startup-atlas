@@ -352,6 +352,23 @@ class ArticleMarkup:
                 'truncated':self.truncated or len(dates)>MAX_DATE_ASSERTIONS}
 
 
+# The existing approved Startmate portfolio uses labelled headings inside
+# company cards, rather than short anchor text. Keep this exception local
+# to that source and path; a matching slug is not name evidence.
+STARTMATE_HOST = 'www.startmate.com'
+STARTMATE_CARD_PATH = re.compile(r'/portfolio-companies/[a-z0-9][a-z0-9-]{0,119}')
+
+
+def startmate_portfolio_page(parts):
+    return (parts.scheme == 'https' and parts.netloc == STARTMATE_HOST
+            and parts.path in ('/portfolio', '/portfolio/'))
+
+
+def startmate_portfolio_card(parts):
+    return (parts.scheme == 'https' and parts.netloc == STARTMATE_HOST
+            and not parts.query and not parts.fragment and STARTMATE_CARD_PATH.fullmatch(parts.path) is not None)
+
+
 class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
@@ -362,6 +379,8 @@ class PageParser(HTMLParser):
         self._brand_regions=[]; self._anchor_homes=[]; self._footer_depth=0
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
         self.article_markup=ArticleMarkup(base)
+        self._startmate_portfolio = startmate_portfolio_page(urlsplit(base))
+        self.startmate_card_names = {}
     def handle_starttag(self,tag,attrs):
         tag=tag.lower()
         # Preserve nested template boundaries. Other inactive containers are
@@ -420,8 +439,14 @@ class PageParser(HTMLParser):
         if not self._hidden and tag in ('h1','h2','h3','h4'): self._heading_links=[]
         if not self._hidden and tag in ('title','h1','h2','h3','h4','a','p'):
             self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links),'label':(a.get('aria-label') or a.get('title') or '')[:160]})
+            capture = self._captures[-1]
             if tag == 'p':
-                self._captures[-1]['visible_text'] = []
+                capture['visible_text'] = []
+            elif self._startmate_portfolio:
+                if tag == 'a' and a.get('href') and startmate_portfolio_card(target):
+                    capture['company_names'] = set()
+                elif tag == 'h3' and a.get('fs-cmsfilter-field') == 'company-name':
+                    capture['company_heading'] = True
     def handle_endtag(self,tag):
         tag=tag.lower()
         if self._inactive:
@@ -463,8 +488,20 @@ class PageParser(HTMLParser):
             elif tag in ('h1','h2','h3','h4') and value:
                 if len(self.headings)<40: self.headings.append({'level':tag,'text':value})
                 self._heading_links=list(range(capture['link_start'],len(self.links)))
+                if capture.get('company_heading'):
+                    anchor = next((c for c in reversed(self._captures) if c['tag'] == 'a'), {})
+                    names = anchor.get('company_names')
+                    if names is not None and len(names) < 2:
+                        names.add(value)
             elif tag=='a' and capture['href'] and value and len(self.links)<1000:
-                self.links.append({'text':value,'url':urljoin(self.base,capture['href'])})
+                link = {'text':value,'url':urljoin(self.base,capture['href'])}
+                names = capture.get('company_names', ())
+                if names:
+                    observed = self.startmate_card_names.setdefault(link['url'], set())
+                    for name in names:
+                        if len(observed) >= 2: break
+                        observed.add(name)
+                self.links.append(link)
             elif tag=='p' and value:
                 for index in set(self._heading_links + list(range(capture['link_start'],len(self.links)))):
                     if self.links[index].get('text') and not self.links[index].get('context'): self.links[index]['context']=value[:600]
@@ -656,7 +693,12 @@ def extract_page(body,url):
         if not text or parts.scheme!='https' or parts.hostname!=urlsplit(url).hostname or parts.username or parts.password or candidate in profile_seen: continue
         if re.search(r'(?:^|&)(?:token|access_token|api_key|code|session)=',parts.query,re.I): continue
         profile_seen.add(candidate)
-        profile_links.append({'url':candidate,'text':text[:140],'context':link.get('context','')[:400]})
+        row = {'url':candidate,'text':text[:140],'context':link.get('context','')[:400]}
+        names = parser.startmate_card_names.get(candidate, ())
+        if len(names) == 1:
+            name = next(iter(names))
+            if 2 <= len(name) <= 100: row['portfolio_company_name'] = name
+        profile_links.append(row)
         if len(profile_links)>=500: break
     snippets=[]
     for piece in parser.text:
@@ -901,6 +943,7 @@ def profile_landing_links(page, base, max_follow, include_about=False):
             parts=urlsplit(link.get('url',''))
             if parts.scheme!='https' or parts.hostname!=host or parts.username or parts.password: continue
             if not pattern.search(link.get('text','')+' '+parts.path.replace('-',' ')): continue
+            if parts.netloc == STARTMATE_HOST and parts.path.startswith('/portfolio-companies/'): continue
             if kind in PROFILE_PATH_RULES and PROFILE_PATH_RULES[kind].search(parts.path): continue
             clean=urlunsplit((parts.scheme,parts.netloc,parts.path,parts.query,''))
             if clean!=base and all(x['url']!=clean for x in selected):
@@ -911,10 +954,14 @@ def profile_landing_links(page, base, max_follow, include_about=False):
 def extract_profile_leads(partner, page, kind):
     """Collect labelled links as unreviewed leads, never infer investment or employment."""
     rows=[]; seen=set()
+    startmate = kind == 'companies' and startmate_portfolio_page(urlsplit(page['final_url']))
     for link in page.get('profile_links',[]):
-        name=' '.join(link.get('text','').split()).strip()
         url=link.get('url',''); parts=urlsplit(url)
-        if not (2<=len(name)<=100) or PROFILE_GENERIC.match(name) or not PROFILE_PATH_RULES[kind].search(parts.path): continue
+        card = startmate and startmate_portfolio_card(parts)
+        raw_name = link.get('portfolio_company_name','') if card else link.get('text','')
+        name = ' '.join(raw_name.split()).strip()
+        if not (2<=len(name)<=100) or PROFILE_GENERIC.match(name): continue
+        if not card and not PROFILE_PATH_RULES[kind].search(parts.path): continue
         if parts.scheme!='https' or not parts.hostname or parts.username or parts.password: continue
         key=(name.casefold(),url)
         if key in seen: continue
@@ -922,6 +969,7 @@ def extract_profile_leads(partner, page, kind):
         rows.append({'partner':partner,'kind':kind,'name':name,'candidate_url':url,
                      'source_url':page['final_url'],'checked_at':page['checked_at'],
                      'context':link.get('context','')[:400],'review_required':True})
+        if card: rows[-1]['name_evidence'] = 'portfolio-card-company-heading'
         if len(rows)>=100: break
     return rows
 
