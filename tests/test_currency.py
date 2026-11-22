@@ -182,5 +182,51 @@ class CrawlWiringTests(unittest.TestCase):
         self.assertEqual(mentions[0]["mention"], "A$1.05B")
 
 
+    def test_late_amount_retains_its_evidence_context(self):
+        crawl = _load_crawl()
+        source = "https://www.morsemicro.com/news/mikrotik-launches-wi-fi-halow-outdoor-gateway-with-morse-micro-silicon"
+        # Crawl receipt retained a capped opening excerpt and the exact token
+        # separately; this synthetic line reproduces the recorded offset loss.
+        prefix = "Gateway hardware and setup. " * 10
+        line = prefix + "Suggested retail price: US$139, excluding shipping."
+        rows = crawl.extract_amount_mentions([line, line], source, rate_bundle=PINNED)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["mention"], "US$139,")
+        self.assertEqual(rows[0]["source"], source)
+        self.assertEqual(rows[0]["normalised"]["value"], 139.0)
+        self.assertIn("US$139, excluding shipping.", rows[0]["context"])
+        self.assertLessEqual(len(rows[0]["context"]), 240)
+
+    def test_amount_context_keeps_early_and_distinct_late_mentions(self):
+        crawl = _load_crawl()
+        source = "https://example.com/news"
+        short = "Issuer raises $320 million; valuation is $11 billion."
+        rows = crawl.extract_amount_mentions([short], source, rate_bundle=PINNED)
+        self.assertEqual([r["context"] for r in rows], [short, short])
+        self.assertTrue(all(r["normalised"]["status"] == "ambiguous" for r in rows))
+        pad = "Technical details. " * 14
+        distinct = [pad + "First unit costs US$139, before tax.",
+                    pad + "Second unit costs US$139, before delivery."]
+        late = crawl.extract_amount_mentions(distinct, source, rate_bundle=PINNED)
+        self.assertEqual(len(late), 2)
+        self.assertIn("First unit costs US$139, before tax.", late[0]["context"])
+        self.assertIn("Second unit costs US$139, before delivery.", late[1]["context"])
+
+    def test_amount_context_boundary_and_oversized_token_stay_bounded(self):
+        crawl = _load_crawl()
+        source = "https://example.com/news"
+        for amount_end in (239, 240, 241):
+            token = "US$139"
+            prefix = ("x" * (amount_end - len(token) - 1)) + " "
+            row = crawl.extract_amount_mentions([prefix + token + " for this item"], source, rate_bundle=PINNED)[0]
+            self.assertIn(token, row["context"])
+            self.assertLessEqual(len(row["context"]), 240)
+        token = "US$" + "1" * 249
+        row = crawl.extract_amount_mentions(["intro " + token], source, rate_bundle=PINNED)[0]
+        self.assertEqual(row["mention"], token)
+        self.assertTrue(row["context"].startswith("US$"))
+        self.assertEqual(len(row["context"]), 240)
+
+
 if __name__ == "__main__":
     unittest.main()

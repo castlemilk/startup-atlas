@@ -537,9 +537,15 @@ def extract_amount_mentions(parts,url,context_country=None,rate_bundle=None):
     for raw in parts:
         line=clean_capture_line(raw)
         for match in pattern.finditer(line):
-            key=(match.group(0),line[:240])
+            # Retain the opening excerpt unless it would omit the amount.
+            # Anchor an unusually long token at its start rather than growing
+            # the bounded evidence field or dropping the observation.
+            end=match.end()
+            start=max(0,min(match.start(),end+48-240)) if end>240 else 0
+            context=line[start:start+240]
+            key=(match.group(0),context)
             if key not in seen:
-                seen.add(key); found.append({'mention':match.group(0),'context':line[:240],'source':url,
+                seen.add(key); found.append({'mention':match.group(0),'context':context,'source':url,
                     'normalised':(_currency.normalise_mention(match.group(0),context_country=context_country,rate_bundle=rate_bundle)
                                  if _currency is not None else None)})
             if len(found)>=30: return found
