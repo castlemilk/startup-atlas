@@ -42,6 +42,8 @@ PARTNER_SOURCES = ROOT / 'data/partner-sources.json'
 AGENT = 'StartupAtlasResearchBot/1.0 (+https://github.com/castlemilk/startup-atlas)'
 BOT_TOKEN = 'startupatlasresearchbot'
 MAX_BYTES = 1_000_000
+PROFILE_LINK_LIMIT = 500
+PROFILE_LEAD_LIMIT = 100
 FOLLOW_WORDS = re.compile(r'apply|application|eligib|terms|conditions|credits|benefits|startup|pricing|program|grant|founder|accelerator|incubator|fellowship|invest', re.I)
 SIGNAL_WORDS = re.compile(r'credit|eligib|expiry|expir|funding|equity|application|deadline|founded|invest|match|country|countries|regional|fee|startup|accelerator', re.I)
 PROGRAM_WORDS = re.compile(r'\b(startups?|start-ups?|founders?|accelerators?|incubators?|fellowships?|grants?|funding|credits?|program(?:me)?s?|innovation)\b',re.I)
@@ -699,7 +701,7 @@ def extract_page(body,url):
             name = next(iter(names))
             if 2 <= len(name) <= 100: row['portfolio_company_name'] = name
         profile_links.append(row)
-        if len(profile_links)>=500: break
+        if len(profile_links)>=PROFILE_LINK_LIMIT: break
     snippets=[]
     for piece in parser.text:
         if SIGNAL_WORDS.search(piece):
@@ -951,11 +953,12 @@ def profile_landing_links(page, base, max_follow, include_about=False):
         if len(selected)>=max_follow: break
     return selected[:max_follow]
 
-def extract_profile_leads(partner, page, kind):
-    """Collect labelled links as unreviewed leads, never infer investment or employment."""
+def profile_lead_batch(partner, page, kind):
+    """Count eligible observations only within the bounded retained link set."""
     rows=[]; seen=set()
+    links = page.get('profile_links', [])[:PROFILE_LINK_LIMIT]
     startmate = kind == 'companies' and startmate_portfolio_page(urlsplit(page['final_url']))
-    for link in page.get('profile_links',[]):
+    for link in links:
         url=link.get('url',''); parts=urlsplit(url)
         card = startmate and startmate_portfolio_card(parts)
         raw_name = link.get('portfolio_company_name','') if card else link.get('text','')
@@ -966,12 +969,18 @@ def extract_profile_leads(partner, page, kind):
         key=(name.casefold(),url)
         if key in seen: continue
         seen.add(key)
+        if len(rows) >= PROFILE_LEAD_LIMIT: continue
         rows.append({'partner':partner,'kind':kind,'name':name,'candidate_url':url,
                      'source_url':page['final_url'],'checked_at':page['checked_at'],
                      'context':link.get('context','')[:400],'review_required':True})
         if card: rows[-1]['name_evidence'] = 'portfolio-card-company-heading'
-        if len(rows)>=100: break
-    return rows
+    return rows, {'eligible_within_retained_links':len(seen), 'returned':len(rows),
+                  'omitted_by_lead_limit':len(seen)-len(rows), 'profile_links_at_limit':len(links)==PROFILE_LINK_LIMIT}
+
+
+def extract_profile_leads(partner, page, kind):
+    """Collect labelled links as unreviewed leads, never infer investment or employment."""
+    return profile_lead_batch(partner, page, kind)[0]
 
 def extract_profile_media_leads(partner, page, kind):
     """Keep labelled image and social URLs as unverified research, never as identity assertions."""
@@ -1284,6 +1293,24 @@ def page_fetch_coverage(results, candidates):
             'pages_skipped_or_failed':failed, 'unreviewed_candidates':len(candidates),
             'note':'Counts cover attempted pages only; they do not establish complete source coverage or verified facts.'}
 
+def profile_batch_coverage(results):
+    """Summarize measured team or portfolio pages without treating unmeasured kinds as zero."""
+    by_kind = {}
+    for result in results:
+        for page in result['pages']:
+            batch = page.get('profile_lead_coverage')
+            if batch is None: continue
+            report = by_kind.setdefault(page['profile_kind'], {
+                'pages_measured':0, 'eligible_within_retained_links':0,
+                'returned':0, 'omitted_by_lead_limit':0, 'pages_at_profile_link_limit':0,
+            })
+            for key in ('eligible_within_retained_links', 'returned', 'omitted_by_lead_limit'):
+                report[key] += batch[key]
+            report['pages_measured'] += 1
+            report['pages_at_profile_link_limit'] += int(batch['profile_links_at_limit'])
+    return by_kind
+
+
 def crawl_profiles(catalogue,args,transport,company=False):
     seeds=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
     if args.partner: seeds=[s for s in seeds if args.partner.casefold() in s['name'].casefold()]
@@ -1321,13 +1348,16 @@ def crawl_profiles(catalogue,args,transport,company=False):
                 page=fetch(target['url'],host,scope); page['profile_kind']=target['kind']; pages.append(page)
                 if page['status']=='ok':
                     if target['kind'] in PROFILE_PATH_RULES:
-                        candidates.extend(extract_profile_leads(seed['name'],page,target['kind']))
+                        leads, page['profile_lead_coverage'] = profile_lead_batch(seed['name'],page,target['kind'])
+                        candidates.extend(leads)
                     candidates.extend(extract_profile_media_leads(seed['name'],page,target['kind']))
         results.append({'name':seed['name'],'url':seed['url'],'pages':pages,**({'crawl_scope':scope} if scope is not None else {}),
                         'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''})
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
+    coverage = page_fetch_coverage(results,candidates)
+    coverage['profile_leads_by_kind'] = profile_batch_coverage(results)
     return {'version':1,'mode':'profiles','generated_at':utc_now(),'results':results,'candidates':candidates,
-            'coverage':page_fetch_coverage(results,candidates),
+            'coverage':coverage,
             'warning':'Links are unreviewed leads, not verified people, roles, investments or current relationships. Verify each against its source before publishing.'}
 
 def logo_resolution(body, kind):
