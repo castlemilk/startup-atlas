@@ -668,7 +668,7 @@ try {
   await until(()=>evaluate(companyMapReady),'Default Graph must mount the company Loom canvas');
   await evaluate('document.fonts.ready.then(()=>true)');
   assert.equal(await evaluate("document.querySelector('#graph-company-group').value"),'sector');
-  const desktopCompanies=await checkCompanyMap({groupLabels:['Design & media','Financial software']});
+  const desktopCompanies=await until(()=>checkCompanyMap({groupLabels:['Design & media','Financial software']}),'Desktop sector Fit must frame every company');
   assert.ok(desktopCompanies.names.length>10,'A desktop Fit should include readable company names');
   await screenshot('graph-all-companies-desktop.png');
   await changeGrouping('country');
