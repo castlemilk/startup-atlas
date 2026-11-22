@@ -503,7 +503,7 @@ function renderDetail() {
     ${facts}<p class="detail-summary">${esc(summary)}</p>${reviewedRelation}
     <div class="detail-actions"><a class="detail-open atlas-button atlas-button-accent" data-atlas-profile-link href="${esc(entityHref(entity))}">Open profile${icon('external')}</a>${inspectAction}${actions}</div>
     <section class="detail-section"><h3>Recorded connections <span>${details.edges.length}</span></h3>${related.length?'<ul class="detail-related">'+related.join('')+'</ul>':'<p class="detail-empty">No reviewed connections yet.</p>'}</section>
-    ${company?'<section class="detail-section"><h3>Funding announcements</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not disclosed')+' · historical announcement</span>'+evidence(round.source,'Announcement source')+'</div>').join(''):'<p class="detail-empty">No recorded funding announcements.</p>')+'</section>':''}
+    ${company?'<section class="detail-section"><h3>Recorded financing</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not recorded')+'</span>'+evidence(round.source,'Funding source')+'</div>').join(''):'<p class="detail-empty">No recorded financing events.</p>')+'</section>':''}
     ${source?'<section class="detail-section"><h3>Sources</h3>'+source+'</section>':''}`;
   $('graph-detail').querySelectorAll('img').forEach(img=>showGraphArtwork(img,img.nextElementSibling));
 }

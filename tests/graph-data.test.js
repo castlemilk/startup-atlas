@@ -2,7 +2,17 @@ import { startupSourceCoverage } from '../backend/hosted/src/coverage.mjs';
 import {readFile} from 'node:fs/promises';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { entityDetails, neighborhood, searchSnapshot, teamPersonId } from '../web/graph-model.js';
+import { entityDetails, fundingTimelineArticles, neighborhood, searchSnapshot, teamPersonId } from '../web/graph-model.js';
+
+test('funding timeline keeps reviewed evidence and hides duplicate round links', () => {
+  const source = 'https://example.com/closed-offer';
+  const legacy = { url: source, kind: 'funding announcement' };
+  const fallback = { url: source, kind: 'funding source' };
+  const reviewed = { url: source, kind: 'equity crowdfunding close record' };
+  const separate = { url: 'https://example.com/another-announcement', kind: 'funding announcement' };
+  const insecure = { url: 'http://example.com/http', kind: 'news' };
+  assert.deepEqual(fundingTimelineArticles([legacy, fallback, reviewed, separate, insecure], [{source}]), [reviewed, separate]);
+});
 
 test('coverage counts distinct source documents for each type of startup evidence',()=>{
   const coverage=startupSourceCoverage({
