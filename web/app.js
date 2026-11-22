@@ -4,7 +4,7 @@ import { partnerRelationships } from './relationships.js';
 import { openGraph } from './graph-store.js';
 import { entityBadge, icon, renderEntityRow } from './atlas-ui.js';
 import { entityDetails, entityHref, slug } from './graph-model.js';
-import { companyFacets, countryName, filterCompanies, hasCompanyScope, indexCompanies, readExploration, writeExploration } from './atlas-exploration.js';
+import { companyFacets, companyPlaceLabel, filterCompanies, hasCompanyScope, indexCompanies, readExploration, writeExploration } from './atlas-exploration.js';
 import { mountExploration } from './atlas-explorer-controls.js';
 import { companyColumnGroups, companyColumns, defaultCompanyColumns, compareCompanyRecords, indexCompanyMetadata } from './company-columns.js';
 import { loadTreemapEvidence } from './treemap-model.js';
@@ -372,7 +372,7 @@ function renderInspectorRecord(entity) {
   const founderPreview=[...new Map(connections.map(({other})=>[other.id,other])).values()].slice(0,3);
   const people=connections.map(({other,label,source})=>`<li><div><a href="${esc(entityHref(other))}">${esc(other.name)}</a><span>${esc(label)}</span></div>${inspectorSource(source,'Evidence')}</li>`).join('');
   const companyInfo=dimensions.get(id);
-  const country=companyInfo?.country ? [companyInfo.city,countryName(companyInfo.country)].filter(Boolean).join(', ') : '';
+  const country=companyPlaceLabel(companyInfo);
   const launch=facts.find(fact=>fact.label.toLowerCase()==='product launched');
   const launchYears=launch?.value.match(/\b[12]\d{3}\b/g) ?? [];
   const launchYear=launchYears.length===1 ? launchYears[0] : '';

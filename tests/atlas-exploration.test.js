@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { explorationHref, filterCompanies, indexCompanies, readExploration, writeExploration } from '../web/atlas-exploration.js';
+import { companyPlaceLabel, countryName, explorationHref, filterCompanies, indexCompanies, readExploration, writeExploration } from '../web/atlas-exploration.js';
 
 const source='https://example.com/record';
 const fact=(label,value,extra={})=>({label,value,source,...extra});
@@ -49,6 +49,26 @@ test('a state or province in a sourced headquarters string is never treated as t
   const row=indexCompanies({entities:[entity]}).get(entity.id);
   assert.equal(row.country,'US');
   assert.equal(row.city,'');
+});
+
+test('country grouping distinguishes a business base, explicit co-headquarters and unresolved claims',()=>{
+  const base = company('base',[fact('Business base','Melbourne, Australia'),fact('Office','London, United Kingdom')]);
+  const relocated = company('relocated',[...base.profile_facts,fact('Headquarters','London, United Kingdom')]);
+  const dual = company('dual',[fact('Co-headquarters','San Francisco, United States and Singapore')]);
+  const conflict = company('conflict',[...dual.profile_facts,fact('Headquarters','San Francisco, United States')]);
+  const companies = [base,relocated,dual,conflict];
+  const dimensions = indexCompanies({entities:companies});
+  assert.equal(dimensions.get(base.id).country,'AU');
+  assert.equal(companyPlaceLabel(dimensions.get(base.id)),'Melbourne, Australia · business base');
+  assert.equal(companyPlaceLabel(dimensions.get(relocated.id)),'London, United Kingdom');
+  assert.equal(countryName(dimensions.get(dual.id).country),'Multiple headquarters');
+  assert.equal(companyPlaceLabel(dimensions.get(dual.id)),'San Francisco, United States and Singapore');
+  assert.equal(dimensions.get(conflict.id).country,'');
+  const selected = scope('hq=multiple&place=multiple&city=San+Francisco');
+  assert.equal(selected.drillCity,'');
+  assert.deepEqual(readExploration(writeExploration(new URLSearchParams(),selected)),selected);
+  assert.deepEqual(ids(filterCompanies(companies,dimensions,selected)),[dual.id]);
+  assert.deepEqual(ids(filterCompanies(companies,dimensions,scope('hq=unknown'))),[conflict.id]);
 });
 
 test('view links round-trip facets and inspection and preserve the destination route state',()=>{

@@ -1,4 +1,4 @@
-import { companyFacets, countryName, filterCompanies, hasCompanyScope } from './atlas-exploration.js';
+import { companyFacets, countryName, filterCompanies, hasCompanyScope, multipleHeadquarters } from './atlas-exploration.js';
 import { renderIcon } from './atlas-icons.js';
 import { escapeHtml as esc } from './logic.js';
 
@@ -238,7 +238,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
       const dimension = dimensions.get(item.id);
       const code = dimension?.country || 'unknown';
       if (!parent) available.add(code);
-      else if (parent===code && code!=='unknown') available.add(dimension?.city || 'unknown');
+      else if (parent===code && code!=='unknown' && code!==multipleHeadquarters) available.add(dimension?.city || 'unknown');
     }
     const label = parent ? cityName : countryName;
     const values = ordered(available,label);

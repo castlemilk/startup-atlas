@@ -485,10 +485,10 @@ function renderDetail() {
   const selectionNote=outOfScope?'Outside current results':isRoot?'Map centred here.':visibleIds.has(selectedId)?'Selected within this map.':listedIds.has(selectedId)?'Selected in the connections list.':'Selected outside this map.';
   const inspectAction=isRoot?'':'<button class="detail-explore atlas-button" type="button" data-explore="'+esc(entity.id)+'">Explore from here</button>';
   const company=dimensions.get(selectedId);
-  const headquarters=company?.country ? [company.city,countryName(company.country)].filter(Boolean).join(', ') : 'Not recorded';
+  const headquarters=company?.location || (company?.country ? [company.city,countryName(company.country)].filter(Boolean).join(', ') : 'Not recorded');
   const recovery=outOfScope?'<div class="graph-recovery"><button type="button" data-graph-adjust>Adjust filters</button><button type="button" data-graph-clear>Clear selection</button></div>':'';
   const actions=company?'<div class="graph-workspace-actions" data-company-name="'+esc(entity.name)+'"><button type="button" class="atlas-button" data-atlas-save-company="'+esc(entity.id)+'">Save</button><button type="button" class="atlas-button" data-atlas-compare="'+esc(entity.id)+'">Compare</button></div>':'';
-  const facts=company?'<dl class="graph-company-facts"><div><dt>Headquarters</dt><dd>'+esc(headquarters)+'</dd></div><div><dt>Primary sector</dt><dd>'+esc(company.sector || 'Not recorded')+'</dd></div></dl>':'';
+  const facts=company?'<dl class="graph-company-facts"><div><dt>'+(company.businessBase?'Business base':'Headquarters')+'</dt><dd>'+esc(headquarters)+'</dd></div><div><dt>Primary sector</dt><dd>'+esc(company.sector || 'Not recorded')+'</dd></div></dl>':'';
   const identityIcon = {startup:'company',partner:'partners',person:'person',programme:'programme',provider:'provider'}[entity.kind] || 'company';
   const from = isRoot && history.state?.atlasGraphFrom;
   const followed = from && orderedEdges.find(edge=>(edge.from===from || edge.to===from) && sourceUrl(edge.source));

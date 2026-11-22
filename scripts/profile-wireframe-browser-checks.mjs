@@ -255,6 +255,21 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   }
   await navigate('/entity.html?id=person%3Aphoebe-pincus--startmate',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'");
   assert.equal(await evaluate("document.querySelector('#entity-employment h2')?.textContent"),'Employment roles','The people dossier uses a top-level section heading for employment');
+  for (const [width,height] of [[1440,900],[320,640]]) {
+    await command('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<700});
+    for (const [id,key] of [['startup:airwallex','co-headquarters'],['startup:t-0','business-base']]) {
+      const fact=graph.entities.find(item=>item.id===id).profile_facts.find(item=>item.key===key);
+      const action=`#entity-company button[aria-label="Sources for ${fact.label}"]`;
+      await navigate('/entity.html?id='+encodeURIComponent(id),"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'");
+      await click(action);
+      await until(()=>evaluate("!!document.querySelector('.profile-evidence-panel[data-open]')"),`The location evidence for ${id} must open`);
+      assert.equal(await evaluate("document.querySelector('.profile-evidence-value').textContent"),fact.value);
+      assert.equal(await evaluate("document.querySelector('.profile-evidence-citations a').href"),fact.source);
+      assert.ok(await evaluate(`[...document.querySelectorAll('.profile-evidence-citations time')].some(time=>time.dateTime===${JSON.stringify(fact.reviewed_at)})`),'Location evidence includes its review date');
+      await assertNoOverflow(`${id} location evidence at ${width}px`);
+      await click('#profile-evidence-close');
+    }
+  }
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   console.log('Profile wireframe checks passed: ordered dossier, exact desktop and mobile claim evidence, focus and reading position, sourced partner inspection, and narrow reading order.');
 }

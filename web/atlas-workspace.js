@@ -1,4 +1,4 @@
-import { countryName, indexCompanies, legacyListUrl } from './atlas-exploration.js';
+import { companyPlaceLabel, indexCompanies, legacyListUrl } from './atlas-exploration.js';
 import { renderIcon } from './atlas-icons.js';
 import { entityHref } from './graph-model.js';
 import { openGraph } from './graph-store.js';
@@ -147,7 +147,7 @@ export function installWorkspace(doc,safeReturn) {
           const name = entity?.name || savedName || defaultName(id);
           const facts = dimensions?.get(id);
           const rows = facts ? `<dl>${[
-            ['Headquarters',facts.country ? [facts.city,countryName(facts.country)].filter(Boolean).join(', ') : 'Not recorded'],
+            ['Headquarters',companyPlaceLabel(facts) || 'Not recorded'],
             ['Primary sector',facts.sector || 'Not recorded'],
             ['Last recorded stage',facts.stage || 'Not recorded'],
             ['Last profile fact review',facts.newestFactReview || 'Not recorded'],

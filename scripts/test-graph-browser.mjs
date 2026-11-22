@@ -9,6 +9,7 @@ import {extname, join, resolve, sep} from 'node:path';
 import {setTimeout as delay} from 'node:timers/promises';
 import {neighborhood} from '../web/graph-model.js';
 import {sourceUrl} from '../web/logic.js';
+import {countryName, indexCompanies} from '../web/atlas-exploration.js';
 
 const root=resolve('dist'), profile=await mkdtemp(join(tmpdir(),'atlas-chrome-'));
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-graph-screenshots');
@@ -618,6 +619,12 @@ try {
   await screenshot('graph-alloovium-artwork-mobile.png');
 
   const companies=graph.entities.filter(entity=>entity.kind==='startup').map(entity=>entity.id).sort();
+  const countryGroups=Object.fromEntries([...indexCompanies(graph)].map(([id,place])=>[id,countryName(place.country)]));
+  const countryLabels=[...new Set(Object.values(countryGroups))].sort();
+  const idsInGroup=group=>companies.filter(id=>countryGroups[id]===group);
+  const changeGrouping=group=>evaluate(`(()=>{
+    const select=document.querySelector('#graph-company-group');select.value=${JSON.stringify(group)};select.dispatchEvent(new Event('change',{bubbles:true}));
+  })()`);
   const companyMapReady="document.querySelector('#graph-company-map')?.dataset.renderer==='loom'&&!document.querySelector('#graph-company-overview').hidden";
   async function checkCompanyMap({ids=companies,groupLabels=[],allNames=false}={}) {
     const map=await evaluate(`(async()=>{
@@ -649,14 +656,25 @@ try {
     for (const group of groupLabels) assert.ok(map.groups.includes(group),`Missing map label for ${group}`);
     return map;
   }
+  async function checkCountryMap() {
+    const map=await checkCompanyMap({groupLabels:countryLabels});
+    assert.deepEqual(map.groups.sort(),countryLabels);
+    const rendered=await evaluate("Object.fromEntries([...document.querySelectorAll('#graph-company-nodes [data-node]')].map(node=>[node.dataset.node,node.dataset.group]))");
+    assert.deepEqual(rendered,countryGroups);
+    return map;
+  }
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
   await command('Page.navigate',{url:`${address}/graph.html`});
   await until(()=>evaluate(companyMapReady),'Default Graph must mount the company Loom canvas');
   await evaluate('document.fonts.ready.then(()=>true)');
   assert.equal(await evaluate("document.querySelector('#graph-company-group').value"),'sector');
-  const desktopCompanies=await checkCompanyMap({groupLabels:['Design & media','Financial software']});
+  const desktopCompanies=await until(()=>checkCompanyMap({groupLabels:['Design & media','Financial software']}),'Desktop sector Fit must frame every company');
   assert.ok(desktopCompanies.names.length>10,'A desktop Fit should include readable company names');
   await screenshot('graph-all-companies-desktop.png');
+  await changeGrouping('country');
+  await until(checkCountryMap,'Desktop country Fit must show the sourced headquarters groups');
+  await screenshot('graph-company-countries-desktop.png');
+  await changeGrouping('sector');
 
   for (const [width,height] of [[844,390],[621,700],[390,844],[320,640]]) {
     await command('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:true});
@@ -680,34 +698,29 @@ try {
       await until(()=>evaluate(`scrollY>${start.scrollY+35}`),'A vertical swipe on the fitted map should scroll the phone page');
     }
   }
-  await evaluate(`(()=>{
-    const select=document.querySelector('#graph-company-group');select.value='country';select.dispatchEvent(new Event('change',{bubbles:true}));
-  })()`);
-  const countryLabels=['Australia','United Kingdom','Country not recorded'];
-  await until(()=>checkCompanyMap({groupLabels:countryLabels}),'Country Fit must show all companies and headquarters groups');
+  await changeGrouping('country');
+  await until(checkCountryMap,'Phone country Fit must show the sourced headquarters groups');
   assert.equal(await evaluate("new URL(location.href).searchParams.get('group')"),'country');
-  const idsInGroup=group=>evaluate(`(()=>{
-    return [...document.querySelectorAll('#graph-company-nodes [data-node]')]
-      .filter(node=>node.dataset.group===${JSON.stringify(group)}).map(node=>node.dataset.node).sort();
-  })()`);
-  const dense=await idsInGroup('Country not recorded'), australian=await idsInGroup('Australia');
-  await evaluate("document.querySelector('.graph-company-cluster-label[data-group=\"Country not recorded\"]').click()");
-  await until(()=>checkCompanyMap({ids:dense,allNames:true}),'The dense country group must show every member and name');
-  assert.match(await evaluate("document.querySelector('#graph-company-guide').textContent"),new RegExp(`${dense.length} companies`));
+  const dual=idsInGroup('Multiple headquarters'), australian=idsInGroup('Australia');
+  assert.ok(dual.includes('startup:airwallex') && dual.includes('startup:bugcrowd'),'Explicit co-headquarters retain one marker per company');
+  await evaluate(`document.querySelector('.graph-company-cluster-label[data-group="Multiple headquarters"]').click()`);
+  await until(()=>checkCompanyMap({ids:dual,allNames:true}),'The multiple headquarters group must show every member and name');
   await evaluate("document.querySelector('#graph-company-fit').click()");
-  await until(()=>checkCompanyMap({groupLabels:countryLabels}),'Fit all should restore the entire country map');
+  await until(checkCountryMap,'Fit all should restore the entire country map');
   await evaluate("document.querySelector('.graph-company-cluster-label[data-group=Australia]').click()");
   const canvaCompany="#graph-company-nodes [data-node='startup:canva']";
   await until(()=>evaluate(`!document.querySelector(${JSON.stringify(canvaCompany+' .network-loom-label')}).hidden`),'Zooming to Australia must make Canva’s name readable');
   const australiaMap=await until(()=>checkCompanyMap({ids:australian,allNames:true}),'Australia must fit all its names after resizing the canvas');
+  assert.equal(await evaluate("document.querySelector('#graph-company-guide').textContent"),`Australia · ${australian.length} companies`);
   assert.ok(australiaMap.names.includes('Canva'));
   await until(()=>evaluate(`(()=>{
     const logo=document.querySelector(${JSON.stringify(canvaCompany+' .network-loom-mark[data-logo=loaded] img')});
     return logo?.naturalWidth>0 && logo.getBoundingClientRect().width>=40;
   })()`),'Group view should render a readable full-size company mark');
   const companyPoint=await evaluate(`(()=>{
-    document.querySelector('#graph-company-loom').scrollIntoView({block:'center',behavior:'instant'});
-    const r=document.querySelector(${JSON.stringify(canvaCompany)}).getBoundingClientRect();
+    const company=document.querySelector(${JSON.stringify(canvaCompany)});
+    company.scrollIntoView({block:'center',behavior:'instant'});
+    const r=company.getBoundingClientRect();
     return {x:r.left+r.width/2,y:r.top+r.height/2};
   })()`);
   await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[companyPoint]});
