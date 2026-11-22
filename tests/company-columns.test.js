@@ -51,3 +51,11 @@ test('financial columns sort numerically within currency and leave missing figur
   assert.deepEqual([missing,listed,foreign,early].sort((a,b)=>compareCompanyRecords(a,b,'value',metadata)).map(item=>item.id),
     [foreign.id,early.id,listed.id,missing.id]);
 });
+
+test('directory and comparison present a location rather than an implicit headquarters claim',async()=>{
+  const {readFile} = await import('node:fs/promises');
+  assert.equal(companyColumns.get('headquarters').label,'Location');
+  assert.equal(companyColumns.get('headquarters').sort,'Location A–Z');
+  const workspace = await readFile(new URL('../web/atlas-workspace.js',import.meta.url),'utf8');
+  assert.match(workspace,/\['Location',companyPlaceLabel\(facts\)/, 'comparison uses the same neutral location label');
+});

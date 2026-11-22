@@ -84,3 +84,22 @@ test('view links round-trip facets and inspection and preserve the destination r
   assert.equal(scope('place=unknown&city=Sydney').drillCity,'');
   assert.equal(scope('selected=https://example.com').selected,'');
 });
+
+test('registry-only business bases preserve country without implying a city', async()=>{
+  const {readFile} = await import('node:fs/promises');
+  const {entities} = JSON.parse(await readFile(new URL('../data/graph.json',import.meta.url),'utf8'));
+  const dimensions = indexCompanies({entities});
+  const bases = new Map([
+    ['CrossCourtAI','NSW 2010'], ['Superstat','VIC 3121'], ['Wiingman','NSW 2026'],
+    ['Zabidou','NSW 2060'], ['Eucalyptus','NSW 2000'],
+  ]);
+  for (const [name,postcode] of bases) {
+    const observed = entities.find(entity=>entity.kind==='startup' && entity.name===name);
+    const row = dimensions.get(observed.id);
+    assert.equal(row.country,'AU',name);
+    assert.equal(row.city,'',name+' must not be included in city filters without city evidence');
+    assert.equal(companyPlaceLabel(row),postcode+', Australia · business base',name);
+  }
+  assert.equal(dimensions.get('startup:loam-bio').city,'Orange','an explicit city remains selectable');
+  assert.equal(dimensions.get('startup:bugcrowd').country,'multiple','explicit co-headquarters remain grouped');
+});
