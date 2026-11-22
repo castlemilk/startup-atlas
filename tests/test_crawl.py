@@ -11,6 +11,33 @@ spec=importlib.util.spec_from_file_location('atlas_crawl',Path(__file__).resolve
 crawl=importlib.util.module_from_spec(spec); spec.loader.exec_module(crawl)
 
 class ExtractionTests(unittest.TestCase):
+    def test_source_labels_and_context_skip_hidden_media(self):
+        # Replayed pattern: a case-study card's visible headline was surrounded
+        # by CSS in saved newsroom link labels. Do not remove visible prose.
+        source = 'https://example.com/news'
+        parser = crawl.PageParser(source)
+        parser.feed("""<article>
+          <h2><a href="/study"><style>.card{width:100px}</style>
+          <span>Customer case study</span><script>const hidden = "US$90 million";</script></a></h2>
+          <p><style>.copy{color:red}</style>Issuer raised US$8 million.</p>
+          <a href="/label" aria-label="Accessible source"><style>.icon{opacity:0}</style></a>
+          <a href="/math">x &lt; y { width:100px }</a>
+          <a href="/hidden"><script>const hiddenOnly = 1;</script></a>
+          <script type="application/ld+json">{"@type":"Article","headline":"Structured headline"}</script>
+          </article>""")
+        by_url = {row['url']: row for row in parser.links}
+        self.assertEqual(parser.headings, [{'level': 'h2', 'text': 'Customer case study'}])
+        self.assertEqual(by_url['https://example.com/study'], {
+            'url': 'https://example.com/study', 'text': 'Customer case study',
+            'context': 'Issuer raised US$8 million.',
+        })
+        self.assertEqual(by_url['https://example.com/label']['text'], 'Accessible source')
+        self.assertEqual(by_url['https://example.com/math']['text'], 'x < y { width:100px }')
+        self.assertNotIn('https://example.com/hidden', by_url)
+        self.assertIn('Issuer raised US$8 million.', parser.text)
+        self.assertFalse(any('US$90 million' in text for text in parser.text))
+        self.assertEqual(parser.structured, [{'@type': 'Article', 'headline': 'Structured headline'}])
+
     def test_page_fetch_coverage_distinguishes_empty_success_from_total_failure(self):
         success=crawl.page_fetch_coverage([{'pages':[{'status':'ok'}]}],[])
         failure=crawl.page_fetch_coverage([{'pages':[{'status':'skipped','reason':'DNS failure'}]}],[])

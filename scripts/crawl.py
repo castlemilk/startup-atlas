@@ -478,15 +478,18 @@ class PageParser(HTMLParser):
     def handle_data(self,data):
         if self._inactive: return
         if self._ld and sum(map(len,self._ldbuf))<50_000: self._ldbuf.append(data)
-        if not self._hidden and self._table_depth==1 and self._cell is not None and len(self._cell['text'])<100:
+        # JSON-LD has its own bounded stream. Script and style text is not
+        # visible evidence and must not become a title, link label or context.
+        if self._hidden: return
+        if self._table_depth==1 and self._cell is not None and len(self._cell['text'])<100:
             self._cell['text'].append(data[:500])
         for capture in self._captures:
             capture['text'].append(data)
-            if not self._hidden and capture['tag'] == 'p':
+            if capture['tag'] == 'p':
                 capture['visible_text'].append(data)
         for context in self._contexts[-3:]:
             if len(context['text'])<100: context['text'].append(data[:500])
-        if not self._hidden and len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
+        if len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
 
 def summarise_jsonld(value):
     keep={'@type','@id','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory','jobTitle','worksFor','headline','publisher','datePublished','mainEntityOfPage'}
