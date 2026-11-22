@@ -1333,6 +1333,28 @@ def fetch_image_bytes(transport, url):
     return body, kind, final
 
 
+def logo_capture_coverage(results, candidates):
+    """Summarise staged observations without treating capture as review or publication."""
+    coverage=page_fetch_coverage(results,candidates)
+    counts={status:0 for status in ('captured','duplicate','skipped','not_fetched')}
+    digests=set()
+    for row in candidates:
+        status=row['status']
+        counts[status]+=1
+        if status=='captured':
+            digests.add(row['sha256'])
+    coverage['logo_candidates']={
+        'observed':len(candidates),
+        'capture_attempted':counts['captured']+counts['duplicate']+counts['skipped'],
+        **counts,
+        'distinct_captured_files':len(digests),
+    }
+    coverage['note']=('Page fetch and candidate capture counts have separate denominators. '
+        'Capture attempts count candidate processing, not HTTP exchanges. Candidate rows '
+        'may repeat across pages; file counts are distinct by SHA-256. No bytes are reviewed or published here.')
+    return coverage
+
+
 def stage_partner_logos(snapshot,args,transport):
     """Capture candidate bytes from the reviewed site or its explicitly approved asset hosts.
 
@@ -1369,6 +1391,7 @@ def stage_partner_logos(snapshot,args,transport):
                     except (CrawlError,ValueError,OSError) as exc: row.update(status='skipped',reason=str(exc))
                 rows.append(row)
     return {'version':1,'mode':'logos','generated_at':utc_now(),'results':snapshot['results'],'candidates':rows,
+            'coverage':logo_capture_coverage(snapshot['results'],rows),
             'warning':'Untrusted candidate files require identity, license and safety review before publishing. A favicon or social image may not be the partner logo.'}
 
 

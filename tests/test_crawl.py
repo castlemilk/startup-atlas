@@ -665,6 +665,12 @@ class WorkflowTests(unittest.TestCase):
             self.assertEqual(by_url,{'https://example.com/logo.png':'captured','https://example.com/blocked.png':'duplicate','https://cdn.example.com/logo.png':'not_fetched','https://example.com/share.png':'not_fetched'})
             captured=next(r for r in result['candidates'] if r['url']=='https://example.com/logo.png')
             self.assertTrue(Path(captured['file']).name.endswith('.bin'))
+            coverage=result['coverage']
+            self.assertEqual((coverage['pages_attempted'],coverage['pages_succeeded']), (1,1))
+            self.assertEqual(coverage['logo_candidates'],{
+                'observed':4,'capture_attempted':2,'captured':1,'duplicate':1,
+                'skipped':0,'not_fetched':2,'distinct_captured_files':1,
+            })
             self.assertIn('https://example.com/blocked.png',transport.calls)
             self.assertFalse(any('/robots.txt' in url for url in transport.calls))
             self.assertNotIn('https://cdn.example.com/logo.png',transport.calls)
@@ -690,6 +696,25 @@ class WorkflowTests(unittest.TestCase):
             rows=crawl.stage_partner_logos({'results':[{'name':'Example','pages':[page]}]},types.SimpleNamespace(out=Path(tmp),logo_limit=2),transport)['candidates']
             self.assertEqual(len(transport.calls),6)
             self.assertEqual(rows[-1]['reason'],'Per-site attempt limit reached')
+
+    def test_logo_coverage_does_not_confuse_page_failure_or_identical_files_with_coverage(self):
+        asset=lambda status, **kw: {'status':status, **kw}
+        results=[{'pages':[{'status':'ok'},{'status':'skipped'}]},{'pages':[{'status':'ok'}]}]
+        candidates=[
+            asset('captured',sha256='same'),asset('captured',sha256='same'),
+            asset('duplicate',sha256='same'),asset('skipped'),asset('not_fetched'),
+        ]
+        coverage=crawl.logo_capture_coverage(results,candidates)
+        self.assertEqual(coverage['fetch_status'],'partial')
+        self.assertEqual(coverage['pages_skipped_or_failed'],1)
+        self.assertEqual(coverage['logo_candidates'],{
+            'observed':5,'capture_attempted':4,'captured':2,'duplicate':1,
+            'skipped':1,'not_fetched':1,'distinct_captured_files':1,
+        })
+        empty=crawl.logo_capture_coverage([],[])
+        self.assertEqual(empty['fetch_status'],'not_attempted')
+        self.assertTrue(all(value==0 for value in empty['logo_candidates'].values()))
+
 
     def test_approved_asset_host_requires_exact_host(self):
         class Fake:
