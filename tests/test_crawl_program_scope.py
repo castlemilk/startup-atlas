@@ -122,3 +122,40 @@ class GoogleApacAcceleratorReplayTests(unittest.TestCase):
         self.assertEqual([c['program_url'] for c in result['candidates']
                           if c['source_id'] == self.source][-1:], [regional])
         self.assertEqual(sum(c['source_id'] == self.source for c in result['candidates']), 7)
+
+
+class IndiaSchemeNavigationReplayTests(unittest.TestCase):
+    source = 'india-schemes'
+    fixture = json.loads(
+        (ROOT / 'tests/fixtures/india-navigation-crawl-45-46.json').read_text()
+    )
+
+    def test_portal_navigation_is_not_a_scheme_but_actual_leads_survive(self):
+        for run, rows in self.fixture['runs'].items():
+            with self.subTest(run=run):
+                result = replay(rows)
+                self.assertEqual(result['results'], rows)
+                scoped = [r for r in result['candidates'] if r['source_id'] == self.source]
+                labels = {r['label'] for r in scoped}
+                self.assertTrue({
+                    'Startup India Seed Fund Scheme', 'Credit Guarantee Scheme for Startups',
+                    'Startup India Fund of Funds 2.0 Scheme', 'Apply for DPIIT Recognition',
+                }.issubset(labels))
+                self.assertTrue({'FAQs', 'Apply for Startup India Logo', 'Mentors',
+                                 'Verify/Download Certificate', 'B. Benefits',
+                                 'E. Process After Applying'}.isdisjoint(labels))
+                self.assertEqual(len(scoped), 51)
+                self.assertTrue(any(r['source_id'] == 'qld-female-founders'
+                                    and r['label'] == 'Learn how to apply'
+                                    for r in result['candidates']))
+
+    def test_another_scheme_fragment_or_external_partner_is_not_filtered(self):
+        rows = deepcopy(self.fixture['runs']['45169210509'])
+        page = next(r['pages'][0] for r in rows if r['id'] == self.source)
+        urls = ('https://www.startupindia.gov.in/content/sih/en/seed-scheme.html#apply',
+                'https://seedfund.startupindia.gov.in/content/sih/en/search.html',
+                page['final_url'] + '#new-funding-scheme')
+        page['links'].extend({'text': 'Startup grant and funding programme', 'url': url}
+                             for url in urls)
+        result = replay(rows)
+        self.assertTrue(set(urls).issubset(r['program_url'] for r in result['candidates']))

@@ -2134,8 +2134,40 @@ GOOGLE_APAC_LANDING = '/intl/cloud/programs/accelerator/asia-pacific'
 GOOGLE_ACCELERATOR_DETAIL = re.compile(r'/(?:intl/cloud/)?programs/accelerator/([a-z]+(?:-[a-z]+)*)/?')
 
 
+
+INDIA_SCHEMES_LANDING = '/content/sih/en/startup-scheme.html'
+# Observed chrome and lookup pages, not an allowlist of valid grant routes.
+INDIA_SCHEMES_NAVIGATION = frozenset({
+    '/content/sih/en/logo-form.html',
+    '/content/sih/en/newsletters.html',
+    '/content/sih/en/about_us/faqs.html',
+    '/content/sih/en/about_us/contact-us.html',
+    '/content/sih/en/bloglist.html',
+    '/content/sih/en/startupgov/validate-startup-recognition.html',
+    '/content/sih/en/recognition-page.html',
+    '/content/sih/en/verify-dpiit-recognition-mapping.html',
+    '/content/sih/en/edit-your-expired-application.html',
+    '/content/sih/en/search.html',
+    '/digital-map/maps',
+})
+INDIA_SCHEMES_SECTION_JUMPS = frozenset({
+    'startup patent application & ipr application', 'b. benefits', 'c. eligibility',
+    'e. process after applying',
+})
+
+
 def in_program_source_scope(source_id, source_url, label, target):
     source = urlsplit(source_url)
+    # These saved same-site links navigate the portal or the current page.
+    # Preserve linked scheme documents, application leads and raw provenance.
+    if (source_id == 'india-schemes' and source.hostname == 'www.startupindia.gov.in'
+            and source.path.rstrip('/') == INDIA_SCHEMES_LANDING
+            and target.hostname == source.hostname):
+        path = target.path.rstrip('/')
+        section_jump = (path == INDIA_SCHEMES_LANDING and target.fragment
+                        and label.casefold() in INDIA_SCHEMES_SECTION_JUMPS)
+        if path in INDIA_SCHEMES_NAVIGATION or section_jump:
+            return False
     # Keep same-site regional accelerator details, not the navigation back to
     # the global index, cross-product tabs or translated copies of this list.
     if (source_id == 'google-apac' and source.hostname == 'startup.google.com'
