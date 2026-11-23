@@ -18,7 +18,10 @@ jobs:
       - name: Discover partner directory leads
         run: python3 scripts/crawl.py partners --follow 0
       - name: Discover programme directory leads
+        # A programme-directory outage degrades this step's snapshot only;
+        # it must never skip the news, logo, profile and portrait steps.
         run: python3 scripts/crawl.py programs --follow 0
+        continue-on-error: true
       - name: Discover startup news leads
         run: python3 scripts/crawl.py news --follow 2
         continue-on-error: true
