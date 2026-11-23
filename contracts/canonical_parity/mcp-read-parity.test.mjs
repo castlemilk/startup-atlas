@@ -99,9 +99,11 @@ test('canonical source readers retain exact Unicode identity, record digest and 
   assert.match(localRead.revision, /^[a-f0-9]{64}$/);
   // Python hashlib over the four fixture documents in `paths` order, each
   // re-encoded as two-space JSON plus LF in a compact JSON string array.
-  // Updated after removing only the synthetic founded_year: 0 placeholder;
-  // authoritative record digest above remains unchanged.
-  assert.equal(localRead.revision, '3e9184d30b766ada04a376a572085ba724bfb96c0c1ac161f1a56796803657a5');
+  // Updated for graph format v2 (docs/KG-CONNECTIVE-TISSUE.md §3): the
+  // generated graph document now carries version 2 plus per-edge
+  // freshness/confidence fields, so its bytes — and only its bytes —
+  // changed; the authoritative record digest above remains unchanged.
+  assert.equal(localRead.revision, '3384bfbd11d6f28317af203cce644012dc5dadd2cb5ce8967bcdf352d77e9180');
   assert.equal(hostedRead.revision, fixture.main_revision);
   assert.notEqual(localRead.revision, hostedRead.revision);
   assert.equal(`startup:${startupSlug(record.name)}`, id);

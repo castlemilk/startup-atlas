@@ -1153,12 +1153,62 @@ def write_json(path,data):
 def utc_now(): return dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds')
 def stamp(): return dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
 
-def partner_update_candidates(snapshot, approved):
-    """Prepare unreviewed evidence for MCP; never write catalogue data."""
+_SAMPLER=None
+_SAMPLER_TRIED=False
+
+def _sampler():
+    """Load scripts/crawl_sampling.py on first use (advisory only).
+
+    crawl.py is also loaded via importlib in tests, where the scripts
+    directory is not on sys.path, so the sibling import needs the fallback.
+    Returns None when the sampler is unavailable; callers then run
+    unsampled, in input order, and skip-unchanged stays disabled.
+    """
+    global _SAMPLER,_SAMPLER_TRIED
+    if _SAMPLER_TRIED: return _SAMPLER
+    _SAMPLER_TRIED=True
+    try:
+        import crawl_sampling as module
+    except ImportError:
+        sys.path.insert(0,str(Path(__file__).resolve().parent))
+        try:
+            import crawl_sampling as module
+        except ImportError:
+            return None
+    _SAMPLER=module
+    return _SAMPLER
+
+def _apply_sampling(entries, state, key='url'):
+    """Order source entries by sampler priority; returns (ordered, skipped).
+
+    Without a state (or without the sampler module) entries are returned
+    unchanged and nothing is skipped: sampling is advisory. Only the
+    3+-failure backoff drops a source, and it is reported via ``skipped``.
+    """
+    if state is None: return list(entries),[]
+    sampler=_sampler()
+    if sampler is None: return list(entries),[]
+    return sampler.order_sources(entries,state,key=key)
+
+def partner_update_candidates(snapshot, approved, reviewed=None):
+    """Prepare unreviewed evidence for MCP; never write catalogue data.
+
+    ``reviewed`` optionally maps a partner name to its reviewed record
+    from data/partners-reviewed.json. A candidate whose fresh site
+    description AND website both match the reviewed record is unchanged
+    since import, so it is skipped and counted in ``skipped_unchanged``
+    instead of being re-emitted for review. This fixes #349: the previous
+    implementation compared against the reviewed record's
+    ``site_description``, a field reviewed records do not carry (they
+    carry ``description``), so the skip never fired. Names with no
+    reviewed record, or with an empty description on either side, are
+    always emitted: absence of evidence is not evidence of no change.
+    """
     if snapshot.get('mode') not in ('sites', 'logos') or not isinstance(snapshot.get('results'), list):
         raise CrawlError('Expected a sites or logos crawl snapshot')
     seeds={(row['name'],row['url']) for row in approved}
-    candidates=[]
+    sampler=_sampler() if isinstance(reviewed,dict) else None
+    candidates=[]; skipped=0; skipped_names=[]
     for row in snapshot['results']:
         if (row.get('name'),row.get('url')) not in seeds: continue
         page=next((p for p in row.get('pages',[]) if p.get('status')=='ok' and p.get('url')==row['url']),None)
@@ -1166,15 +1216,21 @@ def partner_update_candidates(snapshot, approved):
         description=page.get('metadata',{}).get('description') or page.get('metadata',{}).get('og:description') or ''
         description=' '.join(description.split())[:500]
         if len(description)<8: continue
-        candidates.append({'name':row['name'],'review_required':True,'evidence_url':page.get('final_url',row['url']),'captured_at':page.get('checked_at',''), 'suggested_record':{'website':row['url'],'description':description,'source':page.get('final_url',row['url'])}})
-    return {'version':1,'mode':'partner-update-candidates','warning':'Unreviewed extracted text; verify identity, source and claims, then add the review date before MCP validation.','candidates':candidates}
+        candidate={'name':row['name'],'review_required':True,'evidence_url':page.get('final_url',row['url']),'captured_at':page.get('checked_at',''), 'site_description':description, 'suggested_record':{'website':row['url'],'description':description,'source':page.get('final_url',row['url'])}}
+        record=reviewed.get(row['name']) if isinstance(reviewed,dict) else None
+        if (record is not None and sampler is not None
+                and sampler.should_skip_unchanged(candidate,record)):
+            skipped+=1; skipped_names.append(row['name']); continue
+        candidates.append(candidate)
+    return {'version':1,'mode':'partner-update-candidates','warning':'Unreviewed extracted text; verify identity, source and claims, then add the review date before MCP validation.','candidates':candidates,'skipped_unchanged':skipped,'skipped_unchanged_names':skipped_names}
 
-def crawl_sites(catalogue,args,transport):
+def crawl_sites(catalogue,args,transport,source_state=None):
     entries=[{'id':item['id'],'name':item['name'],'url':item['url'],'additional_urls':item.get('extra',[])} for item in catalogue['opportunities']]
     if args.partners_only: entries=[]
     if args.only: entries=[x for x in entries if x['id'] in set(args.only)]
     if args.approved:
         entries += [{'id':'partner:'+(x['qid'] or 'url-'+hashlib.sha256(x['url'].encode()).hexdigest()[:16]),'name':x['name'],'url':x['url'],'asset_hosts':x['asset_hosts'],**({'crawl_scope':x['crawl_scope']} if 'crawl_scope' in x else {})} for x in load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)]
+    entries,sampling_skipped=_apply_sampling(entries,source_state)
     entries=entries[:args.limit] if args.limit else entries
     if not entries: raise CrawlError('No site seeds matched the requested options')
     results=[]; seen={}
@@ -1195,9 +1251,13 @@ def crawl_sites(catalogue,args,transport):
                 if len(pages)==0 and follow: queue.extend(u for u in follow_links(page,final,follow) if u not in queue)
             except (CrawlError,ValueError) as exc: page={'url':url,'checked_at':utc_now(),'status':'skipped','reason':str(exc)}
             seen[cache_key]=page; pages.append(page)
-        results.append({**item,'pages':pages})
+        row={**item,'pages':pages}
+        if source_state is not None: row['sampling_priority']=item.get('sampling_priority')
+        results.append(row)
         print(f"[{len(results)}/{len(entries)}] {item['name']}: {pages[0]['status']}",file=sys.stderr)
-    return {'version':1,'mode':'sites','generated_at':utc_now(),'results':results}
+    output={'version':1,'mode':'sites','generated_at':utc_now(),'results':results}
+    if source_state is not None: output['sampling_skipped']=sampling_skipped
+    return output
 
 PROFILE_PAGE_RULES={
     'people':re.compile(r'\b(team|people|leadership|our people|who we are)\b',re.I),
@@ -1208,6 +1268,17 @@ PROFILE_PATH_RULES={
     'companies':re.compile(r'/(portfolio|companies|investments?)/[^/]+',re.I),
 }
 PROFILE_GENERIC=re.compile(r'^(view|learn more|read more|meet|contact|all|our team|team|people|portfolio|companies|investments|about|careers|jobs|news|home|founders|apply|see all)\b',re.I)
+# Link text that is a call-to-action or badge rather than a name. Unlike
+# PROFILE_GENERIC (navigation labels, skipped outright), these links point
+# at a real person/company page, so R1 derives the name from the URL slug.
+PROFILE_GENERIC_TEXT=re.compile(r'^\(?\s*(full profile|view profile|see profile|profile|link|view more|more|details)\s*\)?$',re.I)
+PROFILE_ROUND_BADGE=re.compile(r'^(?:pre-seed|seed|series [a-f](?:-\d+)?|bridge|grant|convertible|debt|equity)\b.*\b(?:19|20)\d{2}\b',re.I)
+# Link text longer than this is a card/theme label, not a name (Main Sequence
+# theme + tagline, Blackbird role + quote). It is only slug-derived when the
+# slug's words appear in the text, so a genuinely long name is never replaced.
+# 40 chars: no clean person/company name in the run #44 data exceeds it --
+# every longer link text is a label or a name plus role/tagline text.
+PROFILE_LONG_LABEL=40
 
 def profile_landing_links(page, base, max_follow, include_about=False):
     """Select bounded same-host profile pages, with location pages for startups."""
@@ -1232,8 +1303,60 @@ def profile_landing_links(page, base, max_follow, include_about=False):
         if len(selected)>=max_follow: break
     return selected[:max_follow]
 
+def slug_derived_name(url):
+    """Derive a display name from the last URL path segment, title-cased.
+
+    Inferred, never verified: callers flag it with ``name_source: url_slug``
+    and the row still requires review. Returns None when no usable segment
+    exists (empty, numeric-only, or shorter than two characters).
+    """
+    try:
+        parts=urlsplit(url)
+    except ValueError:
+        return None
+    segments=[segment for segment in parts.path.split('/') if segment]
+    if not segments: return None
+    last=unquote(segments[-1]).strip(' .')
+    words=[word for word in re.split(r'[-_]+',last) if word]
+    if not words: return None
+    name=' '.join(words).title()
+    if len(name)<2 or name.replace(' ','').isdigit(): return None
+    return name
+
+def _is_category_label_text(name,url):
+    """True when long link text is a card/theme label for the slug's entity.
+
+    The slug's words (trailing numeric disambiguators dropped, e.g.
+    ``gilmour-space-2``) must appear as a contiguous run in the text, so a
+    long genuine name is never mistaken for a label.
+    """
+    if len(name)<=PROFILE_LONG_LABEL: return False
+    try:
+        segments=[segment for segment in urlsplit(url).path.split('/') if segment]
+    except ValueError:
+        return False
+    if not segments: return False
+    slug_words=re.findall(r'[a-z0-9]+',unquote(segments[-1]).casefold())
+    while slug_words and slug_words[-1].isdigit(): slug_words.pop()
+    if not slug_words: return False
+    text_words=re.findall(r'[a-z0-9]+',name.casefold())
+    return any(text_words[i:i+len(slug_words)]==slug_words
+               for i in range(len(text_words)-len(slug_words)+1))
+
 def profile_lead_batch(partner, page, kind):
-    """Count eligible observations only within the bounded retained link set."""
+    """Count eligible observations only within the bounded retained link set.
+
+    Names come from link text or, on Startmate/USV portfolio cards, from
+    the card's company-name evidence (never guessed: a USV link without
+    evidence is counted unresolved, not named). Plain link text that is a
+    generic CTA/badge (``( FULL PROFILE )``, ``link``, round badges like
+    ``Seed, 2019``), a long card/theme label, or missing yields a
+    slug-derived name (``name_source: url_slug``) instead of the badge
+    text. Slug names are inferred and still require review; the original
+    link text is kept on derived rows as ``link_text`` evidence (a round
+    badge, for instance, still records the round and year). Card-evidence
+    rows keep main's shape (``name_evidence``) and carry no name_source.
+    """
     rows=[]; seen=set()
     links = page.get('profile_links', [])[:PROFILE_LINK_LIMIT]
     source = urlsplit(page['final_url'])
@@ -1253,15 +1376,28 @@ def profile_lead_batch(partner, page, kind):
                 unresolved_usv.add(url)
                 continue
         raw_name = link.get('portfolio_company_name','') if card or usv else link.get('text','')
-        name = ' '.join(raw_name.split()).strip()
-        if not (2<=len(name)<=100) or (not usv and PROFILE_GENERIC.match(name)): continue
-        if not card and not PROFILE_PATH_RULES[kind].search(parts.path): continue
+        raw_name = ' '.join(str(raw_name).split()).strip()
         if parts.scheme!='https' or not parts.hostname or parts.username or parts.password: continue
+        if not card and not PROFILE_PATH_RULES[kind].search(parts.path): continue
+        if card or usv:
+            name=raw_name; name_source=None
+            if not (2<=len(name)<=100) or (not usv and PROFILE_GENERIC.match(name)): continue
+        else:
+            if PROFILE_GENERIC.match(raw_name): continue
+            name=raw_name; name_source='link_text'
+            if (not name or PROFILE_GENERIC_TEXT.match(name) or PROFILE_ROUND_BADGE.match(name)
+                    or _is_category_label_text(name,url)):
+                derived=slug_derived_name(url)
+                if not derived: continue
+                name=derived; name_source='url_slug'
+            if not (2<=len(name)<=100): continue
         key=(name.casefold(),url)
         if key in seen: continue
         seen.add(key)
         if len(rows) >= PROFILE_LEAD_LIMIT: continue
         rows.append({'partner':partner,'kind':kind,'name':name,'candidate_url':url,
+                     **({'name_source':name_source} if name_source else {}),
+                     **({'link_text':raw_name} if name_source=='url_slug' and raw_name else {}),
                      'source_url':page['final_url'],'checked_at':page['checked_at'],
                      'context':link.get('context','')[:400],'review_required':True})
         if card: rows[-1]['name_evidence'] = 'portfolio-card-company-heading'
@@ -1591,17 +1727,59 @@ def crawl_startup_news(registry,args,transport):
             'coverage':page_fetch_coverage(results,candidates),
             'warning':'Unreviewed article and amount candidates; verify the startup, transaction, currency, date and source before publication.'}
 
+def _candidate_source_name(candidate):
+    return (candidate.get('partner') or candidate.get('source_name')
+            or candidate.get('startup') or '')
+
 def page_fetch_coverage(results, candidates):
-    """Describe attempted page fetches, not completeness of the source universe."""
+    """Describe attempted page fetches, not completeness of the source universe.
+
+    ``sources`` records per-source status (R12): ok when at least one page
+    fetched, failed when pages were attempted but none succeeded (annotated
+    with a note, never silently green), not_attempted when no pages were
+    tried. ``rows`` is the number of candidates attributed to the source.
+    """
     pages=[page for row in results for page in row.get('pages', [])]
     succeeded=sum(page.get('status')=='ok' for page in pages)
     failed=len(pages)-succeeded
     status=('not_attempted' if not pages else 'none_succeeded' if not succeeded
             else 'partial' if failed else 'all_succeeded')
+    sources=[]
+    for row in results:
+        row_pages=row.get('pages', [])
+        ok=sum(page.get('status')=='ok' for page in row_pages)
+        source_status='ok' if ok else ('failed' if row_pages else 'not_attempted')
+        entry={'source':row.get('name'), 'source_url':row.get('url'),
+               'status':source_status, 'pages_ok':ok, 'pages_attempted':len(row_pages),
+               'rows':sum(1 for candidate in candidates
+                          if _candidate_source_name(candidate)==row.get('name'))}
+        if source_status=='failed':
+            entry['note']='No pages fetched successfully for this source'
+        sources.append(entry)
     return {'fetch_status':status, 'sources_attempted':len(results),
             'pages_attempted':len(pages), 'pages_succeeded':succeeded,
             'pages_skipped_or_failed':failed, 'unreviewed_candidates':len(candidates),
+            'sources':sources,
             'note':'Counts cover attempted pages only; they do not establish complete source coverage or verified facts.'}
+
+def _normalise_profile_name(name):
+    return ' '.join(str(name or '').split()).casefold()
+
+def dedupe_profile_candidates(rows, seen=None):
+    """Drop rows repeating a (normalised name, candidate URL) pair already seen.
+
+    ``seen`` is shared across the pages of one partner (R6), so a company,
+    person or image row found on the homepage and again on a portfolio
+    page is kept once. The first occurrence wins, retaining the earliest
+    source page. Returns ``(kept_rows, dropped_count)``.
+    """
+    if seen is None: seen=set()
+    kept=[]; dropped=0
+    for row in rows:
+        key=(_normalise_profile_name(row.get('name')), row.get('candidate_url') or '')
+        if key in seen: dropped+=1; continue
+        seen.add(key); kept.append(row)
+    return kept, dropped
 
 def profile_batch_coverage(results):
     """Summarize measured team or portfolio pages without treating unmeasured kinds as zero."""
@@ -1626,9 +1804,10 @@ def profile_batch_coverage(results):
     return by_kind
 
 
-def crawl_profiles(catalogue,args,transport,company=False):
+def crawl_profiles(catalogue,args,transport,company=False,source_state=None):
     seeds=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
     if args.partner: seeds=[s for s in seeds if args.partner.casefold() in s['name'].casefold()]
+    seeds,sampling_skipped=_apply_sampling(seeds,source_state)
     if args.limit: seeds=seeds[:args.limit]
     if not seeds: raise CrawlError('No approved partner websites matched')
     results=[]; candidates=[]
@@ -1645,10 +1824,12 @@ def crawl_profiles(catalogue,args,transport,company=False):
     for seed in seeds:
         host=urlsplit(seed['url']).hostname
         scope=seed.get('crawl_scope'); follow=min(args.follow,scope['max_follow']) if scope else args.follow
+        seen=set(); duplicates=0
         company_name=seed['name'] if company else None
         homepage=fetch(seed['url'],host,scope,company_name); pages=[homepage]; discovered=[]
         if homepage['status']=='ok':
-            candidates.extend(extract_profile_media_leads(seed['name'],homepage,'homepage'))
+            kept,dropped=dedupe_profile_candidates(extract_profile_media_leads(seed['name'],homepage,'homepage'),seen)
+            candidates.extend(kept); duplicates+=dropped
             discovered=profile_landing_links(homepage,seed['url'],follow,include_about=company)
             if company and scope is not None:
                 kinds={item['url']:item['kind'] for item in discovered}
@@ -1664,18 +1845,26 @@ def crawl_profiles(catalogue,args,transport,company=False):
             for target in discovered:
                 page=fetch(target['url'],host,scope,company_name); page['profile_kind']=target['kind']; pages.append(page)
                 if page['status']=='ok':
+                    new_rows=[]
                     if target['kind'] in PROFILE_PATH_RULES:
                         leads, page['profile_lead_coverage'] = profile_lead_batch(seed['name'],page,target['kind'])
-                        candidates.extend(leads)
-                    candidates.extend(extract_profile_media_leads(seed['name'],page,target['kind']))
-        results.append({'name':seed['name'],'url':seed['url'],'pages':pages,**({'crawl_scope':scope} if scope is not None else {}),
-                        'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''})
+                        new_rows.extend(leads)
+                    new_rows.extend(extract_profile_media_leads(seed['name'],page,target['kind']))
+                    kept,dropped=dedupe_profile_candidates(new_rows,seen)
+                    candidates.extend(kept); duplicates+=dropped
+        row={'name':seed['name'],'url':seed['url'],'pages':pages,**({'crawl_scope':scope} if scope is not None else {}),
+                        'duplicates_dropped':duplicates,
+                        'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''}
+        if source_state is not None: row['sampling_priority']=seed.get('sampling_priority')
+        results.append(row)
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
     coverage = page_fetch_coverage(results,candidates)
     coverage['profile_leads_by_kind'] = profile_batch_coverage(results)
-    return {'version':1,'mode':'profiles','generated_at':utc_now(),'results':results,'candidates':candidates,
+    output={'version':1,'mode':'profiles','generated_at':utc_now(),'results':results,'candidates':candidates,
             'coverage':coverage,
             'warning':'Links are unreviewed leads, not verified people, roles, investments or current relationships. Verify each against its source before publishing.'}
+    if source_state is not None: output['sampling_skipped']=sampling_skipped
+    return output
 
 def logo_resolution(body, kind):
     """Report encoded raster dimensions without decoding untrusted images."""
@@ -2231,10 +2420,12 @@ def main(argv=None):
     catalogue=json.loads(CATALOGUE.read_text(encoding='utf-8')); args.out.mkdir(parents=True,exist_ok=True)
     if args.mode=='partner-candidates':
         approved=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
-        data=partner_update_candidates(json.loads(args.snapshot.read_text(encoding='utf-8')),approved)
+        reviewed_path=ROOT/'data/partners-reviewed.json'
+        reviewed=json.loads(reviewed_path.read_text(encoding='utf-8')) if reviewed_path.exists() else {}
+        data=partner_update_candidates(json.loads(args.snapshot.read_text(encoding='utf-8')),approved,reviewed)
         output=args.out/'partner-update-candidates.json'
         write_json(output,data)
-        print(f"Prepared {len(data['candidates'])} unreviewed partner update candidates: {output}")
+        print(f"Prepared {len(data['candidates'])} unreviewed partner update candidates ({data.get('skipped_unchanged',0)} unchanged since last import): {output}")
         return 0
     if args.mode=='apply-reviewed':
         records=load_approved_csv(args.approved,set(catalogue['partnerLeads']))
@@ -2258,15 +2449,21 @@ def main(argv=None):
         data=process_text_captures(json.loads(args.captures.read_text(encoding='utf-8')))
     else:
         transport=Transport(args.delay)
+        sampler=_sampler(); source_state=None
+        if sampler is not None and args.mode in ('sites','logos','profiles'):
+            source_state=sampler.load_state()
         if args.mode=='news': data=crawl_startup_news(json.loads(STARTUP_NEWS_SOURCES.read_text(encoding='utf-8')),args,transport)
-        elif args.mode=='profiles': data=crawl_profiles(catalogue,args,transport)
+        elif args.mode=='profiles': data=crawl_profiles(catalogue,args,transport,source_state=source_state)
         elif args.mode=='company-profiles': data=crawl_company_profiles(json.loads((ROOT/'data/startup-research.json').read_text(encoding='utf-8'))['startups'],args,transport)
         elif args.mode=='portraits': data=crawl_portraits(args,transport)
-        elif args.mode=='sites': data=crawl_sites(catalogue,args,transport)
-        elif args.mode=='logos': data=stage_partner_logos(crawl_sites(catalogue,args,transport),args,transport)
+        elif args.mode=='sites': data=crawl_sites(catalogue,args,transport,source_state=source_state)
+        elif args.mode=='logos': data=stage_partner_logos(crawl_sites(catalogue,args,transport,source_state=source_state),args,transport)
         elif args.mode=='discover': data=discover(catalogue,args,transport)
         elif args.mode=='partners': data=crawl_partner_directories(json.loads(PARTNER_SOURCES.read_text(encoding='utf-8')),catalogue,args,transport)
         else: data=crawl_program_directories(json.loads(PROGRAM_SOURCES.read_text(encoding='utf-8')),args,transport)
+        if sampler is not None and source_state is not None:
+            sampler.record_run_outcomes(source_state,data['results'],data.get('candidates',[]))
+            sampler.save_state(source_state)
     if globals().get('__implementation__'): data['implementation']=__implementation__
     path=args.out/f'{args.mode}-{stamp()}.json'; write_json(path,data); write_json(args.out/f'latest-{args.mode}.json',data)
     if args.mode=='profiles': print(f"Prepared {len(data['candidates'])} unreviewed profile leads")
@@ -2286,6 +2483,9 @@ def main(argv=None):
     if args.mode in ('profiles','company-profiles','portraits','news','programs'):
         coverage=data['coverage']
         print(f"Page fetch coverage: {coverage['fetch_status']}; {coverage['pages_succeeded']}/{coverage['pages_attempted']} attempted pages fetched; {coverage['pages_skipped_or_failed']} skipped or failed.")
+        failed_sources=[row for row in coverage.get('sources',[]) if row['status']=='failed']
+        if failed_sources:
+            print('Sources with no successful pages: '+', '.join(row['source'] or '?' for row in failed_sources),file=sys.stderr)
     print(f'Snapshot: {path}')
     if args.mode=='discover':
         if data['metadata_coverage']['entities_requested'] and not data['metadata_coverage']['entities_succeeded']:

@@ -1,0 +1,4032 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "fact:airwallex:series-h:320000000",
+      "kind": "fact",
+      "subject": "startup:airwallex",
+      "subject_key": "airwallex:series-h:320000000",
+      "candidates": [],
+      "evidence": [
+        "https://www.airwallex.com/global/newsroom",
+        "https://www.airwallex.com/global/newsroom/airwallex-secures-320-million-in-series-h-funding-valuation-hits-11-billion"
+      ],
+      "confidence": 0.55,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "38dfd2753ec16fe9dcaa19d47791767269d730335971ea64682844741e77a835",
+      "draft_round": {
+        "startup": "Airwallex",
+        "amount": 320000000.0,
+        "currency": null,
+        "stage": "Series H",
+        "date": "2026-11-23",
+        "source_url": "https://www.airwallex.com/global/newsroom/airwallex-secures-320-million-in-series-h-funding-valuation-hits-11-billion"
+      }
+    },
+    {
+      "id": "merge:partner:accel-india",
+      "kind": "merge",
+      "subject": "partner:accel-india",
+      "subject_key": "accel-india",
+      "candidates": [
+        {
+          "id": "partner:accel",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:23Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:acir",
+      "kind": "merge",
+      "subject": "partner:acir",
+      "subject_key": "acir",
+      "candidates": [
+        {
+          "id": "partner:air",
+          "score": 0.73,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.73,
+      "created_at": "2026-11-23T08:34:23Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:afore-capital",
+      "kind": "merge",
+      "subject": "partner:afore-capital",
+      "subject_key": "afore-capital",
+      "candidates": [
+        {
+          "id": "partner:afore",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:23Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:airtree-ventures",
+      "kind": "merge",
+      "subject": "partner:airtree-ventures",
+      "subject_key": "airtree-ventures",
+      "candidates": [
+        {
+          "id": "partner:airtree",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:23Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:amity-innovation-incubator",
+      "kind": "merge",
+      "subject": "partner:amity-innovation-incubator",
+      "subject_key": "amity-innovation-incubator",
+      "candidates": [
+        {
+          "id": "partner:amity",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:23Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:amity-vc",
+      "kind": "merge",
+      "subject": "partner:amity-vc",
+      "subject_key": "amity-vc",
+      "candidates": [
+        {
+          "id": "partner:amity",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:29Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:balderton-capital",
+      "kind": "merge",
+      "subject": "partner:balderton-capital",
+      "subject_key": "balderton-capital",
+      "candidates": [
+        {
+          "id": "partner:balderton",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:24Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:bessemer-india",
+      "kind": "merge",
+      "subject": "partner:bessemer-india",
+      "subject_key": "bessemer-india",
+      "candidates": [
+        {
+          "id": "partner:bessemer",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:29Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:bessemer-venture-partners",
+      "kind": "merge",
+      "subject": "partner:bessemer-venture-partners",
+      "subject_key": "bessemer-venture-partners",
+      "candidates": [
+        {
+          "id": "partner:bessemer",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:24Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:blackbird",
+      "kind": "merge",
+      "subject": "partner:blackbird",
+      "subject_key": "blackbird",
+      "candidates": [
+        {
+          "id": "partner:blackbird-ventures",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://innovationbay.com/pages/top-venture-capital-firms-australia"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "dde105de4f974c88f522e38cdba0312049abde3fccbefe020c4762180969965f"
+    },
+    {
+      "id": "merge:partner:boost-capital",
+      "kind": "merge",
+      "subject": "partner:boost-capital",
+      "subject_key": "boost-capital",
+      "candidates": [
+        {
+          "id": "partner:boost-capital-partners",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:24Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:boost-cp",
+      "kind": "merge",
+      "subject": "partner:boost-cp",
+      "subject_key": "boost-cp",
+      "candidates": [
+        {
+          "id": "partner:boost-vc",
+          "score": 0.74,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.74,
+      "created_at": "2026-11-23T08:34:29Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:box-group",
+      "kind": "merge",
+      "subject": "partner:box-group",
+      "subject_key": "box-group",
+      "candidates": [
+        {
+          "id": "partner:boxgroup",
+          "score": 0.8,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.8,
+      "created_at": "2026-11-23T08:34:24Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:draper-startup-house",
+      "kind": "merge",
+      "subject": "partner:draper-startup-house",
+      "subject_key": "draper-startup-house",
+      "candidates": [
+        {
+          "id": "partner:draper",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:25Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:draper-vc",
+      "kind": "merge",
+      "subject": "partner:draper-vc",
+      "subject_key": "draper-vc",
+      "candidates": [
+        {
+          "id": "partner:draper",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:25Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:draperb1",
+      "kind": "merge",
+      "subject": "partner:draperb1",
+      "subject_key": "draperb1",
+      "candidates": [
+        {
+          "id": "partner:draper",
+          "score": 0.73,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.73,
+      "created_at": "2026-11-23T08:34:25Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:f-prime-capital",
+      "kind": "merge",
+      "subject": "partner:f-prime-capital",
+      "subject_key": "f-prime-capital",
+      "candidates": [
+        {
+          "id": "partner:f-prime",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:25Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:fika-vc",
+      "kind": "merge",
+      "subject": "partner:fika-vc",
+      "subject_key": "fika-vc",
+      "candidates": [
+        {
+          "id": "partner:fika",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:25Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:firstmark-capital",
+      "kind": "merge",
+      "subject": "partner:firstmark-capital",
+      "subject_key": "firstmark-capital",
+      "candidates": [
+        {
+          "id": "partner:firstmark",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:25Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:focalvc",
+      "kind": "merge",
+      "subject": "partner:focalvc",
+      "subject_key": "focalvc",
+      "candidates": [
+        {
+          "id": "partner:focal",
+          "score": 0.71,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.71,
+      "created_at": "2026-11-23T08:34:29Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:footwork-vc",
+      "kind": "merge",
+      "subject": "partner:footwork-vc",
+      "subject_key": "footwork-vc",
+      "candidates": [
+        {
+          "id": "partner:footwork",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:25Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:fractal-software",
+      "kind": "merge",
+      "subject": "partner:fractal-software",
+      "subject_key": "fractal-software",
+      "candidates": [
+        {
+          "id": "partner:fractal",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:25Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:galvanize",
+      "kind": "merge",
+      "subject": "partner:galvanize",
+      "subject_key": "galvanize",
+      "candidates": [
+        {
+          "id": "partner:galvanizer",
+          "score": 0.81,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.81,
+      "created_at": "2026-11-23T08:34:29Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:groundupvc",
+      "kind": "merge",
+      "subject": "partner:groundupvc",
+      "subject_key": "groundupvc",
+      "candidates": [
+        {
+          "id": "partner:ground-up",
+          "score": 0.72,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.72,
+      "created_at": "2026-11-23T08:34:26Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:hashed-emergent",
+      "kind": "merge",
+      "subject": "partner:hashed-emergent",
+      "subject_key": "hashed-emergent",
+      "candidates": [
+        {
+          "id": "partner:hashed",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:26Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:hof-capital",
+      "kind": "merge",
+      "subject": "partner:hof-capital",
+      "subject_key": "hof-capital",
+      "candidates": [
+        {
+          "id": "partner:hof",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:26Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:khosla-ventures",
+      "kind": "merge",
+      "subject": "partner:khosla-ventures",
+      "subject_key": "khosla-ventures",
+      "candidates": [
+        {
+          "id": "partner:khosla",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:26Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:lightspeed-venture-partners",
+      "kind": "merge",
+      "subject": "partner:lightspeed-venture-partners",
+      "subject_key": "lightspeed-venture-partners",
+      "candidates": [
+        {
+          "id": "partner:lightspeed",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:26Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:liminal",
+      "kind": "merge",
+      "subject": "partner:liminal",
+      "subject_key": "liminal",
+      "candidates": [
+        {
+          "id": "partner:liminal-venture-studio",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:matrix-partners",
+      "kind": "merge",
+      "subject": "partner:matrix-partners",
+      "subject_key": "matrix-partners",
+      "candidates": [
+        {
+          "id": "partner:matrix",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:27Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:monk-s-hill-ventures",
+      "kind": "merge",
+      "subject": "partner:monk-s-hill-ventures",
+      "subject_key": "monk-s-hill-ventures",
+      "candidates": [
+        {
+          "id": "partner:sutter-hill-ventures",
+          "score": 0.67,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.67,
+      "created_at": "2026-11-23T08:34:27Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:mucker-capital",
+      "kind": "merge",
+      "subject": "partner:mucker-capital",
+      "subject_key": "mucker-capital",
+      "candidates": [
+        {
+          "id": "partner:mucker",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:27Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:neo-ventures",
+      "kind": "merge",
+      "subject": "partner:neo-ventures",
+      "subject_key": "neo-ventures",
+      "candidates": [
+        {
+          "id": "partner:neo",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:27Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:newtopia-vc",
+      "kind": "merge",
+      "subject": "partner:newtopia-vc",
+      "subject_key": "newtopia-vc",
+      "candidates": [
+        {
+          "id": "partner:newtopia",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:27Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:notable",
+      "kind": "merge",
+      "subject": "partner:notable",
+      "subject_key": "notable",
+      "candidates": [
+        {
+          "id": "partner:notable-capital",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:30Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:pantera-capital",
+      "kind": "merge",
+      "subject": "partner:pantera-capital",
+      "subject_key": "pantera-capital",
+      "candidates": [
+        {
+          "id": "partner:pantera",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:27Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:paralect",
+      "kind": "merge",
+      "subject": "partner:paralect",
+      "subject_key": "paralect",
+      "candidates": [
+        {
+          "id": "partner:paralect-venture-studio",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:27Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:pear-ventures",
+      "kind": "merge",
+      "subject": "partner:pear-ventures",
+      "subject_key": "pear-ventures",
+      "candidates": [
+        {
+          "id": "partner:pear",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:27Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:primary-ventures",
+      "kind": "merge",
+      "subject": "partner:primary-ventures",
+      "subject_key": "primary-ventures",
+      "candidates": [
+        {
+          "id": "partner:primary",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:27Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:rackhouse-vc",
+      "kind": "merge",
+      "subject": "partner:rackhouse-vc",
+      "subject_key": "rackhouse-vc",
+      "candidates": [
+        {
+          "id": "partner:rackhouse",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:28Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:scribble-ventures",
+      "kind": "merge",
+      "subject": "partner:scribble-ventures",
+      "subject_key": "scribble-ventures",
+      "candidates": [
+        {
+          "id": "partner:scribble",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:30Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:sequoia",
+      "kind": "merge",
+      "subject": "partner:sequoia",
+      "subject_key": "sequoia",
+      "candidates": [
+        {
+          "id": "partner:sequoia-capital",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://startups.aws.com/lp/aws-activate-provider"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "71dc999a50998139a19c4d5ebc695415e7ca9db5a2dc1ea4abd20b3de7f79804"
+    },
+    {
+      "id": "merge:partner:square-peg-capital",
+      "kind": "merge",
+      "subject": "partner:square-peg-capital",
+      "subject_key": "square-peg-capital",
+      "candidates": [
+        {
+          "id": "partner:square-peg",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://innovationbay.com/pages/top-venture-capital-firms-australia"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "dde105de4f974c88f522e38cdba0312049abde3fccbefe020c4762180969965f"
+    },
+    {
+      "id": "merge:partner:startuptn",
+      "kind": "merge",
+      "subject": "partner:startuptn",
+      "subject_key": "startuptn",
+      "candidates": [
+        {
+          "id": "partner:startout",
+          "score": 0.7,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.7,
+      "created_at": "2026-11-23T08:34:28Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:stationf",
+      "kind": "merge",
+      "subject": "partner:stationf",
+      "subject_key": "stationf",
+      "candidates": [
+        {
+          "id": "partner:station-f",
+          "score": 0.8,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.8,
+      "created_at": "2026-11-23T08:34:28Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:sunflower-capital",
+      "kind": "merge",
+      "subject": "partner:sunflower-capital",
+      "subject_key": "sunflower-capital",
+      "candidates": [
+        {
+          "id": "partner:sunflower",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:28Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:uncork-capital",
+      "kind": "merge",
+      "subject": "partner:uncork-capital",
+      "subject_key": "uncork-capital",
+      "candidates": [
+        {
+          "id": "partner:uncork",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:31Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:unshackled-vc",
+      "kind": "merge",
+      "subject": "partner:unshackled-vc",
+      "subject_key": "unshackled-vc",
+      "candidates": [
+        {
+          "id": "partner:unshackled",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:31Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:unshackled-ventures",
+      "kind": "merge",
+      "subject": "partner:unshackled-ventures",
+      "subject_key": "unshackled-ventures",
+      "candidates": [
+        {
+          "id": "partner:unshackled",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:31Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:up-west",
+      "kind": "merge",
+      "subject": "partner:up-west",
+      "subject_key": "up-west",
+      "candidates": [
+        {
+          "id": "partner:upwest",
+          "score": 0.78,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.78,
+      "created_at": "2026-11-23T08:34:31Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:uz-combinator",
+      "kind": "merge",
+      "subject": "partner:uz-combinator",
+      "subject_key": "uz-combinator",
+      "candidates": [
+        {
+          "id": "partner:y-combinator",
+          "score": 0.75,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.75,
+      "created_at": "2026-11-23T08:34:31Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:velocity-digital",
+      "kind": "merge",
+      "subject": "partner:velocity-digital",
+      "subject_key": "velocity-digital",
+      "candidates": [
+        {
+          "id": "partner:velocity",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:31Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:partner:ycombinator",
+      "kind": "merge",
+      "subject": "partner:ycombinator",
+      "subject_key": "ycombinator",
+      "candidates": [
+        {
+          "id": "partner:y-combinator",
+          "score": 0.81,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://github.com/enterprise/startups/partners"
+      ],
+      "confidence": 0.81,
+      "created_at": "2026-11-23T08:34:31Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
+    },
+    {
+      "id": "merge:startup:bridge-the-gap-to-space-gilmour-space-australian-sovereign-rocket-and-satellite-company",
+      "kind": "merge",
+      "subject": "startup:bridge-the-gap-to-space-gilmour-space-australian-sovereign-rocket-and-satellite-company",
+      "subject_key": "bridge-the-gap-to-space-gilmour-space-australian-sovereign-rocket-and-satellite-company",
+      "candidates": [
+        {
+          "id": "startup:gilmour-space",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/gilmour-space-2"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "1e6d11083ea85afb832abad900200dde4a53a8919f174399b8cef266f04ca042"
+    },
+    {
+      "id": "merge:startup:decarbonise-the-planet-uluu-material-that-replaces-plasticbetter-for-the-planet-built-for-scale",
+      "kind": "merge",
+      "subject": "startup:decarbonise-the-planet-uluu-material-that-replaces-plasticbetter-for-the-planet-built-for-scale",
+      "subject_key": "decarbonise-the-planet-uluu-material-that-replaces-plasticbetter-for-the-planet-built-for-scale",
+      "candidates": [
+        {
+          "id": "startup:uluu",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/uluu"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "b48799655314e1d197a37bd0af5651253646cf466bdfa8ab3eada5c29513ec31"
+    },
+    {
+      "id": "merge:startup:enable-the-next-intelligence-leap-zabidou-the-ultra-vision-ai-platform-for-heavy-industries",
+      "kind": "merge",
+      "subject": "startup:enable-the-next-intelligence-leap-zabidou-the-ultra-vision-ai-platform-for-heavy-industries",
+      "subject_key": "enable-the-next-intelligence-leap-zabidou-the-ultra-vision-ai-platform-for-heavy-industries",
+      "candidates": [
+        {
+          "id": "startup:zabidou",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/zabidou"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "bae4c036dece5f81101312c0ae13bd123376e437d9963b2d98f7afa885e1fa25"
+    },
+    {
+      "id": "merge:startup:feed-10-billion-people-cauldron-industrial-scale-bio-manufacturing-unlocked",
+      "kind": "merge",
+      "subject": "startup:feed-10-billion-people-cauldron-industrial-scale-bio-manufacturing-unlocked",
+      "subject_key": "feed-10-billion-people-cauldron-industrial-scale-bio-manufacturing-unlocked",
+      "candidates": [
+        {
+          "id": "startup:cauldron",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/cauldron"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "2eb1583d31995049547c687db60786bcbb13dce63eb119d20635cf4e0b994693"
+    },
+    {
+      "id": "merge:startup:gilmour-space-technologies",
+      "kind": "merge",
+      "subject": "startup:gilmour-space-technologies",
+      "subject_key": "gilmour-space-technologies",
+      "candidates": [
+        {
+          "id": "startup:gilmour-space",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/gilmour-space-technologies"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "e6bde730dceebfe8ffb7dbdb8c09863d2cc0c6a0391d41755409bd429fe7c592"
+    },
+    {
+      "id": "merge:startup:morse",
+      "kind": "merge",
+      "subject": "startup:morse",
+      "subject_key": "morse",
+      "candidates": [
+        {
+          "id": "startup:morse-micro",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/sling"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "19d1b246942ee609532c4fce414e3029c24397b10398310aa2d5a573bfca1216"
+    },
+    {
+      "id": "merge:startup:neuralindex-ai",
+      "kind": "merge",
+      "subject": "startup:neuralindex-ai",
+      "subject_key": "neuralindex-ai",
+      "candidates": [
+        {
+          "id": "startup:neuralindex",
+          "score": 0.89,
+          "basis": "name-similarity"
+        }
+      ],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/neuralindex-ai"
+      ],
+      "confidence": 0.89,
+      "created_at": "2026-11-23T08:34:32Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "b7b585ff68656a4e2c2e3088d055ca5ea8f6e5fc9991b705e1d1f96fd34634c6"
+    },
+    {
+      "id": "startup-lead:abridge",
+      "kind": "startup-lead",
+      "subject": "startup:abridge",
+      "subject_key": "abridge",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/abridge"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "aa9aa1dd7cad3e07c2b291091510737e111c0a70e94a46df3aea92cefa888c75",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/abridge"
+      }
+    },
+    {
+      "id": "startup-lead:accelo",
+      "kind": "startup-lead",
+      "subject": "startup:accelo",
+      "subject_key": "accelo",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/accelo"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "f57437b258f7848c452b4dad88093702c3b9046cf550e7ba7f972335744d652b",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/accelo"
+      }
+    },
+    {
+      "id": "startup-lead:adora",
+      "kind": "startup-lead",
+      "subject": "startup:adora",
+      "subject_key": "adora",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/adora"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "ee11c360f15ec4885ed8cbf3e30b96b8cda5c7344576b74a3fcad1ff0ef26d3f",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/adora"
+      }
+    },
+    {
+      "id": "startup-lead:agridigital",
+      "kind": "startup-lead",
+      "subject": "startup:agridigital",
+      "subject_key": "agridigital",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/agridigital"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "d0494197133a8342b424cb4568733d99ab2c1fe7941d0f5b024026708fe225e0",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/agridigital"
+      }
+    },
+    {
+      "id": "startup-lead:ai-enabled-biotech",
+      "kind": "startup-lead",
+      "subject": "startup:ai-enabled-biotech",
+      "subject_key": "ai-enabled-biotech",
+      "candidates": [],
+      "evidence": [
+        "https://www.madrona.com/companies/",
+        "https://www.madrona.com/companies/ai-enabled-biotech/"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "7f2511c2c9b11dae6e2d6e95314ca0af21b3fb9f68ea1addecfb55c0fa0a98df",
+      "mentions": {
+        "partners": [
+          "Madrona"
+        ],
+        "website": "https://www.madrona.com/companies/ai-enabled-biotech/"
+      }
+    },
+    {
+      "id": "startup-lead:ai-hay",
+      "kind": "startup-lead",
+      "subject": "startup:ai-hay",
+      "subject_key": "ai-hay",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/ai-hay"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "ec7b739a0c6445fc8047f8ba550fb41649bcfc31ff01eeb15e7346ad2e11aa44",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/ai-hay"
+      }
+    },
+    {
+      "id": "startup-lead:ai-intelligent-apps",
+      "kind": "startup-lead",
+      "subject": "startup:ai-intelligent-apps",
+      "subject_key": "ai-intelligent-apps",
+      "candidates": [],
+      "evidence": [
+        "https://www.madrona.com/companies/",
+        "https://www.madrona.com/companies/ai-intelligent-apps/"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "3a7eaa31ce05df2404d9d6ae077c238c4b47ee308be1c4368390e83d200ef8a4",
+      "mentions": {
+        "partners": [
+          "Madrona"
+        ],
+        "website": "https://www.madrona.com/companies/ai-intelligent-apps/"
+      }
+    },
+    {
+      "id": "startup-lead:ai-nc",
+      "kind": "startup-lead",
+      "subject": "startup:ai-nc",
+      "subject_key": "ai-nc",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/ai-nc"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "2f4331ce93dbef0768a24632802bf054b74b6fe8fdbdbf0fc991dd2eb9031968",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/ai-nc"
+      }
+    },
+    {
+      "id": "startup-lead:aidoc",
+      "kind": "startup-lead",
+      "subject": "startup:aidoc",
+      "subject_key": "aidoc",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/aidoc"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "39b1a2072267e1cdff987efa0d8c92efdfa2bdffd13b1f2b77b3938095218378",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/aidoc"
+      }
+    },
+    {
+      "id": "startup-lead:alloy",
+      "kind": "startup-lead",
+      "subject": "startup:alloy",
+      "subject_key": "alloy",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/alloy-index",
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/alloy"
+      ],
+      "confidence": 0.55,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "a679e8918921ba0be6070f40a25e7174a30cc455c855bec6a0b105259a12e987",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures",
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/alloy"
+      }
+    },
+    {
+      "id": "startup-lead:alloy-robotics",
+      "kind": "startup-lead",
+      "subject": "startup:alloy-robotics",
+      "subject_key": "alloy-robotics",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/alloy"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "f179252582e57728a32e882066bbe7dde808035da2edaef2b05315326f324a9c",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/alloy"
+      }
+    },
+    {
+      "id": "startup-lead:alqem",
+      "kind": "startup-lead",
+      "subject": "startup:alqem",
+      "subject_key": "alqem",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/alqem"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "f9a73a1c997fb44ed35810a26b3a28135fd6cf143cf3ee2e91ae744c54ebab11",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/alqem"
+      }
+    },
+    {
+      "id": "startup-lead:alt-leather",
+      "kind": "startup-lead",
+      "subject": "startup:alt-leather",
+      "subject_key": "alt-leather",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/alt-leather"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "43bddec1c4db173be0ecb4b195a99118455e734814770f10c55f0f6d57ad9718",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/alt-leather"
+      }
+    },
+    {
+      "id": "startup-lead:alta",
+      "kind": "startup-lead",
+      "subject": "startup:alta",
+      "subject_key": "alta",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/alta",
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/alta"
+      ],
+      "confidence": 0.55,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "5d853786098b827a1c5bf496742dd55321d3e9785a21ef449d027237ffc89f25",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures",
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/alta"
+      }
+    },
+    {
+      "id": "startup-lead:alts",
+      "kind": "startup-lead",
+      "subject": "startup:alts",
+      "subject_key": "alts",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/alts"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "9c81cfaf249a3341f5f173caf556043c77c754bea4c85b79d9e0138cc372b459",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/alts"
+      }
+    },
+    {
+      "id": "startup-lead:amber",
+      "kind": "startup-lead",
+      "subject": "startup:amber",
+      "subject_key": "amber",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/amber"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "a9d9e350d6cb5ed4a03d0eccd260306f01db82b7917db7f23d984cc599b61bac",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/amber"
+      }
+    },
+    {
+      "id": "startup-lead:andromeda",
+      "kind": "startup-lead",
+      "subject": "startup:andromeda",
+      "subject_key": "andromeda",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/andromeda-2"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "00b954ca70758b0e588b142b5616f8ceca69913f6c5a3f26a040175239a655e0",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/andromeda-2"
+      }
+    },
+    {
+      "id": "startup-lead:anon",
+      "kind": "startup-lead",
+      "subject": "startup:anon",
+      "subject_key": "anon",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/anon"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "21d3d4d6cafc221d683c28ade3518d74a80df2dfa5dcd9671cb409b6804bc947",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/anon"
+      }
+    },
+    {
+      "id": "startup-lead:ansight",
+      "kind": "startup-lead",
+      "subject": "startup:ansight",
+      "subject_key": "ansight",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/ansight"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "6687a10b0c6f5abef5038e04ade73f59ae114a7f9dd105345d0b3ec11d21eee4",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/ansight"
+      }
+    },
+    {
+      "id": "startup-lead:antares-aerospace",
+      "kind": "startup-lead",
+      "subject": "startup:antares-aerospace",
+      "subject_key": "antares-aerospace",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/antares-aerospace"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "a7f7916a39fee4d4146d85e621e3b0a15b5504b1ec80c7ec5d278ef8686515ef",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/antares-aerospace"
+      }
+    },
+    {
+      "id": "startup-lead:anthro-energy",
+      "kind": "startup-lead",
+      "subject": "startup:anthro-energy",
+      "subject_key": "anthro-energy",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/anthroenergy"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "75f9d93b4e63c99f5935c15cb4a0634ffb055a7231e20135e4d5c4d6b317f2c7",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/anthroenergy"
+      }
+    },
+    {
+      "id": "startup-lead:ao-air",
+      "kind": "startup-lead",
+      "subject": "startup:ao-air",
+      "subject_key": "ao-air",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/ao-air"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "0689a1c226917a591e64d5ba462655874f08d71cf54498ce45c56157655ef6a7",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/ao-air"
+      }
+    },
+    {
+      "id": "startup-lead:applied",
+      "kind": "startup-lead",
+      "subject": "startup:applied",
+      "subject_key": "applied",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/applied"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "ddcc122d0a745d5f22f98aa3f736b2a7747df0f3756e9f724fd3803a1c3410ca",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/applied"
+      }
+    },
+    {
+      "id": "startup-lead:aquila",
+      "kind": "startup-lead",
+      "subject": "startup:aquila",
+      "subject_key": "aquila",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/aquila"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "1354e473fbfe49c5525001dfde6e39ff54f446d16259f29ec28d8aefcdd47e9e",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/aquila"
+      }
+    },
+    {
+      "id": "startup-lead:aravax-pty-ltd-developing-peptide-based-immunotherapies-for-food-allergy-treatment",
+      "kind": "startup-lead",
+      "subject": "startup:aravax-pty-ltd-developing-peptide-based-immunotherapies-for-food-allergy-treatment",
+      "subject_key": "aravax-pty-ltd-developing-peptide-based-immunotherapies-for-food-allergy-treatment",
+      "candidates": [],
+      "evidence": [
+        "https://brandoncapital.vc/investment-portfolio/",
+        "https://brandoncapital.vc/portfolio/aravax/"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "321a8043fa11fe6605ad2c379cb3f34225663b034cd6862e3cd238f609613116",
+      "mentions": {
+        "partners": [
+          "Brandon Capital"
+        ],
+        "website": "https://brandoncapital.vc/portfolio/aravax/"
+      }
+    },
+    {
+      "id": "startup-lead:ask-nicely",
+      "kind": "startup-lead",
+      "subject": "startup:ask-nicely",
+      "subject_key": "ask-nicely",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/ask-nicely"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "9af714d6139c582a2573e20bf41fdf44b4d1522b9a7e8cfbe76ad7e8661e6977",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/ask-nicely"
+      }
+    },
+    {
+      "id": "startup-lead:astrix-astronautics",
+      "kind": "startup-lead",
+      "subject": "startup:astrix-astronautics",
+      "subject_key": "astrix-astronautics",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/astrix-astronautics"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "d68bed11d73bf7e2736419a29d9716c79c495fb08c7c44e15d202843c998f3a1",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/astrix-astronautics"
+      }
+    },
+    {
+      "id": "startup-lead:asyncbrain",
+      "kind": "startup-lead",
+      "subject": "startup:asyncbrain",
+      "subject_key": "asyncbrain",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/asyncbrain"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "69780b0d35330887f5ca28a6087494ce68699f1086de31cfb8b110dbf5fedd2b",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/asyncbrain"
+      }
+    },
+    {
+      "id": "startup-lead:athena-home-loans",
+      "kind": "startup-lead",
+      "subject": "startup:athena-home-loans",
+      "subject_key": "athena-home-loans",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/athena-home-loans"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "fd07ca113bf8fbb62b91677f20f88444498164ca526a74309597df4a55c64d8c",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/athena-home-loans"
+      }
+    },
+    {
+      "id": "startup-lead:atopile",
+      "kind": "startup-lead",
+      "subject": "startup:atopile",
+      "subject_key": "atopile",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/atopile"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "dddd64981a27b08ffcb843eefc62376c3dc5d5ab4d6a12eb1861e39812433532",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/atopile"
+      }
+    },
+    {
+      "id": "startup-lead:atticus",
+      "kind": "startup-lead",
+      "subject": "startup:atticus",
+      "subject_key": "atticus",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/atticus"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "c060f7c9aa861e6f01bdd48bed621c172b2b816f5ef73b0831ebcfc0be432fb6",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/atticus"
+      }
+    },
+    {
+      "id": "startup-lead:august-robotics",
+      "kind": "startup-lead",
+      "subject": "startup:august-robotics",
+      "subject_key": "august-robotics",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/august-robotics"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "43a973004d7a8f61fb2035e15ff3f92c3df777834551032e9365e7390b4ab833",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/august-robotics"
+      }
+    },
+    {
+      "id": "startup-lead:authsignal",
+      "kind": "startup-lead",
+      "subject": "startup:authsignal",
+      "subject_key": "authsignal",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/authsignal"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "49233071e892167e063b4f6bf81d38ae8517656023b44e865c8d2a807313debd",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/authsignal"
+      }
+    },
+    {
+      "id": "startup-lead:azonic",
+      "kind": "startup-lead",
+      "subject": "startup:azonic",
+      "subject_key": "azonic",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/azonic"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "ae9ff90ada60bc6eace9883f97c8a815964ecb412d546bba7654b51f2cc39f35",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/azonic"
+      }
+    },
+    {
+      "id": "startup-lead:baraja",
+      "kind": "startup-lead",
+      "subject": "startup:baraja",
+      "subject_key": "baraja",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/baraja-1"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "e9129a2e9bb9f6e93a610744a92f0d9e824389b24436524369c770351856b131",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/baraja-1"
+      }
+    },
+    {
+      "id": "startup-lead:baseten",
+      "kind": "startup-lead",
+      "subject": "startup:baseten",
+      "subject_key": "baseten",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/baseten"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "946e8d0233347d353fc900a34739420e483af8703b388d4ad4bb54cbb30b587d",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/baseten"
+      }
+    },
+    {
+      "id": "startup-lead:bellish",
+      "kind": "startup-lead",
+      "subject": "startup:bellish",
+      "subject_key": "bellish",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/bellish"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "9af4082af60c67427de98671ecae1ddd0de98ac626599d305baf08230a48ca8a",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/bellish"
+      }
+    },
+    {
+      "id": "startup-lead:biographer",
+      "kind": "startup-lead",
+      "subject": "startup:biographer",
+      "subject_key": "biographer",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/biographer"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "5d08f117c30b0ef6b0f5f46ccaba1177ed5423dc373db75a40f43bcafed2871d",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/biographer"
+      }
+    },
+    {
+      "id": "startup-lead:bioticsai",
+      "kind": "startup-lead",
+      "subject": "startup:bioticsai",
+      "subject_key": "bioticsai",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/bioticsai"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "e0a27c409b7f4e4de6035e95613d0429c14294794c76c0763f6b2ec41120c751",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/bioticsai"
+      }
+    },
+    {
+      "id": "startup-lead:black-ai",
+      "kind": "startup-lead",
+      "subject": "startup:black-ai",
+      "subject_key": "black-ai",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/black-ai"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "9852af00b5f2f3ff1cf52b8c57a419c691674f1c21417bc391bdbc4257f2ae2c",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/black-ai"
+      }
+    },
+    {
+      "id": "startup-lead:blackbird-labs",
+      "kind": "startup-lead",
+      "subject": "startup:blackbird-labs",
+      "subject_key": "blackbird-labs",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/blackbirdlabs"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "e8cd99f9075f12d5acd9144c155f2391b41cc0462d9c28f90f6436f171c55e6e",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/blackbirdlabs"
+      }
+    },
+    {
+      "id": "startup-lead:blinq",
+      "kind": "startup-lead",
+      "subject": "startup:blinq",
+      "subject_key": "blinq",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/blinq",
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/blinq"
+      ],
+      "confidence": 0.55,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "3c7d5ed6ee64f7831c409aa4389136c2ca0d7cf552e3d69faa33587c62054717",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures",
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/blinq"
+      }
+    },
+    {
+      "id": "startup-lead:blixt",
+      "kind": "startup-lead",
+      "subject": "startup:blixt",
+      "subject_key": "blixt",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/blixt"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "fbe63ec9957e411be0746ef8539f8b4eb04fa5df9673f20cdabcee71d4d73e81",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/blixt"
+      }
+    },
+    {
+      "id": "startup-lead:board",
+      "kind": "startup-lead",
+      "subject": "startup:board",
+      "subject_key": "board",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/board"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "d9f1eb88de5fee0d1bd46fe15b650ecfd0de9fe60f74fb6634cc383a1bc0c7c1",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/board"
+      }
+    },
+    {
+      "id": "startup-lead:borne",
+      "kind": "startup-lead",
+      "subject": "startup:borne",
+      "subject_key": "borne",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/borne"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "614aeed005312209083d5327c96dc82e6452769cd423930a88daba837ee05c1f",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/borne"
+      }
+    },
+    {
+      "id": "startup-lead:brandviz-ai",
+      "kind": "startup-lead",
+      "subject": "startup:brandviz-ai",
+      "subject_key": "brandviz-ai",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/brandviz-ai"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "96933fc54651c8e97b24356081d724b9a5f1107970186431a2dacd7a6d75865e",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/brandviz-ai"
+      }
+    },
+    {
+      "id": "startup-lead:bugster",
+      "kind": "startup-lead",
+      "subject": "startup:bugster",
+      "subject_key": "bugster",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/bugster"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "197c1e680d6b892bccf16caeec7446af0e5a014704a3b97efbf0469cb93d0e29",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/bugster"
+      }
+    },
+    {
+      "id": "startup-lead:build-club",
+      "kind": "startup-lead",
+      "subject": "startup:build-club",
+      "subject_key": "build-club",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/build-club"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "bef21d9bbacfdd83e3812f6fe48d0515c8f35c0ca6d8be411999d88428f92ecc",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/build-club"
+      }
+    },
+    {
+      "id": "startup-lead:byron",
+      "kind": "startup-lead",
+      "subject": "startup:byron",
+      "subject_key": "byron",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/byron"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "fca8597fb76264f5067e7a2d6d5a5629778ce72f0a4301503a49a69023e9d228",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/byron"
+      }
+    },
+    {
+      "id": "startup-lead:cactos",
+      "kind": "startup-lead",
+      "subject": "startup:cactos",
+      "subject_key": "cactos",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/cactos"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "9d5952f9b7b4b7fe1b8a6611def711387b5c80c40dfc591acdfc5e1546a6cf0f",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/cactos"
+      }
+    },
+    {
+      "id": "startup-lead:cais",
+      "kind": "startup-lead",
+      "subject": "startup:cais",
+      "subject_key": "cais",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/cais"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "0e8a72568740ca12b6941b59c7c261a47c973cf3dcfd01432d971336ecda070c",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/cais"
+      }
+    },
+    {
+      "id": "startup-lead:caligra",
+      "kind": "startup-lead",
+      "subject": "startup:caligra",
+      "subject_key": "caligra",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/caligra"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "db49cb39a7e710ed3798a2f27c554c301020314a609acada09b8a9bfaa0e4381",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/caligra"
+      }
+    },
+    {
+      "id": "startup-lead:calreply-acquired",
+      "kind": "startup-lead",
+      "subject": "startup:calreply-acquired",
+      "subject_key": "calreply-acquired",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/calreply"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "cdc81a017cccfdef7ee106bf01d50e215fecbe33bde016d9466ec837b9016409",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/calreply"
+      }
+    },
+    {
+      "id": "startup-lead:carbonaught",
+      "kind": "startup-lead",
+      "subject": "startup:carbonaught",
+      "subject_key": "carbonaught",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/carbonaught"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "6f999771ea19c20213e1c62c25a880119bd747f02ceb202d28ff2e41678f59e9",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/carbonaught"
+      }
+    },
+    {
+      "id": "startup-lead:carbonchain",
+      "kind": "startup-lead",
+      "subject": "startup:carbonchain",
+      "subject_key": "carbonchain",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/carbonchain",
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/carbonchain"
+      ],
+      "confidence": 0.55,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "d874aef46bc8ddb12f744c80151da859cf88dfb10243ae83e228daae5eb693ce",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures",
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/carbonchain"
+      }
+    },
+    {
+      "id": "startup-lead:caregp",
+      "kind": "startup-lead",
+      "subject": "startup:caregp",
+      "subject_key": "caregp",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/caregp"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "6496ece315fe29bb5bded12f0b8500d0281d8da348abb3f2dde99ec5e42a3bf5",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/caregp"
+      }
+    },
+    {
+      "id": "startup-lead:carepatron",
+      "kind": "startup-lead",
+      "subject": "startup:carepatron",
+      "subject_key": "carepatron",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/carepatron"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "b9a366afee9d1a819f0069f0ffbe9f2e8255a0e726c26c73dc3978a17328ca86",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/carepatron"
+      }
+    },
+    {
+      "id": "startup-lead:carta",
+      "kind": "startup-lead",
+      "subject": "startup:carta",
+      "subject_key": "carta",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/carta"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "780e63f802b9f85bb730a5604413f462b6fd92099108f1f4cfc290594257622d",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/carta"
+      }
+    },
+    {
+      "id": "startup-lead:carted",
+      "kind": "startup-lead",
+      "subject": "startup:carted",
+      "subject_key": "carted",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/carted"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "11eabc4a03e0d2a81f005585990b4a25a19db52c94875bbc3015f8d7919c2580",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/carted"
+      }
+    },
+    {
+      "id": "startup-lead:catalym-reversing-gdf-15-mediated-immunosupression-to-induce-anti-tumour-responses",
+      "kind": "startup-lead",
+      "subject": "startup:catalym-reversing-gdf-15-mediated-immunosupression-to-induce-anti-tumour-responses",
+      "subject_key": "catalym-reversing-gdf-15-mediated-immunosupression-to-induce-anti-tumour-responses",
+      "candidates": [],
+      "evidence": [
+        "https://brandoncapital.vc/investment-portfolio/",
+        "https://brandoncapital.vc/portfolio/catalym/"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "30ab9436d3113be81ff37f84f99dd8fd9742073bbfde4413f2c964fecd279078",
+      "mentions": {
+        "partners": [
+          "Brandon Capital"
+        ],
+        "website": "https://brandoncapital.vc/portfolio/catalym/"
+      }
+    },
+    {
+      "id": "startup-lead:causal-labs",
+      "kind": "startup-lead",
+      "subject": "startup:causal-labs",
+      "subject_key": "causal-labs",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/causallabs"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "3580a68d939fc9be1a639dc618a32dff239cb154c9bd632ca4dccca245b05f97",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/causallabs"
+      }
+    },
+    {
+      "id": "startup-lead:checkmate",
+      "kind": "startup-lead",
+      "subject": "startup:checkmate",
+      "subject_key": "checkmate",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/checkmate"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "731e30305f14d83cadc49f4f76c4b1d9af5fdb7b773ca694f6c9f7f570760706",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/checkmate"
+      }
+    },
+    {
+      "id": "startup-lead:chirp",
+      "kind": "startup-lead",
+      "subject": "startup:chirp",
+      "subject_key": "chirp",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/chirp"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "23e21305563d8933f892aea832a92a51ca5c727b869fee80169bbc8d280cbbd8",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/chirp"
+      }
+    },
+    {
+      "id": "startup-lead:chope-acquired",
+      "kind": "startup-lead",
+      "subject": "startup:chope-acquired",
+      "subject_key": "chope-acquired",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/chope"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "0fb0d8c7f50ba0f8ced963a99b53d09b326ae2b14fd9bd5b7bc39e9ec20f5ecb",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/chope"
+      }
+    },
+    {
+      "id": "startup-lead:chronicle",
+      "kind": "startup-lead",
+      "subject": "startup:chronicle",
+      "subject_key": "chronicle",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/chronicle"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "d81dd018b6625fb46c8e5fa1a683b164943a514b59aa8ded069a2d86ee6aa0a2",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/chronicle"
+      }
+    },
+    {
+      "id": "startup-lead:chuffed",
+      "kind": "startup-lead",
+      "subject": "startup:chuffed",
+      "subject_key": "chuffed",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/chuffed"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "c97f35cdc3206bfd6882305a193ea6c8505ce0c856e3fcfedb03c27bf3464548",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/chuffed"
+      }
+    },
+    {
+      "id": "startup-lead:circular-sourcing",
+      "kind": "startup-lead",
+      "subject": "startup:circular-sourcing",
+      "subject_key": "circular-sourcing",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/circular-sourcing"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "c56b5917814a262ef3ca14f950344230aba573d63d56ad5e89d63a8c3ad3fb22",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/circular-sourcing"
+      }
+    },
+    {
+      "id": "startup-lead:clausifai",
+      "kind": "startup-lead",
+      "subject": "startup:clausifai",
+      "subject_key": "clausifai",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/clausifai"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "cb3aa38e1c52981248504d9e410b469e9b82efaab5e7fcbebcb6958833995914",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/clausifai"
+      }
+    },
+    {
+      "id": "startup-lead:cloudflare",
+      "kind": "startup-lead",
+      "subject": "startup:cloudflare",
+      "subject_key": "cloudflare",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/cloudflare"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "2135bfc92eecbf5fc1583a85ccc0b1cfb0a06d1531ff4e4c1129f34f5ea58392",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/cloudflare"
+      }
+    },
+    {
+      "id": "startup-lead:clove",
+      "kind": "startup-lead",
+      "subject": "startup:clove",
+      "subject_key": "clove",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/clove"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "200ee27e91fffaf26bb4dc79033c213f35fa806f805628dcfd7655409cb536d8",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/clove"
+      }
+    },
+    {
+      "id": "startup-lead:clutch-glue",
+      "kind": "startup-lead",
+      "subject": "startup:clutch-glue",
+      "subject_key": "clutch-glue",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/clutch-glue"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "42f958b657eeabdc943ee112bfc633b71d974510d5741c73b6d9bd2e228030ed",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/clutch-glue"
+      }
+    },
+    {
+      "id": "startup-lead:coco",
+      "kind": "startup-lead",
+      "subject": "startup:coco",
+      "subject_key": "coco",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/coco"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "dae127dbc7a2923b587f5ec3c50bc026517671a35519dc6cabd74d7f02112fd2",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/coco"
+      }
+    },
+    {
+      "id": "startup-lead:code",
+      "kind": "startup-lead",
+      "subject": "startup:code",
+      "subject_key": "code",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/code"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "549e76a0ed32f79b3103731b53427bed76ce6924251ef01ac040afa04b635acd",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/code"
+      }
+    },
+    {
+      "id": "startup-lead:coherence-neuro",
+      "kind": "startup-lead",
+      "subject": "startup:coherence-neuro",
+      "subject_key": "coherence-neuro",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/coherence-neuro"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "961b39c9e749cfa07cff98884df672f0f68677374d24f9d7efe2cfd8199d8e99",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/coherence-neuro"
+      }
+    },
+    {
+      "id": "startup-lead:coinbase",
+      "kind": "startup-lead",
+      "subject": "startup:coinbase",
+      "subject_key": "coinbase",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/coinbase"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "00347a9b2bf40c6d7f60f0a02bda605f8960834c5442a8cecc2a230533647b3e",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/coinbase"
+      }
+    },
+    {
+      "id": "startup-lead:coinjar",
+      "kind": "startup-lead",
+      "subject": "startup:coinjar",
+      "subject_key": "coinjar",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/coinjar"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "35054c135da7f2f042e29947aceacd3f42ea334967a65119d05267aee9f44696",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/coinjar"
+      }
+    },
+    {
+      "id": "startup-lead:common-fabric",
+      "kind": "startup-lead",
+      "subject": "startup:common-fabric",
+      "subject_key": "common-fabric",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/commonfabric"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "f30000fb68266ae768a37e19126cddeb851622cc62ae06a9ef8fd3b697ceda47",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/commonfabric"
+      }
+    },
+    {
+      "id": "startup-lead:consensus",
+      "kind": "startup-lead",
+      "subject": "startup:consensus",
+      "subject_key": "consensus",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/consensus"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "f76df5455df060a69a1192354a17cb2f6d59eb1a60fdc2b218c36bacaba1c05e",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/consensus"
+      }
+    },
+    {
+      "id": "startup-lead:constantinople",
+      "kind": "startup-lead",
+      "subject": "startup:constantinople",
+      "subject_key": "constantinople",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/constantinople"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "4fc3d58a4782f562da74313dcba4050f2028a6f45ed87775b4772534a4231215",
+      "mentions": {
+        "partners": [
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/constantinople"
+      }
+    },
+    {
+      "id": "startup-lead:consumer-marketplace",
+      "kind": "startup-lead",
+      "subject": "startup:consumer-marketplace",
+      "subject_key": "consumer-marketplace",
+      "candidates": [],
+      "evidence": [
+        "https://www.madrona.com/companies/",
+        "https://www.madrona.com/companies/consumer-marketplace/"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "52e2b000ed57ab657b781bebd7cc1a9778ca0b79891400417d16427b356328dd",
+      "mentions": {
+        "partners": [
+          "Madrona"
+        ],
+        "website": "https://www.madrona.com/companies/consumer-marketplace/"
+      }
+    },
+    {
+      "id": "startup-lead:cortical-labs",
+      "kind": "startup-lead",
+      "subject": "startup:cortical-labs",
+      "subject_key": "cortical-labs",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/cortical-labs"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "fdceebfae310ae382871195eb3cb6c7d2ea006a4b2a680e68a9e4aeb88a7164e",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/cortical-labs"
+      }
+    },
+    {
+      "id": "startup-lead:cotiss",
+      "kind": "startup-lead",
+      "subject": "startup:cotiss",
+      "subject_key": "cotiss",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/cotiss"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "277d5b794836922bd970050229c50826db23ba9269c6cf792aec867f8f9533ac",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/cotiss"
+      }
+    },
+    {
+      "id": "startup-lead:currus-biologics-developing-the-next-generation-of-car-t-cell-therapies-to-treat-solid-cancers",
+      "kind": "startup-lead",
+      "subject": "startup:currus-biologics-developing-the-next-generation-of-car-t-cell-therapies-to-treat-solid-cancers",
+      "subject_key": "currus-biologics-developing-the-next-generation-of-car-t-cell-therapies-to-treat-solid-cancers",
+      "candidates": [],
+      "evidence": [
+        "https://brandoncapital.vc/investment-portfolio/",
+        "https://brandoncapital.vc/portfolio/currus-biologics/"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "76752d9f7eb73d43fa4472c84c9face0ef2580134ee5c93027c9a59d596cfe7f",
+      "mentions": {
+        "partners": [
+          "Brandon Capital"
+        ],
+        "website": "https://brandoncapital.vc/portfolio/currus-biologics/"
+      }
+    },
+    {
+      "id": "startup-lead:cyble",
+      "kind": "startup-lead",
+      "subject": "startup:cyble",
+      "subject_key": "cyble",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/cyble"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "a3628aa21d535ae239716c987e0479a1f726c6de18f299fbb3963e79c436849b",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/cyble"
+      }
+    },
+    {
+      "id": "startup-lead:darwinium",
+      "kind": "startup-lead",
+      "subject": "startup:darwinium",
+      "subject_key": "darwinium",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/darwinium"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "880de61004d89703e84e4e7fb9f68bf84db76f4f1971af4bddcda633f1dd56c6",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/darwinium"
+      }
+    },
+    {
+      "id": "startup-lead:data-infrastructure",
+      "kind": "startup-lead",
+      "subject": "startup:data-infrastructure",
+      "subject_key": "data-infrastructure",
+      "candidates": [],
+      "evidence": [
+        "https://www.madrona.com/companies/",
+        "https://www.madrona.com/companies/data-infrastructure/"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "92b247fb9cae4a9d7cccc3becd8579d77a0862e99c454a4cf2cc04ea6d731f76",
+      "mentions": {
+        "partners": [
+          "Madrona"
+        ],
+        "website": "https://www.madrona.com/companies/data-infrastructure/"
+      }
+    },
+    {
+      "id": "startup-lead:david-energy",
+      "kind": "startup-lead",
+      "subject": "startup:david-energy",
+      "subject_key": "david-energy",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/davidenergy"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "29a8a3f49e24ad1f3a81920f7caa23766c839b479c901703127f13306b925d91",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/davidenergy"
+      }
+    },
+    {
+      "id": "startup-lead:daybreak-health",
+      "kind": "startup-lead",
+      "subject": "startup:daybreak-health",
+      "subject_key": "daybreak-health",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/daybreakhealth"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "14d047346a6be0f41cbcc769f1ff3018b4938b2fdb3486356325ddd7c0124f36",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/daybreakhealth"
+      }
+    },
+    {
+      "id": "startup-lead:daylight",
+      "kind": "startup-lead",
+      "subject": "startup:daylight",
+      "subject_key": "daylight",
+      "candidates": [],
+      "evidence": [
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/daylight"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "ddde6843a020cc73516f1a4dd792fe76a30fb7c41910ac6bf64727e5da0c8a0e",
+      "mentions": {
+        "partners": [
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/daylight"
+      }
+    },
+    {
+      "id": "startup-lead:ddloop",
+      "kind": "startup-lead",
+      "subject": "startup:ddloop",
+      "subject_key": "ddloop",
+      "candidates": [],
+      "evidence": [
+        "https://www.startmate.com/portfolio",
+        "https://www.startmate.com/portfolio-companies/ddloop"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "710c8054699b9cfcfe21781c5454e0dd7a824a675120f2d2aac487ab64bd1a35",
+      "mentions": {
+        "partners": [
+          "Startmate"
+        ],
+        "website": "https://www.startmate.com/portfolio-companies/ddloop"
+      }
+    },
+    {
+      "id": "startup-lead:decarbonise-the-planet-avarni-ai-powered-carbon-management-for-your-supply-chain",
+      "kind": "startup-lead",
+      "subject": "startup:decarbonise-the-planet-avarni-ai-powered-carbon-management-for-your-supply-chain",
+      "subject_key": "decarbonise-the-planet-avarni-ai-powered-carbon-management-for-your-supply-chain",
+      "candidates": [],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/avarni"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "6485f29c0f9cdab612fa79802e7df8120499b0dca4617ef6a8c535ecae5cbdba",
+      "mentions": {
+        "partners": [
+          "Main Sequence"
+        ],
+        "website": "https://www.mseq.vc/portfolio/avarni"
+      }
+    },
+    {
+      "id": "startup-lead:decarbonise-the-planet-endua-developing-high-efficiency-hydrogen-electrolysers-and-storage-systems",
+      "kind": "startup-lead",
+      "subject": "startup:decarbonise-the-planet-endua-developing-high-efficiency-hydrogen-electrolysers-and-storage-systems",
+      "subject_key": "decarbonise-the-planet-endua-developing-high-efficiency-hydrogen-electrolysers-and-storage-systems",
+      "candidates": [],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/endua"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "3f318464114fe8f456c7aa230059ec59622499686d1abcbce27c1e4f2f299a03",
+      "mentions": {
+        "partners": [
+          "Main Sequence"
+        ],
+        "website": "https://www.mseq.vc/portfolio/endua"
+      }
+    },
+    {
+      "id": "startup-lead:decarbonise-the-planet-levur-unlocking-sustainable-oils-and-putting-an-end-to-deforestation",
+      "kind": "startup-lead",
+      "subject": "startup:decarbonise-the-planet-levur-unlocking-sustainable-oils-and-putting-an-end-to-deforestation",
+      "subject_key": "decarbonise-the-planet-levur-unlocking-sustainable-oils-and-putting-an-end-to-deforestation",
+      "candidates": [],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/levur"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "34418f020b63a4409f628f66116f27ce4a105193442fddbad178f6c38e7045b1",
+      "mentions": {
+        "partners": [
+          "Main Sequence"
+        ],
+        "website": "https://www.mseq.vc/portfolio/levur"
+      }
+    },
+    {
+      "id": "startup-lead:decarbonise-the-planet-mga-thermal-continuous-renewable-thermal-energy-to-decarbonise-industry",
+      "kind": "startup-lead",
+      "subject": "startup:decarbonise-the-planet-mga-thermal-continuous-renewable-thermal-energy-to-decarbonise-industry",
+      "subject_key": "decarbonise-the-planet-mga-thermal-continuous-renewable-thermal-energy-to-decarbonise-industry",
+      "candidates": [],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/mga-thermal"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "fa35b2521ca3cb8426df4bea7ea7f33a8b2a39cb2db2af36a53a8f18449d20a5",
+      "mentions": {
+        "partners": [
+          "Main Sequence"
+        ],
+        "website": "https://www.mseq.vc/portfolio/mga-thermal"
+      }
+    },
+    {
+      "id": "startup-lead:decarbonise-the-planet-sundrive-sundrive-copper-solar-cell-better-cheaper-and-scalable",
+      "kind": "startup-lead",
+      "subject": "startup:decarbonise-the-planet-sundrive-sundrive-copper-solar-cell-better-cheaper-and-scalable",
+      "subject_key": "decarbonise-the-planet-sundrive-sundrive-copper-solar-cell-better-cheaper-and-scalable",
+      "candidates": [],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/sundrive"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "fc5ed6704d65975edcbd5940fadabc3a0bf641c69dcd8b7f628a1d4acc1a0f64",
+      "mentions": {
+        "partners": [
+          "Main Sequence"
+        ],
+        "website": "https://www.mseq.vc/portfolio/sundrive"
+      }
+    },
+    {
+      "id": "startup-lead:full-profile",
+      "kind": "startup-lead",
+      "subject": "startup:full-profile",
+      "subject_key": "full-profile",
+      "candidates": [],
+      "evidence": [
+        "https://partechpartners.com/companies",
+        "https://partechpartners.com/companies/ablefy",
+        "https://partechpartners.com/companies/advano",
+        "https://partechpartners.com/companies/agicap",
+        "https://partechpartners.com/companies/ai-coustics",
+        "https://partechpartners.com/companies/akeneo",
+        "https://partechpartners.com/companies/akridata",
+        "https://partechpartners.com/companies/alassio",
+        "https://partechpartners.com/companies/almentor",
+        "https://partechpartners.com/companies/alphin",
+        "https://partechpartners.com/companies/alpic",
+        "https://partechpartners.com/companies/amblea",
+        "https://partechpartners.com/companies/amboss",
+        "https://partechpartners.com/companies/ami-labs",
+        "https://partechpartners.com/companies/apollo-shield",
+        "https://partechpartners.com/companies/aumio",
+        "https://partechpartners.com/companies/aura",
+        "https://partechpartners.com/companies/ava",
+        "https://partechpartners.com/companies/beacon-power-services",
+        "https://partechpartners.com/companies/beam",
+        "https://partechpartners.com/companies/beam-checkout",
+        "https://partechpartners.com/companies/billogram",
+        "https://partechpartners.com/companies/bitrise",
+        "https://partechpartners.com/companies/blendid",
+        "https://partechpartners.com/companies/blink",
+        "https://partechpartners.com/companies/boosters",
+        "https://partechpartners.com/companies/breedr",
+        "https://partechpartners.com/companies/channable",
+        "https://partechpartners.com/companies/cintoo",
+        "https://partechpartners.com/companies/cloudquery",
+        "https://partechpartners.com/companies/co2-ai"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "aab0a68dfe00a39ad83d0f90891b0336b51f2df6eac65a9808d6dbbaa28c607d",
+      "mentions": {
+        "partners": [
+          "Partech"
+        ],
+        "website": "https://partechpartners.com/companies/co2-ai"
+      }
+    },
+    {
+      "id": "startup-lead:lorikeet",
+      "kind": "startup-lead",
+      "subject": "startup:lorikeet",
+      "subject_key": "lorikeet",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/lorikeet",
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/lorikeet"
+      ],
+      "confidence": 0.55,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "d03ebbb3e9e0ea23504b7c1451fc686ee6ac5841ccb46036df282982b3dd5595",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures",
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/lorikeet"
+      }
+    },
+    {
+      "id": "startup-lead:partly",
+      "kind": "startup-lead",
+      "subject": "startup:partly",
+      "subject_key": "partly",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/partly",
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/partly"
+      ],
+      "confidence": 0.55,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "456be99807c9791c1397a750502512d8c77879199b36efd837d2d805cf0a1f63",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures",
+          "Square Peg"
+        ],
+        "website": "https://www.squarepeg.vc/portfolio/partly"
+      }
+    },
+    {
+      "id": "startup-lead:relay",
+      "kind": "startup-lead",
+      "subject": "startup:relay",
+      "subject_key": "relay",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/relay",
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/relay"
+      ],
+      "confidence": 0.55,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "a3b83ee91e0ed330fc8f83e372409b592c7a5def892ce734c8e60196dcefc195",
+      "mentions": {
+        "partners": [
+          "Square Peg",
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/relay"
+      }
+    },
+    {
+      "id": "startup-lead:stripe",
+      "kind": "startup-lead",
+      "subject": "startup:stripe",
+      "subject_key": "stripe",
+      "candidates": [],
+      "evidence": [
+        "https://www.squarepeg.vc/portfolio",
+        "https://www.squarepeg.vc/portfolio/stripe",
+        "https://www.usv.com/portfolio",
+        "https://www.usv.com/portfolio/company/stripe"
+      ],
+      "confidence": 0.55,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "f1bec2c016ab704f2d97f61400f7cb166bccd8f8ad152adecea79f62ef108650",
+      "mentions": {
+        "partners": [
+          "Square Peg",
+          "USV"
+        ],
+        "website": "https://www.usv.com/portfolio/company/stripe"
+      }
+    }
+  ]
+}

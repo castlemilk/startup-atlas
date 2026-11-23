@@ -13,8 +13,15 @@ export const opportunitySchema = {
     url, status: text(200), checked: date,
     extra: { type: 'array', maxItems: 20, uniqueItems: true, items: url },
     facts: { type: 'object', maxProperties: 20, additionalProperties: text(1000) },
+    // Optional KG connective-tissue fields (docs/KG-CONNECTIVE-TISSUE.md §3),
+    // written by scripts/backfill_structured_fields.py: deadline is an ISO
+    // date or null; status_controlled is the controlled status vocabulary.
+    // They are additive — entries without them stay valid.
+    deadline: { anyOf: [date, { type: 'null' }] },
+    status_controlled: { type: 'string', enum: ['Open', 'Closing soon', 'Closed', 'Check intake', 'Eligibility review', 'Partner required', 'Apply / verify', 'Unknown'] },
   },
 };
+export const opportunityOptionalKeys = ['deadline', 'status_controlled'];
 export const provenanceSchema = {
   type: 'object', additionalProperties: false,
   required: ['sourceUrls', 'reviewedOn', 'evidence'],
@@ -69,8 +76,12 @@ function uniqueStrings(values, label, min, max, validate) {
   }
 }
 export function validateOpportunity(entry) {
-  exactKeys(entry, opportunitySchema.required, 'entry');
+  exactKeys(entry, [...opportunitySchema.required, ...opportunityOptionalKeys], 'entry');
   for (const key of opportunitySchema.required) if (!(key in entry)) fail(`entry.${key} is required`);
+  if ('deadline' in entry && entry.deadline !== null) validDate(entry.deadline, 'entry.deadline');
+  if ('status_controlled' in entry && !opportunitySchema.properties.status_controlled.enum.includes(entry.status_controlled)) {
+    fail('entry.status_controlled must be a controlled status value');
+  }
   for (const key of ['id', 'name', 'org', 'kind', 'access', 'value', 'summary', 'eligibility', 'limits', 'status']) {
     string(entry[key], `entry.${key}`, opportunitySchema.properties[key].maxLength);
   }
