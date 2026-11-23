@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generated_at": "2026-11-23T09:45:12Z",
-  "source_revision": "8a5fb9a",
+  "generated_at": "2026-11-23T12:21:42Z",
+  "source_revision": "192d90f",
   "entities": {
     "partner:17sigma": {
       "name": "17Sigma",
@@ -10,7 +10,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:645-ventures": {
       "name": "645 Ventures",
@@ -19,7 +19,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:776": {
       "name": "776",
@@ -28,7 +28,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:8vc": {
       "name": "8VC",
@@ -37,7 +37,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:a16z": {
       "name": "a16z",
@@ -46,16 +46,20 @@
       "identity_key": "a16z.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:accel": {
       "name": "Accel",
       "kind": "partner",
-      "aliases": [],
+      "aliases": [
+        "Accel India"
+      ],
       "identity_key": null,
       "identity_basis": "name-only",
-      "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "merged_from": [
+        "partner:accel-india"
+      ],
+      "updated_at": "2026-11-23T10:45:39Z"
     },
     "partner:accel-community": {
       "name": "Accel Community",
@@ -64,7 +68,17 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
+    },
+    "partner:accel-india": {
+      "name": "Accel India",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:39Z",
+      "merged_into": "partner:accel"
     },
     "partner:acrew": {
       "name": "Acrew",
@@ -73,16 +87,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:afore": {
       "name": "Afore",
+      "kind": "partner",
+      "aliases": [
+        "Afore Capital"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:afore-capital"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:afore-capital": {
+      "name": "Afore Capital",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:afore"
     },
     "partner:agi-house": {
       "name": "AGI House",
@@ -91,7 +119,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:ai-grant": {
       "name": "AI Grant",
@@ -100,7 +128,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:air": {
       "name": "AIR",
@@ -109,16 +137,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:airtree": {
       "name": "Airtree",
       "kind": "partner",
-      "aliases": [],
+      "aliases": [
+        "Airtree Ventures"
+      ],
       "identity_key": "airtree.vc",
       "identity_basis": "website-host",
+      "merged_from": [
+        "partner:airtree-ventures"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:airtree-ventures": {
+      "name": "Airtree Ventures",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:airtree"
     },
     "partner:alif": {
       "name": "Alif",
@@ -127,7 +169,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:alliance": {
       "name": "Alliance",
@@ -136,7 +178,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:alumni-ventures": {
       "name": "Alumni Ventures",
@@ -145,7 +187,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:amity": {
       "name": "Amity",
@@ -154,7 +196,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:amplify-partners": {
       "name": "Amplify Partners",
@@ -163,7 +205,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:animo": {
       "name": "Animo",
@@ -172,7 +214,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:antler": {
       "name": "Antler",
@@ -181,7 +223,7 @@
       "identity_key": "antler.co",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:ardent-ventures": {
       "name": "Ardent Ventures",
@@ -190,7 +232,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:artesian": {
       "name": "Artesian",
@@ -199,7 +241,7 @@
       "identity_key": "artesianinvest.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:b-capital": {
       "name": "B Capital",
@@ -208,7 +250,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:bain-capital-ventures": {
       "name": "Bain Capital Ventures",
@@ -217,16 +259,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:balderton": {
       "name": "Balderton",
+      "kind": "partner",
+      "aliases": [
+        "Balderton Capital"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:balderton-capital"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:balderton-capital": {
+      "name": "Balderton Capital",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:balderton"
     },
     "partner:basecase": {
       "name": "basecase",
@@ -235,7 +291,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:berkeley-skydeck": {
       "name": "Berkeley SkyDeck",
@@ -244,16 +300,42 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:bessemer": {
       "name": "Bessemer",
+      "kind": "partner",
+      "aliases": [
+        "Bessemer India",
+        "Bessemer Venture Partners"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:bessemer-india",
+        "partner:bessemer-venture-partners"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:bessemer-india": {
+      "name": "Bessemer India",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:39Z",
+      "merged_into": "partner:bessemer"
+    },
+    "partner:bessemer-venture-partners": {
+      "name": "Bessemer Venture Partners",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:bessemer"
     },
     "partner:betterfuturelabs": {
       "name": "BetterFutureLabs",
@@ -262,16 +344,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
+    },
+    "partner:blackbird": {
+      "name": "Blackbird",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:blackbird-ventures"
     },
     "partner:blackbird-ventures": {
       "name": "Blackbird Ventures",
       "kind": "partner",
-      "aliases": [],
+      "aliases": [
+        "Blackbird"
+      ],
       "identity_key": "blackbird.vc",
       "identity_basis": "website-host",
-      "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "merged_from": [
+        "partner:blackbird"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
     "partner:boab-ai": {
       "name": "Boab AI",
@@ -280,16 +376,30 @@
       "identity_key": "boab.ventures",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
-    "partner:boost-capital-partners": {
-      "name": "Boost Capital Partners",
+    "partner:boost-capital": {
+      "name": "Boost Capital",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:boost-capital-partners"
+    },
+    "partner:boost-capital-partners": {
+      "name": "Boost Capital Partners",
+      "kind": "partner",
+      "aliases": [
+        "Boost Capital"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:boost-capital"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
     "partner:boost-vc": {
       "name": "Boost VC",
@@ -298,7 +408,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:boson-ventures": {
       "name": "Boson Ventures",
@@ -307,16 +417,30 @@
       "identity_key": "boson.vc",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
-    "partner:boxgroup": {
-      "name": "Boxgroup",
+    "partner:box-group": {
+      "name": "Box Group",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:boxgroup"
+    },
+    "partner:boxgroup": {
+      "name": "Boxgroup",
+      "kind": "partner",
+      "aliases": [
+        "Box Group"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:box-group"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
     "partner:brandon-capital": {
       "name": "Brandon Capital",
@@ -325,7 +449,7 @@
       "identity_key": "brandoncapital.vc",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:brex": {
       "name": "Brex",
@@ -334,7 +458,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:btv": {
       "name": "BTV",
@@ -343,7 +467,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:bufficorn-ventures": {
       "name": "Bufficorn Ventures",
@@ -352,7 +476,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:caffeinated-capital": {
       "name": "Caffeinated Capital",
@@ -361,7 +485,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:canonical": {
       "name": "Canonical",
@@ -370,7 +494,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:cardinal-ventures": {
       "name": "Cardinal Ventures",
@@ -379,7 +503,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:carta": {
       "name": "Carta",
@@ -388,7 +512,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:carthona": {
       "name": "Carthona",
@@ -397,7 +521,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:category-vc": {
       "name": "Category VC",
@@ -406,7 +530,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:charge": {
       "name": "Charge",
@@ -415,7 +539,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:cherry-vc": {
       "name": "Cherry VC",
@@ -424,7 +548,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:cicada-innovations": {
       "name": "Cicada Innovations",
@@ -433,7 +557,7 @@
       "identity_key": "cicadainnovations.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:coinbase-ventures": {
       "name": "Coinbase Ventures",
@@ -442,7 +566,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:colabs-australia": {
       "name": "CoLabs Australia",
@@ -451,7 +575,7 @@
       "identity_key": "colabs.com.au",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:cold-start": {
       "name": "Cold Start",
@@ -460,7 +584,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:concept-vc": {
       "name": "Concept VC",
@@ -469,7 +593,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:craft-ventures": {
       "name": "Craft Ventures",
@@ -478,7 +602,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:crv": {
       "name": "CRV",
@@ -487,7 +611,7 @@
       "identity_key": "crv.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:cygnus": {
       "name": "Cygnus",
@@ -496,7 +620,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:dawn-capital": {
       "name": "Dawn Capital",
@@ -505,7 +629,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:denarii-labs": {
       "name": "Denarii Labs",
@@ -514,7 +638,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:denver-ventures": {
       "name": "Denver Ventures",
@@ -523,7 +647,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:designer-fund": {
       "name": "Designer Fund",
@@ -532,7 +656,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:dlab": {
       "name": "dlab",
@@ -541,7 +665,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:dormroom-fund": {
       "name": "Dormroom Fund",
@@ -550,7 +674,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:draper": {
       "name": "Draper",
@@ -559,7 +683,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:elad-gil": {
       "name": "Elad Gil",
@@ -568,7 +692,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:electric-capital": {
       "name": "Electric Capital",
@@ -577,7 +701,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:embed": {
       "name": "Embed",
@@ -586,7 +710,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:emblem-vc": {
       "name": "Emblem VC",
@@ -595,7 +719,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:emcap": {
       "name": "emcap",
@@ -604,7 +728,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:entrepreneur-first": {
       "name": "Entrepreneur First",
@@ -613,7 +737,7 @@
       "identity_key": "joinef.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:everyday-intelligence": {
       "name": "Everyday Intelligence",
@@ -622,7 +746,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:ewor": {
       "name": "EWOR",
@@ -631,34 +755,76 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:f-prime": {
       "name": "F Prime",
       "kind": "partner",
+      "aliases": [
+        "F Prime Capital"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:f-prime-capital"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:f-prime-capital": {
+      "name": "F Prime Capital",
+      "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:f-prime"
     },
     "partner:fika": {
       "name": "Fika",
       "kind": "partner",
-      "aliases": [],
+      "aliases": [
+        "Fika Vc"
+      ],
       "identity_key": null,
       "identity_basis": "name-only",
-      "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "merged_from": [
+        "partner:fika-vc"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
-    "partner:firstmark": {
-      "name": "FirstMark",
+    "partner:fika-vc": {
+      "name": "Fika Vc",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:fika"
+    },
+    "partner:firstmark": {
+      "name": "FirstMark",
+      "kind": "partner",
+      "aliases": [
+        "Firstmark Capital"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:firstmark-capital"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:firstmark-capital": {
+      "name": "Firstmark Capital",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:firstmark"
     },
     "partner:firstminute-capital": {
       "name": "firstminute capital",
@@ -667,7 +833,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:flex-capital": {
       "name": "Flex Capital",
@@ -676,7 +842,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:floodgate": {
       "name": "Floodgate",
@@ -685,7 +851,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:flybridge": {
       "name": "Flybridge",
@@ -694,25 +860,53 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:focal": {
       "name": "Focal",
       "kind": "partner",
-      "aliases": [],
+      "aliases": [
+        "Focalvc"
+      ],
       "identity_key": null,
       "identity_basis": "name-only",
-      "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "merged_from": [
+        "partner:focalvc"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
-    "partner:footwork": {
-      "name": "Footwork",
+    "partner:focalvc": {
+      "name": "Focalvc",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:focal"
+    },
+    "partner:footwork": {
+      "name": "Footwork",
+      "kind": "partner",
+      "aliases": [
+        "Footwork Vc"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:footwork-vc"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:footwork-vc": {
+      "name": "Footwork Vc",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:footwork"
     },
     "partner:forerunner": {
       "name": "Forerunner",
@@ -721,7 +915,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:foundation": {
       "name": "Foundation",
@@ -730,7 +924,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:founders-factory": {
       "name": "Founders Factory",
@@ -739,7 +933,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:founders-fund": {
       "name": "Founders Fund",
@@ -748,7 +942,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:founders-inc": {
       "name": "Founders Inc",
@@ -757,7 +951,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:fractal": {
       "name": "Fractal",
@@ -766,7 +960,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:frontier": {
       "name": "Frontier",
@@ -775,7 +969,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:galvanizer": {
       "name": "Galvanizer",
@@ -784,7 +978,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:garage-vc": {
       "name": "Garage VC",
@@ -793,7 +987,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:general-catalyst": {
       "name": "General Catalyst",
@@ -802,7 +996,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:genesis-accelerator": {
       "name": "Genesis Accelerator",
@@ -811,7 +1005,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:google-ventures": {
       "name": "Google Ventures",
@@ -820,7 +1014,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:greylock": {
       "name": "Greylock",
@@ -829,16 +1023,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:ground-up": {
       "name": "Ground Up",
+      "kind": "partner",
+      "aliases": [
+        "Groundupvc"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:groundupvc"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:groundupvc": {
+      "name": "Groundupvc",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:ground-up"
     },
     "partner:haatch": {
       "name": "Haatch",
@@ -847,16 +1055,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:hashed": {
       "name": "Hashed",
+      "kind": "partner",
+      "aliases": [
+        "Hashed Emergent"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:hashed-emergent"
+      ],
+      "updated_at": "2026-11-23T10:45:39Z"
+    },
+    "partner:hashed-emergent": {
+      "name": "Hashed Emergent",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:39Z",
+      "merged_into": "partner:hashed"
     },
     "partner:haystack": {
       "name": "Haystack",
@@ -865,7 +1087,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:henson-venture-partners": {
       "name": "Henson Venture Partners",
@@ -874,7 +1096,7 @@
       "identity_key": "henson.vc",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:hetz-vc": {
       "name": "Hetz VC",
@@ -883,7 +1105,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:hex": {
       "name": "HEX",
@@ -892,7 +1114,7 @@
       "identity_key": "startwithhex.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:hexa": {
       "name": "Hexa",
@@ -901,16 +1123,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:hof": {
       "name": "HOF",
+      "kind": "partner",
+      "aliases": [
+        "Hof Capital"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:hof-capital"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:hof-capital": {
+      "name": "Hof Capital",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:hof"
     },
     "partner:humans-in-the-loop": {
       "name": "Humans in the Loop",
@@ -919,7 +1155,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:hustle-fund": {
       "name": "Hustle Fund",
@@ -928,7 +1164,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:ibup": {
       "name": "IBUP",
@@ -937,7 +1173,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:icebreaker-vc": {
       "name": "Icebreaker VC",
@@ -946,7 +1182,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:iconiq": {
       "name": "ICONIQ",
@@ -955,7 +1191,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:illume-ventures": {
       "name": "Illume Ventures",
@@ -964,7 +1200,7 @@
       "identity_key": "illumeventures.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:imec": {
       "name": "imec",
@@ -973,7 +1209,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:index-ventures": {
       "name": "Index Ventures",
@@ -982,7 +1218,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:inspired-capital": {
       "name": "Inspired Capital",
@@ -991,7 +1227,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:investible": {
       "name": "Investible",
@@ -1000,7 +1236,7 @@
       "identity_key": "investible.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:ivp": {
       "name": "IVP",
@@ -1009,7 +1245,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:jumpstart-studio": {
       "name": "Jumpstart Studio",
@@ -1018,7 +1254,7 @@
       "identity_key": "jumpstartstudio.com.au",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:kaszek": {
       "name": "Kaszek",
@@ -1027,16 +1263,30 @@
       "identity_key": "kaszek.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:khosla": {
       "name": "Khosla",
+      "kind": "partner",
+      "aliases": [
+        "Khosla Ventures"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:khosla-ventures"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:khosla-ventures": {
+      "name": "Khosla Ventures",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:khosla"
     },
     "partner:kleiner-perkins": {
       "name": "Kleiner Perkins",
@@ -1045,7 +1295,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:latitud": {
       "name": "Latitud",
@@ -1054,7 +1304,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:lerer-hippeau": {
       "name": "Lerer Hippeau",
@@ -1063,16 +1313,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:lightspeed": {
       "name": "Lightspeed",
+      "kind": "partner",
+      "aliases": [
+        "Lightspeed Venture Partners"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:lightspeed-venture-partners"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:lightspeed-venture-partners": {
+      "name": "Lightspeed Venture Partners",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:lightspeed"
     },
     "partner:liminal-venture-studio": {
       "name": "Liminal Venture Studio",
@@ -1081,7 +1345,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:long-journey-ventures": {
       "name": "Long Journey Ventures",
@@ -1090,7 +1354,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:lux-capital": {
       "name": "Lux Capital",
@@ -1099,7 +1363,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:lyra-capital": {
       "name": "Lyra Capital",
@@ -1108,7 +1372,7 @@
       "identity_key": "lyracap.vc",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:m12": {
       "name": "M12",
@@ -1117,7 +1381,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:madrona": {
       "name": "Madrona",
@@ -1126,7 +1390,7 @@
       "identity_key": "madrona.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:main-sequence": {
       "name": "Main Sequence",
@@ -1135,7 +1399,7 @@
       "identity_key": "mseq.vc",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:maru": {
       "name": "MARU",
@@ -1144,16 +1408,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:matrix": {
       "name": "Matrix",
+      "kind": "partner",
+      "aliases": [
+        "Matrix Partners"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:matrix-partners"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:matrix-partners": {
+      "name": "Matrix Partners",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:matrix"
     },
     "partner:medtech-actuator": {
       "name": "MedTech Actuator",
@@ -1162,7 +1440,7 @@
       "identity_key": "medtechactuator.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:menlo-ventures": {
       "name": "Menlo Ventures",
@@ -1171,7 +1449,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:mento": {
       "name": "Mento",
@@ -1180,7 +1458,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:metaprop": {
       "name": "MetaProp",
@@ -1189,7 +1467,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:moxxie": {
       "name": "Moxxie",
@@ -1198,16 +1476,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:mucker": {
       "name": "Mucker",
+      "kind": "partner",
+      "aliases": [
+        "Mucker Capital"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:mucker-capital"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:mucker-capital": {
+      "name": "Mucker Capital",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:mucker"
     },
     "partner:neo": {
       "name": "Neo",
@@ -1216,16 +1508,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:newtopia": {
       "name": "Newtopia",
+      "kind": "partner",
+      "aliases": [
+        "Newtopia Vc"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:newtopia-vc"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:newtopia-vc": {
+      "name": "Newtopia Vc",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:newtopia"
     },
     "partner:notable-capital": {
       "name": "Notable Capital",
@@ -1234,7 +1540,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:nvidia": {
       "name": "NVIDIA",
@@ -1243,7 +1549,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:odf": {
       "name": "ODF",
@@ -1252,7 +1558,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:offline": {
       "name": "Offline",
@@ -1261,7 +1567,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:operator-collective": {
       "name": "Operator Collective",
@@ -1270,7 +1576,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:outward-vc": {
       "name": "Outward VC",
@@ -1279,7 +1585,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:paa": {
       "name": "PAA",
@@ -1288,16 +1594,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:pantera": {
       "name": "Pantera",
+      "kind": "partner",
+      "aliases": [
+        "Pantera Capital"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:pantera-capital"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:pantera-capital": {
+      "name": "Pantera Capital",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:pantera"
     },
     "partner:paradigm": {
       "name": "Paradigm",
@@ -1306,16 +1626,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
-    "partner:paralect-venture-studio": {
-      "name": "Paralect Venture Studio",
+    "partner:paralect": {
+      "name": "Paralect",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:39Z",
+      "merged_into": "partner:paralect-venture-studio"
+    },
+    "partner:paralect-venture-studio": {
+      "name": "Paralect Venture Studio",
+      "kind": "partner",
+      "aliases": [
+        "Paralect"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:paralect"
+      ],
+      "updated_at": "2026-11-23T10:45:39Z"
     },
     "partner:partech": {
       "name": "Partech",
@@ -1324,16 +1658,30 @@
       "identity_key": "partechpartners.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:pear": {
       "name": "Pear",
       "kind": "partner",
-      "aliases": [],
+      "aliases": [
+        "Pear Ventures"
+      ],
       "identity_key": "pear.vc",
       "identity_basis": "website-host",
+      "merged_from": [
+        "partner:pear-ventures"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:pear-ventures": {
+      "name": "Pear Ventures",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:pear"
     },
     "partner:perceptive-ventures": {
       "name": "Perceptive Ventures",
@@ -1342,7 +1690,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:platanus": {
       "name": "Platanus",
@@ -1351,7 +1699,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:primary": {
       "name": "Primary",
@@ -1360,7 +1708,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:prod": {
       "name": "Prod",
@@ -1369,7 +1717,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:product-hunt": {
       "name": "Product Hunt",
@@ -1378,16 +1726,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:rackhouse": {
       "name": "Rackhouse",
+      "kind": "partner",
+      "aliases": [
+        "Rackhouse Vc"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:rackhouse-vc"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:rackhouse-vc": {
+      "name": "Rackhouse Vc",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:rackhouse"
     },
     "partner:rampersand": {
       "name": "Rampersand",
@@ -1396,7 +1758,7 @@
       "identity_key": "rampersand.vc",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:reach-capital": {
       "name": "Reach Capital",
@@ -1405,7 +1767,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:residency-monad": {
       "name": "Residency (Monad)",
@@ -1414,7 +1776,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:residency-vc": {
       "name": "Residency VC",
@@ -1423,7 +1785,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:resolute": {
       "name": "Resolute",
@@ -1432,7 +1794,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:rmit-discoveryhub": {
       "name": "RMIT DiscoveryHUB",
@@ -1441,16 +1803,30 @@
       "identity_key": "rmit.edu.au",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:scribble": {
       "name": "Scribble",
+      "kind": "partner",
+      "aliases": [
+        "Scribble Ventures"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:scribble-ventures"
+      ],
+      "updated_at": "2026-11-23T10:45:39Z"
+    },
+    "partner:scribble-ventures": {
+      "name": "Scribble Ventures",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:39Z",
+      "merged_into": "partner:scribble"
     },
     "partner:seedcamp": {
       "name": "Seedcamp",
@@ -1459,16 +1835,30 @@
       "identity_key": "seedcamp.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
-    "partner:sequoia-capital": {
-      "name": "Sequoia Capital",
+    "partner:sequoia": {
+      "name": "Sequoia",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:sequoia-capital"
+    },
+    "partner:sequoia-capital": {
+      "name": "Sequoia Capital",
+      "kind": "partner",
+      "aliases": [
+        "Sequoia"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:sequoia"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
     "partner:side-stage-ventures": {
       "name": "Side Stage Ventures",
@@ -1477,7 +1867,7 @@
       "identity_key": "sidestage.vc",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:slow": {
       "name": "Slow",
@@ -1486,7 +1876,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:soma-capital": {
       "name": "Soma Capital",
@@ -1495,7 +1885,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:sound-ventures": {
       "name": "Sound Ventures",
@@ -1504,7 +1894,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:south-park-commons": {
       "name": "South Park Commons",
@@ -1513,7 +1903,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:spark-capital": {
       "name": "Spark Capital",
@@ -1522,16 +1912,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:square-peg": {
       "name": "Square Peg",
       "kind": "partner",
-      "aliases": [],
+      "aliases": [
+        "Square Peg Capital"
+      ],
       "identity_key": "squarepeg.vc",
       "identity_basis": "website-host",
+      "merged_from": [
+        "partner:square-peg-capital"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:square-peg-capital": {
+      "name": "Square Peg Capital",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:square-peg"
     },
     "partner:stanford-cs": {
       "name": "Stanford CS",
@@ -1540,7 +1944,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:startmate": {
       "name": "Startmate",
@@ -1549,7 +1953,7 @@
       "identity_key": "startmate.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:startout": {
       "name": "Startout",
@@ -1558,7 +1962,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:startx": {
       "name": "StartX",
@@ -1567,16 +1971,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:station-f": {
       "name": "Station F",
       "kind": "partner",
-      "aliases": [],
+      "aliases": [
+        "Stationf"
+      ],
       "identity_key": "stationf.co",
       "identity_basis": "website-host",
+      "merged_from": [
+        "partner:stationf"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "partner:stationf": {
+      "name": "Stationf",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:station-f"
     },
     "partner:sunflower": {
       "name": "Sunflower",
@@ -1585,7 +2003,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:susa-ventures": {
       "name": "Susa Ventures",
@@ -1594,7 +2012,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:sutter-hill-ventures": {
       "name": "Sutter Hill Ventures",
@@ -1603,7 +2021,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:sv-angel": {
       "name": "SV Angel",
@@ -1612,7 +2030,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:the-embassy": {
       "name": "The Embassy",
@@ -1621,7 +2039,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:the-gp": {
       "name": "The GP",
@@ -1630,7 +2048,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:the-house-fund": {
       "name": "The House Fund",
@@ -1639,7 +2057,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:thrive-capital": {
       "name": "Thrive Capital",
@@ -1648,7 +2066,7 @@
       "identity_key": "thrivecap.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:tnt": {
       "name": "TNT",
@@ -1657,7 +2075,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:topology": {
       "name": "Topology",
@@ -1666,7 +2084,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:tq-ventures": {
       "name": "TQ Ventures",
@@ -1675,7 +2093,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:true-ventures": {
       "name": "True Ventures",
@@ -1684,7 +2102,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:type-capital": {
       "name": "Type Capital",
@@ -1693,25 +2111,65 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:uncork": {
       "name": "Uncork",
       "kind": "partner",
-      "aliases": [],
+      "aliases": [
+        "Uncork Capital"
+      ],
       "identity_key": "uncorkcapital.com",
       "identity_basis": "website-host",
-      "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "merged_from": [
+        "partner:uncork-capital"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
-    "partner:unshackled": {
-      "name": "Unshackled",
+    "partner:uncork-capital": {
+      "name": "Uncork Capital",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:uncork"
+    },
+    "partner:unshackled": {
+      "name": "Unshackled",
+      "kind": "partner",
+      "aliases": [
+        "Unshackled Vc",
+        "Unshackled Ventures"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:unshackled-vc",
+        "partner:unshackled-ventures"
+      ],
+      "updated_at": "2026-11-23T10:45:39Z"
+    },
+    "partner:unshackled-vc": {
+      "name": "Unshackled Vc",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:unshackled"
+    },
+    "partner:unshackled-ventures": {
+      "name": "Unshackled Ventures",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:39Z",
+      "merged_into": "partner:unshackled"
     },
     "partner:unusual-ventures": {
       "name": "Unusual Ventures",
@@ -1720,16 +2178,30 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
-    "partner:upwest": {
-      "name": "Upwest",
+    "partner:up-west": {
+      "name": "Up West",
       "kind": "partner",
       "aliases": [],
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:upwest"
+    },
+    "partner:upwest": {
+      "name": "Upwest",
+      "kind": "partner",
+      "aliases": [
+        "Up West"
+      ],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [
+        "partner:up-west"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
     "partner:usv": {
       "name": "USV",
@@ -1738,7 +2210,7 @@
       "identity_key": "usv.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:v-connect": {
       "name": "V Connect",
@@ -1747,7 +2219,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:valor-capital": {
       "name": "Valor Capital",
@@ -1756,7 +2228,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:variant": {
       "name": "Variant",
@@ -1765,7 +2237,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:velocity": {
       "name": "Velocity",
@@ -1774,7 +2246,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:vercel-ai-accelerator": {
       "name": "Vercel AI Accelerator",
@@ -1783,7 +2255,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:vercel-ventures": {
       "name": "Vercel Ventures",
@@ -1792,7 +2264,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:wing-vc": {
       "name": "Wing VC",
@@ -1801,16 +2273,20 @@
       "identity_key": "wing.vc",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "partner:y-combinator": {
       "name": "Y Combinator",
       "kind": "partner",
-      "aliases": [],
+      "aliases": [
+        "Ycombinator"
+      ],
       "identity_key": "ycombinator.com",
       "identity_basis": "website-host",
-      "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "merged_from": [
+        "partner:ycombinator"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
     "partner:y-combinator-bookface": {
       "name": "Y Combinator Bookface",
@@ -1819,7 +2295,17 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
+    },
+    "partner:ycombinator": {
+      "name": "Ycombinator",
+      "kind": "partner",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "partner:y-combinator"
     },
     "partner:z-fellows": {
       "name": "Z Fellows",
@@ -1828,7 +2314,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:adam-gilmour": {
       "name": "Adam Gilmour",
@@ -1837,7 +2323,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:alex-delbridge--brandon-capital": {
       "name": "Alex Delbridge",
@@ -1846,7 +2332,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:alex-kendall": {
       "name": "Alex Kendall",
@@ -1855,7 +2341,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:alexey-mitko": {
       "name": "Alexey Mitko",
@@ -1864,7 +2350,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:amar-shah": {
       "name": "Amar Shah",
@@ -1873,7 +2359,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:andrew-barnes": {
       "name": "Andrew Barnes",
@@ -1882,7 +2368,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:andrew-dzurak": {
       "name": "Andrew Dzurak",
@@ -1891,7 +2377,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:andrew-horsley": {
       "name": "Andrew Horsley",
@@ -1900,7 +2386,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:andrew-lai--boab-ai": {
       "name": "Andrew Lai",
@@ -1909,7 +2395,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:andrew-terry": {
       "name": "Andrew Terry",
@@ -1918,7 +2404,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:anish-deenadayalan": {
       "name": "Anish Deenadayalan",
@@ -1927,7 +2413,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:anthony-see": {
       "name": "Anthony See",
@@ -1936,7 +2422,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:ben-abbatangelo": {
       "name": "Ben Abbatangelo",
@@ -1945,7 +2431,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:ben-crawford": {
       "name": "Ben Crawford",
@@ -1954,7 +2440,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:ben-lindsay--investible": {
       "name": "Ben Lindsay",
@@ -1963,7 +2449,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:ben-simai": {
       "name": "Ben Simai",
@@ -1974,7 +2460,7 @@
       "merged_from": [
         "person:ben-simai--startmate"
       ],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:ben-simai--startmate": {
       "name": "Ben Simai",
@@ -1983,7 +2469,7 @@
       "identity_key": "linkedin.com/in/bensimai",
       "identity_basis": "linkedin-url",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z",
+      "updated_at": "2026-11-23T12:21:42Z",
       "merged_into": "person:ben-simai"
     },
     "person:benny-kleist": {
@@ -1993,7 +2479,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:bill-bartee": {
       "name": "Bill Bartee",
@@ -2004,7 +2490,7 @@
       "merged_from": [
         "person:bill-bartee--main-sequence"
       ],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:bill-bartee--main-sequence": {
       "name": "Bill Bartee",
@@ -2013,7 +2499,7 @@
       "identity_key": "linkedin.com/in/billbartee",
       "identity_basis": "linkedin-url",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z",
+      "updated_at": "2026-11-23T12:21:42Z",
       "merged_into": "person:bill-bartee"
     },
     "person:bodhi-hawken": {
@@ -2023,7 +2509,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:cameron-adams": {
       "name": "Cameron Adams",
@@ -2032,7 +2518,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:carlos-eduardo-espinal--seedcamp": {
       "name": "Carlos Eduardo Espinal",
@@ -2041,7 +2527,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:casey-ellis": {
       "name": "Casey Ellis",
@@ -2050,7 +2536,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:charlie-gearside": {
       "name": "Charlie Gearside",
@@ -2059,7 +2545,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:chirag-babu": {
       "name": "Chirag Babu",
@@ -2068,7 +2554,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:chris-eigeland": {
       "name": "Chris Eigeland",
@@ -2077,7 +2563,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:chris-hood": {
       "name": "Chris Hood",
@@ -2086,7 +2572,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:chris-raethke": {
       "name": "Chris Raethke",
@@ -2095,7 +2581,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:christophe-demaison": {
       "name": "Christophe Demaison",
@@ -2104,7 +2590,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:christopher-durre": {
       "name": "Christopher Durre",
@@ -2113,7 +2599,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:cibby-pulikkaseril": {
       "name": "Cibby Pulikkaseril",
@@ -2122,7 +2608,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:cielo-nicolosi": {
       "name": "Cielo Nicolosi",
@@ -2131,7 +2617,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:cliff-obrecht": {
       "name": "Cliff Obrecht",
@@ -2140,7 +2626,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:cordelia-king": {
       "name": "Cordelia King",
@@ -2149,7 +2635,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:craig-benson": {
       "name": "Craig Benson",
@@ -2158,7 +2644,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:craig-blair--airtree": {
       "name": "Craig Blair",
@@ -2167,7 +2653,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:creel-price--investible": {
       "name": "Creel Price",
@@ -2176,7 +2662,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:daniel-dines": {
       "name": "Daniel Dines",
@@ -2185,7 +2671,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:david-kestenbaum": {
       "name": "David Kestenbaum",
@@ -2194,7 +2680,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:dexter-todd": {
       "name": "Dexter Todd",
@@ -2203,7 +2689,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:didier-elzinga": {
       "name": "Didier Elzinga",
@@ -2212,7 +2698,7 @@
       "identity_key": "linkedin.com/in/didierelzinga",
       "identity_basis": "linkedin-url",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:doug-english": {
       "name": "Doug English",
@@ -2221,7 +2707,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:douglas-griffin": {
       "name": "Douglas Griffin",
@@ -2230,7 +2716,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:ed-ring": {
       "name": "Ed Ring",
@@ -2239,7 +2725,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:elaine-stead--main-sequence": {
       "name": "Elaine Stead",
@@ -2248,7 +2734,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:elena-tsalanidis": {
       "name": "Elena Tsalanidis",
@@ -2257,7 +2743,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:elicia-mcdonald--airtree": {
       "name": "Elicia McDonald",
@@ -2266,7 +2752,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:emma-grife": {
       "name": "Emma Grife",
@@ -2277,7 +2763,7 @@
       "merged_from": [
         "person:emma-grife--startmate"
       ],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:emma-grife--startmate": {
       "name": "Emma Grife",
@@ -2286,7 +2772,7 @@
       "identity_key": "linkedin.com/in/emmagrife",
       "identity_basis": "linkedin-url",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z",
+      "updated_at": "2026-11-23T12:21:42Z",
       "merged_into": "person:emma-grife"
     },
     "person:farid-kendoul": {
@@ -2296,7 +2782,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:finnlay-morcombe": {
       "name": "Finnlay Morcombe",
@@ -2305,7 +2791,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:grace-brown": {
       "name": "Grace Brown",
@@ -2314,7 +2800,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:guy-hudson": {
       "name": "Guy Hudson",
@@ -2323,7 +2809,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:guy-webb": {
       "name": "Guy Webb",
@@ -2332,7 +2818,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:hailey-mason": {
       "name": "Hailey Mason",
@@ -2341,7 +2827,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:hamada-els": {
       "name": "Hamada Els",
@@ -2350,7 +2836,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:harrison-crowe-maxwell": {
       "name": "Harrison Crowe-Maxwell",
@@ -2359,7 +2845,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:ivy-fan": {
       "name": "Ivy Fan",
@@ -2368,7 +2854,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:jack-white": {
       "name": "Jack White",
@@ -2377,7 +2863,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:jack-zhang": {
       "name": "Jack Zhang",
@@ -2386,7 +2872,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:jackie-vullinghs--airtree": {
       "name": "Jackie Vullinghs",
@@ -2395,7 +2881,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:james-cameron--airtree": {
       "name": "James Cameron",
@@ -2404,7 +2890,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:james-gilmour": {
       "name": "James Gilmour",
@@ -2413,7 +2899,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:james-oliver": {
       "name": "James Oliver",
@@ -2422,7 +2908,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:jamie-brownlee": {
       "name": "Jamie Brownlee",
@@ -2431,7 +2917,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:jason-cai": {
       "name": "Jason Cai",
@@ -2440,7 +2926,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:jason-hor": {
       "name": "Jason Hor",
@@ -2449,7 +2935,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:jeremy-obrien": {
       "name": "Jeremy O’Brien",
@@ -2458,7 +2944,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:jon-williams": {
       "name": "Jon Williams",
@@ -2467,7 +2953,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:jonathan-nebauer": {
       "name": "Jonathan Nebauer",
@@ -2476,7 +2962,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:julia-reisser": {
       "name": "Julia Reisser",
@@ -2485,7 +2971,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:juliette-murphy": {
       "name": "Juliette Murphy",
@@ -2494,7 +2980,7 @@
       "identity_key": "linkedin.com/in/juliette-murphy",
       "identity_basis": "linkedin-url",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:justin-hansky": {
       "name": "Justin Hansky",
@@ -2503,7 +2989,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:kai-bloomfield": {
       "name": "Kai Bloomfield",
@@ -2512,7 +2998,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:kieran-start": {
       "name": "Kieran Start",
@@ -2521,7 +3007,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:kristo-kaarmann": {
       "name": "Kristo Käärmann",
@@ -2530,7 +3016,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:lance-co-ting-keh": {
       "name": "Lance Co Ting Keh",
@@ -2539,7 +3025,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:linda-zeniou": {
       "name": "Linda Zeniou",
@@ -2548,7 +3034,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:lourdes-agapito": {
       "name": "Lourdes Agapito",
@@ -2557,7 +3043,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:lucy-liu": {
       "name": "Lucy Liu",
@@ -2566,7 +3052,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:marcus-doherty": {
       "name": "Marcus Doherty",
@@ -2575,7 +3061,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:maria-faleeva": {
       "name": "Maria Faleeva",
@@ -2584,7 +3070,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:marius-tirca": {
       "name": "Marius Tirca",
@@ -2593,7 +3079,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:mark-luo": {
       "name": "Mark Luo",
@@ -2602,7 +3088,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:mark-thompson": {
       "name": "Mark Thompson",
@@ -2611,7 +3097,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:mat-heywood": {
       "name": "Mat Heywood",
@@ -2620,7 +3106,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:matthew-eyles": {
       "name": "Matthew Eyles",
@@ -2629,7 +3115,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:matthias-niessner": {
       "name": "Matthias Niessner",
@@ -2638,7 +3124,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:max-mito": {
       "name": "Max Mito",
@@ -2647,7 +3133,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:melanie-perkins": {
       "name": "Melanie Perkins",
@@ -2656,7 +3142,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:michael-de-nil": {
       "name": "Michael De Nil",
@@ -2665,7 +3151,7 @@
       "identity_key": "linkedin.com/in/michael-de-nil",
       "identity_basis": "linkedin-url",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:michael-j-biercuk": {
       "name": "Michael J. Biercuk",
@@ -2674,7 +3160,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:michael-kingsbury": {
       "name": "Michael Kingsbury",
@@ -2683,7 +3169,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:michele-stansfield": {
       "name": "Michele Stansfield",
@@ -2692,7 +3178,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:nathan-challen": {
       "name": "Nathan Challen",
@@ -2701,7 +3187,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:naveed-nekoo": {
       "name": "Naveed Nekoo",
@@ -2710,7 +3196,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:nick-zeniou": {
       "name": "Nick Zeniou",
@@ -2719,7 +3205,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:nik-storonsky": {
       "name": "Nik Storonsky",
@@ -2728,7 +3214,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:niki-scevak--blackbird-ventures": {
       "name": "Niki Scevak",
@@ -2737,7 +3223,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:numa-bertron": {
       "name": "Numa Bertron",
@@ -2746,7 +3232,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:oliver-bagin": {
       "name": "Oliver Bagin",
@@ -2755,7 +3241,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:oliver-farnill": {
       "name": "Oliver Farnill",
@@ -2764,7 +3250,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:oliver-wright": {
       "name": "Oliver Wright",
@@ -2773,7 +3259,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:olympia-yarger": {
       "name": "Olympia Yarger",
@@ -2782,7 +3268,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:omar-elloumi": {
       "name": "Omar Elloumi",
@@ -2791,7 +3277,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:paul-bassat--square-peg": {
       "name": "Paul Bassat",
@@ -2800,7 +3286,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:paul-naphtali--rampersand": {
       "name": "Paul Naphtali",
@@ -2809,7 +3295,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:pete-shadbolt": {
       "name": "Pete Shadbolt",
@@ -2818,7 +3304,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:phoebe-pincus": {
       "name": "Phoebe Pincus",
@@ -2829,7 +3315,7 @@
       "merged_from": [
         "person:phoebe-pincus--startmate"
       ],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:phoebe-pincus--startmate": {
       "name": "Phoebe Pincus",
@@ -2838,7 +3324,7 @@
       "identity_key": "linkedin.com/in/phoebe-pincus-a84150170",
       "identity_basis": "linkedin-url",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z",
+      "updated_at": "2026-11-23T12:21:42Z",
       "merged_into": "person:phoebe-pincus"
     },
     "person:quan-pham": {
@@ -2848,7 +3334,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:randula-ariyawanse": {
       "name": "Randula Ariyawanse",
@@ -2857,7 +3343,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:reshma-sohoni--seedcamp": {
       "name": "Reshma Sohoni",
@@ -2866,7 +3352,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:rick-baker--blackbird-ventures": {
       "name": "Rick Baker",
@@ -2875,7 +3361,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:rod-hamilton": {
       "name": "Rod Hamilton",
@@ -2884,7 +3370,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:ryan-prosser": {
       "name": "Ryan Prosser",
@@ -2893,7 +3379,7 @@
       "identity_key": "linkedin.com/in/ryan-prosser-19a829118",
       "identity_basis": "linkedin-url",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:sai-naicker": {
       "name": "Sai Naicker",
@@ -2902,7 +3388,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:sam-hung": {
       "name": "Sam Hung",
@@ -2911,7 +3397,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:sam-kroonenburg": {
       "name": "Sam Kroonenburg",
@@ -2920,7 +3406,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:shyeon-delnawaz": {
       "name": "Shyeon Delnawaz",
@@ -2929,7 +3415,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:simon-olsen": {
       "name": "Simon Olsen",
@@ -2938,7 +3424,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:son-duong": {
       "name": "Son Duong",
@@ -2947,7 +3433,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:stefan-hrabar": {
       "name": "Stefan Hrabar",
@@ -2956,7 +3442,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:steffen-tjerrild": {
       "name": "Steffen Tjerrild",
@@ -2965,7 +3451,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:storm-drury": {
       "name": "Storm Drury",
@@ -2974,7 +3460,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:taavet-hinrikus": {
       "name": "Taavet Hinrikus",
@@ -2983,7 +3469,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:tegan-nock": {
       "name": "Tegan Nock",
@@ -2992,7 +3478,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:terry-rudolph": {
       "name": "Terry Rudolph",
@@ -3001,7 +3487,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:thien-long-tran": {
       "name": "Thien Long Tran",
@@ -3010,7 +3496,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:tim-doyle": {
       "name": "Tim Doyle",
@@ -3019,7 +3505,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:tom-mckenzie": {
       "name": "Tom McKenzie",
@@ -3028,7 +3514,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:victor-riparbelli": {
       "name": "Victor Riparbelli",
@@ -3037,7 +3523,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:vlad-yatsenko": {
       "name": "Vlad Yatsenko",
@@ -3046,7 +3532,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:vu-tran": {
       "name": "Vu Tran",
@@ -3055,7 +3541,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:will-obrien": {
       "name": "Will O’Brien",
@@ -3064,7 +3550,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:yi-zhang": {
       "name": "Yi Zhang",
@@ -3073,7 +3559,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:zac-duff": {
       "name": "Zac Duff",
@@ -3082,7 +3568,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "person:zander-schweitzer": {
       "name": "Zander Schweitzer",
@@ -3091,7 +3577,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "provider:launchvic": {
       "name": "LaunchVic",
@@ -3100,7 +3586,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:airwallex": {
       "name": "Airwallex",
@@ -3109,7 +3595,7 @@
       "identity_key": "airwallex.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:alloovium": {
       "name": "Alloovium",
@@ -3118,7 +3604,7 @@
       "identity_key": "alloovium.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:andromeda-robotics": {
       "name": "Andromeda Robotics",
@@ -3127,7 +3613,7 @@
       "identity_key": "andromedarobotics.ai",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:arkeus": {
       "name": "Arkeus",
@@ -3136,7 +3622,7 @@
       "identity_key": "arkeus.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:ascenda": {
       "name": "Ascenda",
@@ -3145,7 +3631,7 @@
       "identity_key": "ascenda.one",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:brainwaves": {
       "name": "Brainwaves",
@@ -3154,7 +3640,17 @@
       "identity_key": "getbrainwaves.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
+    },
+    "startup:bridge-the-gap-to-space-gilmour-space-australian-sovereign-rocket-and-satellite-company": {
+      "name": "Bridge The Gap To Space Gilmour Space Australian Sovereign Rocket And Satellite Company",
+      "kind": "startup",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "startup:gilmour-space"
     },
     "startup:bugcrowd": {
       "name": "Bugcrowd",
@@ -3163,7 +3659,7 @@
       "identity_key": "bugcrowd.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:canva": {
       "name": "Canva",
@@ -3172,7 +3668,7 @@
       "identity_key": "canva.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:cascayd": {
       "name": "cascayd",
@@ -3181,16 +3677,20 @@
       "identity_key": "cascayd.app",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:cauldron": {
       "name": "Cauldron",
       "kind": "startup",
-      "aliases": [],
+      "aliases": [
+        "Feed 10 Billion People Cauldron Industrial Scale Bio Manufacturing Unlocked"
+      ],
       "identity_key": "cauldronferm.com",
       "identity_basis": "website-host",
-      "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "merged_from": [
+        "startup:feed-10-billion-people-cauldron-industrial-scale-bio-manufacturing-unlocked"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
     "startup:checkgen": {
       "name": "CheckGen",
@@ -3199,7 +3699,7 @@
       "identity_key": "checkgen.com.au",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:crosscourtai": {
       "name": "CrossCourtAI",
@@ -3208,7 +3708,7 @@
       "identity_key": "crosscourtai.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:culture-amp": {
       "name": "Culture Amp",
@@ -3217,7 +3717,7 @@
       "identity_key": "cultureamp.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:cuttable": {
       "name": "Cuttable",
@@ -3226,7 +3726,17 @@
       "identity_key": "cuttable.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
+    },
+    "startup:decarbonise-the-planet-uluu-material-that-replaces-plasticbetter-for-the-planet-built-for-scale": {
+      "name": "Decarbonise The Planet Uluu Material That Replaces Plasticbetter For The Planet Built For Scale",
+      "kind": "startup",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "startup:uluu"
     },
     "startup:deeligence": {
       "name": "Deeligence",
@@ -3235,7 +3745,7 @@
       "identity_key": "deeligence.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:diraq": {
       "name": "Diraq",
@@ -3244,7 +3754,7 @@
       "identity_key": "diraq.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:emesent": {
       "name": "Emesent",
@@ -3253,7 +3763,7 @@
       "identity_key": "emesent.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:ena-respiratory": {
       "name": "ENA Respiratory",
@@ -3262,7 +3772,17 @@
       "identity_key": "enarespiratory.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
+    },
+    "startup:enable-the-next-intelligence-leap-zabidou-the-ultra-vision-ai-platform-for-heavy-industries": {
+      "name": "Enable The Next Intelligence Leap Zabidou The Ultra Vision Ai Platform For Heavy Industries",
+      "kind": "startup",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "startup:zabidou"
     },
     "startup:eucalyptus": {
       "name": "Eucalyptus",
@@ -3271,7 +3791,17 @@
       "identity_key": "eucalyptus.health",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
+    },
+    "startup:feed-10-billion-people-cauldron-industrial-scale-bio-manufacturing-unlocked": {
+      "name": "Feed 10 Billion People Cauldron Industrial Scale Bio Manufacturing Unlocked",
+      "kind": "startup",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
+      "merged_from": [],
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "startup:cauldron"
     },
     "startup:floodmapp": {
       "name": "FloodMapp",
@@ -3280,7 +3810,7 @@
       "identity_key": "floodmapp.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:flowgo": {
       "name": "FlowGo",
@@ -3289,7 +3819,7 @@
       "identity_key": "flowgoai.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:fluency": {
       "name": "Fluency",
@@ -3298,7 +3828,7 @@
       "identity_key": "usefluency.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:fusion-books": {
       "name": "Fusion Books",
@@ -3307,16 +3837,32 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:gilmour-space": {
       "name": "Gilmour Space",
       "kind": "startup",
-      "aliases": [],
+      "aliases": [
+        "Bridge The Gap To Space Gilmour Space Australian Sovereign Rocket And Satellite Company",
+        "Gilmour Space Technologies"
+      ],
       "identity_key": "gspace.com",
       "identity_basis": "website-host",
+      "merged_from": [
+        "startup:bridge-the-gap-to-space-gilmour-space-australian-sovereign-rocket-and-satellite-company",
+        "startup:gilmour-space-technologies"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "startup:gilmour-space-technologies": {
+      "name": "Gilmour Space Technologies",
+      "kind": "startup",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "startup:gilmour-space"
     },
     "startup:go1": {
       "name": "Go1",
@@ -3325,7 +3871,7 @@
       "identity_key": "go1.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:goterra": {
       "name": "Goterra",
@@ -3334,7 +3880,7 @@
       "identity_key": "goterra.com.au",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:guin": {
       "name": "Guin",
@@ -3343,7 +3889,7 @@
       "identity_key": "guin.ai",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:ibnkvault": {
       "name": "iBnkVault",
@@ -3352,7 +3898,7 @@
       "identity_key": "ibnk.xyz",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:jigspace": {
       "name": "JigSpace",
@@ -3361,7 +3907,7 @@
       "identity_key": "jig.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:loam-bio": {
       "name": "Loam Bio",
@@ -3370,7 +3916,7 @@
       "identity_key": "loambio.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:lockii": {
       "name": "Lockii",
@@ -3379,7 +3925,7 @@
       "identity_key": "lockii.app",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:morse-micro": {
       "name": "Morse Micro",
@@ -3388,16 +3934,30 @@
       "identity_key": "morsemicro.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:neuralindex": {
       "name": "Neuralindex",
       "kind": "startup",
-      "aliases": [],
+      "aliases": [
+        "Neuralindex Ai"
+      ],
       "identity_key": "neuralindex.ai",
       "identity_basis": "website-host",
+      "merged_from": [
+        "startup:neuralindex-ai"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
+    },
+    "startup:neuralindex-ai": {
+      "name": "Neuralindex Ai",
+      "kind": "startup",
+      "aliases": [],
+      "identity_key": null,
+      "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T10:45:38Z",
+      "merged_into": "startup:neuralindex"
     },
     "startup:pi-exchange": {
       "name": "PI.EXCHANGE",
@@ -3406,7 +3966,7 @@
       "identity_key": "mentana.ai",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:psiquantum": {
       "name": "PsiQuantum",
@@ -3415,7 +3975,7 @@
       "identity_key": "psiquantum.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:puralink": {
       "name": "Puralink",
@@ -3424,7 +3984,7 @@
       "identity_key": "puralink.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:q-ctrl": {
       "name": "Q-CTRL",
@@ -3433,7 +3993,7 @@
       "identity_key": "q-ctrl.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:quantum-brilliance": {
       "name": "Quantum Brilliance",
@@ -3442,7 +4002,7 @@
       "identity_key": "quantumbrilliance.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:remi-ai": {
       "name": "Remi AI",
@@ -3451,7 +4011,7 @@
       "identity_key": null,
       "identity_basis": "name-only",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:revolut": {
       "name": "Revolut",
@@ -3460,7 +4020,7 @@
       "identity_key": "revolut.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:skykraft": {
       "name": "Skykraft",
@@ -3469,7 +4029,7 @@
       "identity_key": "skykraft.com.au",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:strongroom-ai": {
       "name": "Strongroom AI",
@@ -3478,7 +4038,7 @@
       "identity_key": "strongroom.ai",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:superstat": {
       "name": "Superstat",
@@ -3487,7 +4047,7 @@
       "identity_key": "superstat.com.au",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:synthesia": {
       "name": "Synthesia",
@@ -3496,7 +4056,7 @@
       "identity_key": "synthesia.io",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:t-0": {
       "name": "T:0",
@@ -3505,7 +4065,7 @@
       "identity_key": "t0.ai",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:talentsheet": {
       "name": "Talentsheet",
@@ -3514,7 +4074,7 @@
       "identity_key": "talentsheet.xyz",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:tendor": {
       "name": "Tendor",
@@ -3523,7 +4083,7 @@
       "identity_key": "tendor.ai",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:thermal-dawn": {
       "name": "Thermal Dawn",
@@ -3532,7 +4092,7 @@
       "identity_key": "thermaldawn.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:uipath": {
       "name": "UiPath",
@@ -3541,16 +4101,20 @@
       "identity_key": "uipath.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:uluu": {
       "name": "ULUU",
       "kind": "startup",
-      "aliases": [],
+      "aliases": [
+        "Decarbonise The Planet Uluu Material That Replaces Plasticbetter For The Planet Built For Scale"
+      ],
       "identity_key": "uluu.com.au",
       "identity_basis": "website-host",
-      "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "merged_from": [
+        "startup:decarbonise-the-planet-uluu-material-that-replaces-plasticbetter-for-the-planet-built-for-scale"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     },
     "startup:vixia": {
       "name": "Vixia",
@@ -3559,7 +4123,7 @@
       "identity_key": "vixia.ai",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:wayve": {
       "name": "Wayve",
@@ -3568,7 +4132,7 @@
       "identity_key": "wayve.ai",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:wiingman": {
       "name": "Wiingman",
@@ -3577,7 +4141,7 @@
       "identity_key": "wiingman.io",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:wise": {
       "name": "Wise",
@@ -3586,46 +4150,337 @@
       "identity_key": "wise.com",
       "identity_basis": "website-host",
       "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "updated_at": "2026-11-23T12:21:42Z"
     },
     "startup:zabidou": {
       "name": "Zabidou",
       "kind": "startup",
-      "aliases": [],
+      "aliases": [
+        "Enable The Next Intelligence Leap Zabidou The Ultra Vision Ai Platform For Heavy Industries"
+      ],
       "identity_key": "zabidou.com",
       "identity_basis": "website-host",
-      "merged_from": [],
-      "updated_at": "2026-11-23T09:45:12Z"
+      "merged_from": [
+        "startup:enable-the-next-intelligence-leap-zabidou-the-ultra-vision-ai-platform-for-heavy-industries"
+      ],
+      "updated_at": "2026-11-23T10:45:38Z"
     }
   },
   "merges": [
+    {
+      "from": "partner:accel-india",
+      "to": "partner:accel",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:39Z"
+    },
+    {
+      "from": "partner:afore-capital",
+      "to": "partner:afore",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:airtree-ventures",
+      "to": "partner:airtree",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:balderton-capital",
+      "to": "partner:balderton",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:bessemer-india",
+      "to": "partner:bessemer",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:39Z"
+    },
+    {
+      "from": "partner:bessemer-venture-partners",
+      "to": "partner:bessemer",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:blackbird",
+      "to": "partner:blackbird-ventures",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:boost-capital",
+      "to": "partner:boost-capital-partners",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:box-group",
+      "to": "partner:boxgroup",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:f-prime-capital",
+      "to": "partner:f-prime",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:fika-vc",
+      "to": "partner:fika",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:firstmark-capital",
+      "to": "partner:firstmark",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:focalvc",
+      "to": "partner:focal",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:footwork-vc",
+      "to": "partner:footwork",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:groundupvc",
+      "to": "partner:ground-up",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:hashed-emergent",
+      "to": "partner:hashed",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:39Z"
+    },
+    {
+      "from": "partner:hof-capital",
+      "to": "partner:hof",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:khosla-ventures",
+      "to": "partner:khosla",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:lightspeed-venture-partners",
+      "to": "partner:lightspeed",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:matrix-partners",
+      "to": "partner:matrix",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:mucker-capital",
+      "to": "partner:mucker",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:newtopia-vc",
+      "to": "partner:newtopia",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:pantera-capital",
+      "to": "partner:pantera",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:paralect",
+      "to": "partner:paralect-venture-studio",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:39Z"
+    },
+    {
+      "from": "partner:pear-ventures",
+      "to": "partner:pear",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:rackhouse-vc",
+      "to": "partner:rackhouse",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:scribble-ventures",
+      "to": "partner:scribble",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:39Z"
+    },
+    {
+      "from": "partner:sequoia",
+      "to": "partner:sequoia-capital",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:square-peg-capital",
+      "to": "partner:square-peg",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:stationf",
+      "to": "partner:station-f",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:uncork-capital",
+      "to": "partner:uncork",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:unshackled-vc",
+      "to": "partner:unshackled",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:unshackled-ventures",
+      "to": "partner:unshackled",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:39Z"
+    },
+    {
+      "from": "partner:up-west",
+      "to": "partner:upwest",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "partner:ycombinator",
+      "to": "partner:y-combinator",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
     {
       "from": "person:ben-simai--startmate",
       "to": "person:ben-simai",
       "basis": "linkedin-url",
       "decided_by": "seed:reviewed-data",
-      "decided_at": "2026-11-23T09:45:12Z"
+      "decided_at": "2026-11-23T12:21:42Z"
     },
     {
       "from": "person:bill-bartee--main-sequence",
       "to": "person:bill-bartee",
       "basis": "linkedin-url",
       "decided_by": "seed:reviewed-data",
-      "decided_at": "2026-11-23T09:45:12Z"
+      "decided_at": "2026-11-23T12:21:42Z"
     },
     {
       "from": "person:emma-grife--startmate",
       "to": "person:emma-grife",
       "basis": "linkedin-url",
       "decided_by": "seed:reviewed-data",
-      "decided_at": "2026-11-23T09:45:12Z"
+      "decided_at": "2026-11-23T12:21:42Z"
     },
     {
       "from": "person:phoebe-pincus--startmate",
       "to": "person:phoebe-pincus",
       "basis": "linkedin-url",
       "decided_by": "seed:reviewed-data",
-      "decided_at": "2026-11-23T09:45:12Z"
+      "decided_at": "2026-11-23T12:21:42Z"
+    },
+    {
+      "from": "startup:bridge-the-gap-to-space-gilmour-space-australian-sovereign-rocket-and-satellite-company",
+      "to": "startup:gilmour-space",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "startup:decarbonise-the-planet-uluu-material-that-replaces-plasticbetter-for-the-planet-built-for-scale",
+      "to": "startup:uluu",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "startup:enable-the-next-intelligence-leap-zabidou-the-ultra-vision-ai-platform-for-heavy-industries",
+      "to": "startup:zabidou",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "startup:feed-10-billion-people-cauldron-industrial-scale-bio-manufacturing-unlocked",
+      "to": "startup:cauldron",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "startup:gilmour-space-technologies",
+      "to": "startup:gilmour-space",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
+    },
+    {
+      "from": "startup:neuralindex-ai",
+      "to": "startup:neuralindex",
+      "basis": "name-similarity",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-23T10:45:38Z"
     }
   ]
 }
