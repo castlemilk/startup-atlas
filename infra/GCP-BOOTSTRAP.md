@@ -16,7 +16,7 @@ unchanged; only the provider moved.
 
 | Resource | Notes |
 |---|---|
-| GCS corpus bucket `<project>-atlas-corpus` | Private, uniform access, public access prevented, versioning on. Crawl snapshots + reviewed files. |
+| GCS corpus bucket `<project>-atlas-corpus` | Private, uniform access, public access prevented, versioning on. Crawl snapshots + reviewed files. Lifecycle: per-run snapshots under `corpus/v1/crawl-snapshots/` are deleted 90 days after creation (plus a 1-day noncurrent purge, since versioning is on); the `latest.json` pointers and reviewed files never expire. |
 | GCS index bucket `<project>-atlas-index` | Public (`allUsers: objectViewer`), CORS `GET` from the Pages origin, old `v1/` versions deleted after 90 days. Versioned Parquet + `latest.json`. |
 | Artifact Registry repo `atlas` (Docker) | Holds the indexer image. |
 | SA `atlas-live-indexer` | Cloud Run Job identity. `objectAdmin` on both buckets, `logging.logWriter`. |

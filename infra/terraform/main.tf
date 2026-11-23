@@ -47,6 +47,41 @@ resource "google_storage_bucket" "corpus" {
     enabled = true
   }
 
+  # Per-run crawl snapshots expire; nothing else in this bucket does.
+  # Snapshots live under their own prefix
+  # (corpus/v1/crawl-snapshots/<mode>/<run-id>.json — see
+  # crawl_snapshot_key in scripts/atlas_corpus.py) precisely so this rule
+  # can target them: GCS lifecycle matches by prefix and has no filename
+  # exclusion, and snapshots used to share corpus/v1/crawl/<mode>/ with
+  # the latest.json pointers. The pointers (corpus/v1/crawl/<mode>/) and
+  # the reviewed corpus (corpus/v1/reviewed/) match neither rule below,
+  # so they can never be expired by them.
+  lifecycle_rule {
+    condition {
+      age            = var.corpus_snapshot_retention_days
+      matches_prefix = ["corpus/v1/crawl-snapshots/"]
+    }
+    action {
+      type = "Delete"
+    }
+  }
+
+  # Versioning is on, so the age rule alone only turns a live snapshot
+  # into a noncurrent version and frees nothing. This second rule deletes
+  # snapshot versions a day after they become noncurrent, so storage is
+  # actually reclaimed (~retention + 1 days end to end). Snapshots are
+  # write-once, so the only noncurrent versions under the prefix are the
+  # ones the age rule creates.
+  lifecycle_rule {
+    condition {
+      days_since_noncurrent_time = 1
+      matches_prefix             = ["corpus/v1/crawl-snapshots/"]
+    }
+    action {
+      type = "Delete"
+    }
+  }
+
   labels = {
     app       = "startup-atlas"
     component = "live-index-corpus"

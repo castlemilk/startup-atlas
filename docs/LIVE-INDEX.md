@@ -47,7 +47,10 @@ exactly as before the pipeline existed.
   `python3 scripts/publish_crawl_corpus.py --snapshots research/crawl
   --run-id <github.run_id>` after the artifact upload. It PUTs each
   `latest-<mode>.json` snapshot (and its stamped sibling) to
-  `corpus/v1/crawl/<mode>/…`, then POSTs a `corpus-updated`
+  `corpus/v1/crawl-snapshots/<mode>/…` (the stamped run snapshot, which
+  the corpus bucket's lifecycle rule expires after 90 days) and
+  `corpus/v1/crawl/<mode>/latest.json` (the pointer, never expired),
+  then POSTs a `corpus-updated`
   `repository_dispatch`. The step has `continue-on-error: true`; a failed
   push never fails a crawl. Dry-run:
   `python3 scripts/publish_crawl_corpus.py --snapshots research/crawl --dry-run`
