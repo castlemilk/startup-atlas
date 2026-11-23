@@ -115,7 +115,10 @@ await cp('data/partner-profiles.json','dist/data/partner-profiles.json');
 await cp('data/map-locations.json','dist/data/map-locations.json');
 await cp('data/land.geojson','dist/data/land.geojson');
 await mkdir('dist/vendor/duckdb',{recursive:true});
-for (const file of ['duckdb-browser.mjs','duckdb-mvp.wasm','duckdb-eh.wasm','duckdb-browser-mvp.worker.js','duckdb-browser-eh.worker.js','LICENSE']) await cp(`${duckdbDist}/${file}`,`dist/vendor/duckdb/${file}`);
+for (const file of ['duckdb-browser.mjs','duckdb-mvp.wasm','duckdb-eh.wasm','duckdb-browser-mvp.worker.js','duckdb-browser-eh.worker.js']) await cp(`${duckdbDist}/${file}`,`dist/vendor/duckdb/${file}`);
+// @duckdb/duckdb-wasm 1.32.0 ships no LICENSE file (neither in dist/ nor the
+// package root), so copy it only when a future version provides one.
+if (existsSync(`${duckdbDist}/LICENSE`)) await cp(`${duckdbDist}/LICENSE`,`dist/vendor/duckdb/LICENSE`);
 // DuckDB-WASM's browser bundle imports the bare specifier 'apache-arrow',
 // and Arrow itself imports 'flatbuffers' and 'tslib'. Browsers cannot
 // resolve bare specifiers, so web/query.html carries an import map pointing
