@@ -17,7 +17,10 @@ class PiExchangeIdentityTests(unittest.TestCase):
   self.assertTrue(fact['value'].startswith('Mentana. '));self.assertNotIn('note',fact);self.assertEqual(fact['source'],'https://www.mentana.ai/website-terms-of-use')
   self.assertEqual(fact['reviewed_at'],'2026-11-18')
   self.assertTrue(any(e['from']=='partner:boab-ai' and e['to']==company['id'] and e['kind']=='supports' for e in result['edges']))
-  self.assertFalse(any(r['startup_id']==company['id'] for r in result['funding_rounds']))
+  rounds=[r for r in result['funding_rounds'] if r['startup_id']==company['id']]
+  self.assertEqual([r['id'] for r in rounds],['pi-exchange-2021-pre-series-a'])
+  self.assertEqual(rounds[0]['stage'],'Pre-Series A');self.assertEqual(rounds[0]['announced_on'],'2021-08-25')
+  self.assertEqual(rounds[0]['amount'],2000000);self.assertEqual(rounds[0]['currency'],'USD')
   founder=next(e for e in result['entities'] if e['id']=='person:quan-pham')
   self.assertEqual(founder['name'],'Quan Pham')
   edges=[e for e in result['edges'] if e['from']==founder['id'] and e['to']==company['id']]
