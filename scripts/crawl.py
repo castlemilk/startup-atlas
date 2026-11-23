@@ -2156,8 +2156,20 @@ INDIA_SCHEMES_SECTION_JUMPS = frozenset({
 })
 
 
+STARTMATE_OFFERINGS_NETLOCS = ('www.startmate.com', 'www.startmate.com:443')
+STARTMATE_OFFERINGS_NAVIGATION = frozenset({'/audience/founders', '/refer'})
+
+
 def in_program_source_scope(source_id, source_url, label, target):
     source = urlsplit(source_url)
+    # These links choose an audience or refer a founder, not an offering.
+    # Keep all raw observations and leave new offering paths eligible.
+    if (source_id == 'startmate-offerings' and source.scheme == 'https'
+            and source.netloc.lower() in STARTMATE_OFFERINGS_NETLOCS
+            and source.path.rstrip('/') == '/offerings'
+            and target.netloc.lower() in STARTMATE_OFFERINGS_NETLOCS
+            and target.path.rstrip('/') in STARTMATE_OFFERINGS_NAVIGATION):
+        return False
     # These saved same-site links navigate the portal or the current page.
     # Preserve linked scheme documents, application leads and raw provenance.
     if (source_id == 'india-schemes' and source.hostname == 'www.startupindia.gov.in'
