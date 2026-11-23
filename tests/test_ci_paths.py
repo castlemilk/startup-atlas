@@ -26,6 +26,7 @@ class CiPathTests(unittest.TestCase):
     def test_service_changes_have_focused_checks(self):
         self.assertEqual(self.selected('backend/hosted/package-lock.json'), {'hosted'})
         self.assertEqual(self.selected('backend/mcp/server.mjs'), {'mcp'})
+        self.assertEqual(self.selected('server.js'), {'mcp'})
         self.assertEqual(self.selected('backend/internal/graph/service.go'), {'go'})
 
     @staticmethod

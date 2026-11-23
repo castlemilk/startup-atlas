@@ -1,6 +1,6 @@
 # Startup Atlas MCP
 
-For the separately configured remote OAuth implementation, see [Hosted OAuth MCP](../backend/hosted/README.md). The local server below continues to work without a GitHub App or hosted service.
+For the separately configured remote OAuth implementation, see [Hosted OAuth MCP](../backend/hosted/README.md). For the same tools over HTTP with Google OAuth (a separate, self-hosted server), see [MCP over HTTP (Google OAuth)](MCP-HTTP.md). The local server below continues to work without a GitHub App or hosted service.
 
 A local MCP server for finding and adding source-backed opportunities to this repository. It uses the official MCP SDK over **stdio**. The static website has no new runtime dependency, database, HTTP write endpoint, account or credentials.
 

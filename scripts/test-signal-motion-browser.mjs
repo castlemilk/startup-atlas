@@ -314,11 +314,38 @@ async function waitEmbedded(name, kind) {
   }, 'Embedded '+name+' did not reach '+kind);
 }
 
-async function replayEmbedded(name, trigger) {
+async function replayEmbedded(name, trigger, onActiveFrame = 'null') {
   const baseline=await evaluate('window.__signalMotionAudit.eventSequence');
+  // Sample in the page so a short timeline cannot end between CDP requests.
+  await evaluate(`(() => {
+    const audit=window.__signalMotionAudit;
+    const root=document.querySelector('[data-test-pilot="${name}"]');
+    const button=root.querySelector('[data-motion-replay]');
+    const layers=[...root.querySelectorAll('[data-motion-layer]')];
+    const measure=${onActiveFrame};
+    audit.embeddedReplay=null;
+    button.addEventListener('click',event=>{
+      if(!event.isTrusted)return;
+      const end=performance.now()+1500;
+      const sample=()=>{
+        const animations=window.gsap.globalTimeline.getChildren(true,true,true);
+        const owns=animation=>animation.targets?.().some(target=>target instanceof Node && root.contains(target));
+        const tweens=animations.filter(owns);
+        const moving=layers.some(layer=>{
+          const style=getComputedStyle(layer);
+          return !new DOMMatrixReadOnly(style.transform).isIdentity || Number(style.opacity)<1;
+        });
+        if(moving && tweens.some(tween=>tween.isActive())){
+          const durations=animations.filter(animation=>animation.getChildren?.(false,true,false).some(owns)).map(animation=>animation.duration());
+          audit.embeddedReplay={durations,result:measure?.({root,tweens})??null};
+        }else if(performance.now()<end)requestAnimationFrame(sample);
+      };
+      requestAnimationFrame(sample);
+    },{once:true});
+  })()`);
   await trigger();
   await until(()=>evaluate(`window.__signalMotionAudit.events.some(event=>event.sequence>${baseline} && event.type==='click' && event.target==='${name}-motion-replay' && event.trusted)`),'Embedded replay needs a trusted native click');
-  await until(async()=>{const state=await embeddedState(name);return state.active>0 && state.styles.some(style=>style.transform);},'Embedded '+name+' did not visibly start playback',2000);
+  return until(()=>evaluate('window.__signalMotionAudit.embeddedReplay'),'Embedded '+name+' did not visibly start playback',2000);
 }
 
 try {
@@ -696,14 +723,12 @@ try {
     assert.equal(report.requests.slice(requestsBefore).filter(request=>vendorRequest(request.url)).length,2,'Concurrent owners must load each vendor once');
     await centre('[data-test-pilot="b"] [data-motion-stage]');
     await waitEmbedded('b','idle');
-    await replayEmbedded('b',()=>click('[data-test-pilot="b"] [data-motion-replay]'));
-    const isolation=await evaluate(`(() => {
-      const root=window.__embedding.roots.b,all=window.gsap.globalTimeline.getChildren(true,true,true),tweens=all.filter(tween=>tween.targets?.().some(target=>target instanceof Node && root.contains(target)));
+    const {result:isolation}=await replayEmbedded('b',()=>click('[data-test-pilot="b"] [data-motion-replay]'),`({root,tweens}) => {
       const styles=()=>[...root.querySelectorAll('[data-motion-layer]')].map(layer=>layer.getAttribute('style'));
       const before=styles(),active=tweens.some(tween=>tween.isActive());
       window.__embedding.destroy('a');
       return {activeBefore:active,activeAfter:tweens.some(tween=>tween.isActive()),sameTweens:tweens.every(tween=>window.gsap.globalTimeline.getChildren(true,true,true).includes(tween)),before,after:styles()};
-    })()`);
+    }`);
     assert.ok(isolation.activeBefore && isolation.activeAfter && isolation.sameTweens,'Destroying A must not kill B’s active timeline');
     assert.deepEqual(isolation.after,isolation.before,'Destroying A must not rewrite B’s layer styles');
     const destroyed=await waitEmbedded('a','static');
@@ -744,10 +769,7 @@ try {
     await evaluate('document.activeElement?.blur()');
     for(let i=0;i<60 && await evaluate(`document.activeElement?.id!=='b-motion-replay'`);i++)await key('Tab','Tab',9);
     assert.equal(await evaluate(`document.activeElement?.id`),'b-motion-replay','Native Tab must reach the second instance');
-    await replayEmbedded('b',()=>key('Enter','Enter',13));
-    // A completed GSAP timeline can detach from the global timeline. Inspect
-    // its duration during this native replay rather than assuming retention.
-    const compact=await embeddedState('b');
+    const compact=await replayEmbedded('b',()=>key('Enter','Enter',13));
     assert.ok(compact.durations.length===1 && compact.durations[0]<=.321,'Compact timing must follow the narrow root');
     assert.equal(await evaluate(`document.activeElement?.id`),'b-motion-replay');
     const focus=await evaluate(`(()=>{const button=document.activeElement,style=getComputedStyle(button);return {visible:button.matches(':focus-visible'),outline:parseFloat(style.outlineWidth),style:style.outlineStyle};})()`);

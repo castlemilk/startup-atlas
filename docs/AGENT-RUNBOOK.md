@@ -80,10 +80,10 @@ The Site uses Sites identity at the MCP boundary and a separate, repository-scop
 
 ### Hosted MCP on DeepHost
 
-The HTTP MCP is also hosted at `https://gamma-systems-pty-ltd-startup-atlas-mcp.apps.deephost.benebsworth.com` (DeepHost app `startup-atlas-mcp`, branch `mcp/http-google-oauth`, PR #300 — unmerged as of 21 Nov 2026; the hosted app runs off the branch). It is read-only: no write allow-list is set, and writes would only change the server's ephemeral checkout anyway.
+The HTTP MCP is also hosted at `https://gamma-systems-pty-ltd-startup-atlas-mcp.apps.deephost.benebsworth.com`. The DeepHost app `startup-atlas-mcp` follows `mcp/http-google-oauth`. Keep that branch available when merging source changes. DeepHost runs this app in read-only mode.
 
 - Google OAuth is configured with `ATLAS_GOOGLE_*` environment variables, not `GOOGLE_*`: the DeepHost runtime strips every `GOOGLE_`-prefixed variable from handler workers, so the server reads `ATLAS_GOOGLE_CLIENT_ID` / `ATLAS_GOOGLE_CLIENT_SECRET` first (with `GOOGLE_*` as a local fallback).
-- DeepHost runs a framework `node` app as a handler, not a long-lived server: the repo needs a root `server.js` exporting the MCP handler. See `docs/MCP-HTTP.md` on the PR #300 branch for the contract.
+- DeepHost imports the root `server.js` as its Node request handler. See [HTTP MCP setup and verification](MCP-HTTP.md).
 - End-to-end OAuth test passed 21 Nov 2026 on a phone: dynamic client registration, Google sign-in + consent as the allowed account, token issue (Bearer, 3600s, refresh token), MCP `initialize` answering `startup-atlas 1.0.0` / protocol `2025-03-26`, and `tools/list` returning all 16 tools.
 - Known findings: the app's 10-minute login session can expire during a slow consent step (the callback then returns "Unknown or expired login session" — retry from `/oauth/authorize`); `tools/list` needs the `Mcp-Session-Id` header from `initialize` (standard streamable-HTTP sessions); `/oauth/register` has no CORS support, so a browser-based client cannot register cross-origin (native MCP clients are unaffected).
 
