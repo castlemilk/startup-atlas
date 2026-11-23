@@ -399,6 +399,42 @@ class CompanyFundingStatementTests(unittest.TestCase):
         result, = self.diraq_completion_review([{}], other_companies=[competitor])['results']
         self.assertNotIn('round_mention', result['observations'][0]['signals'])
 
+    def test_diraq_earlier_round_does_not_mask_the_reviewed_a2_opening(self):
+        # Replay the production catalogue after #368, not just a one-round synthetic record.
+        overlay = json.loads((Path(__file__).resolve().parents[1] / 'data/startup-research.json').read_text())
+        company = next(row for row in overlay['startups'] if row['name'] == 'Diraq')
+        a2 = next(row for row in company['funding_rounds'] if row['id'] == 'diraq-2024-series-a-2')
+        initial = next(row for row in company['funding_rounds'] if row['id'] == 'diraq-initial-series-a')
+        article = REVIEWED_ISSUER_ARTICLES['Diraq']
+        capture = {'url': article['url'], 'excerpt': DIRAQ_A2_COMPLETION,
+                   'acquisition': 'page_excerpt', 'retrieved_on': '2026-11-20'}
+        attestation = {**article, 'opening_sha256': digest(DIRAQ_A2_COMPLETION.encode())}
+
+        def recognized(events, *, other=()):
+            with patch.dict(REVIEWED_ISSUER_ARTICLES, {'Diraq': attestation}):
+                result, = self.first_person_review([capture], company={**company, 'funding_rounds': events},
+                                                   other_companies=other)['results']
+            return 'round_mention' in result['observations'][0]['signals']
+
+        self.assertTrue(recognized([a2, initial]))
+        self.assertTrue(recognized([{**a2, 'source': article['round_source']}]))  # Historical replay.
+        for event in (
+            {**initial, 'amount': 22_000_000},
+            {**initial, 'stage': 'Series A-2'},
+            {**initial, 'source': article['url'] + '#paragraph'},
+            {**initial, 'announced_on': '2024-02-13'},
+        ):
+            with self.subTest(event=event):
+                self.assertFalse(recognized([a2, event]))
+        self.assertFalse(recognized([a2, initial, {**initial, 'id': 'duplicate-initial'}]))
+        self.assertFalse(recognized([a2, initial, {**a2, 'source': article['round_source']}]))
+        self.assertFalse(recognized([a2, initial, {**a2, 'source': a2['source'] + '?cache=1'}]))
+        self.assertFalse(recognized([a2, initial, {**initial, 'source': article['url'].replace('www.', '')}]))
+        self.assertFalse(recognized([a2, initial, {**a2, 'source': a2['source'].replace('www.', '')}]))
+        past_citation = {'name': 'Other', 'website': 'https://other.example/',
+                         'funding_rounds': [{**initial, 'id': 'wrong-company'}]}
+        self.assertFalse(recognized([a2], other=[past_citation]))
+
     def test_numbered_completion_requires_an_asserted_named_round_and_literal_amount(self):
         opening = DIRAQ_A2_COMPLETION
         for excerpt in (
