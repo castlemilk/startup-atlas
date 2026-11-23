@@ -96,8 +96,10 @@ function headquarters(facts) {
   if (locations.size!==1) return {country:'',city:''};
   const [[country,cities]] = locations;
   const city = cities.size===1 ? [...cities][0] : '';
-  return selected.length===1 && /^business base$/i.test(selected[0].label)
-    ? {country,city,location:clean(selected[0].value,320),businessBase:true} : {country,city};
+  const claim = selected.length===1 ? selected[0] : null;
+  const location = clean(claim?.value,320);
+  if (/^business base$/i.test(claim?.label || '')) return {country,city,location,businessBase:true};
+  return /\(historical\)$/i.test(location) ? {country,city,location} : {country,city};
 }
 
 export function indexCompanies(graph, technology = new Map()) {

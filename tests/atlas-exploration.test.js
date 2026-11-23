@@ -104,5 +104,6 @@ test('registry-only business bases preserve country without implying a city', as
   assert.equal(dimensions.get('startup:zabidou').city,'North Sydney','the disclosed headquarters supersedes the registry-only base');
   assert.equal(dimensions.get('startup:eucalyptus').city,'Sydney','the disclosed headquarters is selectable by city');
   assert.equal(dimensions.get('startup:uluu').city,'','the separately sourced operating base does not imply a headquarters city');
+  assert.equal(companyPlaceLabel(dimensions.get('startup:goterra')),'Canberra, Australia (historical)','explorer locations preserve the historical headquarters qualifier');
   assert.equal(dimensions.get('startup:bugcrowd').country,'multiple','explicit co-headquarters remain grouped');
 });
