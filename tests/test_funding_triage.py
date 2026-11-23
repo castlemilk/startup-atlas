@@ -9,7 +9,7 @@ spec = importlib.util.spec_from_file_location('funding_graph', ROOT/'scripts/mak
 graph = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(graph)
 class FundingTriageTests(unittest.TestCase):
-    def test_only_two_rounds_and_articles_added_without_entity_or_edge_inference(self):
+    def test_only_reviewed_rounds_and_distinct_citations_added_without_new_relationships(self):
         read = lambda name: json.loads((ROOT/'data'/name).read_text())
         research = read('startup-research.json')
         base = copy.deepcopy(research)
@@ -24,7 +24,12 @@ class FundingTriageTests(unittest.TestCase):
         added = [r for r in after['funding_rounds'] if r['id'] in ids]
         self.assertEqual({r['id'] for r in added}, ids)
         self.assertEqual([r for r in after['funding_rounds'] if r['id'] not in ids], before['funding_rounds'])
-        self.assertEqual(len(after['articles']), len(before['articles']) + 2)
+        before_articles = {(article['startup_id'], article['url']): article for article in before['articles']}
+        after_articles = {(article['startup_id'], article['url']): article for article in after['articles']}
+        round_sources = {(round['startup_id'], round['source']) for round in added}
+        self.assertEqual(len(after_articles), len(after['articles']))
+        self.assertEqual(after_articles.keys() - before_articles.keys(), round_sources - before_articles.keys())
+        self.assertEqual({key: after_articles[key] for key in before_articles}, before_articles)
         for round in added:
             for key in ['amount','currency','valuation','valuation_currency','investors']:
                 self.assertNotIn(key, round)

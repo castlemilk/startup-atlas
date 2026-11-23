@@ -91,7 +91,7 @@ test('registry-only business bases preserve country without implying a city', as
   const dimensions = indexCompanies({entities});
   const bases = new Map([
     ['CrossCourtAI','NSW 2010'], ['Superstat','VIC 3121'], ['Wiingman','NSW 2026'],
-    ['Zabidou','NSW 2060'], ['Eucalyptus','NSW 2000'],
+    ['Remi AI','NSW 2777'], ['Strongroom AI','VIC 3145'],
   ]);
   for (const [name,postcode] of bases) {
     const observed = entities.find(entity=>entity.kind==='startup' && entity.name===name);
@@ -101,5 +101,9 @@ test('registry-only business bases preserve country without implying a city', as
     assert.equal(companyPlaceLabel(row),postcode+', Australia · business base',name);
   }
   assert.equal(dimensions.get('startup:loam-bio').city,'Orange','an explicit city remains selectable');
+  assert.equal(dimensions.get('startup:zabidou').city,'North Sydney','the disclosed headquarters supersedes the registry-only base');
+  assert.equal(dimensions.get('startup:eucalyptus').city,'Sydney','the disclosed headquarters is selectable by city');
+  assert.equal(dimensions.get('startup:uluu').city,'','the separately sourced operating base does not imply a headquarters city');
+  assert.equal(companyPlaceLabel(dimensions.get('startup:goterra')),'Canberra, Australia (historical)','explorer locations preserve the historical headquarters qualifier');
   assert.equal(dimensions.get('startup:bugcrowd').country,'multiple','explicit co-headquarters remain grouped');
 });
