@@ -1,0 +1,159 @@
+# Startup Atlas — single task file for the GCP live-index bootstrap.
+#
+#   task bootstrap   validate credentials -> terraform init/apply (two-phase,
+#                    so the indexer image exists before the job references
+#                    it) -> print outputs + next steps
+#   task validate    check ADC, project, CLIs, APIs, GitHub secrets — fails
+#                    fast with instructions when something is missing
+#   task plan        terraform plan (no changes made)
+#   task image       build + push the indexer image
+#   task verify      check the live index pointer + scheduler state
+#   task destroy     guarded: needs CONFIRM_DESTROY=yes
+#
+# Requires: go-task, terraform, gcloud, docker (image build only).
+# Auth: Application Default Credentials — `gcloud auth application-default
+# login` once on the operator's machine; the project comes from
+# ATLAS_GCP_PROJECT or `gcloud config get-value project`. No long-lived
+# keys anywhere; GitHub Actions federates via Workload Identity.
+#
+# Place this file at the repo root as Taskfile.yml.
+version: "3"
+
+vars:
+  TF_DIR: infra/terraform
+  # Project: env wins, else the gcloud default project, else empty (validate
+  # fails fast with instructions). The `|| true` keeps a missing gcloud
+  # from failing variable resolution — validate reports it instead.
+  PROJECT:
+    sh: bash -c 'echo "${ATLAS_GCP_PROJECT:-$(gcloud config get-value project 2>/dev/null || true)}"'
+  REGION: '{{.ATLAS_GCP_REGION | default "australia-southeast1"}}'
+  IMAGE: '{{.REGION}}-docker.pkg.dev/{{.PROJECT}}/atlas/atlas-indexer:latest'
+
+tasks:
+  default:
+    desc: Check the bootstrap prerequisites.
+    cmds:
+      - task: validate
+
+  validate:
+    desc: Validate the credentials and setup bootstrap needs; fail fast when something is missing.
+    cmds:
+      - |
+        fail() { echo "VALIDATE FAILED: $1" >&2; exit 1; }
+        need() { command -v "$1" >/dev/null 2>&1 || fail "$1 is not installed. $2"; }
+
+        need terraform "Install it: https://developer.hashicorp.com/terraform/install (brew install hashicorp/tap/terraform on macOS)."
+        need gcloud "Install the Google Cloud CLI: https://cloud.google.com/sdk/docs/install, then run: gcloud auth application-default login"
+        # Docker is only needed to build the indexer image (task image /
+        # bootstrap). Validate warns; the image task fails if it is missing.
+        command -v docker >/dev/null 2>&1 || echo "NOTE: docker is not installed — 'task image' and the image step of 'task bootstrap' will fail until it is. Install Docker Desktop or the docker CLI."
+
+        [ -n "{{.PROJECT}}" ] || fail "No GCP project. Set ATLAS_GCP_PROJECT=<project-id> or run: gcloud config set project <project-id>"
+        echo "Project: {{.PROJECT}} (region {{.REGION}})"
+
+        # ADC: Application Default Credentials must exist and yield a token.
+        # The token itself is never printed.
+        gcloud auth application-default print-access-token >/dev/null 2>&1 \
+          || fail "No Application Default Credentials. Run: gcloud auth application-default login  (then re-run task validate)"
+        echo "ADC: present (gcloud auth application-default)"
+
+        # Project must exist and be reachable with these credentials.
+        gcloud projects describe "{{.PROJECT}}" --format="value(projectId)" >/dev/null 2>&1 \
+          || fail "Cannot access project {{.PROJECT}} with these credentials. Check the project id and that this account has access (roles/viewer at minimum; bootstrap needs project IAM admin + the service APIs)."
+        echo "Project access: ok"
+
+        # Required APIs: bootstrap enables them via Terraform, so a missing
+        # one is a note, not a failure — but the caller still needs the
+        # permission to enable them, which the apply will prove.
+        echo "Required APIs (bootstrap enables any that are missing):"
+        for api in storage.googleapis.com run.googleapis.com cloudscheduler.googleapis.com iam.googleapis.com artifactregistry.googleapis.com secretmanager.googleapis.com; do
+          if gcloud services list --enabled --project="{{.PROJECT}}" --format="value(config.name)" 2>/dev/null | grep -qx "$api"; then
+            echo "  [enabled] $api"
+          else
+            echo "  [missing — bootstrap will enable] $api"
+          fi
+        done
+
+        # GitHub secrets for the WIF path: check with gh when available,
+        # otherwise print the list to set by hand.
+        echo "GitHub secrets needed on castlemilk/startup-atlas (Settings > Secrets > Actions):"
+        echo "  GCP_WORKLOAD_IDENTITY_PROVIDER, GCP_SERVICE_ACCOUNT, ATLAS_GCP_PROJECT, ATLAS_CORPUS_BUCKET, ATLAS_CORPUS_INDEX_BUCKET, ATLAS_CORPUS_BACKEND=gcs"
+        echo "  (exact values come from 'terraform output github_secrets' after bootstrap)"
+        if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+          echo "  Currently set:"
+          gh secret list --repo castlemilk/startup-atlas 2>/dev/null | grep -E "GCP_|ATLAS_" || echo "  (none of the GCP/ATLAS secrets are set yet)"
+        else
+          echo "  (gh CLI not authed here — check the list in the repo settings after bootstrap)"
+        fi
+        echo "VALIDATE OK: credentials, project and tooling are in place."
+
+  plan:
+    desc: Terraform plan for the live-index infra (no changes made).
+    deps: [validate]
+    cmds:
+      - cd {{.TF_DIR}} && terraform init -input=false
+      - cd {{.TF_DIR}} && terraform plan -input=false -var="project_id={{.PROJECT}}" -var="region={{.REGION}}"
+
+  image:
+    desc: Build and push the indexer image to Artifact Registry (repo must exist — bootstrap creates it first).
+    deps: [validate]
+    cmds:
+      - |
+        command -v docker >/dev/null 2>&1 || { echo "VALIDATE FAILED: docker is not installed. Install Docker Desktop or the docker CLI to build the indexer image." >&2; exit 1; }
+        gcloud auth configure-docker {{.REGION}}-docker.pkg.dev --quiet
+        docker build -f infra/docker/Dockerfile.indexer \
+          --build-arg SOURCE_REVISION="$(git rev-parse HEAD)" \
+          -t "{{.IMAGE}}" .
+        docker push "{{.IMAGE}}"
+        echo "Image pushed: {{.IMAGE}}"
+
+  bootstrap:
+    desc: Validate, create the infra (two-phase so the image exists first), and print next steps.
+    deps: [validate]
+    cmds:
+      - cd {{.TF_DIR}} && terraform init -input=false
+      # Phase 1: the Artifact Registry repo must exist before the image push.
+      - cd {{.TF_DIR}} && terraform apply -input=false -auto-approve -target=google_artifact_registry_repository.indexer -var="project_id={{.PROJECT}}" -var="region={{.REGION}}"
+      - task: image
+      # Phase 2: everything else (buckets, service accounts, WIF, job, scheduler).
+      - cd {{.TF_DIR}} && terraform apply -input=false -auto-approve -var="project_id={{.PROJECT}}" -var="region={{.REGION}}"
+      - |
+        cd {{.TF_DIR}}
+        echo ""
+        echo "BOOTSTRAP DONE. Next steps:"
+        echo "  1. Set the GitHub secrets from the output below:"
+        terraform output -json github_secrets
+        echo "  2. Point the query console at the live index (separate PR): set the"
+        echo "     <meta name=\"atlas-live-index\"> tag in web/query.html to:"
+        terraform output -raw index_public_url
+        echo "  3. Verify it worked:"
+        echo "       task verify"
+        echo "  4. The indexer now runs every 15 minutes via Cloud Scheduler;"
+        echo "     the GitHub Actions live-index workflow stays as a manual fallback."
+
+  verify:
+    desc: Check the live index pointer and the scheduler state.
+    cmds:
+      - |
+        [ -n "{{.PROJECT}}" ] || { echo "Set ATLAS_GCP_PROJECT or gcloud config project first." >&2; exit 1; }
+        INDEX_URL="$(cd {{.TF_DIR}} && terraform output -raw index_public_url 2>/dev/null)"
+        [ -n "$INDEX_URL" ] || { echo "No terraform output yet — run task bootstrap first." >&2; exit 1; }
+        echo "Fetching ${INDEX_URL}latest.json ..."
+        curl -fsS "${INDEX_URL}latest.json"
+        echo ""
+        echo "Scheduler job state:"
+        gcloud scheduler jobs describe atlas-live-indexer-poll --location="{{.REGION}}" --project="{{.PROJECT}}" --format="value(state,schedule)"
+        echo "Latest Cloud Run Job execution:"
+        gcloud run jobs executions list --job=atlas-live-indexer --region="{{.REGION}}" --project="{{.PROJECT}}" --limit=1 --format="value(metadata.creationTimestamp,status.conditions[0].type)"
+
+  destroy:
+    desc: Tear down the live-index infra. Guarded — needs CONFIRM_DESTROY=yes.
+    cmds:
+      - |
+        if [ "${CONFIRM_DESTROY:-}" != "yes" ]; then
+          echo "Refusing: destroy is guarded. Re-run with CONFIRM_DESTROY=yes to tear down the live-index infra in project {{.PROJECT}}." >&2
+          echo "This deletes the buckets (corpus + index), the Cloud Run Job, the scheduler job, the service accounts and the WIF pool." >&2
+          echo "The site falls back to the static build once the atlas-live-index meta tag is removed." >&2
+          exit 1
+        fi
+        cd {{.TF_DIR}} && terraform destroy -input=false -auto-approve -var="project_id={{.PROJECT}}" -var="region={{.REGION}}"
