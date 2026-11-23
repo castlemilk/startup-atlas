@@ -59,6 +59,31 @@ EVIDENCE_PATTERNS = {
 }
 MAX_HEADCOUNT_MENTIONS = 12
 MAX_HEADCOUNT_CONTEXT = 360
+MAX_LOCATION_MENTIONS = 12
+MAX_LOCATION_CONTEXT = 360
+LOCATION_FIELDS = {
+    'co-headquarters': r'co[- ]headquarters',
+    'headquarters': r'(?:(?:corporate|global|world) )?headquarters|hq|principal executive offices?',
+    'business-base': r'business base|principal place of business|main (?:business )?location',
+}
+LOCATION_LABEL = re.compile(
+    r"(?:(?P<owner>.+?)[’']s |(?P<our>our) )?(?P<former>former |previous )?"
+    r"(?P<label>" + '|'.join(LOCATION_FIELDS.values()) + r")"
+    r"(?:\s*(?::|[–—])\s*| (?P<tense>is|are|was|were) (?:located )?in )(?P<place>.+)", re.I,
+)
+LOCATION_STATEMENT = re.compile(
+    r"(?P<owner>.+?) (?P<tense>is|are|was|were) (?:(?P<former>formerly|previously|originally) )?"
+    r"(?:(?:now|currently) )?(?P<claim>co[- ]headquartered|headquartered|(?:primarily )?based) in (?P<place>.+)", re.I,
+)
+LOCATION_LOCALE_PATH = r'/(?:[a-z]{2}(?:-[a-z]{2})?/)?'
+LOCATION_ABOUT_PATH = re.compile(LOCATION_LOCALE_PATH + r'(?:about(?:-us)?|our-company|company)/?', re.I)
+LOCATION_CONTACT_PATH = re.compile(LOCATION_LOCALE_PATH + r'(?:contact(?:-us)?|locations)/?', re.I)
+LOCATION_SENTENCES = re.compile(r'(?<=[!?;])\s+|(?<!\bSt\.)(?<!\bMt\.)(?<!\b[A-Z]\.)(?<=\.)\s+', re.I)
+LOCATION_QUALIFIERS = re.compile(
+    r'\b(?:not|never|if|until|may|would|will|planned|proposed|relocat\w*|regional|registered office'
+    r'|headquarters|headquartered|based in|contact us|see map)\b', re.I,
+)
+LOCATION_HIDDEN_STYLE = re.compile(r'\b(?:display\s*:\s*none|visibility\s*:\s*hidden)\b', re.I)
 HEADCOUNT_INTEGER = r'(?:[0-9]{1,3}(?:,[0-9]{3}){1,2}|[0-9]{1,8})'
 HEADCOUNT_NUMBER = rf'{HEADCOUNT_INTEGER}(?:k)?\+?'
 HEADCOUNT_MEASURE = r'(?:(?:group|full[- ]time|part[- ]time) )?(?:employees|staff(?: members)?|workers|people)'
@@ -403,8 +428,80 @@ def add_usv_name(names, raw, evidence):
             names[name] = evidence
 
 
+class CompanyLocationMarkup:
+    """Keep bounded visible text blocks and adjacent heading/value pairs."""
+
+    headings = {'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'dt', 'th'}
+    values = {'p', 'address', 'li', 'dd', 'td', 'div'}
+    tags = headings | values
+    excluded = INACTIVE_TAGS | {'head', 'script', 'style', 'blockquote', 'q', 'nav', 'svg'}
+
+    def __init__(self):
+        self.blocks = []
+        self.stack = [{'tag': '', 'hidden': False, 'children': 0}]
+        self.active = None
+        self.stopped = False
+
+    def start(self, tag, attrs):
+        if self.stopped:
+            return
+        if len(self.stack) == 128 or len(self.blocks) == 512:
+            self.stopped = True
+            return
+        parent = self.stack[-1]
+        parent['children'] += 1
+        hidden = (parent['hidden'] or tag in self.excluded or 'hidden' in attrs
+                  or attrs.get('aria-hidden', '').lower() == 'true'
+                  or bool(LOCATION_HIDDEN_STYLE.search(attrs.get('style', ''))))
+        if tag in VOID_TAGS:
+            if tag == 'br' and not hidden:
+                self.data(' ')
+            return
+        frame = {'tag': tag, 'hidden': hidden, 'children': 0}
+        self.stack.append(frame)
+        if hidden:
+            self.active = None
+        elif tag in self.tags:
+            self.active = frame
+            frame.update(parent=parent, position=parent['children'], text='')
+
+    def data(self, text):
+        if self.stopped:
+            return
+        if self.active is not None:
+            self.active['text'] += text[:max(0, 1001 - len(self.active['text']))]
+        elif text.strip():
+            self.stack[-1]['children'] += 1
+
+    def end(self, tag):
+        if self.stopped:
+            return
+        for index in range(len(self.stack) - 1, 0, -1):
+            frame = self.stack[index]
+            if frame['tag'] != tag:
+                continue
+            closed = self.stack[index:]
+            del self.stack[index:]
+            if any(self.active is item for item in closed):
+                active, self.active = self.active, None
+                if active is frame and len(active['text']) <= 1000:
+                    text = ' '.join(active['text'].split())
+                    if text:
+                        self.blocks.append((tag, active['parent'], active['position'], text))
+            break
+
+    def excerpts(self):
+        previous = None
+        for tag, parent, position, text in self.blocks:
+            yield text
+            if (previous and tag in self.values and previous[0] is parent
+                    and previous[1] + 1 == position and len(text) <= 160):
+                yield previous[2].rstrip(':') + ': ' + text
+            previous = (parent, position, text) if tag in self.headings else None
+
+
 class PageParser(HTMLParser):
-    def __init__(self,base):
+    def __init__(self,base,*,company_locations=False):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
         self.title=''; self.lang=''; self._captures=[]; self._contexts=[]; self._heading_links=[]; self._hidden=0
         self._inactive=[]
@@ -413,6 +510,7 @@ class PageParser(HTMLParser):
         self._brand_regions=[]; self._anchor_homes=[]; self._footer_depth=0
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
         self.article_markup=ArticleMarkup(base)
+        self.location_markup = CompanyLocationMarkup() if company_locations else None
         self._startmate_portfolio = startmate_portfolio_page(urlsplit(base))
         self.startmate_card_names = {}
         self._usv_portfolio = usv_portfolio_page(urlsplit(base))
@@ -438,6 +536,8 @@ class PageParser(HTMLParser):
 
     def handle_starttag(self,tag,attrs):
         tag=tag.lower()
+        if self.location_markup is not None:
+            self.location_markup.start(tag, {key: value or '' for key, value in attrs})
         if self._usv_pending_stream:
             if tag == 'template' and dict(attrs).get('id') == 'B:0':
                 self._usv_stream_boundaries += 1
@@ -539,6 +639,8 @@ class PageParser(HTMLParser):
                     capture['usv_heading'] = []
     def handle_endtag(self,tag):
         tag=tag.lower()
+        if self.location_markup is not None:
+            self.location_markup.end(tag)
         if self._inactive:
             if tag==self._inactive[-1]: self._inactive.pop()
             return
@@ -619,6 +721,8 @@ class PageParser(HTMLParser):
             for link in self.links[context['start']:]:
                 if link.get('text') and not link.get('context'): link['context']=text
     def handle_data(self,data):
+        if self.location_markup is not None:
+            self.location_markup.data(data)
         if self._usv_pending_stream and data.strip(): self._usv_pending_stream = False
         if self._inactive: return
         if self._ld and sum(map(len,self._ldbuf))<50_000: self._ldbuf.append(data)
@@ -785,8 +889,64 @@ def company_headcount_mentions(company_name, page):
     return [row for row in extract_headcount_mentions(contexts, source, company_name) if row in mentions]
 
 
-def extract_page(body,url):
-    parser=PageParser(url); parser.feed(body.decode('utf-8','replace'))
+def extract_location_mentions(excerpts, source, company_name):
+    """Classify explicit location wording while keeping it available for review."""
+    path = urlsplit(source).path
+    site_location_page = (path in ('', '/') or LOCATION_ABOUT_PATH.fullmatch(path)
+                          or LOCATION_CONTACT_PATH.fullmatch(path))
+    mentions = []
+    for excerpt in excerpts:
+        for context in LOCATION_SENTENCES.split(excerpt):
+            if len(context) > MAX_LOCATION_CONTEXT:
+                continue
+            context = context.strip()
+            label = LOCATION_LABEL.fullmatch(context)
+            claim = label or LOCATION_STATEMENT.fullmatch(context)
+            if not claim:
+                continue
+            owner = (claim['owner'] or '').casefold()
+            if owner == company_name.casefold():
+                attribution = 'named-company'
+            elif site_location_page and (owner == 'we' or (label and not owner)):
+                attribution = 'company-page'
+            else:
+                continue
+            place = claim['place'].rstrip(' .')
+            if (not 2 <= len(place) <= 160 or not any(c.isalpha() for c in place)
+                    or any(c in context for c in '!?') or ':' in place or LOCATION_QUALIFIERS.search(place)):
+                continue
+            if label:
+                kind = next(kind for kind, pattern in LOCATION_FIELDS.items()
+                            if re.fullmatch(pattern, label['label'], re.I))
+            elif claim['claim'].casefold().endswith('based'):
+                kind = 'business-base'
+            else:
+                kind = 'co-headquarters' if claim['claim'].casefold().startswith('co') else 'headquarters'
+            historical = (claim['former'] or (claim['tense'] or '').casefold() in ('was', 'were')
+                          or place.casefold().endswith(' (historical)'))
+            mention = {'kind': kind, 'location': place, 'context': context, 'source': source,
+                       'attribution': attribution, 'time_scope': 'historical' if historical else 'unspecified'}
+            if mention not in mentions:
+                mentions.append(mention)
+            if len(mentions) == MAX_LOCATION_MENTIONS:
+                return mentions
+    return mentions
+
+
+def company_location_mentions(company_name, page):
+    """Bind the candidate subset to its saved page and claim wording."""
+    mentions = page.get('location_mentions', [])
+    if not isinstance(mentions, list) or len(mentions) > MAX_LOCATION_MENTIONS:
+        return []
+    source = page['final_url']
+    contexts = [row['context'] for row in mentions
+                if isinstance(row, dict) and row.get('source') == source
+                and isinstance(row.get('context'), str) and len(row['context']) <= MAX_LOCATION_CONTEXT]
+    return [row for row in extract_location_mentions(contexts, source, company_name) if row in mentions]
+
+
+def extract_page(body,url,*,company_name=None):
+    parser=PageParser(url, company_locations=company_name is not None); parser.feed(body.decode('utf-8','replace'))
     metadata={key:value for key,value in parser.meta.items() if key in ('description','keywords','author','logo','og:logo','og:url','og:title','og:description','og:site_name','og:image','og:type','og:locale','twitter:site','twitter:title','twitter:description','twitter:image','article:published_time','article:modified_time')}
     links=[]; seen=set()
     for link in parser.links:
@@ -846,10 +1006,13 @@ def extract_page(body,url):
     for key in ('og:image','twitter:image'):
         candidate(parser.meta.get(key),'social-image')
     headcount = extract_headcount_mentions(parser.paragraphs or parser.text, url)
+    locations = (extract_location_mentions(parser.location_markup.excerpts(), url, company_name)
+                 if parser.location_markup is not None else [])
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
             'structured_data':parser.structured[:10],'links':links,'profile_links':profile_links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
             'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40], 'image_candidates':parser.images,
             **({'headcount_mentions': headcount} if headcount else {}),
+            **({'location_mentions': locations} if locations else {}),
             'tables':parser.tables,'article_markup':parser.article_markup.evidence()}
 
 def follow_links(extracted,base,max_follow):
@@ -1047,16 +1210,20 @@ PROFILE_PATH_RULES={
 PROFILE_GENERIC=re.compile(r'^(view|learn more|read more|meet|contact|all|our team|team|people|portfolio|companies|investments|about|careers|jobs|news|home|founders|apply|see all)\b',re.I)
 
 def profile_landing_links(page, base, max_follow, include_about=False):
-    """Select a bounded, same-host set of team and company index pages."""
+    """Select bounded same-host profile pages, with location pages for startups."""
     if max_follow<=0: return []
     host=urlsplit(base).hostname; selected=[]
     rules=dict(PROFILE_PAGE_RULES)
-    if include_about: rules['about']=re.compile(r'\b(about|our company)\b',re.I)
+    if include_about:
+        rules['about']=re.compile(r'\b(about|our company)\b',re.I)
+        rules['contact']=LOCATION_CONTACT_PATH
     for kind,pattern in rules.items():
         for link in page.get('profile_links',[]):
             parts=urlsplit(link.get('url',''))
             if parts.scheme!='https' or parts.hostname!=host or parts.username or parts.password: continue
-            if not pattern.search(link.get('text','')+' '+parts.path.replace('-',' ')): continue
+            if kind == 'contact':
+                if not pattern.fullmatch(parts.path): continue
+            elif not pattern.search(link.get('text','')+' '+parts.path.replace('-',' ')): continue
             if parts.netloc == STARTMATE_HOST and parts.path.startswith('/portfolio-companies/'): continue
             if kind in PROFILE_PATH_RULES and PROFILE_PATH_RULES[kind].search(parts.path): continue
             clean=urlunsplit((parts.scheme,parts.netloc,parts.path,parts.query,''))
@@ -1196,12 +1363,14 @@ def company_profile_observation(company, page):
                    if structured_types(subject)&{'Organization','Corporation'}
                    and matches_organization(subject,company,source)]
     headcount = company_headcount_mentions(company['name'], page)
+    locations = company_location_mentions(company['name'], page)
     return {'company':company['name'],'kind':'company-profile','source_url':source,
             'checked_at':page['checked_at'],'review_required':True,
             'title':page.get('title',''),
             'description':metadata.get('description') or metadata.get('og:description',''),
             'structured_subjects':subjects,'organization_claims':organizations,
             **({'headcount_mentions': headcount} if headcount else {}),
+            **({'location_mentions': locations} if locations else {}),
             'logo_candidates':page.get('logo_candidates',[])[:40],
             'identity_note':'Page subjects may include other organisations or people. Image alt text and sameAs links are source claims, not verified identities or employment.'}
 
@@ -1463,19 +1632,21 @@ def crawl_profiles(catalogue,args,transport,company=False):
     if args.limit: seeds=seeds[:args.limit]
     if not seeds: raise CrawlError('No approved partner websites matched')
     results=[]; candidates=[]
-    def fetch(url,host,scope):
+    def fetch(url,host,scope,company_name):
         try:
             status,headers,body,final=scoped_request(transport,url,host,scope)
             ctype=headers.get('Content-Type','').lower()
             if status!=200: raise CrawlError(f'HTTP {status}')
             if ctype and 'html' not in ctype: raise CrawlError(f'not HTML: {ctype[:100]}')
-            return {'url':url,'final_url':final,'checked_at':utc_now(),'status':'ok','http_status':status,**extract_page(body,final)}
+            return {'url':url,'final_url':final,'checked_at':utc_now(),'status':'ok','http_status':status,
+                    **extract_page(body,final,company_name=company_name)}
         except (CrawlError,ValueError) as exc:
             return {'url':url,'checked_at':utc_now(),'status':'skipped','reason':str(exc)}
     for seed in seeds:
         host=urlsplit(seed['url']).hostname
         scope=seed.get('crawl_scope'); follow=min(args.follow,scope['max_follow']) if scope else args.follow
-        homepage=fetch(seed['url'],host,scope); pages=[homepage]; discovered=[]
+        company_name=seed['name'] if company else None
+        homepage=fetch(seed['url'],host,scope,company_name); pages=[homepage]; discovered=[]
         if homepage['status']=='ok':
             candidates.extend(extract_profile_media_leads(seed['name'],homepage,'homepage'))
             discovered=profile_landing_links(homepage,seed['url'],follow,include_about=company)
@@ -1491,7 +1662,7 @@ def crawl_profiles(catalogue,args,transport,company=False):
                 discovered=(approved+[item for item in discovered
                                       if item['url'] not in approved_urls | visited])[:follow]
             for target in discovered:
-                page=fetch(target['url'],host,scope); page['profile_kind']=target['kind']; pages.append(page)
+                page=fetch(target['url'],host,scope,company_name); page['profile_kind']=target['kind']; pages.append(page)
                 if page['status']=='ok':
                     if target['kind'] in PROFILE_PATH_RULES:
                         leads, page['profile_lead_coverage'] = profile_lead_batch(seed['name'],page,target['kind'])

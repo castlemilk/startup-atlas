@@ -18,8 +18,8 @@ try:
     )
     from .company_metadata_socials import COMPANY_SOCIALS, company_social_review
     from .crawl import (
-        company_headcount_mentions, evidence_text, evidence_url, matches_organization, newsroom_observation,
-        professional_bio_observations, require_scoped_launcher, structured_types,
+        company_headcount_mentions, company_location_mentions, evidence_text, evidence_url, matches_organization,
+        newsroom_observation, professional_bio_observations, require_scoped_launcher, structured_types,
     )
     from .plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from .replay_company_profiles import compile_replay, utc
@@ -32,8 +32,8 @@ except ImportError:
     )
     from company_metadata_socials import COMPANY_SOCIALS, company_social_review
     from crawl import (
-        company_headcount_mentions, evidence_text, evidence_url, matches_organization, newsroom_observation,
-        professional_bio_observations, require_scoped_launcher, structured_types,
+        company_headcount_mentions, company_location_mentions, evidence_text, evidence_url, matches_organization,
+        newsroom_observation, professional_bio_observations, require_scoped_launcher, structured_types,
     )
     from plan_company_profiles import CrawlError, build_plan, digest, read_input, website_host
     from replay_company_profiles import compile_replay, utc
@@ -333,13 +333,19 @@ def profile_dimensions(packet, replay, company, founders, website):
                 or candidate.get('review_required') is not True):
             raise ValueError('Saved candidate is outside its successful page evidence')
         kind = candidate.get('kind')
+        locator = candidate['source_url'], candidate['checked_at']
         if kind == 'company-profile':
+            page = pages[locator]
             if 'headcount_mentions' in candidate:
-                page = pages[candidate['source_url'], candidate['checked_at']]
                 mentions = company_headcount_mentions(company, page)
                 if not mentions or candidate['headcount_mentions'] != mentions:
                     raise ValueError('Headcount candidate must match the named company and saved page evidence')
                 dimensions.add('headcount')
+            if 'location_mentions' in candidate:
+                mentions = company_location_mentions(company, page)
+                if captured[locator] != 1 or not mentions or candidate['location_mentions'] != mentions:
+                    raise ValueError('Location candidate must match the company and saved page evidence')
+                dimensions.add('geography')
             if candidate.get('description'):
                 dimensions.add('description')
             claims = candidate.get('organization_claims', [])
@@ -357,7 +363,6 @@ def profile_dimensions(packet, replay, company, founders, website):
             for name, url in founders
         ):
             role = candidate.get('role')
-            locator = candidate['source_url'], candidate['checked_at']
             if role and website and captured[locator] == 1:
                 record = {'name': company, 'website': website, 'founders': [{'name': candidate['name']}]}
                 observations = saved_role_observations(record, pages[locator])
