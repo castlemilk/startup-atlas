@@ -1,4 +1,4 @@
-import { countryName } from './atlas-exploration.js';
+import { companyPlaceLabel } from './atlas-exploration.js';
 import { sourceUrl } from './logic.js';
 import { formatValue, indexCompanyValues, indexFundingFigures, validYear } from './treemap-model.js';
 
@@ -22,7 +22,7 @@ export const companyColumnGroups = new Map([
 // A column definition drives the chooser, data cell and optional sort.
 export const companyColumns = new Map([
   ['technology', {label:'Technology type', group:'company', sort:'Technology type A–Z', read:field('technology')}],
-  ['headquarters', {label:'Headquarters', group:'company', sort:'Headquarters A–Z', read:field('headquarters')}],
+  ['headquarters', {label:'Location', group:'company', sort:'Location A–Z', read:field('headquarters')}],
   ['stage', {label:'Recorded stage', group:'company', sort:'Recorded stage A–Z', read:field('stage')}],
   ['sector', {label:'Sector', group:'company', sort:'Sector A–Z', read:field('sector')}],
   ['founded', {label:'Founded', group:'company', sort:'Newest founding year', descending:true, read:field('founded')}],
@@ -56,7 +56,6 @@ export function indexCompanyMetadata(graph, dimensions, research) {
     if (kind==='founded' && entities.get(from).kind==='person') record?.people.add(from);
   }
   for (const [id,{neighbors,people,...dimension}] of records) {
-    const {country,city}=dimension;
     const figure=values.get(id);
     const marketCap=figure?.basis==='market-cap' && !figure.reason ? figure : null;
     const valuation=figure?.basis==='valuation' && !figure.reason ? figure : null;
@@ -64,7 +63,7 @@ export function indexCompanyMetadata(graph, dimensions, research) {
     const founders=[...people].map(id=>entities.get(id)).sort((a,b)=>collator.compare(a.name,b.name) || a.id.localeCompare(b.id));
     records.set(id,{
       ...dimension,
-      headquarters:country ? [city,countryName(country)].filter(Boolean).join(', ') : null,
+      headquarters:companyPlaceLabel(dimension) || null,
       founded:validYear(foundingYear) ? foundingYear : null,
       connections:neighbors.size,
       founders,

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { explorationHref, filterCompanies, indexCompanies, readExploration, writeExploration } from '../web/atlas-exploration.js';
+import { companyPlaceLabel, countryName, explorationHref, filterCompanies, indexCompanies, readExploration, writeExploration } from '../web/atlas-exploration.js';
 
 const source='https://example.com/record';
 const fact=(label,value,extra={})=>({label,value,source,...extra});
@@ -51,6 +51,26 @@ test('a state or province in a sourced headquarters string is never treated as t
   assert.equal(row.city,'');
 });
 
+test('country grouping distinguishes a business base, explicit co-headquarters and unresolved claims',()=>{
+  const base = company('base',[fact('Business base','Melbourne, Australia'),fact('Office','London, United Kingdom')]);
+  const relocated = company('relocated',[...base.profile_facts,fact('Headquarters','London, United Kingdom')]);
+  const dual = company('dual',[fact('Co-headquarters','San Francisco, United States and Singapore')]);
+  const conflict = company('conflict',[...dual.profile_facts,fact('Headquarters','San Francisco, United States')]);
+  const companies = [base,relocated,dual,conflict];
+  const dimensions = indexCompanies({entities:companies});
+  assert.equal(dimensions.get(base.id).country,'AU');
+  assert.equal(companyPlaceLabel(dimensions.get(base.id)),'Melbourne, Australia · business base');
+  assert.equal(companyPlaceLabel(dimensions.get(relocated.id)),'London, United Kingdom');
+  assert.equal(countryName(dimensions.get(dual.id).country),'Multiple headquarters');
+  assert.equal(companyPlaceLabel(dimensions.get(dual.id)),'San Francisco, United States and Singapore');
+  assert.equal(dimensions.get(conflict.id).country,'');
+  const selected = scope('hq=multiple&place=multiple&city=San+Francisco');
+  assert.equal(selected.drillCity,'');
+  assert.deepEqual(readExploration(writeExploration(new URLSearchParams(),selected)),selected);
+  assert.deepEqual(ids(filterCompanies(companies,dimensions,selected)),[dual.id]);
+  assert.deepEqual(ids(filterCompanies(companies,dimensions,scope('hq=unknown'))),[conflict.id]);
+});
+
 test('view links round-trip facets and inspection and preserve the destination route state',()=>{
   const state=scope('q=design&hq=AU&hq=AU&hq=bogus&hq=unknown&place=AU&city=Sydney&technology=Design+%26+media&sector=Design&stage=Seed&selected=startup:au&anchor=startup:gb&type=startup&density=compact');
   assert.deepEqual(state.countries,['AU','unknown']);
@@ -63,4 +83,27 @@ test('view links round-trip facets and inspection and preserve the destination r
   assert.deepEqual(readExploration(url.searchParams),state);
   assert.equal(scope('place=unknown&city=Sydney').drillCity,'');
   assert.equal(scope('selected=https://example.com').selected,'');
+});
+
+test('registry-only business bases preserve country without implying a city', async()=>{
+  const {readFile} = await import('node:fs/promises');
+  const {entities} = JSON.parse(await readFile(new URL('../data/graph.json',import.meta.url),'utf8'));
+  const dimensions = indexCompanies({entities});
+  const bases = new Map([
+    ['CrossCourtAI','NSW 2010'], ['Superstat','VIC 3121'], ['Wiingman','NSW 2026'],
+    ['Remi AI','NSW 2777'], ['Strongroom AI','VIC 3145'],
+  ]);
+  for (const [name,postcode] of bases) {
+    const observed = entities.find(entity=>entity.kind==='startup' && entity.name===name);
+    const row = dimensions.get(observed.id);
+    assert.equal(row.country,'AU',name);
+    assert.equal(row.city,'',name+' must not be included in city filters without city evidence');
+    assert.equal(companyPlaceLabel(row),postcode+', Australia · business base',name);
+  }
+  assert.equal(dimensions.get('startup:loam-bio').city,'Orange','an explicit city remains selectable');
+  assert.equal(dimensions.get('startup:zabidou').city,'North Sydney','the disclosed headquarters supersedes the registry-only base');
+  assert.equal(dimensions.get('startup:eucalyptus').city,'Sydney','the disclosed headquarters is selectable by city');
+  assert.equal(dimensions.get('startup:uluu').city,'','the separately sourced operating base does not imply a headquarters city');
+  assert.equal(companyPlaceLabel(dimensions.get('startup:goterra')),'Canberra, Australia (historical)','explorer locations preserve the historical headquarters qualifier');
+  assert.equal(dimensions.get('startup:bugcrowd').country,'multiple','explicit co-headquarters remain grouped');
 });

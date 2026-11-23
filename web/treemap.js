@@ -7,7 +7,7 @@ import {
   formatValue, groupedTreemap, indexCompanyValues, loadTreemapEvidence, makeView, treemap, validYear,
 } from './treemap-model.js';
 import { animateAtlasChange, canAnimateAtlasChange, icon } from './atlas-ui.js';
-import { countryName, explorationHref, filterCompanies, hasCompanyScope, indexCompanies, readExploration, writeExploration } from './atlas-exploration.js';
+import { companyPlaceLabel, countryName, explorationHref, filterCompanies, hasCompanyScope, indexCompanies, multipleHeadquarters, readExploration, writeExploration } from './atlas-exploration.js';
 import { mountExploration } from './atlas-explorer-controls.js';
 
 const $ = id => document.getElementById(id);
@@ -300,7 +300,7 @@ function showDetail() {
   const inResults = visibleCompanies.has(state.selected);
   const figure = isCompany ? companyFigure(graph,entity,state.metric,state.currency,marketCaps,companyValues) : null;
   const place = dimensions.get(entity.id);
-  const locationLabel = place?.country ? [place.city,countryName(place.country)].filter(Boolean).join(', ') : '';
+  const locationLabel = companyPlaceLabel(place);
   const founded = validYear(entity.founded_year) ? `Founded ${entity.founded_year}` : '';
   const scope = inResults ? ''
     : `<div class="treemap-outside" data-selection="outside">
@@ -467,8 +467,7 @@ function drawCards() {
     const name = grouped ? item.name : item.entity.name;
     const companyCount = !grouped && state.metric === 'companies';
     const dimensionsForCompany = dimensions.get(item.id);
-    const place = dimensionsForCompany?.country
-      ? [dimensionsForCompany.city,countryName(dimensionsForCompany.country)].filter(Boolean).join(', ') : '';
+    const place = companyPlaceLabel(dimensionsForCompany);
     const value = companyCount ? '' : figureAmount(item);
     const year = !grouped && validYear(item.entity.founded_year) ? `est. ${item.entity.founded_year}` : '';
     const metric = item.basis || state.metric;
@@ -515,6 +514,9 @@ function drawRankedList() {
 
 function groupAction(group) {
   if (state.group === 'decade') return state.period === 'all' ? 'Explore decade' : '';
+  if ((state.group === 'country' || state.group === 'city') && group.country===multipleHeadquarters) {
+    return state.drillCountry===multipleHeadquarters ? '' : 'Explore group';
+  }
   if (state.group === 'country') return group.country !== state.drillCountry ? 'Explore country' : '';
   if (state.group === 'city') {
     if (group.country === 'unknown') return state.drillCountry !== 'unknown' ? 'Explore unrecorded locations' : '';
@@ -525,7 +527,7 @@ function groupAction(group) {
 }
 
 function groupTitle(group) {
-  const name = state.group === 'city' && state.drillCountry && group.country === state.drillCountry
+  const name = state.group === 'city' && group.city && state.drillCountry && group.country === state.drillCountry
     ? group.city === 'unknown' ? 'City not recorded' : group.city : group.name;
   const figure = state.metric === 'companies' ? countLabel(group.count) : group.children.length
     ? `${money(group.value)} · ${countLabel(group.children.length)} plotted` : 'No comparable figures';
@@ -706,7 +708,7 @@ function change(next, replace = false) {
 }
 
 function enterCountry(code) {
-  change({drillCountry:code, drillCity:'', group:state.group === 'country' && code !== 'unknown' ? 'city' : state.group});
+  change({drillCountry:code, drillCity:'', group:state.group === 'country' && code !== 'unknown' && code !== multipleHeadquarters ? 'city' : state.group});
 }
 function activateGroup(id) {
   const group = view.groups.find(item => item.id === id);

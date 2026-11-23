@@ -3,7 +3,7 @@ import { graphArtwork, graphInitials, showGraphArtwork } from './graph-artwork.j
 import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName, neighborhood } from './graph-model.js';
 import { createForceSimulation, layoutBounds, layoutNetwork } from './graph-layout.js';
-import { mountLoom } from './graph-loom.js';
+import { mountCompanyLoom, mountLoom } from './graph-loom.js';
 import { mainConnections, mobileFit, mobileFitHeight } from './graph-mobile-fit.js';
 import { renderIcon as icon } from './atlas-icons.js';
 import { animateAtlasChange } from './atlas-ui.js';
@@ -19,6 +19,7 @@ const mobileOverview=window.matchMedia?.(mobileFit.media);
 let store, rootId, selectedId, depth=1, zoom=1, listVisible=false, searchTimer, composing=false;
 let layout, bounds, simulation, frame=null, pan={x:0,y:0}, gesture=null, suppressClick=false;
 let loom, loomViewport, loomUnavailable=false, renderedCameraKey;
+let companyLoom, companySections=[];
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
 const pinned=new Map();
 let scope=readExploration(new URLSearchParams(location.search));
@@ -256,7 +257,7 @@ function renderSvgMap() {
   }));
   applyZoom();
 }
-function renderCompanyOverview() {
+function renderCompanyOverview(saved) {
   const groups=new Map();
   for (const entity of searchMatches) {
     if (!visibleCompanies.has(entity.id)) continue;
@@ -267,10 +268,10 @@ function renderCompanyOverview() {
     groups.get(label).push(entity);
   }
   const byName=(a,b)=>a.name.localeCompare(b.name) || a.id.localeCompare(b.id);
-  const sections=[...groups].sort(([left],[right])=>Number(left.endsWith('not recorded'))-Number(right.endsWith('not recorded')) || left.localeCompare(right));
+  companySections=[...groups].sort(([left],[right])=>Number(left.endsWith('not recorded'))-Number(right.endsWith('not recorded')) || left.localeCompare(right));
   const board=$('graph-company-groups');
   $('graph-overview-count').textContent=`${visibleCompanies.size} ${visibleCompanies.size===1 ? 'company' : 'companies'} in scope`;
-  board.innerHTML=sections.length ? sections.map(([label,items],index)=>`<section class="graph-company-group" aria-labelledby="graph-company-group-${index}">
+  board.innerHTML=companySections.map(([label,items],index)=>`<section class="graph-company-group" aria-labelledby="graph-company-group-${index}">
     <h3 id="graph-company-group-${index}">${esc(label)} <span>${items.length}</span></h3>
     <ul>${items.sort(byName).map(entity=>{
       const params=writeExploration(new URLSearchParams(),{...scope,selected:entity.id,graphAnchor:entity.id});
@@ -278,18 +279,97 @@ function renderCompanyOverview() {
       if (companyGroup==='country') params.set('group',companyGroup);
       return `<li><a class="graph-company-link" data-graph-company="${esc(entity.id)}" href="./graph.html?${esc(params.toString())}">${detailArtwork(entity,true)}<span>${esc(entity.name)}</span></a></li>`;
     }).join('')}</ul>
-  </section>`).join('') : '<p class="detail-empty">No companies match these filters. Adjust the filters or try another search.</p>';
+  </section>`).join('');
   board.querySelectorAll('img').forEach(img=>showGraphArtwork(img,img.nextElementSibling));
+  renderCompanyMap(saved);
 }
 
-function showCompanyOverview() {
+function companyViewKey() {
+  const filters=writeExploration(new URLSearchParams(),{...scope,selected:'',graphAnchor:''});
+  return `${companyGroup}:${filters}`;
+}
+
+function rememberCompanyView(id) {
+  if (!companyLoom) return;
+  const focused=document.activeElement;
+  history.replaceState({...history.state,atlasCompanyView:{key:companyViewKey(),group:$('graph-company-zoom-group').value,
+    camera:companyLoom.savedViewport(),scroll:window.scrollY,
+    focus:id && (focused?.dataset.node===id || focused?.dataset.graphCompany===id) ? id : ''}},'');
+}
+
+function renderCompanyMap(saved) {
+  const panel=$('graph-company-map');
+  if (!panel) return;
+  destroyCompanyMap();
+  delete panel.dataset.renderer;
+  const directory=$('graph-company-directory');
+  const mapTools=$('graph-company-map-tools');
+  const empty=companySections.length===0;
+  directory.hidden=panel.hidden=mapTools.hidden=empty;
+  $('graph-company-empty').hidden=!empty;
+  if (empty) return;
+  const groupControl=$('graph-company-zoom-group');
+  const options='<option value="">All groups</option>'+companySections.map(([label,items])=>
+    `<option value="${esc(label)}">${esc(label)} (${items.length})</option>`).join('');
+  if (groupControl.dataset.options!==options) {
+    groupControl.innerHTML=options;
+    groupControl.dataset.options=options;
+  }
+  const selectedGroup=companySections.find(([label])=>label===saved?.group);
+  const groups=selectedGroup ? [selectedGroup] : companySections;
+  const ids=new Set(groups.flatMap(([,items])=>items.map(item=>item.id)));
+  groupControl.value=selectedGroup?.[0] || '';
+  const edges=store.graph.edges.filter(edge=>ids.has(edge.from) && ids.has(edge.to) && sourceUrl(edge.source));
+  panel.dataset.view=selectedGroup ? 'group' : 'overview';
+  $('graph-company-guide').textContent=selectedGroup
+    ? `${selectedGroup[0]} · ${ids.size} ${ids.size===1?'company':'companies'}` : 'Choose a group to read company names.';
+  document.dispatchEvent(new Event('atlas:controls-sync'));
+  try {
+    companyLoom=mountCompanyLoom({canvas:$('graph-company-loom'),controls:$('graph-company-nodes'),
+      boundaries:$('graph-company-boundaries'),groups,edges,reading:Boolean(selectedGroup),saved:saved?.camera,
+      traverse:openCompanyConnections,selectGroup:zoomCompanyGroup,reportZoom:reportCompanyZoom});
+    panel.dataset.renderer='loom';
+  } catch {
+    panel.hidden=mapTools.hidden=true;
+    directory.open=true;
+  }
+}
+
+function reportCompanyZoom(percent) {
+  const output=$('graph-company-zoom-number'), minus=$('graph-company-zoom-out');
+  if (output.textContent!==`${percent}%`) output.textContent=`${percent}%`;
+  if (minus.disabled!==(percent<=100)) minus.disabled=percent<=100;
+}
+
+function destroyCompanyMap() {
+  companyLoom?.destroy();
+  companyLoom=null;
+}
+
+function zoomCompanyGroup(group, moveFocus=false) {
+  const control=$('graph-company-zoom-group');
+  renderCompanyMap({group});
+  $('graph-overview-heading').scrollIntoView({block:'nearest',behavior:'instant'});
+  if (moveFocus) ($('graph-company-zoom-group-trigger') || control).focus({preventScroll:true});
+}
+
+function openCompanyConnections(id, keyboard) {
+  traverse(id,keyboard,null);
+  $('network-heading').scrollIntoView({block:'nearest',behavior:'instant'});
+}
+
+function showCompanyOverview(saved) {
   if (rootId) saveCamera();
   stopSimulation();resetLoom();layout=null;bounds=null;currentView=null;mapView=null;
   rootId=null;selectedId=null;renderedCameraKey=null;fullMap=false;
   $('graph-neighborhood').hidden=true;
   $('graph-company-overview').hidden=false;
   $('graph-title').textContent='Relationships';
-  renderCompanyOverview();
+  const view=saved?.key===companyViewKey() ? saved : null;
+  renderCompanyOverview(view);
+  if (view && Number.isFinite(view.scroll)) window.scrollTo({top:view.scroll,behavior:'instant'});
+  if (view?.focus && companyLoom?.focusNode(view.focus)) return true;
+  return false;
 }
 
 function renderGraphScope() {
@@ -405,10 +485,10 @@ function renderDetail() {
   const selectionNote=outOfScope?'Outside current results':isRoot?'Map centred here.':visibleIds.has(selectedId)?'Selected within this map.':listedIds.has(selectedId)?'Selected in the connections list.':'Selected outside this map.';
   const inspectAction=isRoot?'':'<button class="detail-explore atlas-button" type="button" data-explore="'+esc(entity.id)+'">Explore from here</button>';
   const company=dimensions.get(selectedId);
-  const headquarters=company?.country ? [company.city,countryName(company.country)].filter(Boolean).join(', ') : 'Not recorded';
+  const headquarters=company?.location || (company?.country ? [company.city,countryName(company.country)].filter(Boolean).join(', ') : 'Not recorded');
   const recovery=outOfScope?'<div class="graph-recovery"><button type="button" data-graph-adjust>Adjust filters</button><button type="button" data-graph-clear>Clear selection</button></div>':'';
   const actions=company?'<div class="graph-workspace-actions" data-company-name="'+esc(entity.name)+'"><button type="button" class="atlas-button" data-atlas-save-company="'+esc(entity.id)+'">Save</button><button type="button" class="atlas-button" data-atlas-compare="'+esc(entity.id)+'">Compare</button></div>':'';
-  const facts=company?'<dl class="graph-company-facts"><div><dt>Headquarters</dt><dd>'+esc(headquarters)+'</dd></div><div><dt>Primary sector</dt><dd>'+esc(company.sector || 'Not recorded')+'</dd></div></dl>':'';
+  const facts=company?'<dl class="graph-company-facts"><div><dt>'+(company.businessBase?'Business base':'Headquarters')+'</dt><dd>'+esc(headquarters)+'</dd></div><div><dt>Primary sector</dt><dd>'+esc(company.sector || 'Not recorded')+'</dd></div></dl>':'';
   const identityIcon = {startup:'company',partner:'partners',person:'person',programme:'programme',provider:'provider'}[entity.kind] || 'company';
   const from = isRoot && history.state?.atlasGraphFrom;
   const followed = from && orderedEdges.find(edge=>(edge.from===from || edge.to===from) && sourceUrl(edge.source));
@@ -423,7 +503,7 @@ function renderDetail() {
     ${facts}<p class="detail-summary">${esc(summary)}</p>${reviewedRelation}
     <div class="detail-actions"><a class="detail-open atlas-button atlas-button-accent" data-atlas-profile-link href="${esc(entityHref(entity))}">Open profile${icon('external')}</a>${inspectAction}${actions}</div>
     <section class="detail-section"><h3>Recorded connections <span>${details.edges.length}</span></h3>${related.length?'<ul class="detail-related">'+related.join('')+'</ul>':'<p class="detail-empty">No reviewed connections yet.</p>'}</section>
-    ${company?'<section class="detail-section"><h3>Funding announcements</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not disclosed')+' · historical announcement</span>'+evidence(round.source,'Announcement source')+'</div>').join(''):'<p class="detail-empty">No recorded funding announcements.</p>')+'</section>':''}
+    ${company?'<section class="detail-section"><h3>Recorded financing</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not recorded')+'</span>'+evidence(round.source,'Funding source')+'</div>').join(''):'<p class="detail-empty">No recorded financing events.</p>')+'</section>':''}
     ${source?'<section class="detail-section"><h3>Sources</h3>'+source+'</section>':''}`;
   $('graph-detail').querySelectorAll('img').forEach(img=>showGraphArtwork(img,img.nextElementSibling));
 }
@@ -444,6 +524,8 @@ function select(id,writeHistory=true) {
   }
 }
 function explore(id,writeHistory=true,followed=null) {
+  if (writeHistory) rememberCompanyView(id);
+  destroyCompanyMap();
   $('graph-company-overview').hidden=true;
   $('graph-neighborhood').hidden=false;
   if(!store.graph.entities.some(entity=>entity.id===id)) {
@@ -642,21 +724,32 @@ $('graph-zoom-out').addEventListener('click',()=>changeZoom(-.2));
 $('graph-back')?.addEventListener('click',()=>history.back());
 $('graph-back-to-companies').addEventListener('click',()=>{
   const previous=rootId;
-  showCompanyOverview();
+  const regainedFocus=showCompanyOverview(history.state?.atlasCompanyView);
   writeState(true,previous);
-  $('graph-overview-heading').focus();
+  if (!regainedFocus) $('graph-overview-heading').focus({preventScroll:Boolean(history.state?.atlasCompanyView)});
 });
 $('graph-company-group').addEventListener('change',event=>{
+  rememberCompanyView();
   companyGroup=event.target.value;
   renderCompanyOverview();
   writeState(true);
+});
+$('graph-company-zoom-group')?.addEventListener('change',event=>zoomCompanyGroup(event.target.value));
+$('graph-company-zoom-in')?.addEventListener('click',()=>companyLoom?.zoom(1));
+$('graph-company-zoom-out')?.addEventListener('click',()=>companyLoom?.zoom(-1));
+$('graph-company-fit')?.addEventListener('click',()=>zoomCompanyGroup(''));
+$('graph-company-open-list')?.addEventListener('click',()=>{
+  const list=$('graph-company-directory');
+  list.open=true;
+  const summary=list.querySelector('summary');
+  summary.focus({preventScroll:true});
+  summary.scrollIntoView({block:'start',behavior:'instant'});
 });
 $('graph-company-groups').addEventListener('click',event=>{
   const link=event.target.closest('[data-graph-company]');
   if (!link || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
-  traverse(link.dataset.graphCompany,event.detail===0,null);
-  $('network-heading').scrollIntoView({block:'nearest',behavior:'instant'});
+  openCompanyConnections(link.dataset.graphCompany,event.detail===0);
 });
 $('graph-full-map')?.addEventListener('click',()=>{
   if (!rootId) return;
@@ -712,7 +805,8 @@ function restoreFromUrl() {
   listVisible=params.get('list')==='1';syncListVisibility();
   $('graph-query').value=nextScope.query;
   updateScope(nextScope);
-  if (!nextRoot) showCompanyOverview();
+  let restoredCompanyFocus=false;
+  if (!nextRoot) restoredCompanyFocus=showCompanyOverview(history.state?.atlasCompanyView);
   else if(nextRoot!==rootId)explore(nextRoot,false);
   else if(mapChanged)renderMap();
   else renderGraphScope();
@@ -723,11 +817,12 @@ function restoreFromUrl() {
   writeState();
   if (restoreMapFocus || (active===previous && previous?.hidden)) {
     if (rootId) focusMapNode(rootId);
-    else $('graph-overview-heading').focus({preventScroll:true});
+    else if (!restoredCompanyFocus) $('graph-overview-heading').focus({preventScroll:true});
   }
 }
 window.addEventListener('popstate',restoreFromUrl);
 window.addEventListener('pagehide',event=>{
+  if (!event.persisted) destroyCompanyMap();
   if (!loom) return;
   saveCamera();
   if (!event.persisted) loom.destroy();
@@ -767,7 +862,7 @@ try {
   dimensions=indexCompanies(store.graph,technology);
   const host=$('graph-exploration');
   controls=mountExploration(host,{companies:store.graph.entities,dimensions,onChange:changeScope,fieldsHost:$('graph-location-fields'),
-    narrowQuery:'(max-width: 620px), (max-width: 760px) and (max-height: 540px)'});
+    narrowQuery:'(max-width: 620px), (max-width: 920px) and (max-height: 540px)'});
   if (host) host.hidden=false;
   restoreFromUrl();
 } catch {

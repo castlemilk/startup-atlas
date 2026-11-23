@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-11-21",
+  "reviewed": "2026-11-23",
   "technology_providers": [
     {
       "name": "Procore",
@@ -109,26 +109,32 @@
           "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/"
         }
       ],
-      "articles": [
-        {
-          "title": "Canva's founders: Lessons on solving big problems, moments of magic, and being outsiders",
-          "url": "https://foundersfactory.com/articles/canva-founders/",
-          "kind": "founder profile"
-        },
-        {
-          "title": "Canva celebrates 10th year anniversary",
-          "url": "https://www.adobomagazine.com/brand-business/on-its-10th-anniversary-canva-celebrates-a-decade-of-empowering-the-world-to-design/",
-          "kind": "company anniversary"
-        }
-      ],
-      "reviewed_at": "2026-11-21",
       "profile_facts": [
         {
-          "key": "company-history-2026-11-21",
+          "key": "business-base",
+          "label": "Business base",
+          "value": "Australia (historical)",
+          "source": "https://www.canva.com/newsroom/news/melanie-perkins-21-questions-part-2/",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "early-company-history",
           "label": "Company history",
-          "value": "Founded 2007 in Perth; became the largest yearbook company in Australia over five years and expanded to France and New Zealand; used by about 400 Australian schools at its peak. No funding round was announced for Fusion Books itself — it was bootstrapped and its yearbook tool became the prototype for Canva (founded 2012–2013).",
+          "value": "Melanie Perkins and Cliff Obrecht started Fusion Books in 2007 as school yearbook design software. It expanded from Australia into France and New Zealand before the founders launched Canva.",
           "source": "https://foundersfactory.com/articles/canva-founders/",
-          "reviewed_at": "2026-11-21"
+          "reviewed_at": "2026-11-23"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Canva seed announcement and Fusion Books origins",
+          "url": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "kind": "company history"
+        },
+        {
+          "title": "Canva’s founders and their early company timeline",
+          "url": "https://foundersfactory.com/articles/canva-founders/",
+          "kind": "founder profile"
         }
       ]
     },
@@ -178,9 +184,20 @@
           "valuation_currency": "USD",
           "note": "Announced valuation; historical, not a current valuation. The round was led by Addition.",
           "source": "https://www.airwallex.com/global/newsroom/airwallex-secures-320-million-in-series-h-funding-valuation-hits-11-billion"
+        },
+        {
+          "id": "airwallex-2025-series-g",
+          "stage": "Series G",
+          "announced_on": "2025-12-08",
+          "amount": 330000000,
+          "currency": "USD",
+          "valuation": 8000000000,
+          "valuation_currency": "USD",
+          "note": "Addition led; the announcement names T. Rowe Price, Activant, Lingotto, Robinhood Ventures and TIAA Ventures as participants. Announced valuation is historical. Capital mix and legal close are not specified.",
+          "source": "https://www.airwallex.com/global/newsroom/awx-raises-usd330m-series-g-at-usd8b-valuation-establishes-sf-as-dual-global-hq"
         }
       ],
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-22",
       "profile_facts": [
         {
           "key": "company-size-observed-2026-11-13",
@@ -188,6 +205,13 @@
           "value": "2,300 people globally, shown on the official company page checked 13 November 2026. The page does not state an as-of date; this is not an independently verified current employee count.",
           "source": "https://www.airwallex.com/en-au/who-we-are",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "co-headquarters",
+          "label": "Co-headquarters",
+          "value": "San Francisco, United States and Singapore",
+          "source": "https://www.airwallex.com/global/newsroom/airwallex-secures-320-million-in-series-h-funding-valuation-hits-11-billion",
+          "reviewed_at": "2026-11-22"
         }
       ]
     },
@@ -248,6 +272,13 @@
           "value": "Reported 161 hires in its 2024 year-in-review article, published 4 February 2025, covering the preceding financial-year review period. This is hiring activity, not total headcount.",
           "source": "https://www.bugcrowd.com/blog/crowdsourced-intelligence-in-action-bugcrowds-2024-year-in-review/",
           "reviewed_at": "2026-11-14"
+        },
+        {
+          "key": "co-headquarters",
+          "label": "Co-headquarters",
+          "value": "San Francisco, United States and Sydney, Australia",
+          "source": "https://www.bugcrowd.com/about/",
+          "reviewed_at": "2026-11-22"
         }
       ]
     },
@@ -299,6 +330,13 @@
           "value": "More than 130 employees in Australia, stated by the NRFC CEO in the 23 September 2025 funding announcement. This is regional and historical, not current global headcount.",
           "source": "https://www.morsemicro.com/news/morse-micro-secures-88-million-aud-series-c-funding-to-lead-the-next-era-of-iot",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Sydney, Australia",
+          "source": "https://www.nrf.gov.au/our-investments/morse-micro",
+          "reviewed_at": "2026-11-22"
         }
       ]
     },
@@ -329,36 +367,35 @@
           "kind": "company announcement"
         },
         {
-          "title": "T:0 Launched for Startups. Here's Why It Won't Touch Your Shopify Books (Yet).",
-          "url": "https://www.catchupcleanup.com/post/t0-launched-for-startups-not-shopify-yet",
-          "published_on": "2026-09-29",
-          "kind": "product review"
-        },
-        {
-          "title": "How T:0 Is Turning Bookkeeping Into Infrastructure With Lance Co Ting Keh",
-          "url": "https://rokosbas.beehiiv.com/p/october-03-2026",
-          "published_on": "2026-10-03",
-          "kind": "founder interview"
+          "title": "Airwallex on building startups for global markets",
+          "url": "https://www.airwallex.com/global/blog/the-ai-era-has-no-home-market-build-accordingly",
+          "published_on": "2026-06-25",
+          "kind": "parent-company announcement"
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/t-0.svg",
       "logo_source": "https://t0.ai/",
-      "founded_year": 2026,
-      "reviewed_at": "2026-11-21",
       "profile_facts": [
         {
-          "key": "company-background-2026-11-21",
-          "label": "Company background",
-          "value": "Wholly owned subsidiary of Airwallex, launched publicly 1 September 2026 (US-only at launch) after exiting private beta. Grew out of OpenPay, founder Lance Co Ting Keh's subscription-billing startup, which Airwallex acquired in September 2025. No standalone funding round; team works in Airwallex's San Francisco office.",
-          "source": "https://rokosbas.beehiiv.com/p/october-03-2026",
-          "reviewed_at": "2026-11-21"
+          "key": "business-base",
+          "label": "Business base",
+          "value": "San Francisco, United States",
+          "source": "https://data.oregon.gov/resource/tckn-sxa6.json?registry_number=259299692&associated_name_type=PRINCIPAL%20PLACE%20OF%20BUSINESS",
+          "reviewed_at": "2026-11-23"
         },
         {
-          "key": "product-pricing-2026-11-21",
-          "label": "Product and pricing",
-          "value": "AI-native accounting platform built around four AI agents (Accountant, Scout, CFO, Integrator) with a GAAP-compliant, audit-ready ledger. Pricing $199/mo self-serve platform, $599/mo managed bookkeeping, $749/mo managed plus tax.",
-          "source": "https://t0.ai/",
-          "reviewed_at": "2026-11-21"
+          "key": "public-launch",
+          "label": "Public launch",
+          "value": "Airwallex announced that its accounting subsidiary left private beta and opened to US startups on 1 September 2026.",
+          "source": "https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "company-origin",
+          "label": "Company background",
+          "value": "Founder Lance Co Ting Keh joined Airwallex through its acquisition of OpenPay, then founded T:0 within Airwallex.",
+          "source": "https://www.airwallex.com/global/blog/the-ai-era-has-no-home-market-build-accordingly",
+          "reviewed_at": "2026-11-23"
         }
       ]
     },
@@ -444,13 +481,22 @@
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/alloovium.png",
-      "logo_source": "https://alloovium.com/"
+      "logo_source": "https://alloovium.com/",
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "San Francisco, United States",
+          "source": "https://www.ycombinator.com/companies/industry/real-estate-and-construction/san-francisco-bay-area",
+          "reviewed_at": "2026-11-22"
+        }
+      ]
     },
     {
       "name": "Ascenda",
-      "description": "Measurement layer for how engineers work with AI agents, joining engineering telemetry to human-state check-ins; founded from a psychologist check-in product for mental-health care.",
+      "description": "Measures how engineering teams work with AI coding agents, combining tool activity with engineers’ own check-ins.",
       "website": "https://ascenda.one/",
-      "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+      "source": "https://www.ascenda.one/",
       "founders": [
         {
           "name": "Nathan Challen",
@@ -463,48 +509,44 @@
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/ascenda.svg",
       "logo_source": "https://www.ascenda.one/",
-      "founded_year": 2024,
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Southport, Australia",
+          "source": "https://au.linkedin.com/company/ascenda-one",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "early-product",
+          "label": "Early product",
+          "value": "Startmate profiled Ascenda’s AI-assisted patient check-ins for psychologists in April 2026.",
+          "source": "https://www.startmate.com/writing/mental-health-support-isnt-broken-the-system-is-incomplete-ascenda-is-fixing-that",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "engineering-measurement",
+          "label": "Engineering measurement",
+          "value": "Ascenda Flow reads engineering-tool activity on a developer’s Mac. Teams can use aggregate measures in a 90-day evaluation of their AI engineering practices.",
+          "source": "https://www.ascenda.one/",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
       "articles": [
         {
-          "title": "Mental health support isn't broken; the system is incomplete. Ascenda is fixing that.",
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
+        },
+        {
+          "title": "Startmate profiles Ascenda’s early mental-health product",
           "url": "https://www.startmate.com/writing/mental-health-support-isnt-broken-the-system-is-incomplete-ascenda-is-fixing-that",
           "published_on": "2026-04-09",
           "kind": "accelerator profile"
-        },
-        {
-          "title": "You Have Observability for Your Systems. You Have None for Yourself.",
-          "url": "https://www.ascenda.one/blog/founder-notes-observability-for-yourself",
-          "kind": "founder notes"
         }
       ],
-      "funding_rounds": [
-        {
-          "id": "ascenda-2026-accelerator",
-          "stage": "Accelerator/Incubator",
-          "announced_on": "2026-02-16",
-          "amount": 120000,
-          "currency": "AUD",
-          "note": "Startmate accelerator investment; PitchBook lists $120K with investors Startmate and LX Health. Startmate's standard accelerator investment is A$120k.",
-          "source": "https://pitchbook.com/profiles/company/1275369-22"
-        }
-      ],
-      "reviewed_at": "2026-11-21",
-      "profile_facts": [
-        {
-          "key": "company-overview-2026-11-21",
-          "label": "Company overview",
-          "value": "Founded 2024; headquartered in Southport, Australia; 2 employees (PitchBook). Co-founders: Nathan Challen (20 years designing and building software systems) and Hamada Els (clinical psychologist). Joined the Antler accelerator in Aug 2024 before Startmate Summer '26.",
-          "source": "https://pitchbook.com/profiles/company/1275369-22",
-          "reviewed_at": "2026-11-21"
-        },
-        {
-          "key": "product-pivot-2026-11-21",
-          "label": "Product repositioning",
-          "value": "The live site (checked 21 Nov 2026) now leads with AI-engineering measurement (Flow: telemetry of how engineers work with AI agents, plus ten-second human-state check-ins, sold as 90-day evaluations). The psychologist check-in product for mental-health care between sessions is the company's origin, not its current headline.",
-          "source": "https://www.ascenda.one/",
-          "reviewed_at": "2026-11-21"
-        }
-      ]
+      "reviewed_at": "2026-11-23"
     },
     {
       "name": "Brainwaves",
@@ -527,43 +569,28 @@
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/brainwaves.svg",
       "logo_source": "https://getbrainwaves.com/",
-      "articles": [
-        {
-          "title": "Brainwaves Launches AI Platform for Marketing and Creative Teams",
-          "url": "https://www.brandinginasia.com/brainwaves-launches-ai-platform-for-marketing-and-creative-teams/",
-          "published_on": "2026-04-16",
-          "kind": "launch coverage"
-        },
-        {
-          "title": "Brainwaves launches AI platform for marketing teams",
-          "url": "https://cmotech.asia/story/brainwaves-launches-ai-platform-for-marketing-teams",
-          "kind": "launch coverage"
-        },
-        {
-          "title": "Brainwaves launches AI strategy platform as CMOs rethink how work gets done",
-          "url": "https://production.marketing-interactive.com/brainwaves-launches-ai-strategy-platform-as-cmos-rethink-how-work-gets-done",
-          "kind": "launch coverage"
-        }
-      ],
-      "funding_rounds": [
-        {
-          "id": "brainwaves-2026-accelerator",
-          "stage": "Accelerator/Incubator",
-          "announced_on": "2026-02-01",
-          "amount": 120000,
-          "currency": "AUD",
-          "note": "Startmate accelerator investment; MarketingTechMap lists Feb 2026, $120,000, led by Startmate. Startmate's standard accelerator investment is A$120k. Day within February not verified.",
-          "source": "https://marketingtechmap.com/company/brainwaves"
-        }
-      ],
-      "reviewed_at": "2026-11-21",
       "profile_facts": [
         {
-          "key": "company-overview-2026-11-21",
-          "label": "Company overview",
-          "value": "Based in Melbourne and Singapore; launched publicly April 2026. Founders: Jamie Brownlee (CEO, ex-CMO Euronews), Ben Crawford (CCO, ex-UM China CEO), Tom McKenzie (CTO, founding engineer at Mr Yum). Product runs 10+ specialist AI agents in parallel to turn research and brand knowledge into audience profiles, campaign plans and creative briefs.",
-          "source": "https://www.brandinginasia.com/brainwaves-launches-ai-platform-for-marketing-and-creative-teams/",
-          "reviewed_at": "2026-11-21"
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://au.linkedin.com/company/getbrainwaves",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "cohort-product",
+          "label": "Marketing strategy",
+          "value": "Startmate’s cohort profile describes software that brings marketing research together and helps teams turn it into strategy.",
+          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
         }
       ]
     },
@@ -580,45 +607,38 @@
         {
           "name": "Will O’Brien",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
-        },
-        {
-          "name": "Will O'Brien",
-          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/cascayd.png",
       "logo_source": "https://cascayd.app/",
+      "profile_facts": [
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "Melbourne, Australia",
+          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "website-experimentation",
+          "label": "Website experimentation",
+          "value": "cascayd analyzes how visitors navigate a website, proposes changes and creates variations for A/B tests.",
+          "source": "https://www.startmate.com/writing/your-landing-page-is-leaking-revenue-cascayd-is-plugging-the-gap",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
       "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
+        },
         {
           "title": "Your landing page is leaking revenue & cascayd is plugging the gap",
           "url": "https://www.startmate.com/writing/your-landing-page-is-leaking-revenue-cascayd-is-plugging-the-gap",
+          "published_on": "2026-04-15",
           "kind": "accelerator profile"
-        },
-        {
-          "title": "Meet our Summer'26 Accelerator Cohort",
-          "url": "https://startmatestaging.webflow.io/writing/meet-our-summer26-accelerator-cohort",
-          "kind": "accelerator profile"
-        }
-      ],
-      "funding_rounds": [
-        {
-          "id": "cascayd-2026-accelerator",
-          "stage": "Accelerator/Incubator",
-          "announced_on": "2026-02-01",
-          "amount": 120000,
-          "currency": "AUD",
-          "note": "Startmate accelerator investment; MarketingTechMap lists Feb 2026, $120,000, led by Startmate. Startmate's standard accelerator investment is A$120k. Day within February not verified.",
-          "source": "https://marketingtechmap.com/company/cascayd"
-        }
-      ],
-      "reviewed_at": "2026-11-21",
-      "profile_facts": [
-        {
-          "key": "company-overview-2026-11-21",
-          "label": "Company overview",
-          "value": "Based in Melbourne, Australia. Founders: Chirag Babu (ex-Product at Edrolo) and Will O'Brien (computer science dropout, exited founder). Product: AI-drafted website A/B tests for growth teams, focused on Shopify stores — client pays a share of proven uplift only when a test wins. Works with B2C brands doing $5M–$50M in ARR; site names no individual customers.",
-          "source": "https://www.startmate.com/writing/your-landing-page-is-leaking-revenue-cascayd-is-plugging-the-gap",
-          "reviewed_at": "2026-11-21"
         }
       ]
     },
@@ -639,38 +659,34 @@
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/checkgen.png",
       "logo_source": "https://www.checkgen.com.au/",
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://au.linkedin.com/company/checkgen",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "early-trial",
+          "label": "Early trial",
+          "value": "In April 2026, Startmate reported that CheckGen had completed its first trial with Ultraceuticals and was developing a point-of-care prototype.",
+          "source": "https://www.startmate.com/writing/most-skincare-is-built-on-claims-checkgen-is-building-proof",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
       "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
+        },
         {
           "title": "Most skincare is built on claims: CheckGen is building proof",
           "url": "https://www.startmate.com/writing/most-skincare-is-built-on-claims-checkgen-is-building-proof",
           "published_on": "2026-04-09",
           "kind": "accelerator profile"
-        },
-        {
-          "title": "Why Your Skincare Stops Working After 30 Days",
-          "url": "https://www.youtube.com/watch?v=6xqb4du0fPg",
-          "kind": "podcast interview"
-        }
-      ],
-      "funding_rounds": [
-        {
-          "id": "checkgen-2026-accelerator",
-          "stage": "Accelerator/Incubator",
-          "announced_on": "2026-02-01",
-          "amount": 120000,
-          "currency": "AUD",
-          "note": "Startmate accelerator investment; a Feb 2026 funding newsletter lists CheckGen raising $120k and Crunchbase lists one seed round. Startmate's standard accelerator investment is A$120k. Day within February not verified.",
-          "source": "https://us9.campaign-archive.com/?u=21f70fe0c7febe608ac895ed9&id=339e7cdacf"
-        }
-      ],
-      "reviewed_at": "2026-11-21",
-      "profile_facts": [
-        {
-          "key": "company-overview-2026-11-21",
-          "label": "Company overview",
-          "value": "Based in Melbourne, Australia, with a lab there. Founders: Dr Maria Faleeva (CEO; PhD in cardiovascular research on cellular ageing) and Dr Oliver Wright (practising medical doctor). Completed its first trial with Ultraceuticals and is working with additional brands and clinics; MVP device in development to bring molecular skin analysis to point of care.",
-          "source": "https://www.startmate.com/writing/most-skincare-is-built-on-claims-checkgen-is-building-proof",
-          "reviewed_at": "2026-11-21"
         }
       ]
     },
@@ -695,8 +711,36 @@
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/crosscourtai.png",
       "logo_source": "https://crosscourtai.com/",
-      "founded_year": 2024,
+      "profile_facts": [
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "NSW 2010, Australia",
+          "source": "https://abr.business.gov.au/ABN/View?abn=86684463134",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "sydney-angels-portfolio",
+          "label": "Sydney Angels portfolio",
+          "value": "Sydney Angels identified CrossCourtAI as a portfolio company in its 19 February 2026 update on the startup’s acceptance into Startmate.",
+          "source": "https://www.sydneyangels.net.au/news/https/wwwstartmatecom/writing/meet-our-summer26-accelerator-cohort",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "harper-workflow",
+          "label": "Harper workflow",
+          "value": "CrossCourtAI describes Harper as a tool for screening investment deals and preparing quarterly reports.",
+          "source": "https://crosscourtai.com/",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
       "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
+        },
         {
           "title": "The high cost of low-impact work: How CrossCourtAI empowers the modern analyst",
           "url": "https://www.startmate.com/writing/the-high-cost-of-low-impact-work-how-crosscourtai-empowers-the-modern-analyst",
@@ -708,48 +752,6 @@
           "url": "https://www.startmate.com/writing/automating-the-hardest-shots-of-investing-in-conversation-with-sai-naicker-crosscourtai",
           "published_on": "2025-11-18",
           "kind": "founder interview"
-        },
-        {
-          "title": "CrossCourtAI: Present of AI Spotlight Scorecard",
-          "url": "https://presentofai.com/spotlight/crosscourtai.com/scorecard.pdf?v=1j5l50n",
-          "published_on": "2026-11-15",
-          "kind": "third-party scorecard"
-        }
-      ],
-      "funding_rounds": [
-        {
-          "id": "crosscourtai-2026-angel",
-          "stage": "Angel",
-          "announced_on": "2026-02-03",
-          "amount_text": "undisclosed",
-          "note": "Sydney Angels investment; PitchBook lists an Angel (individual) deal on 3 Feb 2026 with no amount. Investors on the round are not fully confirmed.",
-          "source": "https://pitchbook.com/profiles/investor/55878-49"
-        },
-        {
-          "id": "crosscourtai-2026-accelerator",
-          "stage": "Accelerator/Incubator",
-          "announced_on": "2026-02-17",
-          "amount": 120000,
-          "currency": "AUD",
-          "note": "Startmate accelerator investment; PitchBook lists $120K on 17 Feb 2026 with investors Startmate, AsheMorgan and Sydney Angels. Startmate's standard accelerator investment is A$120k.",
-          "source": "https://pitchbook.com/profiles/company/802950-40"
-        }
-      ],
-      "reviewed_at": "2026-11-21",
-      "profile_facts": [
-        {
-          "key": "company-overview-2026-11-21",
-          "label": "Company overview",
-          "value": "Based in Sydney, Australia. Founders: Sai Naicker (CEO; ex-J.P. Morgan, Barrenjoey, Cerberus Capital; ~A$2B of real asset transactions), James Oliver (CTO; founding engineer at V-DAQ), Randula Ariyawanse (CPO; ex-quant engineer at Optiver). Won Startmate's Launch Club pitch night in Oct 2025.",
-          "source": "https://www.startmate.com/writing/the-high-cost-of-low-impact-work-how-crosscourtai-empowers-the-modern-analyst",
-          "reviewed_at": "2026-11-21"
-        },
-        {
-          "key": "traction-2026-11-21",
-          "label": "Traction (company-reported)",
-          "value": "Platform 'Harper' screens deals in ~15 minutes and automates quarterly reporting. Company reports ~$10bn capital represented, $3bn deals underwritten and 200+ assets reported per quarter (site, Nov 2026); ~A$7B capital represented and A$1B+ deals processed as of Apr 2026. Named clients: AsheMorgan, Pindara Partners, Arrowpoint Capital, April Group, Clarke Group. Partners: Ansarada, Microsoft; ISO 27001 certified. Backers: Startmate, Sydney Angels, VentureCrowd.",
-          "source": "https://crosscourtai.com/",
-          "reviewed_at": "2026-11-21"
         }
       ]
     },
@@ -782,7 +784,16 @@
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/deeligence.svg",
-      "logo_source": "https://www.deeligence.com/"
+      "logo_source": "https://www.deeligence.com/",
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "London, United Kingdom",
+          "source": "https://au.linkedin.com/company/deeligence",
+          "reviewed_at": "2026-11-22"
+        }
+      ]
     },
     {
       "name": "Neuralindex",
@@ -805,51 +816,28 @@
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/neuralindex.svg",
       "logo_source": "https://neuralindex.ai/",
-      "founded_year": 2024,
-      "articles": [
-        {
-          "title": "Meet our Summer'26 Accelerator Cohort",
-          "url": "https://startmatestaging.webflow.io/writing/meet-our-summer26-accelerator-cohort",
-          "kind": "accelerator profile"
-        },
-        {
-          "title": "Why Data, Not AI, Will Decide The Future Of Property Search",
-          "url": "https://www.onlinemarketplaces.com/articles/why-data-not-ai-will-decide-the-future-of-property-search/",
-          "kind": "industry article"
-        },
-        {
-          "title": "Neuralindex: Pioneering the Next Wave of Property Discovery",
-          "url": "https://www.ppwapac.com/pitch-club/neuralindex",
-          "kind": "conference pitch"
-        }
-      ],
-      "funding_rounds": [
-        {
-          "id": "neuralindex-2026-accelerator",
-          "stage": "Accelerator/Incubator",
-          "announced_on": "2026-02-17",
-          "amount": 120000,
-          "currency": "AUD",
-          "note": "Startmate accelerator investment. CB Insights lists $90K raised 17 Feb 2026 (and names MassChallenge as an investor, unverified elsewhere); a Feb 2026 funding newsletter lists $120k, matching Startmate's standard A$120k accelerator investment.",
-          "source": "https://www.cbinsights.com/compare/neuralindex-vs-nextburb"
-        }
-      ],
-      "reviewed_at": "2026-11-21",
       "profile_facts": [
         {
-          "key": "company-overview-2026-11-21",
-          "label": "Company overview",
-          "value": "Founded 2024, headquartered in Melbourne, Australia. Founders: Naveed Nekoo (former aerospace engineer turned AI specialist), Mat Heywood (proptech veteran), Son Duong (machine learning engineer). LinkedIn lists 2–10 employees. Legal entity NEURALINDEX IP HOLDING COMPANY PTY LTD, ABN active from 17 Dec 2025.",
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
           "source": "https://au.linkedin.com/company/neuralindex",
-          "reviewed_at": "2026-11-21"
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "property-search-product",
+          "label": "Property search",
+          "value": "Neuralindex offers search and an assistant for real-estate agency websites so visitors can describe what they need in their own words.",
+          "source": "https://neuralindex.ai/",
+          "reviewed_at": "2026-11-23"
         }
       ],
-      "socials": [
+      "articles": [
         {
-          "label": "LinkedIn",
-          "url": "https://au.linkedin.com/company/neuralindex",
-          "source": "https://au.linkedin.com/company/neuralindex",
-          "reviewed_at": "2026-11-21"
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
         }
       ]
     },
@@ -868,38 +856,34 @@
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/guin.png",
       "logo_source": "https://www.guin.ai/",
+      "profile_facts": [
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "Sydney, Australia",
+          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "video-workflow",
+          "label": "Video editing workflow",
+          "value": "Startmate’s April 2026 profile describes Guin’s shift from automated soundtrack generation to searching libraries of footage and assembling first cuts.",
+          "source": "https://www.startmate.com/writing/the-real-bottleneck-in-video-production-and-how-guin-is-changing-that",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
       "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
+        },
         {
           "title": "The real bottleneck in video production and how Guin is changing that",
           "url": "https://www.startmate.com/writing/the-real-bottleneck-in-video-production-and-how-guin-is-changing-that",
           "published_on": "2026-04-09",
           "kind": "accelerator profile"
-        },
-        {
-          "title": "Meet our Summer'26 Accelerator Cohort",
-          "url": "https://startmatestaging.webflow.io/writing/meet-our-summer26-accelerator-cohort",
-          "kind": "accelerator profile"
-        }
-      ],
-      "funding_rounds": [
-        {
-          "id": "guin-2026-accelerator",
-          "stage": "Accelerator/Incubator",
-          "announced_on": "2026-02-01",
-          "amount": 120000,
-          "currency": "AUD",
-          "note": "Startmate accelerator investment; MarketingTechMap lists Feb 2026, $120,000, led by Startmate. Startmate's standard accelerator investment is A$120k. Day within February not verified.",
-          "source": "https://marketingtechmap.com/company/guin"
-        }
-      ],
-      "reviewed_at": "2026-11-21",
-      "profile_facts": [
-        {
-          "key": "company-overview-2026-11-21",
-          "label": "Company overview",
-          "value": "Based in Sydney, Australia. Founder Anish Deenadayalan (CEO) is a second-time founder: sold his first startup Frilp to Freshworks, grew Freshchat to $13M ARR, and spent 10+ years building products at Atlassian and Freshworks. Agentic video editor turning a company's video library into on-brand marketing videos in minutes; pilot customers onboarded with 200+ hours of video processed since launching in stealth.",
-          "source": "https://www.startmate.com/writing/the-real-bottleneck-in-video-production-and-how-guin-is-changing-that",
-          "reviewed_at": "2026-11-21"
         }
       ]
     },
@@ -912,6 +896,15 @@
         {
           "name": "Jason Cai",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Sydney, Australia",
+          "source": "https://www.linkedin.com/company/tendorai",
+          "reviewed_at": "2026-11-22"
         }
       ]
     },
@@ -939,7 +932,16 @@
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/flowgo.svg",
-      "logo_source": "https://flowgoai.com/"
+      "logo_source": "https://flowgoai.com/",
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Petaling Jaya, Malaysia",
+          "source": "https://www.linkedin.com/company/flowgoai/",
+          "reviewed_at": "2026-11-22"
+        }
+      ]
     },
     {
       "name": "iBnkVault",
@@ -957,7 +959,16 @@
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/ibnkvault.png",
-      "logo_source": "https://www.ibnk.xyz/"
+      "logo_source": "https://www.ibnk.xyz/",
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://au.linkedin.com/company/ibnk-vault",
+          "reviewed_at": "2026-11-22"
+        }
+      ]
     },
     {
       "name": "Lockii",
@@ -968,6 +979,15 @@
         {
           "name": "Bodhi Hawken",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "Melbourne, Australia",
+          "source": "https://www.lockii.app/licenses",
+          "reviewed_at": "2026-11-23"
         }
       ]
     },
@@ -991,7 +1011,28 @@
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/superstat.svg",
-      "logo_source": "https://www.superstatsport.com/"
+      "logo_source": "https://www.superstatsport.com/",
+      "reviewed_at": "2026-11-22",
+      "funding_rounds": [
+        {
+          "id": "superstat-2026-blackbird-seed",
+          "stage": "Seed",
+          "announced_on": "2026-07-29",
+          "amount": 3500000,
+          "currency": "AUD",
+          "note": "Blackbird reported leading the Seed, joined by Startmate and strategic angels. Participating investor Startmate confirms A$3.5 million and the Seed label (https://www.startmate.com/accelerator); the issuer corroborates the amount and links Blackbird’s announcement (https://www.superstatsport.com/). Date is the investor announcement, not legal close. No individual investor amounts are stated.",
+          "source": "https://www.blackbird.vc/blog/why-we-fell-for-the-founders-building-sports-data-layer-our-investment-in-superstat"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "VIC 3121, Australia",
+          "source": "https://abr.business.gov.au/ABN/View?abn=43687319017",
+          "reviewed_at": "2026-11-23"
+        }
+      ]
     },
     {
       "name": "Talentsheet",
@@ -1011,6 +1052,15 @@
           "name": "Ben Abbatangelo",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort"
         }
+      ],
+      "profile_facts": [
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "Sydney, Australia",
+          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "reviewed_at": "2026-11-23"
+        }
       ]
     },
     {
@@ -1029,7 +1079,16 @@
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/thermal-dawn.png",
-      "logo_source": "https://www.thermaldawn.com/"
+      "logo_source": "https://www.thermaldawn.com/",
+      "profile_facts": [
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "Sydney, Australia",
+          "source": "https://www.thermaldawn.com/blog/heat-pump-replace-gas-hydronic-boiler/",
+          "reviewed_at": "2026-11-23"
+        }
+      ]
     },
     {
       "name": "Vixia",
@@ -1047,7 +1106,16 @@
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/vixia.svg",
-      "logo_source": "https://www.vixia.ai/"
+      "logo_source": "https://www.vixia.ai/",
+      "profile_facts": [
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "Sydney, Australia",
+          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "reviewed_at": "2026-11-23"
+        }
+      ]
     },
     {
       "name": "Wiingman",
@@ -1063,7 +1131,16 @@
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/wiingman.png",
-      "logo_source": "https://www.wiingman.io/"
+      "logo_source": "https://www.wiingman.io/",
+      "profile_facts": [
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "NSW 2026, Australia",
+          "source": "https://abr.business.gov.au/ABN/View?id=94688220760",
+          "reviewed_at": "2026-11-23"
+        }
+      ]
     },
     {
       "name": "Zabidou",
@@ -1077,7 +1154,16 @@
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/zabidou.png",
-      "logo_source": "https://www.zabidou.com/"
+      "logo_source": "https://www.zabidou.com/",
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "North Sydney, Australia",
+          "source": "https://www.linkedin.com/posts/cibbyp_the-recent-post-from-patrick-collison-about-activity-7457551919587287040-Efpc",
+          "reviewed_at": "2026-11-23"
+        }
+      ]
     },
     {
       "name": "Gilmour Space",
@@ -1114,6 +1200,13 @@
           "value": "Invest Gold Coast reports that Adam and James Gilmour established their launch-services company in 2012. This is the reported company establishment year, not a verified legal incorporation date.",
           "source": "https://www.investgoldcoast.com/invest-with-us/investor-resources/success-stories/advanced-manufacturing-gilmour-space-technologies",
           "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Gold Coast, Australia",
+          "source": "https://www.coordinatorgeneral.qld.gov.au/__data/assets/pdf_file/0041/98969/planning-report-appendices-part-2.pdf",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "description": "Australian developer of rockets and satellite platforms.",
@@ -1154,6 +1247,20 @@
           "value": "27 people counted in the website's Our team section, excluding the separate board section, on 13 November 2026. This directory count is not employee headcount.",
           "source": "https://www.uluu.com.au/about",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Australia",
+          "source": "https://www.linkedin.com/company/uluu/",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "operating-base",
+          "label": "Operating base",
+          "value": "Perth, Australia",
+          "source": "https://www.investandtrade.wa.gov.au/contact-us/the-perth-hub/2026/10/08/aibc-2026-delegates-welcomed-to-western-australia",
+          "reviewed_at": "2026-11-23"
         }
       ],
       "funding_rounds": [
@@ -1260,6 +1367,13 @@
           "value": "More than 1,000 employees across 13 global offices, reported in a Queensland Government profile last updated 15 September 2023. Not a current count.",
           "source": "https://innovation.qld.gov.au/innovation-in-queensland/innovation-stories/igniting-innovation-the-go1-journey-from-logan-startup-to-brisbanes-first-unicorn",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Brisbane, Australia",
+          "source": "https://www.linkedin.com/company/go1",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "description": "Learning-content platform that combines workplace training from multiple providers in one subscription.",
@@ -1360,6 +1474,13 @@
           "value": "The Australian Business Register lists Culture Amp Pty Ltd’s ABN 12 138 600 987 as active from 31 July 2009.",
           "source": "https://abr.business.gov.au/AbnHistory/View?id=12138600987",
           "reviewed_at": "2026-11-20"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://invest.vic.gov.au/understand-the-market/explore-investment-success-stories/culture-amp-launches-global-headquarters-and-asia-pacific-engineering-hub",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "funding_rounds": [
@@ -1480,7 +1601,16 @@
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/quantum-brilliance.svg",
-      "logo_source": "https://quantumbrilliance.com/"
+      "logo_source": "https://quantumbrilliance.com/",
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Sydney, Australia",
+          "source": "https://www.linkedin.com/company/quantum-brilliance",
+          "reviewed_at": "2026-11-22"
+        }
+      ]
     },
     {
       "name": "Cauldron",
@@ -1504,6 +1634,13 @@
           "value": "The company's 8 August 2024 CTO announcement states Cauldron was founded in 2022.",
           "source": "https://www.cauldronferm.com/post/cauldron-appoints-former-solugen-basf-executive-david-weiner-as-cto",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Borenore, Australia",
+          "source": "https://au.linkedin.com/company/cauldron-ferm",
+          "reviewed_at": "2026-11-23"
         }
       ],
       "funding_rounds": [
@@ -1523,18 +1660,113 @@
     },
     {
       "name": "Goterra",
-      "source": "https://australianoftheyear.org.au/recipients/olympia-yarger",
-      "reviewed_at": "2026-11-13",
+      "source": "https://meetings.cityofsydney.nsw.gov.au/ieDecisionDetails.aspx?AIId=21977",
+      "reviewed_at": "2026-11-22",
       "founders": [
         {
           "name": "Olympia Yarger",
-          "source": "https://australianoftheyear.org.au/recipients/olympia-yarger"
+          "source": "https://www.australianoftheyear.org.au/recipients/olympia-yarger"
         }
       ],
-      "description": "Develops automated food-waste processing systems that use insects to produce fertiliser and animal feed.",
+      "description": "Canberra-founded company that developed modular food-waste processing systems using insects to produce fertiliser and animal feed. The City of Sydney recorded that Goterra entered voluntary administration on 3 June 2026.",
       "website": "https://www.goterra.com.au/home",
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/goterra.png",
-      "logo_source": "https://www.goterra.au/"
+      "logo_source": "https://www.goterra.au/",
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Canberra, Australia (historical)",
+          "source": "https://jobs.workable.com/company/vmB8UVLgf8NY2YQ9hr1oXD/jobs-at-goterra",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "administration-event",
+          "label": "Voluntary administration",
+          "value": "3 June 2026, as recorded by the City of Sydney. This is a dated event, not the current corporate-register status.",
+          "source": "https://meetings.cityofsydney.nsw.gov.au/ieDecisionDetails.aspx?AIId=21977",
+          "reviewed_at": "2026-11-22"
+        }
+      ],
+      "founded_year": 2016,
+      "funding_rounds": [
+        {
+          "id": "goterra-2018-seed",
+          "stage": "Seed",
+          "amount": 1200000,
+          "currency": "AUD",
+          "note": "Transaction counsel identifies Grok, Giant Leap and Rampersand. Rampersand lists 2018 entry and describes itself as a seed co-lead. No precise announcement or closing date is verified.",
+          "source": "https://img.legalvision.com.au/wp-content/uploads/2022/09/01194909/Capital-Raising-Capability-Statement.pdf"
+        },
+        {
+          "id": "goterra-2020-series-a",
+          "stage": "Series A",
+          "announced_on": "2020-04-14",
+          "amount": 8000000,
+          "currency": "AUD",
+          "note": "Dated Tenacious investment note names Tenacious Ventures and Grok Ventures as co-leads. Transaction counsel corroborates AUD and names Rampersand, Giant Leap and Eleanor Ventures. Date is public investor reporting, not legal close.",
+          "source": "https://tenacious.ventures/insights/investment-notes-goterra"
+        },
+        {
+          "id": "goterra-2023-bridge",
+          "stage": "Bridge",
+          "announced_on": "2023-08-01",
+          "amount": 10000000,
+          "currency": "AUD",
+          "note": "Startup Daily reported the bridge on 1 August 2023. Rampersand corroborates the amount in AUD and identifies Grok and Tenacious as backers, but its portfolio labels the bridge December 2023. Treat this as one reported bridge, without inferring a second round, close date or instrument.",
+          "source": "https://www.startupdaily.net/topic/funding/cannon-brookes-backed-food-waste-recycling-startup-banks-10-million-bridging-round/"
+        },
+        {
+          "id": "goterra-2025-equity-crowdfunding",
+          "stage": "Equity crowdfunding",
+          "amount": 2250000,
+          "currency": "AUD",
+          "note": "Australian intermediary OnMarket reports the December 2025 offer closed fully funded with 938 investors. The intermediary is not identified as an investor. Day and investor identities are not verified.",
+          "source": "https://www.onmarket.com.au/for-companies/past-transactions/"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Tenacious Ventures investment notes on Goterra",
+          "url": "https://tenacious.ventures/insights/investment-notes-goterra",
+          "published_on": "2020-04-14",
+          "kind": "investor announcement"
+        },
+        {
+          "title": "Goterra reportedly raises a bridge for its Western Sydney expansion",
+          "url": "https://www.startupdaily.net/topic/funding/cannon-brookes-backed-food-waste-recycling-startup-banks-10-million-bridging-round/",
+          "published_on": "2023-08-01",
+          "kind": "funding reporting"
+        },
+        {
+          "title": "Olympia Yarger on why Goterra turned to crowdfunding",
+          "url": "https://www.startupdaily.net/advice/business-strategy/theres-no-such-thing-as-the-right-investor-goterras-olympia-yarger-on-why-she-turned-to-crowdfunding-for-her-new-raise/",
+          "published_on": "2025-11-11",
+          "kind": "founder article"
+        },
+        {
+          "title": "City of Sydney records its food-waste trial and Goterra's entry into administration",
+          "url": "https://meetings.cityofsydney.nsw.gov.au/ieDecisionDetails.aspx?AIId=21977",
+          "published_on": "2026-06-29",
+          "kind": "council decision"
+        },
+        {
+          "title": "Startup Daily reports creditors voted to put Goterra into liquidation",
+          "url": "https://www.startupdaily.net/topic/business/creditors-vote-to-put-food-waste-startup-goterra-in-liquidation/",
+          "published_on": "2026-07-10",
+          "kind": "business reporting"
+        },
+        {
+          "title": "LegalVision transaction credentials: Goterra Seed and Series A",
+          "url": "https://img.legalvision.com.au/wp-content/uploads/2022/09/01194909/Capital-Raising-Capability-Statement.pdf",
+          "kind": "transaction counsel record"
+        },
+        {
+          "title": "OnMarket closed-offer record for Goterra Pty Ltd",
+          "url": "https://www.onmarket.com.au/for-companies/past-transactions/",
+          "kind": "equity crowdfunding close record"
+        }
+      ]
     },
     {
       "name": "Wise",
@@ -1557,6 +1789,13 @@
           "value": "Wise says it launched in 2011. This is a launch year, not a reconciled legal founding/incorporation date.",
           "source": "https://wise.com/our-mission/",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "London, United Kingdom",
+          "source": "https://owners.wise.com/static-files/e7599a75-4bc1-4da2-8b73-dfc09ced8396",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "description": "International money-transfer and cross-border payments company.",
@@ -1611,6 +1850,13 @@
           "value": "Companies House lists REVOLUT LTD (08804411) as incorporated on 6 December 2013. This is the named legal entity’s registration date, not Revolut’s 2015 company-reported founding/launch date.",
           "source": "https://find-and-update.company-information.service.gov.uk/company/08804411",
           "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "London, United Kingdom",
+          "source": "https://www.revolut.com/blog/post/where-is-revolut-based/",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "funding_rounds": [
@@ -1657,6 +1903,13 @@
           "value": "More than 3,000 employees worldwide, stated by Seedcamp on 21 April 2021. Historical, not current.",
           "source": "https://seedcamp.com/views/uipath-ipo-a-monumental-moment-for-european-tech-and-for-seedcamp/",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "New York, United States",
+          "source": "https://ir.uipath.com/financials/sec-filings/content/0001734722-26-000012/path-20260131.htm",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "articles": [
@@ -1760,6 +2013,13 @@
           "value": "Transaction counsel's 27 January 2026 announcement explicitly reports US$200 million and a US$4 billion valuation for the Series E announced by Synthesia on 26 January. This is a dated private financing valuation, not public market capitalisation. Pre-money/post-money basis and employee-secondary size are unspecified.",
           "source": "https://www.lw.com/en/news/latham-watkins-advises-synthesia-on-us200-million-series-e-and-secondary-transaction",
           "reviewed_at": "2026-11-15"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "London, United Kingdom",
+          "source": "https://www.synthesia.io/post/why-synthesia-is-expanding-in-the-us",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/synthesia.svg",
@@ -1802,6 +2062,13 @@
           "value": "Hims & Hers announced completion of its acquisition of Eucalyptus on 2 June 2026. Exact closing day was not separately stated. Eucalyptus should not be described as independently owned.",
           "source": "https://investors.hims.com/news/news-details/2026/Hims--Hers-Completes-Acquisition-of-Eucalyptus-Advancing-its-Position-as-the-Worlds-Largest-Consumer-Health-Platform/default.aspx",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Sydney, Australia",
+          "source": "https://au.linkedin.com/company/eucalyptusvc",
+          "reviewed_at": "2026-11-23"
         }
       ],
       "funding_rounds": [
@@ -1853,7 +2120,16 @@
       "description": "Platform for creating and sharing interactive 3D product presentations.",
       "website": "https://www.jig.com/",
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/jigspace.png",
-      "logo_source": "https://www.jig.com/"
+      "logo_source": "https://www.jig.com/",
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://www.linkedin.com/company/jigspace",
+          "reviewed_at": "2026-11-22"
+        }
+      ]
     },
     {
       "name": "Loam Bio",
@@ -1888,6 +2164,13 @@
           "value": "The NSW Government profile states Loam Bio was established in Orange in 2019.",
           "source": "https://www.investregional.nsw.gov.au/success-story/loam-bio",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Orange, Australia",
+          "source": "https://www.loambio.com/us/resources/loam-bio-appoints-rob-hranac-as-ceo-as-company-enters-next-phase-of-commercial-growth/",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "funding_rounds": [
@@ -1923,6 +2206,13 @@
           "value": "Eight named profiles on the leadership page, including consultants. This directory count is neither employee count nor total headcount.",
           "source": "https://enarespiratory.com/about/leadership/",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://enarespiratory.com/about/",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "funding_rounds": [
@@ -2056,6 +2346,13 @@
           "value": "As reviewed on 19 November 2026, PsiQuantum lists Jeremy O’Brien as Executive Chairman, Terry Rudolph as Chief Architect, Pete Shadbolt as Chief Scientific Officer, and Mark Thompson as Chief Technology Officer.",
           "source": "https://www.psiquantum.com/about/",
           "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Palo Alto, United States",
+          "source": "https://www.psiquantum.com/about/",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "articles": [
@@ -2153,6 +2450,13 @@
           "value": "Square Peg’s portfolio profile lists 2022. This conflicts with the 2023 year on Cuttable’s company LinkedIn profile; the difference is unresolved.",
           "source": "https://www.squarepeg.vc/portfolio/cuttable",
           "reviewed_at": "2026-11-15"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "South Yarra, Australia",
+          "source": "https://www.linkedin.com/company/cuttable",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/cuttable.svg",
@@ -2206,6 +2510,13 @@
           "value": "Capital Brief’s 28 March 2025 article states the venture was founded in 2019, differing from 2017 in the company’s own history. This source disagreement is retained without treating a launch year or registration date as an equivalent founding milestone.",
           "source": "https://www.capitalbrief.com/article/im-in-shock-strongroom-ai-investor-blasts-evp-for-calling-in-police-7774f64d-f517-4b8e-846e-8258f47096c6/",
           "reviewed_at": "2026-11-15"
+        },
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "VIC 3145, Australia",
+          "source": "https://abr.business.gov.au/ABN/View/70622134776",
+          "reviewed_at": "2026-11-23"
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/strongroom-ai.png",
@@ -2216,7 +2527,7 @@
       "description": "Builds autonomous robots and software for inspecting and mapping underground pipe infrastructure.",
       "website": "https://puralink.com/",
       "source": "https://puralink.com/",
-      "reviewed_at": "2026-11-15",
+      "reviewed_at": "2026-11-22",
       "founders": [
         {
           "name": "Harrison Crowe-Maxwell",
@@ -2237,6 +2548,17 @@
           "url": "https://puralink.com/news/ferret-alpha-2/",
           "published_on": "2026-09-14",
           "kind": "product update"
+        },
+        {
+          "title": "Puralink announces pre-seed funding for autonomous pipe inspection",
+          "url": "https://puralink.com/news/pre-seed-round/",
+          "published_on": "2025-09-17",
+          "kind": "funding announcement"
+        },
+        {
+          "title": "Harrison Crowe-Maxwell’s original Puralink pre-seed announcement",
+          "url": "https://www.linkedin.com/posts/harrison-crowe-maxwell_puralink-raise-preseed-activity-7373915003420110848-FObV",
+          "kind": "funding announcement"
         }
       ],
       "funding_rounds": [
@@ -2244,13 +2566,22 @@
           "id": "puralink-2025-pre-seed",
           "stage": "Pre-seed",
           "announced_on": "2025-09-17",
-          "amount_text": "$2.5 million (currency unspecified in the company announcement)",
-          "source": "https://puralink.com/news/",
-          "note": "The company news archive dates the announcement 17 September 2025 and names Peak XV Partners as lead. This is the publication date, not a verified closing date. The linked detail at https://puralink.com/news/pre-seed-round/ names Side Stage Ventures, Startmate, NZVC, Wollemi Capital Group, Ashik Ahmed, Matt Jones and Matthew Dellavedova among backers. This is not an exhaustive list. Names are not resolved to canonical graph identities; customer and development-support mentions are not treated as round participation."
+          "amount_text": "Conflicting primary figures: $2.5 million (currency unstated, company newsroom) and A$2.3 million (original founder announcement).",
+          "source": "https://puralink.com/news/pre-seed-round/",
+          "note": "The company archive dates the linked article 17 September 2025. The newsroom links the original founder announcement; both describe the same Peak XV Partners-led pre-seed. No exact closing date or canonical amount is established. Named backers include Side Stage Ventures, Startmate, NZVC, Wollemi Capital Group, Ashik Ahmed, Matt Jones and Matthew Dellavedova. The list is not exhaustive; customer/design partners and accelerator support alone are not investment evidence."
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/puralink.svg",
-      "logo_source": "https://puralink.com/"
+      "logo_source": "https://puralink.com/",
+      "profile_facts": [
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Mascot, Australia",
+          "source": "https://au.linkedin.com/company/puralink",
+          "reviewed_at": "2026-11-22"
+        }
+      ]
     },
     {
       "name": "PI.EXCHANGE",
@@ -2264,6 +2595,13 @@
           "value": "Mentana. The company identifies PI.EXCHANGE PTY LTD as trading as Mentana. Retain the existing PI.EXCHANGE directory identity and historical cohort relationship.",
           "source": "https://www.mentana.ai/website-terms-of-use",
           "reviewed_at": "2026-11-18"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://au.linkedin.com/company/mentana-ai",
+          "reviewed_at": "2026-11-23"
         }
       ],
       "founders": [
@@ -2432,7 +2770,7 @@
       "description": "Develops silicon-spin quantum processors designed for existing semiconductor fabrication processes.",
       "founded_year": 2022,
       "source": "https://www.diraq.com/newsdesk/diraq-expands-us-presence-with-palo-alto-office-to-accelerate-commercial-quantum-computingnbsp",
-      "reviewed_at": "2026-11-19",
+      "reviewed_at": "2026-11-23",
       "socials": [
         {
           "label": "LinkedIn",
@@ -2466,8 +2804,16 @@
           "amount": 15000000,
           "currency": "USD",
           "announced_on": "2024-02-12",
-          "source": "https://www.quantonation.com/news/diraq-secures-usd-15-million-in-series-a-2-funding-to-advance-fault-tolerant-quantum-computing-development",
+          "source": "https://www.einpresswire.com/article/688069410/diraq-secures-usd-15-million-in-series-a-2-funding-to-advance-fault-tolerant-quantum-computing-development",
           "note": "Quantonation led the US$15 million close announced in February 2024. John Higgins Family Investments and the University of New South Wales participated. Diraq subsequently reported US$22 million for the expanded round, including this close. See the company’s expansion announcement in Company details."
+        },
+        {
+          "id": "diraq-initial-series-a",
+          "stage": "Series A",
+          "amount": 20000000,
+          "currency": "USD",
+          "note": "Diraq retrospectively reported a US$20 million Series A led by Allectus Capital, before the US$15 million Series A-2 close. The issuer release does not specify the initial round’s announcement or closing date. This is not the later National Reconstruction Fund stake or cumulative research funding.",
+          "source": "https://www.diraq.com/newsdesk/diraq-secures-usd-15-million-in-series-a-2-funding"
         }
       ],
       "profile_facts": [
@@ -2498,6 +2844,26 @@
           "value": "The National Reconstruction Fund Corporation reported a $20 million equity stake in Diraq. The release uses an unqualified dollar sign.",
           "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-backs-next-generation-quantum-computing-startup-diraq-20-million-equity-investment",
           "reviewed_at": "2026-11-19"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Diraq announces US$15 million Series A-2 close (distributed release)",
+          "url": "https://www.einpresswire.com/article/688069410/diraq-secures-usd-15-million-in-series-a-2-funding-to-advance-fault-tolerant-quantum-computing-development",
+          "published_on": "2024-02-12",
+          "kind": "funding announcement"
+        },
+        {
+          "title": "Diraq reports the Series A-2 close and earlier Series A (company newsroom)",
+          "url": "https://www.diraq.com/newsdesk/diraq-secures-usd-15-million-in-series-a-2-funding",
+          "published_on": "2024-02-13",
+          "kind": "funding announcement"
+        },
+        {
+          "title": "Diraq reports US$22 million expanded Series A-2 total",
+          "url": "https://www.diraq.com/newsdesk/diraq-adds-leading-deeptech-and-venture-investors-to-usd-22-million-investment-round",
+          "published_on": "2024-06-25",
+          "kind": "funding update"
         }
       ]
     },
@@ -2650,6 +3016,13 @@
           "value": "Skykraft reported operating five satellites after its January 2023 launch.",
           "source": "https://www.skykraft.com.au/post/australia-s-largest-ever-satellite-constellation-now-active",
           "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Canberra, Australia",
+          "source": "https://au.linkedin.com/company/skykraft-pty-ltd",
+          "reviewed_at": "2026-11-23"
         }
       ],
       "articles": [
@@ -2751,6 +3124,13 @@
           "value": "Arkeus reported a separate A$1.48 million award from Queensland’s Sovereign Industry Development Fund to support the Ormeau facility.",
           "source": "https://arkeus.com/news/deputy-premier-of-queensland-unveils-new-arkeus-advanced-manufacturing-facility-supported-by-1-48m-in-funding-from-the-sovereign-industry-development-fund",
           "reviewed_at": "2026-11-19"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Port Melbourne, Australia",
+          "source": "https://au.linkedin.com/company/arkeus-sensors",
+          "reviewed_at": "2026-11-22"
         }
       ],
       "articles": [
@@ -2777,6 +3157,334 @@
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/arkeus.svg",
       "logo_source": "https://arkeus.com/"
+    },
+    {
+      "name": "Remi AI",
+      "source": "https://abr.business.gov.au/ABN/View/26608216306",
+      "reviewed_at": "2026-11-22",
+      "profile_facts": [
+        {
+          "key": "business-base",
+          "label": "Business base",
+          "value": "NSW 2777, Australia",
+          "source": "https://abr.business.gov.au/ABN/View/26608216306",
+          "reviewed_at": "2026-11-23"
+        }
+      ]
+    },
+    {
+      "name": "Fluency",
+      "description": "Enterprise work intelligence software for identifying and measuring opportunities to automate business processes.",
+      "website": "https://usefluency.com/",
+      "source": "https://usefluency.com/",
+      "reviewed_at": "2026-11-22",
+      "founded_year": 2023,
+      "founders": [
+        {
+          "name": "Finnlay Morcombe",
+          "source": "https://usefluency.com/blog/fluency-raises-1-5m-to-transform-enterprise-operations"
+        },
+        {
+          "name": "Oliver Farnill",
+          "source": "https://usefluency.com/blog/fluency-raises-1-5m-to-transform-enterprise-operations"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "fluency-2025-04-aud-pre-seed",
+          "stage": "Pre-seed",
+          "announced_on": "2025-04-29",
+          "amount": 1500000,
+          "currency": "AUD",
+          "note": "Fluency named Bradley Tabone and Archangel Ventures as co-leads. Date is the company announcement, not a legal closing date.",
+          "source": "https://usefluency.com/blog/fluency-raises-1-5m-to-transform-enterprise-operations"
+        },
+        {
+          "id": "fluency-2026-02-usd-seed",
+          "stage": "Seed",
+          "announced_on": "2026-02-09",
+          "amount": 6000000,
+          "currency": "USD",
+          "note": "Fluency named Accel as lead. Its posting on Accel’s jobs board confirms participation from DST Global Partners (https://jobs.accel.com/companies/fluency-2-63cef0e4-3bac-49d4-a5c5-03405414a167/jobs/72909400-account-executive-mid-market). Date is the announcement, not a legal closing date. No individual allocations stated.",
+          "source": "https://usefluency.com/blog/fluency-raises-6m-seed-accel"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-year-source",
+          "label": "Founding year",
+          "value": "2023; a company-hosted copy of Swinburne University’s profile dates the startup’s origin to early 2023.",
+          "source": "https://usefluency.com/blog/swinburne-founded-software-startup-fluency-launches-first-product-suite",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "headquarters",
+          "label": "Reported headquarters",
+          "value": "San Francisco, United States",
+          "source": "https://www.startmate.com/writing/startmate-returns-to-san-francisco-reviving-a-decade-old-founder-tradition",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "team-locations",
+          "label": "Team locations",
+          "value": "San Francisco, United States; Melbourne, Australia",
+          "source": "https://usefluency.com/security",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "australian-entity",
+          "label": "Australian entity",
+          "value": "Farmor Software Pty Ltd; FLUENCY is a registered business name.",
+          "source": "https://abr.business.gov.au/ABN/View?id=39667892855",
+          "reviewed_at": "2026-11-22"
+        }
+      ],
+      "relationships": [
+        {
+          "target_id": "partner:startmate",
+          "kind": "supports",
+          "description": "Startmate lists Fluency as a Summer 2025 Accelerator alum. Cohort membership does not establish participation in either reported funding round.",
+          "source": "https://www.startmate.com/writing/startmate-returns-to-san-francisco-reviving-a-decade-old-founder-tradition"
+        }
+      ]
+    },
+    {
+      "name": "Andromeda Robotics",
+      "description": "Robotics company developing Abi, a humanoid companion robot for aged-care settings.",
+      "website": "https://andromedarobotics.ai/",
+      "source": "https://andromedarobotics.ai/",
+      "reviewed_at": "2026-11-22",
+      "founded_year": 2022,
+      "founders": [
+        {
+          "name": "Grace Brown",
+          "source": "https://andromedarobotics.ai/team"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "andromeda-2025-09-aud-series-a",
+          "stage": "Series A",
+          "announced_on": "2025-09-09",
+          "amount": 23000000,
+          "currency": "AUD",
+          "note": "Forerunner Ventures led. The issuer names Main Sequence, Rethink Impact, Artesian, Visible Ventures, Trampoline, Startmate and Purpose Ventures (https://andromedarobotics.ai/post/series-a-funding-news-fuel-for-our-zero-loneliness-vision). Date is the first corroborated public report (https://www.forbes.com.au/news/entrepreneurs/andromedas-animated-approach-to-100m-abi-and-ai/), not the closing date. A September 2025 US Form D (https://www.sec.gov/Archives/edgar/data/2086259/000208625925000001/xslFormDX01/primary_doc.xml) reports a USD offering; its relationship to the Series A is unconfirmed and it is not counted as a separate round.",
+          "source": "https://hamiltonlocke.com.au/hamilton-locke-advises-andromeda-robotics-on-au23-million-series-a-capital-raise/"
+        },
+        {
+          "id": "andromeda-2023-12-pre-seed",
+          "stage": "Pre-seed",
+          "announced_on": "2023-12-01",
+          "amount_text": "Over $500,000 reported by Galileo (currency not explicit)",
+          "note": "Galileo said it led the pre-seed. June 2024 coverage republished by Andromeda described late-2023 pre-seed funding of $1 million from Galileo. The two descriptions do not establish a second financing, an exact total, currency or close date.",
+          "source": "https://galileo.ventures/post/hello-andromeda-companion-robots-for-future-friendships"
+        },
+        {
+          "id": "andromeda-2024-06-seed",
+          "stage": "Seed",
+          "announced_on": "2024-06-18",
+          "amount_text": "$3 million reported (currency not explicit)",
+          "note": "The public report says Purpose Ventures led the completed equity round; Andromeda republishes the report and Purpose Ventures lists Andromeda in its portfolio. Publication date is not the legal close date. No calendar close or currency conversion is inferred.",
+          "source": "https://www.smartcompany.com.au/startupsmart/andromeda-robotics-raises-3-million-seed-humanoid-robot-abi/"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founding-year-source",
+          "label": "Founding year",
+          "value": "2022; the operating business launched in Australia. The later Delaware incorporation of its US issuer is a separate event.",
+          "source": "https://andromedarobotics.ai/post/andromeda-abi-robot-forbes",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "founder-source-disagreement",
+          "label": "Founder sources differ",
+          "value": "Startmate’s early company note names Grace Brown and Tasmin Ahmed. The Series A counsel later names Grace Brown and Yan Chen (https://hamiltonlocke.com.au/hamilton-locke-advises-andromeda-robotics-on-au23-million-series-a-capital-raise/). The historical roster is not reconciled.",
+          "source": "https://www.startmate.com/writing/investment-notes-andromeda",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "team-locations",
+          "label": "Team locations",
+          "value": "Melbourne, Australia; San Francisco, United States.",
+          "source": "https://andromedarobotics.ai/careers",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "us-issuer-principal-place",
+          "label": "US issuer’s reported principal place of business",
+          "value": "San Francisco, United States, in the November 2026 filing. This is the US issuer’s disclosure, not a company-wide headquarters claim.",
+          "source": "https://www.sec.gov/Archives/edgar/data/2086259/000208625926000002/xslFormDX01/primary_doc.xml",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "sec-2026-equity-notice",
+          "label": "November 2026 SEC equity notice",
+          "value": "Form D filed 2026-11-13. First sale 2026-10-29. The issuer reported US$30,020,303 sold to 17 investors against US$75,000,000 offered, with US$44,979,697 remaining as of the filing. No venture stage, named participants or final close is stated.",
+          "source": "https://www.sec.gov/Archives/edgar/data/2086259/000208625926000002/xslFormDX01/primary_doc.xml",
+          "reviewed_at": "2026-11-22"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Andromeda Robotics, Inc. files a new notice of exempt equity offering",
+          "url": "https://www.sec.gov/Archives/edgar/data/2086259/000208625926000002/xslFormDX01/primary_doc.xml",
+          "published_on": "2026-11-13",
+          "kind": "regulatory filing"
+        },
+        {
+          "title": "Galileo Ventures announces its Andromeda pre-seed investment",
+          "url": "https://galileo.ventures/post/hello-andromeda-companion-robots-for-future-friendships",
+          "published_on": "2023-12-01",
+          "kind": "investor announcement"
+        },
+        {
+          "title": "SmartCompany reports Andromeda’s Purpose Ventures-led seed",
+          "url": "https://www.smartcompany.com.au/startupsmart/andromeda-robotics-raises-3-million-seed-humanoid-robot-abi/",
+          "published_on": "2024-06-18",
+          "kind": "funding reporting"
+        },
+        {
+          "title": "Hamilton Locke’s account of advising on Andromeda’s AU$23 million Series A",
+          "url": "https://hamiltonlocke.com.au/hamilton-locke-advises-andromeda-robotics-on-au23-million-series-a-capital-raise/",
+          "published_on": "2025-09-11",
+          "kind": "transaction counsel report"
+        }
+      ],
+      "relationships": [
+        {
+          "target_id": "partner:startmate",
+          "kind": "supports",
+          "description": "Startmate lists Andromeda in its Winter 2022 Accelerator cohort. The 2025 Series A announcement separately names Startmate as an investor.",
+          "source": "https://www.startmate.com/portfolio-companies/andromeda-2"
+        }
+      ]
+    },
+    {
+      "name": "FloodMapp",
+      "description": "Flood forecasting and inundation mapping software for emergency managers and infrastructure operators.",
+      "website": "https://www.floodmapp.com/",
+      "source": "https://www.floodmapp.com/about",
+      "reviewed_at": "2026-11-22",
+      "founded_year": 2018,
+      "founders": [
+        {
+          "name": "Juliette Murphy",
+          "source": "https://www.usv.com/portfolio/company/floodmapp",
+          "profile_url": "https://www.linkedin.com/in/juliette-murphy"
+        },
+        {
+          "name": "Ryan Prosser",
+          "source": "https://www.usv.com/portfolio/company/floodmapp",
+          "profile_url": "https://au.linkedin.com/in/ryan-prosser-19a829118"
+        }
+      ],
+      "funding_rounds": [
+        {
+          "id": "floodmapp-2019-09-seed",
+          "stage": "Seed",
+          "announced_on": "2019-09-23",
+          "amount": 1300000,
+          "amount_text": "A$1.3 million reported",
+          "currency": "AUD",
+          "note": "Contemporaneous founder interview names Allectus Capital, Transition Level Investments, Jelix Ventures, Mercurian and unnamed individuals; Aug 2021 reporting explicitly corroborates AUD. Date is first located public reporting, not a verified legal close. No lead or allocation confirmed.",
+          "source": "https://www.smartcompany.com.au/startupsmart/floodmapp-raise-flood-prediction/"
+        },
+        {
+          "id": "floodmapp-2022-02-seed",
+          "stage": "Seed",
+          "announced_on": "2022-02-06",
+          "amount": 6000000,
+          "amount_text": "US$6 million (A$8.5 million equivalent as reported)",
+          "currency": "USD",
+          "note": "Issuer announcement names Union Square Ventures' Climate Fund as lead; Mundi Ventures, Climate X and Jelix Ventures participated. The USV portfolio lists Seed, 2021 and links its 7 Feb 2022 investment note; no separate 2021 round or exact close is established.",
+          "source": "https://www.floodmapp.com/post/union-square-ventures-leads-floodmapp-s-6m-seed-round"
+        }
+      ],
+      "profile_facts": [
+        {
+          "key": "founded-au",
+          "label": "Founding",
+          "value": "The company says it was founded in 2018.",
+          "source": "https://www.floodmapp.com/post/union-square-ventures-leads-floodmapp-s-6m-seed-round",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "australian-operating-identity",
+          "label": "Australian operating entity",
+          "value": "The Australian department's reporting identifies Codestream Solutions Pty Ltd as trading as FloodMapp and lists Accelerating Commercialisation support separately from equity funding.",
+          "source": "https://www.industry.gov.au/sites/default/files/2023-02/senate-order-2021-22-financial-year.pdf",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "h2-portfolio",
+          "label": "Early investor evidence",
+          "value": "H2 Ventures lists FloodMapp in its own portfolio. The specific cohort, investment date, stage and amount are not established by that listing.",
+          "source": "https://www.h2.vc/",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "early-seed-currency",
+          "label": "2019 seed currency evidence",
+          "value": "A 2021 founder interview reports the earlier raise in Australian dollars and discusses a separate matching grant.",
+          "source": "https://techcrunch.com/2021/08/18/floodmapp-climate-change-flooding/",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Brisbane, Australia",
+          "source": "https://www.floodmapp.com/post/floodmapp-awarded-texas-dir-cooperative-contract-for-flood-intelligence",
+          "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "team-locations",
+          "label": "Team locations",
+          "value": "Brisbane, Australia; Denver, United States (U.S. hub)",
+          "source": "https://www.floodmapp.com/post/floodmapp-awarded-texas-dir-cooperative-contract-for-flood-intelligence",
+          "reviewed_at": "2026-11-22"
+        }
+      ],
+      "articles": [
+        {
+          "title": "FloodMapp seed round reported by SmartCompany",
+          "url": "https://www.smartcompany.com.au/startupsmart/floodmapp-raise-flood-prediction/",
+          "published_on": "2019-09-23",
+          "kind": "funding announcement"
+        },
+        {
+          "title": "FloodMapp named in the Humanitech Lab cohort",
+          "url": "https://www.floodmapp.com/post/floodmapp-named-in-2021-2022-humanitech-lab-cohort",
+          "published_on": "2021-12-23",
+          "kind": "programme announcement"
+        },
+        {
+          "title": "FloodMapp announces its USV-led seed round",
+          "url": "https://www.floodmapp.com/post/union-square-ventures-leads-floodmapp-s-6m-seed-round",
+          "published_on": "2022-02-06",
+          "kind": "funding announcement"
+        },
+        {
+          "title": "Union Square Ventures: Floodmapp",
+          "url": "https://www.usv.com/writing/floodmapp",
+          "published_on": "2022-02-07",
+          "kind": "investor announcement"
+        },
+        {
+          "title": "FloodMapp awarded a Texas DIR cooperative contract",
+          "url": "https://www.floodmapp.com/post/floodmapp-awarded-texas-dir-cooperative-contract-for-flood-intelligence",
+          "published_on": "2026-02-05",
+          "kind": "contract announcement"
+        }
+      ],
+      "relationships": [
+        {
+          "target_id": "partner:usv",
+          "kind": "listed_in_portfolio",
+          "description": "USV lists FloodMapp in its portfolio. FloodMapp's February 2022 announcement names the USV Climate Fund as lead for the announced seed round.",
+          "source": "https://www.usv.com/portfolio/company/floodmapp"
+        }
+      ]
     }
   ]
 }

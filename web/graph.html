@@ -48,14 +48,43 @@
       <header class="graph-company-overview-header">
         <div>
           <h2 id="graph-overview-heading" tabindex="-1">Companies</h2>
-          <p><span id="graph-overview-count" role="status"></span> · Select a company to follow its connections.</p>
+          <p id="graph-overview-count" role="status"></p>
         </div>
         <div class="graph-overview-group-field">
           <label for="graph-company-group">Group by</label>
-          <select id="graph-company-group"><option value="sector">Sector / technology type</option><option value="country">Headquarters country</option></select>
+          <select id="graph-company-group"><option value="sector">Sector</option><option value="country">Country</option></select>
+        </div>
+        <div id="graph-company-map-tools" class="graph-company-map-toolbar" hidden>
+          <div class="graph-overview-group-field">
+            <label for="graph-company-zoom-group">Zoom to group</label>
+            <select id="graph-company-zoom-group"><option value="">All groups</option></select>
+          </div>
+          <div class="network-scale" role="group" aria-label="Company map view">
+            <button id="graph-company-zoom-out" type="button" aria-label="Zoom out on company map">−</button>
+            <output id="graph-company-zoom-number" aria-label="Map zoom" aria-live="off">100%</output>
+            <button id="graph-company-zoom-in" type="button" aria-label="Zoom in on company map">+</button>
+          </div>
         </div>
       </header>
-      <div id="graph-company-groups" class="graph-company-groups"></div>
+      <div id="graph-company-map" class="graph-company-map" hidden>
+        <div class="graph-company-map-context">
+          <p id="graph-company-guide" role="status">Choose a group to read company names.</p>
+          <div class="graph-company-map-actions">
+            <button id="graph-company-fit" class="atlas-button" type="button">Fit all</button>
+            <button id="graph-company-open-list" class="atlas-button" type="button" aria-controls="graph-company-directory">Company list</button>
+          </div>
+        </div>
+        <div class="graph-company-canvas">
+          <canvas id="graph-company-loom" aria-hidden="true"></canvas>
+          <div id="graph-company-boundaries" class="graph-company-boundaries" aria-hidden="true"></div>
+          <div id="graph-company-nodes" class="network-loom-controls" role="group" aria-label="Company nodes" aria-describedby="graph-company-guide"></div>
+        </div>
+      </div>
+      <p id="graph-company-empty" class="detail-empty" hidden>No companies match these filters. Adjust the filters or try another search.</p>
+      <details id="graph-company-directory" class="graph-company-directory" hidden>
+        <summary>Company list</summary>
+        <div id="graph-company-groups" class="graph-company-groups"></div>
+      </details>
     </section>
     <div id="graph-neighborhood" class="explorer-workspace">
       <section class="network-panel" aria-labelledby="network-heading">

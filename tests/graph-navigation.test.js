@@ -119,7 +119,7 @@ test('graph activation follows relationships while shared links can inspect inde
     const retainedMarkup=canvas.innerHTML;
     document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));
     document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));
-    windowEvents.get('pagehide')();
+    windowEvents.get('pagehide')({persisted:false});
     assert.equal(canvas.innerHTML,retainedMarkup,'Lifecycle cleanup preserves the current graph');
   } finally {
     for(const [key,value] of Object.entries(previous))if(value===undefined)delete globalThis[key];else globalThis[key]=value;

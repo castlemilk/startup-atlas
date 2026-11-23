@@ -281,6 +281,7 @@ try {
   assert.match(await text('#graph-company-groups'),/Australia/);
   await assertNoOverflow('Mobile grouped Graph overview');
   await screenshot('atlas-graph-company-overview.png');
+  if (!await evaluate("document.querySelector('#graph-company-directory').open")) await click('#graph-company-directory > summary');
   await click('[data-graph-company="startup:canva"]');
   await until(()=>evaluate("document.querySelector('#graph-detail h2')?.textContent==='Canva'&&!document.querySelector('#graph-neighborhood').hidden"),'A company opens its graph');
   await evaluate('history.back()');
@@ -398,7 +399,7 @@ try {
   await navigate('/entity.html?id='+encodeURIComponent(missingFunding.id),"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'");
   assert.equal(await text('#entity-profile h1'),missingFunding.name);
   assert.equal(await evaluate("document.querySelectorAll('#entity-funding .entity-round').length"),0);
-  assert.match(await text('#entity-funding'),/No recorded funding/);
+  assert.match(await text('#entity-funding'),/no recorded (?:funding|financing events)/i);
 
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await navigate('/entity.html?id=startup%3Acanva',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('#entity-profile h1')?.textContent==='Canva'");

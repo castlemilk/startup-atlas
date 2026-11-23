@@ -1,4 +1,4 @@
-import { countryName } from './atlas-exploration.js';
+import { countryName, multipleHeadquarters } from './atlas-exploration.js';
 
 export const COMPANY_VALUE = 'company-value';
 export const METRICS = ['valuation', 'funding', 'market-cap', 'companies', COMPANY_VALUE];
@@ -96,7 +96,7 @@ function groupFor(entity, grouping, {country = '', city = '', sector = '', stage
     case 'technology': return {id:technology || 'unknown', name:technology || 'Technology type not recorded'};
     case 'sector': return {id:sector || 'unknown', name:sector || 'Sector not recorded'};
     case 'country': return {id:country || 'unknown', name:countryName(country), country:country || 'unknown'};
-    case 'city': return {
+    case 'city': return country===multipleHeadquarters ? {id:country, name:countryName(country), country, city:''} : {
       id:JSON.stringify([country || 'unknown', city || 'unknown']),
       name:country ? `${city || 'City not recorded'}, ${countryName(country)}` : 'City not recorded',
       country:country || 'unknown', city:city || 'unknown',

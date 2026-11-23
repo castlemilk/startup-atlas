@@ -23,13 +23,15 @@ class PiExchangeIdentityTests(unittest.TestCase):
   edges=[e for e in result['edges'] if e['from']==founder['id'] and e['to']==company['id']]
   self.assertEqual(len(edges),1);self.assertEqual(edges[0]['kind'],'founded')
   self.assertEqual(edges[0]['source'],'https://www.prnewswire.com/news-releases/piexchange-announces-the-worlds-first-personal-data-bank-is-ready-300523051.html')
- def test_seed_is_disabled_and_remi_untouched(self):
+ def test_seed_is_disabled_and_remi_website_remains_quarantined(self):
   with (ROOT/'data/company-profile-seeds.csv').open() as stream: seeds=list(csv.DictReader(stream))
   seed=next(s for s in seeds if s['partner']=='PI.EXCHANGE')
   self.assertEqual(seed['approved'],'no');self.assertEqual(seed['official_website'],'https://www.mentana.ai/')
   self.assertFalse(any(s['partner']=='Remi AI' for s in seeds))
   research=json.loads((ROOT/'data/startup-research.json').read_text())
-  self.assertFalse(any(r['name']=='Remi AI' for r in research['startups']))
+  remi=next(r for r in research['startups'] if r['name']=='Remi AI')
+  self.assertFalse(remi.get('website'))
+  self.assertEqual(remi['source'],'https://abr.business.gov.au/ABN/View/26608216306')
  def test_collector_cannot_activate_proposed_seed(self):
   spec=importlib.util.spec_from_file_location('pi_crawl',ROOT/'scripts/crawl.py')
   crawl=importlib.util.module_from_spec(spec);spec.loader.exec_module(crawl)

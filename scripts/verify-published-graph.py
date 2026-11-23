@@ -28,6 +28,8 @@ def get(path, limit):
 def verify():
     page=get('graph.html',100000).decode('utf-8')
     if 'sql-wasm.js' not in page or 'graph.js' not in page: raise ValueError('Published explorer is missing its SQLite runtime')
+    if not all(marker in page for marker in ('id="graph-company-loom"', 'id="graph-company-group"', 'id="graph-company-directory"')):
+        raise ValueError('Published explorer is missing the grouped company map or its list fallback')
     lab=get('design-lab.html',100000).decode('utf-8')
     if 'concept-dialog' not in lab or 'design-lab.js' not in lab or 'concept-collection' not in lab:
         raise ValueError('Published design lab is missing its gallery, collection scope or image viewer')

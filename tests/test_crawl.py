@@ -11,6 +11,33 @@ spec=importlib.util.spec_from_file_location('atlas_crawl',Path(__file__).resolve
 crawl=importlib.util.module_from_spec(spec); spec.loader.exec_module(crawl)
 
 class ExtractionTests(unittest.TestCase):
+    def test_source_labels_and_context_skip_hidden_media(self):
+        # Replayed pattern: a case-study card's visible headline was surrounded
+        # by CSS in saved newsroom link labels. Do not remove visible prose.
+        source = 'https://example.com/news'
+        parser = crawl.PageParser(source)
+        parser.feed("""<article>
+          <h2><a href="/study"><style>.card{width:100px}</style>
+          <span>Customer case study</span><script>const hidden = "US$90 million";</script></a></h2>
+          <p><style>.copy{color:red}</style>Issuer raised US$8 million.</p>
+          <a href="/label" aria-label="Accessible source"><style>.icon{opacity:0}</style></a>
+          <a href="/math">x &lt; y { width:100px }</a>
+          <a href="/hidden"><script>const hiddenOnly = 1;</script></a>
+          <script type="application/ld+json">{"@type":"Article","headline":"Structured headline"}</script>
+          </article>""")
+        by_url = {row['url']: row for row in parser.links}
+        self.assertEqual(parser.headings, [{'level': 'h2', 'text': 'Customer case study'}])
+        self.assertEqual(by_url['https://example.com/study'], {
+            'url': 'https://example.com/study', 'text': 'Customer case study',
+            'context': 'Issuer raised US$8 million.',
+        })
+        self.assertEqual(by_url['https://example.com/label']['text'], 'Accessible source')
+        self.assertEqual(by_url['https://example.com/math']['text'], 'x < y { width:100px }')
+        self.assertNotIn('https://example.com/hidden', by_url)
+        self.assertIn('Issuer raised US$8 million.', parser.text)
+        self.assertFalse(any('US$90 million' in text for text in parser.text))
+        self.assertEqual(parser.structured, [{'@type': 'Article', 'headline': 'Structured headline'}])
+
     def test_page_fetch_coverage_distinguishes_empty_success_from_total_failure(self):
         success=crawl.page_fetch_coverage([{'pages':[{'status':'ok'}]}],[])
         failure=crawl.page_fetch_coverage([{'pages':[{'status':'skipped','reason':'DNS failure'}]}],[])
@@ -35,6 +62,50 @@ class ExtractionTests(unittest.TestCase):
         candidates=crawl.extract_profile_media_leads('Example',page,'people')
         self.assertEqual({x['kind'] for x in candidates},{'image','social'})
         self.assertTrue(all(x['source_url']=='https://example.com/team' and x['review_required'] for x in candidates))
+    def test_team_image_reused_alt_is_review_evidence_not_identity(self):
+        # FloodMapp /our-team reuses "Peter" beside several different named
+        # staff cards. Preserve the label and URLs, without promoting either
+        # role or portrait. A nearby, uniquely labelled image is unchanged.
+        source='https://example.com/our-team'
+        html=b'''<div><img alt="Peter" src="/juliette.webp"><p>Juliette Murphy</p></div>
+        <div><img alt=" peter " src="/ryan.webp"><p>Ryan Prosser</p></div>
+        <div><img alt="Ada Example" src="/ada.webp"><p>Ada Example</p></div>
+        <img alt="Ada Example" src="/ada.webp?size=large">
+        <img alt="Ada Example" src="/ada.webp">
+        <template><img alt="Ada Example" src="/inactive.webp"></template>'''
+        page={'final_url':source,'checked_at':'2026-11-22',**crawl.extract_page(html,source)}
+        rows=crawl.extract_profile_media_leads('Example',page,'people')
+        self.assertEqual([row['name'] for row in rows],['Peter',' peter ','Ada Example','Ada Example'])
+        self.assertEqual([row.get('label_distinct_image_paths') for row in rows],[2,2,None,None])
+        self.assertTrue(all(row['kind']=='image' and row['review_required'] for row in rows))
+        self.assertEqual(list(crawl.professional_bio_observations(
+            {'name':'Example','founders':[{'name':'Juliette Murphy'},{'name':'Ryan Prosser'}]},
+            page,set())),[])
+
+    def test_profile_media_dedupes_identical_image_leads_before_cap(self):
+        first = {'url': 'https://example.com/ada.jpg?size=large', 'alt': 'Ada Example'}
+        different_caption = {**first, 'alt': 'Different source caption'}
+        different_size = {**first, 'url': 'https://example.com/ada.jpg?size=small'}
+        page = {'final_url': 'https://example.com/team', 'checked_at': '2026-11-21',
+                'image_candidates': [first] * 100 + [different_caption, different_size],
+                'links': [{'url': 'https://www.linkedin.com/in/ada', 'text': 'LinkedIn'}]}
+        rows = crawl.extract_profile_media_leads('Example', page, 'people')
+        self.assertEqual([(row['kind'], row['candidate_url'], row['name']) for row in rows], [
+            ('image', first['url'], first['alt']),
+            ('image', different_caption['url'], different_caption['alt']),
+            ('image', different_size['url'], different_size['alt']),
+            ('social', 'https://www.linkedin.com/in/ada', 'LinkedIn'),
+        ])
+        other_page = {**page, 'final_url': 'https://example.com/about'}
+        other_rows = crawl.extract_profile_media_leads('Example', other_page, 'about')
+        self.assertEqual([row['source_url'] for row in other_rows], [other_page['final_url']] * 4)
+        self.assertTrue(all(row['review_required'] for row in rows + other_rows))
+        distinct_images = [{'url': f'https://example.com/{i}.png'} for i in range(101)]
+        many_rows = crawl.extract_profile_media_leads('Example', {**page, 'image_candidates': distinct_images}, 'people')
+        self.assertEqual(len(many_rows), 101)
+        self.assertEqual(many_rows[99]['candidate_url'], distinct_images[99]['url'])
+        self.assertEqual(many_rows[100]['kind'], 'social')
+
     def test_directory_coverage_counts_unmatched_and_failed_without_claiming_completeness(self):
         pages=[{'name':'Source','pages':[{'status':'ok','final_url':'https://example.com/'},{'status':'skipped'}]}]
         candidates=[{'source_name':'Source','existing_lead_exact':True},{'source_name':'Source','existing_lead_exact':False}]
@@ -641,6 +712,12 @@ class WorkflowTests(unittest.TestCase):
             self.assertEqual(by_url,{'https://example.com/logo.png':'captured','https://example.com/blocked.png':'duplicate','https://cdn.example.com/logo.png':'not_fetched','https://example.com/share.png':'not_fetched'})
             captured=next(r for r in result['candidates'] if r['url']=='https://example.com/logo.png')
             self.assertTrue(Path(captured['file']).name.endswith('.bin'))
+            coverage=result['coverage']
+            self.assertEqual((coverage['page_observations'],coverage['successful_page_observations']), (1,1))
+            self.assertEqual(coverage['logo_candidates'],{
+                'observed':4,'capture_attempted':2,'captured':1,'duplicate':1,
+                'skipped':0,'not_fetched':2,'distinct_captured_files':1,
+            })
             self.assertIn('https://example.com/blocked.png',transport.calls)
             self.assertFalse(any('/robots.txt' in url for url in transport.calls))
             self.assertNotIn('https://cdn.example.com/logo.png',transport.calls)
@@ -666,6 +743,30 @@ class WorkflowTests(unittest.TestCase):
             rows=crawl.stage_partner_logos({'results':[{'name':'Example','pages':[page]}]},types.SimpleNamespace(out=Path(tmp),logo_limit=2),transport)['candidates']
             self.assertEqual(len(transport.calls),6)
             self.assertEqual(rows[-1]['reason'],'Per-site attempt limit reached')
+
+    def test_logo_coverage_does_not_confuse_page_failure_or_identical_files_with_coverage(self):
+        asset=lambda status, **kw: {'status':status, **kw}
+        page={'status':'ok'}
+        results=[{'pages':[page,{'status':'skipped'}]},{'pages':[page]}]
+        candidates=[
+            asset('captured',sha256='same'),asset('captured',sha256='same'),
+            asset('duplicate',sha256='same'),asset('skipped'),asset('not_fetched'),
+        ]
+        coverage=crawl.logo_capture_coverage(results,candidates)
+        self.assertEqual(coverage['fetch_status'],'partial')
+        self.assertEqual(coverage['failed_page_observations'],1)
+        self.assertEqual(coverage['page_observations'],3)
+        self.assertEqual(coverage['successful_page_observations'],2)
+        self.assertIn('may reuse', coverage['note'])
+        self.assertNotIn('pages_attempted',coverage)
+        self.assertEqual(coverage['logo_candidates'],{
+            'observed':5,'capture_attempted':4,'captured':2,'duplicate':1,
+            'skipped':1,'not_fetched':1,'distinct_captured_files':1,
+        })
+        empty=crawl.logo_capture_coverage([],[])
+        self.assertEqual(empty['fetch_status'],'not_attempted')
+        self.assertTrue(all(value==0 for value in empty['logo_candidates'].values()))
+
 
     def test_approved_asset_host_requires_exact_host(self):
         class Fake:

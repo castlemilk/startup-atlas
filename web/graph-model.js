@@ -19,6 +19,16 @@ export function entityDetails(graph,id) {
     articles:graph.articles.filter(item=>item.startup_id===id)};
 }
 
+export function fundingTimelineArticles(articles, rounds) {
+  const roundSources = new Set(rounds.map(round => sourceUrl(round.source)).filter(Boolean));
+  return articles.filter(article => {
+    const url = sourceUrl(article.url);
+    // Preserve intentional article categories while suppressing round-link
+    // duplicates in both current snapshots and cached legacy snapshots.
+    return url && !(['funding source', 'funding announcement'].includes(article.kind) && roundSources.has(url));
+  });
+}
+
 export function searchSnapshot(graph,query,limit=100) {
   const q=query.trim().normalize('NFKC').toLocaleLowerCase();
   const terms=q.match(/[\p{L}\p{N}]+/gu) || [];

@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {checkDirectoryPagination} from './directory-pagination-browser-checks.mjs';
+import {companyPlaceLabel, indexCompanies} from '../web/atlas-exploration.js';
 
 /** Exercise the new inspection journeys against the same published snapshot. */
 export async function checkDirectoryWireframes({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph}) {
@@ -114,7 +115,13 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await click('.exploration-apply');
   assert.deepEqual(await evaluate("new URLSearchParams(location.search).getAll('hq')"),['AU']);
   assert.equal(await evaluate("document.querySelectorAll('[data-remove-facet=country]').length"),1,'Native and enhanced inputs must add the same country once');
-  assert.ok(await evaluate("(()=>{const values=[...document.querySelectorAll('.directory-company-row td[data-column=headquarters]')];return values.length>0&&values.every(cell=>cell.lastElementChild.textContent.endsWith('Australia'));})()"));
+  const locations=indexCompanies(graph);
+  const filteredRows=await evaluate("[...document.querySelectorAll('.directory-company-row')].map(row=>[row.dataset.entityId,row.querySelector('td[data-column=headquarters]').lastElementChild.textContent])");
+  assert.ok(filteredRows.length>0);
+  for (const [id,value] of filteredRows) {
+    assert.equal(locations.get(id)?.country,'AU');
+    assert.equal(value,companyPlaceLabel(locations.get(id)));
+  }
 
   await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:800,deviceScaleFactor:1,mobile:true});

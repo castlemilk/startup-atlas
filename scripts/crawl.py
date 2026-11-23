@@ -42,6 +42,8 @@ PARTNER_SOURCES = ROOT / 'data/partner-sources.json'
 AGENT = 'StartupAtlasResearchBot/1.0 (+https://github.com/castlemilk/startup-atlas)'
 BOT_TOKEN = 'startupatlasresearchbot'
 MAX_BYTES = 1_000_000
+PROFILE_LINK_LIMIT = 500
+PROFILE_LEAD_LIMIT = 100
 FOLLOW_WORDS = re.compile(r'apply|application|eligib|terms|conditions|credits|benefits|startup|pricing|program|grant|founder|accelerator|incubator|fellowship|invest', re.I)
 SIGNAL_WORDS = re.compile(r'credit|eligib|expiry|expir|funding|equity|application|deadline|founded|invest|match|country|countries|regional|fee|startup|accelerator', re.I)
 PROGRAM_WORDS = re.compile(r'\b(startups?|start-ups?|founders?|accelerators?|incubators?|fellowships?|grants?|funding|credits?|program(?:me)?s?|innovation)\b',re.I)
@@ -352,6 +354,55 @@ class ArticleMarkup:
                 'truncated':self.truncated or len(dates)>MAX_DATE_ASSERTIONS}
 
 
+# The existing approved Startmate portfolio uses labelled headings inside
+# company cards, rather than short anchor text. Keep this exception local
+# to that source and path; a matching slug is not name evidence.
+STARTMATE_HOST = 'www.startmate.com'
+STARTMATE_CARD_PATH = re.compile(r'/portfolio-companies/[a-z0-9][a-z0-9-]{0,119}')
+
+
+def startmate_portfolio_page(parts):
+    return (parts.scheme == 'https' and parts.netloc == STARTMATE_HOST
+            and parts.path in ('/portfolio', '/portfolio/'))
+
+
+def startmate_portfolio_card(parts):
+    return (parts.scheme == 'https' and parts.netloc == STARTMATE_HOST
+            and not parts.query and not parts.fragment and STARTMATE_CARD_PATH.fullmatch(parts.path) is not None)
+
+
+# USV portfolio cards expose the company in logo alt text or a fallback
+# heading. Their flattened anchors usually contain only funding context.
+USV_HOST = 'www.usv.com'
+USV_CARD_PATH = re.compile(r'/portfolio/company/[a-z0-9][a-z0-9-]{0,119}')
+USV_CARD_ID = re.compile(r'company-[a-z0-9][a-z0-9-]{0,119}')
+USV_NAME_EVIDENCE = ('portfolio-card-logo-alt', 'portfolio-card-heading')
+USV_INVESTMENT_LABEL = re.compile(
+    r'^(?:(?:pre[- ]?)?seed|series [a-z]|token|common|growth|incubation),?\s+\d{4}\b|^\d{4}$', re.I)
+
+
+def usv_portfolio_path(parts):
+    return (parts.scheme == 'https' and parts.netloc == USV_HOST
+            and parts.path in ('/portfolio', '/portfolio/'))
+
+
+def usv_portfolio_page(parts):
+    return usv_portfolio_path(parts) and not parts.query and not parts.fragment
+
+
+def usv_portfolio_card(parts):
+    return (parts.scheme == 'https' and parts.netloc == USV_HOST and not parts.query
+            and not parts.fragment and USV_CARD_PATH.fullmatch(parts.path) is not None)
+
+
+def add_usv_name(names, raw, evidence):
+    name = ' '.join(raw.split())
+    if 2 <= len(name) <= 100 and not USV_INVESTMENT_LABEL.match(name) and len(names) < 2:
+        # Keep the heading as the evidence when both labels agree.
+        if name not in names or evidence == 'portfolio-card-heading':
+            names[name] = evidence
+
+
 class PageParser(HTMLParser):
     def __init__(self,base):
         super().__init__(convert_charrefs=True); self.base=base; self.meta={}; self.links=[]; self.headings=[]
@@ -362,14 +413,64 @@ class PageParser(HTMLParser):
         self._brand_regions=[]; self._anchor_homes=[]; self._footer_depth=0
         self.tables=[]; self._table_depth=0; self._table=None; self._row=None; self._cell=None
         self.article_markup=ArticleMarkup(base)
+        self._startmate_portfolio = startmate_portfolio_page(urlsplit(base))
+        self.startmate_card_names = {}
+        self._usv_portfolio = usv_portfolio_page(urlsplit(base))
+        self._usv_invisible = []
+        self.usv_card_names = {}
+        self._usv_pending_stream = False
+        self._usv_in_main = False
+        self._usv_stream_boundaries = 0
+        self._usv_stream_segments = 0
+        self._usv_stream_div_depth = 0
+        self.usv_stream_card_names = {}
+
+    def handle_comment(self, data):
+        self._usv_pending_stream = (self._usv_portfolio and self._usv_in_main and not self._inactive and not self._hidden
+                                    and not self._usv_invisible and data == '$?')
+
+    def usv_company_names(self, url):
+        names = self.usv_card_names.get(url, {}).copy()
+        if self._usv_stream_boundaries == self._usv_stream_segments == 1:
+            for name, evidence in self.usv_stream_card_names.get(url, {}).items():
+                add_usv_name(names, name, evidence)
+        return names
+
     def handle_starttag(self,tag,attrs):
         tag=tag.lower()
+        if self._usv_pending_stream:
+            if tag == 'template' and dict(attrs).get('id') == 'B:0':
+                self._usv_stream_boundaries += 1
+            self._usv_pending_stream = False
         # Preserve nested template boundaries. Other inactive containers are
         # treated as raw fallback text until their own closing tag.
         if tag in INACTIVE_TAGS and (not self._inactive or self._inactive[-1]=='template'):
             self._inactive.append(tag)
         if self._inactive: return
         a={k.lower():(v or '') for k,v in attrs}
+        if self._usv_portfolio:
+            # The witnessed index has a single paired React suspense
+            # placeholder and a streamed HTML segment. This is structural
+            # provenance for unreviewed labels, not JS execution or a DOM read.
+            if tag == 'main': self._usv_in_main = True
+            stream_segment = (not self._usv_in_main and tag == 'div' and a.get('id') == 'S:0' and 'hidden' in a
+                              and a.get('aria-hidden', '').lower() != 'true'
+                              and not self._usv_invisible and not self._usv_stream_div_depth
+                              and not self._hidden)
+            if stream_segment:
+                self._usv_stream_segments += 1
+            if tag == 'div' and (stream_segment or self._usv_stream_div_depth):
+                self._usv_stream_div_depth += 1
+            visible = (not self._usv_invisible and ('hidden' not in a or stream_segment)
+                       and a.get('aria-hidden', '').lower() != 'true')
+            if not visible and tag not in VOID_TAGS:
+                self._usv_invisible.append(tag)
+            if visible and not self._hidden and tag == 'img':
+                anchor = next((c for c in reversed(self._captures) if c['tag'] == 'a'), {})
+                names = anchor.get('usv_names')
+                alt = ' '.join(a.get('alt', '').split())
+                if names is not None and alt.lower().endswith(' logo'):
+                    add_usv_name(names, alt[:-5], 'portfolio-card-logo-alt')
         if not self._hidden: self.article_markup.start(tag,a)
         if tag=='html': self.lang=a.get('lang','')[:40]
         if tag=='meta':
@@ -420,13 +521,33 @@ class PageParser(HTMLParser):
         if not self._hidden and tag in ('h1','h2','h3','h4'): self._heading_links=[]
         if not self._hidden and tag in ('title','h1','h2','h3','h4','a','p'):
             self._captures.append({'tag':tag,'text':[],'href':a.get('href') if tag=='a' else None,'link_start':len(self.links),'label':(a.get('aria-label') or a.get('title') or '')[:160]})
+            capture = self._captures[-1]
             if tag == 'p':
-                self._captures[-1]['visible_text'] = []
+                capture['visible_text'] = []
+            elif self._startmate_portfolio:
+                if tag == 'a' and a.get('href') and startmate_portfolio_card(target):
+                    capture['company_names'] = set()
+                elif tag == 'h3' and a.get('fs-cmsfilter-field') == 'company-name':
+                    capture['company_heading'] = True
+            elif self._usv_portfolio and visible:
+                if (tag == 'a' and a.get('href') and usv_portfolio_card(target)
+                        and 'portfolio-company-card' in a.get('class', '').split()
+                        and USV_CARD_ID.fullmatch(a.get('id', ''))):
+                    capture['usv_names'] = {}
+                    capture['usv_streamed'] = bool(self._usv_stream_div_depth)
+                elif tag == 'h3':
+                    capture['usv_heading'] = []
     def handle_endtag(self,tag):
         tag=tag.lower()
         if self._inactive:
             if tag==self._inactive[-1]: self._inactive.pop()
             return
+        if tag == 'main': self._usv_in_main = False
+        if tag == 'div' and self._usv_stream_div_depth:
+            self._usv_stream_div_depth -= 1
+        if self._usv_invisible and tag in self._usv_invisible:
+            index = len(self._usv_invisible) - 1 - self._usv_invisible[::-1].index(tag)
+            del self._usv_invisible[index:]
         if not self._hidden or tag in ('script','style'): self.article_markup.end(tag)
         if tag in ('header','nav') and tag in self._brand_regions: self._brand_regions.remove(tag)
         if tag=='footer' and self._footer_depth: self._footer_depth-=1
@@ -458,13 +579,35 @@ class PageParser(HTMLParser):
                 if len(paragraph) <= 1000:
                     self.paragraphs.append(paragraph)
             value=' '.join(' '.join(capture['text']).split())[:300]
+            if 'usv_heading' in capture:
+                anchor = next((c for c in reversed(self._captures) if c['tag'] == 'a'), {})
+                names = anchor.get('usv_names')
+                if names is not None:
+                    add_usv_name(names, ''.join(capture['usv_heading']), 'portfolio-card-heading')
             if tag=='a' and not value: value=capture.get('label','')
             if tag=='title' and not self.title: self.title=value
             elif tag in ('h1','h2','h3','h4') and value:
                 if len(self.headings)<40: self.headings.append({'level':tag,'text':value})
                 self._heading_links=list(range(capture['link_start'],len(self.links)))
-            elif tag=='a' and capture['href'] and value and len(self.links)<1000:
-                self.links.append({'text':value,'url':urljoin(self.base,capture['href'])})
+                if capture.get('company_heading'):
+                    anchor = next((c for c in reversed(self._captures) if c['tag'] == 'a'), {})
+                    names = anchor.get('company_names')
+                    if names is not None and len(names) < 2:
+                        names.add(value)
+            elif tag=='a' and capture['href'] and (value or capture.get('usv_names')) and len(self.links)<1000:
+                link = {'text':value,'url':urljoin(self.base,capture['href'])}
+                names = capture.get('company_names', ())
+                if names:
+                    observed = self.startmate_card_names.setdefault(link['url'], set())
+                    for name in names:
+                        if len(observed) >= 2: break
+                        observed.add(name)
+                if capture.get('usv_names'):
+                    observations = self.usv_stream_card_names if capture['usv_streamed'] else self.usv_card_names
+                    observed_usv = observations.setdefault(link['url'], {})
+                    for name, evidence in capture['usv_names'].items():
+                        add_usv_name(observed_usv, name, evidence)
+                self.links.append(link)
             elif tag=='p' and value:
                 for index in set(self._heading_links + list(range(capture['link_start'],len(self.links)))):
                     if self.links[index].get('text') and not self.links[index].get('context'): self.links[index]['context']=value[:600]
@@ -476,17 +619,23 @@ class PageParser(HTMLParser):
             for link in self.links[context['start']:]:
                 if link.get('text') and not link.get('context'): link['context']=text
     def handle_data(self,data):
+        if self._usv_pending_stream and data.strip(): self._usv_pending_stream = False
         if self._inactive: return
         if self._ld and sum(map(len,self._ldbuf))<50_000: self._ldbuf.append(data)
-        if not self._hidden and self._table_depth==1 and self._cell is not None and len(self._cell['text'])<100:
+        # JSON-LD has its own bounded stream. Script and style text is not
+        # visible evidence and must not become a title, link label or context.
+        if self._hidden: return
+        if self._table_depth==1 and self._cell is not None and len(self._cell['text'])<100:
             self._cell['text'].append(data[:500])
         for capture in self._captures:
             capture['text'].append(data)
-            if not self._hidden and capture['tag'] == 'p':
+            if 'usv_heading' in capture and not self._usv_invisible:
+                capture['usv_heading'].append(data)
+            if capture['tag'] == 'p':
                 capture['visible_text'].append(data)
         for context in self._contexts[-3:]:
             if len(context['text'])<100: context['text'].append(data[:500])
-        if not self._hidden and len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
+        if len(self.text)<3000 and data.strip(): self.text.append(data.strip()[:1000])
 
 def summarise_jsonld(value):
     keep={'@type','@id','name','description','url','logo','image','foundingDate','address','areaServed','sameAs','offers','applicationCategory','jobTitle','worksFor','headline','publisher','datePublished','mainEntityOfPage'}
@@ -537,9 +686,15 @@ def extract_amount_mentions(parts,url,context_country=None,rate_bundle=None):
     for raw in parts:
         line=clean_capture_line(raw)
         for match in pattern.finditer(line):
-            key=(match.group(0),line[:240])
+            # Retain the opening excerpt unless it would omit the amount.
+            # Anchor an unusually long token at its start rather than growing
+            # the bounded evidence field or dropping the observation.
+            end=match.end()
+            start=max(0,min(match.start(),end+48-240)) if end>240 else 0
+            context=line[start:start+240]
+            key=(match.group(0),context)
             if key not in seen:
-                seen.add(key); found.append({'mention':match.group(0),'context':line[:240],'source':url,
+                seen.add(key); found.append({'mention':match.group(0),'context':context,'source':url,
                     'normalised':(_currency.normalise_mention(match.group(0),context_country=context_country,rate_bundle=rate_bundle)
                                  if _currency is not None else None)})
             if len(found)>=30: return found
@@ -644,11 +799,21 @@ def extract_page(body,url):
     profile_links=[]; profile_seen=set()
     for link in parser.links:
         candidate=link.get('url',''); parts=urlsplit(candidate); text=link.get('text','').strip()
-        if not text or parts.scheme!='https' or parts.hostname!=urlsplit(url).hostname or parts.username or parts.password or candidate in profile_seen: continue
+        usv_names = parser.usv_company_names(candidate)
+        if ((not text and not usv_names) or parts.scheme!='https'
+                or parts.hostname!=urlsplit(url).hostname or parts.username or parts.password or candidate in profile_seen): continue
         if re.search(r'(?:^|&)(?:token|access_token|api_key|code|session)=',parts.query,re.I): continue
         profile_seen.add(candidate)
-        profile_links.append({'url':candidate,'text':text[:140],'context':link.get('context','')[:400]})
-        if len(profile_links)>=500: break
+        row = {'url':candidate,'text':text[:140],'context':link.get('context','')[:400]}
+        names = parser.startmate_card_names.get(candidate, ())
+        if len(names) == 1:
+            name = next(iter(names))
+            if 2 <= len(name) <= 100: row['portfolio_company_name'] = name
+        if len(usv_names) == 1:
+            name, evidence = next(iter(usv_names.items()))
+            row.update(portfolio_company_name=name, portfolio_company_name_evidence=evidence)
+        profile_links.append(row)
+        if len(profile_links)>=PROFILE_LINK_LIMIT: break
     snippets=[]
     for piece in parser.text:
         if SIGNAL_WORDS.search(piece):
@@ -892,6 +1057,7 @@ def profile_landing_links(page, base, max_follow, include_about=False):
             parts=urlsplit(link.get('url',''))
             if parts.scheme!='https' or parts.hostname!=host or parts.username or parts.password: continue
             if not pattern.search(link.get('text','')+' '+parts.path.replace('-',' ')): continue
+            if parts.netloc == STARTMATE_HOST and parts.path.startswith('/portfolio-companies/'): continue
             if kind in PROFILE_PATH_RULES and PROFILE_PATH_RULES[kind].search(parts.path): continue
             clean=urlunsplit((parts.scheme,parts.netloc,parts.path,parts.query,''))
             if clean!=base and all(x['url']!=clean for x in selected):
@@ -899,30 +1065,78 @@ def profile_landing_links(page, base, max_follow, include_about=False):
         if len(selected)>=max_follow: break
     return selected[:max_follow]
 
-def extract_profile_leads(partner, page, kind):
-    """Collect labelled links as unreviewed leads, never infer investment or employment."""
+def profile_lead_batch(partner, page, kind):
+    """Count eligible observations only within the bounded retained link set."""
     rows=[]; seen=set()
-    for link in page.get('profile_links',[]):
-        name=' '.join(link.get('text','').split()).strip()
+    links = page.get('profile_links', [])[:PROFILE_LINK_LIMIT]
+    source = urlsplit(page['final_url'])
+    startmate = kind == 'companies' and startmate_portfolio_page(source)
+    usv = kind == 'companies' and usv_portfolio_path(source)
+    unresolved_usv = set()
+    for link in links:
         url=link.get('url',''); parts=urlsplit(url)
-        if not (2<=len(name)<=100) or PROFILE_GENERIC.match(name) or not PROFILE_PATH_RULES[kind].search(parts.path): continue
+        card = startmate and startmate_portfolio_card(parts)
+        if usv:
+            if not usv_portfolio_card(parts): continue
+            label_evidence = link.get('portfolio_company_name_evidence')
+            usv_name = link.get('portfolio_company_name', '')
+            if (not usv_portfolio_page(source) or label_evidence not in USV_NAME_EVIDENCE
+                    or not isinstance(usv_name, str) or not 2 <= len(' '.join(usv_name.split())) <= 100
+                    or USV_INVESTMENT_LABEL.match(' '.join(usv_name.split()))):
+                unresolved_usv.add(url)
+                continue
+        raw_name = link.get('portfolio_company_name','') if card or usv else link.get('text','')
+        name = ' '.join(raw_name.split()).strip()
+        if not (2<=len(name)<=100) or (not usv and PROFILE_GENERIC.match(name)): continue
+        if not card and not PROFILE_PATH_RULES[kind].search(parts.path): continue
         if parts.scheme!='https' or not parts.hostname or parts.username or parts.password: continue
         key=(name.casefold(),url)
         if key in seen: continue
         seen.add(key)
+        if len(rows) >= PROFILE_LEAD_LIMIT: continue
         rows.append({'partner':partner,'kind':kind,'name':name,'candidate_url':url,
                      'source_url':page['final_url'],'checked_at':page['checked_at'],
                      'context':link.get('context','')[:400],'review_required':True})
-        if len(rows)>=100: break
-    return rows
+        if card: rows[-1]['name_evidence'] = 'portfolio-card-company-heading'
+        if usv:
+            rows[-1]['name_evidence'] = label_evidence
+            rows[-1]['portfolio_card_text'] = link.get('text', '')[:140]
+    coverage = {'eligible_within_retained_links':len(seen), 'returned':len(rows),
+                'omitted_by_lead_limit':len(seen)-len(rows), 'profile_links_at_limit':len(links)==PROFILE_LINK_LIMIT}
+    if usv: coverage['unresolved_name_within_retained_links'] = len(unresolved_usv)
+    return rows, coverage
+
+
+def extract_profile_leads(partner, page, kind):
+    """Collect labelled links as unreviewed leads, never infer investment or employment."""
+    return profile_lead_batch(partner, page, kind)[0]
 
 def extract_profile_media_leads(partner, page, kind):
     """Keep labelled image and social URLs as unverified research, never as identity assertions."""
-    rows=[]
-    for image in page.get('image_candidates',[])[:100]:
-        rows.append({'partner':partner,'kind':'image','page_kind':kind,'name':image.get('alt',''),
-                     'candidate_url':image['url'],'source_url':page['final_url'],
-                     'checked_at':page['checked_at'],'review_required':True})
+    rows=[]; seen_images=set()
+    images=page.get('image_candidates',[])
+    label_paths={}
+    for image in images:
+        label=evidence_text(image.get('alt'),160).casefold()
+        if label:
+            parts=urlsplit(image['url'])
+            label_paths.setdefault(label,set()).add((parts.netloc.lower(),parts.path))
+    for image in images:
+        # This page already fixes the subject, source, time and kind. Keep
+        # distinct labels and URLs (including query variants) as evidence.
+        url=image['url']; label=image.get('alt','')
+        key=(url,label)
+        if key in seen_images: continue
+        seen_images.add(key)
+        row={'partner':partner,'kind':'image','page_kind':kind,'name':label,
+             'candidate_url':url,'source_url':page['final_url'],
+             'checked_at':page['checked_at'],'review_required':True}
+        # The raw label is not a person match. Signal reuse across observed
+        # image paths, not query/fragment variants or duplicate DOM nodes.
+        paths=len(label_paths.get(evidence_text(label,160).casefold(),()))
+        if paths>1: row['label_distinct_image_paths']=paths
+        rows.append(row)
+        if len(rows)>=100: break
     for item in page.get('links',[]):
         url=item.get('url',''); host=(urlsplit(url).hostname or '').lower()
         if any(host==h or host.endswith('.'+h) for h in ('linkedin.com','instagram.com','facebook.com','youtube.com','twitter.com','x.com')):
@@ -1220,6 +1434,29 @@ def page_fetch_coverage(results, candidates):
             'pages_skipped_or_failed':failed, 'unreviewed_candidates':len(candidates),
             'note':'Counts cover attempted pages only; they do not establish complete source coverage or verified facts.'}
 
+def profile_batch_coverage(results):
+    """Summarize measured team or portfolio pages without treating unmeasured kinds as zero."""
+    by_kind = {}
+    for result in results:
+        for page in result['pages']:
+            batch = page.get('profile_lead_coverage')
+            if batch is None: continue
+            report = by_kind.setdefault(page['profile_kind'], {
+                'pages_measured':0, 'eligible_within_retained_links':0,
+                'returned':0, 'omitted_by_lead_limit':0, 'pages_at_profile_link_limit':0,
+            })
+            for key in ('eligible_within_retained_links', 'returned', 'omitted_by_lead_limit'):
+                report[key] += batch[key]
+            if 'unresolved_name_within_retained_links' in batch:
+                key = 'unresolved_name_within_retained_links'
+                report[key] = report.get(key, 0) + batch[key]
+                measured = 'pages_measured_for_unresolved_names'
+                report[measured] = report.get(measured, 0) + 1
+            report['pages_measured'] += 1
+            report['pages_at_profile_link_limit'] += int(batch['profile_links_at_limit'])
+    return by_kind
+
+
 def crawl_profiles(catalogue,args,transport,company=False):
     seeds=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
     if args.partner: seeds=[s for s in seeds if args.partner.casefold() in s['name'].casefold()]
@@ -1257,13 +1494,16 @@ def crawl_profiles(catalogue,args,transport,company=False):
                 page=fetch(target['url'],host,scope); page['profile_kind']=target['kind']; pages.append(page)
                 if page['status']=='ok':
                     if target['kind'] in PROFILE_PATH_RULES:
-                        candidates.extend(extract_profile_leads(seed['name'],page,target['kind']))
+                        leads, page['profile_lead_coverage'] = profile_lead_batch(seed['name'],page,target['kind'])
+                        candidates.extend(leads)
                     candidates.extend(extract_profile_media_leads(seed['name'],page,target['kind']))
         results.append({'name':seed['name'],'url':seed['url'],'pages':pages,**({'crawl_scope':scope} if scope is not None else {}),
                         'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''})
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
+    coverage = page_fetch_coverage(results,candidates)
+    coverage['profile_leads_by_kind'] = profile_batch_coverage(results)
     return {'version':1,'mode':'profiles','generated_at':utc_now(),'results':results,'candidates':candidates,
-            'coverage':page_fetch_coverage(results,candidates),
+            'coverage':coverage,
             'warning':'Links are unreviewed leads, not verified people, roles, investments or current relationships. Verify each against its source before publishing.'}
 
 def logo_resolution(body, kind):
@@ -1320,6 +1560,34 @@ def fetch_image_bytes(transport, url):
     return body, kind, final
 
 
+def logo_capture_coverage(results, candidates):
+    """Summarise staged observations without treating capture as review or publication."""
+    coverage=page_fetch_coverage(results,candidates)
+    counts={status:0 for status in ('captured','duplicate','skipped','not_fetched')}
+    digests=set()
+    for row in candidates:
+        status=row['status']
+        counts[status]+=1
+        if status=='captured':
+            digests.add(row['sha256'])
+    for old, new in (
+        ('sources_attempted','source_entries'),('pages_attempted','page_observations'),
+        ('pages_succeeded','successful_page_observations'),
+        ('pages_skipped_or_failed','failed_page_observations'),
+    ):
+        coverage[new]=coverage.pop(old)
+    coverage['logo_candidates']={
+        'observed':len(candidates),
+        'capture_attempted':counts['captured']+counts['duplicate']+counts['skipped'],
+        **counts,
+        'distinct_captured_files':len(digests),
+    }
+    coverage['note']=('Page observations may reuse a fetch result and do not count requests. '
+        'Capture attempts count candidate processing, not HTTP exchanges. Candidate rows '
+        'may repeat across pages; file counts are distinct by SHA-256. No bytes are reviewed or published here.')
+    return coverage
+
+
 def stage_partner_logos(snapshot,args,transport):
     """Capture candidate bytes from the reviewed site or its explicitly approved asset hosts.
 
@@ -1356,6 +1624,7 @@ def stage_partner_logos(snapshot,args,transport):
                     except (CrawlError,ValueError,OSError) as exc: row.update(status='skipped',reason=str(exc))
                 rows.append(row)
     return {'version':1,'mode':'logos','generated_at':utc_now(),'results':snapshot['results'],'candidates':rows,
+            'coverage':logo_capture_coverage(snapshot['results'],rows),
             'warning':'Untrusted candidate files require identity, license and safety review before publishing. A favicon or social image may not be the partner logo.'}
 
 

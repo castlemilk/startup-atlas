@@ -4,8 +4,15 @@ const names = new Intl.DisplayNames(['en'], { type:'region', fallback:'none' });
 const isoCountries = 'AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW';
 const countryCodes = new Set(isoCountries.split(' '));
 const canonicalCountry = value => countryCodes.has(value) ? value : '';
-const countryOption = value => value === 'unknown' ? value : canonicalCountry(value);
-export const countryName = code => canonicalCountry(code) ? names.of(code) || code : 'Country not recorded';
+export const multipleHeadquarters = 'multiple';
+const countryOption = value => value === 'unknown' || value === multipleHeadquarters ? value : canonicalCountry(value);
+export const countryName = code => canonicalCountry(code) ? names.of(code) || code
+  : code === multipleHeadquarters ? 'Multiple headquarters' : 'Country not recorded';
+export function companyPlaceLabel({ country, city, location, businessBase } = {}) {
+  if (!country) return '';
+  const label = location || [city,countryName(country)].filter(Boolean).join(', ');
+  return businessBase ? label + ' · business base' : label;
+}
 const clean = (value, limit=160) => typeof value === 'string' ? value.trim().normalize('NFC').slice(0,limit) : '';
 const entityId = value => /^(?:startup|person|partner|provider|programme):[a-z0-9][a-z0-9_-]{0,159}$/i.test(value || '') ? value : '';
 const directoryType = value => ['all','startup','person','partner','provider','programme'].includes(value) ? value : '';
@@ -25,7 +32,7 @@ export function readExploration(params) {
     countries:selection(params.getAll('hq')),
     ...facetValues(key=>clean(params.get(key))),
     drillCountry,
-    drillCity:drillCountry && drillCountry!=='unknown' ? clean(params.get('city')) : '',
+    drillCity:canonicalCountry(drillCountry) ? clean(params.get('city')) : '',
     selected:entityId(params.get('selected')),
     graphAnchor:entityId(params.get('anchor')),
     directoryType:directoryType(params.get('type')),
@@ -39,7 +46,7 @@ export function writeExploration(params,state) {
   const place = countryOption(state.drillCountry);
   for (const [key,value] of [
     ['q',clean(state.query,200)], ...Object.entries(facetValues(key=>clean(state[key]))),
-    ['place',place], ['city',place && place!=='unknown' ? clean(state.drillCity) : ''],
+    ['place',place], ['city',canonicalCountry(place) ? clean(state.drillCity) : ''],
     ['selected',entityId(state.selected)], ['anchor',entityId(state.graphAnchor)],
     ['type',directoryType(state.entityKind ?? state.directoryType)], ['density',state.density==='compact' ? 'compact' : ''],
   ]) {
@@ -58,13 +65,24 @@ const cityPattern = /([\p{Lu}][\p{L}.'’–-]*(?:[ -][\p{Lu}][\p{L}.'’–-]*)
 const sourceDate = value => /^\d{4}(?:-\d{2}(?:-\d{2})?)?$/.test(value || '') ? value : '';
 const recordedStage = value => /^funding round(?: \(stage (?:not stated|undisclosed)\))?$/i.test(clean(value)) ? '' : clean(value);
 
+export function companyLocationFacts(facts) {
+  const sourced = facts.filter(fact => sourceUrl(fact.source));
+  const headquarters = sourced.filter(fact => /^(?:(?:(?:reported|global|primary) )?headquarters|co-headquarters)$/i.test(fact.label || ''));
+  return headquarters.length ? headquarters : sourced.filter(fact => /^business base$/i.test(fact.label || ''));
+}
+
 function headquarters(facts) {
   const locations = new Map();
-  for (const fact of facts) {
-    if (!/^(?:(?:reported|global|primary) )?headquarters$/i.test(fact.label || '')) continue;
+  const selected = companyLocationFacts(facts);
+  for (const fact of selected) {
     const value = clean(fact.value,320);
     const found = [...value.matchAll(locationPattern)];
-    if (new Set(found.map(match=>countryAliases.get(match[1].toLowerCase()))).size!==1) return {country:'',city:''};
+    const countries = new Set(found.map(match=>countryAliases.get(match[1].toLowerCase())));
+    if (/^co-headquarters$/i.test(fact.label)) {
+      return countries.size>1 && selected.length===1
+        ? {country:multipleHeadquarters,city:'',location:value} : {country:'',city:''};
+    }
+    if (countries.size!==1) return {country:'',city:''};
     const match = found[0];
     const country = countryAliases.get(match[1].toLowerCase());
     const valueStart = value.indexOf(match[1], match.index);
@@ -77,7 +95,11 @@ function headquarters(facts) {
   }
   if (locations.size!==1) return {country:'',city:''};
   const [[country,cities]] = locations;
-  return {country,city:cities.size===1 ? [...cities][0] : ''};
+  const city = cities.size===1 ? [...cities][0] : '';
+  const claim = selected.length===1 ? selected[0] : null;
+  const location = clean(claim?.value,320);
+  if (/^business base$/i.test(claim?.label || '')) return {country,city,location,businessBase:true};
+  return /\(historical\)$/i.test(location) ? {country,city,location} : {country,city};
 }
 
 export function indexCompanies(graph, technology = new Map()) {
