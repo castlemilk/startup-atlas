@@ -14,6 +14,9 @@ SOURCE = 'wa-carbon-innovation-grants-r3'
 DOCUMENTS = f'{SOURCE}-documents'
 REGISTRY = json.loads((ROOT / 'data/program-sources.json').read_text())
 FIXTURE = json.loads((ROOT / 'tests/fixtures/wa-carbon-programmes-crawl-45-46.json').read_text())
+STARTMATE_FIXTURE = json.loads(
+    (ROOT / 'tests/fixtures/startmate-offerings-crawl-45-46.json').read_text()
+)
 
 
 def replay(rows):
@@ -36,6 +39,8 @@ class ScopedProgrammeReplayTests(unittest.TestCase):
 
     def test_nearby_document_and_broad_directory_controls(self):
         rows = deepcopy(FIXTURE['runs']['45169210509'])
+        [startmate] = deepcopy(STARTMATE_FIXTURE['runs']['45169210509'])
+        rows = [startmate if row['id'] == startmate['id'] else row for row in rows]
         landing = rows[0]['pages'][0]
         landing['links'].extend([
             {'text':'Carbon Innovation Grant Programme Guide', 'context':'',
@@ -50,7 +55,9 @@ class ScopedProgrammeReplayTests(unittest.TestCase):
         self.assertFalse(any('wa.gov.au.example' in c['program_url'] for c in result['candidates']))
         self.assertTrue(any('Sample template of the funding agreement for pilot project' in c['label']
                             for c in result['candidates'] if c['source_id']==DOCUMENTS))
-        self.assertTrue(any(c['source_id'] == 'startmate-offerings' for c in result['candidates']))
+        self.assertIn('https://www.startmate.com/accelerator', [
+            c['program_url'] for c in result['candidates'] if c['source_id'] == 'startmate-offerings'
+        ])
 
 
 class QueenslandFemaleFoundersReplayTests(unittest.TestCase):
@@ -159,3 +166,51 @@ class IndiaSchemeNavigationReplayTests(unittest.TestCase):
                              for url in urls)
         result = replay(rows)
         self.assertTrue(set(urls).issubset(r['program_url'] for r in result['candidates']))
+
+
+class StartmateOfferingsReplayTests(unittest.TestCase):
+    source = 'startmate-offerings'
+    base = 'https://www.startmate.com'
+
+    def test_saved_offerings_keep_programme_links_not_audience_or_referral(self):
+        for run, rows in STARTMATE_FIXTURE['runs'].items():
+            with self.subTest(run=run):
+                result = replay(rows)
+                self.assertEqual(result['results'], rows)
+                page = rows[0]['pages'][0]
+                self.assertEqual(result['candidates'], [{
+                    'label': label, 'program_url': self.base + path, 'context': '',
+                    'source_id': self.source, 'source_name': 'Startmate programmes and offerings',
+                    'source_url': self.base + '/offerings', 'source_scope': 'Australia and New Zealand',
+                    'checked_at': page['checked_at'], 'review_required': True,
+                } for label, path in (
+                    ('Accelerator Accelerator', '/accelerator'),
+                    ('Student Founder Bootcamp Student Founder Bootcamp', '/student-founder-bootcamp'),
+                )])
+                self.assertEqual(result['coverage']['returned_candidates'], 2)
+
+    def test_exclusion_is_exact_and_keeps_nearby_programme_leads(self):
+        rows = deepcopy(STARTMATE_FIXTURE['runs']['45169210509'])
+        page = rows[0]['pages'][0]
+        excluded = (self.base + '/audience/founders/?source=nav', self.base + ':443/refer#start')
+        kept = (self.base + '/audience/founders-programme', self.base + '/refer-grants',
+                self.base + '.example/refer', self.base + ':444/refer')
+        page['links'] = [{'text': 'Startup Programme', 'url': u} for u in (*excluded, *kept)]
+        other_page = {**page, 'url': self.base + '/other-offerings',
+                      'final_url': self.base + '/other-offerings'}
+        lookalike_page = {**page, 'url': self.base + '.example/offerings',
+                          'final_url': self.base + '.example/offerings'}
+        rows[0]['pages'].extend([other_page, lookalike_page])
+        rows.append({**rows[0], 'id': 'another-source', 'pages': [page]})
+        result = replay(rows)
+        by_page = {}
+        for candidate in result['candidates']:
+            key = candidate['source_id'], candidate['source_url']
+            by_page.setdefault(key, []).append(candidate['program_url'])
+        self.assertEqual(by_page, {
+            (self.source, page['final_url']): list(kept),
+            (self.source, other_page['final_url']): list((*excluded, *kept)),
+            (self.source, lookalike_page['final_url']): list((*excluded, *kept)),
+            ('another-source', page['final_url']): list((*excluded, *kept)),
+        })
+        self.assertEqual(result['results'], rows)
