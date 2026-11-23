@@ -22,11 +22,12 @@ jobs:
       - name: Check patch and select tests
         id: changes
         if: github.event_name == 'pull_request'
-        env:
-          ATLAS_PR_BASE: ${{ github.event.pull_request.base.sha }}
         run: |
-          git diff --check "$ATLAS_PR_BASE" HEAD
-          python3 scripts/check_ci_paths.py "$ATLAS_PR_BASE" >> "$GITHUB_OUTPUT"
+          # With a shallow PR merge checkout, its first parent is the base tree
+          # that was actually tested, even if main advanced after the event.
+          atlas_pr_base=$(git rev-parse --verify HEAD^1)
+          git diff --check "$atlas_pr_base" HEAD
+          python3 scripts/check_ci_paths.py "$atlas_pr_base" >> "$GITHUB_OUTPUT"
       - name: Check CI routing
         if: steps.changes.outputs.ci == 'true'
         run: python3 -m unittest discover -s tests -p 'test_ci_paths.py'

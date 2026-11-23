@@ -40,7 +40,7 @@ function decodeJwt(token) {
 async function fetchJwks({ fetchImpl = fetch, jwksUrl = GOOGLE_JWKS_URL } = {}) {
   const now = Date.now();
   if (jwksCache.keys && now - jwksCache.fetchedAt < jwksCache.ttlMs) return jwksCache.keys;
-  const response = await fetchImpl(jwksUrl, { headers: { accept: 'application/json' } });
+  const response = await fetchImpl(jwksUrl, { redirect: 'manual', headers: { accept: 'application/json' } });
   if (!response.ok) throw new Error(`Could not fetch Google JWKS (${response.status}).`);
   const body = await response.json();
   if (!Array.isArray(body.keys) || body.keys.length === 0) throw new Error('Google JWKS returned no keys.');
@@ -59,7 +59,7 @@ export function clearJwksCache() {
  * Verify a Google-issued ID token. Returns { email, emailVerified, sub,
  * expiresAt, method: 'id_token' }. Throws on any verification failure.
  */
-export async function verifyGoogleIdToken(token, { clientId, fetchImpl = fetch, jwksUrl = GOOGLE_JWKS_URL } = {}) {
+export async function verifyGoogleIdToken(token, { clientId, nonce, fetchImpl = fetch, jwksUrl = GOOGLE_JWKS_URL } = {}) {
   if (!clientId) throw new Error('GOOGLE_CLIENT_ID is required to verify a Google ID token.');
   if (typeof token !== 'string' || token.split('.').length !== 3) throw new Error('Not a JWT.');
   const { header, payload, signingInput, signature } = decodeJwt(token);
@@ -73,6 +73,7 @@ export async function verifyGoogleIdToken(token, { clientId, fetchImpl = fetch, 
   if (!verified) throw new Error('Google ID token signature verification failed.');
   if (!GOOGLE_ISSUERS.includes(payload.iss)) throw new Error(`Unexpected token issuer: ${payload.iss}.`);
   if (payload.aud !== clientId) throw new Error('Token audience does not match GOOGLE_CLIENT_ID.');
+  if (nonce !== undefined && payload.nonce !== nonce) throw new Error('Google ID token nonce did not match.');
   if (typeof payload.exp !== 'number' || payload.exp * 1000 <= Date.now()) throw new Error('Google ID token has expired.');
   if (typeof payload.email !== 'string' || payload.email.length === 0) throw new Error('Google ID token carries no email.');
   const emailVerified = payload.email_verified === true || payload.email_verified === 'true';
@@ -88,7 +89,7 @@ export async function verifyGoogleAccessToken(token, { clientId, fetchImpl = fet
   if (!clientId) throw new Error('GOOGLE_CLIENT_ID is required to verify a Google access token.');
   const url = new URL(tokeninfoUrl);
   url.searchParams.set('access_token', token);
-  const response = await fetchImpl(url.toString(), { headers: { accept: 'application/json' } });
+  const response = await fetchImpl(url.toString(), { redirect: 'manual', headers: { accept: 'application/json' } });
   if (!response.ok) throw new Error(`Google tokeninfo rejected this token (${response.status}).`);
   const body = await response.json();
   if (body.aud !== clientId && body.audience !== clientId) throw new Error('Token audience does not match GOOGLE_CLIENT_ID.');

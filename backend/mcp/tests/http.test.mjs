@@ -18,18 +18,20 @@ const sha256B64u = value => b64u(createHash('sha256').update(value).digest());
 const { publicKey, privateKey } = generateKeyPairSync('rsa', { modulusLength: 2048 });
 const publicJwk = { ...publicKey.export({ format: 'jwk' }), kid: 'test-key', use: 'sig', alg: 'RS256' };
 
-function signIdToken({ email, aud, expInSeconds = 3600, iss = 'https://accounts.google.com' }) {
+function signIdToken({ email, aud, nonce, expInSeconds = 3600, iss = 'https://accounts.google.com' }) {
   const now = Math.floor(Date.now() / 1000);
   const header = { alg: 'RS256', typ: 'JWT', kid: 'test-key' };
-  const payload = { iss, aud, sub: 'google-sub-1', email, email_verified: true, iat: now, exp: now + expInSeconds };
+  const payload = { iss, aud, sub: 'google-sub-1', email, email_verified: true, iat: now, exp: now + expInSeconds, nonce };
   const input = `${b64u(JSON.stringify(header))}.${b64u(JSON.stringify(payload))}`;
   return `${input}.${b64u(cryptoSign('RSA-SHA256', Buffer.from(input), privateKey))}`;
 }
 
 let mockEmail = 'reader@example.com';
+let mockNonceMatches = true;
 let mockGooglePort;
 
 function startMockGoogle() {
+  const codes = new Map();
   const server = createHttpServer((req, res) => {
     const url = new URL(req.url, 'http://127.0.0.1');
     if (url.pathname === '/oauth2/v3/certs') {
@@ -39,7 +41,9 @@ function startMockGoogle() {
     }
     if (url.pathname === '/o/oauth2/v2/auth') {
       const target = new URL(url.searchParams.get('redirect_uri'));
-      target.searchParams.set('code', 'mock-google-code');
+      const code = b64u(randomBytes(16));
+      codes.set(code, url.searchParams.get('nonce'));
+      target.searchParams.set('code', code);
       target.searchParams.set('state', url.searchParams.get('state'));
       res.writeHead(302, { location: target.toString() });
       res.end();
@@ -50,9 +54,12 @@ function startMockGoogle() {
       req.on('data', chunk => { body += chunk; });
       req.on('end', () => {
         const form = new URLSearchParams(body);
-        if (form.get('code') !== 'mock-google-code') { res.writeHead(400, { 'content-type': 'application/json' }); res.end(JSON.stringify({ error: 'invalid_grant' })); return; }
+        const code = form.get('code');
+        const nonce = codes.get(code);
+        if (!codes.delete(code)) { res.writeHead(400, { 'content-type': 'application/json' }); res.end(JSON.stringify({ error: 'invalid_grant' })); return; }
         res.writeHead(200, { 'content-type': 'application/json' });
-        res.end(JSON.stringify({ access_token: 'mock-google-access', id_token: signIdToken({ email: mockEmail, aud: 'test-google-client' }), token_type: 'Bearer', expires_in: 3600 }));
+        const idToken = signIdToken({ email: mockEmail, aud: 'test-google-client', nonce: mockNonceMatches ? nonce : 'nonmatching-fixture' });
+        res.end(JSON.stringify({ access_token: 'mock-google-access', id_token: idToken, token_type: 'Bearer', expires_in: 3600 }));
       });
       return;
     }
@@ -219,6 +226,26 @@ test('dynamic client registration rejects non-https redirect URIs', async () => 
   assert.equal((await response.json()).error, 'invalid_redirect_uri');
 });
 
+test('MCP sessions are private to the account that opened them', async t => {
+  const endpoint = new URL('/mcp', readOnly.base);
+  const reader = signIdToken({ email: 'reader@example.com', aud: 'test-google-client' });
+  const writer = signIdToken({ email: 'writer@example.com', aud: 'test-google-client' });
+  const transport = new StreamableHTTPClientTransport(endpoint, { requestInit: { headers: { Authorization: `Bearer ${reader}` } } });
+  const client = new Client({ name: 'atlas-http-isolation-test', version: '1.0.0' });
+  t.after(async () => { await transport.terminateSession(); await client.close(); });
+  await client.connect(transport);
+  assert.ok(transport.sessionId);
+  const otherAccount = await fetch(endpoint, {
+    method: 'DELETE', headers: { 'mcp-session-id': transport.sessionId, Authorization: `Bearer ${writer}` },
+  });
+  assert.equal(otherAccount.status, 404);
+  const crossOrigin = await fetch(endpoint, {
+    method: 'DELETE', headers: { 'mcp-session-id': transport.sessionId, Authorization: `Bearer ${reader}`, Origin: 'https://other.example' },
+  });
+  assert.equal(crossOrigin.status, 403);
+  assert.equal((await client.listTools()).tools.length, 16);
+});
+
 test('full OAuth code flow through mock Google issues a working MCP access token', async t => {
   const register = await fetch(`${readOnly.base}/oauth/register`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ redirect_uris: ['http://127.0.0.1:18999/callback'], client_name: 'http-test-client' }) });
   assert.equal(register.status, 201);
@@ -229,7 +256,7 @@ test('full OAuth code flow through mock Google issues a working MCP access token
   const verifier = b64u(randomBytes(32));
   const challenge = sha256B64u(verifier);
 
-  async function runAuthorizeFlow(state) {
+  async function runAuthorizeFlow(state, expectedCallbackStatus = 302) {
     const authorizeUrl = new URL(`${readOnly.base}/oauth/authorize`);
     authorizeUrl.searchParams.set('response_type', 'code');
     authorizeUrl.searchParams.set('client_id', clientId);
@@ -238,6 +265,7 @@ test('full OAuth code flow through mock Google issues a working MCP access token
     authorizeUrl.searchParams.set('state', state);
     authorizeUrl.searchParams.set('code_challenge', challenge);
     authorizeUrl.searchParams.set('code_challenge_method', 'S256');
+    authorizeUrl.searchParams.set('resource', `${readOnly.base}/mcp`);
     const authorize = await fetch(authorizeUrl, { redirect: 'manual' });
     assert.equal(authorize.status, 302);
     const googleLocation = authorize.headers.get('location');
@@ -249,11 +277,22 @@ test('full OAuth code flow through mock Google issues a working MCP access token
     assert.equal(callbackUrl.origin, readOnly.base);
     assert.equal(callbackUrl.pathname, '/oauth/callback');
     const callback = await fetch(callbackUrl, { redirect: 'manual' });
-    assert.equal(callback.status, 302);
+    assert.equal(callback.status, expectedCallbackStatus);
+    if (expectedCallbackStatus !== 302) {
+      assert.match((await callback.json()).error_description, /nonce did not match/);
+      return null;
+    }
     const clientRedirect = new URL(callback.headers.get('location'));
     assert.equal(clientRedirect.origin, 'http://127.0.0.1:18999');
     assert.equal(clientRedirect.searchParams.get('state'), state);
     return clientRedirect.searchParams.get('code');
+  }
+
+  mockNonceMatches = false;
+  try {
+    await runAuthorizeFlow('nonce-check', 502);
+  } finally {
+    mockNonceMatches = true;
   }
 
   // The bad-verifier attempt consumes the single-use code, so each exchange

@@ -7,7 +7,7 @@ provider**. This is separate from the owner-private ChatGPT Site in
 `backend/hosted/` (see [backend/hosted/README.md](../backend/hosted/README.md)); it does not
 change that setup.
 
-## What it is — and is not
+## Service behaviour
 
 - Same tools, same behaviour: catalogue search/get/validate/add, partner
   search/get/validate/upsert, startup record reads/edits, and the
@@ -51,10 +51,10 @@ Deployments also need "Automatic deployments" enabled in the DeepHost
 console ("Deploy branch pushes") — it is off by default, and a push
 with it off deploys nothing and says nothing.
 
-## 1. Google Cloud Console setup (Ben — do this once)
+## 1. Google Cloud Console setup
 
-No Google OAuth client exists yet for this server, and one cannot be
-created from this machine. In [Google Cloud Console](https://console.cloud.google.com/apis/credentials):
+For a new host, configure a Google OAuth client for its callback in
+[Google Cloud Console](https://console.cloud.google.com/apis/credentials):
 
 1. Pick (or create) the Google Cloud project that should own the client.
 2. **OAuth consent screen**: configure it (user type External is fine for
@@ -83,8 +83,8 @@ npm run data:generate
 export GOOGLE_CLIENT_ID='YOUR_GOOGLE_CLIENT_ID'
 export GOOGLE_CLIENT_SECRET='YOUR_GOOGLE_CLIENT_SECRET'
 export ATLAS_HTTP_BASE_URL='https://mcp.example.com'
-export ATLAS_GOOGLE_ALLOWED_EMAILS='ben@dorja.com'
-export ATLAS_GOOGLE_WRITE_EMAILS='ben@dorja.com'
+export ATLAS_GOOGLE_ALLOWED_EMAILS='owner@example.com'
+export ATLAS_GOOGLE_WRITE_EMAILS='owner@example.com'
 # Omit --write for a read-only server; writes also need the email above.
 npm run mcp:http -- --write
 ```

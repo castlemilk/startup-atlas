@@ -53,6 +53,7 @@ const ACCESS_TOKEN_TTL_SECONDS = 3600;
 const REFRESH_TOKEN_TTL_SECONDS = 30 * 24 * 3600;
 const AUTH_CODE_TTL_SECONDS = 600;
 const LOGIN_SESSION_TTL_SECONDS = 600;
+const ACCESS_TOKEN_PREFIX = 'atlas-access-';
 
 const base64url = buffer => Buffer.from(buffer).toString('base64url');
 const randomToken = (bytes = 32) => base64url(randomBytes(bytes));
@@ -159,8 +160,9 @@ function isLoopbackRedirect(uri) {
 
 export function createHttpHandler(store, config, stores = createOAuthStores()) {
   validateConfig(config);
-  const sessions = new Map(); // MCP session id -> { transport, server }
+  const sessions = new Map();
   const issuer = new URL(config.baseUrl);
+  const mcpResource = `${config.baseUrl}/mcp`;
   const scopesSupported = ['openid', 'email', 'profile'];
   const resourceMetadataUrl = `${config.baseUrl}/.well-known/oauth-protected-resource/mcp`;
   const sweepTimer = setInterval(() => sweep(stores), 5 * 60 * 1000);
@@ -171,7 +173,7 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
 
   function issueTokens(email, sub, clientId, scopes, resource) {
     const now = Date.now();
-    const accessToken = randomToken();
+    const accessToken = ACCESS_TOKEN_PREFIX + randomToken();
     const refreshToken = randomToken();
     stores.accessTokens.set(accessToken, { email, sub, clientId, scopes, resource, expiresAt: now + ACCESS_TOKEN_TTL_SECONDS * 1000 });
     stores.refreshTokens.set(refreshToken, { email, sub, clientId, scopes, resource, expiresAt: now + REFRESH_TOKEN_TTL_SECONDS * 1000 });
@@ -186,6 +188,7 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       if (issued.expiresAt <= now) { stores.accessTokens.delete(token); return null; }
       return { email: issued.email, sub: issued.sub, clientId: issued.clientId, scopes: issued.scopes, source: 'mcp-oauth' };
     }
+    if (token.startsWith(ACCESS_TOKEN_PREFIX)) return null;
     try {
       const identity = await resolveGoogleIdentity(token, { clientId: config.googleClientId, fetchImpl: config.fetchImpl, jwksUrl: config.googleJwksUrl, tokeninfoUrl: config.googleTokeninfoUrl });
       return { email: identity.email, sub: identity.sub, clientId: 'google', scopes: scopesSupported, source: identity.method };
@@ -209,7 +212,7 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       return null;
     }
     if (!isEmailAllowed(identity.email, config.allowedEmails)) {
-      sendJson(res, 403, { error: 'forbidden', message: `Google account ${identity.email} is not in ATLAS_GOOGLE_ALLOWED_EMAILS.` });
+      sendJson(res, 403, { error: 'forbidden', message: 'This Google account is outside the allowed list.' });
       return null;
     }
     return {
@@ -227,30 +230,37 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
     return WRITE_TOOLS.includes(toolName);
   }
 
-  async function handleMcp(req, res, url) {
+  async function handleMcp(req, res) {
+    if (req.headers.origin && req.headers.origin !== issuer.origin) {
+      sendJson(res, 403, { error: 'forbidden', message: 'Unrecognized Origin for this MCP endpoint.' });
+      return;
+    }
     const authInfo = await authenticate(req, res);
     if (!authInfo) return;
     const sessionId = req.headers['mcp-session-id'];
+    const { clientId, extra: { email, sub } } = authInfo;
+    let session = typeof sessionId === 'string' ? sessions.get(sessionId) : undefined;
+    if (sessionId !== undefined && (!session || session.clientId !== clientId || session.email !== email || session.sub !== sub)) {
+      sendJson(res, 404, { error: 'not_found', message: 'Unknown MCP session id.' });
+      return;
+    }
+    req.auth = authInfo;
     if (req.method === 'POST') {
       let body;
       try { body = await readJsonBody(req); } catch (error) { sendJson(res, 400, { error: 'bad_request', message: error.message }); return; }
-      let session = typeof sessionId === 'string' ? sessions.get(sessionId) : undefined;
       if (!session) {
         const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: () => randomUUID() });
         const server = createServer(store, { writeAuthorizer });
         transport.onclose = () => { if (transport.sessionId) sessions.delete(transport.sessionId); };
         await server.connect(transport);
-        session = { transport, server };
+        session = { transport, clientId, email, sub };
       }
-      req.auth = authInfo;
       await session.transport.handleRequest(req, res, body);
       if (session.transport.sessionId) sessions.set(session.transport.sessionId, session);
       return;
     }
     if (req.method === 'GET' || req.method === 'DELETE') {
-      const session = typeof sessionId === 'string' ? sessions.get(sessionId) : undefined;
       if (!session) { sendJson(res, 404, { error: 'not_found', message: 'Unknown MCP session id.' }); return; }
-      req.auth = authInfo;
       await session.transport.handleRequest(req, res);
       return;
     }
@@ -302,14 +312,18 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
     const codeChallenge = params.get('code_challenge') ?? '';
     if (params.get('code_challenge_method') !== 'S256' || !codeChallenge) { sendOAuthError(res, 400, 'invalid_request', 'PKCE code_challenge with method S256 is required.'); return; }
     const resource = params.get('resource');
-    if (resource && resource !== config.baseUrl) { sendOAuthError(res, 400, 'invalid_target', `resource must be ${config.baseUrl}.`); return; }
+    if (resource && resource !== mcpResource && resource !== config.baseUrl) {
+      sendOAuthError(res, 400, 'invalid_target', `resource must be ${mcpResource}.`);
+      return;
+    }
     const scope = (params.get('scope') ?? '').split(/\s+/).filter(Boolean);
     if (scope.length > 0 && scope.some(item => !scopesSupported.includes(item))) { sendOAuthError(res, 400, 'invalid_scope', `Supported scopes: ${scopesSupported.join(' ')}.`); return; }
     const loginId = randomToken();
     const googleVerifier = randomToken(32);
+    const nonce = randomToken(16);
     stores.loginSessions.set(loginId, {
       clientId: client.clientId, redirectUri, state: params.get('state') ?? '', codeChallenge,
-      scope: scope.length > 0 ? scope : scopesSupported, resource: resource ?? config.baseUrl, createdAt: Date.now(), googleVerifier,
+      scope: scope.length > 0 ? scope : scopesSupported, resource: mcpResource, createdAt: Date.now(), googleVerifier, nonce,
     });
     const googleUrl = new URL(config.googleAuthUrl);
     googleUrl.searchParams.set('response_type', 'code');
@@ -317,7 +331,7 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
     googleUrl.searchParams.set('redirect_uri', `${config.baseUrl}/oauth/callback`);
     googleUrl.searchParams.set('scope', 'openid email profile');
     googleUrl.searchParams.set('state', loginId);
-    googleUrl.searchParams.set('nonce', randomToken(16));
+    googleUrl.searchParams.set('nonce', nonce);
     googleUrl.searchParams.set('code_challenge', sha256Base64url(googleVerifier));
     googleUrl.searchParams.set('code_challenge_method', 'S256');
     googleUrl.searchParams.set('access_type', 'offline');
@@ -328,9 +342,13 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
   async function handleCallback(req, res, url) {
     if (!oauthEnabled) { sendOAuthError(res, 503, 'temporarily_unavailable', 'GOOGLE_CLIENT_SECRET is not configured, so the OAuth flow is disabled.'); return; }
     const params = url.searchParams;
-    const login = stores.loginSessions.get(params.get('state') ?? '');
-    if (!login) { sendOAuthError(res, 400, 'invalid_request', 'Unknown or expired login session. Start again at /oauth/authorize.'); return; }
-    stores.loginSessions.delete(params.get('state'));
+    const state = params.get('state') ?? '';
+    const login = stores.loginSessions.get(state);
+    stores.loginSessions.delete(state);
+    if (!login || login.createdAt + LOGIN_SESSION_TTL_SECONDS * 1000 <= Date.now()) {
+      sendOAuthError(res, 400, 'invalid_request', 'Unknown or expired login session. Start again at /oauth/authorize.');
+      return;
+    }
     if (params.get('error')) {
       const target = new URL(login.redirectUri);
       target.searchParams.set('error', 'access_denied');
@@ -348,7 +366,9 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
         code, client_id: config.googleClientId, client_secret: config.googleClientSecret,
         redirect_uri: `${config.baseUrl}/oauth/callback`, grant_type: 'authorization_code', code_verifier: login.googleVerifier,
       });
-      const response = await config.fetchImpl(config.googleTokenUrl, { method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body });
+      const response = await config.fetchImpl(config.googleTokenUrl, {
+        method: 'POST', redirect: 'manual', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body,
+      });
       if (!response.ok) throw new Error(`Google token exchange failed (${response.status}).`);
       tokens = await response.json();
     } catch (error) {
@@ -358,7 +378,9 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
     if (!tokens.id_token) { sendOAuthError(res, 502, 'server_error', 'Google returned no ID token.'); return; }
     let identity;
     try {
-      identity = await verifyGoogleIdToken(tokens.id_token, { clientId: config.googleClientId, fetchImpl: config.fetchImpl, jwksUrl: config.googleJwksUrl });
+      identity = await verifyGoogleIdToken(tokens.id_token, {
+        clientId: config.googleClientId, nonce: login.nonce, fetchImpl: config.fetchImpl, jwksUrl: config.googleJwksUrl,
+      });
     } catch (error) {
       sendOAuthError(res, 502, 'server_error', `Could not verify the Google ID token: ${error.message}`);
       return;
@@ -366,7 +388,7 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
     if (!isEmailAllowed(identity.email, config.allowedEmails)) {
       const target = new URL(login.redirectUri);
       target.searchParams.set('error', 'access_denied');
-      target.searchParams.set('error_description', `Google account ${identity.email} is not in ATLAS_GOOGLE_ALLOWED_EMAILS.`);
+      target.searchParams.set('error_description', 'This Google account is outside the allowed list.');
       if (login.state) target.searchParams.set('state', login.state);
       res.writeHead(302, { location: target.toString() });
       res.end();
@@ -407,7 +429,10 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
     if (grantType === 'authorization_code') {
       const code = form.get('code') ?? '';
       const record = stores.authCodes.get(code);
-      if (!record) { sendOAuthError(res, 400, 'invalid_grant', 'Unknown or expired authorization code.'); return; }
+      if (!record || record.expiresAt <= Date.now()) {
+        sendOAuthError(res, 400, 'invalid_grant', 'Unknown or expired authorization code.');
+        return;
+      }
       stores.authCodes.delete(code);
       if (record.clientId !== clientId) { sendOAuthError(res, 400, 'invalid_grant', 'Authorization code was issued to a different client.'); return; }
       if (record.redirectUri !== (form.get('redirect_uri') ?? '')) { sendOAuthError(res, 400, 'invalid_grant', 'redirect_uri does not match the authorization request.'); return; }
@@ -420,7 +445,10 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
     if (grantType === 'refresh_token') {
       const presented = form.get('refresh_token') ?? '';
       const record = stores.refreshTokens.get(presented);
-      if (!record || record.clientId !== clientId) { sendOAuthError(res, 400, 'invalid_grant', 'Unknown or expired refresh token.'); return; }
+      if (!record || record.clientId !== clientId || record.expiresAt <= Date.now()) {
+        sendOAuthError(res, 400, 'invalid_grant', 'Unknown or expired refresh token.');
+        return;
+      }
       stores.refreshTokens.delete(presented);
       const scope = (form.get('scope') ?? '').split(/\s+/).filter(Boolean);
       const scopes = scope.length > 0 ? scope.filter(item => record.scopes.includes(item)) : record.scopes;
@@ -448,10 +476,10 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
         sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 16, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled });
         return;
       }
-      if (pathname === '/mcp') { await handleMcp(req, res, url); return; }
+      if (pathname === '/mcp') { await handleMcp(req, res); return; }
       if (pathname === '/.well-known/oauth-authorization-server' && req.method === 'GET') { sendJson(res, 200, oauthMetadata()); return; }
       if ((pathname === '/.well-known/oauth-protected-resource' || pathname === '/.well-known/oauth-protected-resource/mcp') && req.method === 'GET') {
-        sendJson(res, 200, { resource: `${config.baseUrl}/mcp`, authorization_servers: [config.baseUrl], scopes_supported: scopesSupported, bearer_methods_supported: ['header'] });
+        sendJson(res, 200, { resource: mcpResource, authorization_servers: [config.baseUrl], scopes_supported: scopesSupported, bearer_methods_supported: ['header'] });
         return;
       }
       if (pathname === '/oauth/register' && req.method === 'POST') { await handleRegister(req, res); return; }
