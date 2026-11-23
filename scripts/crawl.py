@@ -1988,6 +1988,76 @@ def stage_partner_logos(snapshot,args,transport):
             'warning':'Untrusted candidate files require identity, license and safety review before publishing. A favicon or social image may not be the partner logo.'}
 
 
+HEADSHOT_ALT_PATTERN = re.compile(r'^Photo of\s+(?P<name>.+?)\s*$', re.I)
+# Lowercase particles that legitimately appear inside a person's name.
+_HEADSHOT_NAME_PARTICLES = frozenset({
+    'van', 'von', 'de', 'der', 'den', 'del', 'della', 'di', 'da', 'do',
+    'dos', 'das', 'le', 'bin', 'ibn', 'al', 'ter', 'ten'})
+# Words that mark a caption as page imagery, never a person.
+_HEADSHOT_NON_PERSON_WORDS = frozenset({
+    'site', 'sites', 'headquarters', 'hq', 'facility', 'facilities',
+    'building', 'buildings', 'campus', 'office', 'offices', 'lab', 'labs',
+    'laboratory', 'logo', 'placeholder', 'team', 'group', 'staff', 'aerial'})
+
+
+def headshot_person_name(label):
+    """Return the person's name when an image label is a 'Photo of <name>' alt.
+
+    Only an explicit photographer-style caption counts: the text after
+    'Photo of' must read as a person's name — capitalised name tokens,
+    allowing honorifics ('Prof.', 'Dr.'), initials ('E.') and lowercase
+    particles ('van') — and must not name a place, facility or other page
+    imagery. Anything else returns None.
+    """
+    if not isinstance(label, str):
+        return None
+    match = HEADSHOT_ALT_PATTERN.match(' '.join(label.split()))
+    if not match:
+        return None
+    name = match.group('name')
+    tokens = name.split()
+    if not 1 <= len(tokens) <= 6:
+        return None
+    capitalised = 0
+    for token in tokens:
+        word = token.strip('.,')
+        if not word or word.casefold() in _HEADSHOT_NON_PERSON_WORDS:
+            return None
+        if word == word.casefold() and word.casefold() in _HEADSHOT_NAME_PARTICLES:
+            continue
+        if not (word[0].isupper()
+                and all(char.isalpha() or char in "'’.-" for char in word)):
+            return None
+        if len(word) >= 2:
+            capitalised += 1
+    return name if capitalised else None
+
+
+def filter_portrait_headshots(candidates):
+    """Keep only 'Photo of <name>' image rows as portraits-mode headshots.
+
+    Portraits mode inherits every page image observed by the company-profile
+    crawl; counting all of them as portrait candidates buried the real
+    headshot leads (crawl #46: 42 candidates, only 20 genuine headshots).
+    Non-image rows (social, company-profile, professional-bio, staged
+    portrait bytes) pass through unchanged; image rows survive only when
+    their alt text names a person, and gain that name as person_name.
+    Returns (kept, excluded_image_count).
+    """
+    kept = []
+    excluded = 0
+    for row in candidates:
+        if row.get('kind') != 'image':
+            kept.append(row)
+            continue
+        person = headshot_person_name(row.get('name'))
+        if person is None:
+            excluded += 1
+            continue
+        kept.append({**row, 'headshot': True, 'person_name': person})
+    return kept, excluded
+
+
 def stage_headshots(result, scopes, args, transport):
     """Fetch portrait bytes for professional-bio headshot candidates.
 
@@ -2039,8 +2109,16 @@ def crawl_portraits(args, transport):
     startups = json.loads((ROOT / 'data/startup-research.json').read_text(encoding='utf-8'))['startups']
     result = crawl_company_profiles(startups, args, transport)
     result['mode'] = 'portraits'
+    kept, excluded = filter_portrait_headshots(result['candidates'])
+    result['candidates'] = kept
     scopes = {row['name']: row.get('crawl_scope') for row in result['results']}
     result['candidates'].extend(stage_headshots(result, scopes, args, transport))
+    result['coverage'] = page_fetch_coverage(result['results'], result['candidates'])
+    headshots = sum(1 for row in kept if row.get('headshot'))
+    result['notes'] = [
+        f"{headshots} headshot candidates matched the 'Photo of <name>' "
+        f"alt-text rule; {excluded} other page images were excluded from "
+        'portrait candidates.']
     result['warning'] = ('Research-only page observations and unreviewed portrait bytes, '
                          'not verified headshots. Review each subject, role and asset '
                          'provenance before publication. No image is published by this mode.')

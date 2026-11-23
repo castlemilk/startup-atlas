@@ -958,6 +958,62 @@ class WorkflowTests(unittest.TestCase):
             scoped_rows=crawl.stage_headshots(result, scopes, types.SimpleNamespace(out=Path(tmp)), Fake())
             self.assertEqual(scoped_rows[-1]['reason'],'Scoped document approval does not authorize asset downloads')
 
+    def test_headshot_person_name_accepts_photo_of_a_person(self):
+        self.assertEqual(crawl.headshot_person_name('Photo of Jane Smith'), 'Jane Smith')
+        self.assertEqual(crawl.headshot_person_name('Photo of Prof. Jeremy O\'Brien'), 'Prof. Jeremy O\'Brien')
+        self.assertEqual(crawl.headshot_person_name('Photo of The Honorable Stephen E. Biegun'),
+                         'The Honorable Stephen E. Biegun')
+        self.assertEqual(crawl.headshot_person_name('Photo of Ludwig van Beethoven'), 'Ludwig van Beethoven')
+        self.assertEqual(crawl.headshot_person_name('  Photo of  Niklas Zennström '), 'Niklas Zennström')
+
+    def test_headshot_person_name_rejects_page_imagery(self):
+        # Logo, facility, hero/news captions and empty or missing alt text
+        # never name a person, even when they begin with 'Photo of'.
+        for label in ('', 'PsiQuantum', 'Logo Placeholder', 'Brisbane site',
+                      'PsiQuantum headquarters in Palo Alto, California',
+                      'Aerial view of the site under construction',
+                      'Photo of the team', 'Photo of Brisbane site',
+                      'Photo of Fab 8 in Malta, New York', None, 42):
+            self.assertIsNone(crawl.headshot_person_name(label), label)
+
+    def test_portrait_filter_keeps_only_photo_of_images(self):
+        def image(name, url):
+            return {'kind': 'image', 'name': name, 'candidate_url': url,
+                    'source_url': 'https://example.com/about', 'review_required': True}
+        rows = [image('Photo of Jane Smith', 'https://example.com/jane.jpg'),
+                image('Example Co', 'https://example.com/logo.png'),
+                image('Example headquarters in Palo Alto, California', 'https://example.com/hq.jpg'),
+                image('Example unveils new platform', 'https://example.com/hero.jpg'),
+                image('', 'https://example.com/blank.jpg'),
+                {'kind': 'social', 'name': 'LinkedIn',
+                 'candidate_url': 'https://www.linkedin.com/company/example',
+                 'source_url': 'https://example.com/about', 'review_required': True}]
+        kept, excluded = crawl.filter_portrait_headshots(rows)
+        self.assertEqual(excluded, 4)
+        self.assertEqual([row['kind'] for row in kept], ['image', 'social'])
+        self.assertTrue(kept[0]['headshot'])
+        self.assertEqual(kept[0]['person_name'], 'Jane Smith')
+        self.assertNotIn('headshot', kept[1])
+
+    def test_portrait_filter_psiquantum_shaped_page_yields_headshot_subset(self):
+        # Shaped like PsiQuantum's /about page in crawl #46: a block of
+        # 'Photo of <name>' team headshots mixed with facility photography.
+        source = 'https://example.com/about'
+        html = b'''<img alt="Example headquarters in Palo Alto, California" src="/hq.jpg">
+        <img alt="Photo of Victor Peng" src="/victor.jpg">
+        <img alt="Photo of Fariba Danesh" src="/fariba.jpg">
+        <img alt="Aerial view of the site under construction" src="/aerial.jpg">
+        <img alt="Photo of Dr. Pete Shadbolt" src="/pete.jpg">
+        <img alt="Logo Placeholder" src="/logo.png">'''
+        page = {'final_url': source, 'checked_at': '2026-11-23',
+                **crawl.extract_page(html, source)}
+        rows = crawl.extract_profile_media_leads('Example', page, 'about')
+        kept, excluded = crawl.filter_portrait_headshots(rows)
+        self.assertEqual(excluded, 3)
+        self.assertEqual([row['person_name'] for row in kept],
+                         ['Victor Peng', 'Fariba Danesh', 'Dr. Pete Shadbolt'])
+        self.assertTrue(all(row['headshot'] for row in kept))
+
     def test_approved_asset_host_rejects_urls_and_local_names(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'review.csv'
