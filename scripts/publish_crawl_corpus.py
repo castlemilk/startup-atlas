@@ -89,9 +89,18 @@ def dispatch_indexer(repo, token, run_id, modes, timeout=10):
 
 
 def publish(snapshots_dir, run_id, config, repo=None, token=None, dry_run=False):
-    """Upload snapshots; returns the receipt dict."""
+    """Upload snapshots; returns the receipt dict.
+
+    Uploads are attempted for every key even when some fail: one mode's
+    failure must not silently drop the remaining modes (crawl #46 lost
+    five of six modes when the logos latest.json overwrite failed first
+    and aborted the loop). Failures are collected and raised as a single
+    CorpusError after all modes have been attempted, so the step still
+    reports failure (the workflow marks it continue-on-error).
+    """
     uploaded = []
     skipped = []
+    failed = []
     modes = [mode for mode, _ in find_modes(snapshots_dir)]
     client = None if dry_run else client_for(config)
     for mode, latest_path in find_modes(snapshots_dir):
@@ -105,8 +114,17 @@ def publish(snapshots_dir, run_id, config, repo=None, token=None, dry_run=False)
             if dry_run:
                 skipped.append({'key': key, 'bytes': len(data), 'dry_run': True})
                 continue
-            result = client.put_object(key, data, 'application/json')
+            try:
+                result = client.put_object(key, data, 'application/json')
+            except CorpusError as exc:
+                failed.append({'key': key, 'error': str(exc)})
+                continue
             uploaded.append(result)
+    if failed:
+        summary = '; '.join(f"{f['key']}: {f['error']}" for f in failed)
+        raise CorpusError(
+            f'{len(failed)} corpus upload(s) failed after '
+            f'{len(uploaded)} succeeded: {summary}')
     dispatched = False
     if uploaded and not dry_run:
         dispatched = dispatch_indexer(repo, token, run_id, modes)

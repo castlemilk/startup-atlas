@@ -154,9 +154,16 @@ resource "google_project_iam_member" "indexer_logging" {
 # GitHub Actions (federated): crawl publishes snapshots to the corpus
 # bucket; the Actions indexer fallback reads the corpus and publishes the
 # index. This mirrors the corpus publisher's needs and nothing more.
+#
+# The corpus role must be objectAdmin, not objectCreator: the publisher
+# overwrites corpus/v1/crawl/<mode>/latest.json on every run, and a GCS
+# overwrite needs storage.objects.delete as well as storage.objects.create.
+# With objectCreator the run-id snapshots (new objects) landed but every
+# latest.json overwrite failed HTTP 403 — crawl #46 (23 Nov 2026) published
+# exactly one snapshot before its publish step aborted.
 resource "google_storage_bucket_iam_member" "github_corpus_create" {
   bucket = google_storage_bucket.corpus.name
-  role   = "roles/storage.objectCreator"
+  role   = "roles/storage.objectAdmin"
   member = "serviceAccount:${google_service_account.github_actions.email}"
 }
 

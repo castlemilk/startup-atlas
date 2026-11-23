@@ -80,6 +80,38 @@ class PublisherTests(unittest.TestCase):
         self.assertTrue(receipt['indexer_dispatched'])
         self.assertEqual(len(receipt['uploaded']), 4)
 
+    def test_one_mode_failure_does_not_drop_other_modes(self):
+        # Regression (crawl #46): the logos latest.json overwrite failed
+        # with HTTP 403 and aborted the publish, silently dropping the
+        # other five modes. Every key must now be attempted; failures are
+        # reported together at the end.
+        class FlakyClient(FakeClient):
+            def put_object(self, key, data, content_type='application/json'):
+                if key.endswith('/latest.json'):
+                    raise corpus.CorpusError(
+                        f'GCS POST b/{key} failed (HTTP 403)')
+                return super().put_object(key, data, content_type)
+
+        publisher.client_for = lambda config, **kw: FlakyClient()
+        flaky = publisher.client_for(None)
+        publisher.client_for = lambda config, **kw: flaky
+        config = corpus.CorpusConfig(
+            endpoint='https://example.invalid', bucket='b',
+            access_key='k', secret_key='s')
+        with tempfile.TemporaryDirectory() as tmp:
+            snapshots = self._snapshots(tmp)
+            with self.assertRaises(corpus.CorpusError) as ctx:
+                publisher.publish(snapshots, 'run-46', config)
+        self.assertIn('2 corpus upload(s) failed', str(ctx.exception))
+        self.assertIn('partners/latest.json', str(ctx.exception))
+        # Both modes' run snapshots were still uploaded.
+        self.assertEqual(
+            set(flaky.objects),
+            {
+                'corpus/v1/crawl/partners/run-46.json',
+                'corpus/v1/crawl/programs/run-46.json',
+            })
+
     def test_missing_stamped_snapshot_falls_back_to_latest(self):
         config = corpus.CorpusConfig(
             endpoint='https://example.invalid', bucket='b',
