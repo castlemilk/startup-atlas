@@ -101,6 +101,20 @@ class LegacyFundingParityTests(unittest.TestCase):
             "kind": "supports",
             "description": "Listed in a synthetic portfolio",
             "source": "https://portfolio.example/companies/orbit",
+            # Graph format v2 (docs/KG-CONNECTIVE-TISSUE.md §2): every edge
+            # carries freshness + confidence. This fixture edge has no
+            # reviewed_at, so the dates are null and the edge is stale —
+            # never invented.
+            "first_seen": None,
+            "last_verified": None,
+            "confidence": 0.5,
+            "confidence_basis": {
+                "sources": 1,
+                "source_types": ["secondary"],
+                "agreement": False,
+                "inferred": False,
+            },
+            "stale": True,
         }])
         self.assertNotIn("investors", graph)
         self.assertNotIn("participations", graph)

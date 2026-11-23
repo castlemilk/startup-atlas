@@ -170,7 +170,10 @@ test('unstamped, empty and missing-row revisions stay unknown; graph and databas
       database.run("DELETE FROM metadata WHERE key='source_revision'");
       assert.equal(Object.hasOwn(getGraph(database), 'source_revision'), false);
       assert.equal(rows(database, "SELECT value FROM metadata WHERE key='schema_version'")[0].value, '2');
-      assert.equal(input.version, 1);
+      // Graph format version 2 (docs/KG-CONNECTIVE-TISSUE.md §3) — a
+      // separate counter from the SQLite schema_version above; the two
+      // version spaces remain distinct fields even when values coincide.
+      assert.equal(input.version, 2);
       assert.equal(Object.hasOwn(getGraph(database), 'version'), false);
     } finally { database.close(); }
   }
