@@ -25,6 +25,7 @@ from atlas_corpus import CorpusConfig  # noqa: E402
 class GcsStubHandler(http.server.BaseHTTPRequestHandler):
     """Simulates the GCS JSON API (upload / download / metadata)."""
     store = {}
+    metadata = {}
     requests = []
     # Tokens the stub accepts; a request with any other Bearer token gets 401.
     valid_tokens = {'good-token'}
@@ -75,6 +76,22 @@ class GcsStubHandler(http.server.BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-Type', 'application/json')
         payload = json.dumps({'name': self._key_from_path()}).encode()
+        self.send_header('Content-Length', str(len(payload)))
+        self.end_headers()
+        self.wfile.write(payload)
+
+    def do_PATCH(self):
+        body = self._record('PATCH')
+        if not self._auth_ok():
+            self.send_response(401)
+            self.send_header('Content-Length', '0')
+            self.end_headers()
+            return
+        key = self._key_from_path()
+        type(self).metadata[key] = json.loads(body.decode('utf-8'))
+        payload = json.dumps({'name': key}).encode()
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
         self.send_header('Content-Length', str(len(payload)))
         self.end_headers()
         self.wfile.write(payload)
@@ -288,6 +305,22 @@ class GCSClientTests(unittest.TestCase):
     def test_put_json_and_get_json(self):
         self.client.put_json('latest.json', {'version': 'v1'})
         self.assertEqual(self.client.get_json('latest.json'), {'version': 'v1'})
+
+    def test_set_cache_control_patches_metadata(self):
+        result = self.client.set_cache_control('latest.json', 'no-cache')
+        self.assertEqual(
+            result, {'key': 'latest.json', 'cacheControl': 'no-cache'})
+        self.assertEqual(
+            GcsStubHandler.metadata['latest.json'],
+            {'cacheControl': 'no-cache'})
+        patch = next(
+            r for r in GcsStubHandler.requests if r['method'] == 'PATCH')
+        # The stub 401s any request without the good Bearer <redacted>, so a
+        # recorded 200 PATCH already proves auth; assert the header shape.
+        self.assertTrue(
+            patch['headers']['Authorization'].startswith('Bearer '))
+        self.assertEqual(json.loads(patch['body'].decode('utf-8')),
+                         {'cacheControl': 'no-cache'})
 
     def test_get_missing_raises_corpus_error(self):
         with self.assertRaises(gcp.CorpusError) as ctx:

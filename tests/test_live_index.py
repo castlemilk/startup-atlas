@@ -39,6 +39,11 @@ class FakeStore:
     def __init__(self, objects=None):
         self.objects = dict(objects or {})
         self.put_order = []
+        self.cache_control = {}
+
+    def set_cache_control(self, key, cache_control):
+        self.cache_control[key] = cache_control
+        return {'key': key, 'cacheControl': cache_control}
 
     def put_object(self, key, data, content_type='application/octet-stream'):
         if isinstance(data, str):
@@ -243,6 +248,10 @@ class LiveIndexTests(unittest.TestCase):
             self.assertEqual(
                 json.loads(store.objects['latest.json'])['version'],
                 version)
+            # The pointer is overwritten in place in a publicly readable
+            # bucket: it must be marked no-cache or readers (including
+            # the indexer itself) can be served a stale copy (#373).
+            self.assertEqual(store.cache_control, {'latest.json': 'no-cache'})
 
     def test_download_reviewed_corpus(self):
         files = indexer.read_reviewed_files(ROOT / 'data')

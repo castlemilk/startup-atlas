@@ -281,6 +281,24 @@ class GCSClient:
     def get_json(self, key):
         return json.loads(self.get_object(key).decode('utf-8'))
 
+    def set_cache_control(self, key, cache_control):
+        """Set an object's Cache-Control metadata via a JSON API PATCH.
+
+        Used for latest.json, the one object in the index bucket that is
+        overwritten in place. The bucket is publicly readable, and a
+        publicly readable object with no explicit Cache-Control may be
+        served from Google's download cache for up to an hour after an
+        overwrite — the stale read behind the #373 follow-up, where the
+        scheduler kept rebuilding because it kept reading the previous
+        pointer. Versioned objects are write-once and need no handling.
+        """
+        body = json.dumps({'cacheControl': cache_control}).encode('utf-8')
+        status, _ = self._request('PATCH', key, body, 'application/json')
+        if status != 200:
+            raise CorpusError(
+                f'GCS PATCH {self.bucket}/{key} returned HTTP {status}')
+        return {'key': key, 'cacheControl': cache_control}
+
     def head_object(self, key):
         """Return response metadata, or None when the object does not exist."""
         try:

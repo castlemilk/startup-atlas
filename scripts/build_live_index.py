@@ -242,6 +242,20 @@ def publish_index(out_dir, version, manifest, config):
     # Pointer last: a reader that sees the new pointer sees a complete version.
     pointer = json.loads((Path(out_dir) / 'latest.json').read_text(encoding='utf-8'))
     uploaded.append(client.put_json(index_latest_key(), pointer))
+    # latest.json is the one object overwritten in place, and the index
+    # bucket is publicly readable: with no explicit Cache-Control a
+    # publicly readable object may be served from Google's download
+    # cache for up to an hour after an overwrite. That stale read is
+    # what kept the scheduler republishing after the #373 fix — every
+    # tick read the pre-change pointer, saw a different corpus sha in
+    # its manifest, and rebuilt. Mark the pointer no-cache so readers
+    # (the indexer itself, the query console) always revalidate. The
+    # versioned objects are immutable and need no such handling. Only
+    # the GCS client implements set_cache_control; other backends are
+    # left as-is.
+    set_cache_control = getattr(client, 'set_cache_control', None)
+    if set_cache_control is not None:
+        set_cache_control(index_latest_key(), 'no-cache')
     return uploaded
 
 
