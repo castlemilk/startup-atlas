@@ -8,6 +8,7 @@ import { CatalogueStore } from './store.mjs';
 import { PartnerStore } from './partners.mjs';
 import { StartupStore } from './startups.mjs';
 import { CrawlRegistry, CRAWL_MODES, CRAWL_STATUSES } from './crawls.mjs';
+import { GitHubIssuesClient, DEFAULT_GITHUB_REPO } from './github-issues.mjs';
 import { startupEditSchema, startupIdSchema } from '../hosted/src/startup-edit.mjs';
 import { EntryError, opportunitySchema, provenanceSchema } from '../../scripts/catalogue-entries.mjs';
 
@@ -35,14 +36,20 @@ const tools = [
   { name: 'atlas_list_crawl_runs', description: 'List recorded crawl runs from data/crawl-runs.json, optionally filtered by mode, source, status or start date. Read-only; the registry is advisory and never triggers a crawl.', inputSchema: schema({ mode: { type: 'string', enum: CRAWL_MODES }, source_id: { type: 'string', maxLength: 200 }, status: { type: 'string', enum: CRAWL_STATUSES }, since: { type: 'string', maxLength: 100 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: readonly },
   { name: 'atlas_get_crawl_run', description: 'Read the full record for one crawl run ID, including its outcome, coverage reference and linked publication PR.', inputSchema: { ...schema({ run_id: { type: 'string', pattern: '^crawl-[0-9]{8}-[a-z0-9-]+-[0-9]{2}$' } }), required: ['run_id'] }, annotations: readonly },
   { name: 'atlas_get_crawl_claims', description: 'List current crawl claims per source, derived from claimed and running runs. A claim whose lease has expired is reported as stale, never as live.', inputSchema: schema({ mode: { type: 'string', enum: CRAWL_MODES }, source_id: { type: 'string', maxLength: 200 } }), annotations: readonly },
+  { name: 'atlas_create_issue', description: 'File a GitHub issue in the Startup Atlas repository (default castlemilk/startup-atlas) through the GitHub API, so the loop can populate issues itself. Requires --write and a configured ATLAS_GITHUB_TOKEN. Create-only: it never edits, closes or deletes an issue. With dedup_key it first searches for an open issue carrying the [kpi-backlog:KEY] marker and returns that issue instead of filing a duplicate. Never retries a create, so a failed call is never silently doubled.', inputSchema: { ...schema({ repo: { type: 'string', pattern: '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$', maxLength: 200 }, title: { type: 'string', minLength: 1, maxLength: 200 }, body: { type: 'string', minLength: 1, maxLength: 65536 }, labels: { type: 'array', maxItems: 10, items: { type: 'string', minLength: 1, maxLength: 50 } }, dedup_key: { type: 'string', pattern: '^[A-Z]+[0-9]+(-[a-z])?$' } }), required: ['title', 'body'] }, annotations: { ...readonly, readOnlyHint: false, idempotentHint: false } },
 ];
 
-export const WRITE_TOOLS = ['atlas_apply_startup_edit', 'atlas_upsert_partner', 'atlas_add_opportunity'];
+export const WRITE_TOOLS = ['atlas_apply_startup_edit', 'atlas_upsert_partner', 'atlas_add_opportunity', 'atlas_create_issue'];
 
 export function createServer(store, options = {}) {
   const partners = new PartnerStore(store.root, {writeEnabled:store.writeEnabled});
   const startups = new StartupStore(store.root, {writeEnabled:store.writeEnabled});
   const crawls = new CrawlRegistry(store.root);
+  // GitHub issue filing: the real client reads its token from
+  // ATLAS_GITHUB_TOKEN (passed in as options.githubToken). Tests may
+  // inject a fake client as options.githubIssues instead; either way
+  // the token never appears in a tool response or a log line.
+  const githubIssues = options.githubIssues ?? new GitHubIssuesClient({ token: options.githubToken ?? '', fetchImpl: options.githubFetch ?? fetch });
   const server = new Server({ name: 'startup-atlas', version: '1.0.0' }, { capabilities: { tools: {} } });
   server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));
   server.setRequestHandler(CallToolRequestSchema, async ({ params }, extra) => {
@@ -77,6 +84,14 @@ export function createServer(store, options = {}) {
         case 'atlas_list_crawl_runs': result = await crawls.list(args); break;
         case 'atlas_get_crawl_run': result = await crawls.get(args.run_id); break;
         case 'atlas_get_crawl_claims': result = await crawls.claims(args); break;
+        case 'atlas_create_issue': {
+          // Same gate as the other write tools, but checked here rather
+          // than in a store: filing an issue touches GitHub, not the
+          // local checkout, so no store can report READ_ONLY for it.
+          if (!store.writeEnabled) throw new EntryError('READ_ONLY', 'Writes are disabled. Restart this local server with --write only when repository edits are intended.');
+          result = await githubIssues.createIssue({ repo: args.repo ?? DEFAULT_GITHUB_REPO, title: args.title, body: args.body, labels: args.labels ?? [], dedupKey: args.dedup_key ?? null });
+          break;
+        }
       }
       return { content: [{ type: 'text', text: JSON.stringify(result) }], structuredContent: result };
     } catch (error) {
@@ -102,7 +117,9 @@ async function main() {
   }
   const store = new CatalogueStore(root, { writeEnabled });
   await store.snapshot(); // Fail before advertising tools if the repository is unusable.
-  await createServer(store).connect(new StdioServerTransport());
+  // ATLAS_GITHUB_TOKEN (if set) enables atlas_create_issue; without it
+  // the tool reports GITHUB_TOKEN_MISSING. The token is never logged.
+  await createServer(store, { githubToken: process.env.ATLAS_GITHUB_TOKEN ?? '' }).connect(new StdioServerTransport());
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   main().catch(error => { console.error(error.message); process.exitCode = 1; });

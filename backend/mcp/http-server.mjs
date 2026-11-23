@@ -2,7 +2,7 @@
 /**
  * Startup Atlas MCP over HTTP with Google OAuth.
  *
- * The same 16 tools as the stdio server (backend/mcp/server.mjs), exposed
+ * The same 17 tools as the stdio server (backend/mcp/server.mjs), exposed
  * over Streamable HTTP at /mcp, behind OAuth 2.0 where Google is the
  * identity provider:
  *
@@ -19,11 +19,16 @@
  * 1. No Bearer token, or a token that does not verify, is rejected (401).
  * 2. A verified Google account must be in ATLAS_GOOGLE_ALLOWED_EMAILS to
  *    call any tool (403 otherwise). An unset list allows nobody.
- * 3. The three write tools additionally require --write AND an email in
+ * 3. The four write tools additionally require --write AND an email in
  *    ATLAS_GOOGLE_WRITE_EMAILS (403 WRITE_FORBIDDEN otherwise).
+ *    `atlas_create_issue` additionally needs ATLAS_GITHUB_TOKEN; without
+ *    it the tool reports GITHUB_TOKEN_MISSING and files nothing.
  *
- * Nothing here triggers a crawl, fetches a source, shells out or talks to
- * Git. The crawl registry stays advisory, exactly as in the stdio server.
+ * Nothing here triggers a crawl, fetches a source, shells out or runs
+ * Git. The crawl registry stays advisory, exactly as in the stdio
+ * server. The one exception is `atlas_create_issue`, which calls the
+ * GitHub REST API (never the git binary) to file an issue — only when
+ * --write is on, the caller may write, and ATLAS_GITHUB_TOKEN is set.
  * No secret is ever hard-coded: GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET
  * come from the environment (see docs/MCP-HTTP.md for the Google Cloud
  * Console setup). Tokens and OAuth state live only in memory.
@@ -87,6 +92,7 @@ export function buildConfig(env = process.env, argv = process.argv.slice(2)) {
     googleTokeninfoUrl: env.ATLAS_GOOGLE_TOKENINFO_URL ?? env.GOOGLE_TOKENINFO_URL ?? GOOGLE_TOKENINFO_URL,
     allowedEmails: parseEmailAllowList(env.ATLAS_GOOGLE_ALLOWED_EMAILS),
     writeEmails: parseEmailAllowList(env.ATLAS_GOOGLE_WRITE_EMAILS),
+    githubToken: env.ATLAS_GITHUB_TOKEN ?? '',
     fetchImpl: fetch,
   };
 }
@@ -250,7 +256,7 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       try { body = await readJsonBody(req); } catch (error) { sendJson(res, 400, { error: 'bad_request', message: error.message }); return; }
       if (!session) {
         const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: () => randomUUID() });
-        const server = createServer(store, { writeAuthorizer });
+        const server = createServer(store, { writeAuthorizer, githubToken: config.githubToken });
         transport.onclose = () => { if (transport.sessionId) sessions.delete(transport.sessionId); };
         await server.connect(transport);
         session = { transport, clientId, email, sub };
@@ -473,7 +479,7 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       const url = new URL(req.url ?? '/', config.baseUrl);
       const pathname = url.pathname;
       if (pathname === '/health' && req.method === 'GET') {
-        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 16, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled });
+        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 17, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken) });
         return;
       }
       if (pathname === '/mcp') { await handleMcp(req, res); return; }

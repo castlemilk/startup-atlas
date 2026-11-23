@@ -158,7 +158,8 @@ test.after(async () => {
 test('health and OAuth discovery metadata are public and point at this server', async () => {
   const health = await (await fetch(`${readOnly.base}/health`)).json();
   assert.equal(health.status, 'ok');
-  assert.equal(health.tools, 16);
+  assert.equal(health.tools, 17);
+  assert.equal(health.githubIssuesConfigured, false);
   assert.equal(health.writeEnabled, false);
   assert.equal(health.auth, 'google-oauth');
   const as = await (await fetch(`${readOnly.base}/.well-known/oauth-authorization-server`)).json();
@@ -185,14 +186,22 @@ test('unauthenticated, forged and unlisted Google identities are rejected before
   assert.equal(stale.status, 401);
 });
 
-test('a verified Google ID token and a Google access token both open the same 16 tools over HTTP', async t => {
+test('a verified Google ID token and a Google access token both open the same 17 tools over HTTP', async t => {
   const idToken = signIdToken({ email: 'reader@example.com', aud: 'test-google-client' });
   const byId = await connectHttp(t, readOnly.base, idToken);
   const { tools } = await byId.listTools();
-  assert.equal(tools.length, 16);
+  assert.equal(tools.length, 17);
   assert.equal(decoded(await byId.callTool({ name: 'atlas_get_catalogue_info', arguments: {} })).writeEnabled, false);
   const byAccess = await connectHttp(t, readOnly.base, 'mock-google-access');
   assert.equal(decoded(await byAccess.callTool({ name: 'atlas_get_catalogue_info', arguments: {} })).opportunities >= 92, true);
+});
+
+test('atlas_create_issue over HTTP reports GITHUB_TOKEN_MISSING when no token is configured', async t => {
+  const writerToken = signIdToken({ email: 'writer@example.com', aud: 'test-google-client' });
+  const client = await connectHttp(t, writeServer.base, writerToken);
+  const result = await client.callTool({ name: 'atlas_create_issue', arguments: { title: 'x', body: 'y' } });
+  assert.equal(result.isError, true);
+  assert.equal(decoded(result).code, 'GITHUB_TOKEN_MISSING');
 });
 
 test('read-only HTTP server rejects writes, and a read-only Google account cannot write even with --write', async t => {
@@ -243,7 +252,7 @@ test('MCP sessions are private to the account that opened them', async t => {
     method: 'DELETE', headers: { 'mcp-session-id': transport.sessionId, Authorization: `Bearer ${reader}`, Origin: 'https://other.example' },
   });
   assert.equal(crossOrigin.status, 403);
-  assert.equal((await client.listTools()).tools.length, 16);
+  assert.equal((await client.listTools()).tools.length, 17);
 });
 
 test('full OAuth code flow through mock Google issues a working MCP access token', async t => {
@@ -321,7 +330,7 @@ test('full OAuth code flow through mock Google issues a working MCP access token
 
   const client = await connectHttp(t, readOnly.base, tokens.access_token);
   const { tools } = await client.listTools();
-  assert.equal(tools.length, 16);
+  assert.equal(tools.length, 17);
 
   const refreshed = await fetch(`${readOnly.base}/oauth/token`, {
     method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded', Authorization: `Basic ${b64u(`${clientId}:${clientSecret}`)}` },
