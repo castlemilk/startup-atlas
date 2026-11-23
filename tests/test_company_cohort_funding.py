@@ -33,6 +33,11 @@ class CompanyCohortFundingTests(unittest.TestCase):
         self.assertEqual(classify(excerpt, names, search_result=True), ('unmatched', []))
         self.assertEqual(classify(excerpt, {name_key('Exchange')}), ('unmatched', []))
         misleading = [
+            f'A proposal for {roster} {terms}',
+            f'Draft {roster} {terms}',
+            f'The accelerator {roster} {terms}',
+            f'{roster} {terms.replace("Each participating company", "The accelerator")}',
+            f'{roster.replace("Pi.Exchange,", "Pi.Exchange Foundation,")} {terms}',
             f'{roster} The programme was announced yesterday. {terms}',
             f'{roster} Each company is eligible for up to $5 million in future rounds.',
             f'{roster} A total of $1.5 million was committed across the cohort.',
