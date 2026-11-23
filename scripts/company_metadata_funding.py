@@ -851,7 +851,7 @@ def chips_support_clauses(excerpt, names):
 
 
 COHORT_LIST = re.compile(
-    r"[\w-]+(?: [\w-]+){0,4}['’]s (?:first|second|third) round of scale[- ]?ups "
+    rf"(?P<programme>{CAPITALIZED_NAME})['’]s (?:first|second|third) round of scale[- ]?ups "
     r"includes? (?P<recipients>[^!?;:]{1,420})\.", re.I,
 )
 COHORT_CAPITAL_MINIMUM = re.compile(
@@ -871,6 +871,9 @@ def cohort_capital_commitment(excerpt, names):
     for roster, terms in zip(statements, statements[1:]):
         listed = COHORT_LIST.fullmatch(roster)
         if not listed or not COHORT_CAPITAL_MINIMUM.fullmatch(terms):
+            continue
+        if re.search(r'\b(?:proposal|draft|hypothetical|proposed|possible|example|for|if|whether)\b',
+                     listed['programme'], re.I):
             continue
         if re.search(r'\b(?:which|who|excluded?|withdrew|formerly|mentor|conditional|pending)\b',
                      listed['recipients'], re.I):
