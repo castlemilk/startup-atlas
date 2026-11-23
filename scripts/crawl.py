@@ -2038,7 +2038,7 @@ def filter_portrait_headshots(candidates):
 
     Portraits mode inherits every page image observed by the company-profile
     crawl; counting all of them as portrait candidates buried the real
-    headshot leads (crawl #46: 42 candidates, only 20 genuine headshots).
+    headshot leads (crawl #46: 42 candidates, only 20 matching alt labels).
     Non-image rows (social, company-profile, professional-bio, staged
     portrait bytes) pass through unchanged; image rows survive only when
     their alt text names a person, and gain that name as person_name.
@@ -2112,9 +2112,24 @@ def crawl_portraits(args, transport):
     kept, excluded = filter_portrait_headshots(result['candidates'])
     result['candidates'] = kept
     scopes = {row['name']: row.get('crawl_scope') for row in result['results']}
-    result['candidates'].extend(stage_headshots(result, scopes, args, transport))
+    headshots = sum(1 for row in kept if row.get('kind') == 'image' and row.get('headshot'))
+    bios = [row for row in kept if row.get('kind') == 'professional-bio']
+    staged = stage_headshots(result, scopes, args, transport)
+    result['candidates'].extend(staged)
     result['coverage'] = page_fetch_coverage(result['results'], result['candidates'])
-    headshots = sum(1 for row in kept if row.get('headshot'))
+    staging = {status: sum(row['status'] == status for row in staged)
+               for status in ('captured', 'not_fetched', 'skipped')}
+    result['coverage']['portraits'] = {
+        'alt_label_leads': headshots,
+        'excluded_image_observations': excluded,
+        'professional_bio_rows': len(bios),
+        'bio_headshot_candidates': sum(bool(row.get('headshot_candidate')) for row in bios),
+        'staging_rows': len(staged),
+        # A guard inside staged retrieval may stop an attempt before HTTP.
+        'staging_attempted': staging['captured'] + staging['skipped'],
+        **staging,
+        'staged_bytes': sum(row['bytes'] for row in staged if row['status'] == 'captured'),
+    }
     result['notes'] = [
         f"{headshots} headshot candidates matched the 'Photo of <name>' "
         f"alt-text rule; {excluded} other page images were excluded from "
