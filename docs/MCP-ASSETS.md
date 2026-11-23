@@ -266,6 +266,17 @@ Crawl → review queue → convert → stage → publish → PR → live readbac
    portrait bytes for professional-bio headshot candidates. Candidate order
    prioritises structured/metadata logos and header logos over favicons, so
    the `--logo-limit` (3 in the workflow) fetches the real logo first.
+   In `latest-portraits.json`, `coverage.unreviewed_candidates` counts all
+   returned rows, including non-portrait leads. Use `coverage.portraits` to
+   distinguish alt-label leads and excluded images from professional-bio
+   rows, bio headshot candidates, and staging outcomes. A staging row may
+   be `captured`, `not_fetched` (held before staging), or `skipped` (the
+   guarded retrieval or write did not complete). `staging_attempted` is
+   captured plus skipped, not an HTTP request count. `staged_bytes` sums
+   captured row sizes, not unique files. These are observation counts,
+   not unique people, verified portraits or publication permissions.
+   Replaying the saved crawl #46 with the current filter yields 20
+   alt-label leads and zero bio headshot candidates or staged bytes.
 2. **Review queue.** Inspect each captured file's content (view the image),
    its kind, alt text/home-link evidence and source page. Reject social
    cards, favicons and portfolio logos as identity. Record the decision in a

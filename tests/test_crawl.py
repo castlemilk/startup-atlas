@@ -958,6 +958,82 @@ class WorkflowTests(unittest.TestCase):
             scoped_rows=crawl.stage_headshots(result, scopes, types.SimpleNamespace(out=Path(tmp)), Fake())
             self.assertEqual(scoped_rows[-1]['reason'],'Scoped document approval does not authorize asset downloads')
 
+    def test_portrait_coverage_separates_alt_leads_from_bio_and_staging_rows(self):
+        site = 'https://example.com'
+        page = {'url': site, 'status': 'ok', 'image_candidates': [{'alt': 'Photo of Ada Example'}]}
+        alt = {'kind': 'image', 'name': 'Photo of Ada Example', 'candidate_url': site + '/ada.png'}
+        other_image = {'kind': 'image', 'name': 'Office building'}
+        social = {'kind': 'social', 'name': 'LinkedIn'}
+        bios = []
+        for company, path, reason in (
+            ('Example', '/ada.png', 'Rights and image review required'),
+            ('Scoped', '/scoped.png', 'Rights and image review required'),
+            ('Example', '/unavailable.png', 'Rights and image review required'),
+            ('Example', '', 'External asset host requires separate review'),
+        ):
+            bio = {'kind': 'professional-bio', 'name': 'Ada Example', 'company': company,
+                   'source_url': site, 'review_required': True}
+            if path:
+                bio['headshot_candidate'] = {'candidate_url': site + path, 'source_url': site,
+                                              'status': 'not_fetched', 'reason': reason}
+            else:
+                bio['headshot_candidate'] = {'candidate_url': 'https://external.example/ada.png',
+                                              'source_url': site, 'status': 'not_fetched', 'reason': reason}
+            bios.append(bio)
+        bios.append({'kind': 'professional-bio', 'name': 'Bio without an image', 'company': 'Example'})
+        raw = {'results': [{'name': 'Example', 'pages': [page]},
+                           {'name': 'Scoped', 'crawl_scope': {'version': 1}, 'pages': []}],
+               'candidates': [alt, other_image, social, *bios]}
+        body = b'\x89PNG\r\n\x1a\nsynthetic'
+        transport = object()
+
+        def fetch(client, url):
+            self.assertIs(client, transport)
+            if url == site + '/ada.png':
+                return body, 'png', url
+            if url == site + '/unavailable.png':
+                raise crawl.CrawlError('Unavailable in mocked transport')
+            self.fail(f'Unexpected portrait staging target: {url}')
+
+        with tempfile.TemporaryDirectory() as tmp, patch.object(crawl, 'crawl_company_profiles',
+                return_value=raw), patch.object(crawl, 'fetch_image_bytes', side_effect=fetch) as requested:
+            result = crawl.crawl_portraits(types.SimpleNamespace(out=Path(tmp)), transport)
+            self.assertEqual([item.args[1] for item in requested.call_args_list],
+                             [site + '/ada.png', site + '/unavailable.png'])
+            self.assertEqual(result['results'][0]['pages'], [page])
+            self.assertEqual(result['candidates'][0], {**alt, 'headshot': True, 'person_name': 'Ada Example'})
+            self.assertEqual(result['candidates'][1:7], [social, *bios])
+            staged = result['candidates'][7:]
+            self.assertEqual([row['status'] for row in staged],
+                             ['captured', 'not_fetched', 'skipped', 'not_fetched'])
+            self.assertTrue(all(row['review_required'] for row in staged))
+            files = list((Path(tmp) / 'portrait-files').glob('*.bin'))
+            self.assertEqual([f.read_bytes() for f in files], [body])
+
+        self.assertEqual(result['coverage']['unreviewed_candidates'], 11)
+        self.assertEqual(result['coverage']['portraits'], {
+            'alt_label_leads': 1, 'excluded_image_observations': 1,
+            'professional_bio_rows': 5, 'bio_headshot_candidates': 4,
+            'staging_rows': 4, 'staging_attempted': 2, 'captured': 1,
+            'not_fetched': 2, 'skipped': 1, 'staged_bytes': len(body),
+        })
+
+    def test_portrait_coverage_reports_explicit_zero_staging_for_label_only(self):
+        candidates = [{'kind': 'image', 'name': 'Photo of Ada Example'},
+                      {'kind': 'company-profile', 'name': 'Example'}]
+        with (patch.object(crawl, 'crawl_company_profiles',
+                           return_value={'results': [], 'candidates': candidates}),
+              patch.object(crawl, 'stage_headshots', return_value=[]) as stage):
+            result = crawl.crawl_portraits(object(), object())
+        self.assertEqual(stage.call_args.args[0]['candidates'], result['candidates'])
+        self.assertEqual(result['coverage']['unreviewed_candidates'], 2)
+        self.assertEqual(result['coverage']['portraits'], {
+            'alt_label_leads': 1, 'excluded_image_observations': 0,
+            'professional_bio_rows': 0, 'bio_headshot_candidates': 0,
+            'staging_rows': 0, 'staging_attempted': 0, 'captured': 0,
+            'not_fetched': 0, 'skipped': 0, 'staged_bytes': 0,
+        })
+
     def test_headshot_person_name_accepts_photo_of_a_person(self):
         self.assertEqual(crawl.headshot_person_name('Photo of Jane Smith'), 'Jane Smith')
         self.assertEqual(crawl.headshot_person_name('Photo of Prof. Jeremy O\'Brien'), 'Prof. Jeremy O\'Brien')
