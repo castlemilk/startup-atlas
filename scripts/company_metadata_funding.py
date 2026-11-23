@@ -850,6 +850,38 @@ def chips_support_clauses(excerpt, names):
     return support
 
 
+COHORT_LIST = re.compile(
+    r"[\w-]+(?: [\w-]+){0,4}['’]s (?:first|second|third) round of scale[- ]?ups "
+    r"includes? (?P<recipients>[^!?;:]{1,420})\.", re.I,
+)
+COHORT_CAPITAL_MINIMUM = re.compile(
+    rf"Each participating company will receive a minimum of (?:(?:US|USD|AU|AUD)?"
+    rf"\${STATED_AMOUNT_NUMBER}) in capital as part of (?:a|the) (?:tailored )?"
+    r"(?:(?:three|six|nine|twelve|[1-9][0-9]?)-month )?(?:(?:accelerator|scale-up) )?program(?:me)?"
+    r"(?: addressing (?![^.!?;:]*\b(?:if|unless|subject to)\b)[^.!?;:]{1,120})?\.", re.I,
+)
+COHORT_LIST_GROUP = re.compile(
+    r"^(?:(?:fellow )?[\w-]+ (?:companies|outfits|scale[- ]?ups) )", re.I,
+)
+
+
+def cohort_capital_commitment(excerpt, names):
+    """Recognize named programme recipients without accepting an amount or a closed round."""
+    statements = [' '.join(part.split()) for part in ISSUER_FINANCIAL_BREAK.split(excerpt)]
+    for roster, terms in zip(statements, statements[1:]):
+        listed = COHORT_LIST.fullmatch(roster)
+        if not listed or not COHORT_CAPITAL_MINIMUM.fullmatch(terms):
+            continue
+        if re.search(r'\b(?:which|who|excluded?|withdrew|formerly|mentor|conditional|pending)\b',
+                     listed['recipients'], re.I):
+            continue
+        recipients = (name_key(COHORT_LIST_GROUP.sub('', member.strip()))
+                      for member in re.split(r',|\s+and\s+', listed['recipients'], flags=re.I))
+        if any(member in names for member in recipients):
+            return True
+    return False
+
+
 def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, search_result=False):
     clauses = CLAUSE_BREAK.split(excerpt)
     matching = [part for part in clauses if any(includes_name(part, name) for name in names)]
@@ -904,6 +936,8 @@ def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, sear
         for pattern in (SERIES, FINANCING_ROUND) for match in pattern.finditer(clause)
     ) or opening_round or report_round
     context = [label for label, pattern in CONTEXT.items() if pattern.search(excerpt)]
+    if not search_result and cohort_capital_commitment(excerpt, names):
+        context.append('programme_capital_commitment')
     if support:
         if 'grant_or_public_support' not in context:
             context.append('grant_or_public_support')
