@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  id-token: write
 jobs:
   crawl:
     runs-on: ubuntu-latest
@@ -60,3 +61,25 @@ jobs:
           path: research/crawl/
           if-no-files-found: warn
           retention-days: 14
+      - name: Authenticate to GCP (Workload Identity Federation)
+        id: gcp-auth
+        if: always()
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          token_format: access_token
+      - name: Publish crawl snapshots to the live-index corpus
+        # High-throughput push: snapshots land in object storage immediately;
+        # the async indexer (live-index.yml) picks them up from there. This
+        # step never fails the crawl, and skips cleanly until the
+        # ATLAS_CORPUS_* secrets exist.
+        if: always()
+        continue-on-error: true
+        env:
+          ATLAS_CORPUS_BACKEND: gcs
+          ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+          ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+          ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+          ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
+        run: python3 scripts/publish_crawl_corpus.py --snapshots research/crawl --run-id ${{ github.run_id }}

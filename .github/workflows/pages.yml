@@ -39,6 +39,7 @@ jobs:
         run: |
           node --test tests/catalogue.test.js tests/graph-data.test.js
           python3 -m unittest discover -s tests -p 'test_graph.py'
+          python3 -m unittest discover -s tests -p 'test_query_parquet.py'
       - name: Check search, relationships and financial views
         if: steps.changes.outputs.web == 'true'
         run: node --test tests/fuzzy-search.test.js tests/graph-layout.test.js tests/treemap.test.js tests/analytics.test.js
@@ -77,6 +78,9 @@ jobs:
       - name: Install site dependencies
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: npm ci --ignore-scripts
+      - name: Install Parquet build dependency
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: pip install pyarrow
       - name: Build the Pages snapshot
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: npm run build
