@@ -2124,6 +2124,24 @@ def crawl_portraits(args, transport):
                          'provenance before publication. No image is published by this mode.')
     return result
 
+WA_CARBON_LANDING = '/service/community-services/grants-and-subsidies/carbon-innovation-grants-program'
+WA_CARBON_IDENTITY = re.compile(r'\bcarbon[\s-]+innovation[\s-]+grants?[\s-]+program(?:me)?\b', re.I)
+
+
+def in_program_source_scope(source_id, source_url, label, target):
+    # This WA landing page is one grant, not a registry. Its rotating site
+    # recommendations and breadcrumb context are saved as raw observations,
+    # but should not be listed as discoveries for the named grant.
+    if source_id != 'wa-carbon-innovation-grants-r3':
+        return True
+    source = urlsplit(source_url)
+    if source.hostname != 'www.wa.gov.au' or source.path.rstrip('/') != WA_CARBON_LANDING:
+        return True
+    return target.hostname == source.hostname and bool(
+        WA_CARBON_IDENTITY.search(label) or WA_CARBON_IDENTITY.search(target.path.rsplit('/', 1)[-1])
+    )
+
+
 def crawl_program_directories(registry,args,transport):
     sources=registry['sources']
     seed_catalogue={'opportunities':[{'id':s['id'],'name':s['name'],'url':s['url'],'extra':[]} for s in sources], 'partnerLeads':[]}
@@ -2136,6 +2154,7 @@ def crawl_program_directories(registry,args,transport):
                 label=link.get('text','').strip(); context=link.get('context','').strip(); url=link.get('url','')
                 parsed=urlsplit(url)
                 if not label or not parsed.hostname or parsed.scheme!='https' or parsed.username or parsed.password: continue
+                if not in_program_source_scope(row['id'],page['final_url'],label,parsed): continue
                 if not PROGRAM_WORDS.search(' '.join((label,context,parsed.path))): continue
                 if label.casefold() in ('learn more','apply now','apply','read more','find out more','programs','programmes','home'): continue
                 # One programme can be listed by several directories or pages.
