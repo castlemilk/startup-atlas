@@ -885,7 +885,22 @@ def cohort_capital_commitment(excerpt, names):
     return False
 
 
+# Match a complete saved assertion before period-bearing issuer names are split
+# into clauses. This is a review cue, not a stage, date or amount extractor.
+INTERIM_ROUND_CLOSE = re.compile(
+    rf"(?P<issuer>{ISSUER_NAME}) (?:has )?closed (?:an|its) interim (?:funding |financing )?"
+    rf"round of {STATED_RAISE_AMOUNT} with (?:the )?participation (?:of|from) "
+    rf"(?:existing )?investors(?: and new ones)? including {CAPITALIZED_NAME}"
+    rf"(?:, (?:and )?{CAPITALIZED_NAME}| and {CAPITALIZED_NAME}){{0,12}}\.", re.I,
+)
+
+
 def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, search_result=False):
+    if not search_result:
+        wording = ' '.join(excerpt.split())
+        match = INTERIM_ROUND_CLOSE.fullmatch(wording)
+        if match and name_key(match['issuer']) in names and not SEED_WIRE_CONDITION.search(wording):
+            return 'round_lead', ['round_mention']
     clauses = CLAUSE_BREAK.split(excerpt)
     matching = [part for part in clauses if any(includes_name(part, name) for name in names)]
     if not matching and reviewed_round is None:
