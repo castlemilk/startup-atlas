@@ -85,3 +85,40 @@ class QueenslandFemaleFoundersReplayTests(unittest.TestCase):
         result = replay(rows)
         self.assertEqual([c['program_url'] for c in result['candidates']
                           if c['source_id'] == self.source], [self.target])
+
+
+class GoogleApacAcceleratorReplayTests(unittest.TestCase):
+    source = 'google-apac'
+    base = 'https://startup.google.com/intl/cloud/programs/accelerator/'
+    fixture = json.loads(
+        (ROOT / 'tests/fixtures/google-apac-programmes-crawl-45-46.json').read_text()
+    )
+
+    def test_saved_cards_survive_while_global_navigation_is_not_a_regional_lead(self):
+        for run, rows in self.fixture['runs'].items():
+            with self.subTest(run=run):
+                result = replay(rows)
+                self.assertEqual(result['results'], rows)
+                kept = [c for c in result['candidates'] if c['source_id'] == self.source]
+                self.assertEqual([c['program_url'] for c in kept], [self.base + name + '/' for name in (
+                    'australia-new-zealand', 'india', 'japan', 'korea', 'singapore', 'southeast-asia',
+                )])
+                self.assertTrue(all(c['review_required'] for c in kept))
+                self.assertIn('Cloud credits', [c['label'] for c in result['candidates']
+                                                if c['source_id'] == 'google-directory'])
+
+    def test_direct_regional_child_may_be_new_but_not_nested_or_another_host(self):
+        rows = deepcopy(self.fixture['runs']['45169210509'])
+        page = next(r['pages'][0] for r in rows if r['id'] == self.source)
+        regional = 'https://startup.google.com/programs/accelerator/new-region/'
+        page['links'].extend({'text': 'Accelerator regional programme', 'url': u} for u in (
+            regional,
+            regional + 'apply/',
+            regional.replace('startup.google.com', 'startup.google.com.example'),
+            regional.replace('new-region', 'asia-pacific'),
+            regional.replace('startup.google.com', 'startup.google.com:444'),
+        ))
+        result = replay(rows)
+        self.assertEqual([c['program_url'] for c in result['candidates']
+                          if c['source_id'] == self.source][-1:], [regional])
+        self.assertEqual(sum(c['source_id'] == self.source for c in result['candidates']), 7)

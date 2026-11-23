@@ -2130,10 +2130,19 @@ WA_CARBON_IDENTITY = re.compile(r'\bcarbon[\s-]+innovation[\s-]+grants?[\s-]+pro
 
 QLD_FEMALE_FOUNDERS_LANDING = '/grants-and-programs/female-founders-coinvestment-fund-qld'
 QLD_FEMALE_FOUNDERS_APPLICATION = '/grants-and-programs/female-founders-co-investment-fund'
+GOOGLE_APAC_LANDING = '/intl/cloud/programs/accelerator/asia-pacific'
+GOOGLE_ACCELERATOR_DETAIL = re.compile(r'/(?:intl/cloud/)?programs/accelerator/([a-z]+(?:-[a-z]+)*)/?')
 
 
 def in_program_source_scope(source_id, source_url, label, target):
     source = urlsplit(source_url)
+    # Keep same-site regional accelerator details, not the navigation back to
+    # the global index, cross-product tabs or translated copies of this list.
+    if (source_id == 'google-apac' and source.hostname == 'startup.google.com'
+            and source.path.rstrip('/') == GOOGLE_APAC_LANDING):
+        detail = GOOGLE_ACCELERATOR_DETAIL.fullmatch(target.path)
+        return (target.netloc.lower() in ('startup.google.com', 'startup.google.com:443')
+                and detail is not None and detail[1] != 'asia-pacific')
     # Preserve the saved application handoff to the named QLD fund, not
     # unrelated portal and registration navigation on its federal listing.
     if (source_id == 'qld-female-founders' and source.hostname == 'business.gov.au'
