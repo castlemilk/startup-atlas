@@ -29,6 +29,24 @@ class CiPathTests(unittest.TestCase):
         self.assertEqual(self.selected('server.js'), {'mcp'})
         self.assertEqual(self.selected('backend/internal/graph/service.go'), {'go'})
 
+    def test_query_dataset_changes_run_data_checks(self):
+        self.assertEqual(self.selected('scripts/build-query-parquet.py'), {'data'})
+        self.assertEqual(self.selected('tests/test_query_parquet.py'), {'data'})
+
+    def test_live_index_changes_run_data_checks(self):
+        self.assertEqual(self.selected('scripts/atlas_corpus.py'), {'data'})
+        self.assertEqual(self.selected('scripts/build_live_index.py'), {'data'})
+        self.assertEqual(self.selected('tests/test_atlas_corpus.py'), {'data'})
+        self.assertEqual(self.selected('tests/test_live_index.py'), {'data'})
+        self.assertEqual(
+            self.selected('.github/workflows/live-index.yml'), {'ci'})
+
+    def test_crawl_corpus_publisher_runs_collection_checks(self):
+        self.assertEqual(
+            self.selected('scripts/publish_crawl_corpus.py'), {'collection'})
+        self.assertEqual(
+            self.selected('tests/test_crawl_corpus.py'), {'collection'})
+
     @staticmethod
     def selected(*paths):
         return {name for name, enabled in lanes(paths).items() if enabled}

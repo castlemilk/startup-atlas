@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f9f8f5">
+  <meta name="description" content="Run SQL against the Startup Atlas catalogue in your browser with DuckDB. No data leaves your device.">
+  <!-- Live index: set content to the public index bucket's base URL (with a
+       trailing slash) to load the latest async-built index instead of the
+       static build output under ./data/query/. Empty means "use the static
+       build". See docs/LIVE-INDEX.md. -->
+  <meta name="atlas-live-index" content="https://storage.googleapis.com/single-station-515408-g9-atlas-index/">
+  <title>Query — Startup Atlas</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./graph.css">
+  <link rel="stylesheet" href="./query.css">
+  <link rel="stylesheet" href="./design-tokens.css">
+  <link rel="stylesheet" href="./atlas-ui.css">
+  <link rel="stylesheet" href="./atlas-sdk.css">
+  <!-- DuckDB-WASM's browser bundle imports the bare specifier 'apache-arrow',
+       and Arrow itself imports 'flatbuffers' and 'tslib'. Browsers cannot
+       resolve bare specifiers without an import map, so map all three to the
+       vendored copies (see scripts/build.mjs). The map must come before any
+       module script. Without it the page fails with "Module name,
+       'apache-arrow' does not resolve to a valid URL" and no query can run. -->
+  <script type="importmap">
+  {"imports": {
+    "apache-arrow": "./vendor/duckdb/apache-arrow/Arrow.dom.mjs",
+    "flatbuffers": "./vendor/duckdb/flatbuffers/flatbuffers.js",
+    "tslib": "./vendor/duckdb/tslib.mjs"
+  }}
+  </script>
+  <script type="module" src="./query.js"></script>
+  <script type="module" src="./atlas-ui.js"></script>
+  <script type="module" src="./atlas-sdk.js"></script>
+</head>
+<body class="atlas-query-page">
+  <a class="skip-link" href="#query-main">Skip to query console</a>
+  <header class="atlas-masthead" data-atlas-masthead="query"></header>
+  <main id="query-main" class="explorer-shell">
+    <header class="atlas-explorer-heading">
+      <div>
+        <h1 id="query-title">Query the Atlas</h1>
+        <p>Analytical SQL over the published catalogue, run locally in your browser with DuckDB. Nothing is uploaded; nothing leaves your device.</p>
+      </div>
+    </header>
+    <p class="query-status" id="query-status" role="status">Loading dataset…</p>
+    <div class="query-layout">
+      <section class="query-main" aria-labelledby="query-title">
+        <label class="query-label" for="query-sql">SQL</label>
+        <textarea id="query-sql" class="query-editor" rows="8" spellcheck="false" placeholder="SELECT kind, COUNT(*) AS n FROM opportunities GROUP BY kind ORDER BY n DESC"></textarea>
+        <div class="query-actions">
+          <button type="button" class="atlas-button query-run" id="query-run" disabled>Run query</button>
+          <button type="button" class="atlas-button query-download" id="query-download" disabled>Download CSV</button>
+          <span class="query-hint">Ctrl/⌘ + Enter runs the query. Only single SELECT (or WITH … SELECT) statements run here.</span>
+        </div>
+        <div class="query-results" id="query-results" aria-live="polite">
+          <p class="query-empty">No query run yet. Pick an example, or write your own.</p>
+        </div>
+        <noscript><p class="noscript">The query console needs JavaScript. The underlying <a href="./data/catalogue.json">catalogue data</a> is available directly.</p></noscript>
+      </section>
+      <aside class="query-side" aria-label="Tables and example queries">
+        <section aria-labelledby="query-tables-heading">
+          <h2 id="query-tables-heading">Tables</h2>
+          <p class="query-side-note" id="query-provenance">Dataset loading…</p>
+          <ul class="query-tables" id="query-tables"></ul>
+        </section>
+        <section aria-labelledby="query-examples-heading">
+          <h2 id="query-examples-heading">Example queries</h2>
+          <ul class="query-examples" id="query-examples"></ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

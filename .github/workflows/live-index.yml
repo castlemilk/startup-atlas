@@ -1,0 +1,55 @@
+name: Build live index
+# Async indexer for the live-index pipeline (docs/LIVE-INDEX.md): rebuilds the
+# versioned Parquet index from the reviewed corpus in object storage and
+# publishes it to the public index bucket, where the DuckDB query console
+# reads the latest version. Never writes to Git.
+on:
+  schedule:
+    # Poll: covers every writer (crawl, MCP, manual upload) even if a
+    # repository_dispatch is missed. A no-change run exits in seconds.
+    - cron: '*/15 * * * *'
+  repository_dispatch:
+    types: [corpus-updated]
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+concurrency:
+  group: live-index
+  cancel-in-progress: false
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    env:
+      ATLAS_SOURCE_REVISION: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Authenticate to GCP (Workload Identity Federation)
+        id: gcp-auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          token_format: access_token
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Parquet build dependency
+        run: pip install pyarrow
+      - name: Build and publish the live index
+        env:
+          ATLAS_CORPUS_BACKEND: gcs
+          ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+          ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+          ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+          ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
+          ATLAS_SOURCE_REVISION: ${{ github.sha }}
+        run: |
+          if [ -z "$ATLAS_CORPUS_BUCKET" ]; then
+            echo "Object storage is not configured; validating the indexer against the repo data/ files only (no publish)."
+            python3 scripts/build_live_index.py --corpus-dir data --out live-index
+            exit 0
+          fi
+          # First run: the corpus bucket has no reviewed files yet, so seed it
+          # from this checkout; later runs read from the store.
+          python3 scripts/build_live_index.py --corpus-store --bootstrap-from data --out live-index --publish

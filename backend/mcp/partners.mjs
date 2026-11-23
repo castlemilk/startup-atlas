@@ -2,6 +2,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import { readFile, lstat, realpath, open, rename, unlink } from 'node:fs/promises';
 import path from 'node:path';
 import { EntryError } from '../../scripts/catalogue-entries.mjs';
+import { publishAfterUpsert } from './corpus.mjs';
 
 const digest=(...parts)=>createHash('sha256').update(JSON.stringify(parts)).digest('hex');
 const normalize=s=>s.normalize('NFKC').toLocaleLowerCase().trim();
@@ -128,6 +129,7 @@ export class PartnerStore {
     try { lock=await open(this.lock,'wx',0o600); }
     catch(e) { if(e.code==='EEXIST') throw new EntryError('WRITE_BUSY','Another catalogue writer holds the lock.'); throw e; }
     let temporary;
+    let saved;
     try {
       await lock.writeFile(JSON.stringify({pid:process.pid,createdAt:new Date().toISOString()}));
       const s=await this.snapshot();
@@ -143,10 +145,14 @@ export class PartnerStore {
       if ((await this.snapshot()).revision!==expectedRevision) throw new EntryError('STALE_REVISION','Partner records changed during the write.');
       await rename(temporary,this.file); temporary=null;
       const directory=await open(path.dirname(this.file),'r'); try { await directory.sync(); } finally { await directory.close(); }
-      return {status:'saved',name,revision:(await this.snapshot()).revision,published:false,sourceFile:'data/partners-reviewed.json'};
+      saved={status:'saved',name,revision:(await this.snapshot()).revision,published:false,sourceFile:'data/partners-reviewed.json'};
     } finally {
       if (temporary) await unlink(temporary).catch(()=>{});
       await lock.close(); await unlink(this.lock);
     }
+    // Best-effort live-index feed, after the lock is released: the corpus
+    // publish never holds the write lock and never fails the upsert.
+    saved.liveIndex=await publishAfterUpsert({root:this.root,filename:'partners-reviewed.json'});
+    return saved;
   }
 }

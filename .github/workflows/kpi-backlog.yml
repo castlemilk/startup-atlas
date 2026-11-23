@@ -1,0 +1,42 @@
+name: File KPI backlog issues
+# Files GitHub issues from data/kpi-backlog.json using only the default
+# GITHUB_TOKEN — no extra secrets, and no agent needs issue permission.
+# The KPI loop appends entries to the backlog file (scripts/kpi_backlog.py
+# add); this workflow turns each open entry into an issue, once.
+#
+# Idempotency: an entry is keyed by its `key` (e.g. F3), which appears in
+# the issue title as [kpi-backlog:F3]. Before creating, the script
+# searches for an issue with that key and the kpi-backlog label, in ANY
+# state, and skips the entry if one exists. A filed issue is therefore
+# never re-filed — to re-file, reopen the issue or change the key.
+#
+# No self-trigger: this workflow only creates issues. It never commits,
+# never pushes, and never edits the backlog file, so it cannot trigger
+# itself through the push trigger below. Issue creation does not fire
+# push events either.
+on:
+  push:
+    branches: [main]
+    paths: ['data/kpi-backlog.json']
+  schedule:
+    # Daily backstop (08:15 AEDT) in case a push event was missed.
+    - cron: '15 21 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: kpi-backlog
+  cancel-in-progress: false
+jobs:
+  file-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: File open backlog entries as issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/kpi_backlog.py file
