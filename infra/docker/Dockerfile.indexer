@@ -1,0 +1,30 @@
+# Indexer image for the Cloud Run Job (infra/terraform/main.tf).
+#
+# The indexer is the repo's own scripts/build_live_index.py plus the Parquet
+# builder it imports (scripts/build-query-parquet.py) and the reviewed data
+# files it bootstraps from. The image carries a copy of data/ at build time
+# purely for the first-run bootstrap: later runs read the reviewed corpus
+# out of the GCS bucket, so the image never needs rebuilding for data
+# changes — only when the scripts change.
+#
+# Build (run by `task image`, which passes the source revision through):
+#   docker build -f infra/docker/Dockerfile.indexer \
+#     --build-arg SOURCE_REVISION=$(git rev-parse HEAD) -t <image> .
+#
+# scripts/build-query-parquet.py already tolerates a missing git binary
+# (git_revision() returns ''), and honours ATLAS_SOURCE_REVISION, so no git
+# is installed or needed in the image.
+
+FROM python:3.12-slim
+
+RUN pip install --no-cache-dir pyarrow
+
+WORKDIR /app
+
+COPY scripts/ ./scripts/
+COPY data/ ./data/
+
+ARG SOURCE_REVISION=""
+ENV ATLAS_SOURCE_REVISION=$SOURCE_REVISION
+
+CMD ["python3", "scripts/build_live_index.py", "--corpus-store", "--bootstrap-from", "data", "--out", "/tmp/live-index", "--publish"]
