@@ -2128,13 +2128,23 @@ WA_CARBON_LANDING = '/service/community-services/grants-and-subsidies/carbon-inn
 WA_CARBON_IDENTITY = re.compile(r'\bcarbon[\s-]+innovation[\s-]+grants?[\s-]+program(?:me)?\b', re.I)
 
 
+QLD_FEMALE_FOUNDERS_LANDING = '/grants-and-programs/female-founders-coinvestment-fund-qld'
+QLD_FEMALE_FOUNDERS_APPLICATION = '/grants-and-programs/female-founders-co-investment-fund'
+
+
 def in_program_source_scope(source_id, source_url, label, target):
+    source = urlsplit(source_url)
+    # Preserve the saved application handoff to the named QLD fund, not
+    # unrelated portal and registration navigation on its federal listing.
+    if (source_id == 'qld-female-founders' and source.hostname == 'business.gov.au'
+            and source.path.rstrip('/') == QLD_FEMALE_FOUNDERS_LANDING):
+        return (target.netloc.lower() in ('innovation.qld.gov.au', 'innovation.qld.gov.au:443')
+                and target.path.rstrip('/') == QLD_FEMALE_FOUNDERS_APPLICATION)
     # This WA landing page is one grant, not a registry. Its rotating site
     # recommendations and breadcrumb context are saved as raw observations,
     # but should not be listed as discoveries for the named grant.
     if source_id != 'wa-carbon-innovation-grants-r3':
         return True
-    source = urlsplit(source_url)
     if source.hostname != 'www.wa.gov.au' or source.path.rstrip('/') != WA_CARBON_LANDING:
         return True
     return target.hostname == source.hostname and bool(

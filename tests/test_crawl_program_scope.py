@@ -51,3 +51,37 @@ class ScopedProgrammeReplayTests(unittest.TestCase):
         self.assertTrue(any('Sample template of the funding agreement for pilot project' in c['label']
                             for c in result['candidates'] if c['source_id']==DOCUMENTS))
         self.assertTrue(any(c['source_id'] == 'startmate-offerings' for c in result['candidates']))
+
+
+class QueenslandFemaleFoundersReplayTests(unittest.TestCase):
+    source = 'qld-female-founders'
+    target = 'https://innovation.qld.gov.au/grants-and-programs/female-founders-co-investment-fund'
+    fixture = json.loads(
+        (ROOT / 'tests/fixtures/qld-female-founders-programmes-crawl-45-46.json').read_text()
+    )
+
+    def test_saved_single_fund_keeps_the_state_application_not_generic_navigation(self):
+        for run, rows in self.fixture['runs'].items():
+            with self.subTest(run=run):
+                result = replay(rows)
+                self.assertEqual(result['results'], rows)
+                rows_for_fund = [c for c in result['candidates'] if c['source_id'] == self.source]
+                self.assertEqual([(c['label'], c['program_url']) for c in rows_for_fund],
+                                 [('Learn how to apply', self.target)])
+                self.assertTrue(rows_for_fund[0]['review_required'])
+                self.assertIn('Research and Development Tax Incentive portal', [
+                    c['label'] for c in result['candidates'] if c['source_id'] == 'au-grants'
+                ])
+
+    def test_similarly_named_hosts_and_unrelated_state_grants_do_not_match(self):
+        rows = deepcopy(self.fixture['runs']['45169210509'])
+        page = next(row['pages'][0] for row in rows if row['id'] == self.source)
+        for url in (
+            self.target.replace('innovation.qld.gov.au', 'innovation.qld.gov.au.example'),
+            self.target.replace('innovation.qld.gov.au', 'innovation.qld.gov.au:444'),
+            self.target + '-other',
+        ):
+            page['links'].append({'text': 'Female Founders Co-Investment Fund', 'url': url})
+        result = replay(rows)
+        self.assertEqual([c['program_url'] for c in result['candidates']
+                          if c['source_id'] == self.source], [self.target])
