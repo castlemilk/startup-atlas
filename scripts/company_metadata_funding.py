@@ -1,6 +1,7 @@
 """Prioritize early financing leads in saved evidence for offline review."""
 
 from collections import defaultdict
+from decimal import Decimal
 import json
 import re
 from urllib.parse import urlsplit
@@ -895,12 +896,48 @@ INTERIM_ROUND_CLOSE = re.compile(
 )
 
 
-def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, search_result=False):
+# Narrow saved-statement cue: the issuer reports new AUD capital, an earlier
+# raise, a consistent cumulative seed total, and a named lead for this round.
+# Validate the roles without emitting any numerical funding metadata.
+def seed_topup_millions(role):
+    return rf'(?:A|AU|AUD)\$(?P<{role}>[0-9]{{1,6}}(?:\.[0-9]{{1,3}})?)(?:M| million)'
+
+
+SEED_TOPUP = re.compile(
+    rf'(?P<issuer>{ISSUER_NAME}) (?:has )?secured an additional {seed_topup_millions("new")} in funding, '
+    rf'on top of (?P<original_owner>our|its) original {seed_topup_millions("prior")} raised [1-9][0-9]? months ago, '
+    rf'bringing (?P=original_owner) total seed raise to {seed_topup_millions("total")}\. '
+    rf'This round was led by (?P<lead>{CAPITALIZED_NAME}), supported by '
+    rf'(?P<supporters>{CAPITALIZED_NAME}(?:, (?:and )?{CAPITALIZED_NAME}| and {CAPITALIZED_NAME}){{0,8}})\.',
+    re.I,
+)
+
+
+def saved_seed_topup(wording, names, *, issuer_source):
+    match = SEED_TOPUP.fullmatch(wording)
+    if not match or name_key(match['issuer']) not in names or SEED_WIRE_CONDITION.search(wording):
+        return False
+    if match['original_owner'].lower() == 'our' and not issuer_source:
+        return False
+    if any(pattern.search(wording) for pattern in CONTEXT.values()):
+        # Preserve the existing classifier's grant, contract and other context.
+        return False
+    supporters = re.split(r', (?:and )?| and ', match['supporters'], flags=re.I)
+    if any(UNCLEAR_INVESTOR_LABEL.search(name_key(name)) for name in [match['lead'], *supporters]):
+        return False
+    new, prior, total = (Decimal(match[role]) for role in ('new', 'prior', 'total'))
+    return new > 0 and prior > 0 and new + prior == total
+
+
+def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, search_result=False,
+             issuer_source=False):
     if not search_result:
         wording = ' '.join(excerpt.split())
         match = INTERIM_ROUND_CLOSE.fullmatch(wording)
         if match and name_key(match['issuer']) in names and not SEED_WIRE_CONDITION.search(wording):
             return 'round_lead', ['round_mention']
+        if saved_seed_topup(wording, names, issuer_source=issuer_source):
+            return 'early_round_lead', ['round_mention', 'early_stage_mention']
     clauses = CLAUSE_BREAK.split(excerpt)
     matching = [part for part in clauses if any(includes_name(part, name) for name in names)]
     if not matching and reviewed_round is None:
@@ -1059,7 +1096,8 @@ def saved_results(captures, host, names, *, reviewed_rounds=None, reviewed_artic
                 reviewed_round = reviewed_rounds.get(url) if reviewed_rounds and acquisition == 'page_excerpt' else None
                 reviewed_article = reviewed_articles.get(url) if reviewed_articles and acquisition == 'page_excerpt' else None
                 bucket, signals = classify(excerpt, names, reviewed_round=reviewed_round, reviewed_article=reviewed_article,
-                                           search_result=acquisition == 'search_result')
+                                           search_result=acquisition == 'search_result',
+                                           issuer_source=website_host(url) == host)
                 if (issuer_excerpt and bucket == 'context' and 'backing_context' in signals
                         and issuer_investor_update(excerpt, names)):
                     signals.append('existing_round_investor_update')
