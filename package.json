@@ -6,7 +6,8 @@
     "@tanstack/query-core": "5.107.1",
     "@tanstack/table-core": "8.21.3",
     "@ui-sdk/core": "0.1.0-beta.6",
-    "@ui-sdk/web": "0.1.0-beta.6"
+    "@ui-sdk/web": "0.1.0-beta.6",
+    "loom-core": "https://castlemilk.github.io/loom/packages/5fd948e7c510048caf1699fd25131e98965aff5a/loom-core-0.1.0.tgz"
   },
   "scripts": {
     "test": "npm run data:generate && node --test tests/*.test.js && python3 -m unittest discover -s tests -p \"test_*.py\" && npm run audit:images",

@@ -1,4 +1,4 @@
-import { countryName, indexCompanies } from './atlas-exploration.js';
+import { companyPlaceLabel, indexCompanies, legacyListUrl } from './atlas-exploration.js';
 import { renderIcon } from './atlas-icons.js';
 import { entityHref } from './graph-model.js';
 import { openGraph } from './graph-store.js';
@@ -16,11 +16,12 @@ export function installWorkspace(doc,safeReturn) {
   let state = newWorkspace(), mode = 'saved', graph = null, dimensions = null;
   let loading = false, unavailable = false, fallbackOpener, companyScope;
 
-  function explorerLink(value) {
+  function explorerLink(value, migrate=true) {
     const safe = safeReturn(value,view.location.href);
     if (!safe) return null;
-    const url = new URL(safe,view.location.href);
-    if (!['','index.html','graph.html','treemap.html'].includes(url.pathname.split('/').pop())) return null;
+    const current = new URL(safe,view.location.href);
+    const url = (migrate && legacyListUrl(current)) || current;
+    if (!['','index.html','list.html','graph.html','treemap.html'].includes(url.pathname.split('/').pop())) return null;
     url.searchParams.delete('embed');
     url.searchParams.sort();
     return url.pathname + url.search + url.hash;
@@ -32,7 +33,8 @@ export function installWorkspace(doc,safeReturn) {
       for (const key of Object.keys(state)) {
         const records = raw?.[key];
         state[key] = Object.fromEntries(Object.entries(records ?? {}).filter(([id,value])=>
-          typeof value==='string' && (key==='views' ? explorerLink(id)===id : startupId.test(id))));
+          typeof value==='string' && (key==='views' ? explorerLink(id,false)===id : startupId.test(id)))
+          .map(([id,value])=>[key==='views' ? explorerLink(id) : id,value]));
       }
     } catch { /* Keep the active page state if storage is unavailable. */ }
   }
@@ -145,7 +147,7 @@ export function installWorkspace(doc,safeReturn) {
           const name = entity?.name || savedName || defaultName(id);
           const facts = dimensions?.get(id);
           const rows = facts ? `<dl>${[
-            ['Headquarters',facts.country ? [facts.city,countryName(facts.country)].filter(Boolean).join(', ') : 'Not recorded'],
+            ['Location',companyPlaceLabel(facts) || 'Not recorded'],
             ['Primary sector',facts.sector || 'Not recorded'],
             ['Last recorded stage',facts.stage || 'Not recorded'],
             ['Last profile fact review',facts.newestFactReview || 'Not recorded'],
@@ -199,10 +201,15 @@ export function installWorkspace(doc,safeReturn) {
     const name = button.closest('[data-company-name]')?.dataset.companyName || defaultName(id);
     if (active) delete group[id];
     else group[id] = name;
+    const inlineError=button.closest('.directory-compare-cell') && doc.querySelector('[data-atlas-workspace-inline-error]');
+    if (inlineError) inlineError.hidden=true;
     const oldError = button.nextElementSibling;
     if (oldError?.matches('.atlas-workspace-action-error')) oldError.remove();
     if (!save({...state,[kind]:group})) {
-      button.insertAdjacentHTML('afterend','<span class="atlas-workspace-action-error" role="alert">Couldn’t update your workspace. Try again.</span>');
+      if (inlineError) {
+        inlineError.hidden=false;
+        inlineError.textContent='Couldn’t update your workspace. Try again.';
+      } else button.insertAdjacentHTML('afterend','<span class="atlas-workspace-action-error" role="alert">Couldn’t update your workspace. Try again.</span>');
       return;
     }
     status.textContent = kind==='saved' ? (active ? 'Company removed from saved companies' : 'Company saved') : (active ? 'Company removed from comparison' : 'Company added to comparison');

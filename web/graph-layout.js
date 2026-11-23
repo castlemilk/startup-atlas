@@ -1,6 +1,6 @@
-// A deterministic, relationship-aware force layout. The graph is deliberately
-// small: the explorer bounds the visible neighbourhood before calling this.
-const WIDTH=1200, HEIGHT=650, ROOT={x:532,y:330};
+// A deterministic, relationship-aware layout for the SVG map.
+export const graphOrigin={x:532,y:330};
+const WIDTH=1200, HEIGHT=650, ROOT=graphOrigin;
 const GROUPS={
   partners:{label:'PARTNERS',x:998,y:330},
   programmes:{label:'PROGRAMMES',x:900,y:146},

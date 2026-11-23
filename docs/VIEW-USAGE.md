@@ -8,18 +8,32 @@ This guide describes the static interfaces at the Signal baseline, not proposed 
 
 | Your question | Start here | Next action | Do not infer |
 | --- | --- | --- | --- |
-| Which records match my search? | [List and search](https://castlemilk.github.io/startup-atlas/?type=startup#directory) | Narrow the entity kind, inspect a record, then open its profile. | A match is not an eligibility decision or a complete market census. |
+| Which records match my search? | [List and search](https://castlemilk.github.io/startup-atlas/list.html) | Narrow the entity kind, inspect a record, then open its profile. | A match is not an eligibility decision or a complete market census. |
 | How large are comparable recorded figures? | [Funding treemap in USD](https://castlemilk.github.io/startup-atlas/treemap.html?metric=funding&currency=USD) | Choose one measure and currency, then inspect the figure and its announcement. | Latest recorded event amount is not total funding raised or current company value. |
 | Can I read the same figures without interpreting area? | [Company cards](https://castlemilk.github.io/startup-atlas/treemap.html?metric=funding&currency=USD&view=cards) or [ranked list](https://castlemilk.github.io/startup-atlas/treemap.html?metric=funding&currency=USD&view=list) | Select a company to open its evidence; use Company for broader context. | Card size is editorial, not proportional. Financial ordering is not a quality score. |
-| What sourced relationships surround an entity? | [Knowledge graph](https://castlemilk.github.io/startup-atlas/graph.html?entity=startup%3Acanva) | Inspect a node, read the relationship and source, then choose Explore from here if you want a new root. | Proximity, line placement or portfolio membership does not prove investment in a particular round. |
+| What sourced relationships surround an entity? | [Knowledge graph](https://castlemilk.github.io/startup-atlas/graph.html) | Choose a company, then activate nodes to follow recorded relationships and open their evidence. | Proximity, line placement or portfolio membership does not prove investment in a particular round. |
 | What is known about a company or person? | [Startup profile](https://castlemilk.github.io/startup-atlas/entity.html?id=startup%3Acanva) | Follow the applicable Founders, Company, Funding, Connections and Sources sections. | An unresearched section means unknown, not absent or zero. |
 | What organisations, people and programmes are associated with a partner? | [Partner profile](https://castlemilk.github.io/startup-atlas/partner.html?name=Airtree) | Inspect a researched company or follow a person/programme and its evidence. | A researched sample is not the firm's entire portfolio; a provider relationship does not guarantee credits. |
 
+## Choose fields and filter the company list
+
+[Open the List](https://castlemilk.github.io/startup-atlas/list.html) to browse companies by technology type, headquarters, sector or recorded funding stage. The view switcher carries those filters to the Graph and Treemap. Use **Columns** for founders, ownership, exchange and ticker, connections, company value, market cap, private valuation and the latest disclosed funding round. On phones, Columns sits beside Filters and selected fields appear under each company name. On wider screens, scroll inside the table to see additional columns while the company and its actions stay in view.
+
+[The column registry](../web/company-columns.js) defines each field's label, value and optional sort. The selected fields, density and sort are recorded in the List URL. Figures show their currency, date and source. Sorting a financial field ranks figures within each currency. Market cap uses listed-company observations, private valuation uses recorded private-company observations, and company value chooses the corresponding basis for each company. Latest disclosed round is a single reported round amount. Founder names link to the person profiles.
+
+The hosted backend's signed-in **Evidence coverage** page reports profile, founder and funding source counts with a missing-area filter. See the [backend notes](../backend/hosted/README.md) for the route and what counts as a source.
+
 ## Continue through search results
 
-The directory initially shows 12 matching records. **Load more** reveals the next batch and moves keyboard focus to the first newly revealed record's profile link, so you can continue reading and tabbing through that record. This also applies to the final, shorter batch when the Load more button disappears. The handoff is immediate, including with reduced motion enabled.
+The directory initially shows 12 matching records. Scrolling near the end appends the next batch while keeping focus and reading position. Use **Load more** to append manually and move focus to the first new profile link. This also applies to the final, shorter batch. The handoff is immediate with reduced motion.
 
 The displayed range is retained in the route's `shown` parameter. Opening a profile and using its return link restores that range and the supported search/filter context; it does not promise the same scroll position. Typing a query, changing filters or restoring history does not trigger the Load more focus handoff. Search and filter changes start a new 12-result range.
+
+## Browse the graph by company group
+
+[Open Graph](https://castlemilk.github.io/startup-atlas/graph.html) to see every matching company on the Loom canvas. **Sector** groups by recorded primary sector or technology type. **Country** uses the company’s headquarters or documented business base. **Multiple headquarters** keeps companies with confirmed headquarters across countries in one group. Open a company’s **Overview** and use **Sources** next to its location for the exact claim, official source and review date. **Fit all** frames every marker. Choose a group to see its full membership with readable names and larger artwork. Long groups continue with ordinary page scrolling at Fit. The zoom controls show magnification relative to Fit.
+
+Select a company to follow sourced relationships. **Companies** and browser Back restore the group and, at the same canvas size, its camera. Direct company links open the relationship map. **Company list** jumps to the native links and opens automatically when WebGL is unavailable.
 
 ## Compare a measure without losing its meaning
 
@@ -34,7 +48,7 @@ The displayed range is retained in the route's `shown` parameter. Opening a prof
 
 ## Explore relationships without changing the question accidentally
 
-The graph has two different concepts: the **root** defines the neighbourhood; the **selection** determines the inspector. Selecting a visible node inspects it without rerooting. **Explore from here** deliberately changes the root, while **Open profile** leaves the graph for the full record. Selecting a search result starts a new neighbourhood.
+The **root** defines the neighbourhood. Activate a node or search result to make it the root and show its evidence in the inspector. A shared link can restore a separate inspected entity. **Previous view** returns to the previous neighbourhood, and **Open profile** shows the full record.
 
 Use the connection list when the canvas is difficult to read. Read the recorded predicate and its evidence, not just the endpoints. **Fit view** changes the camera; **Reset layout** changes the arrangement. Layout and camera positions are not saved by a shared URL. A **view limited** notice means the drawing is capped, not that the selected entity has no other relationships.
 

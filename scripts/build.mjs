@@ -62,14 +62,17 @@ designFiles.push('design-aesthetic.html','design-aesthetic.css','design-aestheti
 designFiles.push('signal-controls.js','signal-controls.css','atlas-sdk.js','atlas-sdk.css');
 designFiles.push('atlas-exploration.js','atlas-explorer-controls.js','atlas-workspace.js','profile-evidence.js');
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
-for (const file of ['analytics.js','analytics-config.js','treemap.html','treemap.js','treemap-model.js','treemap.css','index.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
+const graphModules=['graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','graph-mobile-fit.js','graph-artwork.js'];
+for (const file of ['analytics.js','analytics-config.js','treemap.html','treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','index.html','list.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css',...graphModules,'styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 await build({entryPoints:['web/atlas-sdk.js'],outfile:'dist/atlas-sdk.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof',define:{'process.env.NODE_ENV':'"production"'}});
+await build({entryPoints:['web/graph-loom.js'],outfile:'dist/graph-loom.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof'});
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
-const uiFiles=['treemap.js','treemap-model.js','treemap.css','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','entity.css','entity.js','graph.css','graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
+const uiFiles=['treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','entity.css','entity.js','graph.css',...graphModules,'graph-loom.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
 uiFiles.push(...designFiles.filter(file=>!file.endsWith('.html')));
 const uiHash=createHash('sha256');
 uiHash.update(await readFile('package-lock.json'));
 uiHash.update(await readFile('dist/atlas-sdk.js'));
+uiHash.update(await readFile('dist/graph-loom.js'));
 for (const file of uiFiles) uiHash.update(await readFile(`web/${file}`));
 const uiVersion=uiHash.digest('hex').slice(0,12);
 function versionReferences(source) {
@@ -79,7 +82,7 @@ function versionReferences(source) {
   }
   return source;
 }
-for (const file of ['treemap.html','treemap.js','treemap-model.js','index.html','partner.html','entity.html','entity.js','graph.html','graph.js','graph-store.js','graph-model.js','partner-profile.js','app.js','table-model.js','globe.js']) {
+for (const file of ['treemap.html','treemap.js','treemap-model.js','landing.js','company-columns.js','index.html','list.html','partner.html','entity.html','entity.js','graph.html',...graphModules,'partner-profile.js','app.js','table-model.js','globe.js']) {
   const output='dist/'+file;
   await writeFile(output,versionReferences(await readFile(output,'utf8')));
 }
@@ -105,6 +108,7 @@ await cp('data/map-locations.json','dist/data/map-locations.json');
 await cp('data/land.geojson','dist/data/land.geojson');
 await cp('web/vendor','dist/vendor',{recursive:true});
 await cp('docs/UI-SDK-LICENSE.txt','dist/vendor/UI-SDK-LICENSE.txt');
+await cp('node_modules/loom-core/LICENSE','dist/vendor/LOOM-LICENSE.txt');
 const sdkPackage=JSON.parse(await readFile('package.json','utf8'));
 const sdkLock=JSON.parse(await readFile('skills-lock.json','utf8'));
 await writeFile('dist/vendor/ui-sdk-manifest.json',JSON.stringify({
@@ -129,6 +133,9 @@ for (const file of await (await import('node:fs/promises')).readdir(queryDir)) {
 }
 await cp('node_modules/@tanstack/query-core/LICENSE','dist/vendor/TANSTACK-QUERY-LICENSE.txt');
 await cp('web/assets/logos','dist/assets/logos',{recursive:true});
+if (existsSync('web/assets/portraits')) await cp('web/assets/portraits','dist/assets/portraits',{recursive:true});
+if (existsSync('web/assets/manifests')) await cp('web/assets/manifests','dist/assets/manifests',{recursive:true});
+await cp('web/assets/landing','dist/assets/landing',{recursive:true});
 await cp('web/assets/design-lab','dist/assets/design-lab',{recursive:true});
 if (existsSync('web/assets/fonts')) await cp('web/assets/fonts','dist/assets/fonts',{recursive:true});
 await mkdir('dist/assets/design-icons',{recursive:true});

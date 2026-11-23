@@ -670,5 +670,167 @@ class PrivateStageTests(AssetAssertions):
                 path.chmod(0o600)
 
 
+def svg_fixture(body=b'<path d="M0 0h10v10H0z" fill="#123456"/>',
+                attrs='width="124" height="23" viewBox="0 0 124 23"'):
+    return b'<svg xmlns="http://www.w3.org/2000/svg" ' + attrs.encode() + b'>' + body + b'</svg>'
+
+
+try:
+    from PIL import Image as _PillowImage
+    HAS_PILLOW = True
+except ImportError:  # pragma: no cover - conversion tests skip without Pillow
+    HAS_PILLOW = False
+
+
+class SVGValidationTests(AssetAssertions):
+    def test_plain_vector_logo_reports_measured_dimensions(self):
+        result = assets.inspect_svg(svg_fixture())
+        self.assertEqual(result['mime'], 'image/svg+xml')
+        self.assertEqual((result['width'], result['height']), (124, 23))
+        self.assertEqual(result['validation'], 'svg-safe-v0')
+        self.assertIsNone(result['bit_depth'])
+        self.assertIsNone(result['color_type'])
+        viewbox = assets.inspect_svg(svg_fixture(attrs='viewBox="0 0 1900 213.23"'))
+        self.assertEqual((viewbox['width'], viewbox['height']), (1900, 213))
+
+    def test_active_and_remote_svg_content_is_rejected(self):
+        for data in (
+            svg_fixture(b'<script>alert(1)</script>'),
+            svg_fixture(b'<foreignObject><p>hi</p></foreignObject>'),
+            svg_fixture(b'<rect onclick="alert(1)" width="1" height="1"/>'),
+            svg_fixture(b'<image href="https://example.com/tracker.png" width="1" height="1"/>'),
+            svg_fixture(b'<use href="https://example.com/defs.svg#x"/>'),
+            b'<?xml version="1.0"?><!DOCTYPE svg [<!ENTITY x "y">]>' + svg_fixture(),
+            b'<svg><svg>',
+            svg_fixture(attrs=''),
+        ):
+            with self.subTest(data=data[:40]):
+                self.assertAssetError(assets.inspect_svg, data)
+
+    def test_local_fragment_use_and_style_are_allowed(self):
+        data = svg_fixture(b'<defs><path id="p" d="M0 0h1v1H0z"/></defs><use href="#p"/><style>.a{fill:#fff;}</style>')
+        result = assets.inspect_svg(data)
+        self.assertEqual(result['validation'], 'svg-safe-v0')
+
+    def test_style_can_reference_a_local_gradient_without_allowing_a_network_reference(self):
+        gradient = b'<defs><linearGradient id="mark"/></defs>'
+        styles = b'<style>.brand { fill: url(#mark); }</style>'
+        self.assertEqual(assets.inspect_svg(svg_fixture(gradient + styles))['validation'], 'svg-safe-v0')
+        external = b'<style>.other { fill: url(//example.com/mark.svg#paint); }</style>'
+        self.assertAssetError(assets.inspect_svg, svg_fixture(gradient + styles + external))
+
+    def test_svg_dispatches_by_declared_mime(self):
+        result = assets.inspect_image(svg_fixture(), declared_mime='image/svg+xml')
+        self.assertEqual(result['validation'], 'svg-safe-v0')
+        self.assertAssetError(assets.inspect_image, svg_fixture(), declared_mime='image/png')
+
+
+class ConversionTests(AssetAssertions):
+    def test_svg_has_no_approved_rasterizer(self):
+        self.assertAssetError(assets.convert_image, svg_fixture(), 'svg')
+
+    @unittest.skipUnless(HAS_PILLOW, 'Pillow is required for conversion tests')
+    def test_png_reencode_strips_ancillary_chunks(self):
+        original = png(before_idat=chunk(b'tEXt', b'key\x00content'))
+        self.assertAssetError(assets.inspect_png, original)
+        converted, record = assets.convert_image(original, 'png')
+        blob = assets.inspect_png(converted)
+        self.assertEqual(record['original_sha256'], hashlib.sha256(original).hexdigest())
+        self.assertEqual(record['derivative_sha256'], blob['sha256'])
+        self.assertNotEqual(record['original_sha256'], record['derivative_sha256'])
+        self.assertEqual(record['transformation'], 'png-strict-reencode')
+        self.assertEqual((record['width'], record['height']), (2, 2))
+
+    @unittest.skipUnless(HAS_PILLOW, 'Pillow is required for conversion tests')
+    def test_interlaced_png_is_reencoded_not_relabeled(self):
+        # A real 2x2 Adam7 image: passes 1, 6 and 7 carry pixels; the
+        # fixture's scanlines are valid interlaced data, not a corrupt file.
+        pixel = b'\x18\x7f\xc2\xff'
+        passes = (b'\x00' + pixel) + (b'\x00' + pixel) + (b'\x00' + pixel * 2)
+        header = struct.pack('>IIBBBBB', 2, 2, 8, 6, 0, 0, 1)
+        original = (PNG_SIGNATURE + chunk(b'IHDR', header)
+                    + chunk(b'IDAT', zlib.compress(passes)) + chunk(b'IEND'))
+        self.assertAssetError(assets.inspect_png, original)
+        converted, _record = assets.convert_image(original, 'png')
+        self.assertEqual(assets.inspect_png(converted)['validation'], 'png-rgb8-v0')
+
+    @unittest.skipUnless(HAS_PILLOW, 'Pillow is required for conversion tests')
+    def test_png_conversion_preserves_transparent_pixels_without_metadata_chunks(self):
+        source = _PillowImage.new('RGB', (2, 1))
+        source.putdata([(20, 40, 60), (5, 10, 15)])
+        buffer = io.BytesIO()
+        source.save(buffer, format='PNG', transparency=(20, 40, 60), dpi=(144, 144))
+        converted, _record = assets.convert_image(buffer.getvalue(), 'png')
+        assets.inspect_png(converted)
+        with _PillowImage.open(io.BytesIO(converted)) as image:
+            self.assertEqual(image.getpixel((0, 0)), (20, 40, 60, 0))
+            self.assertEqual(image.getpixel((1, 0)), (5, 10, 15, 255))
+
+    @unittest.skipUnless(HAS_PILLOW, 'Pillow is required for conversion tests')
+    def test_webp_converts_to_strict_png(self):
+        buffer = io.BytesIO()
+        _PillowImage.new('RGB', (4, 2), (10, 20, 30)).save(buffer, format='WEBP')
+        converted, record = assets.convert_image(buffer.getvalue(), 'webp')
+        self.assertEqual(record['transformation'], 'webp-to-png')
+        self.assertEqual((record['width'], record['height']), (4, 2))
+        self.assertEqual(assets.inspect_png(converted)['validation'], 'png-rgb8-v0')
+
+    @unittest.skipUnless(HAS_PILLOW, 'Pillow is required for conversion tests')
+    def test_declared_format_must_match_decoded_bytes(self):
+        self.assertAssetError(assets.convert_image, png(), 'webp')
+
+
+class ConversionProvenanceTests(AssetAssertions):
+    def setUp(self):
+        self.blob = assets.inspect_png(png())
+
+    def test_conversion_record_binds_original_to_derivative(self):
+        source = provenance()
+        source['conversion'] = {
+            'original_sha256': 'a' * 64, 'original_format': 'webp',
+            'derivative_sha256': self.blob['sha256'], 'transformation': 'webp-to-png',
+            'tool': 'Pillow 10.2.0'}
+        result = assets.validate_provenance(source, self.blob)
+        self.assertEqual(result['provenance']['conversion']['original_format'], 'webp')
+
+    def test_conversion_with_a_mismatched_derivative_is_rejected(self):
+        source = provenance()
+        source['conversion'] = {
+            'original_sha256': 'a' * 64, 'original_format': 'webp',
+            'derivative_sha256': 'b' * 64, 'transformation': 'webp-to-png',
+            'tool': 'Pillow 10.2.0'}
+        self.assertAssetError(assets.validate_provenance, source, self.blob)
+
+    def test_nominative_use_is_an_approved_rights_basis(self):
+        source = provenance()
+        source['rights'].update(basis='nominative',
+                                evidence='The subject\u2019s own published brand mark, displayed with attribution.')
+        result = assets.validate_provenance(source, self.blob)
+        self.assertEqual(result['provenance']['rights']['basis'], 'nominative')
+
+
+class SVGStageTests(PrivateStageTests):
+    def test_svg_stages_and_prepares_through_the_same_gate(self):
+        data = svg_fixture()
+        source = provenance()
+        source.update(subject_id='partner:fixture-company', source_kind='official-brand')
+        saved = self.store.stage(data, source, declared_mime='image/svg+xml')
+        self.assertEqual(saved['manifest']['blob']['validation'], 'svg-safe-v0')
+        readback = self.read(saved)
+        self.assertEqual(readback['manifest']['blob']['sha256'],
+                         hashlib.sha256(data).hexdigest())
+        prepared = self.prepare(saved, subject_id='partner:fixture-company', role='logo')
+        self.assertIs(prepared['prepared'], True)
+        self.assertEqual(self.store.read_bytes(saved['asset_id'], saved['asset_revision']), data)
+
+    def test_nominative_rights_prepare_for_public_export(self):
+        source = provenance()
+        source['rights'].update(basis='nominative',
+                                evidence='The subject\u2019s own published brand mark, displayed with attribution.')
+        saved = self.stage(source)
+        prepared = self.prepare(saved)
+        self.assertIs(prepared['prepared'], True)
+
+
 if __name__ == "__main__":
     unittest.main()

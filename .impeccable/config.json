@@ -1,0 +1,36 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "web/design-system.html",
+          "web/list.html"
+        ],
+        "createdAt": "2026-11-21T12:09:24.084Z",
+        "reason": "Rendered List and design catalogue use light paper backgrounds. WebKit computed styles, including the open column picker, show no matching glow or shadow color."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "web/graph.html"
+        ],
+        "createdAt": "2026-11-21T12:39:42.129Z",
+        "reason": "The rendered light paper map has no glow. The static warning matches the shared offset 0 8px 24px rgb(23 43 75 / 4%) shadow in styles.css."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "web/graph.html"
+        ],
+        "createdAt": "2026-11-21T12:39:42.367Z",
+        "reason": "The Loom and SVG canvases are intentionally full-bleed inside the map frame. Canvas captions and controls keep measured insets at desktop and phone widths."
+      }
+    ]
+  }
+}

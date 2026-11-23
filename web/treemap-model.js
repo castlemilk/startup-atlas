@@ -1,4 +1,4 @@
-import { countryName } from './atlas-exploration.js';
+import { countryName, multipleHeadquarters } from './atlas-exploration.js';
 
 export const COMPANY_VALUE = 'company-value';
 export const METRICS = ['valuation', 'funding', 'market-cap', 'companies', COMPANY_VALUE];
@@ -22,6 +22,13 @@ const currencyOf = (record, metric) => metric === 'valuation' ? record.valuation
 const dateOf = (record, metric) => metric === marketCap ? record.observed_on : record.announced_on;
 const sourcedAmount = (record, metric) => source(record.source) && dated(dateOf(record, metric)) && validCurrency(currencyOf(record, metric));
 const observations = (graph, metric, marketCaps) => metric === marketCap ? marketCaps : graph.funding_rounds || [];
+
+export async function loadTreemapEvidence(store) {
+  let document;
+  try { document = await store.document('treemap-evidence.json'); }
+  catch { /* Older snapshots can still show the other measures. */ }
+  return {...indexTreemapEvidence(store.graph,document), available:document?.version===1};
+}
 
 export function indexTreemapEvidence(graph, document) {
   const technology = new Map(), marketCaps = [], ownership = new Map(), privateValuations = [];
@@ -89,7 +96,7 @@ function groupFor(entity, grouping, {country = '', city = '', sector = '', stage
     case 'technology': return {id:technology || 'unknown', name:technology || 'Technology type not recorded'};
     case 'sector': return {id:sector || 'unknown', name:sector || 'Sector not recorded'};
     case 'country': return {id:country || 'unknown', name:countryName(country), country:country || 'unknown'};
-    case 'city': return {
+    case 'city': return country===multipleHeadquarters ? {id:country, name:countryName(country), country, city:''} : {
       id:JSON.stringify([country || 'unknown', city || 'unknown']),
       name:country ? `${city || 'City not recorded'}, ${countryName(country)}` : 'City not recorded',
       country:country || 'unknown', city:city || 'unknown',
@@ -125,6 +132,17 @@ function observationsByCompany(records) {
     events.get(record.startup_id).push(record);
   }
   return events;
+}
+
+export function indexFundingFigures(graph) {
+  const figures = new Map();
+  for (const [id, events] of observationsByCompany(graph.funding_rounds || [])) {
+    const figure = observation(events, 'funding');
+    if (!figure.reason || figure.reason === 'recorded-zero') {
+      figures.set(id, {...figure, basis:'funding', currency:figure.event.currency});
+    }
+  }
+  return figures;
 }
 
 export function indexCompanyValues(graph, {ownership, marketCaps, privateValuations}) {

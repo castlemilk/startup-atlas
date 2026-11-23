@@ -1,7 +1,7 @@
 (function (root) {
   "use strict";
   const KEY = "atlas-website-analytics-v1";
-  function publicPage(config, location) { return [config.basePath, config.basePath + "index.html"].includes(location.pathname); }
+  function publicPage(config, location) { return [config.basePath, config.basePath + "index.html", config.basePath + "list.html"].includes(location.pathname); }
   function eligible(config, location, navigator) {
     return config && config.enabled === true && config.gaPrivacyReviewed === true && config.policyReviewed === true &&
       ["/", "/startup-atlas/"].includes(config.basePath) &&

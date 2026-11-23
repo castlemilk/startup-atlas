@@ -237,6 +237,64 @@ concurrent requests. A branch with no confirmed PR remains uncertain.
 | Formats and transformations | Strict PNG-only policy initially | Broader decoder/runtime and licence-preserving transformations require separate review |
 | Retention and revocation | Retain immutable evidence; explicit correction | Define rejected/stale staging retention and public removal/record fallback without silently rewriting old IDs |
 
+### Resolved by the November 2026 asset pipeline (PR, see delivery receipt)
+
+The following decisions were resolved in the implementation that added
+`scripts/publish_asset.py` and the `portraits` crawl mode. The owner approves
+them by merging that PR; anything marked open below still needs a decision.
+
+| Decision | Resolution |
+| --- | --- |
+| Public byte storage | Logos: `web/assets/logos/<slug>.png\|.svg`, mapped by exact reviewed name in `web/logos.js`. Portraits: `web/assets/portraits/<slug>.png\|.svg`, referenced by the published Pages URL in the person's `photo` (partner profiles) or `photo_url` (startup founders) field. `scripts/build.mjs` copies both directories (plus manifests) into `dist/assets/`. No new service. |
+| Public provenance | A bounded public-safe manifest at `web/assets/manifests/<asset-sha256>.json` (`atlas.asset-public-manifest.v0`): asset/review IDs, target path, subject, role, source URLs, attribution, review date, byte measurements and the full provenance attestation. No private correspondence is copied into it. |
+| Formats and transformations | Strict PNG remains the validated raster profile. Two approved additions: (1) Pillow conversion of WebP/ICO/JPEG/GIF and non-strict PNG into strict PNG (`convert` in `atlas_assets.py`), preserving original and derivative digests in a `conversion` provenance record; (2) SVG passthrough under the `svg-safe-v0` safety checks (well-formed, no scripts/foreign content/event handlers/external references/DOCTYPE), the same rules `tests/logos.test.js` enforces for published files. SVG is never rasterized here. |
+| Rights basis for third-party marks | New basis `nominative`: display of the subject's own published brand mark (or a person's own published portrait) with attribution and a source link, without implying endorsement and without a located licence or permission. The owner's PR merge is the approval of that use. |
+| Publication transaction | One reviewed multi-file proposal through the normal branch/review path: asset bytes, public manifest and the map/record update land in the same PR, so an attachment never points at a missing or unreleased asset. The hosted one-file `updateProposal` check is untouched; this adapter is a local-operator path, not a hosted MCP write. |
+| Review authority | The agent attests identity (viewed bytes against the official source) and records rights evidence in the manifest; `prepare_public_export` enforces both approvals before `publish_asset.py` writes anything. The owner's merge is the authenticated approval of public use. |
+| Retention and revocation | Rejected or superseded captures stay out of Git; the private store keeps staged evidence. Public removal is a follow-up PR deleting the bytes, manifest and reference together. |
+
+Open: hosted MCP ingress for assets (no asset tool yet; the 128 KiB boundary is
+unchanged), and the MCP-side attachment of staged assets to hosted records.
+
+## Published pipeline
+
+Crawl → review queue → convert → stage → publish → PR → live readback.
+
+1. **Crawl.** `logos` mode stages candidate bytes (`.bin` files in the
+   `partner-crawl-review` artifact); `portraits` mode (`scripts/crawl.py
+   portraits --approved data/company-profile-seeds.csv --follow 2`) stages
+   portrait bytes for professional-bio headshot candidates. Candidate order
+   prioritises structured/metadata logos and header logos over favicons, so
+   the `--logo-limit` (3 in the workflow) fetches the real logo first.
+2. **Review queue.** Inspect each captured file's content (view the image),
+   its kind, alt text/home-link evidence and source page. Reject social
+   cards, favicons and portfolio logos as identity. Record the decision in a
+   provenance JSON; see `publish_batch.py` in the delivery notes for the
+   worked 21 Nov 2026 batch (6 logos).
+3. **Convert.** Non-strict PNGs and WebP/ICO/JPEG/GIF go through
+   `atlas_assets.py convert` (Pillow, pixels preserved, original and
+   derivative digests recorded). SVGs go through `inspect_svg` unchanged.
+4. **Stage.** `atlas_assets.py validate` (retain the IDs) then `stage` into a
+   private store outside Git, then `prepare` — the review gate. Unknown or
+   rejected rights cannot prepare for public use.
+5. **Publish.** `scripts/publish_asset.py` (with `--dry-run` first) copies the
+   verified bytes, writes the public manifest and updates `web/logos.js` or
+   the entity's image field. Company and technology-provider logos attach to
+   the exact reviewed record in `data/startup-research.json`. Their published
+   URLs resolve to local assets in the built graph and profile previews.
+   Use the exact reviewed name, including punctuation such as `T:0`.
+   The asset path uses the subject slug, such as `t-0.svg`.
+   Programme operators use the exact organisation name in the catalogue.
+   For a founder recorded under multiple companies, use `--founder-of` with
+   the reviewed startup name that owns the portrait reference.
+   The publisher refuses unprepared assets, unknown names and
+   conflicting bytes. Never hand-edit the map for a reviewed asset; the
+   script derives the path from the validated subject.
+6. **Verify live.** After merge and Pages deploy, fetch the published bytes
+   and compare SHA-256, MIME, size and dimensions with the manifest, and
+   confirm the logo/headshot renders. `npm run audit:images` reports
+   coverage before/after.
+
 No R2 bucket, D1 image storage, CDN, credential, endpoint, public Site audience,
 permission, schedule or billing change is included.
 

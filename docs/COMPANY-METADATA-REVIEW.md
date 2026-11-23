@@ -47,6 +47,12 @@ A `searched_unknown` decision cites a `search_log` with `version: 1`, `name`, `r
 
 These checks bind reviewed receipts to the selected data and preserve the review provenance. They validate saved inputs offline. The reviewer supplies the archive and verifies its source context.
 
+Automatic founder-role candidates require an exact founder and bio URL from the current readback. The same role and issuer affiliation must appear on the saved page's matching structured Person. When present in the capture, the Person identifier, page and canonical references must agree with the bio document. Affiliation identifiers must agree with the reviewed issuer site and explicit affiliation types must be Organization or Corporation. Local node fragments can qualify an already bound document. The collector's newsroom gate also applies during role replay.
+
+Retained declarations of the same explicit Person or issuer identifier must have compatible names, URLs and types. Unreserved escapes in a node's fragment identify the same node as their literal characters. When a ProfilePage URL or identifier names the bio document, all supplied document references must agree and its retained `mainEntity` must identify that same Person. Unresolved or incompatible identifier evidence withholds the role candidate. The collector currently summarizes `mainEntityOfPage`. The corresponding `mainEntity` check applies when the archive already contains that field.
+
+One source title may include former and advisory roles. Repeated copies of that title count once. Distinct titles on the same eligible saved founder page produce a `conflict` with the saved packet as evidence. An explicit review decision keeps its existing precedence. The replay leaves title chronology to the reviewer and depends on the references retained in the archive. Earlier checkpoints whose founder-role decisions change require a fresh ledger.
+
 The queue lists dispositions per company and field, plus counts for the full supplied overlay and the approved-ready subset. Each field in each cohort has the cohort's company count as its denominator. The 19 fields cover company identity, aliases, description, sectors, geography, founding, news, milestones, dated headcount, founders, founder roles, bios, professional socials, portrait candidates, portrait rights, investors, rounds, round participants and early financing.
 
 | Disposition | Meaning for this batch |
@@ -56,7 +62,7 @@ The queue lists dispositions per company and field, plus counts for the full sup
 | `reviewed` | An explicit source-backed review has been recorded. |
 | `published` | The indicated value was observed in the exact saved hosted revision. |
 | `searched_unknown` | A saved bounded search did not yield a supported claim. |
-| `conflict` | The saved review records competing or unresolved claims. |
+| `conflict` | Exact saved observations disagree, or an explicit review records competing or unresolved claims. |
 | `blocked` | A saved receipt explains the access or rights hold. |
 | `not_applicable` | The saved review explains why the field does not apply. |
 
@@ -107,10 +113,18 @@ appears as review context even on the issuer's own website. Capture the
 linked article separately with its own source dates and excerpt. The
 review does not fetch the article or assign transaction dates to the listing.
 
-For a former name, add up to four `former_names` entries with `name` and the
-`evidence_id` cited by the committed alias decision. Use the issuer's saved
-evidence of the name change. The report links that exact evidence digest and
-prioritises issuer pages with explicit early-stage financing language. A lead
+Funding review uses the canonical inventory name. The manifest may include up
+to four `former_names` references, each with the exact former `name` and its
+`evidence_id`. A reference can expand searches or capture matching only with
+independently pinned issuer evidence that binds both company names to the
+committed identity review. The existing pin covers the exact archived Arkeus
+rebrand batch, issuer URL and evidence digest.
+
+The offline report lists other requests in `held_former_names` and continues the
+canonical review. The saved identity and programme observations remain available
+in their original bundle. The batch reviewer, role and name fields are
+reviewer-supplied. The bundle digest checks file integrity. Independent issuer
+evidence is still required before a new name can expand funding review. A lead
 needs wording that ties the round to the company. Keep phrasing that leaves the
 issuer or purpose unclear available for source review. Grants,
 contracts, valuations and portfolio backing can be useful context. A mixed

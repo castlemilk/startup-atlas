@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {checkDirectoryPagination} from './directory-pagination-browser-checks.mjs';
+import {companyPlaceLabel, indexCompanies} from '../web/atlas-exploration.js';
 
 /** Exercise the new inspection journeys against the same published snapshot. */
 export async function checkDirectoryWireframes({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph}) {
@@ -26,7 +27,8 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await navigate('/#directory',ready);
   await checkGlobeLegibility();
   assert.equal(await evaluate("document.querySelector('#entity-kind').value"),'startup','The desktop landing should open the company directory');
-  assert.equal(await evaluate("document.querySelector('#company-view-coverage').getAttribute('aria-checked')"),'true');
+  assert.equal(await evaluate("location.pathname"),'/list.html','A legacy directory URL should open List');
+  assert.ok(await evaluate("!document.querySelector('.directory-evidence-legend')"), 'Coverage counts belong in the backend');
   assert.equal(await evaluate("(()=>{const detail={};document.dispatchEvent(new CustomEvent('atlas:export-records',{detail}));return detail.records.length;})()"),graph.entities.filter(entity=>entity.kind==='startup').length,'Export includes every matching company before pagination');
   await navigate('/?shown=24#directory',ready);
   assert.equal(await evaluate("document.querySelector('#entity-kind').value"),'all','Older directory bookmarks retain the mixed catalogue');
@@ -85,40 +87,13 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await click('#close-directory-inspector');
 
   await until(()=>evaluate(ready),'Returning to the startup scope did not restore results');
-  await until(()=>evaluate("!!document.querySelector('#directory-presentation')?.api"),'Company result view did not upgrade');
-  const readyCount=await evaluate("document.querySelector('#result-count').textContent");
-  await click('#company-view-details');
-  await press('ArrowRight','ArrowRight',39);
-  assert.equal(await evaluate('document.activeElement.id'),'company-view-coverage');
-  assert.equal(await evaluate("new URLSearchParams(location.search).get('coverage')"),'1');
-  assert.equal(await evaluate("document.querySelector('#result-count').textContent"),readyCount);
-  assert.ok(await evaluate("!!document.querySelector('.directory-evidence-counts [data-level=\"0\"] dd')?.textContent.includes('Unknown')"));
-  const company=graph.entities.find(entity=>entity.id==='startup:canva');
-  const countDocuments=urls=>new Set(urls.filter(url=>/^https:\/\//.test(url)).map(url=>new URL(url).href.split('#')[0])).size;
-  const expected=[
-    countDocuments([company.source,...(company.profile_facts||[]).filter(fact=>fact.label&&fact.value).map(fact=>fact.source)]),
-    countDocuments(graph.edges.filter(edge=>edge.kind==='founded'&&edge.to===company.id&&graph.entities.some(person=>person.id===edge.from&&person.kind==='person')).map(edge=>edge.source)),
-    countDocuments(graph.funding_rounds.filter(round=>round.startup_id===company.id).map(round=>round.source)),
-  ].map(count=>count ? String(count) : 'Unknown');
-  const coverageCounts=()=>evaluate("[...document.querySelectorAll('[data-entity-id=\"startup:canva\"] .directory-evidence-counts dd')].map(cell=>cell.textContent)");
-  assert.deepEqual(await coverageCounts(),expected);
   await click(inspect);
-  await click('#company-view-details');
-  assert.equal(await evaluate("document.querySelector('#directory-inspector-heading')?.textContent"),'Canva');
-  assert.equal(await evaluate("new URLSearchParams(location.search).has('coverage')"),false);
-  await click('#company-view-coverage');
-  assert.deepEqual(await coverageCounts(),expected);
-  assert.equal(await evaluate("getComputedStyle(document.querySelector('#company-view-coverage')).backgroundColor"),'rgb(220, 232, 214)','The active presentation must retain its readable fill while hovered');
   const aligned=await evaluate("(()=>{const list=document.querySelector('.results').getBoundingClientRect(), rail=document.querySelector('#directory-inspector').getBoundingClientRect();return Math.abs(list.top-rail.top)<2&&rail.width/(list.width+rail.width)>.27&&rail.width/(list.width+rail.width)<.32;})()");
-  assert.ok(aligned,'The table and white inspector should share a top edge and a roughly 70/30 split');
-  assert.ok(await evaluate("(()=>{const paint=document.querySelector('.directory-evidence-counts [data-level=\"3\"]');return paint.getBoundingClientRect().height>=paint.closest('td').getBoundingClientRect().height-2;})()"),'Known evidence should fill a table cell');
+  assert.ok(aligned,'The table and inspector should share a top edge and a roughly 70/30 split');
   await click('.directory-inspector-tabs ui-tabs-tab[value="sources"] button');
-  await click(compare);
-  await click('#results-list [data-atlas-compare="startup:airwallex"]');
-  await settleTop();await assertNoOverflow('Directory coverage desktop');await screenshot('editorial-coverage-desktop.png');
-  await click(compare);
-  await click('#results-list [data-atlas-compare="startup:airwallex"]');
-  await click('#company-view-details');
+  assert.ok(await evaluate("!!document.querySelector('#directory-inspector .directory-claim-source a[href]')"),'Individual claims retain their citations');
+  await click('#close-directory-inspector');
+  await click('[data-directory-sort="technology"]');
   await click('[data-directory-sort="name"]');
   await click('[data-directory-sort="name"]');
   assert.equal(await evaluate("new URLSearchParams(location.search).get('sort')"),'name-desc');
@@ -130,6 +105,7 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   assert.ok(await evaluate("document.querySelector('.directory-company-row').getBoundingClientRect().height")<comfortableHeight);
   await click('.directory-columns-trigger');await click('#column-source-check-control');
   assert.ok(await evaluate("!!document.querySelector('.directory-company-row td[data-column=source-check]')"));
+  assert.match(await evaluate("new URLSearchParams(location.search).get('columns')"),/source-check/);
   await press('Escape','Escape',27);
   assert.ok(await evaluate("document.activeElement.matches('.directory-columns-trigger')"));
 
@@ -137,21 +113,28 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await click('#atlas-hq-AU-control');
   assert.equal(await evaluate("new URLSearchParams(location.search).has('hq')"),false,'A country draft must not commit filters');
   await click('.exploration-apply');
-  assert.equal(await evaluate("new URLSearchParams(location.search).get('hq')"),'AU');
-  assert.ok(await evaluate("(()=>{const values=[...document.querySelectorAll('.directory-company-row td[data-column=headquarters]')];return values.length>0&&values.every(cell=>cell.textContent==='Australia');})()"));
+  assert.deepEqual(await evaluate("new URLSearchParams(location.search).getAll('hq')"),['AU']);
+  assert.equal(await evaluate("document.querySelectorAll('[data-remove-facet=country]').length"),1,'Native and enhanced inputs must add the same country once');
+  const locations=indexCompanies(graph);
+  const filteredRows=await evaluate("[...document.querySelectorAll('.directory-company-row')].map(row=>[row.dataset.entityId,row.querySelector('td[data-column=headquarters]').lastElementChild.textContent])");
+  assert.ok(filteredRows.length>0);
+  for (const [id,value] of filteredRows) {
+    assert.equal(locations.get(id)?.country,'AU');
+    assert.equal(value,companyPlaceLabel(locations.get(id)));
+  }
 
   await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:800,deviceScaleFactor:1,mobile:true});
   await navigate('/?type=startup&q=Canva&coverage=1#directory',ready);
-  assert.deepEqual(await coverageCounts(),expected);
-  assert.equal(await evaluate("document.querySelector('#company-view-coverage').getAttribute('aria-checked')"),'true');
-  await assertNoOverflow('320px directory evidence coverage');
+  assert.equal(await evaluate("new URLSearchParams(location.search).has('coverage')"),false);
+  assert.ok(await evaluate("document.querySelector('[data-entity-id=\"startup:canva\"] td[data-column=technology]').checkVisibility()"),'Mobile List must show selected metadata');
+  await assertNoOverflow('320px company list');
   await click('#search');
   assert.equal(await evaluate("document.querySelector('label[for=search]').textContent.trim()"),'Search the directory');
   assert.equal(await evaluate("getComputedStyle(document.querySelector('.directory-search-label')).transitionProperty"),'none');
   await evaluate("document.querySelector('#search').blur()");
-  await evaluate("document.querySelector('#directory-evidence-legend').scrollIntoView({block:'center',behavior:'instant'})");
-  await screenshot('editorial-coverage-mobile.png');
+  await settleTop();
+  await screenshot('editorial-list-mobile.png');
   await command('Emulation.setEmulatedMedia',{features:[]});
   await checkGlobeLegibility();
 
@@ -159,10 +142,13 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await navigate('/#directory',ready);
   await checkGlobeLegibility();
   assert.equal(await evaluate("document.querySelector('#directory-heading').textContent"),'Companies');
-  assert.equal(await evaluate("document.querySelector('#company-view-details').getAttribute('aria-checked')"),'true','Mobile lands on the compact record list');
   await click('#directory-options-trigger');
   assert.ok(await evaluate("document.querySelector('#directory-options-panel-body #directory-scope').checkVisibility()"),'Catalogue scopes remain available in mobile Options');
   await press('Escape','Escape',27);
+  await click('.directory-columns-trigger');
+  await click('#column-founders-control');
+  await press('Escape','Escape',27);
+  assert.ok(await evaluate("document.querySelector('[data-entity-id=\"startup:canva\"] td[data-column=founders]').checkVisibility()"),'Choosing a mobile column must reveal its metadata');
   await settleTop();await screenshot('wireframe-directory-mobile.png');
   await navigate('/?type=startup&q=Canva#directory',ready);
   await click(inspect);
@@ -191,13 +177,13 @@ export async function checkDirectoryWireframes({command,evaluate,navigate,until,
   await until(()=>evaluate("!new URLSearchParams(location.search).has('selected')"),'Dismissing the mobile inspector must clear the shareable selection');
 
   await command('Emulation.setDeviceMetricsOverride',{width:961,height:700,deviceScaleFactor:1,mobile:false});
-  await navigate('/?type=startup&coverage=1#directory',ready);
+  await navigate('/list.html?type=startup#directory',ready);
   assert.ok(await evaluate(`(() => {
     const table=document.querySelector('.directory-table-frame');
     const name=table.querySelector('.directory-company-row h3');
     return table.clientWidth>=850 && table.scrollWidth<=table.clientWidth+1
       && name.getBoundingClientRect().height<=2*parseFloat(getComputedStyle(name).lineHeight)+1;
-  })()`),'Coverage must keep readable company names and fit beside the inspector breakpoint');
+  })()`),'The List must keep readable names and fit beside the inspector breakpoint');
   await command('Emulation.setDeviceMetricsOverride',{width:568,height:320,deviceScaleFactor:1,mobile:true});
   await navigate('/?type=startup&q=Canva&selected=startup%3Acanva#directory',ready);
   await until(()=>evaluate("document.querySelector('#directory-inspector-sheet').open&&document.activeElement.id==='directory-inspector-heading'"),'Landscape inspection must focus the loaded record');

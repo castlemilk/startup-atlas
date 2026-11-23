@@ -27,14 +27,14 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [AGI House](https://castlemilk.github.io/startup-atlas/?view=partners&q=AGI%20House#directory) | Not yet reviewed |
 | — | [AI Grant](https://castlemilk.github.io/startup-atlas/?view=partners&q=AI%20Grant#directory) | Not yet reviewed |
 | — | [AIR](https://castlemilk.github.io/startup-atlas/?view=partners&q=AIR#directory) | Not yet reviewed |
-| — | [Airtree](https://castlemilk.github.io/startup-atlas/?view=partners&q=Airtree#directory) | [Official website](https://www.airtree.vc/) · Venture capital firm backing technology founders in Australia and New Zealand, with founder and investor community programmes. ([source](https://www.airtree.vc/)) |
+| — | [Airtree](https://castlemilk.github.io/startup-atlas/?view=partners&q=Airtree#directory) | [Official website](https://www.airtree.vc/) · Airtree is an early-stage venture capital firm backing Aussie and Kiwi founders building the iconic technology companies of tomorrow. Fund V closed August 2025 at A$650M. ([source](https://www.airtree.vc/)) |
 | — | [Alif](https://castlemilk.github.io/startup-atlas/?view=partners&q=Alif#directory) | Not yet reviewed |
 | — | [Alliance](https://castlemilk.github.io/startup-atlas/?view=partners&q=Alliance#directory) | Not yet reviewed |
 | — | [Alumni Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Alumni%20Ventures#directory) | Not yet reviewed |
 | — | [Amity](https://castlemilk.github.io/startup-atlas/?view=partners&q=Amity#directory) | Not yet reviewed |
 | — | [Amplify Partners](https://castlemilk.github.io/startup-atlas/?view=partners&q=Amplify%20Partners#directory) | Not yet reviewed |
 | — | [Animo](https://castlemilk.github.io/startup-atlas/?view=partners&q=Animo#directory) | Not yet reviewed |
-| <img src="../web/assets/logos/antler.svg" alt="" width="42"> | [Antler](https://castlemilk.github.io/startup-atlas/?view=partners&q=Antler#directory) | Not yet reviewed |
+| <img src="../web/assets/logos/antler.svg" alt="" width="42"> | [Antler](https://castlemilk.github.io/startup-atlas/?view=partners&q=Antler#directory) | [Official website](https://www.antler.co/) · Antler is the world's most active early-stage investor, backing exceptional founders from inception. Elevate growth fund $285M. ([source](https://www.antler.co/)) |
 | — | [Ardent Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Ardent%20Ventures#directory) | Not yet reviewed |
 
 ## B
@@ -94,7 +94,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [Embed](https://castlemilk.github.io/startup-atlas/?view=partners&q=Embed#directory) | Not yet reviewed |
 | — | [Emblem VC](https://castlemilk.github.io/startup-atlas/?view=partners&q=Emblem%20VC#directory) | Not yet reviewed |
 | — | [emcap](https://castlemilk.github.io/startup-atlas/?view=partners&q=emcap#directory) | Not yet reviewed |
-| — | [Entrepreneur First](https://castlemilk.github.io/startup-atlas/?view=partners&q=Entrepreneur%20First#directory) | Not yet reviewed |
+| — | [Entrepreneur First](https://castlemilk.github.io/startup-atlas/?view=partners&q=Entrepreneur%20First#directory) | [Official website](https://www.joinef.com/) · We turn exceptional individuals into funded founders. We back you first, then give you a bridge to Silicon Valley. ([source](https://www.joinef.com/)) |
 | — | [Everyday Intelligence](https://castlemilk.github.io/startup-atlas/?view=partners&q=Everyday%20Intelligence#directory) | Not yet reviewed |
 | — | [EWOR](https://castlemilk.github.io/startup-atlas/?view=partners&q=EWOR#directory) | Not yet reviewed |
 
@@ -160,7 +160,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 
 | Logo | Partner | Reviewed website and details |
 | --- | --- | --- |
-| — | [Kaszek](https://castlemilk.github.io/startup-atlas/?view=partners&q=Kaszek#directory) | Not yet reviewed |
+| — | [Kaszek](https://castlemilk.github.io/startup-atlas/?view=partners&q=Kaszek#directory) | [Official website](https://www.kaszek.com/) · We are tech entrepreneurs partnering with the most extraordinary founders in Latin America. ([source](https://www.kaszek.com/)) |
 | <img src="../web/assets/logos/khosla.png" alt="" width="42"> | [Khosla](https://castlemilk.github.io/startup-atlas/?view=partners&q=Khosla#directory) | Not yet reviewed |
 | <img src="../web/assets/logos/kleiner-perkins.png" alt="" width="42"> | [Kleiner Perkins](https://castlemilk.github.io/startup-atlas/?view=partners&q=Kleiner%20Perkins#directory) | Not yet reviewed |
 
@@ -180,7 +180,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | Logo | Partner | Reviewed website and details |
 | --- | --- | --- |
 | — | [M12](https://castlemilk.github.io/startup-atlas/?view=partners&q=M12#directory) | Not yet reviewed |
-| — | [Madrona](https://castlemilk.github.io/startup-atlas/?view=partners&q=Madrona#directory) | Not yet reviewed |
+| — | [Madrona](https://castlemilk.github.io/startup-atlas/?view=partners&q=Madrona#directory) | [Official website](https://www.madrona.com/) · Venture capital firm founded in Seattle, investing from seed and early stages through acceleration. Raised $770M across Fund X and Acceleration Fund IV in January 2025. ([source](https://www.madrona.com/)) |
 | — | [MARU](https://castlemilk.github.io/startup-atlas/?view=partners&q=MARU#directory) | Not yet reviewed |
 | — | [Matrix](https://castlemilk.github.io/startup-atlas/?view=partners&q=Matrix#directory) | Not yet reviewed |
 | <img src="../web/assets/logos/menlo-ventures.png" alt="" width="42"> | [Menlo Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Menlo%20Ventures#directory) | Not yet reviewed |
@@ -215,7 +215,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [Paradigm](https://castlemilk.github.io/startup-atlas/?view=partners&q=Paradigm#directory) | Not yet reviewed |
 | — | [Paralect Venture Studio](https://castlemilk.github.io/startup-atlas/?view=partners&q=Paralect%20Venture%20Studio#directory) | Not yet reviewed |
 | — | [Partech](https://castlemilk.github.io/startup-atlas/?view=partners&q=Partech#directory) | Not yet reviewed |
-| — | [Pear](https://castlemilk.github.io/startup-atlas/?view=partners&q=Pear#directory) | Not yet reviewed |
+| — | [Pear](https://castlemilk.github.io/startup-atlas/?view=partners&q=Pear#directory) | [Official website](https://pear.vc/) · Pear VC is an early stage venture firm founded in 2013. We partner with founders at the earliest stages to build enduring companies. Fund V announced October 2026 at $333M; PearX accelerator. ([source](https://pear.vc/)) |
 | — | [Perceptive Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Perceptive%20Ventures#directory) | Not yet reviewed |
 | — | [Platanus](https://castlemilk.github.io/startup-atlas/?view=partners&q=Platanus#directory) | Not yet reviewed |
 | — | [Primary](https://castlemilk.github.io/startup-atlas/?view=partners&q=Primary#directory) | Not yet reviewed |
@@ -239,18 +239,18 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [Scribble](https://castlemilk.github.io/startup-atlas/?view=partners&q=Scribble#directory) | Not yet reviewed |
 | — | [Seedcamp](https://castlemilk.github.io/startup-atlas/?view=partners&q=Seedcamp#directory) | Not yet reviewed |
 | <img src="../web/assets/logos/sequoia.png" alt="" width="42"> | [Sequoia Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Sequoia%20Capital#directory) | Not yet reviewed |
-| — | [Side Stage Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Side%20Stage%20Ventures#directory) | [Official website](https://www.sidestage.vc/) · Early-stage venture investor supporting founders building companies from Australia. ([source](https://www.sidestage.vc/)) |
+| — | [Side Stage Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Side%20Stage%20Ventures#directory) | [Official website](https://www.sidestage.vc/) · Side Stage Ventures is a founder-led seed fund backing outlier founders in Australia. We write the first cheque into the best early stage companies. Then we lean in to help the founders build & scale. Fund II first closed at A$40M in 2026; first cheques up to $1.5M. ([source](https://www.sidestage.vc/)) |
 | — | [Slow](https://castlemilk.github.io/startup-atlas/?view=partners&q=Slow#directory) | Not yet reviewed |
 | — | [Soma Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Soma%20Capital#directory) | Not yet reviewed |
 | — | [Sound Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Sound%20Ventures#directory) | Not yet reviewed |
 | — | [South Park Commons](https://castlemilk.github.io/startup-atlas/?view=partners&q=South%20Park%20Commons#directory) | Not yet reviewed |
 | <img src="../web/assets/logos/spark.png" alt="" width="42"> | [Spark Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Spark%20Capital#directory) | Not yet reviewed |
-| — | [Square Peg](https://castlemilk.github.io/startup-atlas/?view=partners&q=Square%20Peg#directory) | [Official website](https://www.squarepeg.vc/) · Venture capital firm backing technology founders in Australia, Israel and Southeast Asia. ([source](https://www.squarepeg.vc/our-philosophy)) |
+| — | [Square Peg](https://castlemilk.github.io/startup-atlas/?view=partners&q=Square%20Peg#directory) | [Official website](https://www.squarepeg.vc/) · Discover Square Peg, a venture capital firm. Founded in 2012 in Australia, we now back founders early and repeatedly across APAC's fastest-growing technology markets. Fund 6 first closed February 2026 at A$650M. ([source](https://www.squarepeg.vc/)) |
 | — | [Stanford CS](https://castlemilk.github.io/startup-atlas/?view=partners&q=Stanford%20CS#directory) | Not yet reviewed |
 | <img src="../web/assets/logos/startmate.svg" alt="" width="42"> | [Startmate](https://castlemilk.github.io/startup-atlas/?view=partners&q=Startmate#directory) | [Official website](https://www.startmate.com/) · Startup accelerator supporting founders with a strong connection to Australia or New Zealand. ([source](https://www.startmate.com/faq)) |
 | — | [Startout](https://castlemilk.github.io/startup-atlas/?view=partners&q=Startout#directory) | Not yet reviewed |
 | — | [StartX](https://castlemilk.github.io/startup-atlas/?view=partners&q=StartX#directory) | Not yet reviewed |
-| — | [Station F](https://castlemilk.github.io/startup-atlas/?view=partners&q=Station%20F#directory) | Not yet reviewed |
+| — | [Station F](https://castlemilk.github.io/startup-atlas/?view=partners&q=Station%20F#directory) | [Official website](https://stationf.co/) · The world's biggest startup campus in Paris, home to 1,000+ startups and 30+ programmes. ([source](https://stationf.co/)) |
 | — | [Sunflower](https://castlemilk.github.io/startup-atlas/?view=partners&q=Sunflower#directory) | Not yet reviewed |
 | — | [Susa Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Susa%20Ventures#directory) | Not yet reviewed |
 | — | [Sutter Hill Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Sutter%20Hill%20Ventures#directory) | Not yet reviewed |
@@ -263,7 +263,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 | — | [The Embassy](https://castlemilk.github.io/startup-atlas/?view=partners&q=The%20Embassy#directory) | Not yet reviewed |
 | — | [The GP](https://castlemilk.github.io/startup-atlas/?view=partners&q=The%20GP#directory) | Not yet reviewed |
 | — | [The House Fund](https://castlemilk.github.io/startup-atlas/?view=partners&q=The%20House%20Fund#directory) | Not yet reviewed |
-| — | [Thrive Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Thrive%20Capital#directory) | Not yet reviewed |
+| — | [Thrive Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Thrive%20Capital#directory) | [Official website](https://www.thrivecap.com/) · Investment firm building and investing in internet, software and technology-enabled companies. Thrive X closed February 2026 at over $10B, weighted to growth stage. ([source](https://www.thrivecap.com/)) |
 | — | [TNT](https://castlemilk.github.io/startup-atlas/?view=partners&q=TNT#directory) | Not yet reviewed |
 | — | [Topology](https://castlemilk.github.io/startup-atlas/?view=partners&q=Topology#directory) | Not yet reviewed |
 | — | [TQ Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=TQ%20Ventures#directory) | Not yet reviewed |
@@ -274,11 +274,11 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 
 | Logo | Partner | Reviewed website and details |
 | --- | --- | --- |
-| — | [Uncork](https://castlemilk.github.io/startup-atlas/?view=partners&q=Uncork#directory) | Not yet reviewed |
+| — | [Uncork](https://castlemilk.github.io/startup-atlas/?view=partners&q=Uncork#directory) | [Official website](https://uncorkcapital.com/) · Uncork Capital is a seed-stage venture firm backing exceptional founders from zero, investing early in AI-native companies that are shaping what's next. Uncork VIII ($225M) and Plus IV ($75M) closed May 2025. ([source](https://uncorkcapital.com/)) |
 | — | [Unshackled](https://castlemilk.github.io/startup-atlas/?view=partners&q=Unshackled#directory) | Not yet reviewed |
 | — | [Unusual Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Unusual%20Ventures#directory) | Not yet reviewed |
 | — | [Upwest](https://castlemilk.github.io/startup-atlas/?view=partners&q=Upwest#directory) | Not yet reviewed |
-| — | [USV](https://castlemilk.github.io/startup-atlas/?view=partners&q=USV#directory) | Not yet reviewed |
+| — | [USV](https://castlemilk.github.io/startup-atlas/?view=partners&q=USV#directory) | [Official website](https://www.usv.com/) · New York venture capital firm investing from the earliest stages and supporting founders across markets. Raised a $900M fund cycle in October 2026. ([source](https://www.usv.com/)) |
 
 ## V
 
@@ -295,7 +295,7 @@ Each name links to its search in Startup Atlas. Official websites and summaries 
 
 | Logo | Partner | Reviewed website and details |
 | --- | --- | --- |
-| — | [Wing VC](https://castlemilk.github.io/startup-atlas/?view=partners&q=Wing%20VC#directory) | Not yet reviewed |
+| — | [Wing VC](https://castlemilk.github.io/startup-atlas/?view=partners&q=Wing%20VC#directory) | [Official website](https://www.wing.vc/) · Wing is an early-stage AI-first venture firm investing in companies building the next generation of AI applications, infrastructure, data, and more. Seed to Series A funding. ([source](https://www.wing.vc/)) |
 
 ## Y
 
@@ -318,9 +318,14 @@ These additions sit outside the historical screenshot index. Follow each source 
 | --- | --- |
 | Accel, NVIDIA, Carta, Brex and Y Combinator | [Source](https://startups.aws.com/lp/aws-activate-provider) |
 | Henson Venture Partners (self-reported Microsoft Investor Network membership) | [Source](https://www.henson.vc/post/big-news-henson-venture-partners-joins-the-microsoft-for-startups-investor-network) |
-| Boab AI, Boson Ventures, Cicada Innovations, CoLabs Australia, HEX, Illume Ventures, Jumpstart Studio, MedTech Actuator and RMIT DiscoveryHUB | [Source](https://launchvic.org/announcements/victoria-backs-next-wave-of-ai-and-deeptech-founders/) |
-| [Main Sequence](https://castlemilk.github.io/startup-atlas/?view=partners&q=Main%20Sequence#directory) | [Official website](https://www.mseq.vc/) |
-| [Rampersand](https://castlemilk.github.io/startup-atlas/?view=partners&q=Rampersand#directory) | [Official website](https://rampersand.vc/) |
-| [Investible](https://castlemilk.github.io/startup-atlas/?view=partners&q=Investible#directory) | [Official website](https://www.investible.com/) |
-| [Artesian](https://castlemilk.github.io/startup-atlas/?view=partners&q=Artesian#directory) | [Official website](https://www.artesianinvest.com/) |
-| [Brandon Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Brandon%20Capital#directory) | [Official website](https://brandoncapital.vc/) |
+| Boab AI, Illume Ventures, MedTech Actuator and RMIT DiscoveryHUB | [Source](https://launchvic.org/announcements/victoria-backs-next-wave-of-ai-and-deeptech-founders/) |
+| [Boson Ventures](https://castlemilk.github.io/startup-atlas/?view=partners&q=Boson%20Ventures#directory) | [Official website](https://www.boson.vc/) · Boson Ventures invests in early-stage Australian deep-tech and healthcare companies and helps them scale into China. ([source](https://www.boson.vc/)) |
+| [Cicada Innovations](https://castlemilk.github.io/startup-atlas/?view=partners&q=Cicada%20Innovations#directory) | [Official website](https://www.cicadainnovations.com/) · Cicada Innovations is Australia's leading incubator for startups and scaleups working on deep tech science and engineering innovations. ([source](https://www.cicadainnovations.com/)) |
+| [CoLabs Australia](https://castlemilk.github.io/startup-atlas/?view=partners&q=CoLabs%20Australia#directory) | [Official website](https://www.colabs.com.au/) · Lab, engineering & office space for bio & deep tech startups in Melbourne, Sydney & Brisbane. Build what the world needs faster with our support & community. ([source](https://www.colabs.com.au/)) |
+| [HEX](https://castlemilk.github.io/startup-atlas/?view=partners&q=HEX#directory) | [Official website](https://www.startwithhex.com/) · Innovation education for the gap year generation. Get ready to lead in an exponential world. Start with HEX. Then choose your future career. ([source](https://www.startwithhex.com/)) |
+| [Jumpstart Studio](https://castlemilk.github.io/startup-atlas/?view=partners&q=Jumpstart%20Studio#directory) | [Official website](https://www.jumpstartstudio.com.au/) · The perfect place to start your first business. At Jumpstart Studio, we mentor professionals to become successful entrepreneurs and first-time founders. ([source](https://www.jumpstartstudio.com.au/)) |
+| [Main Sequence](https://castlemilk.github.io/startup-atlas/?view=partners&q=Main%20Sequence#directory) | [Official website](https://www.mseq.vc/) · Australia's deep tech venture capital firm. We back founders rebuilding the systems the world depends on: energy, food, health, industry, space and intelligence. ([source](https://www.mseq.vc/)) |
+| [Rampersand](https://castlemilk.github.io/startup-atlas/?view=partners&q=Rampersand#directory) | [Official website](https://www.rampersand.vc/) · Backing the most ambitious founders to come out of ANZ, from day zero, wherever they're building – as they rewrite the world from software to atoms. ([source](https://www.rampersand.vc/)) |
+| [Investible](https://castlemilk.github.io/startup-atlas/?view=partners&q=Investible#directory) | [Official website](https://www.investible.com/) · Investible is an early-stage venture capital firm backing the visionaries advancing humanity through technology across the Asia-Pacific region and beyond. Also runs a climate technology fund. ([source](https://www.investible.com/)) |
+| [Artesian](https://castlemilk.github.io/startup-atlas/?view=partners&q=Artesian#directory) | [Official website](https://www.artesianinvest.com/) · Global alternative asset manager founded in 2004, managing $1.5 billion across venture capital and debt. Pioneers of Venture Capital as a Service. ([source](https://www.artesianinvest.com/)) |
+| [Brandon Capital](https://castlemilk.github.io/startup-atlas/?view=partners&q=Brandon%20Capital#directory) | [Official website](https://www.brandoncapital.vc/) · Brandon Capital invests in the most promising biomedical opportunities that have the potential to improve the lives of patients. ([source](https://www.brandoncapital.vc/)) |

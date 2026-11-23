@@ -129,6 +129,16 @@ REVIEWED_ISSUER_ARTICLES = {
             'https://www.quantonation.com/news/'
             'diraq-secures-usd-15-million-in-series-a-2-funding-to-advance-fault-tolerant-quantum-computing-development'
         ),
+        # #368 moved the same A-2 event to the distributed issuer release. Its
+        # company newsroom copy separately supports the earlier, undated Series A.
+        'replacement_round_source': (
+            'https://www.einpresswire.com/article/688069410/'
+            'diraq-secures-usd-15-million-in-series-a-2-funding-to-advance-fault-tolerant-quantum-computing-development'
+        ),
+        'preceding_round': {
+            'id': 'diraq-initial-series-a', 'stage': 'Series A', 'amount': 20000000,
+            'currency': 'USD', 'announced_on': None,
+        },
         'round_terms': {'amount': 15000000, 'currency': 'USD'},
         'opening_sha256': '6f1a986f99802631840d22ea22340283bdea99c88d3e57a52fe3cf861583f9de',
         'completion_amount': 'USD $15 million',
@@ -493,21 +503,25 @@ def includes_name(passage, normalized_name):
 def former_names(aliases, current, host, owners, evidence):
     if not isinstance(aliases, list) or len(aliases) > 4:
         raise ValueError('Expected at most four reviewed former names')
-    names = []
+    names, held = [], []
     for alias in aliases:
         fields(alias, ('name', 'evidence_id'))
         label = text(alias['name'], 'former name', 256)
         key = name_key(label)
-        artifact = evidence.get((current, text(alias['evidence_id'], 'alias evidence ID', 64)))
-        if artifact is None:
-            raise ValueError('Former name requires evidence from the committed alias review')
-        support = text(artifact['support'], 'former-name evidence', 1500)
-        if (not key or key in owners or website_host(artifact['source_url']) != host
-                or not includes_name(support, key) or not includes_name(support, name_key(current))):
-            raise ValueError('Former name is ambiguous or lacks support from the reviewed issuer site')
+        evidence_id = text(alias['evidence_id'], 'alias evidence ID', 64)
+        if not key:
+            raise ValueError('Former name must identify a company')
+        artifact = evidence.get((current, evidence_id, label))
+        if artifact is None or website_host(artifact['source_url']) != host:
+            held.append({**alias, 'reason': 'Independently pinned issuer evidence is required'})
+            continue
+        if key in owners:
+            raise ValueError('Former name is ambiguous in the reviewed company inventory')
         owners.add(key)
         names.append({**alias, **artifact})
-    return sorted(names, key=lambda item: item['name'])
+    names.sort(key=lambda item: item['name'])
+    held.sort(key=lambda item: (item['name'], item['evidence_id']))
+    return names, held
 
 
 def associated_round(clause, mention, names):
@@ -1045,8 +1059,16 @@ def reviewed_round_sources(record, host, catalogue, queue):
         return {}, {}
     citations, wire_citations = defaultdict(list), defaultdict(list)
     article = REVIEWED_ISSUER_ARTICLES.get(name)
-    wire_document = urlsplit(article['round_source']) if article else None
-    linked_wire_citations = []
+    attested_sources = [article['round_source']] if article else []
+    if article and article.get('replacement_round_source'):
+        attested_sources.append(article['replacement_round_source'])
+    def document_key(url):
+        ref = urlsplit(url)
+        return ref.netloc.removeprefix('www.'), ref.path
+
+    wire_documents = {document_key(url) for url in attested_sources}
+    article_document = document_key(article['url']) if article else None
+    linked_wire_citations, article_citations = [], []
     for company in catalogue.values():
         rounds = company.get('funding_rounds')
         if not isinstance(rounds, list):
@@ -1063,10 +1085,12 @@ def reviewed_round_sources(record, host, catalogue, queue):
             if website_host(page) == host and urlsplit(page).path != '/':
                 # Group fragments to check ambiguity. Attribution still requires the recorded URL.
                 citations[page].append((source, company['name'], event.get('stage')))
-            if wire_document and page:
-                document = urlsplit(page)
-                if (document.netloc, document.path) == (wire_document.netloc, wire_document.path):
+            if article and page:
+                document = document_key(page)
+                if document in wire_documents:
                     linked_wire_citations.append((company['name'], event))
+                if document == article_document:
+                    article_citations.append((source, company['name'], event))
     results = {}
     for linked_rounds in citations.values():
         if len(linked_rounds) != 1:
@@ -1084,12 +1108,17 @@ def reviewed_round_sources(record, host, catalogue, queue):
     articles = {}
     if len(linked_wire_citations) == 1:
         owner, event = linked_wire_citations[0]
-        expected = {'source': article['round_source'], 'id': article['round_id'], 'stage': article['stage'],
-                    **article.get('round_terms', {})}
+        expected = {'id': article['round_id'], 'stage': article['stage'], **article.get('round_terms', {})}
         url = article['url']
-        cited_paths = {urlsplit(page).path for page in citations}
-        if (owner == name and all(event.get(key) == value for key, value in expected.items())
-                and website_host(url) == host and urlsplit(url).path not in cited_paths):
+        source = event.get('source')
+        source_matches = source == article['round_source'] and not article_citations
+        if source == article.get('replacement_round_source') and len(article_citations) == 1:
+            prior_source, prior_owner, prior = article_citations[0]
+            source_matches = (prior_source == url and prior_owner == name
+                              and all(prior.get(key) == value
+                                      for key, value in article['preceding_round'].items()))
+        if (owner == name and source_matches and all(event.get(key) == value for key, value in expected.items())
+                and website_host(url) == host):
             articles[url] = (name_key(name), name_key(article['stage']), article)
     return results, articles
 
@@ -1120,7 +1149,7 @@ def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
         host = website_host(site_url(row.get('website') or record.get('website')))
         if not host:
             raise ValueError('Funding review needs the reviewed official website')
-        aliases = former_names(company.get('former_names', []), name, host, owners, alias_evidence)
+        aliases, held = former_names(company.get('former_names', []), name, host, owners, alias_evidence)
         action = next_action(row['fields'])
         searches = []
         if action == 'search_early_history':
@@ -1140,5 +1169,7 @@ def prepare_funding_review(report, overlay, manifest_path, alias_evidence):
             'unique_urls_by_bucket': {bucket: sum(result['bucket'] == bucket for result in results) for bucket in BUCKETS},
             'results': results,
         }
+        if held:
+            entries[name]['held_former_names'] = held
     return {'manifest_sha256': digest(raw), 'external_source_population': 'unknown',
             'review_required': True, 'companies': [entries[name] for name in sorted(entries)]}

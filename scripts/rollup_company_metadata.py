@@ -36,6 +36,14 @@ MAX_BATCHES = 20
 PRIORITY = {'blocked': 0, 'searched_unknown': 0, 'candidate': 1,
             'reviewed': 2, 'published': 2, 'conflict': 2, 'not_applicable': 2}
 
+# The archived rebrand receipt binds the reviewed company and former name to
+# the original committed batch, issuer URL and exact evidence bytes.
+PINNED_FORMER_NAMES = {
+    ('Arkeus', 'c994ae4480ec97ceb2b52df01baac9943a7fe6862013240546f79f1f3c1e9285',
+     'https://arkeus.com/news/arkeus-rebrand',
+     '011a8ba7cbbf257ea285cf5da15b6a9445fde519d9597695858609c9b0e52ae3'): 'IAS Asia Pacific',
+}
+
 
 def committed_decisions(snapshot, decisions, batch_sha, at):
     done = processed_cells(snapshot)
@@ -88,16 +96,18 @@ def committed_alias_evidence(effective, batches):
     for (name, dimension), decision in effective.items():
         if dimension != 'aliases' or decision['disposition'] not in ('reviewed', 'published'):
             continue
-        batch = batches[decision['batch_sha256']]
+        batch_sha = decision['batch_sha256']
+        batch = batches[batch_sha]
         for key in decision['evidence']:
             entry = batch['artifacts'][key]
-            if entry['kind'] not in ('review', 'identity_alias') or 'source_url' not in entry:
+            source = entry.get('source_url')
+            former = PINNED_FORMER_NAMES.get((name, batch_sha, source, entry['sha256']))
+            if entry['kind'] != 'review' or former is None:
                 continue
             _, raw = saved_artifact(batch['root'], entry)
-            support = load_json(raw).get('support')
-            if isinstance(support, str):
-                evidence[name, key] = {'source_url': entry['source_url'], 'support': support,
-                                       'sha256': entry['sha256'], 'batch_sha256': decision['batch_sha256']}
+            support = load_json(raw)['support']
+            evidence[name, key, former] = {'source_url': source, 'support': support,
+                                           'sha256': entry['sha256'], 'batch_sha256': batch_sha}
     return evidence
 
 

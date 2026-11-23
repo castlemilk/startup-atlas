@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 
 // Exercises the editorial profile hierarchy and exact evidence against published records.
-export async function checkProfileWireframes({command, evaluate, navigate, until, click, press, screenshot, assertNoOverflow, partners, graph}) {
+export async function checkProfileWireframes({command, evaluate, navigate, until, click, press, screenshot, assertNoOverflow, partners, graph, catalogue}) {
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await navigate('/entity.html?id=startup%3Acanva',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Canva'");
   await evaluate('document.fonts.ready.then(()=>true)');
@@ -217,6 +217,58 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
     assert.equal(await evaluate("document.querySelector('#entity-profile h1')?.textContent"),entity.name);
     assert.equal(await evaluate("document.querySelectorAll('#entity-founders,#entity-company,#entity-funding').length"),0,`${kind} must not acquire invented company/funding sections`);
     await assertNoOverflow(`Wireframe ${kind} dossier narrow`);
+  }
+  const offer=catalogue.opportunities.find(item=>item.id==='carbon-innovation-grants-wa');
+  const personEdge=graph.edges.find(edge=>edge.from==='person:melanie-perkins'&&edge.to==='startup:canva');
+  const profiles=[
+    {id:personEdge.from, trigger:'button[aria-label="Sources for Founding relationship · Canva"]', original:personEdge.source, value:'Melanie Perkins founded Canva'},
+    {id:`programme:${offer.id}`, trigger:'button[aria-label="Sources for Programme eligibility"]', original:offer.url, value:offer.eligibility}
+  ];
+  for (const [width,height] of [[1440,900],[320,568],[568,320]]) {
+    await command('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<700});
+    for (const profile of profiles) {
+      await navigate('/entity.html?id='+encodeURIComponent(profile.id),"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'");
+      await assertNoOverflow(`${profile.id} at ${width}×${height}`);
+      if (profile.id.startsWith('programme:')) {
+        assert.equal(await evaluate("document.querySelector('.entity-programme-source time')?.dateTime"),offer.checked);
+        assert.ok(await evaluate(`(()=>{const sources=[...document.querySelectorAll('#entity-sources a')].map(a=>a.href);return ${JSON.stringify(offer.extra)}.every(url=>sources.includes(url));})()`),'Programme documents remain present in the source index');
+      }
+      await click('.atlas-section-nav a[href="#entity-sources"]');
+      await until(()=>evaluate("location.hash==='#entity-sources'&&document.querySelector('.atlas-section-nav a[aria-current=location]')?.hash==='#entity-sources'"),'The Sources anchor must also update the current location');
+      await click(profile.trigger);
+      await until(()=>evaluate(`(()=>{
+        const panel=document.querySelector('.profile-evidence-panel[data-open]'),footer=panel?.querySelector('.profile-evidence-footer a');
+        if(!footer)return false;
+        const action=footer.getBoundingClientRect(),body=panel.querySelector('.profile-evidence-scroll');
+        return action.top>=0&&action.bottom<=innerHeight+1&&action.height>=44&&body.scrollWidth<=body.clientWidth+1;
+      })()`),`The original source stays visible in the ${width}×${height} evidence panel`);
+      assert.equal(await evaluate("document.querySelector('.profile-evidence-value').textContent"),profile.value);
+      assert.equal(await evaluate("document.querySelector('.profile-evidence-footer a').href"),profile.original);
+      assert.equal(await evaluate('document.activeElement.id'),'profile-evidence-close');
+      await press('Tab','Tab',9);
+      if (await evaluate("document.activeElement.matches('.profile-evidence-scroll')")) await press('Tab','Tab',9);
+      assert.ok(await evaluate("document.activeElement.matches('.profile-evidence-footer a')"),'Keyboard users can reach the visible original source');
+      await screenshot(`atlas-claim-${profile.id.split(':')[0]}-${width}.png`);
+      await press('Escape','Escape',27);
+      await until(()=>evaluate(`!document.querySelector('.profile-evidence-panel[data-open]')&&document.activeElement.matches(${JSON.stringify(profile.trigger)})`),'Evidence returns focus to its exact trigger');
+    }
+  }
+  await navigate('/entity.html?id=person%3Aphoebe-pincus--startmate',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'");
+  assert.equal(await evaluate("document.querySelector('#entity-employment h2')?.textContent"),'Employment roles','The people dossier uses a top-level section heading for employment');
+  for (const [width,height] of [[1440,900],[320,640]]) {
+    await command('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<700});
+    for (const [id,key] of [['startup:airwallex','co-headquarters'],['startup:t-0','business-base']]) {
+      const fact=graph.entities.find(item=>item.id===id).profile_facts.find(item=>item.key===key);
+      const action=`#entity-company button[aria-label="Sources for ${fact.label}"]`;
+      await navigate('/entity.html?id='+encodeURIComponent(id),"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'");
+      await click(action);
+      await until(()=>evaluate("!!document.querySelector('.profile-evidence-panel[data-open]')"),`The location evidence for ${id} must open`);
+      assert.equal(await evaluate("document.querySelector('.profile-evidence-value').textContent"),fact.value);
+      assert.equal(await evaluate("document.querySelector('.profile-evidence-citations a').href"),fact.source);
+      assert.ok(await evaluate(`[...document.querySelectorAll('.profile-evidence-citations time')].some(time=>time.dateTime===${JSON.stringify(fact.reviewed_at)})`),'Location evidence includes its review date');
+      await assertNoOverflow(`${id} location evidence at ${width}px`);
+      await click('#profile-evidence-close');
+    }
   }
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   console.log('Profile wireframe checks passed: ordered dossier, exact desktop and mobile claim evidence, focus and reading position, sourced partner inspection, and narrow reading order.');

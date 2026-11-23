@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 
 // Exercise real graph event handlers against a small sourced neighbourhood.
 // This verifies navigation state and geometry retention; browser tests own rendering.
-test('inspecting graph entities preserves the map and explicit exploration reroots', async () => {
+test('graph activation follows relationships while shared links can inspect independently', async () => {
   const graph={
     entities:[
       {id:'startup:canva',name:'Canva',kind:'startup',summary:'Design platform'},
@@ -51,15 +51,16 @@ test('inspecting graph entities preserves the map and explicit exploration reroo
     };
   }
   for(const id of ['graph-search','graph-query','graph-results','graph-detail','graph-status','graph-canvas','graph-count','graph-list','graph-filters','graph-depth','graph-list-toggle','graph-zoom-in','graph-zoom-out','graph-reset','graph-fit','network-heading'])elements.set(id,element());
+  for(const id of ['graph-back-to-companies','graph-company-group','graph-company-groups','graph-company-overview','graph-neighborhood','graph-overview-heading','graph-overview-count','graph-title'])elements.set(id,element());
   elements.get('graph-filters').filters=['startup','partner','person','programme','provider'].map(kind=>element({kind}));
   const previous={};
   for(const key of ['document','window','location','history','fetch'])previous[key]=globalThis[key];
   globalThis.document=Object.assign(new EventTarget(),{getElementById:id=>elements.get(id),hidden:false});
   globalThis.window={addEventListener:(name,fn)=>windowEvents.set(name,fn)};
-  globalThis.location={search:'?entity=startup%3Acanva'};
+  globalThis.location={pathname:'/graph.html',search:'?entity=startup%3Acanva'};
   globalThis.history={
-    pushState(_state,_title,url){historyEntries.push(url);globalThis.location.search=url;},
-    replaceState(_state,_title,url){globalThis.location.search=url;}
+    pushState(_state,_title,url){historyEntries.push(url);this.replaceState(_state,_title,url);},
+    replaceState(_state,_title,url){globalThis.location.search=new URL(url,'https://example.com').search;}
   };
   globalThis.fetch=async path=>path==='./data/graph.json'?Response.json(graph):new Response('',{status:404});
   const click=(id,dataset)=>elements.get(id).handlers.click({target:{closest:()=>({dataset})}});
@@ -72,7 +73,7 @@ test('inspecting graph entities preserves the map and explicit exploration reroo
     canvas.handlers.keydown({target:{closest:()=>founder},key:'ArrowRight',preventDefault(){}});
     elements.get('graph-zoom-in').handlers.click();
     const geometry=founder.getAttribute('transform'),viewBox=canvas.getAttribute('viewBox'),mapMarkup=canvas.innerHTML;
-    canvas.handlers.keydown({target:{closest:()=>founder},key:'Enter',preventDefault(){}});
+    location.search='?entity=startup%3Acanva&selected=person%3Amelanie-perkins';windowEvents.get('popstate')();
     assert.match(detail.innerHTML,/<h2>Melanie Perkins<\/h2>/);
     assert.equal(new URLSearchParams(location.search).get('entity'),'startup:canva');
     assert.equal(new URLSearchParams(location.search).get('selected'),'person:melanie-perkins');
@@ -83,19 +84,22 @@ test('inspecting graph entities preserves the map and explicit exploration reroo
     assert.match(detail.innerHTML,/Relationship source/);
     assert.match(detail.innerHTML,/Outside current map/);
     const inspectedUrl=location.search;
-    click('graph-detail',{select:'startup:fusion-books'});
-    assert.match(detail.innerHTML,/<h2>Fusion Books<\/h2>/);
-    assert.match(detail.innerHTML,/Selected outside this map/);
-    assert.equal(canvas.innerHTML,mapMarkup,'Inspecting an off-map relationship must retain context');
-    location.search=inspectedUrl;windowEvents.get('popstate')();
-    assert.match(detail.innerHTML,/<h2>Melanie Perkins<\/h2>/);
-    assert.equal(canvas.getAttribute('viewBox'),viewBox,'Back within the same root keeps the viewport');
-    click('graph-detail',{explore:'person:melanie-perkins'});
+    canvas.handlers.keydown({target:{closest:()=>founder},key:'Enter',preventDefault(){}});
     assert.equal(new URLSearchParams(location.search).get('entity'),'person:melanie-perkins');
     assert.equal(new URLSearchParams(location.search).get('selected'),'person:melanie-perkins');
     assert.match(elements.get('network-heading').textContent,/Around Melanie Perkins/);
     assert.notEqual(canvas.innerHTML,mapMarkup);
     assert.match(canvas.innerHTML,/data-node="startup:fusion-books"/);
+    assert.equal(document.activeElement.dataset.node,'person:melanie-perkins');
+    const founderUrl=location.search;
+    click('graph-detail',{select:'startup:fusion-books'});
+    assert.match(detail.innerHTML,/<h2>Fusion Books<\/h2>/);
+    assert.equal(new URLSearchParams(location.search).get('entity'),'startup:fusion-books');
+    location.search=founderUrl;windowEvents.get('popstate')();
+    assert.match(canvas.innerHTML,/data-node="startup:canva"/);
+    location.search=inspectedUrl;windowEvents.get('popstate')();
+    assert.match(detail.innerHTML,/<h2>Melanie Perkins<\/h2>/);
+    assert.equal(new URLSearchParams(location.search).get('entity'),'startup:canva');
     location.search='?entity=startup%3Acanva&selected=startup%3Afusion-books&depth=2&types=person,startup&list=1&q=Melanie';
     windowEvents.get('popstate')();
     assert.match(detail.innerHTML,/<h2>Fusion Books<\/h2>/);
@@ -115,7 +119,7 @@ test('inspecting graph entities preserves the map and explicit exploration reroo
     const retainedMarkup=canvas.innerHTML;
     document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));
     document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));
-    windowEvents.get('pagehide')();
+    windowEvents.get('pagehide')({persisted:false});
     assert.equal(canvas.innerHTML,retainedMarkup,'Lifecycle cleanup preserves the current graph');
   } finally {
     for(const [key,value] of Object.entries(previous))if(value===undefined)delete globalThis[key];else globalThis[key]=value;

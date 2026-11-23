@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check that Pages published a consistent graph and SQLite database."""
+"""Check the published landing, explorer and consistent graph snapshot."""
 import json
 import hashlib
 import io
@@ -28,6 +28,8 @@ def get(path, limit):
 def verify():
     page=get('graph.html',100000).decode('utf-8')
     if 'sql-wasm.js' not in page or 'graph.js' not in page: raise ValueError('Published explorer is missing its SQLite runtime')
+    if not all(marker in page for marker in ('id="graph-company-loom"', 'id="graph-company-group"', 'id="graph-company-directory"')):
+        raise ValueError('Published explorer is missing the grouped company map or its list fallback')
     lab=get('design-lab.html',100000).decode('utf-8')
     if 'concept-dialog' not in lab or 'design-lab.js' not in lab or 'concept-collection' not in lab:
         raise ValueError('Published design lab is missing its gallery, collection scope or image viewer')
@@ -45,10 +47,18 @@ def verify():
         if marker not in system: raise ValueError(f'Published working system is missing {marker}')
     if system.count('class="ds-wireframe"')!=5 or 'design-lab.html?collection=proposed#gallery' not in system:
         raise ValueError('Published working system must retain five source wireframes and link to proposed studies')
-    for filename in ('design-tokens.css','atlas-ui.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css','design-aesthetic-tokens.css','design-aesthetic.css','signal-controls.css','atlas-sdk.css'):
+    for filename in ('design-tokens.css','atlas-ui.css','landing.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css','design-aesthetic-tokens.css','design-aesthetic.css','signal-controls.css','atlas-sdk.css'):
         if get(filename,100000)!=Path('web',filename).read_bytes():
             raise ValueError(f'Published system stylesheet differs from this revision: {filename}')
-    for route in ('index.html','treemap.html','graph.html','entity.html','partner.html'):
+    landing=get('index.html',100000).decode('utf-8')
+    for marker in ('landing.js?v=','landing.css?v=','href="./list.html"','href="./graph.html"','href="./treemap.html"','data-atlas-masthead'):
+        if marker not in landing:
+            raise ValueError(f'Published landing is missing {marker}')
+    for name in ('atlas-list-wide.webp','atlas-list-compact.webp'):
+        path=f'assets/landing/{name}'
+        if path not in landing or get(path,100000)!=Path('web',path).read_bytes():
+            raise ValueError(f'Published landing artwork differs from this revision: {name}')
+    for route in ('list.html','treemap.html','graph.html','entity.html','partner.html'):
         markup=get(route,100000).decode('utf-8')
         if 'atlas-sdk.js?v=' not in markup or 'atlas-sdk.css?v=' not in markup:
             raise ValueError(f'Published view is missing the fingerprinted UI SDK: {route}')
@@ -160,7 +170,7 @@ def verify():
             for table in ('partner_records','locations','logo_mappings','provider_relationships'):
                 if not db.execute(f'SELECT 1 FROM {table} LIMIT 1').fetchone():raise ValueError(f'Published {table} is empty')
             if not db.execute("SELECT 1 FROM entity_search WHERE entity_search MATCH ?",('"canva*"',)).fetchone():raise ValueError('Published FTS index is not searchable')
-    print(f'Verified published graph, SQLite, component/token/recipe reference, design handbook, Signal specimen, {len(expected_assets)} assets, 32 utility icons, four feature symbols and design kit at {REVISION}')
+    print(f'Verified published landing, List, graph, SQLite, component/token/recipe reference, design handbook, Signal specimen, {len(expected_assets)} assets, 32 utility icons, four feature symbols and design kit at {REVISION}')
 
 
 for attempt in range(12):

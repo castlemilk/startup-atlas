@@ -103,11 +103,13 @@ The compatibility aliases in the token stylesheet are `--ink → --atlas-ink`, `
 
 The shared stylesheet follows the established route styles where its primitives/adapters need to take precedence; route-specific catalogue composition may follow it. Verify computed styles rather than assuming a token declaration defeats a more specific legacy rule. There is no Tailwind or React theme provider. The reference can export computed JSON/CSS snapshots, including the current motion preference; these exports do not replace the canonical stylesheet or its media rules.
 
-### Directory evidence coverage
+### Landing and company list
 
-On desktop, the unfiltered Directory opens in company Coverage. On mobile it opens in company Details. The Coverage rows report distinct HTTPS source documents for company details, founder connections and funding rounds. Fragment links to the same document count once per category. A cell with no recorded source reads “Unknown.” The Coverage choice can be shared through the directory URL.
+The homepage leads into List, Graph and Treemap. Its [StageShow composition](docs/design/landing-stage/README.md) uses the editorial tokens and sourced company records. Desktop and mobile use different compositions.
 
-The Directory uses Gamma's Filter Bar chip treatment and the UI SDK's native search, select and segmented controls. The search label adapts [Bencho Label input](https://github.com/cabralorenzo/bencho/tree/84dfcee170171257a28631402d37ff34900bc773/blocks/label-input). Coverage cells and their legend adapt [Bklit's sequential heatmap](https://github.com/bklit/bklit-ui/tree/76299da6981e2494836be5ce842720a7fb057891/packages/ui/src/charts/heatmap), with exact counts in text and a distinct unknown state. The [Bencho licence](web/vendor/BENCHO-LICENSE.txt), [Bklit licence](web/vendor/BKLIT-LICENSE.txt) and [font sources](web/assets/fonts/editorial/sources.json) ship with the site.
+List shows technology type, headquarters and recorded stage by default. The Columns menu groups fields from [the column registry](web/company-columns.js). Mobile rows show the same selected fields under the company name. The desktop table keeps company identity and actions visible while additional columns scroll inside the results frame. The next page appends at the end of the visible results. The List uses Gamma's Filter Bar chip treatment and the UI SDK's native search, select and segmented controls. The search label adapts [Bencho Label input](https://github.com/cabralorenzo/bencho/tree/84dfcee170171257a28631402d37ff34900bc773/blocks/label-input).
+
+Individual profiles retain their citations. The signed-in backend's Evidence coverage view counts distinct profile, founder and funding source documents per company. Fragment links to the same document count once per category.
 
 ## Colors
 
@@ -251,9 +253,11 @@ Directory and partner company rows offer distinct **Inspect**, profile and sourc
 
 ### Graph inspection and movement
 
-Click or Enter/Space inspects a visible node without reconstructing the network. **Explore from here** explicitly changes root; choosing a search result starts a new root neighbourhood. An inspected related entity that is not in the rendered map is labelled **Outside current map**. **Open profile** remains a real link. The connection list exposes the same visible relationships with sources.
+Click or Enter/Space follows a node to its neighbourhood. Search results and linked entities do the same. **Previous view** and browser Back restore the preceding view. The inspector leads with the source for the relationship followed when that edge is recorded. Shared links may open a distinct inspection selection. **Open profile** goes to the full record, and the connections list includes the evidence for each relationship.
 
-Graph cards support pointer dragging and arrow-key movement. **Fit view** contains the neighbourhood, **Center selection** brings a visible node to the middle, and **Reset graph layout** restores automatic placement. The same tab retains camera and node placements by neighbourhood. The toolbar reports company scope separately from contextual relationship nodes.
+Loom draws the paper map and directional connections. The map places names clear of nearby markers, using paper behind each name to keep wires from crossing the text. Light wordmarks use a dark surface and fit within their marker. Busy mobile maps start with a labelled overview of sourced direct neighbours. **Full map** shows the whole diagram, and the connections list retains every matching relationship and its source. The SVG map is available when WebGL2 is unavailable. [Mobile Fit configuration and checks](docs/EXPLORER-VIEWS.md#maintaining-mobile-fit)
+
+Graph cards support pointer dragging and arrow-key movement. **Fit view** frames the current map presentation, **Center selection** brings a visible node to the middle, and **Reset graph layout** restores automatic placement. The same tab retains camera and node placements by neighbourhood and presentation. The toolbar reports company scope separately from contextual relationship nodes.
 
 ### Motion
 

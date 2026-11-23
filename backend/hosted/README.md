@@ -98,3 +98,9 @@ the current OAuth/Sites boundary and draft-PR-only writes. Validation and
 proposal receipts distinguish record digests, repository commits and published
 graph revisions; private MCP deployment and client tool discovery remain
 separate release checks.
+
+## Evidence coverage
+
+Open **Evidence coverage** from the connected private Site, or visit `/coverage`. It uses the existing Site identity and the caller's repository connection. The report compares the published graph revision with GitHub main and shows distinct profile, founder and funding source URLs per company. Search by company name or ID and filter by missing areas. The company name links to the public profile's Sources section.
+
+The [coverage module](src/coverage.mjs) defines which source URLs count and how they are grouped. Publication of this backend is independent of the public GitHub Pages build.

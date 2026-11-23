@@ -33,6 +33,9 @@ def build_graph(profiles, leads, reviewed, catalogue, research):
     for name in leads:
         record = reviewed.get(name, {})
         add('partner', name, summary=record.get('description',''), website=record.get('website',''), source=record.get('source',''))
+    for provider in research.get('technology_providers', []):
+        add('provider', provider['name'], summary=provider['description'], website=provider['website'],
+            source=provider['source'], logo=provider.get('logo',''), logo_source=provider.get('logo_source',''))
     for offer in catalogue['opportunities']:
         provider_id=add('provider', offer['org'])
         # The catalogue identifies the programme operator; it does not imply
@@ -71,7 +74,9 @@ def build_graph(profiles, leads, reviewed, catalogue, research):
             edges.append({'from':founder_id,'to':startup_id,'kind':'founded','description':'Founder','source':founder['source']})
         for event in startup.get('funding_rounds',[]):
             rounds.append({'startup_id':startup_id,**event})
-            articles.append({'startup_id':startup_id,'title':startup['name']+' — '+event['stage'],'url':event['source'],'published_on':event.get('announced_on',''),'kind':'funding announcement'})
+            # A round's source may be counsel's record, an offer close, or an
+            # announcement. Only an explicit article supplies its evidence kind.
+            articles.append({'startup_id':startup_id,'title':startup['name']+' — '+event['stage'],'url':event['source'],'published_on':event.get('announced_on',''),'kind':'funding source'})
         for article in startup.get('articles',[]):
             articles.append({'startup_id':startup_id,'title':article['title'],'url':article['url'],'published_on':article.get('published_on',''),'kind':article.get('kind','news')})
     for startup in research['startups']:

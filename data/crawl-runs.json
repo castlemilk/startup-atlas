@@ -140,8 +140,49 @@
       "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44849701218/artifacts/14685285006",
       "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44849701218",
       "review_status": "unreviewed",
-      "published_pr": null,
+      "published_pr": 301,
       "supersedes": "crawl-20261121-partners-01",
+      "superseded_by": null
+    },
+    {
+      "version": 1,
+      "run_id": "crawl-20261121-partners-04",
+      "mode": "partners",
+      "scope": {
+        "source_ids": [
+          "github-for-startups-partners",
+          "aws-activate-featured",
+          "launchvic-ai-preaccelerators",
+          "henson-microsoft-network",
+          "innovation-bay-australia-vc"
+        ],
+        "seed_file": "data/partner-sources.json",
+        "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "args": {
+        "follow": 0
+      },
+      "catalogue_revision": "09f3e4804cdb56b643a20b7ad5a35077b1e72561",
+      "source_revisions": {
+        "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "claimed_by": "muse",
+      "claimed_at": "2026-11-21T11:49:00Z",
+      "lease_expires_at": "2026-11-21T12:19:00Z",
+      "status": "running",
+      "started_at": "2026-11-21T11:49:00Z",
+      "finished_at": null,
+      "outcome": null,
+      "snapshot_sha256": null,
+      "artifact_url": null,
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44900894051",
+      "review_status": "unreviewed",
+      "published_pr": null,
+      "supersedes": null,
       "superseded_by": null
     }
   ],

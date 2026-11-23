@@ -4,10 +4,10 @@ import { entityHref, kindName } from './graph-model.js';
 import { logoFor, logoClassFor } from './logos.js';
 import {
   COLOURS, COMPANY_VALUE, GROUPS, METRICS, cohort, cohortNames, colourEncoding, companyContext, companyFigure, currencies,
-  formatValue, groupedTreemap, indexCompanyValues, indexTreemapEvidence, makeView, treemap, validYear,
+  formatValue, groupedTreemap, indexCompanyValues, loadTreemapEvidence, makeView, treemap, validYear,
 } from './treemap-model.js';
 import { animateAtlasChange, canAnimateAtlasChange, icon } from './atlas-ui.js';
-import { countryName, explorationHref, filterCompanies, hasCompanyScope, indexCompanies, readExploration, writeExploration } from './atlas-exploration.js';
+import { companyPlaceLabel, countryName, explorationHref, filterCompanies, hasCompanyScope, indexCompanies, multipleHeadquarters, readExploration, writeExploration } from './atlas-exploration.js';
 import { mountExploration } from './atlas-explorer-controls.js';
 
 const $ = id => document.getElementById(id);
@@ -45,6 +45,18 @@ const countLabel = count => formatValue(count, 'companies');
 const safeImageUrl = value => /^\.\/assets\/logos\/[a-z0-9-]+\.(svg|png)$/i.test(value || '') ? value : sourceUrl(value);
 const safeImage = entity => safeImageUrl(logoFor(entity.name)) ||
   (state.presentation !== 'cards' && sourceUrl(entity.logo_source) ? safeImageUrl(entity.logo) : '') || '';
+// Cards can use these already published marks while the graph still cites the reviewed asset and issuer.
+const reviewedCardMarks = new Map([
+  ['startup:synthesia', {file:'synthesia.svg', source:'https://www.synthesia.io/'}],
+  ['startup:culture-amp', {file:'culture-amp.svg', source:'https://www.cultureamp.com/company/media-kit'}],
+  ['startup:quantum-brilliance', {file:'quantum-brilliance.svg', source:'https://quantumbrilliance.com/'}],
+]);
+function reviewedCardLogo(entity) {
+  const mark = reviewedCardMarks.get(entity.id);
+  if (entity.kind !== 'startup' || !mark || entity.logo_source !== mark.source ||
+      entity.logo !== 'https://castlemilk.github.io/startup-atlas/assets/logos/' + mark.file) return '';
+  return './assets/logos/' + mark.file;
+}
 const initials = name => name.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
 const logoCanvases = new Map([
   ['https://cdn.prod.website-files.com/65dd072aa7402b211d7d6ccf/65deeccca712cb796025a2bd_Canva.png', 'cream'],
@@ -171,7 +183,8 @@ function profileContext(entity) {
   const technologyFact = technology.get(entity.id);
   const owner = ownership.get(entity.id);
   const companyValue = companyValues.get(entity.id);
-  const links = [evidenceLink(entity.website,'Website'), ...context.socials.map(link => evidenceLink(link.url,link.label))].filter(Boolean).join('');
+  const logoSource = state.presentation === 'cards' && reviewedCardLogo(entity) ? evidenceLink(entity.logo_source,'Logo source') : '';
+  const links = [evidenceLink(entity.website,'Website'), logoSource, ...context.socials.map(link => evidenceLink(link.url,link.label))].filter(Boolean).join('');
   const figures = context.figures.map(({metric,row,reason,event}) => {
     const date = event ? datedFigure(event, metric) : '';
     const value = row ? `<strong>${esc(formatValue(row.value,metric,state.currency,false))}</strong>` : esc(missingFigureLabel({reason},metric));
@@ -287,7 +300,7 @@ function showDetail() {
   const inResults = visibleCompanies.has(state.selected);
   const figure = isCompany ? companyFigure(graph,entity,state.metric,state.currency,marketCaps,companyValues) : null;
   const place = dimensions.get(entity.id);
-  const locationLabel = place?.country ? [place.city,countryName(place.country)].filter(Boolean).join(', ') : '';
+  const locationLabel = companyPlaceLabel(place);
   const founded = validYear(entity.founded_year) ? `Founded ${entity.founded_year}` : '';
   const scope = inResults ? ''
     : `<div class="treemap-outside" data-selection="outside">
@@ -431,7 +444,7 @@ function draw() {
   focusCopy(previous,chart);
 }
 function cardMedia(entity) {
-  const image = state.logos ? logoFor(entity.name) : '';
+  const image = state.logos ? logoFor(entity.name) || reviewedCardLogo(entity) : '';
   return `<span class="treemap-card-media" aria-hidden="true">
     ${image ? `<img src="${esc(image)}" alt="" hidden>` : ''}
     <span class="treemap-card-word">${esc(entity.name)}</span>
@@ -454,8 +467,7 @@ function drawCards() {
     const name = grouped ? item.name : item.entity.name;
     const companyCount = !grouped && state.metric === 'companies';
     const dimensionsForCompany = dimensions.get(item.id);
-    const place = dimensionsForCompany?.country
-      ? [dimensionsForCompany.city,countryName(dimensionsForCompany.country)].filter(Boolean).join(', ') : '';
+    const place = companyPlaceLabel(dimensionsForCompany);
     const value = companyCount ? '' : figureAmount(item);
     const year = !grouped && validYear(item.entity.founded_year) ? `est. ${item.entity.founded_year}` : '';
     const metric = item.basis || state.metric;
@@ -502,6 +514,9 @@ function drawRankedList() {
 
 function groupAction(group) {
   if (state.group === 'decade') return state.period === 'all' ? 'Explore decade' : '';
+  if ((state.group === 'country' || state.group === 'city') && group.country===multipleHeadquarters) {
+    return state.drillCountry===multipleHeadquarters ? '' : 'Explore group';
+  }
   if (state.group === 'country') return group.country !== state.drillCountry ? 'Explore country' : '';
   if (state.group === 'city') {
     if (group.country === 'unknown') return state.drillCountry !== 'unknown' ? 'Explore unrecorded locations' : '';
@@ -512,7 +527,7 @@ function groupAction(group) {
 }
 
 function groupTitle(group) {
-  const name = state.group === 'city' && state.drillCountry && group.country === state.drillCountry
+  const name = state.group === 'city' && group.city && state.drillCountry && group.country === state.drillCountry
     ? group.city === 'unknown' ? 'City not recorded' : group.city : group.name;
   const figure = state.metric === 'companies' ? countLabel(group.count) : group.children.length
     ? `${money(group.value)} · ${countLabel(group.children.length)} plotted` : 'No comparable figures';
@@ -693,7 +708,7 @@ function change(next, replace = false) {
 }
 
 function enterCountry(code) {
-  change({drillCountry:code, drillCity:'', group:state.group === 'country' && code !== 'unknown' ? 'city' : state.group});
+  change({drillCountry:code, drillCity:'', group:state.group === 'country' && code !== 'unknown' && code !== multipleHeadquarters ? 'city' : state.group});
 }
 function activateGroup(id) {
   const group = view.groups.find(item => item.id === id);
@@ -877,14 +892,10 @@ try {
   graph = graphStore.graph;
   entities = new Map(graph.entities.map(entity => [entity.id,entity]));
   companies = graph.entities.filter(entity => entity.kind === 'startup');
-  dimensions = indexCompanies(graph);
-  let evidence;
-  try { evidence = await graphStore.document('treemap-evidence.json'); } catch { /* Older snapshots can still show the other measures. */ }
-  evidenceAvailable = evidence?.version === 1;
-  const researched = indexTreemapEvidence(graph,evidence);
-  ({technology,ownership,marketCaps} = researched);
+  const researched = await loadTreemapEvidence(graphStore);
+  ({technology,ownership,marketCaps,available:evidenceAvailable} = researched);
   companyValues = indexCompanyValues(graph,researched);
-  for (const [id, fact] of technology) dimensions.get(id).technology = fact.type;
+  dimensions = indexCompanies(graph,technology);
   periods = new Set(cohortNames(graph));
   $('treemap-presentation').removeAttribute('disabled');
   $('treemap-density').removeAttribute('disabled');
@@ -910,7 +921,7 @@ try {
 } catch {
   $('treemap-status').textContent = 'The company snapshot could not be loaded. Reload this page to try again.';
   showPresentation(presentationFrom(new URLSearchParams(location.search)));
-  const unavailable = '<p>The treemap is temporarily unavailable. <a href="">Reload this view</a> or <a href="./">return to the directory</a>.</p>';
+  const unavailable = '<p>The treemap is temporarily unavailable. <a href="">Reload this view</a> or <a href="./list.html">return to the list</a>.</p>';
   for (const panel of [chart, $('treemap-cards'), $('treemap-list')]) panel.innerHTML = unavailable;
   detail.innerHTML = '<p>Company evidence will appear when the snapshot is available.</p>';
   $('treemap-presentation').setAttribute('disabled', '');

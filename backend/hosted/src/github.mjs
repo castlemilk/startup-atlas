@@ -180,6 +180,7 @@ export class GitHubCatalogue {
     for(const startup of current.research.startups)known.add('startup:'+startupSlug(startup.name));
     for(const name of current.leads)known.add('partner:'+startupSlug(name));
     for(const offer of current.catalogue.opportunities)if(typeof offer.org==='string')known.add('provider:'+startupSlug(offer.org));
+    for(const provider of current.research.technology_providers||[])known.add('provider:'+startupSlug(provider.name));
     for(const relationship of merged.relationships||[])if(relationship.target_id===id||!known.has(relationship.target_id))throw new ServiceError('VALIDATION_ERROR','Relationship targets must be a different existing graph entity.');
     return {id,previous:previous||null,merged};
   }

@@ -19,35 +19,14 @@ export function entityDetails(graph,id) {
     articles:graph.articles.filter(item=>item.startup_id===id)};
 }
 
-export function startupSourceCoverage(graph) {
-  const sources = new Map();
-  const people = new Set();
-  function add(set, value) {
-    const url = sourceUrl(value);
-    if (url) set.add(url.split('#', 1)[0]);
-  }
-
-  for (const entity of graph.entities) {
-    if (entity.kind === 'person') people.add(entity.id);
-    if (entity.kind !== 'startup') continue;
-    const groups = { profile: new Set(), founders: new Set(), funding: new Set() };
-    add(groups.profile, entity.source);
-    for (const fact of Array.isArray(entity.profile_facts) ? entity.profile_facts : []) {
-      if (fact.label && fact.value) add(groups.profile, fact.source);
-    }
-    sources.set(entity.id, groups);
-  }
-  for (const edge of graph.edges) {
-    const company = sources.get(edge.to);
-    if (company && edge.kind === 'founded' && people.has(edge.from)) add(company.founders, edge.source);
-  }
-  for (const round of graph.funding_rounds) {
-    const company = sources.get(round.startup_id);
-    if (company) add(company.funding, round.source);
-  }
-  return new Map([...sources].map(([id, groups]) => [id, {
-    profile: groups.profile.size, founders: groups.founders.size, funding: groups.funding.size,
-  }]));
+export function fundingTimelineArticles(articles, rounds) {
+  const roundSources = new Set(rounds.map(round => sourceUrl(round.source)).filter(Boolean));
+  return articles.filter(article => {
+    const url = sourceUrl(article.url);
+    // Preserve intentional article categories while suppressing round-link
+    // duplicates in both current snapshots and cached legacy snapshots.
+    return url && !(['funding source', 'funding announcement'].includes(article.kind) && roundSources.has(url));
+  });
 }
 
 export function searchSnapshot(graph,query,limit=100) {

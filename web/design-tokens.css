@@ -111,7 +111,7 @@
 }
 
 /* Editorial tokens apply to the explorer and dossier routes. */
-:root:has(> body:is(.atlas-directory-page,.atlas-treemap-page,.atlas-graph-page,.atlas-entity-page,.atlas-partner-page)) {
+:root:has(> body:is(.atlas-landing-page,.atlas-directory-page,.atlas-treemap-page,.atlas-graph-page,.atlas-entity-page,.atlas-partner-page)) {
   --atlas-ink: #122b22;
   --atlas-action: #a84121;
   --atlas-action-hover: #9f3d1d;
