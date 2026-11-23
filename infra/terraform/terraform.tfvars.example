@@ -1,0 +1,12 @@
+# Copy to terraform.tfvars and fill in the project id. terraform.tfvars is
+# gitignored — never commit real values. Only project_id is required;
+# everything else has a default (see variables.tf).
+project_id = "YOUR-GCP-PROJECT-ID"
+
+# region                      = "australia-southeast1"
+# corpus_bucket_name          = ""  # default: "<project_id>-atlas-corpus"
+# index_bucket_name           = ""  # default: "<project_id>-atlas-index"
+# pages_origin                = "https://castlemilk.github.io"
+# index_retention_days        = 90
+# github_repo                 = "castlemilk/startup-atlas"
+# scheduler_timezone          = "Australia/Melbourne"
