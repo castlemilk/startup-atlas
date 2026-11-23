@@ -1,0 +1,30 @@
+/* Query console: editor + results beside a tables/examples sidebar. */
+.query-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px;align-items:start}
+.query-status{margin:0 0 18px;color:var(--muted);font-size:13px}
+.query-label{display:block;font-size:12px;font-weight:750;margin-bottom:8px}
+.query-editor{width:100%;min-height:150px;resize:vertical;border:1px solid #d9e1ed;border-radius:8px;background:var(--surface);color:var(--ink);padding:12px 14px;font:13px/1.6 ui-monospace,"SF Mono",Menlo,Consolas,monospace;box-shadow:var(--shadow)}
+.query-editor:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.query-actions{display:flex;align-items:center;gap:10px;margin:12px 0 20px;flex-wrap:wrap}
+.query-run{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:750}
+.query-run:disabled,.query-download:disabled{opacity:.45;cursor:default}
+.query-hint{font-size:11px;color:var(--muted)}
+.query-results{min-width:0}
+.query-empty{color:var(--muted);font-size:13px}
+.query-result-meta{font-size:12px;color:var(--muted);margin:0 0 10px}
+.query-table-wrap{overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.query-result-table{border-collapse:collapse;width:100%;font-size:12px}
+.query-result-table th,.query-result-table td{padding:8px 10px;border-bottom:1px solid #edf0f5;text-align:left;vertical-align:top;white-space:nowrap}
+.query-result-table th{position:sticky;top:0;background:#f4f7fc;font-weight:750}
+.query-result-table tbody tr:nth-child(even){background:#fafbfc}
+.query-side h2{font-size:14px;margin:0 0 8px}
+.query-side section{margin-bottom:28px}
+.query-side-note{font-size:11px;line-height:1.6;color:var(--muted);margin:0 0 10px}
+.query-tables,.query-examples{list-style:none;margin:0;padding:0}
+.query-tables li{border-top:1px solid var(--line);padding:10px 0}
+.query-tables li:first-child{border-top:0}
+.query-table,.query-example{border:0;background:none;padding:0;color:#304bb8;font-weight:750;font-size:13px;text-align:left}
+.query-table:hover,.query-example:hover{text-decoration:underline}
+.query-tables li>span{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.query-tables .query-columns{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:10px;word-break:break-word}
+.query-examples li{margin-bottom:8px}
+@media(max-width:900px){.query-layout{grid-template-columns:1fr}}

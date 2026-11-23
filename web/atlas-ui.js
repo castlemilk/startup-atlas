@@ -89,6 +89,7 @@ export function renderViewNavigation(active) {
   const views = [
     ['directory', './list.html', 'list', 'List'],
     ['graph', './graph.html', 'graph', 'Graph'],
+    ['query', './query.html', 'search', 'Query'],
     ['treemap', './treemap.html', 'treemap', 'Treemap'],
   ];
   return `<nav class="atlas-view-nav" aria-label="Explore the Atlas">${views.map(([name, href, glyph, label]) => `<a href="${href}" data-atlas-view="${name}" data-atlas-base="${href}"${active === name ? ' aria-current="page"' : ''}>${icon(glyph)}${label}</a>`).join('')}</nav>`;
@@ -193,7 +194,7 @@ export function safeAtlasReturn(value, base) {
     const folder = current.pathname.slice(0, current.pathname.lastIndexOf('/') + 1);
     if (target.origin !== current.origin || !target.pathname.startsWith(folder)) return null;
     const route = target.pathname.slice(folder.length);
-    if (!['', 'index.html', 'list.html', 'entity.html', 'partner.html', 'graph.html', 'treemap.html', 'design-system.html', 'design-lab.html', 'design-direction.html', 'design-assets.html'].includes(route)) return null;
+    if (!['', 'index.html', 'list.html', 'entity.html', 'partner.html', 'graph.html', 'query.html', 'treemap.html', 'design-system.html', 'design-lab.html', 'design-direction.html', 'design-assets.html'].includes(route)) return null;
     return target.pathname + target.search + target.hash;
   } catch { return null; }
 }
