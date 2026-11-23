@@ -3,6 +3,7 @@ import { readFile, lstat, realpath, open, rename, unlink } from 'node:fs/promise
 import path from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
 import { EntryError } from '../../scripts/catalogue-entries.mjs';
+import { publishAfterUpsert } from './corpus.mjs';
 import { startupSlug } from '../hosted/src/startup-record.mjs';
 import {
   STARTUP_EDIT_VERSION, describeStartupRecord, prepareStartupEdit,
@@ -149,6 +150,11 @@ export class StartupStore {
         });
       }
       throw errorToThrow;
+    }
+    // Best-effort live-index feed, after the lock is released and only when
+    // a record actually changed: the corpus publish never fails the edit.
+    if (result.status === 'saved') {
+      result.liveIndex = await publishAfterUpsert({ root: this.root, filename: sourceFile });
     }
     return result;
   }
