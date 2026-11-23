@@ -51,6 +51,31 @@ class SavedSeedTopupTests(unittest.TestCase):
                 self.assertNotIn('round_mention', classify(sample, NAMES)[1])
         self.assertNotIn('round_mention', classify(TOPUP, NAMES, search_result=True)[1])
 
+    def test_first_person_cue_requires_exact_issuer_host_and_consistent_attribution(self):
+        first_person = TOPUP.replace('its original', 'our original').replace('its total', 'our total')
+        self.assertEqual(classify(first_person, NAMES, issuer_source=True),
+                         ('early_round_lead', ['round_mention', 'early_stage_mention']))
+        self.assertNotIn('round_mention', classify(first_person, NAMES)[1])
+        self.assertNotIn('round_mention', classify(first_person.replace('our total', 'its total'), NAMES,
+                                                   issuer_source=True)[1])
+        capture = {'url': SOURCE, 'excerpt': first_person, 'retrieved_on': '2026-11-23',
+                   'acquisition': 'reviewer_paraphrase'}
+        on_issuer, = saved_results([capture], 'www.cuttable.com', NAMES)
+        off_issuer, = saved_results([{**capture, 'url': 'https://other.example/issuer'}], 'www.cuttable.com', NAMES)
+        self.assertEqual(on_issuer['bucket'], 'early_round_lead')
+        self.assertNotIn('round_mention', off_issuer['observations'][0]['signals'])
+
+    def test_preserve_legacy_context_and_reject_unnamed_support(self):
+        for support, signal in (
+            ('Government Grant', 'grant_or_public_support'),
+            ('Commercial Contract', 'commercial_contract'),
+        ):
+            with self.subTest(support=support):
+                excerpt = TOPUP.replace('Rampersand and Previously Unavailable', support)
+                self.assertEqual(classify(excerpt, NAMES), ('context', [signal]))
+        self.assertNotIn('round_mention',
+                         classify(TOPUP.replace('Rampersand and Previously Unavailable', 'No Investors'), NAMES)[1])
+
     def test_explicit_seed_and_aggregate_behavior_is_preserved(self):
         self.assertEqual(classify('Cuttable closed an AUD$4.5 million seed round.', NAMES),
                          ('early_round_lead', ['round_mention', 'early_stage_mention']))
