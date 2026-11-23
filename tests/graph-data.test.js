@@ -94,11 +94,13 @@ test('Cuttable seed history separates the initial round and extension from the c
   const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
   const profile = entityDetails(graph, 'startup:cuttable');
   const original = 'https://www.squarepeg.vc/blog/investment-notes-cuttable-au-5-5m-seed';
-  const extension = 'https://www.cuttable.com/blog/the-worlds-first-ai-creative-agency';
+  const extension = 'https://www.linkedin.com/posts/cuttable_cuttable-test-faster-grow-faster-activity-7360467697383469056-464t';
   assert.deepEqual(profile.rounds.filter(r => [original, extension].includes(r.source))
     .map(({id, stage, amount, currency, announced_on, source}) => [id, stage, amount, currency, announced_on, source]), [
     ['cuttable-2024-seed', 'Seed', 5500000, 'AUD', '2024-07-23', original],
     ['cuttable-2025-seed-extension', 'Seed extension', 4500000, 'AUD', '2025-08-11', extension],
   ]);
+  assert.ok(!profile.rounds.some(r => r.announced_on === '2025-08-11' && r.amount === 10000000 && r.currency === 'AUD'));
   assert.ok(profile.articles.some(a => a.url === 'https://rampersand.substack.com/p/investment-notes-cuttable'));
+  assert.ok(profile.articles.some(a => a.url === 'https://www.marketing-interactive.com/cuttable-raises-10m-to-launch-ai-driven-creative-platform-for-ecommerce-brands'));
 });
