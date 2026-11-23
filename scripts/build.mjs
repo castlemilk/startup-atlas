@@ -1,6 +1,6 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { existsSync } from 'node:fs';
+import { existsSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { posix } from 'node:path';
 import { build } from 'esbuild';
@@ -51,8 +51,16 @@ function resolveDesignDocLinks(markdown,sourceFile) {
   });
 }
 
-await rm('dist',{recursive:true,force:true});
-await mkdir('dist/data',{recursive:true});
+// DuckDB-WASM is vendored, not CDN-loaded: the query page imports the
+// browser bundle from ./vendor/duckdb/ and instantiates it in a worker.
+// Check early, before dist/ is wiped, so a missing install fails fast.
+// Install it with: npm install --save-exact @duckdb/duckdb-wasm@1.32.0
+const duckdbDist='node_modules/@duckdb/duckdb-wasm/dist';
+if (!existsSync(`${duckdbDist}/duckdb-browser.mjs`)) {
+  throw new Error('DuckDB-WASM is not installed (node_modules/@duckdb/duckdb-wasm is missing). Run: npm install --save-exact @duckdb/duckdb-wasm@1.32.0');
+}
+
+await rm('dist',{recursive:true,force:true});await mkdir('dist/data',{recursive:true});
 await mkdir('dist/docs',{recursive:true});
 await cp('docs/partner-index.html','dist/docs/partner-index.html');
 await writeFile('dist/docs/PARTNER-INDEX.md',(await readFile('docs/PARTNER-INDEX.md','utf8')).replaceAll('../web/assets/','../assets/'));
@@ -63,11 +71,11 @@ designFiles.push('signal-controls.js','signal-controls.css','atlas-sdk.js','atla
 designFiles.push('atlas-exploration.js','atlas-explorer-controls.js','atlas-workspace.js','profile-evidence.js');
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
 const graphModules=['graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','graph-mobile-fit.js','graph-artwork.js'];
-for (const file of ['analytics.js','analytics-config.js','treemap.html','treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','index.html','list.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css',...graphModules,'styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
+for (const file of ['analytics.js','analytics-config.js','treemap.html','treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','index.html','list.html','partner.html','entity.html','entity.js','entity.css','graph.html','graph.css','query.html','query.js','query.css',...graphModules,'styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 await build({entryPoints:['web/atlas-sdk.js'],outfile:'dist/atlas-sdk.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof',define:{'process.env.NODE_ENV':'"production"'}});
 await build({entryPoints:['web/graph-loom.js'],outfile:'dist/graph-loom.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof'});
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
-const uiFiles=['treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','entity.css','entity.js','graph.css',...graphModules,'graph-loom.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
+const uiFiles=['treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','entity.css','entity.js','graph.css','query.js','query.css',...graphModules,'graph-loom.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
 uiFiles.push(...designFiles.filter(file=>!file.endsWith('.html')));
 const uiHash=createHash('sha256');
 uiHash.update(await readFile('package-lock.json'));
@@ -82,7 +90,7 @@ function versionReferences(source) {
   }
   return source;
 }
-for (const file of ['treemap.html','treemap.js','treemap-model.js','landing.js','company-columns.js','index.html','list.html','partner.html','entity.html','entity.js','graph.html',...graphModules,'partner-profile.js','app.js','table-model.js','globe.js']) {
+for (const file of ['treemap.html','treemap.js','treemap-model.js','landing.js','company-columns.js','index.html','list.html','partner.html','entity.html','entity.js','graph.html','query.html','query.js',...graphModules,'partner-profile.js','app.js','table-model.js','globe.js']) {
   const output='dist/'+file;
   await writeFile(output,versionReferences(await readFile(output,'utf8')));
 }
@@ -106,6 +114,21 @@ await cp('data/partners-reviewed.json','dist/data/partners-reviewed.json');
 await cp('data/partner-profiles.json','dist/data/partner-profiles.json');
 await cp('data/map-locations.json','dist/data/map-locations.json');
 await cp('data/land.geojson','dist/data/land.geojson');
+await mkdir('dist/vendor/duckdb',{recursive:true});
+for (const file of ['duckdb-browser.mjs','duckdb-mvp.wasm','duckdb-eh.wasm','duckdb-browser-mvp.worker.js','duckdb-browser-eh.worker.js','LICENSE']) await cp(`${duckdbDist}/${file}`,`dist/vendor/duckdb/${file}`);
+// DuckDB-WASM's browser bundle imports the bare specifier 'apache-arrow',
+// and Arrow itself imports 'flatbuffers' and 'tslib'. Browsers cannot
+// resolve bare specifiers, so web/query.html carries an import map pointing
+// at these vendored copies. Without them the console fails with "Module
+// name, 'apache-arrow' does not resolve to a valid URL" and no query runs.
+// All three arrive as transitive dependencies of @duckdb/duckdb-wasm.
+if (!existsSync('node_modules/apache-arrow/Arrow.dom.mjs')) {
+  throw new Error('apache-arrow is not installed (expected as a transitive dependency of @duckdb/duckdb-wasm). Run: npm install --save-exact @duckdb/duckdb-wasm@1.32.0');
+}
+const esmOnly=src=>statSync(src).isDirectory()||src.endsWith('.mjs');
+await cp('node_modules/apache-arrow','dist/vendor/duckdb/apache-arrow',{recursive:true,filter:esmOnly});
+await cp('node_modules/flatbuffers/mjs','dist/vendor/duckdb/flatbuffers',{recursive:true,filter:src=>statSync(src).isDirectory()||src.endsWith('.js')});
+await cp('node_modules/tslib/tslib.es6.mjs','dist/vendor/duckdb/tslib.mjs');
 await cp('web/vendor','dist/vendor',{recursive:true});
 await cp('docs/UI-SDK-LICENSE.txt','dist/vendor/UI-SDK-LICENSE.txt');
 await cp('node_modules/loom-core/LICENSE','dist/vendor/LOOM-LICENSE.txt');
