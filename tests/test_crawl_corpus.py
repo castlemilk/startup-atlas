@@ -69,13 +69,13 @@ class PublisherTests(unittest.TestCase):
         self.assertEqual(
             set(self.fake.objects),
             {
-                'corpus/v1/crawl/partners/45015041658.json',
+                'corpus/v1/crawl-snapshots/partners/45015041658.json',
                 'corpus/v1/crawl/partners/latest.json',
-                'corpus/v1/crawl/programs/45015041658.json',
+                'corpus/v1/crawl-snapshots/programs/45015041658.json',
                 'corpus/v1/crawl/programs/latest.json',
             })
         self.assertEqual(
-            self.fake.objects['corpus/v1/crawl/partners/45015041658.json'],
+            self.fake.objects['corpus/v1/crawl-snapshots/partners/45015041658.json'],
             b'{"mode": "partners"}')
         self.assertTrue(receipt['indexer_dispatched'])
         self.assertEqual(len(receipt['uploaded']), 4)
@@ -108,8 +108,8 @@ class PublisherTests(unittest.TestCase):
         self.assertEqual(
             set(flaky.objects),
             {
-                'corpus/v1/crawl/partners/run-46.json',
-                'corpus/v1/crawl/programs/run-46.json',
+                'corpus/v1/crawl-snapshots/partners/run-46.json',
+                'corpus/v1/crawl-snapshots/programs/run-46.json',
             })
 
     def test_missing_stamped_snapshot_falls_back_to_latest(self):
@@ -122,7 +122,7 @@ class PublisherTests(unittest.TestCase):
             (root / 'latest-news.json').write_text('{"mode": "news"}')
             publisher.publish(root, 'run-1', config)
         self.assertEqual(
-            self.fake.objects['corpus/v1/crawl/news/run-1.json'],
+            self.fake.objects['corpus/v1/crawl-snapshots/news/run-1.json'],
             b'{"mode": "news"}')
 
     def test_dry_run_uploads_nothing(self):

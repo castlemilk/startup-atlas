@@ -18,8 +18,15 @@ any of endpoint/bucket/keys is missing, and callers must skip cleanly):
 
 Corpus layout (see docs/LIVE-INDEX.md for the full design):
 
-    corpus/v1/crawl/<mode>/<run-id>.json   raw crawl snapshot, immutable
     corpus/v1/crawl/<mode>/latest.json     pointer to the newest snapshot
+    corpus/v1/crawl-snapshots/<mode>/<run-id>.json
+                                           raw crawl snapshot, immutable;
+                                           under its own prefix so the
+                                           corpus bucket's lifecycle rule
+                                           can expire snapshots after 90
+                                           days without ever matching the
+                                           latest.json pointers or the
+                                           reviewed files
     corpus/v1/reviewed/<file>.json         published data file
     corpus/v1/reviewed/manifest.json       {generated_at, source_revision, files}
 
@@ -227,7 +234,11 @@ class S3Client:
 # --- corpus key layout -----------------------------------------------------
 
 def crawl_snapshot_key(mode, run_id):
-    return f'{CORPUS_PREFIX}/crawl/{mode}/{run_id}.json'
+    # Snapshots sit under crawl-snapshots/, NOT crawl/<mode>/: the corpus
+    # bucket's lifecycle rule expires by prefix (GCS has no filename
+    # exclusion), and crawl/<mode>/ is shared with the latest.json
+    # pointers, which must never expire.
+    return f'{CORPUS_PREFIX}/crawl-snapshots/{mode}/{run_id}.json'
 
 
 def crawl_latest_key(mode):

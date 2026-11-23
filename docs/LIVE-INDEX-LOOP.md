@@ -51,8 +51,13 @@ python3 scripts/publish_crawl_corpus.py \
 with `ATLAS_CORPUS_BACKEND=gcs`,
 `ATLAS_CORPUS_BUCKET=single-station-515408-g9-atlas-corpus` and the
 other `ATLAS_*` variables from the environment. Exit 0 writes 12
-objects: `corpus/v1/crawl/<mode>/45107803260.json` and
-`corpus/v1/crawl/<mode>/latest.json` for all six modes. It reports
+objects: `corpus/v1/crawl-snapshots/<mode>/45107803260.json` and
+`corpus/v1/crawl/<mode>/latest.json` for all six modes. (Snapshots moved
+to their own `crawl-snapshots/` prefix so the corpus bucket's lifecycle
+rule can expire them after 90 days; the `latest.json` pointers and the
+reviewed corpus never expire. Snapshots published before the move sit
+under the old `corpus/v1/crawl/<mode>/<run-id>.json` keys and are not
+covered by the rule.) It reports
 `indexer_dispatched: false` in a manual run — there is no GitHub token
 for `repository_dispatch` outside Actions, so the manual run does not
 trigger the indexer; the 15-minute scheduler covers it (see 2c).

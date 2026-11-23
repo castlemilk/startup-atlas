@@ -44,6 +44,12 @@ variable "index_retention_days" {
   default     = 90
 }
 
+variable "corpus_snapshot_retention_days" {
+  description = "Age in days after which per-run crawl snapshots under corpus/v1/crawl-snapshots/ are deleted. The latest.json pointers under corpus/v1/crawl/<mode>/ and the reviewed corpus under corpus/v1/reviewed/ are never matched by the rule."
+  type        = number
+  default     = 90
+}
+
 variable "github_repo" {
   description = "owner/repo allowed to federate through Workload Identity (crawl publish + Actions indexer fallback)."
   type        = string

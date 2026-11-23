@@ -5,7 +5,9 @@ Run at the end of the partner-research crawl workflow, after the review
 artifact is preserved. Uploads every ``latest-<mode>.json`` snapshot (and
 its stamped sibling) to the private corpus bucket:
 
-    corpus/v1/crawl/<mode>/<run-id>.json   (immutable, one per run)
+    corpus/v1/crawl-snapshots/<mode>/<run-id>.json   (immutable, one per run;
+                                           expires after 90 days — see the
+                                           corpus bucket lifecycle rule)
     corpus/v1/crawl/<mode>/latest.json     (pointer to the newest run)
 
 Then best-effort POSTs a ``repository_dispatch`` (``corpus-updated``) so the

@@ -110,10 +110,20 @@ class CorpusLayoutTests(unittest.TestCase):
     def test_keys(self):
         self.assertEqual(
             corpus.crawl_snapshot_key('partners', '45015041658'),
-            'corpus/v1/crawl/partners/45015041658.json')
+            'corpus/v1/crawl-snapshots/partners/45015041658.json')
         self.assertEqual(
             corpus.crawl_latest_key('partners'),
             'corpus/v1/crawl/partners/latest.json')
+        # The lifecycle exemption, pinned: snapshot keys live under
+        # crawl-snapshots/ so the bucket's 90-day expiry rule matches
+        # them, while pointer keys stay under crawl/<mode>/, which the
+        # rule never matches.
+        self.assertTrue(
+            corpus.crawl_snapshot_key('partners', '45015041658')
+            .startswith('corpus/v1/crawl-snapshots/'))
+        self.assertFalse(
+            corpus.crawl_latest_key('partners')
+            .startswith('corpus/v1/crawl-snapshots/'))
         self.assertEqual(
             corpus.reviewed_key('catalogue.json'),
             'corpus/v1/reviewed/catalogue.json')
