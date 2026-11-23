@@ -7,13 +7,13 @@ const fields = properties => ({type:'object',additionalProperties:false,properti
 const social = {...fields({label:text(100),url,source:url,reviewed_at:date}),required:['label','url','source','reviewed_at']};
 const socials = {type:'array',maxItems:30,items:social};
 const founder = {...fields({name:text(200),source:url,profile_url:url,photo_url:url,photo_source:url,socials}),required:['name','source']};
-const funding = {...fields({id:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},stage:text(100),announced_on:date,amount:{type:'integer',minimum:0},amount_text:text(200),currency:{type:'string',pattern:'^[A-Z]{3}$'},valuation:{type:'integer',minimum:0},valuation_currency:{type:'string',pattern:'^[A-Z]{3}$'},note:text(2000),source:url}),required:['id','stage','source']};
+const funding = {...fields({id:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},stage:text(100),stage_normalised:text(100),announced_on:date,amount:{type:'integer',minimum:0},amount_text:text(200),currency:{type:'string',pattern:'^[A-Z]{3}$'},valuation:{type:'integer',minimum:0},valuation_currency:{type:'string',pattern:'^[A-Z]{3}$'},note:text(2000),source:url}),required:['id','stage','source']};
 const article = {...fields({title:text(300),url,published_on:date,kind:text(100)}),required:['title','url']};
 const profileFact = {...fields({key:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},label:text(100),value:text(1000),source:url,reviewed_at:date}),required:['key','label','value','source','reviewed_at']};
 const relationship = {...fields({target_id:{type:'string',pattern:'^(startup|partner|provider):[a-z0-9]+(?:-[a-z0-9]+)*$'},kind:{type:'string',pattern:'^[a-z][a-z0-9_]{0,49}$'},description:text(300),source:url}),required:['target_id','kind','description','source']};
 export const startupRecordSchema = {...fields({
   name:text(200),description:text(2000),website:url,source:url,reviewed_at:date,
-  founded_year:{type:'integer',minimum:1800,maximum:2100},logo:url,logo_source:url,socials,
+  founded_year:{type:'integer',minimum:1800,maximum:2100},hq_country:text(100),hq_city:text(200),logo:url,logo_source:url,socials,
   founders:{type:'array',maxItems:30,items:founder},funding_rounds:{type:'array',maxItems:100,items:funding},
   profile_facts:{type:'array',maxItems:100,items:profileFact},
   articles:{type:'array',maxItems:100,items:article},relationships:{type:'array',maxItems:100,items:relationship},
