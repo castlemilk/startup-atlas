@@ -1,6 +1,7 @@
 """Prioritize early financing leads in saved evidence for offline review."""
 
 from collections import defaultdict
+from decimal import Decimal
 import json
 import re
 from urllib.parse import urlsplit
@@ -895,12 +896,40 @@ INTERIM_ROUND_CLOSE = re.compile(
 )
 
 
+# Narrow saved-statement cue: the issuer reports new AUD capital, an earlier
+# raise, a consistent cumulative seed total, and a named lead for this round.
+# Validate the roles without emitting any numerical funding metadata.
+def seed_topup_millions(role):
+    return rf'(?:A|AU|AUD)\$(?P<{role}>[0-9]{{1,6}}(?:\.[0-9]{{1,3}})?)(?:M| million)'
+
+
+SEED_TOPUP = re.compile(
+    rf'(?P<issuer>{ISSUER_NAME}) (?:has )?secured an additional {seed_topup_millions("new")} in funding, '
+    rf'on top of (?:our|its) original {seed_topup_millions("prior")} raised [1-9][0-9]? months ago, '
+    rf'bringing (?:our|its) total seed raise to {seed_topup_millions("total")}\. '
+    rf'This round was led by (?P<lead>{CAPITALIZED_NAME}), supported by '
+    rf'{CAPITALIZED_NAME}(?:, (?:and )?{CAPITALIZED_NAME}| and {CAPITALIZED_NAME}){{0,8}}\.',
+    re.I,
+)
+
+
+def saved_seed_topup(wording, names):
+    match = SEED_TOPUP.fullmatch(wording)
+    if not match or name_key(match['issuer']) not in names or SEED_WIRE_CONDITION.search(wording):
+        return False
+    if UNCLEAR_INVESTOR_LABEL.search(name_key(match['lead'])):
+        return False
+    new, prior, total = (Decimal(match[role]) for role in ('new', 'prior', 'total'))
+    return new > 0 and prior > 0 and new + prior == total
+
 def classify(excerpt, names, *, reviewed_round=None, reviewed_article=None, search_result=False):
     if not search_result:
         wording = ' '.join(excerpt.split())
         match = INTERIM_ROUND_CLOSE.fullmatch(wording)
         if match and name_key(match['issuer']) in names and not SEED_WIRE_CONDITION.search(wording):
             return 'round_lead', ['round_mention']
+        if saved_seed_topup(wording, names):
+            return 'early_round_lead', ['round_mention', 'early_stage_mention']
     clauses = CLAUSE_BREAK.split(excerpt)
     matching = [part for part in clauses if any(includes_name(part, name) for name in names)]
     if not matching and reviewed_round is None:
