@@ -540,6 +540,105 @@ class TransportTests(unittest.TestCase):
             self.assertEqual(len(calls),1)
 
 class WorkflowTests(unittest.TestCase):
+    def test_company_location_crawl_saves_distinct_review_candidates(self):
+        home = 'https://example.com/'
+        contact = home + 'en-au/contact-us'
+        pages = {
+            home: b'''
+              <a href="https://elsewhere.example/contact">Contact</a>
+              <a href="mailto:team@example.com">Contact us</a>
+              <a href="/news/contact">Contact news</a>
+              <a href="/en-au/contact-us">Contact us</a>
+              <p>Example is headquartered in <strong>St. Louis</strong>, United States.</p>
+              <p>Example was headquartered in Melbourne, Australia.</p>
+              <p>Example is not headquartered in Paris.</p>
+              <p>Another company is headquartered in Berlin.</p>
+              <p>Example's regional headquarters: Perth, Australia.</p>
+              <p>Example is headquartered in Darwin until its next expansion.</p>
+              <p>Example will be headquartered in Brisbane.</p>
+              <script type="application/ld+json">
+                {"@type":"Organization","name":"Example","url":"https://example.com/",
+                "address":"Copenhagen, Denmark"}
+              </script>
+              <div hidden><p>Example is headquartered in Stockholm.</p></div>
+              <blockquote><p>We are headquartered in Madrid.</p></blockquote>
+            ''',
+            contact: b'''
+              <section><h2>Co-headquarters</h2><p>Sydney, Australia and London, United Kingdom</p></section>
+              <dl><dt>Principal place of business</dt><dd>Fremantle, Australia</dd></dl>
+              <section><h2>Headquarters</h2><button>Office search</button><p>Perth</p></section>
+              <section><h2>Headquarters</h2></section><section><p>Adelaide</p></section>
+              <address>Principal executive office: 100 First Street<br>St. Louis, United States</address>
+              <p>We are based in Auckland, New Zealand.</p>
+              <p aria-hidden="true">Headquarters: Toronto, Canada</p>
+              <p style="display: none">Headquarters: Ottawa, Canada</p>
+            ''',
+        }
+        calls = []
+
+        class FixtureTransport:
+            def __init__(self, _delay):
+                pass
+
+            def request(self, url, allowed_host=None, **kwargs):
+                calls.append((url, allowed_host))
+                return 200, {'Content-Type': 'text/html'}, pages[url], url
+
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / 'data').mkdir()
+            catalogue = root / 'data/catalogue.json'
+            catalogue.write_text('{}')
+            overlay = root / 'data/startup-research.json'
+            researched = json.dumps({'startups': [{'name': 'Example', 'website': home}]})
+            overlay.write_text(researched)
+            seeds = root / 'approved.csv'
+            seeds.write_text(f'partner,official_website,approved\nExample,{home},yes\n')
+            with patch.object(crawl, 'ROOT', root), patch.object(crawl, 'CATALOGUE', catalogue), \
+                    patch.object(crawl, 'Transport', FixtureTransport):
+                self.assertEqual(crawl.main([
+                    'company-profiles', '--approved', str(seeds), '--out', str(root / 'packets'),
+                    '--follow', '1',
+                ]), 0)
+            packet = json.loads((root / 'packets/latest-company-profiles.json').read_text())
+            self.assertEqual(overlay.read_text(), researched)
+
+        self.assertEqual(calls, [(home, 'example.com'), (contact, 'example.com')])
+        profiles = [row for row in packet['candidates'] if row['kind'] == 'company-profile']
+        for page, candidate in zip(packet['results'][0]['pages'], profiles, strict=True):
+            self.assertEqual(candidate['source_url'], page['final_url'])
+            self.assertEqual(candidate['checked_at'], page['checked_at'])
+            self.assertEqual(candidate['location_mentions'], page['location_mentions'])
+            self.assertTrue(candidate['review_required'])
+        self.assertEqual(
+            [(row['kind'], row['location'], row['time_scope']) for row in profiles[0]['location_mentions']],
+            [('headquarters', 'St. Louis, United States', 'unspecified'),
+             ('headquarters', 'Melbourne, Australia', 'historical')],
+        )
+        self.assertEqual(
+            [(row['kind'], row['location'], row['source']) for row in profiles[1]['location_mentions']],
+            [('co-headquarters', 'Sydney, Australia and London, United Kingdom', contact),
+             ('business-base', 'Fremantle, Australia', contact),
+             ('headquarters', '100 First Street St. Louis, United States', contact),
+             ('business-base', 'Auckland, New Zealand', contact)],
+        )
+        self.assertNotIn('country', profiles[1]['location_mentions'][0])
+
+    def test_company_location_mentions_require_attribution_and_are_bounded(self):
+        source = 'https://example.com/news/company-update'
+        named = b'<p>Example is based in Singapore.</p>'
+        anonymous = b'<p>Headquarters: Berlin, Germany.</p><p>We are based in Melbourne.</p>'
+        result = crawl.extract_page(anonymous + named, source, company_name='Example')
+        self.assertEqual(len(result['location_mentions']), 1)
+        self.assertEqual(result['location_mentions'][0]['context'], 'Example is based in Singapore.')
+        self.assertNotIn('location_mentions', crawl.extract_page(named, source))
+        repeated = [
+            f'Example is headquartered in City {index}.' for index in range(crawl.MAX_LOCATION_MENTIONS + 4)
+        ]
+        mentions = crawl.extract_location_mentions([*repeated[:1], *repeated], source, 'Example')
+        self.assertEqual(len(mentions), crawl.MAX_LOCATION_MENTIONS)
+        self.assertEqual(mentions[1]['location'], 'City 1')
+
     def test_company_profile_mode_retains_subject_claims_without_fetching_assets(self):
         class Fake:
             def __init__(self): self.calls=[]

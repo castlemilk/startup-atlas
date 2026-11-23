@@ -637,6 +637,35 @@ class CompanyMetadataReviewTests(unittest.TestCase):
                          ('headcount', 'candidate', ['profile']))
         self.assertEqual(self.run_review()['checkpoint']['applied_companies'], [])
 
+    def test_location_evidence_reaches_geography_review(self):
+        extracted = extract_page(
+            b'<p>PsiQuantum is based in Melbourne, Australia.</p>', SEED, company_name=COMPANY,
+        )
+        page = {**extracted, 'final_url': SEED, 'checked_at': AS_OF}
+        candidate = company_profile_observation({'name': COMPANY, 'website': SEED}, page)
+        packet = self.profile_packet([candidate])
+        packet['results'][0]['pages'][0].update(extracted)
+        self.evidence('locations', 'company_profile_packet', packet)
+        location, = self.run_review()['decisions']
+        self.assertEqual((location['dimension'], location['disposition'], location['evidence']),
+                         ('geography', 'candidate', ['locations']))
+
+    def test_location_reclassification_or_changed_source_requires_new_page_evidence(self):
+        extracted = extract_page(
+            b'<p>PsiQuantum is based in Melbourne, Australia.</p>', SEED, company_name=COMPANY,
+        )
+        mention, = extracted['location_mentions']
+        for changed in ({'kind': 'headquarters'}, {'source': SEED + 'contact'}, {'location': 'Perth'}):
+            with self.subTest(changed=changed):
+                self.batch['evidence'] = []
+                candidate = self.profile_candidate('company-profile', location_mentions=[{**mention, **changed}])
+                packet = self.profile_packet([candidate])
+                packet['results'][0]['pages'][0].update(extracted)
+                self.evidence('locations', 'company_profile_packet', packet)
+                with self.assertRaisesRegex(ValueError, 'company and saved page evidence'):
+                    self.run_review()
+                self.assertFalse(self.ledger.exists())
+
     def test_headcount_with_wrong_subject_source_or_page_bytes_fails_closed(self):
         trusted = extract_page(b'<p>PsiQuantum employs 130 employees.</p>', SEED)['headcount_mentions']
         ambiguous = extract_page(
