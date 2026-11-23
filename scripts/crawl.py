@@ -2483,9 +2483,16 @@ def main(argv=None):
     if args.mode in ('profiles','company-profiles','portraits','news','programs'):
         coverage=data['coverage']
         print(f"Page fetch coverage: {coverage['fetch_status']}; {coverage['pages_succeeded']}/{coverage['pages_attempted']} attempted pages fetched; {coverage['pages_skipped_or_failed']} skipped or failed.")
-        failed_sources=[row for row in coverage.get('sources',[]) if row['status']=='failed']
+        # Programmes report per-source observations separately from unique
+        # requests. Keep both snapshot schemas intact and adapt only this log.
+        status_key, failed_status, name_key = (
+            ('fetch_status', 'none_succeeded', 'source_name') if args.mode=='programs'
+            else ('status', 'failed', 'source')
+        )
+        failed_sources=[row.get(name_key) or '?' for row in coverage.get('sources',[])
+                        if row.get(status_key)==failed_status]
         if failed_sources:
-            print('Sources with no successful pages: '+', '.join(row['source'] or '?' for row in failed_sources),file=sys.stderr)
+            print('Sources with no successful pages: '+', '.join(failed_sources),file=sys.stderr)
     print(f'Snapshot: {path}')
     if args.mode=='discover':
         if data['metadata_coverage']['entities_requested'] and not data['metadata_coverage']['entities_succeeded']:
