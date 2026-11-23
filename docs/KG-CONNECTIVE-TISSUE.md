@@ -350,6 +350,18 @@ uncommitted queue builder precedent in the crawl-review scratch dir
   run #36 docx/xlsx precedent, in repo-reviewable markdown form).
 - Seed the queue from the real run #44 artifact on disk
   (`…/scratch/crawl-review-44/latest-*.json`) — real data, never invented.
+- **Identity replay (landed after the first validation pass):**
+  `entity_resolution.build_registry()` applies the queue's APPROVED
+  merge decisions on top of the seed via `replay_queue_decisions()` —
+  deterministically, in sorted order, with each entry's own
+  `decided_by`/`decided_at`. Subjects the seed never produced are
+  added as minimal entries first (the same shape `decide()` writes),
+  so regenerating `data/identity.json` always reproduces the decided
+  merges and the stored-file invariant holds with decisions landed.
+  Rejected and pending entries change nothing. First pass result:
+  41 approved merges replayed (registry 398 → 439 entities,
+  4 → 45 merges); the graph's 38 distinct canonical winners carry the
+  merged names as aliases.
 
 ## 6. Parquet edges table + wiring — `scripts/graph_edges_parquet.py`
 

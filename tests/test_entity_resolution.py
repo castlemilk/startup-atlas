@@ -252,13 +252,35 @@ class SeedTests(unittest.TestCase):
             entities['person:michael-de-nil']['identity_key'],
             'linkedin.com/in/michael-de-nil')
         # The four LinkedIn-carrying profile people are the seeded merges.
-        self.assertEqual(len(registry['merges']), 4)
+        seeded = [m for m in registry['merges']
+                  if m['decided_by'] == 'seed:reviewed-data']
+        self.assertEqual(len(seeded), 4)
         self.assertEqual(
-            {m['to'] for m in registry['merges']},
+            {m['to'] for m in seeded},
             {'person:bill-bartee', 'person:phoebe-pincus', 'person:ben-simai',
              'person:emma-grife'})
-        self.assertTrue(all(m['basis'] == 'linkedin-url'
-                            for m in registry['merges']))
+        self.assertTrue(all(m['basis'] == 'linkedin-url' for m in seeded))
+        # On top of the seed, build_registry replays the APPROVED
+        # review-queue merges (41 from the first validation pass);
+        # rejected and pending proposals record no merge.
+        replayed = [m for m in registry['merges']
+                    if m['decided_by'] != 'seed:reviewed-data']
+        self.assertEqual(len(registry['merges']), 45)
+        self.assertEqual(len(replayed), 41)
+        self.assertIn('partner:airtree-ventures',
+                      entities['partner:airtree']['merged_from'])
+        self.assertEqual(
+            entities['partner:airtree-ventures']['merged_into'],
+            'partner:airtree')
+        self.assertIn('partner:blackbird',
+                      entities['partner:blackbird-ventures']['merged_from'])
+        for rejected_from in ('partner:monk-s-hill-ventures',
+                              'partner:boost-cp', 'startup:morse'):
+            self.assertNotIn(rejected_from,
+                             {m['from'] for m in registry['merges']})
+        for pending_from in ('partner:draper-vc', 'partner:amity-vc'):
+            self.assertNotIn(pending_from,
+                             {m['from'] for m in registry['merges']})
         # Partner leads with no reviewed website are name-only.
         reviewed = json.loads((ROOT / 'data' / 'partners-reviewed.json').read_text())
         leads = json.loads((ROOT / 'data' / 'partner-leads.json').read_text())
@@ -284,6 +306,79 @@ class SeedTests(unittest.TestCase):
             generated_at=stored['generated_at'],
             source_revision=stored['source_revision'])
         self.assertEqual(stored, built)
+
+
+class ReplayTests(unittest.TestCase):
+    """Approved queue merges replay; rejected/pending change nothing."""
+
+    def _queue_file(self, temp, entries):
+        path = Path(temp) / 'review-queue.json'
+        path.write_text(json.dumps({'version': 1, 'entries': entries}),
+                        encoding='utf-8')
+        return path
+
+    def _entry(self, subject, target, status, **overrides):
+        entry = {'id': f'merge:{subject}', 'kind': 'merge',
+                 'subject': subject, 'subject_key': subject.split(':', 1)[1],
+                 'candidates': [{'id': target, 'score': 0.89,
+                                 'basis': 'name-similarity'}],
+                 'evidence': [], 'confidence': 0.89,
+                 'created_at': '2026-11-23T08:00:00Z', 'run': '44',
+                 'status': status, 'decided_by': 'tester',
+                 'decided_at': '2026-11-23T09:00:00Z',
+                 'decision_note': None, 'evidence_fingerprint': 'x'}
+        entry.update(overrides)
+        return entry
+
+    def test_replay_applies_only_approved_merges(self):
+        with tempfile.TemporaryDirectory() as temp:
+            queue_path = self._queue_file(temp, [
+                self._entry('partner:canva-capital', 'partner:airtree',
+                            'approved'),
+                self._entry('partner:rejected-co', 'partner:airtree',
+                            'rejected'),
+                self._entry('partner:pending-co', 'partner:airtree',
+                            'pending'),
+                self._entry('startup:canva', 'partner:airtree', 'approved',
+                            kind='fact'),
+            ])
+            registry = tiny_registry()
+            er.replay_queue_decisions(registry, temp, queue_path=queue_path)
+            # The approved subject was not seeded: replay adds it as a
+            # minimal entry, then merges it, exactly as decide() does.
+            loser = registry['entities']['partner:canva-capital']
+            self.assertEqual(loser['merged_into'], 'partner:airtree')
+            self.assertEqual(loser['name'], 'Canva Capital')
+            self.assertEqual(
+                registry['entities']['partner:airtree']['merged_from'],
+                ['partner:canva-capital'])
+            self.assertEqual(registry['merges'], [{
+                'from': 'partner:canva-capital', 'to': 'partner:airtree',
+                'basis': 'name-similarity', 'decided_by': 'tester',
+                'decided_at': '2026-11-23T09:00:00Z'}])
+            self.assertNotIn('partner:rejected-co', registry['entities'])
+            self.assertNotIn('partner:pending-co', registry['entities'])
+
+    def test_replay_is_deterministic_and_idempotent(self):
+        with tempfile.TemporaryDirectory() as temp:
+            queue_path = self._queue_file(temp, [
+                self._entry('partner:canva-capital', 'partner:airtree',
+                            'approved')])
+            first = er.replay_queue_decisions(
+                tiny_registry(), temp, queue_path=queue_path)
+            second = er.replay_queue_decisions(
+                tiny_registry(), temp, queue_path=queue_path)
+            self.assertEqual(first, second)
+            # Replaying over an already-replayed registry is a no-op.
+            again = er.replay_queue_decisions(
+                first, temp, queue_path=queue_path)
+            self.assertEqual(first, again)
+
+    def test_replay_without_queue_file_is_a_no_op(self):
+        with tempfile.TemporaryDirectory() as temp:
+            registry = tiny_registry()
+            er.replay_queue_decisions(registry, temp)
+            self.assertEqual(registry, tiny_registry())
 
 
 if __name__ == '__main__':

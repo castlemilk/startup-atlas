@@ -27,6 +27,15 @@ An entry with no website and no LinkedIn gets
 ``identity_basis: "name-only"`` and ``identity_key: null``: the canonical
 ID (``kind:slug(name)``) is its only identifier, and it is never treated
 as a shared identity key, so a name-only entry can never auto-merge.
+
+Review-queue replay: :func:`build_registry` applies APPROVED merge
+decisions from ``data/review-queue.json`` on top of the seed (see
+:func:`replay_queue_decisions`), so a human decision recorded in the
+queue is part of the registry — and therefore of the graph — every
+time the registry is regenerated. Rejected and pending entries change
+nothing. Replay is deterministic and idempotent: entries are applied
+in sorted order with the entry's own ``decided_at`` / ``decided_by``,
+never the wall clock.
 """
 import difflib
 import json
@@ -325,6 +334,92 @@ def _git_revision():
     return None
 
 
+def _ensure_registry_entity(entities, entity_id, subject_key=None,
+                            updated_at=None):
+    """Add a minimal registry entry for ``entity_id`` when missing.
+
+    Mirrors ``build-review-queue.py``'s ``_ensure_merge_entities`` (the
+    writer ``decide()`` uses when an approved merge names an entity the
+    seed never produced — a crawl candidate, by construction). Nothing
+    is invented beyond the name carried by the ID's slug and the key
+    the queue entry itself carries: a LinkedIn subject key stays a
+    LinkedIn key, a host-like subject key stays a website key, anything
+    else is ``name-only``.
+    """
+    if entity_id in entities:
+        return entity_id
+    kind, name_slug = entity_id.split(':', 1)
+    key, basis = None, 'name-only'
+    if subject_key:
+        if subject_key.startswith('linkedin.com/in/'):
+            key, basis = subject_key, 'linkedin-url'
+        elif '.' in subject_key and ' ' not in subject_key:
+            key = normalise_host(subject_key)
+            basis = 'website-host' if key else 'name-only'
+            key = key or None
+    entities[entity_id] = {
+        'name': name_slug.replace('-', ' ').title(),
+        'kind': kind, 'aliases': [], 'identity_key': key,
+        'identity_basis': basis, 'merged_from': [],
+        'updated_at': updated_at or _utcnow()}
+    return entity_id
+
+
+def replay_queue_decisions(registry, data_dir, queue_path=None):
+    """Replay APPROVED review-queue merge decisions into ``registry``.
+
+    Reads ``review-queue.json`` from ``data_dir`` (or ``queue_path``)
+    when it exists. Every ``merge`` entry with ``status ==
+    "approved"`` and at least one candidate is applied, in sorted
+    ``(subject, candidate)`` order, via :func:`apply_merge` with the
+    entry's recorded ``decided_by`` / ``decided_at`` and the
+    candidate's basis — so the registry carries the decision exactly
+    as the queue recorded it, and regenerating twice produces
+    identical output. A subject the seed never produced is first
+    added as a minimal entry (see :func:`_ensure_registry_entity`),
+    matching what ``decide()`` writes when it applies a merge
+    directly. Rejected and pending entries, and approved entries of
+    other kinds (facts, edges — applied by the MCP write path, not
+    the registry), change nothing. A decision whose subject is
+    already merged, or whose target resolves back to the subject, is
+    skipped rather than raising: replay must never fail a build.
+    """
+    data_dir = Path(data_dir)
+    queue_path = Path(queue_path) if queue_path else data_dir / 'review-queue.json'
+    if not queue_path.is_file():
+        return registry
+    queue = json.loads(queue_path.read_text(encoding='utf-8'))
+    approved = []
+    for entry in queue.get('entries', []):
+        if entry.get('kind') != 'merge' or entry.get('status') != 'approved':
+            continue
+        candidates = entry.get('candidates') or []
+        if not candidates or not candidates[0].get('id'):
+            continue
+        approved.append(entry)
+    approved.sort(key=lambda e: (e['subject'], e['candidates'][0]['id']))
+    entities = registry.setdefault('entities', {})
+    for entry in approved:
+        from_id = entry['subject']
+        candidate = entry['candidates'][0]
+        decided_at = entry.get('decided_at') or registry.get('generated_at')
+        _ensure_registry_entity(entities, from_id,
+                                entry.get('subject_key'),
+                                updated_at=decided_at)
+        _ensure_registry_entity(entities, candidate['id'],
+                                updated_at=decided_at)
+        if entities[from_id].get('merged_into'):
+            continue  # already merged (seed or an earlier replay entry)
+        to_id = resolve_canonical_id(registry, candidate['id'])
+        if to_id == from_id:
+            continue
+        apply_merge(registry, from_id, to_id,
+                    basis=candidate.get('basis') or 'review-queue',
+                    decided_by=entry.get('decided_by') or 'review-queue',
+                    decided_at=decided_at)
+    return registry
+
+
 def build_registry(data_dir=None, source_revision=None, generated_at=None):
     """Seed the identity registry from the reviewed files on disk.
 
@@ -335,7 +430,9 @@ def build_registry(data_dir=None, source_revision=None, generated_at=None):
     is never auto-merged. Merges are recorded only for exact
     identity-key matches found in this reviewed data — a LinkedIn URL
     shared by a scoped profile person (``person:<slug>--<partner>``)
-    and a canonical person entry.
+    and a canonical person entry — plus the APPROVED merge decisions
+    replayed from ``review-queue.json`` in the same data directory
+    (see :func:`replay_queue_decisions`).
     """
     data_dir = Path(data_dir) if data_dir else ROOT / 'data'
     now = generated_at or _utcnow()
@@ -430,6 +527,10 @@ def build_registry(data_dir=None, source_revision=None, generated_at=None):
                     'provider', website=sponsor.get('website'))
                 _add_entity(entities, 'provider', sponsor['name'], key,
                             basis, updated_at=now)
+
+    # Human decisions last: approved review-queue merges replay on
+    # top of the seed, so they survive every regeneration.
+    replay_queue_decisions(registry, data_dir)
 
     registry['entities'] = dict(sorted(entities.items()))
     registry['merges'] = sorted(registry['merges'],
