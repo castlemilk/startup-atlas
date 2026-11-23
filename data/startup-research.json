@@ -116,6 +116,25 @@
           "value": "Australia (historical)",
           "source": "https://www.canva.com/newsroom/news/melanie-perkins-21-questions-part-2/",
           "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "early-company-history",
+          "label": "Company history",
+          "value": "Melanie Perkins and Cliff Obrecht started Fusion Books in 2007 as school yearbook design software. It expanded from Australia into France and New Zealand before the founders launched Canva.",
+          "source": "https://foundersfactory.com/articles/canva-founders/",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Canva seed announcement and Fusion Books origins",
+          "url": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+          "kind": "company history"
+        },
+        {
+          "title": "Canva’s founders and their early company timeline",
+          "url": "https://foundersfactory.com/articles/canva-founders/",
+          "kind": "founder profile"
         }
       ]
     },
@@ -346,6 +365,12 @@
           "url": "https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence",
           "published_on": "2026-09-01",
           "kind": "company announcement"
+        },
+        {
+          "title": "Airwallex on building startups for global markets",
+          "url": "https://www.airwallex.com/global/blog/the-ai-era-has-no-home-market-build-accordingly",
+          "published_on": "2026-06-25",
+          "kind": "parent-company announcement"
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/t-0.svg",
@@ -356,6 +381,20 @@
           "label": "Business base",
           "value": "San Francisco, United States",
           "source": "https://data.oregon.gov/resource/tckn-sxa6.json?registry_number=259299692&associated_name_type=PRINCIPAL%20PLACE%20OF%20BUSINESS",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "public-launch",
+          "label": "Public launch",
+          "value": "Airwallex announced that its accounting subsidiary left private beta and opened to US startups on 1 September 2026.",
+          "source": "https://www.airwallex.com/global/newsroom/t-0-launches-to-provide-startups-with-real-time-accounting-and-financial-intelligence",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "company-origin",
+          "label": "Company background",
+          "value": "Founder Lance Co Ting Keh joined Airwallex through its acquisition of OpenPay, then founded T:0 within Airwallex.",
+          "source": "https://www.airwallex.com/global/blog/the-ai-era-has-no-home-market-build-accordingly",
           "reviewed_at": "2026-11-23"
         }
       ]
@@ -455,9 +494,9 @@
     },
     {
       "name": "Ascenda",
-      "description": "Patient check-in tools for psychologists.",
+      "description": "Measures how engineering teams work with AI coding agents, combining tool activity with engineers’ own check-ins.",
       "website": "https://ascenda.one/",
-      "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+      "source": "https://www.ascenda.one/",
       "founders": [
         {
           "name": "Nathan Challen",
@@ -477,8 +516,37 @@
           "value": "Southport, Australia",
           "source": "https://au.linkedin.com/company/ascenda-one",
           "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "early-product",
+          "label": "Early product",
+          "value": "Startmate profiled Ascenda’s AI-assisted patient check-ins for psychologists in April 2026.",
+          "source": "https://www.startmate.com/writing/mental-health-support-isnt-broken-the-system-is-incomplete-ascenda-is-fixing-that",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "engineering-measurement",
+          "label": "Engineering measurement",
+          "value": "Ascenda Flow reads engineering-tool activity on a developer’s Mac. Teams can use aggregate measures in a 90-day evaluation of their AI engineering practices.",
+          "source": "https://www.ascenda.one/",
+          "reviewed_at": "2026-11-23"
         }
-      ]
+      ],
+      "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
+        },
+        {
+          "title": "Startmate profiles Ascenda’s early mental-health product",
+          "url": "https://www.startmate.com/writing/mental-health-support-isnt-broken-the-system-is-incomplete-ascenda-is-fixing-that",
+          "published_on": "2026-04-09",
+          "kind": "accelerator profile"
+        }
+      ],
+      "reviewed_at": "2026-11-23"
     },
     {
       "name": "Brainwaves",
@@ -508,6 +576,21 @@
           "value": "Melbourne, Australia",
           "source": "https://au.linkedin.com/company/getbrainwaves",
           "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "cohort-product",
+          "label": "Marketing strategy",
+          "value": "Startmate’s cohort profile describes software that brings marketing research together and helps teams turn it into strategy.",
+          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
         }
       ]
     },
@@ -535,6 +618,27 @@
           "value": "Melbourne, Australia",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
           "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "website-experimentation",
+          "label": "Website experimentation",
+          "value": "cascayd analyzes how visitors navigate a website, proposes changes and creates variations for A/B tests.",
+          "source": "https://www.startmate.com/writing/your-landing-page-is-leaking-revenue-cascayd-is-plugging-the-gap",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
+        },
+        {
+          "title": "Your landing page is leaking revenue & cascayd is plugging the gap",
+          "url": "https://www.startmate.com/writing/your-landing-page-is-leaking-revenue-cascayd-is-plugging-the-gap",
+          "published_on": "2026-04-15",
+          "kind": "accelerator profile"
         }
       ]
     },
@@ -562,6 +666,27 @@
           "value": "Melbourne, Australia",
           "source": "https://au.linkedin.com/company/checkgen",
           "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "early-trial",
+          "label": "Early trial",
+          "value": "In April 2026, Startmate reported that CheckGen had completed its first trial with Ultraceuticals and was developing a point-of-care prototype.",
+          "source": "https://www.startmate.com/writing/most-skincare-is-built-on-claims-checkgen-is-building-proof",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
+        },
+        {
+          "title": "Most skincare is built on claims: CheckGen is building proof",
+          "url": "https://www.startmate.com/writing/most-skincare-is-built-on-claims-checkgen-is-building-proof",
+          "published_on": "2026-04-09",
+          "kind": "accelerator profile"
         }
       ]
     },
@@ -593,6 +718,40 @@
           "value": "NSW 2010, Australia",
           "source": "https://abr.business.gov.au/ABN/View?abn=86684463134",
           "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "sydney-angels-portfolio",
+          "label": "Sydney Angels portfolio",
+          "value": "Sydney Angels identified CrossCourtAI as a portfolio company in its 19 February 2026 update on the startup’s acceptance into Startmate.",
+          "source": "https://www.sydneyangels.net.au/news/https/wwwstartmatecom/writing/meet-our-summer26-accelerator-cohort",
+          "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "harper-workflow",
+          "label": "Harper workflow",
+          "value": "CrossCourtAI describes Harper as a tool for screening investment deals and preparing quarterly reports.",
+          "source": "https://crosscourtai.com/",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
+        },
+        {
+          "title": "The high cost of low-impact work: How CrossCourtAI empowers the modern analyst",
+          "url": "https://www.startmate.com/writing/the-high-cost-of-low-impact-work-how-crosscourtai-empowers-the-modern-analyst",
+          "published_on": "2026-04-09",
+          "kind": "accelerator profile"
+        },
+        {
+          "title": "Automating the Hardest Shots of Investing: In conversation with Sai Naicker, CrossCourtAI",
+          "url": "https://www.startmate.com/writing/automating-the-hardest-shots-of-investing-in-conversation-with-sai-naicker-crosscourtai",
+          "published_on": "2025-11-18",
+          "kind": "founder interview"
         }
       ]
     },
@@ -664,6 +823,21 @@
           "value": "Melbourne, Australia",
           "source": "https://au.linkedin.com/company/neuralindex",
           "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "property-search-product",
+          "label": "Property search",
+          "value": "Neuralindex offers search and an assistant for real-estate agency websites so visitors can describe what they need in their own words.",
+          "source": "https://neuralindex.ai/",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
         }
       ]
     },
@@ -689,6 +863,27 @@
           "value": "Sydney, Australia",
           "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
           "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "video-workflow",
+          "label": "Video editing workflow",
+          "value": "Startmate’s April 2026 profile describes Guin’s shift from automated soundtrack generation to searching libraries of footage and assembling first cuts.",
+          "source": "https://www.startmate.com/writing/the-real-bottleneck-in-video-production-and-how-guin-is-changing-that",
+          "reviewed_at": "2026-11-23"
+        }
+      ],
+      "articles": [
+        {
+          "title": "Meet our Summer’26 Accelerator Cohort",
+          "url": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "published_on": "2026-02-16",
+          "kind": "accelerator cohort"
+        },
+        {
+          "title": "The real bottleneck in video production and how Guin is changing that",
+          "url": "https://www.startmate.com/writing/the-real-bottleneck-in-video-production-and-how-guin-is-changing-that",
+          "published_on": "2026-04-09",
+          "kind": "accelerator profile"
         }
       ]
     },
