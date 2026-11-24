@@ -7,7 +7,13 @@
  * (ben.ebsworth@gmail.com via ATLAS_ADMIN_EMAILS /
  * ATLAS_GOOGLE_WRITE_EMAILS — the HTTP layer enforces that before any
  * tool runs) and exposes the review queue: list, inspect, decide,
- * undo, gating config and the auto-applied audit trail.
+ * undo, gating config and the auto-applied audit trail. The HTTP layer
+ * also accepts one non-Google credential on this surface only: the
+ * ATLAS_ADMIN_SERVICE_TOKEN service token for the unattended agent
+ * review pass (see http-server.mjs). It authenticates as a synthetic
+ * service identity, never as the admin's Google account, and decisions
+ * made with it are attributed exactly like OAuth-path agent decisions
+ * (decided_by 'agent-review', below).
  *
  * Purpose: the assistant reviews the human-band queue items itself
  * wherever the evidence is clear-cut, so the owner only sees the calls
