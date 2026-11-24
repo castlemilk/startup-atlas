@@ -130,6 +130,7 @@ class GraphTests(unittest.TestCase):
             'articles':[{'title':'New investment','url':'https://example.com/news','published_on':'2026-01-01'}],
             'relationships':[{'target_id':'partner:acme','kind':'backed_by','description':'Backed by Acme','source':'https://example.com/partners'}]}]}
         data=graph.build_graph({},['Acme'],{}, {'opportunities':[]},research)
+        next(e for e in data['entities'] if e['id']=='startup:example')['aliases']=['Exemplar']
         self.assertEqual(len(data['articles']),1)
         self.assertEqual(data['articles'][0]['title'],'New investment')
         with tempfile.TemporaryDirectory() as temp:
@@ -140,6 +141,8 @@ class GraphTests(unittest.TestCase):
                 self.assertEqual(db.execute('select count(*) from edges').fetchone()[0],2)
                 matches=db.execute('select id from entity_search where entity_search match ?',('"acme*"',)).fetchall()
                 self.assertIn(('startup:example',),matches)
+                alias_matches=db.execute('select id from entity_search where entity_search match ?',('"exemplar*"',)).fetchall()
+                self.assertIn(('startup:example',),alias_matches)
         research['startups'][0]['relationships'][0]['target_id']='partner:missing'
         with self.assertRaises(ValueError):graph.build_graph({},['Acme'],{}, {'opportunities':[]},research)
     def test_news_collection_is_bounded_and_returns_unreviewed_amounts(self):
