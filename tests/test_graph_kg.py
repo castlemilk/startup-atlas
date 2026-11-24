@@ -198,6 +198,8 @@ class BackfillMappingTests(unittest.TestCase):
     def test_stage_map(self):
         self.assertEqual(backfill.normalise_stage('Seed round'), 'Seed')
         self.assertEqual(backfill.normalise_stage('Series A-2'), 'Series A')
+        self.assertEqual(backfill.normalise_stage('Series A+'), 'Series A')
+        self.assertEqual(backfill.normalise_stage('Series A+Series B'), 'Unknown')
         self.assertEqual(backfill.normalise_stage('Series D extension'), 'Series D')
         self.assertEqual(backfill.normalise_stage('Pre-seed'), 'Pre-Seed')
         self.assertEqual(backfill.normalise_stage('Grant award (non-equity)'), 'Grant')

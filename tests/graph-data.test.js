@@ -189,3 +189,27 @@ test('Airwallex Series C keeps the announced round separate from cumulative fund
   assert.ok(graph.edges.some(e => e.round_id === round.id && e.from === 'partner:square-peg' && e.kind === 'participated_in'));
   assert.equal(rounds.filter(r => r.stage_normalised === 'Series D').length, 3);
 });
+
+test('Airwallex keeps its four early raises distinct and does not date historical mentions as announcements', async () => {
+  const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const rounds = graph.funding_rounds.filter(r => r.startup_id === 'startup:airwallex');
+  const early = rounds.filter(r => /^(Pre-Series A|Series A\+?|Series B)$/.test(r.stage));
+  assert.deepEqual(early.map(r => [r.id, r.stage, r.announced_on ?? null, r.amount, r.currency]).sort(), [
+    ['airwallex-2016-pre-series-a', 'Pre-Series A', '2016-07-05', 3000000, 'USD'],
+    ['airwallex-2017-series-a', 'Series A', null, 13000000, 'USD'],
+    ['airwallex-2017-series-a-plus', 'Series A+', '2017-12-13', 6000000, 'USD'],
+    ['airwallex-2018-series-b', 'Series B', '2018-07-03', 80000000, 'USD'],
+  ]);
+  const [preA, a, aPlus, b] = ['airwallex-2016-pre-series-a', 'airwallex-2017-series-a', 'airwallex-2017-series-a-plus', 'airwallex-2018-series-b'].map(id => early.find(r => r.id === id));
+  assert.equal(preA.stage_normalised, 'Unknown');
+  assert.equal(aPlus.stage_normalised, 'Series A');
+  assert.equal(preA.lead_investor, 'Gobi Partners');
+  assert.deepEqual(a.participants, ['Tencent Holdings', 'Sequoia Capital China', 'Mastercard']);
+  assert.deepEqual(b.participants, ['Tencent', 'Sequoia China', 'Hillhouse', 'Horizons Ventures', 'Central Capital Ventura', 'Square Peg Capital']);
+  assert.equal(b.lead_investor ?? null, null);
+  for (const round of [aPlus, b]) {
+    assert.ok(graph.edges.some(e => e.round_id === round.id && e.from === 'partner:square-peg' && e.kind === 'participated_in'));
+  }
+  assert.ok(rounds.every(r => ![19000000, 22000000, 102000000].includes(r.amount)));
+  assert.equal(rounds.find(r => r.id === 'airwallex-2019-series-c').amount, 100000000);
+});

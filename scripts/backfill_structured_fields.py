@@ -110,7 +110,7 @@ def parse_hq(value):
     return next(iter(matches))
 
 
-_SERIES_RE = re.compile(r"(?i)^series\s+([A-H])(?:[-\s].*)?$")
+_SERIES_RE = re.compile(r"(?i)^series\s+([A-H])(?:\+|[-\s].*)?$")
 _STAGE_EXACT = {
     'pre-seed': 'Pre-Seed', 'pre seed': 'Pre-Seed', 'preseed': 'Pre-Seed',
     'seed': 'Seed', 'seed round': 'Seed', 'seed extension': 'Seed',
