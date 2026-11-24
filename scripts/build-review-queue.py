@@ -93,7 +93,7 @@ import unicodedata
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
@@ -189,6 +189,68 @@ def normalise_host(url):
     if host.startswith("www."):
         host = host[4:]
     return host.rstrip(".")
+
+
+# Link text longer than this is a card/theme label, not a name. Mirrors
+# crawl.py's PROFILE_LONG_LABEL rule, applied again here because a crawl
+# artifact can carry polluted names produced before the crawl-side guard
+# (or by another producer): run 44 queued eight leads whose names baked
+# in a theme heading and/or the company's full marketing description
+# (#462), e.g. "Decarbonise the planet Avarni AI-powered carbon ...".
+LEAD_LABEL_MAX = 40
+
+
+def _slug_derived_name(url):
+    """Display name from the last URL path segment, title-cased.
+
+    Mirrors crawl.py's ``slug_derived_name``: inferred, never verified.
+    Returns None when no usable segment exists.
+    """
+    if not url or not isinstance(url, str):
+        return None
+    try:
+        parts = urlparse(url)
+    except ValueError:
+        return None
+    segments = [segment for segment in parts.path.split("/") if segment]
+    if not segments:
+        return None
+    last = unquote(segments[-1]).strip(" .")
+    words = [word for word in re.split(r"[-_]+", last) if word]
+    if not words:
+        return None
+    name = " ".join(words).title()
+    if len(name) < 2 or name.replace(" ", "").isdigit():
+        return None
+    return name
+
+
+def clean_lead_name(name, url):
+    """Reduce a long card/theme label to the company name from its URL.
+
+    Only fires when the candidate URL's slug words appear as a
+    contiguous run in the name text (the same test crawl.py applies),
+    so a genuinely long company name is never replaced. Anything else
+    is returned unchanged.
+    """
+    if len(name) <= LEAD_LABEL_MAX or not url:
+        return name
+    try:
+        segments = [s for s in urlparse(url).path.split("/") if s]
+    except ValueError:
+        return name
+    if not segments:
+        return name
+    slug_words = re.findall(r"[a-z0-9]+", unquote(segments[-1]).casefold())
+    while slug_words and slug_words[-1].isdigit():
+        slug_words.pop()
+    if not slug_words:
+        return name
+    text_words = re.findall(r"[a-z0-9]+", name.casefold())
+    if not any(text_words[i:i + len(slug_words)] == slug_words
+               for i in range(len(text_words) - len(slug_words) + 1)):
+        return name
+    return _slug_derived_name(url) or name
 
 
 def evidence_fingerprint(evidence):
@@ -947,6 +1009,9 @@ def produce_startup_leads(artifact_dir, data_dir, run, exclude_slugs=()):
         if row.get("kind") != "companies":
             continue
         name = (row.get("name") or "").strip()
+        # Strip theme headings / description text baked into a card
+        # label, keying the lead on the company name only (#462).
+        name = clean_lead_name(name, row.get("candidate_url") or "")
         if not name or slug(name) in known:
             continue
         bucket = grouped[name]
