@@ -2471,10 +2471,10 @@
       "confidence": 0.55,
       "created_at": "2026-11-23T08:34:33Z",
       "run": "44",
-      "status": "pending",
-      "decided_by": null,
-      "decided_at": null,
-      "decision_note": null,
+      "status": "rejected",
+      "decided_by": "agent-review",
+      "decided_at": "2026-11-24T13:21:54Z",
+      "decision_note": "Split per #487: this lead conflated two distinct companies named Alloy. Blackbird evidence (portfolio/alloy-index) is Alloy, formerly Index (alloy.app); Square Peg evidence (portfolio/alloy, usealloy.ai, robot-data AI agents, founded 2025 by Joe Harris) belongs to the company already held as the approved startup-lead:alloy-robotics lead. Rejected as a conflated single lead; the Blackbird company is re-proposed separately as startup-lead:alloy-index. Lead builder now splits same-name groups on conflicting candidate-profile identities.",
       "evidence_fingerprint": "a679e8918921ba0be6070f40a25e7174a30cc455c855bec6a0b105259a12e987",
       "mentions": {
         "partners": [
@@ -2482,6 +2482,31 @@
           "Square Peg"
         ],
         "website": "https://www.squarepeg.vc/portfolio/alloy"
+      }
+    },
+    {
+      "id": "startup-lead:alloy-index",
+      "kind": "startup-lead",
+      "subject": "startup:alloy-index",
+      "subject_key": "alloy-index",
+      "candidates": [],
+      "evidence": [
+        "https://www.blackbird.vc/portfolio",
+        "https://www.blackbird.vc/portfolio/alloy-index"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-24T13:21:54Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "0785455664de079627edc9d9cf6b5c80356abec39d3202976afd229761b82b0a",
+      "mentions": {
+        "partners": [
+          "Blackbird Ventures"
+        ],
+        "website": "https://www.blackbird.vc/portfolio/alloy-index"
       }
     },
     {

@@ -1039,6 +1039,45 @@ def produce_value_facts(artifact_dir, data_dir, run):
     return entries
 
 
+def _candidate_identity(url):
+    """Identity key from a candidate profile URL's last path segment.
+
+    The segment's words with generic name tokens and trailing numeric
+    tokens removed, or None when the URL has no usable segment. Variant
+    slugs for one company (``foo`` vs ``foo-labs``) collapse to one
+    identity; a genuinely different slug (``alloy`` vs ``alloy-index``)
+    stays distinct (#487).
+    """
+    if not url or not isinstance(url, str):
+        return None
+    try:
+        segments = [s for s in urlparse(url).path.split("/") if s]
+    except ValueError:
+        return None
+    if not segments:
+        return None
+    words = re.findall(r"[a-z0-9]+", unquote(segments[-1]).casefold())
+    while words and words[-1].isdigit():
+        words.pop()
+    words = [w for w in words if w not in GENERIC_NAME_TOKENS]
+    return "-".join(words) or None
+
+
+def _lead_bucket(rows):
+    bucket = {"partners": set(), "urls": set(), "evidence": set(),
+              "website": ""}
+    for row in rows:
+        if row.get("partner"):
+            bucket["partners"].add(row["partner"])
+        if row.get("candidate_url"):
+            bucket["urls"].add(row["candidate_url"])
+            bucket["website"] = row["candidate_url"]
+        for url in (row.get("source_url"), row.get("candidate_url")):
+            if url:
+                bucket["evidence"].add(url)
+    return bucket
+
+
 def produce_startup_leads(artifact_dir, data_dir, run, exclude_slugs=()):
     """Startup-lead entries: new portfolio-company names, capped at 100.
 
@@ -1051,8 +1090,7 @@ def produce_startup_leads(artifact_dir, data_dir, run, exclude_slugs=()):
     research = load_json(Path(data_dir) / "startup-research.json", {}) or {}
     known = {slug(s["name"]) for s in research.get("startups", [])}
     known |= set(exclude_slugs)
-    grouped = defaultdict(lambda: {"partners": set(), "urls": set(),
-                                   "evidence": set(), "website": ""})
+    rows_by_name = defaultdict(list)
     for row in profiles:
         if row.get("kind") != "companies":
             continue
@@ -1066,35 +1104,58 @@ def produce_startup_leads(artifact_dir, data_dir, run, exclude_slugs=()):
         # only of taxonomy words labels a page profiling other firms.
         if is_theme_label(name):
             continue
-        bucket = grouped[name]
-        if row.get("partner"):
-            bucket["partners"].add(row["partner"])
-        if row.get("candidate_url"):
-            bucket["urls"].add(row["candidate_url"])
-            bucket["website"] = row["candidate_url"]
-        for url in (row.get("source_url"), row.get("candidate_url")):
-            if url:
-                bucket["evidence"].add(url)
+        rows_by_name[name].append(row)
+    # Same-name companies are distinct leads (#487): when one name's
+    # mentions carry conflicting candidate-profile identities -- the
+    # profile slug a partner itself uses for the company -- split the
+    # group per identity instead of merging two companies into one
+    # lead (the "Alloy" lead mixed Alloy, formerly Index, via
+    # Blackbird's /portfolio/alloy-index with the robot-data company
+    # via Square Peg's /portfolio/alloy). A partition whose identity
+    # matches the name keeps the plain lead key; any other partition
+    # is keyed by its profile identity. Mentions without a usable
+    # profile identity stay with the name's own partition.
+    grouped = {}
+    for name, rows in rows_by_name.items():
+        by_identity = defaultdict(list)
+        unidentified = []
+        for row in rows:
+            identity = _candidate_identity(row.get("candidate_url"))
+            if identity:
+                by_identity[identity].append(row)
+            else:
+                unidentified.append(row)
+        if len(by_identity) <= 1:
+            grouped[slug(name)] = _lead_bucket(rows)
+            continue
+        name_identity = _stripped_slug(name) or slug(name)
+        parts = {}
+        for identity, part_rows in by_identity.items():
+            key = slug(name) if identity == name_identity else identity
+            parts.setdefault(key, []).extend(part_rows)
+        if unidentified:
+            parts.setdefault(slug(name), []).extend(unidentified)
+        for key, part_rows in parts.items():
+            grouped[key] = _lead_bucket(part_rows)
     # Listing-page artifacts (#460): a subject whose evidence spans
     # many distinct candidate URLs per mentioning partner is a
     # portfolio listing scraped as one "company", not a company.
     grouped = {
-        name: bucket for name, bucket in grouped.items()
+        key: bucket for key, bucket in grouped.items()
         if len(bucket["urls"]) <= max(
             LEAD_URL_FLOOR,
-            LEAD_MAX_URLS_PER_PARTNER * max(1, len(bucket["partners"])))
-    }
+            LEAD_MAX_URLS_PER_PARTNER * max(1, len(bucket["partners"])))}
     ranked = sorted(
         grouped.items(),
         key=lambda kv: (-len(kv[1]["partners"]), -bool(kv[1]["website"]),
                         kv[0].lower()))
     entries = []
-    for name, bucket in ranked[:STARTUP_LEAD_CAP]:
+    for key, bucket in ranked[:STARTUP_LEAD_CAP]:
         confidence = 0.40 + 0.10 * min(len(bucket["partners"]) - 1, 2) \
             + (0.05 if bucket["website"] else 0.0)
         entry = _new_entry(
-            f"startup-lead:{slug(name)}", "startup-lead",
-            f"startup:{slug(name)}", slug(name), [],
+            f"startup-lead:{key}", "startup-lead",
+            f"startup:{key}", key, [],
             sorted(bucket["evidence"]), confidence, run)
         entry["mentions"] = {
             "partners": sorted(bucket["partners"]),

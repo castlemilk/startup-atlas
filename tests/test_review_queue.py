@@ -366,6 +366,75 @@ class BuildTests(FixtureCase):
                  if e["kind"] == "startup-lead"}
         self.assertEqual(leads, {"multi-partner-co"})
 
+    def test_same_name_distinct_companies_are_split(self):
+        # #487: two different Sydney startups share the name Alloy.
+        # Blackbird's profile slug is alloy-index (Alloy, formerly
+        # Index); Square Peg's is alloy (the robot-data company).
+        # Keying leads on the name alone merged them into one lead.
+        rows = [
+            {"partner": "Blackbird Ventures", "kind": "companies",
+             "name": "Alloy",
+             "candidate_url":
+                 "https://www.blackbird.vc/portfolio/alloy-index",
+             "source_url": "https://www.blackbird.vc/portfolio"},
+            {"partner": "Square Peg", "kind": "companies",
+             "name": "Alloy",
+             "candidate_url": "https://www.squarepeg.vc/portfolio/alloy",
+             "source_url": "https://www.squarepeg.vc/portfolio"},
+        ]
+        write_json(self.artifact / "latest-profiles.json",
+                   {"candidates": rows})
+        _, added, _ = self.build()
+        leads = {e["subject_key"]: e for e in added
+                 if e["kind"] == "startup-lead"}
+        self.assertEqual(set(leads), {"alloy", "alloy-index"})
+        self.assertEqual(leads["alloy"]["mentions"]["partners"],
+                         ["Square Peg"])
+        self.assertEqual(leads["alloy-index"]["mentions"]["partners"],
+                         ["Blackbird Ventures"])
+        self.assertIn("https://www.squarepeg.vc/portfolio/alloy",
+                      leads["alloy"]["evidence"])
+        self.assertNotIn("https://www.blackbird.vc/portfolio/alloy-index",
+                         leads["alloy"]["evidence"])
+        self.assertIn("https://www.blackbird.vc/portfolio/alloy-index",
+                      leads["alloy-index"]["evidence"])
+
+    def test_same_company_slug_variants_stay_one_lead(self):
+        # #487 guard-rail: generic-suffix slug variants of one company
+        # (foo vs foo-labs) are one identity, not two leads, and the
+        # multi-partner mention still merges.
+        rows = [
+            {"partner": partner, "kind": "companies", "name": "Foo",
+             "candidate_url": f"https://{host}/portfolio/{suffix}",
+             "source_url": f"https://{host}/portfolio"}
+            for partner, host, suffix in (
+                ("Airtree", "airtree.example", "foo"),
+                ("Blackbird Ventures", "blackbird.example", "foo-labs"),
+                ("Square Peg", "squarepeg.example", "foo"))
+        ]
+        write_json(self.artifact / "latest-profiles.json",
+                   {"candidates": rows})
+        _, added, _ = self.build()
+        leads = [e for e in added if e["kind"] == "startup-lead"]
+        self.assertEqual(len(leads), 1)
+        self.assertEqual(leads[0]["subject_key"], "foo")
+        self.assertEqual(len(leads[0]["mentions"]["partners"]), 3)
+
+    def test_candidate_identity_unit(self):
+        identity = queue_mod._candidate_identity
+        self.assertEqual(
+            identity("https://www.blackbird.vc/portfolio/alloy-index"),
+            "alloy-index")
+        self.assertEqual(
+            identity("https://www.squarepeg.vc/portfolio/alloy"), "alloy")
+        self.assertEqual(identity("https://example.com/portfolio/foo-labs"),
+                         "foo")
+        self.assertEqual(identity("https://example.com/portfolio/foo-2"),
+                         "foo")
+        self.assertIsNone(identity("https://example.com/"))
+        self.assertIsNone(identity(""))
+        self.assertIsNone(identity(None))
+
     def test_is_theme_label_unit(self):
         is_theme = queue_mod.is_theme_label
         self.assertTrue(is_theme("AI & Intelligent Apps"))
