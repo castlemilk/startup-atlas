@@ -238,6 +238,46 @@ def is_theme_label(name):
     return len(tokens) >= 2 and all(t in THEME_LABEL_TOKENS
                                     for t in tokens)
 
+# Link text that is a call-to-action, not a company name (#501).
+# crawl.py's PROFILE_GENERIC_TEXT slug-derives these at extraction
+# time, but — like the #462 polluted names above — an artifact can
+# carry the raw label from before that guard or from another
+# producer. Run 44 queued ``startup-lead:full-profile``: every Partech
+# company card's "( FULL PROFILE )" link text became one lead whose
+# website was the last card's company page. The #460 listing guard
+# only drops such a group when it aggregates many candidate URLs, so
+# a single-card (or small-portfolio) artefact still slipped through.
+UI_LABEL_NAMES = frozenset({
+    "full profile", "view profile", "see profile", "profile",
+    "learn more", "read more", "view more", "view all", "see all",
+    "details", "more", "link", "apply", "apply now", "find out more",
+})
+
+
+def is_ui_label(name):
+    """True when ``name`` is a UI/call-to-action label, not a name.
+
+    Normalised the way crawl.py's PROFILE_GENERIC_TEXT sees link
+    text: case-folded, with surrounding brackets/punctuation removed.
+    """
+    normalised = " ".join(re.findall(r"[a-z0-9]+", str(name).casefold()))
+    return normalised in UI_LABEL_NAMES
+
+
+def lead_name_for_row(name, url):
+    """Company name for one profiles row, or None when it has none.
+
+    A UI label (#501) is not a name and the row is dropped: crawl.py
+    already slug-derives these labels at extraction time, so a fresh
+    artifact carries the real company name; a polluted artifact's
+    label must not be queued under any key — slug-deriving here
+    would also resurrect one lead per card from a listing scrape
+    the #460 guard exists to drop.
+    """
+    if is_ui_label(name):
+        return None
+    return name
+
 
 # One partner contributes at most a couple of candidate URLs for one
 # company (URL variants of its profile page). A "lead" aggregating
@@ -1104,6 +1144,9 @@ def produce_startup_leads(artifact_dir, data_dir, run, exclude_slugs=()):
         # Strip theme headings / description text baked into a card
         # label, keying the lead on the company name only (#462).
         name = clean_lead_name(name, row.get("candidate_url") or "")
+        # UI link text is not a company (#501): drop the row — a
+        # fresh crawl slug-derives the real name at extraction.
+        name = lead_name_for_row(name, row.get("candidate_url") or "")
         if not name or slug(name) in known:
             continue
         # Theme/category pages are not companies (#460): a name made

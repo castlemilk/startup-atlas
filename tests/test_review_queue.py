@@ -366,6 +366,42 @@ class BuildTests(FixtureCase):
                  if e["kind"] == "startup-lead"}
         self.assertEqual(leads, {"multi-partner-co"})
 
+    def test_ui_label_is_not_a_startup_lead(self):
+        # #501: a single "Full Profile" card slipped past the #460
+        # listing guard (too few URLs to look like a listing scrape)
+        # and queued as startup-lead:full-profile with the card's
+        # company page as its website. UI link text is not a name:
+        # the rows are dropped (fresh crawls slug-derive the real
+        # company name at extraction), and a real lead alongside
+        # them still queues.
+        rows = [
+            {"partner": "Partech", "kind": "companies",
+             "name": "Full Profile",
+             "candidate_url": "https://partechpartners.com/companies/co2-ai",
+             "source_url": "https://partechpartners.com/companies"},
+            {"partner": "Partech", "kind": "companies",
+             "name": "( FULL PROFILE )",
+             "candidate_url": "https://partechpartners.com/companies",
+             "source_url": "https://partechpartners.com/companies"},
+            {"partner": "Partech", "kind": "companies",
+             "name": "Co2 Ai",
+             "candidate_url": "https://partechpartners.com/companies/co2-ai",
+             "source_url": "https://partechpartners.com/companies"},
+        ]
+        write_json(self.artifact / "latest-profiles.json",
+                   {"candidates": rows})
+        _, added, _ = self.build()
+        leads = {e["subject_key"] for e in added
+                 if e["kind"] == "startup-lead"}
+        self.assertEqual(leads, {"co2-ai"})
+
+    def test_is_ui_label_unit(self):
+        self.assertTrue(queue_mod.is_ui_label("Full Profile"))
+        self.assertTrue(queue_mod.is_ui_label("( FULL PROFILE )"))
+        self.assertTrue(queue_mod.is_ui_label("Learn More"))
+        self.assertFalse(queue_mod.is_ui_label("Full Circle"))
+        self.assertFalse(queue_mod.is_ui_label("Profile Software"))
+
     def test_same_name_distinct_companies_are_split(self):
         # #487: two different Sydney startups share the name Alloy.
         # Blackbird's profile slug is alloy-index (Alloy, formerly
