@@ -21,19 +21,20 @@ const sheetViewport = matchMedia('(max-width: 900px)');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const presentations = ['map','cards','list'];
 const defaults = {
-  presentation:'map', metric:'companies', currency:'USD', group:'technology', colour:'technology',
+  presentation:'map', metric:COMPANY_VALUE, currency:'USD', group:'technology', colour:'technology',
   period:'all', logos:true,
 };
 const titles = {valuation:'Recorded valuations', funding:'Funding announcements', 'market-cap':'Public market cap', companies:'Company count', [COMPANY_VALUE]:'Company value'};
 const figureNames = {valuation:'Recorded valuation', funding:'Funding announcement', 'market-cap':'Public market cap'};
 const valueBases = {'market-cap':'Market cap', valuation:'Private valuation'};
 const ownershipNames = {public:'Publicly listed', private:'Privately held', subsidiary:'Subsidiary'};
+const valueBasisNames = {listed_market_cap:'Listed market cap', last_round_post_money:'Last round post-money', secondary_sale:'Secondary sale', announced_valuation:'Announced valuation'};
 const figureDate = (event,metric) => metric === 'market-cap' ? event.observed_on : event.announced_on;
 const dateLabel = metric => metric === 'market-cap' ? 'As of' : 'Announced';
 const datedFigure = (event,metric) => figureDate(event,metric) ? `${dateLabel(metric)} ${figureDate(event,metric)}` : '';
 const newerFigure = metric => metric === 'market-cap' ? 'Newer market-cap observation outside this currency' : 'Newer announcement not plotted';
 let graph, graphStore, view, state, exploration, dimensions, companies, entities, periods, colours;
-let technology, ownership, marketCaps, companyValues, evidenceAvailable;
+let technology, ownership, marketCaps, privateValuations, companyValues, evidenceAvailable;
 let lastWidth = 0, lastHeight = 0, visibleCompanies = new Set(), queryCompanies = [];
 let previousQuery, searchMatches;
 let sheetSuspended = false;
@@ -179,7 +180,7 @@ function syncControls() {
   if ($('treemap-query').value !== state.query) $('treemap-query').value = state.query;
 }
 function profileContext(entity) {
-  const context = companyContext(graph, entity, state.currency, marketCaps);
+  const context = companyContext(graph, entity, state.currency, marketCaps, privateValuations);
   const technologyFact = technology.get(entity.id);
   const owner = ownership.get(entity.id);
   const companyValue = companyValues.get(entity.id);
@@ -201,7 +202,16 @@ function profileContext(entity) {
     return `<div><dt>${esc(round.stage || 'Funding announcement')}</dt><dd>${esc(terms || 'Terms unavailable')} ${evidenceLink(round.source,'Source')}${round.note ? `<small>${esc(round.note)}</small>` : ''}</dd></div>`;
   }).join('');
   const valueContext = companyValue?.event ? `<div><dt>${valueBases[companyValue.basis]}</dt><dd><strong>${esc(figureAmount(companyValue))}</strong> <span>${esc(datedFigure(companyValue.event,companyValue.basis))}</span> ${evidenceLink(companyValue.event.source,'Value source')}</dd></div>` : '';
-  return `<p class="treemap-note"><strong>Technology type</strong> ${esc(technologyFact?.type || 'Not recorded')}${technologyFact ? `<br>${esc(technologyFact.detail)} ${evidenceLink(technologyFact.source,'Technology source')}` : ''}</p>
+  const lv = context.value;
+  const listingLine = context.listing?.status === 'public'
+    ? `<p>Listed · ${esc(context.listing.exchange)}: ${esc(context.listing.ticker)}</p>`
+    : context.listing && ownershipNames[context.listing.status] ? `<p>${esc(ownershipNames[context.listing.status])}</p>` : '';
+  const valueBlock = `<section class="treemap-value-block"><h3>Value</h3>${lv
+    ? `<p class="treemap-detail-value">${lv.approximate ? '≈ ' : ''}${esc(formatValue(lv.amount,'valuation',lv.currency,false))}</p>
+       <p>${esc(valueBasisNames[lv.basis] || 'Recorded value')} · As of ${esc(lv.as_of)} ${evidenceLink(lv.source,'Value source')}</p>`
+    : '<p>Valuation not recorded.</p>'}${listingLine}</section>`;
+  const history = context.valueHistory.length ? `<section class="treemap-value-history"><h3>Valuation history</h3><dl>${context.valueHistory.map(entry => `<div><dt>${esc(entry.date)} · ${esc(entry.label)}</dt><dd>${entry.approximate ? '≈ ' : ''}${esc(formatValue(entry.amount,'valuation',entry.currency))}${entry.ticker ? ` · ${esc(entry.exchange)}: ${esc(entry.ticker)}` : ''} ${evidenceLink(entry.source,'Source')}</dd></div>`).join('')}</dl></section>` : '';
+  return `${valueBlock}${history}<p class="treemap-note"><strong>Technology type</strong> ${esc(technologyFact?.type || 'Not recorded')}${technologyFact ? `<br>${esc(technologyFact.detail)} ${evidenceLink(technologyFact.source,'Technology source')}` : ''}</p>
     ${owner ? `<p class="treemap-note"><strong>${ownershipNames[owner.status]}</strong> · ${esc(owner.observed_on)}<br>${esc(owner.detail)} ${evidenceLink(owner.source,'Ownership source')}</p>` : '<p>Ownership evidence not recorded.</p>'}
     <section class="treemap-founders"><h3>Founders</h3>${founders || '<p>Founder details are not recorded yet.</p>'}</section>
     <details class="treemap-context"><summary>Financial context</summary><dl>${valueContext}${figures}</dl></details>
@@ -383,6 +393,7 @@ function tileMarkup(tile, aggregate = false) {
       ${figureBadge(basis)}
       <span class="treemap-tile-identity">${aggregate || !state.logos ? '' : mark(entity)}<span class="treemap-tile-copy"><span class="treemap-tile-name">${esc(name)}</span>${meta ? `<span class="treemap-tile-meta">${esc(meta)}</span>` : ''}</span></span>
       ${aggregate || state.metric !== 'companies' ? `<span class="treemap-value">${esc(figureAmount(tile))}</span>` : ''}
+      ${!aggregate && basis === 'market-cap' && event?.ticker && tile.width >= 132 && tile.height >= 96 ? `<span class="treemap-tile-ticker">${esc(event.exchange)}: ${esc(event.ticker)}</span>` : ''}
     </span>
   </button>`;
 }
@@ -589,6 +600,17 @@ function renderLegend() {
       <ul>${entries.map(entry => `<li class="treemap-legend-item"><i aria-hidden="true" style="--tile-color:${entry.fill}"></i>${esc(entry.name)}</li>`).join('')}</ul>
     </div>` : `<span>${esc(context)}</span>`}${basisKey}`;
 }
+function renderNoValueBand() {
+  const band = $('treemap-novalue');
+  const show = state.presentation === 'map' && state.metric !== 'companies' && view.missing.length > 0;
+  band.hidden = !show;
+  if (!show) { $('treemap-novalue-tiles').replaceChildren(); return; }
+  $('treemap-novalue-tiles').innerHTML = view.missing.map(entity => `<button type="button" class="treemap-novalue-tile" data-company="${esc(entity.id)}" aria-controls="treemap-detail" aria-pressed="${state.selected === entity.id}">
+    ${state.logos ? mark(entity) : ''}<span class="treemap-novalue-name">${esc(entity.name)}</span>
+    <span class="treemap-novalue-reason">${esc(missingFigureLabel(view.missingFigures.get(entity.id)))}</span></button>`).join('');
+  watchImages(band);
+}
+
 function renderMissing() {
   $('treemap-missing').hidden = !view.missing.length;
   const measure = {valuation:'Valuation', funding:'Funding amount', 'market-cap':'Market cap', [COMPANY_VALUE]:'Company value'}[state.metric];
@@ -663,6 +685,7 @@ function render() {
     drawRankedList();
   }
   renderMissing();
+  renderNoValueBand();
   draw();
   showDetail();
   focusCopy(previous,main);
@@ -893,7 +916,7 @@ try {
   entities = new Map(graph.entities.map(entity => [entity.id,entity]));
   companies = graph.entities.filter(entity => entity.kind === 'startup');
   const researched = await loadTreemapEvidence(graphStore);
-  ({technology,ownership,marketCaps,available:evidenceAvailable} = researched);
+  ({technology,ownership,marketCaps,privateValuations,available:evidenceAvailable} = researched);
   companyValues = indexCompanyValues(graph,researched);
   dimensions = indexCompanies(graph,technology);
   periods = new Set(cohortNames(graph));
