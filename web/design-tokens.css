@@ -1,3 +1,22 @@
+/*
+ * Atlas type system — read before adding a face (de-slop #440 audit, 24 Nov 2026).
+ *
+ * Two layers, one trio each. Every @font-face declared below renders on at
+ * least one shipped route; do not add a face without a route that renders
+ * it, and do not reference a family that is not declared here.
+ *
+ * Base layer (routes without an editorial body class — the query console
+ * and the design-lab pages):
+ *   body / display / mono = Atlas Geist / Georgia (system serif) / Atlas Geist Mono
+ * Editorial layer (the :root:has(...) block below — landing, directory,
+ * treemap, graph, entity and partner routes):
+ *   body / display / mono = Atlas Inter / Atlas Newsreader (incl. italic) / Atlas Geist Mono
+ *
+ * Browsers fetch a face only when a glyph in it renders, so the cost of the
+ * set is per-route, not per-file. The risk this header guards against is
+ * silent font swaps: --atlas-font-body resolves differently per layer by
+ * design, and this comment is the record of that intent.
+ */
 @layer ui-sdk;
 
 @font-face { font-family: "Atlas Geist"; src: url("./assets/fonts/geist-sans-variable.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: swap; }
