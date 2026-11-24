@@ -358,3 +358,43 @@ test('service credential: inert when ATLAS_ADMIN_SERVICE_TOKEN is unset, Google 
   const readerInit = await fetch(`${serviceApp.base}/mcp/admin`, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json, text/event-stream', authorization: `Bearer ${readerToken()}` }, body: initializeBody });
   assert.equal(readerInit.status, 403);
 });
+
+test('#473 regression: /mcp/admin is stateless — no session id is issued, and a tool call carrying a foreign session id is not 404d', async () => {
+  seedGithub();
+  const headers = { 'content-type': 'application/json', accept: 'application/json, text/event-stream', authorization: `Bearer ${adminToken()}` };
+
+  const init = await fetch(`${app.base}/mcp/admin`, { method: 'POST', headers, body: initializeBody });
+  assert.equal(init.status, 200);
+  assert.equal(init.headers.get('mcp-session-id'), null);
+  await init.text();
+
+  // The reported failure: initialize succeeded, then the very next call
+  // 404'd with "Unknown MCP session id" because the session lived in a
+  // different process's memory (redeploy / replica). Simulate that by
+  // presenting a session id this process never issued.
+  const callBody = JSON.stringify({
+    jsonrpc: '2.0', id: 2, method: 'tools/call',
+    params: { name: 'atlas_admin_get_review_item', arguments: { id: 'merge:partner:accel' } },
+  });
+  const call = await fetch(`${app.base}/mcp/admin`, {
+    method: 'POST',
+    headers: { ...headers, 'mcp-session-id': 'session-issued-by-another-process' },
+    body: callBody,
+  });
+  assert.equal(call.status, 200);
+  const text = await call.text();
+  const payload = text.split('\n').filter(line => line.startsWith('data:')).map(line => JSON.parse(line.slice(5))).find(msg => msg.id === 2)
+    ?? JSON.parse(text);
+  const result = JSON.parse(payload.result.content[0].text);
+  assert.equal(result.entry.id, 'merge:partner:accel');
+
+  // And a call with no session header at all — a fresh client process
+  // whose initialize landed elsewhere — works the same way.
+  const bare = await fetch(`${app.base}/mcp/admin`, { method: 'POST', headers, body: callBody });
+  assert.equal(bare.status, 200);
+  await bare.text();
+
+  // Stateless surface: no server stream to GET and no session to DELETE.
+  const get = await fetch(`${app.base}/mcp/admin`, { method: 'GET', headers });
+  assert.equal(get.status, 405);
+});
