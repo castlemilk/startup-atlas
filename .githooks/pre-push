@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Startup Atlas pre-push hook: full lane checks for the pushed range,
+# including the hosted-lane tests whenever the push touches data/ or
+# backend/ — the tests whose absence let main go red invisibly in
+# Nov 2026. Implementation lives in scripts/preflight.sh.
+# Emergency bypass: ATLAS_SKIP_HOOKS=1 (prints a loud warning; CI is the backstop).
+exec "$(git rev-parse --show-toplevel)/scripts/preflight.sh"

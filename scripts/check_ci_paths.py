@@ -25,7 +25,11 @@ RULES = {
                    'tests/test_early_investments.py', 'tests/test_collection_coverage.py'),
     'research': ('research/countries/*', 'scripts/index_country_research.py', 'tests/test_country_research_index.py'),
     'mcp': ('backend/mcp/*', 'server.js', 'scripts/catalogue-entries.mjs'),
-    'hosted': ('backend/hosted/*', 'scripts/catalogue-entries.mjs'),
+    # The hosted tests read data/ directly (profile previews, source
+    # reads): data changes MUST run the hosted lane. Before Nov 2026
+    # 'hosted' only fired on backend/hosted/*, so data merges landed
+    # without ever running those tests and main went red invisibly.
+    'hosted': ('backend/hosted/*', 'scripts/catalogue-entries.mjs', 'data/*'),
     'go': ('*.go', 'go.mod', 'go.sum', 'api/*', 'backend/internal/*'),
 }
 
