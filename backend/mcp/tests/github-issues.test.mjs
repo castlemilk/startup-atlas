@@ -226,10 +226,10 @@ async function connectServer(t, { write, githubIssues, githubToken }) {
 
 const decoded = result => JSON.parse(result.content[0].text);
 
-test('tools/list exposes atlas_create_issue as a write tool, bringing the total to 17', async t => {
+test('tools/list exposes atlas_create_issue as a write tool, bringing the total to 18', async t => {
   const client = await connectServer(t, { write: true, githubIssues: { createIssue: async () => ({ created: true }) } });
   const { tools } = await client.listTools();
-  assert.equal(tools.length, 17);
+  assert.equal(tools.length, 18);
   const tool = tools.find(item => item.name === 'atlas_create_issue');
   assert.ok(tool);
   assert.equal(tool.annotations.readOnlyHint, false);
