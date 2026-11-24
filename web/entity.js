@@ -7,6 +7,7 @@ import { icon, renderEvidenceHeading } from './atlas-ui.js';
 import { companyLocationFacts, countryName, indexCompanies } from './atlas-exploration.js';
 import { createProfileEvidence, profileSource, profileTime, recordedProfileDate } from './profile-evidence.js';
 import { installProfileTabs } from './profile-tabs.js';
+import { resolveEntityRedirect } from './entity-redirects.js';
 import { edgeKindLabel, microGraphLayout, microGraphNameLines, microGraphNeighbours } from './micro-graph.js';
 
 const root = document.getElementById('entity-profile');
@@ -255,9 +256,35 @@ function measureProfileNavigation() {
   if (typeof ResizeObserver === 'function') new ResizeObserver(sync).observe(nav);
 }
 
+async function mergedTarget(id) {
+  try {
+    const response = await fetch('./data/entity-redirects.json', { cache: 'no-cache' });
+    if (!response.ok) return null;
+    const published = await response.json();
+    return resolveEntityRedirect(id, published.redirects ?? published);
+  } catch {
+    return null;
+  }
+}
+
 async function renderProfile() {
   const store = await openGraph();
-  const { entity, edges, rounds, articles } = entityDetails(store.graph, identity);
+  let profileId = identity;
+  let mergedFrom = '';
+  try {
+    entityDetails(store.graph, profileId);
+  } catch {
+    // A shared link may name an ID retired by a merge (#93): follow the
+    // published redirect to the canonical record instead of dead-ending.
+    const target = await mergedTarget(profileId);
+    if (!target) throw new Error('Entity not found');
+    mergedFrom = profileId;
+    profileId = target;
+    const url = new URL(location.href);
+    url.searchParams.set('id', target);
+    history.replaceState(null, '', url);
+  }
+  const { entity, edges, rounds, articles } = entityDetails(store.graph, profileId);
   const isStartup = entity.kind === 'startup';
   const focusedDossier = entity.kind === 'person' || entity.kind === 'programme';
   const named = new Map(store.graph.entities.map(item => [item.id, item]));
@@ -369,6 +396,7 @@ async function renderProfile() {
     <header class="entity-hero${isStartup ? ' entity-company-hero' : ''}"><div class="entity-hero-identity">${mark(entity, isStartup)}<div class="entity-hero-copy">${focusedDossier ? `${title}<p class="entity-dossier-type">${type}</p>` : `<p class="profile-kicker">${type}</p>${title}`}${summary || !focusedDossier ? `<p>${esc(summary || 'Explore the connected records and evidence below.')}</p>` : ''}${heroMetadata ? `<div class="entity-hero-meta">${heroMetadata}</div>` : ''}</div></div>
     <div class="entity-actions">${companyActions}${graphAction('entity-hero-graph')}</div>${socials ? `<div class="entity-external-links">${socials}</div>` : ''}</header>
     <div class="profile-sticky${isStartup ? ' entity-company-sticky' : focusedDossier ? ' entity-dossier-sticky' : ''}">${compactBar}<span class="profile-compact-identity" aria-hidden="true">${mark(entity)}<span>${esc(entity.name)}</span></span><nav class="atlas-section-nav" role="tablist" aria-label="Profile sections">${sectionLinks.map(([id, label], index) => `<a role="tab" id="tab-${id}" href="#${id}" aria-controls="${id}" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}">${label}</a>`).join('')}</nav></div>
+    ${mergedFrom ? `<p class="profile-notice" role="status">This record was merged into ${esc(entity.name)}; the shared link now points at the current profile.</p>` : ''}
     ${store.mode === 'fallback' ? '<p class="profile-notice" role="status">Showing the published backup while the database is unavailable.</p>' : ''}
     <div class="entity-layout${isStartup ? ' entity-company-layout' : ''}"><div class="entity-dossier">${programme}${overview}${people}${funding}${relationships}</div>
     ${!isStartup && !focusedDossier ? `<aside class="entity-aside" aria-label="Research at a glance"><section><h2>Research coverage</h2><p>${esc(count(edges.length, 'recorded relationship'))}.</p></section></aside>` : ''}</div>

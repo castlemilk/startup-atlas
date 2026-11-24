@@ -8,6 +8,7 @@ import { atlasIcons, exportIcon } from '../web/atlas-icons.js';
 import { featureSymbols, exportFeatureSymbol } from '../web/atlas-feature-symbols.js';
 import { assets as designAssets } from '../web/design-handbook.js';
 import { indexTreemapEvidence } from '../web/treemap-model.js';
+import { buildEntityRedirects } from '../web/entity-redirects.js';
 
 // These documents are authored against repository paths, then served together
 // under docs/. Resolve links after assets are copied so the published files work.
@@ -71,11 +72,11 @@ designFiles.push('signal-controls.js','signal-controls.css','atlas-sdk.js','atla
 designFiles.push('atlas-exploration.js','atlas-explorer-controls.js','atlas-workspace.js','profile-evidence.js');
 for (const file of designFiles) await cp(`web/${file}`,`dist/${file}`);
 const graphModules=['graph.js','graph-layout.js','graph-model.js','graph-store.js','graph-sql.js','graph-mobile-fit.js','graph-artwork.js'];
-for (const file of ['favicon.svg','favicon.ico','favicon-32.png','apple-touch-icon.png','og-image.png','robots.txt','sitemap.xml','analytics.js','analytics-config.js','treemap.html','treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','index.html','list.html','partner.html','entity.html','entity.js','entity.css','profile-tabs.js','micro-graph.js','graph.html','graph.css','query.html','query.js','query.css',...graphModules,'styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
+for (const file of ['favicon.svg','favicon.ico','favicon-32.png','apple-touch-icon.png','og-image.png','robots.txt','sitemap.xml','analytics.js','analytics-config.js','treemap.html','treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','index.html','list.html','partner.html','entity.html','entity.js','entity.css','entity-redirects.js','profile-tabs.js','micro-graph.js','graph.html','graph.css','query.html','query.js','query.css',...graphModules,'styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 await build({entryPoints:['web/atlas-sdk.js'],outfile:'dist/atlas-sdk.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof',define:{'process.env.NODE_ENV':'"production"'}});
 await build({entryPoints:['web/graph-loom.js'],outfile:'dist/graph-loom.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof'});
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
-const uiFiles=['treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','entity.css','entity.js','profile-tabs.js','micro-graph.js','graph.css','query.js','query.css',...graphModules,'graph-loom.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
+const uiFiles=['treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','entity.css','entity.js','entity-redirects.js','profile-tabs.js','micro-graph.js','graph.css','query.js','query.css',...graphModules,'graph-loom.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
 uiFiles.push(...designFiles.filter(file=>!file.endsWith('.html')));
 const uiHash=createHash('sha256');
 uiHash.update(await readFile('package-lock.json'));
@@ -114,6 +115,12 @@ await cp('data/partners-reviewed.json','dist/data/partners-reviewed.json');
 await cp('data/partner-profiles.json','dist/data/partner-profiles.json');
 await cp('data/map-locations.json','dist/data/map-locations.json');
 await cp('data/land.geojson','dist/data/land.geojson');
+// Shared profile links must survive entity merges (#93): publish the
+// identity registry's merged_into chains, resolved to canonical targets
+// that exist in the published graph, as a small redirect map for entity.js.
+const identityRegistry = JSON.parse(await readFile('data/identity.json','utf8'));
+const entityRedirects = buildEntityRedirects(identityRegistry, new Set(graphForTreemap.entities.map(entity => entity.id)));
+await writeFile('dist/data/entity-redirects.json', JSON.stringify({ version: 1, redirects: entityRedirects }, null, 2) + '\n');
 await mkdir('dist/vendor/duckdb',{recursive:true});
 for (const file of ['duckdb-browser.mjs','duckdb-mvp.wasm','duckdb-eh.wasm','duckdb-browser-mvp.worker.js','duckdb-browser-eh.worker.js']) await cp(`${duckdbDist}/${file}`,`dist/vendor/duckdb/${file}`);
 // @duckdb/duckdb-wasm 1.32.0 ships no LICENSE file (neither in dist/ nor the
