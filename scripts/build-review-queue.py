@@ -23,6 +23,24 @@ Entry kinds
   title signals a funding round and whose amount mention appears in the
   title is proposed, so valuations and product prices are not mistaken
   for rounds.
+- ``fact`` (value) — draft valuation/listing fact from a news item
+  (#414d): a draft-value shape (startup, amount, currency, date, event
+  kind in ``latest_value``'s basis vocabulary, stage when the headline
+  names one, exchange/ticker when the headline literally carries them
+  as ``(NYSE: PATH)``, source URL). Produced by
+  ``produce_value_facts`` from the same news candidates the round
+  producer reads — the amounts ``_draft_round`` deliberately skips
+  because they are valuations, secondary sales or market caps rather
+  than raises. Facts already recorded in the evidence stores
+  (``startup-research`` round valuations, ``treemap-evidence``
+  private valuations / market caps, judged through
+  ``scripts/latest_value.py``'s own gates) are never re-proposed.
+  Confidence is 0.5 — below the 0.55 fact gate — and the payload lives
+  under ``draft_value``, not ``draft_round``, so the fact gating rule
+  (which inspects ``draft_round`` only) can never auto-approve one:
+  every value fact is a human decision, and approval means recording
+  the figure in the evidence stores, where the existing derivation in
+  ``latest_value.py`` picks it up. Nothing here publishes data.
 - ``startup-lead`` — new portfolio-company name from the profiles crawl
   with nowhere to go yet. Ranked by (distinct partners mentioning it,
   has a website) and capped at 100 entries per run; the rest stay in the
@@ -94,6 +112,11 @@ try:  # confidence gating (data/review-gating.json thresholds)
     import review_gating as _review_gating
 except ImportError:  # pragma: no cover
     _review_gating = None
+try:  # latest-value derivation (#414): its gated views of the evidence
+    # stores define what "already recorded" means for value-fact dedup
+    import latest_value as _latest_value
+except ImportError:  # pragma: no cover
+    _latest_value = None
 
 QUEUE_VERSION = 1
 REVIEW_LOW = 0.65
@@ -127,6 +150,20 @@ FUNDING_TITLE_RE = re.compile(
 STAGE_RE = re.compile(
     r"\b(series\s+[A-Z](?:-\d+)?|pre-seed|seed|bridge)\b", re.IGNORECASE
 )
+
+# Value-fact headline signals (#414d). A money mention in a news title is
+# a valuation/listing fact only when the title says so in so many words:
+# "market cap" ahead of the figure, "secondary" in the title together
+# with a valuation signal, or a valuation signal itself ("valued at",
+# "at a $33B valuation", "$33B valuation"). Anything else stays with the
+# round producer (or nowhere). Exchange/ticker are taken only from the
+# literal "(NYSE: PATH)" headline form — never inferred.
+VALUE_CONFIDENCE = 0.5
+TICKER_RE = re.compile(
+    r"\((NYSE|NASDAQ|LSE|ASX|TSX)\s*:\s*([A-Z][A-Z0-9.]{0,9})\)")
+APPROX_RE = re.compile(
+    r"\b(about|around|approximately|approx\.?|over|nearly|almost)\b",
+    re.IGNORECASE)
 
 
 def utcnow_iso():
@@ -683,6 +720,215 @@ def produce_facts(artifact_dir, run):
     return entries
 
 
+def _signal_tail(text, window):
+    """Title text after the last amount token, within ``window`` chars.
+
+    Signal words describe the amount they sit next to, so when another
+    figure intervenes ("raises $200 million at a $2 billion valuation")
+    the words belong to that later figure, not to the mention being
+    classified. Cutting the look-back at the last digit or ``$`` keeps
+    each mention's signals its own.
+    """
+    return re.sub(r"^.*[\d$]", "", text[-window:], flags=re.S)
+
+
+def _value_event_for_mention(title, mention_text):
+    """Classify one title amount mention as a value event, or None.
+
+    Returns ``(event, approximate)`` where ``event`` is one of
+    ``latest_value``'s basis strings (``listed_market_cap``,
+    ``secondary_sale``, ``last_round_post_money``,
+    ``announced_valuation``). Title-only discipline, mirroring
+    ``_draft_round``: the mention text must appear in the title, and
+    the signal words must sit in the title around it.
+    """
+    position = title.find(mention_text)
+    if position < 0:
+        return None
+    before = title[:position]
+    after = title[position + len(mention_text):
+                  position + len(mention_text) + 30]
+    lowered = title.lower()
+    before_tail = _signal_tail(before, 40).lower()
+    after_lower = after.lower()
+    valuation_at = after_lower.find("valuation")
+    after_signal = valuation_at >= 0 and not re.search(
+        r"[\d$]", after_lower[:valuation_at])
+    valuation_signal = (
+        "valuation" in before_tail or "valued at" in before_tail
+        or "valuing" in before_tail or after_signal)
+    cap_tail = _signal_tail(before, 60).lower()
+    if "market cap" in cap_tail or "market capitalisation" in cap_tail \
+            or "market capitalization" in cap_tail:
+        event = "listed_market_cap"
+    elif "secondary" in lowered and valuation_signal:
+        event = "secondary_sale"
+    elif valuation_signal:
+        event = "last_round_post_money" if STAGE_RE.search(title) \
+            else "announced_valuation"
+    else:
+        return None
+    approximate = bool(APPROX_RE.search(before[-25:]))
+    return event, approximate
+
+
+def _recorded_value_events(data_dir):
+    """Gated value events already in the evidence stores, by startup id.
+
+    Built through ``latest_value``'s own views (``private_events`` /
+    ``market_caps``) so dedup can never disagree with the derivation
+    that would consume an approved fact. Returns {} when the module or
+    the stores are unavailable — dedup then relies on the queue alone.
+    """
+    if _latest_value is None:
+        return {}
+    data_dir = Path(data_dir)
+    research = load_json(data_dir / "startup-research.json", {}) or {}
+    evidence = load_json(data_dir / "treemap-evidence.json", {}) or {}
+    rounds_by_id = {}
+    for startup in research.get("startups", []):
+        rounds_by_id[_latest_value.startup_id_for(startup["name"])] = \
+            startup.get("funding_rounds", [])
+    startup_ids = set(rounds_by_id)
+    for record in (evidence.get("private_valuations") or []) + \
+            (evidence.get("market_caps") or []):
+        if isinstance(record, dict) and record.get("startup_id"):
+            startup_ids.add(record["startup_id"])
+    recorded = {}
+    for startup_id in sorted(startup_ids):
+        private = _latest_value.private_events(
+            rounds_by_id.get(startup_id, []),
+            [r for r in evidence.get("private_valuations") or []
+             if r.get("startup_id") == startup_id])
+        caps = _latest_value.market_caps(
+            [r for r in evidence.get("market_caps") or []
+             if r.get("startup_id") == startup_id])
+        recorded[startup_id] = {"private": private, "caps": caps}
+    return recorded
+
+
+def _already_recorded(events, event, amount, currency, date):
+    """True when the evidence stores already hold this figure.
+
+    A match needs the same amount — within 1%, because headlines round
+    ("$5.71 billion" for a recorded 5,711,863,282.64) — and the same
+    year-month (when both dates are known); currency must agree
+    whenever both sides state one. A crawl headline's currency is
+    often unstated (bare ``$``), and blocking a genuinely new fact
+    over an unstated currency would lose it — the reviewer sees both
+    figures either way.
+    """
+    if not events:
+        return False
+    pool = events["caps"] if event == "listed_market_cap" \
+        else events["private"]
+    for record in pool:
+        if abs(record["amount"] - amount) > 0.01 * max(
+                record["amount"], amount):
+            continue
+        if currency and record.get("currency") \
+                and currency != record["currency"]:
+            continue
+        recorded_date = record.get("date") or record.get("observed_on")
+        if date and recorded_date and date[:7] != recorded_date[:7]:
+            continue
+        return True
+    return False
+
+
+def _draft_value(item, mention, event, approximate):
+    """Draft valuation/listing fact from a news item and one mention."""
+    title = item.get("title") or ""
+    normalised = mention.get("normalised") or {}
+    stage_match = STAGE_RE.search(title)
+    stage = None
+    if stage_match and event != "listed_market_cap":
+        stage = stage_match.group(1)
+        stage = stage.lower().replace("series ", "Series ").title() \
+            if stage.lower().startswith("series") else stage.title()
+        stage = {"Pre-Seed": "Pre-Seed", "Seed": "Seed",
+                 "Bridge": "Bridge"}.get(stage, stage)
+    exchange = ticker = None
+    if event == "listed_market_cap":
+        ticker_match = TICKER_RE.search(title)
+        if ticker_match:
+            exchange = {"NASDAQ": "Nasdaq"}.get(
+                ticker_match.group(1), ticker_match.group(1))
+            ticker = ticker_match.group(2)
+    date = (item.get("published_hint") or "").strip()
+    if not re.match(r"^\d{4}-\d{2}-\d{2}", date):
+        checked = item.get("checked_at") or ""
+        date = checked[:10] if re.match(r"^\d{4}-\d{2}-\d{2}", checked) \
+            else None
+    else:
+        date = date[:10]
+    return {
+        "startup": item.get("startup") or "",
+        "amount": normalised.get("value"),
+        "currency": normalised.get("currency"),
+        "date": date,
+        "event": event,
+        "stage": stage,
+        "exchange": exchange,
+        "ticker": ticker,
+        "approximate": approximate,
+        "source_url": item.get("url") or "",
+    }
+
+
+def produce_value_facts(artifact_dir, data_dir, run):
+    """Fact entries: draft valuation/listing facts from news items (#414d).
+
+    The continuous counterpart of the one-off 414c backfill: every
+    crawl's news artifact is scanned for the valuation, secondary-sale
+    and market-cap figures ``_draft_round`` deliberately skips, and
+    each genuinely new one becomes a pending ``fact`` entry carrying a
+    ``draft_value`` payload. Facts the evidence stores already hold are
+    skipped (see ``_recorded_value_events``); queue-level dedup is
+    ``add_entry``'s, as for every producer.
+    """
+    news = load_artifact(artifact_dir, "news").get("candidates", [])
+    recorded = _recorded_value_events(data_dir)
+    entries = []
+    for item in news:
+        title = item.get("title") or ""
+        if not title:
+            continue
+        seen = set()
+        for mention in item.get("amount_mentions", []):
+            text = mention.get("mention") or ""
+            normalised = mention.get("normalised") or {}
+            if normalised.get("value") is None or not text:
+                continue
+            classified = _value_event_for_mention(title, text)
+            if classified is None:
+                continue
+            event, approximate = classified
+            draft = _draft_value(item, mention, event, approximate)
+            dedup_key = (draft["startup"], event,
+                         int(round(draft["amount"])))
+            if dedup_key in seen:
+                continue
+            seen.add(dedup_key)
+            startup_id = _latest_value.startup_id_for(draft["startup"]) \
+                if _latest_value is not None \
+                else f"startup:{slug(draft['startup'])}"
+            if _already_recorded(recorded.get(startup_id), event,
+                                 draft["amount"], draft["currency"],
+                                 draft["date"]):
+                continue
+            month = draft["date"][:7] if draft["date"] else "undated"
+            key = f"{slug(draft['startup'])}:value:{slug(event)}" \
+                  f":{int(round(draft['amount']))}:{month}"
+            entry = _new_entry(
+                f"fact:{key}", "fact", f"startup:{slug(draft['startup'])}",
+                key, [], [draft["source_url"], item.get("discovered_from")],
+                VALUE_CONFIDENCE, run)
+            entry["draft_value"] = draft
+            entries.append(entry)
+    return entries
+
+
 def produce_startup_leads(artifact_dir, data_dir, run, exclude_slugs=()):
     """Startup-lead entries: new portfolio-company names, capped at 100.
 
@@ -765,6 +1011,15 @@ def build_summary(queue, added, skipped, run):
                 f"{draft['stage'] or 'stage unknown'} "
                 f"{draft['amount']:,.0f} {draft['currency'] or '(currency unknown)'}"
                 f" on {draft['date'] or 'date unknown'}")
+        if entry["kind"] == "fact" and entry.get("draft_value"):
+            draft = entry["draft_value"]
+            listing = f" ({draft['exchange']}: {draft['ticker']})" \
+                if draft.get("ticker") else ""
+            lines.append(
+                f"  - draft value: {draft['startup']} — "
+                f"{draft['event']}{listing} "
+                f"{draft['amount']:,.0f} {draft['currency'] or '(currency unknown)'}"
+                f" on {draft['date'] or 'date unknown'}")
         if entry["kind"] == "startup-lead" and entry.get("mentions"):
             mentions = entry["mentions"]
             lines.append(
@@ -834,6 +1089,7 @@ def build(artifact_dir, run, queue_path, data_dir, summary_path=None):
         merges,
         produce_edges(data_dir, run),
         produce_facts(artifact_dir, run),
+        produce_value_facts(artifact_dir, data_dir, run),
         produce_startup_leads(artifact_dir, data_dir, run, merged_slugs),
         produce_headshots(artifact_dir, run),
     ]
