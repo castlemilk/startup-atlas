@@ -2574,10 +2574,10 @@
       "confidence": 0.55,
       "created_at": "2026-11-23T08:34:33Z",
       "run": "44",
-      "status": "pending",
-      "decided_by": null,
-      "decided_at": null,
-      "decision_note": null,
+      "status": "approved",
+      "decided_by": "agent-review",
+      "decided_at": "2026-11-24T10:16:25Z",
+      "decision_note": "Evidence opened: Square Peg portfolio page for Alta (alta.finance) describes onchain global banking infrastructure, founders Catherine Porter and Loong Wang, Series A, first partnered 2026; Blackbird also lists Alta in its portfolio. Two independent VC portfolios confirm a real startup.",
       "evidence_fingerprint": "5d853786098b827a1c5bf496742dd55321d3e9785a21ef449d027237ffc89f25",
       "mentions": {
         "partners": [
@@ -3060,6 +3060,31 @@
           "Blackbird Ventures"
         ],
         "website": "https://www.blackbird.vc/portfolio/authsignal"
+      }
+    },
+    {
+      "id": "startup-lead:avarni",
+      "kind": "startup-lead",
+      "subject": "startup:avarni",
+      "subject_key": "avarni",
+      "candidates": [],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/avarni"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "6485f29c0f9cdab612fa79802e7df8120499b0dca4617ef6a8c535ecae5cbdba",
+      "mentions": {
+        "partners": [
+          "Main Sequence"
+        ],
+        "website": "https://www.mseq.vc/portfolio/avarni"
       }
     },
     {
@@ -4494,31 +4519,6 @@
       }
     },
     {
-      "id": "startup-lead:avarni",
-      "kind": "startup-lead",
-      "subject": "startup:avarni",
-      "subject_key": "avarni",
-      "candidates": [],
-      "evidence": [
-        "https://www.mseq.vc/portfolio",
-        "https://www.mseq.vc/portfolio/avarni"
-      ],
-      "confidence": 0.45,
-      "created_at": "2026-11-23T08:34:33Z",
-      "run": "44",
-      "status": "pending",
-      "decided_by": null,
-      "decided_at": null,
-      "decision_note": null,
-      "evidence_fingerprint": "6485f29c0f9cdab612fa79802e7df8120499b0dca4617ef6a8c535ecae5cbdba",
-      "mentions": {
-        "partners": [
-          "Main Sequence"
-        ],
-        "website": "https://www.mseq.vc/portfolio/avarni"
-      }
-    },
-    {
       "id": "startup-lead:endua",
       "kind": "startup-lead",
       "subject": "startup:endua",
@@ -4541,81 +4541,6 @@
           "Main Sequence"
         ],
         "website": "https://www.mseq.vc/portfolio/endua"
-      }
-    },
-    {
-      "id": "startup-lead:levur",
-      "kind": "startup-lead",
-      "subject": "startup:levur",
-      "subject_key": "levur",
-      "candidates": [],
-      "evidence": [
-        "https://www.mseq.vc/portfolio",
-        "https://www.mseq.vc/portfolio/levur"
-      ],
-      "confidence": 0.45,
-      "created_at": "2026-11-23T08:34:33Z",
-      "run": "44",
-      "status": "pending",
-      "decided_by": null,
-      "decided_at": null,
-      "decision_note": null,
-      "evidence_fingerprint": "34418f020b63a4409f628f66116f27ce4a105193442fddbad178f6c38e7045b1",
-      "mentions": {
-        "partners": [
-          "Main Sequence"
-        ],
-        "website": "https://www.mseq.vc/portfolio/levur"
-      }
-    },
-    {
-      "id": "startup-lead:mga-thermal",
-      "kind": "startup-lead",
-      "subject": "startup:mga-thermal",
-      "subject_key": "mga-thermal",
-      "candidates": [],
-      "evidence": [
-        "https://www.mseq.vc/portfolio",
-        "https://www.mseq.vc/portfolio/mga-thermal"
-      ],
-      "confidence": 0.45,
-      "created_at": "2026-11-23T08:34:33Z",
-      "run": "44",
-      "status": "pending",
-      "decided_by": null,
-      "decided_at": null,
-      "decision_note": null,
-      "evidence_fingerprint": "fa35b2521ca3cb8426df4bea7ea7f33a8b2a39cb2db2af36a53a8f18449d20a5",
-      "mentions": {
-        "partners": [
-          "Main Sequence"
-        ],
-        "website": "https://www.mseq.vc/portfolio/mga-thermal"
-      }
-    },
-    {
-      "id": "startup-lead:sundrive",
-      "kind": "startup-lead",
-      "subject": "startup:sundrive",
-      "subject_key": "sundrive",
-      "candidates": [],
-      "evidence": [
-        "https://www.mseq.vc/portfolio",
-        "https://www.mseq.vc/portfolio/sundrive"
-      ],
-      "confidence": 0.45,
-      "created_at": "2026-11-23T08:34:33Z",
-      "run": "44",
-      "status": "pending",
-      "decided_by": null,
-      "decided_at": null,
-      "decision_note": null,
-      "evidence_fingerprint": "fc5ed6704d65975edcbd5940fadabc3a0bf641c69dcd8b7f628a1d4acc1a0f64",
-      "mentions": {
-        "partners": [
-          "Main Sequence"
-        ],
-        "website": "https://www.mseq.vc/portfolio/sundrive"
       }
     },
     {
@@ -4673,6 +4598,31 @@
       }
     },
     {
+      "id": "startup-lead:levur",
+      "kind": "startup-lead",
+      "subject": "startup:levur",
+      "subject_key": "levur",
+      "candidates": [],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/levur"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "34418f020b63a4409f628f66116f27ce4a105193442fddbad178f6c38e7045b1",
+      "mentions": {
+        "partners": [
+          "Main Sequence"
+        ],
+        "website": "https://www.mseq.vc/portfolio/levur"
+      }
+    },
+    {
       "id": "startup-lead:lorikeet",
       "kind": "startup-lead",
       "subject": "startup:lorikeet",
@@ -4698,6 +4648,31 @@
           "Square Peg"
         ],
         "website": "https://www.squarepeg.vc/portfolio/lorikeet"
+      }
+    },
+    {
+      "id": "startup-lead:mga-thermal",
+      "kind": "startup-lead",
+      "subject": "startup:mga-thermal",
+      "subject_key": "mga-thermal",
+      "candidates": [],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/mga-thermal"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "fa35b2521ca3cb8426df4bea7ea7f33a8b2a39cb2db2af36a53a8f18449d20a5",
+      "mentions": {
+        "partners": [
+          "Main Sequence"
+        ],
+        "website": "https://www.mseq.vc/portfolio/mga-thermal"
       }
     },
     {
@@ -4782,6 +4757,31 @@
           "USV"
         ],
         "website": "https://www.usv.com/portfolio/company/stripe"
+      }
+    },
+    {
+      "id": "startup-lead:sundrive",
+      "kind": "startup-lead",
+      "subject": "startup:sundrive",
+      "subject_key": "sundrive",
+      "candidates": [],
+      "evidence": [
+        "https://www.mseq.vc/portfolio",
+        "https://www.mseq.vc/portfolio/sundrive"
+      ],
+      "confidence": 0.45,
+      "created_at": "2026-11-23T08:34:33Z",
+      "run": "44",
+      "status": "pending",
+      "decided_by": null,
+      "decided_at": null,
+      "decision_note": null,
+      "evidence_fingerprint": "fc5ed6704d65975edcbd5940fadabc3a0bf641c69dcd8b7f628a1d4acc1a0f64",
+      "mentions": {
+        "partners": [
+          "Main Sequence"
+        ],
+        "website": "https://www.mseq.vc/portfolio/sundrive"
       }
     }
   ]
