@@ -119,5 +119,3 @@ class PerSourceStatusShapeTests(unittest.TestCase):
         statuses = {row['source']: row['status'] for row in coverage['sources']}
         self.assertEqual(statuses, {'OK source': 'ok', 'Dead source': 'failed',
                                     'Untried source': 'not_attempted'})
-
-
