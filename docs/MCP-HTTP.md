@@ -262,6 +262,15 @@ owner's own front door onto the same queue.
   authorization endpoint accepts `resource=<base>/mcp/admin` as well
   as `<base>/mcp`. `GET /health` reports `adminMcpEnabled` and
   `adminTools` alongside the unchanged `tools: 18`.
+- **Stateless transport:** unlike `/mcp`, this surface keeps no MCP
+  session — every POST is self-contained and no `Mcp-Session-Id` is
+  issued or honoured (GET/DELETE answer 405). The tools are
+  request-scoped (all state lives in `data/review-queue.json` via the
+  Contents API), and the previous in-memory session map caused
+  intermittent HTTP 404s ("Unknown MCP session id") whenever a
+  client's initialize and its tool call landed on different process
+  state — a redeploy, a restart, or another replica (#473). Clients
+  that send a session header anyway are unaffected; it is ignored.
 - **Tools (6):** `atlas_admin_list_review_queue` (filters: `kind`,
   `status`, confidence `band` — `above_gate` / `below_gate` against
   `data/review-gating.json`; lowest confidence first, each entry
