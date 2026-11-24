@@ -247,6 +247,39 @@ class ProducerTests(ValueFixture):
         self.assertNotIn("startup:airwallex", subjects)
         self.assertNotIn("startup:canva", subjects)
 
+    def test_saved_run_47_undated_original_does_not_requeue_series_h(self):
+        write_json(self.artifact / "latest-news.json", {"candidates": [
+            news_item("Airwallex", "Airwallex secures $320 million in "
+                      "Series H funding, valuation hits $11 billion",
+                      [("$320 million", 320000000, None),
+                       ("$11 billion", 11000000000, None)], published="",
+                      url="https://example.com/airwallex-h"),
+        ]})
+        self.assertEqual(self.produce(), [])
+
+    def test_unrelated_undated_same_amount_stays_pending_without_crawl_date(self):
+        write_json(self.artifact / "latest-news.json", {"candidates": [
+            news_item("Airwallex", "Airwallex raises more in Series I, "
+                      "valuation hits $11 billion",
+                      [("$11 billion", 11000000000, None)], published="2026-11-31",
+                      url="https://example.com/airwallex-i"),
+        ]})
+        entry, = self.produce()
+        self.assertEqual(entry["status"], "pending")
+        self.assertTrue(entry["id"].endswith(":undated"))
+        self.assertIsNone(entry["draft_value"]["date"])
+        self.assertEqual(entry["draft_value"]["stage"], "Series I")
+
+    def test_undated_same_source_with_conflicting_currency_stays_pending(self):
+        write_json(self.artifact / "latest-news.json", {"candidates": [
+            news_item("Airwallex", "Airwallex Series H valuation hits A$11 billion",
+                      [("A$11 billion", 11000000000, "AUD")], published="",
+                      url="https://example.com/airwallex-h"),
+        ]})
+        entry, = self.produce()
+        self.assertIsNone(entry["draft_value"]["date"])
+        self.assertEqual(entry["draft_value"]["currency"], "AUD")
+
     def test_plain_raise_and_off_title_mentions_produce_nothing(self):
         subjects = {e["subject"] for e in self.produce()}
         self.assertNotIn("startup:bugcrowd", subjects)

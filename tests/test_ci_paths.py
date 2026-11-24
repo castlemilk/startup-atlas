@@ -59,6 +59,11 @@ class CiPathTests(unittest.TestCase):
         self.assertEqual(
             self.selected('tests/test_crawl_corpus.py'), {'collection'})
 
+    def test_valuation_queue_uses_only_fast_queue_lane(self):
+        for path in ('scripts/build-review-queue.py', 'scripts/latest_value.py',
+                     'tests/test_valuation_queue.py'):
+            self.assertEqual(self.selected(path), {'queue'})
+
     @staticmethod
     def selected(*paths):
         return {name for name, enabled in lanes(paths).items() if enabled}

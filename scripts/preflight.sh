@@ -153,6 +153,9 @@ check_range() {
     run python3 -m unittest discover -s tests -p 'test_scoped_implementation.py'
     run python3 -m unittest discover -s tests -p 'test_early_investments.py'
   fi
+  if lane queue; then
+    run python3 -m unittest tests.test_review_queue tests.test_review_gating tests.test_valuation_queue
+  fi
   if lane research; then
     run python3 -m unittest discover -s tests -p 'test_country_research_index.py'
   fi
