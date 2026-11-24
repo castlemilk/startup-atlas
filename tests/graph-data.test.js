@@ -173,3 +173,19 @@ test('reviewed Salesforce Ventures resolves only the explicitly sourced funding 
   }
   assert.equal(related.some(edge => edge.round_id === 'airwallex-2021-series-e1'), false);
 });
+
+test('Airwallex Series C keeps the announced round separate from cumulative funding and valuation bounds', async () => {
+  const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const rounds = graph.funding_rounds.filter(r => r.startup_id === 'startup:airwallex');
+  const seriesC = rounds.filter(r => r.stage_normalised === 'Series C');
+  assert.equal(seriesC.length, 1);
+  const [round] = seriesC;
+  assert.deepEqual([round.id, round.announced_on, round.amount, round.currency, round.lead_investor], [
+    'airwallex-2019-series-c', '2019-03-26', 100000000, 'USD', 'DST Global',
+  ]);
+  assert.equal(round.source, 'https://www.airwallex.com/global/newsroom/airwallex-unicorn-series-C-DST-100m');
+  assert.equal(Object.hasOwn(round, 'valuation'), false);
+  assert.match(round.note, /valuation over US\$1 billion/);
+  assert.ok(graph.edges.some(e => e.round_id === round.id && e.from === 'partner:square-peg' && e.kind === 'participated_in'));
+  assert.equal(rounds.filter(r => r.stage_normalised === 'Series D').length, 3);
+});
