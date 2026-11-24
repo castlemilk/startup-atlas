@@ -228,6 +228,48 @@ verifies Google identity.
   configured) and `adminQueueWriteConfigured` (a GitHub token is set —
   a boolean only, never the token).
 
+## Admin MCP (`/mcp/admin`) — the review queue as tools
+
+A **separate** MCP surface on the same handler — not part of `/mcp`,
+whose 17 catalogue tools are unchanged. It exists so the assistant
+(Dog box) can work the review queue itself, taking the owner out of
+the loop wherever the evidence allows; the panel above remains the
+owner's own front door onto the same queue.
+
+- **Access:** the same Google OAuth / Bearer verification as `/mcp`
+  (an issued MCP access token or a Google ID token), then a stricter
+  check: the identity must be on the **admin allow-list**
+  (`ATLAS_ADMIN_EMAILS`, falling back to `ATLAS_GOOGLE_WRITE_EMAILS`).
+  No token → 401; a verified account that is not the admin → 403. Its
+  protected-resource metadata lives at
+  `/.well-known/oauth-protected-resource/mcp/admin`, and the OAuth
+  authorization endpoint accepts `resource=<base>/mcp/admin` as well
+  as `<base>/mcp`. `GET /health` reports `adminMcpEnabled` and
+  `adminTools` alongside the unchanged `tools: 17`.
+- **Tools (6):** `atlas_admin_list_review_queue` (filters: `kind`,
+  `status`, confidence `band` — `above_gate` / `below_gate` against
+  `data/review-gating.json`; lowest confidence first, each entry
+  carrying its gating verdict), `atlas_admin_get_review_item` (full
+  evidence plus the verdict and its reason),
+  `atlas_admin_decide_review_item`, `atlas_admin_undo_review_decision`,
+  `atlas_admin_get_review_gating`, and
+  `atlas_admin_list_auto_applied` (the auto-gate audit trail).
+- **Same write-back, distinct attribution:** decisions go through the
+  panel's `ReviewQueue` service and the GitHub Contents API — same
+  `data/review-queue.json` records, same commit convention
+  (`review: <id> <decision> via admin MCP`), same downstream consumers
+  (identity replay, the fact write path). Agent decisions are recorded
+  with `decided_by: "agent-review"` so they are always distinguishable
+  from the owner's (his email) and the auto-gate's (`auto-gate`), and
+  this surface opens no new path into published Atlas data.
+- **Operating intent:** the assistant reviews the human-band items
+  itself where the evidence is clear-cut. A decision REQUIRES a note
+  citing the evidence relied on — the tool refuses a decision without
+  one. Anything genuinely ambiguous stays pending for the owner's
+  panel queue; that queue is for his calls only. Every agent decision
+  is reversible with `atlas_admin_undo_review_decision`, and the undo
+  commit names what was undone, so the trail keeps both entries.
+
 ## GitHub issues (`atlas_create_issue`)
 
 The loop files issues straight from the MCP server instead of waiting
