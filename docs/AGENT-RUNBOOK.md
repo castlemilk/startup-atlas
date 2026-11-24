@@ -121,7 +121,7 @@ Use `npm test`, `npm run test:mcp`, `npm --prefix backend/hosted test` and the r
 
 ### Hooks, preflight and the CI gate
 
-Setup (once per clone/worktree): `bash scripts/setup-hooks.sh` sets `core.hooksPath=.githooks`. Both hooks delegate to `scripts/preflight.sh`, which is also the standalone command for flows that bypass local git.
+Setup (once per clone/worktree): `bash scripts/setup-hooks.sh` sets `core.hooksPath=.githooks` and restores exec bits on the hooks and scripts (the GitHub API creates pushed files as 0644, which would silently disable hooks). Both hooks delegate to `scripts/preflight.sh`, which is also the standalone command for flows that bypass local git.
 
 - **At commit** (`preflight.sh --staged`): whitespace/conflict markers, staged JSON validity, Python/JS/shell syntax; catalogue/graph integrity tests when `data/` is staged; review-queue/gating tests when the queue, gating config or their builders are staged; the hosted or MCP suite when its backend is staged. Target: seconds.
 - **At push** (`preflight.sh`, also what `pre-push` runs): the CI lanes for `origin/main...HEAD`, routed by `scripts/check_ci_paths.py` — the same function CI uses, so local and CI selection cannot drift. Data changes also verify `npm run data:generate` leaves `data/` untouched (generated output must be committed in sync). Measured on this repo: hosted lane ≈6s, MCP ≈10s, Python data tests ≈2s, worst case about a minute.
