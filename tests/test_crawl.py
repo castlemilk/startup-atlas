@@ -1151,6 +1151,48 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(bindings, 0)
         self.assertNotIn('headshot_candidate', people)
 
+    def test_profile_team_name_headshots_replay_saved_examples(self):
+        fixture = Path(__file__).parent / 'fixtures/team-image-name-crawl-46.json'
+        rows = json.loads(fixture.read_text())['candidates']
+        self.assertEqual(crawl.bind_profile_headshot_candidates(rows), 3)
+        for row in (item for item in rows if item['kind'] == 'people'):
+            self.assertEqual(row['headshot_candidate']['binding_evidence'],
+                             'team-alt-and-profile-slug')
+            self.assertEqual(row['headshot_candidate']['status'], 'not_fetched')
+            self.assertTrue(row['headshot_candidate']['review_required'])
+
+    def test_profile_team_name_headshot_requires_unambiguous_local_evidence(self):
+        source = 'https://example.com/team'
+        person = {'partner': 'Example', 'kind': 'people', 'name': 'Jane Smith',
+                  'candidate_url': source + '/jane-smith', 'source_url': source}
+        image = {'partner': 'Example', 'kind': 'image', 'page_kind': 'people',
+                 'name': 'Jane Smith', 'candidate_url': 'https://example.com/jane.jpg',
+                 'source_url': source}
+        cases = [
+            [{**image, 'page_kind': 'homepage'}],
+            [{**image, 'source_url': 'https://example.com/about'}],
+            [{**image, 'partner': 'Other'}],
+            [{**image, 'label_distinct_image_paths': 2}],
+            [image, {**image, 'candidate_url': image['candidate_url'] + '?v=2'}],
+            [image, {**image, 'name': 'Alice Smith'}],
+            [image, {**person, 'candidate_url': source + '/second-jane-smith'}],
+        ]
+        for images in cases:
+            with self.subTest(images=images):
+                target = person.copy()
+                self.assertEqual(crawl.bind_profile_headshot_candidates(
+                    [target, *(row.copy() for row in images)]), 0)
+                self.assertNotIn('headshot_candidate', target)
+        for url in ('https://other.example/team/jane-smith', source + '/alice-smith'):
+            self.assertEqual(crawl.bind_profile_headshot_candidates(
+                [{**person, 'candidate_url': url}, image.copy()]), 0)
+        explicit = {**image, 'name': 'Photo of Jane Smith',
+                    'candidate_url': 'https://example.com/explicit.jpg'}
+        self.assertEqual(crawl.bind_profile_headshot_candidates(
+            [person, image.copy(), explicit]), 1)
+        self.assertEqual(person['headshot_candidate']['binding_evidence'],
+                         'explicit-photo-alt')
+
     def test_profile_headshot_binding_asset_host_eligibility(self):
         source = 'https://example.com/team'
         def rows(host):
