@@ -50,6 +50,18 @@ Checks, in one stdlib-only run:
                 and a stamp key would be read as a partner/startup record
                 by consumers; the per-record dates already exist, so the
                 health-check-side computation is the honest deliverable.
+  f. queue    — review-queue freshness and pending count (#426). The
+                crawl rebuilds data/review-queue.json, so the newest
+                entry ``created_at`` is the queue's rebuild stamp: WARN
+                when it lags the latest completed crawl by more than
+                48h (a fresh crawl with a stale queue means the builder
+                step broke). The pending count is reported either way
+                and WARNs above 150 — roughly the Nov 2026 level (~112)
+                plus headroom — so a queue growing past what the review
+                passes can clear surfaces in the daily output. Both
+                signals are WARN, never RED: a large pending count can
+                be legitimate review labour, and an unreadable queue
+                degrades to "unverified", never a false RED.
 
 Exit code is non-zero when any check is RED. WARN never fails the run.
 All network access goes through an injectable ``fetch`` callable and all
@@ -78,6 +90,8 @@ INDEX_WARN_AGE_H = 24
 INDEX_RED_AGE_H = 72
 STALE_WARN_DAYS = 5
 STALE_RED_DAYS = 7
+QUEUE_STALE_HOURS = 48
+QUEUE_PENDING_WARN = 150
 DATE_KEYS = ('checked', 'reviewed_at')
 
 OK, WARN, RED = 'ok', 'warn', 'red'
@@ -134,24 +148,25 @@ class Report:
 # --- individual checks -----------------------------------------------------
 
 def check_crawl(fetch, report):
+    """Returns the latest completed crawl run's start time, or None."""
     url = (f'https://api.github.com/repos/{REPO}/actions/workflows/'
            f'{CRAWL_WORKFLOW}/runs?per_page=1')
     try:
         status, body = fetch(url)
     except FetchError as exc:
         report.add(WARN, 'crawl', f'could not query GitHub API ({exc}); unverified')
-        return
+        return None
     if status in (403, 429):
         report.add(WARN, 'crawl',
                    f'GitHub API rate-limited (HTTP {status}); unverified')
-        return
+        return None
     if status != 200:
         report.add(WARN, 'crawl', f'GitHub API returned HTTP {status}; unverified')
-        return
+        return None
     runs = json.loads(body).get('workflow_runs') or []
     if not runs:
         report.add(WARN, 'crawl', 'no crawl workflow runs found')
-        return
+        return None
     run = runs[0]
     conclusion = run.get('conclusion')
     state = run.get('status')
@@ -159,11 +174,16 @@ def check_crawl(fetch, report):
     if state != 'completed':
         report.add(WARN, 'crawl',
                    f'latest run still {state} (started {when}) {run.get("html_url", "")}')
-    elif conclusion == 'success':
+        return None
+    if conclusion == 'success':
         report.add(OK, 'crawl', f'latest run succeeded ({when})')
     else:
         report.add(RED, 'crawl',
                    f'latest run conclusion={conclusion} ({when}) {run.get("html_url", "")}')
+    try:
+        return _parse_ts(when)
+    except (ValueError, AttributeError):
+        return None
 
 
 def check_crawl_progress(fetch, report, now):
@@ -458,17 +478,74 @@ def check_checked_dates(report, data_dir, today, git_date=_git_date):
                    f'{STALE_RED_DAYS}d')
 
 
+def check_review_queue(report, data_dir, now, latest_crawl=None):
+    """Review-queue freshness + pending count (#426). WARN, never RED.
+
+    The queue file lives in the checkout (data/review-queue.json) and is
+    rebuilt by every crawl, so the newest entry ``created_at`` is its
+    rebuild stamp. Freshness is judged against the latest completed
+    crawl when known (a fresh crawl with a stale queue means the
+    builder step broke) and against the clock otherwise.
+    """
+    path = Path(data_dir) / 'review-queue.json'
+    try:
+        queue = json.loads(path.read_text())
+        entries = queue['entries']
+        if not isinstance(entries, list):
+            raise ValueError('entries is not a list')
+    except Exception as exc:
+        report.add(WARN, 'review-queue',
+                   f'could not read {path.name} ({exc}); unverified')
+        return
+    pending = sum(1 for e in entries
+                  if isinstance(e, dict) and e.get('status') == 'pending')
+    stamps = []
+    for entry in entries:
+        if isinstance(entry, dict) and entry.get('created_at'):
+            try:
+                stamps.append(_parse_ts(entry['created_at']))
+            except (ValueError, AttributeError):
+                pass
+    if not stamps:
+        report.add(WARN, 'review-queue',
+                   f'{len(entries)} entries, {pending} pending; no '
+                   'parseable created_at stamps; freshness unverified')
+        return
+    newest = max(stamps)
+    age_h = (now - newest).total_seconds() / 3600
+    reference = latest_crawl or now
+    lag_h = (reference - newest).total_seconds() / 3600
+    problems = []
+    if lag_h > QUEUE_STALE_HOURS:
+        problems.append(
+            f'queue stale: newest entry {newest.isoformat()} lags the '
+            f'latest completed crawl by {lag_h:.0f}h '
+            f'(threshold {QUEUE_STALE_HOURS}h) — the crawl ran but the '
+            'queue builder may have broken')
+    if pending > QUEUE_PENDING_WARN:
+        problems.append(
+            f'pending count {pending} above threshold '
+            f'{QUEUE_PENDING_WARN}')
+    detail = (f'newest entry {newest.date()} (age {age_h:.0f}h), '
+              f'{pending} pending of {len(entries)} entries')
+    if problems:
+        report.add(WARN, 'review-queue', detail + '; ' + '; '.join(problems))
+    else:
+        report.add(OK, 'review-queue', detail)
+
+
 def run_checks(fetch=http_fetch, now=None, data_dir=None, git_date=_git_date,
                web_dir=None):
     now = now or datetime.now(timezone.utc)
     data_dir = Path(data_dir) if data_dir else ROOT / 'data'
     report = Report()
-    check_crawl(fetch, report)
+    latest_crawl = check_crawl(fetch, report)
     check_crawl_progress(fetch, report, now)
     latest, manifest = check_index(fetch, report, now)
     check_corpus_lag(report, manifest, data_dir)
     check_console(fetch, report, latest, manifest, web_dir=web_dir)
     check_checked_dates(report, data_dir, now.date(), git_date)
+    check_review_queue(report, data_dir, now, latest_crawl)
     return report
 
 
