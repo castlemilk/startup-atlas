@@ -120,6 +120,21 @@ async function startMcpHttp({ write = false } = {}) {
   return { server, dir, port, base: `http://127.0.0.1:${port}` };
 }
 
+test('buildConfig enables write mode from the environment for handler-mode hosts', () => {
+  const base = {
+    ATLAS_GOOGLE_CLIENT_ID: 'test-google-client',
+    ATLAS_GOOGLE_ALLOWED_EMAILS: 'reader@example.com',
+  };
+  assert.equal(buildConfig({ ...base, ATLAS_MCP_WRITE_ENABLED: 'true' }, []).writeEnabled, true);
+  assert.equal(buildConfig({ ...base, ATLAS_MCP_WRITE_ENABLED: ' TRUE ' }, []).writeEnabled, true);
+  assert.equal(buildConfig({ ...base, ATLAS_MCP_WRITE_ENABLED: '1' }, []).writeEnabled, true);
+  assert.equal(buildConfig({ ...base, ATLAS_MCP_WRITE_ENABLED: 'false' }, []).writeEnabled, false);
+  assert.equal(buildConfig({ ...base, ATLAS_MCP_WRITE_ENABLED: 'enabled' }, []).writeEnabled, false);
+  assert.equal(buildConfig({ ...base }, []).writeEnabled, false);
+  assert.equal(buildConfig({ ...base }, ['--write']).writeEnabled, true);
+  assert.equal(buildConfig({ ...base, ATLAS_MCP_WRITE_ENABLED: 'false' }, ['--write']).writeEnabled, true);
+});
+
 const decoded = result => JSON.parse(result.content[0].text);
 const entry = {
   id: 'http-test', name: 'HTTP Test', org: 'Example Foundation', kind: 'Founder programmes', access: 'Direct',

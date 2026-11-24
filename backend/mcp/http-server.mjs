@@ -19,7 +19,9 @@
  * 1. No Bearer token, or a token that does not verify, is rejected (401).
  * 2. A verified Google account must be in ATLAS_GOOGLE_ALLOWED_EMAILS to
  *    call any tool (403 otherwise). An unset list allows nobody.
- * 3. The four write tools additionally require --write AND an email in
+ * 3. The four write tools additionally require write mode (--write, or
+ *    ATLAS_MCP_WRITE_ENABLED=true on handler-mode hosts that cannot
+ *    pass CLI flags) AND an email in
  *    ATLAS_GOOGLE_WRITE_EMAILS (403 WRITE_FORBIDDEN otherwise).
  *    `atlas_create_issue` additionally needs ATLAS_GITHUB_TOKEN; without
  *    it the tool reports GITHUB_TOKEN_MISSING and files nothing.
@@ -66,7 +68,13 @@ const sha256Base64url = value => base64url(createHash('sha256').update(value).di
 
 export function buildConfig(env = process.env, argv = process.argv.slice(2)) {
   let root = fileURLToPath(new URL('../../', import.meta.url));
-  let writeEnabled = false;
+  // Handler-mode hosts (DeepHost) import the root server.js and cannot
+  // pass CLI flags, so write mode can also be enabled from the
+  // environment. Only an explicit truthy value enables it; anything
+  // else — including an unset variable — fails closed, exactly like a
+  // missing --write flag.
+  let writeEnabled = ['1', 'true', 'yes'].includes(
+    String(env.ATLAS_MCP_WRITE_ENABLED ?? '').trim().toLowerCase());
   let host = env.ATLAS_HTTP_HOST ?? '0.0.0.0';
   let port = Number(env.PORT ?? env.ATLAS_HTTP_PORT ?? 3000);
   for (let index = 0; index < argv.length; index++) {
