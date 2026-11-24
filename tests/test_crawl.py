@@ -1090,6 +1090,72 @@ class WorkflowTests(unittest.TestCase):
                          ['Victor Peng', 'Fariba Danesh', 'Dr. Pete Shadbolt'])
         self.assertTrue(all(row['headshot'] for row in kept))
 
+    def test_profile_headshot_binding_matches_photo_of_to_people_row(self):
+        source = 'https://example.com/team'
+        people = {'partner': 'Example', 'kind': 'people', 'name': 'Jane Smith',
+                  'candidate_url': 'https://example.com/team/jane-smith',
+                  'source_url': source, 'review_required': True}
+        image = {'partner': 'Example', 'kind': 'image', 'name': 'Photo of Jane Smith',
+                 'candidate_url': 'https://example.com/jane.jpg',
+                 'source_url': source, 'review_required': True}
+        bindings = crawl.bind_profile_headshot_candidates([people, image])
+        self.assertEqual(bindings, 1)
+        candidate = people['headshot_candidate']
+        self.assertEqual(candidate['candidate_url'], 'https://example.com/jane.jpg')
+        self.assertEqual(candidate['status'], 'not_fetched')
+        self.assertTrue(candidate['review_required'])
+        self.assertEqual(candidate['reason'], 'Rights and image review required')
+        self.assertEqual(image['person_name'], 'Jane Smith')
+        self.assertEqual(image['bound_person'], 'Jane Smith')
+
+    def test_profile_headshot_binding_requires_same_page_and_person_alt(self):
+        source = 'https://example.com/team'
+        people = {'partner': 'Example', 'kind': 'people', 'name': 'Jane Smith',
+                  'candidate_url': 'https://example.com/team/jane-smith',
+                  'source_url': source, 'review_required': True}
+        other_page = {'partner': 'Example', 'kind': 'image',
+                      'name': 'Photo of Jane Smith',
+                      'candidate_url': 'https://example.com/jane.jpg',
+                      'source_url': 'https://example.com/about',
+                      'review_required': True}
+        not_a_person = {'partner': 'Example', 'kind': 'image',
+                        'name': 'Photo of the team',
+                        'candidate_url': 'https://example.com/team.jpg',
+                        'source_url': source, 'review_required': True}
+        bindings = crawl.bind_profile_headshot_candidates(
+            [people, other_page, not_a_person])
+        self.assertEqual(bindings, 0)
+        self.assertNotIn('headshot_candidate', people)
+
+    def test_profile_headshot_binding_asset_host_eligibility(self):
+        source = 'https://example.com/team'
+        def rows(host):
+            people = {'partner': 'Example', 'kind': 'people', 'name': 'Jane Smith',
+                      'candidate_url': 'https://example.com/team/jane-smith',
+                      'source_url': source, 'review_required': True}
+            image = {'partner': 'Example', 'kind': 'image',
+                     'name': 'Photo of Jane Smith',
+                     'candidate_url': f'https://{host}/jane.jpg',
+                     'source_url': source, 'review_required': True}
+            return people, image
+        people, image = rows('images.squarespace-cdn.com')
+        crawl.bind_profile_headshot_candidates(
+            [people, image], {'Example': ['images.squarespace-cdn.com']})
+        self.assertEqual(people['headshot_candidate']['reason'],
+                         'Rights and image review required')
+        people, image = rows('images.squarespace-cdn.com')
+        crawl.bind_profile_headshot_candidates([people, image])
+        self.assertEqual(people['headshot_candidate']['reason'],
+                         'External asset host requires separate review')
+
+    def test_company_profile_seeds_carry_psiquantum_asset_hosts(self):
+        seeds = crawl.load_approved_csv(
+            crawl.ROOT / 'data/company-profile-seeds.csv', {'PsiQuantum'},
+            require_qid=False)
+        self.assertEqual(len(seeds), 1)
+        self.assertIn('static1.squarespace.com', seeds[0]['asset_hosts'])
+        self.assertIn('images.squarespace-cdn.com', seeds[0]['asset_hosts'])
+
     def test_approved_asset_host_rejects_urls_and_local_names(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'review.csv'

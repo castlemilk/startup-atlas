@@ -1676,6 +1676,9 @@ def crawl_company_profiles(startups, args, transport):
                     result['candidates'].extend(professional_bio_observations(company,page,asset_hosts[row['name']]))
         result['candidates'].extend(stage_newsroom_articles(row['name'],articles))
     result['coverage']=page_fetch_coverage(result['results'],result['candidates'])
+    result['coverage']['profile_headshot_bindings']=sum(
+        1 for row in result['candidates']
+        if row.get('kind')=='people' and row.get('headshot_candidate'))
     result['warning']='Research-only page observations, not verified company profiles or headshots. Review each subject, role, social link and asset provenance before publication. No image or social destination is fetched by this mode.'
     return result
 
@@ -1858,7 +1861,10 @@ def crawl_profiles(catalogue,args,transport,company=False,source_state=None):
         if source_state is not None: row['sampling_priority']=seed.get('sampling_priority')
         results.append(row)
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
+    bindings = bind_profile_headshot_candidates(
+        candidates, {seed['name']: seed['asset_hosts'] for seed in seeds})
     coverage = page_fetch_coverage(results,candidates)
+    coverage['profile_headshot_bindings'] = bindings
     coverage['profile_leads_by_kind'] = profile_batch_coverage(results)
     output={'version':1,'mode':'profiles','generated_at':utc_now(),'results':results,'candidates':candidates,
             'coverage':coverage,
@@ -2056,6 +2062,57 @@ def filter_portrait_headshots(candidates):
             continue
         kept.append({**row, 'headshot': True, 'person_name': person})
     return kept, excluded
+
+
+def bind_profile_headshot_candidates(candidates, asset_hosts=None):
+    """Bind 'Photo of <name>' image rows to same-page people rows (#354).
+
+    Profiles mode emits people rows (``kind == 'people'``) from labelled
+    links and image rows from page media, but never connected them: a team
+    page image whose alt text is 'Photo of <name>' and whose name matches
+    a people row observed on the same page is that person's headshot lead.
+    The match reuses ``headshot_person_name`` (the #393 portraits filter),
+    so page imagery and logos never bind. A bound image becomes a
+    review-gated ``headshot_candidate`` on the people row — nothing is
+    fetched or published here — and its fetch eligibility follows the same
+    rule as professional-bio candidates: the page's own host or one of the
+    seed's per-seed ``asset_hosts`` is reviewable, any other external host
+    requires separate review. The first matching image per person wins.
+    Returns the number of bindings made.
+    """
+    asset_hosts = asset_hosts or {}
+    people = {}
+    for row in candidates:
+        if row.get('kind') == 'people':
+            key = (row.get('partner'), row.get('source_url'),
+                   (row.get('name') or '').casefold())
+            people.setdefault(key, row)
+    bindings = 0
+    for row in candidates:
+        if row.get('kind') != 'image':
+            continue
+        person = headshot_person_name(row.get('name'))
+        if person is None:
+            continue
+        target = people.get((row.get('partner'), row.get('source_url'),
+                             person.casefold()))
+        if target is None or 'headshot_candidate' in target:
+            continue
+        url = row.get('candidate_url')
+        host = (urlsplit(url).hostname or '').lower() if url else ''
+        source_host = (urlsplit(row.get('source_url') or '').hostname
+                       or '').lower()
+        approved = asset_hosts.get(row.get('partner')) or []
+        target['headshot_candidate'] = {
+            'candidate_url': url, 'source_url': row.get('source_url'),
+            'status': 'not_fetched', 'review_required': True,
+            'reason': ('Rights and image review required'
+                       if host == source_host or host in approved
+                       else 'External asset host requires separate review')}
+        row.update(headshot=True, person_name=person,
+                   bound_person=target.get('name'))
+        bindings += 1
+    return bindings
 
 
 def stage_headshots(result, scopes, args, transport):
