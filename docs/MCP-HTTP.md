@@ -1,6 +1,6 @@
 # Startup Atlas MCP over HTTP (Google OAuth)
 
-The same 17 tools as the local stdio server, reachable over HTTP instead of
+The same 18 tools as the local stdio server, reachable over HTTP instead of
 a local process. Transport is the MCP **Streamable HTTP** transport at
 `/mcp`, and authentication is **OAuth 2.0 with Google as the identity
 provider**. This is separate from the owner-private ChatGPT Site in
@@ -245,7 +245,7 @@ owner's own front door onto the same queue.
   `/.well-known/oauth-protected-resource/mcp/admin`, and the OAuth
   authorization endpoint accepts `resource=<base>/mcp/admin` as well
   as `<base>/mcp`. `GET /health` reports `adminMcpEnabled` and
-  `adminTools` alongside the unchanged `tools: 17`.
+  `adminTools` alongside the unchanged `tools: 18`.
 - **Tools (6):** `atlas_admin_list_review_queue` (filters: `kind`,
   `status`, confidence `band` — `above_gate` / `below_gate` against
   `data/review-gating.json`; lowest confidence first, each entry
@@ -366,7 +366,7 @@ npm --prefix backend/mcp test   # 58 tests: 48 stdio (including 17 GitHub-issue)
 The HTTP tests run a mock Google (JWKS, authorize, token, tokeninfo)
 with a generated RSA key and exercise the real server over loopback:
 unauthenticated/forged/expired/unlisted identities are rejected, a
-verified ID token and a Google access token both open the 17 tools,
+verified ID token and a Google access token both open the 18 tools,
 read-only mode and the per-account write gate behave, and the full
 register → authorize → Google → callback → token → MCP flow issues a
 working access token (including PKCE mismatch, refresh and revoke).

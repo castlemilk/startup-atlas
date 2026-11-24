@@ -8,6 +8,7 @@ import { CatalogueStore } from './store.mjs';
 import { PartnerStore } from './partners.mjs';
 import { StartupStore } from './startups.mjs';
 import { CrawlRegistry, CRAWL_MODES, CRAWL_STATUSES } from './crawls.mjs';
+import { CrawlStatus } from './crawl-status.mjs';
 import { GitHubIssuesClient, DEFAULT_GITHUB_REPO } from './github-issues.mjs';
 import { startupEditSchema, startupIdSchema } from '../hosted/src/startup-edit.mjs';
 import { EntryError, opportunitySchema, provenanceSchema } from '../../scripts/catalogue-entries.mjs';
@@ -36,6 +37,7 @@ const tools = [
   { name: 'atlas_list_crawl_runs', description: 'List recorded crawl runs from data/crawl-runs.json, optionally filtered by mode, source, status or start date. Read-only; the registry is advisory and never triggers a crawl.', inputSchema: schema({ mode: { type: 'string', enum: CRAWL_MODES }, source_id: { type: 'string', maxLength: 200 }, status: { type: 'string', enum: CRAWL_STATUSES }, since: { type: 'string', maxLength: 100 }, limit: { type: 'integer', minimum: 1, maximum: 100 } }), annotations: readonly },
   { name: 'atlas_get_crawl_run', description: 'Read the full record for one crawl run ID, including its outcome, coverage reference and linked publication PR.', inputSchema: { ...schema({ run_id: { type: 'string', pattern: '^crawl-[0-9]{8}-[a-z0-9-]+-[0-9]{2}$' } }), required: ['run_id'] }, annotations: readonly },
   { name: 'atlas_get_crawl_claims', description: 'List current crawl claims per source, derived from claimed and running runs. A claim whose lease has expired is reported as stale, never as live.', inputSchema: schema({ mode: { type: 'string', enum: CRAWL_MODES }, source_id: { type: 'string', maxLength: 200 } }), annotations: readonly },
+  { name: 'atlas_crawl_status', description: 'Live crawl progress from the record the crawl itself publishes while it runs (crawl-progress.json in the public index bucket): per-mode sources done/total, candidates so far, current mode/source and heartbeat age. When no crawl is running, returns the last completed run summary. A stale heartbeat is flagged, never reclassified as failed; when the record is unreachable the state is "unknown", never invented.', inputSchema: schema({ include_modes: { type: 'boolean' } }), annotations: readonly },
   { name: 'atlas_create_issue', description: 'File a GitHub issue in the Startup Atlas repository (default castlemilk/startup-atlas) through the GitHub API, so the loop can populate issues itself. Requires --write and a configured ATLAS_GITHUB_TOKEN. Create-only: it never edits, closes or deletes an issue. With dedup_key it first searches for an open issue carrying the [kpi-backlog:KEY] marker and returns that issue instead of filing a duplicate. Never retries a create, so a failed call is never silently doubled.', inputSchema: { ...schema({ repo: { type: 'string', pattern: '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$', maxLength: 200 }, title: { type: 'string', minLength: 1, maxLength: 200 }, body: { type: 'string', minLength: 1, maxLength: 65536 }, labels: { type: 'array', maxItems: 10, items: { type: 'string', minLength: 1, maxLength: 50 } }, dedup_key: { type: 'string', pattern: '^[A-Z]+[0-9]+(-[a-z])?$' } }), required: ['title', 'body'] }, annotations: { ...readonly, readOnlyHint: false, idempotentHint: false } },
 ];
 
@@ -45,6 +47,7 @@ export function createServer(store, options = {}) {
   const partners = new PartnerStore(store.root, {writeEnabled:store.writeEnabled});
   const startups = new StartupStore(store.root, {writeEnabled:store.writeEnabled});
   const crawls = new CrawlRegistry(store.root);
+  const crawlStatus = options.crawlStatus ?? new CrawlStatus({ fetchImpl: options.crawlStatusFetch ?? fetch });
   // GitHub issue filing: the real client reads its token from
   // ATLAS_GITHUB_TOKEN (passed in as options.githubToken). Tests may
   // inject a fake client as options.githubIssues instead; either way
@@ -84,6 +87,7 @@ export function createServer(store, options = {}) {
         case 'atlas_list_crawl_runs': result = await crawls.list(args); break;
         case 'atlas_get_crawl_run': result = await crawls.get(args.run_id); break;
         case 'atlas_get_crawl_claims': result = await crawls.claims(args); break;
+        case 'atlas_crawl_status': result = await crawlStatus.status(args); break;
         case 'atlas_create_issue': {
           // Same gate as the other write tools, but checked here rather
           // than in a store: filing an issue touches GitHub, not the
