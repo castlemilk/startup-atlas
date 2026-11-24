@@ -98,14 +98,19 @@ resource "google_storage_bucket" "index" {
   # Must stay unset/"inherited": "enforced" would block the public read below.
   force_destroy = false
 
-  # DuckDB-WASM fetches Parquet from the Pages origin. "*" is also allowed:
-  # the bucket is already public-read, and the Atlas KPIs dashboard (a Muse
-  # artifact, origin not fixed) fetches crawl-progress.json from the bucket
-  # root for the live-crawl panel (crawl-progress design, 24 Nov 2026).
+  # DuckDB-WASM fetches Parquet from the Pages origin. Its reads are HTTP
+  # range requests, and a preflight that asks for the Range header fails
+  # unless Range is an allowed request header here — without it the Pages
+  # query console dies with "NetworkError: Failed to load '<table>.parquet'"
+  # even though plain GET/HEAD/range requests succeed (found 24 Nov 2026,
+  # render-verification pass). "*" is also allowed: the bucket is already
+  # public-read, and the Atlas KPIs dashboard (a Muse artifact, origin not
+  # fixed) fetches crawl-progress.json from the bucket root for the
+  # live-crawl panel (crawl-progress design, 24 Nov 2026).
   cors {
     origin          = [var.pages_origin, "*"]
-    method          = ["GET"]
-    response_header = ["Content-Type", "Content-Length"]
+    method          = ["GET", "HEAD"]
+    response_header = ["Content-Type", "Content-Length", "Range"]
     max_age_seconds = 3600
   }
 
