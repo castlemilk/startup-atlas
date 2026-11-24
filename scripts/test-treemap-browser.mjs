@@ -138,7 +138,7 @@ try {
   const market=makeView(snapshot,{metric:'market-cap',currency:'USD',marketCaps});
   const companyValues=indexCompanyValues(snapshot,indexedEvidence);
   const values=makeView(snapshot,{metric:'company-value',currency:'USD',companyValues});
-  const defaultChoices=['companies','technology','technology'];
+  const defaultChoices=['company-value','technology','technology'];
   const chartChoices=()=>evaluate("['metric','group','colour'].map(name=>document.querySelector('#treemap-'+name).value)");
   // Hold snapshot requests to observe the real loading state before data resolves.
   await command('Fetch.enable',{patterns:[{urlPattern:'*atlas.sqlite*'},{urlPattern:'*data/graph.json*'}]});
@@ -152,9 +152,11 @@ try {
   await settled();
   assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-busy')"),'false');
   assert.deepEqual(await chartChoices(),defaultChoices);
-  assert.equal(await evaluate("document.querySelector('#treemap-currency').disabled"),true,'Company count needs no currency');
-  assert.equal(await evaluate("document.querySelector('#treemap-currency-field').getClientRects().length"),0,'Company count must hide the currency field');
-  assert.equal(await evaluate("document.querySelectorAll('#treemap-chart [data-company]').length"),snapshot.entities.filter(entity=>entity.kind==='startup').length);
+  assert.equal(await evaluate("document.querySelector('#treemap-currency').disabled"),false,'Company value compares figures in a selected currency');
+  assert.ok(await evaluate("document.querySelector('#treemap-currency-field').getClientRects().length"),'Company value must show the currency field');
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-chart [data-company]').length"),values.rows.length,'Default company-value view plots only companies with a recorded value');
+  assert.equal(await evaluate("document.querySelectorAll('#treemap-novalue [data-company]').length"),values.missing.length,'Companies without a recorded value appear in the equal-size no-value band, not the sized map');
+  assert.equal(await evaluate("document.querySelector('#treemap-novalue').hidden"),false,'The no-value band is visible in the default map view');
   assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"),'map');
   assert.equal(await evaluate("document.querySelector('#treemap-chart [data-company=\"startup:psiquantum\"]').closest('.treemap-plot-group').getAttribute('aria-label')"),'Quantum technology');
   assert.match(await text('#treemap-legend'),/Technology type/);
@@ -176,7 +178,7 @@ try {
     const size=document.querySelector('#treemap-metric').closest('label').getBoundingClientRect();
     return country.x<size.x && Math.abs(country.top-size.top)<6 && document.querySelector('#treemap-chart').getBoundingClientRect().top<320;
   })()`),true,'The desktop toolbar must put headquarters and chart settings in one row above the plot');
-  await screenshot('company-count-default-desktop.png');
+  await screenshot('company-value-default-desktop.png');
 
   assert.equal(await evaluate("document.querySelector('#treemap-metric option[value=\"market-cap\"]').disabled"),false);
   await change('treemap-metric','market-cap');
@@ -642,7 +644,7 @@ try {
   await click('#treemap-chart a');
   await until(()=>evaluate("document.querySelector('#treemap-metric')?.disabled===false"),'Reload recovery did not restore controls');
   await settled();
-  assert.match(await text('#treemap-status'),/Company count/);
+  assert.match(await text('#treemap-status'),/different observation dates/);
 
   // A fixed set of equal-area tiles exercises both size classes as the catalogue grows.
   const fixtureCompanies=Array.from({length:24},(_,index)=>({
