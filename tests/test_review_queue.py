@@ -340,5 +340,22 @@ class DecideTests(FixtureCase):
         self.assertFalse(self.identity_path.exists())
 
 
+class WorkflowWiringTests(unittest.TestCase):
+    def test_crawl_workflow_builds_the_queue_into_the_artifact(self):
+        workflow = (ROOT / ".github" / "workflows"
+                    / "partner-research.yml").read_text()
+        self.assertIn("scripts/build-review-queue.py", workflow)
+        self.assertIn("--queue research/crawl/review-queue.json", workflow)
+        self.assertIn("--summary-md research/crawl/review-queue-summary.md",
+                      workflow)
+
+    def test_profiles_limit_is_derived_from_the_seed_csv(self):
+        workflow = (ROOT / ".github" / "workflows"
+                    / "partner-research.yml").read_text()
+        self.assertNotIn("--limit 32", workflow)
+        self.assertIn("partner-logo-seeds.csv", workflow)
+        self.assertIn('--limit "$seeds"', workflow)
+
+
 if __name__ == "__main__":
     unittest.main()

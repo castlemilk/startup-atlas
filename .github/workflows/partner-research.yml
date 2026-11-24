@@ -28,7 +28,13 @@ jobs:
       - name: Stage approved partner logos
         run: python3 scripts/crawl.py logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 3
       - name: Discover team and portfolio leads
-        run: python3 scripts/crawl.py profiles --approved data/partner-logo-seeds.csv --follow 2 --limit 32
+        # Issue #350: the limit used to be a literal 32 that silently
+        # truncated the crawl the day a 33rd seed was added. Derive it
+        # from the seed CSV (rows minus the header) so the cap can never
+        # drift from the seed list again.
+        run: |
+          seeds=$(awk 'END {print NR - 1}' data/partner-logo-seeds.csv)
+          python3 scripts/crawl.py profiles --approved data/partner-logo-seeds.csv --follow 2 --limit "$seeds"
       - name: Stage founder and team portraits
         run: python3 scripts/crawl.py portraits --approved data/company-profile-seeds.csv --follow 2
       - name: Prepare partner metadata for review
@@ -56,6 +62,19 @@ jobs:
               for note in data.get('notes', []):
                   print(f"  note: {note}")
           PY
+      - name: Build review queue
+        # Issue #377: the queue builder is committed but nothing ran it,
+        # so the queue was rebuilt by hand after each crawl. Generate it
+        # into the run artifact, seeded from the committed queue so
+        # decisions and dedup carry forward; landing the updated queue
+        # back on main stays a reviewed data change.
+        run: |
+          cp data/review-queue.json research/crawl/review-queue.json
+          python3 scripts/build-review-queue.py \
+            --artifact-dir research/crawl \
+            --run ${{ github.run_number }} \
+            --queue research/crawl/review-queue.json \
+            --summary-md research/crawl/review-queue-summary.md
       - name: Preserve review material
         if: always()
         uses: actions/upload-artifact@v4
