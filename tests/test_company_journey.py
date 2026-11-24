@@ -259,6 +259,44 @@ class CompanyJourneyTests(unittest.TestCase):
         self.assertEqual(self.article_candidates(page('/not-ours', article, head=head)), [])
         self.assertEqual(self.article_candidates(page('/terms', head=head)), [])
 
+    def test_about_placeholder_links_recover_only_unvisited_reviewed_founder_profiles(self):
+        company = {**COMPANY, 'founders': [
+            {'name': "Jeremy O’Brien", 'profile_url': HOME + 'prof-jeremy-obrien'},
+            {'name': 'Pete Shadbolt', 'profile_url': HOME + 'prof-pete-shadbolt'},
+            {'name': 'Offsite Founder', 'profile_url': 'https://elsewhere.example/person'},
+        ]}
+        about = {**page('/about', body="""
+          <a href="/prof-jeremy-obrien">+</a><a href="/prof-jeremy-obrien">+</a>
+          <a href="/prof-pete-shadbolt">+</a><a href="/prof-mark-thompson">+</a>
+          <a href="https://elsewhere.example/person">+</a>
+        """), 'status': 'ok'}
+        already_fetched = {**page('/prof-pete-shadbolt'), 'status': 'ok'}
+        lead, = crawl.observed_founder_profile_leads(company, [about, already_fetched])
+        self.assertEqual(lead['name'], "Jeremy O’Brien")
+        self.assertEqual(lead['candidate_url'], HOME + 'prof-jeremy-obrien')
+        self.assertEqual(lead['source_url'], HOME + 'about')
+        self.assertEqual(lead['kind'], 'founder-bio-link')
+        self.assertEqual(lead['link_text'], '+')
+        self.assertTrue(lead['review_required'])
+        self.assertNotIn('headshot_candidate', lead)
+        self.assertNotIn('role', lead)
+
+    def test_founder_links_reject_query_fragment_and_conflicting_roster_identity(self):
+        target = HOME + 'team/ada'
+        company = {**COMPANY, 'founders': [{'name': 'Ada Example', 'profile_url': target}]}
+        about = {**page('/about', body="""
+          <a href="/team/ada?tracking=1">Ada</a>
+          <a href="/team/ada#not-a-document">Ada</a>
+          <a href="https://example.com@elsewhere.example/team/ada">Ada</a>
+        """), 'status': 'ok'}
+        self.assertEqual(list(crawl.observed_founder_profile_leads(company, [about])), [])
+        clean = {**page('/about', body='<a href="/team/ada">+</a>'), 'status': 'ok'}
+        conflict = {**company, 'founders': company['founders'] +
+                    [{'name': 'Other Person', 'profile_url': target}]}
+        self.assertEqual(list(crawl.observed_founder_profile_leads(conflict, [clean])), [])
+        self.assertEqual(list(crawl.observed_founder_profile_leads(
+            company, [{**clean, 'status': 'error'}])), [])
+
     def test_only_direct_safe_socials_and_explicit_person_images_are_staged(self):
         path = '/team/ada'
         socials = ['https://www.linkedin.com/in/ada-example/','https://www.linkedin.com.evil.test/in/ada',

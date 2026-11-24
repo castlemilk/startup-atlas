@@ -265,3 +265,15 @@ no second queue.
    rebuilds an artifact, and a repeat can add nothing, so entry timestamps
    do not verify rebuild or publication freshness. Check the crawl run's
    Build review queue step and review artifact separately.
+
+### Reviewed founder profile links
+
+A company profile or portrait packet can include a review-only
+`founder-bio-link` when a successful official page links to the exact
+same-host profile already named on its reviewed founder roster. The link
+is not followed by this rule. Run 45407190524 retained four such links
+on PsiQuantum's About page under a “+” control; its existing 20 named
+image observations are unchanged. This does not establish new people,
+roles, image identity, portrait usage permission or a download. Profile
+pages already fetched successfully, conflicting names for the same
+target, and query/fragment references don't create an unvisited lead.

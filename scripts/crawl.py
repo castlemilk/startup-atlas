@@ -1749,6 +1749,37 @@ def professional_bio_observations(company, page, asset_hosts):
         yield row
 
 
+def observed_founder_profile_leads(company, pages):
+    """Expose an observed reviewed profile link without following it."""
+    home = company.get('website') or ''
+    host = urlsplit(home).hostname
+    reviewed = {}
+    for row in company.get('founders', []):
+        target = evidence_url(row.get('profile_url'), home)
+        if target and urlsplit(target).hostname == host and row.get('name'):
+            reviewed.setdefault(target, set()).add(row['name'])
+    if not reviewed:
+        return
+    pages = [page for page in pages if page.get('status') == 'ok']
+    fetched = {evidence_url(page.get('final_url'), home) for page in pages}
+    emitted = set()
+    for page in pages:
+        source = evidence_url(page.get('final_url'), home)
+        if not source or urlsplit(source).hostname != host:
+            continue
+        for link in page.get('profile_links', [])[:PROFILE_LINK_LIMIT]:
+            target = evidence_url(link.get('url'), source)
+            names = reviewed.get(target, set())
+            if target in fetched or target in emitted or len(names) != 1:
+                continue
+            emitted.add(target)
+            yield {'company': company['name'], 'kind': 'founder-bio-link',
+                   'name': next(iter(names)), 'candidate_url': target,
+                   'source_url': source, 'checked_at': page['checked_at'],
+                   'link_text': evidence_text(link.get('text'), 200),
+                   'review_required': True}
+
+
 def crawl_company_profiles(startups, args, transport, progress=None):
     # A separate mode keeps startup names out of the partner identity importer.
     # The approved CSV is mandatory; only already researched companies qualify.
@@ -1774,6 +1805,7 @@ def crawl_company_profiles(startups, args, transport, progress=None):
                 else:
                     result['candidates'].extend(professional_bio_observations(company,page,asset_hosts[row['name']]))
         result['candidates'].extend(stage_newsroom_articles(row['name'],articles))
+        result['candidates'].extend(observed_founder_profile_leads(company, row['pages']))
     result['coverage']=page_fetch_coverage(result['results'],result['candidates'])
     result['coverage']['profile_headshot_bindings']=sum(
         1 for row in result['candidates']
