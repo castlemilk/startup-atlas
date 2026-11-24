@@ -14,7 +14,7 @@ from urllib.request import Request, urlopen
 from zipfile import ZipFile
 
 BASE='https://castlemilk.github.io/startup-atlas/'
-REVISION=os.environ['GITHUB_SHA']
+REVISION=os.environ.get('GITHUB_SHA')
 
 
 def get(path, limit):
@@ -23,6 +23,21 @@ def get(path, limit):
         data=response.read(limit+1)
     if len(data)>limit: raise ValueError(f'{path} exceeds the expected verification size')
     return data
+
+
+def verify_icon_exports(registry, exports, manifest, archive_paths=None):
+    """Compare the published kit to the exact registry, not a fixed count."""
+    ids = [icon['id'] for icon in registry]
+    if not ids or len(set(ids)) != len(ids) or set(ids) != exports.keys():
+        raise ValueError('The source icon registry has missing or duplicate exports')
+    if manifest.get('icons') != registry:
+        raise ValueError('Published icon manifest differs from this revision')
+    if archive_paths is not None:
+        paths = [path for path in archive_paths
+                 if path.startswith('assets/design-icons/') and path.endswith('.svg')]
+        expected = {f'assets/design-icons/{name}.svg' for name in ids}
+        if len(paths) != len(expected) or set(paths) != expected:
+            raise ValueError('Design kit icon files differ from this revision')
 
 
 def verify():
@@ -74,7 +89,7 @@ def verify():
     if get('vendor/UI-SDK-LICENSE.txt',50000)!=Path('docs/UI-SDK-LICENSE.txt').read_bytes():
         raise ValueError('Published UI SDK license differs from this revision')
     design_catalogue=json.loads(subprocess.check_output(['node','--input-type=module','-e',
-        "import {assets} from './web/design-handbook.js';import {atlasIcons,exportIcon} from './web/atlas-icons.js';import {featureSymbols,exportFeatureSymbol} from './web/atlas-feature-symbols.js';console.log(JSON.stringify({assets,icons:Object.fromEntries(atlasIcons.map(icon=>[icon.id,exportIcon(icon.id)])),featureSymbols,featureExports:Object.fromEntries(featureSymbols.map(symbol=>[symbol.id,exportFeatureSymbol(symbol.id)]))}));"],text=True))
+        "import {assets} from './web/design-handbook.js';import {atlasIcons,exportIcon} from './web/atlas-icons.js';import {featureSymbols,exportFeatureSymbol} from './web/atlas-feature-symbols.js';console.log(JSON.stringify({assets,iconRegistry:atlasIcons,icons:Object.fromEntries(atlasIcons.map(icon=>[icon.id,exportIcon(icon.id)])),featureSymbols,featureExports:Object.fromEntries(featureSymbols.map(symbol=>[symbol.id,exportFeatureSymbol(symbol.id)]))}));"],text=True))
     expected_assets=design_catalogue['assets']
     expected_paths={asset[key].removeprefix('./') for asset in expected_assets for key in ('image','thumb')}
     concept_assets=sorted(Path('web/assets/design-lab').glob('*.webp'))
@@ -89,7 +104,10 @@ def verify():
     if manifest.get('sourceRevision')!=REVISION or published_assets!=expected_assets:
         raise ValueError('Published design asset manifest has not caught up')
     icons=design_catalogue['icons']
-    if len(icons)!=32: raise ValueError('The design kit must publish 32 canonical SVG icons')
+    icon_manifest_path='assets/design-icons/icon-manifest.json'
+    icon_manifest_bytes=get(icon_manifest_path,100000)
+    icon_manifest=json.loads(icon_manifest_bytes)
+    verify_icon_exports(design_catalogue['iconRegistry'],icons,icon_manifest)
     for name,svg in icons.items():
         if get(f'assets/design-icons/{name}.svg',10000).decode('utf-8')!=svg:
             raise ValueError(f'Published icon differs from this revision: {name}')
@@ -116,6 +134,9 @@ def verify():
         for asset in concept_assets:
             if kit.read(asset.relative_to('web').as_posix())!=asset.read_bytes():
                 raise ValueError(f'Design kit contains a stale image: {asset.name}')
+        verify_icon_exports(design_catalogue['iconRegistry'],icons,icon_manifest,kit.namelist())
+        if kit.read(icon_manifest_path)!=icon_manifest_bytes:
+            raise ValueError('Design kit contains a stale icon manifest')
         for name,svg in icons.items():
             if kit.read(f'assets/design-icons/{name}.svg').decode('utf-8')!=svg:
                 raise ValueError(f'Design kit contains a stale icon: {name}')
@@ -170,13 +191,16 @@ def verify():
             for table in ('partner_records','locations','logo_mappings','provider_relationships'):
                 if not db.execute(f'SELECT 1 FROM {table} LIMIT 1').fetchone():raise ValueError(f'Published {table} is empty')
             if not db.execute("SELECT 1 FROM entity_search WHERE entity_search MATCH ?",('"canva*"',)).fetchone():raise ValueError('Published FTS index is not searchable')
-    print(f'Verified published landing, List, graph, SQLite, component/token/recipe reference, design handbook, Signal specimen, {len(expected_assets)} assets, 32 utility icons, four feature symbols and design kit at {REVISION}')
+    print(f'Verified published landing, List, graph, SQLite, component/token/recipe reference, design handbook, Signal specimen, {len(expected_assets)} assets, {len(icons)} utility icons, four feature symbols and design kit at {REVISION}')
 
 
-for attempt in range(12):
-    try:
-        verify();break
-    except Exception as error:
-        if attempt==11:raise
-        print(f'Waiting for Pages to serve this revision: {type(error).__name__}: {error}')
-        time.sleep(5)
+if __name__=='__main__':
+    if not REVISION:
+        raise SystemExit('GITHUB_SHA is required')
+    for attempt in range(12):
+        try:
+            verify();break
+        except Exception as error:
+            if attempt==11:raise
+            print(f'Waiting for Pages to serve this revision: {type(error).__name__}: {error}')
+            time.sleep(5)
