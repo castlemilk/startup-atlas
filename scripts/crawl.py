@@ -945,6 +945,27 @@ def company_location_mentions(company_name, page):
     return [row for row in extract_location_mentions(contexts, source, company_name) if row in mentions]
 
 
+PROFILE_SOCIAL_HOSTS = ('linkedin.com','instagram.com','facebook.com','youtube.com','twitter.com','x.com')
+PROFILE_SOCIAL_LINK_LIMIT = 250
+
+def profile_social_links(links):
+    """Select labelled anchors, not resource hints, before URL deduplication."""
+    found=[]; seen=set()
+    for item in links:
+        url=item.get('url',''); text=item.get('text','')
+        if item.get('rel') or not text.strip() or url in seen: continue
+        try:
+            parts=urlsplit(url)
+            host=(parts.hostname or '').lower()
+        except ValueError:
+            continue
+        if (parts.scheme!='https' or parts.username or parts.password
+                or not any(host==h or host.endswith('.'+h) for h in PROFILE_SOCIAL_HOSTS)): continue
+        seen.add(url)
+        found.append({'url':url,'text':text})
+        if len(found)>=PROFILE_SOCIAL_LINK_LIMIT: break
+    return found
+
 def extract_page(body,url,*,company_name=None):
     parser=PageParser(url, company_locations=company_name is not None); parser.feed(body.decode('utf-8','replace'))
     metadata={key:value for key,value in parser.meta.items() if key in ('description','keywords','author','logo','og:logo','og:url','og:title','og:description','og:site_name','og:image','og:type','og:locale','twitter:site','twitter:title','twitter:description','twitter:image','article:published_time','article:modified_time')}
@@ -1009,7 +1030,8 @@ def extract_page(body,url,*,company_name=None):
     locations = (extract_location_mentions(parser.location_markup.excerpts(), url, company_name)
                  if parser.location_markup is not None else [])
     return {'title':parser.title,'language':parser.lang,'metadata':metadata,'headings':parser.headings,
-            'structured_data':parser.structured[:10],'links':links,'profile_links':profile_links,'signals':snippets,'evidence':extract_evidence(parser.text,url),
+            'structured_data':parser.structured[:10],'links':links,'profile_links':profile_links,
+            'profile_social_links':profile_social_links(parser.links),'signals':snippets,'evidence':extract_evidence(parser.text,url),
             'amount_mentions':extract_amount_mentions(parser.text,url),'logo_candidates':logo_candidates[:40], 'image_candidates':parser.images,
             **({'headcount_mentions': headcount} if headcount else {}),
             **({'location_mentions': locations} if locations else {}),
@@ -1440,12 +1462,14 @@ def extract_profile_media_leads(partner, page, kind):
         if paths>1: row['label_distinct_image_paths']=paths
         rows.append(row)
         if len(rows)>=100: break
-    for item in page.get('links',[]):
-        url=item.get('url',''); host=(urlsplit(url).hostname or '').lower()
-        if any(host==h or host.endswith('.'+h) for h in ('linkedin.com','instagram.com','facebook.com','youtube.com','twitter.com','x.com')):
-            rows.append({'partner':partner,'kind':'social','page_kind':kind,'name':item.get('text',''),
-                         'candidate_url':url,'source_url':page['final_url'],
-                         'checked_at':page['checked_at'],'review_required':True})
+    # Older saved pages have only the mixed link window. Never treat an
+    # explicitly empty new anchor set as permission to reuse resource hints.
+    links=page.get('profile_social_links')
+    if links is None: links=profile_social_links(page.get('links',[]))
+    for item in links:
+        rows.append({'partner':partner,'kind':'social','page_kind':kind,'name':item['text'],
+                     'candidate_url':item['url'],'source_url':page['final_url'],
+                     'checked_at':page['checked_at'],'review_required':True})
     return rows[:150]
 
 def evidence_text(value, limit=300):
