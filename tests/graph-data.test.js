@@ -151,3 +151,25 @@ test('Forerunner Ventures resolves to the canonical Series A lead for Andromeda 
     ['partner:forerunner', 'startup:andromeda-robotics', round.source],
   ]);
 });
+
+test('reviewed Salesforce Ventures resolves only the explicitly sourced funding roles', async () => {
+  const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const id = 'partner:salesforce-ventures';
+  const nodes = graph.entities.filter(node => node.id === id);
+  assert.equal(nodes.length, 1);
+  assert.equal(nodes[0].website, 'https://salesforceventures.com/');
+  const related = graph.edges.filter(edge => edge.from === id && ['led_round', 'participated_in'].includes(edge.kind));
+  const reviewedRoles = [
+    ['airwallex-2020-series-d', 'startup:airwallex', 'participated_in'],
+    ['airwallex-2021-series-e', 'startup:airwallex', 'participated_in'],
+    ['airwallex-2022-series-e2', 'startup:airwallex', 'participated_in'],
+    ['airwallex-2025-series-f', 'startup:airwallex', 'participated_in'],
+    ['q-ctrl-2026-series-c', 'startup:q-ctrl', 'led_round'],
+  ];
+  for (const [id, startup, kind] of reviewedRoles) {
+    const round = graph.funding_rounds.find(round => round.id === id);
+    const matching = related.filter(edge => edge.round_id === id);
+    assert.deepEqual(matching.map(edge => [edge.to, edge.kind, edge.source]), [[startup, kind, round.source]]);
+  }
+  assert.equal(related.some(edge => edge.round_id === 'airwallex-2021-series-e1'), false);
+});
