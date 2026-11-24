@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { edgeKindLabel, microGraphLayout, microGraphNeighbours, MICRO_GRAPH_CAP } from '../web/micro-graph.js';
+import { edgeKindLabel, microGraphLayout, microGraphNameLines, microGraphNeighbours, MICRO_GRAPH_CAP } from '../web/micro-graph.js';
 
 const entity = (id, kind, name) => ({ id, kind, name });
 const graph = {
@@ -69,6 +69,21 @@ test('radial layout centres the root and spaces neighbours on the ellipse', () =
     assert.ok(point.x >= 0 && point.x <= 360 && point.y >= 0 && point.y <= 260);
   }
   assert.deepEqual(microGraphLayout(0).points, []);
+});
+
+test('micro graph name labels wrap long names instead of truncating them', () => {
+  // Names that fit one line stay on one line, unchanged.
+  assert.deepEqual(microGraphNameLines('Canva'), ['Canva']);
+  assert.deepEqual(microGraphNameLines('Sixteen Chars Co'), ['Sixteen Chars Co']);
+  // Longer names split at the word boundary that best balances the lines.
+  assert.deepEqual(microGraphNameLines('Blackbird Ventures'), ['Blackbird', 'Ventures']);
+  assert.deepEqual(microGraphNameLines('MedTech Actuator Accelerator Australia'),
+    ['MedTech Actuator', 'Accelerator Australia']);
+  // Names that cannot wrap within two short lines keep the ellipsis
+  // fallback, exactly as the single-line label rendered before.
+  assert.deepEqual(microGraphNameLines('Government of Western Australia — Department of Water and Environmental Regulation'),
+    ['Government of W…']);
+  assert.deepEqual(microGraphNameLines('Antidisestablishmentarianism'), ['Antidisestablis…']);
 });
 
 test('micro graph reads the published graph without inventing neighbours', async () => {
