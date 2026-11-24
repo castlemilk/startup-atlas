@@ -15,7 +15,13 @@ test('graph activation follows relationships while shared links can inspect inde
       {from:'person:melanie-perkins',to:'startup:canva',kind:'founded',source:'https://example.com/founder'},
       {from:'partner:airtree',to:'startup:canva',kind:'supports',source:'https://example.com/portfolio'},
       {from:'person:melanie-perkins',to:'startup:fusion-books',kind:'founded',source:'https://example.com/other-company'}
-    ],funding_rounds:[],articles:[]
+    ],funding_rounds:[
+      {startup_id:'startup:canva',stage:'Series A',amount:100,currency:'USD',announced_on:'2020-01-01',source:'https://example.com/series-a'},
+      {startup_id:'startup:canva',stage:'Series B',amount:200,currency:'USD',announced_on:'2021-01-01',source:'https://example.com/series-b'},
+      {startup_id:'startup:canva',stage:'Series C',amount:300,currency:'USD',announced_on:'2022-01-01',source:'https://example.com/series-c'}
+    ],articles:[
+      {startup_id:'startup:canva',title:'Canva raises again',url:'https://example.com/canva-news',published_on:'2022-02-01',kind:'company announcement'}
+    ]
   };
   const elements=new Map(),windowEvents=new Map(),historyEntries=[];
   function element(dataset={}) {
@@ -68,6 +74,9 @@ test('graph activation follows relationships while shared links can inspect inde
     await import('../web/graph.js');
     const canvas=elements.get('graph-canvas'),detail=elements.get('graph-detail'),query=elements.get('graph-query');
     assert.match(detail.innerHTML,/<h2>Canva<\/h2>/);
+    assert.match(detail.innerHTML,/Series A/);
+    assert.match(detail.innerHTML,/Series C/,'Detail panel lists every recorded round, not just the first two');
+    assert.match(detail.innerHTML,/Canva raises again/,'Detail panel lists recorded articles');
     assert.match(elements.get('network-heading').textContent,/Around Canva/);
     const founder=canvas.nodes.find(node=>node.dataset.node==='person:melanie-perkins');
     canvas.handlers.keydown({target:{closest:()=>founder},key:'ArrowRight',preventDefault(){}});

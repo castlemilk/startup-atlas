@@ -478,6 +478,7 @@ function renderDetail() {
     return '<li>'+detailArtwork(other,true)+'<div class="detail-connection-copy"><button type="button" data-select="'+esc(other.id)+'">'+esc(other.name)+'</button><small>'+esc(relationshipText(edge))+'</small>'+(visibleIds.has(other.id)?'':'<small class="detail-outside">'+location+'</small>')+evidence(edge.source,'Relationship source')+'</div></li>';
   }).filter(Boolean);
   const rounds=[...details.rounds].sort((a,b)=>(b.announced_on||'').localeCompare(a.announced_on||''));
+  const articles=[...details.articles].sort((a,b)=>(b.published_on||'').localeCompare(a.published_on||''));
   const summary=entity.summary || 'This entry is connected to the sources and organisations below. More details are being researched.';
   const source=evidence(entity.source,'Profile source')+evidence(entity.website,entity.kind==='person'?'Professional profile':'Website')+evidence(entity.logo_source,'Image source');
   const isRoot=selectedId===rootId;
@@ -503,7 +504,8 @@ function renderDetail() {
     ${facts}<p class="detail-summary">${esc(summary)}</p>${reviewedRelation}
     <div class="detail-actions"><a class="detail-open atlas-button atlas-button-accent" data-atlas-profile-link href="${esc(entityHref(entity))}">Open profile${icon('external')}</a>${inspectAction}${actions}</div>
     <section class="detail-section"><h3>Recorded connections <span>${details.edges.length}</span></h3>${related.length?'<ul class="detail-related">'+related.join('')+'</ul>':'<p class="detail-empty">No reviewed connections yet.</p>'}</section>
-    ${company?'<section class="detail-section"><h3>Recorded financing</h3>'+(rounds.length?rounds.slice(0,2).map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not recorded')+'</span>'+evidence(round.source,'Funding source')+'</div>').join(''):'<p class="detail-empty">No recorded financing events.</p>')+'</section>':''}
+    ${company?'<section class="detail-section"><h3>Recorded financing <span>'+rounds.length+'</span></h3>'+(rounds.length?rounds.map(round=>'<div class="detail-round"><strong>'+esc(round.stage||'Funding event')+' · '+esc(money(round.amount,round.currency,round.amount_text))+'</strong><span>'+esc(round.announced_on||'Date not recorded')+'</span>'+evidence(round.source,'Funding source')+'</div>').join(''):'<p class="detail-empty">No recorded financing events.</p>')+'</section>':''}
+    ${company?'<section class="detail-section"><h3>Articles <span>'+articles.length+'</span></h3>'+(articles.length?articles.map(article=>'<div class="detail-round"><strong>'+esc(article.title||'Article')+'</strong><span>'+esc(article.published_on||'Date not recorded')+'</span>'+evidence(article.url,'Article source')+'</div>').join(''):'<p class="detail-empty">No recorded articles.</p>')+'</section>':''}
     ${source?'<section class="detail-section"><h3>Sources</h3>'+source+'</section>':''}`;
   $('graph-detail').querySelectorAll('img').forEach(img=>showGraphArtwork(img,img.nextElementSibling));
 }
