@@ -240,5 +240,8 @@ no second queue.
    (`loop-health.yml`) and fails on RED: crawl conclusion, live-index
    freshness, corpus lag by content hash, console smoke test, and
    per-file checked-date staleness (F4). Network-dependent signals
-   degrade to WARN, never a false RED. Known gap, tracked in #426: the
-   check does not yet watch review-queue freshness or pending count.
+   degrade to WARN where evidence is unavailable. The review-queue line
+   reports the committed pending count and newest entry age. A crawl
+   rebuilds an artifact, and a repeat can add nothing, so entry timestamps
+   do not verify rebuild or publication freshness. Check the crawl run's
+   Build review queue step and review artifact separately.
