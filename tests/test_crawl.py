@@ -734,6 +734,38 @@ class WorkflowTests(unittest.TestCase):
             self.assertEqual(got['coverage']['fetch_status'],'all_succeeded')
             self.assertEqual(got['coverage']['pages_succeeded'],3)
             self.assertEqual(got['coverage']['unreviewed_candidates'],2)
+    def test_profile_headshot_binding_preserves_same_page_evidence_before_dedupe(self):
+        fixture = Path(__file__).parent / 'fixtures/team-image-dedupe-crawl-46.json'
+        home, team = json.loads(fixture.read_text())['observations'].items()
+        class Fake:
+            def request(self, url, allowed_host=None, **kwargs):
+                if url not in (home[0], team[0]):
+                    raise AssertionError(f'Unexpected fetch: {url}')
+                return 200, {'Content-Type': 'text/html'}, b'', url
+
+        for repeat in (True, False):
+            with self.subTest(repeat=repeat), tempfile.TemporaryDirectory() as tmp:
+                path = Path(tmp) / 'approved.csv'
+                path.write_text(f'partner,qid,official_website,approved\nArtesian,,{home[0]},yes\n')
+                args = types.SimpleNamespace(approved=path, partner=None, limit=0, follow=1)
+                def observations(body, url, **kwargs):
+                    if url == home[0]:
+                        return {**home[1], 'profile_links': [{'url': team[0], 'text': 'Our team'}]}
+                    return {**team[1], 'image_candidates': team[1]['image_candidates'] if repeat else []}
+                with patch.object(crawl, 'extract_page', side_effect=observations):
+                    result = crawl.crawl_profiles({'partnerLeads': ['Artesian']}, args, Fake())
+                people = [r for r in result['candidates'] if r['kind'] == 'people']
+                images = [r for r in result['candidates'] if r['kind'] == 'image']
+                self.assertEqual(len(people), 1)
+                self.assertEqual(len(images), 1)
+                self.assertEqual(images[0]['source_url'], home[0])
+                self.assertEqual(result['coverage']['profile_headshot_bindings'], int(repeat))
+                if repeat:
+                    self.assertEqual(people[0]['headshot_candidate']['source_url'], team[0])
+                    self.assertEqual(people[0]['headshot_candidate']['status'], 'not_fetched')
+                else:
+                    self.assertNotIn('headshot_candidate', people[0])
+
     def test_profile_index_selection_rejects_external_and_individual_links(self):
         page={'profile_links':[
             {'url':'https://other.test/team','text':'Team'},
