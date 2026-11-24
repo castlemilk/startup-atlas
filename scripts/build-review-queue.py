@@ -199,6 +199,54 @@ def normalise_host(url):
 # (#462), e.g. "Decarbonise the planet Avarni AI-powered carbon ...".
 LEAD_LABEL_MAX = 40
 
+# A startup-lead whose name is built ONLY from taxonomy words is a
+# partner-site theme/category page, not a company (#460): Madrona's
+# Companies filter nav lists "AI & Intelligent Apps", "AI-Enabled
+# Biotech", "Consumer & Marketplace" and "Data & Infrastructure" as
+# themes profiling other companies, and the crawl emitted each one as
+# a lead (two were rejected by agent review after opening the pages
+# live). The vocabulary is deliberately narrow — sector/category nouns
+# and modifiers, no words that carry identity in real company names
+# (no "labs", "platform", "solutions", "technologies") — and the guard
+# needs at least two tokens, so a distinctive name always survives.
+THEME_LABEL_TOKENS = frozenset({
+    "ai", "ml", "intelligent", "apps", "applications", "enabled",
+    "biotech", "consumer", "marketplace", "data", "infrastructure",
+    "health", "healthcare", "medtech", "fintech", "edtech", "agtech",
+    "proptech", "insurtech", "regtech", "legaltech", "hrtech",
+    "climate", "cleantech", "greentech", "energy", "sustainability",
+    "cybersecurity", "security", "enterprise", "saas", "ecommerce",
+    "commerce", "retail", "robotics", "autonomous", "mobility",
+    "logistics", "manufacturing", "agriculture", "food", "travel",
+    "media", "entertainment", "gaming", "education", "wellness",
+    "finance", "financial", "payments", "banking", "insurance",
+    "crypto", "web3", "blockchain", "defi", "quantum", "aerospace",
+    "defense", "defence", "space", "hardware", "software", "cloud",
+    "analytics", "automation", "iot", "semiconductors", "materials",
+    "therapeutics", "diagnostics", "devices", "computing", "networks",
+    "developer", "devtools", "tools", "and", "the", "of", "for",
+})
+
+
+def is_theme_label(name):
+    """True when every token of ``name`` is a taxonomy/category word.
+
+    Such a name labels a theme page that profiles other companies; it
+    cannot be a single company's name (#460).
+    """
+    tokens = re.findall(r"[a-z0-9]+", str(name).casefold())
+    return len(tokens) >= 2 and all(t in THEME_LABEL_TOKENS
+                                    for t in tokens)
+
+
+# One partner contributes at most a couple of candidate URLs for one
+# company (URL variants of its profile page). A "lead" aggregating
+# many distinct candidate URLs per mentioning partner is a listing
+# page scraped as a subject (#460): the Partech "Full Profile" lead
+# carried ~30 different companies' profile URLs as its evidence.
+LEAD_MAX_URLS_PER_PARTNER = 2
+LEAD_URL_FLOOR = 5
+
 
 def _slug_derived_name(url):
     """Display name from the last URL path segment, title-cased.
@@ -1014,6 +1062,10 @@ def produce_startup_leads(artifact_dir, data_dir, run, exclude_slugs=()):
         name = clean_lead_name(name, row.get("candidate_url") or "")
         if not name or slug(name) in known:
             continue
+        # Theme/category pages are not companies (#460): a name made
+        # only of taxonomy words labels a page profiling other firms.
+        if is_theme_label(name):
+            continue
         bucket = grouped[name]
         if row.get("partner"):
             bucket["partners"].add(row["partner"])
@@ -1023,6 +1075,15 @@ def produce_startup_leads(artifact_dir, data_dir, run, exclude_slugs=()):
         for url in (row.get("source_url"), row.get("candidate_url")):
             if url:
                 bucket["evidence"].add(url)
+    # Listing-page artifacts (#460): a subject whose evidence spans
+    # many distinct candidate URLs per mentioning partner is a
+    # portfolio listing scraped as one "company", not a company.
+    grouped = {
+        name: bucket for name, bucket in grouped.items()
+        if len(bucket["urls"]) <= max(
+            LEAD_URL_FLOOR,
+            LEAD_MAX_URLS_PER_PARTNER * max(1, len(bucket["partners"])))
+    }
     ranked = sorted(
         grouped.items(),
         key=lambda kv: (-len(kv[1]["partners"]), -bool(kv[1]["website"]),

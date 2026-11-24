@@ -302,6 +302,81 @@ class BuildTests(FixtureCase):
             "some-very-long-named-australian-technology-company-holdings-group",
         })
 
+    def test_theme_pages_are_not_startup_leads(self):
+        # #460: Madrona's Companies nav lists theme pages (AI &
+        # Intelligent Apps, Consumer & Marketplace, ...) that profile
+        # other companies. A name built only from taxonomy words is a
+        # theme label, never a company lead.
+        rows = [
+            {"partner": "Madrona", "kind": "companies",
+             "name": "AI-Enabled Biotech",
+             "candidate_url":
+                 "https://www.madrona.com/companies/ai-enabled-biotech/",
+             "source_url": "https://www.madrona.com/companies/"},
+            {"partner": "Madrona", "kind": "companies",
+             "name": "Consumer & Marketplace",
+             "candidate_url":
+                 "https://www.madrona.com/companies/consumer-marketplace/",
+             "source_url": "https://www.madrona.com/companies/"},
+            {"partner": "Madrona", "kind": "companies",
+             "name": "Data & Infrastructure",
+             "candidate_url":
+                 "https://www.madrona.com/companies/data-infrastructure/",
+             "source_url": "https://www.madrona.com/companies/"},
+            # A real company on the same listing still leads.
+            {"partner": "Madrona", "kind": "companies",
+             "name": "Vilya",
+             "candidate_url": "https://www.madrona.com/companies/vilya/",
+             "source_url": "https://www.madrona.com/companies/"},
+        ]
+        write_json(self.artifact / "latest-profiles.json",
+                   {"candidates": rows})
+        _, added, _ = self.build()
+        leads = {e["subject_key"] for e in added
+                 if e["kind"] == "startup-lead"}
+        self.assertEqual(leads, {"vilya"})
+
+    def test_listing_page_subject_is_not_a_startup_lead(self):
+        # #460: the Partech "Full Profile" lead aggregated ~30
+        # different companies' profile URLs as one subject's evidence.
+        rows = [
+            {"partner": "Partech", "kind": "companies",
+             "name": "Full Profile",
+             "candidate_url":
+                 f"https://partechpartners.com/companies/company-{i}",
+             "source_url": "https://partechpartners.com/companies"}
+            for i in range(12)
+        ]
+        # The same company listed by several partners, one profile URL
+        # each, is a genuine lead and survives the guard.
+        for partner in ("Airtree", "Blackbird", "Square Peg"):
+            rows.append(
+                {"partner": partner, "kind": "companies",
+                 "name": "Multi Partner Co",
+                 "candidate_url":
+                     f"https://{partner.lower().replace(' ', '')}.example"
+                     "/portfolio/multi-partner-co",
+                 "source_url":
+                     f"https://{partner.lower().replace(' ', '')}.example"
+                     "/portfolio"})
+        write_json(self.artifact / "latest-profiles.json",
+                   {"candidates": rows})
+        _, added, _ = self.build()
+        leads = {e["subject_key"] for e in added
+                 if e["kind"] == "startup-lead"}
+        self.assertEqual(leads, {"multi-partner-co"})
+
+    def test_is_theme_label_unit(self):
+        is_theme = queue_mod.is_theme_label
+        self.assertTrue(is_theme("AI & Intelligent Apps"))
+        self.assertTrue(is_theme("Data & Infrastructure"))
+        self.assertFalse(is_theme("Vilya"))
+        self.assertFalse(is_theme("NewCo One"))
+        # One taxonomy word plus a distinctive word is a name.
+        self.assertFalse(is_theme("Data Zoo"))
+        # A single taxonomy word alone is not enough to fire.
+        self.assertFalse(is_theme("Fintech"))
+
     def test_clean_lead_name_unit(self):
         clean = queue_mod.clean_lead_name
         self.assertEqual(
