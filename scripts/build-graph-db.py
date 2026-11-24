@@ -89,7 +89,11 @@ def build(source, target, data_dir=None, mappings=None):
             db.execute('INSERT INTO articles VALUES (?,?,?)', (article['startup_id'], article.get('published_on'), encode(article)))
         for item in graph['entities']:
             db.execute('INSERT INTO entities VALUES (?,?,?,?)', (item['id'], item['kind'], item['name'], encode(item)))
-            db.execute('INSERT INTO entity_search VALUES (?,?,?,?)', (item['id'], item['name'], item.get('summary', ''), ' '.join(related[item['id']])))
+            # Aliases (former/alternate names from the identity registry) are
+            # folded into the indexed connections text so alias searches find
+            # the entity; the FTS columns are index-only and never displayed.
+            searchable = related[item['id']] + [alias for alias in (item.get('aliases') or []) if alias != item['name']]
+            db.execute('INSERT INTO entity_search VALUES (?,?,?,?)', (item['id'], item['name'], item.get('summary', ''), ' '.join(searchable)))
         for name, content in documents.items():
             db.execute('INSERT INTO source_documents VALUES (?,?,?)',
                        (name, hashlib.sha256(content.encode('utf-8')).hexdigest(), content))
