@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {companyContext, cohort, cohortNames, comparableEvent, currencies, makeView, formatValue, treemap} from '../web/treemap-model.js';
 import * as model from '../web/treemap-model.js';
+import {indexCompanies} from '../web/atlas-exploration.js';
 const company = (id, name=id, founded_year) => ({id, kind:'startup', name, founded_year});
 const event = (id, startup_id, announced_on, value, currency='USD', extra={}) => ({id, startup_id, announced_on, amount:value, valuation:value, currency, valuation_currency:currency, source:'https://example.com/evidence', ...extra});
 const graph = {entities:[company('a','Alpha',2013),company('b','Beta',0),company('c','Gamma',2005),{id:'person:a',kind:'person',name:'Not a company'}], funding_rounds:[event('a-old','a','2020-01-01',10),event('a-new','a','2025-01-01',20),event('a-aud','a','2026-01-01',200,'AUD'),event('b-text','b','2026-02-01',null),event('c-aud','c','2022-01-01',30,'AUD')]};
@@ -258,4 +259,34 @@ test('company context carries the derived value, listing and full valuation hist
   assert.equal(bare.value, null);
   assert.equal(bare.listing, null);
   assert.deepEqual(bare.valueHistory, []);
+});
+
+test('tile ticker shows only for listed tiles large enough for the extra line',()=>{
+  const listed={basis:'market-cap',event:{ticker:'PATH',exchange:'NYSE'},width:128,height:236};
+  assert.equal(model.tileTicker(listed),'NYSE: PATH');
+  assert.equal(model.tileTicker({...listed,width:100,height:96}),'NYSE: PATH');
+  assert.equal(model.tileTicker({...listed,width:99}),'');
+  assert.equal(model.tileTicker({...listed,height:95}),'');
+  assert.equal(model.tileTicker({...listed,basis:'valuation'}),'');
+  assert.equal(model.tileTicker({...listed,event:{}}),'');
+  assert.equal(model.tileTicker({...listed,event:undefined}),'');
+  assert.equal(model.tileTicker(null),'');
+});
+
+test('published listed companies keep their tickers at desktop board sizes (#414b regression)',async()=>{
+  const published=JSON.parse(await readFile('data/graph.json','utf8'));
+  const evidence=JSON.parse(await readFile('data/treemap-evidence.json','utf8'));
+  const indexed=model.indexTreemapEvidence(published,evidence);
+  const companyValues=model.indexCompanyValues(published,indexed);
+  const dimensions=indexCompanies(published,indexed.technology);
+  const companies=published.entities.filter(entity=>entity.kind==='startup');
+  const view=makeView(published,{metric:model.COMPANY_VALUE,currency:'USD',group:'technology',dimensions,companies,marketCaps:indexed.marketCaps,companyValues});
+  // The default company-value board groups tiles into narrow columns; the two
+  // listed tiles lay out ~105-160px wide, below the original 132px gate.
+  for(const [width,height] of [[1400,580],[1200,520]]) {
+    const tiles=new Map(model.groupedTreemap(view.groups,width,height,{heading:44}).flatMap(group=>group.tiles).map(tile=>[tile.id,tile]));
+    assert.equal(model.tileTicker(tiles.get('startup:uipath')),'NYSE: PATH',`UiPath ticker at ${width}x${height}`);
+    assert.equal(model.tileTicker(tiles.get('startup:wise')),'Nasdaq: WSE',`Wise ticker at ${width}x${height}`);
+    assert.equal(model.tileTicker(tiles.get('startup:revolut')),'','Private companies carry no ticker');
+  }
 });

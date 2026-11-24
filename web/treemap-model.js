@@ -171,6 +171,20 @@ export function companyFigure(graph, entity, metric, currency, marketCaps = [], 
   return observation(observations(graph, metric, marketCaps).filter(record => record.startup_id === entity.id), metric, currency);
 }
 
+// The EXCHANGE: TICKER line for a listed company's tile, or '' when the tile
+// carries no listing or is too small for the extra line. The company-value
+// board groups companies into narrow columns (the two listed tiles lay out
+// ~105-130px wide on a desktop board), so the gate is calibrated to those
+// tiles — the original 132px minimum was written for the market-cap view,
+// where two companies fill the whole board, and silently suppressed every
+// ticker in the default view.
+export function tileTicker(tile) {
+  if (!tile || tile.basis !== 'market-cap') return '';
+  const {ticker, exchange} = tile.event || {};
+  if (typeof ticker !== 'string' || !ticker.trim() || typeof exchange !== 'string' || !exchange.trim()) return '';
+  return tile.width >= 100 && tile.height >= 96 ? `${exchange}: ${ticker}` : '';
+}
+
 export function makeView(graph, {metric = 'valuation', currency = 'USD', query = '', period = 'all', group:grouping = 'decade', dimensions, companies = graph.entities, marketCaps = [], companyValues = new Map()} = {}) {
   const population = matchingCompanies(companies, query).filter(entity => period === 'all' || cohort(entity) === period);
   const rows = [], missing = [], missingFigures = new Map(), groups = new Map();

@@ -4,7 +4,7 @@ import { entityHref, kindName } from './graph-model.js';
 import { logoFor, logoClassFor } from './logos.js';
 import {
   COLOURS, COMPANY_VALUE, GROUPS, METRICS, cohort, cohortNames, colourEncoding, companyContext, companyFigure, currencies,
-  formatValue, groupedTreemap, indexCompanyValues, loadTreemapEvidence, makeView, treemap, validYear,
+  formatValue, groupedTreemap, indexCompanyValues, loadTreemapEvidence, makeView, tileTicker, treemap, validYear,
 } from './treemap-model.js';
 import { animateAtlasChange, canAnimateAtlasChange, icon } from './atlas-ui.js';
 import { companyPlaceLabel, countryName, explorationHref, filterCompanies, hasCompanyScope, indexCompanies, multipleHeadquarters, readExploration, writeExploration } from './atlas-exploration.js';
@@ -386,6 +386,7 @@ function tileMarkup(tile, aggregate = false) {
   const target = aggregate ? `data-period="${esc(tile.id)}"`
     : `data-company="${esc(tile.id)}" aria-pressed="${state.selected === tile.id}" aria-controls="treemap-detail"`;
   const markOnly = !valueLayout && (tile.width < 70 || tile.height < 70);
+  const ticker = aggregate ? '' : tileTicker(tile);
   return `<button type="button" class="treemap-tile ${size}${valueLayout}${markOnly ? ' mark-only' : ''}${state.metric === 'companies' && !aggregate ? ' count-company' : ''}"
     ${target} aria-label="${esc(description)}"${basis ? ` title="${esc(description)}"` : ''} style="${tileBounds(tile)};--tile-color:${colour.fill}">
     <span class="treemap-tile-inner">
@@ -393,7 +394,7 @@ function tileMarkup(tile, aggregate = false) {
       ${figureBadge(basis)}
       <span class="treemap-tile-identity">${aggregate || !state.logos ? '' : mark(entity)}<span class="treemap-tile-copy"><span class="treemap-tile-name">${esc(name)}</span>${meta ? `<span class="treemap-tile-meta">${esc(meta)}</span>` : ''}</span></span>
       ${aggregate || state.metric !== 'companies' ? `<span class="treemap-value">${esc(figureAmount(tile))}</span>` : ''}
-      ${!aggregate && basis === 'market-cap' && event?.ticker && tile.width >= 132 && tile.height >= 96 ? `<span class="treemap-tile-ticker">${esc(event.exchange)}: ${esc(event.ticker)}</span>` : ''}
+      ${ticker ? `<span class="treemap-tile-ticker">${esc(ticker)}</span>` : ''}
     </span>
   </button>`;
 }
