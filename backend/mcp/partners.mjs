@@ -71,15 +71,49 @@ function validateAmounts(amounts) {
       throw new EntryError('VALIDATION_ERROR','An ambiguous amount must not carry an assumption; resolve it explicitly or leave it unconverted.');
   }
 }
+// Partner relationships (docs/KG-CONNECTIVE-TISSUE.md §3): an optional
+// `relationships` list on a reviewed partner record declares typed links
+// to other entities — {type, target, note, source} with an optional
+// per-entry reviewed_at. `member_of_network` is the first type (network /
+// brand-family membership, e.g. the Draper Venture Network); new types are
+// added here and to the design doc together. `aliases` is an optional list
+// of other names the partner is known by, so crawls resolve to this record
+// instead of re-proposing a merge.
+const RELATIONSHIP_TYPES=['member_of_network'];
+const RELATIONSHIP_KEYS=['type','target','note','source','reviewed_at'];
+const CANONICAL_ID=/^[a-z]+:[a-z0-9][a-z0-9-]*$/;
+function validateRelationships(relationships) {
+  if (!Array.isArray(relationships) || relationships.length>10)
+    throw new EntryError('VALIDATION_ERROR','relationships must be an array of at most 10 entries.');
+  for (const item of relationships) {
+    if (!item || typeof item!=='object' || Array.isArray(item) || Object.keys(item).some(k=>!RELATIONSHIP_KEYS.includes(k)))
+      throw new EntryError('VALIDATION_ERROR','Each relationship must contain only type, target, note, source and optional reviewed_at.');
+    if (!RELATIONSHIP_TYPES.includes(item.type))
+      throw new EntryError('VALIDATION_ERROR','Each relationship type must be one of: '+RELATIONSHIP_TYPES.join(', ')+'.');
+    if (typeof item.target!=='string' || !CANONICAL_ID.test(item.target))
+      throw new EntryError('VALIDATION_ERROR','Each relationship target must be a canonical entity id such as partner:draper-venture-network.');
+    if (typeof item.note!=='string' || item.note.trim().length<8 || item.note.length>500)
+      throw new EntryError('VALIDATION_ERROR','Each relationship note must be 8–500 characters.');
+    if (!safeURL(item.source)) throw new EntryError('VALIDATION_ERROR','Each relationship source must be an HTTPS URL without credentials.');
+    if (item.reviewed_at!==undefined && !isDateString(item.reviewed_at))
+      throw new EntryError('VALIDATION_ERROR','Each relationship reviewed_at must be a valid YYYY-MM-DD date.');
+  }
+}
+function validateAliases(aliases) {
+  if (!Array.isArray(aliases) || aliases.length>10 || aliases.some(a=>typeof a!=='string' || !a.trim() || a.length>200))
+    throw new EntryError('VALIDATION_ERROR','aliases must be an array of at most 10 names of up to 200 characters.');
+}
 function validateRecord(record) {
-  if (!record || Array.isArray(record) || typeof record!=='object' || Object.keys(record).some(k=>!['website','description','source','reviewed_at','amounts'].includes(k)))
-    throw new EntryError('VALIDATION_ERROR','Record must contain only website, description, source, reviewed_at and optional amounts.');
+  if (!record || Array.isArray(record) || typeof record!=='object' || Object.keys(record).some(k=>!['website','description','source','reviewed_at','amounts','aliases','relationships'].includes(k)))
+    throw new EntryError('VALIDATION_ERROR','Record must contain only website, description, source, reviewed_at and optional amounts, aliases and relationships.');
   if (!safeURL(record.website) || !safeURL(record.source)) throw new EntryError('VALIDATION_ERROR','Website and source must be HTTPS URLs without credentials.');
   if (typeof record.description!=='string' || record.description.trim().length<8 || record.description.length>500)
     throw new EntryError('VALIDATION_ERROR','Description must be 8–500 characters.');
   if (typeof record.reviewed_at!=='string' || !/^\d{4}-\d{2}-\d{2}$/.test(record.reviewed_at) || Number.isNaN(Date.parse(record.reviewed_at+'T00:00:00Z')) || new Date(record.reviewed_at+'T00:00:00Z').toISOString().slice(0,10)!==record.reviewed_at || record.reviewed_at>new Date().toISOString().slice(0,10))
     throw new EntryError('VALIDATION_ERROR','reviewed_at must be a valid non-future date in YYYY-MM-DD format.');
   if (record.amounts!==undefined) validateAmounts(record.amounts);
+  if (record.aliases!==undefined) validateAliases(record.aliases);
+  if (record.relationships!==undefined) validateRelationships(record.relationships);
 }
 export class PartnerStore {
   constructor(root,{writeEnabled=false}={}) {

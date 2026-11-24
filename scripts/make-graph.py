@@ -26,7 +26,17 @@ or renamed, so old readers ignore the new fields):
 Relationship vocabulary: ``founded``, ``team_member``, ``supports``,
 ``supports_programme``, ``offers``, ``programme_relationship``,
 ``led_round``, ``participated_in``, ``subsidiary_of``, ``integrates_with``,
-``listed_in_portfolio``.
+``listed_in_portfolio``, ``member_of_network``.
+
+Partner relationships: a reviewed partner record may carry an optional
+``relationships`` list — ``{"type", "target", "note", "source"}`` entries
+(plus an optional per-entry ``reviewed_at``) declaring typed links to
+other entities, e.g. ``member_of_network`` for a fund that belongs to a
+network alliance such as the Draper Venture Network. Each entry emits an
+edge of kind ``type`` from the partner to the resolved ``target`` node,
+with ``note`` as the description. An unknown or self target fails the
+build, exactly like a startup relationship. See
+``docs/KG-CONNECTIVE-TISSUE.md`` §3.
 
 Edges from a portfolio are only labelled as the source describes; source text is
 not evidence of an investment round or an active provider entitlement.
@@ -332,6 +342,27 @@ def build_graph(profiles, leads, reviewed, catalogue, research, identity=None,
             emit({'from': startup_id, 'to': target, 'kind': relation['kind'],
                   'description': relation['description'], 'source': relation['source']},
                  relation.get('reviewed_at') or research_reviewed)
+    # Partner relationships (reviewed records, §3): typed links such as
+    # member_of_network from a partner to a network entity. Emitted in
+    # the same second pass as startup relationships so every possible
+    # target node already exists.
+    for name in leads:
+        record = reviewed.get(name, {})
+        relations = record.get('relationships') or []
+        if not relations:
+            continue
+        partner_id = resolve('partner:' + slug(name))
+        if partner_id not in nodes:
+            continue
+        for relation in relations:
+            target = resolve(relation['target'])
+            if target not in nodes or target == partner_id:
+                raise ValueError(
+                    f'Unknown or self relationship target: {relation["target"]}')
+            emit({'from': partner_id, 'to': target, 'kind': relation['type'],
+                  'description': relation.get('note', ''),
+                  'source': relation['source']},
+                 relation.get('reviewed_at') or record.get('reviewed_at'))
     round_ids = [round['id'] for round in rounds]
     if len(round_ids) != len(set(round_ids)):
         raise ValueError('Funding round identifiers must be unique')

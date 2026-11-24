@@ -629,14 +629,47 @@
       "source": ""
     },
     {
-      "id": "partner:draper",
-      "canonical_id": "partner:draper",
+      "id": "partner:draper-associates",
+      "canonical_id": "partner:draper-associates",
+      "aliases": [
+        "Draper",
+        "Draper VC"
+      ],
+      "kind": "partner",
+      "name": "Draper Associates",
+      "summary": "Tim Draper's early-stage venture capital firm, founded 1985 and headquartered in San Mateo, California, backing frontier-technology founders worldwide (about US$2.3B AUM, 400+ companies backed). draper.vc is its website; the crawl candidate 'Draper VC' is this firm, and it anchors the Draper Venture Network.",
+      "website": "https://draper.vc/",
+      "source": "https://draper.vc/"
+    },
+    {
+      "id": "partner:draper-b1",
+      "canonical_id": "partner:draper-b1",
       "aliases": [],
       "kind": "partner",
-      "name": "Draper",
-      "summary": "",
-      "website": "",
-      "source": ""
+      "name": "Draper B1",
+      "summary": "Seed and early-stage venture capital firm based in Valencia, Spain. Founded 2010 as Bbooster (Spain's first accelerator), joined the Draper Venture Network in 2017 and rebranded to Draper B1 in 2020. Founding partner Enrique Penichet; latest vehicle, Draper B1 Frontier Tech, closed over €20M.",
+      "website": "https://draperb1.vc/",
+      "source": "https://draperb1.vc/"
+    },
+    {
+      "id": "partner:draper-startup-house",
+      "canonical_id": "partner:draper-startup-house",
+      "aliases": [],
+      "kind": "partner",
+      "name": "Draper Startup House",
+      "summary": "Global network of entrepreneur co-living and coworking houses (15+ locations) plus a pre-seed accelerator in Austin investing up to about US$150k per startup. Founded 2018 in Singapore as Tribe Theory by Vikram Bharati; joined the Draper Venture Network in 2019 and rebranded. HQ Singapore.",
+      "website": "https://draperstartuphouse.com/",
+      "source": "https://businessabc.net/wiki/draper-startup-house"
+    },
+    {
+      "id": "partner:draper-venture-network",
+      "canonical_id": "partner:draper-venture-network",
+      "aliases": [],
+      "kind": "partner",
+      "name": "Draper Venture Network",
+      "summary": "Self-governed alliance of 20+ independent venture funds founded by Tim Draper (origins in 1990 as the DFJ Network). Member funds raise and manage their own capital while sharing deal flow, diligence and co-investment across geographies; Draper Associates is the anchor firm.",
+      "website": "https://www.drapernetwork.com/",
+      "source": "https://www.kauffmanfellows.org/journal/sid-mofya-on-draper-venture-network-network-of-funds"
     },
     {
       "id": "partner:elad-gil",
@@ -7751,6 +7784,63 @@
         "sources": 1,
         "source_types": [
           "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:draper-associates",
+      "to": "partner:draper-venture-network",
+      "kind": "member_of_network",
+      "description": "Anchor member firm of the Draper Venture Network; The Block's mapping of the network lists Draper Associates among its member funds.",
+      "source": "https://www.theblock.co/research/funding/mapping-out-draper-venture-network-portfolio-243385",
+      "first_seen": "2026-11-24",
+      "last_verified": "2026-11-24",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:draper-b1",
+      "to": "partner:draper-venture-network",
+      "kind": "member_of_network",
+      "description": "Member fund of the Draper Venture Network since 2017 (joined as Bbooster); The Block's mapping of the network lists Draper B1 among its member funds.",
+      "source": "https://www.theblock.co/research/funding/mapping-out-draper-venture-network-portfolio-243385",
+      "first_seen": "2026-11-24",
+      "last_verified": "2026-11-24",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:draper-startup-house",
+      "to": "partner:draper-venture-network",
+      "kind": "member_of_network",
+      "description": "Joined the Draper Venture Network in 2019 (as Tribe Theory) and rebranded as Draper Startup House.",
+      "source": "https://businessabc.net/wiki/draper-startup-house",
+      "first_seen": "2026-11-24",
+      "last_verified": "2026-11-24",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
         ],
         "agreement": false,
         "inferred": false

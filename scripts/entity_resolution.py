@@ -452,19 +452,24 @@ def build_registry(data_dir=None, source_revision=None, generated_at=None):
                 'entities': entities, 'merges': []}
 
     # Partners: every lead is seeded; reviewed records supply the
-    # website host. Unreviewed leads have no website on file, so they
-    # are name-only and can never auto-merge.
+    # website host and any reviewed ``aliases`` (names a partner is
+    # also known by — e.g. a crawl candidate that turned out to be
+    # this firm — recorded so future crawls resolve to this entity
+    # instead of re-proposing a merge). Unreviewed leads have no
+    # website on file, so they are name-only and can never auto-merge.
     for name in leads:
         record = reviewed.get(name, {})
         key, basis = identity_key_for('partner', website=record.get('website'))
-        _add_entity(entities, 'partner', name, key, basis, updated_at=now)
+        _add_entity(entities, 'partner', name, key, basis,
+                    aliases=record.get('aliases'), updated_at=now)
     # Reviewed partners not in the leads list (none today, but the
     # seed must not silently drop a reviewed record).
     for name, record in reviewed.items():
         if name not in leads:
             key, basis = identity_key_for(
                 'partner', website=record.get('website'))
-            _add_entity(entities, 'partner', name, key, basis, updated_at=now)
+            _add_entity(entities, 'partner', name, key, basis,
+                        aliases=record.get('aliases'), updated_at=now)
 
     # Startups from research first: their websites give the host key,
     # so profile-company rows below enrich rather than duplicate them.
