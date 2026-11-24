@@ -8075,6 +8075,26 @@
     {
       "from": "partner:airtree",
       "to": "startup:canva",
+      "kind": "participated_in",
+      "description": "Participated in Funding round round",
+      "source": "https://www.canva.com/newsroom/news/canva-announces-usd-40-billion-valuation-fueled-global-demand-visual-communication/",
+      "round_id": "canva-2021-09-15",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:airtree",
+      "to": "startup:canva",
       "kind": "supports",
       "description": "Listed in portfolio",
       "source": "https://jobs.airtree.vc/companies/airtree-2",
@@ -8190,12 +8210,52 @@
       "stale": false
     },
     {
+      "from": "partner:bessemer",
+      "to": "startup:canva",
+      "kind": "participated_in",
+      "description": "Participated in Funding round round",
+      "source": "https://www.canva.com/newsroom/news/canva-announces-usd-40-billion-valuation-fueled-global-demand-visual-communication/",
+      "round_id": "canva-2021-09-15",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:blackbird-ventures",
       "to": "startup:airwallex",
       "kind": "participated_in",
       "description": "Participated in Series F round",
       "source": "https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking",
       "round_id": "airwallex-2025-series-f",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:blackbird-ventures",
+      "to": "startup:canva",
+      "kind": "participated_in",
+      "description": "Participated in Funding round round",
+      "source": "https://www.canva.com/newsroom/news/canva-announces-usd-40-billion-valuation-fueled-global-demand-visual-communication/",
+      "round_id": "canva-2021-09-15",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.6,
@@ -8864,6 +8924,26 @@
       "source": "https://www.mseq.vc/all-companies",
       "first_seen": "2026-11-21",
       "last_verified": "2026-11-21",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:matrix",
+      "to": "startup:canva",
+      "kind": "participated_in",
+      "description": "Participated in Seed round round",
+      "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
+      "round_id": "canva-2013-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,
@@ -15407,7 +15487,12 @@
       "amount_text": "$3 million (currency unspecified)",
       "note": "The announcement reports $3 million, without specifying the currency.",
       "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
-      "stage_normalised": "Seed"
+      "stage_normalised": "Seed",
+      "participants": [
+        "Matrix Partners",
+        "InterWest Partners",
+        "500 Startups"
+      ]
     },
     {
       "startup_id": "startup:canva",
@@ -15420,7 +15505,18 @@
       "valuation_currency": "USD",
       "note": "Announced valuation; historical, not a current valuation.",
       "source": "https://www.canva.com/newsroom/news/canva-announces-usd-40-billion-valuation-fueled-global-demand-visual-communication/",
-      "stage_normalised": "Unknown"
+      "stage_normalised": "Unknown",
+      "lead_investor": "T. Rowe Price",
+      "participants": [
+        "Franklin Templeton",
+        "Sequoia Capital Global Equities",
+        "Bessemer Venture Partners",
+        "Greenoaks Capital",
+        "Dragoneer Investments",
+        "Blackbird",
+        "Felicis",
+        "AirTree Ventures"
+      ]
     },
     {
       "startup_id": "startup:cauldron",
@@ -17090,10 +17186,12 @@
     "lead_investor 'Sapphire Ventures' for round culture-amp-2017-series-c (Culture Amp) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Sequoia Capital China' for round culture-amp-2019-series-e (Culture Amp) has no matching partner lead; led_round edge skipped",
     "lead_investor 'SoftBank Group' for round wayve-2024-series-c (Wayve) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'T. Rowe Price' for round canva-2021-09-15 (Canva) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Union Square Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; led_round edge skipped",
     "participant '1835i Ventures' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant '1835i Ventures' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant '1835i Ventures' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant '500 Startups' for round canva-2013-seed (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'AMD Ventures' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'ANZi Ventures' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'ANZi Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -17116,13 +17214,17 @@
     "participant 'DST Global' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'DST Global' for round airwallex-2025-series-f (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'DYNE Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Dragoneer Investments' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'EDGE Group' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Fairground' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2016-series-b (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2017-series-c (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Felicis' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'Folklore Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Franklin Templeton' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'G Squared' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Greenoaks Capital' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Hermitage Capital' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -17134,6 +17236,7 @@
     "participant 'Hostplus' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'In-Q-Tel' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'InterWest Partners' for round canva-2013-seed (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'Jelix Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
     "participant 'Jelix Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Lingotto' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -17174,6 +17277,7 @@
     "participant 'Sequoia Capital China' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round q-ctrl-2018-seed (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'Sequoia Capital Global Equities' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'Sierra Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Skip Capital' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Skip Capital' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
