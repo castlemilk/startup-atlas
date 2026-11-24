@@ -11,6 +11,8 @@ class CiPathTests(unittest.TestCase):
         self.assertEqual(self.selected('data/startup-research.json'), {'data', 'hosted'})
         self.assertEqual(self.selected('web/entity.js'), {'web'})
         self.assertEqual(self.selected('tests/analytics.test.js'), {'web'})
+        self.assertEqual(self.selected('tests/build-modules.test.js'), {'web'})
+        self.assertEqual(self.selected('scripts/build.mjs'), {'web'})
         self.assertEqual(self.selected('web/atlas-ui.css', 'data/graph.json'), {'data', 'web', 'hosted'})
 
     def test_data_changes_run_hosted_checks(self):
