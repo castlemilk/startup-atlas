@@ -8970,6 +8970,26 @@
     },
     {
       "from": "partner:square-peg",
+      "to": "startup:airwallex",
+      "kind": "participated_in",
+      "description": "Participated in Series E extension (E2) round",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-sustains-ususd5-6-bn-valuation-with-ususd100-m-series-e-extension",
+      "round_id": "airwallex-2022-series-e2",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:square-peg",
       "to": "startup:canva",
       "kind": "supports",
       "description": "Listed in portfolio",
@@ -14967,6 +14987,69 @@
     },
     {
       "startup_id": "startup:airwallex",
+      "id": "airwallex-2021-series-e",
+      "stage": "Series E",
+      "announced_on": "2021-09-20",
+      "amount": 200000000,
+      "currency": "USD",
+      "valuation": 4000000000,
+      "valuation_currency": "USD",
+      "note": "Initial Series E financing; not lifetime equity raised. Valuation is historical.",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-raised-usd200-million-series-e-funding-round-led-by-lone-pine",
+      "stage_normalised": "Series E",
+      "lead_investor": "Lone Pine Capital",
+      "participants": [
+        "G Squared",
+        "Vetamer Capital",
+        "1835i Ventures",
+        "DST Global",
+        "Salesforce Ventures",
+        "Sequoia Capital China"
+      ]
+    },
+    {
+      "startup_id": "startup:airwallex",
+      "id": "airwallex-2021-series-e1",
+      "stage": "Series E extension (E1)",
+      "announced_on": "2021-11-18",
+      "amount": 100000000,
+      "currency": "USD",
+      "valuation": 5500000000,
+      "valuation_currency": "USD",
+      "note": "Incremental E1 financing, not the US$300 million Series E total after E1. Valuation is historical.",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-raises-additional-usd100-million-in-series-e1-led-by-lone-pine",
+      "stage_normalised": "Series E",
+      "lead_investor": "Lone Pine Capital",
+      "participants": [
+        "1835i Ventures",
+        "Sequoia Capital China"
+      ]
+    },
+    {
+      "startup_id": "startup:airwallex",
+      "id": "airwallex-2022-series-e2",
+      "stage": "Series E extension (E2)",
+      "announced_on": "2022-10-11",
+      "amount": 100000000,
+      "currency": "USD",
+      "valuation": 5600000000,
+      "valuation_currency": "USD",
+      "note": "Incremental E2 financing, not cumulative equity raised. Announcement date, not closing date. Valuation is historical; no lead investor named.",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-sustains-ususd5-6-bn-valuation-with-ususd100-m-series-e-extension",
+      "stage_normalised": "Series E",
+      "participants": [
+        "Square Peg",
+        "Salesforce Ventures",
+        "Sequoia Capital China",
+        "Lone Pine Capital",
+        "Hermitage Capital",
+        "1835i Ventures",
+        "Tencent",
+        "HostPlus"
+      ]
+    },
+    {
+      "startup_id": "startup:airwallex",
       "id": "airwallex-2025-series-f",
       "stage": "Series F",
       "announced_on": "2025-05-21",
@@ -15837,6 +15920,20 @@
     },
     {
       "startup_id": "startup:airwallex",
+      "title": "Airwallex — Series E",
+      "url": "https://www.airwallex.com/global/newsroom/airwallex-raised-usd200-million-series-e-funding-round-led-by-lone-pine",
+      "published_on": "2021-09-20",
+      "kind": "funding source"
+    },
+    {
+      "startup_id": "startup:airwallex",
+      "title": "Airwallex — Series E extension (E1)",
+      "url": "https://www.airwallex.com/global/newsroom/airwallex-raises-additional-usd100-million-in-series-e1-led-by-lone-pine",
+      "published_on": "2021-11-18",
+      "kind": "funding source"
+    },
+    {
+      "startup_id": "startup:airwallex",
       "title": "Airwallex — Series F",
       "url": "https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking",
       "published_on": "2025-05-21",
@@ -15847,6 +15944,13 @@
       "title": "Airwallex — Series H",
       "url": "https://www.airwallex.com/global/newsroom/airwallex-secures-320-million-in-series-h-funding-valuation-hits-11-billion",
       "published_on": "2026-06-25",
+      "kind": "funding source"
+    },
+    {
+      "startup_id": "startup:airwallex",
+      "title": "Airwallex — Series E extension (E2)",
+      "url": "https://www.airwallex.com/global/newsroom/airwallex-sustains-ususd5-6-bn-valuation-with-ususd100-m-series-e-extension",
+      "published_on": "2022-10-11",
       "kind": "funding source"
     },
     {
@@ -16734,6 +16838,8 @@
     "lead_investor 'Breakthrough Victoria' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Burda Principal Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Greenoaks' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'MegaChips' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; led_round edge skipped",
     "lead_investor 'NEA' for round synthesia-2025-series-d (Synthesia) has no matching partner lead; led_round edge skipped",
     "lead_investor 'QIC Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; led_round edge skipped",
@@ -16741,6 +16847,9 @@
     "lead_investor 'Sequoia Capital China' for round culture-amp-2019-series-e (Culture Amp) has no matching partner lead; led_round edge skipped",
     "lead_investor 'SoftBank Group' for round wayve-2024-series-c (Wayve) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Union Square Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; led_round edge skipped",
+    "participant '1835i Ventures' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant '1835i Ventures' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant '1835i Ventures' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'ANZi Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Activant' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Anorak Ventures' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; participated_in edge skipped",
@@ -16752,20 +16861,25 @@
     "participant 'Climate X' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
     "participant 'Costanoa Ventures' for round bugcrowd-2024-growth (Bugcrowd) has no matching partner lead; participated_in edge skipped",
     "participant 'DST Global Partners' for round fluency-2026-02-usd-seed (Fluency) has no matching partner lead; participated_in edge skipped",
+    "participant 'DST Global' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'DYNE Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Fairground' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2016-series-b (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2017-series-c (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Folklore Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'G Squared' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Hermitage Capital' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Horizons Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'HostPlus' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'Jelix Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
     "participant 'Jelix Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Lingotto' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Lone Pine Capital' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'MA Financial Growth Ventures Fund' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Main Sequence Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Microsoft' for round wayve-2024-series-c (Wayve) has no matching partner lead; participated_in edge skipped",
@@ -16779,19 +16893,26 @@
     "participant 'R3I Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Rally Ventures' for round bugcrowd-2024-growth (Bugcrowd) has no matching partner lead; participated_in edge skipped",
     "participant 'Robinhood Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Salesforce Ventures' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Salesforce Ventures' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round arkeus-2023-seed (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Sapphire Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Sequoia Capital China' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Sequoia Capital China' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Sequoia Capital China' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Sierra Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Skip Capital' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Skip Capital' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'T. Rowe Price' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'TIAA Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Temasek' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; participated_in edge skipped",
+    "participant 'Tencent' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Trinity Ventures' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Ultratech Capital Partners' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'UniSuper' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'Uniseed' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
+    "participant 'Vetamer Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'W23' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped"
   ]
 }
