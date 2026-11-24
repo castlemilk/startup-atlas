@@ -291,6 +291,13 @@ function card(e) {
     const d = e.draft_round;
     c.append(el('p', [d.startup, d.stage, d.amount, d.currency, d.date].filter(Boolean).join(' · ')));
   }
+  if (e.kind === 'fact' && e.draft_value) {
+    const d = e.draft_value;
+    const listing = d.ticker ? [d.exchange, d.ticker].filter(Boolean).join(': ') : '';
+    const figure = [d.event, d.stage, d.amount, d.currency, d.date, listing].filter(Boolean).join(' · ');
+    c.append(el('p', (d.approximate ? '≈ ' : '') + figure));
+    if (d.source_url) { const p = el('p', null, 'meta'); p.append(document.createTextNode('source: ')); p.append(link(d.source_url)); c.append(p); }
+  }
   if (e.kind === 'startup-lead' && e.mentions) {
     c.append(el('p', 'mentioned by: ' + (e.mentions.partners || []).join(', ') + (e.mentions.website ? ' · ' + e.mentions.website : ''), 'meta'));
   }

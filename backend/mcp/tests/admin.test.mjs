@@ -223,7 +223,11 @@ test('the admin account signs in, reads the queue, decides and undoes via GitHub
 
   const panel = await fetch(`${app.base}/admin`, { headers: { cookie } });
   assert.equal(panel.status, 200);
-  assert.match(await panel.text(), /review queue/);
+  const panelText = await panel.text();
+  assert.match(panelText, /review queue/);
+  // Fact cards must render draft_value (valuation/listing figures from the
+  // crawl intake) as well as draft_round, or reviewers decide them blind.
+  assert.match(panelText, /e\.draft_value/);
 
   const queueRes = await fetch(`${app.base}/admin/api/queue`, { headers: { cookie } });
   assert.equal(queueRes.status, 200);
