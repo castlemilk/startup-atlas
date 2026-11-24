@@ -62,6 +62,30 @@ class ExtractionTests(unittest.TestCase):
         candidates=crawl.extract_profile_media_leads('Example',page,'people')
         self.assertEqual({x['kind'] for x in candidates},{'image','social'})
         self.assertTrue(all(x['source_url']=='https://example.com/team' and x['review_required'] for x in candidates))
+    def test_social_resource_hint_never_masks_labelled_anchor(self):
+        # Crawl #46 included a YouTube JPEG preload as a social candidate.
+        # A same-URL hint can also come before a genuine labelled anchor.
+        source='https://www.joinef.com/'
+        thumbnail='https://img.youtube.com/vi/B_cm9tcJldo/maxresdefault.jpg'
+        channel='https://www.youtube.com/@Join_ef'
+        hint=f'<link rel="preload" as="fetch" href="{channel}">'
+        link=f'<a href="{channel}" aria-label="YouTube"></a>'
+        prefix=f'<link rel="preload" as="image" href="{thumbnail}">'
+        prefix+='<a href="https://youtube.com.example.org/@Join_ef">Lookalike</a>'
+        for dom in (hint+link,link+hint):
+            with self.subTest(dom=dom):
+                page={'final_url':source,'checked_at':'2026-11-23',
+                      **crawl.extract_page((prefix+dom+link).encode(),source)}
+                self.assertIn(thumbnail,[r['url'] for r in page['links']])
+                rows=crawl.extract_profile_media_leads('Entrepreneur First',page,'homepage')
+                self.assertEqual([(r['candidate_url'],r['name']) for r in rows],[(channel,'YouTube')])
+                self.assertTrue(rows[0]['review_required'])
+        page={'final_url':source,'checked_at':'2026-11-23',
+              **crawl.extract_page((prefix+hint).encode(),source)}
+        self.assertEqual(crawl.extract_profile_media_leads('Entrepreneur First',page,'homepage'),[])
+        self.assertEqual(crawl.extract_profile_media_leads(
+            'Entrepreneur First',{k:v for k,v in page.items() if k!='profile_social_links'},'homepage'),[])
+
     def test_team_image_reused_alt_is_review_evidence_not_identity(self):
         # FloodMapp /our-team reuses "Peter" beside several different named
         # staff cards. Preserve the label and URLs, without promoting either
