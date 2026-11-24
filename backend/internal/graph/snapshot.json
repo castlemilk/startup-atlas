@@ -9342,6 +9342,26 @@
     },
     {
       "from": "partner:square-peg",
+      "to": "startup:airwallex",
+      "kind": "participated_in",
+      "description": "Participated in Series C round",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-unicorn-series-C-DST-100m",
+      "round_id": "airwallex-2019-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:square-peg",
       "to": "startup:canva",
       "kind": "supports",
       "description": "Listed in portfolio",
@@ -15338,6 +15358,26 @@
   "funding_rounds": [
     {
       "startup_id": "startup:airwallex",
+      "id": "airwallex-2019-series-c",
+      "stage": "Series C",
+      "announced_on": "2019-03-26",
+      "amount": 100000000,
+      "currency": "USD",
+      "note": "Company announced a US$100 million Series C, distinct from cumulative capital raised of over US$200 million. The company reported valuation over US$1 billion, a lower bound, not an exact valuation. The announcement date is recorded, not an inferred closing date.",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-unicorn-series-C-DST-100m",
+      "stage_normalised": "Series C",
+      "lead_investor": "DST Global",
+      "participants": [
+        "Sequoia Capital China",
+        "Tencent",
+        "Hillhouse Capital",
+        "Gobi Partners",
+        "Horizons Ventures",
+        "Square Peg Capital"
+      ]
+    },
+    {
+      "startup_id": "startup:airwallex",
       "id": "airwallex-2020-series-d",
       "stage": "Series D",
       "announced_on": "2020-04-16",
@@ -16422,6 +16462,13 @@
     },
     {
       "startup_id": "startup:airwallex",
+      "title": "Airwallex — Series C",
+      "url": "https://www.airwallex.com/global/newsroom/airwallex-unicorn-series-C-DST-100m",
+      "published_on": "2019-03-26",
+      "kind": "funding source"
+    },
+    {
+      "startup_id": "startup:airwallex",
       "title": "Airwallex — Series D extension",
       "url": "https://www.airwallex.com/global/newsroom/airwallexs-extended-series-d-fundraising-brings-total-round-to-usd200m",
       "published_on": "2020-09-29",
@@ -17305,6 +17352,7 @@
     "lead_investor 'BlackRock' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Breakthrough Victoria' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Burda Principal Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'DST Global' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Galileo Ventures' for round andromeda-2023-12-pre-seed (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Greenoaks' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; led_round edge skipped",
@@ -17354,11 +17402,14 @@
     "participant 'Folklore Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Franklin Templeton' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'G Squared' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Gobi Partners' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Greenoaks Capital' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Hermitage Capital' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Hillhouse Capital' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Hillhouse Capital' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Horizons Ventures' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Horizons Ventures' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Horizons Ventures' for round q-ctrl-2018-seed (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Horizons Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
@@ -17398,6 +17449,7 @@
     "participant 'Salus Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Sapphire Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Sequoia Capital China' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -17410,6 +17462,7 @@
     "participant 'T. Rowe Price' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'TIAA Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Temasek' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; participated_in edge skipped",
+    "participant 'Tencent' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Tencent' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Tencent' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Trampoline' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
