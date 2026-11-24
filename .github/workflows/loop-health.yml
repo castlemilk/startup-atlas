@@ -1,0 +1,31 @@
+# For PR #405 (issues #375 + #385). The GitHub App cannot push files under
+# .github/workflows/, so this file must be added to branch
+# feat/loop-health-check via the GitHub web UI ("Add file" on the PR branch),
+# then PR #405's CI re-checked in the browser before merging.
+# The health script is stdlib-only and exits 1 when any check is RED, so a
+# failing scheduled run is the alert. The rendered report is kept as an
+# artifact for diagnosis.
+name: Loop health check
+on:
+  schedule:
+    # Daily 22:30 UTC = 09:30 AEDT — after the morning crawl/index cycle.
+    - cron: '30 22 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run loop health check
+        run: |
+          set -o pipefail
+          python3 scripts/loop_health_check.py | tee loop-health-report.txt
+      - name: Upload health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: loop-health-report
+          path: loop-health-report.txt
+          retention-days: 30
