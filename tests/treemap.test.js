@@ -290,3 +290,53 @@ test('published listed companies keep their tickers at desktop board sizes (#414
     assert.equal(model.tileTicker(tiles.get('startup:revolut')),'','Private companies carry no ticker');
   }
 });
+
+test('founder index applies the context evidence rules and derives initials (#415)',()=>{
+  const photo={id:'p1',kind:'person',name:'Ada Lovelace',logo:'https://example.com/ada.png',logo_source:'https://example.com/team'};
+  const bare={id:'p2',kind:'person',name:'Grace Brewster Hopper',logo:'https://example.com/grace.png'};
+  const plain={id:'p3',kind:'person',name:'Nik Storonsky',logo:'',logo_source:''};
+  const g={entities:[company('a','Alpha',2013),photo,bare,plain],edges:[
+    {from:'p1',to:'a',kind:'founded',source:'https://example.com/team'},
+    {from:'p1',to:'a',kind:'founded',source:'https://example.com/team'},
+    {from:'p2',to:'a',kind:'founded',source:'https://example.com/team'},
+    {from:'p3',to:'a',kind:'founded',source:'https://example.com/team'},
+    {from:'p1',to:'a',kind:'team_member',source:'https://example.com/team'},
+    {from:'p1',to:'a',kind:'founded',source:'javascript:bad'},
+    {from:'a',to:'p1',kind:'founded',source:'https://example.com/team'},
+  ]};
+  const founders=model.indexFounders(g).get('a');
+  assert.deepEqual(founders.map(founder=>founder.id),['p1','p2','p3'],'one entry per founder, edge order, duplicates and wrong kinds/directions excluded');
+  assert.equal(founders[0].photo,photo.logo,'photo carried when image and source are both HTTPS');
+  assert.equal(founders[0].initials,'AL');
+  assert.equal(founders[1].photo,'','a portrait URL without a recorded source is never shown');
+  assert.equal(founders[1].initials,'GB','initials use the first two name words');
+  assert.equal(founders[2].photo,'');
+  assert.equal(founders[2].initials,'NS');
+  assert.equal(model.indexFounders(g).has('p1'),false,'people never key the index');
+});
+
+test('founder index covers the published graph without inventing photos (#415)',async()=>{
+  const published=JSON.parse(await readFile('data/graph.json','utf8'));
+  const index=model.indexFounders(published);
+  assert.equal(index.size,54,'every startup but one has recorded founders');
+  const entries=[...index.values()].flat();
+  assert.equal(entries.length,118);
+  assert.equal(entries.filter(founder=>founder.photo).length,20,'photo entries match the graph-held portraits');
+  assert.equal(new Set(entries.filter(founder=>founder.photo).map(founder=>founder.id)).size,18,'across 18 distinct people');
+  assert.equal([...index.values()].filter(founders=>founders.some(founder=>founder.photo)).length,13,'across 13 companies');
+  const canva=index.get('startup:canva');
+  assert.deepEqual(canva.map(founder=>founder.initials),['CA','CO','MP']);
+  assert.ok(canva.every(founder=>founder.photo.endsWith('.png')));
+  assert.ok(index.get('startup:wise').every(founder=>founder.photo===''),'companies without recorded portraits fall back to initials');
+});
+
+test('tile founders render only on tiles large enough for the extra row (#415)',()=>{
+  const founders=[{id:'p1',name:'Ada Lovelace',initials:'AL',photo:''}];
+  assert.equal(model.tileFounders({width:128,height:236},founders),founders);
+  assert.equal(model.tileFounders({width:100,height:120},founders),founders);
+  assert.deepEqual(model.tileFounders({width:99,height:120},founders),[]);
+  assert.deepEqual(model.tileFounders({width:100,height:119},founders),[]);
+  assert.deepEqual(model.tileFounders({width:400,height:400},[]),[]);
+  assert.deepEqual(model.tileFounders({width:400,height:400},undefined),[]);
+  assert.deepEqual(model.tileFounders(null,founders),[]);
+});
