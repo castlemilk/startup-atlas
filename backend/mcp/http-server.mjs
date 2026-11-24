@@ -43,6 +43,7 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { CatalogueStore } from './store.mjs';
 import { createServer, WRITE_TOOLS } from './server.mjs';
+import { createAdmin } from './admin.mjs';
 import {
   GOOGLE_JWKS_URL,
   GOOGLE_TOKENINFO_URL,
@@ -100,7 +101,16 @@ export function buildConfig(env = process.env, argv = process.argv.slice(2)) {
     googleTokeninfoUrl: env.ATLAS_GOOGLE_TOKENINFO_URL ?? env.GOOGLE_TOKENINFO_URL ?? GOOGLE_TOKENINFO_URL,
     allowedEmails: parseEmailAllowList(env.ATLAS_GOOGLE_ALLOWED_EMAILS),
     writeEmails: parseEmailAllowList(env.ATLAS_GOOGLE_WRITE_EMAILS),
+    // Admin panel allow-list: ATLAS_ADMIN_EMAILS when set, otherwise the
+    // MCP write allow-list (in production both name the owner only).
+    adminEmails: parseEmailAllowList(env.ATLAS_ADMIN_EMAILS) ?? parseEmailAllowList(env.ATLAS_GOOGLE_WRITE_EMAILS),
     githubToken: env.ATLAS_GITHUB_TOKEN ?? '',
+    // Where the admin panel reads/writes data/review-queue.json through
+    // the GitHub Contents API. The API base is overridable for tests,
+    // like the GOOGLE_*_URL overrides.
+    githubRepo: env.ATLAS_GITHUB_REPO ?? 'castlemilk/startup-atlas',
+    githubBranch: env.ATLAS_GITHUB_BRANCH ?? 'main',
+    githubApiBase: env.ATLAS_GITHUB_API_BASE ?? 'https://api.github.com',
     fetchImpl: fetch,
   };
 }
@@ -184,6 +194,7 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
 
   const oauthEnabled = Boolean(config.googleClientSecret);
   if (!oauthEnabled) console.error('Warning: GOOGLE_CLIENT_SECRET is not set. The /oauth/* authorization-code flow is disabled; /mcp still accepts verified Google ID tokens.');
+  const admin = createAdmin({ config });
 
   function issueTokens(email, sub, clientId, scopes, resource) {
     const now = Date.now();
@@ -487,9 +498,10 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       const url = new URL(req.url ?? '/', config.baseUrl);
       const pathname = url.pathname;
       if (pathname === '/health' && req.method === 'GET') {
-        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 17, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken) });
+        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 17, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken), adminEnabled: oauthEnabled, adminQueueWriteConfigured: Boolean(config.githubToken) });
         return;
       }
+      if (pathname === '/admin' || pathname.startsWith('/admin/')) { await admin.handle(req, res, url); return; }
       if (pathname === '/mcp') { await handleMcp(req, res); return; }
       if (pathname === '/.well-known/oauth-authorization-server' && req.method === 'GET') { sendJson(res, 200, oauthMetadata()); return; }
       if ((pathname === '/.well-known/oauth-protected-resource' || pathname === '/.well-known/oauth-protected-resource/mcp') && req.method === 'GET') {

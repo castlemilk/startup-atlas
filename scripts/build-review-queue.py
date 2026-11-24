@@ -27,6 +27,15 @@ Entry kinds
   with nowhere to go yet. Ranked by (distinct partners mentioning it,
   has a website) and capped at 100 entries per run; the rest stay in the
   crawl artifact, not the queue.
+- ``headshot`` — staged portrait candidate bound to a professional-bio
+  row in profiles mode (#354/#406). The admin panel card shows the
+  image; approval there is the promotion decision. Never auto-approved
+  by confidence gating in v1.
+
+After the producers run, confidence gating
+(``scripts/review_gating.py``, thresholds in
+``data/review-gating.json``) auto-approves the pending entries whose
+per-kind rule passes; the rest stay pending for the admin panel.
 
 Dedup
 -----
@@ -81,6 +90,10 @@ try:  # subagent B: edge_scoring.py (present)
     import edge_scoring as _edge_scoring
 except ImportError:  # pragma: no cover
     _edge_scoring = None
+try:  # confidence gating (data/review-gating.json thresholds)
+    import review_gating as _review_gating
+except ImportError:  # pragma: no cover
+    _review_gating = None
 
 QUEUE_VERSION = 1
 REVIEW_LOW = 0.65
@@ -769,6 +782,48 @@ def build_summary(queue, added, skipped, run):
 
 # ---------------------------------------------------------------------- CLI
 
+def produce_headshots(artifact_dir, run):
+    """Headshot entries: staged portrait candidates from profiles mode.
+
+    A ``professional-bio`` row carrying a ``headshot_candidate`` (the
+    profiles-mode binding landed with #354/#406) becomes a queue entry
+    whose card shows the image itself. Confidence reflects the staging
+    reason: an allowed/same-host candidate scores 0.80; an external
+    asset host requiring separate review scores 0.50. Headshots are
+    NEVER auto-approved by gating in v1 (see data/review-gating.json) —
+    publication stays a human decision in the admin panel.
+    """
+    profiles = load_artifact(artifact_dir, "profiles").get("candidates", [])
+    entries = []
+    for row in profiles:
+        if row.get("kind") != "professional-bio":
+            continue
+        candidate = row.get("headshot_candidate") or {}
+        url = candidate.get("candidate_url")
+        name = (row.get("name") or "").strip()
+        if not url or not name:
+            continue
+        company = row.get("company") or row.get("partner") or ""
+        subject_key = f"{slug(company)}:{slug(name)}" if company else slug(name)
+        confidence = 0.50 if candidate.get("reason") == \
+            "External asset host requires separate review" else 0.80
+        entry = _new_entry(
+            f"headshot:{subject_key}", "headshot",
+            f"person:{slug(name)}", subject_key, [],
+            [url, candidate.get("source_url") or row.get("source_url")],
+            confidence, run)
+        entry["headshot"] = {
+            "candidate_url": url,
+            "source_url": candidate.get("source_url") or row.get("source_url"),
+            "person_name": name,
+            "company": company or None,
+            "status": candidate.get("status"),
+            "reason": candidate.get("reason"),
+        }
+        entries.append(entry)
+    return entries
+
+
 def build(artifact_dir, run, queue_path, data_dir, summary_path=None):
     """Build/update the queue from one crawl artifact. Returns the queue."""
     queue = load_queue(queue_path)
@@ -780,6 +835,7 @@ def build(artifact_dir, run, queue_path, data_dir, summary_path=None):
         produce_edges(data_dir, run),
         produce_facts(artifact_dir, run),
         produce_startup_leads(artifact_dir, data_dir, run, merged_slugs),
+        produce_headshots(artifact_dir, run),
     ]
     added, skipped = [], 0
     for entries in producers:
@@ -788,6 +844,13 @@ def build(artifact_dir, run, queue_path, data_dir, summary_path=None):
                 added.append(entry)
             else:
                 skipped += 1
+    # Confidence gating: high-confidence entries proceed automatically;
+    # the rest stay pending for the admin panel. Config is the single
+    # place thresholds live; a missing config or module means no gating.
+    if _review_gating is not None:
+        gating_config = load_json(Path(data_dir) / "review-gating.json")
+        if gating_config:
+            _review_gating.apply_gating(queue, gating_config)
     save_queue(queue, queue_path)
     if summary_path:
         summary = build_summary(queue, added, skipped, run)

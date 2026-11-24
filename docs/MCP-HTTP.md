@@ -123,6 +123,10 @@ Environment variables:
 | `ATLAS_GOOGLE_WRITE_EMAILS` | for writes | Comma-separated emails allowed to use the four write tools (also needs `--write`). Unset means no HTTP writes at all. |
 | `ATLAS_MCP_WRITE_ENABLED` | for writes on handler-mode hosts | `true` (also `1`/`yes`) enables write mode where the host imports `server.js` and cannot pass the `--write` flag (DeepHost). Any other value, or unset, keeps the server read-only. Never a substitute for the write allow-list: both are required. |
 | `ATLAS_GITHUB_TOKEN` | for `atlas_create_issue` | GitHub token with Issues write access on the repository (see "GitHub issues"). Without it the tool reports `GITHUB_TOKEN_MISSING` and files nothing. Never commit it; keep it in the server environment only. |
+| `ATLAS_ADMIN_EMAILS` | no | Admin panel allow-list. Unset falls back to `ATLAS_GOOGLE_WRITE_EMAILS`; if both are unset the panel allows nobody. |
+| `ATLAS_GITHUB_REPO` | no | Repository the admin panel reads/writes the review queue in, default `castlemilk/startup-atlas`. |
+| `ATLAS_GITHUB_BRANCH` | no | Branch for admin queue reads/writes, default `main`. |
+| `ATLAS_GITHUB_API_BASE` | no | GitHub API base override; only needed for tests. Default `https://api.github.com`. |
 | `ATLAS_HTTP_HOST` | no | Bind host, default `0.0.0.0` (use `127.0.0.1` for local-only). |
 | `PORT` | no | Bind port, set by container platforms; takes precedence over `ATLAS_HTTP_PORT` when set. |
 | `ATLAS_HTTP_PORT` | no | Bind port, default `3000`. |
@@ -166,6 +170,63 @@ curl -s -X POST https://mcp.example.com/mcp \
 `GET /health` is public and reports status, tool count, write mode and
 whether the OAuth flow is enabled. `githubIssuesConfigured` reports
 whether `ATLAS_GITHUB_TOKEN` is set — a boolean only, never the token.
+
+## Admin panel (`/admin`) — review queue with Google sign-in
+
+The same handler serves a small admin panel for the human-in-the-loop
+review queue (`data/review-queue.json`). The public Pages site is static
+and cannot do auth; the panel lives here because this app already
+verifies Google identity.
+
+- **Login:** `GET /admin` redirects to `/admin/login`, which offers one
+  **Sign in with Google** button. The flow is the standard Google
+  authorization-code web flow against the SAME OAuth client as the MCP
+  flow (separate callback: `<base>/admin/callback` — **this URI must be
+  added as a second authorised redirect URI on the Google OAuth
+  client**, alongside `/oauth/callback`). The ID token is verified
+  exactly like an MCP login (JWKS, issuer, audience, expiry,
+  `email_verified`, nonce), then the email is checked against the
+  **admin allow-list**: `ATLAS_ADMIN_EMAILS` when set, otherwise
+  `ATLAS_GOOGLE_WRITE_EMAILS`. Any other verified account gets a 403
+  page and no session — fail-closed, like `/mcp`. A session is a random
+  token in an `HttpOnly; Secure; SameSite=Lax` cookie, held only in
+  memory for 12 hours; `POST /admin/logout` ends it. A server restart
+  signs the admin out.
+- **Queue UI:** three views — **Queue** (pending, lowest confidence
+  first), **Auto-applied** (decisions made by confidence gating, each
+  with an Undo button), **Decided**. Cards show the evidence per kind:
+  merge candidates with scores and bases, draft rounds for `fact`
+  entries, partner mentions for `startup-lead`s, and the image itself
+  for `headshot` candidates.
+- **Write-back:** decisions are recorded in `data/review-queue.json`
+  itself (`status`, `decided_by`, `decided_at`, `decision_note`) via
+  the **GitHub Contents API** using `ATLAS_GITHUB_TOKEN` — the hosted
+  app has no persistent checkout, so nothing is written locally. The
+  token therefore needs **Contents: Read and write** on the repository
+  in addition to Issues (the token setup above grants Issues only; add
+  Contents or decisions fail with `GITHUB_FORBIDDEN` and the panel says
+  so). Writes fetch a fresh blob sha first, commit with the message
+  `review: <id> <decision> via admin panel`, and are never silently
+  retried; a sha conflict returns 409 and the UI asks for a reload.
+  With no token configured the panel serves the deploy-bundled queue
+  read-only and decisions return `GITHUB_TOKEN_MISSING`. Repo, branch
+  and API base are configurable (`ATLAS_GITHUB_REPO`,
+  `ATLAS_GITHUB_BRANCH`, `ATLAS_GITHUB_API_BASE`).
+- **Confidence gating:** `scripts/review_gating.py` runs at the end of
+  every queue build and applies the thresholds in
+  `data/review-gating.json` — the one place they live. Entries whose
+  per-kind rule passes are marked approved with `decided_by:
+  'auto-gate'` and a note naming the score, threshold and rule, so the
+  existing consumers (identity replay, the MCP fact write path) treat
+  them like human decisions. Merges additionally require a candidate
+  basis carrying a shared identity key (website host or LinkedIn);
+  name similarity alone never auto-approves. `edge` and `headshot`
+  entries never auto-approve in v1. `"enabled": false` in the config
+  is the kill switch. Auto-decisions are listed in the panel's
+  Auto-applied view and reversible there (back to pending).
+- `GET /health` additionally reports `adminEnabled` (Google sign-in
+  configured) and `adminQueueWriteConfigured` (a GitHub token is set —
+  a boolean only, never the token).
 
 ## GitHub issues (`atlas_create_issue`)
 
