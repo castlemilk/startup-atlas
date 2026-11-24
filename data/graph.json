@@ -1760,6 +1760,16 @@
       "source": "https://www.rmit.edu.au/partner/hubs/activator/discoveryhub"
     },
     {
+      "id": "partner:salesforce-ventures",
+      "canonical_id": "partner:salesforce-ventures",
+      "aliases": [],
+      "kind": "partner",
+      "name": "Salesforce Ventures",
+      "summary": "Salesforce’s venture investment arm, backing enterprise software companies globally from seed through growth.",
+      "website": "https://salesforceventures.com/",
+      "source": "https://salesforceventures.com/about/"
+    },
+    {
       "id": "partner:scribble",
       "canonical_id": "partner:scribble",
       "aliases": [
@@ -9083,6 +9093,106 @@
       "source": "https://rampersand.vc/portfolio",
       "first_seen": "2026-11-21",
       "last_verified": "2026-11-21",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:salesforce-ventures",
+      "to": "startup:airwallex",
+      "kind": "participated_in",
+      "description": "Participated in Series D round",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-closes-usd160m-in-record-fundraising-round-to-date",
+      "round_id": "airwallex-2020-series-d",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:salesforce-ventures",
+      "to": "startup:airwallex",
+      "kind": "participated_in",
+      "description": "Participated in Series E round",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-raised-usd200-million-series-e-funding-round-led-by-lone-pine",
+      "round_id": "airwallex-2021-series-e",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:salesforce-ventures",
+      "to": "startup:airwallex",
+      "kind": "participated_in",
+      "description": "Participated in Series F round",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking",
+      "round_id": "airwallex-2025-series-f",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:salesforce-ventures",
+      "to": "startup:airwallex",
+      "kind": "participated_in",
+      "description": "Participated in Series E extension (E2) round",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-sustains-ususd5-6-bn-valuation-with-ususd100-m-series-e-extension",
+      "round_id": "airwallex-2022-series-e2",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:salesforce-ventures",
+      "to": "startup:q-ctrl",
+      "kind": "led_round",
+      "description": "Led Series C round",
+      "source": "https://q-ctrl.com/blog/q-ctrl-secures-us-290-million-series-c-funding-led-by-salesforce-ventures-to-accelerate-the-convergence-of-quantum-and-ai",
+      "round_id": "q-ctrl-2026-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,
@@ -17203,7 +17313,6 @@
     "lead_investor 'NEA' for round synthesia-2025-series-d (Synthesia) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Purpose Ventures' for round andromeda-2024-06-seed (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
     "lead_investor 'QIC Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; led_round edge skipped",
-    "lead_investor 'Salesforce Ventures' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Sapphire Ventures' for round culture-amp-2017-series-c (Culture Amp) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Sequoia Capital China' for round culture-amp-2019-series-e (Culture Amp) has no matching partner lead; led_round edge skipped",
     "lead_investor 'SoftBank Group' for round wayve-2024-series-c (Wayve) has no matching partner lead; led_round edge skipped",
@@ -17285,10 +17394,6 @@
     "participant 'Ridgeline Partners' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Robinhood Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'SPARX Asset Management' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
-    "participant 'Salesforce Ventures' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
-    "participant 'Salesforce Ventures' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
-    "participant 'Salesforce Ventures' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
-    "participant 'Salesforce Ventures' for round airwallex-2025-series-f (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round arkeus-2023-seed (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
