@@ -36,6 +36,7 @@ class QueryParquetTests(unittest.TestCase):
             manifest = generator.build(out)
             self.assertEqual(manifest['version'], 1)
             self.assertRegex(manifest.get('source_revision', ''), r'^[0-9a-f]{40}$')
+            graph = json.loads((ROOT / 'data/graph.json').read_text(encoding='utf-8'))
             expected_tables = {
                 'opportunities': len(catalogue['opportunities']),
                 'partners': len(partners),
@@ -46,6 +47,8 @@ class QueryParquetTests(unittest.TestCase):
                 'profile_facts': sum(len(s.get('profile_facts') or []) for s in startups),
                 'founders': sum(len(s.get('founders') or []) for s in startups),
                 'socials': sum(len(s.get('socials') or []) for s in startups),
+                'edges': len(graph['edges']),
+                'relationships': len(graph['edges']),
             }
             self.assertEqual(set(manifest['tables']), set(expected_tables))
             import pyarrow.parquet as pq

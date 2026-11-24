@@ -56,6 +56,18 @@ const EXAMPLES = [
     label: 'Total raised per startup (AUD)',
     sql: "SELECT startup, COUNT(*) AS rounds, SUM(amount) AS total_aud FROM funding_rounds WHERE currency = 'AUD' GROUP BY startup ORDER BY total_aud DESC LIMIT 10",
   },
+  {
+    label: 'Graph edges by kind',
+    sql: "SELECT kind, COUNT(*) AS n FROM edges GROUP BY kind ORDER BY n DESC",
+  },
+  {
+    label: 'Co-investors (shared funding edges)',
+    sql: "SELECT a.source AS investor, b.source AS co_investor, a.target AS startup FROM edges a JOIN edges b ON a.target = b.target AND a.kind = b.kind WHERE a.kind IN ('led_round', 'participated_in') AND a.source < b.source ORDER BY startup, investor LIMIT 20",
+  },
+  {
+    label: 'Startups a partner supports',
+    sql: "SELECT source AS partner, COUNT(*) AS startups FROM edges WHERE kind = 'supports' GROUP BY source ORDER BY startups DESC LIMIT 10",
+  },
 ];
 
 const statusEl = document.getElementById('query-status');

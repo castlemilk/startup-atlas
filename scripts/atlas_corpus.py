@@ -56,6 +56,10 @@ REVIEWED_FILES = (
     'partners-reviewed.json',
     'partner-profiles.json',
     'startup-research.json',
+    # The regenerated graph rides along so the live-index indexer can emit
+    # the edges/relationships Parquet tables (#359); build_tables() treats
+    # it as an optional generated input, never a reviewed source.
+    'graph.json',
 )
 
 

@@ -32,8 +32,22 @@ the query dataset: the generator has an explicit input allowlist, mirroring
 | `funding_rounds` | `startup-research.json` | One row per round (amount, currency, stage, announced_on, …) |
 | `articles` | `startup-research.json` | One row per article |
 | `profile_facts` | `startup-research.json` | One row per profile fact |
-| `founders` | `startup-research.json` | One row per founder |
+| `founders` | `startup-research.json` | One row per founder, including `photo_url`/`photo_source` where recorded |
 | `socials` | `startup-research.json` | One row per recorded social link |
+| `edges` | `graph.json` (generated, optional) | One row per knowledge-graph edge (`source`, `target`, `kind`, `description`, `source_url`, `first_seen`, `last_verified`, `confidence`, `stale`) |
+| `relationships` | `graph.json` (generated, optional) | Alias of `edges` under the DuckDB-facing name |
+
+The `edges`/`relationships` tables (#359) are built by
+`scripts/graph_edges_parquet.py` from the regenerated `data/graph.json` —
+the same source the Loom export reads — whenever that file sits alongside
+the reviewed JSONs. `graph.json` is a generated file, not a reviewed input,
+so it is not on the generator's reviewed allowlist: a data directory
+without it (an older corpus snapshot) still builds the nine reviewed
+tables unchanged. The live-index corpus carries `graph.json`
+(`atlas_corpus.REVIEWED_FILES`), so the async indexer emits the same two
+tables as the static Pages build. Example graph queries ship in
+`web/query.js`: edges by kind, co-investors sharing a funding edge
+(`led_round`/`participated_in`), and startups a partner supports.
 
 Amounts are stored as recorded (`amount` + `currency`, or `amount_text`
 when the source never stated a currency). Nothing is converted here; the
