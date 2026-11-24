@@ -5,6 +5,24 @@ import { OAuthStore } from '../src/storage.mjs';
 import { seal, unseal } from '../src/common.mjs';
 import { environment, oauthProvider, tokenResponse } from './helpers.mjs';
 
+function deferred() {
+  let resolve, reject;
+  const promise = new Promise((res, rej) => { resolve = res; reject = rej; });
+  return { promise, resolve, reject };
+}
+
+// Bounded wait for a test-controlled phase: if the flow never reaches the
+// phase, the test fails naming the phase instead of spinning forever (#146).
+async function awaitPhase(promise, phase, timeoutMs = 5000) {
+  let timer;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise((_, reject) => { timer = setTimeout(() => reject(new Error(`Timed out waiting for phase: ${phase}`)), timeoutMs); }),
+    ]);
+  } finally { clearTimeout(timer); }
+}
+
 async function begin(oauth) {
   const response = await oauth.start('owner');
   const authorization = new URL(response.headers.get('Location'));
@@ -80,10 +98,11 @@ test('refresh is single-owner, rotates encrypted tokens and never replays an unc
   const tokens = { accessToken: 'old', refreshToken: 'refresh-old', expiresAt: now - 1, refreshExpiresAt: now + 100000 };
   await store.save('owner', await seal(tokens, env, 'connection:owner'), (await store.beginAuth('owner')).version);
   let release;
+  const entered = deferred();
   let calls = 0;
-  const oauth = new GitHubOAuth(env, { store, fetcher: async () => { calls++; await new Promise(resolve => { release = resolve; }); return Response.json(tokenResponse); } });
+  const oauth = new GitHubOAuth(env, { store, fetcher: async () => { calls++; entered.resolve(); await new Promise(resolve => { release = resolve; }); return Response.json(tokenResponse); } });
   const first = oauth.access('owner');
-  while (!release) await new Promise(resolve => setTimeout(resolve, 1));
+  await awaitPhase(entered.promise, 'refresh exchange entered');
   await assert.rejects(oauth.access('owner'), { code: 'REFRESH_BUSY' });
   release(); assert.equal(await first, tokenResponse.access_token); assert.equal(calls, 1);
   assert.equal((await store.get('owner')).version, 3);
@@ -131,9 +150,10 @@ test('disconnect and reconnect cannot be erased by a stale refresh failure (no v
   const initial = { accessToken: 'old', refreshToken: 'old-refresh', expiresAt: now - 1, refreshExpiresAt: now + 999999 };
   await store.save('owner', await seal(initial, env, 'connection:owner'), (await store.beginAuth('owner')).version);
   let fail;
-  const oauth = new GitHubOAuth(env, { store, fetcher: async () => new Promise((_, reject) => { fail = reject; }) });
+  const entered = deferred();
+  const oauth = new GitHubOAuth(env, { store, fetcher: async () => new Promise((_, reject) => { fail = reject; entered.resolve(); }) });
   const pending = oauth.access('owner');
-  while (!fail) await new Promise(resolve => setTimeout(resolve, 1));
+  await awaitPhase(entered.promise, 'stale refresh exchange entered');
   await store.disconnect('owner');
   const next = { ...initial, accessToken: 'new-connection', expiresAt: now + 900000 };
   await store.save('owner', await seal(next, env, 'connection:owner'), (await store.beginAuth('owner')).version);

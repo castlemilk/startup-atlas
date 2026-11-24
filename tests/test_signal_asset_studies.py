@@ -1,13 +1,15 @@
-import unittest,json,hashlib,xml.etree.ElementTree as ET,subprocess
+import unittest,json,hashlib,xml.etree.ElementTree as ET,subprocess,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'web/assets/design-lab/signal-explorations'
 class Studies(unittest.TestCase):
  def test_fixed_exports_and_safe_subset(self):
   manifest=json.loads((OUT/'manifest.json').read_text()); self.assertEqual(len(manifest['assets']),9)
-  before={p.name:p.read_bytes() for p in OUT.glob('*.svg')}
-  subprocess.run(['python3',str(ROOT/'scripts/make-signal-studies.py')],check=True)
-  self.assertEqual(before,{p.name:p.read_bytes() for p in OUT.glob('*.svg')})
+  with tempfile.TemporaryDirectory() as tmp:
+   generated=Path(tmp)
+   subprocess.run(['python3',str(ROOT/'scripts/make-signal-studies.py'),'--out',str(generated)],check=True)
+   self.assertEqual({p.name:p.read_bytes() for p in OUT.glob('*.svg')},{p.name:p.read_bytes() for p in generated.glob('*.svg')})
+   self.assertEqual((OUT/'manifest.json').read_bytes(),(generated/'manifest.json').read_bytes())
   for item in manifest['assets']:
    raw=(OUT/item['file']).read_bytes();self.assertEqual(hashlib.sha256(raw).hexdigest(),item['sha256'])
    root=ET.fromstring(raw);self.assertEqual(root.attrib['viewBox'],'0 0 128 128')
