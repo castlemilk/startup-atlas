@@ -39,6 +39,7 @@ PUBLIC_DATA_FILES = (
     'partners-reviewed.json',
     'partner-profiles.json',
     'startup-research.json',
+    'treemap-evidence.json',
 )
 
 
@@ -70,6 +71,14 @@ def _int(value):
     return value
 
 
+def _float(value):
+    if value is None:
+        return None
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError(f'expected a number, got {type(value).__name__}: {value!r}')
+    return float(value)
+
+
 def _str_list(value):
     if value is None:
         return []
@@ -93,6 +102,18 @@ def build_tables(data_dir):
     partners_reviewed = documents['partners-reviewed.json']
     partner_profiles = documents['partner-profiles.json']
     startups = documents['startup-research.json']['startups']
+    # Latest-value derivation (design §1): the identical figure the graph
+    # carries, computed by the shared module from the same evidence stores.
+    evidence = documents.get('treemap-evidence.json')
+    fx_table = None
+    if evidence is not None:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import currency as _currency
+        import latest_value as _latest_value
+        try:
+            fx_table = _currency.load_fallback_table()
+        except Exception:
+            fx_table = None
 
     opportunities = [
         {
@@ -147,6 +168,11 @@ def build_tables(data_dir):
     social_rows = []
     for startup in startups:
         name = _str(startup['name'])
+        latest, listing = (None, {})
+        if evidence is not None:
+            latest, listing = _latest_value.derive_latest_value(
+                startup.get('funding_rounds') or [], evidence,
+                _latest_value.startup_id_for(name), fx_table)
         startup_rows.append(
             {
                 'name': name,
@@ -155,6 +181,15 @@ def build_tables(data_dir):
                 'source': _str(startup.get('source')),
                 'founded_year': _int(startup.get('founded_year')),
                 'reviewed_at': _str(startup.get('reviewed_at')),
+                'latest_value_amount': _float(latest and latest['amount']),
+                'latest_value_currency': _str(latest and latest['currency']),
+                'latest_value_amount_usd': _float(latest and latest.get('amount_usd')),
+                'latest_value_as_of': _str(latest and latest['as_of']),
+                'latest_value_basis': _str(latest and latest['basis']),
+                'latest_value_source': _str(latest and latest['source']),
+                'listing_status': _str(listing.get('status')),
+                'listing_exchange': _str(listing.get('exchange')),
+                'listing_ticker': _str(listing.get('ticker')),
             }
         )
         for round_ in startup.get('funding_rounds') or []:
@@ -238,6 +273,12 @@ def build_tables(data_dir):
         'startups': pa.schema([
             ('name', string), ('website', string), ('description', string),
             ('source', string), ('founded_year', int64), ('reviewed_at', string),
+            ('latest_value_amount', pa.float64()),
+            ('latest_value_currency', string),
+            ('latest_value_amount_usd', pa.float64()),
+            ('latest_value_as_of', string), ('latest_value_basis', string),
+            ('latest_value_source', string), ('listing_status', string),
+            ('listing_exchange', string), ('listing_ticker', string),
         ]),
         'funding_rounds': pa.schema([
             ('startup', string), ('id', string), ('stage', string),

@@ -22,6 +22,11 @@ or renamed, so old readers ignore the new fields):
   behaviour is unchanged.
 - Records carrying ``superseded_by`` (``profile_facts`` / ``funding_rounds``)
   are excluded from the live graph; they stay in the reviewed files, marked.
+- Startup entities gain a derived ``latest_value`` figure and a ``listing``
+  status when ``data/treemap-evidence.json`` is supplied (see
+  ``scripts/latest_value.py``): the figure is computed from the evidence
+  stores at build time, never hand-edited, and absent when no gated
+  observation exists.
 
 Relationship vocabulary: ``founded``, ``team_member``, ``supports``,
 ``supports_programme``, ``offers``, ``programme_relationship``,
@@ -64,6 +69,12 @@ try:
     import edge_scoring as _edge_scoring
 except ImportError:  # subagent B's module not landed yet; use the §2 model below
     _edge_scoring = None
+try:
+    import latest_value as _latest_value
+    import currency as _currency
+except ImportError:  # derivation is additive; older checkouts build without it
+    _latest_value = None
+    _currency = None
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -169,8 +180,13 @@ def _identity_maps(identity):
 
 
 def build_graph(profiles, leads, reviewed, catalogue, research, identity=None,
-                today=None):
+                today=None, evidence=None, fx_table=None):
     today = _as_date(today) or date.today()
+    if evidence is not None and fx_table is None and _currency is not None:
+        try:
+            fx_table = _currency.load_fallback_table()
+        except Exception:
+            fx_table = None
     merge_map, registry_aliases = _identity_maps(identity)
     research_reviewed = research.get('reviewed')
 
@@ -294,6 +310,17 @@ def build_graph(profiles, leads, reviewed, catalogue, research, identity=None,
         live_facts = [fact for fact in startup.get('profile_facts', [])
                       if 'superseded_by' not in fact]
         startup_id = add('startup', startup['name'], summary=startup.get('description', ''), website=startup.get('website', ''), source=startup.get('source', ''), **({'founded_year': startup['founded_year']} if 'founded_year' in startup else {}), logo=startup.get('logo', ''), logo_source=startup.get('logo_source', ''), profile_facts=live_facts, socials=startup.get('socials', []))
+        if evidence is not None and _latest_value is not None:
+            # Derived headline figure (design §1): never hand-edited, null
+            # stays null. listing is always recorded when evidence is in
+            # play so consumers can distinguish private/public/subsidiary
+            # from "ownership not recorded" (status 'unknown').
+            value, listing = _latest_value.derive_latest_value(
+                startup.get('funding_rounds', []), evidence, startup_id,
+                fx_table)
+            if value is not None:
+                nodes[startup_id]['latest_value'] = value
+            nodes[startup_id]['listing'] = listing
         for founder in startup.get('founders', []):
             founder_id = add('person', founder['name'], source=founder['source'], website=founder.get('profile_url', ''), logo=founder.get('photo_url', ''), logo_source=founder.get('photo_source', ''), **({'socials': founder['socials']} if founder.get('socials') else {}))
             emit({'from': founder_id, 'to': startup_id, 'kind': 'founded',
@@ -415,7 +442,11 @@ def main():
     identity_path = ROOT / 'data' / 'identity.json'
     if identity_path.is_file():
         identity = json.loads(identity_path.read_text(encoding='utf-8'))
-    graph = build_graph(load('partner-profiles.json'), load('partner-leads.json'), load('partners-reviewed.json'), load('catalogue.json'), load('startup-research.json'), identity=identity)
+    evidence = None
+    evidence_path = ROOT / 'data' / 'treemap-evidence.json'
+    if evidence_path.is_file():
+        evidence = json.loads(evidence_path.read_text(encoding='utf-8'))
+    graph = build_graph(load('partner-profiles.json'), load('partner-leads.json'), load('partners-reviewed.json'), load('catalogue.json'), load('startup-research.json'), identity=identity, evidence=evidence)
     if os.environ.get('ATLAS_SOURCE_REVISION'):
         graph['source_revision'] = os.environ['ATLAS_SOURCE_REVISION']
     content = json.dumps(graph, ensure_ascii=False, indent=2) + '\n'
