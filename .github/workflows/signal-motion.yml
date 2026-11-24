@@ -38,8 +38,11 @@ jobs:
           node-version: '22'
       - name: Install existing site dependencies
         run: npm ci --ignore-scripts
-      - name: Build the static site
-        run: npm run build
+      - name: Build static browser fixtures
+        # The pilot serves HTML, CSS and artwork; SQLite and Parquet are release-only here.
+        run: |
+          npm run data:generate
+          node scripts/build.mjs
       - name: Verify artwork motion and static alternatives in Chrome
         run: node scripts/test-signal-motion-browser.mjs
         env:
