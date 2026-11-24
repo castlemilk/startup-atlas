@@ -64,7 +64,10 @@ One record per crawl run, and one claim per source inside that run.
     "sources_failed": 5,
     "candidates_discovered": 0,
     "coverage_reference": "research/crawl/partners-20261120T033518Z.json",
-    "notes": "All sources skipped: host resolved to a non-public address."
+    "notes": "All sources skipped: host resolved to a non-public address.",
+    "sources": [
+      { "source": "Example directory", "status": "failed", "pages_ok": 0, "pages_attempted": 2 }
+    ]
   },
   "snapshot_sha256": "64-hex-digest-of-the-crawl-snapshot-file",
   "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/<id>",
@@ -88,6 +91,12 @@ One record per crawl run, and one claim per source inside that run.
   snapshot it describes without publishing the snapshot.
 - `published_pr` is the pull request number that published reviewed
   candidates from this run, once one exists.
+- `outcome.sources` is optional per-source status copied from the crawl
+  snapshot's `coverage.sources` (`source`, `status` — `ok`, `failed` or
+  `not_attempted` — `pages_ok`, `pages_attempted`). Record it when a run
+  finishes so a dead source is visible in the registry itself, not only
+  by opening the run artifact. Records written before it existed stay
+  valid without it.
 
 ### Source claim
 

@@ -19,7 +19,9 @@ export const CRAWL_REVIEW_STATUSES = ['unreviewed', 'in_review', 'reviewed', 'pu
 export const MAX_REGISTRY_RUNS = 200;
 
 const RUN_KEYS = ['version', 'run_id', 'mode', 'scope', 'args', 'catalogue_revision', 'source_revisions', 'claimed_by', 'claimed_at', 'lease_expires_at', 'status', 'started_at', 'finished_at', 'outcome', 'snapshot_sha256', 'artifact_url', 'run_url', 'review_status', 'published_pr', 'supersedes', 'superseded_by'];
-const OUTCOME_KEYS = ['sources_attempted', 'sources_succeeded', 'sources_failed', 'candidates_discovered', 'coverage_reference', 'notes'];
+const OUTCOME_KEYS = ['sources_attempted', 'sources_succeeded', 'sources_failed', 'candidates_discovered', 'coverage_reference', 'notes', 'sources'];
+const SOURCE_STATUSES = ['ok', 'failed', 'not_attempted'];
+const SOURCE_KEYS = ['source', 'status', 'pages_ok', 'pages_attempted'];
 
 function fail(message) { throw new EntryError('VALIDATION_ERROR', message); }
 function isRecord(value, keys) {
@@ -50,6 +52,18 @@ export function validateRunRecord(run) {
     if (!Number.isInteger(run.outcome[key]) || run.outcome[key] < 0) fail(`outcome.${key} must be a non-negative integer.`);
   }
   if (run.outcome.sources_succeeded + run.outcome.sources_failed > run.outcome.sources_attempted) fail('outcome succeeded and failed sources cannot exceed attempted sources.');
+  if (run.outcome.sources !== undefined) {
+    if (!Array.isArray(run.outcome.sources)) fail('outcome.sources must be a list of per-source status entries.');
+    for (const entry of run.outcome.sources) {
+      if (!isRecord(entry, SOURCE_KEYS)) fail('Each outcome.sources entry must be an object with only source, status, pages_ok and pages_attempted.');
+      for (const key of SOURCE_KEYS) if (!Object.hasOwn(entry, key)) fail(`An outcome.sources entry is missing ${key}.`);
+      if (typeof entry.source !== 'string' || entry.source.length === 0) fail('outcome.sources source must be a non-empty source name.');
+      if (!SOURCE_STATUSES.includes(entry.status)) fail(`outcome.sources status must be one of ${SOURCE_STATUSES.join(', ')}.`);
+      if (!Number.isInteger(entry.pages_ok) || entry.pages_ok < 0) fail('outcome.sources pages_ok must be a non-negative integer.');
+      if (!Number.isInteger(entry.pages_attempted) || entry.pages_attempted < 0) fail('outcome.sources pages_attempted must be a non-negative integer.');
+      if (entry.pages_ok > entry.pages_attempted) fail('outcome.sources pages_ok cannot exceed pages_attempted.');
+    }
+  }
   if (run.outcome.coverage_reference !== null && (typeof run.outcome.coverage_reference !== 'string' || run.outcome.coverage_reference.length === 0)) fail('outcome.coverage_reference must name the crawl snapshot or coverage file, or be null before the run produces one.');
   if (typeof run.outcome.notes !== 'string') fail('outcome.notes must be text.');
   if (!isHex(run.snapshot_sha256, 64) && run.snapshot_sha256 !== null) fail('snapshot_sha256 must be the SHA-256 of the crawl snapshot file, or null.');
