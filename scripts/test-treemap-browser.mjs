@@ -3,89 +3,34 @@
 import assert from 'node:assert/strict';
 import {makeView,formatValue,indexCompanyValues,indexTreemapEvidence} from '../dist/treemap-model.js';
 import {logoFor} from '../dist/logos.js';
-import {spawn} from 'node:child_process';
-import {createServer} from 'node:http';
-import {mkdtemp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
+import {readFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
-import {extname, join, resolve, sep} from 'node:path';
-import {setTimeout as delay} from 'node:timers/promises';
+import {join, resolve} from 'node:path';
+import {launchBrowserTransport, saveScreenshot} from './browser-transport.mjs';
 
-const root=resolve('dist'), profile=await mkdtemp(join(tmpdir(),'atlas-treemap-chrome-'));
+const root=resolve('dist');
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-treemap-screenshots');
-const contentTypes={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png'};
 const requests=[];
 let markFixture;
-const server=createServer(async(req,res)=>{
-  try {
-    const path=resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));
-    if(path!==root&&!path.startsWith(root+sep)){res.writeHead(403).end();return;}
-    const bytes=markFixture && path===join(root,'data','graph.json')
-      ? markFixture
-      : await readFile(path===root?join(root,'index.html'):path);
-    requests.push({url:req.url,status:200});
-    res.writeHead(200,{'Content-Type':contentTypes[extname(path)]||'application/octet-stream'}).end(bytes);
-  } catch {requests.push({url:req.url,status:404});res.writeHead(404).end();}
+// Shared transport/lifecycle (#149): static server, Chrome spawn, CDP
+// session, bounded commands, socket-exit rejection and phase timings. The
+// markFixture override keeps serving a swapped graph document mid-suite,
+// and the session counts document loads / paused Fetch requests for the
+// navigation and loading-state checks below.
+const transport=await launchBrowserTransport({
+  root,
+  profilePrefix:'atlas-treemap-chrome-',
+  server:{requests,
+    contentTypes:{'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png'},
+    override:path=>path===join(root,'data','graph.json')?markFixture:undefined},
+  session:{pollAttempts:100,exceptionText:details=>details.text},
 });
-await new Promise((resolveListen,reject)=>server.once('error',reject).listen(0,'127.0.0.1',resolveListen));
-const address=`http://127.0.0.1:${server.address().port}`;
-const chrome=spawn(process.env.CHROME_BIN||'google-chrome',[
-  '--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-extensions','--no-first-run',
-  '--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'
-],{stdio:['ignore','ignore','pipe']});
-let socket, spawnError, chromeExit, chromeLog='', chromePort=0;
+const address=transport.address;
 let captureFailure=async()=>{}, readDiagnostics=async()=>({state:'unavailable'});
-chrome.on('error',error=>{spawnError=error;});
-chrome.on('exit',(code,signal)=>{chromeExit=`Chrome exited (${code ?? signal})`;});
-chrome.stderr.on('data',chunk=>{
-  chromeLog=(chromeLog+chunk.toString()).slice(-5000);
-  chromePort ||= Number(chromeLog.match(/^DevTools listening on ws:\/\/127\.0\.0\.1:(\d+)\/devtools\/browser\//m)?.[1]) || 0;
-});
-
-async function until(fn,message,attempts=100) {
-  for(let i=0;i<attempts;i++) {
-    if(spawnError)throw spawnError;
-    if(chromeExit)throw new Error(chromeExit+'\n'+chromeLog);
-    const result=await fn().catch(()=>null);
-    if(result)return result;
-    await delay(100);
-  }
-  throw new Error(message+'\n'+chromeLog);
-}
 try {
-  // Cold CI runners can take longer to start Chrome; allow 45 seconds only here.
-  // Page interactions retain the normal polling budget.
-  const port=await until(async()=>chromePort||Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start',450);
-  const target=await until(async()=>{
-    const targets=await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
-    return targets.find(item=>item.type==='page');
-  },'Chrome did not expose a page',450);
-  socket=new WebSocket(target.webSocketDebuggerUrl);
-  await new Promise((resolveOpen,reject)=>{socket.addEventListener('open',resolveOpen,{once:true});socket.addEventListener('error',reject,{once:true});});
-  const pending=new Map(), exceptions=[], browserMessages=[];let sequence=0, documentLoads=0, pausedRequests=0;
-  socket.addEventListener('message',event=>{
-    const message=JSON.parse(event.data);
-    if(message.method==='Page.domContentEventFired')documentLoads++;
-    if(message.method==='Fetch.requestPaused')pausedRequests++;
-    if(message.method==='Runtime.exceptionThrown')exceptions.push(message.params.exceptionDetails.exception?.description||message.params.exceptionDetails.text);
-    if(message.method==='Runtime.consoleAPICalled'&&['error','warning'].includes(message.params.type))browserMessages.push(message.params.args.map(item=>item.value||item.description||'').join(' '));
-    if(!message.id)return;
-    const item=pending.get(message.id);if(!item)return;pending.delete(message.id);
-    clearTimeout(item.timeout);
-    if(message.error)item.reject(new Error(message.error.message));else item.resolve(message.result);
-  });
-  function command(method,params={}) {
-    const id=++sequence;
-    return new Promise((resolveCommand,reject)=>{
-      const timeout=setTimeout(()=>{pending.delete(id);reject(new Error(`Chrome command timed out: ${method}`));},20000);
-      pending.set(id,{resolve:resolveCommand,reject,timeout});
-      socket.send(JSON.stringify({id,method,params}));
-    });
-  }
-  async function evaluate(expression) {
-    const response=await command('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});
-    if(response.exceptionDetails)throw new Error(response.exceptionDetails.text);
-    return response.result.value;
-  }
+  const session=await transport.connect();
+  const {command,evaluate,until}=session;
+  const exceptions=session.exceptions, browserMessages=session.browserMessages;
   async function move(type,x,y,button='none',buttons=0) {
     await command('Input.dispatchMouseEvent',{type,x,y,button,buttons,clickCount:1});
   }
@@ -96,15 +41,13 @@ try {
     await move('mouseReleased',x+dx,y+dy,'left',0);
   }
   async function screenshot(name,fullPage=false) {
-    await mkdir(screenshotDir,{recursive:true});
     const params={format:'png'};
     if(fullPage){
       await evaluate("scrollTo({top:0,behavior:'instant'})");
       const size=await evaluate('({width:innerWidth,height:Math.min(document.documentElement.scrollHeight,3600)})');
       params.captureBeyondViewport=true;params.clip={x:0,y:0,...size,scale:1};
     }
-    const image=await command('Page.captureScreenshot',params);
-    await writeFile(join(screenshotDir,name),Buffer.from(image.data,'base64'));
+    await saveScreenshot(session,screenshotDir,name,params);
   }
   captureFailure=screenshot;
   await command('Runtime.enable'); await command('Page.enable');
@@ -113,14 +56,14 @@ try {
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
   const settled=()=>until(()=>evaluate("document.querySelector('#treemap-workspace')?.getAttribute('aria-busy')==='false'"),'Treemap did not settle');
   const navigate = async suffix => {
-    const before=documentLoads;
+    const before=session.documentLoads;
     await command('Page.navigate',{url:address+'/treemap.html'+suffix});
-    await until(async()=>documentLoads>before,'Treemap navigation did not load a new document');
+    await until(async()=>session.documentLoads>before,'Treemap navigation did not load a new document');
     await settled();
   };
   const reload=async()=>{
-    const before=documentLoads;await command('Page.reload');
-    await until(async()=>documentLoads>before,'Treemap reload did not load a new document');
+    const before=session.documentLoads;await command('Page.reload');
+    await until(async()=>session.documentLoads>before,'Treemap reload did not load a new document');
     await settled();
   };
   const change = (id,value) => evaluate(`(()=>{const e=document.getElementById(${JSON.stringify(id)});e.value=${JSON.stringify(value)};e.dispatchEvent(new Event('change',{bubbles:true}));})()`);
@@ -148,7 +91,7 @@ try {
   // Hold snapshot requests to observe the real loading state before data resolves.
   await command('Fetch.enable',{patterns:[{urlPattern:'*atlas.sqlite*'},{urlPattern:'*data/graph.json*'}]});
   await command('Page.navigate',{url:address+'/treemap.html'});
-  await until(async()=>pausedRequests>0,'Snapshot request was not paused');
+  await until(async()=>session.pausedRequests>0,'Snapshot request was not paused');
   assert.equal(await evaluate("Array.from(document.querySelectorAll('#treemap-controls input, #treemap-controls select, #treemap-controls button')).every(control=>control.disabled)"),true,'Loading controls must not accept changes that will be lost');
   assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-busy')"),'true');
   assert.equal(await evaluate("document.querySelector('#treemap-controls').getAttribute('aria-describedby')"),'treemap-status');
@@ -774,10 +717,10 @@ try {
   await command('Network.setBlockedURLs',{urls:[]});
 
   assert.deepEqual(exceptions,[],'Treemap must not raise unhandled JavaScript exceptions');
+  console.log('Treemap phase timings:',JSON.stringify(transport.timings.summary()));
   console.log('Treemap browser checks passed: proportional views, Company value basis and evidence, public market cap, technology grouping, ranked cards, currencies, source caveats, country and city drilldown, independent colour, excluded selection and comparison, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
 } catch(error) {
   await captureFailure('treemap-failed.png').catch(()=>{});throw error;
 } finally {
-  socket?.close();chrome.kill();server.close();
-  await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100}).catch(()=>{});
+  await transport.close();
 }
