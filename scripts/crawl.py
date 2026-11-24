@@ -1296,6 +1296,10 @@ PROFILE_PAGE_RULES={
     'people':re.compile(r'\b(team|people|leadership|our people|who we are)\b',re.I),
     'companies':re.compile(r'\b(portfolio|companies|investments|our founders)\b',re.I),
 }
+PROFILE_INDEX_PATHS={
+    'people':re.compile(r'/(?:team|our-team|people|our-people|leadership|who-we-are)(?:\.html)?/?',re.I),
+    'companies':re.compile(r'/(?:portfolio|companies|our-companies|investments)(?:\.html)?/?',re.I),
+}
 PROFILE_PATH_RULES={
     'people':re.compile(r'/(team|people|leadership|members?)/[^/]+',re.I),
     'companies':re.compile(r'/(portfolio|companies|investments?)/[^/]+',re.I),
@@ -1322,6 +1326,8 @@ def profile_landing_links(page, base, max_follow, include_about=False):
         rules['about']=re.compile(r'\b(about|our company)\b',re.I)
         rules['contact']=LOCATION_CONTACT_PATH
     for kind,pattern in rules.items():
+        preferred_path=PROFILE_INDEX_PATHS.get(kind)
+        fallback=None
         for link in page.get('profile_links',[]):
             parts=urlsplit(link.get('url',''))
             if parts.scheme!='https' or parts.hostname!=host or parts.username or parts.password: continue
@@ -1331,8 +1337,16 @@ def profile_landing_links(page, base, max_follow, include_about=False):
             if parts.netloc == STARTMATE_HOST and parts.path.startswith('/portfolio-companies/'): continue
             if kind in PROFILE_PATH_RULES and PROFILE_PATH_RULES[kind].search(parts.path): continue
             clean=urlunsplit((parts.scheme,parts.netloc,parts.path,parts.query,''))
-            if clean!=base and all(x['url']!=clean for x in selected):
-                selected.append({'kind':kind,'url':clean}); break
+            if clean==base or any(x['url']==clean for x in selected): continue
+            candidate={'kind':kind,'url':clean}
+            # A broad label/path word can match a theme or a founder portal.
+            # Prefer the direct root index when it is already an eligible
+            # same-host link; otherwise keep the original first match.
+            if preferred_path is None or preferred_path.fullmatch(parts.path):
+                fallback=candidate
+                break
+            if fallback is None: fallback=candidate
+        if fallback is not None: selected.append(fallback)
         if len(selected)>=max_follow: break
     return selected[:max_follow]
 

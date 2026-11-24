@@ -778,6 +778,35 @@ class WorkflowTests(unittest.TestCase):
             {'kind':'companies','url':'https://example.com/companies'}])
         self.assertEqual(crawl.profile_landing_links(page,'https://example.com/',0),[])
 
+    def test_saved_profile_index_routes_outrank_theme_and_portal(self):
+        fixture = json.loads((Path(__file__).parent / 'fixtures' /
+                              'profile-index-selection-crawl-46.json').read_text())
+        expected = {
+            'Main Sequence': ['/our-people', '/portfolio'],
+            'Rampersand': ['/team.html', '/portfolio.html'],
+            'Airtree': ['/team', '/companies'],
+        }
+        for name, page in fixture['observations'].items():
+            with self.subTest(source=name):
+                base = page['base'].rstrip('/')
+                self.assertEqual(crawl.profile_landing_links(page, page['base'], 2), [
+                    {'kind': kind, 'url': base + path}
+                    for kind, path in zip(('people', 'companies'), expected[name])])
+                self.assertEqual(crawl.profile_landing_links(page, page['base'], 1), [
+                    {'kind': 'people', 'url': base + expected[name][0]}])
+
+    def test_profile_index_priority_does_not_admit_unapproved_or_detail_paths(self):
+        base = 'https://example.com/'
+        page = {'profile_links': [
+            {'url': 'https://elsewhere.test/team', 'text': 'Team'},
+            {'url': 'https://user@example.com/portfolio', 'text': 'Portfolio'},
+            {'url': base + 'team/sam', 'text': 'Team member'},
+            {'url': base + 'portfolio/sam', 'text': 'Portfolio company'},
+            {'url': base + 'about/people-at-work?tab=staff', 'text': 'Our team'},
+        ]}
+        self.assertEqual(crawl.profile_landing_links(page, base, 2), [
+            {'kind': 'people', 'url': base + 'about/people-at-work?tab=staff'}])
+
     def test_directory_discovery_preserves_provenance_without_following_candidates(self):
         class Fake:
             delay=1
