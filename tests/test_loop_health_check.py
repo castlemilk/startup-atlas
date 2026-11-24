@@ -7,6 +7,7 @@ import hashlib
 import importlib.util
 import json
 import unittest
+from unittest.mock import patch
 from datetime import date, datetime, timezone
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -147,6 +148,11 @@ def levels(report, name):
 
 
 class LoopHealthCheckTests(unittest.TestCase):
+    def setUp(self):
+        # These fixtures exercise the HTTP/magic checks, not Parquet decoding.
+        # Keep the stub bytes deterministic on machines that have PyArrow.
+        self.enterContext(patch.dict('sys.modules', {'pyarrow': None}))
+
     def test_all_green(self):
         with TemporaryDirectory() as tmp:
             data = make_data_dir(tmp)
@@ -312,19 +318,28 @@ class LoopHealthCheckTests(unittest.TestCase):
                       if n == 'review-queue'][0]
             self.assertIn('3 pending of 4 entries', detail)
 
-    def test_queue_stale_against_latest_crawl_is_warn_never_red(self):
-        # Newest entry is 2026-11-20; the fixture's latest completed
-        # crawl ran 2026-11-23T09:00 — a >48h lag.
+    def test_old_entries_do_not_imply_failed_noop_rebuild(self):
+        # A successful crawl can stage no new entries, leaving all committed
+        # entry timestamps older than the run. This is not a build failure.
         queue = {'version': 1, 'entries': [
             {'id': 'fact:old', 'status': 'pending',
              'created_at': '2026-11-20T08:00:00Z'}]}
         with TemporaryDirectory() as tmp:
             report = run(healthy_responses(), make_data_dir(tmp, queue=queue))
-            self.assertEqual(levels(report, 'review-queue'), [health.WARN])
-            self.assertNotEqual(report.worst, health.RED)
-            detail = [d for _, n, d in report.lines
-                      if n == 'review-queue'][0]
-            self.assertIn('queue stale', detail)
+            self.assertEqual(levels(report, 'review-queue'), [health.OK])
+            detail = [d for _, n, d in report.lines if n == 'review-queue'][0]
+            self.assertIn('newest entry 2026-11-20', detail)
+            self.assertIn('rebuild freshness unverified', detail)
+            self.assertNotIn('builder may have broken', detail)
+
+    def test_empty_queue_is_valid_without_creation_timestamps(self):
+        with TemporaryDirectory() as tmp:
+            report = run(healthy_responses(), make_data_dir(
+                tmp, queue={'version': 1, 'entries': []}))
+            self.assertEqual(levels(report, 'review-queue'), [health.OK])
+            detail = [d for _, n, d in report.lines if n == 'review-queue'][0]
+            self.assertIn('0 pending of 0 entries', detail)
+            self.assertIn('rebuild freshness unverified', detail)
 
     def test_queue_pending_above_threshold_is_warn(self):
         queue = {'version': 1, 'entries': [
