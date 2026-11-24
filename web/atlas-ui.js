@@ -220,6 +220,9 @@ export function installAtlasUI(doc = document) {
     for (const nav of doc.querySelectorAll('.atlas-section-nav')) {
       const sticky = nav.closest('.profile-sticky');
       if (sticky) sticky.toggleAttribute('data-stuck',sticky.getBoundingClientRect().top<=1);
+      // Real tablists (profile tabs) own their selection state via
+      // aria-selected; the scroll-spy only tracks stacked anchor sections.
+      if (nav.getAttribute('role') === 'tablist') continue;
       const entries = Array.from(nav.querySelectorAll('a[href^="#"]')).map(link => ({link, section:doc.getElementById(link.getAttribute('href').slice(1))})).filter(entry => entry.section && !entry.section.hidden).map(entry => ({...entry, top:entry.section.getBoundingClientRect().top}));
       // Profile sections can sit in parallel columns. Use their visual position,
       // with the followed anchor resolving sections that share the same row.

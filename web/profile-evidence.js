@@ -75,7 +75,7 @@ export function createProfileEvidence(subject, { keepSourceVisible = false } = {
     return visible.length ? `<ul class="profile-source-preview">${visible.map(id => `<li>${action(id, 'Source', 'preview')}</li>`).join('')}</ul>` : '';
   }
 
-  function index() {
+  function groupedSources() {
     const bySource = new Map();
     for (const claim of claims) {
       for (const citation of claim.citations) {
@@ -86,6 +86,15 @@ export function createProfileEvidence(subject, { keepSourceVisible = false } = {
         bySource.set(key, entry);
       }
     }
+    return bySource;
+  }
+
+  function sourceCount() {
+    return groupedSources().size;
+  }
+
+  function index() {
+    const bySource = groupedSources();
     if (!bySource.size) return '<p class="profile-empty atlas-empty">Source references are unavailable for this record.</p>';
     return `<ul class="profile-source-index">${[...bySource.values()].map(({ citation, labels }) => `<li>${icon('source')}<div><strong>${profileSource(citation.url, citationLabel(citation)) || esc(citationLabel(citation))}</strong><div class="profile-citation-meta">${citationMeta(citation)}</div><p>${[...labels].map(esc).join(' · ')}</p></div></li>`).join('')}</ul>`;
   }
@@ -146,5 +155,5 @@ export function createProfileEvidence(subject, { keepSourceVisible = false } = {
     enhance(scope);
   }
 
-  return { add, action, preview, index, dialog, enhance, install };
+  return { add, action, preview, index, sourceCount, dialog, enhance, install };
 }

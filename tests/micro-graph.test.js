@@ -1,0 +1,81 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { edgeKindLabel, microGraphLayout, microGraphNeighbours, MICRO_GRAPH_CAP } from '../web/micro-graph.js';
+
+const entity = (id, kind, name) => ({ id, kind, name });
+const graph = {
+  entities: [
+    entity('startup:acme', 'startup', 'Acme'),
+    entity('person:ada', 'person', 'Ada Lovelace'),
+    entity('person:grace', 'person', 'Grace Hopper'),
+    entity('partner:fund', 'partner', 'Fund Co'),
+    entity('programme:accel', 'programme', 'Accel'),
+    entity('startup:other', 'startup', 'Other Co')
+  ],
+  edges: [
+    { from: 'person:ada', to: 'startup:acme', kind: 'founded', confidence: 0.9, last_verified: '2026-11-01' },
+    { from: 'person:grace', to: 'startup:acme', kind: 'team_member', confidence: 0.4, last_verified: '2026-11-20' },
+    { from: 'person:grace', to: 'startup:acme', kind: 'founded', confidence: 0.7, last_verified: '2026-10-01' },
+    { from: 'partner:fund', to: 'startup:acme', kind: 'supports', confidence: 0.7, last_verified: '2026-11-15' },
+    { from: 'startup:acme', to: 'programme:accel', kind: 'participated_in', confidence: 0.2, last_verified: '2026-01-01' },
+    { from: 'person:ada', to: 'startup:other', kind: 'founded', confidence: 1, last_verified: '2026-11-24' }
+  ]
+};
+
+test('micro graph lists depth-1 neighbours only, strongest edge first', () => {
+  const model = microGraphNeighbours(graph, 'startup:acme');
+  assert.equal(model.center.id, 'startup:acme');
+  assert.equal(model.total, 4);
+  assert.equal(model.overflow, 0);
+  // Ada (0.9) first; Grace's strongest edge is her 0.7 founding edge, and the
+  // 0.7 tie with Fund Co breaks on verification recency (2026-11-15 first).
+  assert.deepEqual(model.neighbours.map(item => item.entity.id),
+    ['person:ada', 'partner:fund', 'person:grace', 'programme:accel']);
+  const grace = model.neighbours.find(item => item.entity.id === 'person:grace');
+  assert.equal(grace.edge.kind, 'founded');
+  assert.deepEqual([...grace.kinds].sort(), ['founded', 'team_member']);
+  // Depth-2 records (Ada's other company) never appear.
+  assert.ok(!model.neighbours.some(item => item.entity.id === 'startup:other'));
+});
+
+test('micro graph caps neighbours and reports the overflow', () => {
+  const many = {
+    entities: [entity('startup:hub', 'startup', 'Hub'),
+      ...Array.from({ length: 15 }, (_, i) => entity(`person:p${i}`, 'person', `Person ${i}`))],
+    edges: Array.from({ length: 15 }, (_, i) => (
+      { from: `person:p${i}`, to: 'startup:hub', kind: 'founded', confidence: i / 100, last_verified: '2026-11-01' }))
+  };
+  const model = microGraphNeighbours(many, 'startup:hub');
+  assert.equal(model.neighbours.length, MICRO_GRAPH_CAP);
+  assert.equal(model.total, 15);
+  assert.equal(model.overflow, 3);
+  assert.equal(model.neighbours[0].entity.id, 'person:p14');
+});
+
+test('micro graph rejects unknown roots and labels edge kinds', () => {
+  assert.throws(() => microGraphNeighbours(graph, 'startup:missing'), /Entity not found/);
+  assert.equal(edgeKindLabel('member_of_network'), 'Network member');
+  assert.equal(edgeKindLabel('led_round'), 'Led round');
+  assert.equal(edgeKindLabel('something_new'), 'Connected');
+});
+
+test('radial layout centres the root and spaces neighbours on the ellipse', () => {
+  const { center, points } = microGraphLayout(4);
+  assert.deepEqual(center, { x: 180, y: 130 });
+  assert.equal(points.length, 4);
+  assert.deepEqual(points[0], { x: 180, y: 40 });
+  for (const point of points) {
+    assert.ok(point.x >= 0 && point.x <= 360 && point.y >= 0 && point.y <= 260);
+  }
+  assert.deepEqual(microGraphLayout(0).points, []);
+});
+
+test('micro graph reads the published graph without inventing neighbours', async () => {
+  const published = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const model = microGraphNeighbours(published, 'startup:canva');
+  assert.ok(model.total > 0);
+  assert.ok(model.neighbours.length <= MICRO_GRAPH_CAP);
+  const ids = new Set(published.entities.map(item => item.id));
+  for (const item of model.neighbours) assert.ok(ids.has(item.entity.id));
+});
