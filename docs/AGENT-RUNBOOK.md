@@ -47,6 +47,15 @@ unchanged. These are link choices only: the replay did not fetch the newly
 selected pages or establish new people, companies, or assets. Where no
 direct index is observed, the first eligible fallback is preserved.
 
+On the exact Side Stage Ventures homepage, a visible name under a Team
+heading can corroborate a same-host profile path whose anchor is only
+“Dummy Link.” A numeric slug suffix is accepted only if one unambiguous
+path matches that visible name. Run 45169210509 yields eight unreviewed
+person leads and no additional image evidence; the nine social observations
+are unchanged. The observed “Thought Leadership” report is not a team
+index. No person-profile destination was fetched in the replay, and no
+name, role, relationship or image was promoted to published data.
+
 ### Visible source link evidence
 
 The visible HTML parser keeps script and style text out of headings, link labels and contextual excerpts. Structured JSON-LD remains a separate evidence stream. For a link with no visible label, the existing accessible label fallback still applies. This protects the review context, not the truth of a link, programme or amount. In the 22 November newsroom review, an Airwallex card's customer-savings headline appeared alongside CSS in the saved link label. The saved artifact contains extracted evidence, not original DOM bytes; offline regression fixtures reproduce that pattern without treating the card as funding or rerunning a crawl.

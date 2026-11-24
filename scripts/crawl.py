@@ -1317,6 +1317,53 @@ PROFILE_ROUND_BADGE=re.compile(r'^(?:pre-seed|seed|series [a-f](?:-\d+)?|bridge|
 # every longer link text is a label or a name plus role/tagline text.
 PROFILE_LONG_LABEL=40
 
+SIDESTAGE_PROFILE_HOME = 'https://www.sidestage.vc/'
+
+
+def is_sidestage_profile_home(page, base):
+    return (base in (SIDESTAGE_PROFILE_HOME, SIDESTAGE_PROFILE_HOME[:-1])
+            and page.get('final_url') == SIDESTAGE_PROFILE_HOME)
+
+
+def sidestage_home_team_batch(page):
+    """Use visible Team headings, never the placeholder text or inferred slug."""
+    headings = {}
+    in_team = False
+    for heading in page.get('headings', []):
+        level = heading['level']
+        label = ' '.join(heading['text'].split())
+        if level in ('h1', 'h2'):
+            in_team = level == 'h2' and label.casefold() == 'team'
+        elif in_team and level == 'h3' and re.fullmatch(r'[^\W\d_]+(?:[ -][^\W\d_]+)+', label):
+            key = label.casefold().replace(' ', '-')
+            headings.setdefault(key, set()).add(label)
+
+    links = page.get('profile_links', [])[:PROFILE_LINK_LIMIT]
+    matches = {}
+    for link in links:
+        url = link['url']
+        parts = urlsplit(url)
+        if (parts.scheme, parts.netloc, parts.query, parts.fragment) != ('https', 'www.sidestage.vc', '', ''):
+            continue
+        match = re.fullmatch(r'/team/([a-z]+(?:-[a-z]+)+)(?:-[0-9]+)?', parts.path)
+        if not match or link.get('text') != 'Dummy Link': continue
+        key = match[1]
+        if key in headings:
+            matches.setdefault(key, set()).add(url)
+    rows = [
+        {'kind': 'people', 'name': next(iter(headings[key])), 'candidate_url': next(iter(urls)),
+         'source_url': page['final_url'], 'checked_at': page['checked_at'],
+         'name_evidence': 'homepage-team-heading-and-profile-path',
+         'link_text': 'Dummy Link', 'review_required': True}
+        for key, urls in matches.items() if len(urls) == len(headings[key]) == 1
+    ]
+    returned = rows[:PROFILE_LEAD_LIMIT]
+    return returned, {
+        'eligible_within_retained_links': len(rows), 'returned': len(returned),
+        'omitted_by_lead_limit': len(rows)-len(returned), 'profile_links_at_limit': len(links)==PROFILE_LINK_LIMIT,
+    }
+
+
 def profile_landing_links(page, base, max_follow, include_about=False):
     """Select bounded same-host profile pages, with location pages for startups."""
     if max_follow<=0: return []
@@ -1337,6 +1384,9 @@ def profile_landing_links(page, base, max_follow, include_about=False):
             if parts.netloc == STARTMATE_HOST and parts.path.startswith('/portfolio-companies/'): continue
             if kind in PROFILE_PATH_RULES and PROFILE_PATH_RULES[kind].search(parts.path): continue
             clean=urlunsplit((parts.scheme,parts.netloc,parts.path,parts.query,''))
+            if (kind=='people' and is_sidestage_profile_home(page,base)
+                and clean==SIDESTAGE_PROFILE_HOME+'outliers-report-2025'
+                and link.get('text','').casefold().startswith('thought leadership ')): continue
             if clean==base or any(x['url']==clean for x in selected): continue
             candidate={'kind':kind,'url':clean}
             # A broad label/path word can match a theme or a founder portal.
@@ -1849,7 +1899,7 @@ def profile_batch_coverage(results):
         for page in result['pages']:
             batch = page.get('profile_lead_coverage')
             if batch is None: continue
-            report = by_kind.setdefault(page['profile_kind'], {
+            report = by_kind.setdefault(page.get('profile_lead_kind') or page['profile_kind'], {
                 'pages_measured':0, 'eligible_within_retained_links':0,
                 'returned':0, 'omitted_by_lead_limit':0, 'pages_at_profile_link_limit':0,
             })
@@ -1889,8 +1939,14 @@ def crawl_profiles(catalogue,args,transport,company=False,source_state=None,prog
         seen=set(); duplicates=0
         company_name=seed['name'] if company else None
         homepage=fetch(seed['url'],host,scope,company_name); pages=[homepage]; discovered=[]
+        homepage_leads=[]
         if homepage['status']=='ok':
-            kept,dropped=dedupe_profile_candidates(extract_profile_media_leads(seed['name'],homepage,'homepage'),seen)
+            if not company and is_sidestage_profile_home(homepage,seed['url']):
+                homepage_leads, homepage['profile_lead_coverage']=sidestage_home_team_batch(homepage)
+                for lead in homepage_leads: lead['partner']=seed['name']
+                homepage['profile_lead_kind']='people'
+            media=extract_profile_media_leads(seed['name'],homepage,'homepage')
+            kept,dropped=dedupe_profile_candidates(homepage_leads+media,seen)
             candidates.extend(kept); duplicates+=dropped
             discovered=profile_landing_links(homepage,seed['url'],follow,include_about=company)
             if company and scope is not None:
@@ -1921,7 +1977,9 @@ def crawl_profiles(catalogue,args,transport,company=False,source_state=None,prog
                     candidates.extend(kept); duplicates+=dropped
         row={'name':seed['name'],'url':seed['url'],'pages':pages,**({'crawl_scope':scope} if scope is not None else {}),
                         'duplicates_dropped':duplicates,
-                        'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''}
+                        'note':('Team leads staged from the homepage' if homepage_leads
+                                else 'No matching team or portfolio links found')
+                               if homepage['status']=='ok' and not discovered else ''}
         if source_state is not None: row['sampling_priority']=seed.get('sampling_priority')
         results.append(row)
         if progress: progress.source_done(args.mode,seed['name'],failed=homepage['status']!='ok',candidates=len(candidates))
