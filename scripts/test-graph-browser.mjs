@@ -64,11 +64,16 @@ try {
     if(message.method==='Runtime.consoleAPICalled'&&['error','warning'].includes(message.params.type))browserMessages.push(message.params.args.map(item=>item.value||item.description||'').join(' '));
     if(!message.id)return;
     const item=pending.get(message.id);if(!item)return;pending.delete(message.id);
+    clearTimeout(item.timeout);
     if(message.error)item.reject(new Error(message.error.message));else item.resolve(message.result);
   });
   function command(method,params={}) {
     const id=++sequence;
-    return new Promise((resolveCommand,reject)=>{pending.set(id,{resolve:resolveCommand,reject});socket.send(JSON.stringify({id,method,params}));});
+    return new Promise((resolveCommand,reject)=>{
+      const timeout=setTimeout(()=>{pending.delete(id);reject(new Error(`Chrome command timed out: ${method}`));},20000);
+      pending.set(id,{resolve:resolveCommand,reject,timeout});
+      socket.send(JSON.stringify({id,method,params}));
+    });
   }
   async function evaluate(expression) {
     const response=await command('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});
