@@ -91,7 +91,7 @@ import re
 import sys
 import unicodedata
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import date as calendar_date, datetime, timezone
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
@@ -917,16 +917,16 @@ def _recorded_value_events(data_dir):
     return recorded
 
 
-def _already_recorded(events, event, amount, currency, date):
+def _already_recorded(events, event, amount, currency, date, source):
     """True when the evidence stores already hold this figure.
 
     A match needs the same amount — within 1%, because headlines round
     ("$5.71 billion" for a recorded 5,711,863,282.64) — and the same
     year-month (when both dates are known); currency must agree
     whenever both sides state one. A crawl headline's currency is
-    often unstated (bare ``$``), and blocking a genuinely new fact
-    over an unstated currency would lose it — the reviewer sees both
-    figures either way.
+    often unstated (bare ``$``). Without a publication date, only
+    the exact source of an immutable round valuation can establish a
+    repeat. A rolling market-cap page can reuse its URL every day.
     """
     if not events:
         return False
@@ -940,7 +940,12 @@ def _already_recorded(events, event, amount, currency, date):
                 and currency != record["currency"]:
             continue
         recorded_date = record.get("date") or record.get("observed_on")
-        if date and recorded_date and date[:7] != recorded_date[:7]:
+        if date and recorded_date:
+            if date[:7] != recorded_date[:7]:
+                continue
+        elif (event != "last_round_post_money"
+              or record.get("basis") != event
+              or not source or record.get("source") != source):
             continue
         return True
     return False
@@ -965,13 +970,14 @@ def _draft_value(item, mention, event, approximate):
             exchange = {"NASDAQ": "Nasdaq"}.get(
                 ticker_match.group(1), ticker_match.group(1))
             ticker = ticker_match.group(2)
-    date = (item.get("published_hint") or "").strip()
-    if not re.match(r"^\d{4}-\d{2}-\d{2}", date):
-        checked = item.get("checked_at") or ""
-        date = checked[:10] if re.match(r"^\d{4}-\d{2}-\d{2}", checked) \
-            else None
-    else:
-        date = date[:10]
+    hint = (item.get("published_hint") or "").strip()
+    published = re.match(r"^(\d{4}-\d{2}-\d{2})(?:$|T| )", hint)
+    date = None
+    if published:
+        try:
+            date = calendar_date.fromisoformat(published.group(1)).isoformat()
+        except ValueError:
+            pass  # Crawl time is not evidence of when a valuation occurred.
     return {
         "startup": item.get("startup") or "",
         "amount": normalised.get("value"),
@@ -1025,7 +1031,7 @@ def produce_value_facts(artifact_dir, data_dir, run):
                 else f"startup:{slug(draft['startup'])}"
             if _already_recorded(recorded.get(startup_id), event,
                                  draft["amount"], draft["currency"],
-                                 draft["date"]):
+                                 draft["date"], draft["source_url"]):
                 continue
             month = draft["date"][:7] if draft["date"] else "undated"
             key = f"{slug(draft['startup'])}:value:{slug(event)}" \

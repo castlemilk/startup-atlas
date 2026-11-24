@@ -51,6 +51,9 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_collection_coverage.py'
           python3 -m unittest discover -s tests -p 'test_scoped_implementation.py'
           python3 -m unittest discover -s tests -p 'test_early_investments.py'
+      - name: Validate review queue and valuation evidence
+        if: steps.changes.outputs.queue == 'true'
+        run: python3 -m unittest tests.test_review_queue tests.test_review_gating tests.test_valuation_queue
       - name: Check country research indexing
         if: steps.changes.outputs.research == 'true'
         run: python3 -m unittest discover -s tests -p 'test_country_research_index.py'

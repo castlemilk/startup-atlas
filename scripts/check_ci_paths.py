@@ -24,6 +24,8 @@ RULES = {
                    'scripts/*company*metadata*.py', 'scripts/*early_investments.py', 'scripts/collection_coverage.py',
                    'tests/test_crawl*.py', 'tests/test_company*.py', 'tests/test_scoped_implementation.py',
                    'tests/test_early_investments.py', 'tests/test_collection_coverage.py'),
+    'queue': ('scripts/build-review-queue.py', 'scripts/latest_value.py', 'scripts/review_gating.py',
+              'tests/test_review_queue.py', 'tests/test_review_gating.py', 'tests/test_valuation_queue.py'),
     'research': ('research/countries/*', 'scripts/index_country_research.py', 'tests/test_country_research_index.py'),
     'mcp': ('backend/mcp/*', 'server.js', 'scripts/catalogue-entries.mjs'),
     # The hosted tests read data/ directly (profile previews, source
