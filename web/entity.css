@@ -249,6 +249,28 @@
 .entity-aside h2 { margin: 0 0 10px; color: var(--atlas-ink); font: 480 25px/1.15 var(--atlas-font-display); letter-spacing: -.02em; }
 #entity-funding { max-width: 63%; }
 
+/* Sources footer + rail line (issue #419). */
+.entity-sources-footer .entity-section { margin-top: 6px; }
+.entity-sources-line { margin: 0; color: var(--atlas-muted); font-size: 14px; line-height: 1.6; }
+.entity-sources-line .profile-jump-link { min-height: 0; }
+
+/* Depth-1 micro knowledge graph (issue #419). */
+.entity-micro-graph { margin: 16px 0 6px; padding: 14px; border: 1px solid var(--atlas-border); border-radius: var(--atlas-radius-control); background: var(--atlas-surface); }
+.entity-micro-graph svg { display: block; width: 100%; max-width: 460px; height: auto; margin: 0 auto; }
+.entity-micro-graph line { stroke: var(--atlas-border-strong); stroke-width: 1; }
+.entity-micro-dot { fill: var(--atlas-soft); stroke: var(--atlas-border-strong); }
+.entity-micro-kind-person { fill: var(--atlas-person-soft); }
+.entity-micro-centre { fill: var(--atlas-canvas); stroke: var(--atlas-action); stroke-width: 1.5; }
+.entity-micro-graph a:hover .entity-micro-dot, .entity-micro-graph a:focus-visible .entity-micro-dot { stroke: var(--atlas-action); stroke-width: 1.5; }
+.entity-micro-initials { fill: var(--atlas-ink); font: 600 11px var(--atlas-font-body); pointer-events: none; }
+.entity-micro-centre-initials { font-size: 13px; }
+.entity-micro-name { fill: var(--atlas-muted); font: 11px var(--atlas-font-body); }
+.entity-micro-centre-name { fill: var(--atlas-ink); font-weight: 650; }
+.entity-micro-legend { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 10px 0 0; padding: 0; }
+.entity-micro-legend li { padding: 3px 9px; border: 1px solid var(--atlas-border); border-radius: 999px; color: var(--atlas-muted); font-size: 12px; }
+.entity-micro-overflow { margin: 8px 0 0; color: var(--atlas-muted); font-size: 13px; }
+.entity-micro-overflow a { color: var(--atlas-action); text-underline-offset: 3px; }
+
 @media (min-width: 761px) {
   .entity-overview-rail [data-atlas-notes] form { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 8px 12px; }
   .entity-overview-rail [data-atlas-notes] .atlas-note-actions { display: grid; gap: 6px; max-width: 112px; margin: 0; }

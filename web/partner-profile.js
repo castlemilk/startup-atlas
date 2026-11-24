@@ -4,6 +4,7 @@ import { partnerRelationships } from './relationships.js';
 import { slug, teamPersonId } from './graph-model.js';
 import { icon, renderEvidenceHeading } from './atlas-ui.js';
 import { createProfileEvidence, profileSource as link, profileTime, recordedProfileDate } from './profile-evidence.js';
+import { installProfileTabs } from './profile-tabs.js';
 
 const root = document.getElementById('profile');
 const name = new URLSearchParams(location.search).get('name') || '';
@@ -190,22 +191,40 @@ async function renderProfile() {
   const website = websiteUrl ? `<a href="${esc(websiteUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Website for ${esc(name)}">${icon('external')}${esc(new URL(websiteUrl).hostname.replace(/^www\./, ''))}</a>` : '';
   const externalProfiles = socials(detail.socials);
 
+  const tabSections = [['partner-companies', 'Companies'], ['partner-people', 'People'],
+    ...(sponsors.length ? [['partner-supporters', 'Supporters']] : []), ['partner-programmes', 'Programmes']];
+
   root.innerHTML = `<div class="profile-return"><a class="profile-back" data-atlas-back href="./list.html?view=partners">All partners</a></div>
     <header class="profile-hero"><div class="profile-brand">${mark(name, null, 'profile-logo', { eager: true })}<div class="profile-identity"><div class="profile-nameplate"><h1>${esc(name)}</h1><p class="profile-type">${esc(detail.type || 'Organisation')}</p></div><div class="profile-context"><p class="profile-intro">${esc(record?.description || 'This organisation is in the research index. Identity and activity research is pending.')}</p>${locationText || website ? `<div class="profile-hero-meta">${locationText ? `<span class="profile-geography">${icon('location')}${esc(locationText)}</span>` : ''}${website}</div>` : ''}</div></div></div>
     <div class="profile-actions"><a class="atlas-button atlas-button-primary" data-atlas-profile-graph="${esc(graphId)}" href="${graphHref}">${icon('graph')}Explore graph</a>${externalProfiles ? `<div class="profile-socials">${externalProfiles}</div>` : ''}</div></header>
-    <div class="profile-sticky"><span class="profile-compact-identity" aria-hidden="true">${mark(name, null, 'profile-item-mark company')}<span>${esc(name)}</span></span><nav class="atlas-section-nav" aria-label="Profile sections"><a href="#partner-companies">Companies</a><a href="#partner-people">People</a>${sponsors.length ? '<a href="#partner-supporters">Supporters</a>' : ''}<a href="#partner-programmes">Programmes</a><a href="#partner-sources">Sources</a></nav></div>
+    <div class="profile-sticky"><span class="profile-compact-identity" aria-hidden="true">${mark(name, null, 'profile-item-mark company')}<span>${esc(name)}</span></span><nav class="atlas-section-nav" role="tablist" aria-label="Profile sections">${tabSections.map(([id, label], index) => `<a role="tab" id="tab-${id}" href="#${id}" aria-controls="${id}" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}">${label}</a>`).join('')}</nav></div>
     ${partial ? '<p class="profile-notice" role="status">Some profile research is unavailable. Showing the information that loaded. <a href="">Retry</a></p>' : ''}
-    <div class="profile-body"><div class="profile-main">${portfolio}<p class="profile-selection-status" id="partner-company-selection" role="status" aria-live="polite"></p>${team}${supporters}${programme}
-    <section class="profile-section" id="partner-sources"><div class="profile-section-head">${renderEvidenceHeading()}</div>${evidence.index()}</section></div>
+    <div class="profile-body"><div class="profile-main">${portfolio}<p class="profile-selection-status" id="partner-company-selection" role="status" aria-live="polite"></p>${team}${supporters}${programme}</div>
     <aside class="profile-aside"><section><h2>Research coverage</h2><p class="profile-coverage">${esc(coverage)}.</p>${checked && (people.length || !companies.length) ? `<p>${people.length ? 'Public team sample checked' : 'Research checked'} ${profileTime(checked)}.</p>` : ''}</section>
     <section><h2>Organisation evidence</h2><p>${supplemental[0].status === 'rejected' ? 'Identity research could not be loaded.' : reviewedOn ? `Identity reviewed ${profileTime(reviewedOn)}.` : 'Identity requires review.'}</p>${evidence.action(identityProof, 'Identity source')}<p>Recorded geography, office locations and programme eligibility describe different things. Follow each source for its scope and dates.</p><a class="profile-jump-link" href="#partner-sources">Browse all sources ${icon('arrow')}</a></section></aside></div>
+    <details class="profile-sources-footer"><summary class="profile-sources-summary">${renderEvidenceHeading()}<span class="profile-sources-count">${evidence.sourceCount()} source${evidence.sourceCount() === 1 ? '' : 's'}</span></summary><section class="profile-section" id="partner-sources">${evidence.index()}</section></details>
     ${evidence.dialog()}`;
   const nav = root.querySelector('.profile-sticky');
   installSectionNavigation(nav);
   installImages(root);
   installCompanyInspector(companies, renderCompanyDetail, evidence, nav);
   evidence.install(root);
-  if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+  for (const [id] of tabSections) {
+    const panel = document.getElementById(id);
+    if (panel) {
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', `tab-${id}`);
+    }
+  }
+  const tabsApi = installProfileTabs(root);
+  if (tabsApi && location.hash) {
+    const target = document.getElementById(location.hash.slice(1));
+    if (target && target.id === 'partner-sources') {
+      const details = target.closest('details');
+      if (details) details.open = true;
+      target.scrollIntoView();
+    }
+  }
   document.title = name + ' — Startup Atlas';
   const pageDescription = (record?.description || '').trim() || 'Explore sourced partner profiles, people, companies and programme relationships.';
   document.querySelector('meta[name="description"]')?.setAttribute('content', pageDescription);

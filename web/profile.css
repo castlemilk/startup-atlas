@@ -66,6 +66,21 @@
 .profile-jump-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--atlas-action); font-size: 13px; font-weight: 600; text-underline-offset: 4px; }
 .profile-jump-link .atlas-icon { width: 15px; height: 15px; }
 
+/* Profile tabs (issue #419): panels are switched, never unmounted, and the
+   hidden attribute must win over section display rules. */
+.profile-shell [role="tabpanel"][hidden] { display: none !important; }
+.profile-shell .atlas-section-nav a[aria-selected="true"] { color: var(--atlas-ink); border-bottom-color: var(--atlas-ink); font-weight: 700; }
+
+/* Sources as footer back-matter (issue #419): collapsed, quiet, separated. */
+.profile-sources-footer { margin-top: 44px; border-top: 1px solid var(--atlas-border); }
+.profile-sources-summary { display: flex; align-items: center; gap: 14px; padding: 12px 0; cursor: pointer; list-style: none; }
+.profile-sources-summary::-webkit-details-marker { display: none; }
+.profile-sources-summary .atlas-evidence-heading { margin: 0; color: var(--atlas-muted); font-size: 17px; }
+.profile-sources-summary .atlas-evidence-mark { width: 26px; height: 26px; }
+.profile-sources-count { color: var(--atlas-muted); font-size: 13px; }
+.profile-sources-footer .profile-source-index { font-size: 13px; }
+.profile-sources-footer .profile-source-index p { color: var(--atlas-muted); }
+
 .profile-proof { display: inline-flex; align-items: center; }
 .profile-source-action, .profile-proof-direct {
   display: inline-flex;
