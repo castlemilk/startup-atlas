@@ -157,3 +157,8 @@ tasks:
           exit 1
         fi
         cd {{.TF_DIR}} && terraform destroy -input=false -auto-approve -var="project_id={{.PROJECT}}" -var="region={{.REGION}}"
+
+  health:
+    desc: Loop health check (#375/#385) — crawl run, live index age, corpus lag, console smoke test, per-file checked-date staleness. Exits non-zero on any red check.
+    cmds:
+      - python3 scripts/loop_health_check.py
