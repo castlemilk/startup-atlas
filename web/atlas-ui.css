@@ -20,6 +20,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 }
 [hidden] { display: none !important; }
 .atlas-icon { display: inline-block; width: 18px; height: 18px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
+/* The one kicker style (de-slop #441): 11px, weight 600, .08em tracking,
+   uppercase, muted token colour. Per-surface label rules (profile, globe,
+   directory, explorer) match these metrics; new labels use this class.
+   Dark instrument panels keep a light muted tone instead of --atlas-muted. */
+.atlas-kicker { font: 600 11px/1.4 var(--atlas-font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--atlas-muted); }
 /* The operational routes share a compact masthead and an independent workspace. */
 .atlas-masthead { container: atlas-masthead / inline-size; background: var(--atlas-paper); color: var(--atlas-ink); border-bottom: 1px solid var(--atlas-border); }
 .atlas-brand-bar {

@@ -17,6 +17,7 @@ const definitions = [
   ['download', 'Download', 'actions', 'Save a file to the device.', ['export', 'save', 'file'], '<path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/>'],
   ['copy', 'Copy', 'actions', 'Copy a value or a code fragment.', ['clipboard', 'duplicate', 'svg'], '<rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>'],
   ['check', 'Check', 'actions', 'Confirm a completed action; pair it with explicit text.', ['complete', 'success', 'done'], '<path d="m4 12 5 5L20 6"/>'],
+  ['bookmark', 'Bookmark', 'actions', 'Save a record to the saved list kept in this browser.', ['save', 'saved', 'shortlist'], '<path d="M6 3.5h12v17l-6-4-6 4z"/>'],
   ['plus', 'Plus', 'actions', 'Add an item or expand the current view.', ['add', 'expand', 'increase'], '<path d="M12 4v16M4 12h16"/>'],
   ['minus', 'Minus', 'actions', 'Remove an item or reduce the current view.', ['collapse', 'decrease', 'subtract'], '<path d="M4 12h16"/>'],
   ['chevron-down', 'Chevron down', 'navigation', 'Indicate an expandable section or downward movement.', ['expand', 'select', 'down'], '<path d="m5 9 7 7 7-7"/>'],
