@@ -64,6 +64,28 @@ export function microGraphNeighbours(graph, rootId, cap = MICRO_GRAPH_CAP) {
   };
 }
 
+// Neighbour name labels sit under each circle, where a single line fits
+// about 16 characters. Longer names wrap onto two balanced lines at a word
+// boundary instead of truncating, as long as each line stays short enough
+// for the radial spacing; only names that cannot wrap that way (very long
+// or single-word) fall back to an ellipsis. The full name always remains in
+// the link's title/aria-label and in the records list beneath the diagram.
+const MICRO_GRAPH_LABEL_LINE = 16;
+const MICRO_GRAPH_LABEL_WRAP_MAX = 24;
+
+export function microGraphNameLines(name) {
+  if (name.length <= MICRO_GRAPH_LABEL_LINE) return [name];
+  const words = name.split(' ');
+  let best = null;
+  for (let i = 1; i < words.length; i += 1) {
+    const lines = [words.slice(0, i).join(' '), words.slice(i).join(' ')];
+    const score = Math.max(lines[0].length, lines[1].length);
+    if (!best || score < best.score) best = { lines, score };
+  }
+  if (best && best.score <= MICRO_GRAPH_LABEL_WRAP_MAX) return best.lines;
+  return [`${name.slice(0, MICRO_GRAPH_LABEL_LINE - 1)}…`];
+}
+
 // Simple radial layout: neighbours evenly spaced on an ellipse around the
 // centre, starting at the top. Coordinates suit a 360x260 viewBox.
 export function microGraphLayout(count, { width = 360, height = 260 } = {}) {
