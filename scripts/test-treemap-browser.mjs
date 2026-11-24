@@ -157,6 +157,8 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('#treemap-chart [data-company]').length"),values.rows.length,'Default company-value view plots only companies with a recorded value');
   assert.equal(await evaluate("document.querySelectorAll('#treemap-novalue [data-company]').length"),values.missing.length,'Companies without a recorded value appear in the equal-size no-value band, not the sized map');
   assert.equal(await evaluate("document.querySelector('#treemap-novalue').hidden"),false,'The no-value band is visible in the default map view');
+  const tileTickers=await evaluate(`Object.fromEntries(Array.from(document.querySelectorAll('#treemap-chart [data-company] .treemap-tile-ticker'),el=>[el.closest('[data-company]').dataset.company,el.textContent]))`);
+  assert.deepEqual(tileTickers,{'startup:uipath':'NYSE: PATH','startup:wise':'Nasdaq: WSE'},'Listed tiles must show EXCHANGE: TICKER in the default company-value view');
   assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"),'map');
   assert.equal(await evaluate("document.querySelector('#treemap-chart [data-company=\"startup:psiquantum\"]').closest('.treemap-plot-group').getAttribute('aria-label')"),'Quantum technology');
   assert.match(await text('#treemap-legend'),/Technology type/);
