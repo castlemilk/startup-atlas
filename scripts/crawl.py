@@ -1898,6 +1898,11 @@ def crawl_profiles(catalogue,args,transport,company=False,source_state=None,prog
                         leads, page['profile_lead_coverage'] = profile_lead_batch(seed['name'],page,target['kind'])
                         new_rows.extend(leads)
                     new_rows.extend(extract_profile_media_leads(seed['name'],page,target['kind']))
+                    if target['kind'] == 'people':
+                        # Bind using this page's observations, before a
+                        # duplicate image from the homepage can hide them.
+                        bind_profile_headshot_candidates(
+                            new_rows, {seed['name']: seed['asset_hosts']})
                     kept,dropped=dedupe_profile_candidates(new_rows,seen)
                     candidates.extend(kept); duplicates+=dropped
         row={'name':seed['name'],'url':seed['url'],'pages':pages,**({'crawl_scope':scope} if scope is not None else {}),
@@ -1907,8 +1912,7 @@ def crawl_profiles(catalogue,args,transport,company=False,source_state=None,prog
         results.append(row)
         if progress: progress.source_done(args.mode,seed['name'],failed=homepage['status']!='ok',candidates=len(candidates))
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
-    bindings = bind_profile_headshot_candidates(
-        candidates, {seed['name']: seed['asset_hosts'] for seed in seeds})
+    bindings = sum(bool(row.get('headshot_candidate')) for row in candidates)
     coverage = page_fetch_coverage(results,candidates)
     coverage['profile_headshot_bindings'] = bindings
     coverage['profile_leads_by_kind'] = profile_batch_coverage(results)

@@ -156,7 +156,8 @@ full label agrees with a single same-page people lead and its same-host
 profile slug, and the image URL and label are unambiguous, retain it with
 `binding_evidence: team-alt-and-profile-slug`. Explicit `Photo of …` matches
 retain priority. Multiple URLs or conflicting names withhold the plain-label
-binding. This is review-only metadata: no portrait bytes, identity or rights
+binding. Bind on the observed team page before cross-page deduplication;
+standalone image rows still retain their earliest source. This is review-only metadata: no portrait bytes, identity or rights
 are verified by it, and company portrait capture is unchanged.
 
 ## The review loop (as of 24 Nov 2026)
