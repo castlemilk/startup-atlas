@@ -22,7 +22,11 @@ Checks, in one stdlib-only run:
                 WARN (the publish workflow + 15-min indexer should close
                 the gap; a persistent lag shows up here day after day).
   d. console  — query-console smoke test at HTTP level: fetch query.html
-                from the index base, assert the apache-arrow import map is
+                from the index base, compare the bucket console files
+                against their canonical source in web/ (drift is WARN —
+                issue #439; republish with
+                scripts/publish_query_console.py), assert the apache-arrow
+                import map is
                 present (the 23 Nov 2026 bug: without it DuckDB-WASM cannot
                 resolve 'apache-arrow' and no query runs), assert
                 latest.json + the version manifest + at least one Parquet
@@ -287,7 +291,45 @@ def check_corpus_lag(report, manifest, data_dir):
                      'workflow + indexer run')
 
 
-def check_console(fetch, report, latest, manifest):
+def check_console_drift(fetch, report, web_dir, html_body):
+    """The bucket console must match its canonical source in web/ (#439).
+
+    The bucket copy still runs when it is stale, so drift is a WARN, not a
+    RED. Regenerate it with scripts/publish_query_console.py.
+    """
+    differing = []
+    for name in ('query.html', 'query.js', 'query.css'):
+        local_path = web_dir / name
+        if not local_path.is_file():
+            continue
+        if name == 'query.html':
+            remote = html_body
+        else:
+            try:
+                status, remote = fetch(INDEX_BASE + name)
+            except FetchError as exc:
+                report.add(WARN, 'console-drift',
+                           f'could not fetch bucket {name} to compare '
+                           f'against web/{name} ({exc})')
+                return
+            if status != 200:
+                report.add(WARN, 'console-drift',
+                           f'bucket {name} returned HTTP {status}; cannot '
+                           'verify it matches the canonical web/ source')
+                return
+        if remote != local_path.read_bytes():
+            differing.append(name)
+    if differing:
+        report.add(WARN, 'console-drift',
+                   'bucket query console differs from the canonical web/ '
+                   'source for: ' + ', '.join(differing)
+                   + ' — republish with scripts/publish_query_console.py')
+    else:
+        report.add(OK, 'console-drift',
+                   'bucket query console matches the web/ source')
+
+
+def check_console(fetch, report, latest, manifest, web_dir=None):
     try:
         status, body = fetch(INDEX_BASE + 'query.html')
     except FetchError as exc:
@@ -302,6 +344,8 @@ def check_console(fetch, report, latest, manifest):
                    'query.html is missing the apache-arrow import map '
                    '(DuckDB-WASM cannot resolve apache-arrow; no query runs)')
         return
+    if web_dir is not None:
+        check_console_drift(fetch, report, web_dir, body)
     if not latest or not manifest:
         report.add(RED, 'console',
                    'import map present, but latest.json/manifest unavailable '
@@ -414,7 +458,8 @@ def check_checked_dates(report, data_dir, today, git_date=_git_date):
                    f'{STALE_RED_DAYS}d')
 
 
-def run_checks(fetch=http_fetch, now=None, data_dir=None, git_date=_git_date):
+def run_checks(fetch=http_fetch, now=None, data_dir=None, git_date=_git_date,
+               web_dir=None):
     now = now or datetime.now(timezone.utc)
     data_dir = Path(data_dir) if data_dir else ROOT / 'data'
     report = Report()
@@ -422,7 +467,7 @@ def run_checks(fetch=http_fetch, now=None, data_dir=None, git_date=_git_date):
     check_crawl_progress(fetch, report, now)
     latest, manifest = check_index(fetch, report, now)
     check_corpus_lag(report, manifest, data_dir)
-    check_console(fetch, report, latest, manifest)
+    check_console(fetch, report, latest, manifest, web_dir=web_dir)
     check_checked_dates(report, data_dir, now.date(), git_date)
     return report
 
@@ -432,7 +477,7 @@ def main(argv=None):
     parser.add_argument('--data-dir', type=Path, default=ROOT / 'data',
                         help='Directory holding the reviewed JSON files')
     args = parser.parse_args(argv)
-    report = run_checks(data_dir=args.data_dir)
+    report = run_checks(data_dir=args.data_dir, web_dir=ROOT / 'web')
     print(report.render())
     return 1 if report.worst == RED else 0
 

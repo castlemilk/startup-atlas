@@ -4,6 +4,32 @@ The Query page (`query.html`) lets anyone run analytical SQL against the
 published Atlas catalogue in their own browser. Queries execute locally —
 no request leaves the device except fetching the published dataset files.
 
+## One canonical console (de-slop #439)
+
+The console has exactly one source: `web/query.html`, `web/query.js` and
+`web/query.css` in this repository. GitHub Pages builds and serves those
+files, and the site navigation links to that deployment.
+
+A second copy is served from the root of the public live-index bucket
+(`https://storage.googleapis.com/single-station-515408-g9-atlas-index/query.html`)
+because the live-index loop's readers reach the console next to the index
+data. That copy is a published artefact of the repo source — never edit
+it in place. After changing any console file, regenerate it with:
+
+```sh
+ATLAS_CORPUS_BACKEND=gcs \
+ATLAS_CORPUS_INDEX_BUCKET=single-station-515408-g9-atlas-index \
+ATLAS_GCP_PROJECT=single-station-515408-g9 \
+python3 scripts/publish_query_console.py
+```
+
+The vendored DuckDB/Arrow trees beside it come from `scripts/build.mjs`;
+re-sync them only on a DuckDB-WASM version change with
+`--from-dist dist`. The daily loop health check compares the bucket files
+against `web/` and reports drift as WARN (`console-drift`), so a forgotten
+republish surfaces within a day. (Drift has happened: the bucket query.js
+once lagged the repo by a whole examples update.)
+
 ## Data flow
 
 ```
