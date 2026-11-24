@@ -1143,7 +1143,7 @@ def produce_startup_leads(artifact_dir, data_dir, run, exclude_slugs=()):
         name = (row.get("name") or "").strip()
         # Strip theme headings / description text baked into a card
         # label, keying the lead on the company name only (#462).
-        name =         name = clean_lead_name(name, row.get("candidate_url") or "")
+        name = clean_lead_name(name, row.get("candidate_url") or "")
         # UI link text is not a company (#501): drop the row — a
         # fresh crawl slug-derives the real name at extraction.
         name = lead_name_for_row(name, row.get("candidate_url") or "")
