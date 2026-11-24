@@ -15,7 +15,7 @@ Explore the collection at:
 https://castlemilk.github.io/startup-atlas/design-assets.html
 
 The kit includes all generated full-size visuals and lightweight previews,
-32 editable standalone SVG icons, canonical CSS tokens, shared component styles,
+{icon_count} editable standalone SVG icons, canonical CSS tokens, shared component styles,
 the icon registry, asset and icon manifests, and the design / interaction guidance.
 The component, token and implementation recipe guides accompany the visual handbook.
 The view direction guide specifies four proposed journeys and a list/search
@@ -79,6 +79,7 @@ def add(archive, path, content):
 
 
 manifest = json.loads((DIST / 'assets/design-lab/asset-manifest.json').read_text())
+icon_manifest = json.loads((DIST / 'assets/design-icons/icon-manifest.json').read_text())
 paths = set()
 for asset in manifest['assets']:
     for key in ('image', 'thumb'):
@@ -100,7 +101,7 @@ paths.update({'design-aesthetic.html', 'design-aesthetic.css', 'design-aesthetic
     'design-aesthetic-tokens.css', 'design-aesthetic-data.js', 'atlas-feature-symbols.js',
     'signal-controls.js', 'signal-controls.css', 'atlas-sdk.js', 'atlas-sdk.css', 'vendor/UI-SDK-LICENSE.txt', 'vendor/ui-sdk-manifest.json'})
 with ZipFile(TARGET, 'w') as archive:
-    add(archive, 'README.md', readme.encode())
+    add(archive, 'README.md', readme.replace('{icon_count}', str(len(icon_manifest['icons']))).encode())
     for path in sorted(paths):
         add(archive, path, (DIST / path).read_bytes())
 with ZipFile(TARGET) as archive:
