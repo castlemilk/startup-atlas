@@ -268,6 +268,56 @@ class BuildTests(FixtureCase):
         leads = [e for e in added if e["kind"] == "startup-lead"]
         self.assertEqual(len(leads), 100)
 
+    def test_polluted_lead_names_are_cleaned_to_company_name(self):
+        # #462: run-44 style labels bake a theme heading and/or the
+        # company's marketing description into the name. The queue key
+        # must be the company name only, derived from the profile URL.
+        rows = [
+            {"partner": "Main Sequence", "kind": "companies",
+             "name": "Decarbonise the planet Avarni AI-powered carbon "
+                     "management for your supply chain",
+             "candidate_url": "https://www.mseq.vc/portfolio/avarni",
+             "source_url": "https://www.mseq.vc/portfolio"},
+            {"partner": "Brandon Capital", "kind": "companies",
+             "name": "Currus Biologics Developing the next generation "
+                     "of CAR T-cell therapies to treat solid cancers",
+             "candidate_url":
+                 "https://brandoncapital.vc/portfolio/currus-biologics/",
+             "source_url": "https://brandoncapital.vc/investment-portfolio/"},
+            # A genuinely long name whose slug words do not appear in
+            # the text is left untouched.
+            {"partner": "Airtree", "kind": "companies",
+             "name": "Some Very Long Named Australian Technology "
+                     "Company Holdings Group",
+             "candidate_url": "https://example.com/portfolio/other-co",
+             "source_url": "https://example.com/portfolio"},
+        ]
+        write_json(self.artifact / "latest-profiles.json",
+                   {"candidates": rows})
+        _, added, _ = self.build()
+        leads = {e["subject_key"] for e in added
+                 if e["kind"] == "startup-lead"}
+        self.assertEqual(leads, {
+            "avarni", "currus-biologics",
+            "some-very-long-named-australian-technology-company-holdings-group",
+        })
+
+    def test_clean_lead_name_unit(self):
+        clean = queue_mod.clean_lead_name
+        self.assertEqual(
+            clean("Decarbonise the planet MGA Thermal Continuous "
+                  "renewable thermal energy to decarbonise industry",
+                  "https://www.mseq.vc/portfolio/mga-thermal"),
+            "Mga Thermal")
+        # Short names and slug-free labels pass through unchanged.
+        self.assertEqual(clean("Avarni", "https://www.mseq.vc/portfolio/avarni"),
+                         "Avarni")
+        self.assertEqual(
+            clean("A long label with no slug words in it at all whatsoever",
+                  "https://example.com/portfolio/zzz"),
+            "A long label with no slug words in it at all whatsoever")
+        self.assertEqual(clean("Anything Long " * 5, ""), "Anything Long " * 5)
+
     def test_summary_contains_entry_counts(self):
         queue, added, skipped = self.build()
         summary = queue_mod.build_summary(queue, added, skipped, "44")
