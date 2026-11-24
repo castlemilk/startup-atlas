@@ -1255,7 +1255,8 @@ def crawl_sites(catalogue,args,transport,source_state=None):
         if source_state is not None: row['sampling_priority']=item.get('sampling_priority')
         results.append(row)
         print(f"[{len(results)}/{len(entries)}] {item['name']}: {pages[0]['status']}",file=sys.stderr)
-    output={'version':1,'mode':'sites','generated_at':utc_now(),'results':results}
+    output={'version':1,'mode':'sites','generated_at':utc_now(),'results':results,
+            'coverage':page_fetch_coverage(results)}
     if source_state is not None: output['sampling_skipped']=sampling_skipped
     return output
 
@@ -1734,13 +1735,16 @@ def _candidate_source_name(candidate):
     return (candidate.get('partner') or candidate.get('source_name')
             or candidate.get('startup') or '')
 
-def page_fetch_coverage(results, candidates):
+def page_fetch_coverage(results, candidates=None):
     """Describe attempted page fetches, not completeness of the source universe.
 
     ``sources`` records per-source status (R12): ok when at least one page
     fetched, failed when pages were attempted but none succeeded (annotated
     with a note, never silently green), not_attempted when no pages were
-    tried. ``rows`` is the number of candidates attributed to the source.
+    tried. ``rows`` is the number of candidates attributed to the source;
+    it is only reported when ``candidates`` is supplied (sites mode has no
+    separately attributed candidate list, so it omits the field rather
+    than reporting a misleading zero).
     """
     pages=[page for row in results for page in row.get('pages', [])]
     succeeded=sum(page.get('status')=='ok' for page in pages)
@@ -1753,17 +1757,21 @@ def page_fetch_coverage(results, candidates):
         ok=sum(page.get('status')=='ok' for page in row_pages)
         source_status='ok' if ok else ('failed' if row_pages else 'not_attempted')
         entry={'source':row.get('name'), 'source_url':row.get('url'),
-               'status':source_status, 'pages_ok':ok, 'pages_attempted':len(row_pages),
-               'rows':sum(1 for candidate in candidates
-                          if _candidate_source_name(candidate)==row.get('name'))}
+               'status':source_status, 'pages_ok':ok, 'pages_attempted':len(row_pages)}
+        if candidates is not None:
+            entry['rows']=sum(1 for candidate in candidates
+                              if _candidate_source_name(candidate)==row.get('name'))
         if source_status=='failed':
             entry['note']='No pages fetched successfully for this source'
         sources.append(entry)
-    return {'fetch_status':status, 'sources_attempted':len(results),
-            'pages_attempted':len(pages), 'pages_succeeded':succeeded,
-            'pages_skipped_or_failed':failed, 'unreviewed_candidates':len(candidates),
-            'sources':sources,
-            'note':'Counts cover attempted pages only; they do not establish complete source coverage or verified facts.'}
+    coverage={'fetch_status':status, 'sources_attempted':len(results),
+              'pages_attempted':len(pages), 'pages_succeeded':succeeded,
+              'pages_skipped_or_failed':failed,
+              'sources':sources,
+              'note':'Counts cover attempted pages only; they do not establish complete source coverage or verified facts.'}
+    if candidates is not None:
+        coverage['unreviewed_candidates']=len(candidates)
+    return coverage
 
 def _normalise_profile_name(name):
     return ' '.join(str(name or '').split()).casefold()
@@ -2342,7 +2350,10 @@ def directory_coverage(results, candidates, notes, cap):
         selected=[c for c in candidates if c.get('source_name') == result.get('name')]
         source_urls={p.get('final_url') for p in pages}
         issues=[n.get('message','') for n in notes if n.get('source_url') in source_urls]
-        rows.append({'source':result.get('name'), 'pages_ok':sum(p.get('status')=='ok' for p in pages),
+        pages_ok=sum(p.get('status')=='ok' for p in pages)
+        rows.append({'source':result.get('name'),
+                     'status':'ok' if pages_ok else ('failed' if pages else 'not_attempted'),
+                     'pages_ok':pages_ok,
                      'pages_skipped_or_failed':sum(p.get('status')!='ok' for p in pages),
                      'observed_candidates':len(selected),
                      'exact_existing_names':sum(bool(c.get('existing_lead_exact')) for c in selected),
@@ -2712,7 +2723,11 @@ def main(argv=None):
     if args.mode=='partners':
         review=args.out/f'partner-directory-review-{stamp()}.csv'; write_partner_directory_review_csv(review,data); print(f"Review {len(data['candidates'])} directory leads: {review}")
         for note in data['notes']: print(f"{note['source_url']}: {note['message']}",file=sys.stderr)
-    if args.mode in ('profiles','company-profiles','portraits','news','programs'):
+        failed_sources=[row.get('source') or '?' for row in data['coverage'].get('sources',[])
+                        if row.get('status')=='failed']
+        if failed_sources:
+            print('Sources with no successful pages: '+', '.join(failed_sources),file=sys.stderr)
+    if args.mode in ('profiles','company-profiles','portraits','news','programs','sites'):
         coverage=data['coverage']
         print(f"Page fetch coverage: {coverage['fetch_status']}; {coverage['pages_succeeded']}/{coverage['pages_attempted']} attempted pages fetched; {coverage['pages_skipped_or_failed']} skipped or failed.")
         # Programmes report per-source observations separately from unique

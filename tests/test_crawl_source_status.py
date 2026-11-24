@@ -74,3 +74,50 @@ class SourceStatusReportTests(unittest.TestCase):
             'Sources with no successful pages: Failed feed',
             'No records could be fetched; inspect the snapshot for reasons.',
         ])
+
+    def test_sites_mode_reports_sources_with_no_successful_pages(self):
+        results = [
+            {'name': 'Dead source', 'url': 'https://dead.example', 'pages': [{'status': 'skipped'}]},
+            {'name': 'Live source', 'url': 'https://live.example', 'pages': [{'status': 'ok'}]},
+        ]
+        saved = {'version': 1, 'mode': 'sites', 'generated_at': '2026-11-24T00:00:00Z',
+                 'results': results, 'coverage': crawl.page_fetch_coverage(results)}
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            seed = root / 'seed.json'
+            seed.write_text('{"opportunities": [], "partnerLeads": []}')
+            stdout, stderr = io.StringIO(), io.StringIO()
+            with (patch.object(crawl, 'CATALOGUE', seed),
+                  patch.object(crawl, '_sampler', return_value=None),
+                  patch.object(crawl, 'Transport', return_value=None),
+                  patch.object(crawl, 'crawl_sites', return_value=saved),
+                  redirect_stdout(stdout), redirect_stderr(stderr)):
+                result = crawl.main(['sites', '--out', str(root / 'out')])
+        self.assertEqual(result, 0)
+        self.assertIn('Page fetch coverage: partial; 1/2 attempted pages fetched; 1 skipped or failed.',
+                      stdout.getvalue())
+        self.assertEqual(stderr.getvalue().strip(), 'Sources with no successful pages: Dead source')
+
+
+class PerSourceStatusShapeTests(unittest.TestCase):
+    def test_coverage_without_candidates_omits_rows(self):
+        results = [{'name': 'A', 'url': 'https://a.example', 'pages': [{'status': 'ok'}]}]
+        coverage = crawl.page_fetch_coverage(results)
+        self.assertNotIn('rows', coverage['sources'][0])
+        self.assertNotIn('unreviewed_candidates', coverage)
+        with_rows = crawl.page_fetch_coverage(results, [])
+        self.assertEqual(with_rows['sources'][0]['rows'], 0)
+        self.assertEqual(with_rows['unreviewed_candidates'], 0)
+
+    def test_directory_coverage_marks_failed_and_unattempted_sources(self):
+        results = [
+            {'name': 'OK source', 'pages': [{'status': 'ok'}]},
+            {'name': 'Dead source', 'pages': [{'status': 'skipped'}]},
+            {'name': 'Untried source', 'pages': []},
+        ]
+        coverage = crawl.directory_coverage(results, [], [], 2000)
+        statuses = {row['source']: row['status'] for row in coverage['sources']}
+        self.assertEqual(statuses, {'OK source': 'ok', 'Dead source': 'failed',
+                                    'Untried source': 'not_attempted'})
+
+

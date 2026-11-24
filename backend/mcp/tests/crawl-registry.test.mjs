@@ -103,6 +103,29 @@ test('malformed, duplicate and invalid registry records fail closed', async t =>
   assert.equal(await codeOf((await registryWith(t, overLimit)).snapshot()), 'INVALID_REGISTRY');
 });
 
+test('outcome.sources records per-source status and is validated when present', async t => {
+  const withSources = run({ outcome: { ...seedRun.outcome, sources: [
+    { source: 'Live source', status: 'ok', pages_ok: 3, pages_attempted: 3 },
+    { source: 'Dead source', status: 'failed', pages_ok: 0, pages_attempted: 2 },
+    { source: 'Untried source', status: 'not_attempted', pages_ok: 0, pages_attempted: 0 },
+  ] } });
+  const registry = await registryWith(t, { version: 1, runs: [withSources] });
+  const found = await registry.get(withSources.run_id);
+  assert.equal(found.run.outcome.sources.length, 3);
+  assert.equal(found.run.outcome.sources[1].status, 'failed');
+  // Absent sources stays valid (records written before per-source status existed).
+  assert.equal(await codeOf((await registryWith(t, seed)).snapshot()), null);
+  const badStatus = run({ outcome: { ...seedRun.outcome, sources: [
+    { source: 'X', status: 'green', pages_ok: 0, pages_attempted: 1 }] } });
+  assert.equal(await codeOf((await registryWith(t, { version: 1, runs: [badStatus] })).snapshot()), 'VALIDATION_ERROR');
+  const overOk = run({ outcome: { ...seedRun.outcome, sources: [
+    { source: 'X', status: 'ok', pages_ok: 2, pages_attempted: 1 }] } });
+  assert.equal(await codeOf((await registryWith(t, { version: 1, runs: [overOk] })).snapshot()), 'VALIDATION_ERROR');
+  const extraKey = run({ outcome: { ...seedRun.outcome, sources: [
+    { source: 'X', status: 'ok', pages_ok: 1, pages_attempted: 1, note: 'nope' }] } });
+  assert.equal(await codeOf((await registryWith(t, { version: 1, runs: [extraKey] })).snapshot()), 'VALIDATION_ERROR');
+});
+
 const decoded = result => JSON.parse(result.content[0].text);
 
 test('official MCP client discovers the crawl tools and reads the registry over real stdio', async t => {
