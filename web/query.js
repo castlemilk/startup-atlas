@@ -125,9 +125,7 @@ async function loadManifest() {
     .join('');
 }
 
-async function openConnection() {
-  if (connectionPromise) return connectionPromise;
-  connectionPromise = (async () => {
+async function startEngineOnce() {
     setStatus('Loading DuckDB engine…');
     const duckdb = await import('./vendor/duckdb/duckdb-browser.mjs');
     const bundles = {
@@ -159,10 +157,35 @@ async function openConnection() {
     setStatus(`Ready — ${Object.keys(manifest.tables).length} tables loaded. Queries run locally in your browser.`);
     runEl.disabled = false;
     return connection;
+}
+
+async function openConnection() {
+  if (connectionPromise) return connectionPromise;
+  connectionPromise = (async () => {
+    // Engine start chains several large fetches (module, worker, multi-MB
+    // wasm); a single transient failure used to fail the whole init with no
+    // retry. Retry the whole start a few times with backoff — each attempt
+    // re-runs the import/instantiate sequence from scratch.
+    let lastError;
+    for (let attempt = 1; attempt <= 3; attempt += 1) {
+      try {
+        return await startEngineOnce();
+      } catch (error) {
+        lastError = error;
+        if (attempt < 3) {
+          setStatus(`Query engine failed to start (attempt ${attempt} of 3) — retrying…`);
+          await new Promise((resolve) => setTimeout(resolve, 500 * attempt));
+        }
+      }
+    }
+    throw lastError;
   })();
   connectionPromise.catch((error) => {
     connectionPromise = null;
-    setStatus(`Could not start the query engine: ${error.message}`);
+    // Re-enable Run so the user can retry from the page: runQuery calls
+    // openConnection() afresh because the failed promise was cleared above.
+    runEl.disabled = false;
+    setStatus(`Could not start the query engine: ${error.message} Press Run query to try again.`);
   });
   return connectionPromise;
 }
@@ -276,9 +299,15 @@ editorEl.addEventListener('keydown', (event) => {
 
 const sharedSql = new URLSearchParams(location.search).get('sql');
 if (sharedSql) editorEl.value = sharedSql;
+// Seed the editor with the first example — the SQL the placeholder
+// advertises. Without a real value, clicking Run with the placeholder
+// showing hit the "Enter a query first." check even though SQL was visible.
+else editorEl.value = EXAMPLES[0].sql;
 
+let datasetReady = false;
 loadManifest()
   .then(() => {
+    datasetReady = true;
     setStatus('Dataset ready. Starting the query engine…');
     return openConnection();
   })
@@ -286,5 +315,7 @@ loadManifest()
     if (sharedSql) runQuery();
   })
   .catch((error) => {
-    setStatus(`Could not load the query dataset: ${error.message}`);
+    // Engine-start failures already set their own status in openConnection;
+    // only a manifest failure is a dataset problem.
+    if (!datasetReady) setStatus(`Could not load the query dataset: ${error.message}`);
   });
