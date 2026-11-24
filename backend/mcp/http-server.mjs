@@ -206,7 +206,6 @@ function isLoopbackRedirect(uri) {
 export function createHttpHandler(store, config, stores = createOAuthStores()) {
   validateConfig(config);
   const sessions = new Map();
-  const adminSessions = new Map();
   const issuer = new URL(config.baseUrl);
   const mcpResource = `${config.baseUrl}/mcp`;
   const adminMcpResource = `${config.baseUrl}/mcp/admin`;
@@ -332,34 +331,35 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
     }
     const authInfo = await authenticateAdmin(req, res);
     if (!authInfo) return;
-    const sessionId = req.headers['mcp-session-id'];
-    const { clientId, extra: { email, sub } } = authInfo;
-    let session = typeof sessionId === 'string' ? adminSessions.get(sessionId) : undefined;
-    if (sessionId !== undefined && (!session || session.clientId !== clientId || session.email !== email || session.sub !== sub)) {
-      sendJson(res, 404, { error: 'not_found', message: 'Unknown MCP session id.' });
-      return;
-    }
     req.auth = authInfo;
     if (req.method === 'POST') {
       let body;
       try { body = await readJsonBody(req); } catch (error) { sendJson(res, 400, { error: 'bad_request', message: error.message }); return; }
-      if (!session) {
-        const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: () => randomUUID() });
-        const server = createAdminServer({ config });
-        transport.onclose = () => { if (transport.sessionId) adminSessions.delete(transport.sessionId); };
-        await server.connect(transport);
-        session = { transport, clientId, email, sub };
-      }
-      await session.transport.handleRequest(req, res, body);
-      if (session.transport.sessionId) adminSessions.set(session.transport.sessionId, session);
+      // Stateless (#473): the admin tools are request-scoped — every call
+      // reads or writes the queue through the GitHub Contents API and no
+      // conversational state is kept — so each request gets a fresh
+      // transport/server and no session id is issued or honoured. The
+      // previous in-memory session map 404'd ("Unknown MCP session id")
+      // whenever a client's initialize and its tool call landed on
+      // different process state (redeploy, restart or another replica
+      // behind the load balancer), which presented as queue items
+      // intermittently "not found" even though list had just returned
+      // them. A stray Mcp-Session-Id header from a stateful client is
+      // simply ignored here.
+      const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
+      const server = createAdminServer({ config });
+      res.on('close', () => { transport.close().catch(() => {}); server.close().catch(() => {}); });
+      await server.connect(transport);
+      await transport.handleRequest(req, res, body);
       return;
     }
     if (req.method === 'GET' || req.method === 'DELETE') {
-      if (!session) { sendJson(res, 404, { error: 'not_found', message: 'Unknown MCP session id.' }); return; }
-      await session.transport.handleRequest(req, res);
+      // Stateless mode has no server-initiated stream to GET and no
+      // session to DELETE; the SDK's own stateless answer is 405.
+      sendJson(res, 405, { error: 'method_not_allowed', message: '/mcp/admin is stateless: POST each request; there is no session to stream or close.' });
       return;
     }
-    sendJson(res, 405, { error: 'method_not_allowed', message: 'Use POST, GET or DELETE on /mcp/admin.' });
+    sendJson(res, 405, { error: 'method_not_allowed', message: 'Use POST on /mcp/admin.' });
   }
 
   function writeAuthorizer(authInfo, toolName) {
