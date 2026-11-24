@@ -7563,6 +7563,46 @@
   ],
   "edges": [
     {
+      "from": "partner:accel",
+      "to": "startup:fluency",
+      "kind": "led_round",
+      "description": "Led Seed round",
+      "source": "https://usefluency.com/blog/fluency-raises-6m-seed-accel",
+      "round_id": "fluency-2026-02-usd-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:accel",
+      "to": "startup:synthesia",
+      "kind": "led_round",
+      "description": "Led Series C round",
+      "source": "https://www.ldv.co/blog/congratulations-to-synthesia-on-their-90m-series-c-led-by-accel-at-a-1b-valuation",
+      "round_id": "synthesia-2023-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:airtree",
       "to": "startup:airwallex",
       "kind": "supports",
@@ -7594,6 +7634,26 @@
         "sources": 1,
         "source_types": [
           "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:airtree",
+      "to": "startup:eucalyptus",
+      "kind": "participated_in",
+      "description": "Participated in Series C round",
+      "source": "https://www.eucalyptus.health/blog/series-c",
+      "round_id": "eucalyptus-2023-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
         ],
         "agreement": false,
         "inferred": false
@@ -7660,11 +7720,91 @@
     {
       "from": "partner:blackbird-ventures",
       "to": "startup:culture-amp",
+      "kind": "led_round",
+      "description": "Led Series D round",
+      "source": "https://www.cultureamp.com/blog/series-d-funding-announcement",
+      "round_id": "culture-amp-2018-series-d",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:blackbird-ventures",
+      "to": "startup:culture-amp",
+      "kind": "participated_in",
+      "description": "Participated in Series C round",
+      "source": "https://www.prnewswire.com/news-releases/culture-amp-announces-new-funding-to-empower-companies-everywhere-to-put-culture-first-300474440.html",
+      "round_id": "culture-amp-2017-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:blackbird-ventures",
+      "to": "startup:culture-amp",
+      "kind": "participated_in",
+      "description": "Participated in Series B round",
+      "source": "https://www.prnewswire.com/news-releases/people-analytics-platform-snags-10-million-in-series-b-funding-led-by-index-ventures-300231274.html",
+      "round_id": "culture-amp-2016-series-b",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:blackbird-ventures",
+      "to": "startup:culture-amp",
       "kind": "supports",
       "description": "Listed in portfolio",
       "source": "https://www.blackbird.vc/portfolio/culture-amp",
       "first_seen": "2026-11-21",
       "last_verified": "2026-11-21",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:blackbird-ventures",
+      "to": "startup:eucalyptus",
+      "kind": "participated_in",
+      "description": "Participated in Series C round",
+      "source": "https://www.eucalyptus.health/blog/series-c",
+      "round_id": "eucalyptus-2023-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,
@@ -7689,6 +7829,46 @@
         "sources": 1,
         "source_types": [
           "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:blackbird-ventures",
+      "to": "startup:morse-micro",
+      "kind": "participated_in",
+      "description": "Participated in Series C round",
+      "source": "https://www.morsemicro.com/news/morse-micro-secures-88-million-aud-series-c-funding-to-lead-the-next-era-of-iot",
+      "round_id": "morse-micro-2025-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:blackbird-ventures",
+      "to": "startup:psiquantum",
+      "kind": "participated_in",
+      "description": "Participated in Series D round",
+      "source": "https://mtrustcompany.marketminute.com/article/bizwire-2021-7-27-psiquantum-closes-450-million-funding-round-to-build-the-worlds-first-commercially-viable-quantum-computer",
+      "round_id": "psiquantum-2021-series-d",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
         ],
         "agreement": false,
         "inferred": false
@@ -7848,6 +8028,186 @@
       "stale": false
     },
     {
+      "from": "partner:firstmark",
+      "to": "startup:synthesia",
+      "kind": "led_round",
+      "description": "Led Series A round",
+      "source": "https://api.mattturck.com/synthesia/",
+      "round_id": "synthesia-2021-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:general-catalyst",
+      "to": "startup:bugcrowd",
+      "kind": "led_round",
+      "description": "Led Strategic growth financing round",
+      "source": "https://www.bugcrowd.com/press-release/bugcrowd-secures-102-million-in-strategic-growth-funding-to-scale-ai-powered-crowdsourced-security-platform/",
+      "round_id": "bugcrowd-2024-growth",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:index-ventures",
+      "to": "startup:culture-amp",
+      "kind": "led_round",
+      "description": "Led Series B round",
+      "source": "https://www.prnewswire.com/news-releases/people-analytics-platform-snags-10-million-in-series-b-funding-led-by-index-ventures-300231274.html",
+      "round_id": "culture-amp-2016-series-b",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:index-ventures",
+      "to": "startup:culture-amp",
+      "kind": "participated_in",
+      "description": "Participated in Series D round",
+      "source": "https://www.cultureamp.com/blog/series-d-funding-announcement",
+      "round_id": "culture-amp-2018-series-d",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:index-ventures",
+      "to": "startup:culture-amp",
+      "kind": "participated_in",
+      "description": "Participated in Series C round",
+      "source": "https://www.prnewswire.com/news-releases/culture-amp-announces-new-funding-to-empower-companies-everywhere-to-put-culture-first-300474440.html",
+      "round_id": "culture-amp-2017-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:investible",
+      "to": "startup:quantum-brilliance",
+      "kind": "participated_in",
+      "description": "Participated in Seed round",
+      "source": "https://www.businesswire.com/news/home/20210825005293/en/Quantum-Brilliance-Raises-%249.7-Million-Seed-Funding-to-Advance-Diamond-Quantum-Accelerator-Development-and-Deployment",
+      "round_id": "quantum-brilliance-2021-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:m12",
+      "to": "startup:psiquantum",
+      "kind": "participated_in",
+      "description": "Participated in Series D round",
+      "source": "https://mtrustcompany.marketminute.com/article/bizwire-2021-7-27-psiquantum-closes-450-million-funding-round-to-build-the-worlds-first-commercially-viable-quantum-computer",
+      "round_id": "psiquantum-2021-series-d",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
+      "to": "startup:arkeus",
+      "kind": "led_round",
+      "description": "Led Seed round",
+      "source": "https://arkeus.com/news/arkeus-new-funding-2023-december",
+      "round_id": "arkeus-2023-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
+      "to": "startup:arkeus",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://arkeus.com/news/arkeus-raises-a-25-million-series-a-to-scale-ai-powered-sensing-systems-for-allied-defence-markets",
+      "round_id": "arkeus-2026-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:main-sequence",
       "to": "startup:cauldron",
       "kind": "supports",
@@ -7887,6 +8247,66 @@
     },
     {
       "from": "partner:main-sequence",
+      "to": "startup:morse-micro",
+      "kind": "participated_in",
+      "description": "Participated in Series C round",
+      "source": "https://www.morsemicro.com/news/morse-micro-secures-88-million-aud-series-c-funding-to-lead-the-next-era-of-iot",
+      "round_id": "morse-micro-2025-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
+      "to": "startup:quantum-brilliance",
+      "kind": "participated_in",
+      "description": "Participated in Seed round",
+      "source": "https://www.businesswire.com/news/home/20210825005293/en/Quantum-Brilliance-Raises-%249.7-Million-Seed-Funding-to-Advance-Diamond-Quantum-Accelerator-Development-and-Deployment",
+      "round_id": "quantum-brilliance-2021-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
+      "to": "startup:uluu",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://www.uluu.com.au/press/series-a",
+      "round_id": "uluu-series-a-official-announcement",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
       "to": "startup:uluu",
       "kind": "supports",
       "description": "Listed in portfolio",
@@ -7898,6 +8318,46 @@
         "sources": 1,
         "source_types": [
           "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:nvidia",
+      "to": "startup:wayve",
+      "kind": "participated_in",
+      "description": "Participated in Series C round",
+      "source": "https://wayve.ai/press/series-c/",
+      "round_id": "wayve-2024-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:rampersand",
+      "to": "startup:cuttable",
+      "kind": "participated_in",
+      "description": "Participated in Seed round",
+      "source": "https://www.squarepeg.vc/blog/investment-notes-cuttable-au-5-5m-seed",
+      "round_id": "cuttable-2024-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
         ],
         "agreement": false,
         "inferred": false
@@ -7917,6 +8377,26 @@
         "sources": 1,
         "source_types": [
           "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:rampersand",
+      "to": "startup:jigspace",
+      "kind": "participated_in",
+      "description": "Participated in Funding round (stage not stated) round",
+      "source": "https://breakthroughvictoria.com/media-releases/media-release-jigspace/",
+      "round_id": "jigspace-2024-funding-round",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
         ],
         "agreement": false,
         "inferred": false
@@ -8038,6 +8518,26 @@
       "stale": false
     },
     {
+      "from": "partner:sequoia-capital",
+      "to": "startup:q-ctrl",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://q-ctrl.com/blog/global-vc-bets-on-sydney-quantum-computing-start-up-q-ctrl-in-us15m-series-a",
+      "round_id": "q-ctrl-2019-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:square-peg",
       "to": "startup:canva",
       "kind": "supports",
@@ -8059,11 +8559,51 @@
     {
       "from": "partner:square-peg",
       "to": "startup:cuttable",
+      "kind": "led_round",
+      "description": "Led Seed round",
+      "source": "https://www.squarepeg.vc/blog/investment-notes-cuttable-au-5-5m-seed",
+      "round_id": "cuttable-2024-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:square-peg",
+      "to": "startup:cuttable",
       "kind": "supports",
       "description": "Listed in portfolio",
       "source": "https://www.squarepeg.vc/portfolio/cuttable",
       "first_seen": "2026-11-21",
       "last_verified": "2026-11-21",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:square-peg",
+      "to": "startup:q-ctrl",
+      "kind": "led_round",
+      "description": "Led Series A round",
+      "source": "https://q-ctrl.com/blog/global-vc-bets-on-sydney-quantum-computing-start-up-q-ctrl-in-us15m-series-a",
+      "round_id": "q-ctrl-2019-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,
@@ -8306,6 +8846,26 @@
     {
       "from": "partner:startmate",
       "to": "startup:morse-micro",
+      "kind": "participated_in",
+      "description": "Participated in Series C round",
+      "source": "https://www.morsemicro.com/news/morse-micro-secures-88-million-aud-series-c-funding-to-lead-the-next-era-of-iot",
+      "round_id": "morse-micro-2025-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:startmate",
+      "to": "startup:morse-micro",
       "kind": "supports",
       "description": "Listed in portfolio",
       "source": "https://www.startmate.com/accelerator",
@@ -8425,6 +8985,26 @@
       "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
       "first_seen": "2026-11-21",
       "last_verified": "2026-11-21",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:startmate",
+      "to": "startup:uluu",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://www.uluu.com.au/press/series-a",
+      "round_id": "uluu-series-a-official-announcement",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,
@@ -13706,7 +14286,15 @@
       "valuation_currency": "USD",
       "note": "Addition led; the announcement names T. Rowe Price, Activant, Lingotto, Robinhood Ventures and TIAA Ventures as participants. Announced valuation is historical. Capital mix and legal close are not specified.",
       "source": "https://www.airwallex.com/global/newsroom/awx-raises-usd330m-series-g-at-usd8b-valuation-establishes-sf-as-dual-global-hq",
-      "stage_normalised": "Unknown"
+      "stage_normalised": "Unknown",
+      "lead_investor": "Addition",
+      "participants": [
+        "T. Rowe Price",
+        "Activant",
+        "Lingotto",
+        "Robinhood Ventures",
+        "TIAA Ventures"
+      ]
     },
     {
       "startup_id": "startup:airwallex",
@@ -13719,7 +14307,8 @@
       "valuation_currency": "USD",
       "note": "Announced valuation; historical, not a current valuation. The round was led by Addition.",
       "source": "https://www.airwallex.com/global/newsroom/airwallex-secures-320-million-in-series-h-funding-valuation-hits-11-billion",
-      "stage_normalised": "Unknown"
+      "stage_normalised": "Unknown",
+      "lead_investor": "Addition"
     },
     {
       "startup_id": "startup:andromeda-robotics",
@@ -13761,7 +14350,11 @@
       "announced_on": "2023-12-05",
       "source": "https://arkeus.com/news/arkeus-new-funding-2023-december",
       "note": "Arkeus announced the seed round on 5 December 2023 and named Main Sequence as lead, with Salus Ventures and Steve Baxter as participants. Arkeus described Baxter as from Beaten Zone Venture Partners. The closing date and Baxter's investment vehicle are unknown.",
-      "stage_normalised": "Seed"
+      "stage_normalised": "Seed",
+      "lead_investor": "Main Sequence",
+      "participants": [
+        "Salus Ventures"
+      ]
     },
     {
       "startup_id": "startup:arkeus",
@@ -13783,7 +14376,16 @@
       "announced_on": "2026-05-15",
       "source": "https://arkeus.com/news/arkeus-raises-a-25-million-series-a-to-scale-ai-powered-sensing-systems-for-allied-defence-markets",
       "note": "Arkeus announced an A$25 million Series A led by QIC Ventures. New investors included R+ VC, Folklore Ventures and DYNE Ventures. Main Sequence, Salus Ventures and Beaten Zone Venture Partners returned.",
-      "stage_normalised": "Series A"
+      "stage_normalised": "Series A",
+      "lead_investor": "QIC Ventures",
+      "participants": [
+        "R+ VC",
+        "Folklore Ventures",
+        "DYNE Ventures",
+        "Main Sequence",
+        "Salus Ventures",
+        "Beaten Zone Venture Partners"
+      ]
     },
     {
       "startup_id": "startup:bugcrowd",
@@ -13794,7 +14396,12 @@
       "currency": "USD",
       "source": "https://www.bugcrowd.com/press-release/bugcrowd-secures-102-million-in-strategic-growth-funding-to-scale-ai-powered-crowdsourced-security-platform/",
       "note": "Led by General Catalyst, with participation from Rally Ventures and Costanoa Ventures. Named participants are not claimed exhaustive. USD denomination is corroborated by SmartCompany (13 February 2024): https://www.smartcompany.com.au/technology/bugcrowd-156-million-raise-cybersecurity/",
-      "stage_normalised": "Unknown"
+      "stage_normalised": "Unknown",
+      "lead_investor": "General Catalyst",
+      "participants": [
+        "Rally Ventures",
+        "Costanoa Ventures"
+      ]
     },
     {
       "startup_id": "startup:canva",
@@ -13853,7 +14460,12 @@
       "amount_text": "USD 10 million",
       "source": "https://www.prnewswire.com/news-releases/people-analytics-platform-snags-10-million-in-series-b-funding-led-by-index-ventures-300231274.html",
       "note": "Culture Amp announced on March 7, 2016 that its Series B had closed. The issuer named Index Ventures as lead and Felicis Ventures and Blackbird Ventures as participants. The exact close date is unknown. Startup Daily's March 11, 2016 report and SmartCompany's March 8, 2016 coverage identify the currency as USD. The issuer uses an unqualified dollar sign.",
-      "stage_normalised": "Series B"
+      "stage_normalised": "Series B",
+      "lead_investor": "Index Ventures",
+      "participants": [
+        "Felicis Ventures",
+        "Blackbird Ventures"
+      ]
     },
     {
       "startup_id": "startup:culture-amp",
@@ -13865,7 +14477,13 @@
       "amount_text": "USD 20 million",
       "source": "https://www.prnewswire.com/news-releases/culture-amp-announces-new-funding-to-empower-companies-everywhere-to-put-culture-first-300474440.html",
       "note": "Culture Amp announced the Series C at HR Tech World in San Francisco on June 14, 2017 local time. The issuer wire published June 15 at 07:00 ET reports the previous day's announcement and names Sapphire Ventures as lead, with Index Ventures, Felicis Ventures and Blackbird Ventures participating. Didier Elzinga's June 23 account and lead-investor counsel Bird & Bird specify US$20 million. The exact legal close date is unknown.",
-      "stage_normalised": "Series C"
+      "stage_normalised": "Series C",
+      "lead_investor": "Sapphire Ventures",
+      "participants": [
+        "Index Ventures",
+        "Felicis Ventures",
+        "Blackbird Ventures"
+      ]
     },
     {
       "startup_id": "startup:culture-amp",
@@ -13877,7 +14495,16 @@
       "amount_text": "USD 40 million",
       "source": "https://www.cultureamp.com/blog/series-d-funding-announcement",
       "note": "The issuer named Blackbird Ventures as lead and Felicis Ventures, Index Ventures, Sapphire Ventures, Skip Capital, Grok Ventures and Hostplus as participants. The issuer page labels July 19, 2018 as updated. Index Ventures published its confirmation of the round and its participation that day, supporting the announcement date. The legal close date remains unknown.",
-      "stage_normalised": "Series D"
+      "stage_normalised": "Series D",
+      "lead_investor": "Blackbird Ventures",
+      "participants": [
+        "Felicis Ventures",
+        "Index Ventures",
+        "Sapphire Ventures",
+        "Skip Capital",
+        "Grok Ventures",
+        "Hostplus"
+      ]
     },
     {
       "startup_id": "startup:culture-amp",
@@ -13889,7 +14516,8 @@
       "amount_text": "USD 82 million",
       "source": "https://www.nasdaq.com/press-release/culture-amp-raises-$82m-usd-in-global-funding-to-double-down-on-its-leadership",
       "note": "Culture Amp named Sequoia Capital China as lead. The Nasdaq syndication of the company’s Business Wire release is timestamped 3 September 2019 at 10:00 a.m. EDT, which was 4 September in Melbourne. The company’s release carries the 4 September 2019 Melbourne dateline and its web page displays 4 September 2020. The legal close date remains unknown.",
-      "stage_normalised": "Series E"
+      "stage_normalised": "Series E",
+      "lead_investor": "Sequoia Capital China"
     },
     {
       "startup_id": "startup:culture-amp",
@@ -13911,7 +14539,11 @@
       "currency": "AUD",
       "source": "https://www.squarepeg.vc/blog/investment-notes-cuttable-au-5-5m-seed",
       "note": "Square Peg disclosed A$5.5 million. Rampersand’s same-day investment notes report its participation and name Square Peg as lead. Rampersand’s current portfolio page uses inconsistent role labels, so no Rampersand co-lead role is assigned. The legal close date and investor commitments are not disclosed.",
-      "stage_normalised": "Seed"
+      "stage_normalised": "Seed",
+      "lead_investor": "Square Peg",
+      "participants": [
+        "Rampersand"
+      ]
     },
     {
       "startup_id": "startup:cuttable",
@@ -13952,7 +14584,8 @@
       "currency": "USD",
       "note": "Diraq retrospectively reported a US$20 million Series A led by Allectus Capital, before the US$15 million Series A-2 close. The issuer release does not specify the initial round’s announcement or closing date. This is not the later National Reconstruction Fund stake or cumulative research funding.",
       "source": "https://www.diraq.com/newsdesk/diraq-secures-usd-15-million-in-series-a-2-funding",
-      "stage_normalised": "Series A"
+      "stage_normalised": "Series A",
+      "lead_investor": "Allectus Capital"
     },
     {
       "startup_id": "startup:emesent",
@@ -14004,7 +14637,16 @@
       "currency": "AUD",
       "source": "https://www.eucalyptus.health/blog/series-c",
       "note": "Historical Series C. Named participants only, not exhaustive; close date unknown. Named participants: BOND (lead), Blackbird (participant), NewView (participant), W23 (participant), Airtree (participant), OneVentures (participant), Athletic Ventures (participant). Identities remain unresolved.",
-      "stage_normalised": "Series C"
+      "stage_normalised": "Series C",
+      "lead_investor": "BOND",
+      "participants": [
+        "Blackbird",
+        "NewView",
+        "W23",
+        "Airtree",
+        "OneVentures",
+        "Athletic Ventures"
+      ]
     },
     {
       "startup_id": "startup:floodmapp",
@@ -14028,7 +14670,13 @@
       "currency": "USD",
       "note": "Issuer announcement names Union Square Ventures' Climate Fund as lead; Mundi Ventures, Climate X and Jelix Ventures participated. The USV portfolio lists Seed, 2021 and links its 7 Feb 2022 investment note; no separate 2021 round or exact close is established.",
       "source": "https://www.floodmapp.com/post/union-square-ventures-leads-floodmapp-s-6m-seed-round",
-      "stage_normalised": "Seed"
+      "stage_normalised": "Seed",
+      "lead_investor": "Union Square Ventures",
+      "participants": [
+        "Mundi Ventures",
+        "Climate X",
+        "Jelix Ventures"
+      ]
     },
     {
       "startup_id": "startup:fluency",
@@ -14050,7 +14698,11 @@
       "currency": "USD",
       "note": "Fluency named Accel as lead. Its posting on Accel’s jobs board confirms participation from DST Global Partners (https://jobs.accel.com/companies/fluency-2-63cef0e4-3bac-49d4-a5c5-03405414a167/jobs/72909400-account-executive-mid-market). Date is the announcement, not a legal closing date. No individual allocations stated.",
       "source": "https://usefluency.com/blog/fluency-raises-6m-seed-accel",
-      "stage_normalised": "Seed"
+      "stage_normalised": "Seed",
+      "lead_investor": "Accel",
+      "participants": [
+        "DST Global Partners"
+      ]
     },
     {
       "startup_id": "startup:gilmour-space",
@@ -14124,7 +14776,13 @@
       "amount_text": "$13 million total; lead contribution explicitly AUD4.4 million",
       "source": "https://breakthroughvictoria.com/media-releases/media-release-jigspace/",
       "note": "Total round currency is contextually Australian dollars but not explicitly coded in the inspected text, so it is not normalized. AUD4.4m is the lead cheque, not the total. Stage absent; future job targets are not headcount. Named participants: Breakthrough Victoria (lead), Aura Ventures (participant), Anorak Ventures (participant), Rampersand (participant), Investible (participant), Vulpes (participant), Hugh Bickerstaff (participant). Identities remain unresolved.",
-      "stage_normalised": "Unknown"
+      "stage_normalised": "Unknown",
+      "lead_investor": "Breakthrough Victoria",
+      "participants": [
+        "Aura Ventures",
+        "Anorak Ventures",
+        "Rampersand"
+      ]
     },
     {
       "startup_id": "startup:loam-bio",
@@ -14146,7 +14804,18 @@
       "currency": "AUD",
       "source": "https://www.morsemicro.com/news/morse-micro-secures-88-million-aud-series-c-funding-to-lead-the-next-era-of-iot",
       "note": "The announcement names MegaChips as lead, with NRFC, Blackbird, Main Sequence, Uniseed, Ray Stata, Malcolm and Lucy Turnbull, Startmate, Hostplus, NGS and UniSuper participating. It also refers to other institutional investors, so this is not an exhaustive list. Names are not yet linked to reconciled investor entities.",
-      "stage_normalised": "Series C"
+      "stage_normalised": "Series C",
+      "lead_investor": "MegaChips",
+      "participants": [
+        "NRFC",
+        "Blackbird",
+        "Main Sequence",
+        "Uniseed",
+        "Startmate",
+        "Hostplus",
+        "NGS",
+        "UniSuper"
+      ]
     },
     {
       "startup_id": "startup:pi-exchange",
@@ -14176,7 +14845,14 @@
       "currency": "USD",
       "note": "Led by funds and accounts managed by BlackRock, with participation from Baillie Gifford, M12 (Microsoft’s venture fund), Blackbird Ventures and Temasek. Company release distributed by Business Wire, read in its syndicated copy. USD denomination is explicit in Blackbird’s investor announcement dated 29 July 2021: https://www.blackbird.vc/blog/investment-notes-psiquantum. Named participants are not claimed exhaustive; legal fund identities remain unresolved. This is the round amount, not cumulative funding.",
       "source": "https://mtrustcompany.marketminute.com/article/bizwire-2021-7-27-psiquantum-closes-450-million-funding-round-to-build-the-worlds-first-commercially-viable-quantum-computer",
-      "stage_normalised": "Series D"
+      "stage_normalised": "Series D",
+      "lead_investor": "BlackRock",
+      "participants": [
+        "Baillie Gifford",
+        "M12",
+        "Blackbird Ventures",
+        "Temasek"
+      ]
     },
     {
       "startup_id": "startup:psiquantum",
@@ -14217,7 +14893,14 @@
       "amount_text": "US$15 million",
       "source": "https://q-ctrl.com/blog/global-vc-bets-on-sydney-quantum-computing-start-up-q-ctrl-in-us15m-series-a",
       "note": "Q-CTRL's 9 September 2019 release reports a completed round and leaves the exact legal closing date unspecified. It names Square Peg Capital as lead, Sierra Ventures as a new syndicate member, and Sequoia Capital, Main Sequence Ventures and Horizons Ventures as participating existing investors.",
-      "stage_normalised": "Series A"
+      "stage_normalised": "Series A",
+      "lead_investor": "Square Peg Capital",
+      "participants": [
+        "Sierra Ventures",
+        "Sequoia Capital",
+        "Main Sequence Ventures",
+        "Horizons Ventures"
+      ]
     },
     {
       "startup_id": "startup:q-ctrl",
@@ -14250,7 +14933,16 @@
       "currency": "USD",
       "source": "https://www.businesswire.com/news/home/20210825005293/en/Quantum-Brilliance-Raises-%249.7-Million-Seed-Funding-to-Advance-Diamond-Quantum-Accelerator-Development-and-Deployment",
       "note": "The issuer named the QxBranch founders’ investment consortium and Main Sequence in its co-lead description. It reported participation by CP Ventures, Investible, Jelix Ventures, MA Financial Growth Ventures Fund, R3I Ventures and Ultratech Capital Partners. The recorded date is the announcement date.",
-      "stage_normalised": "Seed"
+      "stage_normalised": "Seed",
+      "participants": [
+        "Main Sequence",
+        "CP Ventures",
+        "Investible",
+        "Jelix Ventures",
+        "MA Financial Growth Ventures Fund",
+        "R3I Ventures",
+        "Ultratech Capital Partners"
+      ]
     },
     {
       "startup_id": "startup:quantum-brilliance",
@@ -14304,7 +14996,8 @@
       "amount": 12500000,
       "currency": "USD",
       "note": "FirstMark deal lead Matt Turck reported the Series A and FirstMark as lead. Slator attributes the April 20 announcement and USD 12.5 million amount to Synthesia: https://slator.com/ai-video-startup-synthesia-raises-usd-12-5m-for-multilingual-avatars/. CEO Victor Riparbelli described the financing as all equity in an interview: https://www.londontechwatch.com/2021/04/synthesia-ai-powered-video-generation-platform-victor-riparbelli/. The legal close date and valuation are unspecified.",
-      "stage_normalised": "Series A"
+      "stage_normalised": "Series A",
+      "lead_investor": "FirstMark"
     },
     {
       "startup_id": "startup:synthesia",
@@ -14318,7 +15011,8 @@
       "valuation": 1000000000,
       "valuation_currency": "USD",
       "note": "LDV reported the Series C on 13 June 2023. Accel's same-day investment announcement corroborates the timing: https://www.accel.com/news/ai-generated-video-for-the-enterprise-our-investment-in-synthesia. Accel's counsel confirmed US$90 million, a US$1 billion valuation and Accel as lead on 20 June: https://www.goodwinlaw.com/en/news-and-events/news/2023/06/announcements-accel-leads-investment-into-synthesia. The legal close date and valuation basis are unspecified. Counsel names NVentures, Kleiner Perkins, GV, FirstMark Capital and MMC as participants.",
-      "stage_normalised": "Series C"
+      "stage_normalised": "Series C",
+      "lead_investor": "Accel"
     },
     {
       "startup_id": "startup:synthesia",
@@ -14332,7 +15026,8 @@
       "valuation": 2100000000,
       "valuation_currency": "USD",
       "note": "Synthesia announced the successful close on 15 January 2025. The exact legal close date is unspecified. Issuer counsel confirmed US$180 million, a US$2.1 billion valuation and NEA as lead on 16 January: https://www.lw.com/en/news/latham-advises-synthesia-on-us180-million-series-fundraising. The valuation basis is unspecified. The issuer names WiL (World Innovation Lab), Atlassian Ventures, PSP Growth, GV, MMC Ventures and FirstMark as participants.",
-      "stage_normalised": "Series D"
+      "stage_normalised": "Series D",
+      "lead_investor": "NEA"
     },
     {
       "startup_id": "startup:synthesia",
@@ -14383,7 +15078,15 @@
       "amount_text": "$16 million (currency unspecified in inspected source)",
       "source": "https://www.uluu.com.au/press/series-a",
       "note": "The official page names Burda Principal Investments as lead, with Main Sequence, Novel Investments, Startmate, Fairground and Trinity Ventures. Currency and announcement date were not explicit in inspected content and remain unknown. Participant identities are unresolved.",
-      "stage_normalised": "Series A"
+      "stage_normalised": "Series A",
+      "lead_investor": "Burda Principal Investments",
+      "participants": [
+        "Main Sequence",
+        "Novel Investments",
+        "Startmate",
+        "Fairground",
+        "Trinity Ventures"
+      ]
     },
     {
       "startup_id": "startup:wayve",
@@ -14393,7 +15096,12 @@
       "amount_text": "$1.05 billion",
       "source": "https://wayve.ai/press/series-c/",
       "note": "Wayve named SoftBank Group as lead and NVIDIA and Microsoft as participants. The announcement uses a dollar sign without a currency code.",
-      "stage_normalised": "Series C"
+      "stage_normalised": "Series C",
+      "lead_investor": "SoftBank Group",
+      "participants": [
+        "NVIDIA",
+        "Microsoft"
+      ]
     },
     {
       "startup_id": "startup:wayve",
@@ -15293,5 +16001,69 @@
       "kind": "funding source"
     }
   ],
-  "warnings": []
+  "warnings": [
+    "lead_investor 'Addition' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Addition' for round airwallex-2026-series-h (Airwallex) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Allectus Capital' for round diraq-initial-series-a (Diraq) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'BOND' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'BlackRock' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Breakthrough Victoria' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Burda Principal Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'MegaChips' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'NEA' for round synthesia-2025-series-d (Synthesia) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'QIC Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Sapphire Ventures' for round culture-amp-2017-series-c (Culture Amp) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Sequoia Capital China' for round culture-amp-2019-series-e (Culture Amp) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'SoftBank Group' for round wayve-2024-series-c (Wayve) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Union Square Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; led_round edge skipped",
+    "participant 'Activant' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Anorak Ventures' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; participated_in edge skipped",
+    "participant 'Athletic Ventures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Aura Ventures' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; participated_in edge skipped",
+    "participant 'Baillie Gifford' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; participated_in edge skipped",
+    "participant 'Beaten Zone Venture Partners' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'CP Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
+    "participant 'Climate X' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Costanoa Ventures' for round bugcrowd-2024-growth (Bugcrowd) has no matching partner lead; participated_in edge skipped",
+    "participant 'DST Global Partners' for round fluency-2026-02-usd-seed (Fluency) has no matching partner lead; participated_in edge skipped",
+    "participant 'DYNE Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Fairground' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
+    "participant 'Felicis Ventures' for round culture-amp-2016-series-b (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Felicis Ventures' for round culture-amp-2017-series-c (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Felicis Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Folklore Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Grok Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Horizons Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'Hostplus' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Hostplus' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
+    "participant 'Jelix Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Jelix Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
+    "participant 'Lingotto' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'MA Financial Growth Ventures Fund' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
+    "participant 'Main Sequence Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'Microsoft' for round wayve-2024-series-c (Wayve) has no matching partner lead; participated_in edge skipped",
+    "participant 'Mundi Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
+    "participant 'NGS' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
+    "participant 'NRFC' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
+    "participant 'NewView' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Novel Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
+    "participant 'OneVentures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
+    "participant 'R+ VC' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'R3I Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
+    "participant 'Rally Ventures' for round bugcrowd-2024-growth (Bugcrowd) has no matching partner lead; participated_in edge skipped",
+    "participant 'Robinhood Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Salus Ventures' for round arkeus-2023-seed (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Salus Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Sapphire Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Sierra Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'Skip Capital' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'T. Rowe Price' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'TIAA Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Temasek' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; participated_in edge skipped",
+    "participant 'Trinity Ventures' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
+    "participant 'Ultratech Capital Partners' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
+    "participant 'UniSuper' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
+    "participant 'Uniseed' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
+    "participant 'W23' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped"
+  ]
 }
