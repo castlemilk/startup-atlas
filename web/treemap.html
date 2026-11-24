@@ -38,7 +38,7 @@
       <p id="treemap-page-context">Compare companies and their recorded figures.</p>
     </div>
     <div class="treemap-board-heading" id="treemap-board-heading" hidden>
-      <h1 id="treemap-board-title" tabindex="-1">Funding announcements</h1>
+      <h2 id="treemap-board-title" tabindex="-1">Funding announcements</h2>
       <p id="treemap-board-context"></p>
       <div class="treemap-summary" id="treemap-board-summary"></div>
     </div>
@@ -49,7 +49,7 @@
       <div id="treemap-location-fields" class="treemap-facet-fields"></div>
       <div class="treemap-representation" id="treemap-filter-fields">
         <label class="treemap-select-field" for="treemap-group"><span>Group by</span><select disabled id="treemap-group"><option value="technology">Technology type</option><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="city">Headquarters city</option><option value="stage">Funding stage</option><option value="company">Company</option><option value="decade">Founding decade</option></select></label>
-        <label class="treemap-select-field" for="treemap-metric"><span>Size by</span><select disabled id="treemap-metric"><option value="companies">Company count</option><option value="company-value" disabled>Company value</option><option value="funding">Funding announcement</option><option value="valuation">Recorded valuation</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
+        <label class="treemap-select-field" for="treemap-metric"><span>Size by</span><select disabled id="treemap-metric"><option value="companies">Company count</option><option value="company-value" disabled>Company value — market cap / latest valuation</option><option value="funding">Funding announcement</option><option value="valuation">Recorded valuation</option><option value="market-cap" disabled>Market cap (not recorded)</option></select></label>
         <label class="treemap-select-field" for="treemap-colour"><span>Colour by</span><select disabled id="treemap-colour"><option value="technology">Technology type</option><option value="sector">Primary sector</option><option value="country">Headquarters country</option><option value="freshness">Profile fact review</option><option value="none">None</option><option value="decade">Founding decade</option></select></label>
         <label class="treemap-select-field" for="treemap-currency" id="treemap-currency-field" hidden><span>Currency</span><select disabled id="treemap-currency"><option value="USD">Not applicable</option></select></label>
         <div class="treemap-density-setting">
@@ -90,6 +90,7 @@
       <div id="treemap-sibling-countries" class="treemap-sibling-countries" hidden></div>
       <p id="treemap-instructions" class="sr-only">Each rectangle is proportional to its company count. Select a company to read its evidence. Small tiles have equivalent controls in the ranked list.</p>
       <div class="treemap-canvas-frame" id="treemap-canvas-frame"><div id="treemap-chart" class="treemap-chart" role="group" aria-label="Company treemap" aria-describedby="treemap-instructions"><div class="treemap-skeleton" aria-hidden="true"></div></div></div>
+      <div id="treemap-novalue" class="treemap-novalue" hidden><h3 class="treemap-novalue-title">No recorded value</h3><p class="treemap-novalue-note">These companies have no sourced figure for this measure, so they are not sized by value — every tile here is the same size and area does not encode value.</p><div id="treemap-novalue-tiles" class="treemap-novalue-tiles"></div></div>
       <p id="treemap-tile-disclosure" class="treemap-tile-disclosure" aria-hidden="true" hidden></p>
       <div id="treemap-cards" class="treemap-cards" role="group" aria-label="Company cards" aria-describedby="treemap-instructions" hidden></div>
       <div id="treemap-list" class="treemap-list" role="group" aria-label="Ranked companies" aria-describedby="treemap-instructions" hidden></div>

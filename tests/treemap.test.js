@@ -238,3 +238,24 @@ test('unsourced portraits, facts and social handles never acquire invented evide
   const g={...graph,entities:[entity,{id:'p',kind:'person',name:'Founder',logo:'https://example.com/photo'}],edges:[{from:'p',to:'a',kind:'founded',source:'https://example.com/team'}]};
   const context=companyContext(g,entity);assert.equal(context.facts.length,1);assert.equal(context.socials.length,0);assert.equal(context.founders[0].person.logo,'');
 });
+
+test('company context carries the derived value, listing and full valuation history (#414b)', () => {
+  const entity = {id:'a', kind:'startup', name:'Alpha',
+    latest_value:{amount:20, currency:'USD', amount_usd:20, as_of:'2025-01-01', basis:'last_round_post_money', approximate:false, source:'https://example.com/evidence'},
+    listing:{status:'public', exchange:'NYSE', ticker:'ALP'}};
+  const g = {entities:[entity], edges:[], funding_rounds:graph.funding_rounds};
+  const privateValuations = [{id:'a-sec', startup_id:'a', announced_on:'2024-06-01', stage:'Secondary sale', valuation:15, valuation_currency:'USD', source:'https://example.com/secondary', approximate:true}];
+  const marketCaps = [{startup_id:'a', observed_on:'2026-01-15', amount:25, currency:'USD', source:'https://example.com/cap', exchange:'NYSE', ticker:'ALP'}];
+  const context = companyContext(g, entity, 'USD', marketCaps, privateValuations);
+  assert.equal(context.value.amount, 20);
+  assert.deepEqual(context.listing, {status:'public', exchange:'NYSE', ticker:'ALP'});
+  // Newest first across all three stores; the AUD round is a separate currency observation and still history.
+  assert.deepEqual(context.valueHistory.map(entry => entry.date), ['2026-01-15','2026-01-01','2025-01-01','2024-06-01','2020-01-01']);
+  assert.equal(context.valueHistory[0].basis, 'listed_market_cap');
+  assert.equal(context.valueHistory[0].ticker, 'ALP');
+  assert.equal(context.valueHistory[3].approximate, true);
+  const bare = companyContext(g, {id:'b', kind:'startup', name:'Beta'}, 'USD');
+  assert.equal(bare.value, null);
+  assert.equal(bare.listing, null);
+  assert.deepEqual(bare.valueHistory, []);
+});

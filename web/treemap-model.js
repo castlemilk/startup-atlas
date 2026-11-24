@@ -308,7 +308,7 @@ export function colourEncoding(mode, companies, dimensions, asOf = new Date().to
 }
 
 // Context is evidence-backed metadata, never a substitute for sizing observations.
-export function companyContext(graph, entity, currency='USD', marketCaps = []) {
+export function companyContext(graph, entity, currency='USD', marketCaps = [], privateValuations = []) {
   const socials = value => Array.isArray(value) ? value.filter(link => link.label && source(link.url) && source(link.source)) : [];
   const seen = new Set();
   const founders = (graph.edges || []).filter(edge => edge.kind === 'founded' && edge.to === entity.id && source(edge.source)).flatMap(edge => {
@@ -317,7 +317,21 @@ export function companyContext(graph, entity, currency='USD', marketCaps = []) {
     seen.add(person.id);
     return [{person:{...person,logo:source(person.logo_source) && source(person.logo) ? person.logo : ''},source:edge.source,socials:socials(person.socials)}];
   });
+  // Every dated value observation for the company, newest first: round
+  // valuations, private-valuation events and market-cap observations.
+  const valueHistory = [
+    ...(graph.funding_rounds || []).filter(round => round.startup_id === entity.id && comparableEvent(round, 'valuation'))
+      .map(round => ({date:round.announced_on, amount:round.valuation, currency:round.valuation_currency,
+        label:round.stage || 'Round valuation', basis:'last_round_post_money', source:round.source, approximate:false})),
+    ...privateValuations.filter(record => record.startup_id === entity.id)
+      .map(record => ({date:record.announced_on, amount:record.valuation, currency:record.valuation_currency,
+        label:record.stage || 'Private valuation', basis:'secondary_or_announced', source:record.source, approximate:!!record.approximate})),
+    ...marketCaps.filter(record => record.startup_id === entity.id)
+      .map(record => ({date:record.observed_on, amount:record.amount, currency:record.currency,
+        label:'Market cap', basis:'listed_market_cap', source:record.source, exchange:record.exchange, ticker:record.ticker, approximate:false})),
+  ].sort((a,b) => String(b.date).localeCompare(String(a.date)));
   return {
+    value:entity.latest_value || null, listing:entity.listing || null, valueHistory,
     facts:Array.isArray(entity.profile_facts) ? entity.profile_facts.filter(fact => fact.label && fact.value && source(fact.source)) : [],
     socials:socials(entity.socials), founders,
     rounds:(graph.funding_rounds || []).filter(round => round.startup_id === entity.id && source(round.source))
