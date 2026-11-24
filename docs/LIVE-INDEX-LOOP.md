@@ -66,7 +66,9 @@ trigger the indexer; the 15-minute scheduler covers it (see 2c).
 
 The indexer builds from the **reviewed** files, not the raw crawl
 output: `data/catalogue.json`, `data/partners-reviewed.json`,
-`data/partner-profiles.json`, `data/startup-research.json`. Sync them
+`data/partner-profiles.json`, `data/startup-research.json`, and
+`data/treemap-evidence.json`. Include the generated `data/graph.json`
+for relationship tables. Sync them
 from remote main first (the local checkout may be behind), then publish:
 
 ```python
@@ -75,7 +77,7 @@ publish_reviewed_corpus(
     source_revision='32bcee00364968c64b6b1c2da8a74fdd1c179965')
 ```
 
-This writes `corpus/v1/reviewed/<file>` for the four files plus
+This writes `corpus/v1/reviewed/<file>` for those inputs plus
 `corpus/v1/reviewed/manifest.json`. The manifest `sha256` is a pure
 content hash over the per-file entries (not the timestamp), so the same
 file bytes always yield the same sha. For crawl #43 the new reviewed
@@ -329,7 +331,7 @@ number cannot be produced by a command below, it is not a metric yet.
 2. Download the `partner-crawl-review` artifact; review the diff
    against the previous crawl and write the review note.
 3. `scripts/publish_crawl_corpus.py --snapshots <dir> --run-id <id>`.
-4. Sync the four reviewed files from remote main; publish them.
+4. Sync the reviewed inputs and generated graph from remote main; publish them.
 5. Trigger the indexer (manual `:run` or wait for the scheduler).
 6. Verify the execution completed and read the new version + row
    counts from `latest.json`.

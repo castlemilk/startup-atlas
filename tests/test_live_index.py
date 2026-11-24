@@ -66,6 +66,38 @@ class FakeStore:
         return json.loads(self.get_object(key).decode('utf-8'))
 
 
+class ReviewedValuationInputTests(unittest.TestCase):
+    def test_stored_corpus_round_trip_keeps_required_valuation_input(self):
+        from unittest.mock import patch
+        store = FakeStore()
+        with tempfile.TemporaryDirectory() as tmp:
+            data = Path(tmp) / 'data'
+            data.mkdir()
+            for name in {*corpus.REVIEWED_FILES, 'treemap-evidence.json', 'unreviewed.json'}:
+                (data / name).write_bytes(json.dumps({'file': name}).encode())
+            with patch.object(indexer, 'client_for', return_value=store):
+                manifest = indexer.publish_reviewed_corpus(data, None, 'abc123', FIXED_NOW)
+            downloaded = indexer.download_reviewed_corpus(store, Path(tmp) / 'download')
+            evidence = (data / 'treemap-evidence.json').read_bytes()
+            self.assertEqual(downloaded['treemap-evidence.json'], evidence)
+            self.assertEqual(manifest['files']['treemap-evidence.json']['sha256'],
+                             hashlib.sha256(evidence).hexdigest())
+            self.assertEqual(store.put_order[-1], corpus.reviewed_manifest_key())
+            self.assertNotIn('unreviewed.json', manifest['files'])
+            self.assertNotIn(corpus.reviewed_key('unreviewed.json'), store.objects)
+
+    def test_reviewed_input_paths_match_query_builder_and_publisher(self):
+        import ast
+        code = ast.parse((ROOT / 'scripts/build-query-parquet.py').read_text())
+        public = next(ast.literal_eval(node.value) for node in code.body
+                      if isinstance(node, ast.Assign)
+                      and any(isinstance(t, ast.Name) and t.id == 'PUBLIC_DATA_FILES'
+                              for t in node.targets))
+        self.assertEqual(set(corpus.REVIEWED_FILES), set(public) | {'graph.json'})
+        publisher = (ROOT / '.github/workflows/publish-reviewed-corpus.yml').read_text()
+        self.assertIn("- 'data/treemap-evidence.json'", publisher)
+
+
 @unittest.skipUnless(PYARROW, 'pyarrow is not installed')
 class LiveIndexTests(unittest.TestCase):
     def test_build_writes_versioned_index_and_pointer(self):

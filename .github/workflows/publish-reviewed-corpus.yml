@@ -3,7 +3,7 @@ name: Publish reviewed corpus
 # Issue #376: a merged change under data/ used to wait for the next crawl
 # (or a manual live-index bootstrap) before the corpus — and therefore
 # the live index — saw it. Publish the reviewed corpus whenever one of
-# the four reviewed files changes on main; the scheduled indexer rebuilds
+# the reviewed inputs change on main; the scheduled indexer rebuilds
 # from the new manifest on its next tick.
 
 on:
@@ -14,6 +14,9 @@ on:
       - 'data/partner-profiles.json'
       - 'data/partners-reviewed.json'
       - 'data/startup-research.json'
+      - 'data/treemap-evidence.json'
+      # Publish the new reviewed input when the publisher contract is changed.
+      - '.github/workflows/publish-reviewed-corpus.yml'
   workflow_dispatch:
 
 permissions:

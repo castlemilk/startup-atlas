@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish the reviewed corpus (the four data/*.json files) to the corpus bucket.
+"""Publish the reviewed corpus (the allowlisted data/*.json files) to the corpus bucket.
 
 Issue #376: a merged change under data/ used to wait for the next crawl
 (or a manual live-index bootstrap) before the corpus — and therefore the
@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--corpus-dir', type=Path, default=ROOT / 'data',
-                        help='Directory holding the four reviewed JSON files')
+                        help='Directory holding the reviewed JSON inputs')
     parser.add_argument('--source-revision', default='',
                         help='Source revision to record in the manifest')
     args = parser.parse_args(argv)
