@@ -220,6 +220,34 @@ class LoopHealthCheckTests(unittest.TestCase):
             except ImportError:
                 self.assertIn('pyarrow not available', detail)
 
+    def _console_drift_run(self, tmp, bucket_js):
+        responses = healthy_responses()
+        responses[INDEX + 'query.js'] = (200, bucket_js)
+        responses[INDEX + 'query.css'] = (200, b'css-bytes')
+        web = Path(tmp) / 'web'
+        web.mkdir()
+        html = responses[INDEX + 'query.html'][1]
+        (web / 'query.html').write_bytes(html)
+        (web / 'query.js').write_bytes(b'repo-js-bytes')
+        (web / 'query.css').write_bytes(b'css-bytes')
+        return health.run_checks(fetch=FakeFetch(responses), now=NOW,
+                                 data_dir=make_data_dir(tmp),
+                                 git_date=lambda p: date(2026, 11, 20),
+                                 web_dir=web)
+
+    def test_console_drift_warns_when_bucket_query_js_is_stale(self):
+        with TemporaryDirectory() as tmp:
+            report = self._console_drift_run(tmp, b'stale-bucket-js')
+            self.assertEqual(levels(report, 'console-drift'), [health.WARN])
+            detail = [d for _, n, d in report.lines
+                      if n == 'console-drift'][0]
+            self.assertIn('query.js', detail)
+
+    def test_console_drift_ok_when_bucket_matches_web_source(self):
+        with TemporaryDirectory() as tmp:
+            report = self._console_drift_run(tmp, b'repo-js-bytes')
+            self.assertEqual(levels(report, 'console-drift'), [health.OK])
+
     def _progress_run(self, record):
         responses = healthy_responses()
         responses[INDEX + 'crawl-progress.json'] = (
