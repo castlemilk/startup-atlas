@@ -13,31 +13,88 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Authenticate to GCP (Workload Identity Federation)
+        id: gcp-auth
+        if: always()
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          token_format: access_token
       - name: Generate current catalogue
         run: python3 scripts/make-data.py
       - name: Discover partner directory leads
+        env:
+          ATLAS_CRAWL_PROGRESS: "1"
+          ATLAS_CORPUS_BACKEND: gcs
+          ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+          ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+          ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+          ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
         run: python3 scripts/crawl.py partners --follow 0
       - name: Discover programme directory leads
         # A programme-directory outage degrades this step's snapshot only;
         # it must never skip the news, logo, profile and portrait steps.
+        env:
+          ATLAS_CRAWL_PROGRESS: "1"
+          ATLAS_CORPUS_BACKEND: gcs
+          ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+          ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+          ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+          ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
         run: python3 scripts/crawl.py programs --follow 0
         continue-on-error: true
       - name: Discover startup news leads
+        env:
+          ATLAS_CRAWL_PROGRESS: "1"
+          ATLAS_CORPUS_BACKEND: gcs
+          ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+          ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+          ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+          ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
         run: python3 scripts/crawl.py news --follow 2
         continue-on-error: true
       - name: Stage approved partner logos
+        env:
+          ATLAS_CRAWL_PROGRESS: "1"
+          ATLAS_CORPUS_BACKEND: gcs
+          ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+          ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+          ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+          ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
         run: python3 scripts/crawl.py logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 3
       - name: Discover team and portfolio leads
         # Issue #350: the limit used to be a literal 32 that silently
         # truncated the crawl the day a 33rd seed was added. Derive it
         # from the seed CSV (rows minus the header) so the cap can never
         # drift from the seed list again.
+        env:
+          ATLAS_CRAWL_PROGRESS: "1"
+          ATLAS_CORPUS_BACKEND: gcs
+          ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+          ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+          ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+          ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
         run: |
           seeds=$(awk 'END {print NR - 1}' data/partner-logo-seeds.csv)
           python3 scripts/crawl.py profiles --approved data/partner-logo-seeds.csv --follow 2 --limit "$seeds"
       - name: Stage founder and team portraits
+        env:
+          ATLAS_CRAWL_PROGRESS: "1"
+          ATLAS_CORPUS_BACKEND: gcs
+          ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+          ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+          ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+          ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
         run: python3 scripts/crawl.py portraits --approved data/company-profile-seeds.csv --follow 2
       - name: Prepare partner metadata for review
+        env:
+          ATLAS_CRAWL_PROGRESS: "1"
+          ATLAS_CORPUS_BACKEND: gcs
+          ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+          ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+          ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+          ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
         run: python3 scripts/crawl.py partner-candidates --approved data/partner-logo-seeds.csv --snapshot research/crawl/latest-logos.json
       - name: Summarize outputs
         if: always()
@@ -83,14 +140,6 @@ jobs:
           path: research/crawl/
           if-no-files-found: warn
           retention-days: 14
-      - name: Authenticate to GCP (Workload Identity Federation)
-        id: gcp-auth
-        if: always()
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-          token_format: access_token
       - name: Publish crawl snapshots to the live-index corpus
         # High-throughput push: snapshots land in object storage immediately;
         # the async indexer (live-index.yml) picks them up from there. This
@@ -105,3 +154,14 @@ jobs:
           ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
           ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
         run: python3 scripts/publish_crawl_corpus.py --snapshots research/crawl --run-id ${{ github.run_id }}
+      - name: Stamp crawl progress terminal
+        if: always()
+        continue-on-error: true
+        env:
+          ATLAS_CRAWL_PROGRESS: "1"
+          ATLAS_CORPUS_BACKEND: gcs
+          ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+          ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+          ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+          ATLAS_GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
+        run: python3 scripts/crawl_progress.py finalize --status ${{ job.status == 'success' && 'completed' || 'failed' }}
