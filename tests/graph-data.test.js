@@ -104,3 +104,18 @@ test('Cuttable seed history separates the initial round and extension from the c
   assert.ok(profile.articles.some(a => a.url === 'https://rampersand.substack.com/p/investment-notes-cuttable'));
   assert.ok(profile.articles.some(a => a.url === 'https://www.marketing-interactive.com/cuttable-raises-10m-to-launch-ai-driven-creative-platform-for-ecommerce-brands'));
 });
+
+test('Airwallex Series D has three distinct source-backed tranches, not cumulative totals', async () => {
+  const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const rounds = graph.funding_rounds.filter(r => r.startup_id === 'startup:airwallex');
+  const seriesD = rounds.filter(r => r.stage_normalised === 'Series D').sort((a, b) => a.announced_on.localeCompare(b.announced_on));
+  const newsroom = 'https://www.airwallex.com/global/newsroom/';
+  assert.deepEqual(seriesD.map(r => [r.announced_on, r.amount, r.currency, r.stage, r.source]), [
+    ['2020-04-16', 160000000, 'USD', 'Series D', newsroom + 'airwallex-closes-usd160m-in-record-fundraising-round-to-date'],
+    ['2020-09-29', 40000000, 'USD', 'Series D extension', newsroom + 'airwallexs-extended-series-d-fundraising-brings-total-round-to-usd200m'],
+    ['2021-03-24', 100000000, 'USD', 'Series D extension', newsroom + 'airwallexs-latest-capital-puts-valuation-at-usd-2-6-billion'],
+  ]);
+  assert.equal(seriesD.reduce((sum, round) => sum + round.amount, 0), 300000000);
+  assert.equal(seriesD[2].lead_investor, 'Greenoaks');
+  assert.equal(rounds.find(r => r.id === 'airwallex-2025-series-f').amount, 300000000);
+});
