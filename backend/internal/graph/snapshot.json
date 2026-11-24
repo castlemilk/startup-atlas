@@ -14926,6 +14926,47 @@
   "funding_rounds": [
     {
       "startup_id": "startup:airwallex",
+      "id": "airwallex-2020-series-d",
+      "stage": "Series D",
+      "announced_on": "2020-04-16",
+      "amount": 160000000,
+      "currency": "USD",
+      "note": "Initial Series D tranche; later extensions are recorded separately.",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-closes-usd160m-in-record-fundraising-round-to-date",
+      "stage_normalised": "Series D"
+    },
+    {
+      "startup_id": "startup:airwallex",
+      "id": "airwallex-2020-series-d-extension",
+      "stage": "Series D extension",
+      "announced_on": "2020-09-29",
+      "amount": 40000000,
+      "currency": "USD",
+      "note": "Incremental tranche, not the US$200 million cumulative Series D total announced at the time.",
+      "source": "https://www.airwallex.com/global/newsroom/airwallexs-extended-series-d-fundraising-brings-total-round-to-usd200m",
+      "stage_normalised": "Series D"
+    },
+    {
+      "startup_id": "startup:airwallex",
+      "id": "airwallex-2021-series-d-extension",
+      "stage": "Series D extension",
+      "announced_on": "2021-03-24",
+      "amount": 100000000,
+      "currency": "USD",
+      "valuation": 2600000000,
+      "valuation_currency": "USD",
+      "note": "Incremental tranche, not the US$300 million cumulative Series D total. Valuation is historical.",
+      "source": "https://www.airwallex.com/global/newsroom/airwallexs-latest-capital-puts-valuation-at-usd-2-6-billion",
+      "stage_normalised": "Series D",
+      "lead_investor": "Greenoaks",
+      "participants": [
+        "Grok Ventures",
+        "Skip Capital",
+        "ANZi Ventures"
+      ]
+    },
+    {
+      "startup_id": "startup:airwallex",
       "id": "airwallex-2025-series-f",
       "stage": "Series F",
       "announced_on": "2025-05-21",
@@ -15789,6 +15830,13 @@
   "articles": [
     {
       "startup_id": "startup:airwallex",
+      "title": "Airwallex — Series D",
+      "url": "https://www.airwallex.com/global/newsroom/airwallex-closes-usd160m-in-record-fundraising-round-to-date",
+      "published_on": "2020-04-16",
+      "kind": "funding source"
+    },
+    {
+      "startup_id": "startup:airwallex",
       "title": "Airwallex — Series F",
       "url": "https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking",
       "published_on": "2025-05-21",
@@ -15799,6 +15847,20 @@
       "title": "Airwallex — Series H",
       "url": "https://www.airwallex.com/global/newsroom/airwallex-secures-320-million-in-series-h-funding-valuation-hits-11-billion",
       "published_on": "2026-06-25",
+      "kind": "funding source"
+    },
+    {
+      "startup_id": "startup:airwallex",
+      "title": "Airwallex — Series D extension",
+      "url": "https://www.airwallex.com/global/newsroom/airwallexs-extended-series-d-fundraising-brings-total-round-to-usd200m",
+      "published_on": "2020-09-29",
+      "kind": "funding source"
+    },
+    {
+      "startup_id": "startup:airwallex",
+      "title": "Airwallex — Series D extension",
+      "url": "https://www.airwallex.com/global/newsroom/airwallexs-latest-capital-puts-valuation-at-usd-2-6-billion",
+      "published_on": "2021-03-24",
       "kind": "funding source"
     },
     {
@@ -16671,6 +16733,7 @@
     "lead_investor 'BlackRock' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Breakthrough Victoria' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Burda Principal Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Greenoaks' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'MegaChips' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; led_round edge skipped",
     "lead_investor 'NEA' for round synthesia-2025-series-d (Synthesia) has no matching partner lead; led_round edge skipped",
     "lead_investor 'QIC Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; led_round edge skipped",
@@ -16678,6 +16741,7 @@
     "lead_investor 'Sequoia Capital China' for round culture-amp-2019-series-e (Culture Amp) has no matching partner lead; led_round edge skipped",
     "lead_investor 'SoftBank Group' for round wayve-2024-series-c (Wayve) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Union Square Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; led_round edge skipped",
+    "participant 'ANZi Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Activant' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Anorak Ventures' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; participated_in edge skipped",
     "participant 'Athletic Ventures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
@@ -16694,6 +16758,7 @@
     "participant 'Felicis Ventures' for round culture-amp-2017-series-c (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Folklore Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Grok Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Horizons Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
@@ -16718,6 +16783,7 @@
     "participant 'Salus Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Sapphire Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Sierra Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'Skip Capital' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Skip Capital' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'T. Rowe Price' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'TIAA Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
