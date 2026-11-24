@@ -168,9 +168,13 @@ class FilingTests(unittest.TestCase):
                 with self.assertRaises(RuntimeError):
                     kpi_backlog.file_entries(Path("data/kpi-backlog.json"))
 
-    def test_real_seed_file_loads_and_has_three_open_entries(self):
+    def test_real_seed_file_loads_with_f3_and_q4_done(self):
+        # F3 closed by the automation assessment on #384 and Q4 by PR #412
+        # (#386); F4 stays open until PR #405 (#375/#385) merges.
         data = kpi_backlog.load_backlog(ROOT / "data" / "kpi-backlog.json")
         self.assertEqual([e["key"] for e in kpi_backlog.open_entries(data)],
+                         ["F4"])
+        self.assertEqual([e["key"] for e in data["entries"]],
                          ["F3", "F4", "Q4"])
         for e in data["entries"]:
             self.assertIn("kpi-backlog", e["labels"])
