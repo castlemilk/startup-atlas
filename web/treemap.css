@@ -5,7 +5,7 @@
 }
 .treemap-shell [hidden] { display:none !important; }
 .treemap-intro { margin-bottom:16px; }
-.treemap-intro h1 {
+.treemap-intro h1, #treemap-board-title {
   margin:0;
   color:var(--atlas-ink);
   font:500 clamp(2rem,3vw,2.75rem)/1.04 var(--atlas-font-display);
@@ -776,7 +776,7 @@
 @media (max-width:720px) {
   .treemap-shell { padding:12px 12px 36px; }
   .treemap-intro { margin-bottom:8px; }
-  .treemap-intro h1 { font-size:clamp(1.9rem,7vw,2.3rem); }
+  .treemap-intro h1, #treemap-board-title { font-size:clamp(1.9rem,7vw,2.3rem); }
   .treemap-control-panel:not(:has(.treemap-representation:not([hidden]))) { padding:0; border:0; background:transparent; }
   .treemap-facet-fields { flex-basis:100%; }
   .treemap-controls:has(#treemap-filter-fields[hidden]) #treemap-exploration .exploration-drill-field { display:none; }
