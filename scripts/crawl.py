@@ -34,6 +34,14 @@ except ImportError:  # run as scripts/crawl.py: scripts/ is on sys.path
         # gracefully and mentions carry normalised=None rather than failing.
         _currency = None
 
+try:
+    from scripts import crawl_progress as _progress
+except ImportError:  # run as scripts/crawl.py: scripts/ is on sys.path
+    try:
+        import crawl_progress as _progress
+    except ImportError:
+        _progress = None
+
 ROOT = Path(__file__).resolve().parents[1]
 CATALOGUE = ROOT / 'data/catalogue.json'
 PROGRAM_SOURCES = ROOT / 'data/program-sources.json'
@@ -1246,7 +1254,7 @@ def partner_update_candidates(snapshot, approved, reviewed=None):
         candidates.append(candidate)
     return {'version':1,'mode':'partner-update-candidates','warning':'Unreviewed extracted text; verify identity, source and claims, then add the review date before MCP validation.','candidates':candidates,'skipped_unchanged':skipped,'skipped_unchanged_names':skipped_names}
 
-def crawl_sites(catalogue,args,transport,source_state=None):
+def crawl_sites(catalogue,args,transport,source_state=None,progress=None):
     entries=[{'id':item['id'],'name':item['name'],'url':item['url'],'additional_urls':item.get('extra',[])} for item in catalogue['opportunities']]
     if args.partners_only: entries=[]
     if args.only: entries=[x for x in entries if x['id'] in set(args.only)]
@@ -1255,6 +1263,7 @@ def crawl_sites(catalogue,args,transport,source_state=None):
     entries,sampling_skipped=_apply_sampling(entries,source_state)
     entries=entries[:args.limit] if args.limit else entries
     if not entries: raise CrawlError('No site seeds matched the requested options')
+    if progress: progress.set_total(args.mode,len(entries))
     results=[]; seen={}
     for item in entries:
         seeds=list(dict.fromkeys([item['url'],*item.get('additional_urls',[])]))
@@ -1276,6 +1285,7 @@ def crawl_sites(catalogue,args,transport,source_state=None):
         row={**item,'pages':pages}
         if source_state is not None: row['sampling_priority']=item.get('sampling_priority')
         results.append(row)
+        if progress: progress.source_done(args.mode,item['name'],failed=not any(p['status']=='ok' for p in pages))
         print(f"[{len(results)}/{len(entries)}] {item['name']}: {pages[0]['status']}",file=sys.stderr)
     output={'version':1,'mode':'sites','generated_at':utc_now(),'results':results,
             'coverage':page_fetch_coverage(results)}
@@ -1675,7 +1685,7 @@ def professional_bio_observations(company, page, asset_hosts):
         yield row
 
 
-def crawl_company_profiles(startups, args, transport):
+def crawl_company_profiles(startups, args, transport, progress=None):
     # A separate mode keeps startup names out of the partner identity importer.
     # The approved CSV is mandatory; only already researched companies qualify.
     known={row['name']:row for row in startups}
@@ -1684,7 +1694,7 @@ def crawl_company_profiles(startups, args, transport):
     for seed in approved:
         if urlsplit(seed['url']).hostname != urlsplit(known[seed['name']].get('website','')).hostname:
             raise CrawlError('Company seed must match its reviewed official website host')
-    result=crawl_profiles({'partnerLeads':list(known)},args,transport,company=True)
+    result=crawl_profiles({'partnerLeads':list(known)},args,transport,company=True,progress=progress)
     result['mode']='company-profiles'
     for candidate in result['candidates']:
         candidate['company']=candidate.pop('partner')
@@ -1710,12 +1720,13 @@ def crawl_company_profiles(startups, args, transport):
 NEWS_FUNDING = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|invest(?:ment|or|s|ed)?|series|seed|acqui(?:res|red|sition)|launch(?:es|ed)?)\b',re.I)
 NEWS_PRIORITY = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|series|seed)\b',re.I)
 
-def crawl_startup_news(registry,args,transport):
+def crawl_startup_news(registry,args,transport,progress=None):
     """Discover dated, source-attributed candidates; never publish extracted claims."""
     sources=registry['sources']
     if args.only: sources=[s for s in sources if s['id'] in set(args.only)]
     if args.limit: sources=sources[:args.limit]
     if not sources: raise CrawlError('No startup news sources matched')
+    if progress: progress.set_total(args.mode,len(sources))
     results=[]; candidates=[]
     def fetch(url,host):
         try:
@@ -1750,6 +1761,7 @@ def crawl_startup_news(registry,args,transport):
                     'amount_mentions':article.get('amount_mentions',[]), 'evidence':article.get('evidence',{}),
                     'review_required':True})
         results.append({'name':entry['name'],'url':entry['url'],'pages':pages})
+        if progress: progress.source_done(args.mode,entry['name'],failed=page['status']!='ok',candidates=len(candidates))
         print(f"[{len(results)}/{len(sources)}] {entry['name']}: {page['status']}; {len(selected)} articles",file=sys.stderr)
     return {'version':1,'mode':'news','generated_at':utc_now(),'results':results,'candidates':candidates,
             'coverage':page_fetch_coverage(results,candidates),
@@ -1839,12 +1851,13 @@ def profile_batch_coverage(results):
     return by_kind
 
 
-def crawl_profiles(catalogue,args,transport,company=False,source_state=None):
+def crawl_profiles(catalogue,args,transport,company=False,source_state=None,progress=None):
     seeds=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
     if args.partner: seeds=[s for s in seeds if args.partner.casefold() in s['name'].casefold()]
     seeds,sampling_skipped=_apply_sampling(seeds,source_state)
     if args.limit: seeds=seeds[:args.limit]
     if not seeds: raise CrawlError('No approved partner websites matched')
+    if progress: progress.set_total(args.mode,len(seeds))
     results=[]; candidates=[]
     def fetch(url,host,scope,company_name):
         try:
@@ -1892,6 +1905,7 @@ def crawl_profiles(catalogue,args,transport,company=False,source_state=None):
                         'note':'No matching team or portfolio links found' if homepage['status']=='ok' and not discovered else ''}
         if source_state is not None: row['sampling_priority']=seed.get('sampling_priority')
         results.append(row)
+        if progress: progress.source_done(args.mode,seed['name'],failed=homepage['status']!='ok',candidates=len(candidates))
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
     bindings = bind_profile_headshot_candidates(
         candidates, {seed['name']: seed['asset_hosts'] for seed in seeds})
@@ -1986,12 +2000,13 @@ def logo_capture_coverage(results, candidates):
     return coverage
 
 
-def stage_partner_logos(snapshot,args,transport):
+def stage_partner_logos(snapshot,args,transport,progress=None):
     """Capture candidate bytes from the reviewed site or its explicitly approved asset hosts.
 
     Files are opaque .bin research artefacts and are never served by the site.
     """
     rows=[]; folder=args.out/'logo-files'; folder.mkdir(parents=True,exist_ok=True)
+    if progress: progress.set_total(args.mode,len(snapshot['results']))
     for entry in snapshot['results']:
         for page in entry.get('pages',[]):
             if page.get('status')!='ok': continue
@@ -2021,6 +2036,7 @@ def stage_partner_logos(snapshot,args,transport):
                             accepted+=1
                     except (CrawlError,ValueError,OSError) as exc: row.update(status='skipped',reason=str(exc))
                 rows.append(row)
+        if progress: progress.source_done(args.mode,entry['name'],failed=not any(p.get('status')=='ok' for p in entry.get('pages',[])),candidates=len(rows))
     return {'version':1,'mode':'logos','generated_at':utc_now(),'results':snapshot['results'],'candidates':rows,
             'coverage':logo_capture_coverage(snapshot['results'],rows),
             'warning':'Untrusted candidate files require identity, license and safety review before publishing. A favicon or social image may not be the partner logo.'}
@@ -2235,10 +2251,10 @@ def stage_headshots(result, scopes, args, transport):
     return rows
 
 
-def crawl_portraits(args, transport):
+def crawl_portraits(args, transport, progress=None):
     """Company-profile crawl plus portrait-byte staging for its bio candidates."""
     startups = json.loads((ROOT / 'data/startup-research.json').read_text(encoding='utf-8'))['startups']
-    result = crawl_company_profiles(startups, args, transport)
+    result = crawl_company_profiles(startups, args, transport, progress=progress)
     result['mode'] = 'portraits'
     kept, excluded = filter_portrait_headshots(result['candidates'])
     result['candidates'] = kept
@@ -2351,10 +2367,10 @@ def in_program_source_scope(source_id, source_url, label, target):
     )
 
 
-def crawl_program_directories(registry,args,transport):
+def crawl_program_directories(registry,args,transport,progress=None):
     sources=registry['sources']
     seed_catalogue={'opportunities':[{'id':s['id'],'name':s['name'],'url':s['url'],'extra':[]} for s in sources], 'partnerLeads':[]}
-    result=crawl_sites(seed_catalogue,args,transport); result['mode']='programs'; candidates=[]; seen=set()
+    result=crawl_sites(seed_catalogue,args,transport,progress=progress); result['mode']='programs'; candidates=[]; seen=set()
     scopes={s['id']:s['scope'] for s in sources}
     for row in result['results']:
         for page in row['pages']:
@@ -2429,11 +2445,11 @@ def directory_coverage(results, candidates, notes, cap):
             'returned_candidates':min(len(candidates),cap), 'truncated':len(candidates)>cap,
             'warning':'Counts cover extracted rows only; exact names are not verified identities and missed or inaccessible pages are unknown.'}
 
-def crawl_partner_directories(registry,catalogue,args,transport):
+def crawl_partner_directories(registry,catalogue,args,transport,progress=None):
     """Extract unverified organisations from a curated provider directory table."""
     sources=registry['sources']
     seed_catalogue={'opportunities':[{'id':s['id'],'name':s['name'],'url':s['url'],'extra':[]} for s in sources], 'partnerLeads':[]}
-    result=crawl_sites(seed_catalogue,args,transport); result['mode']='partners'
+    result=crawl_sites(seed_catalogue,args,transport,progress=progress); result['mode']='partners'
     sources_by_id={s['id']:s for s in sources}; existing={name.casefold() for name in catalogue['partnerLeads']}
     candidates=[]; seen=set(); notes=[]
     for row in result['results']:
@@ -2731,7 +2747,10 @@ def main(argv=None):
         approved=load_approved_csv(args.approved,set(catalogue['partnerLeads']),require_qid=False)
         reviewed_path=ROOT/'data/partners-reviewed.json'
         reviewed=json.loads(reviewed_path.read_text(encoding='utf-8')) if reviewed_path.exists() else {}
+        reporter=_progress.reporter_from_env() if _progress else None
+        if reporter is not None: reporter.begin_run(); reporter.mode_started(args.mode)
         data=partner_update_candidates(json.loads(args.snapshot.read_text(encoding='utf-8')),approved,reviewed)
+        if reporter is not None: reporter.mode_finished(args.mode,data)
         output=args.out/'partner-update-candidates.json'
         write_json(output,data)
         print(f"Prepared {len(data['candidates'])} unreviewed partner update candidates ({data.get('skipped_unchanged',0)} unchanged since last import): {output}")
@@ -2761,15 +2780,25 @@ def main(argv=None):
         sampler=_sampler(); source_state=None
         if sampler is not None and args.mode in ('sites','logos','profiles'):
             source_state=sampler.load_state()
-        if args.mode=='news': data=crawl_startup_news(json.loads(STARTUP_NEWS_SOURCES.read_text(encoding='utf-8')),args,transport)
-        elif args.mode=='profiles': data=crawl_profiles(catalogue,args,transport,source_state=source_state)
-        elif args.mode=='company-profiles': data=crawl_company_profiles(json.loads((ROOT/'data/startup-research.json').read_text(encoding='utf-8'))['startups'],args,transport)
-        elif args.mode=='portraits': data=crawl_portraits(args,transport)
-        elif args.mode=='sites': data=crawl_sites(catalogue,args,transport,source_state=source_state)
-        elif args.mode=='logos': data=stage_partner_logos(crawl_sites(catalogue,args,transport,source_state=source_state),args,transport)
-        elif args.mode=='discover': data=discover(catalogue,args,transport)
-        elif args.mode=='partners': data=crawl_partner_directories(json.loads(PARTNER_SOURCES.read_text(encoding='utf-8')),catalogue,args,transport)
-        else: data=crawl_program_directories(json.loads(PROGRAM_SOURCES.read_text(encoding='utf-8')),args,transport)
+        # Live crawl progress (design 24 Nov 2026): only for the seven
+        # workflow modes and only when ATLAS_CRAWL_PROGRESS=1; the reporter
+        # never raises, so a reporting failure cannot affect the crawl.
+        reporter=_progress.reporter_from_env() if (_progress and args.mode in _progress.WORKFLOW_MODES) else None
+        if reporter is not None: reporter.begin_run(); reporter.mode_started(args.mode)
+        try:
+            if args.mode=='news': data=crawl_startup_news(json.loads(STARTUP_NEWS_SOURCES.read_text(encoding='utf-8')),args,transport,progress=reporter)
+            elif args.mode=='profiles': data=crawl_profiles(catalogue,args,transport,source_state=source_state,progress=reporter)
+            elif args.mode=='company-profiles': data=crawl_company_profiles(json.loads((ROOT/'data/startup-research.json').read_text(encoding='utf-8'))['startups'],args,transport)
+            elif args.mode=='portraits': data=crawl_portraits(args,transport,progress=reporter)
+            elif args.mode=='sites': data=crawl_sites(catalogue,args,transport,source_state=source_state)
+            elif args.mode=='logos': data=stage_partner_logos(crawl_sites(catalogue,args,transport,source_state=source_state,progress=reporter),args,transport,progress=reporter)
+            elif args.mode=='discover': data=discover(catalogue,args,transport)
+            elif args.mode=='partners': data=crawl_partner_directories(json.loads(PARTNER_SOURCES.read_text(encoding='utf-8')),catalogue,args,transport,progress=reporter)
+            else: data=crawl_program_directories(json.loads(PROGRAM_SOURCES.read_text(encoding='utf-8')),args,transport,progress=reporter)
+        except Exception:
+            if reporter is not None: reporter.mode_finished(args.mode,status='failed')
+            raise
+        if reporter is not None: reporter.mode_finished(args.mode,data)
         if sampler is not None and source_state is not None:
             sampler.record_run_outcomes(source_state,data['results'],data.get('candidates',[]))
             sampler.save_state(source_state)
