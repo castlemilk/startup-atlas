@@ -7,10 +7,10 @@
   exactly one unambiguous ``City, Country`` pair; anything else leaves
   the fields absent and lists the startup in the report as ambiguous.
 - Round ``stage_normalised``: the controlled vocabulary (Pre-Seed, Seed,
-  Series A-F, Bridge, Grant, Debt, Crowdfunding, IPO, Acquisition,
+  Series A-H, Bridge, Grant, Debt, Crowdfunding, IPO, Acquisition,
   Unknown) mapped from the free-text ``stage`` spellings. The original
   ``stage`` is always preserved. A stage outside the vocabulary
-  (e.g. Series H) maps to Unknown.
+  (e.g. Series I, or a stage the source never stated) maps to Unknown.
 - Opportunity ``deadline`` + controlled status: ``deadline`` is an ISO
   date or null, extracted only when exactly one date parses unambiguously
   from the status text. Controlled status vocabulary: Open, Closing soon,
@@ -44,8 +44,8 @@ HQ_KEYS = ('headquarters', 'business-base', 'co-headquarters', 'sydney-headquart
 
 CONTROLLED_STAGES = (
     'Pre-Seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Series D',
-    'Series E', 'Series F', 'Bridge', 'Grant', 'Debt', 'Crowdfunding',
-    'IPO', 'Acquisition', 'Unknown',
+    'Series E', 'Series F', 'Series G', 'Series H', 'Bridge', 'Grant',
+    'Debt', 'Crowdfunding', 'IPO', 'Acquisition', 'Unknown',
 )
 
 CONTROLLED_STATUSES = (
@@ -110,10 +110,10 @@ def parse_hq(value):
     return next(iter(matches))
 
 
-_SERIES_RE = re.compile(r"(?i)^series\s+([A-F])(?:[-\s].*)?$")
+_SERIES_RE = re.compile(r"(?i)^series\s+([A-H])(?:[-\s].*)?$")
 _STAGE_EXACT = {
     'pre-seed': 'Pre-Seed', 'pre seed': 'Pre-Seed', 'preseed': 'Pre-Seed',
-    'seed': 'Seed', 'seed round': 'Seed',
+    'seed': 'Seed', 'seed round': 'Seed', 'seed extension': 'Seed',
     'bridge': 'Bridge', 'bridge round': 'Bridge',
     'grant': 'Grant', 'grant award': 'Grant',
     'grant award (non-equity)': 'Grant', 'non-equity grant': 'Grant',

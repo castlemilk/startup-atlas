@@ -204,8 +204,13 @@ class BackfillMappingTests(unittest.TestCase):
         self.assertEqual(backfill.normalise_stage('Series A'), 'Series A')
         self.assertEqual(backfill.normalise_stage('Funding round (stage not stated)'),
                          'Unknown')
+        # Series G/H are in the vocabulary (Airwallex raised both).
+        self.assertEqual(backfill.normalise_stage('Series G'), 'Series G')
+        self.assertEqual(backfill.normalise_stage('Series H'), 'Series H')
+        self.assertEqual(backfill.normalise_stage('Seed extension'), 'Seed')
         # Outside the controlled vocabulary: original preserved, normalised Unknown.
-        self.assertEqual(backfill.normalise_stage('Series H'), 'Unknown')
+        self.assertEqual(backfill.normalise_stage('Series I'), 'Unknown')
+        self.assertEqual(backfill.normalise_stage('Pre-Series A'), 'Unknown')
         self.assertEqual(backfill.normalise_stage('Strategic growth financing'),
                          'Unknown')
 
