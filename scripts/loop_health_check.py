@@ -162,6 +162,54 @@ def check_crawl(fetch, report):
                    f'latest run conclusion={conclusion} ({when}) {run.get("html_url", "")}')
 
 
+def check_crawl_progress(fetch, report, now):
+    """In-run view from the shipped crawl-progress record (design 24 Nov).
+
+    Complements check_crawl's end-of-run verdict: OK on a fresh heartbeat
+    or an idle record, WARN (never RED) on a stale heartbeat during a
+    running crawl, and a silent WARN 'unverified' while the record does
+    not exist yet — progress reporting must never false-RED the loop.
+    """
+    try:
+        status, body = fetch(INDEX_BASE + 'crawl-progress.json')
+    except FetchError as exc:
+        report.add(WARN, 'crawl-progress',
+                   f'could not read progress record ({exc}); unverified')
+        return
+    if status == 404:
+        report.add(WARN, 'crawl-progress',
+                   'no progress record published yet; unverified')
+        return
+    if status != 200:
+        report.add(WARN, 'crawl-progress',
+                   f'progress record returned HTTP {status}; unverified')
+        return
+    try:
+        record = json.loads(body)
+        run = record['run']
+        updated = _parse_ts(run['updated_at'])
+    except (ValueError, KeyError, TypeError) as exc:
+        report.add(WARN, 'crawl-progress',
+                   f'progress record unreadable ({exc}); unverified')
+        return
+    age = (now - updated).total_seconds()
+    if run.get('status') == 'running':
+        if age > 120:
+            report.add(WARN, 'crawl-progress',
+                       f'run {run.get("run_id")} heartbeat stale '
+                       f'({age:.0f}s old, mode {run.get("current_mode")}); '
+                       'the crawl may have stalled')
+        else:
+            report.add(OK, 'crawl-progress',
+                       f'run {run.get("run_id")} in progress '
+                       f'(mode {run.get("current_mode")}, heartbeat '
+                       f'{age:.0f}s old)')
+    else:
+        report.add(OK, 'crawl-progress',
+                   f'idle; last run {run.get("run_id")} '
+                   f'{run.get("status")} (updated {run.get("updated_at")})')
+
+
 def check_index(fetch, report, now):
     """Returns (latest dict, manifest dict) or (None, None)."""
     try:
@@ -371,6 +419,7 @@ def run_checks(fetch=http_fetch, now=None, data_dir=None, git_date=_git_date):
     data_dir = Path(data_dir) if data_dir else ROOT / 'data'
     report = Report()
     check_crawl(fetch, report)
+    check_crawl_progress(fetch, report, now)
     latest, manifest = check_index(fetch, report, now)
     check_corpus_lag(report, manifest, data_dir)
     check_console(fetch, report, latest, manifest)

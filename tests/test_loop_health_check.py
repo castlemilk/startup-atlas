@@ -84,6 +84,12 @@ def healthy_responses(data_bodies=None):
                                'created_at': '2026-11-23T09:00:00Z',
                                'html_url': 'https://example.com/run'}],
         }).encode()),
+        INDEX + 'crawl-progress.json': (200, json.dumps({
+            'version': 1, 'kind': 'crawl-progress',
+            'run': {'run_id': '999', 'status': 'completed',
+                    'updated_at': '2026-11-24T00:30:00Z',
+                    'current_mode': None},
+        }).encode()),
         INDEX + 'latest.json': (200, json.dumps(latest).encode()),
         INDEX + f'v1/{VERSION}/manifest.json': (
             200, json.dumps(index_manifest).encode()),
@@ -213,6 +219,36 @@ class LoopHealthCheckTests(unittest.TestCase):
                 self.assertIn('verified', detail)
             except ImportError:
                 self.assertIn('pyarrow not available', detail)
+
+    def _progress_run(self, record):
+        responses = healthy_responses()
+        responses[INDEX + 'crawl-progress.json'] = (
+            200, json.dumps(record).encode())
+        with TemporaryDirectory() as tmp:
+            return run(responses, make_data_dir(tmp))
+
+    def test_progress_running_fresh_is_ok(self):
+        report = self._progress_run({
+            'run': {'run_id': '42', 'status': 'running',
+                    'updated_at': '2026-11-24T00:59:30Z',
+                    'current_mode': 'profiles'}})
+        self.assertEqual(levels(report, 'crawl-progress'), [health.OK])
+
+    def test_progress_running_stale_is_warn_never_red(self):
+        report = self._progress_run({
+            'run': {'run_id': '42', 'status': 'running',
+                    'updated_at': '2026-11-24T00:30:00Z',
+                    'current_mode': 'logos'}})
+        self.assertEqual(levels(report, 'crawl-progress'), [health.WARN])
+        self.assertIn('heartbeat stale', report.render())
+
+    def test_progress_missing_record_is_warn_unverified(self):
+        responses = healthy_responses()
+        responses[INDEX + 'crawl-progress.json'] = (404, b'')
+        with TemporaryDirectory() as tmp:
+            report = run(responses, make_data_dir(tmp))
+        self.assertEqual(levels(report, 'crawl-progress'), [health.WARN])
+        self.assertNotEqual(report.worst, health.RED)
 
 
 if __name__ == '__main__':
