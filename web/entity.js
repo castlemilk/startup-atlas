@@ -8,7 +8,7 @@ import { companyLocationFacts, countryName, indexCompanies } from './atlas-explo
 import { createProfileEvidence, profileSource, profileTime, recordedProfileDate } from './profile-evidence.js';
 import { installProfileTabs } from './profile-tabs.js';
 import { resolveEntityRedirect } from './entity-redirects.js';
-import { edgeKindLabel, microGraphLayout, microGraphNeighbours } from './micro-graph.js';
+import { edgeKindLabel, microGraphLayout, microGraphNameLines, microGraphNeighbours } from './micro-graph.js';
 
 const root = document.getElementById('entity-profile');
 const identity = new URLSearchParams(location.search).get('id') || '';
@@ -112,8 +112,11 @@ function microGraph(graph, entity) {
   const { center, points } = microGraphLayout(model.neighbours.length);
   const lines = model.neighbours.map((item, i) => `<line x1="${center.x}" y1="${center.y}" x2="${points[i].x}" y2="${points[i].y}" />`).join('');
   const nodes = model.neighbours.map((item, i) => {
-    const label = item.entity.name.length > 16 ? `${item.entity.name.slice(0, 15)}…` : item.entity.name;
-    return `<a href="${esc(entityHref(item.entity))}" data-atlas-profile-link aria-label="${esc(item.entity.name)} — ${esc(edgeKindLabel(item.edge.kind))}"><circle cx="${points[i].x}" cy="${points[i].y}" r="17" class="entity-micro-dot entity-micro-kind-${esc(item.entity.kind)}" /><text x="${points[i].x}" y="${points[i].y}" class="entity-micro-initials" text-anchor="middle" dominant-baseline="central">${esc(initials(item.entity.name))}</text><text x="${points[i].x}" y="${points[i].y + 28}" class="entity-micro-name" text-anchor="middle">${esc(label)}</text><title>${esc(item.entity.name)} — ${esc(edgeKindLabel(item.edge.kind))}</title></a>`;
+    const nameLines = microGraphNameLines(item.entity.name);
+    const name = nameLines.length > 1
+      ? `<text x="${points[i].x}" y="${points[i].y + 24}" class="entity-micro-name" text-anchor="middle"><tspan x="${points[i].x}">${esc(nameLines[0])}</tspan><tspan x="${points[i].x}" dy="11">${esc(nameLines[1])}</tspan></text>`
+      : `<text x="${points[i].x}" y="${points[i].y + 28}" class="entity-micro-name" text-anchor="middle">${esc(nameLines[0])}</text>`;
+    return `<a href="${esc(entityHref(item.entity))}" data-atlas-profile-link aria-label="${esc(item.entity.name)} — ${esc(edgeKindLabel(item.edge.kind))}"><circle cx="${points[i].x}" cy="${points[i].y}" r="17" class="entity-micro-dot entity-micro-kind-${esc(item.entity.kind)}" /><text x="${points[i].x}" y="${points[i].y}" class="entity-micro-initials" text-anchor="middle" dominant-baseline="central">${esc(initials(item.entity.name))}</text>${name}<title>${esc(item.entity.name)} — ${esc(edgeKindLabel(item.edge.kind))}</title></a>`;
   }).join('');
   const shownKinds = [...new Set(model.neighbours.map(item => item.edge.kind))];
   return `<div class="entity-micro-graph"><svg viewBox="0 0 360 260" role="group" aria-label="Closest recorded connections to ${esc(entity.name)}">${lines}${nodes}<circle cx="${center.x}" cy="${center.y}" r="23" class="entity-micro-dot entity-micro-centre entity-micro-kind-${esc(entity.kind)}" /><text x="${center.x}" y="${center.y}" class="entity-micro-initials entity-micro-centre-initials" text-anchor="middle" dominant-baseline="central">${esc(initials(entity.name))}</text><text x="${center.x}" y="${center.y + 36}" class="entity-micro-name entity-micro-centre-name" text-anchor="middle">${esc(entity.name.length > 22 ? `${entity.name.slice(0, 21)}…` : entity.name)}</text></svg>
