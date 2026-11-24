@@ -137,3 +137,17 @@ test('Airwallex distinguishes two same-sized Series E extensions and their valua
   assert.ok(seriesE[2].participants.includes('Square Peg'));
   assert.equal(rounds.filter(r => r.stage_normalised === 'Series D').length, 3);
 });
+
+test('Forerunner Ventures resolves to the canonical Series A lead for Andromeda Robotics', async () => {
+  const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const roundId = 'andromeda-2025-09-aud-series-a';
+  const node = graph.entities.find(x => x.id === 'partner:forerunner');
+  assert.ok(node.aliases.includes('Forerunner Ventures'));
+  assert.ok(!graph.entities.some(x => x.id === 'partner:forerunner-ventures'));
+  const round = graph.funding_rounds.find(x => x.id === roundId);
+  assert.equal(round.lead_investor, 'Forerunner Ventures');
+  const lead = graph.edges.filter(x => x.kind === 'led_round' && x.round_id === roundId);
+  assert.deepEqual(lead.map(x => [x.from, x.to, x.source]), [
+    ['partner:forerunner', 'startup:andromeda-robotics', round.source],
+  ]);
+});

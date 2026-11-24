@@ -888,7 +888,9 @@
     {
       "id": "partner:forerunner",
       "canonical_id": "partner:forerunner",
-      "aliases": [],
+      "aliases": [
+        "Forerunner Ventures"
+      ],
       "kind": "partner",
       "name": "Forerunner",
       "summary": "",
@@ -8605,6 +8607,26 @@
       "description": "Led Series A round",
       "source": "https://api.mattturck.com/synthesia/",
       "round_id": "synthesia-2021-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:forerunner",
+      "to": "startup:andromeda-robotics",
+      "kind": "led_round",
+      "description": "Led Series A round",
+      "source": "https://hamiltonlocke.com.au/hamilton-locke-advises-andromeda-robotics-on-au23-million-series-a-capital-raise/",
+      "round_id": "andromeda-2025-09-aud-series-a",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.5,
@@ -17173,7 +17195,6 @@
     "lead_investor 'BlackRock' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Breakthrough Victoria' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Burda Principal Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; led_round edge skipped",
-    "lead_investor 'Forerunner Ventures' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Galileo Ventures' for round andromeda-2023-12-pre-seed (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Greenoaks' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; led_round edge skipped",
