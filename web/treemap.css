@@ -817,11 +817,11 @@
 .treemap-novalue-title { margin:0 0 4px; font-size:var(--atlas-text-sm); letter-spacing:.02em; }
 .treemap-novalue-note { margin:0 0 10px; font-size:var(--atlas-text-sm); color:var(--atlas-muted, #6b6252); }
 .treemap-novalue-tiles { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:8px; }
-.treemap-novalue-tile { display:flex; align-items:center; gap:8px; min-height:52px; padding:8px 10px; text-align:left; border:1px solid var(--atlas-border, #cbbfa5); border-radius:8px; background:var(--atlas-surface); color:var(--atlas-text); cursor:pointer; }
+.treemap-novalue-tile { display:flex; flex-wrap:wrap; align-items:center; gap:8px; min-height:52px; padding:8px 10px; text-align:left; border:1px solid var(--atlas-border, #cbbfa5); border-radius:8px; background:var(--atlas-surface); color:var(--atlas-text); cursor:pointer; }
 .treemap-novalue-tile[aria-pressed="true"] { outline:2px solid var(--atlas-accent, #b4551f); outline-offset:1px; }
-.treemap-novalue-name { font-weight:600; overflow-wrap:anywhere; }
-.treemap-novalue-reason { font-size:var(--atlas-text-sm); color:var(--atlas-muted, #6b6252); }
-.treemap-tile-ticker { font-size:var(--atlas-text-sm); font-weight:600; letter-spacing:.03em; opacity:.85; }
+.treemap-novalue-name { font-weight:600; min-width:0; overflow-wrap:break-word; }
+.treemap-novalue-reason { font-size:var(--atlas-text-sm); color:var(--atlas-muted, #6b6252); min-width:0; }
+.treemap-tile-ticker { font-size:var(--atlas-text-sm); font-weight:600; letter-spacing:.03em; opacity:.85; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 .treemap-value-block { margin-bottom:14px; }
 .treemap-value-block h3, .treemap-value-history h3 { margin:0 0 6px; font-size:var(--atlas-text-sm); text-transform:uppercase; letter-spacing:.06em; }
 .treemap-value-history dl { display:grid; gap:6px; margin:0 0 14px; }
