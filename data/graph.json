@@ -8150,6 +8150,26 @@
       "stale": false
     },
     {
+      "from": "partner:artesian",
+      "to": "startup:andromeda-robotics",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://hamiltonlocke.com.au/hamilton-locke-advises-andromeda-robotics-on-au23-million-series-a-capital-raise/",
+      "round_id": "andromeda-2025-09-aud-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:blackbird-ventures",
       "to": "startup:canva",
       "kind": "supports",
@@ -8605,6 +8625,26 @@
       "description": "Participated in Series D round",
       "source": "https://mtrustcompany.marketminute.com/article/bizwire-2021-7-27-psiquantum-closes-450-million-funding-round-to-build-the-worlds-first-commercially-viable-quantum-computer",
       "round_id": "psiquantum-2021-series-d",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
+      "to": "startup:andromeda-robotics",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://hamiltonlocke.com.au/hamilton-locke-advises-andromeda-robotics-on-au23-million-series-a-capital-raise/",
+      "round_id": "andromeda-2025-09-aud-series-a",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.5,
@@ -9139,6 +9179,26 @@
         "sources": 1,
         "source_types": [
           "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:startmate",
+      "to": "startup:andromeda-robotics",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://hamiltonlocke.com.au/hamilton-locke-advises-andromeda-robotics-on-au23-million-series-a-capital-raise/",
+      "round_id": "andromeda-2025-09-aud-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
         ],
         "agreement": false,
         "inferred": false
@@ -15164,7 +15224,8 @@
       "amount_text": "Over $500,000 reported by Galileo (currency not explicit)",
       "note": "Galileo said it led the pre-seed. June 2024 coverage republished by Andromeda described late-2023 pre-seed funding of $1 million from Galileo. The two descriptions do not establish a second financing, an exact total, currency or close date.",
       "source": "https://galileo.ventures/post/hello-andromeda-companion-robots-for-future-friendships",
-      "stage_normalised": "Pre-Seed"
+      "stage_normalised": "Pre-Seed",
+      "lead_investor": "Galileo Ventures"
     },
     {
       "startup_id": "startup:andromeda-robotics",
@@ -15174,7 +15235,8 @@
       "amount_text": "$3 million reported (currency not explicit)",
       "note": "The public report says Purpose Ventures led the completed equity round; Andromeda republishes the report and Purpose Ventures lists Andromeda in its portfolio. Publication date is not the legal close date. No calendar close or currency conversion is inferred.",
       "source": "https://www.smartcompany.com.au/startupsmart/andromeda-robotics-raises-3-million-seed-humanoid-robot-abi/",
-      "stage_normalised": "Seed"
+      "stage_normalised": "Seed",
+      "lead_investor": "Purpose Ventures"
     },
     {
       "startup_id": "startup:andromeda-robotics",
@@ -15185,7 +15247,17 @@
       "currency": "AUD",
       "note": "Forerunner Ventures led. The issuer names Main Sequence, Rethink Impact, Artesian, Visible Ventures, Trampoline, Startmate and Purpose Ventures (https://andromedarobotics.ai/post/series-a-funding-news-fuel-for-our-zero-loneliness-vision). Date is the first corroborated public report (https://www.forbes.com.au/news/entrepreneurs/andromedas-animated-approach-to-100m-abi-and-ai/), not the closing date. A September 2025 US Form D (https://www.sec.gov/Archives/edgar/data/2086259/000208625925000001/xslFormDX01/primary_doc.xml) reports a USD offering; its relationship to the Series A is unconfirmed and it is not counted as a separate round.",
       "source": "https://hamiltonlocke.com.au/hamilton-locke-advises-andromeda-robotics-on-au23-million-series-a-capital-raise/",
-      "stage_normalised": "Series A"
+      "stage_normalised": "Series A",
+      "lead_investor": "Forerunner Ventures",
+      "participants": [
+        "Main Sequence",
+        "Rethink Impact",
+        "Artesian",
+        "Visible Ventures",
+        "Trampoline",
+        "Startmate",
+        "Purpose Ventures"
+      ]
     },
     {
       "startup_id": "startup:arkeus",
@@ -16927,11 +16999,14 @@
     "lead_investor 'BlackRock' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Breakthrough Victoria' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Burda Principal Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Forerunner Ventures' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Galileo Ventures' for round andromeda-2023-12-pre-seed (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Greenoaks' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'MegaChips' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; led_round edge skipped",
     "lead_investor 'NEA' for round synthesia-2025-series-d (Synthesia) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Purpose Ventures' for round andromeda-2024-06-seed (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
     "lead_investor 'QIC Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Salesforce Ventures' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Sapphire Ventures' for round culture-amp-2017-series-c (Culture Amp) has no matching partner lead; led_round edge skipped",
@@ -16993,9 +17068,11 @@
     "participant 'NewView' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
     "participant 'Novel Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'OneVentures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Purpose Ventures' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
     "participant 'R+ VC' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'R3I Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Rally Ventures' for round bugcrowd-2024-growth (Bugcrowd) has no matching partner lead; participated_in edge skipped",
+    "participant 'Rethink Impact' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
     "participant 'Ridgeline Partners' for round q-ctrl-2021-series-b (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Ridgeline Partners' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Robinhood Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -17017,11 +17094,13 @@
     "participant 'TIAA Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Temasek' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Tencent' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Trampoline' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
     "participant 'Trinity Ventures' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Ultratech Capital Partners' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'UniSuper' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'Uniseed' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'Vetamer Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Visible Ventures' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
     "participant 'W23' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped"
   ]
 }
