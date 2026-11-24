@@ -18,13 +18,28 @@ export const entry = {
 export const provenance = { sourceUrls: [entry.url], reviewedOn: entry.checked, evidence: 'Fixture-only evidence to verify persistence and validation; not real research.' };
 const clone = value => structuredClone(value);
 const root = new URL('../', import.meta.url);
+// One immutable seed per suite (#145 Q3): the baseline catalogue is generated
+// once from current source, then plain-copied into a distinct writable
+// directory per test. Tests that intentionally regenerate keep their own
+// make-data.py runs; the seed itself is never written to after generation.
+let seedPromise;
+function seed() {
+  if (!seedPromise) {
+    seedPromise = (async () => {
+      const dir = await mkdtemp(path.join(tmpdir(), 'atlas-mcp-seed-'));
+      await mkdir(path.join(dir, 'scripts'));
+      await cp(new URL('data/', root), path.join(dir, 'data'), { recursive: true });
+      for (const file of ['make-data.py', 'merge-additions.mjs', 'catalogue-entries.mjs']) await cp(new URL(`scripts/${file}`, root), path.join(dir, 'scripts', file));
+      execFileSync('python3', ['scripts/make-data.py'], { cwd: dir });
+      return dir;
+    })();
+  }
+  return seedPromise;
+}
 async function fixture(t) {
   const dir = await mkdtemp(path.join(tmpdir(), 'atlas-mcp-'));
   t.after(() => rm(dir, { recursive: true, force: true }));
-  await mkdir(path.join(dir, 'scripts'));
-  await cp(new URL('data/', root), path.join(dir, 'data'), { recursive: true });
-  for (const file of ['make-data.py', 'merge-additions.mjs', 'catalogue-entries.mjs']) await cp(new URL(`scripts/${file}`, root), path.join(dir, 'scripts', file));
-  execFileSync('python3', ['scripts/make-data.py'], { cwd: dir });
+  await cp(await seed(), dir, { recursive: true });
   return dir;
 }
 
