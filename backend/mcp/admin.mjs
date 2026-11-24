@@ -239,16 +239,19 @@ function pageShell(title, body, { script = '' } = {}) {
   .card { background: #1a2129; border: 1px solid #2c3641; border-radius: 10px; padding: 14px 16px; margin: 12px 0; }
   .meta { color: #9fb0bf; font-size: 13px; }
   .conf { font-weight: 600; }
-  button { background: #2456a6; color: #fff; border: 0; border-radius: 6px; padding: 7px 14px; cursor: pointer; margin-right: 8px; }
+  :focus-visible { outline: 3px solid #7db4ff; outline-offset: 2px; }
+  .skip-link { position: absolute; top: -100px; left: 8px; z-index: 10; background: #fff; color: #101418; padding: 10px 14px; border-radius: 6px; font-weight: 600; }
+  .skip-link:focus { top: 8px; }
+  button { background: #9d4526; color: #fff; border: 0; border-radius: 6px; padding: 7px 14px; min-height: 40px; cursor: pointer; margin-right: 8px; }
   button.reject { background: #5a2d2d; } button.undo { background: #3a4450; }
   button:disabled { opacity: 0.5; cursor: default; }
-  input.note { width: 100%; box-sizing: border-box; margin: 8px 0; padding: 7px; border-radius: 6px; border: 1px solid #2c3641; background: #101418; color: #e8ecef; }
+  input.note { width: 100%; box-sizing: border-box; margin: 8px 0; padding: 10px; min-height: 40px; border-radius: 6px; border: 1px solid #2c3641; background: #101418; color: #e8ecef; }
   img.headshot { max-width: 160px; max-height: 160px; border-radius: 8px; display: block; margin: 8px 0; }
-  .tabs button { background: #232c36; } .tabs button.active { background: #2456a6; }
-  .signin { display: inline-block; background: #fff; color: #1f1f1f; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+  .tabs button { background: #232c36; } .tabs button.active { background: #9d4526; }
+  .signin { display: inline-block; background: #fff; color: #1f1f1f; padding: 10px 18px; min-height: 40px; border-radius: 6px; text-decoration: none; font-weight: 600; }
   .error { background: #4a2323; border: 1px solid #7a3a3a; padding: 10px 14px; border-radius: 8px; }
   ul.evidence { margin: 6px 0; padding-left: 18px; }
-</style></head><body><main>${body}</main>${script ? `<script>${script}</script>` : ''}</body></html>`;
+</style></head><body><a class="skip-link" href="#main">Skip to main content</a><main id="main" tabindex="-1">${body}</main>${script ? `<script>${script}</script>` : ''}</body></html>`;
 }
 
 const PANEL_SCRIPT = `
