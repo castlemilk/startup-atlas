@@ -2,6 +2,18 @@
 html { scroll-padding-top: 24px; scrollbar-gutter: stable; }
 body { font-family: var(--atlas-font-body); color: var(--atlas-ink); background: var(--atlas-canvas); }
 body.atlas-directory-page, body.atlas-treemap-page, body.atlas-graph-page, body.atlas-entity-page, body.atlas-partner-page { background: var(--atlas-paper); }
+/* Route globals the legacy styles.css used to supply (de-slop #433a). Scoped
+   to the five routes that loaded it; list.html keeps styles.css until #433b.
+   The :where() gates keep the original element-level specificity, so classed
+   component rules win exactly as they did under the legacy sheet. */
+:root:has(> body:is(.atlas-entity-page, .atlas-partner-page, .atlas-graph-page, .atlas-query-page, .atlas-treemap-page)) { scroll-behavior: smooth; font-synthesis: none; }
+body:is(.atlas-entity-page, .atlas-partner-page, .atlas-graph-page, .atlas-query-page, .atlas-treemap-page) { margin: 0; -webkit-font-smoothing: antialiased; }
+:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) a { color: inherit; }
+:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) :where(button, input, select) { font: inherit; }
+:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) > .skip-link { position: absolute; z-index: 20; top: 8px; left: 8px; padding: 12px; color: var(--atlas-ink); background: var(--atlas-surface); transform: translateY(-150%); }
+:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) > .skip-link:focus { transform: none; }
+:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+:where(body.atlas-query-page) .noscript { padding: 20px; background: var(--atlas-surface); }
 *, *::before, *::after { box-sizing: border-box; }
 * { scrollbar-width: thin; scrollbar-color: var(--atlas-scroll-thumb) var(--atlas-scroll-track); }
 *::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -163,6 +175,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .topbar a:focus-visible { outline-color: var(--atlas-on-action); }
 footer { background: var(--atlas-ink); color: var(--atlas-soft); font-size: 11px; }
 .footer-brand { font-family: var(--atlas-font-display); color: var(--atlas-on-action); letter-spacing: -.025em; }
+/* Footer layout the legacy styles.css used to supply on the profile and
+   treemap routes (de-slop #433a); colours stay with the footer rule above. */
+:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page) footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px max(8vw, 28px); }
+@media (max-width: 650px) {
+  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page) footer { flex-wrap: wrap; }
+  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page) footer > span:nth-child(2) { flex-basis: 65%; }
+  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page) footer > span:last-child { flex-basis: 100%; }
+}
 footer a:focus-visible { outline-color: var(--atlas-on-action); }
 .atlas-view-nav { display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--atlas-border-strong); padding: 0 0 13px; margin: 0 0 24px; flex-wrap: wrap; }
 .atlas-view-nav a { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 13px; border-radius: var(--atlas-radius-control); color: var(--atlas-muted); font-size: var(--atlas-text-sm); font-weight: 600; text-decoration: none; transition: background var(--atlas-duration-fast) var(--atlas-ease); }
@@ -313,6 +333,10 @@ footer a:focus-visible { outline-color: var(--atlas-on-action); }
 @media(prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .atlas-button, .atlas-view-nav a { transition: none; }
+  /* Reduced-motion globals the legacy styles.css used to supply on the five
+     routes (de-slop #433a): smooth scroll off, all animation near-instant. */
+  :root:has(> body:is(.atlas-entity-page, .atlas-partner-page, .atlas-graph-page, .atlas-query-page, .atlas-treemap-page)) { scroll-behavior: auto; }
+  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) :is(*, *::before, *::after) { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
 .atlas-button { min-height: 44px; border-color: var(--atlas-border-strong); border-radius: var(--atlas-radius-control); background: linear-gradient(var(--atlas-face-top),var(--atlas-face-bottom)); box-shadow: var(--atlas-shadow-control); font-family: var(--atlas-font-body); transition: box-shadow var(--atlas-duration-fast) var(--atlas-ease), transform var(--atlas-duration-fast) var(--atlas-ease); }
