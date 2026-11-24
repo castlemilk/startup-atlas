@@ -119,6 +119,16 @@ Profile reports record the number of eligible names within the already retained,
 
 Use `npm test`, `npm run test:mcp`, `npm --prefix backend/hosted test` and the relevant builds as appropriate. Hosted OAuth also needs Workers-compatible verification, not solely mocks. Check the exact commit and deployment result; run a live read through the MCP after publishing.
 
+### Hooks, preflight and the CI gate
+
+Setup (once per clone/worktree): `bash scripts/setup-hooks.sh` sets `core.hooksPath=.githooks`. Both hooks delegate to `scripts/preflight.sh`, which is also the standalone command for flows that bypass local git.
+
+- **At commit** (`preflight.sh --staged`): whitespace/conflict markers, staged JSON validity, Python/JS/shell syntax; catalogue/graph integrity tests when `data/` is staged; review-queue/gating tests when the queue, gating config or their builders are staged; the hosted or MCP suite when its backend is staged. Target: seconds.
+- **At push** (`preflight.sh`, also what `pre-push` runs): the CI lanes for `origin/main...HEAD`, routed by `scripts/check_ci_paths.py` — the same function CI uses, so local and CI selection cannot drift. Data changes also verify `npm run data:generate` leaves `data/` untouched (generated output must be committed in sync). Measured on this repo: hosted lane ≈6s, MCP ≈10s, Python data tests ≈2s, worst case about a minute.
+- **MCP-push flows**: GitHub-MCP `push_files` never touches local git, so hooks do not fire. Running `scripts/preflight.sh` before such a push is mandatory for the main agent, subagents and the burn-down / agent-review cron jobs; a red preflight means fix first, push second.
+- **Bypass**: `ATLAS_SKIP_HOOKS=1` prints a loud warning and skips. Reserve it for broken checks, and record the bypass in the PR description.
+- **CI gate**: `scripts/check_ci_paths.py` routes `data/*` to the hosted lane as well as the data lane, because the hosted tests read `data/` (profile previews, source reads). Before Nov 2026 the hosted lane fired only on `backend/hosted/*`; three data merges landed untested against it (Quantum Brilliance strict preview, every-startup review-only preview, PsiQuantum source read) and main was red invisibly. `tests/test_ci_paths.py` carries a regression test (`test_data_changes_run_hosted_checks`) — do not narrow the routing without replacing that guarantee.
+
 ## Search publication
 
 The public browser builds its Fuse search from the currently loaded catalogue and reviewed partner records; there is no independent persistent search index to update. MCP opportunity PRs include the generated catalogue, and partner proposals update the reviewed data. After merge, Pages publishes those files; a fresh page load revalidates both files with the browser cache. Check exact and typo searches after deployment. A draft PR or local MCP write is not searchable on the public site until merged and deployed.

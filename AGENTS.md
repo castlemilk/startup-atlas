@@ -9,6 +9,14 @@ Startup Atlas is a source-backed startup opportunity and partner directory. Star
 - For factual programme data, verify current primary sources and preserve provenance, review date, eligibility, geography, deadlines and uncertainty.
 - Run relevant tests; inspect and report actual CI/deployment outcomes. A local or draft change is not a production deployment.
 
+## Git hooks and preflight (mandatory)
+
+- Fresh clone or worktree: run `bash scripts/setup-hooks.sh` once. It sets `core.hooksPath=.githooks`; the committed hooks are thin wrappers over `scripts/preflight.sh`.
+- **pre-commit** runs fast staged checks: whitespace/conflict markers, JSON validity, Python/JS/shell syntax, and — whenever `data/` files are staged — the catalogue/graph integrity tests plus the review-queue/gating consistency tests.
+- **pre-push** runs the CI lanes for the pushed range, selected by `scripts/check_ci_paths.py` (the same routing CI uses). It **includes the hosted-lane tests whenever the push touches `data/` or `backend/`** — the hosted tests read `data/` directly, and in Nov 2026 data merges that never triggered that lane put main into a red state nobody saw until later.
+- **GitHub-MCP pushes bypass local git, so the hooks cannot fire.** Before any `push_files`/MCP-driven push, run `scripts/preflight.sh` from the worktree whose content you are pushing and only push when it passes. This binds the main agent, subagents, and the burn-down / agent-review cron jobs equally.
+- Emergency bypass: `ATLAS_SKIP_HOOKS=1` skips the hooks/preflight with a loud warning. Use it only when the checks themselves are broken, and state the bypass in the PR — CI remains the backstop, never the plan.
+
 ## Frontend and ui-sdk
 
 - Before changing ui-sdk integration, read [the installed ui-sdk skill](.agents/skills/ui-sdk/SKILL.md), then `node_modules/@ui-sdk/web/docs/llms.txt` and only the component pages needed for the task. Read `server-rendering.md` when changing initial HTML or upgrade behaviour; read core/rendering documentation only when building a new behaviour.

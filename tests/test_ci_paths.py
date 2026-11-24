@@ -8,10 +8,19 @@ class CiPathTests(unittest.TestCase):
         self.assertFalse(any(lanes(['README.md', 'docs/AGENT-RUNBOOK.md']).values()))
 
     def test_data_and_web_are_independent(self):
-        self.assertEqual(self.selected('data/startup-research.json'), {'data'})
+        self.assertEqual(self.selected('data/startup-research.json'), {'data', 'hosted'})
         self.assertEqual(self.selected('web/entity.js'), {'web'})
         self.assertEqual(self.selected('tests/analytics.test.js'), {'web'})
-        self.assertEqual(self.selected('web/atlas-ui.css', 'data/graph.json'), {'data', 'web'})
+        self.assertEqual(self.selected('web/atlas-ui.css', 'data/graph.json'), {'data', 'web', 'hosted'})
+
+    def test_data_changes_run_hosted_checks(self):
+        # Regression guard for the Nov 2026 red-main incident: the hosted
+        # tests read data/ (Quantum Brilliance strict preview, every-startup
+        # review-only preview, PsiQuantum source read), so any data change
+        # must select the hosted lane at PR time.
+        for path in ('data/startup-research.json', 'data/catalogue.json',
+                     'data/partners-reviewed.json', 'data/review-queue.json'):
+            self.assertIn('hosted', self.selected(path), path)
 
     def test_shared_catalogue_contract_covers_both_mcp_hosts(self):
         self.assertEqual(self.selected('scripts/catalogue-entries.mjs'), {'data', 'mcp', 'hosted'})

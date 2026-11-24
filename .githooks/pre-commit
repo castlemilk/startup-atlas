@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Startup Atlas pre-commit hook: fast checks scoped to staged changes.
+# Installed via scripts/setup-hooks.sh (core.hooksPath=.githooks).
+# Implementation lives in scripts/preflight.sh — keep this file thin.
+# Emergency bypass: ATLAS_SKIP_HOOKS=1 (prints a loud warning; CI is the backstop).
+exec "$(git rev-parse --show-toplevel)/scripts/preflight.sh" --staged
