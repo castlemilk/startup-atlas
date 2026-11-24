@@ -119,3 +119,21 @@ test('Airwallex Series D has three distinct source-backed tranches, not cumulati
   assert.equal(seriesD[2].lead_investor, 'Greenoaks');
   assert.equal(rounds.find(r => r.id === 'airwallex-2025-series-f').amount, 300000000);
 });
+
+test('Airwallex distinguishes two same-sized Series E extensions and their valuations', async () => {
+  const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const rounds = graph.funding_rounds.filter(r => r.startup_id === 'startup:airwallex');
+  const seriesE = rounds.filter(r => r.stage_normalised === 'Series E')
+    .sort((a, b) => a.announced_on.localeCompare(b.announced_on));
+  assert.deepEqual(seriesE.map(r => [r.announced_on, r.amount, r.currency, r.valuation, r.valuation_currency]), [
+    ['2021-09-20', 200000000, 'USD', 4000000000, 'USD'],
+    ['2021-11-18', 100000000, 'USD', 5500000000, 'USD'],
+    ['2022-10-11', 100000000, 'USD', 5600000000, 'USD'],
+  ]);
+  assert.equal(new Set(seriesE.map(r => r.source)).size, 3);
+  assert.ok(seriesE.every(r => r.source.startsWith('https://www.airwallex.com/global/newsroom/')));
+  assert.equal(seriesE[1].lead_investor, 'Lone Pine Capital');
+  assert.equal(seriesE[2].lead_investor, undefined);
+  assert.ok(seriesE[2].participants.includes('Square Peg'));
+  assert.equal(rounds.filter(r => r.stage_normalised === 'Series D').length, 3);
+});
