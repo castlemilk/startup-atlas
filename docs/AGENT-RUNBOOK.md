@@ -36,6 +36,17 @@ The local stdio MCP can be driven directly over JSON-RPC (`node backend/mcp/serv
 
 Run `npm run crawl -- partners --follow 0` to discover directory leads and `npm run crawl -- logos --approved data/partner-logo-seeds.csv --partners-only --follow 0 --logo-limit 3` to stage candidates. Approved websites can omit a Wikidata ID for crawling; identity import still requires one. Allow additional CDN hosts only when independently identified on the official organisation page. Candidate order prioritises structured/metadata logos and header logos over favicons, so the limit fetches the real logo first. For headshots, run `npm run crawl -- portraits --approved data/company-profile-seeds.csv --follow 2`: it runs the company-profiles crawl and then fetches portrait bytes for professional-bio headshot candidates under the same host rules. Publication of any captured logo or portrait goes through the reviewed asset pipeline in `docs/MCP-ASSETS.md` (`atlas_assets.py` review gate → `scripts/publish_asset.py`); unreviewed captures never enter Git.
 
+### Partner landing selection
+
+Within the same follow budget and eligible same-host links, direct root team
+and portfolio routes outrank loose label/path matches. Saved profile crawl
+45169210509 linked Main Sequence's theme page before its people index and
+Rampersand's founders' portal before its portfolio. Replaying the saved
+homepages changes those two destinations and leaves the other 28 selections
+unchanged. These are link choices only: the replay did not fetch the newly
+selected pages or establish new people, companies, or assets. Where no
+direct index is observed, the first eligible fallback is preserved.
+
 ### Visible source link evidence
 
 The visible HTML parser keeps script and style text out of headings, link labels and contextual excerpts. Structured JSON-LD remains a separate evidence stream. For a link with no visible label, the existing accessible label fallback still applies. This protects the review context, not the truth of a link, programme or amount. In the 22 November newsroom review, an Airwallex card's customer-savings headline appeared alongside CSS in the saved link label. The saved artifact contains extracted evidence, not original DOM bytes; offline regression fixtures reproduce that pattern without treating the card as funding or rerunning a crawl.
