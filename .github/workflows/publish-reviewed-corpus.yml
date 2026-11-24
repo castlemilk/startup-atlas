@@ -1,0 +1,50 @@
+name: Publish reviewed corpus
+
+# Issue #376: a merged change under data/ used to wait for the next crawl
+# (or a manual live-index bootstrap) before the corpus — and therefore
+# the live index — saw it. Publish the reviewed corpus whenever one of
+# the four reviewed files changes on main; the scheduled indexer rebuilds
+# from the new manifest on its next tick.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/catalogue.json'
+      - 'data/partner-profiles.json'
+      - 'data/partners-reviewed.json'
+      - 'data/startup-research.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publish-reviewed-corpus
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      ATLAS_CORPUS_BACKEND: ${{ secrets.ATLAS_CORPUS_BACKEND }}
+      ATLAS_CORPUS_BUCKET: ${{ secrets.ATLAS_CORPUS_BUCKET }}
+      ATLAS_CORPUS_INDEX_BUCKET: ${{ secrets.ATLAS_CORPUS_INDEX_BUCKET }}
+      ATLAS_GCP_PROJECT: ${{ secrets.ATLAS_GCP_PROJECT }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - id: auth
+        if: env.ATLAS_CORPUS_BACKEND == 'gcs'
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - if: env.ATLAS_CORPUS_BACKEND == 'gcs'
+        uses: google-github-actions/setup-gcloud@v2
+      - name: Publish reviewed corpus
+        run: python3 scripts/publish_reviewed_corpus.py --source-revision "${{ github.sha }}"
