@@ -214,5 +214,57 @@
     "description": "Silicon Valley venture capital firm (Andreessen Horowitz) founded in 2009 by Marc Andreessen and Ben Horowitz; stage-agnostic, investing from seed to late stage across consumer, enterprise, bio and health, crypto, fintech and games.",
     "source": "https://a16z.com/",
     "reviewed_at": "2026-11-21"
+  },
+  "Draper Associates": {
+    "website": "https://draper.vc/",
+    "description": "Tim Draper's early-stage venture capital firm, founded 1985 and headquartered in San Mateo, California, backing frontier-technology founders worldwide (about US$2.3B AUM, 400+ companies backed). draper.vc is its website; the crawl candidate 'Draper VC' is this firm, and it anchors the Draper Venture Network.",
+    "source": "https://draper.vc/",
+    "reviewed_at": "2026-11-24",
+    "aliases": [
+      "Draper",
+      "Draper VC"
+    ],
+    "relationships": [
+      {
+        "type": "member_of_network",
+        "target": "partner:draper-venture-network",
+        "note": "Anchor member firm of the Draper Venture Network; The Block's mapping of the network lists Draper Associates among its member funds.",
+        "source": "https://www.theblock.co/research/funding/mapping-out-draper-venture-network-portfolio-243385"
+      }
+    ]
+  },
+  "Draper Startup House": {
+    "website": "https://draperstartuphouse.com/",
+    "description": "Global network of entrepreneur co-living and coworking houses (15+ locations) plus a pre-seed accelerator in Austin investing up to about US$150k per startup. Founded 2018 in Singapore as Tribe Theory by Vikram Bharati; joined the Draper Venture Network in 2019 and rebranded. HQ Singapore.",
+    "source": "https://businessabc.net/wiki/draper-startup-house",
+    "reviewed_at": "2026-11-24",
+    "relationships": [
+      {
+        "type": "member_of_network",
+        "target": "partner:draper-venture-network",
+        "note": "Joined the Draper Venture Network in 2019 (as Tribe Theory) and rebranded as Draper Startup House.",
+        "source": "https://businessabc.net/wiki/draper-startup-house"
+      }
+    ]
+  },
+  "Draper B1": {
+    "website": "https://draperb1.vc/",
+    "description": "Seed and early-stage venture capital firm based in Valencia, Spain. Founded 2010 as Bbooster (Spain's first accelerator), joined the Draper Venture Network in 2017 and rebranded to Draper B1 in 2020. Founding partner Enrique Penichet; latest vehicle, Draper B1 Frontier Tech, closed over €20M.",
+    "source": "https://draperb1.vc/",
+    "reviewed_at": "2026-11-24",
+    "relationships": [
+      {
+        "type": "member_of_network",
+        "target": "partner:draper-venture-network",
+        "note": "Member fund of the Draper Venture Network since 2017 (joined as Bbooster); The Block's mapping of the network lists Draper B1 among its member funds.",
+        "source": "https://www.theblock.co/research/funding/mapping-out-draper-venture-network-portfolio-243385"
+      }
+    ]
+  },
+  "Draper Venture Network": {
+    "website": "https://www.drapernetwork.com/",
+    "description": "Self-governed alliance of 20+ independent venture funds founded by Tim Draper (origins in 1990 as the DFJ Network). Member funds raise and manage their own capital while sharing deal flow, diligence and co-investment across geographies; Draper Associates is the anchor firm.",
+    "source": "https://www.kauffmanfellows.org/journal/sid-mofya-on-draper-venture-network-network-of-funds",
+    "reviewed_at": "2026-11-24"
   }
 }

@@ -199,7 +199,42 @@ contract: deterministic ordering, unique round IDs, no self-relations.
   `docs/KG-CONNECTIVE-TISSUE.md` §3): `founded`, `team_member`,
   `supports`, `supports_programme`, `offers`, `programme_relationship`,
   `led_round`, `participated_in`, `subsidiary_of`, `integrates_with`,
-  `listed_in_portfolio`.
+  `listed_in_portfolio`, `member_of_network`.
+
+### Partner `relationships` field (added 24 Nov 2026, Ben's direction)
+
+A reviewed partner record (`data/partners-reviewed.json`) may carry two
+optional fields beyond the four reviewed metadata fields:
+
+- **`aliases`** — a list of other names the partner is known by (at most
+  10). The identity seed copies them into the registry, so a crawl
+  candidate carrying an alias name resolves to this entity instead of
+  re-proposing a merge. Aliases are not merges: the entity keeps one
+  canonical ID and one identity key.
+- **`relationships`** — a list of typed links to other entities, each
+  `{"type", "target", "note", "source"}` with an optional per-entry
+  `reviewed_at`. `target` is a canonical entity ID
+  (`kind:slug`). `make-graph.py` emits one edge per entry — kind =
+  `type`, description = `note` — in its second pass, after every node
+  exists; an unknown or self target fails the build, exactly like a
+  startup relationship. Both validators (local MCP
+  `backend/mcp/partners.mjs` and hosted
+  `backend/hosted/src/github.mjs`) accept and shape-check the two
+  fields.
+
+The first relationship type is **`member_of_network`** — membership of
+a network / brand-family alliance whose members are independent
+organisations (they share a brand and deal network, not ownership,
+management or a website, so they must never be merged on name
+similarity alone). First instance, decided by Ben on 24 Nov 2026 after
+the Draper brief (`draper-modelling-brief-2026-11-24.md`): the three
+pending Draper merge proposals were rejected; the bare `partner:draper`
+lead was repaired to **Draper Associates** (website draper.vc, aliases
+"Draper" and "Draper VC"), **Draper Startup House** and **Draper B1**
+became their own entities, and all three carry a `member_of_network`
+relationship to the new `partner:draper-venture-network` entity.
+New relationship types are added to both validators and this section
+together.
 
 ### Structured fields (KG-4) — `scripts/backfill_structured_fields.py`
 

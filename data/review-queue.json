@@ -358,10 +358,10 @@
       "confidence": 0.89,
       "created_at": "2026-11-23T08:34:25Z",
       "run": "44",
-      "status": "pending",
-      "decided_by": null,
-      "decided_at": null,
-      "decision_note": "Left pending: Draper brand family — Draper Startup House is a distinct organisation (coworking network) inside the Draper ecosystem, and the candidate 'Draper' is itself ambiguous. Needs a modelling decision on brand families, not a merge.",
+      "status": "rejected",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-24T01:04:00Z",
+      "decision_note": "Rejected (Ben's modelling decision, voice call 24 Nov 2026; brief: draper-modelling-brief-2026-11-24.md). Draper Startup House is a distinct organisation (Singapore co-living/coworking network, own website draperstartuphouse.com) and the candidate 'Draper' was an ambiguous bare lead. Not a merge: Draper Startup House is now its own partner entity, linked to the Draper Venture Network by a member_of_network relationship.",
       "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
     },
     {
@@ -382,10 +382,10 @@
       "confidence": 0.89,
       "created_at": "2026-11-23T08:34:25Z",
       "run": "44",
-      "status": "pending",
-      "decided_by": null,
-      "decided_at": null,
-      "decision_note": "Left pending: Draper brand family — 'Draper VC' cannot be tied to the ambiguous candidate 'Draper' on current evidence.",
+      "status": "rejected",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-24T01:04:00Z",
+      "decision_note": "Rejected (Ben's modelling decision, voice call 24 Nov 2026; brief: draper-modelling-brief-2026-11-24.md). 'Draper VC' is not a separate firm: draper.vc is Draper Associates' website, so the candidate is Draper Associates, not the ambiguous bare 'Draper' lead. Not a merge: the lead is repaired to Draper Associates (website draper.vc) with 'Draper' and 'Draper VC' kept as aliases. Draper Associates carries a member_of_network relationship to the Draper Venture Network.",
       "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
     },
     {
@@ -406,10 +406,10 @@
       "confidence": 0.73,
       "created_at": "2026-11-23T08:34:25Z",
       "run": "44",
-      "status": "pending",
-      "decided_by": null,
-      "decided_at": null,
-      "decision_note": "Left pending: Draper brand family — Draper B1 is a distinct Spanish fund in the Draper network; merging it into an ambiguous 'Draper' node would lose that. Needs the brand-family modelling decision.",
+      "status": "rejected",
+      "decided_by": "dogbox-review-loop",
+      "decided_at": "2026-11-24T01:04:00Z",
+      "decision_note": "Rejected (Ben's modelling decision, voice call 24 Nov 2026; brief: draper-modelling-brief-2026-11-24.md). Draper B1 is a distinct Spanish seed fund (Valencia, own website draperb1.vc); merging it into an ambiguous 'Draper' node would lose that. Not a merge: Draper B1 is now its own partner entity, linked to the Draper Venture Network by a member_of_network relationship.",
       "evidence_fingerprint": "4b58181095ed939664b284e53fcf1c3a37f745dda57511fb5d3584b2d0910663"
     },
     {

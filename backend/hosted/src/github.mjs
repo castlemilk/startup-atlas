@@ -30,8 +30,38 @@ function partnerUpdate(reviewed, name, record) {
   delete updated.site_description; delete updated.site_source; delete updated.site_checked_at;
   return { ...reviewed, [name]: updated };
 }
+// Optional partner-record fields beyond the four reviewed metadata fields
+// (docs/KG-CONNECTIVE-TISSUE.md §3): `aliases` (other names the partner is
+// known by) and `relationships` (typed links to other entities:
+// {type, target, note, source} plus optional reviewed_at;
+// `member_of_network` is the first type).
+const PARTNER_RELATIONSHIP_TYPES = ['member_of_network'];
+const PARTNER_RELATIONSHIP_KEYS = ['type', 'target', 'note', 'source', 'reviewed_at'];
+const PARTNER_CANONICAL_ID = /^[a-z]+:[a-z0-9][a-z0-9-]*$/;
+function validatePartnerOptionalFields(record) {
+  if (record.aliases !== undefined && (!Array.isArray(record.aliases) || record.aliases.length > 10 || record.aliases.some(a => typeof a !== 'string' || !a.trim() || a.length > 200)))
+    throw new ServiceError('VALIDATION_ERROR', 'aliases must be an array of at most 10 names of up to 200 characters.');
+  if (record.relationships === undefined) return;
+  if (!Array.isArray(record.relationships) || record.relationships.length > 10)
+    throw new ServiceError('VALIDATION_ERROR', 'relationships must be an array of at most 10 entries.');
+  for (const item of record.relationships) {
+    if (!item || Array.isArray(item) || typeof item !== 'object' || Object.keys(item).some(k => !PARTNER_RELATIONSHIP_KEYS.includes(k)))
+      throw new ServiceError('VALIDATION_ERROR', 'Each relationship must contain only type, target, note, source and optional reviewed_at.');
+    if (!PARTNER_RELATIONSHIP_TYPES.includes(item.type))
+      throw new ServiceError('VALIDATION_ERROR', 'Each relationship type must be one of: ' + PARTNER_RELATIONSHIP_TYPES.join(', ') + '.');
+    if (typeof item.target !== 'string' || !PARTNER_CANONICAL_ID.test(item.target))
+      throw new ServiceError('VALIDATION_ERROR', 'Each relationship target must be a canonical entity id such as partner:draper-venture-network.');
+    if (typeof item.note !== 'string' || item.note.trim().length < 8 || item.note.length > 500)
+      throw new ServiceError('VALIDATION_ERROR', 'Each relationship note must be 8–500 characters.');
+    try { const url = new URL(item.source); if (url.protocol !== 'https:' || !url.hostname || url.username || url.password || (url.port && url.port !== '443')) throw new Error(); }
+    catch { throw new ServiceError('VALIDATION_ERROR', 'Each relationship source must be an HTTPS URL without credentials.'); }
+    if (item.reviewed_at !== undefined && (typeof item.reviewed_at !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(item.reviewed_at) || Number.isNaN(Date.parse(item.reviewed_at + 'T00:00:00Z')) || new Date(item.reviewed_at + 'T00:00:00Z').toISOString().slice(0, 10) !== item.reviewed_at))
+      throw new ServiceError('VALIDATION_ERROR', 'Each relationship reviewed_at must be a valid YYYY-MM-DD date.');
+  }
+}
 function validatePartnerRecord(name, record) {
-  if (typeof name !== 'string' || !name.trim() || name.length > 200 || !record || Array.isArray(record) || typeof record !== 'object' || Object.keys(record).sort().join(',') !== 'description,reviewed_at,source,website') throw new ServiceError('VALIDATION_ERROR', 'Provide an exact partner name and the four reviewed metadata fields.');
+  if (typeof name !== 'string' || !name.trim() || name.length > 200 || !record || Array.isArray(record) || typeof record !== 'object' || !['description,reviewed_at,source,website', 'aliases,description,reviewed_at,source,website', 'description,relationships,reviewed_at,source,website', 'aliases,description,relationships,reviewed_at,source,website'].includes(Object.keys(record).sort().join(','))) throw new ServiceError('VALIDATION_ERROR', 'Provide an exact partner name and the four reviewed metadata fields.');
+  validatePartnerOptionalFields(record);
   for (const field of ['website', 'source']) {
     try { const url = new URL(record[field]); if (url.protocol !== 'https:' || !url.hostname || url.username || url.password || (url.port && url.port !== '443')) throw new Error(); }
     catch { throw new ServiceError('VALIDATION_ERROR', `${field} must be an HTTPS URL without credentials.`); }
