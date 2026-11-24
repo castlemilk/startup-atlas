@@ -1588,10 +1588,10 @@
       "confidence": 0.45,
       "created_at": "2026-11-23T08:34:33Z",
       "run": "44",
-      "status": "pending",
-      "decided_by": null,
-      "decided_at": null,
-      "decision_note": null,
+      "status": "rejected",
+      "decided_by": "agent-review",
+      "decided_at": "2026-11-24T08:20:55Z",
+      "decision_note": "Agent review 24 Nov: opened evidence live — https://www.madrona.com/companies/ai-enabled-biotech/ is Madrona's investment-theme page, not a company profile: it appears as a category in Madrona's Companies filter nav (alongside Consumer & Marketplace, Data & Infrastructure) and profiles other companies (Vilya, TwinStrand Bio). No company named 'AI-Enabled Biotech' exists on the page. Reject: subject is a theme label, crawler extraction artefact.",
       "evidence_fingerprint": "7f2511c2c9b11dae6e2d6e95314ca0af21b3fb9f68ea1addecfb55c0fa0a98df",
       "mentions": {
         "partners": [
