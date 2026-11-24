@@ -138,7 +138,7 @@ async function freePort() {
   return port;
 }
 
-async function startApp() {
+async function startApp(extraEnv = {}) {
   const dir = await mkdtemp(path.join(tmpdir(), 'atlas-admin-mcp-'));
   await cp(path.join(repo, 'data'), path.join(dir, 'data'), { recursive: true });
   await mkdir(path.join(dir, 'scripts'));
@@ -150,6 +150,7 @@ async function startApp() {
     GOOGLE_CLIENT_SECRET: 'test-secret',
     ATLAS_GOOGLE_ALLOWED_EMAILS: 'reader@example.com,admin@example.com',
     ATLAS_GOOGLE_WRITE_EMAILS: 'admin@example.com',
+    ATLAS_ADMIN_SERVICE_TOKEN: '',
     ATLAS_GITHUB_TOKEN: 'test-token',
     ATLAS_GITHUB_API_BASE: `http://127.0.0.1:${githubPort}`,
     GOOGLE_AUTH_URL: `http://127.0.0.1:${mockGooglePort}/o/oauth2/v2/auth`,
@@ -157,6 +158,7 @@ async function startApp() {
     GOOGLE_JWKS_URL: `http://127.0.0.1:${mockGooglePort}/oauth2/v3/certs`,
     GOOGLE_TOKENINFO_URL: `http://127.0.0.1:${mockGooglePort}/tokeninfo`,
     ATLAS_HTTP_BASE_URL: `http://127.0.0.1:${port}`,
+    ...extraEnv,
   };
   const config = buildConfig(env, ['--repo', dir, '--port', String(port)]);
   const { CatalogueStore } = await import('../store.mjs');
@@ -184,20 +186,26 @@ const initializeBody = JSON.stringify({
   params: { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'gate-test', version: '1.0.0' } },
 });
 
+const SERVICE_TOKEN = '<MASKED_SECRET_001>';
+
 let mockGoogle;
 let mockGithub;
 let app;
+let serviceApp;
 
 test.before(async () => {
   clearJwksCache();
   mockGoogle = await startMockGoogle();
   mockGithub = await startMockGithub();
   app = await startApp();
+  serviceApp = await startApp({ ATLAS_ADMIN_SERVICE_TOKEN: SERVICE_TOKEN });
 });
 
 test.after(async () => {
   await new Promise(resolve => app.server.close(resolve));
   await rm(app.dir, { recursive: true, force: true });
+  await new Promise(resolve => serviceApp.server.close(resolve));
+  await rm(serviceApp.dir, { recursive: true, force: true });
   await new Promise(resolve => mockGoogle.close(resolve));
   await new Promise(resolve => mockGithub.close(resolve));
 });
@@ -295,4 +303,58 @@ test('/mcp regression: the catalogue surface still serves its 18 tools and no ad
   const { tools } = await client.listTools();
   assert.equal(tools.length, 18);
   assert.ok(tools.every(tool => !tool.name.startsWith('atlas_admin_')));
+});
+
+test('service credential: the configured token authenticates /mcp/admin and decides as agent-review', async t => {
+  seedGithub();
+  const health = await (await fetch(`${serviceApp.base}/health`)).json();
+  assert.equal(health.adminServiceAuthConfigured, true);
+
+  const client = await connect(t, serviceApp.base, '/mcp/admin', SERVICE_TOKEN);
+  const { tools } = await client.listTools();
+  assert.deepEqual(tools.map(tool => tool.name).sort(), ADMIN_TOOLS.map(tool => tool.name).sort());
+
+  const decided = decoded(await client.callTool({
+    name: 'atlas_admin_decide_review_item',
+    arguments: { id: 'startup-lead:testco', decision: 'approved', note: 'Evidence: Airtree portfolio page lists TestCo with its own website; identity matches the mention.' },
+  }));
+  assert.equal(decided.ok, true);
+  // Same attribution as the OAuth path: the queue record cannot tell
+  // (and must not need to tell) which credential presented.
+  assert.equal(decided.entry.decided_by, 'agent-review');
+  const stored = JSON.parse(githubFiles.get('data/review-queue.json').text);
+  assert.equal(stored.entries.find(item => item.id === 'startup-lead:testco').decided_by, 'agent-review');
+  assert.equal(githubFiles.get('data/review-queue.json').message, 'review: startup-lead:testco approved via admin MCP');
+});
+
+test('service credential: a wrong token and no token get 401 on /mcp/admin', async () => {
+  const wrong = await fetch(`${serviceApp.base}/mcp/admin`, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json, text/event-stream', authorization: 'Bearer service-token-WRONG' }, body: initializeBody });
+  assert.equal(wrong.status, 401);
+
+  const anonymous = await fetch(`${serviceApp.base}/mcp/admin`, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json, text/event-stream' }, body: initializeBody });
+  assert.equal(anonymous.status, 401);
+});
+
+test('service credential: scoped to /mcp/admin only — /mcp refuses it, and the panel is untouched', async () => {
+  const catalogue = await fetch(`${serviceApp.base}/mcp`, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json, text/event-stream', authorization: `Bearer ${SERVICE_TOKEN}` }, body: initializeBody });
+  assert.equal(catalogue.status, 401);
+
+  const panel = await fetch(`${serviceApp.base}/admin/api/queue`, { headers: { authorization: `Bearer ${SERVICE_TOKEN}` } });
+  assert.equal(panel.status, 401);
+});
+
+test('service credential: inert when ATLAS_ADMIN_SERVICE_TOKEN is unset, Google path unaffected either way', async () => {
+  const health = await (await fetch(`${app.base}/health`)).json();
+  assert.equal(health.adminServiceAuthConfigured, false);
+
+  const refused = await fetch(`${app.base}/mcp/admin`, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json, text/event-stream', authorization: `Bearer ${SERVICE_TOKEN}` }, body: initializeBody });
+  assert.equal(refused.status, 401);
+
+  // The Google path still works on the app that HAS the credential set:
+  // the admin's ID token initializes a session (200), the reader's gets
+  // the admin surface's 403 — exactly as without the feature.
+  const adminInit = await fetch(`${serviceApp.base}/mcp/admin`, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json, text/event-stream', authorization: `Bearer ${adminToken()}` }, body: initializeBody });
+  assert.equal(adminInit.status, 200);
+  const readerInit = await fetch(`${serviceApp.base}/mcp/admin`, { method: 'POST', headers: { 'content-type': 'application/json', accept: 'application/json, text/event-stream', authorization: `Bearer ${readerToken()}` }, body: initializeBody });
+  assert.equal(readerInit.status, 403);
 });

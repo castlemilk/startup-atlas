@@ -124,6 +124,7 @@ Environment variables:
 | `ATLAS_MCP_WRITE_ENABLED` | for writes on handler-mode hosts | `true` (also `1`/`yes`) enables write mode where the host imports `server.js` and cannot pass the `--write` flag (DeepHost). Any other value, or unset, keeps the server read-only. Never a substitute for the write allow-list: both are required. |
 | `ATLAS_GITHUB_TOKEN` | for `atlas_create_issue` | GitHub token with Issues write access on the repository (see "GitHub issues"). Without it the tool reports `GITHUB_TOKEN_MISSING` and files nothing. Never commit it; keep it in the server environment only. |
 | `ATLAS_ADMIN_EMAILS` | no | Admin panel allow-list. Unset falls back to `ATLAS_GOOGLE_WRITE_EMAILS`; if both are unset the panel allows nobody. |
+| `ATLAS_ADMIN_SERVICE_TOKEN` | no | Service credential for `/mcp/admin` only (see "Admin MCP" below). A Bearer token matching it (constant-time comparison) authenticates the unattended agent review pass as a service identity. Never valid on `/mcp` or the panel. Unset disables it entirely. Never commit it; keep it in the server environment only. |
 | `ATLAS_GITHUB_REPO` | no | Repository the admin panel reads/writes the review queue in, default `castlemilk/startup-atlas`. |
 | `ATLAS_GITHUB_BRANCH` | no | Branch for admin queue reads/writes, default `main`. |
 | `ATLAS_GITHUB_API_BASE` | no | GitHub API base override; only needed for tests. Default `https://api.github.com`. |
@@ -240,7 +241,22 @@ owner's own front door onto the same queue.
   (an issued MCP access token or a Google ID token), then a stricter
   check: the identity must be on the **admin allow-list**
   (`ATLAS_ADMIN_EMAILS`, falling back to `ATLAS_GOOGLE_WRITE_EMAILS`).
-  No token → 401; a verified account that is not the admin → 403. Its
+  No token → 401; a verified account that is not the admin → 403.
+  **Service credential:** when `ATLAS_ADMIN_SERVICE_TOKEN` is set, a
+  Bearer token matching it (constant-time comparison) also
+  authenticates — as a synthetic service identity
+  (`agent-review@service.atlas.invalid`, auth method logged
+  server-side as `service-token`), never as the admin's Google
+  account. It exists because the hourly agent review pass runs
+  unattended: the admin's Google sign-in is passkey-only
+  interactively, and this server's OAuth client registrations and
+  refresh tokens live only in process memory, so every redeploy used
+  to break the pass's credentials. The credential is scoped to
+  `/mcp/admin` only — it is refused on `/mcp` and means nothing to
+  the admin panel — and with the variable unset the surface behaves
+  exactly as before. Decisions made with it are recorded with the
+  same `decided_by: "agent-review"` as the OAuth path, so the panel
+  history stays consistent. Its
   protected-resource metadata lives at
   `/.well-known/oauth-protected-resource/mcp/admin`, and the OAuth
   authorization endpoint accepts `resource=<base>/mcp/admin` as well

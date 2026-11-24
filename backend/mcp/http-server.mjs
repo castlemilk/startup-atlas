@@ -32,6 +32,17 @@
  * the assistant can decide queue items itself (decided_by
  * 'agent-review') through the panel's write-back path.
  *
+ * /mcp/admin additionally accepts a service credential: when
+ * ATLAS_ADMIN_SERVICE_TOKEN is set, a Bearer token matching it
+ * (constant-time comparison) authenticates as the service identity
+ * (authMethod 'service-token'). This exists because the agent review
+ * pass runs unattended: Google sign-in for the admin account is
+ * passkey-only interactively, and every OAuth client registration and
+ * refresh token lives only in this process's memory, so a redeploy
+ * kills the OAuth chain. The credential is scoped to /mcp/admin ONLY
+ * — it is never consulted on /mcp or the admin panel — and when the
+ * variable is unset the surface behaves exactly as before.
+ *
  * Nothing here triggers a crawl, fetches a source, shells out or runs
  * Git. The crawl registry stays advisory, exactly as in the stdio
  * server. The one exception is `atlas_create_issue`, which calls the
@@ -111,6 +122,9 @@ export function buildConfig(env = process.env, argv = process.argv.slice(2)) {
     // Admin panel allow-list: ATLAS_ADMIN_EMAILS when set, otherwise the
     // MCP write allow-list (in production both name the owner only).
     adminEmails: parseEmailAllowList(env.ATLAS_ADMIN_EMAILS) ?? parseEmailAllowList(env.ATLAS_GOOGLE_WRITE_EMAILS),
+    // Service credential for /mcp/admin only (see the header comment).
+    // Empty/unset disables it — fail-closed, no behaviour change.
+    adminServiceToken: env.ATLAS_ADMIN_SERVICE_TOKEN ?? '',
     githubToken: env.ATLAS_GITHUB_TOKEN ?? '',
     // Where the admin panel reads/writes data/review-queue.json through
     // the GitHub Contents API. The API base is overridable for tests,
@@ -256,12 +270,29 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
     };
   }
 
+  // The service identity the ATLAS_ADMIN_SERVICE_TOKEN credential
+  // authenticates as. The email is a synthetic .invalid address: it can
+  // never be a real Google account, so it can never collide with — or
+  // be impersonated by — the OAuth path, and queue decisions stay
+  // attributed decided_by 'agent-review' by admin-mcp.mjs regardless
+  // of which credential presented.
+  const ADMIN_SERVICE_EMAIL = 'agent-review@service.atlas.invalid';
+  const ADMIN_SERVICE_SUB = 'service:agent-review';
+
   /**
    * The admin MCP's gate is stricter than /mcp's: the Bearer token must
    * verify the same way, but the identity must be on the ADMIN
    * allow-list (ATLAS_ADMIN_EMAILS, falling back to
    * ATLAS_GOOGLE_WRITE_EMAILS) — an ordinary allow-listed reader gets
    * 403 here. Fail-closed exactly like the panel's callback check.
+   *
+   * One exception, checked first and only here: the service credential
+   * (ATLAS_ADMIN_SERVICE_TOKEN). It exists for the unattended agent
+   * review pass, whose operator cannot do an interactive passkey
+   * sign-in per run and whose OAuth registrations/refresh tokens die
+   * with this process on every redeploy. It is scoped to this surface
+   * only — authenticate() for /mcp never consults it — and unset means
+   * off. The comparison is constant-time (secretsEqual).
    */
   async function authenticateAdmin(req, res) {
     const header = req.headers.authorization ?? '';
@@ -270,6 +301,13 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       res.writeHead(401, { 'www-authenticate': `Bearer resource_metadata="${adminResourceMetadataUrl}", error="invalid_token", error_description="A Bearer token is required."`, 'content-type': 'application/json' });
       res.end(JSON.stringify({ error: 'unauthorized', message: 'A Bearer token is required. Authenticate with Google first; see docs/MCP-HTTP.md.' }));
       return null;
+    }
+    if (config.adminServiceToken && secretsEqual(match[1], config.adminServiceToken)) {
+      console.error(JSON.stringify({ event: 'admin_auth', surface: '/mcp/admin', method: 'service-token', identity: ADMIN_SERVICE_SUB }));
+      return {
+        token: match[1], clientId: 'service', scopes: scopesSupported,
+        expiresAt: undefined, extra: { email: ADMIN_SERVICE_EMAIL, sub: ADMIN_SERVICE_SUB, authMethod: 'service-token' },
+      };
     }
     const identity = await resolveBearer(match[1]);
     if (!identity) {
@@ -576,7 +614,7 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       const url = new URL(req.url ?? '/', config.baseUrl);
       const pathname = url.pathname;
       if (pathname === '/health' && req.method === 'GET') {
-        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 18, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken), adminEnabled: oauthEnabled, adminQueueWriteConfigured: Boolean(config.githubToken), adminMcpEnabled: true, adminTools: ADMIN_TOOLS.length });
+        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 18, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken), adminEnabled: oauthEnabled, adminQueueWriteConfigured: Boolean(config.githubToken), adminMcpEnabled: true, adminTools: ADMIN_TOOLS.length, adminServiceAuthConfigured: Boolean(config.adminServiceToken) });
         return;
       }
       if (pathname === '/admin' || pathname.startsWith('/admin/')) { await admin.handle(req, res, url); return; }

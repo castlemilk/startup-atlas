@@ -205,6 +205,18 @@ no second queue.
    decides only where the evidence is clear-cut; kinds the gate reserves
    (edges, headshots) and anything genuinely ambiguous stay pending for
    Ben.
+   **Auth:** the pass authenticates with the admin service credential,
+   not a Google sign-in. It sends
+   `Authorization: Bearer <token>` to `/mcp/admin`, where the token is
+   the `admin_service_token` value stored in
+   `~/workspace/atlas-oauth-live/state.json` on the VM (file mode 0600;
+   never print it, log it, or copy it anywhere else). The server side
+   is `ATLAS_ADMIN_SERVICE_TOKEN` on the DeepHost app; the credential
+   is scoped to `/mcp/admin` only and survives redeploys, unlike the
+   in-memory OAuth registrations and refresh tokens. A 401 from
+   `/mcp/admin` with this credential means the token has rotated or
+   the env var is unset — stop the run and report it; do not fall
+   back to an interactive Google sign-in flow.
 5. **Admin panel (Ben).** The panel at `/admin` on the hosted MCP app
    (Google login, allow-listed admin account only) shows what is left:
    pending cards lowest-confidence first, the auto-applied list with
