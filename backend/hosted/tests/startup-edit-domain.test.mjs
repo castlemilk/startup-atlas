@@ -50,6 +50,18 @@ test('real PsiQuantum source read retains exact metadata and unresolved image pe
   assert.deepEqual(research,before);
 });
 
+test('funding rounds accept canonical lead_investor and participants, and reject malformed ones',async()=>{
+  const research=fixture();
+  const base={id:'example-seed',stage:'Seed',source:'https://example.com/seed'};
+  const updated=await applyStartupEdit(research,await editFor(research,{funding_rounds:[{...base,lead_investor:'Acme Ventures',participants:['Beta Capital','Gamma Fund']}]}));
+  assert.equal(updated.merged.funding_rounds[0].lead_investor,'Acme Ventures');
+  assert.deepEqual(updated.merged.funding_rounds[0].participants,['Beta Capital','Gamma Fund']);
+  assert.equal(updated.merged.funding_rounds[0].amount,500000);
+  await assert.rejects(applyStartupEdit(research,await editFor(research,{funding_rounds:[{...base,participants:'Beta Capital'}]})),expectError('VALIDATION_ERROR','/patch/funding_rounds/0/participants'));
+  await assert.rejects(applyStartupEdit(research,await editFor(research,{funding_rounds:[{...base,lead_investor:''}]})),expectError('VALIDATION_ERROR','/patch/funding_rounds/0/lead_investor'));
+  await assert.rejects(applyStartupEdit(research,await editFor(research,{funding_rounds:[{...base,participants:['Beta Capital','']}]})),expectError('VALIDATION_ERROR','/patch/funding_rounds/0/participants/1'));
+});
+
 test('canonical source IDs resolve exactly and reject missing or ambiguous records',()=>{
   const research=fixture();
   assert.deepEqual(readStartupRecord(research,id).record,research.startups[0]);
