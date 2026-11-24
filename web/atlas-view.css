@@ -4,7 +4,12 @@
 .top-nav a{color:#d0dbef;font-size:12px;font-weight:700;text-decoration:none;padding:28px 0 25px;border-bottom:2px solid transparent}
 .top-nav a:hover,.top-nav a:focus-visible{color:#fff;border-bottom-color:#9fe7dd}
 .top-meta{margin-left:12px;white-space:nowrap}
-.intro{grid-template-columns:minmax(270px,.62fr) minmax(650px,1.65fr);gap:clamp(20px,3vw,54px);padding:48px max(4vw,24px) 0;align-items:center;background:#101e35}
+/* The directory page's intro is painted by directory.css
+   (.atlas-directory-page .intro, token paper) — this sheet's .intro block is
+   the legacy layout layer underneath it. Its background therefore uses the
+   same token canvas, not the retired navy: #434's washes were removed here
+   by PR #446, and the navy itself never won the cascade on list.html. */
+.intro{grid-template-columns:minmax(270px,.62fr) minmax(650px,1.65fr);gap:clamp(20px,3vw,54px);padding:48px max(4vw,24px) 0;align-items:center;background:var(--atlas-paper)}
 .intro-copy{padding-top:0;max-width:440px;align-self:center}
 .intro h1{font-family:Georgia,serif;font-size:clamp(42px,4.2vw,66px);font-weight:400;line-height:1.02;letter-spacing:-2.8px;margin:24px 0 18px}
 .intro h1 em{display:block;font-family:inherit;font-style:normal;color:#b5c9f3;letter-spacing:inherit}
