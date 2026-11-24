@@ -95,7 +95,7 @@ async function makeTempRepo() {
   return dir;
 }
 
-async function startMcpHttp({ write = false } = {}) {
+async function startMcpHttp({ write = false, env: extraEnv = {} } = {}) {
   const dir = await makeTempRepo();
   const port = await freePort();
   const env = {
@@ -109,6 +109,7 @@ async function startMcpHttp({ write = false } = {}) {
     GOOGLE_JWKS_URL: `http://127.0.0.1:${mockGooglePort}/oauth2/v3/certs`,
     GOOGLE_TOKENINFO_URL: `http://127.0.0.1:${mockGooglePort}/tokeninfo`,
     ATLAS_HTTP_BASE_URL: `http://127.0.0.1:${port}`,
+    ...extraEnv,
   };
   const config = buildConfig(env, ['--repo', dir, ...(write ? ['--write'] : []), '--port', String(port)]);
   const { CatalogueStore } = await import('../store.mjs');
@@ -151,23 +152,29 @@ async function connectHttp(t, base, token) {
   return client;
 }
 
+const SERVICE_TOKEN = '<MASKED_SECRET_002>';
+
 let mock;
 let readOnly;
 let writeServer;
+let serviceTokenServer;
 
 test.before(async () => {
   clearJwksCache();
   mock = await startMockGoogle();
   readOnly = await startMcpHttp({ write: false });
   writeServer = await startMcpHttp({ write: true });
+  serviceTokenServer = await startMcpHttp({ env: { ATLAS_ADMIN_SERVICE_TOKEN: SERVICE_TOKEN } });
 });
 
 test.after(async () => {
   await new Promise(resolve => readOnly.server.close(resolve));
   await new Promise(resolve => writeServer.server.close(resolve));
+  await new Promise(resolve => serviceTokenServer.server.close(resolve));
   await new Promise(resolve => mock.close(resolve));
   await rm(readOnly.dir, { recursive: true, force: true });
   await rm(writeServer.dir, { recursive: true, force: true });
+  await rm(serviceTokenServer.dir, { recursive: true, force: true });
 });
 
 test('health and OAuth discovery metadata are public and point at this server', async () => {
@@ -185,6 +192,23 @@ test('health and OAuth discovery metadata are public and point at this server', 
   const pr = await (await fetch(`${readOnly.base}/.well-known/oauth-protected-resource/mcp`)).json();
   assert.equal(pr.resource, `${readOnly.base}/mcp`);
   assert.deepEqual(pr.authorization_servers, [readOnly.base]);
+});
+
+test('health fingerprints the configured admin service token without exposing it', async () => {
+  const raw = await (await fetch(`${serviceTokenServer.base}/health`)).text();
+  const health = JSON.parse(raw);
+  assert.equal(health.adminServiceAuthConfigured, true);
+  assert.equal(health.adminServiceTokenLength, SERVICE_TOKEN.length);
+  const expectedSha256 = createHash('sha256').update(SERVICE_TOKEN, 'utf8').digest('hex');
+  assert.equal(health.adminServiceTokenSha256, expectedSha256.slice(0, 10));
+  assert.equal(raw.includes(SERVICE_TOKEN), false);
+});
+
+test('health omits the service token fingerprint when the credential is not configured', async () => {
+  const health = await (await fetch(`${readOnly.base}/health`)).json();
+  assert.equal(health.adminServiceAuthConfigured, false);
+  assert.equal('adminServiceTokenLength' in health, false);
+  assert.equal('adminServiceTokenSha256' in health, false);
 });
 
 test('unauthenticated, forged and unlisted Google identities are rejected before any tool runs', async () => {

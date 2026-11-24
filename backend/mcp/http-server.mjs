@@ -614,7 +614,17 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       const url = new URL(req.url ?? '/', config.baseUrl);
       const pathname = url.pathname;
       if (pathname === '/health' && req.method === 'GET') {
-        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 18, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken), adminEnabled: oauthEnabled, adminQueueWriteConfigured: Boolean(config.githubToken), adminMcpEnabled: true, adminTools: ADMIN_TOOLS.length, adminServiceAuthConfigured: Boolean(config.adminServiceToken) });
+        // Fingerprint of the configured /mcp/admin service credential, so
+        // the operator can confirm which value this process holds without
+        // either side seeing the other's secret: the token's length plus
+        // the first 10 hex chars of its SHA-256. Both fields are absent
+        // when the credential is not configured; the token itself is
+        // never exposed.
+        const serviceTokenFingerprint = config.adminServiceToken ? {
+          adminServiceTokenLength: config.adminServiceToken.length,
+          adminServiceTokenSha256: createHash('sha256').update(config.adminServiceToken, 'utf8').digest('hex').slice(0, 10),
+        } : {};
+        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 18, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken), adminEnabled: oauthEnabled, adminQueueWriteConfigured: Boolean(config.githubToken), adminMcpEnabled: true, adminTools: ADMIN_TOOLS.length, adminServiceAuthConfigured: Boolean(config.adminServiceToken), ...serviceTokenFingerprint });
         return;
       }
       if (pathname === '/admin' || pathname.startsWith('/admin/')) { await admin.handle(req, res, url); return; }
