@@ -11,6 +11,7 @@ before ``npm run build``; without it this script fails with a clear error
 instead of silently publishing a stale or missing dataset.
 """
 import argparse
+import importlib.util
 import json
 import os
 import subprocess
@@ -199,6 +200,8 @@ def build_tables(data_dir):
                     'startup': name,
                     'name': _str(founder['name']),
                     'source': _str(founder.get('source')),
+                    'photo_url': _str(founder.get('photo_url')),
+                    'photo_source': _str(founder.get('photo_source')),
                 }
             )
         for social in startup.get('socials') or []:
@@ -252,6 +255,7 @@ def build_tables(data_dir):
         ]),
         'founders': pa.schema([
             ('startup', string), ('name', string), ('source', string),
+            ('photo_url', string), ('photo_source', string),
         ]),
         'socials': pa.schema([
             ('startup', string), ('label', string), ('url', string),
@@ -279,6 +283,23 @@ def build_tables(data_dir):
             for field in schema
         ]
         tables[name] = pa.Table.from_arrays(columns, schema=schema)
+    # Graph topology (#359): when the regenerated graph is present alongside
+    # the reviewed JSONs, expose its edges so the console can answer
+    # graph questions (who invested in X, X's neighbours, co-investors).
+    # graph.json is a generated file, not a reviewed input, so it stays off
+    # PUBLIC_DATA_FILES: a data dir without it (an older corpus snapshot)
+    # still builds the nine reviewed tables unchanged. The live-index
+    # indexer reuses build_tables(), and its corpus now carries graph.json
+    # (atlas_corpus.REVIEWED_FILES), so both surfaces gain the tables.
+    graph_path = data_dir / 'graph.json'
+    if graph_path.is_file():
+        graph = json.loads(graph_path.read_text(encoding='utf-8'))
+        spec = importlib.util.spec_from_file_location(
+            'atlas_graph_edges_parquet',
+            Path(__file__).resolve().parent / 'graph_edges_parquet.py')
+        edge_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(edge_module)
+        tables.update(edge_module.build_tables(graph))
     return tables
 
 

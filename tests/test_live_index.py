@@ -82,7 +82,7 @@ class LiveIndexTests(unittest.TestCase):
                 set(manifest['tables']),
                 {'opportunities', 'partners', 'partner_leads', 'startups',
                  'funding_rounds', 'articles', 'profile_facts', 'founders',
-                 'socials'})
+                 'socials', 'edges', 'relationships'})
             self.assertEqual(
                 manifest['corpus']['reviewed_manifest_sha256'],
                 corpus.reviewed_manifest(
@@ -243,7 +243,7 @@ class LiveIndexTests(unittest.TestCase):
                 uploaded = indexer.publish_index(out, version, manifest, config)
             finally:
                 indexer.client_for = real_client
-            self.assertEqual(len(uploaded), 11)  # 9 tables + manifest + pointer
+            self.assertEqual(len(uploaded), 13)  # 11 tables (9 reviewed + edges/relationships, #359) + manifest + pointer
             self.assertEqual(store.put_order[-1], 'latest.json')
             self.assertEqual(
                 json.loads(store.objects['latest.json'])['version'],
