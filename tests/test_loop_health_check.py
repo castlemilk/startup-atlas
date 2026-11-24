@@ -46,14 +46,38 @@ REVIEWED_BODIES = {
         'reviewed': '2026-11-23',
         'startups': [{'name': 'S', 'reviewed_at': '2026-11-23'}],
     }).encode(),
+    # graph.json joined REVIEWED_FILES when the indexer began emitting
+    # the edges tables (#359); the fixture predated that and every test
+    # using it failed on main until it was added here.
+    'graph.json': json.dumps({
+        'version': 1,
+        'entities': [{'id': 'x', 'reviewed_at': '2026-11-22'}],
+    }).encode(),
 }
 
 
-def make_data_dir(root, bodies=None):
+DEFAULT_QUEUE = {
+    'version': 1,
+    'entries': [
+        {'id': 'fact:a', 'status': 'pending',
+         'created_at': '2026-11-23T12:00:00Z'},
+        {'id': 'fact:b', 'status': 'pending',
+         'created_at': '2026-11-23T11:00:00Z'},
+        {'id': 'fact:c', 'status': 'pending',
+         'created_at': '2026-11-22T09:00:00Z'},
+        {'id': 'fact:d', 'status': 'approved',
+         'created_at': '2026-11-21T09:00:00Z'},
+    ],
+}
+
+
+def make_data_dir(root, bodies=None, queue=DEFAULT_QUEUE):
     data = Path(root) / 'data'
     data.mkdir(parents=True)
     for name, body in (bodies or REVIEWED_BODIES).items():
         (data / name).write_bytes(body)
+    if queue is not None:
+        (data / 'review-queue.json').write_text(json.dumps(queue))
     return data
 
 
@@ -277,6 +301,61 @@ class LoopHealthCheckTests(unittest.TestCase):
             report = run(responses, make_data_dir(tmp))
         self.assertEqual(levels(report, 'crawl-progress'), [health.WARN])
         self.assertNotEqual(report.worst, health.RED)
+
+    # --- review queue (#426) -------------------------------------------
+
+    def test_queue_fresh_is_ok_and_reports_pending_count(self):
+        with TemporaryDirectory() as tmp:
+            report = run(healthy_responses(), make_data_dir(tmp))
+            self.assertEqual(levels(report, 'review-queue'), [health.OK])
+            detail = [d for _, n, d in report.lines
+                      if n == 'review-queue'][0]
+            self.assertIn('3 pending of 4 entries', detail)
+
+    def test_queue_stale_against_latest_crawl_is_warn_never_red(self):
+        # Newest entry is 2026-11-20; the fixture's latest completed
+        # crawl ran 2026-11-23T09:00 — a >48h lag.
+        queue = {'version': 1, 'entries': [
+            {'id': 'fact:old', 'status': 'pending',
+             'created_at': '2026-11-20T08:00:00Z'}]}
+        with TemporaryDirectory() as tmp:
+            report = run(healthy_responses(), make_data_dir(tmp, queue=queue))
+            self.assertEqual(levels(report, 'review-queue'), [health.WARN])
+            self.assertNotEqual(report.worst, health.RED)
+            detail = [d for _, n, d in report.lines
+                      if n == 'review-queue'][0]
+            self.assertIn('queue stale', detail)
+
+    def test_queue_pending_above_threshold_is_warn(self):
+        queue = {'version': 1, 'entries': [
+            {'id': f'fact:{i}', 'status': 'pending',
+             'created_at': '2026-11-23T12:00:00Z'}
+            for i in range(health.QUEUE_PENDING_WARN + 1)]}
+        with TemporaryDirectory() as tmp:
+            report = run(healthy_responses(), make_data_dir(tmp, queue=queue))
+            self.assertEqual(levels(report, 'review-queue'), [health.WARN])
+            detail = [d for _, n, d in report.lines
+                      if n == 'review-queue'][0]
+            self.assertIn(f'pending count {health.QUEUE_PENDING_WARN + 1}',
+                          detail)
+
+    def test_queue_unreadable_degrades_to_warn_unverified(self):
+        with TemporaryDirectory() as tmp:
+            data = make_data_dir(tmp, queue=None)
+            (data / 'review-queue.json').write_bytes(b'not json {')
+            report = run(healthy_responses(), data)
+            self.assertEqual(levels(report, 'review-queue'), [health.WARN])
+            detail = [d for _, n, d in report.lines
+                      if n == 'review-queue'][0]
+            self.assertIn('unverified', detail)
+            self.assertNotEqual(report.worst, health.RED)
+
+    def test_queue_missing_degrades_to_warn_unverified(self):
+        with TemporaryDirectory() as tmp:
+            report = run(healthy_responses(),
+                         make_data_dir(tmp, queue=None))
+            self.assertEqual(levels(report, 'review-queue'), [health.WARN])
+            self.assertNotEqual(report.worst, health.RED)
 
 
 if __name__ == '__main__':
