@@ -48,6 +48,8 @@ class CiPathTests(unittest.TestCase):
     def test_live_index_changes_run_data_checks(self):
         self.assertEqual(self.selected('scripts/atlas_corpus.py'), {'data'})
         self.assertEqual(self.selected('scripts/build_live_index.py'), {'data'})
+        self.assertEqual(self.selected('scripts/publish_reviewed_corpus.py'), {'data'})
+        self.assertEqual(self.selected('.github/workflows/publish-reviewed-corpus.yml'), {'data'})
         self.assertEqual(self.selected('tests/test_atlas_corpus.py'), {'data'})
         self.assertEqual(self.selected('tests/test_live_index.py'), {'data'})
         self.assertEqual(

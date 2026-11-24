@@ -63,7 +63,7 @@ def load_parquet_builder():
 
 
 def read_reviewed_files(data_dir):
-    """Return {filename: bytes} for the four reviewed files, or raise."""
+    """Return {filename: bytes} for the reviewed inputs, or raise."""
     data_dir = Path(data_dir)
     missing = [name for name in REVIEWED_FILES if not (data_dir / name).is_file()]
     if missing:
@@ -211,7 +211,7 @@ def build_index(corpus_dir, out_dir, source_revision='', now=None, force=False,
 
 
 def publish_reviewed_corpus(corpus_dir, config, source_revision='', now=None):
-    """Upload the four reviewed files + manifest to the corpus bucket.
+    """Upload the reviewed inputs + manifest to the corpus bucket.
 
     Used on the bootstrap run so the corpus becomes the source of truth for
     later runs. Returns the reviewed manifest.

@@ -49,13 +49,14 @@ from datetime import datetime, timezone
 CORPUS_PREFIX = 'corpus/v1'
 INDEX_PREFIX = 'v1'
 
-# The four reviewed files that are the indexer's input. This list must match
+# Reviewed query inputs plus the generated graph. Keep in sync with
 # PUBLIC_DATA_FILES in scripts/build-query-parquet.py.
 REVIEWED_FILES = (
     'catalogue.json',
     'partners-reviewed.json',
     'partner-profiles.json',
     'startup-research.json',
+    'treemap-evidence.json',
     # The regenerated graph rides along so the live-index indexer can emit
     # the edges/relationships Parquet tables (#359); build_tables() treats
     # it as an optional generated input, never a reviewed source.

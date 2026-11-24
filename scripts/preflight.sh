@@ -139,6 +139,7 @@ check_range() {
     run node --test tests/catalogue.test.js tests/graph-data.test.js
     run python3 -m unittest discover -s tests -p 'test_graph.py'
     run_parquet_tests
+    run python3 -m unittest tests.test_live_index.ReviewedValuationInputTests
     if echo "$paths" | grep -Eq '^data/(review-queue|review-gating)\.json$'; then
       run python3 -m unittest tests.test_review_gating tests.test_review_queue
     fi
