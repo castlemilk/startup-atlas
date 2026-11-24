@@ -55,6 +55,22 @@ Deployments also need "Automatic deployments" enabled in the DeepHost
 console ("Deploy branch pushes") — it is off by default, and a push
 with it off deploys nothing and says nothing.
 
+The app deploys the branch configured in the console; that branch must
+contain the code being configured. A redeploy of an old branch picks up
+new env vars but none of the newer tools.
+
+To enable writes (including `atlas_create_issue`) on the hosted app,
+set all three in the console env and redeploy a build that contains
+the tool:
+
+- `ATLAS_MCP_WRITE_ENABLED=true` — handler mode cannot pass `--write`.
+- `ATLAS_GOOGLE_WRITE_EMAILS` — the Google accounts allowed to write.
+- `ATLAS_GITHUB_TOKEN` — only needed for `atlas_create_issue`.
+
+Verify afterwards with `GET /health`: `tools` should count every tool
+in the deployed build, `writeEnabled` should be `true`, and
+`githubIssuesConfigured` should be `true` when the token is set.
+
 ## 1. Google Cloud Console setup
 
 For a new host, configure a Google OAuth client for its callback in
@@ -105,6 +121,7 @@ Environment variables:
 | `ATLAS_HTTP_BASE_URL` | yes for OAuth | Public origin, no trailing slash, e.g. `https://mcp.example.com`. Used for the issuer, redirect URIs and resource metadata. Defaults to `http://127.0.0.1:<port>`. |
 | `ATLAS_GOOGLE_ALLOWED_EMAILS` | yes | Comma-separated Google account emails allowed to call any tool. Unset or empty allows nobody (fail-closed). |
 | `ATLAS_GOOGLE_WRITE_EMAILS` | for writes | Comma-separated emails allowed to use the four write tools (also needs `--write`). Unset means no HTTP writes at all. |
+| `ATLAS_MCP_WRITE_ENABLED` | for writes on handler-mode hosts | `true` (also `1`/`yes`) enables write mode where the host imports `server.js` and cannot pass the `--write` flag (DeepHost). Any other value, or unset, keeps the server read-only. Never a substitute for the write allow-list: both are required. |
 | `ATLAS_GITHUB_TOKEN` | for `atlas_create_issue` | GitHub token with Issues write access on the repository (see "GitHub issues"). Without it the tool reports `GITHUB_TOKEN_MISSING` and files nothing. Never commit it; keep it in the server environment only. |
 | `ATLAS_HTTP_HOST` | no | Bind host, default `0.0.0.0` (use `127.0.0.1` for local-only). |
 | `PORT` | no | Bind port, set by container platforms; takes precedence over `ATLAS_HTTP_PORT` when set. |
@@ -167,7 +184,9 @@ edits, closes, deletes or comments on an issue.
 }
 ```
 
-Gating, in order: the server must run with `--write`; over HTTP the
+Gating, in order: the server must run with write mode on (`--write`,
+or `ATLAS_MCP_WRITE_ENABLED=true` on a handler-mode host such as
+DeepHost, which cannot pass CLI flags); over HTTP the
 caller's Google account must also be in `ATLAS_GOOGLE_WRITE_EMAILS`;
 and `ATLAS_GITHUB_TOKEN` must be set. Any missing piece fails closed
 (`READ_ONLY`, `WRITE_FORBIDDEN` or `GITHUB_TOKEN_MISSING`) before any
