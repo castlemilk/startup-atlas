@@ -123,14 +123,16 @@ check_range() {
     note "regenerate catalogue/graph and report committed-output drift"
     npm run data:generate >/dev/null || fail=1
     if [ -n "$(git status --porcelain -- data/)" ]; then
-      # Warning, not a block: on 24 Nov 2026 the committed catalogue.json
-      # already drifted from make-data.py on unmodified main (regeneration
-      # drops status_controlled/deadline), so blocking would make every
-      # data push fail until that drift is fixed. Surface it loudly.
-      echo "WARNING: data:generate changed files under data/ — committed generated" >&2
-      echo "output is out of sync with the generators. Review and commit or revert:" >&2
+      # Block: generation is reproducible again since #443 (data:generate
+      # now includes backfill_structured_fields.py, so regeneration no
+      # longer drops status_controlled/deadline from catalogue.json).
+      # Committed generated output must match the generators exactly.
+      echo "ERROR: data:generate changed files under data/ — committed generated" >&2
+      echo "output is out of sync with the generators. Commit the regenerated" >&2
+      echo "files or fix the generator, then re-run preflight:" >&2
       git status --porcelain -- data/ >&2
       git checkout -- data/ 2>/dev/null || true
+      fail=1
     fi
   fi
   if lane data; then
