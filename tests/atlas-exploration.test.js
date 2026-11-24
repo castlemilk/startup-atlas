@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { companyPlaceLabel, countryName, explorationHref, filterCompanies, indexCompanies, readExploration, writeExploration } from '../web/atlas-exploration.js';
+import { companyPlaceLabel, countryFlag, countryName, explorationHref, filterCompanies, indexCompanies, readExploration, writeExploration } from '../web/atlas-exploration.js';
 
 const source='https://example.com/record';
 const fact=(label,value,extra={})=>({label,value,source,...extra});
@@ -106,4 +106,12 @@ test('registry-only business bases preserve country without implying a city', as
   assert.equal(dimensions.get('startup:uluu').city,'','the separately sourced operating base does not imply a headquarters city');
   assert.equal(companyPlaceLabel(dimensions.get('startup:goterra')),'Canberra, Australia (historical)','explorer locations preserve the historical headquarters qualifier');
   assert.equal(dimensions.get('startup:bugcrowd').country,'multiple','explicit co-headquarters remain grouped');
+});
+
+test('country flags derive from canonical ISO codes only (#415)',()=>{
+  assert.equal(countryFlag('AU'),'🇦🇺');
+  assert.equal(countryFlag('US'),'🇺🇸');
+  assert.equal(countryFlag('GB'),'🇬🇧');
+  assert.equal(countryFlag('NZ'),'🇳🇿');
+  for (const code of ['unknown','multiple','','au','XX',null,undefined]) assert.equal(countryFlag(code),'',JSON.stringify(code));
 });

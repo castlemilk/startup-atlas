@@ -4,7 +4,7 @@ import { entityHref, kindName } from './graph-model.js';
 import { logoFor, logoClassFor } from './logos.js';
 import {
   COLOURS, COMPANY_VALUE, GROUPS, METRICS, cohort, cohortNames, colourEncoding, companyContext, companyFigure, currencies,
-  formatValue, groupedTreemap, indexCompanyValues, loadTreemapEvidence, makeView, tileTicker, treemap, validYear,
+  formatValue, groupedTreemap, indexCompanyValues, indexFounders, loadTreemapEvidence, makeView, tileFounders, tileTicker, treemap, validYear,
 } from './treemap-model.js';
 import { animateAtlasChange, canAnimateAtlasChange, icon } from './atlas-ui.js';
 import { companyPlaceLabel, countryName, explorationHref, filterCompanies, hasCompanyScope, indexCompanies, multipleHeadquarters, readExploration, writeExploration } from './atlas-exploration.js';
@@ -34,7 +34,7 @@ const dateLabel = metric => metric === 'market-cap' ? 'As of' : 'Announced';
 const datedFigure = (event,metric) => figureDate(event,metric) ? `${dateLabel(metric)} ${figureDate(event,metric)}` : '';
 const newerFigure = metric => metric === 'market-cap' ? 'Newer market-cap observation outside this currency' : 'Newer announcement not plotted';
 let graph, graphStore, view, state, exploration, dimensions, companies, entities, periods, colours;
-let technology, ownership, marketCaps, privateValuations, companyValues, evidenceAvailable;
+let technology, ownership, marketCaps, privateValuations, companyValues, evidenceAvailable, foundersByCompany;
 let lastWidth = 0, lastHeight = 0, visibleCompanies = new Set(), queryCompanies = [];
 let previousQuery, searchMatches;
 let sheetSuspended = false;
@@ -74,6 +74,11 @@ const mark = entity => {
   const canvas = logoCanvases.get(image);
   return `<span class="treemap-logo ${esc(logoClassFor(entity.name))}"${canvas ? ` data-logo-canvas="${canvas}"` : ''} aria-hidden="true">${image ? `<img src="${esc(image)}" alt="" hidden referrerpolicy="no-referrer">` : ''}<span>${esc(initials(entity.name))}</span></span>`;
 };
+// One small circle per founder: the graph-held photo where one is recorded,
+// the founder's initials behind it (and instead of it when the photo is
+// absent or fails to load — watchImages swaps the two, as with marks).
+const founderCircles = founders => founders?.length ? `<span class="treemap-tile-founders" aria-hidden="true">${founders.map(founder =>
+  `<span class="treemap-founder-circle" title="${esc(founder.name)}">${founder.photo ? `<img src="${esc(founder.photo)}" alt="" hidden referrerpolicy="no-referrer">` : ''}<span>${esc(founder.initials)}</span></span>`).join('')}</span>` : '';
 const evidenceLink = (url, label) => sourceUrl(url) ? `<a class="treemap-source" href="${esc(sourceUrl(url))}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>` : '';
 function watchImages(root) {
   root.querySelectorAll('img').forEach(img => {
@@ -393,6 +398,7 @@ function tileMarkup(tile, aggregate = false) {
       ${aggregate ? '' : '<span class="treemap-tile-selection" aria-hidden="true">Selected</span>'}
       ${figureBadge(basis)}
       <span class="treemap-tile-identity">${aggregate || !state.logos ? '' : mark(entity)}<span class="treemap-tile-copy"><span class="treemap-tile-name">${esc(name)}</span>${meta ? `<span class="treemap-tile-meta">${esc(meta)}</span>` : ''}</span></span>
+      ${aggregate ? '' : founderCircles(tileFounders(tile, foundersByCompany?.get(tile.id)))}
       ${aggregate || state.metric !== 'companies' ? `<span class="treemap-value">${esc(figureAmount(tile))}</span>` : ''}
       ${ticker ? `<span class="treemap-tile-ticker">${esc(ticker)}</span>` : ''}
     </span>
@@ -497,6 +503,7 @@ function drawCards() {
       ${grouped ? '' : cardMedia(item.entity)}
       <span class="treemap-card-body"><span class="treemap-card-name">${esc(name)}</span><span class="treemap-card-summary">${esc(summary)}</span>
         ${place ? `<span class="treemap-card-place">${esc(place)}</span>` : ''}
+        ${grouped ? '' : founderCircles(foundersByCompany?.get(item.id))}
         ${figureBadge(item.basis)}
         <span class="treemap-card-footer"><span class="treemap-card-date">${esc(date)}</span>${year ? `<span class="treemap-card-year">${esc(year)}</span>` : ''}</span>
         ${!grouped && state.colour !== 'decade' ? colourMark(item.entity) : ''}
@@ -919,6 +926,7 @@ try {
   const researched = await loadTreemapEvidence(graphStore);
   ({technology,ownership,marketCaps,privateValuations,available:evidenceAvailable} = researched);
   companyValues = indexCompanyValues(graph,researched);
+  foundersByCompany = indexFounders(graph);
   dimensions = indexCompanies(graph,technology);
   periods = new Set(cohortNames(graph));
   $('treemap-presentation').removeAttribute('disabled');

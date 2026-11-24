@@ -435,6 +435,26 @@
   max-height:78cqi;
 }
 .treemap-tile .treemap-logo[data-logo-canvas] img { object-fit:cover; object-position:center; }
+.treemap-tile-founders { display:flex; flex-wrap:wrap; gap:4px; align-items:center; }
+.treemap-founder-circle {
+  display:grid;
+  grid-template:minmax(0,1fr) / minmax(0,1fr);
+  place-items:center;
+  flex:none;
+  width:20px;
+  height:20px;
+  overflow:hidden;
+  border-radius:50%;
+  background:color-mix(in srgb,var(--atlas-surface) 82%,var(--atlas-soft));
+  color:var(--atlas-ink);
+  font-size:9px;
+  font-weight:740;
+  line-height:1;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--atlas-ink) 18%,transparent);
+}
+.treemap-founder-circle img { width:100%; height:100%; object-fit:cover; }
+.treemap-tile.tiny .treemap-tile-founders { display:none; }
+.treemap-card .treemap-founder-circle { width:22px; height:22px; font-size:10px; }
 .treemap-tile.compact .treemap-tile-inner { padding:8px; }
 .treemap-tile.compact .treemap-tile-identity { gap:5px; }
 .treemap-tile.compact .treemap-tile-name { font-size:15px; }

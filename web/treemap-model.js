@@ -185,6 +185,41 @@ export function tileTicker(tile) {
   return tile.width >= 100 && tile.height >= 96 ? `${exchange}: ${ticker}` : '';
 }
 
+const personInitials = name => String(name || '').trim().split(/\s+/).slice(0, 2)
+  .map(word => Array.from(word)[0] || '').join('').toUpperCase();
+
+// Every startup's founders, keyed by startup id, under the same evidence
+// rules companyContext applies: a 'founded' edge with an HTTPS source, a
+// person entity at its head, deduplicated per company. A founder's photo is
+// carried only when the graph holds both the image and its HTTPS source;
+// otherwise the entry falls back to initials. Nothing is fetched or invented.
+export function indexFounders(graph) {
+  const people = new Map((graph.entities || []).filter(entity => entity.kind === 'person')
+    .map(person => [person.id, person]));
+  const founders = new Map(), seen = new Set();
+  for (const edge of graph.edges || []) {
+    if (edge.kind !== 'founded' || !source(edge.source)) continue;
+    const person = people.get(edge.from);
+    if (!person || seen.has(`${person.id}→${edge.to}`)) continue;
+    seen.add(`${person.id}→${edge.to}`);
+    if (!founders.has(edge.to)) founders.set(edge.to, []);
+    founders.get(edge.to).push({
+      id:person.id, name:person.name, initials:personInitials(person.name),
+      photo:source(person.logo_source) && source(person.logo) ? person.logo : '',
+    });
+  }
+  return founders;
+}
+
+// The founder circles a tile can carry: all of the company's founders when
+// the tile is large enough for one more line, [] otherwise. Calibrated like
+// tileTicker to the default board, whose narrow columns run ~100-130px wide;
+// below that the row would crowd the name and value it sits between.
+export function tileFounders(tile, founders) {
+  if (!tile || !Array.isArray(founders) || !founders.length) return [];
+  return tile.width >= 100 && tile.height >= 120 ? founders : [];
+}
+
 export function makeView(graph, {metric = 'valuation', currency = 'USD', query = '', period = 'all', group:grouping = 'decade', dimensions, companies = graph.entities, marketCaps = [], companyValues = new Map()} = {}) {
   const population = matchingCompanies(companies, query).filter(entity => period === 'all' || cohort(entity) === period);
   const rows = [], missing = [], missingFigures = new Map(), groups = new Map();
