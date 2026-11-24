@@ -148,3 +148,13 @@ Use the [existing image intake and rights review](../contracts/mcp_assets/README
 Retain the dated company-profile packet for review. The exact candidate and source fields stay in that packet. The offline replay records page outcomes and the SHA-256 of the original packet. Use the digest to find the packet when reviewing the accompanying evidence.
 
 PsiQuantum's homepage links LinkedIn, X and YouTube. Its official `/press-materials` page offers credited logo downloads, but `/terms-conditions` restricts copying/display and trademark use without permission. The directory links the press source without copying or embedding those logos. The source link is not a licence or an assertion that rights have cleared.
+
+### Partner team portrait leads
+
+Partner team pages may label an image with only a person's name. Where the
+full label agrees with a single same-page people lead and its same-host
+profile slug, and the image URL and label are unambiguous, retain it with
+`binding_evidence: team-alt-and-profile-slug`. Explicit `Photo of …` matches
+retain priority. Multiple URLs or conflicting names withhold the plain-label
+binding. This is review-only metadata: no portrait bytes, identity or rights
+are verified by it, and company portrait capture is unchanged.

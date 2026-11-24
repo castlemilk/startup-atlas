@@ -2109,7 +2109,10 @@ def bind_profile_headshot_candidates(candidates, asset_hosts=None):
     fetched or published here — and its fetch eligibility follows the same
     rule as professional-bio candidates: the page's own host or one of the
     seed's per-seed ``asset_hosts`` is reviewable, any other external host
-    requires separate review. The first matching image per person wins.
+    requires separate review. Explicit captions keep their existing priority.
+    A plain full-name alt can also be a lead on a team page when it agrees
+    with one same-page person and their same-host profile URL slug, and one
+    unambiguous image URL. Neither form verifies identity or grants access.
     Returns the number of bindings made.
     """
     asset_hosts = asset_hosts or {}
@@ -2117,9 +2120,41 @@ def bind_profile_headshot_candidates(candidates, asset_hosts=None):
     for row in candidates:
         if row.get('kind') == 'people':
             key = (row.get('partner'), row.get('source_url'),
-                   (row.get('name') or '').casefold())
+                   _normalise_profile_name(row.get('name')))
             people.setdefault(key, row)
+    people_urls = {}
+    plain_images = {}
+    labels_by_url = {}
+    for row in candidates:
+        partner, source = row.get('partner'), row.get('source_url')
+        name = _normalise_profile_name(row.get('name'))
+        url = row.get('candidate_url')
+        key = (partner, source, name)
+        if row.get('kind') == 'people':
+            people_urls.setdefault(key, set()).add(url)
+        elif row.get('kind') == 'image' and url and name:
+            labels_by_url.setdefault((partner, source, url), set()).add(
+                _normalise_profile_name(headshot_person_name(row.get('name')) or name))
+            if row.get('page_kind') == 'people':
+                plain_images.setdefault(key, []).append(row)
     bindings = 0
+
+    def bind(row, target, person, evidence):
+        nonlocal bindings
+        url = row.get('candidate_url')
+        host = (urlsplit(url).hostname or '').lower() if url else ''
+        source_host = (urlsplit(row.get('source_url') or '').hostname or '').lower()
+        approved = asset_hosts.get(row.get('partner')) or []
+        target['headshot_candidate'] = {
+            'candidate_url': url, 'source_url': row.get('source_url'),
+            'status': 'not_fetched', 'review_required': True,
+            'binding_evidence': evidence,
+            'reason': ('Rights and image review required'
+                       if host == source_host or host in approved
+                       else 'External asset host requires separate review')}
+        row.update(headshot=True, person_name=person, bound_person=target.get('name'))
+        bindings += 1
+
     for row in candidates:
         if row.get('kind') != 'image':
             continue
@@ -2127,23 +2162,30 @@ def bind_profile_headshot_candidates(candidates, asset_hosts=None):
         if person is None:
             continue
         target = people.get((row.get('partner'), row.get('source_url'),
-                             person.casefold()))
-        if target is None or 'headshot_candidate' in target:
+                             _normalise_profile_name(person)))
+        if target is not None and 'headshot_candidate' not in target:
+            bind(row, target, person, 'explicit-photo-alt')
+    for key, rows in plain_images.items():
+        partner, source, name = key
+        if not source or len(name.split()) < 2 or len(people_urls.get(key, ())) != 1:
             continue
-        url = row.get('candidate_url')
-        host = (urlsplit(url).hostname or '').lower() if url else ''
-        source_host = (urlsplit(row.get('source_url') or '').hostname
-                       or '').lower()
-        approved = asset_hosts.get(row.get('partner')) or []
-        target['headshot_candidate'] = {
-            'candidate_url': url, 'source_url': row.get('source_url'),
-            'status': 'not_fetched', 'review_required': True,
-            'reason': ('Rights and image review required'
-                       if host == source_host or host in approved
-                       else 'External asset host requires separate review')}
-        row.update(headshot=True, person_name=person,
-                   bound_person=target.get('name'))
-        bindings += 1
+        target = people[key]
+        profile = target.get('candidate_url')
+        if not profile or 'headshot_candidate' in target:
+            continue
+        parts = urlsplit(profile)
+        if (parts.scheme != 'https' or parts.netloc != urlsplit(source).netloc
+                or not PROFILE_PATH_RULES['people'].search(parts.path)
+                or _normalise_profile_name(slug_derived_name(profile)) != name):
+            continue
+        urls = {row['candidate_url'] for row in rows}
+        if len(urls) != 1 or any(row.get('label_distinct_image_paths', 0) > 1
+                                 for row in rows):
+            continue
+        row = rows[0]
+        if labels_by_url[(partner, source, row['candidate_url'])] != {name}:
+            continue
+        bind(row, target, target['name'], 'team-alt-and-profile-slug')
     return bindings
 
 
