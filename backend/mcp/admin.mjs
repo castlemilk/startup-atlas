@@ -120,6 +120,103 @@ export class QueueFileStore {
   }
 }
 
+const IDENTITY_KEY_MARKERS = ['host', 'linkedin', 'website'];
+
+/**
+ * Would this pending entry auto-proceed under the gating config?
+ * Mirrors scripts/review_gating.py check_entry(): the same per-kind
+ * rules, so the panel and the admin MCP report the same verdict the
+ * queue build's auto-gate applied. Returns { auto, threshold, reason }
+ * — auto is true only when the entry would be (or was eligible to be)
+ * auto-approved; kinds with no threshold never auto-proceed.
+ */
+export function gatingVerdict(entry, gating) {
+  if (!gating || gating.enabled === false) return { auto: false, threshold: null, reason: 'confidence gating is disabled or not configured' };
+  const rule = (gating.kinds ?? {})[entry?.kind];
+  if (!rule) return { auto: false, threshold: null, reason: `no gating rule for kind ${entry?.kind}` };
+  const threshold = rule.auto_approve_at ?? null;
+  if (threshold === null) return { auto: false, threshold: null, reason: `${entry.kind} entries never auto-proceed in this config` };
+  const confidence = Number(entry?.confidence);
+  if (!Number.isFinite(confidence) || confidence < threshold) {
+    return { auto: false, threshold, reason: `confidence ${Number.isFinite(confidence) ? confidence.toFixed(2) : 'unknown'} is below the ${entry.kind} threshold ${Number(threshold).toFixed(2)}` };
+  }
+  if (entry.kind === 'merge' && rule.require_identity_key) {
+    const bases = (entry.candidates ?? []).map(c => String(c?.basis ?? '').toLowerCase());
+    if (!bases.some(basis => IDENTITY_KEY_MARKERS.some(marker => basis.includes(marker)))) {
+      return { auto: false, threshold, reason: 'no candidate basis carries a shared identity key (website host or LinkedIn); name similarity alone never auto-approves' };
+    }
+    return { auto: true, threshold, reason: `confidence ${confidence.toFixed(2)} >= ${entry.kind} threshold ${Number(threshold).toFixed(2)}; candidate basis carries a shared identity key` };
+  }
+  if (entry.kind === 'fact' && rule.require_complete_draft) {
+    const draft = entry.draft_round ?? {};
+    const missing = ['stage', 'amount', 'date', 'source_url'].filter(field => !draft[field]);
+    if (missing.length) return { auto: false, threshold, reason: `draft round is incomplete (missing ${missing.join(', ')})` };
+    return { auto: true, threshold, reason: `confidence ${confidence.toFixed(2)} >= ${entry.kind} threshold ${Number(threshold).toFixed(2)}; draft round is complete (stage, amount, date, source)` };
+  }
+  return { auto: true, threshold, reason: `confidence ${confidence.toFixed(2)} >= ${entry.kind} threshold ${Number(threshold).toFixed(2)}` };
+}
+
+/**
+ * The review queue as a service over a QueueFileStore: the ONE
+ * implementation of queue reads and decision write-back. The admin
+ * panel (cookie session, decided_by = the admin's email) and the admin
+ * MCP at /mcp/admin (decided_by = 'agent-review') both go through
+ * here, so a decision is the same record, the same commit convention
+ * and the same downstream effect whichever front door recorded it.
+ */
+export class ReviewQueue {
+  constructor(store) {
+    this.store = store;
+  }
+
+  async loadQueue() {
+    const { data, source } = await this.store.loadJson(QUEUE_PATH);
+    return { queue: data, source };
+  }
+
+  async loadGating() {
+    try { return (await this.store.loadJson(GATING_PATH)).data; } catch { return null; }
+  }
+
+  /** Record an approve/reject decision. `via` names the front door in the commit message. */
+  async decide({ id, decision, note = '', decidedBy, via }) {
+    return this.#mutate(id, (entry) => {
+      if (entry.status !== 'pending') fail('ALREADY_DECIDED', `Entry ${entry.id} is already ${entry.status}.`, 409);
+      if (!['approved', 'rejected'].includes(decision)) fail('BAD_REQUEST', 'decision must be "approved" or "rejected".', 400);
+      entry.status = decision;
+      entry.decided_by = decidedBy;
+      entry.decided_at = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
+      entry.decision_note = note ? String(note).slice(0, 500) : null;
+      return `review: ${entry.id} ${decision} via ${via}`;
+    });
+  }
+
+  /** Revert a decided entry to pending; the undo commit is its audit entry. */
+  async undo({ id, via }) {
+    return this.#mutate(id, (entry) => {
+      if (entry.status === 'pending') fail('NOT_DECIDED', `Entry ${entry.id} is not decided.`, 409);
+      const was = `${entry.status} by ${entry.decided_by}`;
+      entry.status = 'pending';
+      entry.decided_by = null;
+      entry.decided_at = null;
+      entry.decision_note = null;
+      return `review: ${entry.id} decision undone via ${via} (was ${was})`;
+    });
+  }
+
+  async #mutate(id, apply) {
+    const { data: queue, sha } = await this.store.loadJson(QUEUE_PATH);
+    const entry = (queue.entries ?? []).find(item => item.id === id);
+    if (!entry) fail('NOT_FOUND', `No queue entry with id ${id}.`, 404);
+    const message = apply(entry);
+    // Match scripts/build-review-queue.py save_queue(): entries sorted
+    // by id, so a decision write produces a minimal diff.
+    queue.entries = [...(queue.entries ?? [])].sort((a, b) => String(a.id).localeCompare(String(b.id)));
+    const result = await this.store.saveJson(QUEUE_PATH, queue, sha, message);
+    return { entry, commit: result.commit };
+  }
+}
+
 function parseCookies(header = '') {
   const cookies = {};
   for (const part of String(header).split(';')) {
@@ -258,6 +355,7 @@ export function createAdmin({ config, store }) {
     token: config.githubToken, repo: config.githubRepo, branch: config.githubBranch,
     apiBase: config.githubApiBase, fetchImpl: config.fetchImpl, root: config.root,
   });
+  const reviewQueue = new ReviewQueue(queueStore);
   const loginStates = new Map(); // state -> { nonce, verifier, createdAt }
   const sessions = new Map(); // token -> { email, sub, expiresAt }
 
@@ -414,49 +512,37 @@ export function createAdmin({ config, store }) {
     }
   }
 
-  async function mutate(req, res, apply) {
+  function sendError(res, error, fallbackMessage) {
+    if (error instanceof AdminError) sendJson(res, error.status, { error: error.code.toLowerCase(), code: error.code, message: error.message });
+    else sendJson(res, 500, { error: 'internal', message: fallbackMessage });
+  }
+
+  async function handleDecide(req, res) {
     const record = requireSession(req, res);
     if (!record) return;
     try {
       const body = await readJsonBody(req);
-      const { data: queue, sha } = await queueStore.loadJson(QUEUE_PATH);
-      const entry = (queue.entries ?? []).find(item => item.id === body.id);
-      if (!entry) fail('NOT_FOUND', `No queue entry with id ${body.id}.`, 404);
-      const message = apply(entry, body, record);
-      // Match scripts/build-review-queue.py save_queue(): entries sorted
-      // by id, so a panel write produces a minimal diff.
-      queue.entries = [...(queue.entries ?? [])].sort((a, b) => String(a.id).localeCompare(String(b.id)));
-      const result = await queueStore.saveJson(QUEUE_PATH, queue, sha, message);
-      sendJson(res, 200, { ok: true, entry, commit: result.commit });
+      const { entry, commit } = await reviewQueue.decide({
+        id: body.id, decision: body.decision,
+        note: typeof body.note === 'string' ? body.note : '',
+        decidedBy: record.email, via: 'admin panel',
+      });
+      sendJson(res, 200, { ok: true, entry, commit });
     } catch (error) {
-      if (error instanceof AdminError) sendJson(res, error.status, { error: error.code.toLowerCase(), code: error.code, message: error.message });
-      else sendJson(res, 500, { error: 'internal', message: 'The decision could not be recorded.' });
+      sendError(res, error, 'The decision could not be recorded.');
     }
   }
 
-  async function handleDecide(req, res) {
-    await mutate(req, res, (entry, body, record) => {
-      if (entry.status !== 'pending') fail('ALREADY_DECIDED', `Entry ${entry.id} is already ${entry.status}.`, 409);
-      if (!['approved', 'rejected'].includes(body.decision)) fail('BAD_REQUEST', 'decision must be "approved" or "rejected".', 400);
-      const note = typeof body.note === 'string' ? body.note.slice(0, 500) : '';
-      entry.status = body.decision;
-      entry.decided_by = record.email;
-      entry.decided_at = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
-      entry.decision_note = note || null;
-      return `review: ${entry.id} ${body.decision} via admin panel`;
-    });
-  }
-
   async function handleUndo(req, res) {
-    await mutate(req, res, (entry) => {
-      if (entry.status === 'pending') fail('NOT_DECIDED', `Entry ${entry.id} is not decided.`, 409);
-      const was = `${entry.status} by ${entry.decided_by}`;
-      entry.status = 'pending';
-      entry.decided_by = null;
-      entry.decided_at = null;
-      entry.decision_note = null;
-      return `review: ${entry.id} decision undone via admin panel (was ${was})`;
-    });
+    const record = requireSession(req, res);
+    if (!record) return;
+    try {
+      const body = await readJsonBody(req);
+      const { entry, commit } = await reviewQueue.undo({ id: body.id, via: 'admin panel' });
+      sendJson(res, 200, { ok: true, entry, commit });
+    } catch (error) {
+      sendError(res, error, 'The decision could not be recorded.');
+    }
   }
 
   async function handle(req, res, url) {
@@ -481,5 +567,5 @@ export function createAdmin({ config, store }) {
     }
   }
 
-  return { handle, sessions, loginStates, queueStore };
+  return { handle, sessions, loginStates, queueStore, reviewQueue };
 }

@@ -26,6 +26,12 @@
  *    `atlas_create_issue` additionally needs ATLAS_GITHUB_TOKEN; without
  *    it the tool reports GITHUB_TOKEN_MISSING and files nothing.
  *
+ * A separate admin MCP surface lives at /mcp/admin (admin-mcp.mjs): the
+ * same Bearer verification, but the identity must additionally be on
+ * the admin allow-list, and it exposes only the review-queue tools so
+ * the assistant can decide queue items itself (decided_by
+ * 'agent-review') through the panel's write-back path.
+ *
  * Nothing here triggers a crawl, fetches a source, shells out or runs
  * Git. The crawl registry stays advisory, exactly as in the stdio
  * server. The one exception is `atlas_create_issue`, which calls the
@@ -44,6 +50,7 @@ import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/
 import { CatalogueStore } from './store.mjs';
 import { createServer, WRITE_TOOLS } from './server.mjs';
 import { createAdmin } from './admin.mjs';
+import { ADMIN_TOOLS, createAdminServer } from './admin-mcp.mjs';
 import {
   GOOGLE_JWKS_URL,
   GOOGLE_TOKENINFO_URL,
@@ -185,10 +192,13 @@ function isLoopbackRedirect(uri) {
 export function createHttpHandler(store, config, stores = createOAuthStores()) {
   validateConfig(config);
   const sessions = new Map();
+  const adminSessions = new Map();
   const issuer = new URL(config.baseUrl);
   const mcpResource = `${config.baseUrl}/mcp`;
+  const adminMcpResource = `${config.baseUrl}/mcp/admin`;
   const scopesSupported = ['openid', 'email', 'profile'];
   const resourceMetadataUrl = `${config.baseUrl}/.well-known/oauth-protected-resource/mcp`;
+  const adminResourceMetadataUrl = `${config.baseUrl}/.well-known/oauth-protected-resource/mcp/admin`;
   const sweepTimer = setInterval(() => sweep(stores), 5 * 60 * 1000);
   sweepTimer.unref();
 
@@ -244,6 +254,74 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       token: match[1], clientId: identity.clientId, scopes: identity.scopes,
       expiresAt: undefined, extra: { email: identity.email, sub: identity.sub, authMethod: identity.source },
     };
+  }
+
+  /**
+   * The admin MCP's gate is stricter than /mcp's: the Bearer token must
+   * verify the same way, but the identity must be on the ADMIN
+   * allow-list (ATLAS_ADMIN_EMAILS, falling back to
+   * ATLAS_GOOGLE_WRITE_EMAILS) — an ordinary allow-listed reader gets
+   * 403 here. Fail-closed exactly like the panel's callback check.
+   */
+  async function authenticateAdmin(req, res) {
+    const header = req.headers.authorization ?? '';
+    const match = /^Bearer\s+(\S+)$/.exec(header);
+    if (!match) {
+      res.writeHead(401, { 'www-authenticate': `Bearer resource_metadata="${adminResourceMetadataUrl}", error="invalid_token", error_description="A Bearer token is required."`, 'content-type': 'application/json' });
+      res.end(JSON.stringify({ error: 'unauthorized', message: 'A Bearer token is required. Authenticate with Google first; see docs/MCP-HTTP.md.' }));
+      return null;
+    }
+    const identity = await resolveBearer(match[1]);
+    if (!identity) {
+      res.writeHead(401, { 'www-authenticate': `Bearer resource_metadata="${adminResourceMetadataUrl}", error="invalid_token", error_description="The Bearer token did not verify."`, 'content-type': 'application/json' });
+      res.end(JSON.stringify({ error: 'unauthorized', message: 'The Bearer token did not verify as a Google identity or an issued MCP token.' }));
+      return null;
+    }
+    if (!isEmailAllowed(identity.email, config.adminEmails)) {
+      sendJson(res, 403, { error: 'forbidden', message: 'This Google account is not the Atlas admin. The admin MCP serves the admin account only.' });
+      return null;
+    }
+    return {
+      token: match[1], clientId: identity.clientId, scopes: identity.scopes,
+      expiresAt: undefined, extra: { email: identity.email, sub: identity.sub, authMethod: identity.source },
+    };
+  }
+
+  async function handleAdminMcp(req, res) {
+    if (req.headers.origin && req.headers.origin !== issuer.origin) {
+      sendJson(res, 403, { error: 'forbidden', message: 'Unrecognized Origin for this MCP endpoint.' });
+      return;
+    }
+    const authInfo = await authenticateAdmin(req, res);
+    if (!authInfo) return;
+    const sessionId = req.headers['mcp-session-id'];
+    const { clientId, extra: { email, sub } } = authInfo;
+    let session = typeof sessionId === 'string' ? adminSessions.get(sessionId) : undefined;
+    if (sessionId !== undefined && (!session || session.clientId !== clientId || session.email !== email || session.sub !== sub)) {
+      sendJson(res, 404, { error: 'not_found', message: 'Unknown MCP session id.' });
+      return;
+    }
+    req.auth = authInfo;
+    if (req.method === 'POST') {
+      let body;
+      try { body = await readJsonBody(req); } catch (error) { sendJson(res, 400, { error: 'bad_request', message: error.message }); return; }
+      if (!session) {
+        const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: () => randomUUID() });
+        const server = createAdminServer({ config });
+        transport.onclose = () => { if (transport.sessionId) adminSessions.delete(transport.sessionId); };
+        await server.connect(transport);
+        session = { transport, clientId, email, sub };
+      }
+      await session.transport.handleRequest(req, res, body);
+      if (session.transport.sessionId) adminSessions.set(session.transport.sessionId, session);
+      return;
+    }
+    if (req.method === 'GET' || req.method === 'DELETE') {
+      if (!session) { sendJson(res, 404, { error: 'not_found', message: 'Unknown MCP session id.' }); return; }
+      await session.transport.handleRequest(req, res);
+      return;
+    }
+    sendJson(res, 405, { error: 'method_not_allowed', message: 'Use POST, GET or DELETE on /mcp/admin.' });
   }
 
   function writeAuthorizer(authInfo, toolName) {
@@ -337,8 +415,8 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
     const codeChallenge = params.get('code_challenge') ?? '';
     if (params.get('code_challenge_method') !== 'S256' || !codeChallenge) { sendOAuthError(res, 400, 'invalid_request', 'PKCE code_challenge with method S256 is required.'); return; }
     const resource = params.get('resource');
-    if (resource && resource !== mcpResource && resource !== config.baseUrl) {
-      sendOAuthError(res, 400, 'invalid_target', `resource must be ${mcpResource}.`);
+    if (resource && resource !== mcpResource && resource !== adminMcpResource && resource !== config.baseUrl) {
+      sendOAuthError(res, 400, 'invalid_target', `resource must be ${mcpResource} or ${adminMcpResource}.`);
       return;
     }
     const scope = (params.get('scope') ?? '').split(/\s+/).filter(Boolean);
@@ -498,12 +576,17 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       const url = new URL(req.url ?? '/', config.baseUrl);
       const pathname = url.pathname;
       if (pathname === '/health' && req.method === 'GET') {
-        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 17, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken), adminEnabled: oauthEnabled, adminQueueWriteConfigured: Boolean(config.githubToken) });
+        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 17, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken), adminEnabled: oauthEnabled, adminQueueWriteConfigured: Boolean(config.githubToken), adminMcpEnabled: true, adminTools: ADMIN_TOOLS.length });
         return;
       }
       if (pathname === '/admin' || pathname.startsWith('/admin/')) { await admin.handle(req, res, url); return; }
+      if (pathname === '/mcp/admin') { await handleAdminMcp(req, res); return; }
       if (pathname === '/mcp') { await handleMcp(req, res); return; }
       if (pathname === '/.well-known/oauth-authorization-server' && req.method === 'GET') { sendJson(res, 200, oauthMetadata()); return; }
+      if (pathname === '/.well-known/oauth-protected-resource/mcp/admin' && req.method === 'GET') {
+        sendJson(res, 200, { resource: adminMcpResource, authorization_servers: [config.baseUrl], scopes_supported: scopesSupported, bearer_methods_supported: ['header'] });
+        return;
+      }
       if ((pathname === '/.well-known/oauth-protected-resource' || pathname === '/.well-known/oauth-protected-resource/mcp') && req.method === 'GET') {
         sendJson(res, 200, { resource: mcpResource, authorization_servers: [config.baseUrl], scopes_supported: scopesSupported, bearer_methods_supported: ['header'] });
         return;
