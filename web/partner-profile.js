@@ -207,6 +207,10 @@ async function renderProfile() {
   evidence.install(root);
   if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
   document.title = name + ' — Startup Atlas';
+  const pageDescription = (record?.description || '').trim() || 'Explore sourced partner profiles, people, companies and programme relationships.';
+  document.querySelector('meta[name="description"]')?.setAttribute('content', pageDescription);
+  for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) document.querySelector(selector)?.setAttribute('content', document.title);
+  for (const selector of ['meta[property="og:description"]', 'meta[name="twitter:description"]']) document.querySelector(selector)?.setAttribute('content', pageDescription);
 }
 
 try { await renderProfile(); } catch {

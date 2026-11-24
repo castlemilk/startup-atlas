@@ -370,6 +370,10 @@ async function renderProfile() {
   });
   if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
   document.title = entity.name + ' — Startup Atlas';
+  const pageDescription = (entity.summary || '').trim() || 'Explore the people, startups and programmes connected across Startup Atlas.';
+  document.querySelector('meta[name="description"]')?.setAttribute('content', pageDescription);
+  for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) document.querySelector(selector)?.setAttribute('content', document.title);
+  for (const selector of ['meta[property="og:description"]', 'meta[name="twitter:description"]']) document.querySelector(selector)?.setAttribute('content', pageDescription);
 }
 
 try { await renderProfile(); } catch {
