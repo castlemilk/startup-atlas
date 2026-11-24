@@ -2,18 +2,126 @@
 html { scroll-padding-top: 24px; scrollbar-gutter: stable; }
 body { font-family: var(--atlas-font-body); color: var(--atlas-ink); background: var(--atlas-canvas); }
 body.atlas-directory-page, body.atlas-treemap-page, body.atlas-graph-page, body.atlas-entity-page, body.atlas-partner-page { background: var(--atlas-paper); }
-/* Route globals the legacy styles.css used to supply (de-slop #433a). Scoped
-   to the five routes that loaded it; list.html keeps styles.css until #433b.
-   The :where() gates keep the original element-level specificity, so classed
-   component rules win exactly as they did under the legacy sheet. */
-:root:has(> body:is(.atlas-entity-page, .atlas-partner-page, .atlas-graph-page, .atlas-query-page, .atlas-treemap-page)) { scroll-behavior: smooth; font-synthesis: none; }
-body:is(.atlas-entity-page, .atlas-partner-page, .atlas-graph-page, .atlas-query-page, .atlas-treemap-page) { margin: 0; -webkit-font-smoothing: antialiased; }
-:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) a { color: inherit; }
-:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) :where(button, input, select) { font: inherit; }
+/* Route globals the legacy styles.css used to supply (de-slop #433a, #433b).
+   Scoped to the routes that loaded it. The :where() gates keep the original
+   element-level specificity, so classed component rules win exactly as they
+   did under the legacy sheet. */
+:root:has(> body:is(.atlas-entity-page, .atlas-partner-page, .atlas-graph-page, .atlas-query-page, .atlas-treemap-page, .atlas-directory-page)) { scroll-behavior: smooth; font-synthesis: none; }
+body:is(.atlas-entity-page, .atlas-partner-page, .atlas-graph-page, .atlas-query-page, .atlas-treemap-page, .atlas-directory-page) { margin: 0; -webkit-font-smoothing: antialiased; }
+:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page, body.atlas-directory-page) a { color: inherit; }
+:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page, body.atlas-directory-page) :where(button, input, select) { font: inherit; }
 :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) > .skip-link { position: absolute; z-index: 20; top: 8px; left: 8px; padding: 12px; color: var(--atlas-ink); background: var(--atlas-surface); transform: translateY(-150%); }
 :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) > .skip-link:focus { transform: none; }
-:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page, body.atlas-directory-page) .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 :where(body.atlas-query-page) .noscript { padding: 20px; background: var(--atlas-surface); }
+/* Directory rules the legacy styles.css used to supply (de-slop #433b).
+   list.html was the last app page loading styles.css. Only the declarations
+   that actually won the cascade on this route were carried over, verbatim,
+   behind the same :where() route gate the #433a globals use, so every other
+   sheet keeps winning exactly where it won before. The legacy --font-ui
+   custom property is still consumed by atlas-view.css and
+   gamma-components.css on this route, so it is re-homed here. */
+:root:has(> body.atlas-directory-page) { --font-ui: "Avenir Next", Avenir, "Segoe UI", sans-serif; font-family: var(--font-ui); }
+:where(body.atlas-directory-page) .skip-link { position: absolute; z-index: 20; top: 8px; left: 8px; background: white; padding: 12px; transform: translateY(-150%); }
+:where(body.atlas-directory-page) .skip-link:focus { transform: none; }
+:where(body.atlas-directory-page) .workspace { max-width: 1440px; margin: 0 auto; padding: 70px max(5vw, 28px) 85px; scroll-margin-top: 20px; }
+:where(body.atlas-directory-page) .intro { background: var(--navy); color: white; min-height: 380px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; padding: 54px max(8vw, 28px) 0; position: relative; isolation: isolate; }
+:where(body.atlas-directory-page) .intro-copy { position: relative; z-index: 1; }
+:where(body.atlas-directory-page) :is(.eyebrow, .section-kicker) { font-size: 11px; letter-spacing: .08em; font-weight: 600; }
+:where(body.atlas-directory-page) .eyebrow { color: #bdc8e0; display: flex; align-items: center; gap: 10px; }
+:where(body.atlas-directory-page) .eyebrow-line { width: 24px; height: 1px; background: #99aaf1; }
+:where(body.atlas-directory-page) .intro-copy p { font-size: 15px; line-height: 1.7; color: #b6c1d5; max-width: 435px; margin: 0; }
+:where(body.atlas-directory-page) .intro-link { display: inline-flex; gap: 24px; align-items: center; color: #fff; font-weight: 700; text-decoration: none; font-size: 12px; border-bottom-width: 1px; border-bottom-style: solid; }
+:where(body.atlas-directory-page) .intro-link span { color: #aabaf5; font-size: 18px; }
+:where(body.atlas-directory-page) .metrics { min-height: 91px; background: #e9edf7; display: flex; align-items: center; padding: 15px max(8vw, 28px); gap: 0; }
+:where(body.atlas-directory-page) .metrics > div { display: flex; align-items: center; gap: 11px; padding-right: 46px; margin-right: 46px; border-right: 1px solid #cbd3e4; }
+:where(body.atlas-directory-page) .metrics span { color: #5a6881; font-size: 11px; line-height: 1.4; max-width: 94px; }
+:where(body.atlas-directory-page) .mode-switch { display: flex; gap: 6px; border-bottom: 1px solid #d4ddea; margin-bottom: 25px; overflow-x: auto; }
+:where(body.atlas-directory-page) .mode { border: 0; background: transparent; padding: 14px 18px 16px; color: #6c7990; font-weight: 700; font-size: 13px; white-space: nowrap; border-bottom: 2px solid transparent; }
+:where(body.atlas-directory-page) .mode:first-child { padding-left: 2px; padding-right: 23px; }
+:where(body.atlas-directory-page) .mode span:last-child { font-size: 10px; padding: 3px 7px; border-radius: 20px; background: #e5eaf3; color: #566780; margin-left: 5px; }
+:where(body.atlas-directory-page) .mode.saved-mode { margin-left: auto; }
+:where(body.atlas-directory-page) .mode:focus-visible { outline: 2px solid var(--focus); outline-offset: -4px; border-radius: 5px; }
+:where(body.atlas-directory-page) .filters { padding: 5px 0; }
+:where(body.atlas-directory-page) .filter-heading { display: flex; align-items: center; justify-content: space-between; }
+:where(body.atlas-directory-page) .text-button { border: 0; background: none; font-size: 11px; padding: 6px 0; font-weight: 700; }
+:where(body.atlas-directory-page) .filter-group { border-top: 1px solid var(--line); padding: 21px 0; }
+:where(body.atlas-directory-page) .filter-group > label:not(.check-label) { display: block; font-weight: 750; }
+:where(body.atlas-directory-page) .filter-group p { color: #748198; font-size: 11px; line-height: 1.55; margin: 0 0 11px; }
+:where(body.atlas-directory-page) .filter-group select { width: 100%; background: white; border: 1px solid #d9e1ed; border-radius: 7px; color: #33415b; padding: 11px 30px 11px 10px; font-size: 12px; min-height: 42px; }
+:where(body.atlas-directory-page) .check-label { display: flex; align-items: flex-start; gap: 7px; margin-top: 12px; color: #627087; font-size: 11px; line-height: 1.4; }
+:where(body.atlas-directory-page) .check-label input { accent-color: #405dd7; margin: 1px 0; }
+:where(body.atlas-directory-page) .filter-explainer { background: #e6ecfa; border-radius: 9px; padding: 17px; color: #3c518b; font-size: 11px; line-height: 1.6; }
+:where(body.atlas-directory-page) .filter-explainer strong { display: block; color: #263c79; }
+:where(body.atlas-directory-page) .filter-explainer p { margin: 6px 0 0; }
+:where(body.atlas-directory-page) .explainer-symbol { font-size: 17px; display: block; margin-bottom: 7px; }
+:where(body.atlas-directory-page) .search-wrap svg { width: 18px; stroke: #7687a0; stroke-width: 1.7; fill: none; flex: none; }
+:where(body.atlas-directory-page) .search-wrap input::-webkit-search-cancel-button { -webkit-appearance: none; }
+:where(body.atlas-directory-page) .clear-search { border: 0; background: #e9eef7; border-radius: 50%; width: 24px; height: 24px; color: #34435b; font-size: 18px; line-height: 1; }
+:where(body.atlas-directory-page) .result-label { font-size: 10px; letter-spacing: 1.3px; font-weight: 800; color: #566782; }
+:where(body.atlas-directory-page) .result-count { font-size: 11px; color: #8a98aa; margin-left: 10px; }
+:where(body.atlas-directory-page) .sort-label { font-size: 11px; color: #8190a4; white-space: nowrap; }
+:where(body.atlas-directory-page) .inline-note { display: flex; align-items: flex-start; gap: 10px; padding: 11px 13px; border: 1px solid #d9e2f2; border-radius: 7px; background: #edf2fc; color: #5c6d8e; margin-bottom: 12px; font-size: 11px; line-height: 1.5; }
+:where(body.atlas-directory-page) .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+:where(body.atlas-directory-page) .card:not(.opportunity-row) { background: #fff; border: 1px solid #dfe7f0; border-radius: 9px; padding: 19px; box-shadow: var(--shadow); display: flex; flex-direction: column; min-width: 0; animation: atlas-rise .55s both; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+:where(body.atlas-directory-page) .card:not(.opportunity-row):hover { border-color: #bdcbed; transform: translateY(-3px); box-shadow: 0 14px 32px rgba(23, 43, 75, .09); }
+:where(body.atlas-directory-page) .card:nth-child(2) { animation-delay: 55ms; }
+:where(body.atlas-directory-page) .card:nth-child(3) { animation-delay: 110ms; }
+:where(body.atlas-directory-page) .card:nth-child(4) { animation-delay: 165ms; }
+:where(body.atlas-directory-page) .card:nth-child(5) { animation-delay: 220ms; }
+:where(body.atlas-directory-page) .card:nth-child(6) { animation-delay: 275ms; }
+@keyframes atlas-rise { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
+:where(body.atlas-directory-page) .identity { display: flex; gap: 11px; min-width: 0; }
+:where(body.atlas-directory-page) .card h3 { font-size: 15px; letter-spacing: -.2px; line-height: 1.3; margin: 0 0 4px; }
+:where(body.atlas-directory-page) .provider { color: #8a98aa; font-size: 11px; }
+:where(body.atlas-directory-page) .save { border: 1px solid #e0e7f0; background: #fff; border-radius: 7px; color: #71809a; width: 32px; height: 32px; flex: none; font-size: 18px; line-height: 1; }
+:where(body.atlas-directory-page) .save:hover { background: #f0f3fc; color: #394fb7; }
+:where(body.atlas-directory-page) .card-summary { font-size: 12px; line-height: 1.6; color: #697890; margin: 8px 0 15px; min-height: 39px; }
+:where(body.atlas-directory-page) .lead-card .card-summary { min-height: auto; }
+:where(body.atlas-directory-page) .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+:where(body.atlas-directory-page) .details-body { font-size: 11px; color: #65748b; line-height: 1.6; padding: 10px 0 1px; }
+:where(body.atlas-directory-page) .sources { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+:where(body.atlas-directory-page) :is(.empty, .error, .loading) { grid-column: 1 / -1; background: #fff; border: 1px solid var(--line); border-radius: 9px; padding: 36px 24px; text-align: center; color: #687991; font-size: 13px; line-height: 1.6; }
+:where(body.atlas-directory-page) .load-more-wrap { text-align: center; }
+:where(body.atlas-directory-page) .load-more { margin-top: 22px; border: 1px solid #c8d4e8; border-radius: 7px; background: white; color: #2e438c; font-size: 12px; font-weight: 750; padding: 11px 20px; }
+:where(body.atlas-directory-page) .load-more span { margin-left: 14px; }
+:where(body.atlas-directory-page) .method { background: #dfe7f5; padding: 55px max(8vw, 28px); display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; }
+:where(body.atlas-directory-page) .method h2 { font-size: 37px; letter-spacing: -1.8px; line-height: 1.15; margin: 15px 0; }
+:where(body.atlas-directory-page) .method p { font-size: 13px; line-height: 1.8; color: #57677f; margin: 0 0 12px; max-width: 650px; }
+:where(body.atlas-directory-page) .method a { display: inline-block; margin-top: 10px; font-size: 12px; color: #304bb8; font-weight: 750; text-decoration: none; }
+:where(body.atlas-directory-page) .method a:hover { text-decoration: underline; }
+:where(body.atlas-directory-page) .footer-brand { font-size: 16px; color: white; font-weight: 750; letter-spacing: -.5px; }
+:where(body.atlas-directory-page) .footer-brand span { font-weight: 350; }
+:where(body.atlas-directory-page) footer > span:last-child { letter-spacing: 1px; }
+:where(body.atlas-directory-page) .related-link { margin-top: auto; align-self: flex-start; border: 0; border-top: 1px solid #edf0f5; width: 100%; padding: 12px 0 0; background: transparent; color: #4257ad; text-align: left; font-size: 11px; font-weight: 750; }
+:where(body.atlas-directory-page) .related-link:hover { text-decoration: underline; }
+:where(body.atlas-directory-page) .lead-sources { display: flex; gap: 14px; flex-wrap: wrap; margin: -4px 0 14px; }
+:where(body.atlas-directory-page) .noscript { padding: 20px; background: #fff; }
+:where(body.atlas-directory-page) .noscript a { color: #304ed8; }
+@media (max-width: 900px) {
+  :where(body.atlas-directory-page) .cards { grid-template-columns: 1fr; }
+  :where(body.atlas-directory-page) .card-summary { min-height: auto; }
+  :where(body.atlas-directory-page) .method { gap: 30px; }
+}
+@media (max-width: 650px) {
+  :where(body.atlas-directory-page) .intro { display: block; min-height: 0; padding-top: 44px; }
+  :where(body.atlas-directory-page) .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 20px; padding-bottom: 20px; }
+  :where(body.atlas-directory-page) .metrics > div { padding-right: 0; margin-right: 0; border: 0; }
+  :where(body.atlas-directory-page) .workspace { padding-top: 48px; padding-bottom: 55px; }
+  :where(body.atlas-directory-page) .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; margin-bottom: 20px; }
+  :where(body.atlas-directory-page) .filter-heading { grid-column: 1 / -1; margin-bottom: 0; }
+  :where(body.atlas-directory-page) .filter-group { padding: 14px 0; border-top: 0; }
+  :where(body.atlas-directory-page) .filter-explainer { display: none; }
+  :where(body.atlas-directory-page) .filter-group p { margin-bottom: 7px; }
+  :where(body.atlas-directory-page) .mode.saved-mode { margin-left: 0; }
+  :where(body.atlas-directory-page) .result-count { display: block; margin: 4px 0 0; }
+  :where(body.atlas-directory-page) .method { grid-template-columns: 1fr; gap: 10px; padding-top: 40px; padding-bottom: 40px; }
+  :where(body.atlas-directory-page) .method h2 { font-size: 31px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(body.atlas-directory-page) .card { animation: none !important; transition: none; }
+  :where(body.atlas-directory-page) .card:not(.opportunity-row) { animation: none !important; transition: none; }
+}
 *, *::before, *::after { box-sizing: border-box; }
 * { scrollbar-width: thin; scrollbar-color: var(--atlas-scroll-thumb) var(--atlas-scroll-track); }
 *::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -177,11 +285,11 @@ footer { background: var(--atlas-ink); color: var(--atlas-soft); font-size: 11px
 .footer-brand { font-family: var(--atlas-font-display); color: var(--atlas-on-action); letter-spacing: -.025em; }
 /* Footer layout the legacy styles.css used to supply on the profile and
    treemap routes (de-slop #433a); colours stay with the footer rule above. */
-:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page) footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px max(8vw, 28px); }
+:where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page, body.atlas-directory-page) footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px max(8vw, 28px); }
 @media (max-width: 650px) {
-  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page) footer { flex-wrap: wrap; }
-  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page) footer > span:nth-child(2) { flex-basis: 65%; }
-  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page) footer > span:last-child { flex-basis: 100%; }
+  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page, body.atlas-directory-page) footer { flex-wrap: wrap; }
+  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page, body.atlas-directory-page) footer > span:nth-child(2) { flex-basis: 65%; }
+  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-treemap-page, body.atlas-directory-page) footer > span:last-child { flex-basis: 100%; }
 }
 footer a:focus-visible { outline-color: var(--atlas-on-action); }
 .atlas-view-nav { display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--atlas-border-strong); padding: 0 0 13px; margin: 0 0 24px; flex-wrap: wrap; }
@@ -335,8 +443,8 @@ footer a:focus-visible { outline-color: var(--atlas-on-action); }
   .atlas-button, .atlas-view-nav a { transition: none; }
   /* Reduced-motion globals the legacy styles.css used to supply on the five
      routes (de-slop #433a): smooth scroll off, all animation near-instant. */
-  :root:has(> body:is(.atlas-entity-page, .atlas-partner-page, .atlas-graph-page, .atlas-query-page, .atlas-treemap-page)) { scroll-behavior: auto; }
-  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page) :is(*, *::before, *::after) { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  :root:has(> body:is(.atlas-entity-page, .atlas-partner-page, .atlas-graph-page, .atlas-query-page, .atlas-treemap-page, .atlas-directory-page)) { scroll-behavior: auto; }
+  :where(body.atlas-entity-page, body.atlas-partner-page, body.atlas-graph-page, body.atlas-query-page, body.atlas-treemap-page, body.atlas-directory-page) :is(*, *::before, *::after) { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
 .atlas-button { min-height: 44px; border-color: var(--atlas-border-strong); border-radius: var(--atlas-radius-control); background: linear-gradient(var(--atlas-face-top),var(--atlas-face-bottom)); box-shadow: var(--atlas-shadow-control); font-family: var(--atlas-font-body); transition: box-shadow var(--atlas-duration-fast) var(--atlas-ease), transform var(--atlas-duration-fast) var(--atlas-ease); }
