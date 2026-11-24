@@ -6,6 +6,8 @@ import { entityDetails, entityHref, fundingTimelineArticles, kindName } from './
 import { icon, renderEvidenceHeading } from './atlas-ui.js';
 import { companyLocationFacts, countryName, indexCompanies } from './atlas-exploration.js';
 import { createProfileEvidence, profileSource, profileTime, recordedProfileDate } from './profile-evidence.js';
+import { installProfileTabs } from './profile-tabs.js';
+import { edgeKindLabel, microGraphLayout, microGraphNeighbours } from './micro-graph.js';
 
 const root = document.getElementById('entity-profile');
 const identity = new URLSearchParams(location.search).get('id') || '';
@@ -100,6 +102,22 @@ function foundingDiagram(entity, founders, graphHref) {
     </div>${founders.length > 3 ? `<p>Showing 3 of ${founders.length} recorded founders.</p>` : ''}
     <a class="atlas-button atlas-button-primary" data-atlas-profile-graph="${esc(entity.id)}" href="${graphHref}">Open full graph ${icon('arrow')}</a>
   </div></aside>`;
+}
+
+function microGraph(graph, entity) {
+  let model;
+  try { model = microGraphNeighbours(graph, entity.id); } catch { return ''; }
+  if (!model.neighbours.length) return '';
+  const { center, points } = microGraphLayout(model.neighbours.length);
+  const lines = model.neighbours.map((item, i) => `<line x1="${center.x}" y1="${center.y}" x2="${points[i].x}" y2="${points[i].y}" />`).join('');
+  const nodes = model.neighbours.map((item, i) => {
+    const label = item.entity.name.length > 16 ? `${item.entity.name.slice(0, 15)}…` : item.entity.name;
+    return `<a href="${esc(entityHref(item.entity))}" data-atlas-profile-link aria-label="${esc(item.entity.name)} — ${esc(edgeKindLabel(item.edge.kind))}"><circle cx="${points[i].x}" cy="${points[i].y}" r="17" class="entity-micro-dot entity-micro-kind-${esc(item.entity.kind)}" /><text x="${points[i].x}" y="${points[i].y}" class="entity-micro-initials" text-anchor="middle" dominant-baseline="central">${esc(initials(item.entity.name))}</text><text x="${points[i].x}" y="${points[i].y + 28}" class="entity-micro-name" text-anchor="middle">${esc(label)}</text><title>${esc(item.entity.name)} — ${esc(edgeKindLabel(item.edge.kind))}</title></a>`;
+  }).join('');
+  const shownKinds = [...new Set(model.neighbours.map(item => item.edge.kind))];
+  return `<div class="entity-micro-graph"><svg viewBox="0 0 360 260" role="group" aria-label="Closest recorded connections to ${esc(entity.name)}">${lines}${nodes}<circle cx="${center.x}" cy="${center.y}" r="23" class="entity-micro-dot entity-micro-centre entity-micro-kind-${esc(entity.kind)}" /><text x="${center.x}" y="${center.y}" class="entity-micro-initials entity-micro-centre-initials" text-anchor="middle" dominant-baseline="central">${esc(initials(entity.name))}</text><text x="${center.x}" y="${center.y + 36}" class="entity-micro-name entity-micro-centre-name" text-anchor="middle">${esc(entity.name.length > 22 ? `${entity.name.slice(0, 21)}…` : entity.name)}</text></svg>
+    <ul class="entity-micro-legend">${shownKinds.map(kind => `<li>${esc(edgeKindLabel(kind))}</li>`).join('')}</ul>
+    ${model.overflow ? `<p class="entity-micro-overflow">+${model.overflow} more in the <a href="${graphLink(entity.id)}" data-atlas-profile-graph="${esc(entity.id)}">full graph</a></p>` : ''}</div>`;
 }
 
 function programmeDetails(offer, unavailable, evidence, citation) {
@@ -280,7 +298,7 @@ async function renderProfile() {
     ...(isStartup ? [['entity-company', 'Overview'], ['entity-founders', 'People'], ['entity-funding', 'Funding']] : []),
     ...(offer || programmeUnavailable ? [['entity-programme', 'Programme']] : []),
     ...(!isStartup && employment.length ? [['entity-employment', 'Employment']] : []),
-    ['entity-connections', 'Relationships'], ['entity-sources', 'Sources']
+    ['entity-connections', 'Relationships']
   ];
 
   function renderConnection(edge, { personAction = false, role = false } = {}) {
@@ -315,7 +333,6 @@ async function renderProfile() {
     ${keyFacts.length ? `<dl class="entity-facts">${keyFacts.map(factRow).join('')}</dl>` : empty('Additional company facts have not been recorded.')}
     ${website ? `<dl class="entity-facts"><div class="entity-fact-website"><dt>${icon('link')} Website</dt><dd>${website}</dd></div></dl>` : ''}
     ${otherFacts.length ? `<div class="entity-facts-extra"><details class="entity-more-facts"><summary>More company facts ${icon('chevron-down')}</summary><dl class="entity-facts">${otherFacts.map(factRow).join('')}</dl></details></div>` : ''}</section>`;
-  const previewSources = evidence.preview([summaryProof, place?.proof, historicSample?.claim, ...recordedFacts.map(fact => fact.proof)].filter(id => id != null).slice(0, 3));
   const overview = isStartup ? `<section class="entity-section entity-overview" id="entity-company">
     <div class="entity-overview-main">${heading('Company overview')}
       <div class="entity-overview-summary"><p>${esc(summary || 'A company description has not been recorded.')}</p>${evidence.action(summaryProof, 'Sources', 'compact')}</div>
@@ -327,7 +344,7 @@ async function renderProfile() {
       ${sharedCompany ? `<section class="entity-overview-block"><h3>Connected through founders</h3><div class="entity-overview-related">${mark(sharedCompany.other)}<strong>${esc(sharedCompany.other.name)}</strong><p>${esc(sharedCompany.label)}</p><a class="profile-jump-link" data-atlas-profile-link href="${esc(entityHref(sharedCompany.other))}">Open company ${icon('arrow')}</a></div></section>` : ''}
     </div>
     <aside class="entity-aside entity-overview-rail" aria-label="Company facts, sources and personal notes">${overviewFacts}
-      <section><div class="entity-overview-block-head"><h3>Sources</h3><a class="profile-jump-link entity-all-sources" href="#entity-sources">View all sources ${icon('arrow')}</a></div>${previewSources || empty('Source references are unavailable for this profile.')}</section>
+      <section class="entity-overview-sources"><h3>Sources</h3><p class="entity-sources-line" data-source-count-line>Source references are unavailable for this profile.</p></section>
       <section data-atlas-notes="${esc(entity.id)}" aria-label="Private notes"></section>
     </aside>
   </section>` : '';
@@ -336,9 +353,9 @@ async function renderProfile() {
   const people = isStartup ? `<section class="entity-section entity-people" id="entity-founders">${heading('People & connections')}<div class="entity-people-layout"><div><div class="entity-subsection"><h3>Founders</h3>${founders.length ? `<div class="entity-connections entity-founder-records">${founders.map(edge => renderConnection(edge, { personAction: true })).join('')}</div>` : empty('Founding relationships have not been researched yet.')}</div>${employmentSection}${sharedCompanies.length ? `<div class="entity-subsection"><h3>Shared company history</h3><div class="entity-connections">${sharedCompanies.map(connectionRow).join('')}</div></div>` : ''}</div>${foundingDiagram(entity, founderPeople, shareProfile)}</div></section>`
     : employment.length ? `<section class="entity-section" id="entity-employment">${heading('Employment roles')}${employmentRows}</section>` : '';
   const funding = isStartup ? companyTimeline(recordedRounds, articles, named, evidence, citation) : '';
-  const relationships = `<section class="entity-section" id="entity-connections">${heading('Relationships')}${otherEdges.length ? `<div class="entity-subsection">${focusedDossier ? '' : '<h3>Related records</h3>'}<div class="entity-connections">${otherEdges.map(edge => renderConnection(edge)).join('')}</div></div>` : empty('No further relationships are recorded in the published research.')}${focusedDossier ? '' : `<a class="atlas-button" data-atlas-profile-graph="${esc(entity.id)}" href="${shareProfile}">${icon('graph')}Explore relationships</a>`}</section>`;
+  const relationships = `<section class="entity-section" id="entity-connections">${heading('Relationships')}${microGraph(store.graph, entity)}${otherEdges.length ? `<div class="entity-subsection">${focusedDossier ? '' : '<h3>Related records</h3>'}<div class="entity-connections">${otherEdges.map(edge => renderConnection(edge)).join('')}</div></div>` : empty('No further relationships are recorded in the published research.')}${focusedDossier ? '' : `<a class="atlas-button" data-atlas-profile-graph="${esc(entity.id)}" href="${shareProfile}">${icon('graph')}Open in full knowledge graph</a>`}</section>`;
   const programme = programmeDetails(offer, programmeUnavailable, evidence, citation);
-  const references = `<section class="entity-section${focusedDossier ? ' entity-dossier-sources' : ''}" id="entity-sources"><div class="entity-section-heading">${renderEvidenceHeading()}</div>${focusedDossier ? `<p class="entity-evidence-coverage">${esc(count(edges.length, 'recorded relationship'))}</p>` : ''}${evidence.index()}</section>`;
+  const references = `<details class="profile-sources-footer entity-sources-footer"><summary class="profile-sources-summary">${renderEvidenceHeading()}<span class="profile-sources-count">${esc(count(evidence.sourceCount(), 'source'))}</span></summary><section class="entity-section entity-sources-section" id="entity-sources">${focusedDossier ? `<p class="entity-evidence-coverage">${esc(count(edges.length, 'recorded relationship'))}</p>` : ''}${evidence.index()}</section></details>`;
   const compactBar = isStartup ? `<div class="entity-compact-bar"><a class="profile-back atlas-button" data-atlas-back href="./list.html">Open list</a>
     <div class="entity-compact-brand">${mark(entity, true)}<div><strong>${esc(entity.name)}</strong>${website}</div></div>
     <div class="entity-actions">${companyActions}${graphAction()}</div></div>` : '';
@@ -348,14 +365,41 @@ async function renderProfile() {
   root.innerHTML = `<div class="profile-return"><a class="profile-back" data-atlas-back href="./list.html">Open list</a>${returnContext ? `<span class="profile-return-context">${esc(returnContext)}</span>` : ''}</div>
     <header class="entity-hero${isStartup ? ' entity-company-hero' : ''}"><div class="entity-hero-identity">${mark(entity, isStartup)}<div class="entity-hero-copy">${focusedDossier ? `${title}<p class="entity-dossier-type">${type}</p>` : `<p class="profile-kicker">${type}</p>${title}`}${summary || !focusedDossier ? `<p>${esc(summary || 'Explore the connected records and evidence below.')}</p>` : ''}${heroMetadata ? `<div class="entity-hero-meta">${heroMetadata}</div>` : ''}</div></div>
     <div class="entity-actions">${companyActions}${graphAction('entity-hero-graph')}</div>${socials ? `<div class="entity-external-links">${socials}</div>` : ''}</header>
-    <div class="profile-sticky${isStartup ? ' entity-company-sticky' : focusedDossier ? ' entity-dossier-sticky' : ''}">${compactBar}<span class="profile-compact-identity" aria-hidden="true">${mark(entity)}<span>${esc(entity.name)}</span></span><nav class="atlas-section-nav" aria-label="Profile sections">${sectionLinks.map(([id, label]) => `<a href="#${id}">${label}</a>`).join('')}</nav></div>
+    <div class="profile-sticky${isStartup ? ' entity-company-sticky' : focusedDossier ? ' entity-dossier-sticky' : ''}">${compactBar}<span class="profile-compact-identity" aria-hidden="true">${mark(entity)}<span>${esc(entity.name)}</span></span><nav class="atlas-section-nav" role="tablist" aria-label="Profile sections">${sectionLinks.map(([id, label], index) => `<a role="tab" id="tab-${id}" href="#${id}" aria-controls="${id}" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}">${label}</a>`).join('')}</nav></div>
     ${store.mode === 'fallback' ? '<p class="profile-notice" role="status">Showing the published backup while the database is unavailable.</p>' : ''}
-    <div class="entity-layout${isStartup ? ' entity-company-layout' : ''}"><div class="entity-dossier">${programme}${overview}${people}${funding}${relationships}${focusedDossier ? '' : references}</div>
-    ${focusedDossier ? references : isStartup ? '' : `<aside class="entity-aside" aria-label="Research at a glance"><section><h2>Research coverage</h2><p>${esc(count(edges.length, 'recorded relationship'))}.</p></section></aside>`}</div>
+    <div class="entity-layout${isStartup ? ' entity-company-layout' : ''}"><div class="entity-dossier">${programme}${overview}${people}${funding}${relationships}</div>
+    ${!isStartup && !focusedDossier ? `<aside class="entity-aside" aria-label="Research at a glance"><section><h2>Research coverage</h2><p>${esc(count(edges.length, 'recorded relationship'))}.</p></section></aside>` : ''}</div>
+    ${references}
     ${evidence.dialog()}`;
   placeOverviewFacts();
   measureProfileNavigation();
   evidence.install(root);
+  const sourcesLine = root.querySelector('[data-source-count-line]');
+  if (sourcesLine) {
+    const total = evidence.sourceCount();
+    if (total) sourcesLine.innerHTML = `Researched from ${esc(count(total, 'source'))} — <a class="profile-jump-link" href="#entity-sources">view</a>`;
+  }
+  for (const [id] of sectionLinks) {
+    const panel = document.getElementById(id);
+    if (panel) {
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', `tab-${id}`);
+    }
+  }
+  const tabsApi = installProfileTabs(root);
+  if (tabsApi && location.hash) {
+    const target = document.getElementById(location.hash.slice(1));
+    const panel = target?.closest?.('[role="tabpanel"]');
+    const panelIndex = panel ? tabsApi.panels.indexOf(panel) : -1;
+    if (panelIndex !== -1 && target !== panel) {
+      tabsApi.activate(panelIndex, { updateHash: false });
+      target.scrollIntoView();
+    } else if (target && target.id === 'entity-sources') {
+      const details = target.closest('details');
+      if (details) details.open = true;
+      target.scrollIntoView();
+    }
+  }
   root.querySelectorAll('[data-reveal-funding]').forEach(link => link.addEventListener('click', () => {
     const round = document.getElementById(link.dataset.revealFunding);
     if (round) round.open = true;
@@ -368,7 +412,6 @@ async function renderProfile() {
     if (img.complete && !img.naturalWidth) fallback();
     else img.addEventListener('error', fallback, { once: true });
   });
-  if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
   document.title = entity.name + ' — Startup Atlas';
   const pageDescription = (entity.summary || '').trim() || 'Explore the people, startups and programmes connected across Startup Atlas.';
   document.querySelector('meta[name="description"]')?.setAttribute('content', pageDescription);
