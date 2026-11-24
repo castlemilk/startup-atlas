@@ -1,85 +1,33 @@
 // Browser-level graph interaction smoke test. Uses the Chrome already installed
 // on the GitHub Actions runner and Node's built-in CDP WebSocket client.
 import assert from 'node:assert/strict';
-import {spawn} from 'node:child_process';
-import {createServer} from 'node:http';
-import {mkdtemp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
+import {readFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
-import {extname, join, resolve, sep} from 'node:path';
-import {setTimeout as delay} from 'node:timers/promises';
+import {join, resolve} from 'node:path';
+import {launchBrowserTransport, saveScreenshot} from './browser-transport.mjs';
 import {neighborhood} from '../web/graph-model.js';
 import {sourceUrl} from '../web/logic.js';
 import {countryName, indexCompanies} from '../web/atlas-exploration.js';
 
-const root=resolve('dist'), profile=await mkdtemp(join(tmpdir(),'atlas-chrome-'));
+const root=resolve('dist');
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-graph-screenshots');
-const contentTypes={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png'};
 const requests=[];
-const server=createServer(async(req,res)=>{
-  try {
-    const path=resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));
-    if(path!==root&&!path.startsWith(root+sep)){res.writeHead(403).end();return;}
-    const bytes=await readFile(path===root?join(root,'index.html'):path);
-    requests.push({url:req.url,status:200});
-    res.writeHead(200,{'Content-Type':contentTypes[extname(path)]||'application/octet-stream'}).end(bytes);
-  } catch {requests.push({url:req.url,status:404});res.writeHead(404).end();}
+// Shared transport/lifecycle (#149): static server, Chrome spawn, CDP
+// session, bounded commands, socket-exit rejection and phase timings.
+// Graph keeps its SwiftShader flags and the text-only evaluate error style.
+const transport=await launchBrowserTransport({
+  root,
+  profilePrefix:'atlas-chrome-',
+  chromeFlags:['--headless=new','--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader','--disable-dev-shm-usage','--disable-background-networking','--disable-extensions','--no-first-run'],
+  server:{requests,contentTypes:{'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png'}},
+  session:{pollAttempts:100,exceptionText:details=>details.text},
 });
-await new Promise((resolveListen,reject)=>server.once('error',reject).listen(0,'127.0.0.1',resolveListen));
-const address=`http://127.0.0.1:${server.address().port}`;
-const chrome=spawn(process.env.CHROME_BIN||'google-chrome',[
-  '--headless=new','--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader','--disable-dev-shm-usage','--disable-background-networking','--disable-extensions','--no-first-run',
-  '--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'
-],{stdio:['ignore','ignore','pipe']});
-let socket, spawnError, chromeExit, chromeLog='';
+const address=transport.address;
 let captureFailure=async()=>{}, readDiagnostics=async()=>({state:'unavailable'});
-chrome.on('error',error=>{spawnError=error;});
-chrome.on('exit',(code,signal)=>{chromeExit=`Chrome exited (${code ?? signal})`;});
-chrome.stderr.on('data',chunk=>{chromeLog=(chromeLog+chunk.toString()).slice(-5000);});
-
-async function until(fn,message,attempts=100) {
-  for(let i=0;i<attempts;i++) {
-    if(spawnError)throw spawnError;
-    if(chromeExit)throw new Error(chromeExit+'\n'+chromeLog);
-    const result=await fn().catch(()=>null);
-    if(result)return result;
-    await delay(100);
-  }
-  throw new Error(message+'\n'+chromeLog);
-}
 try {
-  // Cold CI runners can take longer to start Chrome; allow 45 seconds only here.
-  // Page interactions retain the normal polling budget.
-  const port=await until(async()=>Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start',450);
-  const target=await until(async()=>{
-    const targets=await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
-    return targets.find(item=>item.type==='page');
-  },'Chrome did not expose a page',450);
-  socket=new WebSocket(target.webSocketDebuggerUrl);
-  await new Promise((resolveOpen,reject)=>{socket.addEventListener('open',resolveOpen,{once:true});socket.addEventListener('error',reject,{once:true});});
-  const pending=new Map(), exceptions=[], browserMessages=[];let sequence=0,navigationCount=0;
-  socket.addEventListener('message',event=>{
-    const message=JSON.parse(event.data);
-    if(message.method==='Page.frameNavigated'&&!message.params.frame.parentId)navigationCount++;
-    if(message.method==='Runtime.exceptionThrown')exceptions.push(message.params.exceptionDetails.exception?.description||message.params.exceptionDetails.text);
-    if(message.method==='Runtime.consoleAPICalled'&&['error','warning'].includes(message.params.type))browserMessages.push(message.params.args.map(item=>item.value||item.description||'').join(' '));
-    if(!message.id)return;
-    const item=pending.get(message.id);if(!item)return;pending.delete(message.id);
-    clearTimeout(item.timeout);
-    if(message.error)item.reject(new Error(message.error.message));else item.resolve(message.result);
-  });
-  function command(method,params={}) {
-    const id=++sequence;
-    return new Promise((resolveCommand,reject)=>{
-      const timeout=setTimeout(()=>{pending.delete(id);reject(new Error(`Chrome command timed out: ${method}`));},20000);
-      pending.set(id,{resolve:resolveCommand,reject,timeout});
-      socket.send(JSON.stringify({id,method,params}));
-    });
-  }
-  async function evaluate(expression) {
-    const response=await command('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});
-    if(response.exceptionDetails)throw new Error(response.exceptionDetails.text);
-    return response.result.value;
-  }
+  const session=await transport.connect();
+  const {command,evaluate,until}=session;
+  const exceptions=session.exceptions, browserMessages=session.browserMessages;
   async function assertGraphControlSizes(viewport) {
     const controls=await evaluate(`['graph-fit','graph-reset'].map(id=>{
       const button=document.getElementById(id),icon=button?.querySelector('svg');
@@ -212,9 +160,7 @@ try {
     await move('mouseReleased',x+dx,y+dy,'left',0);
   }
   async function screenshot(name) {
-    await mkdir(screenshotDir,{recursive:true});
-    const image=await command('Page.captureScreenshot',{format:'png'});
-    await writeFile(join(screenshotDir,name),Buffer.from(image.data,'base64'));
+    await saveScreenshot(session,screenshotDir,name);
   }
   captureFailure=screenshot;
   readDiagnostics=async()=>({
@@ -347,9 +293,9 @@ try {
   assert.equal(await evaluate("document.querySelector('#graph-list').hidden"),false);
   assert.equal(await evaluate("!!document.querySelector('[data-node=\"partner:airtree\"]')"),false);
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
-  const mobileReloadGeneration=navigationCount;
+  const mobileReloadGeneration=session.navigationCount;
   await command('Page.reload');
-  await until(async()=>navigationCount>mobileReloadGeneration,'Mobile reload did not commit');
+  await until(async()=>session.navigationCount>mobileReloadGeneration,'Mobile reload did not commit');
   await until(()=>evaluate("!!document.querySelector('[data-node=\"startup:canva\"]')"),'Mobile graph did not render');
   await assertGraphControlSizes('mobile');
   await assertWireframePresentation('mobile');
@@ -744,12 +690,12 @@ try {
   await until(()=>checkCompanyMap({ids:australian,allNames:true}),'Focusable return must preserve the fitted company group');
 
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
+  console.log('Graph phase timings:',JSON.stringify(transport.timings.summary()));
   console.log('Chrome graph checks passed for all-company Loom Fit and grouping, phone traversal, context wires, artwork, mobile neighbourhood Fit and SVG fallback');
 } catch(error) {
   console.error('Interaction diagnostics:',JSON.stringify(await readDiagnostics().catch(()=>({state:'unavailable'}))));
   await captureFailure('failed-interaction.png').catch(()=>{});
   throw error;
 } finally {
-  socket?.close();chrome.kill();server.close();
-  await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100}).catch(()=>{});
+  await transport.close();
 }

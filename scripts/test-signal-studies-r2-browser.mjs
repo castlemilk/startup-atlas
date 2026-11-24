@@ -3,13 +3,11 @@
 // CHROME_BIN=/usr/bin/chromium ATLAS_SCREENSHOTS_DIR=/tmp/atlas-r2-review \
 //   node scripts/test-signal-studies-r2-browser.mjs
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { createServer } from 'node:http';
-import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { basename, extname, join, resolve, sep } from 'node:path';
-import { setTimeout as delay } from 'node:timers/promises';
+import { basename, join, resolve } from 'node:path';
+import { launchBrowserTransport } from './browser-transport.mjs';
 
 const root = resolve('dist');
 const galleryPath = '/assets/design-lab/signal-explorations/r2/index.html';
@@ -34,87 +32,34 @@ const report = {
   manifest_sha256: sha256(manifestBytes), assets: [], viewports: [], screenshots: [],
   checks: {}, visual_review: 'pending human or agent image inspection'
 };
-let server, address, chrome, profile, downloadDir;
-let socket, spawnError, chromeExit, chromeLog = '', sequence = 0, navigationCount = 0, loadCount = 0;
+let address, profile, downloadDir, transport;
 let capture = async () => {};
-const pending = new Map();
-
-async function until(fn, label, attempts = 150) {
-  for (let i = 0; i < attempts; i++) {
-    if (spawnError) throw spawnError;
-    if (chromeExit !== undefined) throw new Error(`Chromium exited (${chromeExit})\n${chromeLog}`);
-    const result = await fn().catch(() => null);
-    if (result) return result;
-    await delay(100);
-  }
-  throw new Error(label);
-}
 
 try {
   await mkdir(output, { recursive: true });
   profile = await mkdtemp(join(tmpdir(), 'atlas-signal-r2-chrome-'));
   downloadDir = join(profile, 'downloads');
   await mkdir(downloadDir, { recursive: true });
-  server = createServer(async (req, res) => {
-    try {
-      const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-      if (pathname === '/favicon.ico') { res.writeHead(204).end(); return; }
-      const file = resolve(root, '.' + pathname);
-      if (file !== root && !file.startsWith(root + sep)) { res.writeHead(403).end(); return; }
-      const bytes = await readFile(file === root ? join(root, 'index.html') : file);
-      served.push({ path: pathname, status: 200 });
-      res.writeHead(200, { 'Content-Type': mime[extname(file)] || 'application/octet-stream' }).end(bytes);
-    } catch {
-      served.push({ path: req.url, status: 404 });
-      res.writeHead(404).end();
-    }
+  // Shared transport/lifecycle (#149): static server, Chrome spawn, CDP
+  // session, bounded commands, socket-exit rejection and phase timings.
+  // This suite keeps its own timeout wording, error-only console capture,
+  // favicon 204, served-entry shape and external-request tracking.
+  transport = await launchBrowserTransport({
+    root,
+    profileDir: profile,
+    server: { favicon204: true, contentTypes: mime,
+      recordRequest: entry => served.push({ path: entry.status === 200 ? entry.path : entry.url, status: entry.status }) },
+    session: { consoleTypes: ['error'], timeoutMessage: method => `CDP timed out: ${method}` },
   });
-  await new Promise((done, reject) => server.once('error', reject).listen(0, '127.0.0.1', done));
-  address = `http://127.0.0.1:${server.address().port}`;
-  chrome = spawn(process.env.CHROME_BIN || 'google-chrome', [
-    '--headless=new', '--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage',
-    '--disable-background-networking', '--disable-extensions', '--no-first-run',
-    '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'
-  ], { stdio: ['ignore', 'ignore', 'pipe'] });
-  chrome.on('error', error => { spawnError = error; });
-  chrome.on('exit', (code, signal) => { chromeExit = `${code ?? signal}`; });
-  chrome.stderr.on('data', chunk => { chromeLog = (chromeLog + chunk).slice(-4000); });
-  const port = await until(async () => Number((await readFile(join(profile, 'DevToolsActivePort'), 'utf8')).split('\n')[0]), 'Chromium did not start', 450);
-  const target = await until(async () => (await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()).find(item => item.type === 'page'), 'No browser page');
-  socket = new WebSocket(target.webSocketDebuggerUrl);
-  await new Promise((done, reject) => {
-    socket.addEventListener('open', done, { once: true });
-    socket.addEventListener('error', reject, { once: true });
-  });
-  socket.addEventListener('message', event => {
-    const message = JSON.parse(event.data);
-    if (message.method === 'Page.frameNavigated' && !message.params.frame.parentId) navigationCount++;
-    if (message.method === 'Page.loadEventFired') loadCount++;
-    if (message.method === 'Runtime.exceptionThrown') exceptions.push(message.params.exceptionDetails.exception?.description || message.params.exceptionDetails.text);
-    if (message.method === 'Runtime.consoleAPICalled' && message.params.type === 'error') browserErrors.push(message.params.args.map(item => item.value || item.description || '').join(' '));
-    if (message.method === 'Network.requestWillBeSent') {
-      const url = message.params.request.url;
-      if (/^https?:/.test(url) && new URL(url).origin !== address) external.push(url);
-    }
-    if (!message.id) return;
-    const task = pending.get(message.id);
-    if (!task) return;
-    pending.delete(message.id); clearTimeout(task.timeout);
-    if (message.error) task.reject(new Error(message.error.message)); else task.resolve(message.result);
-  });
-  function command(method, params = {}) {
-    const id = ++sequence;
-    return new Promise((resolveCommand, reject) => {
-      const timeout = setTimeout(() => { pending.delete(id); reject(new Error(`CDP timed out: ${method}`)); }, 20000);
-      pending.set(id, { resolve: resolveCommand, reject, timeout });
-      socket.send(JSON.stringify({ id, method, params }));
-    });
-  }
-  async function evaluate(expression, awaitPromise = true) {
-    const value = await command('Runtime.evaluate', { expression, returnByValue: true, awaitPromise });
-    if (value.exceptionDetails) throw new Error(value.exceptionDetails.exception?.description || value.exceptionDetails.text);
-    return value.result.value;
-  }
+  address = transport.address;
+  const session = await transport.connect({ exceptions, browserMessages: browserErrors,
+    onEvent: message => {
+      if (message.method === 'Network.requestWillBeSent') {
+        const url = message.params.request.url;
+        if (/^https?:/.test(url) && new URL(url).origin !== address) external.push(url);
+      }
+    } });
+  const { command, evaluate, until } = session;
   async function press(key, code, keyCode) {
     const character = key === 'Enter' ? { text: '\r', unmodifiedText: '\r', nativeVirtualKeyCode: keyCode } : {};
     await command('Input.dispatchKeyEvent', { type: 'keyDown', key, code, windowsVirtualKeyCode: keyCode, ...character });
@@ -148,12 +93,12 @@ try {
     return visibleIndices.length;
   }
   async function navigate(withoutPageCallbacks = false) {
-    const before = navigationCount;
-    const beforeLoad = loadCount;
+    const before = session.navigationCount;
+    const beforeLoad = session.loadCount;
     const result = await command('Page.navigate', { url: address + galleryPath });
     assert.ok(!result.errorText, result.errorText);
-    await until(() => Promise.resolve(navigationCount > before), 'Gallery navigation did not commit');
-    await until(() => Promise.resolve(loadCount > beforeLoad), 'Gallery load event did not arrive');
+    await until(() => Promise.resolve(session.navigationCount > before), 'Gallery navigation did not commit');
+    await until(() => Promise.resolve(session.loadCount > beforeLoad), 'Gallery load event did not arrive');
     await until(() => evaluate("document.readyState === 'complete' && !!document.querySelector('main h1')", !withoutPageCallbacks), 'Gallery did not load');
     if (withoutPageCallbacks) return settleWithoutPageCallbacks();
     await settle();
@@ -322,24 +267,18 @@ try {
   assert.deepEqual(served.filter(item => item.status !== 200), [], 'No missing local assets or destinations');
   report.checks.self_hosted_resources_and_errors = 'passed';
   report.status = 'passed';
+  console.log('Phase timings:', JSON.stringify(transport.timings.summary()));
   console.log(`Signal r2 browser acceptance passed: 18 hash-verified SVGs; 1440/390/320px; images/fonts; local links; keyboard; native download; minimum-size specimens; reduced motion; no JS. Evidence: ${output}`);
 } catch (error) {
   report.status = 'failed';
   report.error = error.stack || String(error);
-  report.diagnostics = { external, exceptions, browserErrors, missing: served.filter(item => item.status !== 200), chromeLog };
+  report.diagnostics = { external, exceptions, browserErrors, missing: served.filter(item => item.status !== 200), chromeLog: transport?.chromeLog() ?? '' };
   await capture('signal-r2-failed.png').catch(() => {});
   throw error;
 } finally {
   try {
     await writeFile(join(output, 'browser-review.json'), JSON.stringify(report, null, 2) + '\n');
   } finally {
-    for (const task of pending.values()) clearTimeout(task.timeout);
-    socket?.close();
-    chrome?.kill();
-    if (server?.listening) {
-      server.closeAllConnections();
-      await new Promise(done => server.close(done));
-    }
-    if (profile) await rm(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 }).catch(() => {});
+    await transport?.close();
   }
 }

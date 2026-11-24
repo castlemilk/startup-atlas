@@ -1,12 +1,10 @@
 // Real Chrome coverage for the design catalogue and its connected profile flows.
 // Uses the same built-in CDP harness as the graph and treemap browser checks.
 import assert from 'node:assert/strict';
-import {spawn} from 'node:child_process';
-import {createServer} from 'node:http';
-import {mkdtemp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
+import {readFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
-import {extname, join, resolve, sep} from 'node:path';
-import {setTimeout as delay} from 'node:timers/promises';
+import {join, resolve} from 'node:path';
+import {launchBrowserTransport, saveScreenshot} from './browser-transport.mjs';
 import {checkDesignWorkbench} from './design-workbench-browser-checks.mjs';
 import {checkDirectoryWireframes} from './directory-wireframe-browser-checks.mjs';
 import {checkProfileWireframes} from './profile-wireframe-browser-checks.mjs';
@@ -24,83 +22,27 @@ const missingFunding=startups.find(entity=>!graph.funding_rounds.some(round=>rou
 assert.ok(graph.entities.some(entity=>entity.id==='startup:canva'),'Canva is the profile navigation fixture');
 assert.ok(partners.Airtree?.companies.length&&partners.Airtree?.people.length,'Airtree provides a sourced company and team sample');
 assert.ok(missingFunding,'A startup without recorded funding is needed to verify unknown data');
-const profile=await mkdtemp(join(tmpdir(),'atlas-views-chrome-'));
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-view-screenshots');
-const contentTypes={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.md':'text/markdown'};
 const requests=[];
-const server=createServer(async(req,res)=>{
-  try {
-    const path=resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));
-    if(path!==root&&!path.startsWith(root+sep)){res.writeHead(403).end();return;}
-    const file=path===root?join(root,'index.html'):path;
-    const bytes=await readFile(file);
-    requests.push({url:req.url,status:200});
-    res.writeHead(200,{'Content-Type':contentTypes[extname(file)]||'application/octet-stream'}).end(bytes);
-  } catch {requests.push({url:req.url,status:404});res.writeHead(404).end();}
+// Shared transport/lifecycle (#149): static server, Chrome spawn, CDP
+// session, bounded commands, socket-exit rejection and phase timings.
+// This suite keeps the object-shaped console capture ({level, text}).
+const transport=await launchBrowserTransport({
+  root,
+  profilePrefix:'atlas-views-chrome-',
+  server:{requests,contentTypes:{'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.sqlite':'application/octet-stream','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.md':'text/markdown'}},
+  session:{consoleFormat:'object'},
 });
-await new Promise((resolveListen,reject)=>server.once('error',reject).listen(0,'127.0.0.1',resolveListen));
-const address=`http://127.0.0.1:${server.address().port}`;
-const chrome=spawn(process.env.CHROME_BIN||'google-chrome',[
-  '--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-extensions','--no-first-run',
-  '--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'
-],{stdio:['ignore','ignore','pipe']});
-let socket,spawnError,chromeExit,chromeLog='',chromePort=0;
+const address=transport.address;
 let captureFailure=async()=>{},readDiagnostics=async()=>({state:'unavailable'});
-chrome.on('error',error=>{spawnError=error;});
-chrome.on('exit',(code,signal)=>{chromeExit=`Chrome exited (${code??signal})`;});
-chrome.stderr.on('data',chunk=>{
-  chromeLog=(chromeLog+chunk.toString()).slice(-5000);
-  chromePort ||= Number(chromeLog.match(/^DevTools listening on ws:\/\/127\.0\.0\.1:(\d+)\/devtools\/browser\//m)?.[1]) || 0;
-});
-async function until(fn,message,attempts=150) {
-  for(let i=0;i<attempts;i++) {
-    if(spawnError)throw spawnError;
-    if(chromeExit)throw new Error(chromeExit+'\n'+chromeLog);
-    const result=await fn().catch(()=>null);
-    if(result)return result;
-    await delay(100);
-  }
-  throw new Error(message+'\n'+chromeLog);
-}
 try {
-  // Cold CI runners can take longer to start Chrome; allow 45 seconds only here.
-  // Page interactions retain the normal polling budget.
-  const port=await until(async()=>chromePort||Number((await readFile(join(profile,'DevToolsActivePort'),'utf8')).split('\n')[0]),'Chrome did not start',450);
-  const target=await until(async()=>{
-    const targets=await(await fetch(`http://127.0.0.1:${port}/json/list`)).json();
-    return targets.find(item=>item.type==='page');
-  },'Chrome did not expose a page',450);
-  socket=new WebSocket(target.webSocketDebuggerUrl);
-  await new Promise((resolveOpen,reject)=>{socket.addEventListener('open',resolveOpen,{once:true});socket.addEventListener('error',reject,{once:true});});
-  const pending=new Map(),exceptions=[],browserMessages=[];
-  let sequence=0,navigationCount=0;
-  socket.addEventListener('message',event=>{
-    const message=JSON.parse(event.data);
-    if(message.method==='Page.frameNavigated'&&!message.params.frame.parentId)navigationCount++;
-    if(message.method==='Runtime.exceptionThrown')exceptions.push(message.params.exceptionDetails.exception?.description||message.params.exceptionDetails.text);
-    if(message.method==='Runtime.consoleAPICalled'&&['error','warning'].includes(message.params.type))browserMessages.push({level:message.params.type,text:message.params.args.map(item=>item.value||item.description||'').join(' ')});
-    if(!message.id)return;
-    const item=pending.get(message.id);if(!item)return;pending.delete(message.id);
-    clearTimeout(item.timeout);
-    if(message.error)item.reject(new Error(message.error.message));else item.resolve(message.result);
-  });
-  function command(method,params={}) {
-    const id=++sequence;
-    return new Promise((resolveCommand,reject)=>{
-      const timeout=setTimeout(()=>{pending.delete(id);reject(new Error(`Chrome command timed out: ${method}`));},20000);
-      pending.set(id,{resolve:resolveCommand,reject,timeout});
-      socket.send(JSON.stringify({id,method,params}));
-    });
-  }
-  async function evaluate(expression) {
-    const response=await command('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});
-    if(response.exceptionDetails)throw new Error(response.exceptionDetails.exception?.description||response.exceptionDetails.text);
-    return response.result.value;
-  }
+  const session=await transport.connect();
+  const {command,evaluate,until}=session;
+  const exceptions=session.exceptions, browserMessages=session.browserMessages;
   async function navigate(path,ready) {
-    const generation=navigationCount;
+    const generation=session.navigationCount;
     await command('Page.navigate',{url:address+path});
-    await until(async()=>navigationCount>generation,'Navigation did not commit: '+path);
+    await until(async()=>session.navigationCount>generation,'Navigation did not commit: '+path);
     await until(()=>evaluate(ready),'View did not become ready: '+path);
   }
   let lastPointerAction;
@@ -173,15 +115,13 @@ try {
     await command('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode:keyCode,modifiers});
   }
   async function screenshot(name,fullPage=false) {
-    await mkdir(screenshotDir,{recursive:true});
     const options={format:'png'};
     if(fullPage) {
       const size=(await command('Page.getLayoutMetrics')).cssContentSize;
       options.captureBeyondViewport=true;
       options.clip={x:0,y:0,width:size.width,height:size.height,scale:1};
     }
-    const image=await command('Page.captureScreenshot',options);
-    await writeFile(join(screenshotDir,name),Buffer.from(image.data,'base64'));
+    await saveScreenshot(session,screenshotDir,name,options);
   }
   async function assertNoOverflow(label) {
     const dimensions=await evaluate('({scroll:document.documentElement.scrollWidth,viewport:innerWidth})');
@@ -446,6 +386,7 @@ try {
   await checkEditorialExplorer({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph});
 
   assert.deepEqual(exceptions,[],'Explorer views must not raise unhandled JavaScript exceptions');
+  console.log('Atlas views phase timings:',JSON.stringify(transport.timings.summary()));
   assert.deepEqual(browserMessages.filter(message=>message.level==='error'),[],'Explorer views must not log application errors');
   const missingAssets=requests.filter(request=>request.status===404&&!request.url.startsWith('/favicon.ico'));
   assert.deepEqual(missingAssets,[],'All requested local page and module assets must be published');
@@ -455,6 +396,5 @@ try {
   await captureFailure('atlas-views-failed.png').catch(()=>{});
   throw error;
 } finally {
-  socket?.close();chrome.kill();server.close();
-  await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100}).catch(()=>{});
+  await transport.close();
 }
