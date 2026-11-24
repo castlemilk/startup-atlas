@@ -8,6 +8,13 @@ export const multipleHeadquarters = 'multiple';
 const countryOption = value => value === 'unknown' || value === multipleHeadquarters ? value : canonicalCountry(value);
 export const countryName = code => canonicalCountry(code) ? names.of(code) || code
   : code === multipleHeadquarters ? 'Multiple headquarters' : 'Country not recorded';
+// The country's flag as a regional-indicator pair derived from its ISO code,
+// for the country filter UI. '' for anything that is not a canonical code
+// ('unknown', 'multiple', malformed), so unrecorded places carry no flag.
+export const countryFlag = code => {
+  const canonical = canonicalCountry(code);
+  return canonical ? String.fromCodePoint(...[...canonical].map(letter => 0x1F1E6 + letter.charCodeAt(0) - 0x41)) : '';
+};
 export function companyPlaceLabel({ country, city, location, businessBase } = {}) {
   if (!country) return '';
   const label = location || [city,countryName(country)].filter(Boolean).join(', ');

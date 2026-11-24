@@ -1,10 +1,12 @@
-import { companyFacets, countryName, filterCompanies, hasCompanyScope, multipleHeadquarters } from './atlas-exploration.js';
+import { companyFacets, countryFlag, countryName, filterCompanies, hasCompanyScope, multipleHeadquarters } from './atlas-exploration.js';
 import { renderIcon } from './atlas-icons.js';
 import { escapeHtml as esc } from './logic.js';
 
 const format = new Intl.NumberFormat('en');
 const companyCount = count => `${format.format(count)} ${count===1 ? 'company' : 'companies'}`;
 const cityName = value => value==='unknown' ? 'City not recorded' : value;
+const flagSpan = code => { const flag = countryFlag(code); return flag ? `<span class="exploration-option-flag" aria-hidden="true">${flag}</span>` : ''; };
+const flaggedCountryName = code => { const flag = countryFlag(code); return flag ? `${flag} ${countryName(code)}` : countryName(code); };
 const facetByKey = new Map(companyFacets.map(facet=>[facet.key,facet]));
 const facetLabel = (key,value) => value==='unknown' ? `${facetByKey.get(key).label} not recorded` : value;
 const ordered = (values,label) => [...new Set(values)].sort((a,b)=>a==='unknown' ? 1 : b==='unknown' ? -1 : label(a).localeCompare(label(b)));
@@ -169,7 +171,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
     finish.textContent = 'Apply filters';
     options.innerHTML = ordered([...countries,...draft],countryName).map(code=>`<li data-hq="${esc(code)}"><label for="atlas-hq-${esc(code)}">
       <input type="checkbox" id="atlas-hq-${esc(code)}" value="${esc(code)}" aria-label="${esc(countryName(code))}">
-      <span>${esc(countryName(code))}</span><span class="exploration-option-count"></span></label></li>`).join('');
+      ${flagSpan(code)}<span>${esc(countryName(code))}</span><span class="exploration-option-count"></span></label></li>`).join('');
     renderDraft();
   }
 
@@ -207,7 +209,7 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
     const appliedFacets = [...applied.map(code=>['country',code,`HQ: ${countryName(code)}`])];
     for (const {key} of companyFacets) if (state[key]) appliedFacets.push([key,state[key],facetLabel(key,state[key])]);
     mobileLabel.textContent = appliedFacets.length ? `Filters (${appliedFacets.length})` : 'Filters';
-    const markup = appliedFacets.map(([key,value,label])=>`<li><button type="button" data-remove-facet="${key}" data-value="${esc(value)}" aria-label="Remove ${esc(label)}">${esc(label)}${renderIcon('close')}</button></li>`).join('');
+    const markup = appliedFacets.map(([key,value,label])=>`<li><button type="button" data-remove-facet="${key}" data-value="${esc(value)}" aria-label="Remove ${esc(label)}">${key==='country' ? flagSpan(value) : ''}${esc(label)}${renderIcon('close')}</button></li>`).join('');
     if (chips.dataset.rendered!==markup) {
       chips.innerHTML = markup;
       chips.dataset.rendered = markup;
@@ -240,8 +242,8 @@ export function mountExploration(host,{companies,dimensions,onChange,showDensity
       if (!parent) available.add(code);
       else if (parent===code && code!=='unknown' && code!==multipleHeadquarters) available.add(dimension?.city || 'unknown');
     }
-    const label = parent ? cityName : countryName;
-    const values = ordered(available,label);
+    const label = parent ? cityName : flaggedCountryName;
+    const values = ordered(available,parent ? cityName : countryName);
     setChoices(drill,option('',parent ? 'Choose a city' : 'Choose a country') + values.map(value=>option(value,label(value))).join(''),'');
     find('.exploration-drill-field').hidden = Boolean(city) || !values.length;
     host.dataset.companyScope = String(hasCompanyScope(state));
