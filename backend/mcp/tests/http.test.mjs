@@ -173,7 +173,7 @@ test.after(async () => {
 test('health and OAuth discovery metadata are public and point at this server', async () => {
   const health = await (await fetch(`${readOnly.base}/health`)).json();
   assert.equal(health.status, 'ok');
-  assert.equal(health.tools, 17);
+  assert.equal(health.tools, 18);
   assert.equal(health.githubIssuesConfigured, false);
   assert.equal(health.writeEnabled, false);
   assert.equal(health.auth, 'google-oauth');
@@ -201,11 +201,11 @@ test('unauthenticated, forged and unlisted Google identities are rejected before
   assert.equal(stale.status, 401);
 });
 
-test('a verified Google ID token and a Google access token both open the same 17 tools over HTTP', async t => {
+test('a verified Google ID token and a Google access token both open the same 18 tools over HTTP', async t => {
   const idToken = signIdToken({ email: 'reader@example.com', aud: 'test-google-client' });
   const byId = await connectHttp(t, readOnly.base, idToken);
   const { tools } = await byId.listTools();
-  assert.equal(tools.length, 17);
+  assert.equal(tools.length, 18);
   assert.equal(decoded(await byId.callTool({ name: 'atlas_get_catalogue_info', arguments: {} })).writeEnabled, false);
   const byAccess = await connectHttp(t, readOnly.base, 'mock-google-access');
   assert.equal(decoded(await byAccess.callTool({ name: 'atlas_get_catalogue_info', arguments: {} })).opportunities >= 92, true);
@@ -267,7 +267,7 @@ test('MCP sessions are private to the account that opened them', async t => {
     method: 'DELETE', headers: { 'mcp-session-id': transport.sessionId, Authorization: `Bearer ${reader}`, Origin: 'https://other.example' },
   });
   assert.equal(crossOrigin.status, 403);
-  assert.equal((await client.listTools()).tools.length, 17);
+  assert.equal((await client.listTools()).tools.length, 18);
 });
 
 test('full OAuth code flow through mock Google issues a working MCP access token', async t => {
@@ -345,7 +345,7 @@ test('full OAuth code flow through mock Google issues a working MCP access token
 
   const client = await connectHttp(t, readOnly.base, tokens.access_token);
   const { tools } = await client.listTools();
-  assert.equal(tools.length, 17);
+  assert.equal(tools.length, 18);
 
   const refreshed = await fetch(`${readOnly.base}/oauth/token`, {
     method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded', Authorization: `Basic ${b64u(`${clientId}:${clientSecret}`)}` },

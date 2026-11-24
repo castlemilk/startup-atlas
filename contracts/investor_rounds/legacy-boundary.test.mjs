@@ -96,9 +96,15 @@ for (const [field, value] of [
   });
 }
 
-for (const [field, value] of [
+for (const [field, value, expectedPath] of [
   ['investors', [{ id: 'investor:fixture-one' }]],
-  ['participants', [{ investor_id: 'investor:fixture-one', role: 'lead' }]],
+  // `participants` has since become an accepted legacy field in its own right
+  // (a round's plain investor names, consumed by the graph builder as
+  // participated_in edges), so the proposed structured entry below is now
+  // rejected at the item path instead of the field path. The guarantee this
+  // case pins is unchanged: the structured {investor_id, role} shape is
+  // rejected by the legacy validator and the event is not dropped.
+  ['participants', [{ investor_id: 'investor:fixture-one', role: 'lead' }], '/patch/funding_rounds/0/participants/0'],
   ['participations', ['participation:fixture-one']],
   ['amount_precision', 'approximate'],
   ['date_precision', 'month'],
@@ -112,7 +118,7 @@ for (const [field, value] of [
     const before = structuredClone(current);
     const round = { ...current.research.startups[0].funding_rounds[0], [field]: value };
     assert.throws(() => validateStartupRecord({ ...current.research.startups[0], funding_rounds: [round] }), errorAt('VALIDATION_ERROR'));
-    await assert.rejects(prepareStartupEdit(current, await editFor(current, { funding_rounds: [round] })), errorAt('VALIDATION_ERROR', `/patch/funding_rounds/0/${field}`));
+    await assert.rejects(prepareStartupEdit(current, await editFor(current, { funding_rounds: [round] })), errorAt('VALIDATION_ERROR', expectedPath ?? `/patch/funding_rounds/0/${field}`));
     assert.deepEqual(current, before);
   });
 }

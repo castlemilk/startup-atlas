@@ -249,6 +249,21 @@ def crawl_latest_key(mode):
     return f'{CORPUS_PREFIX}/crawl/{mode}/latest.json'
 
 
+def crawl_progress_key():
+    # Live crawl-progress record: index-bucket ROOT (no prefix), so it sits
+    # outside the v1/ 90-day retention prefix and next to latest.json. One
+    # object, overwritten in place by every crawl step; read by the KPIs
+    # dashboard, the hosted MCP (atlas_crawl_status) and the loop health
+    # check. See the crawl-progress design (24 Nov 2026).
+    return 'crawl-progress.json'
+
+
+def crawl_progress_archive_key(run_id):
+    # Terminal per-run copy in the private corpus bucket, beside the crawl
+    # snapshots: permanent history, never a live source.
+    return f'{CORPUS_PREFIX}/crawl-progress/{run_id}.json'
+
+
 def reviewed_key(filename):
     return f'{CORPUS_PREFIX}/reviewed/{filename}'
 

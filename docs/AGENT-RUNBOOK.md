@@ -158,3 +158,64 @@ profile slug, and the image URL and label are unambiguous, retain it with
 retain priority. Multiple URLs or conflicting names withhold the plain-label
 binding. This is review-only metadata: no portrait bytes, identity or rights
 are verified by it, and company portrait capture is unchanged.
+
+## The review loop (as of 24 Nov 2026)
+
+The loop is one pipeline; every stage below is live on main and verified
+2026-11-24. The review queue (`data/review-queue.json`) is the single
+hand-off point between automated collection and published data — there is
+no second queue.
+
+1. **Crawl.** The Partner research crawl workflow runs the bounded
+   collector (partners → programs → news → logos → profiles → portraits →
+   partner-candidates). Corpus snapshots publish to the corpus bucket and
+   the live index rebuilds from reviewed data.
+2. **Queue build.** The same workflow then runs
+   `scripts/build-review-queue.py`: it copies the current
+   `data/review-queue.json` in, folds in the crawl's new candidates
+   (merges, draft facts/rounds, startup leads, headshot candidates, edges)
+   as `pending` entries with confidence scores and evidence, and writes
+   the queue back.
+3. **Confidence gate.** At every queue build, the builder applies
+   `scripts/review_gating.py` with the thresholds in
+   `data/review-gating.json`. Entries at or above their kind's threshold
+   are auto-approved and recorded `decided_by: auto-gate` — an audit
+   trail, reversible from the admin panel. Current v1 thresholds: merges
+   ≥ 0.88 **and** a shared identity key; facts ≥ 0.55 with a complete
+   draft; startup leads ≥ 0.65. Edges and headshots have no auto-approve
+   threshold in v1 (`auto_approve_at: null`) — they always wait for a
+   human-band decision. `enabled: false` in the config is the kill
+   switch: no gating at all.
+4. **Agent review pass.** An hourly cron works the human band through the
+   hosted admin MCP at `/mcp/admin` (tools `atlas_admin_*`, reusing the
+   panel's queue write-back). Decisions are attributed
+   `decided_by: agent-review` and **require a note citing the evidence
+   relied on** — the tool refuses a decision without one. The pass
+   decides only where the evidence is clear-cut; kinds the gate reserves
+   (edges, headshots) and anything genuinely ambiguous stay pending for
+   Ben.
+5. **Admin panel (Ben).** The panel at `/admin` on the hosted MCP app
+   (Google login, allow-listed admin account only) shows what is left:
+   pending cards lowest-confidence first, the auto-applied list with
+   Undo, and past decisions. Panel and `/mcp/admin` read and write the
+   same `data/review-queue.json` through the same GitHub Contents
+   write-back, with commits of the form
+   `review: <id> <decision> via admin panel`.
+6. **Decisions applied.** The existing consumers replay approved queue
+   decisions at registry/graph build (identity replay for merges,
+   reviewed-data writes for facts and leads) — a decision changes
+   published data only through those consumers, never by a queue write
+   alone.
+7. **Defects become issues.** Anything the loop surfaces but cannot fix
+   in place — a broken source, a data defect, a missing check — is filed
+   as a GitHub issue on this repo (the hosted MCP's `atlas_create_issue`
+   or the backlog file → `kpi-backlog.yml` path).
+8. **Burn-down.** A 30-minute cron (`atlas-backlog-burndown`) advances
+   one open issue per run: close-with-evidence if already fixed, else
+   branch → tests → PR → squash-merge on green CI.
+9. **Health check.** `scripts/loop_health_check.py` runs daily
+   (`loop-health.yml`) and fails on RED: crawl conclusion, live-index
+   freshness, corpus lag by content hash, console smoke test, and
+   per-file checked-date staleness (F4). Network-dependent signals
+   degrade to WARN, never a false RED. Known gap, tracked in #426: the
+   check does not yet watch review-queue freshness or pending count.

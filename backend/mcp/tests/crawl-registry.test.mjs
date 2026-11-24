@@ -143,7 +143,7 @@ test('official MCP client discovers the crawl tools and reads the registry over 
   t.after(async () => { await client.close(); await rm(dir, { recursive: true, force: true }); assert.equal(stderr, ''); });
   await client.connect(transport);
   const { tools } = await client.listTools();
-  assert.equal(tools.length, 17);
+  assert.equal(tools.length, 18);
   for (const name of ['atlas_list_crawl_runs', 'atlas_get_crawl_run', 'atlas_get_crawl_claims']) {
     assert.equal(tools.find(item => item.name === name).annotations.readOnlyHint, true);
   }

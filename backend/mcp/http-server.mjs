@@ -2,7 +2,7 @@
 /**
  * Startup Atlas MCP over HTTP with Google OAuth.
  *
- * The same 17 tools as the stdio server (backend/mcp/server.mjs), exposed
+ * The same 18 tools as the stdio server (backend/mcp/server.mjs), exposed
  * over Streamable HTTP at /mcp, behind OAuth 2.0 where Google is the
  * identity provider:
  *
@@ -576,7 +576,7 @@ export function createHttpHandler(store, config, stores = createOAuthStores()) {
       const url = new URL(req.url ?? '/', config.baseUrl);
       const pathname = url.pathname;
       if (pathname === '/health' && req.method === 'GET') {
-        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 17, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken), adminEnabled: oauthEnabled, adminQueueWriteConfigured: Boolean(config.githubToken), adminMcpEnabled: true, adminTools: ADMIN_TOOLS.length });
+        sendJson(res, 200, { status: 'ok', server: 'startup-atlas', transport: 'streamable-http', tools: 18, writeEnabled: store.writeEnabled, auth: 'google-oauth', oauthEnabled, githubIssuesConfigured: Boolean(config.githubToken), adminEnabled: oauthEnabled, adminQueueWriteConfigured: Boolean(config.githubToken), adminMcpEnabled: true, adminTools: ADMIN_TOOLS.length });
         return;
       }
       if (pathname === '/admin' || pathname.startsWith('/admin/')) { await admin.handle(req, res, url); return; }

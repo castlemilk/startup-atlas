@@ -225,7 +225,7 @@ test('the admin account gets exactly the admin tools, disjoint from /mcp', async
   assert.ok(tools.every(tool => tool.name.startsWith('atlas_admin_')));
 
   const health = await (await fetch(`${app.base}/health`)).json();
-  assert.equal(health.tools, 17);
+  assert.equal(health.tools, 18);
   assert.equal(health.adminMcpEnabled, true);
   assert.equal(health.adminTools, 6);
 });
@@ -290,9 +290,9 @@ test('decide requires an evidence note, writes back as agent-review, and undo re
   assert.equal(githubFiles.get('data/review-queue.json').message, 'review: startup-lead:testco decision undone via admin MCP (was approved by agent-review)');
 });
 
-test('/mcp regression: the catalogue surface still serves its 17 tools and no admin tools', async t => {
+test('/mcp regression: the catalogue surface still serves its 18 tools and no admin tools', async t => {
   const client = await connect(t, app.base, '/mcp', readerToken());
   const { tools } = await client.listTools();
-  assert.equal(tools.length, 17);
+  assert.equal(tools.length, 18);
   assert.ok(tools.every(tool => !tool.name.startsWith('atlas_admin_')));
 });
