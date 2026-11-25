@@ -238,8 +238,8 @@ class SeedTests(unittest.TestCase):
         self.assertEqual(entities['startup:canva']['identity_key'], 'canva.com')
         self.assertEqual(entities['startup:canva']['identity_basis'], 'website-host')
         self.assertEqual(entities['partner:airtree']['identity_key'], 'airtree.vc')
-        self.assertEqual(entities['startup:fusion-books']['identity_basis'], 'name-only')
-        self.assertIsNone(entities['startup:fusion-books']['identity_key'])
+        self.assertEqual(entities['startup:fusion-books']['identity_basis'], 'website-host')
+        self.assertEqual(entities['startup:fusion-books']['identity_key'], 'fusionbooks.com.au')
         self.assertEqual(
             entities['person:bill-bartee']['identity_key'],
             'linkedin.com/in/billbartee')
