@@ -17,6 +17,10 @@ jobs:
         if: steps.toolchain.outputs.node_ready != 'true'
         with:
           node-version: '22'
+      - uses: actions/setup-python@v5
+        if: steps.toolchain.outputs.python_ready != 'true'
+        with:
+          python-version: '3.12'
       - name: Record npm version
         id: npmver
         run: echo "version=$(npm --version)" >> "$GITHUB_OUTPUT"
@@ -40,6 +44,8 @@ jobs:
           npm ci --prefix backend/hosted --ignore-scripts
           npm --prefix backend/hosted test
           npm --prefix backend/hosted run build
+      - name: Install Parquet build dependency
+        run: python3 -m pip install pyarrow
       - name: Validate catalogue and filtering
         run: |
           npm run data:generate
@@ -78,7 +84,9 @@ jobs:
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
       - name: Exercise design-system and profile views in Chrome
-        run: node scripts/test-atlas-views-browser.mjs
+        run: |
+          node scripts/test-atlas-views-browser.mjs
+          node scripts/test-offline-fixture-browser.mjs
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
       - name: Exercise the design microsite in Chrome
