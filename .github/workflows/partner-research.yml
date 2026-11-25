@@ -132,6 +132,24 @@ jobs:
             --run ${{ github.run_number }} \
             --queue research/crawl/review-queue.json \
             --summary-md research/crawl/review-queue-summary.md
+      - name: Record crawl bookkeeping
+        # Issue #538: data/crawl-runs.json only ever held manual partners
+        # runs and data/crawl-source-state.json was an empty stub, because
+        # nothing in the workflow recorded the seven mode runs or persisted
+        # the sampler state. Build the updated registry and copy the state
+        # file into the artifact; landing them back on main stays a
+        # reviewed data change, like the review queue above.
+        if: always()
+        run: |
+          cp data/crawl-runs.json research/crawl/crawl-runs.json
+          python3 scripts/record_crawl_runs.py \
+            --registry research/crawl/crawl-runs.json \
+            --snapshots research/crawl \
+            --catalogue-revision ${{ github.sha }} \
+            --claimed-by github-actions \
+            --run-url ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
+            --sequence ${{ github.run_number }}
+          cp data/crawl-source-state.json research/crawl/crawl-source-state.json
       - name: Preserve review material
         if: always()
         uses: actions/upload-artifact@v4
