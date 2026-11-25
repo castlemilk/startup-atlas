@@ -199,7 +199,25 @@ contract: deterministic ordering, unique round IDs, no self-relations.
   `docs/KG-CONNECTIVE-TISSUE.md` §3): `founded`, `team_member`,
   `supports`, `supports_programme`, `offers`, `programme_relationship`,
   `led_round`, `participated_in`, `subsidiary_of`, `integrates_with`,
-  `listed_in_portfolio`, `member_of_network`.
+  `listed_in_portfolio`, `member_of_network`, `co_founder`.
+
+### Co-founder edges (#527, added 25 Nov 2026, Ben's direction)
+
+The graph's first person-to-person relationship. Two people who are both
+recorded founders of the same startup gain a derived `co_founder` edge:
+one per unordered pair per startup, emitted in canonical ID order with
+`startup_id` naming the shared startup as its basis and description
+`Co-founder of <startup>`. The edge asserts no new fact — it is a
+deterministic join over the two reviewed `founded` edges — so it carries
+the standard §2 attribution through the normal enrichment path and is
+not scored as inferred. Its source is the founder source the pair
+shares, else the startup's own source, else the first founder's source;
+its verified date is the later of the two founders' dates. Person views
+render it through the generic relationship path (label `Co-founder` in
+the micro-graph, the edge description in the Relationships list).
+Non-derivable personal relationships (friendships, prior collaborations
+outside a shared recorded founding) are out of scope until a reviewed
+data source records them.
 
 ### Partner `relationships` field (added 24 Nov 2026, Ben's direction)
 
