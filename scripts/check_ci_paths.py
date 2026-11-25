@@ -1,5 +1,17 @@
-"""Select focused PR checks using changed paths in the checked-out merge tree."""
+"""Select focused PR checks using changed paths in the checked-out merge tree.
+
+Two modes:
+
+- ``check_ci_paths.py <base-sha>`` prints the enforced lane selection as
+  ``name=true|false`` lines (consumed by the Pages workflow and the
+  pre-push hook).
+- ``check_ci_paths.py --shadow <base-sha>`` prints a JSON shadow report
+  (issue #150 A4): what the selector *would* execute for the same diff,
+  recorded inside existing full runs without changing what they execute.
+  Shadow mode never gates and always exits 0.
+"""
 from fnmatch import fnmatchcase
+import json
 import subprocess
 import sys
 
@@ -46,6 +58,59 @@ def lanes(paths):
     }
 
 
+ALL_PATTERNS = tuple(pattern for patterns in RULES.values() for pattern in patterns)
+
+# Paths that legitimately select no lane: the patch check (git diff --check)
+# and human review cover them, and no build or test input reads them. A path
+# matched by no rule and not listed here is *unknown* — the shadow report
+# treats unknown paths as selecting full validation (issue #150 A4).
+PATCH_ONLY_PATTERNS = ('*.md', 'docs/*', 'LICENSE*', '.gitignore', '.gitattributes')
+
+WORKFLOW_PREFIX = '.github/workflows/'
+
+
+def shadow_report(paths):
+    """Dependency-aware selection recorded in shadow mode (issue #150 A4).
+
+    The verdict distinguishes what a full run would have executed:
+
+    - ``full``: an unknown path (matched by no rule and not patch-only) or
+      any workflow change — CI behaviour itself is in play, so every lane
+      counts as selected.
+    - ``selected``: at least one lane matched the dependency map.
+    - ``patch-only``: every path is documentation/meta the patch check
+      already covers.
+
+    Per-lane values distinguish ``selected`` from ``not-applicable``; the
+    aggregate of a shadow record is ``recorded`` — it is evidence for a
+    future selection change, never a gate on the current run.
+    """
+    selected = lanes(paths)
+    unknown = [
+        path for path in paths
+        if not any(fnmatchcase(path, pattern) for pattern in ALL_PATTERNS)
+        and not any(fnmatchcase(path, pattern) for pattern in PATCH_ONLY_PATTERNS)
+    ]
+    workflow_change = any(path.startswith(WORKFLOW_PREFIX) for path in paths)
+    if unknown or workflow_change:
+        verdict = 'full'
+    elif any(selected.values()):
+        verdict = 'selected'
+    else:
+        verdict = 'patch-only'
+    return {
+        'mode': 'shadow',
+        'verdict': verdict,
+        'lanes': {
+            name: 'selected' if enabled else 'not-applicable'
+            for name, enabled in selected.items()
+        },
+        'unknown_paths': unknown,
+        'workflow_change': workflow_change,
+        'aggregate': 'recorded',
+    }
+
+
 def changed_paths(base):
     output = subprocess.check_output(
         ['git', 'diff', '--name-only', '--no-renames', '-z', base, 'HEAD', '--'],
@@ -54,8 +119,18 @@ def changed_paths(base):
             for path in output.split(b'\0') if path]
 
 
-if __name__ == '__main__':
-    if len(sys.argv) != 2 or len(sys.argv[1]) != 40 or any(c not in '0123456789abcdef' for c in sys.argv[1]):
+def _base_sha(value):
+    if len(value) != 40 or any(c not in '0123456789abcdef' for c in value):
         raise SystemExit('Expected the exact GitHub pull-request base SHA')
-    for name, selected in lanes(changed_paths(sys.argv[1])).items():
-        print(f'{name}={str(selected).lower()}')
+    return value
+
+
+if __name__ == '__main__':
+    if len(sys.argv) == 3 and sys.argv[1] == '--shadow':
+        print(json.dumps(shadow_report(changed_paths(_base_sha(sys.argv[2]))),
+                         indent=2, sort_keys=True))
+    elif len(sys.argv) == 2:
+        for name, selected in lanes(changed_paths(_base_sha(sys.argv[1]))).items():
+            print(f'{name}={str(selected).lower()}')
+    else:
+        raise SystemExit('Expected the exact GitHub pull-request base SHA')
