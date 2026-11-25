@@ -17,8 +17,8 @@
  */
 
 export const WORKFLOW_MODES = [
-  'partners', 'programs', 'news', 'logos', 'profiles', 'portraits',
-  'partner-candidates',
+  'partners', 'programs', 'news', 'logos', 'profiles', 'company-profiles',
+  'portraits', 'partner-candidates',
 ];
 
 export const DEFAULT_INDEX_BUCKET = 'single-station-515408-g9-atlas-index';

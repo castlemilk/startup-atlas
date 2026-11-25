@@ -579,6 +579,27 @@ class WorkflowWiringTests(unittest.TestCase):
         self.assertIn("--summary-md research/crawl/review-queue-summary.md",
                       workflow)
 
+    def test_company_profiles_mode_is_wired_into_the_workflow(self):
+        # Issue #535: the deep company-profiles mode runs for every
+        # approved company seed in the scheduled workflow, appears in the
+        # run summary, and is registered in every mode list that the
+        # progress/bookkeeping consumers read.
+        workflow = (ROOT / ".github" / "workflows"
+                    / "partner-research.yml").read_text()
+        self.assertIn(
+            "crawl.py company-profiles "
+            "--approved data/company-profile-seeds.csv", workflow)
+        self.assertIn("'company-profiles', 'portraits'", workflow)
+        self.assertIn(
+            "'company-profiles'",
+            (ROOT / "scripts" / "crawl_progress.py").read_text())
+        self.assertIn(
+            "'company-profiles': 'data/company-profile-seeds.csv'",
+            (ROOT / "scripts" / "record_crawl_runs.py").read_text())
+        self.assertIn(
+            "'company-profiles'",
+            (ROOT / "backend" / "mcp" / "crawl-status.mjs").read_text())
+
     def test_profiles_limit_is_derived_from_the_seed_csv(self):
         workflow = (ROOT / ".github" / "workflows"
                     / "partner-research.yml").read_text()

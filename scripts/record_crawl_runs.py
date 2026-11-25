@@ -2,7 +2,7 @@
 """Append one registry record per crawl mode run to data/crawl-runs.json.
 
 Issue #538: the registry only ever held manual ``partners`` runs, although
-the partner-research workflow runs seven modes. This script is the
+the partner-research workflow runs eight modes. This script is the
 workflow's bookkeeping step: after the crawl steps finish, it reads each
 mode's snapshot from the snapshot directory, builds a record that satisfies
 the strict registry schema in ``backend/mcp/crawls.mjs`` (run ID shape,
@@ -39,6 +39,7 @@ MODE_SEED_FILES = {
     'news': 'data/startup-news-sources.json',
     'logos': 'data/partner-logo-seeds.csv',
     'profiles': 'data/partner-logo-seeds.csv',
+    'company-profiles': 'data/company-profile-seeds.csv',
     'portraits': 'data/company-profile-seeds.csv',
     'partner-candidates': 'data/partner-logo-seeds.csv',
 }

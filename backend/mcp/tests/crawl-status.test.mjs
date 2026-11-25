@@ -43,7 +43,7 @@ test('running record shapes with percent over declared totals only', () => {
   assert.equal(out.current_mode, 'profiles');
   // (12+20+7+32+19) / (12+20+7+32+32) = 90/103 -> 87
   assert.equal(out.percent_complete, 87);
-  assert.equal(out.modes.length, 7);
+  assert.equal(out.modes.length, 8);
   assert.equal(out.modes[4].current_source, 'Blackbird');
   assert.deepEqual(out.totals, { sources_total: 103, sources_done: 90, candidates: 3238, errors: 1 });
 });
