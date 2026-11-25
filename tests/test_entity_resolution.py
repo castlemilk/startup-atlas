@@ -1,3 +1,4 @@
+import copy
 import importlib.util
 import json
 import tempfile
@@ -313,6 +314,81 @@ class SeedTests(unittest.TestCase):
             generated_at=stored['generated_at'],
             source_revision=stored['source_revision'])
         self.assertEqual(stored, built)
+
+
+class RegistryDriftTests(unittest.TestCase):
+    """Issue #516: the committed registry must match its builder.
+
+    data/identity.json is a build output of the reviewed data plus the
+    APPROVED review-queue merge decisions, but the admin panel / admin
+    MCP write-backs commit data/review-queue.json alone. On 25 Nov 2026
+    nine approved partner merges landed that way and the stale registry
+    only surfaced later as red tests on main. These tests fail fast in
+    the normal suite (and the data/queue CI lanes) instead.
+    """
+
+    REGENERATE = ('regenerate it with '
+                  '`python3 scripts/entity_resolution.py` and commit '
+                  'the result together with the queue change')
+
+    @staticmethod
+    def _canonical(registry):
+        # Byte-for-byte the form scripts/entity_resolution.py writes.
+        return json.dumps(registry, ensure_ascii=False, indent=2) + '\n'
+
+    def _built(self, stored):
+        # generated_at / source_revision are the only volatile fields;
+        # pin them from the committed file so everything else — every
+        # entity, alias and merge — must match exactly.
+        return er.build_registry(generated_at=stored['generated_at'],
+                                 source_revision=stored['source_revision'])
+
+    def test_committed_registry_matches_builder_output(self):
+        stored = er.load_registry()
+        built = self._built(stored)
+        if stored != built:
+            stored_entities = stored.get('entities', {})
+            built_entities = built.get('entities', {})
+            differing = sorted(
+                entity_id for entity_id
+                in set(stored_entities) | set(built_entities)
+                if stored_entities.get(entity_id)
+                != built_entities.get(entity_id))
+            stored_merges = {(m['from'], m['to'])
+                             for m in stored.get('merges', [])}
+            built_merges = {(m['from'], m['to'])
+                            for m in built.get('merges', [])}
+            self.fail(
+                'data/identity.json has drifted from build_registry(): '
+                f'entities differing: {differing or "none"}; '
+                'merges only in the committed file: '
+                f'{sorted(stored_merges - built_merges) or "none"}; '
+                'merges only in a fresh build: '
+                f'{sorted(built_merges - stored_merges) or "none"}. '
+                f'If a review-queue decision changed the inputs, '
+                f'{self.REGENERATE}.')
+        raw = (ROOT / 'data' / 'identity.json').read_text(encoding='utf-8')
+        self.assertEqual(
+            raw, self._canonical(built),
+            'data/identity.json parses to the built registry but is not '
+            'serialised the way the builder writes it (entity/merge '
+            f'order or formatting); {self.REGENERATE}.')
+
+    def test_drift_check_detects_a_decision_that_skipped_regeneration(self):
+        # Negative control: remove one recorded merge from a copy of
+        # the built registry — exactly what a queue decision that was
+        # never regenerated looks like — and the comparison above must
+        # see the two registries diverge, or it has no teeth.
+        stored = er.load_registry()
+        tampered = copy.deepcopy(self._built(stored))
+        victim = tampered['merges'][0]
+        winner = tampered['entities'][victim['to']]
+        winner['merged_from'].remove(victim['from'])
+        del tampered['entities'][victim['from']]['merged_into']
+        tampered['merges'] = tampered['merges'][1:]
+        self.assertNotEqual(stored, tampered)
+        self.assertNotEqual(self._canonical(stored),
+                            self._canonical(tampered))
 
 
 class ReplayTests(unittest.TestCase):
