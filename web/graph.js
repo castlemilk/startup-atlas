@@ -4,6 +4,7 @@ import { openGraph } from './graph-store.js';
 import { entityDetails, entityHref, kindName, neighborhood } from './graph-model.js';
 import { createForceSimulation, layoutBounds, layoutNetwork } from './graph-layout.js';
 import { mountCompanyLoom, mountLoom } from './graph-loom.js';
+import { mountAtlasExplorer } from './graph-atlas.js';
 import { mainConnections, mobileFit, mobileFitHeight } from './graph-mobile-fit.js';
 import { renderIcon as icon } from './atlas-icons.js';
 import { animateAtlasChange } from './atlas-ui.js';
@@ -20,6 +21,7 @@ let store, rootId, selectedId, depth=1, zoom=1, listVisible=false, searchTimer, 
 let layout, bounds, simulation, frame=null, pan={x:0,y:0}, gesture=null, suppressClick=false;
 let loom, loomViewport, loomUnavailable=false, renderedCameraKey;
 let companyLoom, companySections=[];
+let atlasExplorer;
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
 const pinned=new Map();
 let scope=readExploration(new URLSearchParams(location.search));
@@ -824,7 +826,7 @@ function restoreFromUrl() {
 }
 window.addEventListener('popstate',restoreFromUrl);
 window.addEventListener('pagehide',event=>{
-  if (!event.persisted) destroyCompanyMap();
+  if (!event.persisted) { destroyCompanyMap(); atlasExplorer?.destroy(); atlasExplorer=null; }
   if (!loom) return;
   saveCamera();
   if (!event.persisted) loom.destroy();
@@ -871,4 +873,23 @@ try {
   $('graph-status').textContent='The graph could not be loaded. Refresh to try again.';
   $('graph-detail').innerHTML='<p class="detail-empty">Profiles are temporarily unavailable.</p>';
   $('graph-canvas').innerHTML='<text x="460" y="320" text-anchor="middle">Graph unavailable</text>';
+}
+
+// On-demand atlas overview (#367): an additional whole-graph view fed by
+// the Loom atlas export. It is independent of the explorer above — any
+// failure leaves the section hidden and the full-graph path untouched,
+// which stays the fallback until the atlas path is verified live.
+try {
+  const section=$('graph-atlas');
+  atlasExplorer=await mountAtlasExplorer({
+    canvas:$('graph-atlas-canvas'),
+    topicsHost:$('graph-atlas-topics'),
+    reveal:()=>{section.hidden=false;},
+    onStatus:text=>{$('graph-atlas-status').textContent=text;},
+    onPick:text=>{$('graph-atlas-pick').textContent=text;},
+  });
+} catch {
+  atlasExplorer=null;
+  const section=$('graph-atlas');
+  if (section) section.hidden=true;
 }

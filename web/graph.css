@@ -111,10 +111,20 @@
 #graph-back:hover{background:var(--atlas-soft)}
 #graph-back[hidden]{display:none}
 #graph-back .atlas-icon{width:16px;height:16px}
-:is(.network-canvas,.graph-company-canvas){position:relative;overflow:hidden;overflow:clip;background:var(--atlas-paper);border-block:1px solid var(--atlas-border)}
-:is(.network-canvas,.graph-company-canvas) > :is(svg,canvas){display:block;width:100%;height:max(var(--graph-canvas-height),var(--graph-fit-height,0px));touch-action:none;cursor:grab;user-select:none}
-:is(.network-canvas,.graph-company-canvas) > [hidden]{display:none}
-:is(.network-canvas,.graph-company-canvas) > :is(svg,canvas):active{cursor:grabbing}
+:is(.network-canvas,.graph-company-canvas,.graph-atlas-canvas){position:relative;overflow:hidden;overflow:clip;background:var(--atlas-paper);border-block:1px solid var(--atlas-border)}
+:is(.network-canvas,.graph-company-canvas,.graph-atlas-canvas) > :is(svg,canvas){display:block;width:100%;height:max(var(--graph-canvas-height),var(--graph-fit-height,0px));touch-action:none;cursor:grab;user-select:none}
+:is(.network-canvas,.graph-company-canvas,.graph-atlas-canvas) > [hidden]{display:none}
+:is(.network-canvas,.graph-company-canvas,.graph-atlas-canvas) > :is(svg,canvas):active{cursor:grabbing}
+.graph-atlas{margin-top:28px}
+.graph-atlas[hidden]{display:none}
+.graph-atlas-header{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+.graph-atlas-header h2{margin:0;color:var(--atlas-ink);font:600 1rem/1.3 var(--atlas-font-body)}
+.graph-atlas-header p{margin:0;color:var(--atlas-muted);font:400 .8125rem/1.4 var(--atlas-font-body)}
+.graph-atlas-topics{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.graph-atlas-topic{min-height:40px;padding:6px 12px;border:1px solid var(--atlas-border);border-radius:var(--atlas-radius-control);background:var(--atlas-surface);color:var(--atlas-ink);font:600 .8125rem/1.3 var(--atlas-font-body);cursor:pointer}
+.graph-atlas-topic[aria-pressed="true"]{background:var(--atlas-ink);color:var(--atlas-on-action)}
+.graph-atlas-canvas{--graph-canvas-height:clamp(320px,52dvh,560px)}
+.graph-atlas-pick{min-height:1.4em;margin:10px 0 0;color:var(--atlas-muted);font:400 .875rem/1.4 var(--atlas-font-body)}
 .graph-company-canvas > canvas{height:var(--company-map-height,var(--graph-canvas-height))}
 .network-loom-controls{position:absolute;inset:0;pointer-events:none}
 .network-loom-controls .network-node{position:absolute;inset:0 auto auto 0;padding:0;border:0;border-radius:8px;background:transparent;overflow:visible;pointer-events:none}
