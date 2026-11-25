@@ -126,8 +126,14 @@ export async function checkEditorialExplorer({command,evaluate,navigate,until,cl
   assert.equal(await evaluate(`(()=>{
     const views=document.querySelector('[data-atlas-explorer-actions] .atlas-view-nav').getBoundingClientRect();
     const utilities=document.querySelector('.atlas-view-utilities').getBoundingClientRect();
-    return Math.abs(views.top-utilities.top)<3;
-  })()`),true,'View and utility actions fit on the same row at 320px');
+    // With four views the actions bar wraps at 320px by design (the
+    // container is flex-wrap and the utilities become icon buttons);
+    // require one shared row or a clean stack, never an overlap or
+    // horizontal overflow.
+    const sameRow=Math.abs(views.top-utilities.top)<3;
+    const stacked=utilities.top>=views.bottom-3;
+    return (sameRow||stacked)&&views.right<=innerWidth+1&&utilities.right<=innerWidth+1;
+  })()`),true,'View and utility actions fit without overlap at 320px');
   assert.ok(await evaluate(`document.querySelector('${trigger}').getBoundingClientRect().height>=44`),'The mobile Filters button is touch-sized');
   await click(trigger);
   await until(()=>evaluate(`document.querySelector('${popup}')?.checkVisibility()&&document.querySelector('${popup}')?.dataset.presentation==='sheet'&&!!document.querySelector('${checkbox(company.country)}')`),'Narrow headquarters control did not open as a sheet');
