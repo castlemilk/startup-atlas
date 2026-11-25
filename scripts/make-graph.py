@@ -393,7 +393,9 @@ def build_graph(profiles, leads, reviewed, catalogue, research, identity=None,
     round_ids = [round['id'] for round in rounds]
     if len(round_ids) != len(set(round_ids)):
         raise ValueError('Funding round identifiers must be unique')
-    key = lambda x: (x['from'], x['to'], x['kind'], x['source'])
+    # The same announcement can document multiple rounds for the same investor.
+    # Scope duplicate funding roles to the round while preserving other edge keys.
+    key = lambda x: (x['from'], x['to'], x['kind'], x['source'], x.get('round_id') or '')
     seen = set()
     unique, unique_verified = [], []
     for edge, verified in sorted(zip(edges, edge_verified), key=lambda pair: key(pair[0])):
