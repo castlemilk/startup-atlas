@@ -148,7 +148,7 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await until(()=>evaluate(`(()=>{
     const params=new URLSearchParams(location.search);
     const chart=document.querySelector('#treemap-chart');
-    return params.get('metric')==='company-value'&&params.get('group')==='technology'
+    return params.get('metric')==='company-value'&&params.get('group')==='country'
       &&!!chart.querySelector('[data-company="startup:wise"] [data-figure-basis="market-cap"]')
       &&!!chart.querySelector('[data-company="startup:revolut"] [data-figure-basis="valuation"]');
   })()`),'SDK company value choice did not plot both figure types');
