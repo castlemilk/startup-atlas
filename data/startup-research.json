@@ -327,9 +327,13 @@
           "announced_on": "2020-09-29",
           "amount": 40000000,
           "currency": "USD",
-          "note": "Incremental tranche, not the US$200 million cumulative Series D total announced at the time.",
+          "note": "Incremental tranche, not the US$200 million cumulative Series D total announced at the time. Participants recorded from the full syndicated text of the company's release, which carries a Square Peg partner quote describing Square Peg as returning as an investor in the extended Series D round, and Kalkine's contemporaneous report naming Skip Capital as a new investor in this raise; AVCJ reported the company did not specify which investors participated, so no lead is recorded.",
           "source": "https://www.airwallex.com/global/newsroom/airwallexs-extended-series-d-fundraising-brings-total-round-to-usd200m",
-          "stage_normalised": "Series D"
+          "stage_normalised": "Series D",
+          "participants": [
+            "Skip Capital",
+            "Square Peg Capital"
+          ]
         },
         {
           "id": "airwallex-2021-series-d-extension",
@@ -1215,7 +1219,10 @@
           "amount_text": "$1 million (currency unspecified in the LaunchVic case study)",
           "source": "https://launchvic.org/case-studies/the-legaltech-startup-revolutionising-due-diligence-with-ai/",
           "note": "LaunchVic reports that Deeligence announced this round in early 2024, including backing from its Alice Anderson Fund. Exact announcement and closing dates, currency, stage and lead status are not specified by this source. This is not an exhaustive participant list; the fund name is not resolved to a canonical graph identity.",
-          "stage_normalised": "Unknown"
+          "stage_normalised": "Unknown",
+          "participants": [
+            "Alice Anderson Fund"
+          ]
         },
         {
           "id": "deeligence-2026-startmate-accelerator",
@@ -2083,7 +2090,16 @@
           "amount_text": "Over $100 million (currency unspecified in the company announcement)",
           "note": "The company reports the round closed in May 2022; announced_on is the publication date, not the closing date. Its quoted Five Sigma founding partner says Five Sigma led the round. Named participants include AirTree Ventures, Blue Cloud Ventures, Five Sigma, Madrona, Salesforce Ventures and SoftBank Vision Fund 2; this is not an exhaustive investor list or canonical identity mapping. No numeric amount, valuation or lifetime total is inferred from the unspecified currency and lower-bound wording.",
           "source": "https://www.go1.com/blog/go1-secures-fresh-support-after-year-of-record-growth",
-          "stage_normalised": "Unknown"
+          "stage_normalised": "Unknown",
+          "lead_investor": "Five Sigma",
+          "participants": [
+            "AirTree Ventures",
+            "Blue Cloud Ventures",
+            "Five Sigma",
+            "Madrona",
+            "Salesforce Ventures",
+            "SoftBank Vision Fund 2"
+          ]
         }
       ],
       "hq_city": "Brisbane",
@@ -2484,7 +2500,12 @@
           "currency": "AUD",
           "note": "Transaction counsel identifies Grok, Giant Leap and Rampersand. Rampersand lists 2018 entry and describes itself as a seed co-lead. No precise announcement or closing date is verified.",
           "source": "https://img.legalvision.com.au/wp-content/uploads/2022/09/01194909/Capital-Raising-Capability-Statement.pdf",
-          "stage_normalised": "Seed"
+          "stage_normalised": "Seed",
+          "participants": [
+            "Grok Ventures",
+            "Giant Leap",
+            "Rampersand"
+          ]
         },
         {
           "id": "goterra-2020-series-a",
@@ -2511,7 +2532,11 @@
           "currency": "AUD",
           "note": "Startup Daily reported the bridge on 1 August 2023. Rampersand corroborates the amount in AUD and identifies Grok and Tenacious as backers, but its portfolio labels the bridge December 2023. Treat this as one reported bridge, without inferring a second round, close date or instrument.",
           "source": "https://www.startupdaily.net/topic/funding/cannon-brookes-backed-food-waste-recycling-startup-banks-10-million-bridging-round/",
-          "stage_normalised": "Bridge"
+          "stage_normalised": "Bridge",
+          "participants": [
+            "Grok Ventures",
+            "Tenacious Ventures"
+          ]
         },
         {
           "id": "goterra-2025-equity-crowdfunding",
@@ -3257,8 +3282,18 @@
           "id": "psiquantum-2020-series-c",
           "stage": "Series C",
           "source": "https://m12.vc/news/psiquantum-series-d-marks-important-technology-achievements/",
-          "note": "M12 says it first invested in PsiQuantum in the Series C announced in April 2020. M12 announced its investment on 6 April 2020: https://m12.vc/news/welcoming-psiquantum-to-the-m12-portfolio/. The exact round announcement day, round amount and lead allocation remain unconfirmed.",
-          "stage_normalised": "Series C"
+          "note": "M12 says it first invested in PsiQuantum in the Series C announced in April 2020. M12 announced its investment on 6 April 2020: https://m12.vc/news/welcoming-psiquantum-to-the-m12-portfolio/. The exact round announcement day and round amount remain unconfirmed; Bloomberg reporting via The Quantum Insider states the round was led by Atomico, with participation from Founders Fund, Playground Global, Redpoint Ventures, BlackRock, Baillie Gifford and M12: https://thequantuminsider.com/2020/04/07/psiquantum-quantum-computer-startup-raises-230-million-possibly-largest-qc-investment-to-date-2/",
+          "stage_normalised": "Series C",
+          "lead_investor": "Atomico",
+          "participants": [
+            "Atomico",
+            "Founders Fund",
+            "Playground Global",
+            "Redpoint Ventures",
+            "BlackRock",
+            "Baillie Gifford",
+            "M12"
+          ]
         }
       ],
       "profile_facts": [
@@ -3582,7 +3617,15 @@
           "amount_text": "Conflicting primary figures: $2.5 million (currency unstated, company newsroom) and A$2.3 million (original founder announcement).",
           "source": "https://puralink.com/news/pre-seed-round/",
           "note": "The company archive dates the linked article 17 September 2025. The newsroom links the original founder announcement; both describe the same Peak XV Partners-led pre-seed. No exact closing date or canonical amount is established. Named backers include Side Stage Ventures, Startmate, NZVC, Wollemi Capital Group, Ashik Ahmed, Matt Jones and Matthew Dellavedova. The list is not exhaustive; customer/design partners and accelerator support alone are not investment evidence.",
-          "stage_normalised": "Pre-Seed"
+          "stage_normalised": "Pre-Seed",
+          "lead_investor": "Peak XV Partners",
+          "participants": [
+            "Peak XV Partners",
+            "Side Stage Ventures",
+            "Startmate",
+            "NZVC",
+            "Wollemi Capital Group"
+          ]
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/puralink.svg",
@@ -3704,7 +3747,12 @@
           "amount_text": "$60 million",
           "source": "https://wayve.ai/press/series-d-extension/",
           "note": "Wayve announced this extension to its February Series D with AMD, Arm and Qualcomm Ventures. The announcement uses a dollar sign without a currency code.",
-          "stage_normalised": "Series D"
+          "stage_normalised": "Series D",
+          "participants": [
+            "AMD",
+            "Arm",
+            "Qualcomm Ventures"
+          ]
         }
       ],
       "profile_facts": [
@@ -4096,7 +4144,12 @@
           "announced_on": "2023-10-16",
           "source": "https://www.skykraft.com.au/post/skykraft-secures-100m-of-investment-to-transform-air-traffic-management",
           "note": "In a release datelined 16 October 2023 and posted on its site on 19 October, Skykraft reported completing a round that would provide over A$100 million. It named Foresight Australia, OPTrust and Main Sequence as new investors. The release gives no exact amount, lead investor or instrument.",
-          "stage_normalised": "Unknown"
+          "stage_normalised": "Unknown",
+          "participants": [
+            "Foresight Australia",
+            "OPTrust",
+            "Main Sequence"
+          ]
         }
       ],
       "profile_facts": [
@@ -4597,7 +4650,13 @@
           "currency": "AUD",
           "note": "Contemporaneous founder interview names Allectus Capital, Transition Level Investments, Jelix Ventures, Mercurian and unnamed individuals; Aug 2021 reporting explicitly corroborates AUD. Date is first located public reporting, not a verified legal close. No lead or allocation confirmed.",
           "source": "https://www.smartcompany.com.au/startupsmart/floodmapp-raise-flood-prediction/",
-          "stage_normalised": "Seed"
+          "stage_normalised": "Seed",
+          "participants": [
+            "Allectus Capital",
+            "Transition Level Investments",
+            "Jelix Ventures",
+            "Mercurian"
+          ]
         },
         {
           "id": "floodmapp-2022-02-seed",
