@@ -72,6 +72,10 @@ EOF
     note "pre-commit: review queue / gating consistency"
     run python3 -m unittest tests.test_review_gating tests.test_review_queue
   fi
+  if any_staged '^(data/accelerator-deals\.json|scripts/accelerator_deals\.py|tests/test_accelerator_deals\.py)$'; then
+    note "pre-commit: accelerator standard-deal table consistency"
+    run python3 -m unittest tests.test_accelerator_deals
+  fi
   if any_staged '^(scripts/check_ci_paths\.py|tests/test_ci_paths\.py)$'; then
     note "pre-commit: CI routing fixtures"
     run python3 -m unittest discover -s tests -p 'test_ci_paths.py'
@@ -142,6 +146,9 @@ check_range() {
     run python3 -m unittest tests.test_live_index.ReviewedValuationInputTests
     if echo "$paths" | grep -Eq '^data/(review-queue|review-gating)\.json$'; then
       run python3 -m unittest tests.test_review_gating tests.test_review_queue
+    fi
+    if echo "$paths" | grep -Eq '^(data/accelerator-deals\.json|scripts/accelerator_deals\.py|tests/test_accelerator_deals\.py)$'; then
+      run python3 -m unittest tests.test_accelerator_deals
     fi
   fi
   if lane web; then
