@@ -17,6 +17,10 @@ jobs:
         if: steps.toolchain.outputs.node_ready != 'true'
         with:
           node-version: '22'
+      - uses: actions/setup-python@v5
+        if: steps.toolchain.outputs.python_ready != 'true'
+        with:
+          python-version: '3.12'
       - name: Record npm version
         id: npmver
         run: echo "version=$(npm --version)" >> "$GITHUB_OUTPUT"
