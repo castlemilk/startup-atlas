@@ -15,6 +15,7 @@ on:
       - 'data/partners-reviewed.json'
       - 'data/startup-research.json'
       - 'data/treemap-evidence.json'
+      - 'data/graph.json'
       # Publish the new reviewed input when the publisher contract is changed.
       - '.github/workflows/publish-reviewed-corpus.yml'
   workflow_dispatch:
