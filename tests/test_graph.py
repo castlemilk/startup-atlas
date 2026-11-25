@@ -94,6 +94,42 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(len(data['edges']),2)
         self.assertEqual(data['funding_rounds'][0]['currency'],'AUD')
         self.assertTrue(all(x['source'].startswith('https://') for x in data['edges']))
+    def test_shared_evidence_preserves_distinct_funding_round_edges(self):
+        source = 'https://example.com/two-rounds'
+        profiles = {'Investor': {'companies': [
+            {'name': 'Example', 'source': source},
+            {'name': 'Example', 'source': source},
+        ]}}
+        rounds = [
+            {'id': 'seed', 'stage': 'Seed', 'source': source,
+             'lead_investor': 'Investor', 'participants': ['Member', 'Member']},
+            {'id': 'series-a', 'stage': 'Series A', 'source': source,
+             'lead_investor': 'Investor', 'participants': ['Member']},
+        ]
+        result = graph.build_graph(profiles, ['Investor', 'Member'], {},
+                                   {'opportunities': []},
+                                   {'startups': [{'name': 'Example', 'funding_rounds': rounds}]})
+        expected = [
+            ('led_round', 'seed'), ('led_round', 'series-a'),
+            ('participated_in', 'seed'), ('participated_in', 'series-a'),
+            ('supports', ''),
+        ]
+
+        def roles(edges):
+            return sorted((edge['kind'], edge.get('round_id', '')) for edge in edges)
+
+        self.assertEqual(roles(result['edges']), expected)
+        self.assertTrue(all(edge['source'] == source for edge in result['edges']))
+        with tempfile.TemporaryDirectory() as temp:
+            artifact = Path(temp) / 'graph.json'
+            sqlite_path = Path(temp) / 'graph.sqlite'
+            artifact.write_text(json.dumps(result), encoding='utf-8')
+            database.build(artifact, sqlite_path)
+            with sqlite3.connect(sqlite_path) as db:
+                stored = list(map(lambda row: json.loads(row[0]),
+                                  db.execute('select data from edges')))
+            self.assertEqual(roles(stored), expected)
+
     def test_derived_funding_links_do_not_claim_to_be_announcements(self):
         # The exact Goterra draft initially mislabelled both retrospective
         # counsel's credentials and the intermediary's closed-offer record.
