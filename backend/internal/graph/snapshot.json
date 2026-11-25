@@ -8640,6 +8640,26 @@
       "stale": false
     },
     {
+      "from": "partner:artesian",
+      "to": "startup:pi-exchange",
+      "kind": "participated_in",
+      "description": "Participated in Pre-Series A round",
+      "source": "https://itwire.com/it-industry-news/deals/pi-exchange-primed-to-democratise-ai-after-%242-million-pre-series-a-funding-round",
+      "round_id": "pi-exchange-2021-pre-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:bessemer",
       "to": "startup:canva",
       "kind": "participated_in",
@@ -8989,6 +9009,26 @@
         "sources": 1,
         "source_types": [
           "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:boab-ai",
+      "to": "startup:pi-exchange",
+      "kind": "participated_in",
+      "description": "Participated in Pre-Series A round",
+      "source": "https://itwire.com/it-industry-news/deals/pi-exchange-primed-to-democratise-ai-after-%242-million-pre-series-a-funding-round",
+      "round_id": "pi-exchange-2021-pre-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
         ],
         "agreement": false,
         "inferred": false
@@ -9912,6 +9952,26 @@
       "description": "Participated in Series C round",
       "source": "https://wayve.ai/press/series-c/",
       "round_id": "wayve-2024-series-c",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:nvidia",
+      "to": "startup:wayve",
+      "kind": "participated_in",
+      "description": "Participated in Series D round",
+      "source": "https://wayve.ai/press/series-d/",
+      "round_id": "wayve-2026-series-d",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.6,
@@ -19932,7 +19992,13 @@
       "currency": "USD",
       "source": "https://itwire.com/it-industry-news/deals/pi-exchange-primed-to-democratise-ai-after-%242-million-pre-series-a-funding-round",
       "note": "PI.EXCHANGE described the close as an interim round, with Boab AI, Artesian, Nextrans and Vision Creator named as participants. The issuer article is dated 25 August 2021; the exact close date, lead and individual commitments are not stated. Startup Daily reported A$2.75 million as the equivalent for the same event. The earlier Boab programme minimum is not a separate confirmed close.",
-      "stage_normalised": "Unknown"
+      "stage_normalised": "Unknown",
+      "participants": [
+        "Boab AI",
+        "Artesian",
+        "Nextrans",
+        "Vision Creator"
+      ]
     },
     {
       "startup_id": "startup:psiquantum",
@@ -20403,7 +20469,20 @@
       "amount_text": "$1.2 billion",
       "source": "https://wayve.ai/press/series-d/",
       "note": "Wayve reported a closed round led by Eclipse, Balderton and SoftBank Vision Fund 2. Named participants include Ontario Teachers’ Pension Plan, Baillie Gifford, British Business Bank, Icehouse Ventures, Schroders Capital, Microsoft, NVIDIA, Uber, Mercedes-Benz, Nissan and Stellantis. The separate $1.5 billion headline includes milestone-based Uber capital. The company’s release uses a dollar sign without a currency code.",
-      "stage_normalised": "Series D"
+      "stage_normalised": "Series D",
+      "participants": [
+        "Ontario Teachers’ Pension Plan",
+        "Baillie Gifford",
+        "British Business Bank",
+        "Icehouse Ventures",
+        "Schroders Capital",
+        "Microsoft",
+        "NVIDIA",
+        "Uber",
+        "Mercedes-Benz",
+        "Nissan",
+        "Stellantis"
+      ]
     },
     {
       "startup_id": "startup:wayve",
@@ -21603,12 +21682,14 @@
     "participant 'Baillie Gifford' for round psiquantum-2020-series-c (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Baillie Gifford' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Baillie Gifford' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
+    "participant 'Baillie Gifford' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'Beaten Zone Venture Partners' for round arkeus-2025-march-financing (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Beaten Zone Venture Partners' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'BlackRock' for round psiquantum-2020-series-c (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Blue Cloud Ventures' for round go1-2022-06-funding (Go1) has no matching partner lead; participated_in edge skipped",
     "participant 'Breakthrough Victoria' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Brighter Super' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
+    "participant 'British Business Bank' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'Bullhound Capital' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'CEFC' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped",
     "participant 'CP Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
@@ -21674,6 +21755,7 @@
     "participant 'Hostplus' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'Huashan Capital One' for round airwallex-2016-pre-series-a (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Icehouse Ventures' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'In-Q-Tel' for round cauldron-2024-series-a (Cauldron) has no matching partner lead; participated_in edge skipped",
     "participant 'In-Q-Tel' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'In-Q-Tel' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
@@ -21695,8 +21777,10 @@
     "participant 'Main Sequence Ventures' for round q-ctrl-2018-seed (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Main Sequence Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Mastercard' for round airwallex-2017-series-a (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Mercedes-Benz' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'Mercurian' for round floodmapp-2019-09-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
     "participant 'Microsoft' for round wayve-2024-series-c (Wayve) has no matching partner lead; participated_in edge skipped",
+    "participant 'Microsoft' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'Mistletoe, Inc.' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Mundi Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
     "participant 'NGS Super' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
@@ -21709,9 +21793,12 @@
     "participant 'National Reconstruction Fund Corporation' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'New Enterprise Associates' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'NewView' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Nextrans' for round pi-exchange-2021-pre-series-a (PI.EXCHANGE) has no matching partner lead; participated_in edge skipped",
+    "participant 'Nissan' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'Novel Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'OPTrust' for round skykraft-2023-october-financing (Skykraft) has no matching partner lead; participated_in edge skipped",
     "participant 'OneVentures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Ontario Teachers’ Pension Plan' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'PSP Growth' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Peak XV Partners' for round puralink-2025-pre-seed (Puralink) has no matching partner lead; participated_in edge skipped",
     "participant 'Playground Global' for round psiquantum-2020-series-c (PsiQuantum) has no matching partner lead; participated_in edge skipped",
@@ -21739,6 +21826,7 @@
     "participant 'Salus Ventures' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Sapphire Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Sapphire Ventures' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Schroders Capital' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round airwallex-2017-series-a (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -21756,6 +21844,7 @@
     "participant 'Skip Capital' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'SoftBank Vision Fund 2' for round go1-2022-06-funding (Go1) has no matching partner lead; participated_in edge skipped",
     "participant 'SoftBank Vision Fund 2' for round revolut-2021-series-e (Revolut) has no matching partner lead; participated_in edge skipped",
+    "participant 'Stellantis' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'Stoic Venture Capital' for round ena-respiratory-2025-series-b (ENA Respiratory) has no matching partner lead; participated_in edge skipped",
     "participant 'T. Rowe Price Associates, Inc.' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'T. Rowe Price' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -21778,6 +21867,7 @@
     "participant 'Transition Level Investments' for round floodmapp-2019-09-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
     "participant 'Trinity Ventures' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Type One Ventures' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
+    "participant 'Uber' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'Ultratech Capital Partners' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'UniSuper' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'Uniseed' for round ena-respiratory-2025-series-b (ENA Respiratory) has no matching partner lead; participated_in edge skipped",
@@ -21786,6 +21876,7 @@
     "participant 'Vetamer Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Visa Ventures' for round airwallex-2025-series-f (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Visible Ventures' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
+    "participant 'Vision Creator' for round pi-exchange-2021-pre-series-a (PI.EXCHANGE) has no matching partner lead; participated_in edge skipped",
     "participant 'W23' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
     "participant 'Wollemi Capital Group' for round puralink-2025-pre-seed (Puralink) has no matching partner lead; participated_in edge skipped",
     "participant 'Wollemi Capital' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped"
