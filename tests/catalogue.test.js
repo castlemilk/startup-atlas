@@ -137,7 +137,7 @@ test('India seed-fund application closure is distinguished from ongoing scheme a
 test('British Columbia AI funding records co-funding, repayability and project eligibility',()=>{
  const item=data.opportunities.find(x=>x.id==='canada-raii-bc');
  assert.deepEqual(item.scope,['CA']);
- assert.equal(item.checked,'2026-11-11');
+ assert.equal(item.checked,'2026-11-25');
  assert.match(item.status,/23 November 2026/);
  assert.match(item.eligibility,/British Columbia/);
  assert.match(item.eligibility,/at least 1 year/);
