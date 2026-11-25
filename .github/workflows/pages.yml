@@ -67,6 +67,7 @@ jobs:
         if: steps.changes.outputs.data == 'true'
         run: |
           node --test tests/catalogue.test.js tests/graph-data.test.js
+          python3 -m unittest discover -s tests -p 'test_entity_resolution.py'
           python3 -m unittest discover -s tests -p 'test_graph.py'
           python3 -m unittest discover -s tests -p 'test_query_parquet.py'
           python3 -m unittest tests.test_live_index.ReviewedValuationInputTests
@@ -83,7 +84,7 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_early_investments.py'
       - name: Validate review queue and valuation evidence
         if: steps.changes.outputs.queue == 'true'
-        run: python3 -m unittest tests.test_review_queue tests.test_review_gating tests.test_valuation_queue
+        run: python3 -m unittest tests.test_review_queue tests.test_review_gating tests.test_valuation_queue tests.test_entity_resolution
       - name: Check country research indexing
         if: steps.changes.outputs.research == 'true'
         run: python3 -m unittest discover -s tests -p 'test_country_research_index.py'
@@ -131,6 +132,16 @@ jobs:
       - name: Verify Node toolchain version
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: python3 scripts/toolchain.py check --only node
+      - name: Check identity registry matches its builder
+        # Issue #516: admin panel / admin MCP write-backs commit
+        # data/review-queue.json straight to main, and the identity
+        # registry is a build output of those decisions. Nothing else
+        # runs Python tests on a push to main, so without this step a
+        # drifted data/identity.json is only caught by a later PR.
+        # Fail the build before publishing when the committed registry
+        # differs from build_registry() over the same inputs.
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: python3 -m unittest tests.test_entity_resolution.SeedTests.test_seeded_registry_file_loads_and_matches_builder
       - name: Build the Pages snapshot
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: npm run build
