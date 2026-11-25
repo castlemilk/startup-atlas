@@ -180,6 +180,17 @@
         <p>Loading the selected profile…</p>
       </aside>
     </div>
+    <section id="graph-atlas" class="graph-atlas" aria-labelledby="graph-atlas-heading" hidden>
+      <div class="graph-atlas-header">
+        <h2 id="graph-atlas-heading">Atlas overview</h2>
+        <p id="graph-atlas-status" role="status">Loading the on-demand atlas…</p>
+      </div>
+      <div id="graph-atlas-topics" class="graph-atlas-topics" role="group" aria-label="Atlas topics"></div>
+      <div class="graph-atlas-canvas">
+        <canvas id="graph-atlas-canvas" aria-hidden="true"></canvas>
+      </div>
+      <p id="graph-atlas-pick" class="graph-atlas-pick" aria-live="polite"></p>
+    </section>
     <div data-atlas-compare-tray hidden></div>
   </main>
 </body>

@@ -75,13 +75,15 @@ const graphModules=['graph.js','graph-layout.js','graph-model.js','graph-store.j
 for (const file of ['favicon.svg','favicon.ico','favicon-32.png','apple-touch-icon.png','og-image.png','robots.txt','sitemap.xml','analytics.js','analytics-config.js','treemap.html','treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','index.html','list.html','partner.html','entity.html','entity.js','entity.css','entity-redirects.js','profile-tabs.js','micro-graph.js','graph.html','graph.css','query.html','query.js','query.css',...graphModules,'styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','partner-profile.js','app.js','logic.js','relationships.js','table-model.js','logos.js','globe.js']) await cp(`web/${file}`,`dist/${file}`);
 await build({entryPoints:['web/atlas-sdk.js'],outfile:'dist/atlas-sdk.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof',define:{'process.env.NODE_ENV':'"production"'}});
 await build({entryPoints:['web/graph-loom.js'],outfile:'dist/graph-loom.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof'});
+await build({entryPoints:['web/graph-atlas.js'],outfile:'dist/graph-atlas.js',bundle:true,format:'esm',platform:'browser',target:['chrome120','safari17','firefox128'],minify:true,legalComments:'eof'});
 // Fingerprint local UI modules and styles as one release to avoid stale mixed versions.
-const uiFiles=['treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','entity.css','entity.js','entity-redirects.js','profile-tabs.js','micro-graph.js','graph.css','query.js','query.css',...graphModules,'graph-loom.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
+const uiFiles=['treemap.js','treemap-model.js','treemap.css','landing.js','landing.css','company-columns.js','styles.css','gamma-components.css','globe.css','atlas-view.css','field-atlas.css','directory.css','profile.css','entity.css','entity.js','entity-redirects.js','profile-tabs.js','micro-graph.js','graph.css','query.js','query.css',...graphModules,'graph-loom.js','graph-atlas.js','partner-profile.js','app.js','logic.js','table-model.js','relationships.js','logos.js','globe.js'];
 uiFiles.push(...designFiles.filter(file=>!file.endsWith('.html')));
 const uiHash=createHash('sha256');
 uiHash.update(await readFile('package-lock.json'));
 uiHash.update(await readFile('dist/atlas-sdk.js'));
 uiHash.update(await readFile('dist/graph-loom.js'));
+uiHash.update(await readFile('dist/graph-atlas.js'));
 for (const file of uiFiles) uiHash.update(await readFile(`web/${file}`));
 const uiVersion=uiHash.digest('hex').slice(0,12);
 function versionReferences(source) {
@@ -142,6 +144,7 @@ await cp('node_modules/tslib/tslib.es6.mjs','dist/vendor/duckdb/tslib.mjs');
 await cp('web/vendor','dist/vendor',{recursive:true});
 await cp('docs/UI-SDK-LICENSE.txt','dist/vendor/UI-SDK-LICENSE.txt');
 await cp('node_modules/loom-core/LICENSE','dist/vendor/LOOM-LICENSE.txt');
+await cp('node_modules/loom-core/dist/atlas-runtime','dist/vendor/atlas-runtime',{recursive:true});
 const sdkPackage=JSON.parse(await readFile('package.json','utf8'));
 const sdkLock=JSON.parse(await readFile('skills-lock.json','utf8'));
 await writeFile('dist/vendor/ui-sdk-manifest.json',JSON.stringify({
