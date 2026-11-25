@@ -76,6 +76,10 @@ EOF
     note "pre-commit: accelerator standard-deal table consistency"
     run python3 -m unittest tests.test_accelerator_deals
   fi
+  if any_staged '^(scripts/convert_cohort_rounds\.py|tests/test_convert_cohort_rounds\.py)$'; then
+    note "pre-commit: cohort round conversion consistency"
+    run python3 -m unittest tests.test_convert_cohort_rounds
+  fi
   if any_staged '^(scripts/check_ci_paths\.py|tests/test_ci_paths\.py)$'; then
     note "pre-commit: CI routing fixtures"
     run python3 -m unittest discover -s tests -p 'test_ci_paths.py'
@@ -149,6 +153,9 @@ check_range() {
     fi
     if echo "$paths" | grep -Eq '^(data/accelerator-deals\.json|scripts/accelerator_deals\.py|tests/test_accelerator_deals\.py)$'; then
       run python3 -m unittest tests.test_accelerator_deals
+    fi
+    if echo "$paths" | grep -Eq '^(scripts/convert_cohort_rounds\.py|tests/test_convert_cohort_rounds\.py)$'; then
+      run python3 -m unittest tests.test_convert_cohort_rounds
     fi
   fi
   if lane web; then

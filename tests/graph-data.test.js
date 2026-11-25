@@ -80,7 +80,15 @@ test('reviewed accelerator cohort connects partner, startup and founders with ev
   const deeligenceRounds=graph.funding_rounds.filter(round=>round.startup_id==='startup:deeligence');
   assert.equal(deeligenceRounds.some(round=>round.source===cohort),false);
   assert.ok(deeligenceRounds.some(round=>round.id==='deeligence-2024-funding'&&round.source==='https://launchvic.org/case-studies/the-legaltech-startup-revolutionising-due-diligence-with-ai/'));
-  assert.ok(deeligenceRounds.every(round=>!Object.hasOwn(round,'currency')&&!Object.hasOwn(round,'amount')));
+  // The 2024 round's uncertainty is preserved: no amount or currency was
+  // ever sourced for it, and the cohort listing itself is not a round
+  // source. The cohort membership does, however, convert under #534 to
+  // a separate Accelerator round carrying Startmate's published
+  // standard-deal terms, sourced from the deal table — not the listing.
+  const deeligence2024=deeligenceRounds.find(round=>round.id==='deeligence-2024-funding');
+  assert.ok(!Object.hasOwn(deeligence2024,'currency')&&!Object.hasOwn(deeligence2024,'amount'));
+  const deeligenceAccelerator=deeligenceRounds.find(round=>round.id==='deeligence-2026-startmate-accelerator');
+  assert.ok(deeligenceAccelerator&&deeligenceAccelerator.amount===120000&&deeligenceAccelerator.currency==='AUD'&&deeligenceAccelerator.lead_investor==='Startmate'&&deeligenceAccelerator.source==='https://www.startmate.com/writing/startmate-accelerator-investment-terms-101');
   const flowgoFounders=entityDetails(graph,'startup:flowgo').edges.filter(edge=>edge.kind==='founded');
   assert.deepEqual(flowgoFounders.map(edge=>edge.from).sort(),['person:anthony-see','person:jason-hor']);
   assert.ok(flowgoFounders.every(edge=>edge.source==='https://www.startmate.com/writing/a-500-order-starts-as-a-whatsapp-message-flowgo-handles-the-rest'));
