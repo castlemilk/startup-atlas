@@ -20,6 +20,18 @@ or renamed, so old readers ignore the new fields):
   ID resolves to its canonical winner before edges are emitted (and the
   old ID is kept in the winner's ``aliases``). When it is absent,
   behaviour is unchanged.
+- Co-founder edges (#527): two people who are both recorded founders of
+  the same startup gain a derived person-to-person ``co_founder`` edge,
+  one per unordered pair per startup, in canonical ID order, carrying
+  ``startup_id`` as its basis. The edge is a deterministic join over the
+  two reviewed ``founded`` edges — no new fact is asserted — so it goes
+  through the same emit/enrichment path and is not marked inferred (the
+  §2 inferred penalty covers evidence-weakening derivations such as
+  slug-derived names and fuzzy matches, and a sub-0.50 score would queue
+  every derived edge for review). Its source is the founder source the
+  pair shares, else the startup's own source, else the first founder's
+  source; its verified date is the later of the two founders' dates, the
+  point by which both founding facts were verified.
 - Records carrying ``superseded_by`` (``profile_facts`` / ``funding_rounds``)
   are excluded from the live graph; they stay in the reviewed files, marked.
 - Startup entities gain a derived ``latest_value`` figure and a ``listing``
@@ -31,7 +43,7 @@ or renamed, so old readers ignore the new fields):
 Relationship vocabulary: ``founded``, ``team_member``, ``supports``,
 ``supports_programme``, ``offers``, ``programme_relationship``,
 ``led_round``, ``participated_in``, ``subsidiary_of``, ``integrates_with``,
-``listed_in_portfolio``, ``member_of_network``.
+``listed_in_portfolio``, ``member_of_network``, ``co_founder``.
 
 Partner relationships: a reviewed partner record may carry an optional
 ``relationships`` list — ``{"type", "target", "note", "source"}`` entries
@@ -321,11 +333,46 @@ def build_graph(profiles, leads, reviewed, catalogue, research, identity=None,
             if value is not None:
                 nodes[startup_id]['latest_value'] = value
             nodes[startup_id]['listing'] = listing
+        founder_records = []
         for founder in startup.get('founders', []):
             founder_id = add('person', founder['name'], source=founder['source'], website=founder.get('profile_url', ''), logo=founder.get('photo_url', ''), logo_source=founder.get('photo_source', ''), **({'socials': founder['socials']} if founder.get('socials') else {}))
             emit({'from': founder_id, 'to': startup_id, 'kind': 'founded',
                   'description': 'Founder', 'source': founder['source']},
                  founder.get('reviewed_at') or research_reviewed)
+            founder_records.append((founder_id, founder))
+        # Co-founder edges (#527): one derived person-to-person edge per
+        # unordered founder pair of this startup, in canonical ID order.
+        seen_pairs = set()
+        for left in range(len(founder_records)):
+            for right in range(left + 1, len(founder_records)):
+                left_id, left_founder = founder_records[left]
+                right_id, right_founder = founder_records[right]
+                if left_id == right_id:
+                    continue
+                if left_id < right_id:
+                    from_id, from_founder = left_id, left_founder
+                    to_id, to_founder = right_id, right_founder
+                else:
+                    from_id, from_founder = right_id, right_founder
+                    to_id, to_founder = left_id, left_founder
+                if (from_id, to_id) in seen_pairs:
+                    continue
+                seen_pairs.add((from_id, to_id))
+                if left_founder.get('source') and \
+                        left_founder.get('source') == right_founder.get('source'):
+                    pair_source = left_founder['source']
+                else:
+                    pair_source = startup.get('source') or \
+                        from_founder.get('source') or \
+                        to_founder.get('source') or ''
+                verified_dates = [_as_date(founder.get('reviewed_at') or research_reviewed)
+                                  for founder in (left_founder, right_founder)]
+                known_dates = [d for d in verified_dates if d is not None]
+                pair_verified = max(known_dates).isoformat() if known_dates else None
+                emit({'from': from_id, 'to': to_id, 'kind': 'co_founder',
+                      'description': f"Co-founder of {startup['name']}",
+                      'source': pair_source, 'startup_id': startup_id},
+                     pair_verified)
         for event in startup.get('funding_rounds', []):
             if 'superseded_by' in event:
                 continue
@@ -395,7 +442,9 @@ def build_graph(profiles, leads, reviewed, catalogue, research, identity=None,
         raise ValueError('Funding round identifiers must be unique')
     # The same announcement can document multiple rounds for the same investor.
     # Scope duplicate funding roles to the round while preserving other edge keys.
-    key = lambda x: (x['from'], x['to'], x['kind'], x['source'], x.get('round_id') or '')
+    # Co-founder edges scope to their basis startup the same way (#527); no
+    # other edge kind carries startup_id, so their keys are unchanged.
+    key = lambda x: (x['from'], x['to'], x['kind'], x['source'], x.get('round_id') or x.get('startup_id') or '')
     seen = set()
     unique, unique_verified = [], []
     for edge, verified in sorted(zip(edges, edge_verified), key=lambda pair: key(pair[0])):
