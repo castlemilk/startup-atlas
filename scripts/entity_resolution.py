@@ -15,6 +15,10 @@ Identity keys (the join key per kind):
 - Person: normalised LinkedIn URL (``linkedin.com/in/<slug>``, lowercase
   host, query params and trailing slash stripped). Otherwise the person
   stays scoped per partner (``person:<slug>--<partner>``), as today.
+  The URL is read from the person row's recorded ``linkedin`` field
+  first, then its ``socials``, then (founders only, legacy) a
+  ``profile_url`` that is itself a LinkedIn profile URL — see
+  :func:`_person_linkedin` and docs/PERSON-IDENTITY.md.
 
 Matching thresholds (from the design):
 
@@ -322,6 +326,33 @@ def _linkedin_from_socials(socials):
     return None
 
 
+def _person_linkedin(row):
+    """Return the LinkedIn profile URL recorded on a person row.
+
+    Sources are tried in a fixed precedence order and the first one
+    that normalises to a valid ``linkedin.com/in/<slug>`` key wins
+    (docs/PERSON-IDENTITY.md):
+
+    1. the row's explicit ``linkedin`` field — the reviewed identity
+       assertion, recorded first-class so the join does not depend on
+       incidental fields;
+    2. a LinkedIn entry in the row's ``socials``;
+    3. the row's ``profile_url``, when it is itself a LinkedIn profile
+       URL (legacy: the first founders were keyed this way before the
+       explicit field existed).
+
+    A present-but-invalid value never masks a valid later source, and
+    a non-LinkedIn ``profile_url`` (a bio page) yields nothing.
+    Returns ``None`` when no source yields a key.
+    """
+    for candidate in (row.get('linkedin'),
+                      _linkedin_from_socials(row.get('socials')),
+                      row.get('profile_url')):
+        if candidate and normalise_linkedin(candidate):
+            return candidate
+    return None
+
+
 def _git_revision():
     try:
         out = subprocess.run(
@@ -427,7 +458,10 @@ def build_registry(data_dir=None, source_revision=None, generated_at=None):
     ``partner-profiles.json`` and ``startup-research.json`` from
     ``data_dir`` (default ``<repo>/data``). Nothing is invented: an
     entry with no website and no LinkedIn is seeded ``name-only`` and
-    is never auto-merged. Merges are recorded only for exact
+    is never auto-merged. A person's LinkedIn URL is read from the
+    row's recorded ``linkedin`` field, its ``socials``, or a LinkedIn
+    ``profile_url`` (see :func:`_person_linkedin`). Merges are
+    recorded only for exact
     identity-key matches found in this reviewed data — a LinkedIn URL
     shared by a scoped profile person (``person:<slug>--<partner>``)
     and a canonical person entry — plus the APPROVED merge decisions
@@ -479,8 +513,7 @@ def build_registry(data_dir=None, source_revision=None, generated_at=None):
         _add_entity(entities, 'startup', startup['name'], key, basis,
                     updated_at=now)
         for founder in startup.get('founders', []):
-            linkedin = _linkedin_from_socials(founder.get('socials')) \
-                or founder.get('profile_url')
+            linkedin = _person_linkedin(founder)
             key, basis = identity_key_for(
                 'person', linkedin_url=linkedin)
             _add_entity(entities, 'person', founder['name'], key, basis,
@@ -493,7 +526,7 @@ def build_registry(data_dir=None, source_revision=None, generated_at=None):
             _add_entity(entities, 'partner', partner, None, 'name-only',
                         updated_at=now)
         for person in profile.get('people', []):
-            linkedin = _linkedin_from_socials(person.get('socials'))
+            linkedin = _person_linkedin(person)
             scoped_id = f'person:{slug(person["name"])}--{slug(partner)}'
             if linkedin:
                 key, basis = identity_key_for('person', linkedin_url=linkedin)

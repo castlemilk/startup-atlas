@@ -388,5 +388,130 @@ class ReplayTests(unittest.TestCase):
             self.assertEqual(registry, tiny_registry())
 
 
+class RecordedLinkedinFieldTests(unittest.TestCase):
+    """The explicit ``linkedin`` field on person rows (#366, slice 1).
+
+    The registry builder reads a person's LinkedIn URL from the row's
+    recorded ``linkedin`` field first, then ``socials``, then a
+    LinkedIn ``profile_url`` (legacy). No current reviewed row carries
+    the field, so these run against a minimal fixture data directory;
+    the seeded-registry tests above prove real data is unchanged.
+    """
+
+    GENERATED_AT = '2026-11-25T00:00:00Z'
+
+    def _build(self, temp, profiles=None, research=None):
+        data = Path(temp)
+        (data / 'partner-leads.json').write_text('[]', encoding='utf-8')
+        (data / 'partners-reviewed.json').write_text('{}', encoding='utf-8')
+        (data / 'partner-profiles.json').write_text(
+            json.dumps(profiles or {}), encoding='utf-8')
+        (data / 'startup-research.json').write_text(
+            json.dumps(research or {'startups': []}), encoding='utf-8')
+        return er.build_registry(data_dir=data, source_revision='test',
+                                 generated_at=self.GENERATED_AT)
+
+    def test_founder_linkedin_field_is_the_identity_key(self):
+        with tempfile.TemporaryDirectory() as temp:
+            registry = self._build(temp, research={'startups': [{
+                'name': 'Example Co', 'website': 'https://example.com',
+                'founders': [{'name': 'Jane Example',
+                              'source': 'https://example.com/team',
+                              'linkedin':
+                                  'https://au.linkedin.com/in/Jane-Example/'
+                                  '?trk=public'}]}]})
+            person = registry['entities']['person:jane-example']
+            self.assertEqual(person['identity_key'],
+                             'linkedin.com/in/jane-example')
+            self.assertEqual(person['identity_basis'], 'linkedin-url')
+
+    def test_linkedin_field_wins_over_socials(self):
+        with tempfile.TemporaryDirectory() as temp:
+            registry = self._build(temp, research={'startups': [{
+                'name': 'Example Co', 'website': 'https://example.com',
+                'founders': [{'name': 'Jane Example',
+                              'source': 'https://example.com/team',
+                              'linkedin':
+                                  'https://www.linkedin.com/in/jane-field',
+                              'socials': [{'label': 'LinkedIn',
+                                           'url': 'https://www.linkedin.com'
+                                                  '/in/jane-social'}]}]}]})
+            person = registry['entities']['person:jane-example']
+            self.assertEqual(person['identity_key'],
+                             'linkedin.com/in/jane-field')
+
+    def test_invalid_linkedin_field_falls_through_to_profile_url(self):
+        # A present-but-invalid field (a company page, not a profile)
+        # never masks a valid later source.
+        with tempfile.TemporaryDirectory() as temp:
+            registry = self._build(temp, research={'startups': [{
+                'name': 'Example Co', 'website': 'https://example.com',
+                'founders': [{'name': 'Jane Example',
+                              'source': 'https://example.com/team',
+                              'linkedin':
+                                  'https://www.linkedin.com/company/example',
+                              'profile_url':
+                                  'https://www.linkedin.com/in/jane-example'}]}]})
+            person = registry['entities']['person:jane-example']
+            self.assertEqual(person['identity_key'],
+                             'linkedin.com/in/jane-example')
+            self.assertEqual(person['identity_basis'], 'linkedin-url')
+
+    def test_founder_profile_url_fallback_is_kept(self):
+        # Legacy rows keyed only by a LinkedIn profile_url (Michael
+        # De Nil et al. on main) keep their key.
+        with tempfile.TemporaryDirectory() as temp:
+            registry = self._build(temp, research={'startups': [{
+                'name': 'Example Co', 'website': 'https://example.com',
+                'founders': [{'name': 'Jane Example',
+                              'source': 'https://example.com/team',
+                              'profile_url':
+                                  'https://www.linkedin.com/in/jane-example'}]}]})
+            person = registry['entities']['person:jane-example']
+            self.assertEqual(person['identity_key'],
+                             'linkedin.com/in/jane-example')
+
+    def test_profile_person_linkedin_field_merges_scoped_entry(self):
+        # Same governed path as the socials-carried people on main:
+        # the scoped entry is kept and merged into the canonical
+        # person on the shared LinkedIn key.
+        with tempfile.TemporaryDirectory() as temp:
+            registry = self._build(temp, profiles={'Example Capital': {
+                'people': [{'name': 'Jane Example', 'role': 'Partner',
+                            'source': 'https://example.vc/team',
+                            'linkedin':
+                                'https://www.linkedin.com/in/jane-example'}],
+                'companies': [], 'sponsors': []}})
+            canonical = registry['entities']['person:jane-example']
+            self.assertEqual(canonical['identity_key'],
+                             'linkedin.com/in/jane-example')
+            self.assertEqual(canonical['merged_from'],
+                             ['person:jane-example--example-capital'])
+            scoped = registry['entities'][
+                'person:jane-example--example-capital']
+            self.assertEqual(scoped['merged_into'], 'person:jane-example')
+            self.assertEqual(scoped['identity_key'],
+                             'linkedin.com/in/jane-example')
+            self.assertEqual(registry['merges'], [{
+                'from': 'person:jane-example--example-capital',
+                'to': 'person:jane-example', 'basis': 'linkedin-url',
+                'decided_by': 'seed:reviewed-data',
+                'decided_at': self.GENERATED_AT}])
+
+    def test_profile_person_without_valid_linkedin_stays_scoped(self):
+        with tempfile.TemporaryDirectory() as temp:
+            registry = self._build(temp, profiles={'Example Capital': {
+                'people': [{'name': 'Jane Example', 'role': 'Partner',
+                            'source': 'https://example.vc/team',
+                            'linkedin': 'https://example.vc/jane'}],
+                'companies': [], 'sponsors': []}})
+            self.assertNotIn('person:jane-example', registry['entities'])
+            scoped = registry['entities'][
+                'person:jane-example--example-capital']
+            self.assertIsNone(scoped['identity_key'])
+            self.assertEqual(scoped['identity_basis'], 'name-only')
+            self.assertEqual(registry['merges'], [])
+
+
 if __name__ == '__main__':
     unittest.main()
