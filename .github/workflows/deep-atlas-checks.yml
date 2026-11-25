@@ -10,9 +10,25 @@ jobs:
       ATLAS_SOURCE_REVISION: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
+      - name: Probe provisioned toolchain
+        id: toolchain
+        run: python3 scripts/toolchain.py probe >> "$GITHUB_OUTPUT"
       - uses: actions/setup-node@v4
+        if: steps.toolchain.outputs.node_ready != 'true'
         with:
           node-version: '22'
+      - name: Record npm version
+        id: npmver
+        run: echo "version=$(npm --version)" >> "$GITHUB_OUTPUT"
+      - name: Restore npm download cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.npm
+          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
+          restore-keys: |
+            atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-
+      - name: Verify Node and Python toolchain versions
+        run: python3 scripts/toolchain.py check --only node,python
       - name: Install site dependencies
         run: npm ci --ignore-scripts
       - name: Install MCP dependencies
@@ -29,8 +45,11 @@ jobs:
           npm run data:generate
           npm run test:prepared
       - uses: actions/setup-go@v5
+        if: steps.toolchain.outputs.go_ready != 'true'
         with:
           go-version-file: go.mod
+      - name: Verify Go and Chrome toolchain versions
+        run: python3 scripts/toolchain.py check --only go,chrome
       - name: Validate Connect graph service
         run: go test -mod=readonly ./backend/internal/graph ./api
       - name: Build static site
@@ -77,3 +96,9 @@ jobs:
           path: ${{ runner.temp }}/startup-atlas-graph/
           if-no-files-found: warn
           retention-days: 7
+      - name: Save npm download cache
+        if: github.event_name != 'pull_request'
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.npm
+          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}

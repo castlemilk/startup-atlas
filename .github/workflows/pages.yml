@@ -19,6 +19,19 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
+      - name: Probe provisioned toolchain
+        id: toolchain
+        run: python3 scripts/toolchain.py probe >> "$GITHUB_OUTPUT"
+      - name: Record npm version
+        id: npmver
+        run: echo "version=$(npm --version)" >> "$GITHUB_OUTPUT"
+      - name: Restore npm download cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.npm
+          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
+          restore-keys: |
+            atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-
       - name: Check patch and select tests
         id: changes
         if: github.event_name == 'pull_request'
@@ -83,14 +96,17 @@ jobs:
           npm ci --prefix backend/hosted --ignore-scripts
           npm --prefix backend/hosted test
       - uses: actions/setup-go@v5
-        if: steps.changes.outputs.go == 'true'
+        if: steps.changes.outputs.go == 'true' && steps.toolchain.outputs.go_ready != 'true'
         with:
           go-version-file: go.mod
+      - name: Verify Go toolchain version
+        if: steps.changes.outputs.go == 'true'
+        run: python3 scripts/toolchain.py check --only go
       - name: Validate Connect graph service
         if: steps.changes.outputs.go == 'true'
         run: go test -mod=readonly ./backend/internal/graph ./api
       - uses: actions/setup-node@v4
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && steps.toolchain.outputs.node_ready != 'true'
         with:
           node-version: '22'
       - name: Install site dependencies
@@ -99,6 +115,9 @@ jobs:
       - name: Install Parquet build dependency
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: pip install pyarrow
+      - name: Verify Node and Python toolchain versions
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: python3 scripts/toolchain.py check --only node,python
       - name: Build the Pages snapshot
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: npm run build
@@ -107,6 +126,12 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+      - name: Save npm download cache
+        if: github.event_name != 'pull_request'
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.npm
+          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
@@ -123,8 +148,14 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       - uses: actions/checkout@v4
+      - name: Probe provisioned toolchain
+        id: toolchain
+        run: python3 scripts/toolchain.py probe >> "$GITHUB_OUTPUT"
       - uses: actions/setup-node@v4
+        if: steps.toolchain.outputs.node_ready != 'true'
         with:
           node-version: '22'
+      - name: Verify Node toolchain version
+        run: python3 scripts/toolchain.py check --only node
       - name: Verify published graph and design microsite
         run: python3 scripts/verify-published-graph.py
