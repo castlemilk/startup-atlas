@@ -278,11 +278,15 @@ test('without a GitHub token the panel serves the bundled queue read-only', asyn
   assert.equal(queueBody.canWrite, false);
   assert.ok(queueBody.entries.length > 100);
 
-  const pending = queueBody.entries.find(item => item.status === 'pending');
-  assert.ok(pending);
+  // The write-disabled 503 fires before any state validation, so any
+  // real entry id exercises it; the bundled queue may legitimately have
+  // zero pending entries (it was fully decided on 25 Nov 2026).
+  const target = queueBody.entries.find(item => item.status === 'pending')
+    ?? queueBody.entries[0];
+  assert.ok(target);
   const decideRes = await fetch(`${localApp.base}/admin/api/decide`, {
     method: 'POST', headers: { cookie, 'content-type': 'application/json' },
-    body: JSON.stringify({ id: pending.id, decision: 'approved' }),
+    body: JSON.stringify({ id: target.id, decision: 'approved' }),
   });
   assert.equal(decideRes.status, 503);
   assert.equal((await decideRes.json()).code, 'GITHUB_TOKEN_MISSING');
