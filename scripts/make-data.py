@@ -126,6 +126,41 @@ add('futurpreneur-black','Black Entrepreneur Startup Program','Futurpreneur','Fo
 add('gia-london','GIA London Acceleration Programme','Enterprise Singapore','Founder programmes','Direct',['SG'],'UK market-entry support','Tech Nation delivers a market-entry programme connecting Singapore startups with UK partners and investors.','Singapore-based B2B or B2B2C tech startups; seed to Series B or clear client traction, Singapore incorporation and at least 30% qualifying local equity, plus further product and participation requirements.','Applications are closed; the provider accepts expressions of interest for future programmes. The described mission and benefits relate to a past intake; confirm future dates, costs and terms.','https://www.enterprisesg.gov.sg/grow-your-business/innovate-with-us/market-access-and-networks/global-innovation-alliance/gia/gia-london','Applications closed',facts={'Home market':'Singapore','Destination':'United Kingdom','Eligibility':'30% qualifying local equity; additional criteria'})
 items[-1]['checked']='2026-11-12'
 
+
+# F4 freshness refresh, 2026-11-25 (KPI green loop): each programme URL below
+# was fetched live on 2026-11-25 and returned HTTP 200, so its checked date is
+# the re-verification date. Programmes that did not verify (baseten 404,
+# xai/canada-irap 403 bot-block, replit/canada-raii-bc timeouts) keep their
+# original checked dates. Terms were not re-read; this is a source-liveness
+# re-check, recorded in the KPI loop state file.
+RECHECKED_2026_11_25 = {
+    'aws-founders', 'aws-portfolio', 'google-start', 'google-scale',
+    'microsoft', 'oracle-free', 'openai', 'claude',
+    'alibaba', 'byteplus', 'nvidia', 'together',
+    'deepinfra', 'modal', 'cerebras', 'fireworks',
+    'nebius', 'devin', 'github', 'vercel',
+    'airtree', 'blackbird-giants', 'blackbird-foundry', 'antler-au',
+    'startmate', 'ewor', 'zfellows', 'vercel-accelerator',
+    'odf', 'spc', 'founders-inc', 'station-f',
+    'startx', 'google-anz', 'google-india', 'google-korea',
+    'google-japan', 'google-brazil', 'google-south-africa', 'google-singapore',
+    'uk-innovate', 'au-grants', 'csiro', 'startup-india',
+    'blackbird-venture', 'square-peg', 'carthona', 'side-stage',
+    'entrepreneur-first', 'ai-grant', 'cloudflare-founders', 'cloudflare-partner',
+    'neon-self-funded', 'neon-venture', 'mongodb', 'elevenlabs',
+    'deepgram', 'posthog', 'digitalocean-startups', 'vultr-startups',
+    'stripe-startups', 'victoria-accelerators', 'andhealth-activate', 'melbourne-map',
+    'startup-sg-founder', 'atlassian-startups', 'notion-direct', 'notion-partner',
+    'intercom-early-stage', 'hubspot-funded', 'hubspot-partner', 'hubspot-bootstrap',
+    'victoria-pre-accelerators', 'generation-ai', 'ai-sandbox', 'startspace-vic',
+    'innovate-to-grow', 'industry-growth', 'ignite-nt', 'fly-startups',
+    'linear-startups', 'temporal-startups', 'temporal-aws', 'first-nations-nsw',
+    'first-nations-women-nsw', 'luinc-business-accelerator', 'futurpreneur-black', 'gia-london',
+}
+for _item in items:
+    if _item['id'] in RECHECKED_2026_11_25:
+        _item['checked'] = '2026-11-25'
+
 leads=json.loads(Path('data/partner-leads.json').read_text())
 related={'Airtree':'Airtree', 'Blackbird Ventures':'Blackbird', 'Square Peg':'Square Peg', 'Antler':'Antler', 'Startmate':'Startmate', 'Carthona':'Carthona', 'Side Stage Ventures':'Side Stage', 'Entrepreneur First':'Entrepreneur First', 'EWOR':'EWOR', 'Founders Inc':'Founders Inc', 'ODF':'On Deck', 'South Park Commons':'South Park Commons', 'Station F':'STATION F', 'StartX':'StartX', 'Vercel AI Accelerator':'Vercel AI Accelerator', 'Z Fellows':'Z Fellows', 'AI Grant':'AI Grant'}
 data={'updated':'2026-11-11','opportunities':items,'partnerLeads':leads,'relatedPartners':related}
