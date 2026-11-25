@@ -574,7 +574,8 @@ try {
   assert.deepEqual(await cardIds(),valuation.rows.map(row=>row.id),'Mobile cards must preserve the valuation rows');
   assert.equal(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),true,'Cards must not overflow at 390px');
   await evaluate("scrollTo({top:0,behavior:'instant'})");
-  assert.ok(await evaluate("document.querySelector('#treemap-cards .treemap-card').getBoundingClientRect().top<innerHeight/2"),'The lead card must begin in the upper half of the 390px viewport');
+  const leadCard=await evaluate("(()=>{const card=document.querySelector('#treemap-cards .treemap-card');return {top:card.getBoundingClientRect().top,innerHeight};})()");
+  assert.ok(leadCard.top<leadCard.innerHeight/2,`The lead card must begin in the upper half of the 390px viewport (top ${leadCard.top}px, half ${leadCard.innerHeight/2}px)`);
   await screenshot('cards-valuation-mobile.png',true);
   await command('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
   assert.equal(await evaluate("document.querySelector('#treemap-inspector-sheet').open"),false);
