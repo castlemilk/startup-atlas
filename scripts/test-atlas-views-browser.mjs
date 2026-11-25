@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join, resolve} from 'node:path';
-import {launchBrowserTransport, saveScreenshot} from './browser-transport.mjs';
+import {launchBrowserTransport, saveScreenshot, unmappedExternalRequests} from './browser-transport.mjs';
 import {checkDesignWorkbench} from './design-workbench-browser-checks.mjs';
 import {checkDirectoryWireframes} from './directory-wireframe-browser-checks.mjs';
 import {checkProfileWireframes} from './profile-wireframe-browser-checks.mjs';
@@ -386,6 +386,7 @@ try {
   await checkEditorialExplorer({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph});
 
   assert.deepEqual(exceptions,[],'Explorer views must not raise unhandled JavaScript exceptions');
+  assert.deepEqual(unmappedExternalRequests(session,graph.entities.map(entity=>entity.logo)),[],'Explorer views must remain self-hosted apart from sourced entity image URLs');
   console.log('Atlas views phase timings:',JSON.stringify(transport.timings.summary()));
   assert.deepEqual(browserMessages.filter(message=>message.level==='error'),[],'Explorer views must not log application errors');
   const missingAssets=requests.filter(request=>request.status===404&&!request.url.startsWith('/favicon.ico'));

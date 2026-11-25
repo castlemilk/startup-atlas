@@ -19,6 +19,15 @@
 //   Page.frameNavigated (top frame) -> navigationCount, Page.loadEventFired
 //   -> loadCount, Page.domContentEventFired -> documentLoads and
 //   Fetch.requestPaused -> pausedRequests.
+// - Network hermeticity (#143 V3): when the session knows its local origin
+//   (launchBrowserTransport defaults it to the static server's address),
+//   Network.requestWillBeSent URLs on any other http(s) origin accumulate
+//   in session.externalRequests, for suites to assert empty — the pattern
+//   the Signal suites originally hand-wired per suite.
+// - Offline fixture mode (#143 V3): session.enableOfflineMode() pauses
+//   every request at the Fetch domain, continues the local ones and fails
+//   the rest (session.blockedRequests), so a suite can demonstrate that
+//   its journeys run entirely on local fixtures.
 // - Phase timing: command durations are accumulated into startup /
 //   navigation / assertion / capture phases; `session.timings.summary()`
 //   (also on the transport handle) is what suites log at the end of a run.
@@ -161,6 +170,17 @@ export function launchChrome({profileDir,bin=process.env.CHROME_BIN||'google-chr
   };
 }
 
+// Expected-traffic mapping for hermeticity assertions (#143 V3): entity
+// logo/portrait URLs are recorded in the sourced graph data and pages
+// render them straight from that data, so in a local run they leave the
+// local origin even though the application itself (code, fonts, data
+// files) is self-hosted. Suites assert that every external request is one
+// of those mapped content URLs; anything else is a hermeticity failure.
+export function unmappedExternalRequests(session,contentUrls) {
+  const mapped=new Set(contentUrls);
+  return session.externalRequests.filter(url=>!mapped.has(url));
+}
+
 // The suites' polling loop: retry fn every 100ms until it returns a truthy
 // value, failing fast when Chrome dies and appending the Chrome log tail to
 // the final timeout error.
@@ -202,6 +222,10 @@ export class CdpSession {
     this.loadCount=0;
     this.documentLoads=0;
     this.pausedRequests=0;
+    this.localOrigin=options.localOrigin ?? null;
+    this.externalRequests=[];
+    this.blockedRequests=[];
+    this.offlineMode=false;
     this.pending=new Map();
     this.sequence=0;
     this.failure=null;
@@ -233,7 +257,14 @@ export class CdpSession {
       if(message.method==='Page.frameNavigated'&&!message.params.frame.parentId)this.navigationCount++;
       if(message.method==='Page.loadEventFired')this.loadCount++;
       if(message.method==='Page.domContentEventFired')this.documentLoads++;
-      if(message.method==='Fetch.requestPaused')this.pausedRequests++;
+      if(message.method==='Fetch.requestPaused') {
+        this.pausedRequests++;
+        if(this.offlineMode)this.#resolvePausedRequest(message.params);
+      }
+      if(message.method==='Network.requestWillBeSent'&&this.localOrigin) {
+        const url=message.params.request.url;
+        if(/^https?:/.test(url)&&new URL(url).origin!==this.localOrigin)this.externalRequests.push(url);
+      }
       if(message.method==='Runtime.exceptionThrown') {
         this.exceptions.push(message.params.exceptionDetails.exception?.description||message.params.exceptionDetails.text);
       }
@@ -250,6 +281,38 @@ export class CdpSession {
     clearTimeout(item.timeout);
     if(message.error)item.reject(new Error(message.error.message));
     else item.resolve(message.result);
+  }
+
+  // Offline fixture mode: a paused request continues when it is local (or
+  // not network traffic at all: data:, blob:, about:) and fails as
+  // InternetDisconnected when it leaves the local origin.
+  #resolvePausedRequest(params) {
+    const {requestId,request}=params;
+    const url=request?.url||'';
+    let external=false;
+    if(/^https?:/.test(url)) {
+      try {external=new URL(url).origin!==this.localOrigin;} catch {external=true;}
+    }
+    if(external) {
+      this.blockedRequests.push(url);
+      this.command('Fetch.failRequest',{requestId,errorReason:'InternetDisconnected'}).catch(()=>{});
+    } else {
+      this.command('Fetch.continueRequest',{requestId}).catch(()=>{});
+    }
+  }
+
+  // Pause every request at the Fetch domain and fail the non-local ones:
+  // the page then runs entirely on local fixtures, and any external
+  // dependency surfaces as a failed request instead of silent network use.
+  async enableOfflineMode() {
+    if(!this.localOrigin)throw new Error('Offline mode needs the session localOrigin (launchBrowserTransport sets it to the server address)');
+    this.offlineMode=true;
+    await this.command('Fetch.enable',{patterns:[{urlPattern:'*'}]});
+  }
+
+  async disableOfflineMode() {
+    this.offlineMode=false;
+    await this.command('Fetch.disable');
   }
 
   // Socket-exit rejection: reject every pending command now (and remember the
@@ -351,9 +414,10 @@ export async function launchBrowserTransport(options={}) {
     get session(){return session;},
     get exceptions(){return session?.exceptions ?? [];},
     get browserMessages(){return session?.browserMessages ?? [];},
+    get externalRequests(){return session?.externalRequests ?? [];},
     chromeLog(){return chrome.log;},
     async connect(sessionOptions={}) {
-      session=await connectChromeSession(chrome,profileDir,{...options.session,...sessionOptions,timings});
+      session=await connectChromeSession(chrome,profileDir,{localOrigin:server.address,...options.session,...sessionOptions,timings});
       return session;
     },
     async close() {

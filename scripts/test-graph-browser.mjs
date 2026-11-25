@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join, resolve} from 'node:path';
-import {launchBrowserTransport, saveScreenshot} from './browser-transport.mjs';
+import {launchBrowserTransport, saveScreenshot, unmappedExternalRequests} from './browser-transport.mjs';
 import {neighborhood} from '../web/graph-model.js';
 import {sourceUrl} from '../web/logic.js';
 import {countryName, indexCompanies} from '../web/atlas-exploration.js';
@@ -172,7 +172,7 @@ try {
         hit:hit?.outerHTML?.slice(0,400)};
     })()`).catch(()=>'<unavailable>'),exceptions,browserMessages,
   });
-  await command('Page.enable');await command('Runtime.enable');
+  await command('Page.enable');await command('Runtime.enable');await command('Network.enable');
   const {identifier:fallbackScript}=await command('Page.addScriptToEvaluateOnNewDocument',{source:`(()=>{
     const getContext=HTMLCanvasElement.prototype.getContext;
     HTMLCanvasElement.prototype.getContext=function(type,...options) {
@@ -443,7 +443,7 @@ try {
   assert.equal(await evaluate('document.activeElement.dataset.node'),person,'Back must restore keyboard focus to the map');
 
   await command('Emulation.setDeviceMetricsOverride',{width:320,height:740,deviceScaleFactor:1,mobile:true});
-  const blockedPortrait='person:ben-simai--startmate';
+  const blockedPortrait='person:ben-simai';
   const portraitUrl=graph.entities.find(entity=>entity.id===blockedPortrait).logo;
   await command('Network.enable');
   await command('Network.setBlockedURLs',{urls:[portraitUrl]});
@@ -690,6 +690,7 @@ try {
   await until(()=>checkCompanyMap({ids:australian,allNames:true}),'Focusable return must preserve the fitted company group');
 
   assert.deepEqual(exceptions,[],'Page must not raise unhandled JavaScript exceptions');
+  assert.deepEqual(unmappedExternalRequests(session,graph.entities.map(entity=>entity.logo)),[],'Graph resources must remain self-hosted apart from sourced entity image URLs');
   console.log('Graph phase timings:',JSON.stringify(transport.timings.summary()));
   console.log('Chrome graph checks passed for all-company Loom Fit and grouping, phone traversal, context wires, artwork, mobile neighbourhood Fit and SVG fallback');
 } catch(error) {
