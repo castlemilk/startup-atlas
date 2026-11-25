@@ -92,6 +92,22 @@ class FundingEdgeTests(unittest.TestCase):
         self.assertEqual(participated['round_id'], 'example-series-a')
         self.assertEqual(result['warnings'], [])
 
+    def test_lead_investors_emit_a_led_round_edge_per_co_lead(self):
+        research = simple_research(funding_rounds=[{
+            'id': 'example-series-b', 'stage': 'Series B',
+            'announced_on': '2026-02-01',
+            'source': 'https://example.com/news/series-b',
+            'lead_investors': ['Airtree', 'Blackbird'],
+        }])
+        result = graph.build_graph({}, ['Airtree', 'Blackbird'], {},
+                                   {'opportunities': []}, research, today=TODAY)
+        led = [edge for edge in result['edges'] if edge['kind'] == 'led_round']
+        self.assertEqual({edge['from'] for edge in led},
+                         {'partner:airtree', 'partner:blackbird'})
+        self.assertTrue(all(edge['round_id'] == 'example-series-b'
+                            for edge in led))
+        self.assertEqual(result['warnings'], [])
+
     def test_missing_funder_skips_with_warning_and_no_exception(self):
         research = simple_research(funding_rounds=[{
             'id': 'example-seed', 'stage': 'Seed',

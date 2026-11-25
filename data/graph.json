@@ -8660,6 +8660,26 @@
       "stale": false
     },
     {
+      "from": "partner:balderton",
+      "to": "startup:wayve",
+      "kind": "led_round",
+      "description": "Led Series D round",
+      "source": "https://wayve.ai/press/series-d/",
+      "round_id": "wayve-2026-series-d",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:bessemer",
       "to": "startup:canva",
       "kind": "participated_in",
@@ -19524,11 +19544,13 @@
       "amount": 100000000,
       "currency": "USD",
       "source": "https://www.cultureamp.com/company/announcements/global-employee-experience-leader-culture-amp-raises-100-million",
-      "note": "Announced 29 July 2021; closing date unknown. Led by TDM Growth Partners and Sequoia Capital China, with Salesforce Ventures, Felicis Ventures, Blackbird Ventures, Index Ventures, Sapphire Ventures, Skip Capital, Grok Ventures and Global Founders Capital. The single lead_investor field records TDM Growth Partners; co-lead Sequoia Capital China is listed first among participants.",
+      "note": "Announced 29 July 2021; closing date unknown. Led by TDM Growth Partners and Sequoia Capital China, with Salesforce Ventures, Felicis Ventures, Blackbird Ventures, Index Ventures, Sapphire Ventures, Skip Capital, Grok Ventures and Global Founders Capital. Both co-leads are recorded in lead_investors.",
       "stage_normalised": "Series F",
-      "lead_investor": "TDM Growth Partners",
+      "lead_investors": [
+        "TDM Growth Partners",
+        "Sequoia Capital China"
+      ],
       "participants": [
-        "Sequoia Capital China",
         "Salesforce Ventures",
         "Felicis Ventures",
         "Blackbird Ventures",
@@ -19755,7 +19777,11 @@
       "currency": "AUD",
       "note": "Fluency named Bradley Tabone and Archangel Ventures as co-leads. Date is the company announcement, not a legal closing date.",
       "source": "https://usefluency.com/blog/fluency-raises-1-5m-to-transform-enterprise-operations",
-      "stage_normalised": "Pre-Seed"
+      "stage_normalised": "Pre-Seed",
+      "lead_investors": [
+        "Bradley Tabone",
+        "Archangel Ventures"
+      ]
     },
     {
       "startup_id": "startup:fluency",
@@ -20470,6 +20496,11 @@
       "source": "https://wayve.ai/press/series-d/",
       "note": "Wayve reported a closed round led by Eclipse, Balderton and SoftBank Vision Fund 2. Named participants include Ontario Teachers’ Pension Plan, Baillie Gifford, British Business Bank, Icehouse Ventures, Schroders Capital, Microsoft, NVIDIA, Uber, Mercedes-Benz, Nissan and Stellantis. The separate $1.5 billion headline includes milestone-based Uber capital. The company’s release uses a dollar sign without a currency code.",
       "stage_normalised": "Series D",
+      "lead_investors": [
+        "Eclipse",
+        "Balderton",
+        "SoftBank Vision Fund 2"
+      ],
       "participants": [
         "Ontario Teachers’ Pension Plan",
         "Baillie Gifford",
@@ -21619,13 +21650,16 @@
     "lead_investor 'Addition' for round airwallex-2026-series-h (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Airbus Ventures' for round q-ctrl-2021-series-b (Q-CTRL) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Allectus Capital' for round diraq-initial-series-a (Diraq) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Archangel Ventures' for round fluency-2025-04-aud-pre-seed (Fluency) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Atomico' for round psiquantum-2020-series-c (PsiQuantum) has no matching partner lead; led_round edge skipped",
     "lead_investor 'BOND' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; led_round edge skipped",
     "lead_investor 'BlackRock' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; led_round edge skipped",
     "lead_investor 'BlackRock' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Bradley Tabone' for round fluency-2025-04-aud-pre-seed (Fluency) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Breakthrough Victoria' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Burda Principal Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; led_round edge skipped",
     "lead_investor 'DST Global' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Eclipse' for round wayve-2026-series-d (Wayve) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Felicis Ventures' for round culture-amp-2015-series-a (Culture Amp) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Five Sigma' for round go1-2022-06-funding (Go1) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Galileo Ventures' for round andromeda-2023-12-pre-seed (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
@@ -21645,7 +21679,9 @@
     "lead_investor 'Quantonation' for round diraq-2024-series-a-2 (Diraq) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Sapphire Ventures' for round culture-amp-2017-series-c (Culture Amp) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Sequoia Capital China' for round culture-amp-2019-series-e (Culture Amp) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Sequoia Capital China' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; led_round edge skipped",
     "lead_investor 'SoftBank Group' for round wayve-2024-series-c (Wayve) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'SoftBank Vision Fund 2' for round wayve-2026-series-d (Wayve) has no matching partner lead; led_round edge skipped",
     "lead_investor 'T. Rowe Price' for round canva-2021-09-15 (Canva) has no matching partner lead; led_round edge skipped",
     "lead_investor 'TDM Growth Partners' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Tenacious Ventures' for round goterra-2020-series-a (Goterra) has no matching partner lead; led_round edge skipped",
@@ -21833,7 +21869,6 @@
     "participant 'Sequoia Capital China' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
-    "participant 'Sequoia Capital China' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital China' for round q-ctrl-2018-seed (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia Capital Global Equities' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'Sequoia China' for round airwallex-2018-series-b (Airwallex) has no matching partner lead; participated_in edge skipped",

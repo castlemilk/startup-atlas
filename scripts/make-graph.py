@@ -10,7 +10,8 @@ or renamed, so old readers ignore the new fields):
   design doc ``docs/KG-CONNECTIVE-TISSUE.md`` §2):
   ``first_seen``, ``last_verified``, ``confidence``, ``confidence_basis``,
   ``stale``.
-- Funding edges: a round's ``lead_investor`` emits ``led_round``
+- Funding edges: a round's ``lead_investor`` (single lead) and each
+  entry of ``lead_investors`` (co-led rounds, #353) emit ``led_round``
   (funder → startup) and each entry of ``participants`` emits
   ``participated_in``. The funder is resolved against the partner leads
   (by slug, or by alias/host via ``data/identity.json`` when present); an
@@ -380,8 +381,13 @@ def build_graph(profiles, leads, reviewed, catalogue, research, identity=None,
             articles.append({'startup_id': startup_id, 'title': startup['name'] + ' — ' + event['stage'], 'url': event['source'], 'published_on': event.get('announced_on', ''), 'kind': 'funding source'})
             round_verified = event.get('reviewed_at') or event.get('checked') or research_reviewed
             stage = event.get('stage') or 'funding'
-            lead = event.get('lead_investor')
-            if lead:
+            round_leads = []
+            if event.get('lead_investor'):
+                round_leads.append(event['lead_investor'])
+            for co_lead in event.get('lead_investors', []) or []:
+                if co_lead not in round_leads:
+                    round_leads.append(co_lead)
+            for lead in round_leads:
                 funder_id = resolve_funder(lead)
                 if funder_id is None:
                     warnings.append(

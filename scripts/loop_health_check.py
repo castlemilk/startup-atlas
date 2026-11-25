@@ -567,7 +567,8 @@ def coverage_scopes(graph):
         ('person-headshots', 'person', people, people & logos),
         ('round-lead-investors', 'funding_round',
          {r.get('id') for r in rounds},
-         {r.get('id') for r in rounds if r.get('lead_investor')}),
+         {r.get('id') for r in rounds
+          if r.get('lead_investor') or r.get('lead_investors')}),
     ]
     scopes = []
     for scope_id, kind, eligible, covered in raw:
