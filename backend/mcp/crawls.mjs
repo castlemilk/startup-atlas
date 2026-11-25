@@ -13,7 +13,7 @@ const isHttpsUrl = value => {
 };
 const isRunId = value => typeof value === 'string' && /^crawl-\d{8}-[a-z0-9-]+-\d{2}$/.test(value);
 
-export const CRAWL_MODES = ['sites', 'discover', 'programs', 'partners', 'captures', 'apply-reviewed', 'logos', 'partner-candidates', 'profiles', 'company-profiles', 'news'];
+export const CRAWL_MODES = ['sites', 'discover', 'programs', 'partners', 'captures', 'apply-reviewed', 'logos', 'partner-candidates', 'profiles', 'company-profiles', 'portraits', 'news'];
 export const CRAWL_STATUSES = ['claimed', 'running', 'completed', 'failed', 'abandoned', 'superseded'];
 export const CRAWL_REVIEW_STATUSES = ['unreviewed', 'in_review', 'reviewed', 'published'];
 export const MAX_REGISTRY_RUNS = 200;

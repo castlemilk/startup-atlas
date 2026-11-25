@@ -137,6 +137,16 @@ Rules:
    source, and the registry never overrides a transport guard. It is the
    thread that ties a published entry back to the crawl that found it; it
    never short-circuits review.
+6. **Workflow runs are recorded by the workflow** (issue #538). The
+   partner-research workflow's bookkeeping step runs
+   `scripts/record_crawl_runs.py` over every mode snapshot and writes the
+   updated registry to `research/crawl/crawl-runs.json` in the crawl
+   artifact, alongside the updated `data/crawl-source-state.json`
+   (per-source sampler state, recorded by `crawl.py` for every fetch
+   mode). Landing either file back on main stays a reviewed data change,
+   like the review queue; until a landing happens, the committed registry
+   legitimately lags the latest workflow run rather than implying
+   coverage it does not have.
 
 ## What does not change
 
