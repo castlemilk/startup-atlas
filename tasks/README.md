@@ -16,6 +16,7 @@ runner labels, no capacity questions owed by anyone.
 
 ## Tasks
 
+- `tasks/setup.sh [worktree]` — pre-flight install: git hooks, Node deps (root + backend/mcp) and a worktree venv with pyarrow, idempotent.
 - `tasks/build.sh [worktree]` — install, regenerate data, build `dist/`.
 - `tasks/test.sh [worktree]` — JS suite, Python suite, hosted MCP suite.
 - `tasks/publish.sh [worktree]` — preflight gate for the browser landing.
