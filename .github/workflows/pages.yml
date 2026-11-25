@@ -109,6 +109,10 @@ jobs:
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && steps.toolchain.outputs.node_ready != 'true'
         with:
           node-version: '22'
+      - uses: actions/setup-python@v5
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && steps.toolchain.outputs.python_ready != 'true'
+        with:
+          python-version: '3.12'
       - name: Install site dependencies
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: npm ci --ignore-scripts
