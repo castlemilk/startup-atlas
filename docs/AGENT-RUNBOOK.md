@@ -139,6 +139,8 @@ Profile reports record the number of eligible names within the already retained,
 
 Use `npm test`, `npm run test:mcp`, `npm --prefix backend/hosted test` and the relevant builds as appropriate. Hosted OAuth also needs Workers-compatible verification, not solely mocks. Check the exact commit and deployment result; run a live read through the MCP after publishing.
 
+**Shared generation in CI (#145 Q2):** `npm test` and `npm run build` each regenerate the catalogue/graph chain, so a sequence that runs both pays for two identical generation passes. `npm run ci` is the shared-generation sequence: one `data:generate`, then `test:prepared`, then `build:prepared`. Generation ends by stamping the whole generation closure (generator code, source data, generated outputs) with the source revision and SHA-256 hashes into `data/.generated-inputs.json` (`scripts/generated_inputs.py stamp`, git-ignored); the prepared entrypoints run `data:verify` first and fail on a missing stamp, a revision change, or any closure file that changed, appeared or vanished — so tests and build provably consume the same freshly generated inputs, and a test that mutates a shared input fails the build's verification. The plain `test`/`build` commands stay self-contained for developer use; never wire a prepared entrypoint to output generated under a previous commit.
+
 ### Hooks, preflight and the CI gate
 
 Setup (once per clone/worktree): `bash scripts/setup-hooks.sh` sets `core.hooksPath=.githooks` and restores exec bits on the hooks and scripts (the GitHub API creates pushed files as 0644, which would silently disable hooks). Both hooks delegate to `scripts/preflight.sh`, which is also the standalone command for flows that bypass local git.
