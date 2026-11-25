@@ -221,10 +221,11 @@
           "currency": "USD",
           "source": "https://www.airwallex.com/global/newsroom/airwallex-square-peg-capital-series-a-funding",
           "stage_normalised": "Series A",
+          "lead_investor": "Square Peg Capital",
           "participants": [
             "Square Peg Capital"
           ],
-          "note": "Separate investment by Square Peg Capital, after the initial US$13 million Series A."
+          "note": "Separate investment by Square Peg Capital, after the initial US$13 million Series A. The issuer release (the round's source) presents Square Peg Capital as the sole investor in this A+ investment."
         },
         {
           "id": "airwallex-2018-series-b",
@@ -378,9 +379,10 @@
           "currency": "USD",
           "valuation": 6200000000,
           "valuation_currency": "USD",
-          "note": "Company announcement says the round includes $150 million in secondary share transfers; the amount is not solely primary capital.",
+          "note": "Company announcement says the round includes $150 million in secondary share transfers; the amount is not solely primary capital. K&L Gates, advising Square Peg, identified Square Peg as lead investor on the raise, with existing shareholders Lone Pine Capital, Tencent and DST Global among those participating and Blackbird Ventures, Airtree Ventures, Radar Ventures, R136 Ventures and Athletic Ventures among the new investors: https://www.KLGates.com/KL-Gates-Advises-Australian-Venture-Capital-Firm-Square-Peg-on-Airwallexs-US300-Million-Series-F-Fundraise-5-26-2025",
           "source": "https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking",
           "stage_normalised": "Series F",
+          "lead_investor": "Square Peg",
           "participants": [
             "Square Peg",
             "DST Global",
@@ -1321,7 +1323,11 @@
           "currency": "AUD",
           "note": "Blackbird reported leading the Seed, joined by Startmate and strategic angels. Participating investor Startmate confirms A$3.5 million and the Seed label (https://www.startmate.com/accelerator); the issuer corroborates the amount and links Blackbird’s announcement (https://www.superstatsport.com/). Date is the investor announcement, not legal close. No individual investor amounts are stated.",
           "source": "https://www.blackbird.vc/blog/why-we-fell-for-the-founders-building-sports-data-layer-our-investment-in-superstat",
-          "stage_normalised": "Seed"
+          "stage_normalised": "Seed",
+          "lead_investor": "Blackbird Ventures",
+          "participants": [
+            "Startmate"
+          ]
         }
       ],
       "profile_facts": [
@@ -2047,7 +2053,13 @@
           "amount_text": "AUD9.5 million (USD6.25 million as reported)",
           "source": "https://www.cauldronferm.com/post/cauldron-raises-9-5m-aud-series-a-to-scale-its-continuous-hyper-fermentation-technology",
           "note": "The 19 March 2024 announcement says the round has closed; exact close date is not stated. Horizons Ventures led, with SOSV and In-Q-Tel joining existing investor Main Sequence. USD6.25 million is the reported equivalent, not an additional round.",
-          "stage_normalised": "Series A"
+          "stage_normalised": "Series A",
+          "lead_investor": "Horizons Ventures",
+          "participants": [
+            "SOSV",
+            "In-Q-Tel",
+            "Main Sequence"
+          ]
         }
       ],
       "description": "Develops continuous fermentation technology for commercial biomanufacturing.",
