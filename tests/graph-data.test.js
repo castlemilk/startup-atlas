@@ -213,3 +213,41 @@ test('Airwallex keeps its four early raises distinct and does not date historica
   assert.ok(rounds.every(r => ![19000000, 22000000, 102000000].includes(r.amount)));
   assert.equal(rounds.find(r => r.id === 'airwallex-2019-series-c').amount, 100000000);
 });
+
+test('co-founder edges connect every founder pair of a startup (#527)', async () => {
+  const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const nodes = new Map(graph.entities.map(x => [x.id, x]));
+  const foundersByStartup = new Map();
+  for (const edge of graph.edges) {
+    if (edge.kind !== 'founded') continue;
+    const list = foundersByStartup.get(edge.to) || [];
+    list.push(edge.from);
+    foundersByStartup.set(edge.to, list);
+  }
+  const expected = new Set();
+  for (const [startupId, founders] of foundersByStartup) {
+    const unique = [...new Set(founders)].sort();
+    for (let i = 0; i < unique.length; i++)
+      for (let j = i + 1; j < unique.length; j++)
+        expected.add(`${unique[i]}|${unique[j]}|${startupId}`);
+  }
+  const actual = graph.edges.filter(edge => edge.kind === 'co_founder');
+  assert.equal(actual.length, expected.size);
+  for (const edge of actual) {
+    assert.ok(expected.has(`${edge.from}|${edge.to}|${edge.startup_id}`), `unexpected co-founder edge ${edge.from} -> ${edge.to}`);
+    assert.equal(nodes.get(edge.from).kind, 'person');
+    assert.equal(nodes.get(edge.to).kind, 'person');
+    assert.ok(edge.from < edge.to);
+    assert.equal(edge.description, `Co-founder of ${nodes.get(edge.startup_id).name}`);
+    assert.match(edge.source, /^https:\/\//);
+    assert.equal(typeof edge.confidence, 'number');
+    assert.ok(edge.confidence >= 0.5);
+    assert.equal(edge.confidence_basis.inferred, false);
+  }
+  // The Canva trio is fully connected, and Perkins/Obrecht carry one edge
+  // per shared startup (Canva and Fusion Books).
+  assert.equal(actual.filter(edge => edge.startup_id === 'startup:canva').length, 3);
+  assert.equal(actual.filter(edge => edge.from === 'person:cliff-obrecht' && edge.to === 'person:melanie-perkins').length, 2);
+  // A person's view surfaces the co-founder as a relationship.
+  assert.ok(entityDetails(graph, 'person:melanie-perkins').related.some(x => x.id === 'person:cliff-obrecht'));
+});
