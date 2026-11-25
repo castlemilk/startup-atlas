@@ -13,6 +13,7 @@ GCP workload-identity credentials in CI). With no backend configured the
 script exits 2 without touching anything, so it is safe to run locally.
 """
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -20,7 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from atlas_corpus import CorpusConfig, CorpusError  # noqa: E402
 from atlas_gcp import is_configured  # noqa: E402
-from build_live_index import publish_reviewed_corpus  # noqa: E402
+from build_live_index import publish_reviewed_corpus_if_changed  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -40,11 +41,16 @@ def main(argv=None):
               'variables.', file=sys.stderr)
         return 2
     try:
-        manifest = publish_reviewed_corpus(
+        manifest, receipt = publish_reviewed_corpus_if_changed(
             args.corpus_dir, config, args.source_revision)
     except CorpusError as exc:
         print(str(exc), file=sys.stderr)
         return 1
+    if receipt['status'] == 'unchanged':
+        # Explicit no-op publication receipt (issue #150 A3): the validated
+        # candidate is byte-identical to the already-published corpus.
+        print(f"No-op publication receipt: {json.dumps(receipt, sort_keys=True)}")
+        return 0
     print(f"Published reviewed corpus sha256 {manifest['sha256']} "
           f"({len(manifest['files'])} files) from {args.corpus_dir}")
     return 0
