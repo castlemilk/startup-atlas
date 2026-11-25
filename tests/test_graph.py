@@ -48,6 +48,20 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(result['edges'][0]['source'],'https://example.com/team')
         self.assertEqual(result['edges'][0]['to'],'startup:example')
 
+    def test_founder_blurb_survives_source_to_graph_projection(self):
+        blurb={'text':'Co-founder of Example. Previously a site engineer.',
+               'sources':['https://example.com/team','https://example.org/profile'],
+               'verified_at':'2026-01-01'}
+        research={'startups':[{'name':'Example','source':'https://example.com/about',
+                              'founders':[{'name':'Example Founder','source':'https://example.com/team',
+                                           'blurb':blurb},
+                                          {'name':'Other Founder','source':'https://example.com/team'}]}]}
+        result=graph.build_graph({},[],{},{'opportunities':[]},research)
+        founder=next(entity for entity in result['entities'] if entity['id']=='person:example-founder')
+        self.assertEqual(founder['blurb'],blurb)
+        other=next(entity for entity in result['entities'] if entity['id']=='person:other-founder')
+        self.assertNotIn('blurb',other)
+
     def test_cofounder_edges_join_founders_of_the_same_startup(self):
         research={'reviewed':'2026-01-15','startups':[{'name':'Example','source':'https://example.com/about',
             'founders':[

@@ -211,6 +211,23 @@ test('malformed social metadata has precise paths and never silently normalizes 
   assert.throws(()=>validateStartupRecord({...research.startups[0],socials:[social(),social()]}),{code:'VALIDATION_ERROR'});
 });
 
+test('founder blurb carries its own sourced provenance (#528)',async()=>{
+  const research=fixture();
+  const blurb={text:'Co-founder of Example. Previously a site engineer.',sources:['https://example.com/team','https://example.org/profile'],verified_at:'2026-01-01'};
+  const withBlurb={...research.startups[0],founders:[{name:'Pat Founder',source:'https://example.com/team',blurb}]};
+  assert.equal(validateStartupRecord(withBlurb),withBlurb);
+  for(const bad of [
+    {...blurb,text:' '},
+    {...blurb,sources:[]},
+    {...blurb,sources:['http://example.com/team']},
+    {...blurb,sources:'https://example.com/team'},
+    {...blurb,verified_at:'2026-02-30'},
+    {...blurb,verified_at:'2100-01-01'},
+    {...blurb,extra:true},
+    {sources:blurb.sources,verified_at:blurb.verified_at},
+  ])assert.throws(()=>validateStartupRecord({...research.startups[0],founders:[{name:'Pat Founder',source:'https://example.com/team',blurb:bad}]}),{code:'VALIDATION_ERROR'});
+});
+
 test('full merged collection limits are checked after valid individual patches',async()=>{
   for(const nested of [false,true]) {
     const research=fixture(), links=Array.from({length:30},(_,index)=>social(String(index)));
