@@ -7,7 +7,7 @@ const fields = properties => ({type:'object',additionalProperties:false,properti
 const social = {...fields({label:text(100),url,source:url,reviewed_at:date}),required:['label','url','source','reviewed_at']};
 const socials = {type:'array',maxItems:30,items:social};
 const blurb = {...fields({text:text(1000),sources:{type:'array',minItems:1,maxItems:10,items:url},verified_at:date}),required:['text','sources','verified_at']};
-const founder = {...fields({name:text(200),source:url,profile_url:url,photo_url:url,photo_source:url,socials,blurb}),required:['name','source']};
+const founder = {...fields({name:text(200),source:url,profile_url:url,linkedin:url,photo_url:url,photo_source:url,socials,blurb}),required:['name','source']};
 const funding = {...fields({id:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},stage:text(100),stage_normalised:text(100),announced_on:date,amount:{type:'integer',minimum:0},amount_text:text(200),currency:{type:'string',pattern:'^[A-Z]{3}$'},valuation:{type:'integer',minimum:0},valuation_currency:{type:'string',pattern:'^[A-Z]{3}$'},note:text(2000),source:url,lead_investor:text(200),participants:{type:'array',maxItems:30,items:text(200)}}),required:['id','stage','source']};
 const article = {...fields({title:text(300),url,published_on:date,kind:text(100)}),required:['title','url']};
 const profileFact = {...fields({key:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},label:text(100),value:text(1000),source:url,reviewed_at:date}),required:['key','label','value','source','reviewed_at']};
@@ -63,7 +63,7 @@ export function validateStartupRecord(record){
   if(record.socials!==undefined)checkSocials(record.socials,'record.socials');
   if(record.founders!==undefined)checkRecords(record.founders,'founders',30,founder,item=>{
     checkText(item.name,'founder.name',200);publicHttps(item.source,'founder.source');
-    for(const key of ['profile_url','photo_url','photo_source'])if(item[key]!==undefined)publicHttps(item[key],`founder.${key}`);
+    for(const key of ['profile_url','linkedin','photo_url','photo_source'])if(item[key]!==undefined)publicHttps(item[key],`founder.${key}`);
     checkPair(item,'photo_url','photo_source','Founder photo');
     if(item.socials!==undefined)checkSocials(item.socials,'founder.socials');
     if(item.blurb!==undefined){
