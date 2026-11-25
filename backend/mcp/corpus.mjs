@@ -19,11 +19,17 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { publishAfterUpsertGcs } from './gcs.mjs';
 
+// Keep in sync with REVIEWED_FILES in scripts/atlas_corpus.py. A shorter
+// list here rewrites the reviewed manifest without graph.json /
+// treemap-evidence.json, which drops the edges/relationships tables from
+// the live index (F1 regression, 25 Nov 2026).
 export const REVIEWED_FILES = [
   'catalogue.json',
   'partners-reviewed.json',
   'partner-profiles.json',
   'startup-research.json',
+  'treemap-evidence.json',
+  'graph.json',
 ];
 const CORPUS_PREFIX = 'corpus/v1';
 
