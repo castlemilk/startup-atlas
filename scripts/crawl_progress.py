@@ -44,11 +44,11 @@ from atlas_corpus import (  # noqa: E402
 )
 from atlas_gcp import GCSConfig, client_for  # noqa: E402
 
-# The seven partner-research workflow modes, in workflow order. Consumers
-# render in this order; records pre-seed all seven as pending.
+# The eight partner-research workflow modes, in workflow order. Consumers
+# render in this order; records pre-seed all eight as pending.
 WORKFLOW_MODES = [
-    'partners', 'programs', 'news', 'logos', 'profiles', 'portraits',
-    'partner-candidates',
+    'partners', 'programs', 'news', 'logos', 'profiles', 'company-profiles',
+    'portraits', 'partner-candidates',
 ]
 
 # A running record whose heartbeat is older than this is treated as
