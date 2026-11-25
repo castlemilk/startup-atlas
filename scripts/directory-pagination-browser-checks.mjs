@@ -16,7 +16,16 @@ export async function checkDirectoryPagination({command,evaluate,navigate,until,
       await press('Enter','Enter',13);
     } else await click('#load-more');
     const expected=Math.min(before+12,total);
-    await until(()=>evaluate(`document.querySelectorAll(${JSON.stringify(rows)}).length===${expected}`),'Load more did not reveal the next batch');
+    try {
+      await until(()=>evaluate(`document.querySelectorAll(${JSON.stringify(rows)}).length===${expected}`),'Load more did not reveal the next batch');
+    } catch (error) {
+      // Diagnostic: distinguish a pointer-delivery failure from a handler
+      // no-op by reporting the pager state and trying a synthetic click.
+      const state=await evaluate(`(()=>{const button=document.querySelector('#load-more');const rowsNow=document.querySelectorAll(${JSON.stringify(rows)}).length;const snapshot={rowsNow,range:document.querySelector('#result-range')?.textContent,shown:new URLSearchParams(location.search).get('shown'),buttonHidden:button?.hidden};button?.click();return snapshot;})()`);
+      await new Promise(resolve=>setTimeout(resolve,300));
+      const afterSynthetic=await count();
+      throw new Error(`Load more did not reveal the next batch (state ${JSON.stringify(state)}, rows after synthetic click ${afterSynthetic})`);
+    }
     const firstNew=`${rows}:nth-child(${before+1})`;
     assert.equal(await evaluate(`document.activeElement===document.querySelector(${JSON.stringify(firstNew+' h3 a[href]')})`),true,'Load more must focus the first newly revealed native profile link');
     assert.ok(await evaluate("(()=>{const r=document.activeElement.getBoundingClientRect();return r.width>0&&r.height>0&&r.top>=0&&r.bottom<=innerHeight;})()"),'The new reading position must be visible immediately');
