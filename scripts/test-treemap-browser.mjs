@@ -335,6 +335,13 @@ try {
     ['startup:synthesia','./assets/logos/synthesia.svg'],
     ['startup:culture-amp','./assets/logos/culture-amp.svg'],
     ['startup:quantum-brilliance','./assets/logos/quantum-brilliance.svg'],
+    // Founder portraits are the reviewed card mark for startups with no
+    // logo: indexFounders serves the bundled portrait (own-origin asset
+    // URLs are relativized in web/treemap-model.js, as in graph-artwork).
+    ['startup:q-ctrl','./assets/portraits/michael-j-biercuk.png'],
+    ['startup:canva','./assets/portraits/cameron-adams.png'],
+    ['startup:bugcrowd','./assets/portraits/casey-ellis.png'],
+    ['startup:alloovium','./assets/portraits/cielo-nicolosi.png'],
   ]);
   const expectedFundingCards = defaultFunding.rows.map((row,index)=>({
     id:row.id, rank:String(index+1), amount:formatValue(row.value,'funding','USD'),
