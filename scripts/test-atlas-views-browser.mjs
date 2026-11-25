@@ -310,7 +310,7 @@ try {
   await screenshot('atlas-startup-desktop.png');
   await click('.atlas-section-nav a[href="#entity-funding"]');
   await until(()=>evaluate("location.hash==='#entity-funding'"),'Funding section navigation did not update the fragment');
-  await until(()=>evaluate("document.querySelector('.atlas-section-nav a[href=\"#entity-funding\"]').getAttribute('aria-current')==='location'"),'Funding anchor should mark the current section');
+  await until(()=>evaluate("document.querySelector('.atlas-section-nav a[href=\"#entity-funding\"]').getAttribute('aria-selected')==='true'&&!document.querySelector('#entity-funding').hidden"),'Funding tab should be selected and its panel shown');
   assert.equal(await text('[data-atlas-back]'),'Back to search results','Section links must not replace the originating return with a self-link');
   assert.match(await text('#entity-funding'),/Historical announcements/);
   await click('[data-atlas-back]');
