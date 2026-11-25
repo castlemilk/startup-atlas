@@ -8,7 +8,7 @@ import { companyLocationFacts, countryName, indexCompanies } from './atlas-explo
 import { createProfileEvidence, profileSource, profileTime, recordedProfileDate } from './profile-evidence.js';
 import { installProfileTabs } from './profile-tabs.js';
 import { resolveEntityRedirect } from './entity-redirects.js';
-import { edgeKindLabel, microGraphLayout, microGraphNameLines, microGraphNeighbours } from './micro-graph.js';
+import { edgeKindLabel, microGraphLayout, microGraphNameLines, microGraphNeighbours, microGraphNodeArt } from './micro-graph.js';
 
 const root = document.getElementById('entity-profile');
 const identity = new URLSearchParams(location.search).get('id') || '';
@@ -116,10 +116,14 @@ function microGraph(graph, entity) {
     const name = nameLines.length > 1
       ? `<text x="${points[i].x}" y="${points[i].y + 24}" class="entity-micro-name" text-anchor="middle"><tspan x="${points[i].x}">${esc(nameLines[0])}</tspan><tspan x="${points[i].x}" dy="11">${esc(nameLines[1])}</tspan></text>`
       : `<text x="${points[i].x}" y="${points[i].y + 28}" class="entity-micro-name" text-anchor="middle">${esc(nameLines[0])}</text>`;
-    return `<a href="${esc(entityHref(item.entity))}" data-atlas-profile-link aria-label="${esc(item.entity.name)} — ${esc(edgeKindLabel(item.edge.kind))}"><circle cx="${points[i].x}" cy="${points[i].y}" r="17" class="entity-micro-dot entity-micro-kind-${esc(item.entity.kind)}" /><text x="${points[i].x}" y="${points[i].y}" class="entity-micro-initials" text-anchor="middle" dominant-baseline="central">${esc(initials(item.entity.name))}</text>${name}<title>${esc(item.entity.name)} — ${esc(edgeKindLabel(item.edge.kind))}</title></a>`;
+    const art = microGraphNodeArt(item.entity, points[i].x, points[i].y, 17);
+    const plate = graphArtwork(item.entity).classes;
+    return `<a href="${esc(entityHref(item.entity))}" data-atlas-profile-link aria-label="${esc(item.entity.name)} — ${esc(edgeKindLabel(item.edge.kind))}"><circle cx="${points[i].x}" cy="${points[i].y}" r="17" class="entity-micro-dot entity-micro-kind-${esc(item.entity.kind)}${plate ? ` ${esc(plate)}` : ''}" />${art}<text x="${points[i].x}" y="${points[i].y}" class="entity-micro-initials" text-anchor="middle" dominant-baseline="central"${art ? ' visibility="hidden"' : ''}>${esc(initials(item.entity.name))}</text>${name}<title>${esc(item.entity.name)} — ${esc(edgeKindLabel(item.edge.kind))}</title></a>`;
   }).join('');
   const shownKinds = [...new Set(model.neighbours.map(item => item.edge.kind))];
-  return `<div class="entity-micro-graph"><svg viewBox="0 0 360 260" role="group" aria-label="Closest recorded connections to ${esc(entity.name)}">${lines}${nodes}<circle cx="${center.x}" cy="${center.y}" r="23" class="entity-micro-dot entity-micro-centre entity-micro-kind-${esc(entity.kind)}" /><text x="${center.x}" y="${center.y}" class="entity-micro-initials entity-micro-centre-initials" text-anchor="middle" dominant-baseline="central">${esc(initials(entity.name))}</text><text x="${center.x}" y="${center.y + 36}" class="entity-micro-name entity-micro-centre-name" text-anchor="middle">${esc(entity.name.length > 22 ? `${entity.name.slice(0, 21)}…` : entity.name)}</text></svg>
+  const centreArt = microGraphNodeArt(entity, center.x, center.y, 23);
+  const centrePlate = graphArtwork(entity).classes;
+  return `<div class="entity-micro-graph"><svg viewBox="0 0 360 260" role="group" aria-label="Closest recorded connections to ${esc(entity.name)}">${lines}${nodes}<g class="entity-micro-centre-node"><circle cx="${center.x}" cy="${center.y}" r="23" class="entity-micro-dot entity-micro-centre entity-micro-kind-${esc(entity.kind)}${centrePlate ? ` ${esc(centrePlate)}` : ''}" />${centreArt}<text x="${center.x}" y="${center.y}" class="entity-micro-initials entity-micro-centre-initials" text-anchor="middle" dominant-baseline="central"${centreArt ? ' visibility="hidden"' : ''}>${esc(initials(entity.name))}</text></g><text x="${center.x}" y="${center.y + 36}" class="entity-micro-name entity-micro-centre-name" text-anchor="middle">${esc(entity.name.length > 22 ? `${entity.name.slice(0, 21)}…` : entity.name)}</text></svg>
     <ul class="entity-micro-legend">${shownKinds.map(kind => `<li>${esc(edgeKindLabel(kind))}</li>`).join('')}</ul>
     ${model.overflow ? `<p class="entity-micro-overflow">+${model.overflow} more in the <a href="${graphLink(entity.id)}" data-atlas-profile-graph="${esc(entity.id)}">full graph</a></p>` : ''}</div>`;
 }
@@ -439,6 +443,16 @@ async function renderProfile() {
     function fallback() {
       img.hidden = true;
       img.nextElementSibling.hidden = false;
+    }
+    if (img.complete && !img.naturalWidth) fallback();
+    else img.addEventListener('error', fallback, { once: true });
+  });
+  // Micro-graph node artwork (#526): a failed image restores the node's
+  // initials, which were rendered hidden beneath it.
+  root.querySelectorAll('.entity-micro-art').forEach(img => {
+    function fallback() {
+      img.setAttribute('visibility', 'hidden');
+      img.closest('a, g')?.querySelector('.entity-micro-initials')?.removeAttribute('visibility');
     }
     if (img.complete && !img.naturalWidth) fallback();
     else img.addEventListener('error', fallback, { once: true });

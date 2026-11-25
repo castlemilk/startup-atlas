@@ -263,6 +263,8 @@
 .entity-micro-centre { fill: var(--atlas-canvas); stroke: var(--atlas-action); stroke-width: 1.5; }
 .entity-micro-graph a:hover .entity-micro-dot, .entity-micro-graph a:focus-visible .entity-micro-dot { stroke: var(--atlas-action); stroke-width: 1.5; }
 .entity-micro-initials { fill: var(--atlas-ink); font: 600 11px var(--atlas-font-body); pointer-events: none; }
+.entity-micro-art-person { clip-path: circle(50%) fill-box; }
+.entity-micro-graph .entity-micro-dot.logo-on-dark { fill: var(--atlas-ink); }
 .entity-micro-centre-initials { font-size: 13px; }
 .entity-micro-name { fill: var(--atlas-muted); font: 11px var(--atlas-font-body); }
 .entity-micro-centre-name { fill: var(--atlas-ink); font-weight: 650; }
