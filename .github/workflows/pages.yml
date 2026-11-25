@@ -68,6 +68,7 @@ jobs:
         run: |
           node --test tests/catalogue.test.js tests/graph-data.test.js
           python3 -m unittest discover -s tests -p 'test_entity_resolution.py'
+          python3 -m unittest discover -s tests -p 'test_accelerator_deals.py'
           python3 -m unittest discover -s tests -p 'test_graph.py'
           python3 -m unittest discover -s tests -p 'test_query_parquet.py'
           python3 -m unittest tests.test_live_index.ReviewedValuationInputTests
