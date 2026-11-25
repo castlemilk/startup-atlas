@@ -37,7 +37,7 @@ RULES = {
             'tests/fuzzy-search.test.js', 'tests/graph-layout.test.js', 'tests/graph-atlas.test.js', 'tests/treemap.test.js',
             'tests/analytics.test.js', 'tests/build-modules.test.js',
            'tests/accessibility.test.js', 'tests/browser-transport.test.js'),
-    'collection': ('scripts/crawl.py', 'scripts/publish_crawl_corpus.py',
+    'collection': ('scripts/crawl.py', 'scripts/crawl_gap_report.py', 'scripts/publish_crawl_corpus.py',
                    'scripts/run_scoped_collection.py', 'scripts/*company*profile*.py',
                    'scripts/*company*metadata*.py', 'scripts/*early_investments.py', 'scripts/collection_coverage.py',
                    'tests/test_crawl*.py', 'tests/test_company*.py', 'tests/test_scoped_implementation.py',
