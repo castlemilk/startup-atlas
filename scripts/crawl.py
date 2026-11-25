@@ -2886,7 +2886,12 @@ def main(argv=None):
     else:
         transport=Transport(args.delay)
         sampler=_sampler(); source_state=None
-        if sampler is not None and args.mode in ('sites','logos','profiles'):
+        # Issue #538: record per-source outcomes for every fetch mode, not
+        # only sites/logos/profiles, so data/crawl-source-state.json holds
+        # real state for the whole crawl. 'discover' is excluded: its
+        # results are Wikidata lookups with no fetched pages, so recording
+        # them would fabricate fetch failures.
+        if sampler is not None and args.mode in ('sites','logos','profiles','partners','programs','news','company-profiles','portraits'):
             source_state=sampler.load_state()
         # Live crawl progress (design 24 Nov 2026): only for the seven
         # workflow modes and only when ATLAS_CRAWL_PROGRESS=1; the reporter

@@ -16,7 +16,11 @@ Policy (design doc docs/KG-CONNECTIVE-TISSUE.md section 4):
 
 The sampler orders and annotates; it drops nothing except the 3+-failure
 backoff. State lives in ``data/crawl-source-state.json`` and is seeded empty
--- no history is invented. A source id is its seed URL, the one stable key
+-- no history is invented. ``crawl.py`` records outcomes into it for every
+fetch mode, and the partner-research workflow copies the updated file into
+the crawl artifact so it can be landed back on main as a reviewed data
+change (issue #538); without that landing the in-job state is ephemeral.
+A source id is its seed URL, the one stable key
 shared by the sites and profiles crawl modes.
 """
 from __future__ import annotations
