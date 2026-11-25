@@ -122,9 +122,16 @@
           "value": "Canva Pty Ltd (reported in FY2023)",
           "source": "https://content-management-files.canva.com/fbfd7dc6-c9ae-4836-8a41-2b3e2ce941f7/CanvaAnti-SlaveryStatement-FY23.pdf",
           "reviewed_at": "2026-11-13"
+        },
+        {
+          "key": "founding-year",
+          "label": "Founding year",
+          "value": "Canva’s founders write in their community letter: “Back in 2012, we set out with the crazy big goal of empowering the whole world to design”, and date the launch of the first version of Canva to 2013 (recorded separately as Product launched).",
+          "source": "https://www.canva.com/newsroom/news/note-canva-community/",
+          "reviewed_at": "2026-11-25"
         }
       ],
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-25",
       "articles": [
         {
           "title": "Canva announces changes affecting 1,271 people, including role changes, relocation and departures",
@@ -133,11 +140,13 @@
         }
       ],
       "hq_city": "Sydney",
-      "hq_country": "Australia"
+      "hq_country": "Australia",
+      "founded_year": 2012
     },
     {
       "name": "Fusion Books",
       "description": "Online school yearbook design product launched by Melanie Perkins and Cliff Obrecht before Canva.",
+      "website": "https://www.fusionbooks.com.au/",
       "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
       "founded_year": 2007,
       "founders": [
@@ -164,6 +173,13 @@
           "value": "Melanie Perkins and Cliff Obrecht started Fusion Books in 2007 as school yearbook design software. It expanded from Australia into France and New Zealand before the founders launched Canva.",
           "source": "https://foundersfactory.com/articles/canva-founders/",
           "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "website-domain",
+          "label": "Website",
+          "value": "The fusionbooks.com.au domain resolves to a Canva-operated page (checked 25 November 2026). Fusion Books is the founders’ historical pre-Canva product and the domain is retained by Canva.",
+          "source": "https://www.fusionbooks.com.au/",
+          "reviewed_at": "2026-11-25"
         }
       ],
       "articles": [
@@ -177,7 +193,8 @@
           "url": "https://foundersfactory.com/articles/canva-founders/",
           "kind": "founder profile"
         }
-      ]
+      ],
+      "reviewed_at": "2026-11-25"
     },
     {
       "name": "Airwallex",
@@ -1155,7 +1172,8 @@
           "stage_normalised": "Unknown",
           "lead_investor": "Startmate"
         }
-      ]
+      ],
+      "reviewed_at": "2026-11-25"
     },
     {
       "name": "Deeligence",
@@ -1378,7 +1396,7 @@
       "description": "Financial workflow automation in chat and email.",
       "website": "https://flowgoai.com/",
       "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-25",
       "founders": [
         {
           "name": "Anthony See",
@@ -1420,7 +1438,9 @@
           "stage_normalised": "Unknown",
           "lead_investor": "Startmate"
         }
-      ]
+      ],
+      "hq_city": "Petaling Jaya",
+      "hq_country": "Malaysia"
     },
     {
       "name": "iBnkVault",
@@ -1523,7 +1543,7 @@
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/superstat.svg",
       "logo_source": "https://www.superstatsport.com/",
-      "reviewed_at": "2026-11-22",
+      "reviewed_at": "2026-11-25",
       "funding_rounds": [
         {
           "id": "superstat-2026-blackbird-seed",
@@ -1730,7 +1750,8 @@
           "stage_normalised": "Unknown",
           "lead_investor": "Startmate"
         }
-      ]
+      ],
+      "reviewed_at": "2026-11-25"
     },
     {
       "name": "Zabidou",
@@ -1837,7 +1858,7 @@
     {
       "name": "ULUU",
       "source": "https://www.uluu.com.au/about",
-      "reviewed_at": "2026-11-13",
+      "reviewed_at": "2026-11-25",
       "founders": [
         {
           "name": "Julia Reisser",
@@ -3515,7 +3536,7 @@
       "description": "Develops AI software for assisted and autonomous driving.",
       "founded_year": 2017,
       "source": "https://wayve.ai/company/leadership-team/",
-      "reviewed_at": "2026-11-19",
+      "reviewed_at": "2026-11-25",
       "founders": [
         {
           "name": "Alex Kendall",
@@ -3575,7 +3596,9 @@
           "source": "https://find-and-update.company-information.service.gov.uk/company/10924127",
           "reviewed_at": "2026-11-19"
         }
-      ]
+      ],
+      "hq_city": "London",
+      "hq_country": "United Kingdom"
     },
     {
       "name": "Q-CTRL",
@@ -3831,7 +3854,7 @@
       "description": "Develops autonomous mapping, mobile LiDAR scanning and spatial data analytics for mining and other industries.",
       "founded_year": 2018,
       "source": "https://www.emesent.com/who-we-are",
-      "reviewed_at": "2026-11-19",
+      "reviewed_at": "2026-11-25",
       "founders": [
         {
           "name": "Stefan Hrabar",
@@ -3918,7 +3941,9 @@
           "description": "Main Sequence lists Emesent in its portfolio.",
           "source": "https://www.mseq.vc/portfolio/emesent"
         }
-      ]
+      ],
+      "hq_city": "Brisbane",
+      "hq_country": "Australia"
     },
     {
       "name": "Skykraft",
@@ -4147,8 +4172,9 @@
     },
     {
       "name": "Remi AI",
+      "description": "Artificial intelligence research firm building AI and reinforcement-learning platforms for enterprise, including supply-chain, price-optimisation and demand-forecasting tools.",
       "source": "https://abr.business.gov.au/ABN/View/26608216306",
-      "reviewed_at": "2026-11-22",
+      "reviewed_at": "2026-11-25",
       "profile_facts": [
         {
           "key": "business-base",
@@ -4156,6 +4182,27 @@
           "value": "NSW 2777, Australia",
           "source": "https://abr.business.gov.au/ABN/View/26608216306",
           "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "legal-identity",
+          "label": "Legal identity",
+          "value": "ABN Lookup lists ABN 26 608 216 306 as REMI INVESTING PTY LTD, active from 20 December 2017, with the business name “Remi AI” registered from 12 February 2018 and main business location NSW 2777.",
+          "source": "https://abr.business.gov.au/ABN/View/26608216306",
+          "reviewed_at": "2026-11-25"
+        },
+        {
+          "key": "company-profile",
+          "label": "Company profile",
+          "value": "Techboard’s company-reported profile describes Remi AI as an artificial intelligence research firm whose platforms include supply chain AI, price optimisation and demand forecasting, built on a foundation of research.",
+          "source": "https://techboard.com.au/company-profile/remi-ai/",
+          "reviewed_at": "2026-11-25"
+        },
+        {
+          "key": "website-domain",
+          "label": "Website",
+          "value": "Older company profiles list remi.ai as Remi AI’s website, but the domain now resolves to an unrelated United States roofing business (checked 25 November 2026), so no current official website is recorded.",
+          "source": "https://www.remi.ai/",
+          "reviewed_at": "2026-11-25"
         }
       ]
     },
