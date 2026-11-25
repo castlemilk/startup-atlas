@@ -43,7 +43,9 @@ jobs:
           python3 scripts/check_ci_paths.py "$atlas_pr_base" >> "$GITHUB_OUTPUT"
       - name: Check CI routing
         if: steps.changes.outputs.ci == 'true'
-        run: python3 -m unittest discover -s tests -p 'test_ci_paths.py'
+        run: |
+          python3 -m unittest discover -s tests -p 'test_ci_paths.py'
+          python3 -m unittest discover -s tests -p 'test_toolchain_contract.py'
       - name: Record shadow test selection
         # Issue #150 (A4): inside this existing full run, record what the
         # dependency-aware selector would have executed for the pushed
@@ -112,12 +114,19 @@ jobs:
       - name: Install site dependencies
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: npm ci --ignore-scripts
+      - uses: actions/setup-python@v5
+        if: ((github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || steps.changes.outputs.ci == 'true') && steps.toolchain.outputs.python_ready != 'true'
+        with:
+          python-version: '3.12'
+      - name: Verify Python toolchain version
+        if: (github.event_name != 'pull_request' && github.ref == 'refs/heads/main') || steps.changes.outputs.ci == 'true'
+        run: python3 scripts/toolchain.py check --only python
       - name: Install Parquet build dependency
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        run: pip install pyarrow
-      - name: Verify Node and Python toolchain versions
+        run: python3 -m pip install pyarrow
+      - name: Verify Node toolchain version
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        run: python3 scripts/toolchain.py check --only node,python
+        run: python3 scripts/toolchain.py check --only node
       - name: Build the Pages snapshot
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: npm run build

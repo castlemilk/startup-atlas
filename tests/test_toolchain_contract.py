@@ -51,6 +51,18 @@ class ToolchainContractTests(unittest.TestCase):
         for name in ("pages.yml", "deep-atlas-checks.yml"):
             self.assertIn("go-version-file: go.mod", workflow(name), name)
 
+    def test_pages_provisions_pinned_python_before_build_dependencies(self):
+        text = workflow("pages.yml")
+        setup = text.index("uses: actions/setup-python@v5")
+        verify = text.index("check --only python")
+        install = text.index("python3 -m pip install pyarrow")
+        self.assertLess(setup, verify)
+        self.assertLess(verify, install)
+        stanza = text[setup:verify]
+        self.assertIn("steps.toolchain.outputs.python_ready != 'true'", stanza)
+        self.assertIn("steps.changes.outputs.ci == 'true'", stanza)
+        self.assertIn(f"python-version: '{self.contract['python']['version']}'", stanza)
+
     def test_chrome_binary_matches_workflow_env(self):
         self.assertIn(f"CHROME_BIN: {self.contract['chrome']['binary']}", workflow("signal-motion.yml"))
 
