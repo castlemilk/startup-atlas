@@ -8794,6 +8794,26 @@
     {
       "from": "partner:brandon-capital",
       "to": "startup:ena-respiratory",
+      "kind": "participated_in",
+      "description": "Participated in Series B round",
+      "source": "https://enarespiratory.com/ena-respiratory-attracts-us22-4m-au34m-to-fund-phase-ii-development-of-inna-051-nasal-spray-designed-to-protect-against-symptomatic-viral-respiratory-infections/",
+      "round_id": "ena-respiratory-2025-series-b",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:brandon-capital",
+      "to": "startup:ena-respiratory",
       "kind": "supports",
       "description": "Listed in portfolio",
       "source": "https://brandoncapital.vc/2026/09/02/ena-respiratory-awarded-biointelect-venturer-funding-to-support-new-study-in-asthma-patients-of-inna-051-nasal-spray-designed-to-protect-against-symptomatic-viral-respiratory-infections/",
@@ -9209,6 +9229,26 @@
     },
     {
       "from": "partner:main-sequence",
+      "to": "startup:arkeus",
+      "kind": "participated_in",
+      "description": "Participated in Funding round (stage undisclosed) round",
+      "source": "https://arkeus.com/news/arkeus-secures-5-million-to-accelerate",
+      "round_id": "arkeus-2025-march-financing",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
       "to": "startup:cauldron",
       "kind": "participated_in",
       "description": "Participated in Series A round",
@@ -9372,6 +9412,26 @@
       "description": "Participated in Series A round",
       "source": "https://www.uluu.com.au/press/series-a",
       "round_id": "uluu-series-a-official-announcement",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
+      "to": "startup:uluu",
+      "kind": "participated_in",
+      "description": "Participated in Seed round",
+      "source": "https://www.uluu.com.au/press/uluu-closes-8-6m-seed-round-with-some-pretty-special-investors",
+      "round_id": "uluu-2022-seed",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.6,
@@ -18540,7 +18600,12 @@
       "announced_on": "2025-03-20",
       "source": "https://arkeus.com/news/arkeus-secures-5-million-to-accelerate",
       "note": "Arkeus announced an additional A$5 million in an oversubscribed round. It named Main Sequence, Salus Ventures and Beaten Zone Venture Partners as returning backers. The announcement does not give a stage, lead investor or security type.",
-      "stage_normalised": "Unknown"
+      "stage_normalised": "Unknown",
+      "participants": [
+        "Main Sequence",
+        "Salus Ventures",
+        "Beaten Zone Venture Partners"
+      ]
     },
     {
       "startup_id": "startup:arkeus",
@@ -18920,7 +18985,14 @@
       "currency": "AUD",
       "note": "Company-announced Series B; exact closing date and valuation not disclosed. The same round is reported as AUD34 million and US$22.4 million, not two events or an assistant-derived FX conversion. Participants named by the company: Gates Foundation, Flu Lab (previously announced contribution included in this round), Brandon Capital, Uniseed and Stoic Venture Capital. No lead is identified; participant identities remain unresolved. Separate from the non-equity grants already recorded.",
       "source": "https://enarespiratory.com/ena-respiratory-attracts-us22-4m-au34m-to-fund-phase-ii-development-of-inna-051-nasal-spray-designed-to-protect-against-symptomatic-viral-respiratory-infections/",
-      "stage_normalised": "Series B"
+      "stage_normalised": "Series B",
+      "participants": [
+        "Gates Foundation",
+        "Flu Lab",
+        "Brandon Capital",
+        "Uniseed",
+        "Stoic Venture Capital"
+      ]
     },
     {
       "startup_id": "startup:ena-respiratory",
@@ -19546,7 +19618,13 @@
       "announced_on": "2022-11-15",
       "source": "https://www.uluu.com.au/press/uluu-closes-8-6m-seed-round-with-some-pretty-special-investors",
       "note": "Uluu’s press archive dates the announcement to 15 November 2022. Uluu reported “$8.6 million” with currency unspecified. The issuer named Main Sequence, Possible Ventures, Alberts, Mistletoe, Inc., Karlie Kloss, Kevin Parker, Melvin Benn, Nathan McLay and Neil Perry as participants. The legal closing date remains unverified.",
-      "stage_normalised": "Seed"
+      "stage_normalised": "Seed",
+      "participants": [
+        "Main Sequence",
+        "Possible Ventures",
+        "Alberts",
+        "Mistletoe, Inc."
+      ]
     },
     {
       "startup_id": "startup:uluu",
@@ -20767,6 +20845,7 @@
     "participant 'Activant' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Affinity Partners' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Air Street Capital' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
+    "participant 'Alberts' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Alium Capital Management' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Alpha Edison' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Anorak Ventures' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; participated_in edge skipped",
@@ -20774,6 +20853,7 @@
     "participant 'Athletic Ventures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
     "participant 'Aura Ventures' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; participated_in edge skipped",
     "participant 'Baillie Gifford' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; participated_in edge skipped",
+    "participant 'Beaten Zone Venture Partners' for round arkeus-2025-march-financing (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Beaten Zone Venture Partners' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Breakthrough Victoria' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Bullhound Capital' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
@@ -20797,9 +20877,11 @@
     "participant 'Felicis Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
+    "participant 'Flu Lab' for round ena-respiratory-2025-series-b (ENA Respiratory) has no matching partner lead; participated_in edge skipped",
     "participant 'Folklore Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Franklin Templeton' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'G Squared' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Gates Foundation' for round ena-respiratory-2025-series-b (ENA Respiratory) has no matching partner lead; participated_in edge skipped",
     "participant 'Global Founders Capital' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Gobi Partners' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Gravity VC' for round airwallex-2016-pre-series-a (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -20841,6 +20923,7 @@
     "participant 'Main Sequence Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Mastercard' for round airwallex-2017-series-a (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Microsoft' for round wayve-2024-series-c (Wayve) has no matching partner lead; participated_in edge skipped",
+    "participant 'Mistletoe, Inc.' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Mundi Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
     "participant 'NGS' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'NRFC' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
@@ -20852,6 +20935,7 @@
     "participant 'Novel Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'OneVentures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
     "participant 'PSP Growth' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
+    "participant 'Possible Ventures' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Purpose Ventures' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
     "participant 'R+ VC' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'R3I Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
@@ -20863,6 +20947,7 @@
     "participant 'SOSV' for round cauldron-2024-series-a (Cauldron) has no matching partner lead; participated_in edge skipped",
     "participant 'SPARX Asset Management' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round arkeus-2023-seed (Arkeus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Salus Ventures' for round arkeus-2025-march-financing (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Sapphire Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
@@ -20881,6 +20966,7 @@
     "participant 'Skip Capital' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Skip Capital' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Skip Capital' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Stoic Venture Capital' for round ena-respiratory-2025-series-b (ENA Respiratory) has no matching partner lead; participated_in edge skipped",
     "participant 'T. Rowe Price' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'TELUS Ventures' for round emesent-2022-series-a (Emesent) has no matching partner lead; participated_in edge skipped",
     "participant 'TIAA Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -20895,6 +20981,7 @@
     "participant 'Trinity Ventures' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Ultratech Capital Partners' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'UniSuper' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
+    "participant 'Uniseed' for round ena-respiratory-2025-series-b (ENA Respiratory) has no matching partner lead; participated_in edge skipped",
     "participant 'Uniseed' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'University of New South Wales' for round diraq-2024-series-a-2 (Diraq) has no matching partner lead; participated_in edge skipped",
     "participant 'Vetamer Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
