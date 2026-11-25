@@ -17,7 +17,7 @@
     "build:prepared": "npm run data:verify && node scripts/build.mjs && python3 scripts/build-graph-db.py && python3 scripts/build-query-parquet.py",
     "ci": "npm run data:generate && npm run test:prepared && npm run build:prepared",
     "crawl": "python3 scripts/crawl.py",
-    "data:generate": "python3 scripts/make-data.py && python3 scripts/make-graph.py && node scripts/add-provider-edges.mjs && python3 scripts/backfill_structured_fields.py && python3 scripts/generated_inputs.py stamp",
+    "data:generate": "python3 scripts/convert_cohort_rounds.py && python3 scripts/make-data.py && python3 scripts/make-graph.py && node scripts/add-provider-edges.mjs && python3 scripts/backfill_structured_fields.py && python3 scripts/generated_inputs.py stamp",
     "data:verify": "python3 scripts/generated_inputs.py verify",
     "mcp": "node backend/mcp/server.mjs",
     "mcp:http": "node backend/mcp/http-server.mjs",
