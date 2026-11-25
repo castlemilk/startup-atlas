@@ -274,6 +274,33 @@ class LiveIndexTests(unittest.TestCase):
             self.assertNotEqual(version2, version)
             self.assertEqual(manifest2['previous_version'], version)
 
+    def test_subset_corpus_against_remote_pointer_is_refused(self):
+        # F1 regression guard: a stale indexer whose corpus lacks files
+        # the published index has (e.g. graph.json) must fail loudly
+        # instead of publishing an index without the graph tables.
+        with tempfile.TemporaryDirectory() as tmp:
+            first_out = Path(tmp) / 'first'
+            version, manifest, _ = indexer.build_index(
+                ROOT / 'data', first_out, 'abc123', now=FIXED_NOW)
+            pointer = json.loads(
+                (first_out / 'latest.json').read_text(encoding='utf-8'))
+            corpus_dir = Path(tmp) / 'data'
+            shutil.copytree(ROOT / 'data', corpus_dir)
+            (corpus_dir / 'graph.json').unlink()
+            (corpus_dir / 'treemap-evidence.json').unlink()
+            import unittest.mock as mock
+            subset = tuple(
+                name for name in indexer.REVIEWED_FILES
+                if name not in ('graph.json', 'treemap-evidence.json'))
+            with mock.patch.object(indexer, 'REVIEWED_FILES', subset):
+                with self.assertRaises(Exception) as ctx:
+                    indexer.build_index(
+                        corpus_dir, Path(tmp) / 'fresh', 'cef76c1',
+                        now=datetime(2026, 11, 23, 11, 0, 0,
+                                     tzinfo=timezone.utc),
+                        remote_pointer=pointer, remote_manifest=manifest)
+            self.assertIn('graph.json', str(ctx.exception))
+
     def test_read_remote_pointer_returns_none_when_absent(self):
         self.assertIsNone(indexer.read_remote_pointer(FakeStore()))
         self.assertIsNone(
