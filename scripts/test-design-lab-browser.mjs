@@ -37,7 +37,7 @@ assert.equal(assets.length,concepts.length+directionBoards.length+editorialIllus
 assert.equal(directionBoards.length,2);
 assert.equal(editorialIllustrations.length,3);
 assert.deepEqual(viewPlaybooks.map(view=>view.id),sourceIds,'Each implemented explorer retains its own playbook');
-assert.equal(atlasIcons.length,32,'The shared utility library must publish all reviewed marks');
+assert.equal(atlasIcons.length,33,'The shared utility library must publish all reviewed marks');
 for(const asset of assets) {
   assert.ok(asset.title&&asset.alt&&asset.usage.length&&asset.avoid.length,'Assets need identity, alternatives and usage boundaries: '+asset.id);
   for(const file of [asset.image,asset.thumb])assert.ok((await readFile(resolve(root,file))).byteLength>0,'Missing handbook asset: '+file);
