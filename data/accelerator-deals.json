@@ -1,0 +1,107 @@
+{
+ "base_currency": "USD",
+ "comment": "Standard deals for accelerator programmes (issue #533, from the 2026-11-25 crawler self-critique: accelerator participation was recorded as an edge, never a transaction). Each entry records one programme's published standard deal so cohort participation can later be converted into funding rounds (issue #534). A programme whose standard deal has not been sourced from its official pages is recorded with deal_status 'unknown' and a null deal \u2014 never estimated. Amounts keep their original currency; amount_usd uses the committed fallback rate in data/fx-rates.json, with the rate and its date recorded on the deal. Validated by scripts/accelerator_deals.py and tests/test_accelerator_deals.py.",
+ "deals": [
+  {
+   "deal": {
+    "amount": 500000,
+    "amount_usd": 500000,
+    "components": [
+     {
+      "amount": 125000,
+      "currency": "USD",
+      "equity_percent": 7,
+      "instrument": "Post-money SAFE",
+      "terms": "Converts into a fixed 7% of the company in the priced round."
+     },
+     {
+      "amount": 375000,
+      "currency": "USD",
+      "equity_percent": null,
+      "instrument": "Uncapped SAFE with MFN provision",
+      "terms": "Converts on the terms of the lowest-cap SAFE (or other most favourable terms) issued between the MFN start date and the priced round."
+     }
+    ],
+    "currency": "USD",
+    "equity_percent": 7,
+    "fx_rate": null,
+    "fx_rate_date": null,
+    "instrument": "SAFE",
+    "terms": "Standard deal for every company accepted to Y Combinator, committed on the day of acceptance and not contingent on milestones; no programme fees. Made as two SAFEs at the same time with an accompanying YC Agreement, including a participation (pro-rata) right in the company's future financing rounds.",
+    "valuation_cap": null,
+    "valuation_cap_currency": null
+   },
+   "deal_status": "published",
+   "id": "y-combinator",
+   "name": "Y Combinator",
+   "note": null,
+   "partner_id": "partner:y-combinator",
+   "programme_id": null,
+   "source": "https://www.ycombinator.com/deal",
+   "source_name": "Y Combinator \u2014 The YC Standard Deal",
+   "verified_on": "2026-11-25"
+  },
+  {
+   "deal": {
+    "amount": 120000,
+    "amount_usd": 79440,
+    "components": [],
+    "currency": "AUD",
+    "equity_percent": 8,
+    "fx_rate": 0.662,
+    "fx_rate_date": "2026-11-21",
+    "instrument": "SAFE or priced equity round (founder's choice)",
+    "terms": "AUD $120,000 invested in every accepted company; no programme fees. Founders who have not previously raised are invested on a post-money SAFE at a AUD $1.5M post-money valuation cap (8% of the company). Founders who have raised AUD $250,000 or more from VC or angel investors, finalised with executed documents before interviews, have the terms and valuation of that round matched instead (equity take then below 8%, so equity_percent and valuation_cap describe the not-previously-raised case). Founders choose whether Startmate invests via its template SAFE or into their priced equity round.",
+    "valuation_cap": 1500000,
+    "valuation_cap_currency": "AUD"
+   },
+   "deal_status": "published",
+   "id": "startmate",
+   "name": "Startmate Accelerator",
+   "note": "Terms corroborated on https://www.startmate.com/accelerator and https://www.startmate.com/faq (fetched 2026-11-25).",
+   "partner_id": "partner:startmate",
+   "programme_id": "programme:startmate",
+   "source": "https://www.startmate.com/writing/startmate-accelerator-investment-terms-101",
+   "source_name": "Startmate \u2014 Accelerator Investment Terms 101 (updated October 2026)",
+   "verified_on": "2026-11-25"
+  },
+  {
+   "deal": null,
+   "deal_status": "unknown",
+   "id": "boab-ai",
+   "name": "Boab AI",
+   "note": "Cohort participation is recorded in the graph (2021 cohort) but no published standard deal has been sourced for this programme as of 2026-11-25; recorded as unknown rather than estimated.",
+   "partner_id": "partner:boab-ai",
+   "programme_id": null,
+   "source": null,
+   "source_name": null,
+   "verified_on": "2026-11-25"
+  },
+  {
+   "deal": null,
+   "deal_status": "unknown",
+   "id": "antler-au",
+   "name": "Antler Australia Residency",
+   "note": "No published standard deal has been sourced for this programme as of 2026-11-25; recorded as unknown rather than estimated.",
+   "partner_id": "partner:antler",
+   "programme_id": "programme:antler-au",
+   "source": null,
+   "source_name": null,
+   "verified_on": "2026-11-25"
+  },
+  {
+   "deal": null,
+   "deal_status": "unknown",
+   "id": "melbourne-map",
+   "name": "Melbourne Accelerator Program",
+   "note": "No published standard deal has been sourced for this programme as of 2026-11-25; recorded as unknown rather than estimated.",
+   "partner_id": null,
+   "programme_id": "programme:melbourne-map",
+   "source": null,
+   "source_name": null,
+   "verified_on": "2026-11-25"
+  }
+ ],
+ "updated": "2026-11-25",
+ "version": 1
+}
