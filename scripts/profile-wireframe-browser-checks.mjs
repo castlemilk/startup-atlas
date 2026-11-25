@@ -5,16 +5,19 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await navigate('/entity.html?id=startup%3Acanva',"document.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&document.querySelector('h1')?.textContent==='Canva'");
   await evaluate('document.fonts.ready.then(()=>true)');
-  await until(()=>evaluate("document.querySelector('.atlas-section-nav a')?.getAttribute('aria-current')==='location'"),'Startup entry should highlight the first main section, not the top-aligned source rail');
-  assert.equal(await evaluate("document.querySelectorAll('.atlas-section-nav [aria-current=\"location\"]').length"),1,'A startup profile has one current section');
+  await until(()=>evaluate("document.querySelector('.atlas-section-nav a')?.getAttribute('aria-selected')==='true'"),'Startup entry should select the first main section tab');
+  assert.equal(await evaluate("document.querySelectorAll('.atlas-section-nav [aria-selected=\"true\"]').length"),1,'A startup profile has one selected section');
   const dossier = await evaluate(`(()=>{
     const main=document.querySelector('.entity-overview-main').getBoundingClientRect();
     const evidence=document.querySelector('.entity-overview-rail').getBoundingClientRect();
     const plate=document.querySelector('.entity-hero-identity > .entity-mark').getBoundingClientRect();
     const facts=document.querySelector('.entity-overview-facts').getBoundingClientRect();
-    const funding=document.querySelector('#entity-funding').getBoundingClientRect();
-    const people=document.querySelector('#entity-founders').getBoundingClientRect();
-    return {beside:evidence.left>=main.right,aligned:Math.abs(evidence.top-main.top)<2,ordered:facts.bottom<=people.top&&people.bottom<=funding.top,firstFold:document.querySelector('.entity-overview-related').getBoundingClientRect().bottom<=innerHeight,founders:document.querySelectorAll('.entity-founder-preview li').length,sourceCount:document.querySelectorAll('#entity-company .entity-fact-source a').length,split:main.width/(main.width+evidence.width),plateRatio:plate.width/plate.height};
+    // Sections are tab panels (#419): people and funding are hidden until
+    // selected, so their order is the DOM/tab order, not a visual stack.
+    const peoplePanel=document.querySelector('#entity-founders');
+    const fundingPanel=document.querySelector('#entity-funding');
+    const ordered=!!(document.querySelector('.entity-overview-facts').compareDocumentPosition(peoplePanel)&Node.DOCUMENT_POSITION_FOLLOWING)&&!!(peoplePanel.compareDocumentPosition(fundingPanel)&Node.DOCUMENT_POSITION_FOLLOWING);
+    return {beside:evidence.left>=main.right,aligned:Math.abs(evidence.top-main.top)<2,ordered,firstFold:document.querySelector('.entity-overview-related').getBoundingClientRect().bottom<=innerHeight,founders:document.querySelectorAll('.entity-founder-preview li').length,sourceCount:document.querySelectorAll('#entity-company .entity-fact-source a').length,split:main.width/(main.width+evidence.width),plateRatio:plate.width/plate.height};
   })()`);
   assert.ok(dossier.beside&&dossier.aligned,'Startup evidence should align beside the overview below the full-width identity');
   assert.ok(dossier.split >= .6 && dossier.split <= .66,'The overview and evidence rail should preserve the approved column proportion');
@@ -45,7 +48,7 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   await click('.entity-funding-sample a');
   await until(()=>evaluate(`location.hash==='#entity-funding'&&document.getElementById(${JSON.stringify(`entity-round-${seed.id}`)}).open`),'Opening the snapshot should expand its exact funding event');
   const seedAction='#entity-funding details[open] button[aria-label*="Seed round"]';
-  await until(()=>evaluate("(()=>{const y=document.querySelector('#entity-funding').getBoundingClientRect().top;const nav=document.querySelector('.atlas-section-nav').getBoundingClientRect();return y>=nav.bottom&&y<nav.bottom+28;})()"),'Funding heading did not settle below the sticky profile header');
+  await until(()=>evaluate("document.querySelector('.atlas-section-nav a[href=\"#entity-funding\"]').getAttribute('aria-selected')==='true'&&!document.querySelector('#entity-funding').hidden"),'Funding did not become the selected section');
   await evaluate(`document.querySelector(${JSON.stringify(seedAction)}).focus({preventScroll:true})`);
   await press('Enter','Enter',13);
   await until(()=>evaluate("!!document.querySelector('.profile-evidence-panel[data-presentation=dialog][data-open]')"),'The funding evidence did not open beside the chronology');
@@ -54,13 +57,13 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   await press('Escape','Escape',27);
   await until(()=>evaluate("!document.querySelector('.profile-evidence-panel[data-open]')"),'Escape did not dismiss funding evidence');
   await click('.atlas-section-nav a[href="#entity-founders"]');
-  await until(()=>evaluate("(()=>{const y=document.querySelector('#entity-founders').getBoundingClientRect().top;const nav=document.querySelector('.atlas-section-nav');return nav.querySelector('[aria-current=location]')?.getAttribute('href')==='#entity-founders'&&y>=nav.getBoundingClientRect().bottom&&y<nav.getBoundingClientRect().bottom+28;})()"),'People did not settle as the current section');
+  await until(()=>evaluate("(()=>{const nav=document.querySelector('.atlas-section-nav');return nav.querySelector('[aria-selected=true]')?.getAttribute('href')==='#entity-founders'&&!document.querySelector('#entity-founders').hidden;})()"),'People did not become the selected section');
   assert.equal(await evaluate("document.querySelectorAll('.entity-network-people a[data-atlas-profile-link]').length"),3,'The relationship preview links the recorded founders');
   await screenshot('atlas-wireframe-people-desktop.png');
 
   await navigate('/partner.html?name=Airtree',"document.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('#partner-company-detail')");
-  await until(()=>evaluate("document.querySelector('.atlas-section-nav a')?.getAttribute('aria-current')==='location'"),'Partner entry should highlight its first main section');
-  assert.equal(await evaluate("document.querySelectorAll('.atlas-section-nav [aria-current=\"location\"]').length"),1,'A partner profile has one current section');
+  await until(()=>evaluate("document.querySelector('.atlas-section-nav a')?.getAttribute('aria-selected')==='true'"),'Partner entry should select its first main section tab');
+  assert.equal(await evaluate("document.querySelectorAll('.atlas-section-nav [aria-selected=\"true\"]').length"),1,'A partner profile has one selected section');
   const companyIndex=partners.Airtree.companies.length-1;
   const company=partners.Airtree.companies[companyIndex];
   const originalLocation=await evaluate('location.href');
@@ -121,7 +124,7 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
       const nav=document.querySelector('.atlas-section-nav');
       const links=[...nav.querySelectorAll('a')];
       const bounds=nav.getBoundingClientRect();
-      return links.length===5&&nav.scrollWidth<=nav.clientWidth+1&&links.every(link=>{
+      return links.length>=3&&links[0].textContent.trim()==='Companies'&&links.at(-1).textContent.trim()==='Programmes'&&nav.scrollWidth<=nav.clientWidth+1&&links.every(link=>{
         const r=link.getBoundingClientRect();
         return r.left>=bounds.left-1&&r.right<=bounds.right+1&&r.height>=44;
       });
@@ -174,7 +177,7 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
   await click('.entity-mobile-facts-extra summary');
   assert.ok(await evaluate("document.querySelector('.entity-more-facts[open] .entity-facts').textContent.includes('Legal entity')"),'The compact overview preserves access to the additional company facts');
   await click('.atlas-section-nav a[href="#entity-funding"]');
-  await until(()=>evaluate("document.querySelector('.atlas-section-nav [aria-current=location]')?.getAttribute('href')==='#entity-funding'"),'Funding did not become current');
+  await until(()=>evaluate("document.querySelector('.atlas-section-nav [aria-selected=\"true\"]')?.getAttribute('href')==='#entity-funding'"),'Funding did not become the selected section');
   await click('#entity-funding .entity-timeline details summary');
   await click(seedAction);
   await until(()=>evaluate("(()=>{const sheet=document.querySelector('.profile-evidence-panel[data-presentation=sheet][data-open]')?.getBoundingClientRect();return sheet?.height>0&&Math.abs(sheet.bottom-innerHeight)<=1;})()"),'The mobile funding claim did not settle as a sheet');
@@ -200,11 +203,11 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
       return bounds.left>=frame.left-1 && bounds.right<=frame.right+1 && bounds.height>=44;
     });
   })()`),'Every company section link must fit and remain tappable at 320px');
-  await click('.atlas-section-nav a[href="#entity-sources"]');
+  await click('.entity-overview-sources a[href="#entity-sources"]');
   await until(()=>evaluate(`(() => {
     const nav=document.querySelector('.profile-sticky');
     const top=document.querySelector('#entity-sources').getBoundingClientRect().top;
-    return location.hash==='#entity-sources' && top>=0 && top<innerHeight/2
+    return document.querySelector('.profile-sources-footer').open && top>=0 && top<innerHeight/2
       && (getComputedStyle(nav).position!=='sticky' || top>=nav.getBoundingClientRect().bottom);
   })()`),'Sources must open at a readable position below the section navigation');
   await assertNoOverflow('Short 320px company dossier');
@@ -233,8 +236,16 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
         assert.equal(await evaluate("document.querySelector('.entity-programme-source time')?.dateTime"),offer.checked);
         assert.ok(await evaluate(`(()=>{const sources=[...document.querySelectorAll('#entity-sources a')].map(a=>a.href);return ${JSON.stringify(offer.extra)}.every(url=>sources.includes(url));})()`),'Programme documents remain present in the source index');
       }
-      await click('.atlas-section-nav a[href="#entity-sources"]');
-      await until(()=>evaluate("location.hash==='#entity-sources'&&document.querySelector('.atlas-section-nav a[aria-current=location]')?.hash==='#entity-sources'"),'The Sources anchor must also update the current location');
+      await click('.profile-sources-summary');
+      // The sources index renders asynchronously, so keep re-anchoring the
+      // section until it reads at the top of the viewport — re-opening the
+      // footer if a re-render closed it. A short profile's sources section
+      // sits near the document end, where the page cannot scroll it to the
+      // top half at all; reaching maximum scroll is its anchored position.
+      await until(()=>evaluate("(()=>{const f=document.querySelector('.profile-sources-footer');if(!f.open)f.querySelector('.profile-sources-summary').click();const s=document.querySelector('#entity-sources');s.scrollIntoView({block:'start',behavior:'instant'});const atMaxScroll=scrollY+innerHeight>=document.documentElement.scrollHeight-1;return f.open&&(s.getBoundingClientRect().top<innerHeight/2||atMaxScroll);})()"),'The Sources section must open and read at the top of the viewport');
+      // Tabbed profiles (#419): the evidence trigger may sit in a hidden
+      // panel; select that panel's tab first so the control is reachable.
+      await evaluate(`(()=>{const b=document.querySelector(${JSON.stringify(profile.trigger)});const panel=b?.closest('[role="tabpanel"]');if(panel&&panel.hidden)document.getElementById('tab-'+panel.id)?.click();})()`);
       await click(profile.trigger);
       await until(()=>evaluate(`(()=>{
         const panel=document.querySelector('.profile-evidence-panel[data-open]'),footer=panel?.querySelector('.profile-evidence-footer a');

@@ -37,7 +37,7 @@ assert.equal(assets.length,concepts.length+directionBoards.length+editorialIllus
 assert.equal(directionBoards.length,2);
 assert.equal(editorialIllustrations.length,3);
 assert.deepEqual(viewPlaybooks.map(view=>view.id),sourceIds,'Each implemented explorer retains its own playbook');
-assert.equal(atlasIcons.length,32,'The shared utility library must publish all reviewed marks');
+assert.equal(atlasIcons.length,33,'The shared utility library must publish all reviewed marks');
 for(const asset of assets) {
   assert.ok(asset.title&&asset.alt&&asset.usage.length&&asset.avoid.length,'Assets need identity, alternatives and usage boundaries: '+asset.id);
   for(const file of [asset.image,asset.thumb])assert.ok((await readFile(resolve(root,file))).byteLength>0,'Missing handbook asset: '+file);
@@ -713,12 +713,12 @@ try {
   assert.ok((await visibleIcons()).includes('graph')&&(await visibleIcons()).length<atlasIcons.length,'Icon search should narrow the real collection');
   await click('#icon-clear');
   assert.equal(await evaluate('document.activeElement.id'),'icon-search');
-  assert.equal((await visibleIcons()).length,32);
+  assert.equal((await visibleIcons()).length,atlasIcons.length);
   await fill('#icon-search','atlas-no-icon-zzzz-72915');
   assert.deepEqual(await visibleIcons(),[]);
   assert.ok(await evaluate("!document.querySelector('#icon-empty').hidden&&document.querySelector('#icon-empty').getClientRects().length>0"));
   await click('#icon-reset');
-  assert.equal((await visibleIcons()).length,32,'Reset must recover all utility icons');
+  assert.equal((await visibleIcons()).length,atlasIcons.length,'Reset must recover all utility icons');
   await click('#icon-grid [data-select-icon="graph"]');
   assert.equal(await evaluate("document.querySelector('#icon-preview').dataset.icon"),'graph');
   assert.ok(await evaluate("document.activeElement.matches('#icon-grid [data-select-icon=graph]')"),'Desktop icon selection should retain its grid focus');
@@ -804,7 +804,7 @@ try {
   await fill('#icon-search','atlas-no-mobile-icon-zzzz');
   assert.deepEqual(await visibleIcons(),[]);
   await click('#icon-reset');
-  assert.equal((await visibleIcons()).length,32,'Mobile icon recovery should restore the grid');
+  assert.equal((await visibleIcons()).length,atlasIcons.length,'Mobile icon recovery should restore the grid');
   await captureSection('#icon-library','atlas-icons-library-mobile.png');
 
   await checkDesignAesthetic({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,features:aestheticFeatures,symbols:featureSymbols,exportFeatureSymbol});
@@ -814,7 +814,7 @@ try {
   assert.deepEqual(browserMessages.filter(message=>message.level==='error'),[],'The design microsite must not log application errors');
   const missingAssets=requests.filter(request=>request.status===404&&!request.url.startsWith('/favicon.ico'));
   assert.deepEqual(missingAssets,[],'All microsite pages, modules, images, SVGs and downloads must be published');
-  console.log('Design microsite browser checks passed: five source wireframes, four new journeys and an elevation study; collection scope and prerequisite boundaries; all decoded assets and real illustration transparency; accessible dialog navigation/focus/deep links; 32-icon filtering, styled SVG previews, exact exports and copy feedback; five native playbooks, profile return, layout and reduced-motion demos; desktop/390px layouts and focused screenshots.');
+  console.log('Design microsite browser checks passed: five source wireframes, four new journeys and an elevation study; collection scope and prerequisite boundaries; all decoded assets and real illustration transparency; accessible dialog navigation/focus/deep links; 33-icon filtering, styled SVG previews, exact exports and copy feedback; five native playbooks, profile return, layout and reduced-motion demos; desktop/390px layouts and focused screenshots.');
 } catch(error) {
   console.error('Design lab diagnostics:',JSON.stringify(await readDiagnostics().catch(()=>({state:'unavailable'}))));
   await captureFailure('atlas-design-lab-failed.png').catch(()=>{});

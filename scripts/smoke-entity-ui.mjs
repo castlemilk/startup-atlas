@@ -14,8 +14,8 @@ if(!fallback){
   const init=createRequire(import.meta.url)(join(temporary,'sql-wasm.cjs'));
   globalThis.initSqlJs=()=>init({locateFile:()=>resolve('web/vendor/sql.js/sql-wasm.wasm')});
 }
-const root={innerHTML:'',attributes:{},setAttribute(k,v){this.attributes[k]=v;},querySelectorAll(){return [];}};
-globalThis.document={getElementById:()=>root,title:''};
+const root={innerHTML:'',attributes:{},setAttribute(k,v){this.attributes[k]=v;},querySelector(){return null;},querySelectorAll(){return [];}};
+globalThis.document={getElementById:()=>root,querySelector(){return null;},title:''};
 globalThis.location={search:person?'?id=person%3Amelanie-perkins':programme?'?id=programme%3Astartmate':psiquantum?'?id=startup%3Apsiquantum':'?id=startup%3Acanva'};
 globalThis.fetch=async url=>{
   if(url==='./data/atlas.sqlite')return new Response(await readFile('dist/data/atlas.sqlite'));

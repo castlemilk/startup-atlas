@@ -188,6 +188,22 @@ export function tileTicker(tile) {
 const personInitials = name => String(name || '').trim().split(/\s+/).slice(0, 2)
   .map(word => Array.from(word)[0] || '').join('').toUpperCase();
 
+// Founder portraits are recorded as published Pages URLs (the asset
+// publisher records the live URL), but the same file ships in the bundle —
+// serve the bundled copy, as graph-artwork does, so tiles and cards stay
+// self-contained on any origin and offline. Genuinely external photos pass
+// through unchanged.
+const atlasPagesBase = 'https://castlemilk.github.io/startup-atlas/';
+const bundledPortrait = /^\.\/assets\/portraits\/[a-z0-9-]+\.(?:png|jpe?g|webp)$/i;
+function portraitUrl(value) {
+  if (bundledPortrait.test(value)) return value;
+  if (typeof value === 'string' && value.startsWith(atlasPagesBase)) {
+    const relative = './' + value.slice(atlasPagesBase.length);
+    if (bundledPortrait.test(relative)) return relative;
+  }
+  return value;
+}
+
 // Every startup's founders, keyed by startup id, under the same evidence
 // rules companyContext applies: a 'founded' edge with an HTTPS source, a
 // person entity at its head, deduplicated per company. A founder's photo is
@@ -205,7 +221,7 @@ export function indexFounders(graph) {
     if (!founders.has(edge.to)) founders.set(edge.to, []);
     founders.get(edge.to).push({
       id:person.id, name:person.name, initials:personInitials(person.name),
-      photo:source(person.logo_source) && source(person.logo) ? person.logo : '',
+      photo:source(person.logo_source) && source(person.logo) ? portraitUrl(person.logo) : '',
     });
   }
   return founders;

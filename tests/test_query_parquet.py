@@ -80,14 +80,25 @@ class QueryParquetTests(unittest.TestCase):
             generator._str_list(['ok', 7])
 
     def test_generator_exits_without_pyarrow(self):
-        # Run the script with an empty import path so pyarrow cannot be found.
+        # Simulate pyarrow being absent by shadowing it with a stub module
+        # that raises ImportError. PYTHONPATH precedes site-packages on
+        # sys.path, so the stub wins no matter where pyarrow is really
+        # installed (user site, system site-packages, or a venv) — the old
+        # PYTHONNOUSERSITE-only isolation hid user-site installs only, and
+        # broke as soon as a workflow installed pyarrow system-wide.
         # The failure must be explicit, not a silent missing dataset.
-        env = {'PATH': '/usr/bin:/bin', 'PYTHONNOUSERSITE': '1'}
-        result = subprocess.run(
-            [sys.executable, str(ROOT / 'scripts/build-query-parquet.py'),
-             '--out', str(Path(tempfile.gettempdir()) / 'query-no-pyarrow')],
-            capture_output=True, text=True, env=env, cwd=ROOT,
-        )
+        with tempfile.TemporaryDirectory() as stub_dir:
+            (Path(stub_dir) / 'pyarrow.py').write_text(
+                "raise ImportError('pyarrow is simulated as not installed')\n",
+                encoding='utf-8',
+            )
+            env = {'PATH': '/usr/bin:/bin', 'PYTHONNOUSERSITE': '1',
+                   'PYTHONPATH': stub_dir}
+            result = subprocess.run(
+                [sys.executable, str(ROOT / 'scripts/build-query-parquet.py'),
+                 '--out', str(Path(tempfile.gettempdir()) / 'query-no-pyarrow')],
+                capture_output=True, text=True, env=env, cwd=ROOT,
+            )
         self.assertEqual(result.returncode, 2)
         self.assertIn('pyarrow', result.stderr)
 

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join, resolve} from 'node:path';
-import {launchBrowserTransport, saveScreenshot} from './browser-transport.mjs';
+import {launchBrowserTransport, saveScreenshot, unmappedExternalRequests} from './browser-transport.mjs';
 import {checkDesignWorkbench} from './design-workbench-browser-checks.mjs';
 import {checkDirectoryWireframes} from './directory-wireframe-browser-checks.mjs';
 import {checkProfileWireframes} from './profile-wireframe-browser-checks.mjs';
@@ -234,7 +234,7 @@ try {
   assert.match(await text('#ds-snapshot'),new RegExp(`${graph.entities.length} entity records`));
   const patterns=[
     {key:'search',path:'/list.html',ready:"d.querySelector('#entity-kind')?.value==='startup'&&d.querySelectorAll('#results-list .entity-row').length>0"},
-    {key:'treemap',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='companies'&&d.querySelector('#treemap-group')?.value==='technology'"},
+    {key:'treemap',path:'/treemap.html',ready:"d.querySelectorAll('.treemap-tile').length>0&&d.querySelector('#treemap-metric')?.value==='company-value'&&d.querySelector('#treemap-group')?.value==='technology'"},
     {key:'graph',path:'/graph.html',ready:"d.querySelectorAll('.network-node').length>0&&d.querySelector('#graph-detail h2')?.textContent==='Canva'"},
     {key:'startup',path:'/entity.html',ready:"d.querySelector('#entity-profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#entity-profile h1')?.textContent==='Canva'"},
     {key:'partner',path:'/partner.html',ready:"d.querySelector('#profile')?.getAttribute('aria-busy')==='false'&&d.querySelector('#profile h1')?.textContent==='Airtree'"}
@@ -310,7 +310,7 @@ try {
   await screenshot('atlas-startup-desktop.png');
   await click('.atlas-section-nav a[href="#entity-funding"]');
   await until(()=>evaluate("location.hash==='#entity-funding'"),'Funding section navigation did not update the fragment');
-  await until(()=>evaluate("document.querySelector('.atlas-section-nav a[href=\"#entity-funding\"]').getAttribute('aria-current')==='location'"),'Funding anchor should mark the current section');
+  await until(()=>evaluate("document.querySelector('.atlas-section-nav a[href=\"#entity-funding\"]').getAttribute('aria-selected')==='true'&&!document.querySelector('#entity-funding').hidden"),'Funding tab should be selected and its panel shown');
   assert.equal(await text('[data-atlas-back]'),'Back to search results','Section links must not replace the originating return with a self-link');
   assert.match(await text('#entity-funding'),/Historical announcements/);
   await click('[data-atlas-back]');
@@ -329,8 +329,8 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('#partner-people .profile-item').length"),partners.Airtree.people.length);
   assert.match(await text('#partner-companies .profile-sample'),/Selected portfolio sample/);
   assert.equal(await evaluate("document.querySelector('#partner-companies .profile-sample time')?.dateTime"),partners.Airtree.checked);
-  const readingOrder=await evaluate("(()=>{const companies=document.querySelector('#partner-companies'),people=document.querySelector('#partner-people'),a=companies.getBoundingClientRect(),b=people.getBoundingClientRect();return {dom:!!(companies.compareDocumentPosition(people)&Node.DOCUMENT_POSITION_FOLLOWING),visual:a.top<b.top-1||(Math.abs(a.top-b.top)<=1&&a.left<b.left)};})()");
-  assert.deepEqual(readingOrder,{dom:true,visual:true},'Companies should precede people in the DOM and visual reading order');
+  const readingOrder=await evaluate("(()=>{const companies=document.querySelector('#partner-companies'),people=document.querySelector('#partner-people');return {dom:!!(companies.compareDocumentPosition(people)&Node.DOCUMENT_POSITION_FOLLOWING),companiesShown:!companies.hidden,peopleHidden:people.hidden};})()");
+  assert.deepEqual(readingOrder,{dom:true,companiesShown:true,peopleHidden:true},'Companies should precede people in the DOM and be the panel shown first');
   await assertActionContrast('.profile-actions .atlas-button-primary');
   assert.ok(await evaluate("[...document.querySelectorAll('#partner-companies .profile-item-source,#partner-people .profile-item-source')].every(row=>row.querySelector('a[href^=\"https://\"]'))"),'Every researched company/person needs visible evidence');
   await assertNoOverflow('Desktop partner profile');
@@ -386,9 +386,14 @@ try {
   await checkEditorialExplorer({command,evaluate,navigate,until,click,press,screenshot,assertNoOverflow,graph});
 
   assert.deepEqual(exceptions,[],'Explorer views must not raise unhandled JavaScript exceptions');
+  assert.deepEqual(unmappedExternalRequests(session,graph.entities.map(entity=>entity.logo)),[],'Explorer views must remain self-hosted apart from sourced entity image URLs');
   console.log('Atlas views phase timings:',JSON.stringify(transport.timings.summary()));
   assert.deepEqual(browserMessages.filter(message=>message.level==='error'),[],'Explorer views must not log application errors');
-  const missingAssets=requests.filter(request=>request.status===404&&!request.url.startsWith('/favicon.ico'));
+  // The Loom atlas manifest is exempt: the #367 on-demand overview probes
+  // for its export bundle and hides itself when it is absent (the bundle is
+  // published by the Loom export pipeline, not this repo's Pages build, and
+  // the live site answers the same 404 until that path is verified live).
+  const missingAssets=requests.filter(request=>request.status===404&&!request.url.startsWith('/favicon.ico')&&!request.url.endsWith('/data/loom-atlas-manifest.json'));
   assert.deepEqual(missingAssets,[],'All requested local page and module assets must be published');
   console.log('Atlas view browser checks passed: five real previews, 390px preview, search/profile return, graph continuity, partner evidence, unknown funding, mobile layouts and partial-data state.');
 } catch(error) {
