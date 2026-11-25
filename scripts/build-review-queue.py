@@ -8,7 +8,12 @@ directory (``latest-*.json`` files) plus the reviewed data on disk.
 Entry kinds
 -----------
 - ``merge`` — fuzzy identity match in the section 1 review band
-  (score 0.65-0.90). Produced by ``scripts/entity_resolution.py``'s
+  (score 0.65-0.90), plus exact LinkedIn identity-key matches for
+  people (score 1.0, #366 slice 3): two person records sharing a
+  LinkedIn key are NOT seed-merged when both are canonical, and no
+  governed auto path applies merges from unreviewed crawl rows, so
+  the pair queues as a proposal instead of being dropped as
+  "auto-merge, not queued". Produced by ``scripts/entity_resolution.py``'s
   ``match_candidates`` (present, delivered by subagent A); the local
   fallback in this file implements the same documented algorithm
   (token Jaccard + host bonus; exact identity-key match = 1.0) and is
@@ -431,6 +436,22 @@ def local_match_candidates(name, identity_key, kind, registry):
     return out
 
 
+def linkedin_key(url):
+    """LinkedIn identity key for a URL, via entity_resolution (#366).
+
+    Delegates to ``entity_resolution.normalise_linkedin()`` so crawl
+    rows and reviewed rows can never derive different keys for the
+    same URL (docs/PERSON-IDENTITY.md Decision 2). The regex fallback
+    mirrors the old local behaviour only when that module cannot be
+    imported.
+    """
+    if _entity_resolution is not None:
+        return _entity_resolution.normalise_linkedin(url)
+    match = re.search(r"linkedin\.com/in/([a-z0-9-]+)", url or "",
+                      re.IGNORECASE)
+    return "linkedin.com/in/" + match.group(1).lower() if match else ""
+
+
 def match_candidates(name, identity_key, kind, registry):
     """Score identity-match candidates, via entity_resolution if present."""
     if _entity_resolution is not None:
@@ -721,7 +742,25 @@ def produce_merges(artifact_dir, data_dir, run):
         subject = f"{kind}:{slug(name)}"
         for cand in candidates:
             if cand["score"] >= 1.0 or cand.get("auto_merge"):
-                continue  # exact identity-key match: auto-merge, not queued
+                # Exact identity-key match. For partners/startups the
+                # seed already reconciles these, so they are not
+                # queued. For people there is no such path (#366
+                # Decision 4): two canonical people sharing a key are
+                # not seed-merged, and crawl rows never merge — so the
+                # pair must queue as a governed proposal, carrying a
+                # basis the merge gate recognises as an identity key.
+                if kind != "person" or cand["id"] == subject:
+                    continue
+                basis = cand["basis"]
+                if str(identity_key or "").startswith("linkedin.com/in/"):
+                    basis = "identity-key: linkedin-url"
+                entries.append(_new_entry(
+                    f"merge:{subject}", "merge", subject,
+                    identity_key or slug(name),
+                    [{"id": cand["id"], "score": cand["score"],
+                      "basis": basis}],
+                    evidence, cand["score"], run))
+                break
             if not (REVIEW_LOW <= cand["score"] <= REVIEW_HIGH):
                 continue
             if not merge_is_plausible(subject, cand["id"]):
@@ -765,10 +804,9 @@ def produce_merges(artifact_dir, data_dir, run):
     for row in profiles:
         if row.get("kind") != "people":
             continue
-        url = row.get("candidate_url") or ""
-        match = re.search(r"linkedin\.com/in/([a-z0-9-]+)", url, re.IGNORECASE)
-        if match:
-            by_linkedin["linkedin.com/in/" + match.group(1).lower()].append(row)
+        key = linkedin_key(row.get("candidate_url") or "")
+        if key:
+            by_linkedin[key].append(row)
     for key, rows in sorted(by_linkedin.items()):
         firms = {r.get("partner") for r in rows if r.get("partner")}
         if len(firms) < 2:
@@ -778,6 +816,51 @@ def produce_merges(artifact_dir, data_dir, run):
             continue
         propose(name, "person", key,
                 [r.get("candidate_url") for r in rows])
+
+    # Registry pairs (#366 slice 3): two person entities already in
+    # the registry that share a LinkedIn identity key but were never
+    # merged — e.g. the same person under two name spellings, one a
+    # founder row and one a profile row — surface as a merge proposal.
+    # Pairs the seed or a recorded decision already merged are skipped
+    # (on current data every shared-key pair is seed-merged, so this
+    # produces nothing until a genuinely distinct pair appears).
+    merged_pairs = set()
+    for merge in registry.get("merges") or []:
+        merged_pairs.add((merge.get("from"), merge.get("to")))
+        merged_pairs.add((merge.get("to"), merge.get("from")))
+    by_key = defaultdict(list)
+    for entity_id, entity in (registry.get("entities") or {}).items():
+        if entity.get("kind") != "person":
+            continue
+        key = entity.get("identity_key") or ""
+        if key.startswith("linkedin.com/in/"):
+            by_key[key].append(entity_id)
+    for key, entity_ids in sorted(by_key.items()):
+        entity_ids = sorted(entity_ids)
+        proposed = False
+        for i, from_id in enumerate(entity_ids):
+            if proposed:
+                break
+            for to_id in entity_ids[i + 1:]:
+                if (from_id, to_id) in merged_pairs:
+                    continue
+                from_entity = registry["entities"][from_id]
+                to_entity = registry["entities"][to_id]
+                if (from_id in (to_entity.get("merged_from") or [])
+                        or to_id in (from_entity.get("merged_from") or [])):
+                    continue
+                # The canonical (unscoped) id wins; the scoped or
+                # alphabetically later id is the merge subject.
+                winner, loser = (from_id, to_id) \
+                    if "--" in to_id or "--" not in from_id \
+                    else (to_id, from_id)
+                entries.append(_new_entry(
+                    f"merge:{loser}", "merge", loser, key,
+                    [{"id": winner, "score": 1.0,
+                      "basis": "identity-key: linkedin-url"}],
+                    ["https://" + key], 1.0, run))
+                proposed = True
+                break
     return entries
 
 

@@ -517,6 +517,92 @@ class BuildTests(FixtureCase):
         self.assertEqual([e for e in added if e["kind"] == "edge"], [])
 
 
+class PersonLinkedinTests(FixtureCase):
+    """#366 slice 3: same-LinkedIn-key person pairs queue as merges."""
+
+    def _person_registry(self, entities, merges=()):
+        write_json(self.data_dir / "identity.json", {
+            "version": 1, "generated_at": "2026-11-25T00:00:00Z",
+            "source_revision": None, "entities": entities,
+            "merges": list(merges)})
+
+    def _person(self, name, key):
+        return {"name": name, "kind": "person", "aliases": [],
+                "identity_key": key, "identity_basis": "linkedin-url",
+                "merged_from": [], "updated_at": "2026-11-25T00:00:00Z"}
+
+    def test_linkedin_key_normalisation_is_shared(self):
+        key = queue_mod.linkedin_key
+        self.assertEqual(
+            key("https://au.linkedin.com/in/Jane-Example/?trk=public"),
+            "linkedin.com/in/jane-example")
+        self.assertEqual(key("https://www.linkedin.com/company/acme"), "")
+        self.assertEqual(key("https://example.com/in/jane"), "")
+        self.assertEqual(key(""), "")
+
+    def test_cross_firm_crawl_pair_with_exact_key_is_queued(self):
+        # The registry already holds the same LinkedIn key under a
+        # different name spelling; the crawl sees the URL (locale
+        # subdomain + tracking params) at two firms. Previously the
+        # exact match was dropped as "auto-merge, not queued",
+        # although no path applies merges from unreviewed crawl rows.
+        self._person_registry({
+            "person:j-example": self._person(
+                "J Example", "linkedin.com/in/jane-example")})
+        rows = [
+            {"partner": "Airtree", "kind": "people", "name": "Jane Example",
+             "candidate_url": "https://au.linkedin.com/in/jane-example/",
+             "source_url": "https://www.airtree.vc/team"},
+            {"partner": "Square Peg", "kind": "people",
+             "name": "Jane Example",
+             "candidate_url":
+                 "https://www.linkedin.com/in/jane-example?trk=public",
+             "source_url": "https://www.squarepegcap.com/team"},
+        ]
+        write_json(self.artifact / "latest-profiles.json",
+                   {"candidates": rows})
+        _, added, _ = self.build()
+        merges = [e for e in added if e["kind"] == "merge"
+                  and e["subject"] == "person:jane-example"]
+        self.assertEqual(len(merges), 1)
+        self.assertEqual(merges[0]["confidence"], 1.0)
+        self.assertEqual(merges[0]["subject_key"],
+                         "linkedin.com/in/jane-example")
+        self.assertIn("linkedin", merges[0]["candidates"][0]["basis"])
+
+    def test_registry_same_key_different_name_pair_is_queued(self):
+        self._person_registry({
+            "person:jane-example": self._person(
+                "Jane Example", "linkedin.com/in/jane-example"),
+            "person:j-example": self._person(
+                "J Example", "linkedin.com/in/jane-example")})
+        _, added, _ = self.build()
+        merges = [e for e in added if e["kind"] == "merge"
+                  and e["subject_key"] == "linkedin.com/in/jane-example"]
+        self.assertEqual(len(merges), 1)
+        self.assertEqual(merges[0]["confidence"], 1.0)
+        pair = {merges[0]["subject"], merges[0]["candidates"][0]["id"]}
+        self.assertEqual(pair, {"person:jane-example", "person:j-example"})
+
+    def test_registry_seed_merged_pair_is_not_queued(self):
+        canonical = self._person("Jane Example",
+                                 "linkedin.com/in/jane-example")
+        canonical["merged_from"] = ["person:jane-example--airtree"]
+        self._person_registry(
+            {"person:jane-example": canonical,
+             "person:jane-example--airtree": self._person(
+                 "Jane Example", "linkedin.com/in/jane-example")},
+            merges=[{"from": "person:jane-example--airtree",
+                     "to": "person:jane-example", "basis": "linkedin-url",
+                     "decided_by": "seed:reviewed-data",
+                     "decided_at": "2026-11-25T00:00:00Z"}])
+        _, added, _ = self.build()
+        self.assertFalse(any(
+            e["kind"] == "merge"
+            and e["subject_key"] == "linkedin.com/in/jane-example"
+            for e in added))
+
+
 class DecideTests(FixtureCase):
     def test_approve_and_reject_transitions(self):
         queue, added, _ = self.build()

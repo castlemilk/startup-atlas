@@ -98,11 +98,12 @@ founders whose LinkedIn surfaces in review, per the issue.
 The result is the key form stored in the registry:
 `linkedin.com/in/<slug>`.
 
-One known duplication to retire in a later slice:
-`build-review-queue.py` re-implements a subset of this with a regex
-over `candidate_url`. It should call `normalise_linkedin()` so crawl
-rows and reviewed rows can never derive different keys for the same
-URL.
+One known duplication, retired in slice 3:
+`build-review-queue.py` re-implemented a subset of this with a regex
+over `candidate_url`. It now calls `normalise_linkedin()` (via its
+`linkedin_key()` helper, which keeps the regex only as an
+import-failure fallback) so crawl rows and reviewed rows can never
+derive different keys for the same URL.
 
 ## Decision 3: how the registry builder uses the field
 
@@ -213,9 +214,13 @@ at a time:
    optionally mirror the 4 socials-carried profile people) —
    data-only, verified by the registry diff showing keys unchanged,
    now field-sourced.
-3. **Queue producer alignment**: `build-review-queue.py` reuses
-   `normalise_linkedin()`; same-key person pairs surface as
-   proposals instead of being dropped.
+3. **Queue producer alignment** (landed): `build-review-queue.py`
+   reuses `normalise_linkedin()`; same-key person pairs surface as
+   proposals instead of being dropped — both cross-firm crawl pairs
+   whose exact key matches a registry person under another name
+   spelling, and unmerged same-key pairs already in the registry.
+   Pairs the seed or a recorded decision already merged are skipped,
+   so current data produces no new proposals.
 4. **Promotion path**: when a profiles-crawl person is approved
    into `partner-profiles.json`, carry the verified LinkedIn URL
    into the row's `linkedin` field, so recording is part of the
