@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { CdpSession, PhaseTimer } from '../scripts/browser-transport.mjs';
+import { CdpSession, PhaseTimer, unmappedExternalRequests } from '../scripts/browser-transport.mjs';
 
 // Fake socket with the addEventListener/send/close surface CdpSession uses,
 // so the session's command lifecycle can be driven without a real browser.
@@ -109,6 +109,61 @@ test('event capture: exceptions, console messages and navigation counts', async 
   assert.equal(session.loadCount, 1);
   assert.equal(session.documentLoads, 1);
   assert.equal(session.pausedRequests, 1);
+});
+
+test('external requests accumulate only for non-local http(s) origins (#143 V3)', async () => {
+  const socket = new FakeSocket();
+  const session = new CdpSession(socket, { localOrigin: 'http://127.0.0.1:8123' });
+  const sent = url => socket.event('Network.requestWillBeSent', { request: { url } });
+  sent('http://127.0.0.1:8123/index.html');
+  sent('http://127.0.0.1:8123/data/graph.json');
+  sent('https://fonts.example.com/geist.woff2');
+  sent('http://127.0.0.1:9999/other-port');
+  sent('data:text/plain,hello');
+  sent('blob:http://127.0.0.1:8123/uuid');
+  assert.deepEqual(session.externalRequests, [
+    'https://fonts.example.com/geist.woff2',
+    'http://127.0.0.1:9999/other-port',
+  ]);
+});
+
+test('without a local origin, external requests are not tracked', async () => {
+  const socket = new FakeSocket();
+  const session = new CdpSession(socket);
+  socket.event('Network.requestWillBeSent', { request: { url: 'https://example.com/x' } });
+  assert.deepEqual(session.externalRequests, []);
+});
+
+test('offline mode continues local requests and fails external ones (#143 V3)', async () => {
+  const socket = new FakeSocket();
+  const session = new CdpSession(socket, { localOrigin: 'http://127.0.0.1:8123' });
+  const enabling = session.enableOfflineMode();
+  socket.respond(socket.sent[0].id, {});
+  await enabling;
+  assert.equal(socket.sent[0].method, 'Fetch.enable');
+  socket.event('Fetch.requestPaused', { requestId: 'r1', request: { url: 'http://127.0.0.1:8123/app.js' } });
+  socket.event('Fetch.requestPaused', { requestId: 'r2', request: { url: 'https://example.com/probe' } });
+  socket.event('Fetch.requestPaused', { requestId: 'r3', request: { url: 'data:text/plain,hello' } });
+  const resolutions = socket.sent.slice(1).map(item => [item.method, item.params.requestId]);
+  assert.deepEqual(resolutions, [
+    ['Fetch.continueRequest', 'r1'],
+    ['Fetch.failRequest', 'r2'],
+    ['Fetch.continueRequest', 'r3'],
+  ]);
+  assert.equal(socket.sent[2].params.errorReason, 'InternetDisconnected');
+  assert.deepEqual(session.blockedRequests, ['https://example.com/probe']);
+  assert.equal(session.pausedRequests, 3);
+});
+
+test('unmappedExternalRequests keeps only external requests outside the mapped content URLs', async () => {
+  const session = { externalRequests: ['https://cdn.example/logo.png', 'https://tracker.example/pixel', 'https://cdn.example/logo.png'] };
+  assert.deepEqual(unmappedExternalRequests(session, ['https://cdn.example/logo.png']), ['https://tracker.example/pixel']);
+  assert.deepEqual(unmappedExternalRequests(session, []), session.externalRequests);
+});
+
+test('offline mode requires a local origin', async () => {
+  const session = new CdpSession(new FakeSocket());
+  await assert.rejects(session.enableOfflineMode(), /localOrigin/);
 });
 
 test('object console format keeps level and text (atlas-views / design-lab shape)', async () => {
