@@ -139,14 +139,20 @@ try {
     const country=document.querySelector('.exploration-country-trigger').getBoundingClientRect();
     // Measure the rendered select trigger, not the native control or its
     // label: the SDK keeps #treemap-metric as a hidden backing control (its
-    // rect sits at x=0) and the label wraps a caption span above the control
-    // (its box starts one caption line higher). The visible control is the
-    // #treemap-metric-trigger button the SDK renders for it.
+    // rect sits at x=0) and the label wraps a caption span. The visible
+    // control is the #treemap-metric-trigger button the SDK renders for it.
     const size=(document.querySelector('#treemap-metric-trigger')||document.querySelector('#treemap-metric')).getBoundingClientRect();
-    return {countryX:country.x,countryTop:country.top,sizeX:size.x,sizeTop:size.top,chartTop:document.querySelector('#treemap-chart').getBoundingClientRect().top};
+    return {countryX:country.x,countryTop:country.top,countryBottom:country.bottom,sizeX:size.x,sizeTop:size.top,sizeBottom:size.bottom,chartTop:document.querySelector('#treemap-chart').getBoundingClientRect().top};
   })()`);
   assert.ok(toolbarLayout.countryX<toolbarLayout.sizeX,`Headquarters control must sit left of the chart settings (country x=${toolbarLayout.countryX}, metric x=${toolbarLayout.sizeX})`);
-  assert.ok(Math.abs(toolbarLayout.countryTop-toolbarLayout.sizeTop)<6,`Headquarters and chart settings must share one row (country top=${toolbarLayout.countryTop}, metric top=${toolbarLayout.sizeTop})`);
+  // "One row" means the two controls' vertical ranges overlap, not that
+  // their tops align to the pixel: the headquarters and chart-settings
+  // groups carry different caption/padding offsets (~12px), so a top-based
+  // check fails even when both controls sit in the same toolbar row. If the
+  // toolbar stacked them into two rows, the overlap would be ~0.
+  const toolbarOverlap=Math.min(toolbarLayout.countryBottom,toolbarLayout.sizeBottom)-Math.max(toolbarLayout.countryTop,toolbarLayout.sizeTop);
+  const smallerControlHeight=Math.min(toolbarLayout.countryBottom-toolbarLayout.countryTop,toolbarLayout.sizeBottom-toolbarLayout.sizeTop);
+  assert.ok(toolbarOverlap>smallerControlHeight/2,`Headquarters and chart settings must share one row (vertical overlap ${toolbarOverlap}px of a ${smallerControlHeight}px control; country ${toolbarLayout.countryTop}–${toolbarLayout.countryBottom}, metric ${toolbarLayout.sizeTop}–${toolbarLayout.sizeBottom})`);
   assert.ok(toolbarLayout.chartTop<320,`The plot must start above 320px on desktop (chart top=${toolbarLayout.chartTop})`);
   await screenshot('company-value-default-desktop.png');
 
