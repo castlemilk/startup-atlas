@@ -111,7 +111,7 @@ test('new South Australian and Queensland funding listings preserve geography an
  const qld=data.opportunities.find(x=>x.id==='first-nations-innovation-acceleration-qld');
  assert.ok(sa && qld);
  assert.deepEqual(sa.scope,['AU']);
- assert.equal(sa.checked,'2026-11-11');
+ assert.equal(sa.checked,'2026-11-25');
  assert.match(sa.eligibility,/South Australia/);
  assert.match(sa.limits,/2:1/);
  assert.match(sa.limits,/1:1/);
@@ -126,7 +126,7 @@ test('new South Australian and Queensland funding listings preserve geography an
 test('India seed-fund application closure is distinguished from ongoing scheme administration',()=>{
  const item=data.opportunities.find(x=>x.id==='startup-india');
  assert.equal(item.status,'Applications closed 31 May 2026');
- assert.equal(item.checked,'2026-11-12');
+ assert.equal(item.checked,'2026-11-25');
  assert.match(item.eligibility,/DPIIT-recognised/);
  assert.match(item.limits,/applications are closed/);
  assert.match(item.limits,/₹20 lakh/);
@@ -149,7 +149,7 @@ test('British Columbia AI funding records co-funding, repayability and project e
 test('West of England START programme does not imply a confirmed next cohort or guaranteed placement',()=>{
  const item=data.opportunities.find(x=>x.id==='start-west-england');
  assert.deepEqual(item.scope,['GB']);
- assert.equal(item.checked,'2026-11-11');
+ assert.equal(item.checked,'2026-11-25');
  assert.match(item.eligibility,/Bristol, South Gloucestershire or Bath/);
  assert.match(item.status,/dates unconfirmed/);
  assert.match(item.limits,/not a guaranteed/);
@@ -159,7 +159,7 @@ test('West of England START programme does not imply a confirmed next cohort or 
 test('North East Pathways to Funding keeps its three-area eligibility and non-grant support clear',()=>{
  const item=data.opportunities.find(x=>x.id==='pathways-to-funding-north-east');
  assert.deepEqual(item.scope,['GB']);
- assert.equal(item.checked,'2026-11-11');
+ assert.equal(item.checked,'2026-11-25');
  assert.match(item.eligibility,/Newcastle, Northumberland, or North Tyneside/);
  assert.match(item.limits,/No grant or investment award is promised/);
  assert.match(item.status,/no deadline stated/);
@@ -169,7 +169,7 @@ test('North East Pathways to Funding keeps its three-area eligibility and non-gr
 test('Innovative Solutions Canada AI challenge records Canadian thresholds and Phase 2 contract limits',()=>{
  const item=data.opportunities.find(x=>x.id==='isc-ai-governance-phase2-2026');
  assert.deepEqual(item.scope,['CA']);
- assert.equal(item.checked,'2026-11-11');
+ assert.equal(item.checked,'2026-11-25');
  assert.match(item.eligibility,/Canadian-incorporated/);
  assert.match(item.eligibility,/TRL 5–9/);
  assert.match(item.value,/C\$2,000,000/);
@@ -180,7 +180,7 @@ test('Innovative Solutions Canada AI challenge records Canadian thresholds and P
 test('Queensland Female Founders fund preserves co-investment and founder eligibility',()=>{
  const item=data.opportunities.find(x=>x.id==='female-founders-coinvestment-qld');
  assert.deepEqual(item.scope,['AU']);
- assert.equal(item.checked,'2026-11-12');
+ assert.equal(item.checked,'2026-11-25');
  assert.match(item.eligibility,/headquartered and operating in Queensland/);
  assert.match(item.eligibility,/51%/);
  assert.match(item.eligibility,/50 full-time-equivalent employees/);
@@ -189,14 +189,14 @@ test('Queensland Female Founders fund preserves co-investment and founder eligib
 });
 
 
-test('Ignite Program NT separates year-round planning vouchers from competitive MVP funding',()=>{const item=data.opportunities.find(x=>x.id==='ignite-program-nt');assert.ok(item);assert.deepEqual(item.scope,['AU']);assert.equal(item.checked,'2026-11-12');assert.match(item.status,/30 November 2026/);assert.match(item.eligibility,/Territory Enterprise/);assert.match(item.value,/A\$2,000/);assert.match(item.value,/A\$15,000/);assert.match(item.limits,/first-come-first-served/);assert.match(item.limits,/competitive/);assert.match(item.limits,/schools\/universities/);assert.ok(item.extra.includes('https://nt.gov.au/__data/assets/pdf_file/0007/1622527/ignite-program-guidelines.pdf'));});
+test('Ignite Program NT separates year-round planning vouchers from competitive MVP funding',()=>{const item=data.opportunities.find(x=>x.id==='ignite-program-nt');assert.ok(item);assert.deepEqual(item.scope,['AU']);assert.equal(item.checked,'2026-11-25');assert.match(item.status,/30 November 2026/);assert.match(item.eligibility,/Territory Enterprise/);assert.match(item.value,/A\$2,000/);assert.match(item.value,/A\$15,000/);assert.match(item.limits,/first-come-first-served/);assert.match(item.limits,/competitive/);assert.match(item.limits,/schools\/universities/);assert.ok(item.extra.includes('https://nt.gov.au/__data/assets/pdf_file/0007/1622527/ignite-program-guidelines.pdf'));});
 
 
 test('WA Carbon Innovation Grants Round 3 preserves location, partner and exclusions',()=>{
  const item=data.opportunities.find(x=>x.id==='carbon-innovation-grants-wa');
  assert.ok(item);
  assert.deepEqual(item.scope,['AU']);
- assert.equal(item.checked,'2026-11-12');
+ assert.equal(item.checked,'2026-11-25');
  assert.match(item.status,/11 December 2026, 5pm AWST/);
  assert.match(item.value,/A\$50,000/);
  assert.match(item.value,/A\$1.5 million/);
