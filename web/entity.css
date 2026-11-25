@@ -115,6 +115,8 @@
 .entity-founder-preview-link { display: flex; align-items: center; gap: clamp(8px, 1.45vw, 20px); min-height: 58px; padding-right: 10px; color: var(--atlas-ink); text-decoration: none; }
 .entity-founder-preview-link:hover strong { color: var(--atlas-action); text-decoration: underline; text-underline-offset: 3px; }
 .entity-founder-preview .entity-mark, .entity-overview-related .entity-mark, .entity-founder-records .entity-mark-person { border-radius: 5px; border-color: transparent; color: var(--atlas-ink); background: var(--atlas-soft); }
+/* Portraits are circles on every surface (owner direction, 25 Nov 2026). */
+.entity-founder-preview .entity-mark-person, .entity-overview-related .entity-mark-person, .entity-founder-records .entity-mark-person { border-radius: 50%; }
 .entity-founder-preview .entity-mark { width: clamp(44px, 3.6vw, 56px); height: clamp(44px, 3.6vw, 56px); font: 650 clamp(17px, 1.55vw, 22px)/1 var(--atlas-font-body); }
 .entity-founder-preview strong { display: block; color: var(--atlas-ink); font: 650 clamp(14px, 1.32vw, 20px)/1.25 var(--atlas-font-body); overflow-wrap: anywhere; }
 .entity-founder-preview small { display: block; margin-top: 4px; color: var(--atlas-muted); font-size: clamp(13px, 1.1vw, 16px); }

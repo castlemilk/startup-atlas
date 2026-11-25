@@ -367,6 +367,9 @@ footer a:focus-visible { outline-color: var(--atlas-on-action); }
 .entity-row h3 a:hover { text-decoration: underline; text-decoration-color: var(--atlas-accent); }
 .entity-row p { max-width: 75ch; line-height: 1.6; }
 .entity-row-mark { background: var(--atlas-surface); border-color: var(--atlas-border); border-radius: var(--atlas-radius-control); }
+/* Portraits are circles on every surface (owner direction, 25 Nov 2026). */
+.entity-row[data-kind="person"] .entity-row-mark { border-radius: 50%; overflow: hidden; }
+.entity-row[data-kind="person"] .entity-row-mark img { padding: 0; object-fit: cover; }
 /* These portraits place the face above the centre of the original frame. */
 :is(.network-loom-mark.person, .detail-mark.person, .detail-mini.person, .entity-mark-person) img:is(
   [src$="/portraits/casey-ellis.png"],
