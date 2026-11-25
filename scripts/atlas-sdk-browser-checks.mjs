@@ -141,7 +141,7 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await until(()=>evaluate("document.querySelector('#treemap-filter-fields').hidden&&document.querySelector('#treemap-metric').value==='companies'"),'Collapsing filters lost the applied measure');
   await act('Filters','press');
   await act('Reset exploration','press');
-  await until(()=>evaluate("document.querySelector('#treemap-metric').value==='companies'&&document.querySelector('#treemap-query').value===''&&!document.querySelector('#treemap-chart').hidden&&document.querySelector('#treemap-cards').hidden"),'SDK reset did not restore the company-count map');
+  await until(()=>evaluate("document.querySelector('#treemap-metric').value==='company-value'&&document.querySelector('#treemap-query').value===''&&!document.querySelector('#treemap-chart').hidden&&document.querySelector('#treemap-cards').hidden"),'SDK reset did not restore the default map');
   await assertOneTabStop('.treemap-view-switch');
   await choose('Group by',/^Headquarters country$/);
   await choose('Size by',/^Company value$/);
