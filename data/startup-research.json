@@ -2626,7 +2626,11 @@
           "amount_text": "$800 million; dollar currency not explicit in inspected source",
           "source": "https://www.balderton.com/news/revolut-valued-at-33bn-after-raising-800m/",
           "note": "Balderton reports the round and $33bn valuation. Currency is not normalized. Balderton's earlier investment does not establish its participation in this round. Two named leads only; no exhaustive list. Named participants: SoftBank Vision Fund 2 (lead), Tiger Global Management (lead). Identities remain unresolved.",
-          "stage_normalised": "Series E"
+          "stage_normalised": "Series E",
+          "participants": [
+            "SoftBank Vision Fund 2",
+            "Tiger Global Management"
+          ]
         }
       ],
       "description": "Financial-services platform for spending, saving, investing and international transfers.",
@@ -2690,7 +2694,16 @@
           "amount_text": "$750 million; dollar currency not explicit in inspected release",
           "source": "https://ir.uipath.com/news/detail/8/uipath-closes-750-million-in-series-f-funding",
           "note": "Release says the round has closed and reports a $35bn post-money valuation. Exact close date and dollar currency are not separately normalized. Named investors include advised funds/accounts, not necessarily the adviser itself. Named participants: Alkeon Capital (lead), Coatue (lead), Altimeter Capital (participant), Dragoneer (participant), IVP (participant), Sequoia (participant), Tiger Global (participant), Funds and accounts advised by T. Rowe Price Associates, Inc. (participant). Identities remain unresolved.",
-          "stage_normalised": "Series F"
+          "stage_normalised": "Series F",
+          "participants": [
+            "Alkeon Capital",
+            "Coatue",
+            "Altimeter Capital",
+            "Dragoneer",
+            "IVP",
+            "Sequoia",
+            "Tiger Global"
+          ]
         }
       ],
       "description": "Enterprise automation software company.",
@@ -2990,7 +3003,16 @@
           "currency": "AUD",
           "source": "https://www.cefc.com.au/media/media-release/cefc-increases-investment-in-loam-bio-through-a-105-million-series-b-round/",
           "note": "The company release embedded by CEFC names these investors and others. CEFC's own $9m contribution is not an additional round. Founder list is partial; close date unknown. Named participants: Lowercarbon Capital (lead), Wollemi Capital (lead), Horizons Ventures (participant), Acre Venture Partners (participant), Main Sequence (participant), CEFC (participant), Grok Ventures (participant). Identities remain unresolved.",
-          "stage_normalised": "Series B"
+          "stage_normalised": "Series B",
+          "participants": [
+            "Lowercarbon Capital",
+            "Wollemi Capital",
+            "Horizons Ventures",
+            "Acre Venture Partners",
+            "Main Sequence",
+            "CEFC",
+            "Grok Ventures"
+          ]
         }
       ],
       "description": "Develops microbial seed treatments and soil-carbon projects for agriculture.",
