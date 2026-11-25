@@ -1,13 +1,35 @@
 #!/usr/bin/env python3
-"""Check the published landing, explorer and consistent graph snapshot."""
+"""Check the published landing, explorer and consistent graph snapshot.
+
+Verification runs in two stages per attempt (issue #148):
+
+* Fetch stage — every path the checks need is collected up front and
+  fetched once through a small bounded pool. Fetched bytes are cached
+  for the rest of the attempt, so repeated checks against one path
+  never refetch it.
+* Validation stage — the byte/hash, ZIP, SQLite, source-document and
+  revision assertions run against the cached bytes, in the same order
+  and with the same size limits as the original serial verifier.
+
+Each retry starts from a fresh fetcher, so no fetched state survives
+across attempts and revision boundaries are always verified against
+fresh bytes. Only failures that publication propagation can explain
+are retried: transport failures (FetchError) and content mismatches
+(ValueError). Deterministic failures — a corrupt ZIP or database, a
+programming error, a missing local source file — are not retried:
+they fail on the first attempt instead of burning the retry budget.
+"""
 import json
 import hashlib
 import io
 import os
+from concurrent.futures import ThreadPoolExecutor
+from http.client import HTTPException
 from pathlib import Path
 import sqlite3
 import subprocess
 import tempfile
+import threading
 import time
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -15,14 +37,73 @@ from zipfile import ZipFile
 
 BASE='https://castlemilk.github.io/startup-atlas/'
 REVISION=os.environ.get('GITHUB_SHA')
+MAX_FETCH_WORKERS=8
+STYLESHEETS=('design-tokens.css','atlas-ui.css','landing.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css','design-aesthetic-tokens.css','design-aesthetic.css','signal-controls.css','atlas-sdk.css')
+KIT_DOCS=('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md','VIEW-DIRECTION-STUDIES.md','AESTHETIC-DIRECTION.md','SIGNAL-COMPONENTS.md','REFERENCE-EXTRACTION.md','UI-SDK.md')
+KIT_SIGNAL_FILES=('design-aesthetic.html','design-aesthetic.css','design-aesthetic.js','design-aesthetic-tokens.css','design-aesthetic-data.js','atlas-feature-symbols.js','signal-controls.js','signal-controls.css')
+
+
+class FetchError(Exception):
+    """A published file could not be fetched; Pages may still be propagating it."""
+
+
+def _http_get(path, limit):
+    url=BASE+path+'?'+urlencode({'revision':REVISION})
+    try:
+        with urlopen(Request(url,headers={'User-Agent':'Startup-Atlas-Publication-Check','Cache-Control':'no-cache'}),timeout=15) as response:
+            data=response.read(limit+1)
+    except (OSError, HTTPException) as error:
+        raise FetchError(f'{path} could not be fetched: {error}') from error
+    if len(data)>limit: raise ValueError(f'{path} exceeds the expected verification size')
+    return data
 
 
 def get(path, limit):
-    url=BASE+path+'?'+urlencode({'revision':REVISION})
-    with urlopen(Request(url,headers={'User-Agent':'Startup-Atlas-Publication-Check','Cache-Control':'no-cache'}),timeout=15) as response:
-        data=response.read(limit+1)
-    if len(data)>limit: raise ValueError(f'{path} exceeds the expected verification size')
-    return data
+    """Fetch one published file, without caching."""
+    return _http_get(path, limit)
+
+
+class Fetcher:
+    """Per-attempt fetch cache with a bounded prefetch pool.
+
+    One Fetcher serves one verification attempt: each path is fetched
+    at most once, however many checks read it, and nothing is shared
+    with the next attempt.
+    """
+
+    def __init__(self, transport=None, max_workers=MAX_FETCH_WORKERS):
+        self._transport=transport if transport is not None else _http_get
+        self._max_workers=max(1, max_workers)
+        self._cache={}
+        self.fetch_counts={}
+        self._lock=threading.Lock()
+
+    def fetch(self, path, limit):
+        with self._lock:
+            data=self._cache.get(path)
+        if data is None:
+            data=self._load(path, limit)
+        if len(data)>limit: raise ValueError(f'{path} exceeds the expected verification size')
+        return data
+
+    def _load(self, path, limit):
+        data=self._transport(path, limit)
+        with self._lock:
+            self._cache[path]=data
+            self.fetch_counts[path]=self.fetch_counts.get(path, 0)+1
+        return data
+
+    def prefetch(self, requests):
+        """Fetch every (path, limit) request once, through the bounded pool."""
+        limits={}
+        for path, limit in requests:
+            limits[path]=max(limit, limits.get(path, 0))
+        pending=[(path, limit) for path, limit in limits.items() if path not in self._cache]
+        if not pending: return
+        with ThreadPoolExecutor(max_workers=self._max_workers) as pool:
+            futures=[pool.submit(self._load, path, limit) for path, limit in pending]
+            for future in futures:
+                future.result()
 
 
 def verify_icon_exports(registry, exports, manifest, archive_paths=None):
@@ -40,7 +121,63 @@ def verify_icon_exports(registry, exports, manifest, archive_paths=None):
             raise ValueError('Design kit icon files differ from this revision')
 
 
-def verify():
+def _fetch_requests(design_catalogue, concept_assets, fonts, reference_snapshots):
+    """Every published path the validation stage reads, with its size limit."""
+    requests=[]
+    def want(path, limit):
+        requests.append((path, limit))
+    for name in ('graph.html','design-lab.html','design-direction.html','design-assets.html','design-aesthetic.html','design-system.html','index.html'):
+        want(name, 100000)
+    for filename in STYLESHEETS:
+        want(filename, 100000)
+    for name in ('atlas-list-wide.webp','atlas-list-compact.webp'):
+        want(f'assets/landing/{name}', 100000)
+    for route in ('list.html','treemap.html','graph.html','entity.html','partner.html'):
+        want(route, 100000)
+    want('vendor/ui-sdk-manifest.json', 10000)
+    want('atlas-sdk.js', 600000)
+    want('vendor/UI-SDK-LICENSE.txt', 50000)
+    for asset in concept_assets:
+        want(asset.relative_to('web').as_posix(), 1000000)
+    want('assets/design-lab/asset-manifest.json', 200000)
+    want('assets/design-icons/icon-manifest.json', 100000)
+    for name in design_catalogue['icons']:
+        want(f'assets/design-icons/{name}.svg', 10000)
+    for name in design_catalogue['featureExports']:
+        want(f'assets/feature-symbols/{name}.svg', 20000)
+    want('assets/feature-symbols/symbol-manifest.json', 30000)
+    for path in fonts:
+        want(path, 2000000)
+    for path in reference_snapshots:
+        want(path, 200000)
+    want('assets/design-lab/atlas-design-kit.zip', 10000000)
+    for filename in KIT_SIGNAL_FILES:
+        want(filename, 200000)
+    for name in KIT_DOCS:
+        want('docs/'+name, 100000)
+    for name in ('graph.json','catalogue.json','treemap-evidence.json','partners-reviewed.json','partner-profiles.json','map-locations.json','land.geojson'):
+        want('data/'+name, 5000000)
+    want('data/atlas.sqlite', 15000000)
+    want('vendor/sql.js/sql-wasm.wasm', 2000000)
+    return requests
+
+
+def verify(fetcher=None):
+    if fetcher is None: fetcher=Fetcher()
+    get=fetcher.fetch
+    # Local preparation: deterministic inputs, computed before any fetch.
+    dependencies=json.loads(Path('package.json').read_text())['dependencies']
+    design_catalogue=json.loads(subprocess.check_output(['node','--input-type=module','-e',
+        "import {assets} from './web/design-handbook.js';import {atlasIcons,exportIcon} from './web/atlas-icons.js';import {featureSymbols,exportFeatureSymbol} from './web/atlas-feature-symbols.js';console.log(JSON.stringify({assets,iconRegistry:atlasIcons,icons:Object.fromEntries(atlasIcons.map(icon=>[icon.id,exportIcon(icon.id)])),featureSymbols,featureExports:Object.fromEntries(featureSymbols.map(symbol=>[symbol.id,exportFeatureSymbol(symbol.id)]))}));"],text=True))
+    expected_assets=design_catalogue['assets']
+    expected_paths={asset[key].removeprefix('./') for asset in expected_assets for key in ('image','thumb')}
+    concept_assets=sorted(Path('web/assets/design-lab').glob('*.webp'))
+    fonts={path.relative_to('web').as_posix():path.read_bytes() for path in Path('web/assets/fonts').rglob('*') if path.is_file()}
+    reference_snapshots={path.as_posix():path.read_bytes() for path in Path('docs/reference-extraction').rglob('*') if path.is_file()}
+    reference_snapshots['docs/reference-extraction-audit.json']=Path('docs/reference-extraction-audit.json').read_bytes()
+    # Fetch stage: each path once, through the bounded pool.
+    fetcher.prefetch(_fetch_requests(design_catalogue, concept_assets, fonts, reference_snapshots))
+    # Validation stage: the original assertions, in the original order.
     page=get('graph.html',100000).decode('utf-8')
     if 'sql-wasm.js' not in page or 'graph.js' not in page: raise ValueError('Published explorer is missing its SQLite runtime')
     if not all(marker in page for marker in ('id="graph-company-loom"', 'id="graph-company-group"', 'id="graph-company-directory"')):
@@ -62,7 +199,7 @@ def verify():
         if marker not in system: raise ValueError(f'Published working system is missing {marker}')
     if system.count('class="ds-wireframe"')!=5 or 'design-lab.html?collection=proposed#gallery' not in system:
         raise ValueError('Published working system must retain five source wireframes and link to proposed studies')
-    for filename in ('design-tokens.css','atlas-ui.css','landing.css','directory.css','treemap.css','graph.css','entity.css','profile.css','design-workbench.css','design-token-reference.css','design-recipes.css','design-aesthetic-tokens.css','design-aesthetic.css','signal-controls.css','atlas-sdk.css'):
+    for filename in STYLESHEETS:
         if get(filename,100000)!=Path('web',filename).read_bytes():
             raise ValueError(f'Published system stylesheet differs from this revision: {filename}')
     landing=get('index.html',100000).decode('utf-8')
@@ -81,18 +218,12 @@ def verify():
             raise ValueError(f'Published view is missing the wireframe masthead: {route}')
     sdk_manifest=json.loads(get('vendor/ui-sdk-manifest.json',10000))
     sdk_bundle=get('atlas-sdk.js',600000)
-    dependencies=json.loads(Path('package.json').read_text())['dependencies']
     if sdk_manifest.get('sourceRevision')!=REVISION or sdk_manifest.get('sha256')!=hashlib.sha256(sdk_bundle).hexdigest():
         raise ValueError('Published UI SDK bundle has a stale revision or checksum')
     if sdk_manifest.get('coreVersion')!=dependencies['@ui-sdk/core'] or sdk_manifest.get('webVersion')!=dependencies['@ui-sdk/web']:
         raise ValueError('Published UI SDK packages differ from the pinned versions')
     if get('vendor/UI-SDK-LICENSE.txt',50000)!=Path('docs/UI-SDK-LICENSE.txt').read_bytes():
         raise ValueError('Published UI SDK license differs from this revision')
-    design_catalogue=json.loads(subprocess.check_output(['node','--input-type=module','-e',
-        "import {assets} from './web/design-handbook.js';import {atlasIcons,exportIcon} from './web/atlas-icons.js';import {featureSymbols,exportFeatureSymbol} from './web/atlas-feature-symbols.js';console.log(JSON.stringify({assets,iconRegistry:atlasIcons,icons:Object.fromEntries(atlasIcons.map(icon=>[icon.id,exportIcon(icon.id)])),featureSymbols,featureExports:Object.fromEntries(featureSymbols.map(symbol=>[symbol.id,exportFeatureSymbol(symbol.id)]))}));"],text=True))
-    expected_assets=design_catalogue['assets']
-    expected_paths={asset[key].removeprefix('./') for asset in expected_assets for key in ('image','thumb')}
-    concept_assets=sorted(Path('web/assets/design-lab').glob('*.webp'))
     if {path.relative_to('web').as_posix() for path in concept_assets}!=expected_paths:
         raise ValueError('The design microsite assets differ from the declared image catalogue')
     for asset in concept_assets:
@@ -120,11 +251,8 @@ def verify():
     symbol_manifest=get('assets/feature-symbols/symbol-manifest.json',30000)
     if json.loads(symbol_manifest).get('symbols')!=design_catalogue['featureSymbols']:
         raise ValueError('Published feature-symbol manifest has not caught up')
-    fonts={path.relative_to('web').as_posix():path.read_bytes() for path in Path('web/assets/fonts').rglob('*') if path.is_file()}
     for path,content in fonts.items():
         if get(path,2000000)!=content: raise ValueError(f'Published font or license differs from this revision: {path}')
-    reference_snapshots={path.as_posix():path.read_bytes() for path in Path('docs/reference-extraction').rglob('*') if path.is_file()}
-    reference_snapshots['docs/reference-extraction-audit.json']=Path('docs/reference-extraction-audit.json').read_bytes()
     for path,content in reference_snapshots.items():
         if get(path,200000)!=content: raise ValueError(f'Published reference snapshot differs from this revision: {path}')
     with ZipFile(io.BytesIO(get('assets/design-lab/atlas-design-kit.zip',10000000))) as kit:
@@ -149,7 +277,7 @@ def verify():
             if kit.read(path)!=content: raise ValueError(f'Design kit contains a stale font or license: {path}')
         for path,content in reference_snapshots.items():
             if kit.read(path)!=content: raise ValueError(f'Design kit contains a stale reference snapshot: {path}')
-        for filename in ('design-aesthetic.html','design-aesthetic.css','design-aesthetic.js','design-aesthetic-tokens.css','design-aesthetic-data.js','atlas-feature-symbols.js','signal-controls.js','signal-controls.css'):
+        for filename in KIT_SIGNAL_FILES:
             if kit.read(filename)!=get(filename,200000):
                 raise ValueError(f'Design kit contains a stale Signal specimen source: {filename}')
         if kit.read('atlas-sdk.js')!=sdk_bundle or json.loads(kit.read('vendor/ui-sdk-manifest.json'))!=sdk_manifest:
@@ -158,7 +286,7 @@ def verify():
             raise ValueError('Design kit contains stale tokens')
         if kit.read('atlas-ui.css')!=Path('web/atlas-ui.css').read_bytes():
             raise ValueError('Design kit contains stale shared component styles')
-        for name in ('DESIGN.md','UX-CONTRACT.md','EXPLORER-VIEWS.md','DESIGN-LAB.md','DESIGN-DIRECTION.md','COMPONENTS.md','TOKENS.md','IMPLEMENTATION-RECIPES.md','VIEW-DIRECTION-STUDIES.md','AESTHETIC-DIRECTION.md','SIGNAL-COMPONENTS.md','REFERENCE-EXTRACTION.md','UI-SDK.md'):
+        for name in KIT_DOCS:
             published_doc=get('docs/'+name,100000)
             if not published_doc or kit.read('docs/'+name)!=published_doc:
                 raise ValueError(f'Design kit has missing or stale guidance: {name}')
@@ -194,13 +322,28 @@ def verify():
     print(f'Verified published landing, List, graph, SQLite, component/token/recipe reference, design handbook, Signal specimen, {len(expected_assets)} assets, {len(icons)} utility icons, four feature symbols and design kit at {REVISION}')
 
 
+RETRYABLE_ERRORS=(FetchError, ValueError)
+
+
+def run_verification(verify_once=None, attempts=12, delay=5, sleep=time.sleep):
+    """Run verification, retrying only propagation-shaped failures.
+
+    Every attempt calls verify() afresh, which builds a new Fetcher, so
+    fetched state never leaks across a revision boundary. Errors that
+    are not in RETRYABLE_ERRORS are deterministic — retrying cannot
+    change them — and fail the run on the first attempt.
+    """
+    if verify_once is None: verify_once=verify
+    for attempt in range(attempts):
+        try:
+            verify_once(); return
+        except RETRYABLE_ERRORS as error:
+            if attempt==attempts-1: raise
+            print(f'Waiting for Pages to serve this revision: {type(error).__name__}: {error}')
+            sleep(delay)
+
+
 if __name__=='__main__':
     if not REVISION:
         raise SystemExit('GITHUB_SHA is required')
-    for attempt in range(12):
-        try:
-            verify();break
-        except Exception as error:
-            if attempt==11:raise
-            print(f'Waiting for Pages to serve this revision: {type(error).__name__}: {error}')
-            time.sleep(5)
+    run_verification()
