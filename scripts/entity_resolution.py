@@ -537,27 +537,8 @@ def build_registry(data_dir=None, source_revision=None, generated_at=None):
     # top of the seed, so they survive every regeneration.
     replay_queue_decisions(registry, data_dir)
 
-    # Curated aliases recorded directly in the stored registry carry
-    # forward too: they are human name resolutions that no reviewed
-    # file or queue decision derives (e.g. PR #506 resolved the lead
-    # name "Forerunner Ventures" to partner:forerunner), so a plain
-    # regeneration must not silently drop them. Removing one is done
-    # by editing the stored registry — the builder preserves what it
-    # finds there, it never invents aliases of its own.
-    stored_path = data_dir / 'identity.json'
-    if stored_path.is_file():
-        try:
-            stored = json.loads(stored_path.read_text(encoding='utf-8'))
-        except (OSError, ValueError):
-            stored = {}
-        for entity_id, record in (stored.get('entities') or {}).items():
-            current = entities.get(entity_id)
-            if not current:
-                continue
-            extra = [a for a in record.get('aliases') or []
-                     if a not in current['aliases']]
-            if extra:
-                current['aliases'] = sorted([*current['aliases'], *extra])
+    # Do not replay aliases from the generated registry: they may have
+    # been inherited from a merge that has since been reversed.
 
     registry['entities'] = dict(sorted(entities.items()))
     registry['merges'] = sorted(registry['merges'],

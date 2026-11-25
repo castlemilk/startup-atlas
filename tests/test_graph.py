@@ -14,6 +14,7 @@ def load(name,path):
 graph=load('atlas_graph','scripts/make-graph.py')
 crawl=load('atlas_crawl_news','scripts/crawl.py')
 database=load('atlas_graph_db','scripts/build-graph-db.py')
+identity=load('atlas_identity','scripts/entity_resolution.py')
 
 class GraphTests(unittest.TestCase):
     def test_missing_founding_year_stays_absent_in_graph_and_sqlite(self):
@@ -129,6 +130,50 @@ class GraphTests(unittest.TestCase):
                 stored = list(map(lambda row: json.loads(row[0]),
                                   db.execute('select data from edges')))
             self.assertEqual(roles(stored), expected)
+
+    def test_rejected_merge_does_not_leave_a_funding_alias(self):
+        reviewed = {'Canonical Capital': {'website': 'https://canonical.example/',
+                                           'aliases': ['Canonical VC']}}
+        leads = list(reviewed)
+        research = {'startups': [{'name': 'Example', 'funding_rounds': [
+            {'id': 'revoked-lead', 'stage': 'Seed', 'lead_investor': 'Unrelated Ventures',
+             'source': 'https://example.com/seed'},
+            {'id': 'reviewed-lead', 'stage': 'Series A', 'lead_investor': 'Canonical VC',
+             'source': 'https://example.com/series-a'},
+        ]}]}
+        decision = {'kind': 'merge', 'subject': 'partner:unrelated-ventures',
+                    'subject_key': 'unrelated-ventures', 'status': 'approved',
+                    'candidates': [{'id': 'partner:canonical-capital', 'basis': 'name-similarity'}]}
+        with tempfile.TemporaryDirectory() as temp:
+            directory = Path(temp)
+            def put(name, value):
+                (directory / name).write_text(json.dumps(value), encoding='utf-8')
+            for name, value in [('partner-leads.json', leads), ('partners-reviewed.json', reviewed),
+                                ('partner-profiles.json', {}), ('startup-research.json', research)]:
+                put(name, value)
+
+            def regenerate(status):
+                put('review-queue.json', {'entries': [{**decision, 'status': status}]})
+                return identity.build_registry(directory, source_revision='fixture',
+                                               generated_at='2026-11-25T00:00:00Z')
+
+            def funding_edges(registry):
+                result = graph.build_graph({}, leads, reviewed, {'opportunities': []}, research,
+                                           identity=registry)
+                return sorted((e['round_id'], e['from']) for e in result['edges']
+                              if e['kind'] == 'led_round')
+
+            approved = regenerate('approved')
+            self.assertEqual(funding_edges(approved), [('reviewed-lead', 'partner:canonical-capital'),
+                                                       ('revoked-lead', 'partner:canonical-capital')])
+            put('identity.json', approved)
+            rejected = regenerate('rejected')
+            self.assertEqual(rejected['merges'], [])
+            self.assertEqual(rejected['entities']['partner:canonical-capital']['aliases'],
+                             ['Canonical VC'])
+            self.assertEqual(funding_edges(rejected), [('reviewed-lead', 'partner:canonical-capital')])
+            put('identity.json', rejected)
+            self.assertEqual(regenerate('rejected'), rejected)
 
     def test_derived_funding_links_do_not_claim_to_be_announcements(self):
         # The exact Goterra draft initially mislabelled both retrospective
