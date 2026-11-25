@@ -219,6 +219,33 @@ Non-derivable personal relationships (friendships, prior collaborations
 outside a shared recorded founding) are out of scope until a reviewed
 data source records them.
 
+### Founder blurbs (#528, added 25 Nov 2026, Ben's direction)
+
+A founder record in `data/startup-research.json` may carry an optional
+`blurb` object — the Wikipedia-style summary the person view renders in
+its About section:
+
+```json
+"blurb": {
+  "text": "Co-founder and CEO of …",
+  "sources": ["https://…", "https://…"],
+  "verified_at": "2026-11-25"
+}
+```
+
+Every fact in `text` must be traceable to one of the fetched `sources`
+(1–10 public https URLs); `verified_at` is the date those sources were
+checked. The field is self-sourced — unlike inherited founder fields it
+carries its own provenance, so it is exempt from source-inheritance
+checks. `scripts/make-graph.py` passes it through to the person entity
+(only when present, like `socials`), the hosted record schema
+(`backend/hosted/src/startup-record.mjs`) validates its shape, and
+`web/entity.js` renders it with its sources in the profile evidence
+index. Partner team members (scoped `person:<name>--<partner>` records)
+do not carry blurbs until their identities are reconciled with founder
+records. First tranche (25 Nov 2026): 11 founders — Alloovium's three,
+PsiQuantum's four, Canva's three and Culture Amp's Didier Elzinga.
+
 ### Partner `relationships` field (added 24 Nov 2026, Ben's direction)
 
 A reviewed partner record (`data/partners-reviewed.json`) may carry two
