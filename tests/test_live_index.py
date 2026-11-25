@@ -98,6 +98,87 @@ class ReviewedValuationInputTests(unittest.TestCase):
         self.assertIn("- 'data/treemap-evidence.json'", publisher)
 
 
+class PublishGuardTests(unittest.TestCase):
+    """Issue #150 (A3): skip only unchanged verified publication.
+
+    The guarded publisher compares the candidate's content manifest (a
+    pure content hash) with the already-published manifest. Identical
+    releases produce an explicit no-op receipt and upload nothing;
+    changed, missing or stale stored state takes the full path — a
+    failure is never relabelled "unchanged".
+    """
+
+    LATER = datetime(2026, 11, 24, 10, 30, 0, tzinfo=timezone.utc)
+
+    def make_corpus(self, tmp):
+        data = Path(tmp) / 'data'
+        data.mkdir()
+        for name in corpus.REVIEWED_FILES:
+            (data / name).write_bytes(json.dumps({'file': name}).encode())
+        return data
+
+    def guarded(self, store, data, revision, now):
+        from unittest.mock import patch
+        with patch.object(indexer, 'client_for', return_value=store):
+            return indexer.publish_reviewed_corpus_if_changed(
+                data, None, revision, now)
+
+    def test_unchanged_corpus_is_a_noop_with_receipt(self):
+        from unittest.mock import patch
+        store = FakeStore()
+        with tempfile.TemporaryDirectory() as tmp:
+            data = self.make_corpus(tmp)
+            with patch.object(indexer, 'client_for', return_value=store):
+                indexer.publish_reviewed_corpus(data, None, 'abc123', FIXED_NOW)
+            store.put_order.clear()
+            manifest, receipt = self.guarded(store, data, 'def456', self.LATER)
+            self.assertEqual(receipt['status'], 'unchanged')
+            self.assertEqual(receipt['sha256'], manifest['sha256'])
+            self.assertEqual(receipt['published_source_revision'], 'abc123')
+            self.assertEqual(receipt['source_revision'], 'def456')
+            self.assertEqual(store.put_order, [])
+
+    def test_changed_corpus_publishes_in_full(self):
+        store = FakeStore()
+        with tempfile.TemporaryDirectory() as tmp:
+            data = self.make_corpus(tmp)
+            self.guarded(store, data, 'abc123', FIXED_NOW)
+            store.put_order.clear()
+            (data / 'catalogue.json').write_bytes(b'{"changed": true}')
+            manifest, receipt = self.guarded(store, data, 'def456', self.LATER)
+            self.assertEqual(receipt['status'], 'published')
+            self.assertEqual(receipt['sha256'], manifest['sha256'])
+            self.assertIn(corpus.reviewed_key('catalogue.json'), store.put_order)
+            self.assertEqual(store.put_order[-1], corpus.reviewed_manifest_key())
+
+    def test_missing_stored_manifest_publishes(self):
+        store = FakeStore()
+        with tempfile.TemporaryDirectory() as tmp:
+            data = self.make_corpus(tmp)
+            _, receipt = self.guarded(store, data, 'abc123', FIXED_NOW)
+            self.assertEqual(receipt['status'], 'published')
+            self.assertEqual(store.put_order[-1], corpus.reviewed_manifest_key())
+
+    def test_stale_stored_manifest_publishes(self):
+        store = FakeStore()
+        with tempfile.TemporaryDirectory() as tmp:
+            data = self.make_corpus(tmp)
+            # A stored manifest whose hash no longer matches the candidate
+            # is stale evidence, not an unchanged release.
+            store.objects[corpus.reviewed_manifest_key()] = json.dumps(
+                {'sha256': '0' * 64, 'source_revision': 'old'}).encode()
+            _, receipt = self.guarded(store, data, 'abc123', FIXED_NOW)
+            self.assertEqual(receipt['status'], 'published')
+
+    def test_corrupt_stored_manifest_publishes(self):
+        store = FakeStore()
+        with tempfile.TemporaryDirectory() as tmp:
+            data = self.make_corpus(tmp)
+            store.objects[corpus.reviewed_manifest_key()] = b'not json'
+            _, receipt = self.guarded(store, data, 'abc123', FIXED_NOW)
+            self.assertEqual(receipt['status'], 'published')
+
+
 @unittest.skipUnless(PYARROW, 'pyarrow is not installed')
 class LiveIndexTests(unittest.TestCase):
     def test_build_writes_versioned_index_and_pointer(self):
