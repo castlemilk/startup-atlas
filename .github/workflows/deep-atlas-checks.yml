@@ -27,9 +27,7 @@ jobs:
       - name: Validate catalogue and filtering
         run: |
           npm run data:generate
-          node --test tests/*.test.js
-          python3 -m unittest discover -s tests -p 'test_*.py'
-          npm run audit:images
+          npm run test:prepared
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
