@@ -2,6 +2,13 @@
 
 Only Python's standard library is used. No transport, catalogue write, scheduler,
 review authority or publication capability is provided. See the companion contract.
+
+Integration note (#537): the contract's eligible-population denominators
+(eligible_total / verification_ratio / completion) are consumed by
+scripts/loop_health_check.py, whose coverage check reports catalogue
+completeness over the committed graph as a daily RED/WARN signal. The
+ledger itself remains per-run and offline until the crawler writes one
+(#77); the health check does not open or create ledgers.
 """
 from __future__ import annotations
 

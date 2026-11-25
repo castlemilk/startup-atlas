@@ -55,6 +55,28 @@ Checks, in one stdlib-only run:
                 is descriptive only. A crawl writes a separate artifact,
                 and a successful no-op rebuild preserves entry timestamps,
                 so rebuild/publish freshness requires separate evidence.
+  g. coverage — catalogue entity completeness (#537), using the
+                eligible-population denominators defined by the
+                collection-coverage contract
+                (docs/COLLECTION-COVERAGE-CONTRACT.md, implemented by
+                scripts/collection_coverage.py): for each scope, the
+                eligible population in the committed graph vs the
+                covered subset, reported in the contract's report shape
+                (eligible_total, verification_ratio, completion). Until
+                this check the contract was offline and unintegrated and
+                loop health measured only plumbing, so completeness gaps
+                hid indefinitely — a full accelerator cohort sat at zero
+                funding rounds unnoticed (#529). Scopes: cohort-rounds
+                (startups with a cohort/batch participated_in edge —
+                no round_id — that have at least one funding round;
+                any gap is RED, this is the #529 miss class),
+                startup-funding, startup-logos, person-headshots and
+                round-lead-investors (#353). A scope is WARN below full
+                coverage and RED below its floor; floors sit below the
+                25 Nov 2026 baselines (0.60 / 0.75 / 0.21 / 0.51) so a
+                regression trips RED while the known gaps stay visible
+                as WARN until the companion issues close them. Missing
+                or unreadable graph data degrades to WARN, unverified.
 
 Exit code is non-zero when any check is RED. WARN never fails the run.
 All network access goes through an injectable ``fetch`` callable and all
@@ -84,6 +106,17 @@ INDEX_RED_AGE_H = 72
 STALE_WARN_DAYS = 5
 STALE_RED_DAYS = 7
 QUEUE_PENDING_WARN = 150
+# Coverage floors (#537): a scope's verification_ratio below its floor is
+# RED; below full coverage (1.0) it is WARN. Floors sit below the
+# 25 Nov 2026 baselines noted in the module docstring, except
+# cohort-rounds, whose floor is full coverage by design.
+COVERAGE_FLOORS = {
+    'cohort-rounds': 1.0,
+    'startup-funding': 0.50,
+    'startup-logos': 0.50,
+    'person-headshots': 0.10,
+    'round-lead-investors': 0.40,
+}
 DATE_KEYS = ('checked', 'reviewed_at')
 
 OK, WARN, RED = 'ok', 'warn', 'red'
@@ -503,6 +536,92 @@ def check_review_queue(report, data_dir, now):
                '; '.join([detail, *problems]))
 
 
+def coverage_scopes(graph):
+    """Eligible-vs-covered completeness scopes over the committed graph.
+
+    Denominators follow the collection-coverage contract
+    (docs/COLLECTION-COVERAGE-CONTRACT.md): each scope names an eligible
+    population and counts the covered subset, in the shape of
+    collection_coverage.Ledger.report() scope entries. A cohort edge is
+    a participated_in edge with no round_id — batch/cohort membership,
+    as opposed to participation in a specific funding round.
+    """
+    entities = [e for e in graph.get('entities') or [] if isinstance(e, dict)]
+    edges = [e for e in graph.get('edges') or [] if isinstance(e, dict)]
+    rounds = [r for r in graph.get('funding_rounds') or []
+              if isinstance(r, dict)]
+    by_kind = {}
+    for entity in entities:
+        by_kind.setdefault(entity.get('kind'), set()).add(entity.get('id'))
+    startups = by_kind.get('startup', set())
+    people = by_kind.get('person', set())
+    logos = {e.get('id') for e in entities if e.get('logo')}
+    funded = {r.get('startup_id') for r in rounds} & startups
+    cohort = {e.get('from') for e in edges
+              if e.get('kind') == 'participated_in'
+              and not e.get('round_id')} & startups
+    raw = [
+        ('cohort-rounds', 'startup', cohort, cohort & funded),
+        ('startup-funding', 'startup', startups, funded),
+        ('startup-logos', 'startup', startups, startups & logos),
+        ('person-headshots', 'person', people, people & logos),
+        ('round-lead-investors', 'funding_round',
+         {r.get('id') for r in rounds},
+         {r.get('id') for r in rounds if r.get('lead_investor')}),
+    ]
+    scopes = []
+    for scope_id, kind, eligible, covered in raw:
+        eligible.discard(None)
+        covered.discard(None)
+        if not eligible:
+            continue
+        ratio = len(covered) / len(eligible)
+        scopes.append({
+            'scope_id': scope_id,
+            'entity_kind': kind,
+            'eligible_total': len(eligible),
+            'counts': {'covered': len(covered),
+                       'uncovered': len(eligible) - len(covered)},
+            'verification_ratio': ratio,
+            'completion': 'complete' if ratio == 1 else 'partial',
+            'uncovered_ids': sorted(eligible - covered),
+        })
+    return scopes
+
+
+def check_coverage(report, data_dir):
+    """Catalogue completeness signal (#537); see module docstring (g)."""
+    path = Path(data_dir) / 'graph.json'
+    try:
+        graph = json.loads(path.read_text())
+        if not isinstance(graph, dict):
+            raise ValueError('graph is not an object')
+    except (OSError, ValueError) as exc:
+        report.add(WARN, 'coverage',
+                   f'could not read {path.name} ({exc}); unverified')
+        return
+    scopes = coverage_scopes(graph)
+    if not scopes:
+        report.add(OK, 'coverage',
+                   'graph carries no eligible populations to measure')
+        return
+    for scope in scopes:
+        ratio = scope['verification_ratio']
+        floor = COVERAGE_FLOORS[scope['scope_id']]
+        level = OK if ratio >= 1.0 else (RED if ratio < floor else WARN)
+        detail = (f"{scope['scope_id']}: {scope['counts']['covered']} of "
+                  f"{scope['eligible_total']} eligible covered "
+                  f'({ratio:.0%})')
+        if level != OK:
+            detail += f"; floor {floor:.0%}"
+            uncovered = scope['uncovered_ids']
+            if scope['scope_id'] == 'cohort-rounds' and uncovered:
+                detail += ('; uncovered: '
+                           + ', '.join(i.removeprefix('startup:')
+                                       for i in uncovered[:5]))
+        report.add(level, 'coverage', detail)
+
+
 def run_checks(fetch=http_fetch, now=None, data_dir=None, git_date=_git_date,
                web_dir=None):
     now = now or datetime.now(timezone.utc)
@@ -515,6 +634,7 @@ def run_checks(fetch=http_fetch, now=None, data_dir=None, git_date=_git_date,
     check_console(fetch, report, latest, manifest, web_dir=web_dir)
     check_checked_dates(report, data_dir, now.date(), git_date)
     check_review_queue(report, data_dir, now)
+    check_coverage(report, data_dir)
     return report
 
 
