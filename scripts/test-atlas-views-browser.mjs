@@ -329,8 +329,8 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('#partner-people .profile-item').length"),partners.Airtree.people.length);
   assert.match(await text('#partner-companies .profile-sample'),/Selected portfolio sample/);
   assert.equal(await evaluate("document.querySelector('#partner-companies .profile-sample time')?.dateTime"),partners.Airtree.checked);
-  const readingOrder=await evaluate("(()=>{const companies=document.querySelector('#partner-companies'),people=document.querySelector('#partner-people'),a=companies.getBoundingClientRect(),b=people.getBoundingClientRect();return {dom:!!(companies.compareDocumentPosition(people)&Node.DOCUMENT_POSITION_FOLLOWING),visual:a.top<b.top-1||(Math.abs(a.top-b.top)<=1&&a.left<b.left)};})()");
-  assert.deepEqual(readingOrder,{dom:true,visual:true},'Companies should precede people in the DOM and visual reading order');
+  const readingOrder=await evaluate("(()=>{const companies=document.querySelector('#partner-companies'),people=document.querySelector('#partner-people');return {dom:!!(companies.compareDocumentPosition(people)&Node.DOCUMENT_POSITION_FOLLOWING),companiesShown:!companies.hidden,peopleHidden:people.hidden};})()");
+  assert.deepEqual(readingOrder,{dom:true,companiesShown:true,peopleHidden:true},'Companies should precede people in the DOM and be the panel shown first');
   await assertActionContrast('.profile-actions .atlas-button-primary');
   assert.ok(await evaluate("[...document.querySelectorAll('#partner-companies .profile-item-source,#partner-people .profile-item-source')].every(row=>row.querySelector('a[href^=\"https://\"]'))"),'Every researched company/person needs visible evidence');
   await assertNoOverflow('Desktop partner profile');
