@@ -205,6 +205,10 @@ export class ReviewQueue {
   }
 
   async #mutate(id, apply) {
+    // A tokenless store is read-only: refuse before touching entry
+    // state, so the refusal is the same 503 whatever the entry's
+    // status — a fully-decided queue must not answer 409 instead.
+    if (!this.store.token) fail('GITHUB_TOKEN_MISSING', 'ATLAS_GITHUB_TOKEN is not configured, so decisions cannot be written back. The panel is read-only.', 503);
     const { data: queue, sha } = await this.store.loadJson(QUEUE_PATH);
     const entry = (queue.entries ?? []).find(item => item.id === id);
     if (!entry) fail('NOT_FOUND', `No queue entry with id ${id}.`, 404);
