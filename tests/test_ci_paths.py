@@ -61,6 +61,13 @@ class CiPathTests(unittest.TestCase):
         self.assertEqual(
             self.selected('tests/test_crawl_corpus.py'), {'collection'})
 
+    def test_identity_registry_builder_runs_data_checks(self):
+        # Issue #516: the identity-drift test lives in
+        # test_entity_resolution.py and runs in the data lane, so the
+        # builder and its test must select that lane.
+        self.assertEqual(self.selected('scripts/entity_resolution.py'), {'data'})
+        self.assertEqual(self.selected('tests/test_entity_resolution.py'), {'data'})
+
     def test_valuation_queue_uses_only_fast_queue_lane(self):
         for path in ('scripts/build-review-queue.py', 'scripts/latest_value.py',
                      'tests/test_valuation_queue.py'):
