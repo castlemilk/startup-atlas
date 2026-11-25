@@ -137,7 +137,10 @@ try {
   assert.deepEqual(clippedGroupHeadings,[],'Group headings must fit above their tiles');
   const toolbarLayout=await evaluate(`(() => {
     const country=document.querySelector('.exploration-country-trigger').getBoundingClientRect();
-    const size=document.querySelector('#treemap-metric').closest('label').getBoundingClientRect();
+    // Measure the select itself, not its closest('label'): the label wraps a
+    // caption span above the select, so its box starts one caption line
+    // (~13px) higher than the control even when both controls share a row.
+    const size=document.querySelector('#treemap-metric').getBoundingClientRect();
     return {countryX:country.x,countryTop:country.top,sizeX:size.x,sizeTop:size.top,chartTop:document.querySelector('#treemap-chart').getBoundingClientRect().top};
   })()`);
   assert.ok(toolbarLayout.countryX<toolbarLayout.sizeX,`Headquarters control must sit left of the chart settings (country x=${toolbarLayout.countryX}, metric x=${toolbarLayout.sizeX})`);
