@@ -150,6 +150,16 @@ jobs:
             --run-url ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
             --sequence ${{ github.run_number }}
           cp data/crawl-source-state.json research/crawl/crawl-source-state.json
+          # Issue #532: the bookkeeping above counts pages and runs, never
+          # entity completeness, so catalogue gaps were only found by hand.
+          # Emit the gap report into the artifact with the registry: a
+          # crawl does not count as done until it runs clean or its gaps
+          # are filed.
+          python3 scripts/crawl_gap_report.py \
+            --graph data/graph.json \
+            --out research/crawl/crawl-gap-report.json \
+            --summary-md research/crawl/crawl-gap-report.md \
+            --catalogue-revision ${{ github.sha }}
       - name: Preserve review material
         if: always()
         uses: actions/upload-artifact@v4
