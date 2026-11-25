@@ -8566,6 +8566,26 @@
       "stale": false
     },
     {
+      "from": "partner:blackbird-ventures",
+      "to": "startup:superstat",
+      "kind": "led_round",
+      "description": "Led Seed round",
+      "source": "https://www.blackbird.vc/blog/why-we-fell-for-the-founders-building-sports-data-layer-our-investment-in-superstat",
+      "round_id": "superstat-2026-blackbird-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:boab-ai",
       "to": "startup:pi-exchange",
       "kind": "supports",
@@ -9025,6 +9045,26 @@
       "description": "Participated in Series A round",
       "source": "https://arkeus.com/news/arkeus-raises-a-25-million-series-a-to-scale-ai-powered-sensing-systems-for-allied-defence-markets",
       "round_id": "arkeus-2026-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
+      "to": "startup:cauldron",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://www.cauldronferm.com/post/cauldron-raises-9-5m-aud-series-a-to-scale-its-continuous-hyper-fermentation-technology",
+      "round_id": "cauldron-2024-series-a",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.6,
@@ -9555,6 +9595,46 @@
       "description": "Participated in Series A round",
       "source": "https://q-ctrl.com/blog/global-vc-bets-on-sydney-quantum-computing-start-up-q-ctrl-in-us15m-series-a",
       "round_id": "q-ctrl-2019-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:square-peg",
+      "to": "startup:airwallex",
+      "kind": "led_round",
+      "description": "Led Series F round",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking",
+      "round_id": "airwallex-2025-series-f",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:square-peg",
+      "to": "startup:airwallex",
+      "kind": "led_round",
+      "description": "Led Series A+ round",
+      "source": "https://www.airwallex.com/global/newsroom/airwallex-square-peg-capital-series-a-funding",
+      "round_id": "airwallex-2017-series-a-plus",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.6,
@@ -10105,6 +10185,26 @@
         "sources": 1,
         "source_types": [
           "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:startmate",
+      "to": "startup:superstat",
+      "kind": "participated_in",
+      "description": "Participated in Seed round",
+      "source": "https://www.blackbird.vc/blog/why-we-fell-for-the-founders-building-sports-data-layer-our-investment-in-superstat",
+      "round_id": "superstat-2026-blackbird-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
         ],
         "agreement": false,
         "inferred": false
@@ -17565,10 +17665,11 @@
       "currency": "USD",
       "source": "https://www.airwallex.com/global/newsroom/airwallex-square-peg-capital-series-a-funding",
       "stage_normalised": "Series A",
+      "lead_investor": "Square Peg Capital",
       "participants": [
         "Square Peg Capital"
       ],
-      "note": "Separate investment by Square Peg Capital, after the initial US$13 million Series A."
+      "note": "Separate investment by Square Peg Capital, after the initial US$13 million Series A. The issuer release (the round's source) presents Square Peg Capital as the sole investor in this A+ investment."
     },
     {
       "startup_id": "startup:airwallex",
@@ -17731,9 +17832,10 @@
       "currency": "USD",
       "valuation": 6200000000,
       "valuation_currency": "USD",
-      "note": "Company announcement says the round includes $150 million in secondary share transfers; the amount is not solely primary capital.",
+      "note": "Company announcement says the round includes $150 million in secondary share transfers; the amount is not solely primary capital. K&L Gates, advising Square Peg, identified Square Peg as lead investor on the raise, with existing shareholders Lone Pine Capital, Tencent and DST Global among those participating and Blackbird Ventures, Airtree Ventures, Radar Ventures, R136 Ventures and Athletic Ventures among the new investors: https://www.KLGates.com/KL-Gates-Advises-Australian-Venture-Capital-Firm-Square-Peg-on-Airwallexs-US300-Million-Series-F-Fundraise-5-26-2025",
       "source": "https://www.airwallex.com/global/newsroom/airwallex-raises-usd300-million-at-a-usd6-2-billion-valuation-to-build-the-future-of-global-banking",
       "stage_normalised": "Series F",
+      "lead_investor": "Square Peg",
       "participants": [
         "Square Peg",
         "DST Global",
@@ -17959,7 +18061,13 @@
       "amount_text": "AUD9.5 million (USD6.25 million as reported)",
       "source": "https://www.cauldronferm.com/post/cauldron-raises-9-5m-aud-series-a-to-scale-its-continuous-hyper-fermentation-technology",
       "note": "The 19 March 2024 announcement says the round has closed; exact close date is not stated. Horizons Ventures led, with SOSV and In-Q-Tel joining existing investor Main Sequence. USD6.25 million is the reported equivalent, not an additional round.",
-      "stage_normalised": "Series A"
+      "stage_normalised": "Series A",
+      "lead_investor": "Horizons Ventures",
+      "participants": [
+        "SOSV",
+        "In-Q-Tel",
+        "Main Sequence"
+      ]
     },
     {
       "startup_id": "startup:culture-amp",
@@ -18575,7 +18683,11 @@
       "currency": "AUD",
       "note": "Blackbird reported leading the Seed, joined by Startmate and strategic angels. Participating investor Startmate confirms A$3.5 million and the Seed label (https://www.startmate.com/accelerator); the issuer corroborates the amount and links Blackbird’s announcement (https://www.superstatsport.com/). Date is the investor announcement, not legal close. No individual investor amounts are stated.",
       "source": "https://www.blackbird.vc/blog/why-we-fell-for-the-founders-building-sports-data-layer-our-investment-in-superstat",
-      "stage_normalised": "Seed"
+      "stage_normalised": "Seed",
+      "lead_investor": "Blackbird Ventures",
+      "participants": [
+        "Startmate"
+      ]
     },
     {
       "startup_id": "startup:synthesia",
@@ -19703,6 +19815,7 @@
     "lead_investor 'Galileo Ventures' for round andromeda-2023-12-pre-seed (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Gobi Partners' for round airwallex-2016-pre-series-a (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Greenoaks' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Horizons Ventures' for round cauldron-2024-series-a (Cauldron) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'MegaChips' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; led_round edge skipped",
@@ -19782,6 +19895,7 @@
     "participant 'Hostplus' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'Huashan Capital One' for round airwallex-2016-pre-series-a (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'In-Q-Tel' for round cauldron-2024-series-a (Cauldron) has no matching partner lead; participated_in edge skipped",
     "participant 'In-Q-Tel' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'In-Q-Tel' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'InterWest Partners' for round canva-2013-seed (Canva) has no matching partner lead; participated_in edge skipped",
@@ -19820,6 +19934,7 @@
     "participant 'Ridgeline Partners' for round q-ctrl-2021-series-b (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Ridgeline Partners' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Robinhood Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'SOSV' for round cauldron-2024-series-a (Cauldron) has no matching partner lead; participated_in edge skipped",
     "participant 'SPARX Asset Management' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round arkeus-2023-seed (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Salus Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
