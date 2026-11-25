@@ -226,6 +226,52 @@ def publish_reviewed_corpus(corpus_dir, config, source_revision='', now=None):
     return manifest
 
 
+def read_stored_reviewed_manifest(client):
+    """Fetch the published reviewed manifest; None when absent or unreadable."""
+    try:
+        return client.get_json(reviewed_manifest_key())
+    except (CorpusError, ValueError):
+        return None
+
+
+def publish_reviewed_corpus_if_changed(corpus_dir, config, source_revision='',
+                                        now=None):
+    """Publish the reviewed corpus unless it is already published unchanged.
+
+    Issue #150 (A3): the reviewed manifest ``sha256`` is a pure content hash
+    (see ``atlas_corpus.reviewed_manifest``), so when the candidate's hash
+    matches the already-published manifest, re-uploading the same bytes is
+    redundant publication work. Returns ``(manifest, receipt)`` where
+    ``receipt['status']`` is ``'published'`` or ``'unchanged'``; the
+    unchanged receipt is the explicit no-op publication record. Any doubt —
+    a missing, unreadable or malformed stored manifest — takes the full
+    publication path: a failure is never relabelled "unchanged".
+    """
+    now = now or datetime.now(timezone.utc)
+    files = read_reviewed_files(corpus_dir)
+    candidate = reviewed_manifest(files, source_revision, now)
+    stored = read_stored_reviewed_manifest(client_for(config))
+    if isinstance(stored, dict) and stored.get('sha256') == candidate['sha256']:
+        receipt = {
+            'status': 'unchanged',
+            'sha256': candidate['sha256'],
+            'files': len(candidate['files']),
+            'source_revision': source_revision,
+            'published_source_revision': stored.get('source_revision', ''),
+            'reason': 'content manifest matches the published reviewed '
+                      'corpus; upload skipped',
+        }
+        return candidate, receipt
+    manifest = publish_reviewed_corpus(corpus_dir, config, source_revision, now)
+    receipt = {
+        'status': 'published',
+        'sha256': manifest['sha256'],
+        'files': len(manifest['files']),
+        'source_revision': source_revision,
+    }
+    return manifest, receipt
+
+
 def publish_index(out_dir, version, manifest, config):
     """Upload a built version directory + pointer to the index bucket."""
     client = client_for(config, bucket=config.index_bucket or config.bucket)

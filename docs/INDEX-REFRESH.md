@@ -6,6 +6,8 @@ Reviewed source data is versioned in GitHub. `data/startup-research.json` holds 
 
 The existing Pages workflow builds and checks pull requests, and rebuilds and deploys main on each main update and daily at 03:17 UTC. The release uses `ATLAS_SOURCE_REVISION=github.sha`; its published graph and SQLite must agree on that exact revision. The deploy job runs `scripts/verify-published-graph.py`.
 
+Unchanged-publication guards (issue #150): the live index is content-addressed, so rebuilding an unchanged reviewed corpus is already a no-op that uploads nothing (#373). The reviewed-corpus publisher applies the same rule through `publish_reviewed_corpus_if_changed`: when the candidate's content manifest matches the published manifest it emits an explicit no-op publication receipt instead of re-uploading identical bytes; a missing, unreadable or stale stored manifest always takes the full publication path. PR validation is dependency-selected by `scripts/check_ci_paths.py`; on push (full) runs the Pages workflow also records a shadow selection report in the run summary — what the selector would have executed, with unknown paths and workflow changes counting as full validation — without changing what the full run executes.
+
 That daily job refreshes the index from reviewed repository inputs. It does not discover or verify new founder, funding, headcount or news facts. A pushed branch or draft PR is not a live index update. The private MCP is deployed separately from Pages.
 
 ## Proposed discovery and review loop

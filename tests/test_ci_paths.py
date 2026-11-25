@@ -1,6 +1,6 @@
 import unittest
 
-from scripts.check_ci_paths import lanes
+from scripts.check_ci_paths import lanes, shadow_report
 
 
 class CiPathTests(unittest.TestCase):
@@ -69,3 +69,66 @@ class CiPathTests(unittest.TestCase):
     @staticmethod
     def selected(*paths):
         return {name for name, enabled in lanes(paths).items() if enabled}
+
+
+class ShadowSelectionTests(unittest.TestCase):
+    """Issue #150 (A4): shadow selection recorded inside full runs.
+
+    The shadow report never changes what executes; it records what the
+    dependency map *would* execute, distinguishing selected lanes from
+    not-applicable ones, so a future enforced reduction has replay
+    evidence. Unknown paths and workflow changes select full validation.
+    """
+
+    def test_documentation_only_is_patch_only(self):
+        report = shadow_report(['README.md', 'docs/AGENT-RUNBOOK.md'])
+        self.assertEqual(report['verdict'], 'patch-only')
+        self.assertEqual(report['unknown_paths'], [])
+        self.assertFalse(report['workflow_change'])
+        self.assertTrue(all(
+            value == 'not-applicable' for value in report['lanes'].values()))
+        self.assertEqual(report['aggregate'], 'recorded')
+
+    def test_unknown_paths_select_full_validation(self):
+        report = shadow_report(['scripts/new-tool.py', 'tools/thing.txt'])
+        self.assertEqual(report['verdict'], 'full')
+        self.assertEqual(report['unknown_paths'],
+                         ['scripts/new-tool.py', 'tools/thing.txt'])
+
+    def test_workflow_changes_select_full_validation(self):
+        report = shadow_report(['.github/workflows/live-index.yml'])
+        self.assertEqual(report['verdict'], 'full')
+        self.assertTrue(report['workflow_change'])
+        self.assertEqual(report['lanes']['ci'], 'selected')
+
+    def test_selected_lanes_distinguish_not_applicable(self):
+        report = shadow_report(['data/startup-research.json'])
+        self.assertEqual(report['verdict'], 'selected')
+        self.assertEqual(report['lanes']['data'], 'selected')
+        self.assertEqual(report['lanes']['hosted'], 'selected')
+        self.assertEqual(report['lanes']['go'], 'not-applicable')
+        self.assertEqual(report['lanes']['web'], 'not-applicable')
+
+    def test_manifests_and_lockfiles_select_their_lanes(self):
+        self.assertEqual(
+            shadow_report(['package-lock.json'])['lanes']['web'], 'selected')
+        self.assertEqual(
+            shadow_report(['backend/hosted/package-lock.json'])['lanes']['hosted'],
+            'selected')
+        self.assertEqual(
+            shadow_report(['backend/mcp/package.json'])['lanes']['mcp'],
+            'selected')
+
+    def test_shared_module_selects_every_dependent_lane(self):
+        report = shadow_report(['scripts/catalogue-entries.mjs'])
+        self.assertEqual(report['verdict'], 'selected')
+        for lane in ('data', 'mcp', 'hosted'):
+            self.assertEqual(report['lanes'][lane], 'selected', lane)
+
+    def test_invalid_data_still_selects_the_data_lane(self):
+        # Seeded invalid data must select the tests that catch it: any
+        # data/* path selects data (and hosted, which reads data directly).
+        report = shadow_report(['data/graph.json'])
+        self.assertEqual(report['lanes']['data'], 'selected')
+        self.assertEqual(report['lanes']['hosted'], 'selected')
+        self.assertEqual(report['verdict'], 'selected')
