@@ -327,10 +327,13 @@ async function renderProfile() {
   const heroMetadata = [place ? `<span aria-label="${esc(place.value)}">${icon('location')}${placeLabel}</span>` : '', website].filter(Boolean).join('');
   const returnContext = [dimensions?.country ? countryName(dimensions.country) : '', dimensions?.sector].filter(Boolean).join(' / ');
   const socials = (Array.isArray(entity.socials) ? entity.socials : []).filter(item => sourceUrl(item.source)).map(item => profileSource(item.url, item.label)).join(' ');
+  const blurb = entity.kind === 'person' && entity.blurb && typeof entity.blurb.text === 'string' && entity.blurb.text ? entity.blurb : null;
+  const blurbProof = blurb ? evidence.add({ label: 'About', value: blurb.text, sources: (Array.isArray(blurb.sources) ? blurb.sources : []).map(url => citation(url, { reviewed_at: blurb.verified_at })) }) : null;
   const shareProfile = graphLink(entity.id);
   const sectionLinks = [
     ...(isStartup ? [['entity-company', 'Overview'], ['entity-founders', 'People'], ['entity-funding', 'Funding']] : []),
     ...(offer || programmeUnavailable ? [['entity-programme', 'Programme']] : []),
+    ...(blurb ? [['entity-about', 'About']] : []),
     ...(!isStartup && employment.length ? [['entity-employment', 'Employment']] : []),
     ['entity-connections', 'Relationships']
   ];
@@ -387,6 +390,7 @@ async function renderProfile() {
   const people = isStartup ? `<section class="entity-section entity-people" id="entity-founders">${heading('People & connections')}<div class="entity-people-layout"><div><div class="entity-subsection"><h3>Founders</h3>${founders.length ? `<div class="entity-connections entity-founder-records">${founders.map(edge => renderConnection(edge, { personAction: true })).join('')}</div>` : empty('Founding relationships have not been researched yet.')}</div>${employmentSection}${sharedCompanies.length ? `<div class="entity-subsection"><h3>Shared company history</h3><div class="entity-connections">${sharedCompanies.map(connectionRow).join('')}</div></div>` : ''}</div>${foundingDiagram(entity, founderPeople, shareProfile)}</div></section>`
     : employment.length ? `<section class="entity-section" id="entity-employment">${heading('Employment roles')}${employmentRows}</section>` : '';
   const funding = isStartup ? companyTimeline(recordedRounds, articles, named, evidence, citation) : '';
+  const about = blurb ? `<section class="entity-section" id="entity-about">${heading('About')}<div class="entity-overview-summary"><p>${esc(blurb.text)}</p>${evidence.action(blurbProof, 'Sources', 'compact')}</div></section>` : '';
   const relationships = `<section class="entity-section" id="entity-connections">${heading('Relationships')}${microGraph(store.graph, entity)}${otherEdges.length ? `<div class="entity-subsection">${focusedDossier ? '' : '<h3>Related records</h3>'}<div class="entity-connections">${otherEdges.map(edge => renderConnection(edge)).join('')}</div></div>` : empty('No further relationships are recorded in the published research.')}${focusedDossier ? '' : `<a class="atlas-button" data-atlas-profile-graph="${esc(entity.id)}" href="${shareProfile}">${icon('graph')}Open in full knowledge graph</a>`}</section>`;
   const programme = programmeDetails(offer, programmeUnavailable, evidence, citation);
   const references = `<details class="profile-sources-footer entity-sources-footer"><summary class="profile-sources-summary">${renderEvidenceHeading()}<span class="profile-sources-count">${esc(count(evidence.sourceCount(), 'source'))}</span></summary><section class="entity-section entity-sources-section" id="entity-sources">${focusedDossier ? `<p class="entity-evidence-coverage">${esc(count(edges.length, 'recorded relationship'))}</p>` : ''}${evidence.index()}</section></details>`;
@@ -402,7 +406,7 @@ async function renderProfile() {
     <div class="profile-sticky${isStartup ? ' entity-company-sticky' : focusedDossier ? ' entity-dossier-sticky' : ''}">${compactBar}<span class="profile-compact-identity" aria-hidden="true">${mark(entity)}<span>${esc(entity.name)}</span></span><nav class="atlas-section-nav" role="tablist" aria-label="Profile sections">${sectionLinks.map(([id, label], index) => `<a role="tab" id="tab-${id}" href="#${id}" aria-controls="${id}" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}">${label}</a>`).join('')}</nav></div>
     ${mergedFrom ? `<p class="profile-notice" role="status">This record was merged into ${esc(entity.name)}; the shared link now points at the current profile.</p>` : ''}
     ${store.mode === 'fallback' ? '<p class="profile-notice" role="status">Showing the published backup while the database is unavailable.</p>' : ''}
-    <div class="entity-layout${isStartup ? ' entity-company-layout' : ''}"><div class="entity-dossier">${programme}${overview}${people}${funding}${relationships}</div>
+    <div class="entity-layout${isStartup ? ' entity-company-layout' : ''}"><div class="entity-dossier">${programme}${overview}${about}${people}${funding}${relationships}</div>
     ${!isStartup && !focusedDossier ? `<aside class="entity-aside" aria-label="Research at a glance"><section><h2>Research coverage</h2><p>${esc(count(edges.length, 'recorded relationship'))}.</p></section></aside>` : ''}</div>
     ${references}
     ${evidence.dialog()}`;
