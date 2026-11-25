@@ -1276,12 +1276,15 @@ class WorkflowTests(unittest.TestCase):
                          'External asset host requires separate review')
 
     def test_company_profile_seeds_carry_psiquantum_asset_hosts(self):
+        research = json.loads(
+            (crawl.ROOT / 'data/startup-research.json').read_text())
         seeds = crawl.load_approved_csv(
-            crawl.ROOT / 'data/company-profile-seeds.csv', {'PsiQuantum'},
+            crawl.ROOT / 'data/company-profile-seeds.csv',
+            {row['name'] for row in research['startups']},
             require_qid=False)
-        self.assertEqual(len(seeds), 1)
-        self.assertIn('static1.squarespace.com', seeds[0]['asset_hosts'])
-        self.assertIn('images.squarespace-cdn.com', seeds[0]['asset_hosts'])
+        psi = next(s for s in seeds if s['name'] == 'PsiQuantum')
+        self.assertIn('static1.squarespace.com', psi['asset_hosts'])
+        self.assertIn('images.squarespace-cdn.com', psi['asset_hosts'])
 
     def test_approved_asset_host_rejects_urls_and_local_names(self):
         with tempfile.TemporaryDirectory() as tmp:
