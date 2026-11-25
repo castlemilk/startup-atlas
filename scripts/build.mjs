@@ -9,6 +9,7 @@ import { featureSymbols, exportFeatureSymbol } from '../web/atlas-feature-symbol
 import { assets as designAssets } from '../web/design-handbook.js';
 import { indexTreemapEvidence } from '../web/treemap-model.js';
 import { buildEntityRedirects } from '../web/entity-redirects.js';
+import { selectCohort, renderCohortIndex, renderOpportunityPage, withCohortUrls, opportunityPath } from '../scripts/opportunity-pages.mjs';
 
 // These documents are authored against repository paths, then served together
 // under docs/. Resolve links after assets are copied so the published files work.
@@ -123,6 +124,18 @@ await cp('data/land.geojson','dist/data/land.geojson');
 const identityRegistry = JSON.parse(await readFile('data/identity.json','utf8'));
 const entityRedirects = buildEntityRedirects(identityRegistry, new Set(graphForTreemap.entities.map(entity => entity.id)));
 await writeFile('dist/data/entity-redirects.json', JSON.stringify({ version: 1, redirects: entityRedirects }, null, 2) + '\n');
+// Prerender the reviewed opportunity cohort (#130): static, script-free
+// pages so the catalogue's checked credits/programmes are readable in the
+// initial HTML. The cohort is derived from the catalogue at build time; an
+// empty cohort means the review pipeline broke, so fail loudly.
+const catalogue = JSON.parse(await readFile('data/catalogue.json','utf8'));
+const opportunityCohort = selectCohort(catalogue.opportunities);
+if (opportunityCohort.length === 0) throw new Error('Opportunity cohort is empty: no catalogue record meets the #130 review bar');
+await mkdir('dist/opportunities',{recursive:true});
+await writeFile('dist/opportunities.html', renderCohortIndex(opportunityCohort, { updated: catalogue.updated }));
+for (const record of opportunityCohort) await writeFile(`dist/${opportunityPath(record.id)}`, renderOpportunityPage(record));
+await writeFile('dist/sitemap.xml', withCohortUrls(await readFile('dist/sitemap.xml','utf8'), opportunityCohort));
+console.log(`Prerendered ${opportunityCohort.length} reviewed opportunity pages (#130)`);
 await mkdir('dist/vendor/duckdb',{recursive:true});
 for (const file of ['duckdb-browser.mjs','duckdb-mvp.wasm','duckdb-eh.wasm','duckdb-browser-mvp.worker.js','duckdb-browser-eh.worker.js']) await cp(`${duckdbDist}/${file}`,`dist/vendor/duckdb/${file}`);
 // @duckdb/duckdb-wasm 1.32.0 ships no LICENSE file (neither in dist/ nor the
