@@ -176,13 +176,13 @@
       "status": "completed",
       "started_at": "2026-11-21T11:49:00Z",
       "finished_at": "2026-11-21T11:55:00Z",
-      "outcome":       {
-            "sources_attempted": 90,
-            "sources_succeeded": 81,
-            "sources_failed": 0,
-            "candidates_discovered": 4705,
-            "coverage_reference": "partner-crawl-review artifact 14706395079 (snapshots partners-20261121T115127Z.json, programs-20261121T115143Z.json, news-20261121T115152Z.json, logos-20261121T115207Z.json, profiles-20261121T115246Z.json, portraits-20261121T115158Z.json)",
-            "notes": "Dispatched as Partner research crawl workflow run #37 (ID 44900894051) on 21 Nov 2026 at 22:52 AEDT via browser, main 09f3e48; succeeded in 2m 57s, all steps green (one warning only: Node.js 20 deprecated, actions forced to Node.js 24). Artifact partner-crawl-review (ID 14706395079, 2,440,419 bytes, 89 files, expires ~5 Dec 2026). Per-mode: partners 5 attempted / 1564 candidates; programs 17 / 155; news 4 / 5; logos 32 / 312; profiles 32 / 2639 (73/75 pages); portraits 1 source / 51 candidates; partner-update candidates 30. Logos step captured 74 logo files (vs 42 in crawl-03) \u2014 the fixed logo prioritisation (structured logos and page logos first, --logo-limit 3) and seed hosts worked. Portraits mode ran (PsiQuantum only, 2/2 pages) but captured 0 portrait files \u2014 mode executes, capture unproven. All candidates unreviewed; nothing published."
+      "outcome": {
+        "sources_attempted": 90,
+        "sources_succeeded": 81,
+        "sources_failed": 0,
+        "candidates_discovered": 4705,
+        "coverage_reference": "partner-crawl-review artifact 14706395079 (snapshots partners-20261121T115127Z.json, programs-20261121T115143Z.json, news-20261121T115152Z.json, logos-20261121T115207Z.json, profiles-20261121T115246Z.json, portraits-20261121T115158Z.json)",
+        "notes": "Dispatched as Partner research crawl workflow run #37 (ID 44900894051) on 21 Nov 2026 at 22:52 AEDT via browser, main 09f3e48; succeeded in 2m 57s, all steps green (one warning only: Node.js 20 deprecated, actions forced to Node.js 24). Artifact partner-crawl-review (ID 14706395079, 2,440,419 bytes, 89 files, expires ~5 Dec 2026). Per-mode: partners 5 attempted / 1564 candidates; programs 17 / 155; news 4 / 5; logos 32 / 312; profiles 32 / 2639 (73/75 pages); portraits 1 source / 51 candidates; partner-update candidates 30. Logos step captured 74 logo files (vs 42 in crawl-03) — the fixed logo prioritisation (structured logos and page logos first, --logo-limit 3) and seed hosts worked. Portraits mode ran (PsiQuantum only, 2/2 pages) but captured 0 portrait files — mode executes, capture unproven. All candidates unreviewed; nothing published."
       },
       "snapshot_sha256": "128d1d50375153343e71437f6b322202bbc8820ec2ad1ae98d7276875364bfff",
       "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44900894051/artifacts/14706395079",
@@ -225,39 +225,12 @@
       "started_at": "2026-11-21T23:02:00Z",
       "finished_at": "2026-11-21T23:08:00Z",
       "outcome": {
-        "attempted": null,
-        "succeeded": null,
-        "failed": 0,
-        "candidates": 4350,
-        "per_mode": {
-          "partners": {
-            "sources": 5,
-            "candidates": 1564
-          },
-          "programs": {
-            "sources": 17,
-            "candidates": 156
-          },
-          "news": {
-            "sources": 4,
-            "candidates": 5
-          },
-          "logos": {
-            "sources": 32,
-            "candidates": 309
-          },
-          "profiles": {
-            "sources": 32,
-            "candidates": 2286
-          },
-          "portraits": {
-            "sources": 1,
-            "candidates": 46
-          },
-          "partner_updates": 30
-        },
-        "duration_seconds": 176,
-        "notes": "All 16 job steps green; one Node.js 20 deprecation warning only. Profiles down 353 vs run #37 (2,639 -> 2,286) after PR #329 deduplicated identical profile image leads; programs up 1 (155 -> 156); logos down 3 (312 -> 309); portraits 46 (was 51), still 0 files captured. Partner updates still 30, same names as runs #36/#37. Skipped sources include LaunchVic, Henson, Canada NRC IRAP, Innovative Solutions Canada AI governance challenge, Ignite Program NT."
+        "sources_attempted": 5,
+        "sources_succeeded": 5,
+        "sources_failed": 0,
+        "candidates_discovered": 1564,
+        "coverage_reference": null,
+        "notes": "All 16 job steps green; one Node.js 20 deprecation warning only. Profiles down 353 vs run #37 (2,639 -> 2,286) after PR #329 deduplicated identical profile image leads; programs up 1 (155 -> 156); logos down 3 (312 -> 309); portraits 46 (was 51), still 0 files captured. Partner updates still 30, same names as runs #36/#37. Skipped sources include LaunchVic, Henson, Canada NRC IRAP, Innovative Solutions Canada AI governance challenge, Ignite Program NT. [Normalised to the documented registry schema for issue #538: the record's original non-schema outcome fields were {\"attempted\": null, \"candidates\": 4350, \"duration_seconds\": 176, \"failed\": 0, \"per_mode\": {\"logos\": {\"candidates\": 309, \"sources\": 32}, \"news\": {\"candidates\": 5, \"sources\": 4}, \"partner_updates\": 30, \"partners\": {\"candidates\": 1564, \"sources\": 5}, \"portraits\": {\"candidates\": 46, \"sources\": 1}, \"profiles\": {\"candidates\": 2286, \"sources\": 32}, \"programs\": {\"candidates\": 156, \"sources\": 17}}, \"succeeded\": null}; sources_attempted/candidates_discovered above are the partners-mode figures from per_mode, and the whole-job totals remain in this note.]"
       },
       "snapshot_sha256": "a66d70240af0b1d83da2833cf918126bf933b2ddbda321e4abf1538c38446bc1",
       "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44959790188/artifacts/14729167006",
@@ -300,39 +273,12 @@
       "started_at": "2026-11-22T00:54:00Z",
       "finished_at": "2026-11-22T00:57:00Z",
       "outcome": {
-        "attempted": null,
-        "succeeded": null,
-        "failed": 0,
-        "candidates": 4352,
-        "per_mode": {
-          "partners": {
-            "sources": 5,
-            "candidates": 1564
-          },
-          "programs": {
-            "sources": 17,
-            "candidates": 155
-          },
-          "news": {
-            "sources": 4,
-            "candidates": 5
-          },
-          "logos": {
-            "sources": 32,
-            "candidates": 312
-          },
-          "profiles": {
-            "sources": 32,
-            "candidates": 2286
-          },
-          "portraits": {
-            "sources": 1,
-            "candidates": 46
-          },
-          "partner_updates": 30
-        },
-        "duration_seconds": 174,
-        "notes": "All 16 job steps green; one Node.js 20 deprecation warning only. Programs 156 -> 155 (4 WA grant forms out, 3 WA grant pages in, all forms/listings not programs); logos 309 -> 312 (3 new Boab AI favicons, no logo-grade capture); partners, news, profiles and portraits identical to run #38. Partner updates still 30, same names and identical descriptions as runs #36/#37/#38."
+        "sources_attempted": 5,
+        "sources_succeeded": 5,
+        "sources_failed": 0,
+        "candidates_discovered": 1564,
+        "coverage_reference": null,
+        "notes": "All 16 job steps green; one Node.js 20 deprecation warning only. Programs 156 -> 155 (4 WA grant forms out, 3 WA grant pages in, all forms/listings not programs); logos 309 -> 312 (3 new Boab AI favicons, no logo-grade capture); partners, news, profiles and portraits identical to run #38. Partner updates still 30, same names and identical descriptions as runs #36/#37/#38. [Normalised to the documented registry schema for issue #538: the record's original non-schema outcome fields were {\"attempted\": null, \"candidates\": 4352, \"duration_seconds\": 174, \"failed\": 0, \"per_mode\": {\"logos\": {\"candidates\": 312, \"sources\": 32}, \"news\": {\"candidates\": 5, \"sources\": 4}, \"partner_updates\": 30, \"partners\": {\"candidates\": 1564, \"sources\": 5}, \"portraits\": {\"candidates\": 46, \"sources\": 1}, \"profiles\": {\"candidates\": 2286, \"sources\": 32}, \"programs\": {\"candidates\": 155, \"sources\": 17}}, \"succeeded\": null}; sources_attempted/candidates_discovered above are the partners-mode figures from per_mode, and the whole-job totals remain in this note.]"
       },
       "snapshot_sha256": "f192f9def2d15136fe1631f8e72bcaece42679fc44aec61b2932a69434dcfc4d",
       "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/44968875124/artifacts/14732748205",
@@ -375,39 +321,12 @@
       "started_at": "2026-11-22T08:39:00Z",
       "finished_at": "2026-11-22T08:42:00Z",
       "outcome": {
-        "attempted": null,
-        "succeeded": null,
-        "failed": 0,
-        "candidates": 4350,
-        "per_mode": {
-          "partners": {
-            "sources": 5,
-            "candidates": 1564
-          },
-          "programs": {
-            "sources": 17,
-            "candidates": 156
-          },
-          "news": {
-            "sources": 4,
-            "candidates": 5
-          },
-          "logos": {
-            "sources": 32,
-            "candidates": 309
-          },
-          "profiles": {
-            "sources": 32,
-            "candidates": 2286
-          },
-          "portraits": {
-            "sources": 1,
-            "candidates": 46
-          },
-          "partner_updates": 30
-        },
-        "duration_seconds": 175,
-        "notes": "Job concluded Success in 2m 55s. Programs 155 -> 156 (3 WA grant pages out, 4 WA form pages in, all forms/listings not programs); logos 312 -> 309 (3 Boab AI favicons gone, no logo-grade capture); partners, news, profiles and portraits identical to run #39. Partner updates still 30, same names and identical descriptions as runs #36/#37/#38/#39. Main moved to 05f5d4f (#333 Airwallex) since #39."
+        "sources_attempted": 5,
+        "sources_succeeded": 5,
+        "sources_failed": 0,
+        "candidates_discovered": 1564,
+        "coverage_reference": null,
+        "notes": "Job concluded Success in 2m 55s. Programs 155 -> 156 (3 WA grant pages out, 4 WA form pages in, all forms/listings not programs); logos 312 -> 309 (3 Boab AI favicons gone, no logo-grade capture); partners, news, profiles and portraits identical to run #39. Partner updates still 30, same names and identical descriptions as runs #36/#37/#38/#39. Main moved to 05f5d4f (#333 Airwallex) since #39. [Normalised to the documented registry schema for issue #538: the record's original non-schema outcome fields were {\"attempted\": null, \"candidates\": 4350, \"duration_seconds\": 175, \"failed\": 0, \"per_mode\": {\"logos\": {\"candidates\": 309, \"sources\": 32}, \"news\": {\"candidates\": 5, \"sources\": 4}, \"partner_updates\": 30, \"partners\": {\"candidates\": 1564, \"sources\": 5}, \"portraits\": {\"candidates\": 46, \"sources\": 1}, \"profiles\": {\"candidates\": 2286, \"sources\": 32}, \"programs\": {\"candidates\": 156, \"sources\": 17}}, \"succeeded\": null}; sources_attempted/candidates_discovered above are the partners-mode figures from per_mode, and the whole-job totals remain in this note.]"
       },
       "snapshot_sha256": "04450b3432df7e0190af93fb8185f81975d133ebad25a34cddbad6b81b6308f3",
       "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45003836763/artifacts/14747012272",
@@ -450,39 +369,12 @@
       "started_at": "2026-11-22T10:59:00Z",
       "finished_at": "2026-11-22T11:02:00Z",
       "outcome": {
-        "attempted": null,
-        "succeeded": null,
-        "failed": 0,
-        "candidates": 4448,
-        "per_mode": {
-          "partners": {
-            "sources": 5,
-            "candidates": 1564
-          },
-          "programs": {
-            "sources": 17,
-            "candidates": 154
-          },
-          "news": {
-            "sources": 4,
-            "candidates": 5
-          },
-          "logos": {
-            "sources": 32,
-            "candidates": 309
-          },
-          "profiles": {
-            "sources": 32,
-            "candidates": 2386
-          },
-          "portraits": {
-            "sources": 1,
-            "candidates": 46
-          },
-          "partner_updates": 30
-        },
-        "duration_seconds": 177,
-        "notes": "Job concluded Success in 2m 57s. Programs 156 -> 154 (4 WA form pages out, 2 WA pages in, all forms/listings not programs); profiles 2286 -> 2386 (+100 Blackbird Ventures portfolio-company candidates, none removed); partners, news, logos and portraits identical to run #40. Partner updates still 30, same names and identical descriptions as runs #36/#37/#38/#39/#40. Main moved to 3302829 (#334 exclude hidden page text from source labels) since #40."
+        "sources_attempted": 5,
+        "sources_succeeded": 5,
+        "sources_failed": 0,
+        "candidates_discovered": 1564,
+        "coverage_reference": null,
+        "notes": "Job concluded Success in 2m 57s. Programs 156 -> 154 (4 WA form pages out, 2 WA pages in, all forms/listings not programs); profiles 2286 -> 2386 (+100 Blackbird Ventures portfolio-company candidates, none removed); partners, news, logos and portraits identical to run #40. Partner updates still 30, same names and identical descriptions as runs #36/#37/#38/#39/#40. Main moved to 3302829 (#334 exclude hidden page text from source labels) since #40. [Normalised to the documented registry schema for issue #538: the record's original non-schema outcome fields were {\"attempted\": null, \"candidates\": 4448, \"duration_seconds\": 177, \"failed\": 0, \"per_mode\": {\"logos\": {\"candidates\": 309, \"sources\": 32}, \"news\": {\"candidates\": 5, \"sources\": 4}, \"partner_updates\": 30, \"partners\": {\"candidates\": 1564, \"sources\": 5}, \"portraits\": {\"candidates\": 46, \"sources\": 1}, \"profiles\": {\"candidates\": 2386, \"sources\": 32}, \"programs\": {\"candidates\": 154, \"sources\": 17}}, \"succeeded\": null}; sources_attempted/candidates_discovered above are the partners-mode figures from per_mode, and the whole-job totals remain in this note.]"
       },
       "snapshot_sha256": "cd35c0f78fa0dded842c6640bd3f51801cc405bce5f400bccfb8f8cfafb3c1f5",
       "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45015041658/artifacts/14751660432",
@@ -492,306 +384,198 @@
       "supersedes": null,
       "superseded_by": null
     },
-{
- "version": 1,
- "run_id": "crawl-20261123-partners-09",
- "mode": "partners",
- "scope": {
-  "source_ids": [
-   "github-for-startups-partners",
-   "aws-activate-featured",
-   "launchvic-ai-preaccelerators",
-   "henson-microsoft-network",
-   "innovation-bay-australia-vc"
-  ],
-  "seed_file": "data/partner-sources.json",
-  "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
- },
- "args": {
-  "follow": 0
- },
- "catalogue_revision": "163eace8de0b884e82a1bc865448f4f92401d3ac",
- "source_revisions": {
-  "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
- },
- "claimed_by": "muse",
- "claimed_at": "2026-11-22T23:30:00Z",
- "lease_expires_at": "2026-11-23T00:00:00Z",
- "status": "completed",
- "started_at": "2026-11-22T23:30:00Z",
- "finished_at": "2026-11-22T23:33:00Z",
- "outcome": {
-  "attempted": null,
-  "succeeded": null,
-  "failed": 0,
-  "candidates": 4548,
-  "per_mode": {
-   "partners": {
-    "sources": 5,
-    "candidates": 1564
-   },
-   "programs": {
-    "sources": 17,
-    "candidates": 154
-   },
-   "news": {
-    "sources": 4,
-    "candidates": 5
-   },
-   "logos": {
-    "sources": 32,
-    "candidates": 309
-   },
-   "profiles": {
-    "sources": 32,
-    "candidates": 2486
-   },
-   "portraits": {
-    "sources": 1,
-    "candidates": 46
-   },
-   "partner_updates": 30
-  },
-  "duration_seconds": 178,
-  "notes": "Job concluded Success in 2m 58s. Profiles 2386 -> 2486 (+100 net): Startmate 100 portfolio-company candidates new, USV 100 rows renamed from round badges to real company names via portfolio-card-logo-alt (name bug fixed at source); partners, programs, news, logos and portraits identical to run #41. Partner updates still 30, same names and identical descriptions as runs #36-#41 (sixth consecutive run). Main moved to 163eace (#348 Puralink, #347 Andromeda Robotics startup updates) since #41."
- },
- "snapshot_sha256": "b115a7cf76bde5d0ce1cae3c5b9e5f552cfda8f13ac5fd9e9bb119ba9cf846a8",
- "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45083640338/artifacts/14778735184",
- "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45083640338",
- "review_status": "unreviewed",
- "published_pr": null,
- "supersedes": null,
- "superseded_by": null
-},
-{
- "version": 1,
- "run_id": "crawl-20261123-partners-10",
- "mode": "partners",
- "scope": {
-  "source_ids": [
-   "github-for-startups-partners",
-   "aws-activate-featured",
-   "launchvic-ai-preaccelerators",
-   "henson-microsoft-network",
-   "innovation-bay-australia-vc"
-  ],
-  "seed_file": "data/partner-sources.json",
-  "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
- },
- "args": {
-  "follow": 0
- },
- "catalogue_revision": "32bcee00364968c64b6b1c2da8a74fdd1c179965",
- "source_revisions": {
-  "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
- },
- "claimed_by": "muse",
- "claimed_at": "2026-11-23T03:45:00Z",
- "lease_expires_at": "2026-11-23T04:15:00Z",
- "status": "completed",
- "started_at": "2026-11-23T03:45:00Z",
- "finished_at": "2026-11-23T03:48:00Z",
- "outcome": {
-  "attempted": null,
-  "succeeded": null,
-  "failed": 0,
-  "candidates": 4551,
-  "per_mode": {
-   "partners": {
-    "sources": 5,
-    "candidates": 1564
-   },
-   "programs": {
-    "sources": 17,
-    "candidates": 154
-   },
-   "news": {
-    "sources": 4,
-    "candidates": 5
-   },
-   "logos": {
-    "sources": 32,
-    "candidates": 312
-   },
-   "profiles": {
-    "sources": 32,
-    "candidates": 2486
-   },
-   "portraits": {
-    "sources": 1,
-    "candidates": 52
-   },
-   "partner_updates": 30
-  },
-  "duration_seconds": 175,
-  "notes": "Job concluded Success in 2m 55s. Logos 309 -> 312 (+3: Boab AI favicons back, logo files 71 -> 74); profiles one swap (Brandon Capital Ziva Surgical in, OncoRes Medical out); portraits 52 candidates, still 0 files. Partner updates still 30, same names and identical descriptions as runs #36-#42 (seventh consecutive run). Snapshots published to the corpus bucket and the reviewed corpus synced from main 32bcee0 (reviewed manifest a6d6e63c); manual indexer run published 20261123T035050Z-a6d6e63c (826 rows). Scheduler republishing every 15 min filed as issue #373."
- },
- "snapshot_sha256": "9963e2bd8c64ec678e6c10944be98b8e3305b5543f2ba173f669c13ec7d13fb4",
- "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45107803260/artifacts/14788237018",
- "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45107803260",
- "review_status": "unreviewed",
- "published_pr": null,
- "supersedes": null,
- "superseded_by": null
-},
-{
- "version": 1,
- "run_id": "crawl-20261123-partners-11",
- "mode": "partners",
- "scope": {
-  "source_ids": [
-   "github-for-startups-partners",
-   "aws-activate-featured",
-   "launchvic-ai-preaccelerators",
-   "henson-microsoft-network",
-   "innovation-bay-australia-vc"
-  ],
-  "seed_file": "data/partner-sources.json",
-  "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
- },
- "args": {
-  "follow": 0
- },
- "catalogue_revision": "862930d0ec685b7d9f7eface7f703d676eb503d7",
- "source_revisions": {
-  "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
- },
- "claimed_by": "muse",
- "claimed_at": "2026-11-23T07:14:00Z",
- "lease_expires_at": "2026-11-23T07:44:00Z",
- "status": "completed",
- "started_at": "2026-11-23T07:14:00Z",
- "finished_at": "2026-11-23T07:17:00Z",
- "outcome": {
-  "attempted": null,
-  "succeeded": null,
-  "failed": 0,
-  "candidates": 4552,
-  "per_mode": {
-   "partners": {
-    "sources": 5,
-    "candidates": 1564
-   },
-   "programs": {
-    "sources": 17,
-    "candidates": 155
-   },
-   "news": {
-    "sources": 4,
-    "candidates": 5
-   },
-   "logos": {
-    "sources": 32,
-    "candidates": 312
-   },
-   "profiles": {
-    "sources": 32,
-    "candidates": 2486
-   },
-   "portraits": {
-    "sources": 1,
-    "candidates": 52
-   },
-   "partner_updates": 30
-  },
-  "duration_seconds": 180,
-  "notes": "Job concluded Success in 3m 0s. Programs 154 -> 155 (+1); everything else identical to run #43. Partner updates still 30, same names and identical descriptions for the eighth consecutive run (skip-unchanged bug, issue #349). Portraits 52 candidates, 0 files; logo files 74 of 312. Reviewed corpus synced from main 862930d after the #373 fix verification; indexer published 20261123T072735Z-56067000 (829 rows, funding_rounds 65, articles 75)."
- },
- "snapshot_sha256": "9e7c100e0357529143c340ce2d13c434fed91fc7b034d7436930c89eb07f7cc9",
- "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45129626751/artifacts/14796734087",
- "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45129626751",
- "review_status": "unreviewed",
- "published_pr": null,
- "supersedes": null,
- "superseded_by": null
-},
-{
- "version": 1,
- "run_id": "crawl-20261123-partners-12",
- "mode": "partners",
- "scope": {
-  "source_ids": [
-   "github-for-startups-partners",
-   "aws-activate-featured",
-   "launchvic-ai-preaccelerators",
-   "henson-microsoft-network",
-   "innovation-bay-australia-vc"
-  ],
-  "seed_file": "data/partner-sources.json",
-  "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
- },
- "args": {
-  "follow": 0
- },
- "catalogue_revision": "66a53bf8e63842ddaa4932a20372aa744512a676",
- "source_revisions": {
-  "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
-  "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
- },
- "claimed_by": "muse",
- "claimed_at": "2026-11-23T11:53:00Z",
- "lease_expires_at": "2026-11-23T12:23:00Z",
- "status": "completed",
- "started_at": "2026-11-23T11:53:00Z",
- "finished_at": "2026-11-23T11:56:00Z",
- "outcome": {
-  "attempted": null,
-  "succeeded": null,
-  "failed": 0,
-  "candidates": 4432,
-  "per_mode": {
-   "partners": {
-    "sources": 5,
-    "candidates": 1564
-   },
-   "programs": {
-    "sources": 17,
-    "candidates": 156
-   },
-   "news": {
-    "sources": 4,
-    "candidates": 5
-   },
-   "logos": {
-    "sources": 32,
-    "candidates": 309
-   },
-   "profiles": {
-    "sources": 32,
-    "candidates": 2379
-   },
-   "portraits": {
-    "sources": 1,
-    "candidates": 42
-   },
-   "partner_updates": 19
-  },
-  "duration_seconds": 191,
-  "notes": "Job concluded Success in 3m 11s on main 66a53bf (PR #387 fix) - first full crawl since #44. Partner updates 19 genuine + 11 unchanged skipped: the #349 skip-unchanged fix verified live, ending the eight-run streak of 30 repeats. Portraits produced candidates for the first time: 42 rows from 1 source (PsiQuantum), all image URL rows - no files captured; 20 of them are named individual headshots ('Photo of <name>') on the PsiQuantum /about page, the rest are logos, facility and hero images. Profiles 2486 -> 2379: cross-page dedupe (new with the KG work) dropped 178 duplicates while raw extraction rose ~71; Boab AI page skipped this run. Logos 312 -> 309: exactly Boab AI's 3 candidates lost to that skipped page. Corpus-publish step failed with a GCS 403 on logos/latest.json but was continue-on-error, so the run stayed Success; corpus completeness for this run investigated separately."
- },
- "snapshot_sha256": "f278077615857803d9692b3b112fcae565c05f38c150a3bc37b7a7a164c25fe5",
- "artifact_url": null,
- "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45169210509",
- "review_status": "unreviewed",
- "published_pr": null,
- "supersedes": null,
- "superseded_by": null
-}
+    {
+      "version": 1,
+      "run_id": "crawl-20261123-partners-09",
+      "mode": "partners",
+      "scope": {
+        "source_ids": [
+          "github-for-startups-partners",
+          "aws-activate-featured",
+          "launchvic-ai-preaccelerators",
+          "henson-microsoft-network",
+          "innovation-bay-australia-vc"
+        ],
+        "seed_file": "data/partner-sources.json",
+        "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "args": {
+        "follow": 0
+      },
+      "catalogue_revision": "163eace8de0b884e82a1bc865448f4f92401d3ac",
+      "source_revisions": {
+        "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "claimed_by": "muse",
+      "claimed_at": "2026-11-22T23:30:00Z",
+      "lease_expires_at": "2026-11-23T00:00:00Z",
+      "status": "completed",
+      "started_at": "2026-11-22T23:30:00Z",
+      "finished_at": "2026-11-22T23:33:00Z",
+      "outcome": {
+        "sources_attempted": 5,
+        "sources_succeeded": 5,
+        "sources_failed": 0,
+        "candidates_discovered": 1564,
+        "coverage_reference": null,
+        "notes": "Job concluded Success in 2m 58s. Profiles 2386 -> 2486 (+100 net): Startmate 100 portfolio-company candidates new, USV 100 rows renamed from round badges to real company names via portfolio-card-logo-alt (name bug fixed at source); partners, programs, news, logos and portraits identical to run #41. Partner updates still 30, same names and identical descriptions as runs #36-#41 (sixth consecutive run). Main moved to 163eace (#348 Puralink, #347 Andromeda Robotics startup updates) since #41. [Normalised to the documented registry schema for issue #538: the record's original non-schema outcome fields were {\"attempted\": null, \"candidates\": 4548, \"duration_seconds\": 178, \"failed\": 0, \"per_mode\": {\"logos\": {\"candidates\": 309, \"sources\": 32}, \"news\": {\"candidates\": 5, \"sources\": 4}, \"partner_updates\": 30, \"partners\": {\"candidates\": 1564, \"sources\": 5}, \"portraits\": {\"candidates\": 46, \"sources\": 1}, \"profiles\": {\"candidates\": 2486, \"sources\": 32}, \"programs\": {\"candidates\": 154, \"sources\": 17}}, \"succeeded\": null}; sources_attempted/candidates_discovered above are the partners-mode figures from per_mode, and the whole-job totals remain in this note.]"
+      },
+      "snapshot_sha256": "b115a7cf76bde5d0ce1cae3c5b9e5f552cfda8f13ac5fd9e9bb119ba9cf846a8",
+      "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45083640338/artifacts/14778735184",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45083640338",
+      "review_status": "unreviewed",
+      "published_pr": null,
+      "supersedes": null,
+      "superseded_by": null
+    },
+    {
+      "version": 1,
+      "run_id": "crawl-20261123-partners-10",
+      "mode": "partners",
+      "scope": {
+        "source_ids": [
+          "github-for-startups-partners",
+          "aws-activate-featured",
+          "launchvic-ai-preaccelerators",
+          "henson-microsoft-network",
+          "innovation-bay-australia-vc"
+        ],
+        "seed_file": "data/partner-sources.json",
+        "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "args": {
+        "follow": 0
+      },
+      "catalogue_revision": "32bcee00364968c64b6b1c2da8a74fdd1c179965",
+      "source_revisions": {
+        "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "claimed_by": "muse",
+      "claimed_at": "2026-11-23T03:45:00Z",
+      "lease_expires_at": "2026-11-23T04:15:00Z",
+      "status": "completed",
+      "started_at": "2026-11-23T03:45:00Z",
+      "finished_at": "2026-11-23T03:48:00Z",
+      "outcome": {
+        "sources_attempted": 5,
+        "sources_succeeded": 5,
+        "sources_failed": 0,
+        "candidates_discovered": 1564,
+        "coverage_reference": null,
+        "notes": "Job concluded Success in 2m 55s. Logos 309 -> 312 (+3: Boab AI favicons back, logo files 71 -> 74); profiles one swap (Brandon Capital Ziva Surgical in, OncoRes Medical out); portraits 52 candidates, still 0 files. Partner updates still 30, same names and identical descriptions as runs #36-#42 (seventh consecutive run). Snapshots published to the corpus bucket and the reviewed corpus synced from main 32bcee0 (reviewed manifest a6d6e63c); manual indexer run published 20261123T035050Z-a6d6e63c (826 rows). Scheduler republishing every 15 min filed as issue #373. [Normalised to the documented registry schema for issue #538: the record's original non-schema outcome fields were {\"attempted\": null, \"candidates\": 4551, \"duration_seconds\": 175, \"failed\": 0, \"per_mode\": {\"logos\": {\"candidates\": 312, \"sources\": 32}, \"news\": {\"candidates\": 5, \"sources\": 4}, \"partner_updates\": 30, \"partners\": {\"candidates\": 1564, \"sources\": 5}, \"portraits\": {\"candidates\": 52, \"sources\": 1}, \"profiles\": {\"candidates\": 2486, \"sources\": 32}, \"programs\": {\"candidates\": 154, \"sources\": 17}}, \"succeeded\": null}; sources_attempted/candidates_discovered above are the partners-mode figures from per_mode, and the whole-job totals remain in this note.]"
+      },
+      "snapshot_sha256": "9963e2bd8c64ec678e6c10944be98b8e3305b5543f2ba173f669c13ec7d13fb4",
+      "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45107803260/artifacts/14788237018",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45107803260",
+      "review_status": "unreviewed",
+      "published_pr": null,
+      "supersedes": null,
+      "superseded_by": null
+    },
+    {
+      "version": 1,
+      "run_id": "crawl-20261123-partners-11",
+      "mode": "partners",
+      "scope": {
+        "source_ids": [
+          "github-for-startups-partners",
+          "aws-activate-featured",
+          "launchvic-ai-preaccelerators",
+          "henson-microsoft-network",
+          "innovation-bay-australia-vc"
+        ],
+        "seed_file": "data/partner-sources.json",
+        "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "args": {
+        "follow": 0
+      },
+      "catalogue_revision": "862930d0ec685b7d9f7eface7f703d676eb503d7",
+      "source_revisions": {
+        "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "claimed_by": "muse",
+      "claimed_at": "2026-11-23T07:14:00Z",
+      "lease_expires_at": "2026-11-23T07:44:00Z",
+      "status": "completed",
+      "started_at": "2026-11-23T07:14:00Z",
+      "finished_at": "2026-11-23T07:17:00Z",
+      "outcome": {
+        "sources_attempted": 5,
+        "sources_succeeded": 5,
+        "sources_failed": 0,
+        "candidates_discovered": 1564,
+        "coverage_reference": null,
+        "notes": "Job concluded Success in 3m 0s. Programs 154 -> 155 (+1); everything else identical to run #43. Partner updates still 30, same names and identical descriptions for the eighth consecutive run (skip-unchanged bug, issue #349). Portraits 52 candidates, 0 files; logo files 74 of 312. Reviewed corpus synced from main 862930d after the #373 fix verification; indexer published 20261123T072735Z-56067000 (829 rows, funding_rounds 65, articles 75). [Normalised to the documented registry schema for issue #538: the record's original non-schema outcome fields were {\"attempted\": null, \"candidates\": 4552, \"duration_seconds\": 180, \"failed\": 0, \"per_mode\": {\"logos\": {\"candidates\": 312, \"sources\": 32}, \"news\": {\"candidates\": 5, \"sources\": 4}, \"partner_updates\": 30, \"partners\": {\"candidates\": 1564, \"sources\": 5}, \"portraits\": {\"candidates\": 52, \"sources\": 1}, \"profiles\": {\"candidates\": 2486, \"sources\": 32}, \"programs\": {\"candidates\": 155, \"sources\": 17}}, \"succeeded\": null}; sources_attempted/candidates_discovered above are the partners-mode figures from per_mode, and the whole-job totals remain in this note.]"
+      },
+      "snapshot_sha256": "9e7c100e0357529143c340ce2d13c434fed91fc7b034d7436930c89eb07f7cc9",
+      "artifact_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45129626751/artifacts/14796734087",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45129626751",
+      "review_status": "unreviewed",
+      "published_pr": null,
+      "supersedes": null,
+      "superseded_by": null
+    },
+    {
+      "version": 1,
+      "run_id": "crawl-20261123-partners-12",
+      "mode": "partners",
+      "scope": {
+        "source_ids": [
+          "github-for-startups-partners",
+          "aws-activate-featured",
+          "launchvic-ai-preaccelerators",
+          "henson-microsoft-network",
+          "innovation-bay-australia-vc"
+        ],
+        "seed_file": "data/partner-sources.json",
+        "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "args": {
+        "follow": 0
+      },
+      "catalogue_revision": "66a53bf8e63842ddaa4932a20372aa744512a676",
+      "source_revisions": {
+        "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "claimed_by": "muse",
+      "claimed_at": "2026-11-23T11:53:00Z",
+      "lease_expires_at": "2026-11-23T12:23:00Z",
+      "status": "completed",
+      "started_at": "2026-11-23T11:53:00Z",
+      "finished_at": "2026-11-23T11:56:00Z",
+      "outcome": {
+        "sources_attempted": 5,
+        "sources_succeeded": 5,
+        "sources_failed": 0,
+        "candidates_discovered": 1564,
+        "coverage_reference": null,
+        "notes": "Job concluded Success in 3m 11s on main 66a53bf (PR #387 fix) - first full crawl since #44. Partner updates 19 genuine + 11 unchanged skipped: the #349 skip-unchanged fix verified live, ending the eight-run streak of 30 repeats. Portraits produced candidates for the first time: 42 rows from 1 source (PsiQuantum), all image URL rows - no files captured; 20 of them are named individual headshots ('Photo of <name>') on the PsiQuantum /about page, the rest are logos, facility and hero images. Profiles 2486 -> 2379: cross-page dedupe (new with the KG work) dropped 178 duplicates while raw extraction rose ~71; Boab AI page skipped this run. Logos 312 -> 309: exactly Boab AI's 3 candidates lost to that skipped page. Corpus-publish step failed with a GCS 403 on logos/latest.json but was continue-on-error, so the run stayed Success; corpus completeness for this run investigated separately. [Normalised to the documented registry schema for issue #538: the record's original non-schema outcome fields were {\"attempted\": null, \"candidates\": 4432, \"duration_seconds\": 191, \"failed\": 0, \"per_mode\": {\"logos\": {\"candidates\": 309, \"sources\": 32}, \"news\": {\"candidates\": 5, \"sources\": 4}, \"partner_updates\": 19, \"partners\": {\"candidates\": 1564, \"sources\": 5}, \"portraits\": {\"candidates\": 42, \"sources\": 1}, \"profiles\": {\"candidates\": 2379, \"sources\": 32}, \"programs\": {\"candidates\": 156, \"sources\": 17}}, \"succeeded\": null}; sources_attempted/candidates_discovered above are the partners-mode figures from per_mode, and the whole-job totals remain in this note.]"
+      },
+      "snapshot_sha256": "f278077615857803d9692b3b112fcae565c05f38c150a3bc37b7a7a164c25fe5",
+      "artifact_url": null,
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45169210509",
+      "review_status": "unreviewed",
+      "published_pr": null,
+      "supersedes": null,
+      "superseded_by": null
+    }
   ],
   "version": 1
 }
