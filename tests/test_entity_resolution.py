@@ -261,12 +261,13 @@ class SeedTests(unittest.TestCase):
              'person:emma-grife'})
         self.assertTrue(all(m['basis'] == 'linkedin-url' for m in seeded))
         # On top of the seed, build_registry replays the APPROVED
-        # review-queue merges (41 from the first validation pass);
+        # review-queue merges (41 from the first validation pass, plus
+        # the nine partner merges approved on 25 Nov 2026);
         # rejected and pending proposals record no merge.
         replayed = [m for m in registry['merges']
                     if m['decided_by'] != 'seed:reviewed-data']
-        self.assertEqual(len(registry['merges']), 45)
-        self.assertEqual(len(replayed), 41)
+        self.assertEqual(len(registry['merges']), 54)
+        self.assertEqual(len(replayed), 50)
         self.assertIn('partner:airtree-ventures',
                       entities['partner:airtree']['merged_from'])
         self.assertEqual(
@@ -278,9 +279,15 @@ class SeedTests(unittest.TestCase):
                               'partner:boost-cp', 'startup:morse'):
             self.assertNotIn(rejected_from,
                              {m['from'] for m in registry['merges']})
-        for pending_from in ('partner:draper-vc', 'partner:amity-vc'):
-            self.assertNotIn(pending_from,
+        for rejected_from in ('partner:draper-vc',):
+            self.assertNotIn(rejected_from,
                              {m['from'] for m in registry['merges']})
+        # The nine 25 Nov 2026 approvals replay as merges.
+        for approved_from in ('partner:amity-vc',
+                              'partner:amity-innovation-incubator',
+                              'partner:galvanize'):
+            self.assertIn(approved_from,
+                          {m['from'] for m in registry['merges']})
         # Partner leads with no reviewed website are name-only.
         reviewed = json.loads((ROOT / 'data' / 'partners-reviewed.json').read_text())
         leads = json.loads((ROOT / 'data' / 'partner-leads.json').read_text())

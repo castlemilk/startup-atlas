@@ -54,6 +54,12 @@ REVIEWED_BODIES = {
         'version': 1,
         'entities': [{'id': 'x', 'reviewed_at': '2026-11-22'}],
     }).encode(),
+    # treemap-evidence.json is in REVIEWED_FILES (atlas_corpus) as a
+    # reviewed query input; the fixture predated its addition and the
+    # corpus-lag / all-green tests failed on main until it was added.
+    'treemap-evidence.json': json.dumps({
+        'market_caps': {'X': {'checked': '2026-11-22'}},
+    }).encode(),
 }
 
 
