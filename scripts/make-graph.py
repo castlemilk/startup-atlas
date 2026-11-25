@@ -335,7 +335,7 @@ def build_graph(profiles, leads, reviewed, catalogue, research, identity=None,
             nodes[startup_id]['listing'] = listing
         founder_records = []
         for founder in startup.get('founders', []):
-            founder_id = add('person', founder['name'], source=founder['source'], website=founder.get('profile_url', ''), logo=founder.get('photo_url', ''), logo_source=founder.get('photo_source', ''), **({'socials': founder['socials']} if founder.get('socials') else {}))
+            founder_id = add('person', founder['name'], source=founder['source'], website=founder.get('profile_url', ''), logo=founder.get('photo_url', ''), logo_source=founder.get('photo_source', ''), **({'socials': founder['socials']} if founder.get('socials') else {}), **({'blurb': founder['blurb']} if founder.get('blurb') else {}))
             emit({'from': founder_id, 'to': startup_id, 'kind': 'founded',
                   'description': 'Founder', 'source': founder['source']},
                  founder.get('reviewed_at') or research_reviewed)
