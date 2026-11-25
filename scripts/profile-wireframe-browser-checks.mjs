@@ -124,7 +124,7 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
       const nav=document.querySelector('.atlas-section-nav');
       const links=[...nav.querySelectorAll('a')];
       const bounds=nav.getBoundingClientRect();
-      return links.length===5&&nav.scrollWidth<=nav.clientWidth+1&&links.every(link=>{
+      return links.length>=3&&links[0].textContent.trim()==='Companies'&&links.at(-1).textContent.trim()==='Programmes'&&nav.scrollWidth<=nav.clientWidth+1&&links.every(link=>{
         const r=link.getBoundingClientRect();
         return r.left>=bounds.left-1&&r.right<=bounds.right+1&&r.height>=44;
       });
