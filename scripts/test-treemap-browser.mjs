@@ -135,11 +135,14 @@ try {
     });
   }).map(heading=>heading.closest('[aria-label]').getAttribute('aria-label'))`);
   assert.deepEqual(clippedGroupHeadings,[],'Group headings must fit above their tiles');
-  assert.equal(await evaluate(`(() => {
+  const toolbarLayout=await evaluate(`(() => {
     const country=document.querySelector('.exploration-country-trigger').getBoundingClientRect();
     const size=document.querySelector('#treemap-metric').closest('label').getBoundingClientRect();
-    return country.x<size.x && Math.abs(country.top-size.top)<6 && document.querySelector('#treemap-chart').getBoundingClientRect().top<320;
-  })()`),true,'The desktop toolbar must put headquarters and chart settings in one row above the plot');
+    return {countryX:country.x,countryTop:country.top,sizeX:size.x,sizeTop:size.top,chartTop:document.querySelector('#treemap-chart').getBoundingClientRect().top};
+  })()`);
+  assert.ok(toolbarLayout.countryX<toolbarLayout.sizeX,`Headquarters control must sit left of the chart settings (country x=${toolbarLayout.countryX}, metric x=${toolbarLayout.sizeX})`);
+  assert.ok(Math.abs(toolbarLayout.countryTop-toolbarLayout.sizeTop)<6,`Headquarters and chart settings must share one row (country top=${toolbarLayout.countryTop}, metric top=${toolbarLayout.sizeTop})`);
+  assert.ok(toolbarLayout.chartTop<320,`The plot must start above 320px on desktop (chart top=${toolbarLayout.chartTop})`);
   await screenshot('company-value-default-desktop.png');
 
   assert.equal(await evaluate("document.querySelector('#treemap-metric option[value=\"market-cap\"]').disabled"),false);
