@@ -259,3 +259,30 @@ test('co-founder edges connect every founder pair of a startup (#527)', async ()
   // A person's view surfaces the co-founder as a relationship.
   assert.ok(entityDetails(graph, 'person:melanie-perkins').related.some(x => x.id === 'person:cliff-obrecht'));
 });
+
+test('founder blurbs are sourced, dated and carried onto person entities (#528)', async () => {
+  const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const research = JSON.parse(await readFile(new URL('../data/startup-research.json', import.meta.url), 'utf8'));
+  const people = new Map(graph.entities.filter(x => x.kind === 'person').map(x => [x.name, x]));
+  let recorded = 0;
+  for (const startup of research.startups) {
+    for (const founder of startup.founders || []) {
+      if (!founder.blurb) continue;
+      recorded++;
+      const { text, sources, verified_at } = founder.blurb;
+      assert.ok(typeof text === 'string' && text.length > 0 && text.length <= 1000, `${founder.name} blurb text`);
+      assert.ok(Array.isArray(sources) && sources.length >= 1 && sources.length <= 10, `${founder.name} blurb sources`);
+      for (const source of sources) assert.match(source, /^https:\/\//);
+      assert.match(verified_at, /^\d{4}-\d{2}-\d{2}$/);
+      // The graph entity carries the reviewed blurb unchanged.
+      assert.deepEqual(people.get(founder.name)?.blurb, founder.blurb, `${founder.name} blurb reaches the graph`);
+    }
+  }
+  assert.ok(recorded >= 11, `expected the first enrichment tranche, found ${recorded}`);
+  // The Alloovium founders Ben named are all enriched.
+  for (const name of ['Cielo Nicolosi', 'Omar Elloumi', 'Zander Schweitzer'])
+    assert.ok(people.get(name)?.blurb?.text.includes('Alloovium'), `${name} has an Alloovium blurb`);
+  // No person outside the founder records carries a blurb in this slice.
+  for (const person of people.values())
+    if (person.blurb) assert.ok(person.id.startsWith('person:') && !person.id.includes('--'), `${person.id} blurb is on a canonical person`);
+});
