@@ -7,6 +7,7 @@ non-pull_request events so PR data cannot poison the release cache).
 """
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -100,11 +101,11 @@ class NpmDownloadCacheTests(unittest.TestCase):
 
 
 class ToolchainScriptTests(unittest.TestCase):
-    def run_toolchain(self, *argv, contract=None):
+    def run_toolchain(self, *argv, contract=None, env=None):
         command = [sys.executable, str(ROOT / "scripts" / "toolchain.py"), *argv]
         if contract is not None:
             command += ["--contract", str(contract)]
-        return subprocess.run(command, capture_output=True, text=True, timeout=60)
+        return subprocess.run(command, capture_output=True, text=True, timeout=60, env=env)
 
     def test_probe_never_fails_and_reports_every_tool(self):
         result = self.run_toolchain("probe")
@@ -112,6 +113,23 @@ class ToolchainScriptTests(unittest.TestCase):
         for tool in ("go", "node", "python", "chrome"):
             self.assertRegex(result.stdout, rf"(?m)^{tool}_ready=(true|false)$")
             self.assertRegex(result.stdout, rf"(?m)^{tool}_version=\S+$")
+
+    def test_go_probe_runs_version_subcommand_and_checks_the_pin(self):
+        with tempfile.TemporaryDirectory() as temp:
+            fixture = Path(temp) / "go"
+            fixture.write_text(
+                '#!/bin/sh\n[ "$*" = version ] || exit 2\n'
+                'printf "go version go%s linux/amd64\\n" "$ATLAS_TEST_GO"\n',
+                encoding="utf-8",
+            )
+            fixture.chmod(0o755)
+            env = {**os.environ, "PATH": temp, "ATLAS_TEST_GO": "1.25.0"}
+            found = self.run_toolchain("check", "--only", "go", env=env)
+            self.assertEqual(found.returncode, 0, found.stdout + found.stderr)
+            env["ATLAS_TEST_GO"] = "1.25.1"
+            drift = self.run_toolchain("check", "--only", "go", env=env)
+            self.assertEqual(drift.returncode, 1)
+            self.assertIn("found 1.25.1 -> DRIFT", drift.stdout)
 
     def test_check_passes_for_the_running_python(self):
         contract = json.loads((ROOT / "ci" / "toolchain.json").read_text(encoding="utf-8"))

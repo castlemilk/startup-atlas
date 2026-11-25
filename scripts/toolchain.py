@@ -50,7 +50,8 @@ def found_version(tool, contract):
         return None
     try:
         output = subprocess.run(
-            [binary, "--version"], capture_output=True, text=True, timeout=30
+            [binary, "version" if tool == "go" else "--version"],
+            capture_output=True, text=True, timeout=30, check=True
         ).stdout
     except (OSError, subprocess.SubprocessError):
         return None
