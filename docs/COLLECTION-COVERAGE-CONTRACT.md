@@ -2,7 +2,13 @@
 
 ## Status and ownership
 
-This is an **offline, unintegrated reference contract** for Atlas improvement 1 of 6.
+This is an **offline reference contract** for Atlas improvement 1 of 6.
+Since #537 its eligible-population denominators are integrated in one
+place: `scripts/loop_health_check.py` reports catalogue completeness
+over the committed graph (eligible vs covered per scope, in this
+contract's report shape) as a daily RED/WARN signal. The ledger itself
+remains per-run and unwired to the crawler; the health check neither
+opens nor creates ledgers.
 It contributes to [OPS-01 / #89](https://github.com/castlemilk/startup-atlas/issues/89)
 and hands an adapter boundary to
 [CRAWL-01 / #77](https://github.com/castlemilk/startup-atlas/issues/77).

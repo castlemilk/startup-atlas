@@ -379,5 +379,108 @@ class LoopHealthCheckTests(unittest.TestCase):
             self.assertNotEqual(report.worst, health.RED)
 
 
+def coverage_graph(startups=4, funded=4, logos=4, people=4, headshots=4,
+                   rounds=4, leads=4, cohort=()):
+    entities = []
+    for i in range(startups):
+        entity = {'id': f'startup:s{i}', 'kind': 'startup'}
+        if i < logos:
+            entity['logo'] = 'https://example.com/logo.png'
+        entities.append(entity)
+    for i in range(people):
+        entity = {'id': f'person:p{i}', 'kind': 'person'}
+        if i < headshots:
+            entity['logo'] = 'https://example.com/head.png'
+        entities.append(entity)
+    edges = [{'from': f'startup:{name}', 'to': 'partner:accel',
+              'kind': 'participated_in',
+              'description': 'Summer batch'} for name in cohort]
+    funding_rounds = []
+    for i in range(rounds):
+        entry = {'id': f'r{i}', 'startup_id': f'startup:s{i % funded}'}
+        if i < leads:
+            entry['lead_investor'] = 'Accel'
+        funding_rounds.append(entry)
+    return {'version': 2, 'entities': entities, 'edges': edges,
+            'funding_rounds': funding_rounds}
+
+
+def coverage_report(graph):
+    report = health.Report()
+    with TemporaryDirectory() as tmp:
+        data = Path(tmp) / 'data'
+        data.mkdir()
+        if graph is not None:
+            (data / 'graph.json').write_text(json.dumps(graph))
+        health.check_coverage(report, data)
+    return report
+
+
+def coverage_details(report):
+    return [d for _, n, d in report.lines if n == 'coverage']
+
+
+class CoverageCheckTests(unittest.TestCase):
+    def test_complete_coverage_is_ok(self):
+        report = coverage_report(coverage_graph(cohort=('s0',)))
+        self.assertEqual(set(levels(report, 'coverage')), {health.OK})
+        self.assertIn('cohort-rounds: 1 of 1 eligible covered (100%)',
+                      coverage_details(report))
+
+    def test_partial_coverage_above_floors_is_warn(self):
+        report = coverage_report(coverage_graph(funded=3, logos=3,
+                                                headshots=2, leads=3))
+        self.assertEqual(set(levels(report, 'coverage')), {health.WARN})
+        self.assertTrue(any(d.startswith(
+            'startup-funding: 3 of 4 eligible covered (75%)')
+            for d in coverage_details(report)))
+
+    def test_cohort_startup_without_round_is_red_and_named(self):
+        # The #529 miss class: a batch/cohort edge but no funding round.
+        graph = coverage_graph(funded=3)
+        graph['edges'].append({'from': 'startup:s3', 'to': 'partner:yc',
+                               'kind': 'participated_in',
+                               'description': 'Summer 2026 accelerator batch'})
+        report = coverage_report(graph)
+        self.assertIn(health.RED, levels(report, 'coverage'))
+        detail = [d for d in coverage_details(report)
+                  if d.startswith('cohort-rounds')][0]
+        self.assertIn('uncovered: s3', detail)
+
+    def test_round_participation_edge_is_not_a_cohort_edge(self):
+        graph = coverage_graph(funded=3)
+        graph['edges'].append({'from': 'partner:accel', 'to': 'startup:s3',
+                               'kind': 'participated_in',
+                               'round_id': 'r9',
+                               'description': 'Participated in Seed round'})
+        report = coverage_report(graph)
+        self.assertNotIn(health.RED, levels(report, 'coverage'))
+        self.assertFalse(any(d.startswith('cohort-rounds')
+                             for d in coverage_details(report)))
+
+    def test_below_floor_is_red(self):
+        report = coverage_report(coverage_graph(funded=1))
+        detail = [d for d in coverage_details(report)
+                  if d.startswith('startup-funding')][0]
+        self.assertIn('1 of 4 eligible covered (25%)', detail)
+        idx = coverage_details(report).index(detail)
+        self.assertEqual(levels(report, 'coverage')[idx], health.RED)
+
+    def test_missing_graph_degrades_to_warn_unverified(self):
+        report = coverage_report(None)
+        self.assertEqual(levels(report, 'coverage'), [health.WARN])
+        self.assertIn('unverified', coverage_details(report)[0])
+
+    def test_scopes_use_contract_report_shape(self):
+        scopes = health.coverage_scopes(coverage_graph(funded=3))
+        by_id = {s['scope_id']: s for s in scopes}
+        scope = by_id['startup-funding']
+        self.assertEqual(scope['eligible_total'], 4)
+        self.assertEqual(scope['counts'], {'covered': 3, 'uncovered': 1})
+        self.assertEqual(scope['verification_ratio'], 0.75)
+        self.assertEqual(scope['completion'], 'partial')
+        self.assertEqual(scope['uncovered_ids'], ['startup:s3'])
+
+
 if __name__ == '__main__':
     unittest.main()
