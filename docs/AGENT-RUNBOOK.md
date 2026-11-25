@@ -150,6 +150,7 @@ Setup (once per clone/worktree): `bash scripts/setup-hooks.sh` sets `core.hooksP
 - **MCP-push flows**: GitHub-MCP `push_files` never touches local git, so hooks do not fire. Running `scripts/preflight.sh` before such a push is mandatory for the main agent, subagents and the burn-down / agent-review cron jobs; a red preflight means fix first, push second.
 - **Bypass**: `ATLAS_SKIP_HOOKS=1` prints a loud warning and skips. Reserve it for broken checks, and record the bypass in the PR description.
 - **CI gate**: `scripts/check_ci_paths.py` routes `data/*` to the hosted lane as well as the data lane, because the hosted tests read `data/` (profile previews, source reads). Before Nov 2026 the hosted lane fired only on `backend/hosted/*`; three data merges landed untested against it (Quantum Brilliance strict preview, every-startup review-only preview, PsiQuantum source read) and main was red invisibly. `tests/test_ci_paths.py` carries a regression test (`test_data_changes_run_hosted_checks`) — do not narrow the routing without replacing that guarantee.
+- **Toolchain and npm cache**: CI jobs probe the provisioned toolchain against `ci/toolchain.json` (`scripts/toolchain.py probe`), skip `setup-go`/`setup-node` when the intended-rig image already provides the contracted versions, and fail on drift via `check`. The npm download cache (`~/.npm` only, never `node_modules`) is keyed by OS/arch, Node/npm versions and all three lockfile hashes, and is saved only from non-PR events. See [docs/CI-TOOLCHAIN.md](CI-TOOLCHAIN.md).
 
 ## Search publication
 
