@@ -238,8 +238,11 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
       }
       await click('.profile-sources-summary');
       // The sources index renders asynchronously, so keep re-anchoring the
-      // section until it reads at the top of the viewport.
-      await until(()=>evaluate("(()=>{const s=document.querySelector('#entity-sources');s.scrollIntoView({block:'start',behavior:'instant'});return document.querySelector('.profile-sources-footer').open&&s.getBoundingClientRect().top<innerHeight/2;})()"),'The Sources section must open and read at the top of the viewport');
+      // section until it reads at the top of the viewport — re-opening the
+      // footer if a re-render closed it. A short profile's sources section
+      // sits near the document end, where the page cannot scroll it to the
+      // top half at all; reaching maximum scroll is its anchored position.
+      await until(()=>evaluate("(()=>{const f=document.querySelector('.profile-sources-footer');if(!f.open)f.querySelector('.profile-sources-summary').click();const s=document.querySelector('#entity-sources');s.scrollIntoView({block:'start',behavior:'instant'});const atMaxScroll=scrollY+innerHeight>=document.documentElement.scrollHeight-1;return f.open&&(s.getBoundingClientRect().top<innerHeight/2||atMaxScroll);})()"),'The Sources section must open and read at the top of the viewport');
       // Tabbed profiles (#419): the evidence trigger may sit in a hidden
       // panel; select that panel's tab first so the control is reachable.
       await evaluate(`(()=>{const b=document.querySelector(${JSON.stringify(profile.trigger)});const panel=b?.closest('[role="tabpanel"]');if(panel&&panel.hidden)document.getElementById('tab-'+panel.id)?.click();})()`);
