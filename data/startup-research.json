@@ -2264,11 +2264,13 @@
           "amount": 100000000,
           "currency": "USD",
           "source": "https://www.cultureamp.com/company/announcements/global-employee-experience-leader-culture-amp-raises-100-million",
-          "note": "Announced 29 July 2021; closing date unknown. Led by TDM Growth Partners and Sequoia Capital China, with Salesforce Ventures, Felicis Ventures, Blackbird Ventures, Index Ventures, Sapphire Ventures, Skip Capital, Grok Ventures and Global Founders Capital. The single lead_investor field records TDM Growth Partners; co-lead Sequoia Capital China is listed first among participants.",
+          "note": "Announced 29 July 2021; closing date unknown. Led by TDM Growth Partners and Sequoia Capital China, with Salesforce Ventures, Felicis Ventures, Blackbird Ventures, Index Ventures, Sapphire Ventures, Skip Capital, Grok Ventures and Global Founders Capital. Both co-leads are recorded in lead_investors.",
           "stage_normalised": "Series F",
-          "lead_investor": "TDM Growth Partners",
+          "lead_investors": [
+            "TDM Growth Partners",
+            "Sequoia Capital China"
+          ],
           "participants": [
-            "Sequoia Capital China",
             "Salesforce Ventures",
             "Felicis Ventures",
             "Blackbird Ventures",
@@ -3873,6 +3875,11 @@
           "source": "https://wayve.ai/press/series-d/",
           "note": "Wayve reported a closed round led by Eclipse, Balderton and SoftBank Vision Fund 2. Named participants include Ontario Teachers’ Pension Plan, Baillie Gifford, British Business Bank, Icehouse Ventures, Schroders Capital, Microsoft, NVIDIA, Uber, Mercedes-Benz, Nissan and Stellantis. The separate $1.5 billion headline includes milestone-based Uber capital. The company’s release uses a dollar sign without a currency code.",
           "stage_normalised": "Series D",
+          "lead_investors": [
+            "Eclipse",
+            "Balderton",
+            "SoftBank Vision Fund 2"
+          ],
           "participants": [
             "Ontario Teachers’ Pension Plan",
             "Baillie Gifford",
@@ -4588,7 +4595,11 @@
           "currency": "AUD",
           "note": "Fluency named Bradley Tabone and Archangel Ventures as co-leads. Date is the company announcement, not a legal closing date.",
           "source": "https://usefluency.com/blog/fluency-raises-1-5m-to-transform-enterprise-operations",
-          "stage_normalised": "Pre-Seed"
+          "stage_normalised": "Pre-Seed",
+          "lead_investors": [
+            "Bradley Tabone",
+            "Archangel Ventures"
+          ]
         },
         {
           "id": "fluency-2026-02-usd-seed",
