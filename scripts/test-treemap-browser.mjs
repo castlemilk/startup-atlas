@@ -390,6 +390,17 @@ try {
     assert.ok(sources.includes(new URL(row.event.source).href),`Funding evidence must stay available for ${row.id}`);
     if (!reviewedFundingMarks.has(row.id)) continue;
     await click('#treemap-company-tab');
+    const reviewedMark=reviewedFundingMarks.get(row.id);
+    if (reviewedMark.includes('/portraits/')) {
+      // A portrait card mark attributes through the founder's Photo source
+      // link in the company panel; there is no Logo source link for it.
+      const founder=snapshot.entities.find(entity=>entity.kind==='person'&&entity.logo&&entity.logo.endsWith('/'+reviewedMark.split('/').pop()));
+      assert.ok(founder,`No founder holds the reviewed portrait mark for ${row.id}`);
+      await until(()=>evaluate(`Array.from(document.querySelectorAll('#treemap-company-panel a')).some(link=>
+        link.textContent.includes('Photo source')&&link.href===${JSON.stringify(founder.logo_source)}&&link.getClientRects().length>0)`),
+      `Reviewed portrait attribution must be discoverable for ${row.id}`);
+      continue;
+    }
     await until(()=>evaluate(`Array.from(document.querySelectorAll('#treemap-company-panel a')).some(link=>
       link.textContent.includes('Logo source')&&link.href===${JSON.stringify(row.entity.logo_source)}&&link.getClientRects().length>0)`),
     `Reviewed logo attribution must be discoverable for ${row.id}`);
