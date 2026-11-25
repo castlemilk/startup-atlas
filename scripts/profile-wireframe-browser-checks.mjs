@@ -239,6 +239,9 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
       await click('.profile-sources-summary');
       await evaluate("document.querySelector('#entity-sources').scrollIntoView({block:'start',behavior:'instant'})");
       await until(()=>evaluate("document.querySelector('.profile-sources-footer').open&&document.querySelector('#entity-sources').getBoundingClientRect().top<innerHeight/2"),'The Sources section must open and read at the top of the viewport');
+      // Tabbed profiles (#419): the evidence trigger may sit in a hidden
+      // panel; select that panel's tab first so the control is reachable.
+      await evaluate(`(()=>{const b=document.querySelector(${JSON.stringify(profile.trigger)});const panel=b?.closest('[role="tabpanel"]');if(panel&&panel.hidden)document.getElementById('tab-'+panel.id)?.click();})()`);
       await click(profile.trigger);
       await until(()=>evaluate(`(()=>{
         const panel=document.querySelector('.profile-evidence-panel[data-open]'),footer=panel?.querySelector('.profile-evidence-footer a');
