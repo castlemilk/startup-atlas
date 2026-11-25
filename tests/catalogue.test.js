@@ -174,7 +174,7 @@ test('Innovative Solutions Canada AI challenge records Canadian thresholds and P
  assert.match(item.eligibility,/TRL 5–9/);
  assert.match(item.value,/C\$2,000,000/);
  assert.match(item.limits,/not an unconditional grant/);
- assert.match(item.status,/22 December 2026, 14:00 Eastern/);
+ assert.match(item.status,/8 December 2026, 14:00 Eastern/);
 });
 
 test('Queensland Female Founders fund preserves co-investment and founder eligibility',()=>{
