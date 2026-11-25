@@ -1879,9 +1879,21 @@
           "amount": 217000000,
           "amount_text": "A$217 million (company reports US$145 million equivalent)",
           "currency": "AUD",
-          "note": "January 2026 announced financing, not a cumulative Series E or all-time funding total. Explicit AUD currency and closed-week wording are corroborated by investor Blackbird: https://www.blackbird.vc/blog/investment-notes-gilmour-space-series-e. Exact closing day is undisclosed. Company names National Reconstruction Fund Corporation and Hostplus as co-leads, with Future Fund, Blackbird, Funds SA, HESTA, NGS Super, Main Sequence, QIC and Brighter Super participating. Participant identities remain unresolved. Blackbird reports valuation over US$1 billion; this lower bound is not an exact valuation and is not plotted as one.",
+          "note": "January 2026 announced financing, not a cumulative Series E or all-time funding total. Explicit AUD currency and closed-week wording are corroborated by investor Blackbird: https://www.blackbird.vc/blog/investment-notes-gilmour-space-series-e. Exact closing day is undisclosed. Company names National Reconstruction Fund Corporation and Hostplus as co-leads, with Future Fund, Blackbird, Funds SA, HESTA, NGS Super, Main Sequence, QIC and Brighter Super participating. Participant identities remain unresolved. Blackbird reports valuation over US$1 billion; this lower bound is not an exact valuation and is not plotted as one. The single lead_investor field records National Reconstruction Fund Corporation; co-lead Hostplus is listed first among participants.",
           "source": "https://www.gspace.com/post/gilmour-space-secures-major-australian-investment-to-scale-sovereign-space-capability",
-          "stage_normalised": "Series E"
+          "stage_normalised": "Series E",
+          "lead_investor": "National Reconstruction Fund Corporation",
+          "participants": [
+            "Hostplus",
+            "Future Fund",
+            "Blackbird",
+            "Funds SA",
+            "HESTA",
+            "NGS Super",
+            "Main Sequence",
+            "QIC",
+            "Brighter Super"
+          ]
         }
       ],
       "founded_year": 2012,
@@ -1963,7 +1975,12 @@
           "amount_text": "Reported amount scope unresolved",
           "source": "https://www.the8s.com.au/our-commitment",
           "note": "The Eights confirms pre-seed participation. Uluu’s press archive lists Main Sequence-led pre-seed coverage dated 21 September 2021 and reports A$1.3 million. The linked Startup Daily article is dated 27 September 2021. CSIRO reports a $1.3 million investment from Main Sequence, Alberts Impact Ventures and The Eights. Alberts describes early 2021 backing and a 2022 Seed follow-on. Main Sequence lists April 2021 as its investment month. Forbes later reported $1.8 million, whose scope remains unresolved. The exact announcement and legal closing dates are unverified.",
-          "stage_normalised": "Pre-Seed"
+          "stage_normalised": "Pre-Seed",
+          "lead_investor": "Main Sequence",
+          "participants": [
+            "Alberts Impact Ventures",
+            "The Eights"
+          ]
         }
       ],
       "description": "Develops alternatives to fossil-fuel plastics.",
@@ -2345,7 +2362,7 @@
           "amount": 9700000,
           "currency": "USD",
           "source": "https://www.businesswire.com/news/home/20210825005293/en/Quantum-Brilliance-Raises-%249.7-Million-Seed-Funding-to-Advance-Diamond-Quantum-Accelerator-Development-and-Deployment",
-          "note": "The issuer named the QxBranch founders’ investment consortium and Main Sequence in its co-lead description. It reported participation by CP Ventures, Investible, Jelix Ventures, MA Financial Growth Ventures Fund, R3I Ventures and Ultratech Capital Partners. The recorded date is the announcement date.",
+          "note": "The issuer named the QxBranch founders’ investment consortium and Main Sequence in its co-lead description. It reported participation by CP Ventures, Investible, Jelix Ventures, MA Financial Growth Ventures Fund, R3I Ventures and Ultratech Capital Partners. The recorded date is the announcement date. The single lead_investor field records the QxBranch founders' investment consortium; co-lead Main Sequence is listed first among participants.",
           "stage_normalised": "Seed",
           "participants": [
             "Main Sequence",
@@ -2355,7 +2372,8 @@
             "MA Financial Growth Ventures Fund",
             "R3I Ventures",
             "Ultratech Capital Partners"
-          ]
+          ],
+          "lead_investor": "QxBranch founders' investment consortium"
         }
       ],
       "logo": "https://castlemilk.github.io/startup-atlas/assets/logos/quantum-brilliance.svg",
@@ -2474,9 +2492,16 @@
           "announced_on": "2020-04-14",
           "amount": 8000000,
           "currency": "AUD",
-          "note": "Dated Tenacious investment note names Tenacious Ventures and Grok Ventures as co-leads. Transaction counsel corroborates AUD and names Rampersand, Giant Leap and Eleanor Ventures. Date is public investor reporting, not legal close.",
+          "note": "Dated Tenacious investment note names Tenacious Ventures and Grok Ventures as co-leads. Transaction counsel corroborates AUD and names Rampersand, Giant Leap and Eleanor Ventures. Date is public investor reporting, not legal close. The single lead_investor field records Tenacious Ventures; co-lead Grok Ventures is listed first among participants.",
           "source": "https://tenacious.ventures/insights/investment-notes-goterra",
-          "stage_normalised": "Series A"
+          "stage_normalised": "Series A",
+          "lead_investor": "Tenacious Ventures",
+          "participants": [
+            "Grok Ventures",
+            "Rampersand",
+            "Giant Leap",
+            "Eleanor Ventures"
+          ]
         },
         {
           "id": "goterra-2023-bridge",
@@ -3020,17 +3045,17 @@
           "amount": 105000000,
           "currency": "AUD",
           "source": "https://www.cefc.com.au/media/media-release/cefc-increases-investment-in-loam-bio-through-a-105-million-series-b-round/",
-          "note": "The company release embedded by CEFC names these investors and others. CEFC's own $9m contribution is not an additional round. Founder list is partial; close date unknown. Named participants: Lowercarbon Capital (lead), Wollemi Capital (lead), Horizons Ventures (participant), Acre Venture Partners (participant), Main Sequence (participant), CEFC (participant), Grok Ventures (participant). Identities remain unresolved.",
+          "note": "The company release embedded by CEFC names these investors and others. CEFC's own $9m contribution is not an additional round. Founder list is partial; close date unknown. Named participants: Lowercarbon Capital (lead), Wollemi Capital (lead), Horizons Ventures (participant), Acre Venture Partners (participant), Main Sequence (participant), CEFC (participant), Grok Ventures (participant). Identities remain unresolved. The single lead_investor field records Lowercarbon Capital; co-lead Wollemi Capital is listed first among participants.",
           "stage_normalised": "Series B",
           "participants": [
-            "Lowercarbon Capital",
             "Wollemi Capital",
             "Horizons Ventures",
             "Acre Venture Partners",
             "Main Sequence",
             "CEFC",
             "Grok Ventures"
-          ]
+          ],
+          "lead_investor": "Lowercarbon Capital"
         }
       ],
       "description": "Develops microbial seed treatments and soil-carbon projects for agriculture.",
@@ -3404,7 +3429,12 @@
           "currency": "AUD",
           "source": "https://www.linkedin.com/posts/cuttable_cuttable-test-faster-grow-faster-activity-7360467697383469056-464t",
           "note": "Cuttable’s company post identifies Square Peg, Rampersand and Previously Unavailable as backers. Marketing-Interactive corroborates the A$4.5 million amount, 11 August disclosure and Square Peg’s lead role. The exact investment vehicle for Previously Unavailable is not assigned. Cuttable’s A$10 million figure is the combined seed total, not a third event. The legal close date and individual commitments are not disclosed.",
-          "stage_normalised": "Seed"
+          "stage_normalised": "Seed",
+          "lead_investor": "Square Peg",
+          "participants": [
+            "Rampersand",
+            "Previously Unavailable"
+          ]
         }
       ],
       "articles": [

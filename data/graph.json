@@ -8674,6 +8674,26 @@
     {
       "from": "partner:blackbird-ventures",
       "to": "startup:gilmour-space",
+      "kind": "participated_in",
+      "description": "Participated in Series E round",
+      "source": "https://www.gspace.com/post/gilmour-space-secures-major-australian-investment-to-scale-sovereign-space-capability",
+      "round_id": "gilmour-space-2026-series-e-january",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:blackbird-ventures",
+      "to": "startup:gilmour-space",
       "kind": "supports",
       "description": "Listed in portfolio",
       "source": "https://www.blackbird.vc/investors",
@@ -9383,6 +9403,26 @@
     },
     {
       "from": "partner:main-sequence",
+      "to": "startup:gilmour-space",
+      "kind": "participated_in",
+      "description": "Participated in Series E round",
+      "source": "https://www.gspace.com/post/gilmour-space-secures-major-australian-investment-to-scale-sovereign-space-capability",
+      "round_id": "gilmour-space-2026-series-e-january",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
       "to": "startup:loam-bio",
       "kind": "participated_in",
       "description": "Participated in Series B round",
@@ -9503,6 +9543,26 @@
     {
       "from": "partner:main-sequence",
       "to": "startup:uluu",
+      "kind": "led_round",
+      "description": "Led Pre-seed round",
+      "source": "https://www.the8s.com.au/our-commitment",
+      "round_id": "uluu-2021-pre-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
+      "to": "startup:uluu",
       "kind": "participated_in",
       "description": "Participated in Series A round",
       "source": "https://www.uluu.com.au/press/series-a",
@@ -9603,9 +9663,49 @@
       "from": "partner:rampersand",
       "to": "startup:cuttable",
       "kind": "participated_in",
+      "description": "Participated in Seed extension round",
+      "source": "https://www.linkedin.com/posts/cuttable_cuttable-test-faster-grow-faster-activity-7360467697383469056-464t",
+      "round_id": "cuttable-2025-seed-extension",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:rampersand",
+      "to": "startup:cuttable",
+      "kind": "participated_in",
       "description": "Participated in Seed round",
       "source": "https://www.squarepeg.vc/blog/investment-notes-cuttable-au-5-5m-seed",
       "round_id": "cuttable-2024-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:rampersand",
+      "to": "startup:goterra",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://tenacious.ventures/insights/investment-notes-goterra",
+      "round_id": "goterra-2020-series-a",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.5,
@@ -10085,6 +10185,26 @@
         "sources": 1,
         "source_types": [
           "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:square-peg",
+      "to": "startup:cuttable",
+      "kind": "led_round",
+      "description": "Led Seed extension round",
+      "source": "https://www.linkedin.com/posts/cuttable_cuttable-test-faster-grow-faster-activity-7360467697383469056-464t",
+      "round_id": "cuttable-2025-seed-extension",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
         ],
         "agreement": false,
         "inferred": false
@@ -19013,7 +19133,12 @@
       "currency": "AUD",
       "source": "https://www.linkedin.com/posts/cuttable_cuttable-test-faster-grow-faster-activity-7360467697383469056-464t",
       "note": "Cuttable’s company post identifies Square Peg, Rampersand and Previously Unavailable as backers. Marketing-Interactive corroborates the A$4.5 million amount, 11 August disclosure and Square Peg’s lead role. The exact investment vehicle for Previously Unavailable is not assigned. Cuttable’s A$10 million figure is the combined seed total, not a third event. The legal close date and individual commitments are not disclosed.",
-      "stage_normalised": "Seed"
+      "stage_normalised": "Seed",
+      "lead_investor": "Square Peg",
+      "participants": [
+        "Rampersand",
+        "Previously Unavailable"
+      ]
     },
     {
       "startup_id": "startup:deeligence",
@@ -19216,9 +19341,21 @@
       "amount": 217000000,
       "amount_text": "A$217 million (company reports US$145 million equivalent)",
       "currency": "AUD",
-      "note": "January 2026 announced financing, not a cumulative Series E or all-time funding total. Explicit AUD currency and closed-week wording are corroborated by investor Blackbird: https://www.blackbird.vc/blog/investment-notes-gilmour-space-series-e. Exact closing day is undisclosed. Company names National Reconstruction Fund Corporation and Hostplus as co-leads, with Future Fund, Blackbird, Funds SA, HESTA, NGS Super, Main Sequence, QIC and Brighter Super participating. Participant identities remain unresolved. Blackbird reports valuation over US$1 billion; this lower bound is not an exact valuation and is not plotted as one.",
+      "note": "January 2026 announced financing, not a cumulative Series E or all-time funding total. Explicit AUD currency and closed-week wording are corroborated by investor Blackbird: https://www.blackbird.vc/blog/investment-notes-gilmour-space-series-e. Exact closing day is undisclosed. Company names National Reconstruction Fund Corporation and Hostplus as co-leads, with Future Fund, Blackbird, Funds SA, HESTA, NGS Super, Main Sequence, QIC and Brighter Super participating. Participant identities remain unresolved. Blackbird reports valuation over US$1 billion; this lower bound is not an exact valuation and is not plotted as one. The single lead_investor field records National Reconstruction Fund Corporation; co-lead Hostplus is listed first among participants.",
       "source": "https://www.gspace.com/post/gilmour-space-secures-major-australian-investment-to-scale-sovereign-space-capability",
-      "stage_normalised": "Series E"
+      "stage_normalised": "Series E",
+      "lead_investor": "National Reconstruction Fund Corporation",
+      "participants": [
+        "Hostplus",
+        "Future Fund",
+        "Blackbird",
+        "Funds SA",
+        "HESTA",
+        "NGS Super",
+        "Main Sequence",
+        "QIC",
+        "Brighter Super"
+      ]
     },
     {
       "startup_id": "startup:go1",
@@ -19247,9 +19384,16 @@
       "announced_on": "2020-04-14",
       "amount": 8000000,
       "currency": "AUD",
-      "note": "Dated Tenacious investment note names Tenacious Ventures and Grok Ventures as co-leads. Transaction counsel corroborates AUD and names Rampersand, Giant Leap and Eleanor Ventures. Date is public investor reporting, not legal close.",
+      "note": "Dated Tenacious investment note names Tenacious Ventures and Grok Ventures as co-leads. Transaction counsel corroborates AUD and names Rampersand, Giant Leap and Eleanor Ventures. Date is public investor reporting, not legal close. The single lead_investor field records Tenacious Ventures; co-lead Grok Ventures is listed first among participants.",
       "source": "https://tenacious.ventures/insights/investment-notes-goterra",
-      "stage_normalised": "Series A"
+      "stage_normalised": "Series A",
+      "lead_investor": "Tenacious Ventures",
+      "participants": [
+        "Grok Ventures",
+        "Rampersand",
+        "Giant Leap",
+        "Eleanor Ventures"
+      ]
     },
     {
       "startup_id": "startup:goterra",
@@ -19322,17 +19466,17 @@
       "amount": 105000000,
       "currency": "AUD",
       "source": "https://www.cefc.com.au/media/media-release/cefc-increases-investment-in-loam-bio-through-a-105-million-series-b-round/",
-      "note": "The company release embedded by CEFC names these investors and others. CEFC's own $9m contribution is not an additional round. Founder list is partial; close date unknown. Named participants: Lowercarbon Capital (lead), Wollemi Capital (lead), Horizons Ventures (participant), Acre Venture Partners (participant), Main Sequence (participant), CEFC (participant), Grok Ventures (participant). Identities remain unresolved.",
+      "note": "The company release embedded by CEFC names these investors and others. CEFC's own $9m contribution is not an additional round. Founder list is partial; close date unknown. Named participants: Lowercarbon Capital (lead), Wollemi Capital (lead), Horizons Ventures (participant), Acre Venture Partners (participant), Main Sequence (participant), CEFC (participant), Grok Ventures (participant). Identities remain unresolved. The single lead_investor field records Lowercarbon Capital; co-lead Wollemi Capital is listed first among participants.",
       "stage_normalised": "Series B",
       "participants": [
-        "Lowercarbon Capital",
         "Wollemi Capital",
         "Horizons Ventures",
         "Acre Venture Partners",
         "Main Sequence",
         "CEFC",
         "Grok Ventures"
-      ]
+      ],
+      "lead_investor": "Lowercarbon Capital"
     },
     {
       "startup_id": "startup:lockii",
@@ -19543,7 +19687,7 @@
       "amount": 9700000,
       "currency": "USD",
       "source": "https://www.businesswire.com/news/home/20210825005293/en/Quantum-Brilliance-Raises-%249.7-Million-Seed-Funding-to-Advance-Diamond-Quantum-Accelerator-Development-and-Deployment",
-      "note": "The issuer named the QxBranch founders’ investment consortium and Main Sequence in its co-lead description. It reported participation by CP Ventures, Investible, Jelix Ventures, MA Financial Growth Ventures Fund, R3I Ventures and Ultratech Capital Partners. The recorded date is the announcement date.",
+      "note": "The issuer named the QxBranch founders’ investment consortium and Main Sequence in its co-lead description. It reported participation by CP Ventures, Investible, Jelix Ventures, MA Financial Growth Ventures Fund, R3I Ventures and Ultratech Capital Partners. The recorded date is the announcement date. The single lead_investor field records the QxBranch founders' investment consortium; co-lead Main Sequence is listed first among participants.",
       "stage_normalised": "Seed",
       "participants": [
         "Main Sequence",
@@ -19553,7 +19697,8 @@
         "MA Financial Growth Ventures Fund",
         "R3I Ventures",
         "Ultratech Capital Partners"
-      ]
+      ],
+      "lead_investor": "QxBranch founders' investment consortium"
     },
     {
       "startup_id": "startup:quantum-brilliance",
@@ -19763,7 +19908,12 @@
       "amount_text": "Reported amount scope unresolved",
       "source": "https://www.the8s.com.au/our-commitment",
       "note": "The Eights confirms pre-seed participation. Uluu’s press archive lists Main Sequence-led pre-seed coverage dated 21 September 2021 and reports A$1.3 million. The linked Startup Daily article is dated 27 September 2021. CSIRO reports a $1.3 million investment from Main Sequence, Alberts Impact Ventures and The Eights. Alberts describes early 2021 backing and a 2022 Seed follow-on. Main Sequence lists April 2021 as its investment month. Forbes later reported $1.8 million, whose scope remains unresolved. The exact announcement and legal closing dates are unverified.",
-      "stage_normalised": "Pre-Seed"
+      "stage_normalised": "Pre-Seed",
+      "lead_investor": "Main Sequence",
+      "participants": [
+        "Alberts Impact Ventures",
+        "The Eights"
+      ]
     },
     {
       "startup_id": "startup:uluu",
@@ -20960,6 +21110,7 @@
     }
   ],
   "warnings": [
+    "lead_investor \"QxBranch founders' investment consortium\" for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Addition' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Addition' for round airwallex-2026-series-h (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Airbus Ventures' for round q-ctrl-2021-series-b (Q-CTRL) has no matching partner lead; led_round edge skipped",
@@ -20977,8 +21128,10 @@
     "lead_investor 'Horizons Ventures' for round cauldron-2024-series-a (Cauldron) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Lowercarbon Capital' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; led_round edge skipped",
     "lead_investor 'MegaChips' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; led_round edge skipped",
     "lead_investor 'NEA' for round synthesia-2025-series-d (Synthesia) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'National Reconstruction Fund Corporation' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Perennial Partners' for round emesent-2022-series-a (Emesent) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Purpose Ventures' for round andromeda-2024-06-seed (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
     "lead_investor 'QIC Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; led_round edge skipped",
@@ -20988,6 +21141,7 @@
     "lead_investor 'SoftBank Group' for round wayve-2024-series-c (Wayve) has no matching partner lead; led_round edge skipped",
     "lead_investor 'T. Rowe Price' for round canva-2021-09-15 (Canva) has no matching partner lead; led_round edge skipped",
     "lead_investor 'TDM Growth Partners' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Tenacious Ventures' for round goterra-2020-series-a (Goterra) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Tencent Holdings' for round airwallex-2017-series-a (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Union Square Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; led_round edge skipped",
     "participant '1789 Capital' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
@@ -21003,6 +21157,7 @@
     "participant 'Adage Capital Management' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Affinity Partners' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Air Street Capital' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
+    "participant 'Alberts Impact Ventures' for round uluu-2021-pre-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Alberts' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Alium Capital Management' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Alkeon Capital' for round uipath-2021-series-f (UiPath) has no matching partner lead; participated_in edge skipped",
@@ -21017,6 +21172,7 @@
     "participant 'Beaten Zone Venture Partners' for round arkeus-2025-march-financing (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Beaten Zone Venture Partners' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Breakthrough Victoria' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
+    "participant 'Brighter Super' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'Bullhound Capital' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'CEFC' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped",
     "participant 'CP Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
@@ -21035,6 +21191,7 @@
     "participant 'Dragoneer Investments' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'Dragoneer' for round uipath-2021-series-f (UiPath) has no matching partner lead; participated_in edge skipped",
     "participant 'EDGE Group' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'Eleanor Ventures' for round goterra-2020-series-a (Goterra) has no matching partner lead; participated_in edge skipped",
     "participant 'Evantic' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Fairground' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2016-series-b (Culture Amp) has no matching partner lead; participated_in edge skipped",
@@ -21045,8 +21202,11 @@
     "participant 'Flu Lab' for round ena-respiratory-2025-series-b (ENA Respiratory) has no matching partner lead; participated_in edge skipped",
     "participant 'Folklore Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Franklin Templeton' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
+    "participant 'Funds SA' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
+    "participant 'Future Fund' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'G Squared' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Gates Foundation' for round ena-respiratory-2025-series-b (ENA Respiratory) has no matching partner lead; participated_in edge skipped",
+    "participant 'Giant Leap' for round goterra-2020-series-a (Goterra) has no matching partner lead; participated_in edge skipped",
     "participant 'Global Founders Capital' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Gobi Partners' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Gravity VC' for round airwallex-2016-pre-series-a (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -21054,7 +21214,9 @@
     "participant 'Grok Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Grok Ventures' for round goterra-2020-series-a (Goterra) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped",
+    "participant 'HESTA' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'Hedosophia' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Hermitage Capital' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Hillhouse Capital' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -21068,6 +21230,7 @@
     "participant 'Horizons Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'HostPlus' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Hostplus' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'Huashan Capital One' for round airwallex-2016-pre-series-a (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'In-Q-Tel' for round cauldron-2024-series-a (Cauldron) has no matching partner lead; participated_in edge skipped",
@@ -21083,7 +21246,6 @@
     "participant 'Lockheed Martin Ventures' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Lone Pine Capital' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Lone Pine Capital' for round airwallex-2025-series-f (Airwallex) has no matching partner lead; participated_in edge skipped",
-    "participant 'Lowercarbon Capital' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped",
     "participant 'MA Financial Growth Ventures Fund' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'MMC Ventures' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'MPower Partners' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
@@ -21094,6 +21256,7 @@
     "participant 'Microsoft' for round wayve-2024-series-c (Wayve) has no matching partner lead; participated_in edge skipped",
     "participant 'Mistletoe, Inc.' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Mundi Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
+    "participant 'NGS Super' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'NGS' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'NRFC' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'NVentures' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
@@ -21106,7 +21269,9 @@
     "participant 'OneVentures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
     "participant 'PSP Growth' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Possible Ventures' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
+    "participant 'Previously Unavailable' for round cuttable-2025-seed-extension (Cuttable) has no matching partner lead; participated_in edge skipped",
     "participant 'Purpose Ventures' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
+    "participant 'QIC' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'Qatar Investment Authority' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'R+ VC' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'R3I Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
@@ -21152,6 +21317,7 @@
     "participant 'Tencent' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Tencent' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Tencent' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'The Eights' for round uluu-2021-pre-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Third Point Ventures' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Tiger Global Management' for round revolut-2021-series-e (Revolut) has no matching partner lead; participated_in edge skipped",
     "participant 'Tiger Global' for round emesent-2022-series-a (Emesent) has no matching partner lead; participated_in edge skipped",
