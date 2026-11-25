@@ -26,7 +26,7 @@ const mime = {
   '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2',
   '.png': 'image/png', '.webp': 'image/webp', '.md': 'text/markdown'
 };
-const served = [], external = [], exceptions = [], browserErrors = [];
+const served = [], exceptions = [], browserErrors = [];
 const report = {
   gallery: galleryPath, status: 'running', browser: null,
   manifest_sha256: sha256(manifestBytes), assets: [], viewports: [], screenshots: [],
@@ -43,7 +43,8 @@ try {
   // Shared transport/lifecycle (#149): static server, Chrome spawn, CDP
   // session, bounded commands, socket-exit rejection and phase timings.
   // This suite keeps its own timeout wording, error-only console capture,
-  // favicon 204, served-entry shape and external-request tracking.
+  // favicon 204 and served-entry shape. External-request tracking is the
+  // shared transport's (#143 V3): session.externalRequests.
   transport = await launchBrowserTransport({
     root,
     profileDir: profile,
@@ -52,13 +53,7 @@ try {
     session: { consoleTypes: ['error'], timeoutMessage: method => `CDP timed out: ${method}` },
   });
   address = transport.address;
-  const session = await transport.connect({ exceptions, browserMessages: browserErrors,
-    onEvent: message => {
-      if (message.method === 'Network.requestWillBeSent') {
-        const url = message.params.request.url;
-        if (/^https?:/.test(url) && new URL(url).origin !== address) external.push(url);
-      }
-    } });
+  const session = await transport.connect({ exceptions, browserMessages: browserErrors });
   const { command, evaluate, until } = session;
   async function press(key, code, keyCode) {
     const character = key === 'Enter' ? { text: '\r', unmodifiedText: '\r', nativeVirtualKeyCode: keyCode } : {};
@@ -261,7 +256,7 @@ try {
   }
   report.checks.no_javascript = { status: 'passed', visible_images_loaded: noJsImages, native_details: noJsDetails };
 
-  assert.deepEqual(external, [], 'Gallery resources must remain self-hosted');
+  assert.deepEqual(session.externalRequests, [], 'Gallery resources must remain self-hosted');
   assert.deepEqual(exceptions, [], 'No browser exceptions');
   assert.deepEqual(browserErrors, [], 'No browser errors');
   assert.deepEqual(served.filter(item => item.status !== 200), [], 'No missing local assets or destinations');
@@ -272,7 +267,7 @@ try {
 } catch (error) {
   report.status = 'failed';
   report.error = error.stack || String(error);
-  report.diagnostics = { external, exceptions, browserErrors, missing: served.filter(item => item.status !== 200), chromeLog: transport?.chromeLog() ?? '' };
+  report.diagnostics = { external: transport?.externalRequests ?? [], exceptions, browserErrors, missing: served.filter(item => item.status !== 200), chromeLog: transport?.chromeLog() ?? '' };
   await capture('signal-r2-failed.png').catch(() => {});
   throw error;
 } finally {

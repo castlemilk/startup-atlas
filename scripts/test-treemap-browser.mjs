@@ -6,7 +6,7 @@ import {logoFor} from '../dist/logos.js';
 import {readFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join, resolve} from 'node:path';
-import {launchBrowserTransport, saveScreenshot} from './browser-transport.mjs';
+import {launchBrowserTransport, saveScreenshot, unmappedExternalRequests} from './browser-transport.mjs';
 
 const root=resolve('dist');
 const screenshotDir=process.env.ATLAS_SCREENSHOTS_DIR||join(tmpdir(),'atlas-treemap-screenshots');
@@ -50,7 +50,7 @@ try {
     await saveScreenshot(session,screenshotDir,name,params);
   }
   captureFailure=screenshot;
-  await command('Runtime.enable'); await command('Page.enable');
+  await command('Runtime.enable'); await command('Page.enable'); await command('Network.enable');
   await command('Page.bringToFront');
   await command('Emulation.setFocusEmulationEnabled',{enabled:true});
   await command('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
@@ -717,6 +717,7 @@ try {
   await command('Network.setBlockedURLs',{urls:[]});
 
   assert.deepEqual(exceptions,[],'Treemap must not raise unhandled JavaScript exceptions');
+  assert.deepEqual(unmappedExternalRequests(session,snapshot.entities.map(entity=>entity.logo)),[],'Treemap resources must remain self-hosted apart from sourced entity image URLs');
   console.log('Treemap phase timings:',JSON.stringify(transport.timings.summary()));
   console.log('Treemap browser checks passed: proportional views, Company value basis and evidence, public market cap, technology grouping, ranked cards, currencies, source caveats, country and city drilldown, independent colour, excluded selection and comparison, keyboard/profile navigation, desktop/mobile, SQLite/JSON fallback and unavailable state.');
 } catch(error) {
