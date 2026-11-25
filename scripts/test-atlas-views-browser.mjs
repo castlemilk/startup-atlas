@@ -389,7 +389,11 @@ try {
   assert.deepEqual(unmappedExternalRequests(session,graph.entities.map(entity=>entity.logo)),[],'Explorer views must remain self-hosted apart from sourced entity image URLs');
   console.log('Atlas views phase timings:',JSON.stringify(transport.timings.summary()));
   assert.deepEqual(browserMessages.filter(message=>message.level==='error'),[],'Explorer views must not log application errors');
-  const missingAssets=requests.filter(request=>request.status===404&&!request.url.startsWith('/favicon.ico'));
+  // The Loom atlas manifest is exempt: the #367 on-demand overview probes
+  // for its export bundle and hides itself when it is absent (the bundle is
+  // published by the Loom export pipeline, not this repo's Pages build, and
+  // the live site answers the same 404 until that path is verified live).
+  const missingAssets=requests.filter(request=>request.status===404&&!request.url.startsWith('/favicon.ico')&&!request.url.endsWith('/data/loom-atlas-manifest.json'));
   assert.deepEqual(missingAssets,[],'All requested local page and module assets must be published');
   console.log('Atlas view browser checks passed: five real previews, 390px preview, search/profile return, graph continuity, partner evidence, unknown funding, mobile layouts and partial-data state.');
 } catch(error) {
