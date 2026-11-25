@@ -6146,6 +6146,13 @@
           "value": "Form D filed 2026-11-13. First sale 2026-10-29. The issuer reported US$30,020,303 sold to 17 investors against US$75,000,000 offered, with US$44,979,697 remaining as of the filing. No venture stage, named participants or final close is stated.",
           "source": "https://www.sec.gov/Archives/edgar/data/2086259/000208625926000002/xslFormDX01/primary_doc.xml",
           "reviewed_at": "2026-11-22"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://alumni.csiro.au/meet-the-melbourne-built-robot-now-in-dozens-of-aged-care-homes/",
+          "reviewed_at": "2026-11-25"
         }
       ],
       "socials": [],
@@ -6504,6 +6511,13 @@
           "value": "CrossCourtAI describes Harper as a tool for screening investment deals and preparing quarterly reports.",
           "source": "https://crosscourtai.com/",
           "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Sydney, Australia",
+          "source": "https://aidirectory.industry.gov.au/organisation/crosscourtai",
+          "reviewed_at": "2026-11-25"
         }
       ],
       "listing": {
@@ -7579,6 +7593,13 @@
           "value": "Older company profiles list remi.ai as Remi AI’s website, but the domain now resolves to an unrelated United States roofing business (checked 25 November 2026), so no current official website is recorded.",
           "source": "https://www.remi.ai/",
           "reviewed_at": "2026-11-25"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://itbrief.com.au/story/remi-ai-completes-external-capital-raise-looks-to-accelerate-growth",
+          "reviewed_at": "2026-11-25"
         }
       ],
       "listing": {
@@ -7760,6 +7781,13 @@
           "value": "VIC 3145, Australia",
           "source": "https://abr.business.gov.au/ABN/View/70622134776",
           "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://ia.acs.org.au/article/2025/melbournes-strongroom-ai-for-sale-amid-10m-court-battle.html",
+          "reviewed_at": "2026-11-25"
         }
       ],
       "listing": {
@@ -7784,6 +7812,13 @@
           "value": "VIC 3121, Australia",
           "source": "https://abr.business.gov.au/ABN/View?abn=43687319017",
           "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "headquarters",
+          "label": "Headquarters",
+          "value": "Melbourne, Australia",
+          "source": "https://fundediq.co/superstat-superstat-com-au-funding/",
+          "reviewed_at": "2026-11-25"
         }
       ],
       "listing": {
@@ -9128,6 +9163,26 @@
       "stale": false
     },
     {
+      "from": "partner:ivp",
+      "to": "startup:uipath",
+      "kind": "participated_in",
+      "description": "Participated in Series F round",
+      "source": "https://ir.uipath.com/news/detail/8/uipath-closes-750-million-in-series-f-funding",
+      "round_id": "uipath-2021-series-f",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:kleiner-perkins",
       "to": "startup:synthesia",
       "kind": "participated_in",
@@ -9300,6 +9355,26 @@
         "sources": 1,
         "source_types": [
           "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
+      "to": "startup:loam-bio",
+      "kind": "participated_in",
+      "description": "Participated in Series B round",
+      "source": "https://www.cefc.com.au/media/media-release/cefc-increases-investment-in-loam-bio-through-a-105-million-series-b-round/",
+      "round_id": "loam-bio-2023-series-b",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
         ],
         "agreement": false,
         "inferred": false
@@ -9811,6 +9886,26 @@
         "sources": 1,
         "source_types": [
           "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:sequoia-capital",
+      "to": "startup:uipath",
+      "kind": "participated_in",
+      "description": "Participated in Series F round",
+      "source": "https://ir.uipath.com/news/detail/8/uipath-closes-750-million-in-series-f-funding",
+      "round_id": "uipath-2021-series-f",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
         ],
         "agreement": false,
         "inferred": false
@@ -19208,7 +19303,16 @@
       "currency": "AUD",
       "source": "https://www.cefc.com.au/media/media-release/cefc-increases-investment-in-loam-bio-through-a-105-million-series-b-round/",
       "note": "The company release embedded by CEFC names these investors and others. CEFC's own $9m contribution is not an additional round. Founder list is partial; close date unknown. Named participants: Lowercarbon Capital (lead), Wollemi Capital (lead), Horizons Ventures (participant), Acre Venture Partners (participant), Main Sequence (participant), CEFC (participant), Grok Ventures (participant). Identities remain unresolved.",
-      "stage_normalised": "Series B"
+      "stage_normalised": "Series B",
+      "participants": [
+        "Lowercarbon Capital",
+        "Wollemi Capital",
+        "Horizons Ventures",
+        "Acre Venture Partners",
+        "Main Sequence",
+        "CEFC",
+        "Grok Ventures"
+      ]
     },
     {
       "startup_id": "startup:lockii",
@@ -19443,7 +19547,11 @@
       "amount_text": "$800 million; dollar currency not explicit in inspected source",
       "source": "https://www.balderton.com/news/revolut-valued-at-33bn-after-raising-800m/",
       "note": "Balderton reports the round and $33bn valuation. Currency is not normalized. Balderton's earlier investment does not establish its participation in this round. Two named leads only; no exhaustive list. Named participants: SoftBank Vision Fund 2 (lead), Tiger Global Management (lead). Identities remain unresolved.",
-      "stage_normalised": "Series E"
+      "stage_normalised": "Series E",
+      "participants": [
+        "SoftBank Vision Fund 2",
+        "Tiger Global Management"
+      ]
     },
     {
       "startup_id": "startup:skykraft",
@@ -19600,7 +19708,16 @@
       "amount_text": "$750 million; dollar currency not explicit in inspected release",
       "source": "https://ir.uipath.com/news/detail/8/uipath-closes-750-million-in-series-f-funding",
       "note": "Release says the round has closed and reports a $35bn post-money valuation. Exact close date and dollar currency are not separately normalized. Named investors include advised funds/accounts, not necessarily the adviser itself. Named participants: Alkeon Capital (lead), Coatue (lead), Altimeter Capital (participant), Dragoneer (participant), IVP (participant), Sequoia (participant), Tiger Global (participant), Funds and accounts advised by T. Rowe Price Associates, Inc. (participant). Identities remain unresolved.",
-      "stage_normalised": "Series F"
+      "stage_normalised": "Series F",
+      "participants": [
+        "Alkeon Capital",
+        "Coatue",
+        "Altimeter Capital",
+        "Dragoneer",
+        "IVP",
+        "Sequoia",
+        "Tiger Global"
+      ]
     },
     {
       "startup_id": "startup:uluu",
@@ -20842,12 +20959,15 @@
     "participant 'AMD Ventures' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'ANZi Ventures' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'ANZi Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Acre Venture Partners' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped",
     "participant 'Activant' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Affinity Partners' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Air Street Capital' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Alberts' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Alium Capital Management' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
+    "participant 'Alkeon Capital' for round uipath-2021-series-f (UiPath) has no matching partner lead; participated_in edge skipped",
     "participant 'Alpha Edison' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'Altimeter Capital' for round uipath-2021-series-f (UiPath) has no matching partner lead; participated_in edge skipped",
     "participant 'Anorak Ventures' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; participated_in edge skipped",
     "participant 'Archangel Ventures' for round emesent-2022-series-a (Emesent) has no matching partner lead; participated_in edge skipped",
     "participant 'Athletic Ventures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
@@ -20857,9 +20977,11 @@
     "participant 'Beaten Zone Venture Partners' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Breakthrough Victoria' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Bullhound Capital' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'CEFC' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped",
     "participant 'CP Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Central Capital Ventura' for round airwallex-2018-series-b (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Climate X' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Coatue' for round uipath-2021-series-f (UiPath) has no matching partner lead; participated_in edge skipped",
     "participant 'Costanoa Ventures' for round bugcrowd-2024-growth (Bugcrowd) has no matching partner lead; participated_in edge skipped",
     "participant 'DCVC' for round q-ctrl-2018-seed (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'DCVC' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
@@ -20869,6 +20991,7 @@
     "participant 'DST Global' for round airwallex-2025-series-f (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'DYNE Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Dragoneer Investments' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
+    "participant 'Dragoneer' for round uipath-2021-series-f (UiPath) has no matching partner lead; participated_in edge skipped",
     "participant 'EDGE Group' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Evantic' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Fairground' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
@@ -20889,6 +21012,7 @@
     "participant 'Grok Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Grok Ventures' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped",
     "participant 'Hedosophia' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Hermitage Capital' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Hillhouse Capital' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -20897,6 +21021,7 @@
     "participant 'Horizons Ventures' for round airwallex-2018-series-b (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Horizons Ventures' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Horizons Ventures' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Horizons Ventures' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped",
     "participant 'Horizons Ventures' for round q-ctrl-2018-seed (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Horizons Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'HostPlus' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -20916,6 +21041,7 @@
     "participant 'Lockheed Martin Ventures' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Lone Pine Capital' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Lone Pine Capital' for round airwallex-2025-series-f (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Lowercarbon Capital' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped",
     "participant 'MA Financial Growth Ventures Fund' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'MMC Ventures' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'MPower Partners' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
@@ -20966,6 +21092,7 @@
     "participant 'Skip Capital' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Skip Capital' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Skip Capital' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'SoftBank Vision Fund 2' for round revolut-2021-series-e (Revolut) has no matching partner lead; participated_in edge skipped",
     "participant 'Stoic Venture Capital' for round ena-respiratory-2025-series-b (ENA Respiratory) has no matching partner lead; participated_in edge skipped",
     "participant 'T. Rowe Price' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'TELUS Ventures' for round emesent-2022-series-a (Emesent) has no matching partner lead; participated_in edge skipped",
@@ -20976,7 +21103,9 @@
     "participant 'Tencent' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Tencent' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Tencent' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Tiger Global Management' for round revolut-2021-series-e (Revolut) has no matching partner lead; participated_in edge skipped",
     "participant 'Tiger Global' for round emesent-2022-series-a (Emesent) has no matching partner lead; participated_in edge skipped",
+    "participant 'Tiger Global' for round uipath-2021-series-f (UiPath) has no matching partner lead; participated_in edge skipped",
     "participant 'Trampoline' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
     "participant 'Trinity Ventures' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Ultratech Capital Partners' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
@@ -20987,6 +21116,7 @@
     "participant 'Vetamer Capital' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Visa Ventures' for round airwallex-2025-series-f (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Visible Ventures' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
-    "participant 'W23' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped"
+    "participant 'W23' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
+    "participant 'Wollemi Capital' for round loam-bio-2023-series-b (Loam Bio) has no matching partner lead; participated_in edge skipped"
   ]
 }

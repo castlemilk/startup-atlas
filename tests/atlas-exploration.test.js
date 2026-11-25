@@ -90,8 +90,7 @@ test('registry-only business bases preserve country without implying a city', as
   const {entities} = JSON.parse(await readFile(new URL('../data/graph.json',import.meta.url),'utf8'));
   const dimensions = indexCompanies({entities});
   const bases = new Map([
-    ['CrossCourtAI','NSW 2010'], ['Superstat','VIC 3121'], ['Wiingman','NSW 2026'],
-    ['Remi AI','NSW 2777'], ['Strongroom AI','VIC 3145'],
+    ['Wiingman','NSW 2026'],
   ]);
   for (const [name,postcode] of bases) {
     const observed = entities.find(entity=>entity.kind==='startup' && entity.name===name);
@@ -99,6 +98,19 @@ test('registry-only business bases preserve country without implying a city', as
     assert.equal(row.country,'AU',name);
     assert.equal(row.city,'',name+' must not be included in city filters without city evidence');
     assert.equal(companyPlaceLabel(row),postcode+', Australia · business base',name);
+  }
+  // Disclosed headquarters supersede the registry-only base (25 Nov 2026:
+  // sourced headquarters facts added for these four, so their cities are
+  // selectable like Zabidou's and Eucalyptus's).
+  const disclosed = new Map([
+    ['CrossCourtAI','Sydney'], ['Superstat','Melbourne'],
+    ['Remi AI','Melbourne'], ['Strongroom AI','Melbourne'],
+  ]);
+  for (const [name,city] of disclosed) {
+    const observed = entities.find(entity=>entity.kind==='startup' && entity.name===name);
+    const row = dimensions.get(observed.id);
+    assert.equal(row.country,'AU',name);
+    assert.equal(row.city,city,name+' disclosed headquarters is selectable by city');
   }
   assert.equal(dimensions.get('startup:loam-bio').city,'Orange','an explicit city remains selectable');
   assert.equal(dimensions.get('startup:zabidou').city,'North Sydney','the disclosed headquarters supersedes the registry-only base');
