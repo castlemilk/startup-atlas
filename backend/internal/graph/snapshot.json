@@ -3039,6 +3039,17 @@
       "logo_source": ""
     },
     {
+      "id": "person:jeremy-colless--artesian",
+      "canonical_id": "person:jeremy-colless--artesian",
+      "aliases": [],
+      "kind": "person",
+      "name": "Jeremy Colless",
+      "source": "https://www.artesianinvest.com/",
+      "logo": "",
+      "logo_source": "",
+      "socials": []
+    },
+    {
       "id": "person:jeremy-obrien",
       "canonical_id": "person:jeremy-obrien",
       "aliases": [],
@@ -3055,6 +3066,17 @@
         ],
         "verified_at": "2026-11-25"
       }
+    },
+    {
+      "id": "person:john-mccartney--artesian",
+      "canonical_id": "person:john-mccartney--artesian",
+      "aliases": [],
+      "kind": "person",
+      "name": "John McCartney",
+      "source": "https://www.artesianinvest.com/",
+      "logo": "",
+      "logo_source": "",
+      "socials": []
     },
     {
       "id": "person:jon-williams",
@@ -3260,6 +3282,17 @@
       "website": "",
       "logo": "",
       "logo_source": ""
+    },
+    {
+      "id": "person:matt-clunies-ross--artesian",
+      "canonical_id": "person:matt-clunies-ross--artesian",
+      "aliases": [],
+      "kind": "person",
+      "name": "Matt Clunies-Ross",
+      "source": "https://www.artesianinvest.com/",
+      "logo": "",
+      "logo_source": "",
+      "socials": []
     },
     {
       "id": "person:matthew-eyles",
@@ -4060,8 +4093,8 @@
       "kind": "programme",
       "name": "NRC IRAP innovation support",
       "summary": "Advice and potential project funding for eligible Canadian technology SMEs.",
-      "website": "https://cnrc.canada.ca/en/support-technology-innovation/financial-support-technology-innovation",
-      "source": "https://cnrc.canada.ca/en/support-technology-innovation/financial-support-technology-innovation",
+      "website": "https://nrc.canada.ca/en/support-technology-innovation/financial-support-technology-innovation",
+      "source": "https://nrc.canada.ca/en/support-technology-innovation/financial-support-technology-innovation",
       "opportunity_id": "canada-irap"
     },
     {
@@ -13315,6 +13348,25 @@
       "stale": false
     },
     {
+      "from": "person:jeremy-colless--artesian",
+      "to": "partner:artesian",
+      "kind": "team_member",
+      "description": "Co-founder",
+      "source": "https://www.artesianinvest.com/",
+      "first_seen": "2026-11-21",
+      "last_verified": "2026-11-21",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "person:jeremy-obrien",
       "to": "person:mark-thompson",
       "kind": "co_founder",
@@ -13387,6 +13439,25 @@
         "sources": 1,
         "source_types": [
           "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "person:john-mccartney--artesian",
+      "to": "partner:artesian",
+      "kind": "team_member",
+      "description": "Co-founder",
+      "source": "https://www.artesianinvest.com/",
+      "first_seen": "2026-11-21",
+      "last_verified": "2026-11-21",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
         ],
         "agreement": false,
         "inferred": false
@@ -14069,6 +14140,25 @@
         "sources": 1,
         "source_types": [
           "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "person:matt-clunies-ross--artesian",
+      "to": "partner:artesian",
+      "kind": "team_member",
+      "description": "Co-founder",
+      "source": "https://www.artesianinvest.com/",
+      "first_seen": "2026-11-21",
+      "last_verified": "2026-11-21",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
         ],
         "agreement": false,
         "inferred": false
@@ -15573,8 +15663,8 @@
       "kind": "offers",
       "description": "Programme offered by",
       "source": "https://www.baseten.co/startup-program/",
-      "first_seen": "2026-11-11",
-      "last_verified": "2026-11-11",
+      "first_seen": "2026-11-25",
+      "last_verified": "2026-11-25",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,
@@ -17010,9 +17100,9 @@
       "to": "programme:canada-irap",
       "kind": "offers",
       "description": "Programme offered by",
-      "source": "https://cnrc.canada.ca/en/support-technology-innovation/financial-support-technology-innovation",
-      "first_seen": "2026-11-11",
-      "last_verified": "2026-11-11",
+      "source": "https://nrc.canada.ca/en/support-technology-innovation/financial-support-technology-innovation",
+      "first_seen": "2026-11-25",
+      "last_verified": "2026-11-25",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,
@@ -17239,8 +17329,8 @@
       "kind": "offers",
       "description": "Programme offered by",
       "source": "https://www.canada.ca/en/pacific-economic-development/services/funding/regional-artificial-intelligence-initiative.html",
-      "first_seen": "2026-11-11",
-      "last_verified": "2026-11-11",
+      "first_seen": "2026-11-25",
+      "last_verified": "2026-11-25",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,
@@ -17315,8 +17405,8 @@
       "kind": "offers",
       "description": "Programme offered by",
       "source": "https://replit.com/startups",
-      "first_seen": "2026-11-11",
-      "last_verified": "2026-11-11",
+      "first_seen": "2026-11-25",
+      "last_verified": "2026-11-25",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,
@@ -17857,8 +17947,8 @@
       "kind": "offers",
       "description": "Programme offered by",
       "source": "https://x.ai/startups",
-      "first_seen": "2026-11-11",
-      "last_verified": "2026-11-11",
+      "first_seen": "2026-11-25",
+      "last_verified": "2026-11-25",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,

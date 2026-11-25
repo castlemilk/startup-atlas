@@ -84,7 +84,7 @@ add('stripe-startups','Stripe Startups','Stripe','Business tools','Direct',['AU'
 add('victoria-accelerators','Victoria accelerator directory','Innovation Victoria','Founder programmes','Community',['AU'],'Victorian programmes','A directory of Victorian accelerator programmes, including health, university and climate pathways.','Each accelerator has its own founder, location and stage requirements.','A discovery directory; admission, funding, fees and current intake vary by programme.','https://www.innovationvictoria.com/pathways/programs/accelerator-programs','Browse programmes',facts={'Location':'Victoria, Australia','Includes':'Health, university and climate pathways'})
 add('andhealth-activate','ANDHealth ACTIVATE','ANDHealth','Founder programmes','Community',['AU'],'Six-month accelerator','Mentoring and commercialisation support for Victorian digital and connected health ventures.','Victorian digital or connected health company with an MVP and early user or customer engagement.','Programme selection applies. Confirm intake, participation requirements, fees and funding with the programme.','https://www.innovationvictoria.com/pathways/programs/accelerator-programs','Check intake',['https://www.andhealth.com.au/'],facts={'Duration':'Six months','Sector':'Digital and connected health','Stage':'MVP and early engagement'})
 add('melbourne-map','Melbourne Accelerator Program','Melbourne Accelerator Program','Founder programmes','Community',['AU'],'Founder support pathways','Founder development through university, social-impact and climate-innovation pathways.','A University of Melbourne connection, a social-impact focus or climate innovation, depending on the pathway.','Programme selection, intake and any funding or participation terms should be confirmed directly.','https://www.innovationvictoria.com/pathways/programs/accelerator-programs','Check intake',['https://www.themap.co/'],facts={'Location':'Melbourne, Victoria','Pathways':'University, social impact or climate'})
-add('canada-irap','NRC IRAP innovation support','National Research Council Canada','Funding finders','Direct',['CA'],'Project support varies','Advice and potential project funding for eligible Canadian technology SMEs.','Incorporated, for-profit SME operating in Canada with 500 or fewer full-time-equivalent employees; technology innovation and growth criteria apply.','Funding is assessed per project and is not guaranteed. Day-to-day operating costs are excluded, as are LLCs, ULCs, sole proprietorships and partnerships.','https://cnrc.canada.ca/en/support-technology-innovation/financial-support-technology-innovation','Eligibility review',facts={'Business':'Incorporated SME operating in Canada','Size':'Up to 500 full-time equivalents','Award':'Project-specific assessment'})
+add('canada-irap','NRC IRAP innovation support','National Research Council Canada','Funding finders','Direct',['CA'],'Project support varies','Advice and potential project funding for eligible Canadian technology SMEs.','Incorporated, for-profit SME operating in Canada with 500 or fewer full-time-equivalent employees; technology innovation and growth criteria apply.','Funding is assessed per project and is not guaranteed. Day-to-day operating costs are excluded, as are LLCs, ULCs, sole proprietorships and partnerships.','https://nrc.canada.ca/en/support-technology-innovation/financial-support-technology-innovation','Eligibility review',facts={'Business':'Incorporated SME operating in Canada','Size':'Up to 500 full-time equivalents','Award':'Project-specific assessment'})
 add('startup-sg-founder','Startup SG Founder','Startup SG','Funding finders','Direct',['SG'],'Co-matched founder support','A Singapore founder programme involving an accredited mentor partner and a matching contribution.','Programme eligibility, a letter of recommendation and matching contribution requirements apply.','At application, at least 50% of the required co-matching capital must already be paid-up capital. Check current terms and availability.','https://frontend.startupsg.gov.sg/programmes/4894/startup-sg-founder/apply','Eligibility review',facts={'Location':'Singapore','Application':'Letter of recommendation','Co-match':'At least half paid up at application'})
 
 # Collaboration tools and regional pathways, checked against their own current
@@ -170,6 +170,25 @@ RECHECKED_2026_11_25 = {
 }
 for _item in items:
     if _item['id'] in RECHECKED_2026_11_25:
+        _item['checked'] = '2026-11-25'
+
+# F4 tail, 2026-11-25 (KPI green loop, later run): the five programmes the
+# refresh above could not verify by direct fetch were verified through the
+# browser/search route the same day, and their published terms re-read
+# against these entries: baseten (programme page live; the 404 is
+# bot-gating — $25,000 dedicated/training + $2,500 Model API credits,
+# AI-first, Seed–Series A, under five years, net-new), xai (Grok for
+# Startups live at x.ai/startups; venture backing, live product,
+# company-domain email), replit (official startups page live; $25K,
+# six-month partner offer), canada-raii-bc (canada.ca page live; terms
+# and 23 Nov 2026 close match), canada-irap (page moved from
+# cnrc.canada.ca to nrc.canada.ca — URL updated in the add() call above;
+# eligibility text matches the live page).
+RECHECKED_TAIL_2026_11_25 = {
+    'baseten', 'xai', 'replit', 'canada-irap', 'canada-raii-bc',
+}
+for _item in items:
+    if _item['id'] in RECHECKED_TAIL_2026_11_25:
         _item['checked'] = '2026-11-25'
 
 leads=json.loads(Path('data/partner-leads.json').read_text())
