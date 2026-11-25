@@ -1729,8 +1729,20 @@
           "amount": 100000000,
           "currency": "USD",
           "source": "https://www.cultureamp.com/company/announcements/global-employee-experience-leader-culture-amp-raises-100-million",
-          "note": "Announced 29 July 2021; closing date unknown. Led by TDM Growth Partners and Sequoia Capital China, with Salesforce Ventures, Felicis Ventures, Blackbird Ventures, Index Ventures, Sapphire Ventures, Skip Capital, Grok Ventures and Global Founders Capital. Participant identities remain unresolved.",
-          "stage_normalised": "Series F"
+          "note": "Announced 29 July 2021; closing date unknown. Led by TDM Growth Partners and Sequoia Capital China, with Salesforce Ventures, Felicis Ventures, Blackbird Ventures, Index Ventures, Sapphire Ventures, Skip Capital, Grok Ventures and Global Founders Capital. The single lead_investor field records TDM Growth Partners; co-lead Sequoia Capital China is listed first among participants.",
+          "stage_normalised": "Series F",
+          "lead_investor": "TDM Growth Partners",
+          "participants": [
+            "Sequoia Capital China",
+            "Salesforce Ventures",
+            "Felicis Ventures",
+            "Blackbird Ventures",
+            "Index Ventures",
+            "Sapphire Ventures",
+            "Skip Capital",
+            "Grok Ventures",
+            "Global Founders Capital"
+          ]
         },
         {
           "id": "culture-amp-2019-series-e",
@@ -1773,7 +1785,12 @@
           "amount_text": "USD 6.3 million",
           "source": "https://www.prnewswire.com/news-releases/culture-amp-secures-63-million-in-series-a-funding-to-grow-culture-first-companies-300044471.html",
           "note": "On March 4, 2015, Culture Amp announced that the round had closed. Its release named Felicis Ventures, Index Ventures and Blackbird Ventures as leads. TechCrunch described Felicis as lead and Index and Blackbird as participants. The CEO’s later account emphasized Felicis and named the other two as investors. SmartCompany’s March 4 interview coverage gives the denomination in US dollars. The issuer release uses an unqualified dollar sign. The exact close date and valuation remain unknown.",
-          "stage_normalised": "Series A"
+          "stage_normalised": "Series A",
+          "lead_investor": "Felicis Ventures",
+          "participants": [
+            "Index Ventures",
+            "Blackbird Ventures"
+          ]
         },
         {
           "id": "culture-amp-2016-series-b",
