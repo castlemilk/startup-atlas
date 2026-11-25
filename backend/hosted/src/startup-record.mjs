@@ -8,7 +8,7 @@ const social = {...fields({label:text(100),url,source:url,reviewed_at:date}),req
 const socials = {type:'array',maxItems:30,items:social};
 const blurb = {...fields({text:text(1000),sources:{type:'array',minItems:1,maxItems:10,items:url},verified_at:date}),required:['text','sources','verified_at']};
 const founder = {...fields({name:text(200),source:url,profile_url:url,linkedin:url,photo_url:url,photo_source:url,socials,blurb}),required:['name','source']};
-const funding = {...fields({id:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},stage:text(100),stage_normalised:text(100),announced_on:date,amount:{type:'integer',minimum:0},amount_text:text(200),currency:{type:'string',pattern:'^[A-Z]{3}$'},valuation:{type:'integer',minimum:0},valuation_currency:{type:'string',pattern:'^[A-Z]{3}$'},note:text(2000),source:url,lead_investor:text(200),participants:{type:'array',maxItems:30,items:text(200)}}),required:['id','stage','source']};
+const funding = {...fields({id:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},stage:text(100),stage_normalised:text(100),announced_on:date,amount:{type:'integer',minimum:0},amount_text:text(200),currency:{type:'string',pattern:'^[A-Z]{3}$'},valuation:{type:'integer',minimum:0},valuation_currency:{type:'string',pattern:'^[A-Z]{3}$'},note:text(2000),source:url,lead_investor:text(200),lead_investors:{type:'array',maxItems:10,items:text(200)},participants:{type:'array',maxItems:30,items:text(200)}}),required:['id','stage','source']};
 const article = {...fields({title:text(300),url,published_on:date,kind:text(100)}),required:['title','url']};
 const profileFact = {...fields({key:{...text(100),pattern:'^[a-z0-9]+(?:-[a-z0-9]+)*$'},label:text(100),value:text(1000),source:url,reviewed_at:date}),required:['key','label','value','source','reviewed_at']};
 const relationship = {...fields({target_id:{type:'string',pattern:'^(startup|partner|provider):[a-z0-9]+(?:-[a-z0-9]+)*$'},kind:{type:'string',pattern:'^[a-z][a-z0-9_]{0,49}$'},description:text(300),source:url}),required:['target_id','kind','description','source']};
@@ -81,6 +81,10 @@ export function validateStartupRecord(record){
     if(item.note!==undefined)checkText(item.note,'funding.note',2000);
     if(item.amount_text!==undefined)checkText(item.amount_text,'funding.amount_text',200);
     if(item.lead_investor!==undefined)checkText(item.lead_investor,'funding.lead_investor',200);
+    if(item.lead_investors!==undefined){
+      if(!Array.isArray(item.lead_investors)||item.lead_investors.length>10)fail('funding.lead_investors must be an array with at most 10 items.');
+      for(const lead of item.lead_investors)checkText(lead,'funding.lead_investors',200);
+    }
     if(item.participants!==undefined){
       if(!Array.isArray(item.participants)||item.participants.length>30)fail('funding.participants must be an array with at most 30 items.');
       for(const participant of item.participants)checkText(participant,'funding.participants',200);
