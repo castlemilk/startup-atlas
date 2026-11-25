@@ -44,6 +44,8 @@ jobs:
           npm ci --prefix backend/hosted --ignore-scripts
           npm --prefix backend/hosted test
           npm --prefix backend/hosted run build
+      - name: Install Parquet build dependency
+        run: python3 -m pip install pyarrow
       - name: Validate catalogue and filtering
         run: |
           npm run data:generate
