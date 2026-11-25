@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { edgeKindLabel, microGraphLayout, microGraphNameLines, microGraphNeighbours, MICRO_GRAPH_CAP } from '../web/micro-graph.js';
+import { edgeKindLabel, microGraphLayout, microGraphNameLines, microGraphNeighbours, microGraphNodeArt, MICRO_GRAPH_CAP } from '../web/micro-graph.js';
 
 const entity = (id, kind, name) => ({ id, kind, name });
 const graph = {
@@ -84,6 +84,44 @@ test('micro graph name labels wrap long names instead of truncating them', () =>
   assert.deepEqual(microGraphNameLines('Government of Western Australia — Department of Water and Environmental Regulation'),
     ['Government of W…']);
   assert.deepEqual(microGraphNameLines('Antidisestablishmentarianism'), ['Antidisestablis…']);
+});
+
+test('micro graph node art renders a person headshot filling the node', () => {
+  const art = microGraphNodeArt(
+    { id: 'person:cielo', kind: 'person', name: 'Cielo Nicolosi', logo: 'https://castlemilk.github.io/startup-atlas/assets/portraits/cielo-nicolosi.png' },
+    100, 50, 17);
+  assert.match(art, /^<image class="entity-micro-art entity-micro-art-person" /);
+  assert.ok(art.includes('href="./assets/portraits/cielo-nicolosi.png"'));
+  assert.ok(art.includes('x="83" y="33" width="34" height="34"'));
+  assert.ok(art.includes('preserveAspectRatio="xMidYMid slice"'));
+});
+
+test('micro graph node art fits a company logo whole inside the node', () => {
+  const art = microGraphNodeArt(
+    { id: 'startup:alloovium', kind: 'startup', name: 'Alloovium', logo: 'https://castlemilk.github.io/startup-atlas/assets/logos/alloovium.png' },
+    180, 130, 23);
+  assert.match(art, /^<image class="entity-micro-art" /);
+  assert.ok(art.includes('href="./assets/logos/alloovium.png"'));
+  assert.ok(art.includes('x="157" y="107" width="46" height="46"'));
+  assert.ok(art.includes('preserveAspectRatio="xMidYMid meet"'));
+});
+
+test('micro graph node art falls back to the curated logo map, then to nothing', () => {
+  // No logo field: the curated map used by the profile marks still applies.
+  const curated = microGraphNodeArt({ id: 'startup:openai', kind: 'startup', name: 'OpenAI' }, 0, 0, 17);
+  assert.ok(curated.includes('href="./assets/logos/openai.svg"'));
+  // No artwork anywhere: empty string, so the caller renders initials.
+  assert.equal(microGraphNodeArt({ id: 'partner:fund', kind: 'partner', name: 'Fund Co' }, 0, 0, 17), '');
+  assert.equal(microGraphNodeArt({ id: 'person:ada', kind: 'person', name: 'Ada Lovelace' }, 0, 0, 17), '');
+});
+
+test('micro graph node art resolves the published example records', async () => {
+  const published = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const byId = new Map(published.entities.map(item => [item.id, item]));
+  assert.ok(microGraphNodeArt(byId.get('person:cielo-nicolosi'), 0, 0, 17)
+    .includes('href="./assets/portraits/cielo-nicolosi.png"'));
+  assert.ok(microGraphNodeArt(byId.get('startup:alloovium'), 0, 0, 17)
+    .includes('href="./assets/logos/alloovium.png"'));
 });
 
 test('micro graph reads the published graph without inventing neighbours', async () => {
