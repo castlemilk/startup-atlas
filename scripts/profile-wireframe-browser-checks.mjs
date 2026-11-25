@@ -237,8 +237,9 @@ export async function checkProfileWireframes({command, evaluate, navigate, until
         assert.ok(await evaluate(`(()=>{const sources=[...document.querySelectorAll('#entity-sources a')].map(a=>a.href);return ${JSON.stringify(offer.extra)}.every(url=>sources.includes(url));})()`),'Programme documents remain present in the source index');
       }
       await click('.profile-sources-summary');
-      await evaluate("document.querySelector('#entity-sources').scrollIntoView({block:'start',behavior:'instant'})");
-      await until(()=>evaluate("document.querySelector('.profile-sources-footer').open&&document.querySelector('#entity-sources').getBoundingClientRect().top<innerHeight/2"),'The Sources section must open and read at the top of the viewport');
+      // The sources index renders asynchronously, so keep re-anchoring the
+      // section until it reads at the top of the viewport.
+      await until(()=>evaluate("(()=>{const s=document.querySelector('#entity-sources');s.scrollIntoView({block:'start',behavior:'instant'});return document.querySelector('.profile-sources-footer').open&&s.getBoundingClientRect().top<innerHeight/2;})()"),'The Sources section must open and read at the top of the viewport');
       // Tabbed profiles (#419): the evidence trigger may sit in a hidden
       // panel; select that panel's tab first so the control is reachable.
       await evaluate(`(()=>{const b=document.querySelector(${JSON.stringify(profile.trigger)});const panel=b?.closest('[role="tabpanel"]');if(panel&&panel.hidden)document.getElementById('tab-'+panel.id)?.click();})()`);
