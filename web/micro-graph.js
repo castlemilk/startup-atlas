@@ -20,6 +20,7 @@ const EDGE_KIND_LABELS = {
   led_round: 'Led round',
   team_member: 'Team',
   employment: 'Team',
+  co_founder: 'Co-founder',
   member_of_network: 'Network member',
   subsidiary_of: 'Subsidiary',
   integrates_with: 'Integrates with'

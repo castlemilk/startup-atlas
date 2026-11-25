@@ -48,6 +48,45 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(result['edges'][0]['source'],'https://example.com/team')
         self.assertEqual(result['edges'][0]['to'],'startup:example')
 
+    def test_cofounder_edges_join_founders_of_the_same_startup(self):
+        research={'reviewed':'2026-01-15','startups':[{'name':'Example','source':'https://example.com/about',
+            'founders':[
+                {'name':'Zoe Founder','source':'https://example.com/team','reviewed_at':'2026-01-02'},
+                {'name':'Amy Founder','source':'https://example.com/team','reviewed_at':'2026-01-05'},
+                {'name':'Max Founder','source':'https://example.org/press'}]}]}
+        result=graph.build_graph({},[],{},{'opportunities':[]},research)
+        pairs=[edge for edge in result['edges'] if edge['kind']=='co_founder']
+        self.assertEqual(len(pairs),3)
+        for edge in pairs:
+            self.assertLess(edge['from'],edge['to'])
+            self.assertEqual(edge['startup_id'],'startup:example')
+            self.assertEqual(edge['description'],'Co-founder of Example')
+            self.assertEqual(edge['confidence_basis']['inferred'],False)
+            self.assertGreaterEqual(edge['confidence'],0.5)
+        shared=next(edge for edge in pairs if {edge['from'],edge['to']}=={'person:amy-founder','person:zoe-founder'})
+        self.assertEqual(shared['source'],'https://example.com/team')
+        self.assertEqual(shared['last_verified'],'2026-01-05')
+        mixed=next(edge for edge in pairs if {edge['from'],edge['to']}=={'person:amy-founder','person:max-founder'})
+        self.assertEqual(mixed['source'],'https://example.com/about')
+    def test_cofounder_edges_need_two_distinct_founders(self):
+        single={'startups':[{'name':'Solo','source':'https://example.com/about',
+            'founders':[{'name':'Only Founder','source':'https://example.com/team'}]}]}
+        result=graph.build_graph({},[],{},{'opportunities':[]},single)
+        self.assertEqual([edge for edge in result['edges'] if edge['kind']=='co_founder'],[])
+        duplicated={'startups':[{'name':'Echo','source':'https://example.com/about',
+            'founders':[{'name':'Same Person','source':'https://example.com/team'},
+                        {'name':'Same Person','source':'https://example.com/team'}]}]}
+        result=graph.build_graph({},[],{},{'opportunities':[]},duplicated)
+        self.assertEqual([edge for edge in result['edges'] if edge['kind']=='co_founder'],[])
+    def test_cofounder_edges_are_scoped_per_startup(self):
+        founders=[{'name':'Amy Founder','source':'https://example.com/team'},
+                  {'name':'Zoe Founder','source':'https://example.com/team'}]
+        research={'startups':[
+            {'name':'First','source':'https://example.com/about','founders':founders},
+            {'name':'Second','source':'https://example.com/about','founders':founders}]}
+        result=graph.build_graph({},[],{},{'opportunities':[]},research)
+        pairs=[edge for edge in result['edges'] if edge['kind']=='co_founder']
+        self.assertEqual(sorted(edge['startup_id'] for edge in pairs),['startup:first','startup:second'])
     def test_public_catalogue_snapshot_round_trips_sources_and_mappings(self):
         with tempfile.TemporaryDirectory() as temp:
             data_dir=Path(temp)/'data'; shutil.copytree(ROOT/'data',data_dir)

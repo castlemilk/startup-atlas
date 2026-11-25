@@ -57,6 +57,7 @@ test('micro graph rejects unknown roots and labels edge kinds', () => {
   assert.throws(() => microGraphNeighbours(graph, 'startup:missing'), /Entity not found/);
   assert.equal(edgeKindLabel('member_of_network'), 'Network member');
   assert.equal(edgeKindLabel('led_round'), 'Led round');
+  assert.equal(edgeKindLabel('co_founder'), 'Co-founder');
   assert.equal(edgeKindLabel('something_new'), 'Connected');
 });
 
