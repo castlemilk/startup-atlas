@@ -78,7 +78,9 @@ jobs:
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
       - name: Exercise design-system and profile views in Chrome
-        run: node scripts/test-atlas-views-browser.mjs
+        run: |
+          node scripts/test-atlas-views-browser.mjs
+          node scripts/test-offline-fixture-browser.mjs
         env:
           ATLAS_SCREENSHOTS_DIR: ${{ runner.temp }}/startup-atlas-graph
       - name: Exercise the design microsite in Chrome
