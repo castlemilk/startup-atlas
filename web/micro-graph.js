@@ -4,6 +4,9 @@
 // decides ordering and the label shown, exactly as the Relationships list
 // beneath it presents the same records in full.
 
+import { escapeHtml as esc } from './logic.js';
+import { graphArtwork } from './graph-artwork.js';
+
 export const MICRO_GRAPH_CAP = 12;
 
 const EDGE_KIND_LABELS = {
@@ -84,6 +87,21 @@ export function microGraphNameLines(name) {
   }
   if (best && best.score <= MICRO_GRAPH_LABEL_WRAP_MAX) return best.lines;
   return [`${name.slice(0, MICRO_GRAPH_LABEL_LINE - 1)}…`];
+}
+
+// Node artwork for the micro graph (issue #526): the entity's own image —
+// a person's headshot, or a company/partner/programme logo — resolved by
+// graphArtwork from the same graph fields the full graph and the profile
+// marks use, so a node shows the image its profile shows. Portraits fill
+// the node circle (slice, clipped round by entity.css, as in graph.js);
+// logos fit whole inside the node's bounding square (meet) over the plate.
+// Returns '' when the entity has no artwork; the caller then renders the
+// initials fallback, which is also restored if the image fails to load.
+export function microGraphNodeArt(entity, x, y, r) {
+  const { url, portrait } = graphArtwork(entity);
+  if (!url) return '';
+  const size = r * 2;
+  return `<image class="entity-micro-art${portrait ? ' entity-micro-art-person' : ''}" href="${esc(url)}" x="${x - r}" y="${y - r}" width="${size}" height="${size}" preserveAspectRatio="xMidYMid ${portrait ? 'slice' : 'meet'}" aria-hidden="true"></image>`;
 }
 
 // Simple radial layout: neighbours evenly spaced on an ellipse around the
