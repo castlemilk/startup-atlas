@@ -31,6 +31,20 @@ jobs:
       - name: Check CI routing
         if: steps.changes.outputs.ci == 'true'
         run: python3 -m unittest discover -s tests -p 'test_ci_paths.py'
+      - name: Record shadow test selection
+        # Issue #150 (A4): inside this existing full run, record what the
+        # dependency-aware selector would have executed for the pushed
+        # diff. Record only — the full run below is unchanged and the
+        # shadow report never gates it.
+        if: github.event_name == 'push'
+        run: |
+          python3 scripts/check_ci_paths.py --shadow HEAD^1 | tee shadow-selection.json
+          {
+            echo '### Shadow test selection (record only)'
+            echo '```json'
+            cat shadow-selection.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Generate catalogue and graph for selected checks
         if: steps.changes.outputs.data == 'true' || steps.changes.outputs.web == 'true'
         run: npm run data:generate
