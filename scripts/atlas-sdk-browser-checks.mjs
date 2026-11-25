@@ -144,7 +144,7 @@ export async function checkAtlasSdk({command,evaluate,navigate,until,click,press
   await until(()=>evaluate("document.querySelector('#treemap-metric').value==='company-value'&&document.querySelector('#treemap-query').value===''&&!document.querySelector('#treemap-chart').hidden&&document.querySelector('#treemap-cards').hidden"),'SDK reset did not restore the default map');
   await assertOneTabStop('.treemap-view-switch');
   await choose('Group by',/^Headquarters country$/);
-  await choose('Size by',/^Company value$/);
+  await choose('Size by',/^Company value(?:\s|$)/);
   await until(()=>evaluate(`(()=>{
     const params=new URLSearchParams(location.search);
     const chart=document.querySelector('#treemap-chart');
