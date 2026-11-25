@@ -1,7 +1,8 @@
 // Browser-level treemap and ranked-card checks. Uses the Chrome already installed
 // on the GitHub Actions runner and Node's built-in CDP WebSocket client.
 import assert from 'node:assert/strict';
-import {makeView,formatValue,indexCompanyValues,indexTreemapEvidence} from '../dist/treemap-model.js';
+import {makeView,formatValue,groupedTreemap,indexCompanyValues,indexTreemapEvidence,tileTicker} from '../dist/treemap-model.js';
+import {indexCompanies} from '../dist/atlas-exploration.js';
 import {logoFor} from '../dist/logos.js';
 import {readFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
@@ -106,7 +107,18 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('#treemap-novalue [data-company]').length"),values.missing.length,'Companies without a recorded value appear in the equal-size no-value band, not the sized map');
   assert.equal(await evaluate("document.querySelector('#treemap-novalue').hidden"),false,'The no-value band is visible in the default map view');
   const tileTickers=await evaluate(`Object.fromEntries(Array.from(document.querySelectorAll('#treemap-chart [data-company] .treemap-tile-ticker'),el=>[el.closest('[data-company]').dataset.company,el.textContent]))`);
-  assert.deepEqual(tileTickers,{'startup:uipath':'NYSE: PATH','startup:wise':'Nasdaq: WSE'},'Listed tiles must show EXCHANGE: TICKER in the default company-value view');
+  // A listed tile shows its EXCHANGE: TICKER line only when the tile clears
+  // tileTicker's size gate, and tile sizes move whenever values do — so the
+  // expected map is derived from the model at the chart's real bounds (the
+  // page's own inputs: technology grouping, heading 44, unstacked) instead of
+  // hard-coding which listed companies happen to clear the gate today.
+  const chartBounds=await evaluate("(()=>{const r=document.querySelector('#treemap-chart').getBoundingClientRect();return {width:r.width,height:r.height};})()");
+  const pageView=makeView(snapshot,{metric:'company-value',currency:'USD',companyValues,group:'technology',dimensions:indexCompanies(snapshot,indexedEvidence.technology),marketCaps:indexedEvidence.marketCaps});
+  const expectedTickers={};
+  for(const group of groupedTreemap(pageView.groups,chartBounds.width,chartBounds.height,{heading:44,stacked:false}))
+    for(const tile of group.tiles||[]) { const ticker=tileTicker(tile); if(ticker) expectedTickers[tile.id]=ticker; }
+  assert.ok(Object.keys(expectedTickers).length>0,'At least one listed tile must clear the ticker size gate in the default view');
+  assert.deepEqual(tileTickers,expectedTickers,'Listed tiles must show EXCHANGE: TICKER in the default company-value view');
   assert.equal(await evaluate("new URL(location.href).searchParams.get('view')"),'map');
   assert.equal(await evaluate("document.querySelector('#treemap-chart [data-company=\"startup:psiquantum\"]').closest('.treemap-plot-group').getAttribute('aria-label')"),'Quantum technology');
   assert.match(await text('#treemap-legend'),/Technology type/);
