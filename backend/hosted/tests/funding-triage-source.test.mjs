@@ -27,7 +27,18 @@ for(const [slug,eventId] of [['puralink','puralink-2025-pre-seed'],['deeligence'
   assert.deepEqual(research,before);assert.equal(result.persisted,false);assert.equal(result.published,false);
  });
 }
-test('Alloovium accelerator listing is not converted into assumed round terms',async()=>{
+test('Alloovium accelerator rounds carry only their sourced terms (#529)',async()=>{
  const record=readStartupRecord(await load('startup-research.json'),'startup:alloovium').record;
- assert.equal((record.funding_rounds||[]).length,0);
+ const rounds=record.funding_rounds||[];
+ assert.equal(rounds.length,2);
+ const byId=Object.fromEntries(rounds.map(r=>[r.id,r]));
+ const startmate=byId['alloovium-2026-startmate-accelerator'];
+ assert.ok(startmate);assert.equal(startmate.stage,'Accelerator');assert.equal(startmate.announced_on,'2026-02-17');
+ assert.equal(startmate.amount,120000);assert.equal(startmate.currency,'AUD');
+ assert.equal(startmate.valuation,1500000);assert.equal(startmate.valuation_currency,'AUD');
+ assert.equal(startmate.lead_investor,'Startmate');assert.match(startmate.source,/^https:\/\//);
+ const yc=byId['alloovium-2026-y-combinator-accelerator'];
+ assert.ok(yc);assert.equal(yc.stage,'Accelerator');assert.equal(yc.announced_on,'2026-06-05');
+ assert.equal(yc.amount,500000);assert.equal(yc.currency,'USD');
+ assert.equal(yc.lead_investor,'Y Combinator');assert.match(yc.source,/^https:\/\//);
 });
