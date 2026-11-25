@@ -8063,6 +8063,26 @@
       "stale": false
     },
     {
+      "from": "partner:accel",
+      "to": "startup:synthesia",
+      "kind": "participated_in",
+      "description": "Participated in Series E round",
+      "source": "https://www.synthesia.io/post/series-e-200-million-4-billion-valuation-future-work",
+      "round_id": "synthesia-2026-series-e",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:airtree",
       "to": "startup:airwallex",
       "kind": "participated_in",
@@ -8688,6 +8708,26 @@
       "stale": false
     },
     {
+      "from": "partner:firstmark",
+      "to": "startup:synthesia",
+      "kind": "participated_in",
+      "description": "Participated in Series E round",
+      "source": "https://www.synthesia.io/post/series-e-200-million-4-billion-valuation-future-work",
+      "round_id": "synthesia-2026-series-e",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:forerunner",
       "to": "startup:andromeda-robotics",
       "kind": "led_round",
@@ -8714,6 +8754,26 @@
       "description": "Led Strategic growth financing round",
       "source": "https://www.bugcrowd.com/press-release/bugcrowd-secures-102-million-in-strategic-growth-funding-to-scale-ai-powered-crowdsourced-security-platform/",
       "round_id": "bugcrowd-2024-growth",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:google-ventures",
+      "to": "startup:synthesia",
+      "kind": "led_round",
+      "description": "Led Series E round",
+      "source": "https://www.synthesia.io/post/series-e-200-million-4-billion-valuation-future-work",
+      "round_id": "synthesia-2026-series-e",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.6,
@@ -8868,6 +8928,26 @@
       "stale": false
     },
     {
+      "from": "partner:kleiner-perkins",
+      "to": "startup:synthesia",
+      "kind": "participated_in",
+      "description": "Participated in Series E round",
+      "source": "https://www.synthesia.io/post/series-e-200-million-4-billion-valuation-future-work",
+      "round_id": "synthesia-2026-series-e",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
       "from": "partner:m12",
       "to": "startup:psiquantum",
       "kind": "participated_in",
@@ -8955,6 +9035,26 @@
       "source": "https://www.mseq.vc/all-companies",
       "first_seen": "2026-11-21",
       "last_verified": "2026-11-21",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
+      "to": "startup:emesent",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://www.emesent.com/news/2022/02/25/emesent-doubles-down-on-global-growth-after-closing-32-million-series-a",
+      "round_id": "emesent-2022-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
       "confidence": 0.6,
       "confidence_basis": {
         "sources": 1,
@@ -15577,12 +15677,13 @@
       "currency": "USD",
       "source": "https://www.airwallex.com/global/newsroom/airwallex-square-peg-capital-series-a-funding",
       "stage_normalised": "Series A",
+      "lead_investor": "Tencent Holdings",
       "participants": [
         "Tencent Holdings",
         "Sequoia Capital China",
         "Mastercard"
       ],
-      "note": "Issuer’s later Series A+ release reports this earlier round and its participants. That release date is not the announcement date of the initial Series A; the latter is not provided in the cited release."
+      "note": "Issuer’s later Series A+ release reports this earlier round and its participants. That release date is not the announcement date of the initial Series A; the latter is not provided in the cited release. TechCrunch reported on 1 May 2017 that the round was led by Tencent, with participation from Sequoia China, Mastercard and existing investor Gobi Ventures: https://techcrunch.com/2017/05/01/airwallex-tencent-series-a-mastercard-sequoia-china/"
     },
     {
       "startup_id": "startup:airwallex",
@@ -16141,7 +16242,14 @@
       "amount_text": "$32 million (currency unspecified in company announcement)",
       "source": "https://www.emesent.com/news/2022/02/25/emesent-doubles-down-on-global-growth-after-closing-32-million-series-a",
       "note": "In February 2022, Emesent reported the Series A had closed. Perennial Partners led. Tiger Global, TELUS Ventures, Main Sequence and Archangel Ventures participated.",
-      "stage_normalised": "Series A"
+      "stage_normalised": "Series A",
+      "lead_investor": "Perennial Partners",
+      "participants": [
+        "Tiger Global",
+        "TELUS Ventures",
+        "Main Sequence",
+        "Archangel Ventures"
+      ]
     },
     {
       "startup_id": "startup:ena-respiratory",
@@ -16627,7 +16735,20 @@
       "currency": "USD",
       "valuation": 4000000000,
       "valuation_currency": "USD",
-      "stage_normalised": "Series E"
+      "stage_normalised": "Series E",
+      "lead_investor": "Google Ventures",
+      "participants": [
+        "Evantic",
+        "Hedosophia",
+        "NVentures",
+        "Accel",
+        "Kleiner Perkins",
+        "New Enterprise Associates",
+        "PSP Growth",
+        "Air Street Capital",
+        "FirstMark",
+        "MMC Ventures"
+      ]
     },
     {
       "startup_id": "startup:uipath",
@@ -17675,6 +17796,7 @@
     "lead_investor 'Lone Pine Capital' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'MegaChips' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; led_round edge skipped",
     "lead_investor 'NEA' for round synthesia-2025-series-d (Synthesia) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Perennial Partners' for round emesent-2022-series-a (Emesent) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Purpose Ventures' for round andromeda-2024-06-seed (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
     "lead_investor 'QIC Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Quantonation' for round diraq-2024-series-a-2 (Diraq) has no matching partner lead; led_round edge skipped",
@@ -17683,6 +17805,7 @@
     "lead_investor 'SoftBank Group' for round wayve-2024-series-c (Wayve) has no matching partner lead; led_round edge skipped",
     "lead_investor 'T. Rowe Price' for round canva-2021-09-15 (Canva) has no matching partner lead; led_round edge skipped",
     "lead_investor 'TDM Growth Partners' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'Tencent Holdings' for round airwallex-2017-series-a (Airwallex) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Union Square Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; led_round edge skipped",
     "participant '1835i Ventures' for round airwallex-2021-series-e (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant '1835i Ventures' for round airwallex-2021-series-e1 (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -17693,9 +17816,11 @@
     "participant 'ANZi Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Activant' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Affinity Partners' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'Air Street Capital' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Alium Capital Management' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
     "participant 'Alpha Edison' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Anorak Ventures' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; participated_in edge skipped",
+    "participant 'Archangel Ventures' for round emesent-2022-series-a (Emesent) has no matching partner lead; participated_in edge skipped",
     "participant 'Athletic Ventures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
     "participant 'Aura Ventures' for round jigspace-2024-funding-round (JigSpace) has no matching partner lead; participated_in edge skipped",
     "participant 'Baillie Gifford' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; participated_in edge skipped",
@@ -17715,6 +17840,7 @@
     "participant 'DYNE Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'Dragoneer Investments' for round canva-2021-09-15 (Canva) has no matching partner lead; participated_in edge skipped",
     "participant 'EDGE Group' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
+    "participant 'Evantic' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Fairground' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2016-series-b (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Felicis Ventures' for round culture-amp-2017-series-c (Culture Amp) has no matching partner lead; participated_in edge skipped",
@@ -17731,6 +17857,7 @@
     "participant 'Grok Ventures' for round airwallex-2021-series-d-extension (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Grok Ventures' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Hedosophia' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Hermitage Capital' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Hillhouse Capital' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Hillhouse Capital' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -17757,6 +17884,7 @@
     "participant 'Lone Pine Capital' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Lone Pine Capital' for round airwallex-2025-series-f (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'MA Financial Growth Ventures Fund' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
+    "participant 'MMC Ventures' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'MPower Partners' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Main Sequence Ventures' for round q-ctrl-2018-seed (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'Main Sequence Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
@@ -17765,11 +17893,14 @@
     "participant 'Mundi Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
     "participant 'NGS' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'NRFC' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
+    "participant 'NVentures' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'National Reconstruction Fund Corporation' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'National Reconstruction Fund Corporation' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
+    "participant 'New Enterprise Associates' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'NewView' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
     "participant 'Novel Investments' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'OneVentures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
+    "participant 'PSP Growth' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Purpose Ventures' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
     "participant 'R+ VC' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; participated_in edge skipped",
     "participant 'R3I Ventures' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
@@ -17799,6 +17930,7 @@
     "participant 'Skip Capital' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'Skip Capital' for round culture-amp-2021-series-f (Culture Amp) has no matching partner lead; participated_in edge skipped",
     "participant 'T. Rowe Price' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'TELUS Ventures' for round emesent-2022-series-a (Emesent) has no matching partner lead; participated_in edge skipped",
     "participant 'TIAA Ventures' for round airwallex-2025-series-g (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Temasek' for round psiquantum-2021-series-d (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Tencent Holdings' for round airwallex-2017-series-a (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -17806,6 +17938,7 @@
     "participant 'Tencent' for round airwallex-2019-series-c (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Tencent' for round airwallex-2020-series-d (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Tencent' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
+    "participant 'Tiger Global' for round emesent-2022-series-a (Emesent) has no matching partner lead; participated_in edge skipped",
     "participant 'Trampoline' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
     "participant 'Trinity Ventures' for round uluu-series-a-official-announcement (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Ultratech Capital Partners' for round quantum-brilliance-2021-seed (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
