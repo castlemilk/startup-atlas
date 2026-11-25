@@ -159,6 +159,21 @@ def build_index(corpus_dir, out_dir, source_revision='', now=None, force=False,
     out_dir = Path(out_dir)
     files = read_reviewed_files(corpus_dir)
     manifest = reviewed_manifest(files, source_revision, now)
+    # Anti-regression guard (F1, 25 Nov 2026): a stale indexer image whose
+    # REVIEWED_FILES predates graph.json/treemap-evidence.json rebuilt the
+    # index from a 4-file corpus and silently dropped the edges and
+    # relationships tables. Never build a version whose corpus file set is
+    # a strict subset of the currently published index's corpus files.
+    if remote_manifest is not None:
+        remote_files = set(
+            ((remote_manifest.get('corpus') or {}).get('files') or {}).keys())
+        missing = remote_files - set(manifest['files'].keys())
+        if missing:
+            raise CorpusError(
+                'Refusing to build a regressed index: candidate corpus is '
+                f'missing files the published index has: {", ".join(sorted(missing))}. '
+                'This build is likely running a stale REVIEWED_FILES list; '
+                'update the indexer image/code instead of publishing.')
     current_pointer = read_local_pointer(out_dir) or remote_pointer
     current_manifest = read_local_index_manifest(out_dir, current_pointer)
     if current_manifest is None and remote_manifest is not None:
