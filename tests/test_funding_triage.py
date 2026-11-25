@@ -9,7 +9,7 @@ spec = importlib.util.spec_from_file_location('funding_graph', ROOT/'scripts/mak
 graph = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(graph)
 class FundingTriageTests(unittest.TestCase):
-    def test_only_reviewed_rounds_and_distinct_citations_added_without_new_relationships(self):
+    def test_only_reviewed_rounds_and_distinct_citations_added_with_only_sourced_participant_edges(self):
         read = lambda name: json.loads((ROOT/'data'/name).read_text())
         research = read('startup-research.json')
         base = copy.deepcopy(research)
@@ -20,7 +20,17 @@ class FundingTriageTests(unittest.TestCase):
         args = [read(name) for name in ['partner-profiles.json','partner-leads.json','partners-reviewed.json','catalogue.json']]
         before, after = [graph.build_graph(*args, source) for source in [base, research]]
         self.assertEqual(before['entities'], after['entities'])
-        self.assertEqual(before['edges'], after['edges'])
+        # The two rounds carry sourced participants (Puralink's own newsroom names
+        # Side Stage Ventures and Startmate; Deeligence's Alice Anderson Fund does
+        # not resolve to a partner entity). The only new relationships allowed are
+        # those rounds' own participated_in edges — nothing else may appear.
+        added_edges = [edge for edge in after['edges'] if edge not in before['edges']]
+        removed_edges = [edge for edge in before['edges'] if edge not in after['edges']]
+        self.assertEqual(removed_edges, [])
+        self.assertEqual(
+            {(edge['from'], edge['to'], edge['kind'], edge['round_id']) for edge in added_edges},
+            {('partner:side-stage-ventures', 'startup:puralink', 'participated_in', 'puralink-2025-pre-seed'),
+             ('partner:startmate', 'startup:puralink', 'participated_in', 'puralink-2025-pre-seed')})
         added = [r for r in after['funding_rounds'] if r['id'] in ids]
         self.assertEqual({r['id'] for r in added}, ids)
         self.assertEqual([r for r in after['funding_rounds'] if r['id'] not in ids], before['funding_rounds'])
@@ -35,4 +45,4 @@ class FundingTriageTests(unittest.TestCase):
                 self.assertNotIn(key, round)
         deeligence = next(r for r in added if r['startup_id']=='startup:deeligence')
         self.assertNotIn('announced_on', deeligence)
-        print('Funding graph:', len(after['entities']), 'entities;', len(after['funding_rounds']), 'rounds; unchanged identities and edges')
+        print('Funding graph:', len(after['entities']), 'entities;', len(after['funding_rounds']), 'rounds; unchanged identities, only the rounds\' own sourced participant edges added')
