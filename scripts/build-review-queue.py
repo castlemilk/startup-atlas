@@ -27,7 +27,13 @@ Entry kinds
   (startup, amount, currency, stage, date, source URL). Only news whose
   title signals a funding round and whose amount mention appears in the
   title is proposed, so valuations and product prices are not mistaken
-  for rounds.
+  for rounds. The startup is the crawl's per-article attribution (F6):
+  items the crawl could not attribute to a tracked startup never
+  become drafts. When the article itself names investors for the
+  round, the draft also carries them (lead/participants) marked
+  ``investors_source: crawl-extracted (unverified)``; only investors
+  Atlas already records can be named, and boilerplate backer lists are
+  never extracted.
 - ``fact`` (value) — draft valuation/listing fact from a news item
   (#414d): a draft-value shape (startup, amount, currency, date, event
   kind in ``latest_value``'s basis vocabulary, stage when the headline
@@ -896,11 +902,124 @@ def produce_edges(data_dir, run):
     return entries
 
 
-def _draft_round(item):
+def _known_investors(data_dir):
+    """Investor names Atlas already records, for draft-round matching.
+
+    Built from the graph's partner entities, the reviewed-partner
+    registry and the lead/participant names on recorded funding
+    rounds. Draft extraction may only ever name an investor from this
+    set: a name the corpus does not know cannot be checked against
+    anything, so it is left for human research instead of guessed.
+    Maps casefolded name -> canonical recorded name.
+    """
+    names = {}
+
+    def add(raw):
+        name = " ".join(str(raw or "").split())
+        if name:
+            names.setdefault(name.casefold(), name)
+
+    graph = load_json(Path(data_dir) / "graph.json", None) or {}
+    for entity in graph.get("entities", []):
+        if str(entity.get("id", "")).startswith("partner:"):
+            add(entity.get("name"))
+    reviewed = load_json(Path(data_dir) / "partners-reviewed.json", None) or {}
+    if isinstance(reviewed, dict):
+        for name in reviewed:
+            add(name)
+    elif isinstance(reviewed, list):
+        for entry in reviewed:
+            if isinstance(entry, dict):
+                add(entry.get("name"))
+    research = load_json(Path(data_dir) / "startup-research.json", None) or {}
+    for startup in research.get("startups", []):
+        for round_ in startup.get("funding_rounds", []):
+            add(round_.get("lead_investor"))
+            for name in round_.get("lead_investors") or []:
+                add(name)
+            for name in round_.get("participants") or []:
+                add(name)
+    return names
+
+
+_LEAD_ANCHOR_RE = re.compile(r"\bled by\b", re.I)
+_PARTICIPANT_ANCHOR_RE = re.compile(
+    r"\b(?:with participation from|participation from|joined by|backed by"
+    r"|investors? (?:including|include)|alongside)\b", re.I)
+_ROUND_CONTEXT_RE = re.compile(
+    r"\b(?:rais\w+|round|funding|capital|seed|series|pre-seed|investment)\b",
+    re.I)
+_BOILERPLATE_RE = re.compile(
+    r"\b(?:existing investors?|previous (?:round|investors?|backing)"
+    r"|prior rounds?|earlier rounds?|long[-\s](?:standing|time) "
+    r"(?:investors?|backers?))\b", re.I)
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+")
+
+
+def _extract_draft_investors(item, investors):
+    """Investors an article names for THIS round, from its own words.
+
+    Conservative by construction. A name is extracted only when it is
+    an investor Atlas already records (``investors`` maps casefolded
+    name -> canonical name) AND it appears in the window after a
+    funding anchor ("led by", "participation from", "joined by",
+    "backed by", "investors including") in a sentence about the round;
+    each anchor's window ends at the next anchor, so a participant
+    named after "participation from" is never misread as a co-lead.
+    Sentences flagged as boilerplate ("existing investors include …")
+    are skipped entirely, so an about-the-company backer list is never
+    mistaken for this round's syndicate. Returns (leads, participants)
+    in article order; both empty when nothing qualifies.
+    """
+    if not investors:
+        return [], []
+    patterns = [(canonical, re.compile(
+        r"(?<!\w)" + re.escape(canonical) + r"(?!\w)", re.I))
+        for canonical in investors.values()]
+    texts = [item.get("title") or ""]
+    for excerpts in (item.get("evidence") or {}).values():
+        for excerpt in excerpts:
+            if excerpt.get("text"):
+                texts.append(excerpt["text"])
+    leads, participants = [], []
+    for text in texts:
+        for sentence in _SENTENCE_SPLIT_RE.split(text):
+            if _BOILERPLATE_RE.search(sentence):
+                continue
+            if not _ROUND_CONTEXT_RE.search(sentence):
+                continue
+            anchors = [(m.start(), m.end(), True)
+                       for m in _LEAD_ANCHOR_RE.finditer(sentence)]
+            anchors += [(m.start(), m.end(), False)
+                        for m in _PARTICIPANT_ANCHOR_RE.finditer(sentence)]
+            anchors.sort()
+            for position, (_, end, is_lead) in enumerate(anchors):
+                stop = anchors[position + 1][0] \
+                    if position + 1 < len(anchors) else len(sentence)
+                window = sentence[end:stop]
+                named = sorted(
+                    ((pattern.search(window).start(), canonical)
+                     for canonical, pattern in patterns
+                     if pattern.search(window)),
+                    key=lambda pair: pair[0])
+                for _, canonical in named:
+                    target = leads if is_lead else participants
+                    if canonical not in leads \
+                            and canonical not in participants:
+                        target.append(canonical)
+    participants = [name for name in participants if name not in leads]
+    return leads, participants
+
+
+def _draft_round(item, investors=None):
     """Draft funding round from a news item, or None when not a round.
 
     Requires a funding signal in the title and an amount mention that
     appears in the title (so valuations and product prices are skipped).
+    When ``investors`` (the recorded-investor registry) is supplied,
+    investors the article itself names for the round are added as
+    crawl-extracted, unverified candidates — see
+    ``_extract_draft_investors`` for the conservative rules.
     """
     title = item.get("title") or ""
     if not FUNDING_TITLE_RE.search(title):
@@ -931,7 +1050,7 @@ def _draft_round(item):
     if not date:
         checked = item.get("checked_at") or ""
         date = checked[:10] if checked else None
-    return {
+    draft = {
         "startup": item.get("startup") or "",
         "amount": amount["value"],
         "currency": amount["currency"],
@@ -939,14 +1058,33 @@ def _draft_round(item):
         "date": date,
         "source_url": item.get("url") or "",
     }
+    if investors:
+        leads, participants = _extract_draft_investors(item, investors)
+        if leads or participants:
+            draft["lead_investor"] = leads[0] if leads else None
+            if len(leads) > 1:
+                draft["lead_investors"] = leads
+            draft["participants"] = participants
+            draft["investors_source"] = "crawl-extracted (unverified)"
+    return draft
 
 
-def produce_facts(artifact_dir, run):
-    """Fact entries: draft funding rounds from news items."""
+def produce_facts(artifact_dir, data_dir, run):
+    """Fact entries: draft funding rounds from news items.
+
+    Items the crawl could not attribute to a tracked startup
+    (``startup`` empty) never become drafts: a round without a company
+    is not a fact, and stamping the publication as the subject was the
+    F6 defect. Unattributed items stay in the crawl artifact, with the
+    publication recorded as their source, for human triage.
+    """
     news = load_artifact(artifact_dir, "news").get("candidates", [])
+    investors = _known_investors(data_dir)
     entries = []
     for item in news:
-        draft = _draft_round(item)
+        if not item.get("startup"):
+            continue
+        draft = _draft_round(item, investors)
         if draft is None:
             continue
         confidence = 0.55 if draft["stage"] else 0.40
@@ -1140,6 +1278,10 @@ def produce_value_facts(artifact_dir, data_dir, run):
     for item in news:
         title = item.get("title") or ""
         if not title:
+            continue
+        if not item.get("startup"):
+            # Unattributed (F6): a valuation cannot be recorded against
+            # an unknown company either.
             continue
         seen = set()
         for mention in item.get("amount_mentions", []):
@@ -1427,7 +1569,7 @@ def build(artifact_dir, run, queue_path, data_dir, summary_path=None):
     producers = [
         merges,
         produce_edges(data_dir, run),
-        produce_facts(artifact_dir, run),
+        produce_facts(artifact_dir, data_dir, run),
         produce_value_facts(artifact_dir, data_dir, run),
         produce_startup_leads(artifact_dir, data_dir, run, merged_slugs),
         produce_headshots(artifact_dir, run),
