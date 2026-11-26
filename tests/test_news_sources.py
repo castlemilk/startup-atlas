@@ -117,13 +117,20 @@ class TradePressTraversalTests(unittest.TestCase):
 
     def test_trade_press_listings_yield_unreviewed_candidates(self):
         out, _ = self.run_frontier()
-        by_startup = {c['startup']: c for c in out['candidates']}
+        by_source = {c['source_name']: c for c in out['candidates']}
         for entry in TRADE_PRESS:
             with self.subTest(id=entry['id']):
-                candidate = by_startup[entry['name']]
+                candidate = by_source[entry['name']]
                 self.assertTrue(candidate['review_required'])
                 self.assertEqual(candidate['discovered_from'], entry['url'])
                 self.assertTrue(candidate['amount_mentions'])
+                # F6: the fixture article is about "Acme", which Atlas
+                # does not track, so the candidate is unattributed —
+                # the publication is recorded as its source, never
+                # stamped as its subject.
+                self.assertIsNone(candidate['startup'])
+                self.assertEqual(candidate['attribution'], 'unattributed')
+                self.assertEqual(candidate['source_id'], entry['id'])
         coverage = {row['source']: row for row in out['coverage']['sources']}
         for entry in TRADE_PRESS:
             self.assertEqual(coverage[entry['name']]['status'], 'ok')
@@ -134,6 +141,106 @@ class TradePressTraversalTests(unittest.TestCase):
         fetched = [url for url, _ in transport.calls]
         self.assertFalse(any('elsewhere.example' in url for url in fetched))
         self.assertFalse(any(url.endswith('/about') for url in fetched))
+
+
+TRADE_REGISTRY = {'sources': [
+    {'id': 'startup-daily-funding', 'name': 'Startup Daily',
+     'url': 'https://www.startupdaily.net/topic/funding/'}]}
+NEWSROOM_REGISTRY = {'sources': [
+    {'id': 'canva-news', 'name': 'Canva',
+     'url': 'https://www.canva.com/newsroom/news/'}]}
+TRACKED = [
+    {'name': 'Alloovium', 'website': 'https://alloovium.com/'},
+    {'name': 'Canva', 'website': 'https://www.canva.com/'},
+]
+
+
+class ArticleTransport:
+    """Serve one listing whose links lead to shaped articles.
+
+    ``articles`` maps slug -> (title, paragraph); the listing links to
+    each article under its title, on the listing's own host.
+    """
+
+    def __init__(self, articles):
+        self.articles = articles
+
+    def request(self, url, allowed_host=None, **kwargs):
+        parts = urlsplit(url)
+        for slug, (title, paragraph) in self.articles.items():
+            if url.endswith('/' + slug):
+                body = (f'<title>{title}</title>'
+                        f'<p>{paragraph}</p>').encode()
+                return 200, {'Content-Type': 'text/html'}, body, url
+        links = ''.join(
+            f'<a href="{parts.scheme}://{parts.netloc}/article/{slug}">'
+            f'{title}</a>'
+            for slug, (title, _) in self.articles.items())
+        return 200, {'Content-Type': 'text/html'}, links.encode(), url
+
+
+class AttributionTests(unittest.TestCase):
+    """F6: a news candidate's subject is the startup the article is
+    about — never the publication that carried it."""
+
+    def run_news(self, registry, articles, startups=TRACKED):
+        args = types.SimpleNamespace(only=[], limit=0, follow=4)
+        return crawl.crawl_startup_news(
+            registry, args, ArticleTransport(articles), startups=startups)
+
+    def test_trade_press_article_attributed_by_title(self):
+        out = self.run_news(TRADE_REGISTRY, {
+            'alloovium-raises': (
+                'Alloovium raises $500,000 seed round',
+                'Alloovium will use the funds to grow its team.')})
+        self.assertEqual(len(out['candidates']), 1)
+        candidate = out['candidates'][0]
+        self.assertEqual(candidate['startup'], 'Alloovium')
+        self.assertEqual(candidate['attribution'], 'article-title')
+        self.assertEqual(candidate['source_name'], 'Startup Daily')
+        self.assertEqual(candidate['source_id'], 'startup-daily-funding')
+
+    def test_trade_press_article_attributed_by_evidence(self):
+        out = self.run_news(TRADE_REGISTRY, {
+            'sydney-startup-raises': (
+                'Sydney startup raises $2 million seed round',
+                'Alloovium has raised $2 million in seed funding to '
+                'expand its hiring platform.')})
+        candidate = out['candidates'][0]
+        self.assertEqual(candidate['startup'], 'Alloovium')
+        self.assertEqual(candidate['attribution'], 'article-evidence')
+
+    def test_unattributable_article_queues_without_a_subject(self):
+        out = self.run_news(TRADE_REGISTRY, {
+            'zephyr-raises': (
+                'Zephyr Labs raises $3 million seed round',
+                'Zephyr Labs raised $3 million to build its product.')})
+        candidate = out['candidates'][0]
+        self.assertIsNone(candidate['startup'])
+        self.assertEqual(candidate['attribution'], 'unattributed')
+        self.assertEqual(candidate['source_name'], 'Startup Daily')
+
+    def test_article_naming_two_tracked_startups_is_unattributed(self):
+        out = self.run_news(TRADE_REGISTRY, {
+            'two-raises': (
+                'Canva and Alloovium raise new funding rounds',
+                'Canva and Alloovium both announced raises this week.')})
+        candidate = out['candidates'][0]
+        self.assertIsNone(candidate['startup'])
+        self.assertEqual(candidate['attribution'], 'unattributed')
+
+    def test_company_newsroom_attributes_to_the_company(self):
+        # The article names no tracked startup at all; the source IS
+        # the company's own newsroom (name + host match), so the
+        # company is the subject.
+        out = self.run_news(NEWSROOM_REGISTRY, {
+            'creator-fund': (
+                'Creator fund announces $10 million in grants',
+                'The fund will support creators worldwide.')})
+        candidate = out['candidates'][0]
+        self.assertEqual(candidate['startup'], 'Canva')
+        self.assertEqual(candidate['attribution'], 'source-newsroom')
+        self.assertEqual(candidate['source_name'], 'Canva')
 
 
 if __name__ == '__main__':
