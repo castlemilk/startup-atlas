@@ -96,7 +96,7 @@ alone never registers as a change.
 
 Check the execution, not the job: a Run API execution resource carries
 `completionTime` and `conditions` at the top level (there is no `status`
-object). A successful run prints `Built index <version>: 9 tables, N
+object). A successful run prints `Built index <version>: 11 tables, N
 rows, from <corpus-sha[:12]>` and `Published … objects …; latest.json
 now points at <version>.`
 
@@ -139,10 +139,10 @@ https://storage.googleapis.com/single-station-515408-g9-atlas-index/query.html
 
 The page reads its index base from the
 `<meta name="atlas-live-index">` tag, follows
-`latest.json` → `manifest.json` → the nine Parquet tables, loads them
+`latest.json` → `manifest.json` → the eleven Parquet tables, loads them
 into DuckDB-WASM in the browser, and runs SQL locally — nothing is
 uploaded. The engine files are tens of MB, so the first load takes a
-while; the page reports "Ready — 9 tables loaded" when it is usable.
+while; the page reports "Ready — 11 tables loaded" when it is usable.
 
 ### The apache-arrow import map (a real gap, fixed 23 Nov 2026)
 
