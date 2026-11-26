@@ -3,8 +3,9 @@ name: Publish reviewed corpus
 # Issue #376: a merged change under data/ used to wait for the next crawl
 # (or a manual live-index bootstrap) before the corpus — and therefore
 # the live index — saw it. Publish the reviewed corpus whenever one of
-# the reviewed inputs change on main; the scheduled indexer rebuilds
-# from the new manifest on its next tick.
+# the reviewed inputs change on main; the Build live index workflow
+# chains off this workflow's completion (workflow_run) and rebuilds from
+# the new manifest straight away, with its */15 poll as backstop.
 
 on:
   push:
