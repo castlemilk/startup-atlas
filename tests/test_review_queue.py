@@ -574,6 +574,94 @@ class BuildTests(FixtureCase):
         self.assertEqual([e for e in added if e["kind"] == "edge"], [])
 
 
+class NewsDraftTests(FixtureCase):
+    """F6: draft rounds need an attributed startup, and investors come
+    only from the article's own round sentences."""
+
+    def _append_news(self, candidate):
+        news = json.loads(
+            (self.artifact / "latest-news.json").read_text())
+        news["candidates"].append(candidate)
+        write_json(self.artifact / "latest-news.json", news)
+
+    def _drafts(self, added):
+        return [e["draft_round"] for e in added
+                if e["kind"] == "fact" and "draft_round" in e]
+
+    def _series_f_candidate(self, evidence_text):
+        return {
+            "startup": "Airwallex",
+            "title": "Airwallex raises $200 million in Series F funding",
+            "url": "https://example.com/news/airwallex-series-f",
+            "discovered_from": "https://example.com/trade-press",
+            "published_hint": "2026-11-21",
+            "checked_at": "2026-11-23T07:15:00+00:00",
+            "amount_mentions": [
+                {"mention": "$200 million",
+                 "normalised": {"value": 200000000.0, "currency": None}}],
+            "evidence": {"funding_stage": [
+                {"text": evidence_text,
+                 "source": "https://example.com/news/airwallex-series-f"}]}}
+
+    def test_unattributed_news_item_produces_no_draft(self):
+        # The crawl leaves startup empty when no tracked startup can be
+        # named; a round without a company is not a fact.
+        self._append_news({
+            "startup": None, "attribution": "unattributed",
+            "source_name": "Startup Daily",
+            "title": "Zephyr Labs raises $3 million seed round",
+            "url": "https://example.com/news/zephyr-seed",
+            "discovered_from": "https://example.com/trade-press",
+            "published_hint": "2026-11-21",
+            "checked_at": "2026-11-23T07:16:00+00:00",
+            "amount_mentions": [
+                {"mention": "$3 million",
+                 "normalised": {"value": 3000000.0, "currency": None}}]})
+        _, added, _ = self.build()
+        amounts = [d["amount"] for d in self._drafts(added)]
+        self.assertNotIn(3000000.0, amounts)
+        self.assertTrue(all(d["startup"] for d in self._drafts(added)))
+
+    def test_named_lead_and_participants_are_extracted(self):
+        # "Square Peg" and "Airtree" are recorded investors in the
+        # fixture data dir (partners-reviewed.json).
+        self._append_news(self._series_f_candidate(
+            "The Series F round was led by Square Peg, with "
+            "participation from Airtree."))
+        _, added, _ = self.build()
+        draft = next(d for d in self._drafts(added)
+                     if d["amount"] == 200000000.0)
+        self.assertEqual(draft["lead_investor"], "Square Peg")
+        self.assertEqual(draft["participants"], ["Airtree"])
+        self.assertEqual(draft["investors_source"],
+                         "crawl-extracted (unverified)")
+
+    def test_boilerplate_backer_list_is_not_extracted(self):
+        # The sentence names recorded investors and carries round
+        # words, but it is about-the-company boilerplate ("existing
+        # investors"), not this round's syndicate.
+        self._append_news(self._series_f_candidate(
+            "The company's existing investors include Square Peg and "
+            "Airtree, both long-standing backers since the seed round."))
+        _, added, _ = self.build()
+        draft = next(d for d in self._drafts(added)
+                     if d["amount"] == 200000000.0)
+        self.assertNotIn("lead_investor", draft)
+        self.assertNotIn("participants", draft)
+        self.assertNotIn("investors_source", draft)
+
+    def test_unrecorded_investor_name_is_not_extracted(self):
+        # "Zephyr Capital" is named as lead in the article's own words
+        # but is not an investor Atlas records, so it cannot be
+        # checked and is left for human research.
+        self._append_news(self._series_f_candidate(
+            "The Series F round was led by Zephyr Capital."))
+        _, added, _ = self.build()
+        draft = next(d for d in self._drafts(added)
+                     if d["amount"] == 200000000.0)
+        self.assertNotIn("lead_investor", draft)
+
+
 class PersonLinkedinTests(FixtureCase):
     """#366 slice 3: same-LinkedIn-key person pairs queue as merges."""
 
