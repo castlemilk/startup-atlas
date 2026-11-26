@@ -60,6 +60,16 @@ Entry kinds
   row in profiles mode (#354/#406). The admin panel card shows the
   image; approval there is the promotion decision. Never auto-approved
   by confidence gating in v1.
+- ``social`` — crawled social profile URL for a known person (founder
+  or partner person): a professional-bio row's schema.org
+  ``social_candidates`` or a profiles-mode ``social`` row, matched to
+  the person and deduped against the socials they already record, so
+  an already-recorded URL never re-queues however it is respelled.
+  A crawled profile that disagrees with a recorded one queues as a
+  distinctly flagged conflict — LinkedIn keys the identity registry
+  (#366), so a wrong recorded URL is the highest-value catch this
+  producer makes. Never auto-approved by confidence gating in v1:
+  socials are identity evidence, and a wrong one poisons the registry.
 
 After the producers run, confidence gating
 (``scripts/review_gating.py``, thresholds in
@@ -1494,6 +1504,15 @@ def build_summary(queue, added, skipped, run):
             lines.append(
                 f"  - mentioned by {len(mentions['partners'])} partner(s): "
                 f"{', '.join(mentions['partners'])}")
+        if entry["kind"] == "social" and entry.get("social"):
+            social = entry["social"]
+            lines.append(
+                f"  - {social['platform']}: "
+                f"{', '.join(social['candidate_urls'])}")
+            if social.get("conflict"):
+                lines.append(
+                    f"  - CONFLICT: recorded profile is "
+                    f"{', '.join(social['conflict']['recorded_urls'])}")
     lines.append("")
     lines.append("## Pending by kind")
     lines.append("")
@@ -1560,6 +1579,269 @@ def produce_headshots(artifact_dir, run):
     return entries
 
 
+# ------------------------------------------------------------------ socials
+
+# Social profile hosts the crawl captures: crawl.py's
+# PROFILE_SOCIAL_HOSTS (labelled links on partner pages) plus the
+# schema.org sameAs LinkedIn URLs on professional-bio rows. x.com is
+# Twitter's current host; both spellings key to the one platform so a
+# handle recorded under either host dedups against the other.
+SOCIAL_PLATFORM_HOSTS = {
+    "linkedin.com": "linkedin",
+    "twitter.com": "twitter",
+    "x.com": "twitter",
+    "instagram.com": "instagram",
+    "facebook.com": "facebook",
+    "youtube.com": "youtube",
+}
+
+# Socials are identity-adjacent — a wrong LinkedIn URL poisons the
+# identity registry (#366 keys people by it) — so crawl socials score
+# conservatively and the kind NEVER auto-approves in v1
+# (data/review-gating.json pins social's auto_approve_at to null).
+# The numbers only order the human worklist.
+SOCIAL_STRUCTURED_CONFIDENCE = 0.70
+SOCIAL_LABELLED_CONFIDENCE = 0.50
+SOCIAL_CONFLICT_CONFIDENCE = 0.50
+
+
+def _social_platform(url):
+    """Platform name for a social profile URL, or None."""
+    host = normalise_host(url)
+    if not host:
+        return None
+    if host.endswith(".linkedin.com"):
+        host = "linkedin.com"
+    for domain, platform in SOCIAL_PLATFORM_HOSTS.items():
+        if host == domain or host.endswith("." + domain):
+            return platform
+    return None
+
+
+def _social_value_key(platform, url):
+    """Comparison key naming one social profile, however written.
+
+    LinkedIn keys come from ``entity_resolution.normalise_linkedin``
+    via :func:`linkedin_key` — the identity key itself — so a locale
+    subdomain, ``www.`` or a trailing slash can never make a recorded
+    profile look new. Other platforms key on normalised host + path.
+    An empty key means the URL does not name a comparable person
+    profile (a LinkedIn company page, a bare host) and never queues.
+    """
+    if platform == "linkedin":
+        return linkedin_key(url)
+    try:
+        parts = urlparse(url or "")
+    except ValueError:
+        return ""
+    host = normalise_host(url)
+    path = (parts.path or "").rstrip("/").lower()
+    return f"{host}{path}" if host and path else ""
+
+
+def _recorded_socials(row):
+    """``{platform: {value_key: recorded_url}}`` for one person row.
+
+    Sources are the row's first-class ``linkedin`` field and its
+    ``socials`` entries — the two places reviewed socials live, on
+    founder rows (startup-research.json) and partner-people rows
+    (partner-profiles.json) alike.
+    """
+    recorded = defaultdict(dict)
+    urls = []
+    if row.get("linkedin"):
+        urls.append(row["linkedin"])
+    for social in row.get("socials") or []:
+        if isinstance(social, dict) and social.get("url"):
+            urls.append(social["url"])
+    for url in urls:
+        platform = _social_platform(url)
+        key = _social_value_key(platform, url) if platform else ""
+        if platform and key:
+            recorded[platform].setdefault(key, url)
+    return recorded
+
+
+def _people_index(data_dir):
+    """Known people by casefolded name, with their recorded socials.
+
+    Founders come from startup-research.json (context = the startup),
+    partner people from partner-profiles.json (context = the
+    partner). A person appearing in both files keeps two records, so
+    a crawl row's own context can pick the right one.
+    """
+    people = defaultdict(list)
+    research = load_json(Path(data_dir) / "startup-research.json", {}) or {}
+    for startup in research.get("startups", []):
+        for founder in startup.get("founders") or []:
+            name = (founder.get("name") or "").strip()
+            if name:
+                people[name.casefold()].append({
+                    "name": name, "context": startup.get("name") or "",
+                    "context_kind": "startup",
+                    "recorded": _recorded_socials(founder)})
+    profiles = load_json(Path(data_dir) / "partner-profiles.json", {}) or {}
+    for partner, entry in profiles.items():
+        for person in (entry or {}).get("people") or []:
+            name = (person.get("name") or "").strip()
+            if name:
+                people[name.casefold()].append({
+                    "name": name, "context": partner,
+                    "context_kind": "partner",
+                    "recorded": _recorded_socials(person)})
+    return people
+
+
+def _match_person(people, name, context, context_kind):
+    """The one known person a crawl social row refers to, or None.
+
+    The row's own context wins (the startup whose structured data
+    carried the URL, the partner whose page carried the link);
+    otherwise the name must match exactly one known person. An
+    ambiguous or unknown name queues nothing — an unattributable
+    social stays a lead in the crawl artifact, not a queue item.
+    """
+    records = people.get(name.casefold(), [])
+    if context:
+        for record in records:
+            if record["context_kind"] == context_kind and \
+                    record["context"].casefold() == context.casefold():
+                return record
+    if len(records) == 1:
+        return records[0]
+    return None
+
+
+def produce_socials(artifact_dir, data_dir, run):
+    """Social entries: crawled social profile URLs for known people.
+
+    Two crawl captures feed this producer and, until now, nothing
+    consumed either (round-2 critique F5): professional-bio rows in
+    the company-profiles artifact carry ``social_candidates`` — the
+    schema.org sameAs LinkedIn URLs from the company's own structured
+    data, the person already matched to the reviewed founder roster
+    at crawl time — and profiles-mode ``social`` rows carry labelled
+    social links from partner pages, keyed by anchor text.
+
+    A candidate queues only when it names a known person and a
+    profile that person does not already record. When the person
+    records a DIFFERENT profile for the same platform, the entry is
+    a conflict: one of the two URLs is wrong, and because LinkedIn
+    keys the identity registry the conflict is keyed and flagged
+    distinctly, so it can never be swallowed by an ordinary
+    proposal's (kind, subject_key) dedup. Approval is the human's
+    promotion decision under the #366 discipline — record the
+    ``linkedin`` field / ``socials`` entry on the person row (by hand
+    or via promote_profile_person.py); this producer only makes the
+    captured evidence visible. Nothing here publishes data.
+    """
+    people = _people_index(data_dir)
+    if not people:
+        return []
+    groups = {}
+    order = []
+
+    def observe(name, context, context_kind, url, source_url, via,
+                confidence):
+        platform = _social_platform(url)
+        if not platform:
+            return
+        key = _social_value_key(platform, url)
+        if not key:
+            return
+        person = _match_person(people, name, context, context_kind)
+        if person is None:
+            return
+        group_key = (id(person), platform)
+        group = groups.get(group_key)
+        if group is None:
+            group = groups[group_key] = {"person": person,
+                                         "platform": platform,
+                                         "urls": {}}
+            order.append(group_key)
+        slot = group["urls"].get(key)
+        if slot is None:
+            group["urls"][key] = {"url": url, "source_url": source_url,
+                                  "vias": {via}, "confidence": confidence}
+        else:
+            slot["vias"].add(via)
+            if confidence > slot["confidence"]:
+                slot.update({"url": url, "source_url": source_url,
+                             "confidence": confidence})
+
+    for row in load_artifact(artifact_dir, "company-profiles") \
+            .get("candidates", []):
+        if row.get("kind") != "professional-bio":
+            continue
+        name = (row.get("name") or "").strip()
+        if not name:
+            continue
+        for url in row.get("social_candidates") or []:
+            observe(name, row.get("company") or "", "startup", url,
+                    row.get("source_url"), "structured",
+                    SOCIAL_STRUCTURED_CONFIDENCE)
+    for row in load_artifact(artifact_dir, "profiles").get("candidates", []):
+        if row.get("kind") != "social":
+            continue
+        name = (row.get("name") or "").strip()
+        url = row.get("candidate_url")
+        if not name or not url:
+            continue
+        observe(name, row.get("partner") or "", "partner", url,
+                row.get("source_url"), "labelled-link",
+                SOCIAL_LABELLED_CONFIDENCE)
+
+    entries = []
+    for group_key in order:
+        group = groups[group_key]
+        person, platform = group["person"], group["platform"]
+        recorded = person["recorded"].get(platform, {})
+        fresh = {key: slot for key, slot in group["urls"].items()
+                 if key not in recorded}
+        if not fresh:
+            continue  # everything crawled is already recorded
+        person_key = (f"{slug(person['context'])}:{slug(person['name'])}"
+                      if person["context"] else slug(person["name"]))
+        candidate_urls = sorted(slot["url"] for slot in fresh.values())
+        evidence = candidate_urls + [slot["source_url"]
+                                     for slot in fresh.values()]
+        social = {
+            "person_name": person["name"],
+            "context": person["context"] or None,
+            "context_kind": person["context_kind"],
+            "platform": platform,
+            "candidate_urls": candidate_urls,
+            "sources": {slot["url"]: slot["source_url"]
+                        for slot in sorted(fresh.values(),
+                                           key=lambda s: s["url"])},
+            "via": sorted({via for slot in fresh.values()
+                           for via in slot["vias"]}),
+            "conflict": None,
+        }
+        if recorded:
+            social["conflict"] = {
+                "recorded_urls": sorted(recorded.values())}
+            entry = _new_entry(
+                f"social:{person_key}:{platform}:conflict", "social",
+                f"person:{slug(person['name'])}",
+                f"{person_key}:{platform}:conflict", [],
+                evidence, SOCIAL_CONFLICT_CONFIDENCE, run)
+        else:
+            entry = _new_entry(
+                f"social:{person_key}:{platform}", "social",
+                f"person:{slug(person['name'])}",
+                f"{person_key}:{platform}", [],
+                evidence,
+                max(slot["confidence"] for slot in fresh.values()), run)
+        entry["social"] = social
+        entries.append(entry)
+    # Conflicts first: a possibly-wrong recorded identity key outranks
+    # a merely missing social on the human worklist.
+    entries.sort(key=lambda e: (not e["social"]["conflict"],
+                                e["subject_key"]))
+    return entries
+
+
 def build(artifact_dir, run, queue_path, data_dir, summary_path=None):
     """Build/update the queue from one crawl artifact. Returns the queue."""
     queue = load_queue(queue_path)
@@ -1573,6 +1855,7 @@ def build(artifact_dir, run, queue_path, data_dir, summary_path=None):
         produce_value_facts(artifact_dir, data_dir, run),
         produce_startup_leads(artifact_dir, data_dir, run, merged_slugs),
         produce_headshots(artifact_dir, run),
+        produce_socials(artifact_dir, data_dir, run),
     ]
     added, skipped = [], 0
     for entries in producers:
