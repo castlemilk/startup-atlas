@@ -12309,6 +12309,26 @@
     },
     {
       "from": "partner:main-sequence",
+      "to": "startup:emesent",
+      "kind": "participated_in",
+      "description": "Participated in SAFE note round",
+      "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-invests-10-million-venture-debt-csiro-spin-out-emesent-build-robotics-and-spatial-computing-capabilities",
+      "round_id": "emesent-2026-safe-note",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:main-sequence",
       "to": "startup:gilmour-space",
       "kind": "participated_in",
       "description": "Participated in Series E round",
@@ -22846,6 +22866,18 @@
     },
     {
       "startup_id": "startup:diraq",
+      "id": "diraq-2026-nrfc-equity",
+      "stage": "Funding round (stage not stated)",
+      "amount": 20000000,
+      "currency": "AUD",
+      "announced_on": "2026-02-02",
+      "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-backs-next-generation-quantum-computing-startup-diraq-20-million-equity-investment",
+      "note": "The National Reconstruction Fund Corporation announced a $20 million equity investment in Diraq in February 2026. The NRFC release uses an unqualified dollar sign; the amount is recorded in AUD because the investor is Australia's sovereign fund, Diraq is headquartered in Sydney, and contemporaneous Australian reporting (AAP, 2 February 2026) reported the investment as $20 million in that context. The release does not state a priced-round stage, so no stage is recorded. This is the investment already described in the nrf-equity-stake profile fact; it is not cumulative research funding.",
+      "stage_normalised": "Unknown",
+      "lead_investor": "National Reconstruction Fund Corporation"
+    },
+    {
+      "startup_id": "startup:diraq",
       "id": "diraq-initial-series-a",
       "stage": "Series A",
       "amount": 20000000,
@@ -22883,6 +22915,36 @@
         "Main Sequence",
         "Archangel Ventures"
       ]
+    },
+    {
+      "startup_id": "startup:emesent",
+      "id": "emesent-2026-safe-note",
+      "stage": "SAFE note",
+      "amount": 15000000,
+      "currency": "AUD",
+      "announced_on": "2026-07-08",
+      "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-invests-10-million-venture-debt-csiro-spin-out-emesent-build-robotics-and-spatial-computing-capabilities",
+      "note": "Emesent completed a A$15 million SAFE note funding round with Main Sequence Ventures, QIC, NGS, Hostplus and Orion Resource Partners, per the National Reconstruction Fund Corporation. Emesent's own 8 July 2026 announcement describes the same A$15 million component as an equity round supported by Main Sequence, QIC Ventures, Orion Resource Partners, Hostplus and NGS Super; the NRFC's instrument-level description (SAFE note) is recorded here. No lead investor was named for this component. Announced alongside the NRFC's A$10 million venture debt facility as a A$25 million package.",
+      "stage_normalised": "SAFE",
+      "participants": [
+        "Main Sequence",
+        "QIC Ventures",
+        "Orion Resource Partners",
+        "Hostplus",
+        "NGS Super"
+      ]
+    },
+    {
+      "startup_id": "startup:emesent",
+      "id": "emesent-2026-venture-debt",
+      "stage": "Venture debt",
+      "amount": 10000000,
+      "currency": "AUD",
+      "announced_on": "2026-07-08",
+      "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-invests-10-million-venture-debt-csiro-spin-out-emesent-build-robotics-and-spatial-computing-capabilities",
+      "note": "The National Reconstruction Fund Corporation invested A$10 million of venture debt in Emesent, its first venture debt deployment to a deep technology company. Announced alongside Emesent's A$15 million SAFE note round on 8 July 2026 as part of a A$25 million financing package; the two components are recorded as separate rounds.",
+      "stage_normalised": "Debt",
+      "lead_investor": "National Reconstruction Fund Corporation"
     },
     {
       "startup_id": "startup:ena-respiratory",
@@ -24495,6 +24557,13 @@
       "kind": "funding announcement"
     },
     {
+      "startup_id": "startup:diraq",
+      "title": "NRFC backs Diraq with $20 million equity investment",
+      "url": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-backs-next-generation-quantum-computing-startup-diraq-20-million-equity-investment",
+      "published_on": "2026-02-02",
+      "kind": "funding announcement"
+    },
+    {
       "startup_id": "startup:draper",
       "title": "Draper — Accelerator",
       "url": "https://www.startmate.com/writing/startmate-accelerator-investment-terms-101",
@@ -24514,6 +24583,13 @@
       "url": "https://www.emesent.com/news/emesent-secures-25-million-aud-to-accelerate-autonomous-intelligence-platform",
       "published_on": "2026-07-08",
       "kind": "financing announcement"
+    },
+    {
+      "startup_id": "startup:emesent",
+      "title": "Emesent — SAFE note",
+      "url": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-invests-10-million-venture-debt-csiro-spin-out-emesent-build-robotics-and-spatial-computing-capabilities",
+      "published_on": "2026-07-08",
+      "kind": "funding source"
     },
     {
       "startup_id": "startup:ena-respiratory",
@@ -25228,6 +25304,8 @@
     "lead_investor 'Main Sequence Ventures' for round cauldron-2026-series-a2 (Cauldron) has no matching partner lead; led_round edge skipped",
     "lead_investor 'MegaChips' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; led_round edge skipped",
     "lead_investor 'NEA' for round synthesia-2025-series-d (Synthesia) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'National Reconstruction Fund Corporation' for round diraq-2026-nrfc-equity (Diraq) has no matching partner lead; led_round edge skipped",
+    "lead_investor 'National Reconstruction Fund Corporation' for round emesent-2026-venture-debt (Emesent) has no matching partner lead; led_round edge skipped",
     "lead_investor 'National Reconstruction Fund Corporation' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; led_round edge skipped",
     "lead_investor 'National Reconstruction Fund Corporation' for round quantum-brilliance-2026-nrfc-follow-on (Quantum Brilliance) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Peak XV Partners' for round puralink-2025-pre-seed (Puralink) has no matching partner lead; led_round edge skipped",
@@ -25344,6 +25422,7 @@
     "participant 'Horizons Ventures' for round q-ctrl-2019-series-a (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'HostPlus' for round airwallex-2022-series-e2 (Airwallex) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round culture-amp-2018-series-d (Culture Amp) has no matching partner lead; participated_in edge skipped",
+    "participant 'Hostplus' for round emesent-2026-safe-note (Emesent) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'Hostplus' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'Huashan Capital One' for round airwallex-2016-pre-series-a (Airwallex) has no matching partner lead; participated_in edge skipped",
@@ -25373,6 +25452,7 @@
     "participant 'Mistletoe, Inc.' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Mundi Ventures' for round floodmapp-2022-02-seed (FloodMapp) has no matching partner lead; participated_in edge skipped",
     "participant 'NGS Super' for round cauldron-2026-series-a2 (Cauldron) has no matching partner lead; participated_in edge skipped",
+    "participant 'NGS Super' for round emesent-2026-safe-note (Emesent) has no matching partner lead; participated_in edge skipped",
     "participant 'NGS Super' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'NGS' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'NRFC' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
@@ -25387,11 +25467,13 @@
     "participant 'OPTrust' for round skykraft-2023-october-financing (Skykraft) has no matching partner lead; participated_in edge skipped",
     "participant 'OneVentures' for round eucalyptus-2023-series-c (Eucalyptus) has no matching partner lead; participated_in edge skipped",
     "participant 'Ontario Teachers’ Pension Plan' for round wayve-2026-series-d (Wayve) has no matching partner lead; participated_in edge skipped",
+    "participant 'Orion Resource Partners' for round emesent-2026-safe-note (Emesent) has no matching partner lead; participated_in edge skipped",
     "participant 'PSP Growth' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'Peak XV Partners' for round puralink-2025-pre-seed (Puralink) has no matching partner lead; participated_in edge skipped",
     "participant 'Playground Global' for round psiquantum-2020-series-c (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Possible Ventures' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Previously Unavailable' for round cuttable-2025-seed-extension (Cuttable) has no matching partner lead; participated_in edge skipped",
+    "participant 'QIC Ventures' for round emesent-2026-safe-note (Emesent) has no matching partner lead; participated_in edge skipped",
     "participant 'QIC' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'Qatar Investment Authority' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Qualcomm Ventures' for round wayve-2026-series-d-extension-20260415 (Wayve) has no matching partner lead; participated_in edge skipped",
