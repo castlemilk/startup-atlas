@@ -3,7 +3,24 @@ name: Build live index
 # versioned Parquet index from the reviewed corpus in object storage and
 # publishes it to the public index bucket, where the DuckDB query console
 # reads the latest version. Never writes to Git.
+#
+# Triggering (F1 reliability, 26 Nov 2026): merged data reaches the corpus via
+# the "Publish reviewed corpus" workflow, which never dispatched the indexer —
+# the indexer relied on the */15 poll below, and GitHub dropped that
+# schedule's ticks for hours at a time (last scheduled run 02:33Z, ~7 ticks
+# missed, F1 red three times in one day). The workflow_run chain is now the
+# primary path for git-merged data: it fires when a corpus publish completes
+# on main, so the corpus is already in the store when the indexer reads it.
+# The poll stays as the backstop for any missed dispatch, repository_dispatch
+# covers the crawl and MCP writers (they dispatch corpus-updated themselves),
+# and the indexer exits in seconds when the corpus manifest is unchanged, so
+# extra triggers are cheap. The live-index concurrency group below serialises
+# chained, scheduled and dispatched runs so publishes never interleave.
 on:
+  workflow_run:
+    workflows: ['Publish reviewed corpus']
+    types: [completed]
+    branches: [main]
   schedule:
     # Poll: covers every writer (crawl, MCP, manual upload) even if a
     # repository_dispatch is missed. A no-change run exits in seconds.
@@ -19,6 +36,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   index:
+    # A chained run only makes sense once the corpus publish succeeded;
+    # every other trigger (schedule, dispatch) runs unconditionally.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
       ATLAS_SOURCE_REVISION: ${{ github.sha }}
