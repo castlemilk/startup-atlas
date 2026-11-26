@@ -63,8 +63,10 @@ exactly as before the pipeline existed.
 
 ### 2. Async indexer
 
-`.github/workflows/live-index.yml` — every 15 minutes, on
-`repository_dispatch` (`corpus-updated`), or manual dispatch. It runs
+`.github/workflows/live-index.yml` — chained off each completed
+"Publish reviewed corpus" run on main (`workflow_run`), every 15 minutes
+as a backstop poll, on `repository_dispatch` (`corpus-updated`), or manual
+dispatch. It runs
 `scripts/build_live_index.py --corpus-store --bootstrap-from data --out
 live-index --publish`:
 
