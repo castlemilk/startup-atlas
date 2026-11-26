@@ -3,7 +3,9 @@
 The same 18 tools as the local stdio server, reachable over HTTP instead of
 a local process. Transport is the MCP **Streamable HTTP** transport at
 `/mcp`, and authentication is **OAuth 2.0 with Google as the identity
-provider**. This is separate from the owner-private ChatGPT Site in
+provider**. This document is the operator's reference; if you just want to
+connect a client to the hosted server, start with the
+[MCP integration guide](MCP-INTEGRATION.md). This is separate from the owner-private ChatGPT Site in
 `backend/hosted/` (see [backend/hosted/README.md](../backend/hosted/README.md)); it does not
 change that setup.
 
@@ -232,7 +234,7 @@ verifies Google identity.
 ## Admin MCP (`/mcp/admin`) — the review queue as tools
 
 A **separate** MCP surface on the same handler — not part of `/mcp`,
-whose 17 catalogue tools are unchanged. It exists so the assistant
+whose 18 catalogue tools are unchanged. It exists so the assistant
 (Dog box) can work the review queue itself, taking the owner out of
 the loop wherever the evidence allows; the panel above remains the
 owner's own front door onto the same queue.
@@ -327,10 +329,13 @@ DeepHost, which cannot pass CLI flags); over HTTP the
 caller's Google account must also be in `ATLAS_GOOGLE_WRITE_EMAILS`;
 and `ATLAS_GITHUB_TOKEN` must be set. Any missing piece fails closed
 (`READ_ONLY`, `WRITE_FORBIDDEN` or `GITHUB_TOKEN_MISSING`) before any
-GitHub call is made. **The hosted DeepHost app stays read-only
-(`writeEnabled: false`, no token) unless Ben deliberately configures
-the token and write mode there** — deploying this branch does not by
-itself enable issue filing from the hosted app.
+GitHub call is made. **The hosted DeepHost app has write mode and the
+token configured** — verified via `GET /health` on 26 Nov 2026
+(`writeEnabled: true`, `githubIssuesConfigured: true`) — so issue
+filing is live there for write-allow-listed accounts. That
+configuration lives in the app environment, not the code: deploying a
+new build does not by itself change it, and removing either setting
+returns the hosted app to read-only.
 
 Token setup (Ben — do this once, in GitHub, not in the repo):
 
@@ -394,7 +399,7 @@ while the issue stays open.
 ## Verification
 
 ```sh
-npm --prefix backend/mcp test   # 58 tests: 48 stdio (including 17 GitHub-issue) + 10 HTTP/OAuth
+npm --prefix backend/mcp test   # 103 tests: stdio protocol, HTTP/OAuth, admin + admin-MCP, crawl registry/status, startup edits and GitHub issues
 ```
 
 The HTTP tests run a mock Google (JWKS, authorize, token, tokeninfo)
