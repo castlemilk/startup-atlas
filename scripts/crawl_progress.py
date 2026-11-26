@@ -97,6 +97,13 @@ def counts_from_data(data):
         return counts
     if isinstance(data.get('candidates'), list):
         counts['candidates'] = len(data['candidates'])
+    if data.get('reused_company_profiles'):
+        # F4: this mode consumed another mode's fetches (portraits
+        # reusing company-profiles), so its coverage describes pages it
+        # did not fetch. The fetch counts — failed sources included —
+        # belong to the fetching mode alone; counting them here as well
+        # reported every shared failure twice in the run totals.
+        return counts
     coverage = data.get('coverage') or {}
     sources = coverage.get('sources') or []
     if sources:

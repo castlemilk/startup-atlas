@@ -2445,10 +2445,89 @@ def stage_headshots(result, scopes, args, transport):
     return rows
 
 
+COMPANY_PROFILES_SNAPSHOT = 'latest-company-profiles.json'
+# The workflow runs company-profiles immediately before portraits in the
+# same job, minutes apart. This window only stops a standalone portraits
+# run in a long-lived --out directory from resurrecting an earlier run's
+# snapshot instead of crawling.
+PORTRAITS_REUSE_MAX_AGE_S = 6 * 60 * 60
+
+
+def _company_profile_seed_names(args):
+    """Seed names a company-profiles crawl with these args would fetch.
+
+    Mirrors the seed selection of crawl_company_profiles/crawl_profiles
+    (approved CSV, then the --partner and --limit narrowing) so a
+    snapshot can be checked against exactly this invocation's seeds.
+    """
+    startups = json.loads((ROOT / 'data/startup-research.json').read_text(encoding='utf-8'))['startups']
+    seeds = load_approved_csv(args.approved, {row['name'] for row in startups}, require_qid=False)
+    if getattr(args, 'partner', None):
+        seeds = [seed for seed in seeds if args.partner.casefold() in seed['name'].casefold()]
+    if getattr(args, 'limit', 0):
+        seeds = seeds[:args.limit]
+    return [seed['name'] for seed in seeds]
+
+
+def load_reusable_company_profiles(args):
+    """Return this run's company-profiles snapshot for portraits, or None.
+
+    Portraits is company-profiles plus portrait staging (F4): when the
+    deep mode already fetched every company page earlier in the same
+    run, re-crawling them doubles the load on source hosts and reports
+    every shared page failure a second time. Reuse therefore requires
+    the snapshot the workflow just wrote into --out: right mode, fresh,
+    and covering exactly the seeds this invocation would crawl.
+    Anything else returns None and portraits crawls as before.
+    """
+    out = getattr(args, 'out', None)
+    if out is None or getattr(args, 'approved', None) is None:
+        return None
+    try:
+        snapshot = json.loads((Path(out) / COMPANY_PROFILES_SNAPSHOT).read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return None
+    if not isinstance(snapshot, dict) or snapshot.get('mode') != 'company-profiles':
+        return None
+    results, candidates = snapshot.get('results'), snapshot.get('candidates')
+    if not isinstance(results, list) or not isinstance(candidates, list):
+        return None
+    if not all(isinstance(row, dict) for row in results):
+        return None
+    try:
+        generated = dt.datetime.fromisoformat(
+            str(snapshot.get('generated_at') or '').replace('Z', '+00:00'))
+    except ValueError:
+        return None
+    if generated.tzinfo is None:
+        return None
+    age = time.time() - generated.timestamp()
+    if age < -300 or age > PORTRAITS_REUSE_MAX_AGE_S:
+        return None
+    try:
+        expected = _company_profile_seed_names(args)
+    except (OSError, ValueError, KeyError, CrawlError):
+        return None
+    if [row.get('name') for row in results] != expected:
+        return None
+    return snapshot
+
+
 def crawl_portraits(args, transport, progress=None):
     """Company-profile crawl plus portrait-byte staging for its bio candidates."""
-    startups = json.loads((ROOT / 'data/startup-research.json').read_text(encoding='utf-8'))['startups']
-    result = crawl_company_profiles(startups, args, transport, progress=progress)
+    result = load_reusable_company_profiles(args)
+    if result is not None:
+        # F4: consume the pages company-profiles already fetched in this
+        # run instead of crawling them again. The marker tells the
+        # progress reporter that the shared fetch counts belong to
+        # company-profiles alone, so shared failures are reported once.
+        result['reused_company_profiles'] = {
+            'snapshot': COMPANY_PROFILES_SNAPSHOT,
+            'generated_at': result.get('generated_at'),
+        }
+    else:
+        startups = json.loads((ROOT / 'data/startup-research.json').read_text(encoding='utf-8'))['startups']
+        result = crawl_company_profiles(startups, args, transport, progress=progress)
     result['mode'] = 'portraits'
     kept, excluded = filter_portrait_headshots(result['candidates'])
     result['candidates'] = kept
