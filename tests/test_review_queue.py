@@ -212,6 +212,63 @@ class BuildTests(FixtureCase):
                          "startup:newco-one")
         self.assertEqual(skipped, 0)
 
+    def _bio_row(self, name, company, url, reason):
+        return {"partner": company, "company": company,
+                "kind": "professional-bio", "name": name,
+                "candidate_url": "https://example.com/team",
+                "source_url": "https://example.com/team",
+                "checked_at": "2026-11-25T21:10:00+00:00",
+                "role": "Co-founder", "bio": "Builds things.",
+                "social_candidates": [],
+                "headshot_candidate": {
+                    "candidate_url": url,
+                    "source_url": "https://example.com/team",
+                    "status": "not_fetched", "review_required": True,
+                    "reason": reason}}
+
+    def test_headshots_come_from_company_profiles_artifact(self):
+        # professional-bio rows are emitted by the company-profiles
+        # mode, not profiles mode: the producer must read that artifact
+        # or no headshot can ever queue (round-2 critique F1).
+        write_json(self.artifact / "latest-company-profiles.json", {
+            "candidates": [
+                self._bio_row("Melanie Perkins", "Canva",
+                              "https://example.com/melanie.jpg",
+                              "Rights and image review required"),
+                self._bio_row("Casey Ellis", "Bugcrowd",
+                              "https://cdn.example.net/casey.jpg",
+                              "External asset host requires separate review"),
+                # A bio row without a headshot candidate is not queued.
+                {"company": "Canva", "kind": "professional-bio",
+                 "name": "No Photo", "source_url": "https://example.com/t"},
+            ]})
+        queue, added, skipped = self.build()
+        headshots = [e for e in added if e["kind"] == "headshot"]
+        self.assertEqual(len(headshots), 2)
+        by_subject = {e["subject"]: e for e in headshots}
+        same_host = by_subject["person:melanie-perkins"]
+        self.assertEqual(same_host["confidence"], 0.80)
+        self.assertEqual(same_host["headshot"]["candidate_url"],
+                         "https://example.com/melanie.jpg")
+        self.assertEqual(same_host["headshot"]["company"], "Canva")
+        external = by_subject["person:casey-ellis"]
+        self.assertEqual(external["confidence"], 0.50)
+
+    def test_headshots_deduped_across_artifacts(self):
+        row = self._bio_row("Melanie Perkins", "Canva",
+                            "https://example.com/melanie.jpg",
+                            "Rights and image review required")
+        write_json(self.artifact / "latest-company-profiles.json",
+                   {"candidates": [row]})
+        write_json(self.artifact / "latest-profiles.json", {
+            "candidates": [
+                *json.loads((self.artifact / "latest-profiles.json")
+                            .read_text(encoding="utf-8"))["candidates"],
+                row]})
+        queue, added, skipped = self.build()
+        headshots = [e for e in added if e["kind"] == "headshot"]
+        self.assertEqual(len(headshots), 1)
+
     def test_dedup_on_rerun(self):
         _, added_first, _ = self.build()
         queue, added_second, skipped_second = self.build()
