@@ -22,6 +22,12 @@ jobs:
       - name: Probe provisioned toolchain
         id: toolchain
         run: python3 scripts/toolchain.py probe >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        if: steps.toolchain.outputs.node_ready != 'true'
+        with:
+          node-version-file: .nvmrc
+      - name: Verify Node toolchain version
+        run: python3 scripts/toolchain.py check --only node
       - name: Record npm version
         id: npmver
         run: echo "version=$(npm --version)" >> "$GITHUB_OUTPUT"
@@ -29,9 +35,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ~/.npm
-          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
+          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node26.13.1-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
           restore-keys: |
-            atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-
+            atlas-npm-${{ runner.os }}-${{ runner.arch }}-node26.13.1-
       - name: Check patch and select tests
         id: changes
         if: github.event_name == 'pull_request'
@@ -110,10 +116,6 @@ jobs:
       - name: Validate Connect graph service
         if: steps.changes.outputs.go == 'true'
         run: go test -mod=readonly ./backend/internal/graph ./api
-      - uses: actions/setup-node@v4
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && steps.toolchain.outputs.node_ready != 'true'
-        with:
-          node-version: '22'
       - uses: actions/setup-python@v5
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && steps.toolchain.outputs.python_ready != 'true'
         with:
@@ -131,9 +133,6 @@ jobs:
       - name: Install Parquet build dependency
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: python3 -m pip install pyarrow
-      - name: Verify Node toolchain version
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        run: python3 scripts/toolchain.py check --only node
       - name: Check identity registry matches its builder
         # Issue #516: admin panel / admin MCP write-backs commit
         # data/review-queue.json straight to main, and the identity
@@ -157,7 +156,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: ~/.npm
-          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
+          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node26.13.1-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
@@ -180,7 +179,7 @@ jobs:
       - uses: actions/setup-node@v4
         if: steps.toolchain.outputs.node_ready != 'true'
         with:
-          node-version: '22'
+          node-version-file: .nvmrc
       - name: Verify Node toolchain version
         run: python3 scripts/toolchain.py check --only node
       - name: Verify published graph and design microsite

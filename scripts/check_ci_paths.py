@@ -17,7 +17,8 @@ import sys
 
 
 RULES = {
-    'ci': ('.github/workflows/pages.yml', '.github/workflows/deep-atlas-checks.yml',
+    'ci': ('.nvmrc', 'ci/toolchain.json', 'scripts/toolchain.py', 'tests/test_toolchain_contract.py',
+           '.github/workflows/pages.yml', '.github/workflows/deep-atlas-checks.yml',
            '.github/workflows/live-index.yml',
            'scripts/check_ci_paths.py', 'tests/test_ci_paths.py'),
     'data': ('data/*', 'scripts/make-data.py', 'scripts/make-graph.py', 'scripts/build-graph-db.py',
