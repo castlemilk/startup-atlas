@@ -215,6 +215,6 @@ if (isMain) {
     } catch { /* keep null */ }
   }
   const markdown = renderMediaCoverageMarkdown(report, { generatedAt, revision });
-  await writeFile(new URL('docs/MEDIA-COVERAGE.md', root), markdown + '\n');
+  await writeFile(new URL('docs/MEDIA-COVERAGE.md', root), markdown.replace(/\n+$/, '') + '\n');
   console.log(JSON.stringify({ generatedAt, kinds: Object.fromEntries(Object.entries(report.kinds).map(([k, v]) => [k, { total: v.total, ...v.stages }])) }, null, 2));
 }
