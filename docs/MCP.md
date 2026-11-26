@@ -1,5 +1,7 @@
 # Startup Atlas MCP
 
+**Just want to connect?** The [install & connect quickstart](INSTALL-MCP.md) covers the hosted endpoint (nothing to install) and the one-command local path for Claude Code, Claude.ai/Desktop, Cursor and VS Code. This page is the full reference for the local server.
+
 For the separately configured remote OAuth implementation, see [Hosted OAuth MCP](../backend/hosted/README.md). For the same tools over HTTP with Google OAuth (a separate, self-hosted server), see [MCP over HTTP (Google OAuth)](MCP-HTTP.md). The local server below continues to work without a GitHub App or hosted service.
 
 A local MCP server for finding and adding source-backed opportunities to this repository. It uses the official MCP SDK over **stdio**. The static website has no new runtime dependency, database, HTTP write endpoint, account or credentials.
