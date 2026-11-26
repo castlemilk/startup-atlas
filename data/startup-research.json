@@ -2383,7 +2383,16 @@
               "https://draper.chat/"
             ],
             "verified_at": "2026-11-26"
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/bjabbatangelo/",
+          "socials": [
+            {
+              "label": "LinkedIn (profile listed on founder's recorded source page)",
+              "url": "https://www.linkedin.com/in/bjabbatangelo/",
+              "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+              "reviewed_at": "2026-11-26"
+            }
+          ]
         }
       ],
       "profile_facts": [
@@ -2649,6 +2658,17 @@
           "note": "Startmate lists Evatto in its Summer 2026 accelerator cohort (https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort). Converted to a funding round under #534 from the published standard deal in data/accelerator-deals.json (Startmate — Accelerator Investment Terms 101 (updated October 2026), verified 2026-11-25): A$120,000 per accepted company, SAFE or priced equity round (founder's choice). Valuation cap A$1,500,000. Cohort participation was previously recorded only as a graph edge, never as a transaction.",
           "stage_normalised": "Accelerator",
           "lead_investor": "Startmate"
+        },
+        {
+          "id": "evatto-2026-pre-seed",
+          "stage": "Pre-seed",
+          "announced_on": "2026-09-19",
+          "amount": 1020000,
+          "currency": "AUD",
+          "source": "https://www.ausleisure.com.au/news/event-technology-company-evatto-secures-funding-to-accelerate-product-development",
+          "note": "Ausleisure, carrying the company's announcement, confirms Evatto closed its pre-seed round led by Purpose Ventures; the amount is not stated there. The A$1.02 million figure is reported by Overnight Success (19 Sep 2026, https://www.overnightsuccess.vc/p/19th-september-2026) and by ASTN member news (21 Sep 2026), which states it explicitly as $AUD 1.02 million; Australian reports use a bare \"$\", resolved to AUD from the Sydney HQ context under the Atlas currency rule (one secondary aggregator renders it as US$). The announced date is the first dated corroborating report, not a verified closing date. Named customers at announcement: Invictus Games and Canada Snowboard.",
+          "stage_normalised": "Pre-Seed",
+          "lead_investor": "Purpose Ventures"
         }
       ],
       "reviewed_at": "2026-11-26"

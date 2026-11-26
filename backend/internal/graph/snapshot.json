@@ -1909,6 +1909,16 @@
       "logo_source": "https://github.com/castlemilk/startup-atlas/blob/main/web/assets/logos/README.md"
     },
     {
+      "id": "partner:purpose-ventures",
+      "canonical_id": "partner:purpose-ventures",
+      "aliases": [],
+      "kind": "partner",
+      "name": "Purpose Ventures",
+      "summary": "",
+      "website": "",
+      "source": ""
+    },
+    {
       "id": "partner:rackhouse",
       "canonical_id": "partner:rackhouse",
       "aliases": [
@@ -2845,6 +2855,14 @@
       "website": "",
       "logo": "",
       "logo_source": "",
+      "socials": [
+        {
+          "label": "LinkedIn (profile listed on founder's recorded source page)",
+          "url": "https://www.linkedin.com/in/bjabbatangelo/",
+          "source": "https://www.startmate.com/writing/meet-our-summer26-accelerator-cohort",
+          "reviewed_at": "2026-11-26"
+        }
+      ],
       "blurb": {
         "text": "Co-founder of Talentsheet (now Draper). In Startmate's Summer '26 cohort the company identified the creators, podcasts, communities and brands a company's ideal customers already trust, and how to reach them organically; it has since pivoted to Draper, an app that turns a business idea into a real product. Ben co-founded the Sydney-based company; Startmate says the three founders' backgrounds span consumer behaviour, engineering and elite performance.",
         "sources": [
@@ -12598,6 +12616,66 @@
       "description": "Led Series E round",
       "source": "https://en.wikipedia.org/wiki/TransferWise",
       "round_id": "wise-2017-series-e",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:purpose-ventures",
+      "to": "startup:andromeda-robotics",
+      "kind": "led_round",
+      "description": "Led Seed round",
+      "source": "https://www.smartcompany.com.au/startupsmart/andromeda-robotics-raises-3-million-seed-humanoid-robot-abi/",
+      "round_id": "andromeda-2024-06-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:purpose-ventures",
+      "to": "startup:andromeda-robotics",
+      "kind": "participated_in",
+      "description": "Participated in Series A round",
+      "source": "https://hamiltonlocke.com.au/hamilton-locke-advises-andromeda-robotics-on-au23-million-series-a-capital-raise/",
+      "round_id": "andromeda-2025-09-aud-series-a",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.5,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "secondary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:purpose-ventures",
+      "to": "startup:evatto",
+      "kind": "led_round",
+      "description": "Led Pre-seed round",
+      "source": "https://www.ausleisure.com.au/news/event-technology-company-evatto-secures-funding-to-accelerate-product-development",
+      "round_id": "evatto-2026-pre-seed",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.5,
@@ -22559,6 +22637,18 @@
     },
     {
       "startup_id": "startup:evatto",
+      "id": "evatto-2026-pre-seed",
+      "stage": "Pre-seed",
+      "announced_on": "2026-09-19",
+      "amount": 1020000,
+      "currency": "AUD",
+      "source": "https://www.ausleisure.com.au/news/event-technology-company-evatto-secures-funding-to-accelerate-product-development",
+      "note": "Ausleisure, carrying the company's announcement, confirms Evatto closed its pre-seed round led by Purpose Ventures; the amount is not stated there. The A$1.02 million figure is reported by Overnight Success (19 Sep 2026, https://www.overnightsuccess.vc/p/19th-september-2026) and by ASTN member news (21 Sep 2026), which states it explicitly as $AUD 1.02 million; Australian reports use a bare \"$\", resolved to AUD from the Sydney HQ context under the Atlas currency rule (one secondary aggregator renders it as US$). The announced date is the first dated corroborating report, not a verified closing date. Named customers at announcement: Invictus Games and Canada Snowboard.",
+      "stage_normalised": "Pre-Seed",
+      "lead_investor": "Purpose Ventures"
+    },
+    {
+      "startup_id": "startup:evatto",
       "id": "evatto-2026-startmate-accelerator",
       "stage": "Accelerator",
       "amount": 120000,
@@ -24091,6 +24181,13 @@
     },
     {
       "startup_id": "startup:evatto",
+      "title": "Evatto — Pre-seed",
+      "url": "https://www.ausleisure.com.au/news/event-technology-company-evatto-secures-funding-to-accelerate-product-development",
+      "published_on": "2026-09-19",
+      "kind": "funding source"
+    },
+    {
+      "startup_id": "startup:evatto",
       "title": "Evatto — Accelerator",
       "url": "https://www.startmate.com/writing/startmate-accelerator-investment-terms-101",
       "published_on": "",
@@ -24734,7 +24831,6 @@
     "lead_investor 'National Reconstruction Fund Corporation' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Peak XV Partners' for round puralink-2025-pre-seed (Puralink) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Perennial Partners' for round emesent-2022-series-a (Emesent) has no matching partner lead; led_round edge skipped",
-    "lead_investor 'Purpose Ventures' for round andromeda-2024-06-seed (Andromeda Robotics) has no matching partner lead; led_round edge skipped",
     "lead_investor 'QIC Ventures' for round arkeus-2026-series-a (Arkeus) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Quantonation' for round diraq-2024-series-a-2 (Diraq) has no matching partner lead; led_round edge skipped",
     "lead_investor 'Sequoia Capital China' for round culture-amp-2019-series-e (Culture Amp) has no matching partner lead; led_round edge skipped",
@@ -24890,7 +24986,6 @@
     "participant 'Playground Global' for round psiquantum-2020-series-c (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Possible Ventures' for round uluu-2022-seed (ULUU) has no matching partner lead; participated_in edge skipped",
     "participant 'Previously Unavailable' for round cuttable-2025-seed-extension (Cuttable) has no matching partner lead; participated_in edge skipped",
-    "participant 'Purpose Ventures' for round andromeda-2025-09-aud-series-a (Andromeda Robotics) has no matching partner lead; participated_in edge skipped",
     "participant 'QIC' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'Qatar Investment Authority' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
     "participant 'Qualcomm Ventures' for round wayve-2026-series-d-extension-20260415 (Wayve) has no matching partner lead; participated_in edge skipped",
