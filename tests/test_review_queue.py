@@ -643,6 +643,45 @@ class DecideTests(FixtureCase):
                             and m["decided_by"] == "ben"
                             for m in registry["merges"]))
 
+    def test_defer_records_who_and_why_and_applies_nothing(self):
+        queue, added, _ = self.build()
+        merge = next(e for e in added if e["kind"] == "merge")
+        deferred = queue_mod.decide(queue, merge["id"], "deferred", "ben",
+                                    "need a second source for the firm",
+                                    self.identity_path)
+        self.assertEqual(deferred["status"], "deferred")
+        self.assertEqual(deferred["decided_by"], "ben")
+        self.assertEqual(deferred["decision_note"],
+                         "need a second source for the firm")
+        self.assertIsNotNone(deferred["decided_at"])
+        # A deferral is not an approval: no registry write happens.
+        self.assertFalse(self.identity_path.exists())
+
+    def test_deferred_entry_can_be_decided_for_real(self):
+        queue, added, _ = self.build()
+        fact = next(e for e in added if e["kind"] == "fact")
+        queue_mod.decide(queue, fact["id"], "deferred", "ben",
+                         "awaiting the press release")
+        decided = queue_mod.decide(queue, fact["id"], "approved", "ben",
+                                   "press release confirms it")
+        self.assertEqual(decided["status"], "approved")
+        self.assertEqual(decided["decision_note"],
+                         "press release confirms it")
+        with self.assertRaises(ValueError):
+            queue_mod.decide(queue, fact["id"], "deferred", "ben")
+
+    def test_deferred_blocks_same_evidence_but_not_new_evidence(self):
+        queue, added, _ = self.build()
+        lead = next(e for e in added if e["kind"] == "startup-lead")
+        queue_mod.decide(queue, lead["id"], "deferred", "ben",
+                         "need more evidence")
+        same = dict(lead, id="startup-lead:again", status="pending",
+                    decided_by=None, decided_at=None, decision_note=None)
+        self.assertFalse(queue_mod.add_entry(queue, same))
+        refreshed = dict(same, id="startup-lead:refreshed",
+                         evidence_fingerprint="different-fingerprint")
+        self.assertTrue(queue_mod.add_entry(queue, refreshed))
+
     def test_approved_fact_does_not_edit_reviewed_files(self):
         before = (self.data_dir / "startup-research.json").read_text()
         queue, added, _ = self.build()

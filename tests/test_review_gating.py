@@ -125,6 +125,12 @@ class GatingRuleTests(unittest.TestCase):
         self.assertEqual(gating.apply_gating(queue_of(e), CONFIG), [])
         self.assertEqual(e["status"], "rejected")
 
+    def test_deferred_entries_are_never_auto_approved(self):
+        e = entry("startup-lead", 0.99, status="deferred",
+                  decided_by="ben@example.com")
+        self.assertEqual(gating.apply_gating(queue_of(e), CONFIG), [])
+        self.assertEqual(e["status"], "deferred")
+
 
 class ShippedConfigTests(unittest.TestCase):
     def test_shipped_config_shape(self):
