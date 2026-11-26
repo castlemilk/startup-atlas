@@ -6062,6 +6062,17 @@
           "source": "https://www.diraq.com/newsdesk/diraq-secures-usd-15-million-in-series-a-2-funding",
           "stage_normalised": "Series A",
           "lead_investor": "Allectus Capital"
+        },
+        {
+          "id": "diraq-2026-nrfc-equity",
+          "stage": "Funding round (stage not stated)",
+          "amount": 20000000,
+          "currency": "AUD",
+          "announced_on": "2026-02-02",
+          "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-backs-next-generation-quantum-computing-startup-diraq-20-million-equity-investment",
+          "note": "The National Reconstruction Fund Corporation announced a $20 million equity investment in Diraq in February 2026. The NRFC release uses an unqualified dollar sign; the amount is recorded in AUD because the investor is Australia's sovereign fund, Diraq is headquartered in Sydney, and contemporaneous Australian reporting (AAP, 2 February 2026) reported the investment as $20 million in that context. The release does not state a priced-round stage, so no stage is recorded. This is the investment already described in the nrf-equity-stake profile fact; it is not cumulative research funding.",
+          "stage_normalised": "Unknown",
+          "lead_investor": "National Reconstruction Fund Corporation"
         }
       ],
       "profile_facts": [
@@ -6112,6 +6123,12 @@
           "url": "https://www.diraq.com/newsdesk/diraq-adds-leading-deeptech-and-venture-investors-to-usd-22-million-investment-round",
           "published_on": "2024-06-25",
           "kind": "funding update"
+        },
+        {
+          "title": "NRFC backs Diraq with $20 million equity investment",
+          "url": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-backs-next-generation-quantum-computing-startup-diraq-20-million-equity-investment",
+          "published_on": "2026-02-02",
+          "kind": "funding announcement"
         }
       ],
       "hq_city": "Sydney",
@@ -6179,6 +6196,34 @@
             "TELUS Ventures",
             "Main Sequence",
             "Archangel Ventures"
+          ]
+        },
+        {
+          "id": "emesent-2026-venture-debt",
+          "stage": "Venture debt",
+          "amount": 10000000,
+          "currency": "AUD",
+          "announced_on": "2026-07-08",
+          "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-invests-10-million-venture-debt-csiro-spin-out-emesent-build-robotics-and-spatial-computing-capabilities",
+          "note": "The National Reconstruction Fund Corporation invested A$10 million of venture debt in Emesent, its first venture debt deployment to a deep technology company. Announced alongside Emesent's A$15 million SAFE note round on 8 July 2026 as part of a A$25 million financing package; the two components are recorded as separate rounds.",
+          "stage_normalised": "Debt",
+          "lead_investor": "National Reconstruction Fund Corporation"
+        },
+        {
+          "id": "emesent-2026-safe-note",
+          "stage": "SAFE note",
+          "amount": 15000000,
+          "currency": "AUD",
+          "announced_on": "2026-07-08",
+          "source": "https://www.nrf.gov.au/news-and-media-releases/national-reconstruction-fund-corporation-invests-10-million-venture-debt-csiro-spin-out-emesent-build-robotics-and-spatial-computing-capabilities",
+          "note": "Emesent completed a A$15 million SAFE note funding round with Main Sequence Ventures, QIC, NGS, Hostplus and Orion Resource Partners, per the National Reconstruction Fund Corporation. Emesent's own 8 July 2026 announcement describes the same A$15 million component as an equity round supported by Main Sequence, QIC Ventures, Orion Resource Partners, Hostplus and NGS Super; the NRFC's instrument-level description (SAFE note) is recorded here. No lead investor was named for this component. Announced alongside the NRFC's A$10 million venture debt facility as a A$25 million package.",
+          "stage_normalised": "SAFE",
+          "participants": [
+            "Main Sequence",
+            "QIC Ventures",
+            "Orion Resource Partners",
+            "Hostplus",
+            "NGS Super"
           ]
         }
       ],

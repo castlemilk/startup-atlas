@@ -6,7 +6,9 @@ though the sources stated the stage verbatim ("Accelerator" cohort
 deals, issuer-announced "Pre-Series A", a "strategic growth
 financing"). Those spellings joined the controlled vocabulary in
 ``scripts/backfill_structured_fields.py``. "Secondary" joined on the
-same basis later that day (Wise's source-stated secondary rounds). This test keeps them from
+same basis later that day (Wise's source-stated secondary rounds).
+"SAFE" joined on 2026-11-27 on the same basis (the NRFC's verbatim
+"SAFE note" description of Emesent's July 2026 round). This test keeps them from
 silently regressing: every committed round's ``stage_normalised`` must
 equal what the normaliser derives from its raw ``stage``, and any raw
 spelling that still maps to Unknown must be one of the known
@@ -60,6 +62,7 @@ class NormaliserSpellingTests(unittest.TestCase):
         self.assertEqual(
             backfill.normalise_stage('Strategic growth financing'), 'Growth')
         self.assertEqual(backfill.normalise_stage('Secondary'), 'Secondary')
+        self.assertEqual(backfill.normalise_stage('SAFE note'), 'SAFE')
 
     def test_stage_less_spellings_stay_unknown(self):
         for spelling in STAGE_LESS_SPELLINGS:
