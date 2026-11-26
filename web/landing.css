@@ -165,20 +165,24 @@
   text-underline-offset: 4px;
 }
 .landing-footer-bar {
+  position: absolute;
+  inset-inline: clamp(20px,4.3vw,64px);
+  bottom: 0;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 4px 24px;
-  margin-top: clamp(40px,4.5vw,60px);
-  padding-block: 18px 22px;
-  border-top: 1px solid var(--atlas-border);
+  padding-block: 20px 24px;
+  color: var(--atlas-paper);
   font-size: .84375rem;
   line-height: 1.5;
+  text-shadow: 0 1px 14px rgba(6,20,15,.45);
 }
 .landing-footer-vista {
   position: relative;
   height: clamp(320px,44vh,560px);
-  margin: 0 calc(-1 * clamp(20px,4.3vw,64px));
+  margin: clamp(40px,4.5vw,60px) calc(-1 * clamp(20px,4.3vw,64px)) 0;
   overflow: hidden;
 }
 .landing-footer-vista img {
@@ -187,6 +191,14 @@
   height: 100%;
   object-fit: cover;
   object-position: center 62%;
+}
+.landing-footer-vista::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(6,20,15,.78), rgba(6,20,15,.28) 30%, transparent 55%);
+  pointer-events: none;
 }
 .landing-footer-vista::after {
   content: "";
@@ -223,5 +235,5 @@
   .landing-footer { margin-top: 44px; }
   .landing-footer-col a { display: flex; align-items: center; min-block-size: 44px; line-height: 1.4; }
   .landing-footer-social a { inline-size: 44px; block-size: 44px; }
-  .landing-footer-vista { height: 34vh; }
+  .landing-footer-vista { height: 38vh; }
 }
