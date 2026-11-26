@@ -1827,12 +1827,81 @@ def crawl_company_profiles(startups, args, transport, progress=None):
 NEWS_FUNDING = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|invest(?:ment|or|s|ed)?|series|seed|acqui(?:res|red|sition)|launch(?:es|ed)?)\b',re.I)
 NEWS_PRIORITY = re.compile(r'\b(fund(?:ing|ed|raise)?|rais(?:e|es|ed|ing)|series|seed)\b',re.I)
 
-def crawl_startup_news(registry,args,transport,progress=None):
+def _tracked_startup_index(startups):
+    """Map casefolded tracked-startup name -> (canonical name, website host).
+
+    News attribution may only ever name a startup Atlas already tracks;
+    the registry is data/startup-research.json, the same list the
+    company-profiles mode crawls.
+    """
+    index={}
+    for row in startups or []:
+        name=(row.get('name') or '').strip()
+        if not name: continue
+        host=urlsplit(row.get('website') or '').hostname or ''
+        if host.startswith('www.'): host=host[4:]
+        index.setdefault(name.casefold(),(name,host))
+    return index
+
+def _load_tracked_startups():
+    try:
+        return json.loads((ROOT/'data/startup-research.json').read_text(encoding='utf-8'))['startups']
+    except (OSError,ValueError,KeyError):
+        return []
+
+def _startup_name_patterns(index):
+    """(canonical name, literal pattern) pairs for attribution matching.
+
+    Matching is literal and case-insensitive with non-word boundaries,
+    so a name counts only when it appears as itself, never as a
+    substring of a longer word.
+    """
+    return [(name,re.compile(r'(?<!\w)'+re.escape(name)+r'(?!\w)',re.I))
+            for name,_ in index.values()]
+
+def _startups_named_in(text,patterns):
+    """Distinct tracked startups named in text, in registry order."""
+    return [name for name,pattern in patterns if pattern.search(text or '')]
+
+def attribute_news_candidate(entry,index,patterns,title,evidence):
+    """Decide which tracked startup a news article is about (F6).
+
+    Returns (startup name or None, basis). The publication is never the
+    subject. A source whose name is a tracked startup AND whose host is
+    that startup's own site is the company's newsroom, so its articles
+    are attributed to the company (basis 'source-newsroom'). Every
+    other source is trade press: the article must name exactly one
+    tracked startup in its title, or — failing that — exactly one
+    across its evidence excerpts (basis 'article-title' /
+    'article-evidence'). Zero or several matches stay unattributed:
+    a wrong attribution is worse than none, and the candidate still
+    queues with the publication recorded as its source.
+    """
+    source_host=urlsplit(entry['url']).hostname or ''
+    if source_host.startswith('www.'): source_host=source_host[4:]
+    own=index.get((entry.get('name') or '').casefold())
+    if own and own[1] and own[1]==source_host:
+        return own[0],'source-newsroom'
+    in_title=_startups_named_in(title,patterns)
+    if len(in_title)==1: return in_title[0],'article-title'
+    if len(in_title)>1: return None,'unattributed'
+    evidence_text=' '.join(
+        excerpt.get('text','')
+        for excerpts in (evidence or {}).values()
+        for excerpt in excerpts)
+    in_evidence=_startups_named_in(evidence_text,patterns)
+    if len(in_evidence)==1: return in_evidence[0],'article-evidence'
+    return None,'unattributed'
+
+def crawl_startup_news(registry,args,transport,progress=None,startups=None):
     """Discover dated, source-attributed candidates; never publish extracted claims."""
     sources=registry['sources']
     if args.only: sources=[s for s in sources if s['id'] in set(args.only)]
     if args.limit: sources=sources[:args.limit]
     if not sources: raise CrawlError('No startup news sources matched')
+    if startups is None: startups=_load_tracked_startups()
+    startup_index=_tracked_startup_index(startups)
+    name_patterns=_startup_name_patterns(startup_index)
     if progress: progress.set_total(args.mode,len(sources))
     results=[]; candidates=[]
     def fetch(url,host):
@@ -1862,7 +1931,13 @@ def crawl_startup_news(registry,args,transport,progress=None):
             for target in selected:
                 article=fetch(target['url'],host); pages.append(article)
                 if article['status']!='ok': continue
-                candidates.append({'startup':entry['name'],'title':article.get('title') or target['title'],
+                title=article.get('title') or target['title']
+                startup,basis=attribute_news_candidate(
+                    entry,startup_index,name_patterns,title,
+                    article.get('evidence',{}))
+                candidates.append({'startup':startup,'attribution':basis,
+                    'source_id':entry['id'],'source_name':entry['name'],
+                    'title':title,
                     'url':article.get('final_url'), 'discovered_from':page['final_url'],
                     'checked_at':article['checked_at'], 'published_hint':article.get('metadata',{}).get('article:published_time',''),
                     'amount_mentions':article.get('amount_mentions',[]), 'evidence':article.get('evidence',{}),
@@ -2910,7 +2985,7 @@ def main(argv=None):
         reporter=_progress.reporter_from_env() if (_progress and args.mode in _progress.WORKFLOW_MODES) else None
         if reporter is not None: reporter.begin_run(); reporter.mode_started(args.mode)
         try:
-            if args.mode=='news': data=crawl_startup_news(json.loads(STARTUP_NEWS_SOURCES.read_text(encoding='utf-8')),args,transport,progress=reporter)
+            if args.mode=='news': data=crawl_startup_news(json.loads(STARTUP_NEWS_SOURCES.read_text(encoding='utf-8')),args,transport,progress=reporter,startups=json.loads((ROOT/'data/startup-research.json').read_text(encoding='utf-8'))['startups'])
             elif args.mode=='profiles': data=crawl_profiles(catalogue,args,transport,source_state=source_state,progress=reporter)
             elif args.mode=='company-profiles': data=crawl_company_profiles(json.loads((ROOT/'data/startup-research.json').read_text(encoding='utf-8'))['startups'],args,transport)
             elif args.mode=='portraits': data=crawl_portraits(args,transport,progress=reporter)
