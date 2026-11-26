@@ -263,12 +263,14 @@ class SeedTests(unittest.TestCase):
         self.assertTrue(all(m['basis'] == 'linkedin-url' for m in seeded))
         # On top of the seed, build_registry replays the APPROVED
         # review-queue merges (41 from the first validation pass, plus
-        # the nine partner merges approved on 25 Nov 2026);
+        # the nine partner merges approved on 25 Nov 2026, plus the
+        # two startup merges approved on 26 Nov 2026 — Andromeda and
+        # Gilmour Space 2);
         # rejected and pending proposals record no merge.
         replayed = [m for m in registry['merges']
                     if m['decided_by'] != 'seed:reviewed-data']
-        self.assertEqual(len(registry['merges']), 54)
-        self.assertEqual(len(replayed), 50)
+        self.assertEqual(len(registry['merges']), 56)
+        self.assertEqual(len(replayed), 52)
         self.assertIn('partner:airtree-ventures',
                       entities['partner:airtree']['merged_from'])
         self.assertEqual(
