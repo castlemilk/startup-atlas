@@ -229,13 +229,13 @@ test('the admin account gets exactly the admin tools, disjoint from /mcp', async
   const client = await connect(t, app.base, '/mcp/admin', adminToken());
   const { tools } = await client.listTools();
   assert.deepEqual(tools.map(tool => tool.name).sort(), ADMIN_TOOLS.map(tool => tool.name).sort());
-  assert.equal(tools.length, 6);
+  assert.equal(tools.length, 8);
   assert.ok(tools.every(tool => tool.name.startsWith('atlas_admin_')));
 
   const health = await (await fetch(`${app.base}/health`)).json();
   assert.equal(health.tools, 18);
   assert.equal(health.adminMcpEnabled, true);
-  assert.equal(health.adminTools, 6);
+  assert.equal(health.adminTools, 8);
 });
 
 test('queue listing filters by status and band and carries gating verdicts', async t => {
@@ -320,6 +320,65 @@ test('defer records what evidence is missing, stays listed as deferred, and can 
   }));
   assert.equal(decided.ok, true);
   assert.equal(decided.entry.status, 'approved');
+});
+
+test('batch: preview is a dry run, a stale revision is refused whole, and a fresh batch lands in one commit', async t => {
+  seedGithub();
+  const client = await connect(t, app.base, '/mcp/admin', adminToken());
+  const decisions = [
+    { id: 'merge:partner:accel', decision: 'approved', note: 'Evidence: candidate basis is the same website host accel.com; confidence 0.92.' },
+    { id: 'startup-lead:testco', decision: 'rejected', note: 'Evidence: the only source is a partner mention with no company site confirming the name.' },
+  ];
+
+  const noNote = await client.callTool({ name: 'atlas_admin_preview_review_batch', arguments: { decisions: [{ id: 'merge:partner:accel', decision: 'approved', note: ' ' }] } });
+  assert.equal(noNote.isError, true);
+  assert.equal(decoded(noNote).code, 'EVIDENCE_NOTE_REQUIRED');
+
+  const preview = decoded(await client.callTool({ name: 'atlas_admin_preview_review_batch', arguments: { decisions } }));
+  assert.equal(preview.dry_run, true);
+  assert.equal(preview.revision, 'sha-1');
+  assert.deepEqual(preview.changes.map(change => [change.id, change.from_status, change.to_status]), [
+    ['merge:partner:accel', 'pending', 'approved'],
+    ['startup-lead:testco', 'pending', 'rejected'],
+  ]);
+  // Dry run wrote nothing.
+  const untouched = JSON.parse(githubFiles.get('data/review-queue.json').text);
+  assert.ok(untouched.entries.every(entry => entry.id === 'startup-lead:autoco' || entry.status === 'pending'));
+
+  const stale = await client.callTool({ name: 'atlas_admin_decide_review_batch', arguments: { decisions, expected_revision: 'sha-STALE' } });
+  assert.equal(stale.isError, true);
+  assert.equal(decoded(stale).code, 'QUEUE_CONFLICT');
+  const stillUntouched = JSON.parse(githubFiles.get('data/review-queue.json').text);
+  assert.ok(stillUntouched.entries.every(entry => entry.id === 'startup-lead:autoco' || entry.status === 'pending'));
+
+  const applied = decoded(await client.callTool({ name: 'atlas_admin_decide_review_batch', arguments: { decisions, expected_revision: preview.revision } }));
+  assert.equal(applied.ok, true);
+  assert.equal(applied.entries.length, 2);
+  assert.ok(applied.entries.every(entry => entry.decided_by === 'agent-review'));
+  assert.match(githubFiles.get('data/review-queue.json').message, /^review: batch of 2 via admin MCP: merge:partner:accel approved, startup-lead:testco rejected$/);
+  const stored = JSON.parse(githubFiles.get('data/review-queue.json').text);
+  assert.equal(stored.entries.find(entry => entry.id === 'merge:partner:accel').status, 'approved');
+  assert.equal(stored.entries.find(entry => entry.id === 'startup-lead:testco').status, 'rejected');
+
+  // A retry of the same batch cannot apply twice: the revision moved
+  // with the first commit, and the entries are already decided anyway.
+  const retry = await client.callTool({ name: 'atlas_admin_decide_review_batch', arguments: { decisions, expected_revision: preview.revision } });
+  assert.equal(retry.isError, true);
+  assert.equal(decoded(retry).code, 'QUEUE_CONFLICT');
+});
+
+test('batch: one invalid decision refuses the whole batch before anything is written', async t => {
+  seedGithub();
+  const client = await connect(t, app.base, '/mcp/admin', adminToken());
+  const decisions = [
+    { id: 'merge:partner:accel', decision: 'approved', note: 'Evidence: same website host.' },
+    { id: 'startup-lead:autoco', decision: 'approved', note: 'Evidence: attempt to re-decide an auto-gate approval.' },
+  ];
+  const preview = await client.callTool({ name: 'atlas_admin_preview_review_batch', arguments: { decisions } });
+  assert.equal(preview.isError, true);
+  assert.equal(decoded(preview).code, 'ALREADY_DECIDED');
+  const stored = JSON.parse(githubFiles.get('data/review-queue.json').text);
+  assert.equal(stored.entries.find(entry => entry.id === 'merge:partner:accel').status, 'pending');
 });
 
 test('/mcp regression: the catalogue surface still serves its 18 tools and no admin tools', async t => {
