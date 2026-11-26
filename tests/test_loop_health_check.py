@@ -96,7 +96,13 @@ def healthy_responses(data_bodies=None):
     }
     manifest_sha = corpus.reviewed_manifest(
         {name: body for name, body in bodies.items()})['sha256']
-    tables = {f't{i}': 10 for i in range(9)}
+    # The canonical live-index table set, pinned independently of the
+    # checker's own constant so a drift in either fails a test here or in
+    # test_query_parquet.py (which pins the same names to the builder).
+    tables = {name: 10 for name in (
+        'opportunities', 'partners', 'partner_leads', 'startups',
+        'funding_rounds', 'articles', 'profile_facts', 'founders',
+        'socials', 'edges', 'relationships')}
     latest = {
         'version': VERSION,
         'manifest': f'v1/{VERSION}/manifest.json',
@@ -204,6 +210,22 @@ class LoopHealthCheckTests(unittest.TestCase):
         with TemporaryDirectory() as tmp:
             report = run(responses, make_data_dir(tmp))
             self.assertEqual(levels(report, 'index'), [health.RED])
+
+    def test_missing_table_is_red_and_named(self):
+        # Regression: the pre-#359 index (9 reviewed tables, no graph
+        # tables) must stay RED, and the report must name what is missing
+        # rather than only comparing a count.
+        responses = healthy_responses()
+        latest = json.loads(responses[INDEX + 'latest.json'][1])
+        for name in ('edges', 'relationships'):
+            del latest['tables'][name]
+        responses[INDEX + 'latest.json'] = (200, json.dumps(latest).encode())
+        with TemporaryDirectory() as tmp:
+            report = run(responses, make_data_dir(tmp))
+            self.assertEqual(levels(report, 'index'), [health.RED])
+            index_details = [d for _, n, d in report.lines if n == 'index']
+            self.assertTrue(any('edges' in d and 'relationships' in d
+                                for d in index_details), index_details)
 
     def test_corpus_lag_is_warn_and_names_file(self):
         bodies = dict(REVIEWED_BODIES)
