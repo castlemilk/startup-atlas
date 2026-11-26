@@ -178,11 +178,13 @@ export class ReviewQueue {
     try { return (await this.store.loadJson(GATING_PATH)).data; } catch { return null; }
   }
 
-  /** Record an approve/reject decision. `via` names the front door in the commit message. */
+  /** Record an approve/reject/defer decision. `via` names the front door in the commit message.
+   * Deferring is not final: the entry keeps its decision record (who deferred
+   * it and what evidence is still needed) and can be decided for real later. */
   async decide({ id, decision, note = '', decidedBy, via }) {
     return this.#mutate(id, (entry) => {
-      if (entry.status !== 'pending') fail('ALREADY_DECIDED', `Entry ${entry.id} is already ${entry.status}.`, 409);
-      if (!['approved', 'rejected'].includes(decision)) fail('BAD_REQUEST', 'decision must be "approved" or "rejected".', 400);
+      if (!['pending', 'deferred'].includes(entry.status)) fail('ALREADY_DECIDED', `Entry ${entry.id} is already ${entry.status}.`, 409);
+      if (!['approved', 'rejected', 'deferred'].includes(decision)) fail('BAD_REQUEST', 'decision must be "approved", "rejected" or "deferred".', 400);
       entry.status = decision;
       entry.decided_by = decidedBy;
       entry.decided_at = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
@@ -270,9 +272,9 @@ async function load() {
 }
 function entries() {
   const all = state.data.entries;
-  if (state.view === 'queue') return all.filter(e => e.status === 'pending');
+  if (state.view === 'queue') return all.filter(e => e.status === 'pending' || e.status === 'deferred');
   if (state.view === 'auto') return all.filter(e => e.decided_by === 'auto-gate');
-  return all.filter(e => e.status !== 'pending' && e.decided_by !== 'auto-gate');
+  return all.filter(e => e.status !== 'pending' && e.status !== 'deferred' && e.decided_by !== 'auto-gate');
 }
 function card(e) {
   const c = el('div', null, 'card');
@@ -311,11 +313,12 @@ function card(e) {
     c.append(ul);
   }
   const note = document.createElement('input'); note.className = 'note'; note.placeholder = 'Decision note (optional)'; note.id = 'note-' + CSS.escape(e.id);
-  if (e.status === 'pending') {
+  if (e.status === 'pending' || e.status === 'deferred') {
     c.append(note);
     const approve = el('button', 'Approve'); approve.onclick = () => decide(e.id, 'approved', note.value, approve);
     const reject = el('button', 'Reject', 'reject'); reject.onclick = () => decide(e.id, 'rejected', note.value, reject);
-    c.append(approve, reject);
+    const defer = el('button', 'Defer', 'undo'); defer.onclick = () => decide(e.id, 'deferred', note.value, defer);
+    c.append(approve, reject, defer);
   } else if (e.decided_by === 'auto-gate') {
     const undo = el('button', 'Undo auto-decision', 'undo'); undo.onclick = () => undoEntry(e.id, undo);
     c.append(undo);
@@ -345,7 +348,7 @@ function render() {
   root.append(el('p', 'Signed in as ' + d.email + ' · queue source: ' + d.source + (d.canWrite ? '' : ' · READ-ONLY (no write token)') +
     ' · confidence gate: ' + (g ? (g.enabled ? 'on' : 'OFF (kill switch)') : 'not configured'), 'meta'));
   const counts = { queue: 0, auto: 0, decided: 0 };
-  for (const e of d.entries) { if (e.status === 'pending') counts.queue++; else if (e.decided_by === 'auto-gate') counts.auto++; else counts.decided++; }
+  for (const e of d.entries) { if (e.status === 'pending' || e.status === 'deferred') counts.queue++; else if (e.decided_by === 'auto-gate') counts.auto++; else counts.decided++; }
   const tabs = el('div', null, 'tabs');
   for (const [view, label] of [['queue', 'Queue (' + counts.queue + ')'], ['auto', 'Auto-applied (' + counts.auto + ')'], ['decided', 'Decided (' + counts.decided + ')']]) {
     const b = el('button', label, view === state.view ? 'active' : ''); b.onclick = () => { state.view = view; render(); }; tabs.append(b);

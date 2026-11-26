@@ -46,7 +46,7 @@ export const ADMIN_TOOLS = [
     description: 'List review-queue entries (data/review-queue.json) with optional filters: kind, status and confidence band. Band "above_gate" means the entry meets its kind\'s auto-proceed threshold in data/review-gating.json (the verdict is included per entry); "below_gate" is the human band. Entries are returned lowest-confidence first, the order a reviewer should work them.',
     inputSchema: schema({
       kind: { type: 'string', enum: QUEUE_KINDS },
-      status: { type: 'string', enum: ['pending', 'approved', 'rejected'] },
+      status: { type: 'string', enum: ['pending', 'approved', 'rejected', 'deferred'] },
       band: { type: 'string', enum: ['above_gate', 'below_gate'] },
       limit: { type: 'integer', minimum: 1, maximum: 200 },
     }),
@@ -60,11 +60,11 @@ export const ADMIN_TOOLS = [
   },
   {
     name: 'atlas_admin_decide_review_item',
-    description: 'Record an approve/reject decision on a pending review-queue entry, through the same GitHub Contents write-back the admin panel uses. Attributed decided_by "agent-review". A note is REQUIRED and must cite the evidence relied on — a decision without an evidence note is refused. Never retries a write; a conflict means the queue changed since it was read, so re-read and decide again.',
+    description: 'Record an approve/reject/defer decision on a pending or deferred review-queue entry, through the same GitHub Contents write-back the admin panel uses. Attributed decided_by "agent-review". Deferring is not final: it records what further evidence is needed and the entry can be decided for real later. A note is REQUIRED and must cite the evidence relied on (for a defer, the evidence still missing) — a decision without an evidence note is refused. Never retries a write; a conflict means the queue changed since it was read, so re-read and decide again.',
     inputSchema: {
       ...schema({
         id: { type: 'string', minLength: 1, maxLength: 300 },
-        decision: { type: 'string', enum: ['approved', 'rejected'] },
+        decision: { type: 'string', enum: ['approved', 'rejected', 'deferred'] },
         note: { type: 'string', minLength: 1, maxLength: 500 },
       }),
       required: ['id', 'decision', 'note'],
