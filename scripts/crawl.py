@@ -1254,6 +1254,17 @@ def partner_update_candidates(snapshot, approved, reviewed=None):
         candidates.append(candidate)
     return {'version':1,'mode':'partner-update-candidates','warning':'Unreviewed extracted text; verify identity, source and claims, then add the review date before MCP validation.','candidates':candidates,'skipped_unchanged':skipped,'skipped_unchanged_names':skipped_names}
 
+def _first_page_error(pages):
+    """Reason recorded by the first non-ok page, if any.
+
+    Passed as ``error=`` to the progress reporter so a failed source's
+    cause survives in the durable crawl-progress record (critique R2 F3).
+    """
+    for page in pages:
+        if page.get('status')!='ok':
+            return page.get('reason')
+    return None
+
 def crawl_sites(catalogue,args,transport,source_state=None,progress=None):
     entries=[{'id':item['id'],'name':item['name'],'url':item['url'],'additional_urls':item.get('extra',[])} for item in catalogue['opportunities']]
     if args.partners_only: entries=[]
@@ -1285,7 +1296,7 @@ def crawl_sites(catalogue,args,transport,source_state=None,progress=None):
         row={**item,'pages':pages}
         if source_state is not None: row['sampling_priority']=item.get('sampling_priority')
         results.append(row)
-        if progress: progress.source_done(args.mode,item['name'],failed=not any(p['status']=='ok' for p in pages))
+        if progress: progress.source_done(args.mode,item['name'],failed=not any(p['status']=='ok' for p in pages),error=_first_page_error(pages))
         print(f"[{len(results)}/{len(entries)}] {item['name']}: {pages[0]['status']}",file=sys.stderr)
     output={'version':1,'mode':'sites','generated_at':utc_now(),'results':results,
             'coverage':page_fetch_coverage(results)}
@@ -1857,7 +1868,7 @@ def crawl_startup_news(registry,args,transport,progress=None):
                     'amount_mentions':article.get('amount_mentions',[]), 'evidence':article.get('evidence',{}),
                     'review_required':True})
         results.append({'name':entry['name'],'url':entry['url'],'pages':pages})
-        if progress: progress.source_done(args.mode,entry['name'],failed=page['status']!='ok',candidates=len(candidates))
+        if progress: progress.source_done(args.mode,entry['name'],failed=page['status']!='ok',candidates=len(candidates),error=page.get('reason'))
         print(f"[{len(results)}/{len(sources)}] {entry['name']}: {page['status']}; {len(selected)} articles",file=sys.stderr)
     return {'version':1,'mode':'news','generated_at':utc_now(),'results':results,'candidates':candidates,
             'coverage':page_fetch_coverage(results,candidates),
@@ -2014,7 +2025,7 @@ def crawl_profiles(catalogue,args,transport,company=False,source_state=None,prog
                                if homepage['status']=='ok' and not discovered else ''}
         if source_state is not None: row['sampling_priority']=seed.get('sampling_priority')
         results.append(row)
-        if progress: progress.source_done(args.mode,seed['name'],failed=homepage['status']!='ok',candidates=len(candidates))
+        if progress: progress.source_done(args.mode,seed['name'],failed=homepage['status']!='ok',candidates=len(candidates),error=homepage.get('reason'))
         print(f"[{len(results)}/{len(seeds)}] {seed['name']}: {homepage['status']}; {len(discovered)} profile pages",file=sys.stderr)
     bindings = sum(bool(row.get('headshot_candidate')) for row in candidates)
     coverage = page_fetch_coverage(results,candidates)
@@ -2144,7 +2155,7 @@ def stage_partner_logos(snapshot,args,transport,progress=None):
                             accepted+=1
                     except (CrawlError,ValueError,OSError) as exc: row.update(status='skipped',reason=str(exc))
                 rows.append(row)
-        if progress: progress.source_done(args.mode,entry['name'],failed=not any(p.get('status')=='ok' for p in entry.get('pages',[])),candidates=len(rows))
+        if progress: progress.source_done(args.mode,entry['name'],failed=not any(p.get('status')=='ok' for p in entry.get('pages',[])),candidates=len(rows),error=_first_page_error(entry.get('pages',[])))
     return {'version':1,'mode':'logos','generated_at':utc_now(),'results':snapshot['results'],'candidates':rows,
             'coverage':logo_capture_coverage(snapshot['results'],rows),
             'warning':'Untrusted candidate files require identity, license and safety review before publishing. A favicon or social image may not be the partner logo.'}
