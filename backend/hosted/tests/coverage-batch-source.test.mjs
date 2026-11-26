@@ -16,6 +16,6 @@ test('founder social references stay explicitly company-profile linked without r
  const c=(await load()).startups.find(r=>r.name==='Culture Amp'),f=c.founders.find(p=>p.name==='Didier Elzinga');
  assert.equal(f.socials.length,2);
  assert.deepEqual(f.socials.map(s=>s.url),['https://twitter.com/didierelzinga','https://www.linkedin.com/in/didierelzinga']);
- for(const s of f.socials){assert.match(s.label,/company-profile linked/);assert.equal(s.source,'https://www.cultureamp.com/contributors/didier-elzinga');assert.equal(s.reviewed_at,'2026-11-18');}
+ for(const s of f.socials){assert.match(s.label,/company-profile linked/);assert.equal(s.source,'https://www.cultureamp.com/contributors/didier-elzinga');assert.equal(s.reviewed_at,'2026-11-26');}
  assert.ok(!f.role);assert.ok(!f.logo);
 });
