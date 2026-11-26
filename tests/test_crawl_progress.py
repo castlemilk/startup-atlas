@@ -265,6 +265,56 @@ class CrawlInstrumentationTests(unittest.TestCase):
         self.assertEqual(news['candidates'], 0)
         self.assertEqual(record['totals']['sources_done'], 2)
 
+    def _run_failing_modes(self):
+        import importlib.util
+        import types
+        spec = importlib.util.spec_from_file_location(
+            'atlas_crawl_for_progress_failures',
+            Path(__file__).resolve().parents[1] / 'scripts' / 'crawl.py')
+        crawl = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(crawl)
+
+        class FailingTransport:
+            def request(self, url, allowed_host=None, **kwargs):
+                return 500, {'Content-Type': 'text/html'}, b'', url
+
+        client = FakeClient()
+        reporter = make_reporter(client, FakeClock())
+        reporter.begin_run()
+
+        catalogue = {'opportunities': [
+            {'id': 'x', 'name': 'X Co', 'url': 'https://x.example/',
+             'extra': []}], 'partnerLeads': []}
+        site_args = types.SimpleNamespace(
+            mode='partners', partners_only=False, only=[], approved=None,
+            limit=0, follow=0)
+        reporter.mode_started('partners')
+        data = crawl.crawl_sites(catalogue, site_args, FailingTransport(),
+                                 progress=reporter)
+        reporter.mode_finished('partners', data)
+
+        registry = {'sources': [
+            {'id': 's1', 'name': 'X Co', 'url': 'https://x.example/news'}]}
+        news_args = types.SimpleNamespace(
+            mode='news', only=[], limit=0, follow=0)
+        reporter.mode_started('news')
+        news = crawl.crawl_startup_news(registry, news_args,
+                                        FailingTransport(),
+                                        progress=reporter)
+        reporter.mode_finished('news', news)
+        return client.store[cp.crawl_progress_key()]
+
+    def test_failed_sources_record_last_error(self):
+        # Critique R2 F3: crawl.py must pass the failing page's reason as
+        # error= so the durable record is diagnosable, not just counted.
+        record = self._run_failing_modes()
+        for mode in ('partners', 'news'):
+            entry = record['modes'][mode]
+            self.assertEqual(entry['sources_failed'], 1, mode)
+            self.assertEqual(entry['errors'], 1, mode)
+            self.assertEqual(entry['last_error'], 'HTTP 500', mode)
+        self.assertEqual(record['totals']['errors'], 2)
+
 
 class EnvGateTests(unittest.TestCase):
     def test_disabled_without_flag(self):
