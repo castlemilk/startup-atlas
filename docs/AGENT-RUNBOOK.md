@@ -110,11 +110,11 @@ The Site uses Sites identity at the MCP boundary and a separate, repository-scop
 
 ### Hosted MCP on DeepHost
 
-The HTTP MCP is also hosted at `https://gamma-systems-pty-ltd-startup-atlas-mcp.apps.deephost.benebsworth.com`. The DeepHost app `startup-atlas-mcp` follows `mcp/http-google-oauth`. Keep that branch available when merging source changes. DeepHost runs this app in read-only mode.
+The HTTP MCP is also hosted at `https://gamma-systems-pty-ltd-startup-atlas-mcp.apps.deephost.benebsworth.com`. The DeepHost app `startup-atlas-mcp` deploys from `main`; the old `mcp/http-google-oauth` branch no longer exists on the remote, so there is no side branch to keep available when merging source changes. The app is write-enabled, not read-only: live `/health` reports `writeEnabled: true` and `githubIssuesConfigured: true`, so allow-listed accounts can write through it (issue filing, proposals). Trust `/health` over any document for tool counts: `/mcp` serves 18 tools, and the admin tool count is whatever `adminTools` reports — the live release can lag the code on `main` until a redeploy.
 
 - Google OAuth is configured with `ATLAS_GOOGLE_*` environment variables, not `GOOGLE_*`: the DeepHost runtime strips every `GOOGLE_`-prefixed variable from handler workers, so the server reads `ATLAS_GOOGLE_CLIENT_ID` / `ATLAS_GOOGLE_CLIENT_SECRET` first (with `GOOGLE_*` as a local fallback).
 - DeepHost imports the root `server.js` as its Node request handler. See [HTTP MCP setup and verification](MCP-HTTP.md).
-- End-to-end OAuth test passed 21 Nov 2026 on a phone: dynamic client registration, Google sign-in + consent as the allowed account, token issue (Bearer, 3600s, refresh token), MCP `initialize` answering `startup-atlas 1.0.0` / protocol `2025-03-26`, and `tools/list` returning all 16 tools.
+- End-to-end OAuth test passed 21 Nov 2026 on a phone: dynamic client registration, Google sign-in + consent as the allowed account, token issue (Bearer, 3600s, refresh token), MCP `initialize` answering `startup-atlas 1.0.0` / protocol `2025-03-26`, and `tools/list` returning the then-current tool set (16 at the time; `/mcp` serves 18 tools as of 26 Nov 2026 — check `/health` for the live count).
 - Known findings: the app's 10-minute login session can expire during a slow consent step (the callback then returns "Unknown or expired login session" — retry from `/oauth/authorize`); `tools/list` needs the `Mcp-Session-Id` header from `initialize` (standard streamable-HTTP sessions); `/oauth/register` has no CORS support, so a browser-based client cannot register cross-origin (native MCP clients are unaffected).
 
 Cloudflare Workers rejects `redirect: 'error'` for fetch. Use `redirect: 'manual'` and reject non-success responses; never forward credentials across redirects. Workers' native fetch needs its global receiver; use the existing `globalThis.fetch.bind(globalThis)` defaults. Node-only mocks can miss both issues. Preserve the workerd and receiver-checking tests, single-use OAuth state, encrypted storage, token-specific revocation and uncertain-write handling.
@@ -230,10 +230,13 @@ no second queue.
    Ben.
    **Auth:** the pass authenticates with the admin service credential,
    not a Google sign-in. It sends
-   `Authorization: Bearer <token>` to `/mcp/admin`, where the token is
-   the `admin_service_token` value stored in
-   `~/workspace/atlas-oauth-live/state.json` on the VM (file mode 0600;
-   never print it, log it, or copy it anywhere else). The server side
+   `Authorization: Bearer <token>` to `/mcp/admin` through the
+   custom.atlas-admin connector client
+   (`~/workspace/custom-connectors/custom.atlas-admin/bin/client.py`);
+   the credential is held by the connector's registered connection —
+   never in a file, command argument or log. (The old OAuth helper and
+   its `~/workspace/atlas-oauth-live/state.json` are dead; do not use
+   them.) The server side
    is `ATLAS_ADMIN_SERVICE_TOKEN` on the DeepHost app; the credential
    is scoped to `/mcp/admin` only and survives redeploys, unlike the
    in-memory OAuth registrations and refresh tokens. A 401 from
