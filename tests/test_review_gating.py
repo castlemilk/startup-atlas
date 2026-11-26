@@ -140,6 +140,8 @@ class ShippedConfigTests(unittest.TestCase):
         kinds = config["kinds"]
         self.assertIsNone(kinds["headshot"]["auto_approve_at"])
         self.assertIsNone(kinds["edge"]["auto_approve_at"])
+        # Socials are identity evidence (#366): never auto-approved.
+        self.assertIsNone(kinds["social"]["auto_approve_at"])
         self.assertTrue(kinds["merge"]["require_identity_key"])
         self.assertGreaterEqual(kinds["merge"]["auto_approve_at"], 0.85)
 

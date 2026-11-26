@@ -20,8 +20,9 @@ Rules are per kind and deliberately conservative:
   ``require_complete_draft`` is set, the draft round has stage, amount,
   date and source URL.
 - ``startup-lead`` — confidence >= ``auto_approve_at``.
-- Any kind with ``auto_approve_at: null`` (``edge``, ``headshot`` in
-  v1) never auto-proceeds; every such item queues for a human.
+- Any kind with ``auto_approve_at: null`` (``edge``, ``headshot`` and
+  ``social`` in v1) never auto-proceeds; every such item queues for a
+  human.
 
 Safety rails: ``"enabled": false`` in the config is the kill switch —
 nothing is decided. Decided entries are never touched. Auto-decisions

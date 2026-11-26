@@ -38,7 +38,7 @@ const readonly = { readOnlyHint: true, destructiveHint: false, idempotentHint: t
 const write = { ...readonly, readOnlyHint: false, idempotentHint: false };
 const schema = properties => ({ type: 'object', properties, additionalProperties: false });
 
-const QUEUE_KINDS = ['merge', 'fact', 'startup-lead', 'headshot', 'edge'];
+const QUEUE_KINDS = ['merge', 'fact', 'startup-lead', 'headshot', 'edge', 'social'];
 
 export const ADMIN_TOOLS = [
   {

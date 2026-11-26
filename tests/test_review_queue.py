@@ -878,5 +878,189 @@ class WorkflowWiringTests(unittest.TestCase):
         self.assertIn('--limit "$seeds"', workflow)
 
 
+class SocialProducerTests(unittest.TestCase):
+    """F5: crawled socials queue as ``social`` entries for known people.
+
+    Until this producer existed the crawl captured socials in two
+    places — professional-bio ``social_candidates`` and profiles-mode
+    ``social`` rows — and nothing consumed either, so every recorded
+    social came from a manual batch.
+    """
+
+    def setUp(self):
+        self._td = __import__("tempfile").TemporaryDirectory()
+        self.addCleanup(self._td.cleanup)
+        base = Path(self._td.name)
+        self.data_dir = base / "data"
+        self.artifact = base / "artifact"
+        write_json(self.data_dir / "startup-research.json", {
+            "startups": [{
+                "name": "Canva",
+                "founders": [
+                    {"name": "Melanie Perkins"},
+                    {"name": "Cliff Obrecht",
+                     "linkedin":
+                         "https://www.linkedin.com/in/cliffobrecht"},
+                ]}]})
+        write_json(self.data_dir / "partner-profiles.json", {
+            "Airtree": {"people": [
+                {"name": "Elicia McDonald", "role": "CEO & Partner",
+                 "socials": [{"label": "X",
+                              "url": "https://twitter.com/eliciam",
+                              "source": "https://www.airtree.vc/team"}]}]}})
+
+    def produce(self):
+        return queue_mod.produce_socials(self.artifact, self.data_dir, "48")
+
+    def _bio_row(self, name, company, social_candidates):
+        return {"company": company, "kind": "professional-bio",
+                "name": name,
+                "candidate_url": "https://example.com/team",
+                "source_url": "https://example.com/team",
+                "social_candidates": social_candidates}
+
+    def _social_row(self, partner, name, url):
+        return {"partner": partner, "kind": "social",
+                "page_kind": "team", "name": name,
+                "candidate_url": url,
+                "source_url": "https://example.com/team",
+                "review_required": True}
+
+    def test_structured_candidate_queues(self):
+        write_json(self.artifact / "latest-company-profiles.json", {
+            "candidates": [self._bio_row(
+                "Melanie Perkins", "Canva",
+                ["https://www.linkedin.com/in/melanieperkins"])]})
+        entries = self.produce()
+        self.assertEqual(len(entries), 1)
+        entry = entries[0]
+        self.assertEqual(entry["kind"], "social")
+        self.assertEqual(entry["id"],
+                         "social:canva:melanie-perkins:linkedin")
+        self.assertEqual(entry["subject"], "person:melanie-perkins")
+        self.assertEqual(entry["status"], "pending")
+        # Structured sameAs evidence from the company's own page is
+        # the strongest crawl signal, but still conservative.
+        self.assertEqual(entry["confidence"], 0.70)
+        social = entry["social"]
+        self.assertEqual(social["platform"], "linkedin")
+        self.assertEqual(social["candidate_urls"],
+                         ["https://www.linkedin.com/in/melanieperkins"])
+        self.assertEqual(social["sources"], {
+            "https://www.linkedin.com/in/melanieperkins":
+                "https://example.com/team"})
+        self.assertIsNone(social["conflict"])
+        self.assertIn("https://www.linkedin.com/in/melanieperkins",
+                      entry["evidence"])
+        self.assertIn("https://example.com/team", entry["evidence"])
+
+    def test_recorded_linkedin_respelled_is_not_requeued(self):
+        # Locale subdomain + trailing slash: the identity key is the
+        # same, so the recorded profile must not look new.
+        write_json(self.artifact / "latest-company-profiles.json", {
+            "candidates": [self._bio_row(
+                "Cliff Obrecht", "Canva",
+                ["https://au.linkedin.com/in/cliffobrecht/"])]})
+        self.assertEqual(self.produce(), [])
+
+    def test_conflicting_linkedin_is_flagged_distinctly(self):
+        write_json(self.artifact / "latest-company-profiles.json", {
+            "candidates": [self._bio_row(
+                "Cliff Obrecht", "Canva",
+                ["https://www.linkedin.com/in/cliff-obrecht-1a2b3c"])]})
+        entries = self.produce()
+        self.assertEqual(len(entries), 1)
+        entry = entries[0]
+        self.assertTrue(entry["subject_key"].endswith(":conflict"))
+        self.assertEqual(entry["social"]["conflict"], {
+            "recorded_urls": ["https://www.linkedin.com/in/cliffobrecht"]})
+        self.assertEqual(entry["social"]["candidate_urls"],
+                         ["https://www.linkedin.com/in/cliff-obrecht-1a2b3c"])
+        self.assertEqual(entry["confidence"], 0.50)
+
+    def test_profiles_social_row_queues(self):
+        write_json(self.artifact / "latest-profiles.json", {
+            "candidates": [self._social_row(
+                "Airtree", "Elicia McDonald",
+                "https://au.linkedin.com/in/eliciamcdonald")]})
+        entries = self.produce()
+        self.assertEqual(len(entries), 1)
+        entry = entries[0]
+        self.assertEqual(entry["id"],
+                         "social:airtree:elicia-mcdonald:linkedin")
+        self.assertEqual(entry["confidence"], 0.50)
+        self.assertEqual(entry["social"]["via"], ["labelled-link"])
+
+    def test_profiles_social_row_already_recorded_is_skipped(self):
+        # Recorded as twitter.com/eliciam; the crawl's www. + trailing
+        # slash spelling is the same profile.
+        write_json(self.artifact / "latest-profiles.json", {
+            "candidates": [self._social_row(
+                "Airtree", "Elicia McDonald",
+                "https://www.twitter.com/eliciam/")]})
+        self.assertEqual(self.produce(), [])
+
+    def test_unattributable_social_rows_are_skipped(self):
+        write_json(self.artifact / "latest-profiles.json", {
+            "candidates": [
+                # A firm's own footer link: anchor text is not a person.
+                self._social_row("Airtree", "LinkedIn",
+                                 "https://www.linkedin.com/company/airtree"),
+                self._social_row("Airtree", "Unknown Person",
+                                 "https://twitter.com/unknownperson"),
+            ]})
+        self.assertEqual(self.produce(), [])
+
+    def test_socials_deduped_across_artifacts(self):
+        url = "https://www.linkedin.com/in/melanieperkins"
+        write_json(self.artifact / "latest-company-profiles.json", {
+            "candidates": [self._bio_row("Melanie Perkins", "Canva", [url])]})
+        write_json(self.artifact / "latest-profiles.json", {
+            "candidates": [self._social_row("Airtree", "Melanie Perkins",
+                                            url)]})
+        entries = self.produce()
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["social"]["candidate_urls"], [url])
+        # The structured sighting sets the group's confidence.
+        self.assertEqual(entries[0]["confidence"], 0.70)
+        self.assertEqual(entries[0]["social"]["via"],
+                         ["labelled-link", "structured"])
+
+    def test_ambiguous_name_is_skipped(self):
+        write_json(self.data_dir / "startup-research.json", {
+            "startups": [
+                {"name": "Canva", "founders": [{"name": "Melanie Perkins"}]},
+                {"name": "OtherCo",
+                 "founders": [{"name": "Melanie Perkins"}]},
+            ]})
+        write_json(self.artifact / "latest-profiles.json", {
+            "candidates": [self._social_row(
+                "Airtree", "Melanie Perkins",
+                "https://www.linkedin.com/in/melanieperkins")]})
+        self.assertEqual(self.produce(), [])
+
+    def test_socials_never_auto_approve_under_shipped_config(self):
+        write_json(self.artifact / "latest-company-profiles.json", {
+            "candidates": [
+                self._bio_row("Melanie Perkins", "Canva",
+                              ["https://www.linkedin.com/in/melanieperkins"]),
+                self._bio_row("Cliff Obrecht", "Canva",
+                              ["https://www.linkedin.com/in/cliff-obrecht-x"]),
+            ]})
+        entries = self.produce()
+        self.assertEqual(len(entries), 2)
+        gating = queue_mod._review_gating
+        self.assertIsNotNone(gating)
+        config = json.loads(
+            (ROOT / "data" / "review-gating.json").read_text())
+        queue = {"version": 1, "entries": entries}
+        decided = gating.apply_gating(queue, config)
+        self.assertEqual(decided, [])
+        self.assertTrue(all(e["status"] == "pending" for e in entries))
+        # Conflicts sort ahead of plain proposals on the worklist.
+        self.assertEqual(entries[0]["social"]["conflict"], {
+            "recorded_urls": ["https://www.linkedin.com/in/cliffobrecht"]})
+
+
 if __name__ == "__main__":
     unittest.main()
