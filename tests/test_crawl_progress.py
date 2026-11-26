@@ -206,6 +206,28 @@ class ReporterTests(unittest.TestCase):
         self.assertEqual(counts['sources_total'], 3)
         self.assertEqual(counts['sources_failed'], 1)
 
+    def test_reused_mode_failures_counted_once(self):
+        # F4: portraits reusing the company-profiles fetches carries the
+        # same coverage; the shared failed source belongs to
+        # company-profiles alone, so the run total counts it once.
+        coverage = {'pages_attempted': 3, 'pages_succeeded': 2,
+                    'sources': [{'status': 'failed'}, {'status': 'ok'}]}
+        reused = {'candidates': [1, 2], 'coverage': coverage,
+                  'reused_company_profiles':
+                      {'snapshot': 'latest-company-profiles.json'}}
+        self.assertEqual(cp.counts_from_data(reused), {'candidates': 2})
+        self.reporter.begin_run()
+        self.reporter.mode_finished(
+            'company-profiles', {'candidates': [1], 'coverage': coverage})
+        self.reporter.mode_finished('portraits', reused)
+        record = self.record()
+        self.assertEqual(record['modes']['company-profiles']['errors'], 1)
+        portraits = record['modes']['portraits']
+        self.assertEqual(portraits['errors'], 0)
+        self.assertEqual(portraits['sources_failed'], 0)
+        self.assertEqual(portraits['candidates'], 2)
+        self.assertEqual(record['totals']['errors'], 1)
+
 
 class CrawlInstrumentationTests(unittest.TestCase):
     """Two real crawl modes driven with a stub transport + real reporter."""
