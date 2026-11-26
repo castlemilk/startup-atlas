@@ -100,7 +100,17 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = 'castlemilk/startup-atlas'
 CRAWL_WORKFLOW = 'partner-research.yml'
 INDEX_BASE = 'https://storage.googleapis.com/single-station-515408-g9-atlas-index/'
-EXPECTED_TABLES = 9
+# The canonical live-index table set: the nine reviewed tables built by
+# scripts/build-query-parquet.py plus edges/relationships from
+# scripts/graph_edges_parquet.py (#359). tests/test_query_parquet.py pins
+# the same set against the builder's real output. A bare count went stale
+# when #359 landed (9 -> 11) and reported a false RED on every run, so
+# the check compares names and reports exactly what is missing/extra.
+EXPECTED_TABLES = frozenset({
+    'opportunities', 'partners', 'partner_leads', 'startups',
+    'funding_rounds', 'articles', 'profile_facts', 'founders', 'socials',
+    'edges', 'relationships',
+})
 INDEX_WARN_AGE_H = 24
 INDEX_RED_AGE_H = 72
 STALE_WARN_DAYS = 5
@@ -275,8 +285,15 @@ def check_index(fetch, report, now):
     detail = (f"version {latest.get('version')}, {len(tables)} tables, "
               f"{total} rows, age {age_h:.1f}h" if age_h is not None else
               f"version {latest.get('version')}, {len(tables)} tables, {total} rows")
-    if len(tables) != EXPECTED_TABLES:
-        report.add(RED, 'index', detail + f' — expected {EXPECTED_TABLES} tables')
+    missing = sorted(EXPECTED_TABLES - set(tables))
+    extra = sorted(set(tables) - EXPECTED_TABLES)
+    if missing or extra:
+        problems = []
+        if missing:
+            problems.append('missing tables: ' + ', '.join(missing))
+        if extra:
+            problems.append('unexpected tables: ' + ', '.join(extra))
+        report.add(RED, 'index', detail + ' — ' + '; '.join(problems))
     elif age_h is not None and age_h > INDEX_RED_AGE_H:
         report.add(RED, 'index', detail + f' — older than {INDEX_RED_AGE_H}h')
     elif age_h is not None and age_h > INDEX_WARN_AGE_H:
