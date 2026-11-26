@@ -1365,19 +1365,28 @@ def build_summary(queue, added, skipped, run):
 # ---------------------------------------------------------------------- CLI
 
 def produce_headshots(artifact_dir, run):
-    """Headshot entries: staged portrait candidates from profiles mode.
+    """Headshot entries: staged portrait candidates from company profiles.
 
     A ``professional-bio`` row carrying a ``headshot_candidate`` (the
-    profiles-mode binding landed with #354/#406) becomes a queue entry
-    whose card shows the image itself. Confidence reflects the staging
-    reason: an allowed/same-host candidate scores 0.80; an external
-    asset host requiring separate review scores 0.50. Headshots are
-    NEVER auto-approved by gating in v1 (see data/review-gating.json) —
+    binding landed with #354/#406) becomes a queue entry whose card
+    shows the image itself. Confidence reflects the staging reason: an
+    allowed/same-host candidate scores 0.80; an external asset host
+    requiring separate review scores 0.50. Headshots are NEVER
+    auto-approved by gating in v1 (see data/review-gating.json) —
     publication stays a human decision in the admin panel.
+
+    The rows are emitted by the company-profiles mode
+    (``professional_bio_observations`` in crawl.py), so they live in the
+    company-profiles artifact; the profiles artifact is read second for
+    legacy artifacts that predate the move. Until both were read, this
+    producer could never match a row and no headshot ever queued.
     """
-    profiles = load_artifact(artifact_dir, "profiles").get("candidates", [])
+    rows = []
+    for stem in ("company-profiles", "profiles"):
+        rows.extend(load_artifact(artifact_dir, stem).get("candidates", []))
     entries = []
-    for row in profiles:
+    seen_ids = set()
+    for row in rows:
         if row.get("kind") != "professional-bio":
             continue
         candidate = row.get("headshot_candidate") or {}
@@ -1387,6 +1396,9 @@ def produce_headshots(artifact_dir, run):
             continue
         company = row.get("company") or row.get("partner") or ""
         subject_key = f"{slug(company)}:{slug(name)}" if company else slug(name)
+        if subject_key in seen_ids:
+            continue
+        seen_ids.add(subject_key)
         confidence = 0.50 if candidate.get("reason") == \
             "External asset host requires separate review" else 0.80
         entry = _new_entry(
