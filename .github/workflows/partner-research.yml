@@ -1,8 +1,17 @@
 name: Partner research crawl
 on:
   workflow_dispatch:
+# One crawl at a time: runs build on the committed crawl state (review
+# queue, run registry, sampler state) and land updates back onto it, so
+# overlapping runs would race that landing. Queue, never cancel.
+concurrency:
+  group: partner-research-crawl
+  cancel-in-progress: false
 permissions:
-  contents: read
+  # contents: write is for one step only -- "Land crawl outputs on main"
+  # commits the run's review queue, crawl-run registry and sampler state
+  # back to main (finding F2 of the crawler self-critique, round 2).
+  contents: write
   id-token: write
 jobs:
   crawl:
@@ -141,8 +150,8 @@ jobs:
         # Issue #377: the queue builder is committed but nothing ran it,
         # so the queue was rebuilt by hand after each crawl. Generate it
         # into the run artifact, seeded from the committed queue so
-        # decisions and dedup carry forward; landing the updated queue
-        # back on main stays a reviewed data change.
+        # decisions and dedup carry forward; the "Land crawl outputs on
+        # main" step below merges it back onto main.
         run: |
           cp data/review-queue.json research/crawl/review-queue.json
           python3 scripts/build-review-queue.py \
@@ -155,8 +164,8 @@ jobs:
         # runs and data/crawl-source-state.json was an empty stub, because
         # nothing in the workflow recorded the mode runs or persisted
         # the sampler state. Build the updated registry and copy the state
-        # file into the artifact; landing them back on main stays a
-        # reviewed data change, like the review queue above.
+        # file into the artifact; the "Land crawl outputs on main" step
+        # below merges them back onto main, like the review queue above.
         if: always()
         run: |
           cp data/crawl-runs.json research/crawl/crawl-runs.json
@@ -186,6 +195,79 @@ jobs:
           path: research/crawl/
           if-no-files-found: warn
           retention-days: 14
+      - name: Land crawl outputs on main
+        # Finding F2 (crawler self-critique round 2): the steps above
+        # build the review queue, the crawl-run registry and the sampler
+        # state into the run artifact only, and the committed copies went
+        # stale -- the queue's newest entries were from run 44, the
+        # registry ended 2026-11-23 and the source state stayed the empty
+        # stub, so the sampler started every run with no memory and
+        # failure backoff could never engage. This step lands the three
+        # files on main: it clones the current main, merges the run's
+        # outputs into the committed copies with
+        # scripts/land_crawl_outputs.py (committed review decisions
+        # always win, so a panel/MCP decision made during the crawl is
+        # never clobbered), and commits exactly those three files. If
+        # main moves mid-landing the push is rejected and the attempt
+        # retries against the fresh main; after three attempts it logs a
+        # warning and leaves the files in the artifact above -- the crawl
+        # itself never fails over bookkeeping. The push uses the
+        # workflow's own GITHUB_TOKEN, so it does not retrigger other
+        # workflows (no loop) and needs no extra secret.
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          land_attempt() {
+            local tmp tree changed file
+            tmp=$(mktemp -d)
+            tree="$tmp/tree"
+            if ! git clone --quiet --depth 1 --branch main \
+              "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+              "$tree"; then
+              echo "landing: clone of main failed"
+              return 1
+            fi
+            if ! python3 scripts/land_crawl_outputs.py \
+              --artifact-dir research/crawl --data-dir "$tree/data"; then
+              echo "landing: merge failed"
+              return 1
+            fi
+            changed=$(git -C "$tree" status --porcelain | awk '{print $2}')
+            for file in $changed; do
+              case "$file" in
+                data/review-queue.json|data/crawl-runs.json|data/crawl-source-state.json) ;;
+                *)
+                  echo "::warning::landing aborted: unexpected change to $file"
+                  return 1
+                  ;;
+              esac
+            done
+            if [ -z "$changed" ]; then
+              echo "landing: committed crawl outputs already current; nothing to land"
+              return 0
+            fi
+            git -C "$tree" add data/review-queue.json data/crawl-runs.json data/crawl-source-state.json
+            git -C "$tree" \
+              -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit --quiet \
+              -m "Crawl: land run ${{ github.run_number }} outputs (review queue, run registry, source state)"
+            git -C "$tree" push origin HEAD:main
+          }
+          attempt=1
+          while [ "$attempt" -le 3 ]; do
+            if land_attempt; then
+              echo "landing: crawl outputs landed on main (attempt $attempt)"
+              exit 0
+            fi
+            echo "::warning::landing attempt $attempt failed; retrying against fresh main"
+            attempt=$((attempt + 1))
+            sleep 5
+          done
+          echo "::warning::crawl outputs were NOT landed on main; they remain in the partner-crawl-review artifact for manual landing"
+          exit 0
       - name: Publish crawl snapshots to the live-index corpus
         # High-throughput push: snapshots land in object storage immediately;
         # the async indexer (live-index.yml) picks them up from there. This
