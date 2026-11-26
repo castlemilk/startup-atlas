@@ -12,7 +12,7 @@ is keyed and trusted.
 | Tool   | Contract      | Match       | Source of truth                          |
 | ------ | ------------- | ----------- | ---------------------------------------- |
 | Go     | 1.25.0        | exact       | `go.mod` (`go-version-file: go.mod`)     |
-| Node   | 22            | major       | workflow `setup-node` `node-version`     |
+| Node   | 26.13.1       | exact       | `.nvmrc`                                 |
 | Python | 3.12          | major.minor | workflow `setup-python` `python-version` |
 | Chrome | stable channel | present    | runner image; workflows set `CHROME_BIN=google-chrome` |
 
@@ -49,7 +49,7 @@ image/toolcache or update the contract, instead of tests silently running
 on an unqualified toolchain.
 
 Provisioning expectation for the intended-rig image: pre-install the
-contract versions into the image/toolcache (Go 1.25.0, Node 22.x,
+contract versions into the image/toolcache (Go 1.25.0, Node 26.13.1,
 Python 3.12.x, google-chrome stable). Clean per-job isolation is unchanged —
 jobs still run in fresh checkouts and `npm ci` still builds `node_modules`
 from the lockfiles; only the toolchain acquisition is shared.

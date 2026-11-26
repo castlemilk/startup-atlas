@@ -35,11 +35,13 @@ class ToolchainContractTests(unittest.TestCase):
         self.assertIsNotNone(match)
         self.assertEqual(self.contract["go"]["version"], match.group(1))
 
-    def test_node_version_matches_every_workflow_pin(self):
-        pins = set()
+    def test_node_toolchain_uses_the_local_pin(self):
+        self.assertEqual((ROOT / ".nvmrc").read_text(encoding="utf-8").strip(), self.contract["node"]["version"])
         for path in WORKFLOWS.glob("*.yml"):
-            pins.update(re.findall(r"node-version:\s*'?(\d+)'?", path.read_text(encoding="utf-8")))
-        self.assertEqual(pins, {self.contract["node"]["version"]})
+            text = path.read_text(encoding="utf-8")
+            if "actions/setup-node" in text:
+                self.assertNotIn("node-version:", text, path.name)
+                self.assertEqual(text.count("node-version-file: .nvmrc"), text.count("actions/setup-node"), path.name)
 
     def test_python_version_matches_every_workflow_pin(self):
         pins = set()
@@ -86,7 +88,7 @@ class ToolchainProbeGatingTests(unittest.TestCase):
 
 class NpmDownloadCacheTests(unittest.TestCase):
     def test_cache_is_downloads_only_and_fully_keyed(self):
-        node_major = json.loads((ROOT / "ci" / "toolchain.json").read_text(encoding="utf-8"))["node"]["version"]
+        node_version = json.loads((ROOT / "ci" / "toolchain.json").read_text(encoding="utf-8"))["node"]["version"]
         for name in NPM_CI_WORKFLOWS:
             text = workflow(name)
             self.assertIn("actions/cache/restore@v4", text, name)
@@ -95,7 +97,7 @@ class NpmDownloadCacheTests(unittest.TestCase):
             for lockfile in LOCKFILES:
                 self.assertIn(f"'{lockfile}'", text, name)
             self.assertIn("${{ runner.os }}-${{ runner.arch }}", text, name)
-            self.assertIn(f"node{node_major}-npm${{{{ steps.npmver.outputs.version }}}}", text, name)
+            self.assertIn(f"node{node_version}-npm${{{{ steps.npmver.outputs.version }}}}", text, name)
 
     def test_cache_save_is_trusted_events_only(self):
         for name in NPM_CI_WORKFLOWS:

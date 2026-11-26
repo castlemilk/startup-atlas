@@ -10,6 +10,7 @@ on:
       - web/assets/design-lab/signal-graph.webp
       - web/design-tokens.css
       - web/assets/fonts/**
+      - .nvmrc
       - package.json
       - package-lock.json
       - scripts/build.mjs
@@ -39,7 +40,7 @@ jobs:
       - uses: actions/setup-node@v4
         if: steps.toolchain.outputs.node_ready != 'true'
         with:
-          node-version: '22'
+          node-version-file: .nvmrc
       - name: Record npm version
         id: npmver
         run: echo "version=$(npm --version)" >> "$GITHUB_OUTPUT"
@@ -47,9 +48,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ~/.npm
-          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
+          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node26.13.1-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
           restore-keys: |
-            atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-
+            atlas-npm-${{ runner.os }}-${{ runner.arch }}-node26.13.1-
       - name: Verify Node and Chrome toolchain versions
         run: python3 scripts/toolchain.py check --only node,chrome
       - name: Install existing site dependencies
@@ -76,4 +77,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: ~/.npm
-          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node22-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
+          key: atlas-npm-${{ runner.os }}-${{ runner.arch }}-node26.13.1-npm${{ steps.npmver.outputs.version }}-${{ hashFiles('package-lock.json', 'backend/mcp/package-lock.json', 'backend/hosted/package-lock.json') }}
