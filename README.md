@@ -94,6 +94,8 @@ Install the MCP dependencies first with `npm ci --prefix backend/mcp --ignore-sc
 
 ## Add opportunities with MCP
 
+**New here? Start with the [MCP install & connect quickstart](docs/INSTALL-MCP.md)** — connect to the hosted endpoint (nothing to install) or run the local server, with copy-paste configuration for Claude Code, Claude.ai/Desktop, Cursor and VS Code.
+
 The [local Startup Atlas MCP server](docs/MCP.md) provides catalogue search, entry lookup, validation and add-only persistence. It runs over stdio, defaults to read-only, and requires an explicit `--write` launch option to edit this checkout. It does not create a public API, use credentials, or publish automatically.
 
 The same 18 tools are also served by the **hosted MCP server** at `https://gamma-systems-pty-ltd-startup-atlas-mcp.apps.deephost.benebsworth.com/mcp` (Streamable HTTP, Google OAuth, allow-listed accounts). To connect Claude, Cursor or another MCP client, follow the [MCP integration guide](docs/MCP-INTEGRATION.md); operators should read [MCP over HTTP](docs/MCP-HTTP.md).
