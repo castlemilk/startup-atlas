@@ -298,6 +298,30 @@ test('decide requires an evidence note, writes back as agent-review, and undo re
   assert.equal(githubFiles.get('data/review-queue.json').message, 'review: startup-lead:testco decision undone via admin MCP (was approved by agent-review)');
 });
 
+test('defer records what evidence is missing, stays listed as deferred, and can be decided for real', async t => {
+  seedGithub();
+  const client = await connect(t, app.base, '/mcp/admin', adminToken());
+
+  const deferred = decoded(await client.callTool({
+    name: 'atlas_admin_decide_review_item',
+    arguments: { id: 'startup-lead:testco', decision: 'deferred', note: 'Evidence so far is a single partner mention; need the company\'s own site confirming the name before this can be approved.' },
+  }));
+  assert.equal(deferred.ok, true);
+  assert.equal(deferred.entry.status, 'deferred');
+  assert.equal(deferred.entry.decided_by, 'agent-review');
+  assert.equal(githubFiles.get('data/review-queue.json').message, 'review: startup-lead:testco deferred via admin MCP');
+
+  const listed = decoded(await client.callTool({ name: 'atlas_admin_list_review_queue', arguments: { status: 'deferred' } }));
+  assert.deepEqual(listed.entries.map(entry => entry.id), ['startup-lead:testco']);
+
+  const decided = decoded(await client.callTool({
+    name: 'atlas_admin_decide_review_item',
+    arguments: { id: 'startup-lead:testco', decision: 'approved', note: 'Evidence: TestCo\'s own site now confirms the name and the Airtree mention.' },
+  }));
+  assert.equal(decided.ok, true);
+  assert.equal(decided.entry.status, 'approved');
+});
+
 test('/mcp regression: the catalogue surface still serves its 18 tools and no admin tools', async t => {
   const client = await connect(t, app.base, '/mcp', readerToken());
   const { tools } = await client.listTools();
