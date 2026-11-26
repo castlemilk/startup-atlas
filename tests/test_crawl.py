@@ -563,6 +563,87 @@ class TransportTests(unittest.TestCase):
             with self.assertRaisesRegex(crawl.CrawlError,'redirect denied'): t.request('https://example.com/start',redirect_guard=deny)
             self.assertEqual(len(calls),1)
 
+class PortraitsReuseTests(unittest.TestCase):
+    """F4: portraits consumes the company-profiles snapshot of the same
+    run instead of re-crawling every company page a second time."""
+
+    def _workspace(self, tmp, snapshot=None):
+        root = Path(tmp)
+        (root / 'data').mkdir(parents=True)
+        (root / 'data' / 'startup-research.json').write_text(json.dumps(
+            {'startups': [{'name': 'Example', 'website': 'https://example.com'}]}),
+            encoding='utf-8')
+        approved = root / 'seeds.csv'
+        approved.write_text(
+            'partner,official_website,approved,asset_hosts\n'
+            'Example,https://example.com,yes,\n', encoding='utf-8')
+        out = root / 'crawl-out'
+        out.mkdir()
+        if snapshot is not None:
+            (out / crawl.COMPANY_PROFILES_SNAPSHOT).write_text(
+                json.dumps(snapshot), encoding='utf-8')
+        args = types.SimpleNamespace(out=out, approved=approved, follow=2,
+                                     limit=0, partner=None)
+        return root, args
+
+    def _snapshot(self, generated_at=None, names=('Example',)):
+        return {
+            'version': 1, 'mode': 'company-profiles',
+            'generated_at': generated_at or crawl.utc_now(),
+            'results': [{'name': name, 'url': 'https://example.com',
+                         'pages': [{'url': 'https://example.com',
+                                    'status': 'ok'}]} for name in names],
+            'candidates': [{'kind': 'company-profile', 'name': 'Example',
+                            'company': 'Example'}],
+        }
+
+    def test_portraits_reuses_company_profiles_snapshot_without_fetching(self):
+        class NoFetchTransport:
+            def request(self, *args, **kwargs):
+                raise AssertionError('portraits must not fetch pages '
+                                     'company-profiles already fetched')
+        with tempfile.TemporaryDirectory() as tmp:
+            root, args = self._workspace(tmp, snapshot=self._snapshot())
+            with patch.object(crawl, 'ROOT', root), \
+                    patch.object(crawl, 'crawl_company_profiles',
+                                 side_effect=AssertionError(
+                                     'reuse must not re-crawl')):
+                result = crawl.crawl_portraits(args, NoFetchTransport())
+        self.assertEqual(result['mode'], 'portraits')
+        self.assertEqual(result['reused_company_profiles']['snapshot'],
+                         crawl.COMPANY_PROFILES_SNAPSHOT)
+        self.assertEqual([row['name'] for row in result['results']],
+                         ['Example'])
+        self.assertEqual(result['results'][0]['pages'][0]['status'], 'ok')
+        self.assertEqual(result['coverage']['pages_attempted'], 1)
+
+    def test_portraits_without_snapshot_crawls_as_before(self):
+        raw = {'results': [{'name': 'Example', 'pages': []}],
+               'candidates': [{'kind': 'company-profile', 'name': 'Example'}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            root, args = self._workspace(tmp)
+            with patch.object(crawl, 'ROOT', root), \
+                    patch.object(crawl, 'crawl_company_profiles',
+                                 return_value=raw) as crawl_profiles:
+                result = crawl.crawl_portraits(args, object())
+        crawl_profiles.assert_called_once()
+        self.assertNotIn('reused_company_profiles', result)
+
+    def test_portraits_ignores_stale_or_mismatched_snapshot(self):
+        raw = {'results': [], 'candidates': []}
+        stale = self._snapshot(generated_at='2020-01-01T00:00:00+00:00')
+        mismatched = self._snapshot(names=('Somebody Else',))
+        for snapshot in (stale, mismatched):
+            with tempfile.TemporaryDirectory() as tmp:
+                root, args = self._workspace(tmp, snapshot=snapshot)
+                with patch.object(crawl, 'ROOT', root), \
+                        patch.object(crawl, 'crawl_company_profiles',
+                                     return_value=raw) as crawl_profiles:
+                    result = crawl.crawl_portraits(args, object())
+            crawl_profiles.assert_called_once()
+            self.assertNotIn('reused_company_profiles', result)
+
+
 class WorkflowTests(unittest.TestCase):
     def test_company_location_crawl_saves_distinct_review_candidates(self):
         home = 'https://example.com/'
