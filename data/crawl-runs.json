@@ -575,6 +575,1973 @@
       "published_pr": null,
       "supersedes": null,
       "superseded_by": null
+    },
+    {
+      "args": {},
+      "artifact_url": null,
+      "catalogue_revision": "e6b5031d0fb1946321cbbaeb60b19251fc990dd8",
+      "claimed_at": "2026-11-26T21:05:41Z",
+      "claimed_by": "github-actions",
+      "finished_at": "2026-11-26T21:11:09Z",
+      "lease_expires_at": "2026-11-26T21:35:41Z",
+      "mode": "partners",
+      "outcome": {
+        "candidates_discovered": 1564,
+        "coverage_reference": "research/crawl/latest-partners.json",
+        "notes": "Recorded by scripts/record_crawl_runs.py from the partner-research workflow snapshot (latest-partners.json); see the crawl artifact for the full snapshot.",
+        "sources": [
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "GitHub for Startups partner directory",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "AWS Activate featured providers",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "LaunchVic AI and deeptech pre-accelerators",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Henson investor network announcement",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Innovation Bay Australian venture capital firms",
+            "status": "ok"
+          }
+        ],
+        "sources_attempted": 5,
+        "sources_failed": 2,
+        "sources_succeeded": 3
+      },
+      "published_pr": null,
+      "review_status": "unreviewed",
+      "run_id": "crawl-20261126-partners-49",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45895657031",
+      "scope": {
+        "seed_file": "data/partner-sources.json",
+        "seed_sha256": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "source_ids": [
+          "github-for-startups-partners",
+          "aws-activate-featured",
+          "launchvic-ai-preaccelerators",
+          "henson-microsoft-network",
+          "innovation-bay-australia-vc"
+        ]
+      },
+      "snapshot_sha256": "98d98f9aad9176280287061df68c8bfd8f3211100584d726a7a2baa43ac15f81",
+      "source_revisions": {
+        "aws-activate-featured": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "github-for-startups-partners": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "henson-microsoft-network": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "innovation-bay-australia-vc": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b",
+        "launchvic-ai-preaccelerators": "087291a70e9228a0e2be53df34aeb9aeb3ea0434bb1405f641ecf0a8f4a40f5b"
+      },
+      "started_at": "2026-11-26T21:05:41Z",
+      "status": "completed",
+      "superseded_by": null,
+      "supersedes": null,
+      "version": 1
+    },
+    {
+      "args": {},
+      "artifact_url": null,
+      "catalogue_revision": "e6b5031d0fb1946321cbbaeb60b19251fc990dd8",
+      "claimed_at": "2026-11-26T21:06:05Z",
+      "claimed_by": "github-actions",
+      "finished_at": "2026-11-26T21:11:09Z",
+      "lease_expires_at": "2026-11-26T21:36:05Z",
+      "mode": "programs",
+      "outcome": {
+        "candidates_discovered": 111,
+        "coverage_reference": "research/crawl/latest-programs.json",
+        "notes": "Recorded by scripts/record_crawl_runs.py from the partner-research workflow snapshot (latest-programs.json); see the crawl artifact for the full snapshot.",
+        "sources": [
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Google for Startups programme directory",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Google for Startups Asia Pacific accelerators",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Innovation Victoria accelerator programmes",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Innovation Victoria pre-accelerator programmes",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Australian grants and programmes finder",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Startup SG programmes",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Startup India government schemes",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "UK innovation funding finder",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Canada NRC IRAP support",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Pathways to Funding",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Innovative Solutions Canada AI governance challenge",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Female Founders Co-Investment Fund QLD",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Ignite Program NT",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Ignite Program Guidelines (18 June 2026)",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Carbon Innovation Grants Program — Round 3",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Carbon Innovation Grants Program Round 3 documents (updated 4 November 2026)",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Startmate programmes and offerings",
+            "status": "ok"
+          }
+        ],
+        "sources_attempted": 17,
+        "sources_failed": 4,
+        "sources_succeeded": 13
+      },
+      "published_pr": null,
+      "review_status": "unreviewed",
+      "run_id": "crawl-20261126-programs-49",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45895657031",
+      "scope": {
+        "seed_file": "data/program-sources.json",
+        "seed_sha256": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "source_ids": [
+          "google-directory",
+          "google-apac",
+          "victoria-accelerators",
+          "victoria-pre-accelerators",
+          "au-grants",
+          "singapore-sg",
+          "india-schemes",
+          "uk-innovate",
+          "canada-irap",
+          "uk-pathways-funding",
+          "canada-isc-ai-governance",
+          "qld-female-founders",
+          "ignite-nt",
+          "ignite-nt-guidelines",
+          "wa-carbon-innovation-grants-r3",
+          "wa-carbon-innovation-grants-r3-documents",
+          "startmate-offerings"
+        ]
+      },
+      "snapshot_sha256": "c11ecbf3be62453274fb48fb7ef85a40600895bdd083f35c729cc115debe0114",
+      "source_revisions": {
+        "au-grants": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "canada-irap": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "canada-isc-ai-governance": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "google-apac": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "google-directory": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "ignite-nt": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "ignite-nt-guidelines": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "india-schemes": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "qld-female-founders": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "singapore-sg": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "startmate-offerings": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "uk-innovate": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "uk-pathways-funding": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "victoria-accelerators": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "victoria-pre-accelerators": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "wa-carbon-innovation-grants-r3": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0",
+        "wa-carbon-innovation-grants-r3-documents": "c006a97dced9dba86e86a82fcfb57a34f3c0cf30468b28f7a54be35fadc460a0"
+      },
+      "started_at": "2026-11-26T21:06:05Z",
+      "status": "completed",
+      "superseded_by": null,
+      "supersedes": null,
+      "version": 1
+    },
+    {
+      "args": {},
+      "artifact_url": null,
+      "catalogue_revision": "e6b5031d0fb1946321cbbaeb60b19251fc990dd8",
+      "claimed_at": "2026-11-26T21:06:24Z",
+      "claimed_by": "github-actions",
+      "finished_at": "2026-11-26T21:11:09Z",
+      "lease_expires_at": "2026-11-26T21:36:24Z",
+      "mode": "news",
+      "outcome": {
+        "candidates_discovered": 9,
+        "coverage_reference": "research/crawl/latest-news.json",
+        "notes": "Recorded by scripts/record_crawl_runs.py from the partner-research workflow snapshot (latest-news.json); see the crawl artifact for the full snapshot.",
+        "sources": [
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Canva",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Airwallex",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Bugcrowd",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Morse Micro",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Startup Daily",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "SmartCompany",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "InnovationAus",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Overnight Success",
+            "status": "failed"
+          }
+        ],
+        "sources_attempted": 8,
+        "sources_failed": 3,
+        "sources_succeeded": 5
+      },
+      "published_pr": null,
+      "review_status": "unreviewed",
+      "run_id": "crawl-20261126-news-49",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45895657031",
+      "scope": {
+        "seed_file": "data/startup-news-sources.json",
+        "seed_sha256": "f5d132fd8e6b74ad827e7efa2a3cb7456a49143949ce1a7c612890b618fa9830",
+        "source_ids": [
+          "canva-news",
+          "airwallex-news",
+          "bugcrowd-news",
+          "morse-micro-news",
+          "startup-daily-funding",
+          "smartcompany-startupsmart",
+          "innovationaus-news",
+          "overnight-success-capital-raise"
+        ]
+      },
+      "snapshot_sha256": "acede6aae225840c08ea468736a7a6a66e57c76764c2494c080f5c48866db38b",
+      "source_revisions": {
+        "airwallex-news": "f5d132fd8e6b74ad827e7efa2a3cb7456a49143949ce1a7c612890b618fa9830",
+        "bugcrowd-news": "f5d132fd8e6b74ad827e7efa2a3cb7456a49143949ce1a7c612890b618fa9830",
+        "canva-news": "f5d132fd8e6b74ad827e7efa2a3cb7456a49143949ce1a7c612890b618fa9830",
+        "innovationaus-news": "f5d132fd8e6b74ad827e7efa2a3cb7456a49143949ce1a7c612890b618fa9830",
+        "morse-micro-news": "f5d132fd8e6b74ad827e7efa2a3cb7456a49143949ce1a7c612890b618fa9830",
+        "overnight-success-capital-raise": "f5d132fd8e6b74ad827e7efa2a3cb7456a49143949ce1a7c612890b618fa9830",
+        "smartcompany-startupsmart": "f5d132fd8e6b74ad827e7efa2a3cb7456a49143949ce1a7c612890b618fa9830",
+        "startup-daily-funding": "f5d132fd8e6b74ad827e7efa2a3cb7456a49143949ce1a7c612890b618fa9830"
+      },
+      "started_at": "2026-11-26T21:06:24Z",
+      "status": "completed",
+      "superseded_by": null,
+      "supersedes": null,
+      "version": 1
+    },
+    {
+      "args": {},
+      "artifact_url": null,
+      "catalogue_revision": "e6b5031d0fb1946321cbbaeb60b19251fc990dd8",
+      "claimed_at": "2026-11-26T21:08:02Z",
+      "claimed_by": "github-actions",
+      "finished_at": "2026-11-26T21:11:09Z",
+      "lease_expires_at": "2026-11-26T21:38:02Z",
+      "mode": "logos",
+      "outcome": {
+        "candidates_discovered": 350,
+        "coverage_reference": "research/crawl/latest-logos.json",
+        "notes": "Recorded by scripts/record_crawl_runs.py from the partner-research workflow snapshot (latest-logos.json); see the crawl artifact for the full snapshot.",
+        "sources": [
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Blackbird Ventures",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Entrepreneur First",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Station F",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Airtree",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Square Peg",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Side Stage Ventures",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Startmate",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Seedcamp",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Partech",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Antler",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "USV",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Madrona",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Kaszek",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "CRV",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Pear",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Wing VC",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Uncork",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Thrive Capital",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Boab AI",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Boson Ventures",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Cicada Innovations",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "CoLabs Australia",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "HEX",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Illume Ventures",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Jumpstart Studio",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "MedTech Actuator",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "RMIT DiscoveryHUB",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Main Sequence",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Rampersand",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Investible",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Artesian",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Brandon Capital",
+            "status": "ok"
+          }
+        ],
+        "sources_attempted": 32,
+        "sources_failed": 1,
+        "sources_succeeded": 31
+      },
+      "published_pr": null,
+      "review_status": "unreviewed",
+      "run_id": "crawl-20261126-logos-49",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45895657031",
+      "scope": {
+        "seed_file": "data/partner-logo-seeds.csv",
+        "seed_sha256": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "source_ids": [
+          "partner:Q123757058",
+          "partner:Q21592473",
+          "partner:Q32979361",
+          "partner:url-bdf6632389c6e018",
+          "partner:url-8e7db6e290603f06",
+          "partner:url-e7104c89ac8bef15",
+          "partner:url-43940cb70a73d567",
+          "partner:url-4a105d1eefc93455",
+          "partner:url-73b5ba797b009deb",
+          "partner:url-2c7b4e15be765b29",
+          "partner:url-9b39a9c97704e3a6",
+          "partner:url-ca69ce7f1f1dcd50",
+          "partner:url-0eda93b57a62401a",
+          "partner:url-4140a014b06a42d9",
+          "partner:url-b0860bd219c5b30c",
+          "partner:url-21c63ebf3b8fe56e",
+          "partner:url-e169fe158d436836",
+          "partner:url-5741f782a9a46e48",
+          "partner:url-685ac4de7e4ba919",
+          "partner:url-75bc2540f94a369a",
+          "partner:url-7fe44db300b85fc6",
+          "partner:url-637ee0058272f8b4",
+          "partner:url-4b86d36fe4b92afc",
+          "partner:url-467e848c1b5fd0cd",
+          "partner:url-38246c761b72fc62",
+          "partner:url-d9687b4a1da0f053",
+          "partner:url-bfcc38710ba0f2bd",
+          "partner:url-fe9fc7d932d40e5d",
+          "partner:url-243b73fb9994eee8",
+          "partner:url-6a955a1d78f57e6e",
+          "partner:url-de4718059aaa7138",
+          "partner:url-86a3370e78d9dc99"
+        ]
+      },
+      "snapshot_sha256": "f98d1190c786064ff989d9ff61bdaed0bcea2f662baa37e2b21b26a1fe27f968",
+      "source_revisions": {
+        "partner:Q123757058": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:Q21592473": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:Q32979361": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-0eda93b57a62401a": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-21c63ebf3b8fe56e": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-243b73fb9994eee8": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-2c7b4e15be765b29": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-38246c761b72fc62": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-4140a014b06a42d9": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-43940cb70a73d567": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-467e848c1b5fd0cd": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-4a105d1eefc93455": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-4b86d36fe4b92afc": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-5741f782a9a46e48": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-637ee0058272f8b4": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-685ac4de7e4ba919": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-6a955a1d78f57e6e": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-73b5ba797b009deb": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-75bc2540f94a369a": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-7fe44db300b85fc6": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-86a3370e78d9dc99": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-8e7db6e290603f06": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-9b39a9c97704e3a6": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-b0860bd219c5b30c": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-bdf6632389c6e018": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-bfcc38710ba0f2bd": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-ca69ce7f1f1dcd50": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-d9687b4a1da0f053": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-de4718059aaa7138": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-e169fe158d436836": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-e7104c89ac8bef15": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "partner:url-fe9fc7d932d40e5d": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457"
+      },
+      "started_at": "2026-11-26T21:08:02Z",
+      "status": "completed",
+      "superseded_by": null,
+      "supersedes": null,
+      "version": 1
+    },
+    {
+      "args": {},
+      "artifact_url": null,
+      "catalogue_revision": "e6b5031d0fb1946321cbbaeb60b19251fc990dd8",
+      "claimed_at": "2026-11-26T21:09:15Z",
+      "claimed_by": "github-actions",
+      "finished_at": "2026-11-26T21:11:09Z",
+      "lease_expires_at": "2026-11-26T21:39:15Z",
+      "mode": "profiles",
+      "outcome": {
+        "candidates_discovered": 2527,
+        "coverage_reference": "research/crawl/latest-profiles.json",
+        "notes": "Recorded by scripts/record_crawl_runs.py from the partner-research workflow snapshot (latest-profiles.json); see the crawl artifact for the full snapshot.",
+        "sources": [
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Entrepreneur First",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Airtree",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Square Peg",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Side Stage Ventures",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Startmate",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Seedcamp",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Partech",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Antler",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "USV",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Madrona",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Pear",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Wing VC",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Boson Ventures",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "HEX",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Jumpstart Studio",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Main Sequence",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Investible",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Artesian",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Brandon Capital",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Blackbird Ventures",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Cicada Innovations",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "MedTech Actuator",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "RMIT DiscoveryHUB",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Thrive Capital",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Boab AI",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Illume Ventures",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Station F",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "CRV",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 2,
+            "source": "Uncork",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Kaszek",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "CoLabs Australia",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Rampersand",
+            "status": "ok"
+          }
+        ],
+        "sources_attempted": 32,
+        "sources_failed": 1,
+        "sources_succeeded": 31
+      },
+      "published_pr": null,
+      "review_status": "unreviewed",
+      "run_id": "crawl-20261126-profiles-49",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45895657031",
+      "scope": {
+        "seed_file": "data/partner-logo-seeds.csv",
+        "seed_sha256": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "source_ids": [
+          "Entrepreneur First",
+          "Airtree",
+          "Square Peg",
+          "Side Stage Ventures",
+          "Startmate",
+          "Seedcamp",
+          "Partech",
+          "Antler",
+          "USV",
+          "Madrona",
+          "Pear",
+          "Wing VC",
+          "Boson Ventures",
+          "HEX",
+          "Jumpstart Studio",
+          "Main Sequence",
+          "Investible",
+          "Artesian",
+          "Brandon Capital",
+          "Blackbird Ventures",
+          "Cicada Innovations",
+          "MedTech Actuator",
+          "RMIT DiscoveryHUB",
+          "Thrive Capital",
+          "Boab AI",
+          "Illume Ventures",
+          "Station F",
+          "CRV",
+          "Uncork",
+          "Kaszek",
+          "CoLabs Australia",
+          "Rampersand"
+        ]
+      },
+      "snapshot_sha256": "c1bdbca912bb99c87747bfe0b9799b56b67e0a2a12790a54172fd8ce1e0b8924",
+      "source_revisions": {
+        "Airtree": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Antler": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Artesian": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Blackbird Ventures": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Boab AI": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Boson Ventures": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Brandon Capital": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "CRV": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Cicada Innovations": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "CoLabs Australia": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Entrepreneur First": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "HEX": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Illume Ventures": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Investible": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Jumpstart Studio": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Kaszek": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Madrona": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Main Sequence": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "MedTech Actuator": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Partech": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Pear": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "RMIT DiscoveryHUB": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Rampersand": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Seedcamp": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Side Stage Ventures": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Square Peg": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Startmate": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Station F": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Thrive Capital": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "USV": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Uncork": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Wing VC": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457"
+      },
+      "started_at": "2026-11-26T21:09:15Z",
+      "status": "completed",
+      "superseded_by": null,
+      "supersedes": null,
+      "version": 1
+    },
+    {
+      "args": {},
+      "artifact_url": null,
+      "catalogue_revision": "e6b5031d0fb1946321cbbaeb60b19251fc990dd8",
+      "claimed_at": "2026-11-26T21:10:45Z",
+      "claimed_by": "github-actions",
+      "finished_at": "2026-11-26T21:11:09Z",
+      "lease_expires_at": "2026-11-26T21:40:45Z",
+      "mode": "company-profiles",
+      "outcome": {
+        "candidates_discovered": 999,
+        "coverage_reference": "research/crawl/latest-company-profiles.json",
+        "notes": "Recorded by scripts/record_crawl_runs.py from the partner-research workflow snapshot (latest-company-profiles.json); see the crawl artifact for the full snapshot.",
+        "sources": [
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "PsiQuantum",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Airwallex",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Alloovium",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Andromeda Robotics",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Arkeus",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Ascenda",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Brainwaves",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Bugcrowd",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Canva",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Cauldron",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "CheckGen",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "CrossCourtAI",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Culture Amp",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Cuttable",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Deeligence",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Diraq",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "ENA Respiratory",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Emesent",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Eucalyptus",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "FloodMapp",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "FlowGo",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Fluency",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Fusion Books",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 1,
+            "source": "Gilmour Space",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Go1",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Goterra",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Guin",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "JigSpace",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Loam Bio",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Lockii",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Morse Micro",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Neuralindex",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Puralink",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Q-CTRL",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Quantum Brilliance",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Revolut",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Skykraft",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Strongroom AI",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Superstat",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Synthesia",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "T:0",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Draper",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Tendor",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Thermal Dawn",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "ULUU",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "UiPath",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Vixia",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Wayve",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Evatto",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Wise",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Zabidou",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "cascayd",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "iBnkVault",
+            "status": "failed"
+          }
+        ],
+        "sources_attempted": 53,
+        "sources_failed": 14,
+        "sources_succeeded": 39
+      },
+      "published_pr": null,
+      "review_status": "unreviewed",
+      "run_id": "crawl-20261126-company-profiles-49",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45895657031",
+      "scope": {
+        "seed_file": "data/company-profile-seeds.csv",
+        "seed_sha256": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "source_ids": [
+          "PsiQuantum",
+          "Airwallex",
+          "Alloovium",
+          "Andromeda Robotics",
+          "Arkeus",
+          "Ascenda",
+          "Brainwaves",
+          "Bugcrowd",
+          "Canva",
+          "Cauldron",
+          "CheckGen",
+          "CrossCourtAI",
+          "Culture Amp",
+          "Cuttable",
+          "Deeligence",
+          "Diraq",
+          "ENA Respiratory",
+          "Emesent",
+          "Eucalyptus",
+          "FloodMapp",
+          "FlowGo",
+          "Fluency",
+          "Fusion Books",
+          "Gilmour Space",
+          "Go1",
+          "Goterra",
+          "Guin",
+          "JigSpace",
+          "Loam Bio",
+          "Lockii",
+          "Morse Micro",
+          "Neuralindex",
+          "Puralink",
+          "Q-CTRL",
+          "Quantum Brilliance",
+          "Revolut",
+          "Skykraft",
+          "Strongroom AI",
+          "Superstat",
+          "Synthesia",
+          "T:0",
+          "Draper",
+          "Tendor",
+          "Thermal Dawn",
+          "ULUU",
+          "UiPath",
+          "Vixia",
+          "Wayve",
+          "Evatto",
+          "Wise",
+          "Zabidou",
+          "cascayd",
+          "iBnkVault"
+        ]
+      },
+      "snapshot_sha256": "12623ae7ae772c8051ceaa3266bf26ff11ee9ac3dda7f3c2a2395f8237a6b949",
+      "source_revisions": {
+        "Airwallex": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Alloovium": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Andromeda Robotics": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Arkeus": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Ascenda": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Brainwaves": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Bugcrowd": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Canva": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Cauldron": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "CheckGen": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "CrossCourtAI": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Culture Amp": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Cuttable": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Deeligence": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Diraq": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Draper": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "ENA Respiratory": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Emesent": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Eucalyptus": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Evatto": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "FloodMapp": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "FlowGo": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Fluency": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Fusion Books": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Gilmour Space": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Go1": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Goterra": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Guin": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "JigSpace": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Loam Bio": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Lockii": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Morse Micro": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Neuralindex": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "PsiQuantum": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Puralink": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Q-CTRL": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Quantum Brilliance": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Revolut": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Skykraft": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Strongroom AI": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Superstat": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Synthesia": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "T:0": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Tendor": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Thermal Dawn": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "ULUU": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "UiPath": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Vixia": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Wayve": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Wise": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Zabidou": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "cascayd": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "iBnkVault": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99"
+      },
+      "started_at": "2026-11-26T21:10:45Z",
+      "status": "completed",
+      "superseded_by": null,
+      "supersedes": null,
+      "version": 1
+    },
+    {
+      "args": {},
+      "artifact_url": null,
+      "catalogue_revision": "e6b5031d0fb1946321cbbaeb60b19251fc990dd8",
+      "claimed_at": "2026-11-26T21:10:45Z",
+      "claimed_by": "github-actions",
+      "finished_at": "2026-11-26T21:11:09Z",
+      "lease_expires_at": "2026-11-26T21:40:45Z",
+      "mode": "portraits",
+      "outcome": {
+        "candidates_discovered": 242,
+        "coverage_reference": "research/crawl/latest-portraits.json",
+        "notes": "Recorded by scripts/record_crawl_runs.py from the partner-research workflow snapshot (latest-portraits.json); see the crawl artifact for the full snapshot.",
+        "sources": [
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "PsiQuantum",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Airwallex",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Alloovium",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Andromeda Robotics",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Arkeus",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Ascenda",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Brainwaves",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Bugcrowd",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Canva",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Cauldron",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "CheckGen",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "CrossCourtAI",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Culture Amp",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Cuttable",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Deeligence",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Diraq",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "ENA Respiratory",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Emesent",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Eucalyptus",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "FloodMapp",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "FlowGo",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Fluency",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Fusion Books",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 1,
+            "source": "Gilmour Space",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Go1",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Goterra",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Guin",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "JigSpace",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Loam Bio",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Lockii",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Morse Micro",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Neuralindex",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Puralink",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Q-CTRL",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Quantum Brilliance",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Revolut",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Skykraft",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Strongroom AI",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Superstat",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Synthesia",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "T:0",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Draper",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Tendor",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Thermal Dawn",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "ULUU",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "UiPath",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 2,
+            "pages_ok": 2,
+            "source": "Vixia",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Wayve",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "Evatto",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 3,
+            "pages_ok": 3,
+            "source": "Wise",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "Zabidou",
+            "status": "failed"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 1,
+            "source": "cascayd",
+            "status": "ok"
+          },
+          {
+            "pages_attempted": 1,
+            "pages_ok": 0,
+            "source": "iBnkVault",
+            "status": "failed"
+          }
+        ],
+        "sources_attempted": 53,
+        "sources_failed": 14,
+        "sources_succeeded": 39
+      },
+      "published_pr": null,
+      "review_status": "unreviewed",
+      "run_id": "crawl-20261126-portraits-49",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45895657031",
+      "scope": {
+        "seed_file": "data/company-profile-seeds.csv",
+        "seed_sha256": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "source_ids": [
+          "PsiQuantum",
+          "Airwallex",
+          "Alloovium",
+          "Andromeda Robotics",
+          "Arkeus",
+          "Ascenda",
+          "Brainwaves",
+          "Bugcrowd",
+          "Canva",
+          "Cauldron",
+          "CheckGen",
+          "CrossCourtAI",
+          "Culture Amp",
+          "Cuttable",
+          "Deeligence",
+          "Diraq",
+          "ENA Respiratory",
+          "Emesent",
+          "Eucalyptus",
+          "FloodMapp",
+          "FlowGo",
+          "Fluency",
+          "Fusion Books",
+          "Gilmour Space",
+          "Go1",
+          "Goterra",
+          "Guin",
+          "JigSpace",
+          "Loam Bio",
+          "Lockii",
+          "Morse Micro",
+          "Neuralindex",
+          "Puralink",
+          "Q-CTRL",
+          "Quantum Brilliance",
+          "Revolut",
+          "Skykraft",
+          "Strongroom AI",
+          "Superstat",
+          "Synthesia",
+          "T:0",
+          "Draper",
+          "Tendor",
+          "Thermal Dawn",
+          "ULUU",
+          "UiPath",
+          "Vixia",
+          "Wayve",
+          "Evatto",
+          "Wise",
+          "Zabidou",
+          "cascayd",
+          "iBnkVault"
+        ]
+      },
+      "snapshot_sha256": "cc4f4c68bbbf7154b7a7c39f2de2ff190c823d294db705f9821fd7e38ccbe0c9",
+      "source_revisions": {
+        "Airwallex": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Alloovium": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Andromeda Robotics": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Arkeus": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Ascenda": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Brainwaves": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Bugcrowd": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Canva": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Cauldron": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "CheckGen": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "CrossCourtAI": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Culture Amp": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Cuttable": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Deeligence": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Diraq": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Draper": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "ENA Respiratory": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Emesent": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Eucalyptus": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Evatto": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "FloodMapp": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "FlowGo": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Fluency": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Fusion Books": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Gilmour Space": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Go1": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Goterra": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Guin": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "JigSpace": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Loam Bio": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Lockii": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Morse Micro": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Neuralindex": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "PsiQuantum": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Puralink": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Q-CTRL": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Quantum Brilliance": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Revolut": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Skykraft": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Strongroom AI": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Superstat": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Synthesia": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "T:0": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Tendor": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Thermal Dawn": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "ULUU": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "UiPath": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Vixia": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Wayve": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Wise": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "Zabidou": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "cascayd": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99",
+        "iBnkVault": "dfc63c965d4a7977654cc79bdb9d234af94c9c8c57ca1beb8eee83b95f432c99"
+      },
+      "started_at": "2026-11-26T21:10:45Z",
+      "status": "completed",
+      "superseded_by": null,
+      "supersedes": null,
+      "version": 1
+    },
+    {
+      "args": {},
+      "artifact_url": null,
+      "catalogue_revision": "e6b5031d0fb1946321cbbaeb60b19251fc990dd8",
+      "claimed_at": "2026-11-26T21:11:09Z",
+      "claimed_by": "github-actions",
+      "finished_at": "2026-11-26T21:11:09Z",
+      "lease_expires_at": "2026-11-26T21:41:09Z",
+      "mode": "partner-candidates",
+      "outcome": {
+        "candidates_discovered": 19,
+        "coverage_reference": "research/crawl/partner-update-candidates.json",
+        "notes": "Recorded by scripts/record_crawl_runs.py from the partner-research workflow snapshot (partner-update-candidates.json); see the crawl artifact for the full snapshot.",
+        "sources": [],
+        "sources_attempted": 32,
+        "sources_failed": 0,
+        "sources_succeeded": 32
+      },
+      "published_pr": null,
+      "review_status": "unreviewed",
+      "run_id": "crawl-20261126-partner-candidates-49",
+      "run_url": "https://github.com/castlemilk/startup-atlas/actions/runs/45895657031",
+      "scope": {
+        "seed_file": "data/partner-logo-seeds.csv",
+        "seed_sha256": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "source_ids": [
+          "Blackbird Ventures",
+          "Entrepreneur First",
+          "Station F",
+          "Airtree",
+          "Square Peg",
+          "Side Stage Ventures",
+          "Startmate",
+          "Seedcamp",
+          "Partech",
+          "Antler",
+          "USV",
+          "Madrona",
+          "Kaszek",
+          "CRV",
+          "Pear",
+          "Wing VC",
+          "Uncork",
+          "Thrive Capital",
+          "Boab AI",
+          "Boson Ventures",
+          "Cicada Innovations",
+          "CoLabs Australia",
+          "HEX",
+          "Illume Ventures",
+          "Jumpstart Studio",
+          "MedTech Actuator",
+          "RMIT DiscoveryHUB",
+          "Main Sequence",
+          "Rampersand",
+          "Investible",
+          "Artesian",
+          "Brandon Capital"
+        ]
+      },
+      "snapshot_sha256": "6f9163154a5ab663a9a8bcf45e4acaccb5ce9c8bafa7a4bf06ab59c222c3aeef",
+      "source_revisions": {
+        "Airtree": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Antler": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Artesian": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Blackbird Ventures": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Boab AI": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Boson Ventures": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Brandon Capital": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "CRV": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Cicada Innovations": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "CoLabs Australia": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Entrepreneur First": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "HEX": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Illume Ventures": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Investible": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Jumpstart Studio": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Kaszek": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Madrona": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Main Sequence": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "MedTech Actuator": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Partech": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Pear": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "RMIT DiscoveryHUB": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Rampersand": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Seedcamp": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Side Stage Ventures": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Square Peg": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Startmate": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Station F": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Thrive Capital": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "USV": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Uncork": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457",
+        "Wing VC": "2f1a93118c7885bc42c4d9837060437bd27be83974b9af1c86ea66ae03264457"
+      },
+      "started_at": "2026-11-26T21:11:09Z",
+      "status": "completed",
+      "superseded_by": null,
+      "supersedes": null,
+      "version": 1
     }
   ],
   "version": 1
