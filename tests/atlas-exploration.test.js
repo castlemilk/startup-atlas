@@ -90,7 +90,7 @@ test('registry-only business bases preserve country without implying a city', as
   const {entities} = JSON.parse(await readFile(new URL('../data/graph.json',import.meta.url),'utf8'));
   const dimensions = indexCompanies({entities});
   const bases = new Map([
-    ['Wiingman','NSW 2026'],
+    ['Evatto','NSW 2026'],
   ]);
   for (const [name,postcode] of bases) {
     const observed = entities.find(entity=>entity.kind==='startup' && entity.name===name);
