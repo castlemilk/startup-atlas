@@ -83,7 +83,7 @@ add('vultr-startups','Vultr Digital Startup Program','Vultr','Cloud credits','Di
 add('stripe-startups','Stripe Startups','Stripe','Business tools','Direct',['AU','NZ','US','GB','CA','FR','BR','SG','JP'],'Fee credits vary','Stripe product-fee credits for eligible venture-backed startups in named markets.','Institutional funding and programme review; startups can apply directly or through an eligible partner.','This is a fee benefit, not a cloud or AI credit. The amount varies and some Stripe products are excluded; other countries may have different offers.','https://support.stripe.com/questions/stripe-startups-program-faq','Eligibility review',facts={'Benefit':'Stripe product-fee credits','Backing':'Institutional funding','Amount':'Varies by offer'})
 add('victoria-accelerators','Victoria accelerator directory','Innovation Victoria','Founder programmes','Community',['AU'],'Victorian programmes','A directory of Victorian accelerator programmes, including health, university and climate pathways.','Each accelerator has its own founder, location and stage requirements.','A discovery directory; admission, funding, fees and current intake vary by programme.','https://www.innovationvictoria.com/pathways/programs/accelerator-programs','Browse programmes',facts={'Location':'Victoria, Australia','Includes':'Health, university and climate pathways'})
 add('andhealth-activate','ANDHealth ACTIVATE','ANDHealth','Founder programmes','Community',['AU'],'Six-month accelerator','Mentoring and commercialisation support for Victorian digital and connected health ventures.','Victorian digital or connected health company with an MVP and early user or customer engagement.','Programme selection applies. Confirm intake, participation requirements, fees and funding with the programme.','https://www.innovationvictoria.com/pathways/programs/accelerator-programs','Applications closed 22 March 2026',['https://www.andhealth.com.au/','https://www.andhealth.com.au/activate'],facts={'Duration':'Six months','Sector':'Digital and connected health','Stage':'MVP and early engagement'})
-add('melbourne-map','Melbourne Accelerator Program','Melbourne Accelerator Program','Founder programmes','Community',['AU'],'Founder support pathways','Founder development through university, social-impact and climate-innovation pathways.','A University of Melbourne connection, a social-impact focus or climate innovation, depending on the pathway.','Programme selection, intake and any funding or participation terms should be confirmed directly.','https://www.innovationvictoria.com/pathways/programs/accelerator-programs','Check intake',['https://www.themap.co/'],facts={'Location':'Melbourne, Victoria','Pathways':'University, social impact or climate'})
+add('melbourne-map','Melbourne Accelerator Program','Melbourne Accelerator Program','Founder programmes','Community',['AU'],'Founder support pathways','Founder development through university, social-impact and climate-innovation pathways.','A University of Melbourne connection, a social-impact focus or climate innovation, depending on the pathway.','Programme selection, intake and any funding or participation terms should be confirmed directly.','https://www.innovationvictoria.com/pathways/programs/accelerator-programs','Applications closed 14 June 2026',['https://www.themap.co/','https://www.themap.co/accelerator'],facts={'Location':'Melbourne, Victoria','Pathways':'University, social impact or climate'})
 add('canada-irap','NRC IRAP innovation support','National Research Council Canada','Funding finders','Direct',['CA'],'Project support varies','Advice and potential project funding for eligible Canadian technology SMEs.','Incorporated, for-profit SME operating in Canada with 500 or fewer full-time-equivalent employees; technology innovation and growth criteria apply.','Funding is assessed per project and is not guaranteed. Day-to-day operating costs are excluded, as are LLCs, ULCs, sole proprietorships and partnerships.','https://nrc.canada.ca/en/support-technology-innovation/financial-support-technology-innovation','Eligibility review',facts={'Business':'Incorporated SME operating in Canada','Size':'Up to 500 full-time equivalents','Award':'Project-specific assessment'})
 add('startup-sg-founder','Startup SG Founder','Startup SG','Funding finders','Direct',['SG'],'Co-matched founder support','A Singapore founder programme involving an accredited mentor partner and a matching contribution.','Programme eligibility, a letter of recommendation and matching contribution requirements apply.','At application, at least 50% of the required co-matching capital must already be paid-up capital. Check current terms and availability.','https://frontend.startupsg.gov.sg/programmes/4894/startup-sg-founder/apply','Eligibility review',facts={'Location':'Singapore','Application':'Letter of recommendation','Co-match':'At least half paid up at application'})
 
@@ -203,6 +203,27 @@ RECHECKED_2026_11_26 = {
 }
 for _item in items:
     if _item['id'] in RECHECKED_2026_11_26:
+        _item['checked'] = '2026-11-26'
+
+# C5 deadline batch 2, 2026-11-26: MAP's own accelerator page
+# (https://www.themap.co/accelerator) publishes Key Dates for the 2026
+# MAP Accelerator — applications opened 20 May and closed 14 June, for a
+# 28 July – 24 October programme — and the MAP homepage confirms 2026
+# applications are now closed. The status in the add() call above now
+# carries that close so the structured-fields backfill derives the
+# deadline, the accelerator page is added to the entry's sources, and
+# the entry is stamped re-verified 2026-11-26. The rest of this batch's
+# ~33 candidate pages were fetched live the same day and publish no
+# day-precision close date (rolling intakes, month-only closes such as
+# Blackbird Foundry's August 2026 and LUinc.'s March/July, opening
+# windows without a year such as MedTech Actuator Origin's
+# 19 April – 31 May, or directories/schemes), so they stay unfilled
+# rather than guess a date.
+RECHECKED_2026_11_26_C5B2 = {
+    'melbourne-map',
+}
+for _item in items:
+    if _item['id'] in RECHECKED_2026_11_26_C5B2:
         _item['checked'] = '2026-11-26'
 
 leads=json.loads(Path('data/partner-leads.json').read_text())
