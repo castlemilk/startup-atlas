@@ -38,11 +38,13 @@ crawl and review proceed, the machinery is data-agnostic.
 - The crawl emits LinkedIn URLs at volume (profiles-mode people rows
   carry them as `candidate_url`; ~232 per run per the #366 survey),
   and `scripts/build-review-queue.py` already groups those rows by
-  LinkedIn key across firms (the KG-10 producer). But nothing records
-  an approved URL onto the reviewed person rows, and an exact-key
-  match found by that producer is treated as "auto-merge, not
-  queued" even though no path applies merges from unreviewed crawl
-  rows — so the cross-firm signal mostly evaporates.
+  LinkedIn key across firms (the KG-10 producer). At filing time
+  nothing recorded an approved URL onto the reviewed person rows;
+  slice 4's promotion tool (`scripts/promote_profile_person.py`)
+  now carries it as part of the review motion. An exact-key match
+  found by that producer was treated as "auto-merge, not queued"
+  even though no path applies merges from unreviewed crawl rows —
+  slice 3 made those pairs queue as proposals instead.
 - Dependency #355 (derive profile company names from URL slugs when
   link text is a CTA or badge) has landed. It concerned *company*
   names; person names in the reviewed files remain human-reviewed
@@ -221,7 +223,13 @@ at a time:
    spelling, and unmerged same-key pairs already in the registry.
    Pairs the seed or a recorded decision already merged are skipped,
    so current data produces no new proposals.
-4. **Promotion path**: when a profiles-crawl person is approved
-   into `partner-profiles.json`, carry the verified LinkedIn URL
-   into the row's `linkedin` field, so recording is part of the
-   normal review motion rather than a special pass.
+4. **Promotion path** (landed): `scripts/promote_profile_person.py`
+   is the reviewer's write hand for this motion — given a profiles
+   artifact, a partner and a person, it writes the reviewed row
+   into `partner-profiles.json` carrying the verified LinkedIn URL
+   (from the people row's `candidate_url` or a same-person social
+   row, normalised only via `normalise_linkedin()`, recorded as
+   published). Conflicting keys — in the crawl, or against a
+   `linkedin` already on the row — refuse the promotion, and a new
+   person requires an explicit `--role`, so recording is part of
+   the normal review motion rather than a special pass.
