@@ -8,14 +8,18 @@
   the fields absent and lists the startup in the report as ambiguous.
 - Round ``stage_normalised``: the controlled vocabulary (Pre-Seed, Seed,
   Pre-Series A, Series A-H, Bridge, Grant, Debt, Crowdfunding, IPO,
-  Acquisition, Accelerator, Growth, Unknown) mapped from the free-text
-  ``stage`` spellings. The original ``stage`` is always preserved. A
-  stage outside the vocabulary (e.g. Series I, or a stage the source
-  never stated) maps to Unknown. Pre-Series A, Accelerator and Growth
-  joined the vocabulary on 2026-11-26: sources state those stages
-  verbatim (an issuer's own "Pre-Series A" announcement, a published
-  accelerator deal, a "strategic growth financing"), so normalising
-  them to Unknown was discarding recorded facts, not refusing a guess.
+  Acquisition, Accelerator, Growth, Secondary, Unknown) mapped from the
+  free-text ``stage`` spellings. The original ``stage`` is always
+  preserved. A stage outside the vocabulary (e.g. Series I, or a stage
+  the source never stated) maps to Unknown. Pre-Series A, Accelerator
+  and Growth joined the vocabulary on 2026-11-26: sources state those
+  stages verbatim (an issuer's own "Pre-Series A" announcement, a
+  published accelerator deal, a "strategic growth financing"), so
+  normalising them to Unknown was discarding recorded facts, not
+  refusing a guess. Secondary joined on the same basis the same day:
+  Wise's 2019 and 2020 rounds are stated as secondary rounds in the
+  cited coverage, and a secondary is a distinct recorded fact (existing
+  shares changing hands, not new primary capital), not a guess.
 - Opportunity ``deadline`` + controlled status: ``deadline`` is an ISO
   date or null, extracted only when exactly one date parses unambiguously
   from the status text. Controlled status vocabulary: Open, Closing soon,
@@ -51,7 +55,7 @@ CONTROLLED_STAGES = (
     'Pre-Seed', 'Seed', 'Pre-Series A', 'Series A', 'Series B', 'Series C',
     'Series D', 'Series E', 'Series F', 'Series G', 'Series H', 'Bridge',
     'Grant', 'Debt', 'Crowdfunding', 'IPO', 'Acquisition', 'Accelerator',
-    'Growth', 'Unknown',
+    'Growth', 'Secondary', 'Unknown',
 )
 
 CONTROLLED_STATUSES = (
@@ -132,6 +136,7 @@ _STAGE_EXACT = {
     'growth': 'Growth', 'growth round': 'Growth',
     'growth financing': 'Growth', 'strategic growth': 'Growth',
     'strategic growth financing': 'Growth',
+    'secondary': 'Secondary', 'secondary round': 'Secondary',
 }
 
 
