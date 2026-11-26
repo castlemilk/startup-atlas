@@ -320,7 +320,7 @@ test('founder index covers the published graph without inventing photos (#415)',
   const index=model.indexFounders(published);
   assert.equal(index.size,54,'every startup but one has recorded founders');
   const entries=[...index.values()].flat();
-  assert.equal(entries.length,118);
+  assert.equal(entries.length,119);
   assert.equal(entries.filter(founder=>founder.photo).length,20,'photo entries match the graph-held portraits');
   assert.equal(new Set(entries.filter(founder=>founder.photo).map(founder=>founder.id)).size,18,'across 18 distinct people');
   assert.equal([...index.values()].filter(founders=>founders.some(founder=>founder.photo)).length,13,'across 13 companies');
