@@ -170,8 +170,81 @@ export class ReviewQueue {
   }
 
   async loadQueue() {
-    const { data, source } = await this.store.loadJson(QUEUE_PATH);
-    return { queue: data, source };
+    const { data, sha, source } = await this.store.loadJson(QUEUE_PATH);
+    return { queue: data, source, revision: sha };
+  }
+
+  /**
+   * Validate a batch of decisions against a loaded queue without
+   * mutating anything. Shared by the dry-run preview and the apply
+   * path so the two can never disagree about what a batch would do.
+   * Returns the per-decision change list; throws the same coded
+   * errors decide() throws for the first invalid decision.
+   */
+  #planBatch(queue, decisions, decidedBy) {
+    if (!Array.isArray(decisions) || !decisions.length) fail('BAD_REQUEST', 'decisions must be a non-empty array.', 400);
+    if (decisions.length > 50) fail('BAD_REQUEST', 'A batch is capped at 50 decisions; split larger batches.', 400);
+    const seen = new Set();
+    const changes = [];
+    for (const item of decisions) {
+      const { id, decision, note = '' } = item ?? {};
+      if (typeof id !== 'string' || !id) fail('BAD_REQUEST', 'Every batch decision needs an entry id.', 400);
+      if (seen.has(id)) fail('BAD_REQUEST', `Entry ${id} appears twice in this batch; a batch decides each entry at most once.`, 400);
+      seen.add(id);
+      if (!['approved', 'rejected', 'deferred'].includes(decision)) fail('BAD_REQUEST', 'decision must be "approved", "rejected" or "deferred".', 400);
+      const entry = (queue.entries ?? []).find(candidate => candidate.id === id);
+      if (!entry) fail('NOT_FOUND', `No queue entry with id ${id}.`, 404);
+      if (!['pending', 'deferred'].includes(entry.status)) fail('ALREADY_DECIDED', `Entry ${entry.id} is already ${entry.status}.`, 409);
+      changes.push({
+        id: entry.id, kind: entry.kind, from_status: entry.status, to_status: decision,
+        decided_by: decidedBy, decision_note: note ? String(note).slice(0, 500) : null,
+      });
+    }
+    return changes;
+  }
+
+  /**
+   * Dry-run a batch of decisions (#87): the diff a batch apply would
+   * write, plus the queue revision it was planned against. Nothing is
+   * written. Pass the returned revision back as expectedRevision to
+   * decideBatch() so the apply can refuse if the queue moved on.
+   */
+  async previewBatch({ decisions, decidedBy }) {
+    const { data: queue, sha, source } = await this.store.loadJson(QUEUE_PATH);
+    const changes = this.#planBatch(queue, decisions, decidedBy);
+    return { source, revision: sha, changes };
+  }
+
+  /**
+   * Apply a batch of decisions in ONE write-back commit (#87).
+   * Optimistic revision: expectedRevision must be the revision the
+   * caller planned against (from previewBatch / a queue read); if the
+   * queue file changed since, the whole batch is refused with
+   * QUEUE_CONFLICT and nothing is written — so a retried or stale
+   * batch can neither silently overwrite a newer record nor apply
+   * twice. Validation is all-or-nothing: every decision is checked
+   * before any entry is mutated.
+   */
+  async decideBatch({ decisions, decidedBy, via, expectedRevision }) {
+    if (!this.store.token) fail('GITHUB_TOKEN_MISSING', 'ATLAS_GITHUB_TOKEN is not configured, so decisions cannot be written back. The panel is read-only.', 503);
+    if (typeof expectedRevision !== 'string' || !expectedRevision) fail('BAD_REQUEST', 'expectedRevision is required: preview the batch first and pass its revision, so a stale batch cannot overwrite newer decisions.', 400);
+    const { data: queue, sha } = await this.store.loadJson(QUEUE_PATH);
+    if (sha !== expectedRevision) fail('QUEUE_CONFLICT', `The review queue changed since revision ${expectedRevision} (now ${sha}). Re-preview the batch and apply again; nothing was written.`, 409);
+    const changes = this.#planBatch(queue, decisions, decidedBy);
+    const decidedAt = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
+    const byId = new Map((queue.entries ?? []).map(entry => [entry.id, entry]));
+    const entries = changes.map(change => {
+      const entry = byId.get(change.id);
+      entry.status = change.to_status;
+      entry.decided_by = decidedBy;
+      entry.decided_at = decidedAt;
+      entry.decision_note = change.decision_note;
+      return entry;
+    });
+    queue.entries = [...(queue.entries ?? [])].sort((a, b) => String(a.id).localeCompare(String(b.id)));
+    const summary = changes.map(change => `${change.id} ${change.to_status}`).join(', ').slice(0, 400);
+    const result = await this.store.saveJson(QUEUE_PATH, queue, sha, `review: batch of ${changes.length} via ${via}: ${summary}`);
+    return { entries, changes, commit: result.commit, revision: sha };
   }
 
   async loadGating() {

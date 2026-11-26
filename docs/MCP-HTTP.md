@@ -271,14 +271,23 @@ owner's own front door onto the same queue.
   client's initialize and its tool call landed on different process
   state — a redeploy, a restart, or another replica (#473). Clients
   that send a session header anyway are unaffected; it is ignored.
-- **Tools (6):** `atlas_admin_list_review_queue` (filters: `kind`,
+- **Tools (8):** `atlas_admin_list_review_queue` (filters: `kind`,
   `status`, confidence `band` — `above_gate` / `below_gate` against
   `data/review-gating.json`; lowest confidence first, each entry
   carrying its gating verdict), `atlas_admin_get_review_item` (full
   evidence plus the verdict and its reason),
   `atlas_admin_decide_review_item`, `atlas_admin_undo_review_decision`,
-  `atlas_admin_get_review_gating`, and
-  `atlas_admin_list_auto_applied` (the auto-gate audit trail).
+  `atlas_admin_get_review_gating`,
+  `atlas_admin_list_auto_applied` (the auto-gate audit trail), and the
+  batch pair (#87): `atlas_admin_preview_review_batch` — a dry-run
+  diff of a batch of decisions plus the queue revision it was planned
+  against, writing nothing — and `atlas_admin_decide_review_batch`,
+  which applies the batch in ONE write-back commit
+  (`review: batch of N via admin MCP: …`) only when the caller's
+  `expected_revision` still matches the queue file; a stale or retried
+  batch is refused whole with `QUEUE_CONFLICT`, and validation is
+  all-or-nothing, so a batch can neither partially apply, duplicate a
+  decision, nor silently overwrite a newer record.
 - **Same write-back, distinct attribution:** decisions go through the
   panel's `ReviewQueue` service and the GitHub Contents API — same
   `data/review-queue.json` records, same commit convention

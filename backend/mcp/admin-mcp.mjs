@@ -72,6 +72,51 @@ export const ADMIN_TOOLS = [
     annotations: write,
   },
   {
+    name: 'atlas_admin_preview_review_batch',
+    description: 'Dry-run a batch of review decisions: returns the per-entry diff (from_status → to_status, attribution, note) the batch would write, plus the queue revision it was planned against. Writes nothing. Decisions are validated exactly as the apply path validates them, so an invalid batch fails here first. Each decision needs its own evidence note. Pass the returned revision as expected_revision to atlas_admin_decide_review_batch.',
+    inputSchema: {
+      ...schema({
+        decisions: {
+          type: 'array', minItems: 1, maxItems: 50,
+          items: {
+            type: 'object', additionalProperties: false,
+            properties: {
+              id: { type: 'string', minLength: 1, maxLength: 300 },
+              decision: { type: 'string', enum: ['approved', 'rejected', 'deferred'] },
+              note: { type: 'string', minLength: 1, maxLength: 500 },
+            },
+            required: ['id', 'decision', 'note'],
+          },
+        },
+      }),
+      required: ['decisions'],
+    },
+    annotations: readonly,
+  },
+  {
+    name: 'atlas_admin_decide_review_batch',
+    description: 'Apply a batch of review decisions in ONE GitHub write-back commit through the same ReviewQueue the panel uses, attributed decided_by "agent-review". Optimistic revision: expected_revision must be the revision returned by atlas_admin_preview_review_batch; if the queue changed since the preview, the whole batch is refused (QUEUE_CONFLICT) and nothing is written, so a retried or stale batch cannot duplicate decisions or overwrite newer ones. Validation is all-or-nothing and every decision needs an evidence note.',
+    inputSchema: {
+      ...schema({
+        decisions: {
+          type: 'array', minItems: 1, maxItems: 50,
+          items: {
+            type: 'object', additionalProperties: false,
+            properties: {
+              id: { type: 'string', minLength: 1, maxLength: 300 },
+              decision: { type: 'string', enum: ['approved', 'rejected', 'deferred'] },
+              note: { type: 'string', minLength: 1, maxLength: 500 },
+            },
+            required: ['id', 'decision', 'note'],
+          },
+        },
+        expected_revision: { type: 'string', minLength: 1, maxLength: 200 },
+      }),
+      required: ['decisions', 'expected_revision'],
+    },
+    annotations: write,
+  },
+  {
     name: 'atlas_admin_undo_review_decision',
     description: 'Revert a decided review-queue entry (human, auto-gate or agent) back to pending. The undo is committed with its own message naming what was undone, so the audit trail keeps both entries.',
     inputSchema: { ...schema({ id: { type: 'string', minLength: 1, maxLength: 300 } }), required: ['id'] },
@@ -93,6 +138,21 @@ export const ADMIN_TOOLS = [
     annotations: readonly,
   },
 ];
+
+/** Batch decisions carry the same evidence-note rule as single decisions. */
+function validateBatchDecisions(decisions) {
+  if (!Array.isArray(decisions) || !decisions.length) {
+    throw new EntryError('VALIDATION_ERROR', 'decisions must be a non-empty array of { id, decision, note }.');
+  }
+  return decisions.map(item => {
+    if (!item || typeof item !== 'object' || Array.isArray(item)) throw new EntryError('VALIDATION_ERROR', 'Each batch decision must be an object.');
+    for (const key of Object.keys(item)) if (!['id', 'decision', 'note'].includes(key)) throw new EntryError('VALIDATION_ERROR', `Unexpected batch decision field: ${key}`);
+    if (typeof item.note !== 'string' || !item.note.trim()) {
+      throw new EntryError('EVIDENCE_NOTE_REQUIRED', 'Every batch decision must carry a note citing the evidence relied on. Re-read the items, check their evidence, and decide again with notes.');
+    }
+    return { id: item.id, decision: item.decision, note: item.note.trim() };
+  });
+}
 
 export function createAdminServer({ config, store, reviewQueue } = {}) {
   const queue = reviewQueue ?? new ReviewQueue(store ?? new QueueFileStore({
@@ -141,6 +201,20 @@ export function createAdminServer({ config, store, reviewQueue } = {}) {
             decidedBy: AGENT_DECIDED_BY, via: VIA,
           });
           result = { ok: true, entry: decided.entry, commit: decided.commit };
+          break;
+        }
+        case 'atlas_admin_preview_review_batch': {
+          const decisions = validateBatchDecisions(args.decisions);
+          const preview = await queue.previewBatch({ decisions, decidedBy: AGENT_DECIDED_BY });
+          result = { ok: true, dry_run: true, source: preview.source, revision: preview.revision, changes: preview.changes };
+          break;
+        }
+        case 'atlas_admin_decide_review_batch': {
+          const decisions = validateBatchDecisions(args.decisions);
+          const applied = await queue.decideBatch({
+            decisions, decidedBy: AGENT_DECIDED_BY, via: VIA, expectedRevision: args.expected_revision,
+          });
+          result = { ok: true, entries: applied.entries, changes: applied.changes, commit: applied.commit, revision: applied.revision };
           break;
         }
         case 'atlas_admin_undo_review_decision': {
