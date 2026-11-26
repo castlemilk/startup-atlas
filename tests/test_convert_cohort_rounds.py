@@ -218,10 +218,17 @@ class ShippedDataTests(unittest.TestCase):
         report = convert_on(research)
         unknown = {name for name, _, _ in report["unknown_deal"]}
         self.assertEqual(unknown, {"PI.EXCHANGE", "Remi AI", "Strongroom AI"})
+        # The conversion itself must never fabricate a Boab round from
+        # cohort membership (the deal is unknown). A reviewed,
+        # hand-recorded Boab round may still exist in the shipped data
+        # where the investment itself is independently sourced — Remi
+        # AI's is: the Victorian Government launch release names it in
+        # the cohort and IT Brief reported the raise as its first
+        # external capital raise.
+        created_leads = {(name, record.get("lead_investor"))
+                         for name, record in report["created"]}
         for name in unknown:
-            rounds = startup(research, name).get("funding_rounds", [])
-            self.assertFalse(
-                any(r.get("lead_investor") == "Boab AI" for r in rounds), name)
+            self.assertNotIn((name, "Boab AI"), created_leads)
 
     def test_cautionary_supports_mentions_are_not_converted(self):
         research = copy.deepcopy(RESEARCH)
