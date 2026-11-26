@@ -194,6 +194,13 @@
           "value": "The fusionbooks.com.au domain resolves to a Canva-operated page (checked 25 November 2026). Fusion Books is the founders’ historical pre-Canva product and the domain is retained by Canva.",
           "source": "https://www.fusionbooks.com.au/",
           "reviewed_at": "2026-11-25"
+        },
+        {
+          "key": "funding-history",
+          "label": "Funding history",
+          "value": "No funding rounds are recorded: Fusion Books was bootstrapped. A peer-reviewed case study (Emerald, The Case Journal) describes Fusion as 'completely bootstrapped', and a founder profile records the only startup capital as a bank loan and a A$5,000 government tax rebate — neither is an equity funding round. Funding history checked 26 November 2026 and verified as zero rounds.",
+          "source": "https://www.emerald.com/tcj/article-abstract/20/6/1423/462242/Melanie-Perkins-poised-to-redesign-Canva-from-tech?redirectedFrom=fulltext",
+          "reviewed_at": "2026-11-26"
         }
       ],
       "articles": [
@@ -769,6 +776,13 @@
           "value": "Founder Lance Co Ting Keh joined Airwallex through its acquisition of OpenPay, then founded T:0 within Airwallex.",
           "source": "https://www.airwallex.com/global/blog/the-ai-era-has-no-home-market-build-accordingly",
           "reviewed_at": "2026-11-23"
+        },
+        {
+          "key": "funding-history",
+          "label": "Funding history",
+          "value": "No funding rounds are recorded: T:0 is a venture built inside Airwallex and funded from Airwallex's balance sheet, so it is not an independent fundraising entity; Airwallex's own funding rounds are recorded under Airwallex. Funding history checked 26 November 2026 and verified as zero rounds.",
+          "source": "https://www.opensourceceo.com/p/lance-co-ting-keh-interview",
+          "reviewed_at": "2026-11-26"
         }
       ],
       "hq_city": "San Francisco",
@@ -3040,6 +3054,123 @@
           }
         }
       ],
+      "funding_rounds": [
+        {
+          "id": "wise-2011-seedcamp-accelerator",
+          "stage": "Accelerator",
+          "amount": 50000,
+          "currency": "EUR",
+          "source": "https://www.slideshare.net/slideshow/transferwise-presentation-from-aman-agrawal/92880434",
+          "note": "TransferWise's own 2011 pitch deck timeline records 'August 2011 — Seed Round €50k, Seedcamp'; Wise was a Seedcamp 2011 winner. The amount is as stated in the deck, in euros. Month precision only in the source, so no announced_on day is recorded.",
+          "stage_normalised": "Accelerator",
+          "lead_investor": "Seedcamp"
+        },
+        {
+          "id": "wise-2012-seed",
+          "stage": "Seed",
+          "amount": 1300000,
+          "currency": "USD",
+          "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "note": "Seed round raised in 2012 (no month stated in the cited coverage). Consortium: IA Ventures, Index Ventures, IJNR Ventures and NYPPE, with angel investors Max Levchin, David Yu and Errol Damelin. No lead investor is named in the source.",
+          "stage_normalised": "Seed",
+          "participants": [
+            "IA Ventures",
+            "Index Ventures",
+            "IJNR Ventures",
+            "NYPPE"
+          ]
+        },
+        {
+          "id": "wise-2013-series-a",
+          "stage": "Series A",
+          "amount": 6000000,
+          "currency": "USD",
+          "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "note": "Raised in May 2013, led by Peter Thiel's Valar Ventures. Month precision only in the cited coverage, so no announced_on day is recorded.",
+          "stage_normalised": "Series A",
+          "lead_investor": "Valar Ventures"
+        },
+        {
+          "id": "wise-2014-series-b",
+          "stage": "Series B",
+          "amount": 25000000,
+          "currency": "USD",
+          "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "note": "Raised in June 2014. Richard Branson joined as an investor; no lead firm is named in the cited coverage. Month precision only, so no announced_on day is recorded.",
+          "stage_normalised": "Series B"
+        },
+        {
+          "id": "wise-2015-series-c",
+          "stage": "Series C",
+          "amount": 58000000,
+          "currency": "USD",
+          "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "note": "Raised in January 2015, led by Andreessen Horowitz. Month precision only in the cited coverage, so no announced_on day is recorded.",
+          "stage_normalised": "Series C",
+          "lead_investor": "Andreessen Horowitz"
+        },
+        {
+          "id": "wise-2016-series-d",
+          "stage": "Series D",
+          "amount": 26000000,
+          "currency": "USD",
+          "valuation": 1100000000,
+          "valuation_currency": "USD",
+          "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "note": "Raised in May 2016 at a US$1.1 billion valuation, taking cumulative funding to US$117 million. The cited coverage does not name a lead investor. Month precision only, so no announced_on day is recorded.",
+          "stage_normalised": "Series D"
+        },
+        {
+          "id": "wise-2017-series-e",
+          "stage": "Series E",
+          "amount": 280000000,
+          "currency": "USD",
+          "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "note": "Raised in November 2017, led by Old Mutual Global Investors and Institutional Venture Partners (IVP), with Sapphire Ventures, Mitsui & Co. and World Innovation Lab participating. Month precision only in the cited coverage, so no announced_on day is recorded.",
+          "stage_normalised": "Series E",
+          "lead_investors": [
+            "Old Mutual Global Investors",
+            "IVP"
+          ],
+          "participants": [
+            "Sapphire Ventures",
+            "Mitsui & Co.",
+            "World Innovation Lab"
+          ]
+        },
+        {
+          "id": "wise-2019-secondary",
+          "stage": "Secondary",
+          "amount": 292000000,
+          "currency": "USD",
+          "valuation": 3500000000,
+          "valuation_currency": "USD",
+          "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "note": "Secondary investment round in May 2019 at a US$3.5 billion valuation. This was a secondary round — existing shares changing hands, not new primary capital raised by the company. The cited coverage names no lead investor or participating firms for this round. Month precision only in the cited coverage, so no announced_on day is recorded.",
+          "stage_normalised": "Secondary"
+        },
+        {
+          "id": "wise-2020-secondary",
+          "stage": "Secondary",
+          "amount": 319000000,
+          "currency": "USD",
+          "valuation": 5000000000,
+          "valuation_currency": "USD",
+          "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "note": "Secondary round in July 2020 at a US$5 billion valuation, led by new investor D1 Capital Partners; existing shareholder Lone Pine Capital participated, Vulcan Capital joined, and Baillie Gifford, Fidelity Investments and LocalGlobe were added as shareholders. This was a secondary round — existing shares changing hands, not new primary capital raised by the company. Month precision only in the cited coverage, so no announced_on day is recorded.",
+          "stage_normalised": "Secondary",
+          "lead_investors": [
+            "D1 Capital Partners"
+          ],
+          "participants": [
+            "Lone Pine Capital",
+            "Vulcan Capital",
+            "Baillie Gifford",
+            "Fidelity Investments",
+            "LocalGlobe"
+          ]
+        }
+      ],
       "profile_facts": [
         {
           "key": "launch-year-2011",
@@ -4161,6 +4292,46 @@
           "source": "https://www.linkedin.com/posts/strong-room-technology_we-are-honoured-to-have-strongroom-ais-founders-activity-7197118768718766081-10dT"
         }
       ],
+      "funding_rounds": [
+        {
+          "id": "strongroom-ai-2020-seed",
+          "stage": "Seed",
+          "amount": 1000000,
+          "currency": "AUD",
+          "source": "https://brand.com/brandpedia/strong-room-technology-pty-ltd-australia",
+          "note": "Dated December 2020 (month precision in the source, so no announced_on day is recorded). Single secondary-aggregator source: a company-profile page states a A$1 million seed led by Artesian Investments 'through the Boab program'. Possible overlap: this may be the same capital as Strongroom's February 2021 Boab AI Scale Up cohort participation (programme term a minimum of A$300,000 per company, per the Victorian Government's launch release) described two ways, so no separate Boab cohort round is recorded; treat the two as one event unless a second source separates them.",
+          "stage_normalised": "Seed",
+          "lead_investor": "Artesian"
+        },
+        {
+          "id": "strongroom-ai-2022-series-a",
+          "stage": "Series A",
+          "announced_on": "2022-06-21",
+          "source": "https://www.cbinsights.com/company/strong-room/financials",
+          "note": "CB Insights' funding table dates this round 21 June 2022. No source found states the amount: AFR reporting puts Strongroom's total pre-2025 venture investment from Artesian, InterValley Ventures and Kalytix Ventures at $15 million combined across all earlier rounds. Investors per the Overnight Success timeline (https://www.overnightsuccess.vc/p/29th-march-2025): InterValley Ventures and Kalytix Ventures, with Tyson & Blake making a follow-on investment in June 2022; Artesian was an existing backer, but its participation in this round is not stated, so it is not recorded as a participant. No lead is named.",
+          "stage_normalised": "Series A",
+          "participants": [
+            "InterValley Ventures",
+            "Kalytix Ventures",
+            "Tyson & Blake"
+          ]
+        },
+        {
+          "id": "strongroom-ai-2025-series-b",
+          "stage": "Series B",
+          "announced_on": "2025-03-13",
+          "amount": 17000000,
+          "currency": "AUD",
+          "source": "https://ia.acs.org.au/article/2025/melbournes-strongroom-ai-for-sale-amid-10m-court-battle.html",
+          "note": "Announced 13–14 March 2025: a A$17 million round at a ~A$70 million valuation (approximate as reported, so no structured valuation is recorded), led by EVP Opportunities Fund — EVP's portion A$10.44 million — with Artesian and InterValley Ventures participating. COMPLETION DISPUTED: within ten days EVP alleged the company had misrepresented its financial position, notified law enforcement and sought to recover its investment; Strongroom entered voluntary administration on 28 March 2025, and whether the round completed and what was ultimately recovered is contested in Federal Court proceedings. This record documents the announced round and its dispute; it does not assert the capital was received.",
+          "stage_normalised": "Series B",
+          "lead_investor": "EVP Opportunities Fund",
+          "participants": [
+            "Artesian",
+            "InterValley Ventures"
+          ]
+        }
+      ],
       "profile_facts": [
         {
           "key": "historical-founder-scope",
@@ -5156,6 +5327,29 @@
       "description": "Artificial intelligence research firm building AI and reinforcement-learning platforms for enterprise, including supply-chain, price-optimisation and demand-forecasting tools.",
       "source": "https://abr.business.gov.au/ABN/View/26608216306",
       "reviewed_at": "2026-11-25",
+      "funding_rounds": [
+        {
+          "id": "remi-ai-2021-boab-accelerator",
+          "stage": "Accelerator",
+          "announced_on": "2021-02-16",
+          "source": "https://www.premier.vic.gov.au/sites/default/files/2021-02/210216%20-%20Backing%20Victoria%20As%20A%20Leading%20AI%20Technology%20Destination.pdf",
+          "note": "Remi AI was named in the inaugural Boab AI Scale Up cohort, announced by the Victorian Government on 16 February 2021; IT Brief reported on 3 June 2021 that the raise was Remi's 'first external capital raise' (https://itbrief.com.au/story/remi-ai-completes-external-capital-raise-looks-to-accelerate-growth). The per-company amount was not published: the launch release states each participating company receives a minimum of A$300,000 in capital as a programme term, which is not a Remi-specific figure, so no amount is recorded.",
+          "stage_normalised": "Accelerator",
+          "lead_investor": "Boab AI"
+        },
+        {
+          "id": "remi-ai-2022-seed",
+          "stage": "Seed",
+          "amount": 1440000,
+          "currency": "AUD",
+          "source": "https://techboard.com.au/funded-february-2022/",
+          "note": "Techboard's February 2022 funding roundup (published 8 March 2022, citing Business News Australia) reported: 'Artesian backed Remi AI closes a $1.44m seed round'. Single trade-press source; no second corroborating report was found. The report describes Artesian as the backer without stating a lead/participant split, so Artesian is recorded as a participant, not a lead.",
+          "stage_normalised": "Seed",
+          "participants": [
+            "Artesian"
+          ]
+        }
+      ],
       "profile_facts": [
         {
           "key": "business-base",
