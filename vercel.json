@@ -1,10 +1,21 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "git": { "deploymentEnabled": false },
+  "git": {
+    "deploymentEnabled": false
+  },
   "buildCommand": "npm run build",
   "build": {
-    "env": { "GOFLAGS": "-mod=readonly" }
+    "env": {
+      "GOFLAGS": "-mod=readonly"
+    }
   },
   "outputDirectory": "dist",
-  "installCommand": "npm ci --ignore-scripts"
+  "installCommand": "npm ci --ignore-scripts",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://castlemilk.github.io/startup-atlas/$1",
+      "permanent": true
+    }
+  ]
 }
