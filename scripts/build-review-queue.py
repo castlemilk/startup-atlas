@@ -73,7 +73,10 @@ Transitions
 -----------
 ``decide(queue, entry_id, decision, by, note)`` moves a pending entry
 to ``approved`` or ``rejected`` with ``decided_by`` / ``decided_at`` /
-``decision_note``. An approved merge writes into ``data/identity.json``
+``decision_note``, or to ``deferred`` — a non-final state recording
+that further evidence is needed (the note says what); a deferred entry
+blocks re-proposal on identical evidence and can be decided for real
+later. An approved merge writes into ``data/identity.json``
 (``merged_from`` + ``merges[]``) via ``entity_resolution.apply_merge``
 when available, otherwise via the local writer in this file following
 the same schema. Approved edges and facts record ``decided_by`` on the
@@ -554,9 +557,10 @@ def add_entry(queue, entry):
     """Add ``entry`` unless dedup blocks it.
 
     Blocked when an entry with the same ``(kind, subject_key)`` is
-    pending or approved, or when a rejected entry with the same key
-    carries the identical evidence fingerprint. Returns True when the
-    entry was added.
+    pending or approved, or when a rejected or deferred entry with the
+    same key carries the identical evidence fingerprint (a deferred
+    entry is waiting on further evidence, so only genuinely new
+    evidence re-proposes it). Returns True when the entry was added.
     """
     key = (entry["kind"], entry["subject_key"])
     for existing in queue["entries"]:
@@ -564,7 +568,7 @@ def add_entry(queue, entry):
             continue
         if existing["status"] in ("pending", "approved"):
             return False
-        if existing["status"] == "rejected" and existing.get(
+        if existing["status"] in ("rejected", "deferred") and existing.get(
                 "evidence_fingerprint") == entry["evidence_fingerprint"]:
             return False
     entry["id"] = _unique_id(queue, entry["id"])
@@ -585,24 +589,28 @@ def _unique_id(queue, entry_id):
 
 
 def decide(queue, entry_id, decision, by, note=None, identity_path=None):
-    """Decide a pending entry.
+    """Decide a pending or deferred entry.
 
-    ``decision`` is ``"approved"`` or ``"rejected"``. Sets ``status``,
-    ``decided_by``, ``decided_at`` and ``decision_note``. An approved
-    merge writes into the identity registry at ``identity_path``
-    (``merged_from`` + ``merges[]``); approved edges and facts only
-    record ``decided_by`` on the entry — they are applied by the
-    existing MCP write path, never by editing reviewed files here.
-    Returns the decided entry. Raises ValueError for an unknown id, a
-    bad decision, or a non-pending entry.
+    ``decision`` is ``"approved"``, ``"rejected"`` or ``"deferred"``.
+    Sets ``status``, ``decided_by``, ``decided_at`` and
+    ``decision_note``. Deferring is not a final decision: it records
+    who deferred the entry and why (the note names the further
+    evidence requested), applies nothing, and the entry can be decided
+    for real once that evidence arrives. An approved merge writes into
+    the identity registry at ``identity_path`` (``merged_from`` +
+    ``merges[]``); approved edges and facts only record ``decided_by``
+    on the entry — they are applied by the existing MCP write path,
+    never by editing reviewed files here. Returns the decided entry.
+    Raises ValueError for an unknown id, a bad decision, or an entry
+    already finally decided (approved/rejected).
     """
-    if decision not in ("approved", "rejected"):
-        raise ValueError(f"decision must be 'approved' or 'rejected', "
-                         f"got {decision!r}")
+    if decision not in ("approved", "rejected", "deferred"):
+        raise ValueError(f"decision must be 'approved', 'rejected' or "
+                         f"'deferred', got {decision!r}")
     entry = next((e for e in queue["entries"] if e["id"] == entry_id), None)
     if entry is None:
         raise ValueError(f"unknown queue entry: {entry_id!r}")
-    if entry["status"] != "pending":
+    if entry["status"] not in ("pending", "deferred"):
         raise ValueError(f"entry {entry_id!r} is already "
                          f"{entry['status']}, cannot decide it again")
     entry["status"] = decision
