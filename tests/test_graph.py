@@ -287,9 +287,10 @@ class GraphTests(unittest.TestCase):
                 html=(b'<a href="/news/raised">Example raises funding</a><a href="https://elsewhere.test/funding">Other</a>' if len(self.calls)==1 else b'<title>Example raises AUD $2 million</title><p>Example raised AUD $2 million in a seed round.</p>')
                 return 200,{'Content-Type':'text/html'},html,url
         t=Transport();args=types.SimpleNamespace(only=[],limit=0,follow=1)
-        out=crawl.crawl_startup_news({'sources':[{'id':'example','name':'Example','url':'https://example.com/news'}]},args,t)
+        out=crawl.crawl_startup_news({'sources':[{'id':'example','name':'Example','url':'https://example.com/news'}]},args,t,startups=[{'name':'Example','website':'https://example.com/'}])
         self.assertEqual(len(t.calls),2);self.assertEqual(len(out['candidates']),1)
         candidate=out['candidates'][0];self.assertTrue(candidate['review_required']);self.assertEqual(candidate['startup'],'Example')
+        self.assertEqual(candidate['attribution'],'source-newsroom');self.assertEqual(candidate['source_name'],'Example')
         self.assertTrue(candidate['amount_mentions']);self.assertEqual(candidate['discovered_from'],'https://example.com/news')
     def test_news_crawl_prioritizes_funding_without_exceeding_follow_limit(self):
         class Transport:
