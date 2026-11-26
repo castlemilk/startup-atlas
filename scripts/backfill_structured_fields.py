@@ -8,7 +8,7 @@
   the fields absent and lists the startup in the report as ambiguous.
 - Round ``stage_normalised``: the controlled vocabulary (Pre-Seed, Seed,
   Pre-Series A, Series A-H, Bridge, Grant, Debt, Crowdfunding, IPO,
-  Acquisition, Accelerator, Growth, Secondary, Unknown) mapped from the
+  Acquisition, Accelerator, Growth, Secondary, SAFE, Unknown) mapped from the
   free-text ``stage`` spellings. The original ``stage`` is always
   preserved. A stage outside the vocabulary (e.g. Series I, or a stage
   the source never stated) maps to Unknown. Pre-Series A, Accelerator
@@ -20,6 +20,10 @@
   Wise's 2019 and 2020 rounds are stated as secondary rounds in the
   cited coverage, and a secondary is a distinct recorded fact (existing
   shares changing hands, not new primary capital), not a guess.
+  SAFE joined on the same basis on 2026-11-27: the NRFC stated Emesent's
+  A$15 million July 2026 component verbatim as a SAFE note round, and a
+  SAFE is a distinct recorded instrument (a convertible note, not a
+  priced equity stage), not a guess.
 - Opportunity ``deadline`` + controlled status: ``deadline`` is an ISO
   date or null, extracted only when exactly one date parses unambiguously
   from the status text. Controlled status vocabulary: Open, Closing soon,
@@ -55,7 +59,7 @@ CONTROLLED_STAGES = (
     'Pre-Seed', 'Seed', 'Pre-Series A', 'Series A', 'Series B', 'Series C',
     'Series D', 'Series E', 'Series F', 'Series G', 'Series H', 'Bridge',
     'Grant', 'Debt', 'Crowdfunding', 'IPO', 'Acquisition', 'Accelerator',
-    'Growth', 'Secondary', 'Unknown',
+    'Growth', 'Secondary', 'SAFE', 'Unknown',
 )
 
 CONTROLLED_STATUSES = (
@@ -137,6 +141,7 @@ _STAGE_EXACT = {
     'growth financing': 'Growth', 'strategic growth': 'Growth',
     'strategic growth financing': 'Growth',
     'secondary': 'Secondary', 'secondary round': 'Secondary',
+    'safe': 'SAFE', 'safe note': 'SAFE', 'safe note round': 'SAFE',
 }
 
 
