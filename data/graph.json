@@ -1558,6 +1558,7 @@
       "id": "partner:newtopia",
       "canonical_id": "partner:newtopia",
       "aliases": [
+        "Newtopia VC",
         "Newtopia Vc"
       ],
       "kind": "partner",
@@ -1581,7 +1582,9 @@
     {
       "id": "partner:nvidia",
       "canonical_id": "partner:nvidia",
-      "aliases": [],
+      "aliases": [
+        "NVentures"
+      ],
       "kind": "partner",
       "name": "NVIDIA",
       "summary": "NVIDIA's venture capital arm, NVentures, invests in technology companies solving complex problems on NVIDIA's accelerated computing platforms, with a portfolio spanning AI infrastructure, robotics, digital biology, applied AI and frontier compute.",
@@ -1593,7 +1596,10 @@
     {
       "id": "partner:odf",
       "canonical_id": "partner:odf",
-      "aliases": [],
+      "aliases": [
+        "On Deck Fellowship",
+        "On Deck Founders"
+      ],
       "kind": "partner",
       "name": "ODF",
       "summary": "Founder fellowship (On Deck Founders) that helps people start companies through an intense one-week in-person onboarding experience in San Francisco and a 3,000+ member founder community; it is non-dilutive and takes no equity, and its fellows have launched more than 1,000 startups.",
@@ -1603,7 +1609,9 @@
     {
       "id": "partner:offline",
       "canonical_id": "partner:offline",
-      "aliases": [],
+      "aliases": [
+        "Offline Ventures"
+      ],
       "kind": "partner",
       "name": "Offline",
       "summary": "Early-stage venture fund and studio that focuses on pre-seed and seed and also co-founds and incubates companies in-house, backing human-centric technology at the convergence of the online and offline worlds.",
@@ -1613,7 +1621,9 @@
     {
       "id": "partner:operator-collective",
       "canonical_id": "partner:operator-collective",
-      "aliases": [],
+      "aliases": [
+        "OpCo"
+      ],
       "kind": "partner",
       "name": "Operator Collective",
       "summary": "B2B venture capital firm focused on early-stage enterprise and B2B founders, built on a Collective Venture Model whose 250+ operator limited partners from leading technology companies advise and support portfolio founders.",
@@ -1709,7 +1719,9 @@
     {
       "id": "partner:platanus",
       "canonical_id": "partner:platanus",
-      "aliases": [],
+      "aliases": [
+        "Platanus Ventures"
+      ],
       "kind": "partner",
       "name": "Platanus",
       "summary": "Santiago, Chile-based accelerator for technical founding teams from Spanish-speaking Latin America that invests US$200,000 for 7% on a post-money SAFE on the same terms for every company, running a three-month programme with a Demo Day; it has backed more than 90 startups.",
@@ -1754,7 +1766,9 @@
       "id": "partner:rackhouse",
       "canonical_id": "partner:rackhouse",
       "aliases": [
-        "Rackhouse Vc"
+        "Rackhouse Vc",
+        "Rackhouse Venture Capital",
+        "Rackhouse Ventures"
       ],
       "kind": "partner",
       "name": "Rackhouse",
@@ -1807,7 +1821,9 @@
     {
       "id": "partner:resolute",
       "canonical_id": "partner:resolute",
-      "aliases": [],
+      "aliases": [
+        "Resolute Ventures"
+      ],
       "kind": "partner",
       "name": "Resolute",
       "summary": "Lead pre-seed and seed investor based in San Francisco and Boston, focused on backing and connecting a community of founders who share an entrepreneurial spirit and energy.",
@@ -1973,7 +1989,9 @@
     {
       "id": "partner:startout",
       "canonical_id": "partner:startout",
-      "aliases": [],
+      "aliases": [
+        "StartOut"
+      ],
       "kind": "partner",
       "name": "Startout",
       "summary": "National 501(c)(3) nonprofit founded in 2009 that supports LGBTQ+ entrepreneurs, connecting a community of over 25,000 members to expertise, peers and capital, and running the Growth Lab accelerator and Spark Lab incubator, both taking zero equity.",
@@ -2176,7 +2194,9 @@
       "id": "partner:upwest",
       "canonical_id": "partner:upwest",
       "aliases": [
-        "Up West"
+        "Up West",
+        "UpWest",
+        "UpWest Labs"
       ],
       "kind": "partner",
       "name": "Upwest",
@@ -2209,7 +2229,9 @@
     {
       "id": "partner:valor-capital",
       "canonical_id": "partner:valor-capital",
-      "aliases": [],
+      "aliases": [
+        "Valor Capital Group"
+      ],
       "kind": "partner",
       "name": "Valor Capital",
       "summary": "Cross-border venture fund founded in 2011 bridging the US, Latin American and global technology markets, partnering with founders in Latam and the US from start-up to scale-up across venture capital and growth equity strategies.",
@@ -10584,6 +10606,46 @@
       "description": "Participated in Seed round round",
       "source": "https://www.canva.com/newsroom/news/aussie-startup-canva-announces-3-million-seed-round-world-class-investors/",
       "round_id": "canva-2013-seed",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:nvidia",
+      "to": "startup:psiquantum",
+      "kind": "participated_in",
+      "description": "Participated in Series E round",
+      "source": "https://www.psiquantum.com/news-import/psiquantum-1b-fundraise",
+      "round_id": "psiquantum-2025-series-e",
+      "first_seen": "2026-11-23",
+      "last_verified": "2026-11-23",
+      "confidence": 0.6,
+      "confidence_basis": {
+        "sources": 1,
+        "source_types": [
+          "primary"
+        ],
+        "agreement": false,
+        "inferred": false
+      },
+      "stale": false
+    },
+    {
+      "from": "partner:nvidia",
+      "to": "startup:synthesia",
+      "kind": "participated_in",
+      "description": "Participated in Series E round",
+      "source": "https://www.synthesia.io/post/series-e-200-million-4-billion-valuation-future-work",
+      "round_id": "synthesia-2026-series-e",
       "first_seen": "2026-11-23",
       "last_verified": "2026-11-23",
       "confidence": 0.6,
@@ -22454,8 +22516,6 @@
     "participant 'NGS Super' for round gilmour-space-2026-series-e-january (Gilmour Space) has no matching partner lead; participated_in edge skipped",
     "participant 'NGS' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
     "participant 'NRFC' for round morse-micro-2025-series-c (Morse Micro) has no matching partner lead; participated_in edge skipped",
-    "participant 'NVentures' for round psiquantum-2025-series-e (PsiQuantum) has no matching partner lead; participated_in edge skipped",
-    "participant 'NVentures' for round synthesia-2026-series-e (Synthesia) has no matching partner lead; participated_in edge skipped",
     "participant 'NZVC' for round puralink-2025-pre-seed (Puralink) has no matching partner lead; participated_in edge skipped",
     "participant 'National Reconstruction Fund Corporation' for round q-ctrl-2026-series-c (Q-CTRL) has no matching partner lead; participated_in edge skipped",
     "participant 'National Reconstruction Fund Corporation' for round quantum-brilliance-2025-series-a (Quantum Brilliance) has no matching partner lead; participated_in edge skipped",
