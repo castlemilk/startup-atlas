@@ -7,10 +7,15 @@
   exactly one unambiguous ``City, Country`` pair; anything else leaves
   the fields absent and lists the startup in the report as ambiguous.
 - Round ``stage_normalised``: the controlled vocabulary (Pre-Seed, Seed,
-  Series A-H, Bridge, Grant, Debt, Crowdfunding, IPO, Acquisition,
-  Unknown) mapped from the free-text ``stage`` spellings. The original
-  ``stage`` is always preserved. A stage outside the vocabulary
-  (e.g. Series I, or a stage the source never stated) maps to Unknown.
+  Pre-Series A, Series A-H, Bridge, Grant, Debt, Crowdfunding, IPO,
+  Acquisition, Accelerator, Growth, Unknown) mapped from the free-text
+  ``stage`` spellings. The original ``stage`` is always preserved. A
+  stage outside the vocabulary (e.g. Series I, or a stage the source
+  never stated) maps to Unknown. Pre-Series A, Accelerator and Growth
+  joined the vocabulary on 2026-11-26: sources state those stages
+  verbatim (an issuer's own "Pre-Series A" announcement, a published
+  accelerator deal, a "strategic growth financing"), so normalising
+  them to Unknown was discarding recorded facts, not refusing a guess.
 - Opportunity ``deadline`` + controlled status: ``deadline`` is an ISO
   date or null, extracted only when exactly one date parses unambiguously
   from the status text. Controlled status vocabulary: Open, Closing soon,
@@ -43,9 +48,10 @@ ROOT = Path(__file__).resolve().parents[1]
 HQ_KEYS = ('headquarters', 'business-base', 'co-headquarters', 'sydney-headquarters')
 
 CONTROLLED_STAGES = (
-    'Pre-Seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Series D',
-    'Series E', 'Series F', 'Series G', 'Series H', 'Bridge', 'Grant',
-    'Debt', 'Crowdfunding', 'IPO', 'Acquisition', 'Unknown',
+    'Pre-Seed', 'Seed', 'Pre-Series A', 'Series A', 'Series B', 'Series C',
+    'Series D', 'Series E', 'Series F', 'Series G', 'Series H', 'Bridge',
+    'Grant', 'Debt', 'Crowdfunding', 'IPO', 'Acquisition', 'Accelerator',
+    'Growth', 'Unknown',
 )
 
 CONTROLLED_STATUSES = (
@@ -121,6 +127,11 @@ _STAGE_EXACT = {
     'crowdfunding': 'Crowdfunding', 'crowdfund': 'Crowdfunding',
     'ipo': 'IPO', 'initial public offering': 'IPO',
     'acquisition': 'Acquisition', 'acquired': 'Acquisition',
+    'pre-series a': 'Pre-Series A', 'pre series a': 'Pre-Series A',
+    'accelerator': 'Accelerator', 'accelerator round': 'Accelerator',
+    'growth': 'Growth', 'growth round': 'Growth',
+    'growth financing': 'Growth', 'strategic growth': 'Growth',
+    'strategic growth financing': 'Growth',
 }
 
 
@@ -143,6 +154,10 @@ def normalise_stage(stage):
         return 'Crowdfunding'
     if 'bridge' in lowered:
         return 'Bridge'
+    if 'growth' in lowered:
+        return 'Growth'
+    if 'accelerator' in lowered:
+        return 'Accelerator'
     if 'ipo' in lowered:
         return 'IPO'
     if 'acqui' in lowered:

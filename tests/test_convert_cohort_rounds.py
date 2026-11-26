@@ -136,7 +136,7 @@ class SyntheticConversionTests(unittest.TestCase):
         self.assertEqual(record["valuation_currency"], "USD")
         self.assertEqual(record["source"], "https://acme.example/deal")
         self.assertEqual(record["lead_investor"], "Acme")
-        self.assertEqual(record["stage_normalised"], "Unknown")
+        self.assertEqual(record["stage_normalised"], "Accelerator")
         # No cohort date is carried by the membership record, so no
         # date is invented for the round.
         self.assertNotIn("announced_on", record)

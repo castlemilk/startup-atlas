@@ -226,11 +226,15 @@ class BackfillMappingTests(unittest.TestCase):
         self.assertEqual(backfill.normalise_stage('Series G'), 'Series G')
         self.assertEqual(backfill.normalise_stage('Series H'), 'Series H')
         self.assertEqual(backfill.normalise_stage('Seed extension'), 'Seed')
+        # Source-stated stages that joined the vocabulary on 2026-11-26:
+        # the issuer or programme states them verbatim, so they normalise
+        # to themselves rather than discarding the fact as Unknown.
+        self.assertEqual(backfill.normalise_stage('Pre-Series A'), 'Pre-Series A')
+        self.assertEqual(backfill.normalise_stage('Strategic growth financing'),
+                         'Growth')
+        self.assertEqual(backfill.normalise_stage('Accelerator'), 'Accelerator')
         # Outside the controlled vocabulary: original preserved, normalised Unknown.
         self.assertEqual(backfill.normalise_stage('Series I'), 'Unknown')
-        self.assertEqual(backfill.normalise_stage('Pre-Series A'), 'Unknown')
-        self.assertEqual(backfill.normalise_stage('Strategic growth financing'),
-                         'Unknown')
 
     def test_deadline_parse(self):
         self.assertEqual(backfill.parse_deadline('Open until 4 February 2027'),
