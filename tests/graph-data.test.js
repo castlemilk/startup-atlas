@@ -209,7 +209,7 @@ test('Airwallex keeps its four early raises distinct and does not date historica
     ['airwallex-2018-series-b', 'Series B', '2018-07-03', 80000000, 'USD'],
   ]);
   const [preA, a, aPlus, b] = ['airwallex-2016-pre-series-a', 'airwallex-2017-series-a', 'airwallex-2017-series-a-plus', 'airwallex-2018-series-b'].map(id => early.find(r => r.id === id));
-  assert.equal(preA.stage_normalised, 'Unknown');
+  assert.equal(preA.stage_normalised, 'Pre-Series A');
   assert.equal(aPlus.stage_normalised, 'Series A');
   assert.equal(preA.lead_investor, 'Gobi Partners');
   assert.deepEqual(a.participants, ['Tencent Holdings', 'Sequoia Capital China', 'Mastercard']);
