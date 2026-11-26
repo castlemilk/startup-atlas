@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-26 from data revision 70f54d9 by `npm run report:media-coverage` (#85).
+Generated 2026-11-26 from data revision 72c441f by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -351,4 +351,3 @@ kind's own records do not carry.
 - Ryan Prosser (FloodMapp) — no source-attributed image reference
 
 </details>
-
