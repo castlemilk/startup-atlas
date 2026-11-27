@@ -1,7 +1,9 @@
 // Hosted partner validator: optional `aliases` / `relationships` fields
-// (docs/KG-CONNECTIVE-TISSUE.md §3) are accepted and shape-checked by
-// validatePartnerRecord in backend/hosted/src/github.mjs; the four
-// reviewed metadata fields stay mandatory and exact.
+// (docs/KG-CONNECTIVE-TISSUE.md §3) and the coverage programme's
+// `logo` / `linkedin` media fields (each with a mandatory *_source
+// companion) are accepted and shape-checked by validatePartnerRecord
+// in backend/hosted/src/github.mjs; the four reviewed metadata fields
+// stay mandatory, and no other keys are allowed.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { GitHubCatalogue } from '../src/github.mjs';
@@ -45,6 +47,33 @@ test('hosted validator still accepts the plain four-field record', async () => {
   const mock = provider(), client = new GitHubCatalogue('test-token-not-real', mock);
   const validation = await client.validatePartner('Example Fund', record);
   assert.equal(validation.name, 'Example Fund');
+});
+
+test('hosted validator accepts logo and linkedin with sources', async () => {
+  const mock = provider(), client = new GitHubCatalogue('test-token-not-real', mock);
+  const validation = await client.validatePartner('Example Fund', {
+    ...record,
+    logo: 'https://fund.example.com/logo.png', logo_source: 'https://fund.example.com/',
+    linkedin: 'https://www.linkedin.com/company/example-fund', linkedin_source: 'https://fund.example.com/',
+  });
+  assert.equal(validation.name, 'Example Fund');
+  assert.equal(validation.persisted, false);
+});
+
+test('hosted validator rejects malformed logo and linkedin fields', async () => {
+  const mock = provider(), client = new GitHubCatalogue('test-token-not-real', mock);
+  // A media field without its *_source companion is unverifiable.
+  await assert.rejects(client.validatePartner('Example Fund',
+    { ...record, logo: 'https://fund.example.com/logo.png' }), { code: 'VALIDATION_ERROR' });
+  await assert.rejects(client.validatePartner('Example Fund',
+    { ...record, logo_source: 'https://fund.example.com/' }), { code: 'VALIDATION_ERROR' });
+  await assert.rejects(client.validatePartner('Example Fund',
+    { ...record, logo: 'http://fund.example.com/logo.png', logo_source: 'https://fund.example.com/' }), { code: 'VALIDATION_ERROR' });
+  // Partner LinkedIn is the firm's company page, never a personal profile.
+  await assert.rejects(client.validatePartner('Example Fund',
+    { ...record, linkedin: 'https://www.linkedin.com/in/example-person', linkedin_source: 'https://fund.example.com/' }), { code: 'VALIDATION_ERROR' });
+  await assert.rejects(client.validatePartner('Example Fund',
+    { ...record, linkedin: 'https://example.com/company/example-fund', linkedin_source: 'https://fund.example.com/' }), { code: 'VALIDATION_ERROR' });
 });
 
 test('hosted validator rejects malformed relationships and aliases', async () => {

@@ -34,13 +34,37 @@ function partnerUpdate(reviewed, name, record) {
 // (docs/KG-CONNECTIVE-TISSUE.md §3): `aliases` (other names the partner is
 // known by) and `relationships` (typed links to other entities:
 // {type, target, note, source} plus optional reviewed_at;
-// `member_of_network` is the first type).
+// `member_of_network` is the first type). The coverage programme adds
+// `logo` / `linkedin` (the firm's own logo asset and LinkedIn company
+// page), each with a mandatory `*_source` companion naming the page the
+// value was verified on — the founder photo_url/photo_source convention
+// applied to firms. All six stay optional: absence is a coverage gap,
+// not an invalid record.
+const PARTNER_OPTIONAL_KEYS = ['aliases', 'relationships', 'logo', 'logo_source', 'linkedin', 'linkedin_source'];
 const PARTNER_RELATIONSHIP_TYPES = ['member_of_network'];
 const PARTNER_RELATIONSHIP_KEYS = ['type', 'target', 'note', 'source', 'reviewed_at'];
 const PARTNER_CANONICAL_ID = /^[a-z]+:[a-z0-9][a-z0-9-]*$/;
 function validatePartnerOptionalFields(record) {
   if (record.aliases !== undefined && (!Array.isArray(record.aliases) || record.aliases.length > 10 || record.aliases.some(a => typeof a !== 'string' || !a.trim() || a.length > 200)))
     throw new ServiceError('VALIDATION_ERROR', 'aliases must be an array of at most 10 names of up to 200 characters.');
+  const httpsUrl = value => { try { const url = new URL(value); return url.protocol === 'https:' && !!url.hostname && !url.username && !url.password && (!url.port || url.port === '443') ? url : null; } catch { return null; } };
+  for (const field of ['logo', 'linkedin']) {
+    if (record[field] === undefined) {
+      if (record[`${field}_source`] !== undefined)
+        throw new ServiceError('VALIDATION_ERROR', `${field}_source requires ${field} to be present.`);
+      continue;
+    }
+    if (!httpsUrl(record[field]))
+      throw new ServiceError('VALIDATION_ERROR', `${field} must be an HTTPS URL without credentials.`);
+    if (!httpsUrl(record[`${field}_source`]))
+      throw new ServiceError('VALIDATION_ERROR', `${field}_source must be an HTTPS URL without credentials naming the page ${field} was verified on.`);
+  }
+  if (record.linkedin !== undefined) {
+    const url = httpsUrl(record.linkedin);
+    const host = url.hostname.replace(/^www\./, '');
+    if ((host !== 'linkedin.com' && !host.endsWith('.linkedin.com')) || !url.pathname.startsWith('/company/'))
+      throw new ServiceError('VALIDATION_ERROR', 'linkedin must be the firm\'s LinkedIn company page (linkedin.com/company/…), not a personal profile.');
+  }
   if (record.relationships === undefined) return;
   if (!Array.isArray(record.relationships) || record.relationships.length > 10)
     throw new ServiceError('VALIDATION_ERROR', 'relationships must be an array of at most 10 entries.');
@@ -60,7 +84,8 @@ function validatePartnerOptionalFields(record) {
   }
 }
 function validatePartnerRecord(name, record) {
-  if (typeof name !== 'string' || !name.trim() || name.length > 200 || !record || Array.isArray(record) || typeof record !== 'object' || !['description,reviewed_at,source,website', 'aliases,description,reviewed_at,source,website', 'description,relationships,reviewed_at,source,website', 'aliases,description,relationships,reviewed_at,source,website'].includes(Object.keys(record).sort().join(','))) throw new ServiceError('VALIDATION_ERROR', 'Provide an exact partner name and the four reviewed metadata fields.');
+  const requiredKeys = ['description', 'reviewed_at', 'source', 'website'];
+  if (typeof name !== 'string' || !name.trim() || name.length > 200 || !record || Array.isArray(record) || typeof record !== 'object' || !requiredKeys.every(k => Object.hasOwn(record, k)) || Object.keys(record).some(k => !requiredKeys.includes(k) && !PARTNER_OPTIONAL_KEYS.includes(k))) throw new ServiceError('VALIDATION_ERROR', 'Provide an exact partner name and the four reviewed metadata fields.');
   validatePartnerOptionalFields(record);
   for (const field of ['website', 'source']) {
     try { const url = new URL(record[field]); if (url.protocol !== 'https:' || !url.hostname || url.username || url.password || (url.port && url.port !== '443')) throw new Error(); }

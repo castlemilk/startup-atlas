@@ -132,7 +132,11 @@ class GapReportTests(unittest.TestCase):
                 '--graph', str(graph_path), '--out', str(out_path),
                 '--summary-md', str(summary_path),
                 '--catalogue-revision', 'a' * 40,
-                '--generated-at', GENERATED])
+                '--generated-at', GENERATED,
+                # No reviewed-data files in the fixture tree: the
+                # founder/partner field scopes are skipped.
+                '--research', str(directory / 'no-research.json'),
+                '--partners', str(directory / 'no-partners.json')])
             self.assertEqual(result, 0)
             written = json.loads(out_path.read_text(encoding='utf-8'))
             self.assertEqual(written['generated_at'], GENERATED)
@@ -145,6 +149,81 @@ class GapReportTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             missing = Path(directory) / 'nope.json'
             self.assertEqual(gap_report.main(['--graph', str(missing)]), 2)
+
+
+def research_fixture():
+    return {'startups': [
+        {'name': 'Covered Co', 'founders': [
+            {'name': 'Full Founder',
+             'photo_url': 'https://example.com/full.png',
+             'linkedin': 'https://www.linkedin.com/in/fullfounder'}]},
+        {'name': 'Gap Co', 'founders': [
+            {'name': 'Photo Only',
+             'photo_url': 'https://example.com/photo.png'},
+            {'name': 'Linkedin Via Socials',
+             'socials': [{'label': 'LinkedIn',
+                          'url': 'https://au.linkedin.com/in/linkedvia'}]},
+            {'name': 'Bare Founder'}]},
+    ]}
+
+
+def partners_fixture():
+    return {
+        'Covered Capital': {
+            'website': 'https://covered.example.com/',
+            'logo': 'https://covered.example.com/logo.png',
+            'linkedin': 'https://www.linkedin.com/company/covered'},
+        'Gap Capital': {'website': 'https://gap.example.com/'},
+    }
+
+
+class FieldScopeTests(unittest.TestCase):
+    """Per-entity founder/partner field scopes (coverage programme).
+
+    Aggregate graph scopes cannot say which founder is missing which
+    field; these scopes name every uncovered row so the gap report is
+    the worklist for the headshot/socials producers.
+    """
+
+    def test_founder_scopes_name_each_missing_field(self):
+        report = gap_report.build_report(
+            complete_graph(), generated_at=GENERATED,
+            research=research_fixture())
+        photos = scope(report, 'founder-photos')
+        self.assertEqual(photos['eligible_total'], 4)
+        self.assertEqual(photos['uncovered_ids'], [
+            'founder:gap-co:bare-founder',
+            'founder:gap-co:linkedin-via-socials'])
+        linkedin = scope(report, 'founder-linkedin')
+        self.assertEqual(linkedin['uncovered_ids'], [
+            'founder:gap-co:bare-founder',
+            'founder:gap-co:photo-only'])
+
+    def test_partner_scopes_name_missing_logo_and_linkedin(self):
+        report = gap_report.build_report(
+            complete_graph(), generated_at=GENERATED,
+            partners=partners_fixture())
+        self.assertEqual(scope(report, 'partner-logos')['uncovered_ids'],
+                         ['partner:gap-capital'])
+        self.assertEqual(scope(report, 'partner-linkedin')['uncovered_ids'],
+                         ['partner:gap-capital'])
+        self.assertEqual(scope(report, 'partner-logos')['counts'],
+                         {'covered': 1, 'uncovered': 1})
+
+    def test_field_scopes_absent_without_reviewed_data(self):
+        report = gap_report.build_report(complete_graph(),
+                                         generated_at=GENERATED)
+        ids = [s['scope_id'] for s in report['scopes']]
+        self.assertNotIn('founder-photos', ids)
+        self.assertNotIn('partner-logos', ids)
+
+    def test_summary_lists_named_founder_and_partner_gaps(self):
+        report = gap_report.build_report(
+            complete_graph(), generated_at=GENERATED,
+            research=research_fixture(), partners=partners_fixture())
+        summary = gap_report.render_summary(report)
+        self.assertIn('founder:gap-co:bare-founder', summary)
+        self.assertIn('partner:gap-capital', summary)
 
 
 if __name__ == '__main__':

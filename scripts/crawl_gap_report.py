@@ -17,8 +17,15 @@ filed.
 The scope math is not duplicated here: the five graph scopes come from
 ``loop_health_check.coverage_scopes`` (the #537 coverage signal, whose
 denominators follow docs/COLLECTION-COVERAGE-CONTRACT.md). This script
-adds the one scope the health check does not track -- people with no
-recorded socials -- in the same scope-entry shape.
+adds the scopes the health check does not track, in the same scope-entry
+shape: people with no recorded socials (graph level), and -- because the
+manual coverage waves of Nov 2026 showed aggregate counts do not get
+worked -- per-entity field scopes over the reviewed data files:
+founder rows missing a photo or a LinkedIn profile (from
+startup-research.json) and reviewed partners missing a logo or a
+LinkedIn company page (from partners-reviewed.json). Those scopes name
+every uncovered entity, so the daily crawl's gap list is a worklist,
+not a statistic.
 """
 from __future__ import annotations
 
@@ -74,9 +81,113 @@ def gap_scopes(graph):
     return scopes
 
 
-def build_report(graph, *, generated_at, catalogue_revision=None):
-    """Structured gap report for one graph snapshot."""
+def _slug(name):
+    """Row-reference slug, matching build-review-queue's ``slug``."""
+    import re
+    return re.sub(r'[^a-z0-9]+', '-', str(name).casefold()).strip('-')
+
+
+def _founder_has_linkedin(founder):
+    """A founder row records LinkedIn via the field or a socials entry."""
+    if founder.get('linkedin'):
+        return True
+    for social in founder.get('socials') or []:
+        if not isinstance(social, dict):
+            continue
+        url = social.get('url') or ''
+        host = url.split('/')[2] if '://' in url else ''
+        if host.endswith('linkedin.com') and '/in/' in url:
+            return True
+    return False
+
+
+def founder_scopes(research):
+    """Per-founder photo / LinkedIn scopes over startup-research rows.
+
+    The graph-level person-headshots and person-socials scopes cannot
+    say *which field* a given founder is missing (any social covers the
+    socials scope; the graph portrait can lag the founder row). These
+    scopes name every uncovered founder row as
+    ``founder:<startup-slug>:<founder-slug>`` so the gap list is the
+    worklist for the headshot and socials producers.
+    """
+    startups = (research or {}).get('startups') or []
+    rows = []
+    for startup in startups:
+        if not isinstance(startup, dict):
+            continue
+        for founder in startup.get('founders') or []:
+            if isinstance(founder, dict) and founder.get('name'):
+                rows.append((startup.get('name') or '', founder))
+    if not rows:
+        return []
+    scopes = []
+    for scope_id, covered_fn in (
+            ('founder-photos', lambda f: bool(f.get('photo_url'))),
+            ('founder-linkedin', _founder_has_linkedin)):
+        uncovered = sorted(
+            f'founder:{_slug(company)}:{_slug(founder["name"])}'
+            for company, founder in rows if not covered_fn(founder))
+        ratio = (len(rows) - len(uncovered)) / len(rows)
+        scopes.append({
+            'scope_id': scope_id,
+            'entity_kind': 'founder',
+            'eligible_total': len(rows),
+            'counts': {'covered': len(rows) - len(uncovered),
+                       'uncovered': len(uncovered)},
+            'verification_ratio': ratio,
+            'completion': 'complete' if ratio == 1 else 'partial',
+            'uncovered_ids': uncovered,
+        })
+    return scopes
+
+
+def partner_scopes(partners):
+    """Per-partner logo / LinkedIn scopes over partners-reviewed rows.
+
+    Partner records carry optional ``logo`` and ``linkedin`` fields
+    (additive; absence is the gap). Uncovered partners are named as
+    ``partner:<slug>``.
+    """
+    rows = [(name, record) for name, record in (partners or {}).items()
+            if isinstance(record, dict)]
+    if not rows:
+        return []
+    scopes = []
+    for scope_id, field in (('partner-logos', 'logo'),
+                            ('partner-linkedin', 'linkedin')):
+        uncovered = sorted(f'partner:{_slug(name)}'
+                           for name, record in rows
+                           if not record.get(field))
+        ratio = (len(rows) - len(uncovered)) / len(rows)
+        scopes.append({
+            'scope_id': scope_id,
+            'entity_kind': 'partner',
+            'eligible_total': len(rows),
+            'counts': {'covered': len(rows) - len(uncovered),
+                       'uncovered': len(uncovered)},
+            'verification_ratio': ratio,
+            'completion': 'complete' if ratio == 1 else 'partial',
+            'uncovered_ids': uncovered,
+        })
+    return scopes
+
+
+def build_report(graph, *, generated_at, catalogue_revision=None,
+                 research=None, partners=None):
+    """Structured gap report for one graph snapshot.
+
+    ``research`` (startup-research.json) and ``partners``
+    (partners-reviewed.json) are optional: when supplied, the report
+    gains the per-entity founder and partner field scopes. The CLI
+    passes the committed files by default, so the workflow's existing
+    invocation emits them with no workflow change.
+    """
     scopes = gap_scopes(graph)
+    if research is not None:
+        scopes.extend(founder_scopes(research))
+    if partners is not None:
+        scopes.extend(partner_scopes(partners))
     return {
         'version': VERSION,
         'generated_at': generated_at,
@@ -134,6 +245,14 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--graph', type=Path, default=ROOT / 'data/graph.json',
                         help='Committed graph the gaps are computed from')
+    parser.add_argument('--research', type=Path,
+                        default=ROOT / 'data/startup-research.json',
+                        help='Reviewed startup research for the founder '
+                             'field scopes (skipped when unreadable)')
+    parser.add_argument('--partners', type=Path,
+                        default=ROOT / 'data/partners-reviewed.json',
+                        help='Reviewed partners for the partner field '
+                             'scopes (skipped when unreadable)')
     parser.add_argument('--out', type=Path, default=None,
                         help='Write the JSON report here (default: stdout)')
     parser.add_argument('--summary-md', type=Path, default=None,
@@ -152,8 +271,17 @@ def main(argv=None):
     except (OSError, ValueError) as exc:
         print(f'Error: {exc}', file=sys.stderr)
         return 2
+    def _optional_json(path):
+        try:
+            data = json.loads(path.read_text(encoding='utf-8'))
+            return data if isinstance(data, dict) else None
+        except (OSError, ValueError):
+            return None
+
     report = build_report(graph, generated_at=generated_at,
-                          catalogue_revision=args.catalogue_revision)
+                          catalogue_revision=args.catalogue_revision,
+                          research=_optional_json(args.research),
+                          partners=_optional_json(args.partners))
     text = json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + '\n'
     if args.out is not None:
         _write(args.out, text)

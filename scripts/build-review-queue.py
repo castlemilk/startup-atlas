@@ -1525,7 +1525,33 @@ def build_summary(queue, added, skipped, run):
 
 # ---------------------------------------------------------------------- CLI
 
-def produce_headshots(artifact_dir, run):
+def _recorded_photo_keys(data_dir):
+    """Subject keys and name slugs of people who already record a photo.
+
+    Founder rows record it as ``photo_url`` (startup-research.json),
+    partner-people rows as ``photo`` (partner-profiles.json). Keys use
+    the headshot producer's own subject-key shape
+    (``<context slug>:<name slug>``); the bare name set covers rows
+    whose crawl context is missing.
+    """
+    keys, names = set(), set()
+    research = load_json(Path(data_dir) / "startup-research.json", {}) or {}
+    for startup in research.get("startups", []):
+        for founder in startup.get("founders") or []:
+            if founder.get("photo_url") and founder.get("name"):
+                keys.add(f"{slug(startup.get('name') or '')}:"
+                         f"{slug(founder['name'])}")
+                names.add(slug(founder["name"]))
+    profiles = load_json(Path(data_dir) / "partner-profiles.json", {}) or {}
+    for partner, entry in profiles.items():
+        for person in (entry or {}).get("people") or []:
+            if person.get("photo") and person.get("name"):
+                keys.add(f"{slug(partner)}:{slug(person['name'])}")
+                names.add(slug(person["name"]))
+    return keys, names
+
+
+def produce_headshots(artifact_dir, data_dir=None, run=""):
     """Headshot entries: staged portrait candidates from company profiles.
 
     A ``professional-bio`` row carrying a ``headshot_candidate`` (the
@@ -1539,11 +1565,25 @@ def produce_headshots(artifact_dir, run):
     The rows are emitted by the company-profiles mode
     (``professional_bio_observations`` in crawl.py), so they live in the
     company-profiles artifact; the profiles artifact is read second for
-    legacy artifacts that predate the move. Until both were read, this
-    producer could never match a row and no headshot ever queued.
+    legacy artifacts that predate the move, and the portraits artifact
+    third — it carries the same bio rows plus the staging outcome, and
+    it exists even when the company-profiles step failed
+    (continue-on-error) or its snapshot was reused. Until both were
+    read, this producer could never match a row and no headshot ever
+    queued.
+
+    Completeness rule (Nov 2026 coverage programme): the producer
+    sweeps the whole crawl frontier for founders *currently missing* a
+    recorded photo. A person who already records one never queues —
+    their photo was either approved through this queue (dedup would
+    block a re-proposal anyway) or recorded directly in the reviewed
+    data, and queueing a second candidate for a covered founder is
+    noise the panel should never see.
     """
+    covered_keys, covered_names = _recorded_photo_keys(data_dir) \
+        if data_dir is not None else (set(), set())
     rows = []
-    for stem in ("company-profiles", "profiles"):
+    for stem in ("company-profiles", "profiles", "portraits"):
         rows.extend(load_artifact(artifact_dir, stem).get("candidates", []))
     entries = []
     seen_ids = set()
@@ -1560,6 +1600,9 @@ def produce_headshots(artifact_dir, run):
         if subject_key in seen_ids:
             continue
         seen_ids.add(subject_key)
+        if subject_key in covered_keys or \
+                (not company and slug(name) in covered_names):
+            continue  # already records a photo; not a coverage gap
         confidence = 0.50 if candidate.get("reason") == \
             "External asset host requires separate review" else 0.80
         entry = _new_entry(
@@ -1769,8 +1812,17 @@ def produce_socials(artifact_dir, data_dir, run):
                 slot.update({"url": url, "source_url": source_url,
                              "confidence": confidence})
 
-    for row in load_artifact(artifact_dir, "company-profiles") \
-            .get("candidates", []):
+    # The portraits artifact carries the same professional-bio rows
+    # (crawl_portraits builds on the company-profiles result), so sweep
+    # both: the social evidence queues even when the company-profiles
+    # step failed or its snapshot was reused by the portraits mode.
+    # Observing the same URL twice is harmless — groups dedup by
+    # person + platform + value key.
+    bio_rows = []
+    for stem in ("company-profiles", "portraits"):
+        bio_rows.extend(load_artifact(artifact_dir, stem)
+                        .get("candidates", []))
+    for row in bio_rows:
         if row.get("kind") != "professional-bio":
             continue
         name = (row.get("name") or "").strip()
@@ -1854,7 +1906,7 @@ def build(artifact_dir, run, queue_path, data_dir, summary_path=None):
         produce_facts(artifact_dir, data_dir, run),
         produce_value_facts(artifact_dir, data_dir, run),
         produce_startup_leads(artifact_dir, data_dir, run, merged_slugs),
-        produce_headshots(artifact_dir, run),
+        produce_headshots(artifact_dir, data_dir, run),
         produce_socials(artifact_dir, data_dir, run),
     ]
     added, skipped = [], 0
