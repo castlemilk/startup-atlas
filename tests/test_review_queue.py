@@ -556,6 +556,63 @@ class BuildTests(FixtureCase):
         self.assertEqual(leads[0]["subject_key"], "foo")
         self.assertEqual(len(leads[0]["mentions"]["partners"]), 3)
 
+    def test_lead_website_is_never_the_partner_profile_url(self):
+        # #641: candidate_url is the partner's portfolio/profile page
+        # for the company, not the company's own website. Run-49 leads
+        # carried it as mentions.website (e.g. a Partech /companies/
+        # page), which would publish the VC page as the company site.
+        rows = [
+            {"partner": "Partech", "kind": "companies", "name": "Alassio",
+             "candidate_url": "https://partechpartners.com/companies/alassio",
+             "source_url": "https://partechpartners.com/companies"},
+            {"partner": "Brandon Capital", "kind": "companies",
+             "name": "AstronauTx",
+             "candidate_url": "https://brandoncapital.vc/portfolio/astronautx/",
+             "source_url": "https://brandoncapital.vc/portfolio"},
+        ]
+        write_json(self.artifact / "latest-profiles.json",
+                   {"candidates": rows})
+        _, added, _ = self.build()
+        leads = [e for e in added if e["kind"] == "startup-lead"]
+        self.assertEqual(len(leads), 2)
+        for lead in leads:
+            self.assertIsNone(lead["mentions"]["website"])
+            # The profile URL stays available as evidence.
+            self.assertTrue(any("portfolio" in url or "companies" in url
+                                for url in lead["evidence"]))
+
+    def test_lead_website_accepts_explicit_company_website(self):
+        # A row that carries the company's own outbound website (host
+        # distinct from the mentioning partner's pages) keeps it; one
+        # that merely restates the partner host does not.
+        rows = [
+            {"partner": "Partech", "kind": "companies", "name": "Alassio",
+             "candidate_url": "https://partechpartners.com/companies/alassio",
+             "source_url": "https://partechpartners.com/companies",
+             "website": "https://alassio.fr"},
+            {"partner": "Partech", "kind": "companies", "name": "Fakeweb",
+             "candidate_url": "https://partechpartners.com/companies/fakeweb",
+             "source_url": "https://partechpartners.com/companies",
+             "website": "https://partechpartners.com/companies/fakeweb"},
+        ]
+        write_json(self.artifact / "latest-profiles.json",
+                   {"candidates": rows})
+        _, added, _ = self.build()
+        by_key = {e["subject_key"]: e for e in added
+                  if e["kind"] == "startup-lead"}
+        self.assertEqual(by_key["alassio"]["mentions"]["website"],
+                         "https://alassio.fr")
+        self.assertIsNone(by_key["fakeweb"]["mentions"]["website"])
+
+    def test_company_website_unit(self):
+        website = queue_mod._company_website
+        row = {"candidate_url": "https://partechpartners.com/companies/x",
+               "source_url": "https://partechpartners.com/companies"}
+        self.assertEqual(website(row), "")
+        self.assertEqual(website(dict(row, website="https://x.example")), "https://x.example")
+        self.assertEqual(
+            website(dict(row, website="https://partechpartners.com/x")), "")
+
     def test_candidate_identity_unit(self):
         identity = queue_mod._candidate_identity
         self.assertEqual(

@@ -1352,6 +1352,30 @@ def _candidate_identity(url):
     return "-".join(words) or None
 
 
+def _company_website(row):
+    """A row's explicit company website, or "" when it is not one.
+
+    ``candidate_url`` is the partner's portfolio/profile page for the
+    company — evidence, never the company's own website (#641: run-49
+    leads published the VC portfolio URL as each company's website).
+    Only an explicit ``website`` field counts, and only when its host
+    differs from the mentioning page's hosts, so a profile URL can
+    never be re-labelled as the company website.
+    """
+    website = row.get("website")
+    if not website or not isinstance(website, str):
+        return ""
+    try:
+        host = urlparse(website).hostname
+        other_hosts = {urlparse(row.get(field) or "").hostname
+                       for field in ("candidate_url", "source_url")}
+    except ValueError:
+        return ""
+    if not host or host in other_hosts:
+        return ""
+    return website
+
+
 def _lead_bucket(rows):
     bucket = {"partners": set(), "urls": set(), "evidence": set(),
               "website": ""}
@@ -1360,7 +1384,9 @@ def _lead_bucket(rows):
             bucket["partners"].add(row["partner"])
         if row.get("candidate_url"):
             bucket["urls"].add(row["candidate_url"])
-            bucket["website"] = row["candidate_url"]
+        website = _company_website(row)
+        if website:
+            bucket["website"] = website
         for url in (row.get("source_url"), row.get("candidate_url")):
             if url:
                 bucket["evidence"].add(url)
