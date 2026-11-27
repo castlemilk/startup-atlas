@@ -14,11 +14,48 @@ ROOT = Path(__file__).resolve().parents[1]
 # Explicitly list public inputs. An unreviewed file added under data/ must not
 # accidentally become downloadable just because it has a familiar extension.
 PUBLIC_DATA_FILES = (
-    'catalogue.json', 'graph.json', 'land.geojson', 'map-locations.json',
+    'catalogue.json', 'crawl-runs.json', 'fx-rates.json', 'graph.json', 'identity.json',
+    'land.geojson', 'map-locations.json',
     'opportunities-added.json', 'partner-leads.json', 'partner-logo-seeds.csv',
     'partner-profiles.json', 'partner-sources.json', 'partners-reviewed.json',
     'program-sources.json', 'startup-news-sources.json', 'startup-research.json', 'treemap-evidence.json',
 )
+
+
+def manifest_stats(name, content, parsed_value):
+    """Record count and per-kind counts for one public source document (#70).
+
+    record_count is the number of top-level records in the document's main
+    container (list length, entity/run/entry/feature count, or top-level key
+    count for plain objects). kind_counts is only populated where records
+    carry a `kind` field (graph and identity-registry entities).
+    """
+    if name.endswith('.csv'):
+        lines = [line for line in content.splitlines() if line.strip()]
+        return max(0, len(lines) - 1), {}
+    value = parsed_value
+    if isinstance(value, list):
+        return len(value), {}
+    if isinstance(value, dict):
+        entities = value.get('entities')
+        if isinstance(entities, dict):
+            kinds = {}
+            for item in entities.values():
+                if isinstance(item, dict) and item.get('kind'):
+                    kinds[item['kind']] = kinds.get(item['kind'], 0) + 1
+            return len(entities), kinds
+        if isinstance(entities, list):
+            kinds = {}
+            for item in entities:
+                if isinstance(item, dict) and item.get('kind'):
+                    kinds[item['kind']] = kinds.get(item['kind'], 0) + 1
+            return len(entities), kinds
+        for key in ('features', 'runs', 'entries', 'opportunities', 'sources', 'startups'):
+            container = value.get(key)
+            if isinstance(container, list):
+                return len(container), {}
+        return len(value), {}
+    return 0, {}
 
 
 def read_public_data(data_dir):
@@ -63,6 +100,7 @@ def build(source, target, data_dir=None, mappings=None):
           CREATE TABLE articles (startup_id TEXT NOT NULL, published_on TEXT, data TEXT NOT NULL);
           CREATE INDEX articles_startup ON articles(startup_id);
           CREATE TABLE source_documents (path TEXT PRIMARY KEY, sha256 TEXT NOT NULL, content TEXT NOT NULL);
+          CREATE TABLE source_manifest (path TEXT PRIMARY KEY, sha256 TEXT NOT NULL, bytes INTEGER NOT NULL, record_count INTEGER NOT NULL, kind_counts TEXT NOT NULL);
           CREATE TABLE opportunities (id TEXT PRIMARY KEY, name TEXT NOT NULL, provider TEXT NOT NULL, data TEXT NOT NULL, addition_data TEXT);
           CREATE TABLE partner_records (name TEXT PRIMARY KEY, reviewed_data TEXT, profile_data TEXT);
           CREATE TABLE locations (id TEXT PRIMARY KEY, data TEXT NOT NULL);
@@ -95,8 +133,13 @@ def build(source, target, data_dir=None, mappings=None):
             searchable = related[item['id']] + [alias for alias in (item.get('aliases') or []) if alias != item['name']]
             db.execute('INSERT INTO entity_search VALUES (?,?,?,?)', (item['id'], item['name'], item.get('summary', ''), ' '.join(searchable)))
         for name, content in documents.items():
+            digest = hashlib.sha256(content.encode('utf-8')).hexdigest()
             db.execute('INSERT INTO source_documents VALUES (?,?,?)',
-                       (name, hashlib.sha256(content.encode('utf-8')).hexdigest(), content))
+                       (name, digest, content))
+            record_count, kind_counts = manifest_stats(name, content, data.get(name))
+            db.execute('INSERT INTO source_manifest VALUES (?,?,?,?,?)',
+                       (name, digest, len(content.encode('utf-8')), record_count,
+                        encode(dict(sorted(kind_counts.items())))))
         if data:
             addition_entries = data['opportunities-added.json']['entries']
             additions = {item['entry']['id']: item for item in addition_entries}
