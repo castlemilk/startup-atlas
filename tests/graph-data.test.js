@@ -2,7 +2,7 @@ import { startupSourceCoverage } from '../backend/hosted/src/coverage.mjs';
 import {readFile} from 'node:fs/promises';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { entityDetails, fundingTimelineArticles, neighborhood, searchSnapshot, teamPersonId } from '../web/graph-model.js';
+import { entityDetails, fundingTimelineArticles, neighborhood, searchSnapshot, slug, teamPersonId } from '../web/graph-model.js';
 
 test('funding timeline keeps reviewed evidence and hides duplicate round links', () => {
   const source = 'https://example.com/closed-offer';
@@ -285,4 +285,44 @@ test('founder blurbs are sourced, dated and carried onto person entities (#528)'
   // No person outside the founder records carries a blurb in this slice.
   for (const person of people.values())
     if (person.blurb) assert.ok(person.id.startsWith('person:') && !person.id.includes('--'), `${person.id} blurb is on a canonical person`);
+});
+
+test('curated funding rounds reach the graph unchanged, with no phantom rounds (#529)', async () => {
+  const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const research = JSON.parse(await readFile(new URL('../data/startup-research.json', import.meta.url), 'utf8'));
+  // The fields a reviewer curates on a round. The graph builder carries a
+  // research round verbatim (plus startup_id and derived fields such as
+  // participants), so every curated value must survive generation exactly:
+  // a published round that drops or zeroes the amount, moves the date or
+  // loses the lead investor is the #529 failure mode, for any startup.
+  const curatedFields = ['stage', 'announced_on', 'amount', 'currency', 'amount_text',
+    'valuation', 'valuation_currency', 'lead_investor', 'lead_investors', 'source'];
+  const graphRounds = new Map(graph.funding_rounds.map(round => [round.id, round]));
+  let recorded = 0;
+  for (const startup of research.startups) {
+    const startupId = `startup:${slug(startup.name)}`;
+    for (const round of startup.funding_rounds || []) {
+      if ('superseded_by' in round) continue;
+      recorded++;
+      const published = graphRounds.get(round.id);
+      assert.ok(published, `${startup.name} round ${round.id} is missing from the graph`);
+      assert.equal(published.startup_id, startupId, `${round.id} is attached to the wrong startup`);
+      for (const field of curatedFields) {
+        if (field in round) assert.deepEqual(published[field], round[field],
+          `${round.id} ${field} changed between the research record and the graph`);
+      }
+      graphRounds.delete(round.id);
+    }
+  }
+  assert.ok(recorded > 0, 'expected curated funding rounds in the research data');
+  // Anything left in the graph has no curated source record: a phantom round
+  // (e.g. a second, cohort-derived $0 round shadowing the curated one).
+  assert.deepEqual([...graphRounds.keys()], [], 'graph carries funding rounds with no research record');
+  // The case Ben flagged: Alloovium's two accelerator rounds publish with
+  // their sourced amounts and organisers named.
+  const alloovium = graph.funding_rounds.filter(round => round.startup_id === 'startup:alloovium');
+  assert.deepEqual(alloovium.map(round => [round.id, round.amount, round.currency, round.announced_on, round.lead_investor]), [
+    ['alloovium-2026-startmate-accelerator', 120000, 'AUD', '2026-02-17', 'Startmate'],
+    ['alloovium-2026-y-combinator-accelerator', 500000, 'USD', '2026-06-05', 'Y Combinator'],
+  ]);
 });
