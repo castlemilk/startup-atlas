@@ -466,6 +466,210 @@ class ReplayTests(unittest.TestCase):
             self.assertEqual(registry, tiny_registry())
 
 
+def edge_registry():
+    """Registry for the #88 edge cases: shared hosts, programmes, parents."""
+    def ent(name, kind, key, basis='website-host'):
+        return {'name': name, 'kind': kind, 'aliases': [],
+                'identity_key': key, 'identity_basis': basis,
+                'merged_from': [], 'updated_at': '2026-11-23T00:00:00Z'}
+    return {'version': 1, 'generated_at': '2026-11-23T00:00:00Z',
+            'source_revision': 'test', 'entities': {
+                'startup:acme-labs': ent('Acme Labs', 'startup', 'acme.com'),
+                'startup:example-co': ent('Example Co', 'startup',
+                                          'example.com'),
+                'startup:talentsheet': ent('Talentsheet', 'startup',
+                                           'talentsheet.com'),
+                'partner:acme': ent('Acme', 'partner', 'acme.com'),
+                'person:jane-example': ent(
+                    'Jane Example', 'person',
+                    'linkedin.com/in/jane-example', 'linkedin-url'),
+            }, 'merges': []}
+
+
+class SharedKeyEdgeCaseTests(unittest.TestCase):
+    """#88 (REVIEW-02) named edge cases: domain changes,
+    parent/subsidiary, and programme-vs-firm.
+
+    A shared identity key is evidence, not identity: distinct
+    entities share hosts (subsidiaries, programmes), and one entity
+    can change its domain or name. Only a shared key AND an
+    equivalent name may auto-merge; everything else is review-band
+    at most.
+    """
+
+    # -- domain changes ------------------------------------------------
+
+    def test_domain_change_same_name_new_domain_is_review_only(self):
+        # The company moved domains: same name, different host. The
+        # matcher must propose the pair for review, never auto-merge
+        # on the name alone.
+        candidates = er.match_candidates(
+            'Example Co', 'https://example-co.io', 'startup',
+            edge_registry())
+        self.assertEqual([c['id'] for c in candidates],
+                         ['startup:example-co'])
+        self.assertEqual(candidates[0]['basis'], 'name-similarity')
+        self.assertLessEqual(candidates[0]['score'],
+                             er.NAME_ONLY_SCORE_CAP)
+        self.assertFalse(candidates[0]['auto_merge'])
+
+    def test_subdomain_of_same_registrable_domain_is_review_only(self):
+        # blog.example.com vs example.com: the host bonus nudges the
+        # pair into the review band; it is not a shared identity key.
+        candidates = er.match_candidates(
+            'Example Co', 'https://blog.example.com', 'startup',
+            edge_registry())
+        self.assertEqual([c['id'] for c in candidates],
+                         ['startup:example-co'])
+        self.assertLess(candidates[0]['score'], er.AUTO_MERGE_THRESHOLD)
+        self.assertFalse(candidates[0]['auto_merge'])
+
+    def test_rebrand_changing_name_and_domain_produces_no_candidate(self):
+        # Known limitation, pinned: a rebrand that changes BOTH the
+        # name and the domain (Talentsheet -> Draper) is invisible to
+        # the matcher. Rebrands are caught by human review of the
+        # source evidence, never by guessing at name similarity.
+        self.assertEqual(
+            er.match_candidates('Draper', 'https://draper.com',
+                                'startup', edge_registry()),
+            [])
+
+    # -- parent / subsidiary -------------------------------------------
+
+    def test_subsidiary_sharing_parent_host_does_not_auto_merge(self):
+        # Acme Health is a distinct subsidiary whose site lives on
+        # the parent's host. Same host, different name: a review
+        # proposal at the mismatch score, never an auto-merge.
+        candidates = er.match_candidates(
+            'Acme Health', 'https://acme.com', 'startup', edge_registry())
+        self.assertEqual([c['id'] for c in candidates],
+                         ['startup:acme-labs'])
+        self.assertEqual(candidates[0]['score'],
+                         er.SHARED_KEY_NAME_MISMATCH_SCORE)
+        self.assertEqual(candidates[0]['basis'],
+                         'shared-key-name-mismatch')
+        self.assertFalse(candidates[0]['auto_merge'])
+
+    def test_subsidiary_on_parent_subdomain_is_review_only(self):
+        candidates = er.match_candidates(
+            'Acme Labs', 'https://labs.acme.com', 'startup',
+            edge_registry())
+        self.assertEqual([c['id'] for c in candidates],
+                         ['startup:acme-labs'])
+        self.assertFalse(candidates[0]['auto_merge'])
+
+    def test_distinct_subsidiaries_on_distinct_domains_do_not_match(self):
+        # Sibling subsidiaries with similar names but their own
+        # domains score below the review band: no proposal at all.
+        self.assertEqual(
+            er.match_candidates('Acme Health', 'https://acmehealth.com',
+                                'startup', edge_registry()),
+            [])
+
+    # -- programme vs firm ----------------------------------------------
+
+    def test_programme_on_firm_host_does_not_auto_merge_into_firm(self):
+        # "Acme Accelerator" is Acme's programme, served from the
+        # firm's own host. Name containment (the programme is named
+        # after the firm) plus a shared host must not merge a
+        # programme into its operator.
+        candidates = er.match_candidates(
+            'Acme Accelerator', 'https://acme.com/accelerator',
+            'partner', edge_registry())
+        self.assertEqual([c['id'] for c in candidates], ['partner:acme'])
+        self.assertEqual(candidates[0]['basis'],
+                         'shared-key-name-mismatch')
+        self.assertFalse(candidates[0]['auto_merge'])
+
+    def test_programme_and_firm_of_different_kinds_do_not_match(self):
+        # Kind scoping: the firm as a provider never matches the
+        # partner record, whatever the name and host.
+        self.assertEqual(
+            er.match_candidates('Acme', 'https://acme.com', 'provider',
+                                edge_registry()),
+            [])
+
+    # -- the guard must not break true duplicates ------------------------
+
+    def test_exact_name_and_host_still_auto_merges(self):
+        candidates = er.match_candidates(
+            'Acme', 'https://www.acme.com/', 'partner', edge_registry())
+        self.assertEqual(candidates[0]['id'], 'partner:acme')
+        self.assertEqual(candidates[0]['score'], 1.0)
+        self.assertTrue(candidates[0]['auto_merge'])
+
+    def test_legal_suffix_difference_still_auto_merges(self):
+        # "Example Co" vs "Example Co Pty Ltd" on the same host is
+        # one entity with a fuller legal name, not two entities.
+        registry = edge_registry()
+        registry['entities']['startup:example-co']['name'] = 'Example Co'
+        candidates = er.match_candidates(
+            'Example Co Pty Ltd', 'https://example.com', 'startup',
+            registry)
+        self.assertEqual(candidates[0]['id'], 'startup:example-co')
+        self.assertEqual(candidates[0]['score'], 1.0)
+        self.assertTrue(candidates[0]['auto_merge'])
+
+    def test_person_name_change_on_same_linkedin_is_review_only(self):
+        # Same LinkedIn, changed name (marriage, rebrand of self):
+        # strong evidence, but a human confirms it is the same
+        # person before the records merge.
+        candidates = er.match_candidates(
+            'Jane Married', 'https://linkedin.com/in/jane-example',
+            'person', edge_registry())
+        self.assertEqual([c['id'] for c in candidates],
+                         ['person:jane-example'])
+        self.assertEqual(candidates[0]['basis'],
+                         'shared-key-name-mismatch')
+        self.assertFalse(candidates[0]['auto_merge'])
+
+    def test_person_initial_variant_on_same_linkedin_still_auto_merges(self):
+        # The #366 allowance: "J Example" is the same person as
+        # "Jane Example" when the LinkedIn key is shared — an
+        # initial-for-name spelling variant, not a name change.
+        candidates = er.match_candidates(
+            'J Example', 'https://linkedin.com/in/jane-example',
+            'person', edge_registry())
+        self.assertEqual(candidates[0]['id'], 'person:jane-example')
+        self.assertEqual(candidates[0]['score'], 1.0)
+        self.assertTrue(candidates[0]['auto_merge'])
+
+    # -- the downgrade must survive the review auto-gate -----------------
+
+    def test_mismatch_candidate_cannot_pass_merge_auto_gate(self):
+        # Defence in depth: even if a mismatch proposal reaches the
+        # review queue, the auto-gate (merge >= 0.88 AND an
+        # identity-key basis marker) must not decide it.
+        gating = load('atlas_review_gating', 'scripts/review_gating.py')
+        config = json.loads(
+            (ROOT / 'data' / 'review-gating.json').read_text())
+        candidate = er.match_candidates(
+            'Acme Health', 'https://acme.com', 'startup',
+            edge_registry())[0]
+        entry = {'kind': 'merge', 'status': 'pending',
+                 'confidence': candidate['score'],
+                 'candidates': [candidate]}
+        self.assertIsNone(gating.check_entry(entry, config))
+
+    def test_queue_fallback_matcher_agrees_on_shared_key_cases(self):
+        # scripts/build-review-queue.py carries a fallback matcher
+        # for when entity_resolution cannot be imported; it must
+        # reach the same decisions on the shared-key cases.
+        brq = load('atlas_build_review_queue_fb',
+                   'scripts/build-review-queue.py')
+        mismatch = brq.local_match_candidates(
+            'Acme Health', 'acme.com', 'startup', edge_registry())
+        self.assertEqual([c['id'] for c in mismatch],
+                         ['startup:acme-labs'])
+        self.assertEqual(mismatch[0]['basis'],
+                         'shared-key-name-mismatch')
+        self.assertFalse(mismatch[0]['auto_merge'])
+        exact = brq.local_match_candidates(
+            'Acme Labs', 'acme.com', 'startup', edge_registry())
+        self.assertEqual(exact[0]['score'], 1.0)
+        self.assertTrue(exact[0]['auto_merge'])
+
+
 class RecordedLinkedinFieldTests(unittest.TestCase):
     """The explicit ``linkedin`` field on person rows (#366, slice 1).
 
