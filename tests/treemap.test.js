@@ -320,10 +320,10 @@ test('founder index covers the published graph without inventing photos (#415)',
   const index=model.indexFounders(published);
   assert.equal(index.size,54,'every startup but one has recorded founders');
   const entries=[...index.values()].flat();
-  assert.equal(entries.length,121);
-  assert.equal(entries.filter(founder=>founder.photo).length,22,'photo entries match the graph-held portraits');
-  assert.equal(new Set(entries.filter(founder=>founder.photo).map(founder=>founder.id)).size,20,'across 20 distinct people');
-  assert.equal([...index.values()].filter(founders=>founders.some(founder=>founder.photo)).length,14,'across 14 companies');
+  assert.equal(entries.length,123);
+  assert.equal(entries.filter(founder=>founder.photo).length,67,'photo entries match the graph-held portraits');
+  assert.equal(new Set(entries.filter(founder=>founder.photo).map(founder=>founder.id)).size,65,'across 65 distinct people');
+  assert.equal([...index.values()].filter(founders=>founders.some(founder=>founder.photo)).length,37,'across 37 companies');
   const canva=index.get('startup:canva');
   assert.deepEqual(canva.map(founder=>founder.initials),['CA','CO','MP']);
   assert.ok(canva.every(founder=>founder.photo.endsWith('.png')));
