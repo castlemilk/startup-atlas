@@ -1,4 +1,4 @@
-"""Offline, source-scoped coverage/checkpoint contract; not wired to the crawler.
+"""Offline, source-scoped coverage/checkpoint contract.
 
 Only Python's standard library is used. No transport, catalogue write, scheduler,
 review authority or publication capability is provided. See the companion contract.
@@ -7,8 +7,14 @@ Integration note (#537): the contract's eligible-population denominators
 (eligible_total / verification_ratio / completion) are consumed by
 scripts/loop_health_check.py, whose coverage check reports catalogue
 completeness over the committed graph as a daily RED/WARN signal. The
-ledger itself remains per-run and offline until the crawler writes one
-(#77); the health check does not open or create ledgers.
+health check does not open or create ledgers.
+
+Integration note (#89): the ledger is now written by the crawler when
+``--coverage-ledger PATH`` is passed to scripts/crawl.py (see
+scripts/crawl_coverage_ledger.py). It is still opt-in, per-run and
+offline: without the flag no ledger is created, a ledger failure never
+fails the crawl, and each ledger's exact population is only the set of
+entities that run attempted on a host — not the host's whole universe.
 """
 from __future__ import annotations
 
