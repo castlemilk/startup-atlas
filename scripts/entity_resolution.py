@@ -23,7 +23,13 @@ Identity keys (the join key per kind):
 Matching thresholds (from the design):
 
 - auto-merge >= 0.90, and ONLY with a shared identity key (website host
-  or LinkedIn URL). Name similarity alone never auto-merges.
+  or LinkedIn URL) AND equivalent names (token sets equal once legal
+  suffixes are dropped). Name similarity alone never auto-merges, and
+  a shared key alone does not auto-merge either: distinct entities can
+  share one host — a subsidiary on its parent's domain, a programme on
+  its firm's domain — so a shared key with non-equivalent names is a
+  review-band proposal (basis ``shared-key-name-mismatch``), never a
+  merge. See :func:`match_candidates`.
 - review band 0.65-0.90 -> the validation queue.
 - below 0.65 -> no proposal.
 
@@ -71,6 +77,22 @@ REVIEW_MIN_SCORE = 0.65
 # A score without a shared identity key is capped below the auto-merge
 # threshold: name similarity alone can propose, never merge.
 NAME_ONLY_SCORE_CAP = 0.89
+# A shared identity key whose names are NOT equivalent (a subsidiary
+# on its parent's host, a programme on its firm's host, a person whose
+# name changed on the same LinkedIn) scores below the review gate's
+# merge auto-approve threshold (0.88 in data/review-gating.json) as
+# well as below AUTO_MERGE_THRESHOLD, with a basis that carries no
+# identity-key marker: the pair is proposed for human review and can
+# never be auto-decided by either path.
+SHARED_KEY_NAME_MISMATCH_SCORE = 0.87
+# Corporate-form tokens that do not distinguish one entity from
+# another: "Canva" and "Canva Pty Ltd" are the same name for identity
+# purposes. Descriptive tokens ("Labs", "Health", "Accelerator",
+# "Ventures") DO distinguish, so they are deliberately absent.
+LEGAL_NAME_TOKENS = frozenset({
+    'pty', 'ltd', 'limited', 'inc', 'llc', 'plc', 'gmbh', 'co',
+    'company', 'corp', 'corporation', 'the',
+})
 
 
 def _utcnow():
@@ -151,6 +173,40 @@ def _name_tokens(name):
     return set(slug(name).split('-')) - {''}
 
 
+def names_equivalent(a, b):
+    """True when two names are the same entity name for identity use.
+
+    Token sets must be equal once corporate-form tokens
+    (:data:`LEGAL_NAME_TOKENS`) are dropped, and non-empty — with one
+    person-name allowance: a single-letter token may stand for the
+    full token it initialises ("J Example" vs "Jane Example", the
+    #366 cross-firm spelling variant). Anything else — an extra
+    descriptive token ("Acme Health" vs "Acme Labs", "Acme
+    Accelerator" vs "Acme"), a changed token, a name change on the
+    same LinkedIn — is a different name, however strong the other
+    evidence is.
+    """
+    tokens_a = _name_tokens(a) - LEGAL_NAME_TOKENS
+    tokens_b = _name_tokens(b) - LEGAL_NAME_TOKENS
+    if not tokens_a or not tokens_b:
+        return False
+    if tokens_a == tokens_b:
+        return True
+    if len(tokens_a) != len(tokens_b):
+        return False
+    unmatched = list(tokens_b)
+    for token in sorted(tokens_a):
+        hit = next((other for other in unmatched
+                    if other == token
+                    or (len(token) == 1 and other.startswith(token))
+                    or (len(other) == 1 and token.startswith(other))),
+                   None)
+        if hit is None:
+            return False
+        unmatched.remove(hit)
+    return True
+
+
 def name_similarity(a, b):
     """Token-based name similarity in [0, 1].
 
@@ -181,8 +237,15 @@ def match_candidates(name, identity_key, kind, registry):
 
     Each candidate is ``{"id", "name", "score", "basis", "identity_key",
     "auto_merge"}``. Only candidates scoring >= 0.65 are returned. An
-    exact identity-key match scores 1.0 and is the only route to
-    ``auto_merge``; anything else is capped at 0.89.
+    exact identity-key match with an equivalent name (see
+    :func:`names_equivalent`) scores 1.0 and is the only route to
+    ``auto_merge``. A shared key with a non-equivalent name — a
+    subsidiary or programme sharing its parent/firm host, a person
+    whose name changed on the same LinkedIn — is a distinct entity
+    until a human says otherwise: it is proposed at
+    :data:`SHARED_KEY_NAME_MISMATCH_SCORE` with basis
+    ``shared-key-name-mismatch`` and ``auto_merge`` False. Anything
+    else is capped at 0.89.
     """
     if kind == 'person':
         own_key = normalise_linkedin(identity_key) if identity_key else ''
@@ -198,10 +261,22 @@ def match_candidates(name, identity_key, kind, registry):
         # entries that both actually have one. Name-only entries have
         # identity_key None, so they can never match this way.
         shared_key = bool(own_key and other_key and own_key == other_key)
-        if shared_key:
+        if shared_key and names_equivalent(name, entity.get('name', '')):
             results.append({'id': entity_id, 'name': entity.get('name', ''),
                             'score': 1.0, 'basis': 'identity-key',
                             'identity_key': other_key, 'auto_merge': True})
+            continue
+        if shared_key:
+            # Same host/LinkedIn, different name: a subsidiary on its
+            # parent's domain, a programme on its firm's domain, or a
+            # person whose name changed. Distinct entities that happen
+            # to share a key — propose for review, never auto-merge,
+            # and keep the score and basis clear of the review gate's
+            # merge auto-approve rule.
+            results.append({'id': entity_id, 'name': entity.get('name', ''),
+                            'score': SHARED_KEY_NAME_MISMATCH_SCORE,
+                            'basis': 'shared-key-name-mismatch',
+                            'identity_key': other_key, 'auto_merge': False})
             continue
         score = name_similarity(name, entity.get('name', ''))
         # Host bonus: same registrable domain under a different
