@@ -22,6 +22,13 @@
 import { access, readdir, readFile, writeFile } from 'node:fs/promises';
 
 const PAGES_ORIGIN = 'https://castlemilk.github.io/startup-atlas/';
+
+// The web-relative asset path a web/logos.js slug points at: slugs already
+// carrying a .png extension are PNG files, bare slugs are SVG. The CLI's
+// existence pre-collection and the logoMap it feeds must agree on this —
+// collecting the extensionless slug silently marked every bundled SVG
+// logo "not downloaded" once graph artwork stopped naming the local file.
+export const logoAssetPath = (slug) => 'assets/logos/' + (slug.endsWith('.png') ? slug : slug + '.svg');
 export const STAGES = ['discovered', 'published', 'downloaded', 'approved', 'rendered'];
 
 // Normalise a record/logo reference to a web-relative local path
@@ -196,13 +203,13 @@ if (isMain) {
     for (const c of record.companies || []) collect(c.logo);
     for (const p of record.people || []) collect(p.photo);
   }
-  for (const [, slug] of logoEntries) paths.add('assets/logos/' + slug);
+  for (const [, slug] of logoEntries) paths.add(logoAssetPath(slug));
   for (const e of graph.entities) collect(graphArtwork(e).url);
   const existing = new Set();
   for (const p of paths) if (await fileExists(p)) existing.add(p);
   const report = buildMediaCoverage({
     profiles, research, catalogue, manifests, graph,
-    logoMap: new Map(logoEntries.map(([name, slug]) => [name, `./assets/logos/${slug.endsWith('.png') ? slug : slug + '.svg'}`])),
+    logoMap: new Map(logoEntries.map(([name, slug]) => [name, './' + logoAssetPath(slug)])),
     fileExists: (p) => existing.has(p),
     artworkUrl: (entity) => graphArtwork(entity).url,
   });
