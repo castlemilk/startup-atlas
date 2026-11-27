@@ -1,0 +1,1480 @@
+{
+ "version": 1,
+ "source": "data/review-queue.json decided merge entries",
+ "cases": [
+  {
+   "queue_id": "merge:partner:accel-india",
+   "label": "same",
+   "subject": {
+    "id": "partner:accel-india",
+    "kind": "partner",
+    "name": "Accel India",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:accel",
+    "kind": "partner",
+    "name": "Accel",
+    "identity_key": "accel.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:acir",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:acir",
+    "kind": "partner",
+    "name": "acir",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:air",
+    "kind": "partner",
+    "name": "AIR",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.73,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:afore-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:afore-capital",
+    "kind": "partner",
+    "name": "Afore Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:afore",
+    "kind": "partner",
+    "name": "Afore",
+    "identity_key": "afore.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:airtree-ventures",
+   "label": "same",
+   "subject": {
+    "id": "partner:airtree-ventures",
+    "kind": "partner",
+    "name": "Airtree Ventures",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:airtree",
+    "kind": "partner",
+    "name": "Airtree",
+    "identity_key": "airtree.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:amity-innovation-incubator",
+   "label": "same",
+   "subject": {
+    "id": "partner:amity-innovation-incubator",
+    "kind": "partner",
+    "name": "Amity Innovation Incubator",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:amity",
+    "kind": "partner",
+    "name": "Amity",
+    "identity_key": "amity.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-25T00:25:09Z"
+  },
+  {
+   "queue_id": "merge:partner:amity-vc",
+   "label": "same",
+   "subject": {
+    "id": "partner:amity-vc",
+    "kind": "partner",
+    "name": "Amity Vc",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:amity",
+    "kind": "partner",
+    "name": "Amity",
+    "identity_key": "amity.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-25T00:25:15Z"
+  },
+  {
+   "queue_id": "merge:partner:balderton-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:balderton-capital",
+    "kind": "partner",
+    "name": "Balderton Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:balderton",
+    "kind": "partner",
+    "name": "Balderton",
+    "identity_key": "balderton.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:bessemer-india",
+   "label": "same",
+   "subject": {
+    "id": "partner:bessemer-india",
+    "kind": "partner",
+    "name": "Bessemer India",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:bessemer",
+    "kind": "partner",
+    "name": "Bessemer",
+    "identity_key": "bvp.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:bessemer-venture-partners",
+   "label": "same",
+   "subject": {
+    "id": "partner:bessemer-venture-partners",
+    "kind": "partner",
+    "name": "Bessemer Venture Partners",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:bessemer",
+    "kind": "partner",
+    "name": "Bessemer",
+    "identity_key": "bvp.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:blackbird",
+   "label": "same",
+   "subject": {
+    "id": "partner:blackbird",
+    "kind": "partner",
+    "name": "Blackbird",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:blackbird-ventures",
+    "kind": "partner",
+    "name": "Blackbird Ventures",
+    "identity_key": "blackbird.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:boost-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:boost-capital",
+    "kind": "partner",
+    "name": "Boost Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:boost-capital-partners",
+    "kind": "partner",
+    "name": "Boost Capital Partners",
+    "identity_key": "boostcp.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:boost-cp",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:boost-cp",
+    "kind": "partner",
+    "name": "boost cp",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:boost-vc",
+    "kind": "partner",
+    "name": "Boost VC",
+    "identity_key": "boost.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.74,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:box-group",
+   "label": "same",
+   "subject": {
+    "id": "partner:box-group",
+    "kind": "partner",
+    "name": "Box Group",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:boxgroup",
+    "kind": "partner",
+    "name": "Boxgroup",
+    "identity_key": "boxgroup.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.8,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:draper-startup-house",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:draper-startup-house",
+    "kind": "partner",
+    "name": "Draper Startup House",
+    "identity_key": "draperstartuphouse.com",
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:draper",
+    "kind": "partner",
+    "name": "draper",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-24T01:04:00Z"
+  },
+  {
+   "queue_id": "merge:partner:draper-vc",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:draper-vc",
+    "kind": "partner",
+    "name": "draper vc",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:draper",
+    "kind": "partner",
+    "name": "draper",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-24T01:04:00Z"
+  },
+  {
+   "queue_id": "merge:partner:draperb1",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:draperb1",
+    "kind": "partner",
+    "name": "draperb1",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:draper",
+    "kind": "partner",
+    "name": "draper",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "proposed_score": 0.73,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-24T01:04:00Z"
+  },
+  {
+   "queue_id": "merge:partner:f-prime-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:f-prime-capital",
+    "kind": "partner",
+    "name": "F Prime Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:f-prime",
+    "kind": "partner",
+    "name": "F Prime",
+    "identity_key": "fprimecapital.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:fika-vc",
+   "label": "same",
+   "subject": {
+    "id": "partner:fika-vc",
+    "kind": "partner",
+    "name": "Fika Vc",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:fika",
+    "kind": "partner",
+    "name": "Fika",
+    "identity_key": "fika.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:firstmark-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:firstmark-capital",
+    "kind": "partner",
+    "name": "Firstmark Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:firstmark",
+    "kind": "partner",
+    "name": "FirstMark",
+    "identity_key": "firstmark.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:focalvc",
+   "label": "same",
+   "subject": {
+    "id": "partner:focalvc",
+    "kind": "partner",
+    "name": "Focalvc",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:focal",
+    "kind": "partner",
+    "name": "Focal",
+    "identity_key": "focal.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.71,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:footwork-vc",
+   "label": "same",
+   "subject": {
+    "id": "partner:footwork-vc",
+    "kind": "partner",
+    "name": "Footwork Vc",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:footwork",
+    "kind": "partner",
+    "name": "Footwork",
+    "identity_key": "footwork.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:fractal-software",
+   "label": "same",
+   "subject": {
+    "id": "partner:fractal-software",
+    "kind": "partner",
+    "name": "Fractal Software",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:fractal",
+    "kind": "partner",
+    "name": "Fractal",
+    "identity_key": "fractalsoftware.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-25T00:25:21Z"
+  },
+  {
+   "queue_id": "merge:partner:galvanize",
+   "label": "same",
+   "subject": {
+    "id": "partner:galvanize",
+    "kind": "partner",
+    "name": "Galvanize",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:galvanizer",
+    "kind": "partner",
+    "name": "Galvanizer",
+    "identity_key": "galvanizer.io",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.81,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-25T00:25:04Z"
+  },
+  {
+   "queue_id": "merge:partner:groundupvc",
+   "label": "same",
+   "subject": {
+    "id": "partner:groundupvc",
+    "kind": "partner",
+    "name": "Groundupvc",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:ground-up",
+    "kind": "partner",
+    "name": "Ground Up",
+    "identity_key": "groundup.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.72,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:hashed-emergent",
+   "label": "same",
+   "subject": {
+    "id": "partner:hashed-emergent",
+    "kind": "partner",
+    "name": "Hashed Emergent",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:hashed",
+    "kind": "partner",
+    "name": "Hashed",
+    "identity_key": "hashed.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:hof-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:hof-capital",
+    "kind": "partner",
+    "name": "Hof Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:hof",
+    "kind": "partner",
+    "name": "HOF",
+    "identity_key": "hofcapital.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:ibb-ventures",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:ibb-ventures",
+    "kind": "partner",
+    "name": "ibb ventures",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:scribble-ventures",
+    "kind": "partner",
+    "name": "Scribble Ventures",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.7,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-26T21:38:42Z"
+  },
+  {
+   "queue_id": "merge:partner:khosla-ventures",
+   "label": "same",
+   "subject": {
+    "id": "partner:khosla-ventures",
+    "kind": "partner",
+    "name": "Khosla Ventures",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:khosla",
+    "kind": "partner",
+    "name": "Khosla",
+    "identity_key": "khoslaventures.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:lightspeed-venture-partners",
+   "label": "same",
+   "subject": {
+    "id": "partner:lightspeed-venture-partners",
+    "kind": "partner",
+    "name": "Lightspeed Venture Partners",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:lightspeed",
+    "kind": "partner",
+    "name": "Lightspeed",
+    "identity_key": "lsvp.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:liminal",
+   "label": "same",
+   "subject": {
+    "id": "partner:liminal",
+    "kind": "partner",
+    "name": "Liminal",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:liminal-venture-studio",
+    "kind": "partner",
+    "name": "Liminal Venture Studio",
+    "identity_key": "liminalstudio.co",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-25T00:25:26Z"
+  },
+  {
+   "queue_id": "merge:partner:masters-union-innovation-lab",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:masters-union-innovation-lab",
+    "kind": "partner",
+    "name": "masters union innovation lab",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:world-innovation-lab",
+    "kind": "partner",
+    "name": "World Innovation Lab",
+    "identity_key": "wilab.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.67,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-26T21:38:42Z"
+  },
+  {
+   "queue_id": "merge:partner:matrix-partners",
+   "label": "same",
+   "subject": {
+    "id": "partner:matrix-partners",
+    "kind": "partner",
+    "name": "Matrix Partners",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:matrix",
+    "kind": "partner",
+    "name": "Matrix",
+    "identity_key": "matrix.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:monk-s-hill-ventures",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:monk-s-hill-ventures",
+    "kind": "partner",
+    "name": "monk s hill ventures",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:sutter-hill-ventures",
+    "kind": "partner",
+    "name": "Sutter Hill Ventures",
+    "identity_key": "shv.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.67,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:mucker-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:mucker-capital",
+    "kind": "partner",
+    "name": "Mucker Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:mucker",
+    "kind": "partner",
+    "name": "Mucker",
+    "identity_key": "mucker.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:neo-ventures",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:neo-ventures",
+    "kind": "partner",
+    "name": "neo ventures",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:neo",
+    "kind": "partner",
+    "name": "Neo",
+    "identity_key": "neo.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:newtopia-vc",
+   "label": "same",
+   "subject": {
+    "id": "partner:newtopia-vc",
+    "kind": "partner",
+    "name": "Newtopia Vc",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:newtopia",
+    "kind": "partner",
+    "name": "Newtopia",
+    "identity_key": "newtopia.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:notable",
+   "label": "same",
+   "subject": {
+    "id": "partner:notable",
+    "kind": "partner",
+    "name": "Notable",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:notable-capital",
+    "kind": "partner",
+    "name": "Notable Capital",
+    "identity_key": "notablecap.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-25T00:25:33Z"
+  },
+  {
+   "queue_id": "merge:partner:pantera-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:pantera-capital",
+    "kind": "partner",
+    "name": "Pantera Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:pantera",
+    "kind": "partner",
+    "name": "Pantera",
+    "identity_key": "panteracapital.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:paralect",
+   "label": "same",
+   "subject": {
+    "id": "partner:paralect",
+    "kind": "partner",
+    "name": "Paralect",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:paralect-venture-studio",
+    "kind": "partner",
+    "name": "Paralect Venture Studio",
+    "identity_key": "paralect.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:pear-ventures",
+   "label": "same",
+   "subject": {
+    "id": "partner:pear-ventures",
+    "kind": "partner",
+    "name": "Pear Ventures",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:pear",
+    "kind": "partner",
+    "name": "Pear",
+    "identity_key": "pear.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:primary-ventures",
+   "label": "same",
+   "subject": {
+    "id": "partner:primary-ventures",
+    "kind": "partner",
+    "name": "Primary Ventures",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:primary",
+    "kind": "partner",
+    "name": "Primary",
+    "identity_key": "primary.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-25T00:25:38Z"
+  },
+  {
+   "queue_id": "merge:partner:rackhouse-vc",
+   "label": "same",
+   "subject": {
+    "id": "partner:rackhouse-vc",
+    "kind": "partner",
+    "name": "Rackhouse Vc",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:rackhouse",
+    "kind": "partner",
+    "name": "Rackhouse",
+    "identity_key": "rackhouse.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:scribble-ventures",
+   "label": "same",
+   "subject": {
+    "id": "partner:scribble-ventures",
+    "kind": "partner",
+    "name": "Scribble Ventures",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:scribble",
+    "kind": "partner",
+    "name": "Scribble",
+    "identity_key": "scribble.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:sequoia",
+   "label": "same",
+   "subject": {
+    "id": "partner:sequoia",
+    "kind": "partner",
+    "name": "Sequoia",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:sequoia-capital",
+    "kind": "partner",
+    "name": "Sequoia Capital",
+    "identity_key": "sequoiacap.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:sequoia-india",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:sequoia-india",
+    "kind": "partner",
+    "name": "sequoia india",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:sequoia",
+    "kind": "partner",
+    "name": "Sequoia",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-26T22:38:01Z"
+  },
+  {
+   "queue_id": "merge:partner:square-peg-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:square-peg-capital",
+    "kind": "partner",
+    "name": "Square Peg Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:square-peg",
+    "kind": "partner",
+    "name": "Square Peg",
+    "identity_key": "squarepeg.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:startuptn",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:startuptn",
+    "kind": "partner",
+    "name": "startuptn",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:startout",
+    "kind": "partner",
+    "name": "Startout",
+    "identity_key": "startout.org",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.7,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:stationf",
+   "label": "same",
+   "subject": {
+    "id": "partner:stationf",
+    "kind": "partner",
+    "name": "Stationf",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:station-f",
+    "kind": "partner",
+    "name": "Station F",
+    "identity_key": "stationf.co",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.8,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:sunflower-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:sunflower-capital",
+    "kind": "partner",
+    "name": "Sunflower Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:sunflower",
+    "kind": "partner",
+    "name": "Sunflower",
+    "identity_key": "sunflowercapital.co",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-25T00:25:43Z"
+  },
+  {
+   "queue_id": "merge:partner:uncork-capital",
+   "label": "same",
+   "subject": {
+    "id": "partner:uncork-capital",
+    "kind": "partner",
+    "name": "Uncork Capital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:uncork",
+    "kind": "partner",
+    "name": "Uncork",
+    "identity_key": "uncorkcapital.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:unshackled-vc",
+   "label": "same",
+   "subject": {
+    "id": "partner:unshackled-vc",
+    "kind": "partner",
+    "name": "Unshackled Vc",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:unshackled",
+    "kind": "partner",
+    "name": "Unshackled",
+    "identity_key": "unshackledvc.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:unshackled-ventures",
+   "label": "same",
+   "subject": {
+    "id": "partner:unshackled-ventures",
+    "kind": "partner",
+    "name": "Unshackled Ventures",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:unshackled",
+    "kind": "partner",
+    "name": "Unshackled",
+    "identity_key": "unshackledvc.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:up-west",
+   "label": "same",
+   "subject": {
+    "id": "partner:up-west",
+    "kind": "partner",
+    "name": "Up West",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:upwest",
+    "kind": "partner",
+    "name": "Upwest",
+    "identity_key": "upwest.vc",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.78,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:partner:uz-combinator",
+   "label": "distinct",
+   "subject": {
+    "id": "partner:uz-combinator",
+    "kind": "partner",
+    "name": "uz combinator",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "partner:y-combinator",
+    "kind": "partner",
+    "name": "Y Combinator",
+    "identity_key": "ycombinator.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.75,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:partner:velocity-digital",
+   "label": "same",
+   "subject": {
+    "id": "partner:velocity-digital",
+    "kind": "partner",
+    "name": "Velocity Digital",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:velocity",
+    "kind": "partner",
+    "name": "Velocity",
+    "identity_key": "velocity.africa",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-25T00:25:49Z"
+  },
+  {
+   "queue_id": "merge:partner:ycombinator",
+   "label": "same",
+   "subject": {
+    "id": "partner:ycombinator",
+    "kind": "partner",
+    "name": "Ycombinator",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "partner:y-combinator",
+    "kind": "partner",
+    "name": "Y Combinator",
+    "identity_key": "ycombinator.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.81,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:startup:andromeda",
+   "label": "same",
+   "subject": {
+    "id": "startup:andromeda",
+    "kind": "startup",
+    "name": "Andromeda",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "startup:andromeda-robotics",
+    "kind": "startup",
+    "name": "Andromeda Robotics",
+    "identity_key": "andromedarobotics.ai",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-26T21:38:42Z"
+  },
+  {
+   "queue_id": "merge:startup:bridge-the-gap-to-space-gilmour-space-australian-sovereign-rocket-and-satellite-company",
+   "label": "same",
+   "subject": {
+    "id": "startup:bridge-the-gap-to-space-gilmour-space-australian-sovereign-rocket-and-satellite-company",
+    "kind": "startup",
+    "name": "Bridge The Gap To Space Gilmour Space Australian Sovereign Rocket And Satellite Company",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "startup:gilmour-space",
+    "kind": "startup",
+    "name": "Gilmour Space",
+    "identity_key": "gspace.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:startup:decarbonise-the-planet-uluu-material-that-replaces-plasticbetter-for-the-planet-built-for-scale",
+   "label": "same",
+   "subject": {
+    "id": "startup:decarbonise-the-planet-uluu-material-that-replaces-plasticbetter-for-the-planet-built-for-scale",
+    "kind": "startup",
+    "name": "Decarbonise The Planet Uluu Material That Replaces Plasticbetter For The Planet Built For Scale",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "startup:uluu",
+    "kind": "startup",
+    "name": "ULUU",
+    "identity_key": "uluu.com.au",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:startup:enable-the-next-intelligence-leap-zabidou-the-ultra-vision-ai-platform-for-heavy-industries",
+   "label": "same",
+   "subject": {
+    "id": "startup:enable-the-next-intelligence-leap-zabidou-the-ultra-vision-ai-platform-for-heavy-industries",
+    "kind": "startup",
+    "name": "Enable The Next Intelligence Leap Zabidou The Ultra Vision Ai Platform For Heavy Industries",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "startup:zabidou",
+    "kind": "startup",
+    "name": "Zabidou",
+    "identity_key": "zabidou.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:startup:feed-10-billion-people-cauldron-industrial-scale-bio-manufacturing-unlocked",
+   "label": "same",
+   "subject": {
+    "id": "startup:feed-10-billion-people-cauldron-industrial-scale-bio-manufacturing-unlocked",
+    "kind": "startup",
+    "name": "Feed 10 Billion People Cauldron Industrial Scale Bio Manufacturing Unlocked",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "startup:cauldron",
+    "kind": "startup",
+    "name": "Cauldron",
+    "identity_key": "cauldronferm.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:startup:fleet-space-technologies",
+   "label": "distinct",
+   "subject": {
+    "id": "startup:fleet-space-technologies",
+    "kind": "startup",
+    "name": "fleet space technologies",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "startup:gilmour-space-technologies",
+    "kind": "startup",
+    "name": "Gilmour Space Technologies",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.68,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-26T21:38:42Z"
+  },
+  {
+   "queue_id": "merge:startup:gilmour-space-2",
+   "label": "same",
+   "subject": {
+    "id": "startup:gilmour-space-2",
+    "kind": "startup",
+    "name": "Gilmour Space 2",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "startup:gilmour-space",
+    "kind": "startup",
+    "name": "Gilmour Space",
+    "identity_key": "gspace.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-26T21:38:42Z"
+  },
+  {
+   "queue_id": "merge:startup:gilmour-space-technologies",
+   "label": "same",
+   "subject": {
+    "id": "startup:gilmour-space-technologies",
+    "kind": "startup",
+    "name": "Gilmour Space Technologies",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "startup:gilmour-space",
+    "kind": "startup",
+    "name": "Gilmour Space",
+    "identity_key": "gspace.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:startup:morse",
+   "label": "distinct",
+   "subject": {
+    "id": "startup:morse",
+    "kind": "startup",
+    "name": "morse",
+    "identity_key": null,
+    "name_source": "subject-key-slug"
+   },
+   "candidate": {
+    "id": "startup:morse-micro",
+    "kind": "startup",
+    "name": "Morse Micro",
+    "identity_key": "morsemicro.com",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:39Z"
+  },
+  {
+   "queue_id": "merge:startup:neuralindex-ai",
+   "label": "same",
+   "subject": {
+    "id": "startup:neuralindex-ai",
+    "kind": "startup",
+    "name": "Neuralindex Ai",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "startup:neuralindex",
+    "kind": "startup",
+    "name": "Neuralindex",
+    "identity_key": "neuralindex.ai",
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "dogbox-review-loop",
+   "decided_at": "2026-11-23T10:45:38Z"
+  },
+  {
+   "queue_id": "merge:startup:uluu",
+   "label": "same",
+   "subject": {
+    "id": "startup:uluu",
+    "kind": "startup",
+    "name": "ULUU",
+    "identity_key": "uluu.com.au",
+    "name_source": "identity-registry"
+   },
+   "candidate": {
+    "id": "startup:decarbonise-the-planet-uluu-material-that-replaces-plasticbetter-for-the-planet-built-for-scale",
+    "kind": "startup",
+    "name": "Decarbonise The Planet Uluu Material That Replaces Plasticbetter For The Planet Built For Scale",
+    "identity_key": null,
+    "name_source": "identity-registry"
+   },
+   "proposed_score": 0.89,
+   "proposed_basis": "name-similarity",
+   "decided_by": "agent-review",
+   "decided_at": "2026-11-26T21:38:42Z"
+  }
+ ]
+}
