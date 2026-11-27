@@ -840,8 +840,8 @@
     },
     {
       "attempts": 1,
-      "claimed_at": "2026-11-27T09:01:21Z",
-      "claimed_by": "main-agent-continue",
+      "claimed_at": null,
+      "claimed_by": null,
       "entity_ids": [
         "partner:ai-grant",
         "partner:ardent-ventures",
@@ -882,14 +882,22 @@
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": "2026-11-27T09:31:21Z",
+      "lease_expires_at": null,
       "max_attempts": 3,
       "mode": null,
-      "result": null,
+      "result": {
+        "result_ref": "scripts/crawl_gap_report.py partner-logos scope + data/coverage-exhausted.json on origin/main after PR #678",
+        "outcome": {
+          "scope": "partner-logos",
+          "finding": "27 of 36 partners now record logos on current main (coverage waves 1-3, PRs #653-#669). The 9 still uncovered (AI Grant, D1 Capital, Draper Startup House, Draper Venture Network, Elad Gil, Everyday Intelligence, Foundation, Founders Inc, Haystack) are all recorded evidence-exhausted. Zero open gaps in this unit."
+        },
+        "completed_by": "main-agent-continue",
+        "completed_at": "2026-11-27T09:01:32Z"
+      },
       "run_id": "selftest-2026-11-27",
       "scope_id": "partner-logos",
       "source_ids": null,
-      "status": "claimed",
+      "status": "done",
       "unit_id": "cwu-selftest-2026-11-27-027"
     },
     {
