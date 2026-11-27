@@ -2,8 +2,10 @@
 """Offline image review and private staging; no network, MCP or record writes.
 
 This prototype accepts a deliberately small PNG subset, a safety-checked SVG
-subset, and Pillow conversions from WebP, ICO, JPEG, GIF and non-strict PNG
-into strict PNG. It validates the complete PNG/zlib stream, not all image
+subset, and Pillow conversions from WebP, ICO, JPEG, GIF, AVIF and
+non-strict PNG into strict PNG. AVIF decoding is provided by the optional
+pillow-avif-plugin package (import name pillow_avif); it is required only
+for AVIF sources, exactly as Pillow itself is required for any conversion. It validates the complete PNG/zlib stream, not all image
 formats or every conceivable decoder vulnerability. Provenance is caller
 attestation: a digest binds its text, but does not authenticate the reviewer,
 prove identity, clear rights or authorize publication.
@@ -448,9 +450,9 @@ def validate_provenance(provenance, blob, now=None):
             _fail('VALIDATION_ERROR', 'conversion.original_sha256', 'Expected a lower-case SHA-256 hex digest.')
         if conversion['derivative_sha256'] != blob['sha256']:
             _fail('VALIDATION_ERROR', 'conversion.derivative_sha256', 'The derivative digest must match the validated bytes.')
-        _choice(conversion['original_format'], ('png', 'webp', 'ico', 'jpeg', 'gif'), 'conversion.original_format')
+        _choice(conversion['original_format'], ('png', 'webp', 'ico', 'jpeg', 'gif', 'avif'), 'conversion.original_format')
         _choice(conversion['transformation'], ('png-strict-reencode', 'webp-to-png', 'ico-to-png',
-                                               'jpeg-to-png', 'gif-to-png'), 'conversion.transformation')
+                                               'jpeg-to-png', 'gif-to-png', 'avif-to-png'), 'conversion.transformation')
         _text(conversion['tool'], 'conversion.tool', 200)
         if blob['mime'] != 'image/png':
             _fail('VALIDATION_ERROR', 'conversion', 'A conversion record belongs to a PNG derivative.')
@@ -475,9 +477,10 @@ def validate_asset(data, provenance, declared_mime='image/png', observed_mime=No
             'state': 'validated', 'published': False, 'manifest': manifest}
 
 
-_CONVERT_FORMATS = {'png': 'PNG', 'webp': 'WEBP', 'ico': 'ICO', 'jpeg': 'JPEG', 'gif': 'GIF'}
+_CONVERT_FORMATS = {'png': 'PNG', 'webp': 'WEBP', 'ico': 'ICO', 'jpeg': 'JPEG', 'gif': 'GIF',
+                    'avif': 'AVIF'}
 _CONVERT_TRANSFORMATIONS = {'png': 'png-strict-reencode', 'webp': 'webp-to-png', 'ico': 'ico-to-png',
-                            'jpeg': 'jpeg-to-png', 'gif': 'gif-to-png'}
+                            'jpeg': 'jpeg-to-png', 'gif': 'gif-to-png', 'avif': 'avif-to-png'}
 
 
 def _encode_png(image):
@@ -527,7 +530,17 @@ def convert_image(data, source_format):
     except ImportError:
         _fail('UNSUPPORTED_IMAGE', 'conversion', 'Pillow is required to convert raster images; it is not installed.')
     if source_format not in _CONVERT_FORMATS:
-        _fail('UNSUPPORTED_IMAGE', 'conversion', 'Conversion supports PNG, WebP, ICO, JPEG and GIF only; SVG needs a separately reviewed rasterizer.')
+        _fail('UNSUPPORTED_IMAGE', 'conversion', 'Conversion supports PNG, WebP, ICO, JPEG, GIF and AVIF only; SVG needs a separately reviewed rasterizer.')
+    tool = 'Pillow ' + Image.__version__
+    if source_format == 'avif':
+        # Pillow has no bundled AVIF codec; the plugin registers one on
+        # import. Require it explicitly so a missing plugin is reported as
+        # such, not as an undecodable source.
+        try:
+            import pillow_avif
+        except ImportError:
+            _fail('UNSUPPORTED_IMAGE', 'conversion', 'AVIF conversion requires the pillow-avif-plugin package (import name pillow_avif); it is not installed.')
+        tool += ' + pillow-avif-plugin ' + pillow_avif.__version__
     if not isinstance(data, (bytes, bytearray)):
         _fail('VALIDATION_ERROR', 'bytes', 'Supply binary bytes.')
     if not 0 < len(data) <= MAX_SOURCE_BYTES:
@@ -560,7 +573,7 @@ def convert_image(data, source_format):
               'source_width': source_width, 'source_height': source_height,
               'downscaled': downscaled,
               'transformation': _CONVERT_TRANSFORMATIONS[source_format],
-              'tool': 'Pillow ' + Image.__version__}
+              'tool': tool}
     return png_bytes, record
 
 

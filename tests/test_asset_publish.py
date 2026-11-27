@@ -25,6 +25,12 @@ ASSETS_SPEC = importlib.util.spec_from_file_location(
 assets = importlib.util.module_from_spec(ASSETS_SPEC)
 ASSETS_SPEC.loader.exec_module(assets)
 
+try:
+    import pillow_avif  # noqa: F401  (importing registers the AVIF codec with Pillow)
+    HAS_AVIF = True
+except ImportError:  # pragma: no cover - AVIF end-to-end tests skip without the plugin
+    HAS_AVIF = False
+
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 
 
@@ -372,6 +378,60 @@ class PublishTests(unittest.TestCase):
         self.assertLessEqual(len(png_bytes), assets.MAX_BYTES)
         blob = assets.inspect_png(png_bytes)
         self.assertEqual((blob["width"], blob["height"]), (24, 18))
+
+    @staticmethod
+    def small_avif(width=24, height=18):
+        import pillow_avif  # noqa: F401  (registers the AVIF codec with Pillow)
+        from PIL import Image
+        buffer = io.BytesIO()
+        Image.new("RGB", (width, height), (32, 96, 160)).save(buffer, format="AVIF")
+        return buffer.getvalue()
+
+    @unittest.skipUnless(HAS_AVIF, "pillow-avif-plugin is required for AVIF conversion tests")
+    def test_convert_avif_and_publishes_end_to_end(self):
+        data = self.small_avif()
+        png_bytes, record = assets.convert_image(data, "avif")
+        self.assertEqual(record["original_format"], "avif")
+        self.assertEqual(record["transformation"], "avif-to-png")
+        self.assertEqual(record["original_sha256"], hashlib.sha256(data).hexdigest())
+        self.assertEqual(record["derivative_sha256"], hashlib.sha256(png_bytes).hexdigest())
+        self.assertIs(record["downscaled"], False)
+        self.assertEqual((record["width"], record["height"]), (24, 18))
+        self.assertEqual(assets.inspect_png(png_bytes)["validation"], "png-rgb8-v0")
+        source = provenance(subject_id="person:sam-sample", role="portrait",
+                            source_kind="labelled-portrait",
+                            conversion={"original_sha256": record["original_sha256"],
+                                        "original_format": "avif",
+                                        "derivative_sha256": record["derivative_sha256"],
+                                        "transformation": "avif-to-png",
+                                        "tool": record["tool"]})
+        receipt = self.stage(data=png_bytes, source=source)
+        status, result = self.run_publish(receipt, "Sam Sample", "person:sam-sample", "portrait")
+        self.assertEqual(status, 0, result)
+        published = self.repo / "web" / "assets" / "portraits" / "sam-sample.png"
+        self.assertEqual(published.read_bytes(), png_bytes)
+        research = json.loads((self.repo / "data" / "startup-research.json").read_text())
+        self.assertEqual(research["startups"][0]["founders"][0]["photo_url"],
+                         "https://castlemilk.github.io/startup-atlas/assets/portraits/sam-sample.png")
+
+    @unittest.skipUnless(HAS_AVIF, "pillow-avif-plugin is required for AVIF conversion tests")
+    def test_avif_bytes_declared_as_another_format_are_rejected(self):
+        with self.assertRaises(assets.AssetError):
+            assets.convert_image(self.small_avif(), "webp")
+
+    def test_avif_conversion_provenance_is_accepted(self):
+        # Decoder-independent: the provenance gate accepts an avif-to-png
+        # conversion record whose derivative digest matches the staged PNG,
+        # whether or not the AVIF codec is installed.
+        blob = assets.inspect_png(self.data)
+        source = provenance()
+        source["conversion"] = {
+            "original_sha256": "a" * 64, "original_format": "avif",
+            "derivative_sha256": blob["sha256"], "transformation": "avif-to-png",
+            "tool": "Pillow 10.2.0 + pillow-avif-plugin 1.6.0"}
+        result = assets.validate_provenance(source, blob)
+        self.assertEqual(result["provenance"]["conversion"]["original_format"], "avif")
+        self.assertEqual(result["provenance"]["conversion"]["transformation"], "avif-to-png")
 
 
 if __name__ == "__main__":
