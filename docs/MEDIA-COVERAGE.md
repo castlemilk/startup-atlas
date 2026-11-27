@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-27 from data revision 817d3bb by `npm run report:media-coverage` (#85).
+Generated 2026-11-27 from data revision 6fa0e7a by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -12,10 +12,10 @@ resolves to an existing local file (no initials fallback).
 
 | Entity kind | Total | Discovered | Published | Downloaded | Approved | Rendered |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Startup logos | 55 | 29 (53%) | 29 (53%) | 29 (53%) | 29 (53%) | 32 (58%) |
+| Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 29 (53%) | 53 (96%) |
 | Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 8 (73%) | 10 (91%) |
 | Provider logos | 92 | 46 (50%) | 46 (50%) | 46 (50%) | 7 (8%) | 46 (50%) |
-| Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 0 (0%) | 28 (61%) |
+| Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 0 (0%) | 44 (96%) |
 | Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
 Public asset manifests on file: 143.
@@ -25,34 +25,39 @@ kind's own records do not carry.
 
 ## Startup logos
 
-<details><summary>Not downloaded (26)</summary>
+<details><summary>Not downloaded (2)</summary>
 
-- Canva — no source-attributed image reference
-- Fusion Books — no source-attributed image reference
-- Airwallex — no source-attributed image reference
-- Bugcrowd — no source-attributed image reference
-- Morse Micro — no source-attributed image reference
-- Tendor — no source-attributed image reference
-- Lockii — no source-attributed image reference
-- Draper — no source-attributed image reference
-- Gilmour Space — no source-attributed image reference
-- ULUU — no source-attributed image reference
-- Go1 — no source-attributed image reference
-- Cauldron — no source-attributed image reference
-- Wise — no source-attributed image reference
-- Revolut — no source-attributed image reference
-- UiPath — no source-attributed image reference
-- Eucalyptus — no source-attributed image reference
-- Loam Bio — no source-attributed image reference
 - PsiQuantum — no source-attributed image reference
-- PI.EXCHANGE — no source-attributed image reference
-- Wayve — no source-attributed image reference
-- Diraq — no source-attributed image reference
-- Emesent — no source-attributed image reference
 - Remi AI — no source-attributed image reference
-- Fluency — no source-attributed image reference
-- Andromeda Robotics — no source-attributed image reference
-- FloodMapp — no source-attributed image reference
+
+</details>
+
+<details><summary>Downloaded but not manifest-approved (24)</summary>
+
+- Canva — no public asset manifest
+- Fusion Books — no public asset manifest
+- Airwallex — no public asset manifest
+- Bugcrowd — no public asset manifest
+- Morse Micro — no public asset manifest
+- Tendor — no public asset manifest
+- Lockii — no public asset manifest
+- Draper — no public asset manifest
+- Gilmour Space — no public asset manifest
+- ULUU — no public asset manifest
+- Go1 — no public asset manifest
+- Cauldron — no public asset manifest
+- Wise — no public asset manifest
+- Revolut — no public asset manifest
+- UiPath — no public asset manifest
+- Eucalyptus — no public asset manifest
+- Loam Bio — no public asset manifest
+- PI.EXCHANGE — no public asset manifest
+- Wayve — no public asset manifest
+- Diraq — no public asset manifest
+- Emesent — no public asset manifest
+- Fluency — no public asset manifest
+- Andromeda Robotics — no public asset manifest
+- FloodMapp — no public asset manifest
 
 </details>
 
