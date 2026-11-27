@@ -7,6 +7,7 @@ import { join } from 'node:path';
 import {
   RELEASE_MANIFEST_NAME,
   buildReleaseManifest,
+  verifyReleaseManifest,
   writeReleaseManifest,
 } from '../scripts/release-manifest.mjs';
 
@@ -60,6 +61,48 @@ test('written manifest excludes itself and round-trips', async () => {
   // Rebuilding over a tree that already contains a manifest stays stable.
   const rebuilt = await buildReleaseManifest(dir, { sourceRevision: 'abc123' });
   assert.deepEqual(rebuilt, written);
+});
+
+test('verify accepts a tree that matches its manifest (rollback proof)', async () => {
+  const dir = await fixture();
+  const manifest = await writeReleaseManifest(dir, { sourceRevision: 'abc123' });
+  const result = await verifyReleaseManifest(dir, manifest);
+  assert.deepEqual(result, { ok: true, problems: [] });
+});
+
+test('verify detects a tampered file by sha256', async () => {
+  const dir = await fixture();
+  const manifest = await writeReleaseManifest(dir, { sourceRevision: 'abc123' });
+  await writeFile(join(dir, 'index.html'), '<h1>Changed</h1>\n');
+  const result = await verifyReleaseManifest(dir, manifest);
+  assert.equal(result.ok, false);
+  assert.ok(
+    result.problems.some(
+      (p) => p.includes('index.html') && (p.includes('sha256') || p.includes('size')),
+    ),
+    result.problems.join('; '),
+  );
+});
+
+test('verify detects missing and unexpected files', async () => {
+  const dir = await fixture();
+  const manifest = await writeReleaseManifest(dir, { sourceRevision: 'abc123' });
+  const { rm } = await import('node:fs/promises');
+  await rm(join(dir, 'data', 'atlas.sqlite'));
+  await writeFile(join(dir, 'stale.html'), 'leftover from a newer release\n');
+  const result = await verifyReleaseManifest(dir, manifest);
+  assert.equal(result.ok, false);
+  assert.ok(result.problems.some((p) => p === 'missing: data/atlas.sqlite'));
+  assert.ok(result.problems.some((p) => p === 'unexpected: stale.html'));
+});
+
+test('verify rejects a manifest whose counts disagree with its entries', async () => {
+  const dir = await fixture();
+  const manifest = await writeReleaseManifest(dir, { sourceRevision: 'abc123' });
+  manifest.counts = { files: 99, bytes: 99 };
+  const result = await verifyReleaseManifest(dir, manifest);
+  assert.equal(result.ok, false);
+  assert.ok(result.problems.some((p) => p.includes('counts')));
 });
 
 test('package.json runs the manifest step last in both build scripts', async () => {
