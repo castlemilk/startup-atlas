@@ -272,7 +272,13 @@ def build_graph(profiles, leads, reviewed, catalogue, research, identity=None,
     for name in leads:
         record = reviewed.get(name, {})
 
-        add('partner', name, summary=record.get('description',''), website=record.get('website',''), source=record.get('source',''))
+        partner_id = add('partner', name, summary=record.get('description',''), website=record.get('website',''), source=record.get('source',''))
+        # Optional reviewed media fields (coverage programme): a partner
+        # record's logo surfaces on the node only with its source, the
+        # same both-or-neither rule as catalogue companies below.
+        if record.get('logo') and record.get('logo_source'):
+            nodes[partner_id]['logo'] = record['logo']
+            nodes[partner_id]['logo_source'] = record['logo_source']
     for provider in research.get('technology_providers', []):
         add('provider', provider['name'], summary=provider['description'], website=provider['website'],
             source=provider['source'], logo=provider.get('logo',''), logo_source=provider.get('logo_source',''))
