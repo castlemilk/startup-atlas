@@ -514,9 +514,9 @@
       "unit_id": "cwu-selftest-2026-11-27-017"
     },
     {
-      "attempts": 0,
-      "claimed_at": null,
-      "claimed_by": null,
+      "attempts": 1,
+      "claimed_at": "2026-11-27T08:58:55Z",
+      "claimed_by": "main-agent-continue",
       "entity_ids": [
         "person:paul-bassat--square-peg",
         "person:paul-naphtali--rampersand",
@@ -527,14 +527,14 @@
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": null,
+      "lease_expires_at": "2026-11-27T09:28:55Z",
       "max_attempts": 3,
       "mode": null,
       "result": null,
       "run_id": "selftest-2026-11-27",
       "scope_id": "person-socials",
       "source_ids": null,
-      "status": "pending",
+      "status": "claimed",
       "unit_id": "cwu-selftest-2026-11-27-018"
     },
     {
