@@ -579,8 +579,8 @@
     },
     {
       "attempts": 1,
-      "claimed_at": "2026-11-27T08:59:27Z",
-      "claimed_by": "main-agent-continue",
+      "claimed_at": null,
+      "claimed_by": null,
       "entity_ids": [
         "founder:draper:dexter-todd",
         "founder:draper:oliver-bagin",
@@ -599,14 +599,22 @@
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": "2026-11-27T09:29:27Z",
+      "lease_expires_at": null,
       "max_attempts": 3,
       "mode": null,
-      "result": null,
+      "result": {
+        "result_ref": "scripts/crawl_gap_report.py founder-photos scope + data/coverage-exhausted.json on origin/main after PR #678",
+        "outcome": {
+          "scope": "founder-photos",
+          "finding": "6 of 14 founder rows now record photos on current main (Todd, Bagin, Gearside, Toward, Barnes, Webb). The 8 still uncovered (Mitko, Kleist, Hor, Hood, Fan, Zhang, Bertron, Oly) are all recorded evidence-exhausted. No open work remains in this unit."
+        },
+        "completed_by": "main-agent-continue",
+        "completed_at": "2026-11-27T08:59:38Z"
+      },
       "run_id": "selftest-2026-11-27",
       "scope_id": "founder-photos",
       "source_ids": null,
-      "status": "claimed",
+      "status": "done",
       "unit_id": "cwu-selftest-2026-11-27-020"
     },
     {
