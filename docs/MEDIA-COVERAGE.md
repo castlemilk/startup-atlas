@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-26 from data revision 72c441f by `npm run report:media-coverage` (#85).
+Generated 2026-11-27 from data revision 817d3bb by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -16,9 +16,9 @@ resolves to an existing local file (no initials fallback).
 | Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 8 (73%) | 10 (91%) |
 | Provider logos | 92 | 46 (50%) | 46 (50%) | 46 (50%) | 7 (8%) | 46 (50%) |
 | Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 0 (0%) | 28 (61%) |
-| Portraits (founders & partner people) | 141 | 28 (20%) | 22 (16%) | 22 (16%) | 22 (16%) | 24 (17%) |
+| Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
-Public asset manifests on file: 69.
+Public asset manifests on file: 143.
 Rendered can exceed a kind's own discovered count where the graph carries an image
 reference from another record (for example a partner portfolio listing) that the
 kind's own records do not carry.
@@ -228,7 +228,7 @@ kind's own records do not carry.
 
 ## Portraits (founders & partner people)
 
-<details><summary>Not downloaded (119)</summary>
+<details><summary>Not downloaded (48)</summary>
 
 - Elicia McDonald (Airtree) — no source-attributed image reference
 - Craig Blair (Airtree) — no source-attributed image reference
@@ -246,108 +246,37 @@ kind's own records do not carry.
 - Phoebe Pincus (Startmate) — reference is remote-only, no local asset published
 - Ben Simai (Startmate) — reference is remote-only, no local asset published
 - Emma Grife (Startmate) — reference is remote-only, no local asset published
-- Melanie Perkins (Fusion Books) — no source-attributed image reference
-- Cliff Obrecht (Fusion Books) — no source-attributed image reference
-- Jack Zhang (Airwallex) — no source-attributed image reference
-- Lucy Liu (Airwallex) — no source-attributed image reference
 - Chris Raethke (Bugcrowd) — no source-attributed image reference
+- Sergei Belokamen (Bugcrowd) — no source-attributed image reference
 - Michael De Nil (Morse Micro) — reference is remote-only, no local asset published
 - Andrew Terry (Morse Micro) — reference is remote-only, no local asset published
-- Lance Co Ting Keh (T:0) — no source-attributed image reference
-- Nathan Challen (Ascenda) — no source-attributed image reference
-- Hamada Els (Ascenda) — no source-attributed image reference
-- Jamie Brownlee (Brainwaves) — no source-attributed image reference
-- Ben Crawford (Brainwaves) — no source-attributed image reference
 - Tom McKenzie (Brainwaves) — no source-attributed image reference
-- Chirag Babu (cascayd) — no source-attributed image reference
-- Will O’Brien (cascayd) — no source-attributed image reference
-- Maria Faleeva (CheckGen) — no source-attributed image reference
 - Oliver Wright (CheckGen) — no source-attributed image reference
-- Sai Naicker (CrossCourtAI) — no source-attributed image reference
-- James Oliver (CrossCourtAI) — no source-attributed image reference
-- Randula Ariyawanse (CrossCourtAI) — no source-attributed image reference
 - Naveed Nekoo (Neuralindex) — no source-attributed image reference
 - Mat Heywood (Neuralindex) — no source-attributed image reference
 - Son Duong (Neuralindex) — no source-attributed image reference
+- Manishankar R (Guin) — no source-attributed image reference
 - Jason Cai (Tendor) — no source-attributed image reference
-- Anthony See (FlowGo) — no source-attributed image reference
 - Jason Hor (FlowGo) — no source-attributed image reference
 - Ivy Fan (iBnkVault) — no source-attributed image reference
 - Yi Zhang (iBnkVault) — no source-attributed image reference
-- Bodhi Hawken (Lockii) — no source-attributed image reference
 - Cordelia King (Superstat) — no source-attributed image reference
 - Kai Bloomfield (Superstat) — no source-attributed image reference
 - Sam Hung (Superstat) — no source-attributed image reference
-- Dexter Todd (Draper) — no source-attributed image reference
-- Oliver Bagin (Draper) — no source-attributed image reference
-- Ben Abbatangelo (Draper) — no source-attributed image reference
-- Nick Zeniou (Thermal Dawn) — no source-attributed image reference
 - Linda Zeniou (Thermal Dawn) — no source-attributed image reference
 - Matthew Eyles (Vixia) — no source-attributed image reference
 - Storm Drury (Vixia) — no source-attributed image reference
-- Chris Toward (Evatto) — no source-attributed image reference
-- Cibby Pulikkaseril (Zabidou) — no source-attributed image reference
-- Adam Gilmour (Gilmour Space) — no source-attributed image reference
-- James Gilmour (Gilmour Space) — no source-attributed image reference
-- Julia Reisser (ULUU) — no source-attributed image reference
-- Michael Kingsbury (ULUU) — no source-attributed image reference
-- Vu Tran (Go1) — no source-attributed image reference
-- Andrew Barnes (Go1) — no source-attributed image reference
-- Chris Eigeland (Go1) — no source-attributed image reference
 - Chris Hood (Go1) — no source-attributed image reference
-- Didier Elzinga (Culture Amp) — no source-attributed image reference
-- Doug English (Culture Amp) — no source-attributed image reference
-- Jon Williams (Culture Amp) — no source-attributed image reference
-- Rod Hamilton (Culture Amp) — no source-attributed image reference
-- Andrew Horsley (Quantum Brilliance) — no source-attributed image reference
-- Mark Luo (Quantum Brilliance) — no source-attributed image reference
-- Michele Stansfield (Cauldron) — no source-attributed image reference
-- David Kestenbaum (Cauldron) — no source-attributed image reference
-- Olympia Yarger (Goterra) — no source-attributed image reference
-- Kristo Käärmann (Wise) — no source-attributed image reference
 - Taavet Hinrikus (Wise) — no source-attributed image reference
-- Nik Storonsky (Revolut) — no source-attributed image reference
-- Vlad Yatsenko (Revolut) — no source-attributed image reference
-- Marius Tirca (UiPath) — no source-attributed image reference
-- Victor Riparbelli (Synthesia) — no source-attributed image reference
-- Steffen Tjerrild (Synthesia) — no source-attributed image reference
-- Lourdes Agapito (Synthesia) — no source-attributed image reference
-- Matthias Niessner (Synthesia) — no source-attributed image reference
-- Tim Doyle (Eucalyptus) — no source-attributed image reference
-- Charlie Gearside (Eucalyptus) — no source-attributed image reference
 - Benny Kleist (Eucalyptus) — no source-attributed image reference
 - Alexey Mitko (Eucalyptus) — no source-attributed image reference
 - Numa Bertron (JigSpace) — no source-attributed image reference
-- Zac Duff (JigSpace) — no source-attributed image reference
-- Guy Hudson (Loam Bio) — no source-attributed image reference
-- Tegan Nock (Loam Bio) — no source-attributed image reference
-- Guy Webb (Loam Bio) — no source-attributed image reference
-- Jeremy O’Brien (PsiQuantum) — no source-attributed image reference
-- Pete Shadbolt (PsiQuantum) — no source-attributed image reference
-- Mark Thompson (PsiQuantum) — no source-attributed image reference
-- Terry Rudolph (PsiQuantum) — no source-attributed image reference
-- Sam Kroonenburg (Cuttable) — no source-attributed image reference
+- Frank Oly (Loam Bio) — no source-attributed image reference
 - Jack White (Cuttable) — no source-attributed image reference
-- Christopher Durre (Strongroom AI) — no source-attributed image reference
 - Kieran Start (Strongroom AI) — no source-attributed image reference
-- Max Mito (Strongroom AI) — no source-attributed image reference
-- Harrison Crowe-Maxwell (Puralink) — no source-attributed image reference
+- Mark Feldschuh (Strongroom AI) — no source-attributed image reference
 - Thien Long Tran (Puralink) — no source-attributed image reference
-- Shyeon Delnawaz (Puralink) — no source-attributed image reference
 - Quan Pham (PI.EXCHANGE) — no source-attributed image reference
-- Alex Kendall (Wayve) — no source-attributed image reference
 - Amar Shah (Wayve) — no source-attributed image reference
-- Andrew Dzurak (Diraq) — no source-attributed image reference
-- Stefan Hrabar (Emesent) — no source-attributed image reference
-- Farid Kendoul (Emesent) — no source-attributed image reference
-- Craig Benson (Skykraft) — no source-attributed image reference
-- Douglas Griffin (Skykraft) — no source-attributed image reference
-- Simon Olsen (Arkeus) — no source-attributed image reference
-- Jonathan Nebauer (Arkeus) — no source-attributed image reference
-- Finnlay Morcombe (Fluency) — no source-attributed image reference
-- Oliver Farnill (Fluency) — no source-attributed image reference
-- Grace Brown (Andromeda Robotics) — no source-attributed image reference
-- Juliette Murphy (FloodMapp) — no source-attributed image reference
-- Ryan Prosser (FloodMapp) — no source-attributed image reference
 
 </details>
