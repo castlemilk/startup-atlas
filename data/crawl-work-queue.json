@@ -1,22 +1,22 @@
 {
   "units": [
     {
-      "attempts": 0,
-      "claimed_at": null,
-      "claimed_by": null,
+      "attempts": 1,
+      "claimed_at": "2026-11-27T03:48:52Z",
+      "claimed_by": "main-agent-selftest",
       "entity_ids": [
         "startup:fusion-books"
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": null,
+      "lease_expires_at": "2026-11-27T04:18:52Z",
       "max_attempts": 3,
       "mode": null,
       "result": null,
       "run_id": "selftest-2026-11-27",
       "scope_id": "startup-funding",
       "source_ids": null,
-      "status": "pending",
+      "status": "claimed",
       "unit_id": "cwu-selftest-2026-11-27-001"
     },
     {
