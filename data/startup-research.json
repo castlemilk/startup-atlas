@@ -426,6 +426,10 @@
           "amount": 80000000,
           "currency": "USD",
           "source": "https://www.airwallex.com/global/newsroom/series-b-closing-80m",
+          "lead_investors": [
+            "Tencent",
+            "Sequoia China"
+          ],
           "stage_normalised": "Series B",
           "participants": [
             "Tencent",
@@ -464,6 +468,7 @@
           "currency": "USD",
           "note": "Initial Series D tranche; later extensions are recorded separately.",
           "source": "https://www.airwallex.com/global/newsroom/airwallex-closes-usd160m-in-record-fundraising-round-to-date",
+          "lead_investor": "ANZi Ventures",
           "stage_normalised": "Series D",
           "participants": [
             "ANZi Ventures",
@@ -3106,6 +3111,7 @@
           "stage": "Seed",
           "announced_on": "2022-11-15",
           "source": "https://www.uluu.com.au/press/uluu-closes-8-6m-seed-round-with-some-pretty-special-investors",
+          "lead_investor": "Main Sequence",
           "note": "Uluu’s press archive dates the announcement to 15 November 2022. Uluu reported “$8.6 million” with currency unspecified. The issuer named Main Sequence, Possible Ventures, Alberts, Mistletoe, Inc., Karlie Kloss, Kevin Parker, Melvin Benn, Nathan McLay and Neil Perry as participants. The legal closing date remains unverified.",
           "stage_normalised": "Seed",
           "participants": [
@@ -3721,6 +3727,11 @@
           "currency": "USD",
           "note": "The announcement names Main Sequence, In-Q-Tel (IQT), Intervalley Ventures, National Reconstruction Fund Corporation (NRFC), Breakthrough Victoria (BV), Alium Capital Management, Investible and Jelix Ventures as investors. This is a reported participant list, not an exhaustive list or a statement of lead status. Investor names are not resolved to canonical graph identities.",
           "source": "https://quantumbrilliance.com/news/quantum-brilliance-raises-usd-20-million-in-series-a-funding-round/",
+          "lead_investors": [
+            "Main Sequence",
+            "In-Q-Tel",
+            "Intervalley Ventures"
+          ],
           "stage_normalised": "Series A",
           "participants": [
             "Main Sequence",
@@ -3759,6 +3770,7 @@
           "amount": 18000000,
           "currency": "USD",
           "source": "https://venturebeat.com/programming-development/quantum-brilliance-snags-18m-funding-on-synthetic-diamond-road-to-quantum-chips",
+          "lead_investor": "Breakthrough Victoria",
           "note": "US$18 million round reported by VentureBeat in February 2023; stage and exact announcement day not stated in the report.",
           "stage_normalised": "Unknown"
         },
@@ -4134,6 +4146,7 @@
           "amount": 1300000,
           "currency": "USD",
           "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "lead_investor": "IA Ventures",
           "note": "Seed round raised in 2012 (no month stated in the cited coverage). Consortium: IA Ventures, Index Ventures, IJNR Ventures and NYPPE, with angel investors Max Levchin, David Yu and Errol Damelin. No lead investor is named in the source.",
           "stage_normalised": "Seed",
           "participants": [
@@ -4180,6 +4193,7 @@
           "valuation": 1100000000,
           "valuation_currency": "USD",
           "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "lead_investor": "Baillie Gifford",
           "note": "Raised in May 2016 at a US$1.1 billion valuation, taking cumulative funding to US$117 million. The cited coverage does not name a lead investor. Month precision only, so no announced_on day is recorded.",
           "stage_normalised": "Series D"
         },
@@ -4209,6 +4223,11 @@
           "valuation": 3500000000,
           "valuation_currency": "USD",
           "source": "https://en.wikipedia.org/wiki/TransferWise",
+          "lead_investors": [
+            "Lead Edge Capital",
+            "Lone Pine Capital",
+            "Vitruvian Partners"
+          ],
           "note": "Secondary investment round in May 2019 at a US$3.5 billion valuation. This was a secondary round — existing shares changing hands, not new primary capital raised by the company. The cited coverage names no lead investor or participating firms for this round. Month precision only in the cited coverage, so no announced_on day is recorded.",
           "stage_normalised": "Secondary"
         },
@@ -4506,6 +4525,10 @@
           "announced_on": "2021-07-15",
           "amount_text": "$800 million; dollar currency not explicit in inspected source",
           "source": "https://www.balderton.com/news/revolut-valued-at-33bn-after-raising-800m/",
+          "lead_investors": [
+            "SoftBank Vision Fund 2",
+            "Tiger Global Management"
+          ],
           "note": "Balderton reports the round and $33bn valuation. Currency is not normalized. Balderton's earlier investment does not establish its participation in this round. Two named leads only; no exhaustive list. Named participants: SoftBank Vision Fund 2 (lead), Tiger Global Management (lead). Identities remain unresolved.",
           "stage_normalised": "Series E",
           "participants": [
@@ -4681,6 +4704,10 @@
           "announced_on": "2021-02-01",
           "amount_text": "$750 million; dollar currency not explicit in inspected release",
           "source": "https://ir.uipath.com/news/detail/8/uipath-closes-750-million-in-series-f-funding",
+          "lead_investors": [
+            "Alkeon Capital",
+            "Coatue"
+          ],
           "note": "Release says the round has closed and reports a $35bn post-money valuation. Exact close date and dollar currency are not separately normalized. Named investors include advised funds/accounts, not necessarily the adviser itself. Named participants: Alkeon Capital (lead), Coatue (lead), Altimeter Capital (participant), Dragoneer (participant), IVP (participant), Sequoia (participant), Tiger Global (participant), Funds and accounts advised by T. Rowe Price Associates, Inc. (participant). Identities remain unresolved.",
           "stage_normalised": "Series F",
           "participants": [
@@ -5373,6 +5400,10 @@
           "currency": "AUD",
           "note": "Company-announced Series B; exact closing date and valuation not disclosed. The same round is reported as AUD34 million and US$22.4 million, not two events or an assistant-derived FX conversion. Participants named by the company: Gates Foundation, Flu Lab (previously announced contribution included in this round), Brandon Capital, Uniseed and Stoic Venture Capital. No lead is identified; participant identities remain unresolved. Separate from the non-equity grants already recorded.",
           "source": "https://enarespiratory.com/ena-respiratory-attracts-us22-4m-au34m-to-fund-phase-ii-development-of-inna-051-nasal-spray-designed-to-protect-against-symptomatic-viral-respiratory-infections/",
+          "lead_investors": [
+            "Brandon Capital",
+            "Uniseed"
+          ],
           "stage_normalised": "Series B",
           "participants": [
             "Gates Foundation",
@@ -6486,6 +6517,7 @@
           "stage": "Seed",
           "announced_on": "2018-07-10",
           "source": "https://q-ctrl.com/blog/sydneys-q-ctrl-wins-backing-from-global-technology-funds",
+          "lead_investor": "Main Sequence",
           "note": "Q-CTRL reported completion of the Seed round begun in 2017 by Main Sequence Ventures. It identified Horizons Ventures as an initial backer that added capital at completion, alongside contributions from Sequoia China and DCVC (Data Collective). The report describes the seed investment in qualitative terms.",
           "stage_normalised": "Seed",
           "participants": [
