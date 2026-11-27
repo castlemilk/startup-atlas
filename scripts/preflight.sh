@@ -159,7 +159,7 @@ check_range() {
     fi
   fi
   if lane web; then
-    run node --test tests/fuzzy-search.test.js tests/graph-layout.test.js tests/treemap.test.js tests/analytics.test.js tests/build-modules.test.js tests/accessibility.test.js tests/browser-transport.test.js
+    run node --test tests/fuzzy-search.test.js tests/graph-layout.test.js tests/treemap.test.js tests/analytics.test.js tests/build-modules.test.js tests/accessibility.test.js tests/browser-transport.test.js tests/release-manifest.test.js
   fi
   if lane collection; then
     run python3 -m unittest discover -s tests -p 'test_crawl*.py'
