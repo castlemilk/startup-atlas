@@ -82,6 +82,19 @@ function seedGithub() {
     ],
   };
   githubFiles.set('data/review-queue.json', { text: JSON.stringify(queue, null, 2) + '\n', sha: 'sha-1' });
+  githubFiles.set('data/crawl-work-queue.json', {
+    text: JSON.stringify({
+      version: 1,
+      units: [1, 2].map(i => ({
+        unit_id: `cwu-run-t-${String(i).padStart(3, '0')}`, run_id: 'run-t',
+        kind: 'coverage', mode: null, scope_id: 'founder-photos',
+        source_ids: null, entity_ids: [`founder:x:p${i}`],
+        status: 'pending', claimed_by: null, claimed_at: null, lease_expires_at: null,
+        attempts: 0, max_attempts: 3, result: null, last_error: null,
+      })),
+    }, null, 2) + '\n',
+    sha: 'sha-cwq',
+  });
   githubFiles.set('data/review-gating.json', {
     text: JSON.stringify({
       version: 1, enabled: true, decided_by: 'auto-gate',
@@ -229,13 +242,13 @@ test('the admin account gets exactly the admin tools, disjoint from /mcp', async
   const client = await connect(t, app.base, '/mcp/admin', adminToken());
   const { tools } = await client.listTools();
   assert.deepEqual(tools.map(tool => tool.name).sort(), ADMIN_TOOLS.map(tool => tool.name).sort());
-  assert.equal(tools.length, 8);
+  assert.equal(tools.length, 13);
   assert.ok(tools.every(tool => tool.name.startsWith('atlas_admin_')));
 
   const health = await (await fetch(`${app.base}/health`)).json();
   assert.equal(health.tools, 18);
   assert.equal(health.adminMcpEnabled, true);
-  assert.equal(health.adminTools, 8);
+  assert.equal(health.adminTools, 13);
 });
 
 test('queue listing filters by status and band and carries gating verdicts', async t => {
@@ -480,4 +493,43 @@ test('#473 regression: /mcp/admin is stateless — no session id is issued, and 
   // Stateless surface: no server stream to GET and no session to DELETE.
   const get = await fetch(`${app.base}/mcp/admin`, { method: 'GET', headers });
   assert.equal(get.status, 405);
+});
+
+test('crawl queue: two agents claim different units, complete is idempotent, status counts', async t => {
+  seedGithub();
+  const clientA = await connect(t, app.base, '/mcp/admin', adminToken());
+  const clientB = await connect(t, app.base, '/mcp/admin', adminToken());
+
+  const claimA = decoded(await clientA.callTool({ name: 'atlas_admin_crawl_claim', arguments: { agent_id: 'agent-a' } }));
+  const claimB = decoded(await clientB.callTool({ name: 'atlas_admin_crawl_claim', arguments: { agent_id: 'agent-b' } }));
+  assert.equal(claimA.ok, true);
+  assert.notEqual(claimA.unit.unit_id, claimB.unit.unit_id);
+  assert.equal(claimA.unit.claimed_by, 'agent-a');
+
+  const claimC = decoded(await clientA.callTool({ name: 'atlas_admin_crawl_claim', arguments: { agent_id: 'agent-c' } }));
+  assert.equal(claimC.unit, null);
+
+  const wrongHolder = await clientB.callTool({ name: 'atlas_admin_crawl_complete', arguments: { agent_id: 'agent-b', unit_id: claimA.unit.unit_id, result_ref: 'research/crawl/latest-portraits.json' } });
+  assert.equal(wrongHolder.isError, true);
+  assert.equal(decoded(wrongHolder).code, 'NOT_HELD');
+
+  const beaten = decoded(await clientA.callTool({ name: 'atlas_admin_crawl_heartbeat', arguments: { agent_id: 'agent-a', unit_id: claimA.unit.unit_id } }));
+  assert.equal(beaten.ok, true);
+
+  const completed = decoded(await clientA.callTool({ name: 'atlas_admin_crawl_complete', arguments: { agent_id: 'agent-a', unit_id: claimA.unit.unit_id, result_ref: 'research/crawl/latest-portraits.json', outcome: { candidates: 5 } } }));
+  assert.equal(completed.already_done, false);
+  const repeated = decoded(await clientA.callTool({ name: 'atlas_admin_crawl_complete', arguments: { agent_id: 'agent-a', unit_id: claimA.unit.unit_id, result_ref: 'research/crawl/latest-portraits.json' } }));
+  assert.equal(repeated.already_done, true);
+
+  const failed = decoded(await clientB.callTool({ name: 'atlas_admin_crawl_fail', arguments: { agent_id: 'agent-b', unit_id: claimB.unit.unit_id, error: 'source unreachable' } }));
+  assert.equal(failed.unit.status, 'pending');
+  assert.equal(failed.unit.last_error, 'source unreachable');
+
+  const status = decoded(await clientA.callTool({ name: 'atlas_admin_crawl_status', arguments: {} }));
+  assert.equal(status.total, 2);
+  assert.equal(status.by_status.done, 1);
+  assert.equal(status.by_status.pending, 1);
+
+  const stored = JSON.parse(githubFiles.get('data/crawl-work-queue.json').text);
+  assert.equal(stored.units.find(unit => unit.unit_id === claimA.unit.unit_id).result.completed_by, 'agent-a');
 });
