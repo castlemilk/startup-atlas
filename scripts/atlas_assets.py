@@ -41,6 +41,13 @@ import zlib
 
 
 MAX_BYTES = 1_000_000
+# Conversion accepts larger source files than the staged-asset cap: a
+# high-resolution original may exceed MAX_BYTES while its strict-PNG
+# derivative, downscaled as needed, must still fit within MAX_BYTES.
+MAX_SOURCE_BYTES = 32_000_000
+# First downscale target for an over-cap derivative, on the long edge; the
+# ladder then steps down until the derivative fits or cannot shrink further.
+DOWNSCALE_LONG_EDGES = (512, 384, 256, 192, 128, 96, 64, 48, 32, 24, 16, 8, 4, 2, 1)
 MAX_DIMENSION = 4096
 MAX_PIXELS = 16_000_000
 MAX_CHUNKS = 256
@@ -473,14 +480,47 @@ _CONVERT_TRANSFORMATIONS = {'png': 'png-strict-reencode', 'webp': 'webp-to-png',
                             'jpeg': 'jpeg-to-png', 'gif': 'gif-to-png'}
 
 
+def _encode_png(image):
+    buffer = io.BytesIO()
+    image.save(buffer, format='PNG')
+    return buffer.getvalue()
+
+
+def _fit_within_byte_cap(image, resample):
+    """Encode as strict PNG, downscaling progressively until the bytes fit.
+
+    The first encode preserves the decoded pixels exactly. Only when it
+    exceeds MAX_BYTES is the image resized — first to a 512px long edge,
+    then down the DOWNSCALE_LONG_EDGES ladder — always from the decoded
+    original, so resampling never compounds. Returns (png_bytes, downscaled).
+    """
+    png_bytes = _encode_png(image)
+    if len(png_bytes) <= MAX_BYTES:
+        return png_bytes, False
+    long_edge = max(image.size)
+    for target in DOWNSCALE_LONG_EDGES:
+        if target >= long_edge:
+            continue
+        scale = target / long_edge
+        size = (max(1, round(image.size[0] * scale)), max(1, round(image.size[1] * scale)))
+        png_bytes = _encode_png(image.resize(size, resample))
+        if len(png_bytes) <= MAX_BYTES:
+            return png_bytes, True
+    _fail('INVALID_PNG', 'bytes', f'File must contain 1 to {MAX_BYTES} bytes.')
+
+
 def convert_image(data, source_format):
     """Decode a raster image and re-encode it as strict PNG.
 
     Pixels are preserved; the container is rebuilt with only IHDR, IDAT and
     IEND chunks, so real-world PNGs with ancillary chunks or interlacing pass
-    the strict validator. Returns (png_bytes, conversion_record) where the
-    record binds the original digest to the derivative digest. SVG is rejected:
-    this helper has no approved SVG rasterizer.
+    the strict validator. When the re-encoded PNG would exceed the staged
+    asset byte cap, the derivative is downscaled progressively until it fits
+    (see _fit_within_byte_cap); the record then reports downscaled=True with
+    the source dimensions alongside the derivative dimensions. Returns
+    (png_bytes, conversion_record) where the record binds the original digest
+    to the derivative digest. SVG is rejected: this helper has no approved
+    SVG rasterizer.
     """
     try:
         from PIL import Image
@@ -488,7 +528,11 @@ def convert_image(data, source_format):
         _fail('UNSUPPORTED_IMAGE', 'conversion', 'Pillow is required to convert raster images; it is not installed.')
     if source_format not in _CONVERT_FORMATS:
         _fail('UNSUPPORTED_IMAGE', 'conversion', 'Conversion supports PNG, WebP, ICO, JPEG and GIF only; SVG needs a separately reviewed rasterizer.')
-    data = _image_bytes(data)
+    if not isinstance(data, (bytes, bytearray)):
+        _fail('VALIDATION_ERROR', 'bytes', 'Supply binary bytes.')
+    if not 0 < len(data) <= MAX_SOURCE_BYTES:
+        _fail('INVALID_IMAGE', 'conversion', f'Source file must contain 1 to {MAX_SOURCE_BYTES} bytes.')
+    data = bytes(data)
     original_sha256 = _digest(data)
     try:
         with Image.open(io.BytesIO(data)) as image:
@@ -502,11 +546,9 @@ def convert_image(data, source_format):
                 converted = image.convert('RGBA')
             else:
                 converted = image.convert('RGB')
-            width, height = converted.size
+            source_width, source_height = converted.size
             converted.info.clear()
-            buffer = io.BytesIO()
-            converted.save(buffer, format='PNG')
-            png_bytes = buffer.getvalue()
+            png_bytes, downscaled = _fit_within_byte_cap(converted, Image.LANCZOS)
     except AssetError:
         raise
     except Exception:
@@ -514,7 +556,9 @@ def convert_image(data, source_format):
     blob = inspect_png(png_bytes)
     record = {'original_sha256': original_sha256, 'original_format': source_format,
               'derivative_sha256': blob['sha256'], 'derivative_bytes': blob['bytes'],
-              'width': width, 'height': height,
+              'width': blob['width'], 'height': blob['height'],
+              'source_width': source_width, 'source_height': source_height,
+              'downscaled': downscaled,
               'transformation': _CONVERT_TRANSFORMATIONS[source_format],
               'tool': 'Pillow ' + Image.__version__}
     return png_bytes, record
@@ -855,7 +899,7 @@ def main(argv=None):
     try:
         args = parser.parse_args(argv)
         if args.command == 'convert':
-            data = _input_file(args.file, MAX_BYTES)
+            data = _input_file(args.file, MAX_SOURCE_BYTES)
             png_bytes, record = convert_image(data, args.source_format)
             out = _absolute(args.out)
             parent = _directory_fd(out.parent)
