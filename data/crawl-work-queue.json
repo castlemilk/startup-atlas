@@ -54,8 +54,8 @@
     },
     {
       "attempts": 1,
-      "claimed_at": "2026-11-27T08:22:24Z",
-      "claimed_by": "main-agent-continue",
+      "claimed_at": null,
+      "claimed_by": null,
       "entity_ids": [
         "startup:andromeda-robotics",
         "startup:diraq",
@@ -64,14 +64,22 @@
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": "2026-11-27T08:52:24Z",
+      "lease_expires_at": null,
       "max_attempts": 3,
       "mode": null,
-      "result": null,
+      "result": {
+        "result_ref": "verified against data/startup-research.json on origin/main 2026-11-27 (main-agent session check)",
+        "outcome": {
+          "scope": "startup-logos",
+          "finding": "All four startups (Andromeda Robotics, Diraq, Draper, Emesent) record a logo on current main; the gap this unit was enqueued against has been resolved by the coverage waves."
+        },
+        "completed_by": "main-agent-continue",
+        "completed_at": "2026-11-27T08:22:32Z"
+      },
       "run_id": "selftest-2026-11-27",
       "scope_id": "startup-logos",
       "source_ids": null,
-      "status": "claimed",
+      "status": "done",
       "unit_id": "cwu-selftest-2026-11-27-003"
     },
     {
