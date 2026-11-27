@@ -539,8 +539,8 @@
     },
     {
       "attempts": 1,
-      "claimed_at": "2026-11-27T08:59:10Z",
-      "claimed_by": "main-agent-continue",
+      "claimed_at": null,
+      "claimed_by": null,
       "entity_ids": [
         "founder:arkeus:jonathan-nebauer",
         "founder:arkeus:simon-olsen",
@@ -559,14 +559,22 @@
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": "2026-11-27T09:29:10Z",
+      "lease_expires_at": null,
       "max_attempts": 3,
       "mode": null,
-      "result": null,
+      "result": {
+        "result_ref": "scripts/crawl_gap_report.py founder-photos scope + data/coverage-exhausted.json on origin/main after PR #678",
+        "outcome": {
+          "scope": "founder-photos",
+          "finding": "9 of 14 founder rows now record photos on current main (Nebauer, Olsen, Babu, O'Brien, Kestenbaum, Faleeva, Williams, Kroonenburg, Dzurak). The 5 still uncovered (McKenzie, Raethke, Belokamen, Wright, White) are all recorded evidence-exhausted. No open work remains in this unit."
+        },
+        "completed_by": "main-agent-continue",
+        "completed_at": "2026-11-27T08:59:22Z"
+      },
       "run_id": "selftest-2026-11-27",
       "scope_id": "founder-photos",
       "source_ids": null,
-      "status": "claimed",
+      "status": "done",
       "unit_id": "cwu-selftest-2026-11-27-019"
     },
     {
