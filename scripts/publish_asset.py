@@ -46,7 +46,14 @@ SITE_ORIGIN = "https://castlemilk.github.io/startup-atlas"
 PUBLIC_MANIFEST_SCHEMA = "atlas.asset-public-manifest.v0"
 MAX_PUBLIC_MANIFEST_BYTES = 32_768
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 .&':\-]{0,119}$")
+# A letter is any Unicode letter ([^\W\d_] excludes digits and underscore),
+# so recorded names like Käärmann pass; apostrophes may be ASCII ' or the
+# typographic ’ (U+2019, as in O’Brien). Everything else keeps the original
+# ASCII allow-list: no path separators, no leading dot, no shell or glob
+# metacharacters, at most 120 characters.
+_LETTER = r"[^\W\d_]"
+NAME = re.compile(
+    rf"^(?:{_LETTER}|[0-9])(?:{_LETTER}|[0-9 .&'’:\-]){{0,119}}$")
 
 
 class PublishError(Exception):

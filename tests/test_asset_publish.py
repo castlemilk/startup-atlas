@@ -278,6 +278,34 @@ class PublishTests(unittest.TestCase):
         self.assertEqual(self.run_publish(unknown, "Other Cloud", "provider:other-cloud", "logo")[0], 1)
         self.assertFalse((self.repo / "web" / "assets" / "logos" / "other-cloud.png").exists())
 
+    def test_name_pattern_accepts_unicode_letters_and_apostrophes(self):
+        for name in ("Jeremy O’Brien", "Kristo Käärmann", "Alex Example", "T:0"):
+            self.assertIsNotNone(publish.NAME.fullmatch(name), name)
+        for name in ("../Evil Name", "Evil/Name", "Evil\\Name", ".Evil Name",
+                     "Evil;Name", "Evil*Name", ""):
+            self.assertIsNone(publish.NAME.fullmatch(name), name)
+
+    def test_portrait_publish_accepts_unicode_founder_names(self):
+        records = self.repo / "data" / "startup-research.json"
+        records.write_text(json.dumps({"startups": [{"name": "Example Co", "founders": [
+            {"name": "Kristo Käärmann", "source": "https://example.com/team"},
+            {"name": "Jeremy O’Brien", "source": "https://example.com/team"}]}]}))
+        for name, subject, data in (("Kristo Käärmann", "person:kristo-k-rmann", None),
+                                    ("Jeremy O’Brien", "person:jeremy-o-brien", png(3, 3))):
+            receipt = self.stage(data=data, source=provenance(
+                subject_id=subject, role="portrait", source_kind="labelled-portrait"))
+            status, result = self.run_publish(receipt, name, subject, "portrait")
+            self.assertEqual(status, 0, result)
+        founders = json.loads(records.read_text())["startups"][0]["founders"]
+        self.assertEqual(founders[0]["photo_url"],
+                         publish.SITE_ORIGIN + "/assets/portraits/kristo-k-rmann.png")
+        self.assertEqual(founders[1]["photo_url"],
+                         publish.SITE_ORIGIN + "/assets/portraits/jeremy-o-brien.png")
+        self.assertTrue((self.repo / "web" / "assets" / "portraits" /
+                         "kristo-k-rmann.png").exists())
+        self.assertTrue((self.repo / "web" / "assets" / "portraits" /
+                         "jeremy-o-brien.png").exists())
+
     def test_founder_selection_updates_only_the_named_reviewed_startup(self):
         path = self.repo / "data" / "startup-research.json"
         research = json.loads(path.read_text())

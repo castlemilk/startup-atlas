@@ -2,7 +2,8 @@
 
 The complete, per-tool reference for both MCP surfaces served by
 `backend/mcp/`: the 18 catalogue tools on `/mcp` (and the identical
-stdio server) and the 8 review-queue tools on `/mcp/admin`.
+stdio server) and the 13 tools on `/mcp/admin` (8 review-queue
+tools and 5 distributed-crawl work-queue tools).
 
 Companion docs: [install & connect quickstart](INSTALL-MCP.md)
 (the fastest path to a working client),
@@ -18,7 +19,7 @@ schema in full), [crawl coordination contract](CRAWL-COORDINATION.md)
 Verified against the code on `main` on 27 Nov 2026
 (`backend/mcp/server.mjs`, `backend/mcp/admin-mcp.mjs`,
 `backend/mcp/http-server.mjs`) and the live `/health` of the hosted
-deployment, which reports `tools: 18`, `adminTools: 8`. `tools/list`
+deployment, which reports `tools: 18`, `adminTools: 13`. `tools/list`
 against a live endpoint remains the final authority for any one
 deployment — a deployment built from older code serves fewer tools.
 
@@ -387,11 +388,13 @@ pre-existing dedup match.
 {"jsonrpc":"2.0","id":6,"method":"tools/call","params":{"name":"atlas_create_issue","arguments":{"title":"[kpi-backlog:F3] Crawl errors not surfaced","body":"Problem, evidence with numbers/dates, proposed fix.","labels":["kpi-backlog"],"dedup_key":"F3"}}}
 ```
 
-## Admin surface — `/mcp/admin` (8 tools)
+## Admin surface — `/mcp/admin` (13 tools)
 
 A separate MCP server (`startup-atlas-admin`) on the same host. It
-serves only the review queue — the human-in-the-loop gate between
-crawled candidates and published data — and only to
+serves the review queue — the human-in-the-loop gate between
+crawled candidates and published data — and the distributed crawl
+work queue (the five `atlas_admin_crawl_*` tools, documented with
+the crawl pipeline below), and only to
 admin-allow-listed identities or the scoped service credential (see
 [MCP-HTTP.md](MCP-HTTP.md#admin-mcp-mcpadmin--the-review-queue-as-tools)).
 Decisions write back to `data/review-queue.json` through the GitHub
@@ -567,12 +570,173 @@ How crawls run today, and where the MCP fits. The MCP is the
    gap report (`scripts/crawl_gap_report.py`) reports the scopes
    the run left uncovered, so the next run can be aimed at them.
 
-*Distributed / multi-agent crawl scheduling:* a design for letting
-multiple agents claim and run crawl work concurrently is in
-preparation; the claim/lease registry above is its coordination
-basis, and this section will be replaced when that design lands —
-no distributed API exists yet, and nothing here should be read as
-one.
+### Distributed / multi-agent crawl scheduling — the work queue
+
+The crawl work queue (`data/crawl-work-queue.json`) partitions a
+crawl run into claimable work units so any number of agents can
+crawl concurrently without double-working an entity. The queue only
+coordinates: outputs keep flowing through the paths above
+(snapshots → review queue → corpus/index), and completing a unit
+records a pointer to the output, never the output itself.
+`scripts/crawl_work_queue.py` is the source of truth for the
+semantics; the five `atlas_admin_crawl_*` tools on `/mcp/admin`
+mirror it over the same GitHub Contents API store as the review
+queue (see also [MCP-HTTP.md](MCP-HTTP.md), "Distributed crawl work
+queue").
+
+**Work-unit model.** A unit is one of:
+
+- a **mode unit** — one crawl mode × one shard of that mode's seed
+  set (`kind: "mode"`, with `mode` and `source_ids[]`); or
+- a **coverage unit** — one coverage scope from
+  `scripts/crawl_gap_report.py` output × one shard of its uncovered
+  entity ids (`kind: "coverage"`, with `scope_id` and
+  `entity_ids[]`), so a run can be aimed directly at the gaps a
+  previous run left.
+
+Each unit carries `unit_id` (`cwu-<run_id>-<seq>`), `run_id`,
+`status` (`pending`, `claimed`, `done`, `failed`, `dead`),
+`claimed_by` / `claimed_at` / `lease_expires_at`, `attempts` /
+`max_attempts` (default 3), `result` and `last_error`. Shards
+default to 10 ids; with `--agents N` the shard size is tuned to
+roughly two shards per agent, so faster agents take a second shard
+instead of idling.
+
+**Claim/lease semantics.** Exactly one agent holds a unit at a
+time: the MCP surface persists through the Contents API sha check
+(a contested claim retries once on the next unit), and CLI claims
+in one checkout are flock-guarded. A claim takes a lease —
+default 30 minutes (1,800 s, matching the `crawl-runs.json`
+precedent; tools accept `lease_seconds` from 60 to 14,400) — and
+`atlas_admin_crawl_heartbeat` extends it. There is no sweeper:
+expired leases return to `pending` lazily, on the next mutating
+operation, and status reads report them as pending (the CLI
+`sweep` command forces a reclaim). Completion is idempotent:
+repeating a completion with the same `agent_id` and `result_ref`
+returns `already_done: true` and writes nothing; a completion
+with a different result is refused with `ALREADY_DONE`. A late
+completion is accepted only while the unit is still held by the
+same agent — once an expired lease has been re-claimed by someone
+else, the late completion is refused with `NOT_HELD` rather than
+overwriting the new holder's work. Failing a unit returns it to
+`pending` while attempts remain, otherwise it becomes `dead` and
+stays visible as the failure record. `agent_id` is an attribution
+label; the admin allow-list / service credential remains the
+authority.
+
+#### `atlas_admin_crawl_claim` — write
+
+Claim the next pending unit, optionally filtered to one run, kind,
+mode or coverage scope.
+
+| Parameter | Type | Required | Notes |
+| --- | --- | --- | --- |
+| `agent_id` | string ≥ 1 char | yes | Attribution label for the claiming agent. |
+| `run_id` | string | no | Restrict to one run. |
+| `kind` | enum: `mode`, `coverage` | no | |
+| `mode` | string | no | Restrict to one crawl mode. |
+| `scope_id` | string | no | Restrict to one coverage scope. |
+| `lease_seconds` | integer 60–14400 | no | Default 1800 (30 min). |
+
+Returns: `{ ok: true, source, unit, commit }` — `unit: null` when
+no matching work remains (the agent's loop is done). `commit`
+identifies the GitHub write-back commit.
+
+```json
+{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"atlas_admin_crawl_claim","arguments":{"agent_id":"agent-1","run_id":"dcrawl-20261127-a"}}}
+```
+
+#### `atlas_admin_crawl_heartbeat` — write
+
+Extend the lease on a unit you hold.
+
+| Parameter | Type | Required | Notes |
+| --- | --- | --- | --- |
+| `agent_id` | string ≥ 1 char | yes | Must be the current holder. |
+| `unit_id` | string ≥ 1 char | yes | |
+| `lease_seconds` | integer 60–14400 | no | Default 1800 (30 min). |
+
+Returns: `{ ok: true, source, unit, commit }`. Fails with
+`NOT_HELD` when the unit is not claimed by `agent_id` — including
+after the lease expired and the unit returned to the pool.
+
+#### `atlas_admin_crawl_complete` — write
+
+Record the result of a unit you hold. Completing a unit publishes
+nothing: the output itself still flows through the normal
+review-queue/corpus path.
+
+| Parameter | Type | Required | Notes |
+| --- | --- | --- | --- |
+| `agent_id` | string ≥ 1 char | yes | Must be the current holder. |
+| `unit_id` | string ≥ 1 char | yes | |
+| `result_ref` | string ≥ 1 char | yes | Pointer to the output: snapshot path, artifact, staged findings file or PR. |
+| `outcome` | object | no | Free-form summary of the result. |
+
+Returns: `{ ok: true, source, unit, already_done, commit }` —
+`already_done: true` when the same `agent_id` + `result_ref` was
+already recorded (no write made).
+
+#### `atlas_admin_crawl_fail` — write
+
+Fail a unit you hold, recording the error.
+
+| Parameter | Type | Required | Notes |
+| --- | --- | --- | --- |
+| `agent_id` | string ≥ 1 char | yes | Must be the current holder. |
+| `unit_id` | string ≥ 1 char | yes | |
+| `error` | string ≥ 1 char | yes | Recorded as the unit's `last_error`. |
+
+Returns: `{ ok: true, source, unit, commit }` — the unit is back
+to `pending` while attempts remain, else `dead`.
+
+#### `atlas_admin_crawl_status` — read
+
+Read-only queue summary; expired leases are reported as pending
+(they are reclaimable).
+
+| Parameter | Type | Required | Notes |
+| --- | --- | --- | --- |
+| `run_id` | string | no | Restrict the summary to one run. |
+
+Returns: `{ ok: true, source, total, by_status, runs }` — counts
+by status, overall and per run.
+
+**The CLI.** `scripts/crawl_work_queue.py` exposes the same state
+machine from a checkout, against the same queue file (`--queue`
+overrides the default `data/crawl-work-queue.json`):
+`enqueue --run-id <id> [--modes <list>|all] [--gap-report <file>]
+[--shard-size N] [--agents N] [--max-attempts N]`,
+`claim --agent <id> [--run-id …] [--kind …] [--mode …]
+[--scope-id …] [--lease-seconds N]`, `heartbeat`, `complete
+--result-ref <ref> [--outcome-json <json>]`, `fail --error <msg>`,
+`release` (give a unit back without consuming an attempt),
+`sweep` (reclaim expired leases now) and `status [--run-id …]`.
+Enqueue is CLI-only — partitioning needs the checkout's seed files
+and gap report, which the hosted server does not have — and a
+`run_id` may only be enqueued once (`RUN_EXISTS`). There is no MCP
+`release` tool in this version.
+
+**Multi-agent walkthrough.** A dispatcher partitions the run once;
+every agent then drains the same queue:
+
+```bash
+# Dispatcher, in a checkout of main:
+python3 scripts/crawl_gap_report.py --out /tmp/gap.json
+python3 scripts/crawl_work_queue.py enqueue --run-id dcrawl-$(date -u +%Y%m%d)-a \
+    --modes all --gap-report /tmp/gap.json --agents 4
+# Land data/crawl-work-queue.json via the normal browser route (or work locally).
+
+# Each agent loops until claim returns no work — via /mcp/admin:
+#   atlas_admin_crawl_claim    { agent_id: "agent-1", run_id: "dcrawl-…" }
+#   … do the unit's crawl, heartbeat on long units …
+#   atlas_admin_crawl_complete { agent_id: "agent-1", unit_id: "cw-…",
+#                                result_ref: "<snapshot/artifact/PR>",
+#                                outcome: { … } }
+# or via the CLI: crawl_work_queue.py claim --agent agent-1 … complete …
+
+python3 scripts/crawl_work_queue.py status   # counts by status, per run
+```
 
 ## See also
 
