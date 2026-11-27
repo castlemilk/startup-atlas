@@ -247,7 +247,7 @@ them by merging that PR; anything marked open below still needs a decision.
 | --- | --- |
 | Public byte storage | Logos: `web/assets/logos/<slug>.png\|.svg`, mapped by exact reviewed name in `web/logos.js`. Portraits: `web/assets/portraits/<slug>.png\|.svg`, referenced by the published Pages URL in the person's `photo` (partner profiles) or `photo_url` (startup founders) field. `scripts/build.mjs` copies both directories (plus manifests) into `dist/assets/`. No new service. |
 | Public provenance | A bounded public-safe manifest at `web/assets/manifests/<asset-sha256>.json` (`atlas.asset-public-manifest.v0`): asset/review IDs, target path, subject, role, source URLs, attribution, review date, byte measurements and the full provenance attestation. No private correspondence is copied into it. |
-| Formats and transformations | Strict PNG remains the validated raster profile. Two approved additions: (1) Pillow conversion of WebP/ICO/JPEG/GIF and non-strict PNG into strict PNG (`convert` in `atlas_assets.py`), preserving original and derivative digests in a `conversion` provenance record; (2) SVG passthrough under the `svg-safe-v0` safety checks (well-formed, no scripts/foreign content/event handlers/external references/DOCTYPE), the same rules `tests/logos.test.js` enforces for published files. SVG is never rasterized here. |
+| Formats and transformations | Strict PNG remains the validated raster profile. Two approved additions: (1) Pillow conversion of WebP/ICO/JPEG/GIF/AVIF and non-strict PNG into strict PNG (`convert` in `atlas_assets.py`; AVIF decoding additionally requires the optional pillow-avif-plugin package), preserving original and derivative digests in a `conversion` provenance record; (2) SVG passthrough under the `svg-safe-v0` safety checks (well-formed, no scripts/foreign content/event handlers/external references/DOCTYPE), the same rules `tests/logos.test.js` enforces for published files. SVG is never rasterized here. |
 | Rights basis for third-party marks | New basis `nominative`: display of the subject's own published brand mark (or a person's own published portrait) with attribution and a source link, without implying endorsement and without a located licence or permission. The owner's PR merge is the approval of that use. |
 | Publication transaction | One reviewed multi-file proposal through the normal branch/review path: asset bytes, public manifest and the map/record update land in the same PR, so an attachment never points at a missing or unreleased asset. The hosted one-file `updateProposal` check is untouched; this adapter is a local-operator path, not a hosted MCP write. |
 | Review authority | The agent attests identity (viewed bytes against the official source) and records rights evidence in the manifest; `prepare_public_export` enforces both approvals before `publish_asset.py` writes anything. The owner's merge is the authenticated approval of public use. |
@@ -282,9 +282,10 @@ Crawl → review queue → convert → stage → publish → PR → live readbac
    cards, favicons and portfolio logos as identity. Record the decision in a
    provenance JSON; see `publish_batch.py` in the delivery notes for the
    worked 21 Nov 2026 batch (6 logos).
-3. **Convert.** Non-strict PNGs and WebP/ICO/JPEG/GIF go through
+3. **Convert.** Non-strict PNGs and WebP/ICO/JPEG/GIF/AVIF go through
    `atlas_assets.py convert` (Pillow, pixels preserved, original and
-   derivative digests recorded). SVGs go through `inspect_svg` unchanged.
+   derivative digests recorded; AVIF also needs pillow-avif-plugin
+   installed). SVGs go through `inspect_svg` unchanged.
 4. **Stage.** `atlas_assets.py validate` (retain the IDs) then `stage` into a
    private store outside Git, then `prepare` — the review gate. Unknown or
    rejected rights cannot prepare for public use.
