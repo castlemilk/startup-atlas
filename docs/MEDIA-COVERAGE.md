@@ -12,13 +12,13 @@ resolves to an existing local file (no initials fallback).
 
 | Entity kind | Total | Discovered | Published | Downloaded | Approved | Rendered |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 46 (84%) | 53 (96%) |
-| Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 8 (73%) | 10 (91%) |
-| Provider logos | 92 | 46 (50%) | 46 (50%) | 46 (50%) | 7 (8%) | 46 (50%) |
-| Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 3 (7%) | 44 (96%) |
+| Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 43 (78%) | 53 (96%) |
+| Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 9 (82%) | 10 (91%) |
+| Provider logos | 92 | 46 (50%) | 46 (50%) | 46 (50%) | 8 (9%) | 46 (50%) |
+| Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 0 (0%) | 44 (96%) |
 | Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
-Public asset manifests on file: 160.
+Public asset manifests on file: 158.
 Rendered can exceed a kind's own discovered count where the graph carries an image
 reference from another record (for example a partner portfolio listing) that the
 kind's own records do not carry.
@@ -32,13 +32,16 @@ kind's own records do not carry.
 
 </details>
 
-<details><summary>Downloaded but not manifest-approved (7)</summary>
+<details><summary>Downloaded but not manifest-approved (10)</summary>
 
 - Canva — no public asset manifest
 - Fusion Books — no public asset manifest
 - Draper — no public asset manifest
 - Gilmour Space — no public asset manifest
 - Go1 — no public asset manifest
+- Wise — no public asset manifest
+- Revolut — no public asset manifest
+- UiPath — no public asset manifest
 - Loam Bio — no public asset manifest
 - FloodMapp — no public asset manifest
 
@@ -52,10 +55,9 @@ kind's own records do not carry.
 
 </details>
 
-<details><summary>Downloaded but not manifest-approved (2)</summary>
+<details><summary>Downloaded but not manifest-approved (1)</summary>
 
 - Blackbird Ventures — no public asset manifest
-- Startmate — no public asset manifest
 
 </details>
 
@@ -112,7 +114,7 @@ kind's own records do not carry.
 
 </details>
 
-<details><summary>Downloaded but not manifest-approved (39)</summary>
+<details><summary>Downloaded but not manifest-approved (38)</summary>
 
 - Alibaba Cloud — no public asset manifest
 - Amazon Web Services — no public asset manifest
@@ -147,7 +149,6 @@ kind's own records do not carry.
 - Oracle — no public asset manifest
 - PostHog — no public asset manifest
 - Replit — no public asset manifest
-- Startmate — no public asset manifest
 - Stripe — no public asset manifest
 - Together AI — no public asset manifest
 - Vercel — no public asset manifest
@@ -203,6 +204,14 @@ kind's own records do not carry.
 - Vixia (Startmate) — no source-attributed image reference
 - Evatto (Startmate) — no source-attributed image reference
 - Zabidou (Startmate) — no source-attributed image reference
+
+</details>
+
+<details><summary>Downloaded but not manifest-approved (3)</summary>
+
+- Revolut (Seedcamp) — no public asset manifest
+- Wise (Seedcamp) — no public asset manifest
+- UiPath (Seedcamp) — no public asset manifest
 
 </details>
 
