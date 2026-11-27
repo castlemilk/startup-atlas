@@ -418,9 +418,9 @@
       "unit_id": "cwu-selftest-2026-11-27-013"
     },
     {
-      "attempts": 0,
-      "claimed_at": null,
-      "claimed_by": null,
+      "attempts": 1,
+      "claimed_at": "2026-11-27T08:57:32Z",
+      "claimed_by": "main-agent-continue",
       "entity_ids": [
         "uluu-2022-seed",
         "wayve-2026-series-d-extension-20260415",
@@ -431,14 +431,14 @@
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": null,
+      "lease_expires_at": "2026-11-27T09:27:32Z",
       "max_attempts": 3,
       "mode": null,
       "result": null,
       "run_id": "selftest-2026-11-27",
       "scope_id": "round-lead-investors",
       "source_ids": null,
-      "status": "pending",
+      "status": "claimed",
       "unit_id": "cwu-selftest-2026-11-27-014"
     },
     {
