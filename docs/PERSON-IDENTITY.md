@@ -233,3 +233,18 @@ at a time:
    `linkedin` already on the row — refuse the promotion, and a new
    person requires an explicit `--role`, so recording is part of
    the normal review motion rather than a special pass.
+5. **Partner-profile recording batch** (27 Nov 2026): first-class
+   `linkedin` fields recorded for 14 more partner-profile people,
+   each backed by a binding source that prints the URL with the
+   person and firm (firm team/people pages where available):
+   Elicia McDonald, James Cameron, Jackie Vullinghs (Airtree);
+   Niki Scevak, Rick Baker (Blackbird Ventures); Andrew Lai
+   (Boab AI); Reshma Sohoni, Carlos Eduardo Espinal (Seedcamp);
+   Paul Bassat (Square Peg); Elaine Stead (Main Sequence);
+   Paul Naphtali (Rampersand); Creel Price (Investible);
+   Jeremy Colless (Artesian); Alex Delbridge (Brandon Capital).
+   Profile people carrying the field: 18 of 22. Left unrecorded:
+   Craig Blair, Matt Clunies-Ross and John McCartney (no binding
+   source found) and Ben Lindsay (the only sourced slug,
+   `benjaminjamesrichard`, now returns 404 — a stale source, not
+   recorded).

@@ -252,14 +252,21 @@ class SeedTests(unittest.TestCase):
         self.assertEqual(
             entities['person:michael-de-nil']['identity_key'],
             'linkedin.com/in/michael-de-nil')
-        # The four LinkedIn-carrying profile people are the seeded merges.
+        # The LinkedIn-carrying profile people are the seeded merges:
+        # the original four plus the 14 recorded on 27 Nov 2026 (#366).
         seeded = [m for m in registry['merges']
                   if m['decided_by'] == 'seed:reviewed-data']
-        self.assertEqual(len(seeded), 4)
+        self.assertEqual(len(seeded), 18)
         self.assertEqual(
             {m['to'] for m in seeded},
             {'person:bill-bartee', 'person:phoebe-pincus', 'person:ben-simai',
-             'person:emma-grife'})
+             'person:emma-grife', 'person:alex-delbridge', 'person:andrew-lai',
+             'person:carlos-eduardo-espinal', 'person:creel-price',
+             'person:elaine-stead', 'person:elicia-mcdonald',
+             'person:jackie-vullinghs', 'person:james-cameron',
+             'person:jeremy-colless', 'person:niki-scevak',
+             'person:paul-bassat', 'person:paul-naphtali',
+             'person:reshma-sohoni', 'person:rick-baker'})
         self.assertTrue(all(m['basis'] == 'linkedin-url' for m in seeded))
         # On top of the seed, build_registry replays the APPROVED
         # review-queue merges (41 from the first validation pass, plus
@@ -269,7 +276,7 @@ class SeedTests(unittest.TestCase):
         # rejected and pending proposals record no merge.
         replayed = [m for m in registry['merges']
                     if m['decided_by'] != 'seed:reviewed-data']
-        self.assertEqual(len(registry['merges']), 56)
+        self.assertEqual(len(registry['merges']), 70)
         self.assertEqual(len(replayed), 52)
         self.assertIn('partner:airtree-ventures',
                       entities['partner:airtree']['merged_from'])
