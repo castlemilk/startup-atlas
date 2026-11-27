@@ -79,9 +79,16 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_graph.py'
           python3 -m unittest discover -s tests -p 'test_query_parquet.py'
           python3 -m unittest tests.test_live_index.ReviewedValuationInputTests
+      - name: Install site dependencies for web checks
+        # The web tests import root devDependencies (accessibility.test.js
+        # imports jsdom), but the full install step below only runs on main
+        # pushes — a PR that selects the web lane must install first or the
+        # step fails at import on a clean runner.
+        if: github.event_name == 'pull_request' && steps.changes.outputs.web == 'true'
+        run: npm ci --ignore-scripts
       - name: Check search, relationships and financial views
         if: steps.changes.outputs.web == 'true'
-        run: node --test tests/fuzzy-search.test.js tests/graph-layout.test.js tests/treemap.test.js tests/analytics.test.js tests/build-modules.test.js tests/accessibility.test.js tests/browser-transport.test.js
+        run: node --test tests/fuzzy-search.test.js tests/graph-layout.test.js tests/treemap.test.js tests/analytics.test.js tests/build-modules.test.js tests/accessibility.test.js tests/browser-transport.test.js tests/release-manifest.test.js
       - name: Validate collection boundaries and saved evidence
         if: steps.changes.outputs.collection == 'true'
         run: |
