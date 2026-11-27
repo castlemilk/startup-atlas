@@ -12,16 +12,11 @@ change that setup.
 ## Service behaviour
 
 - Same tools, same behaviour: catalogue search/get/validate/add, partner
-  search/get/validate/upsert, startup record reads/edits, the
+  search/get/validate/upsert, startup record reads/edits, and the
   read-only crawl-run registry (`atlas_list_crawl_runs`,
-  `atlas_get_crawl_run`, `atlas_get_crawl_claims`), live crawl
-  progress (`atlas_crawl_status`, read from the crawl-progress
-  record the crawl itself publishes — see
-  [the tool reference](MCP-TOOL-REFERENCE.md#atlas_crawl_status--read)),
-  and GitHub issue filing (`atlas_create_issue`, see below). No
-  shell, fetch or Git tool; MCP never triggers a crawl; the registry
-  stays advisory. The complete per-tool reference is
-  [MCP-TOOL-REFERENCE.md](MCP-TOOL-REFERENCE.md).
+  `atlas_get_crawl_run`, `atlas_get_crawl_claims`), and GitHub issue
+  filing (`atlas_create_issue`, see below). No shell, fetch or Git
+  tool; MCP never triggers a crawl; the registry stays advisory.
 - Writes work exactly as in stdio: they need `--write` **and** the caller's
   Google account to be in `ATLAS_GOOGLE_WRITE_EMAILS`. Writes still only
   change the local checkout — nothing commits, pushes or publishes.
@@ -278,7 +273,7 @@ owner's own front door onto the same queue.
   client's initialize and its tool call landed on different process
   state — a redeploy, a restart, or another replica (#473). Clients
   that send a session header anyway are unaffected; it is ignored.
-- **Tools (8):** `atlas_admin_list_review_queue` (filters: `kind`,
+- **Tools (13):** `atlas_admin_list_review_queue` (filters: `kind`,
   `status`, confidence `band` — `above_gate` / `below_gate` against
   `data/review-gating.json`; lowest confidence first, each entry
   carrying its gating verdict), `atlas_admin_get_review_item` (full
@@ -310,6 +305,45 @@ owner's own front door onto the same queue.
   panel queue; that queue is for his calls only. Every agent decision
   is reversible with `atlas_admin_undo_review_decision`, and the undo
   commit names what was undone, so the trail keeps both entries.
+
+### Distributed crawl work queue (5 of the 13 tools)
+
+So multiple agents can crawl concurrently without double-working the
+same entities, `/mcp/admin` also serves the crawl work queue in
+`data/crawl-work-queue.json` — the same Contents-API write-back pattern
+as the review queue, nothing held in process memory. A dispatcher
+(Ben, a cron, or an Actions step) partitions a crawl run into work
+units with `scripts/crawl_work_queue.py enqueue` — one unit per crawl
+mode × seed shard, plus one per coverage scope × entity shard built
+from the `scripts/crawl_gap_report.py` scopes, so the gap report's
+named uncovered entities are first-class work. Agents then loop:
+
+- `atlas_admin_crawl_claim` (`agent_id`, optional `run_id` / `kind` /
+  `mode` / `scope_id` filters, `lease_seconds`) — takes the next
+  pending unit under a lease (default 30 min). Exactly one agent holds
+  a unit: the Contents API sha makes a racing claim fail and retry on
+  the next unit. Returns `unit: null` when the pool is drained.
+- `atlas_admin_crawl_heartbeat` (`agent_id`, `unit_id`) — extends the
+  lease on a unit you hold.
+- `atlas_admin_crawl_complete` (`agent_id`, `unit_id`, `result_ref`,
+  `outcome`) — records where the unit's output landed. Idempotent for
+  the same agent + `result_ref` (`already_done: true`); a different
+  result on a done unit is refused. Completing a unit publishes
+  nothing — outputs still flow through the review queue and corpus
+  path as before.
+- `atlas_admin_crawl_fail` (`agent_id`, `unit_id`, `error`) — the unit
+  returns to pending while attempts remain (default max 3), then is
+  marked `dead` and stays visible as the failure record.
+- `atlas_admin_crawl_status` (`run_id` optional) — read-only counts by
+  status, overall and per run.
+
+Expired leases return to the pool lazily on the next operation, so a
+crashed agent costs at most one lease period. The CLI
+(`scripts/crawl_work_queue.py claim|heartbeat|complete|fail|release|status`)
+offers the same state machine from a checkout; the Python module is
+the semantics source of truth and both test suites pin the same
+behaviours. The contract this implements is
+`docs/CRAWL-COORDINATION.md`.
 
 ## GitHub issues (`atlas_create_issue`)
 
@@ -349,11 +383,7 @@ Token setup (Ben — do this once, in GitHub, not in the repo):
 2. Resource owner: `castlemilk`; Repository access: **Only select
    repositories** → `castlemilk/startup-atlas`.
 3. Permissions → Repository permissions → **Issues: Read and write**.
-   That alone is enough for `atlas_create_issue`. Note the hosted
-   deployment uses this one token for the admin write-back too
-   (below), so its token additionally carries **Contents: Read and
-   write** — grant Contents only when the same token will serve the
-   panel / admin MCP on that deployment. Actions is never needed.
+   Nothing else is needed; do not grant Contents or Actions.
 4. Put the token in the server environment as `ATLAS_GITHUB_TOKEN`
    (DeepHost console env vars for the hosted app, or the shell for a
    local server). Never paste it into chat, a file, or a test — tests
