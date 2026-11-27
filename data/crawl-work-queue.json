@@ -26,21 +26,30 @@
     },
     {
       "attempts": 1,
-      "claimed_at": "2026-11-27T08:22:03Z",
-      "claimed_by": "main-agent-continue",
+      "claimed_at": null,
+      "claimed_by": null,
       "entity_ids": [
         "startup:t-0"
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": "2026-11-27T08:52:03Z",
+      "lease_expires_at": null,
       "max_attempts": 3,
       "mode": null,
-      "result": null,
+      "result": {
+        "result_ref": "verified against data/startup-research.json on origin/main 2026-11-27 (main-agent session check)",
+        "outcome": {
+          "scope": "startup-funding",
+          "entity": "startup:t-0",
+          "finding": "T:0 records zero funding rounds on current main, consistent with the 2026-11-27 gap report's verified-zero finding; nothing to add."
+        },
+        "completed_by": "main-agent-continue",
+        "completed_at": "2026-11-27T08:22:20Z"
+      },
       "run_id": "selftest-2026-11-27",
       "scope_id": "startup-funding",
       "source_ids": null,
-      "status": "claimed",
+      "status": "done",
       "unit_id": "cwu-selftest-2026-11-27-002"
     },
     {
