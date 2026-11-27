@@ -17,6 +17,10 @@ test('SQLite WASM searches the graph and preserves sourced startup records',asyn
     const db=new SQL.Database(readFileSync(database));
     assert.ok(searchGraph(db,'air').some(x=>x.name==='Airwallex'));
     assert.ok(searchGraph(db,'Airtree').some(x=>x.name==='Canva'));
+    // Ranking policy (#76): the exact-alias match leads, ahead of entities
+    // that only mention Airtree through connections.
+    assert.match(searchGraph(db,'airtree')[0].name,/^Airtree/);
+    assert.equal(searchGraph(db,'airwallex')[0].name,'Airwallex');
     assert.ok(searchGraph(db,'series h').some(x=>x.name==='Airwallex'));
     assert.ok(searchGraph(db,'Melanie Perkins').some(x=>x.kind==='person'));
     assert.ok(searchGraph(db,'Melanie Perkins').some(x=>x.id==='startup:canva'));
