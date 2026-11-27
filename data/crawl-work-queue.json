@@ -475,8 +475,8 @@
     },
     {
       "attempts": 1,
-      "claimed_at": "2026-11-27T08:57:50Z",
-      "claimed_by": "main-agent-continue",
+      "claimed_at": null,
+      "claimed_by": null,
       "entity_ids": [
         "person:alex-delbridge--brandon-capital",
         "person:andrew-lai--boab-ai",
@@ -487,14 +487,22 @@
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": "2026-11-27T12:58:17Z",
+      "lease_expires_at": null,
       "max_attempts": 3,
       "mode": null,
-      "result": null,
+      "result": {
+        "result_ref": "PR #681 (merge aa5224d); research spec hidden_files/person-socials-unit015.md",
+        "outcome": {
+          "scope": "person-socials",
+          "finding": "4 of 6 people gained evidence-bound socials via PR #681 (Delbridge, Lai, Espinal, Blair — LinkedIn bound by firm/investor profile pages, X where the same page binds it). Ben Lindsay was researched and bound to in/benjaminjamesrichard via the Investible team page, but the profile URL 404s on direct check, so it was deliberately NOT recorded. Chris Toward remains evidence-exhausted (no verified public profile). Person-socials overall: 119/144 to 135/144."
+        },
+        "completed_by": "main-agent-continue",
+        "completed_at": "2026-11-27T09:32:29Z"
+      },
       "run_id": "selftest-2026-11-27",
       "scope_id": "person-socials",
       "source_ids": null,
-      "status": "claimed",
+      "status": "done",
       "unit_id": "cwu-selftest-2026-11-27-015"
     },
     {
