@@ -36,20 +36,24 @@ names (`atlas_propose_startup_edit`, `atlas_get_connection`, …) — see
 - **Admin panel (humans):** `…/admin` — browser sign-in, same allow-list
   family as the admin MCP
 
-Live `/health`, verified 26 Nov 2026:
+Live `/health`, verified 27 Nov 2026:
 
 ```json
-{"status":"ok","server":"startup-atlas","transport":"streamable-http","tools":18,"writeEnabled":true,"auth":"google-oauth","oauthEnabled":true,"githubIssuesConfigured":true,"adminEnabled":true,"adminQueueWriteConfigured":true,"adminMcpEnabled":true,"adminTools":6,"adminServiceAuthConfigured":true}
+{"status":"ok","server":"startup-atlas","transport":"streamable-http","tools":18,"writeEnabled":true,"auth":"google-oauth","oauthEnabled":true,"githubIssuesConfigured":true,"adminEnabled":true,"adminQueueWriteConfigured":true,"adminMcpEnabled":true,"adminTools":8,"adminServiceAuthConfigured":true,"adminServiceTokenLength":18,"adminServiceTokenSha256":"0da086788f"}
 ```
 
 Two things to read correctly in that output:
 
-- `tools: 18` is the `/mcp` tool count; `adminTools` is the separate
-  `/mcp/admin` count. The code on `main` defines **8** admin tools
-  (the batch pair from #87 included); the live deployment reports **6**
-  because it predates that merge — a redeploy closes the gap. When in
-  doubt, `tools/list` against the live endpoint is the truth, not any
-  document (including this one).
+- `tools: 18` is the `/mcp` tool count; `adminTools: 8` is the
+  separate `/mcp/admin` count — the live deployment serves the full
+  set defined in the code on `main`, the batch pair from #87
+  included. When in doubt, `tools/list` against the live endpoint
+  is the truth, not any document (including this one).
+- `adminServiceTokenLength` / `adminServiceTokenSha256` are a
+  fingerprint of the configured admin service credential (length +
+  first 10 hex of its SHA-256), so an operator can confirm which
+  value the process holds without either side seeing the other's
+  secret. The token itself is never exposed.
 - `/health` is the first diagnostic for every connection problem: it
   tells you the server is up, which surfaces are enabled, and whether
   write mode and issue filing are configured — booleans only, never a
@@ -165,7 +169,10 @@ client (all of the above are), or register from a non-browser context.
 
 ## Tools on `/mcp` (18)
 
-Grouped by purpose. Parameters are summarised; `tools/list` returns
+Grouped by purpose. Parameters are summarised here; the complete
+per-tool reference — every parameter, return shape and a runnable
+example for all 18 tools plus the 8 admin tools — is
+[MCP-TOOL-REFERENCE.md](MCP-TOOL-REFERENCE.md). `tools/list` returns
 each tool's full JSON Schema, and the server rejects unexpected
 arguments, so introspect rather than guessing.
 
@@ -294,9 +301,8 @@ accounts, and one scoped service credential used by the unattended
 agent review pass (valid on this surface only — it is refused on
 `/mcp` and means nothing to the panel).
 
-Tools (8 in the code on `main`; the live deployment currently serves
-6 of them — the batch pair below awaits a redeploy — see the
-`/health` note above):
+Tools (8, and the live deployment serves all 8 — verified via
+`/health` on 27 Nov 2026):
 
 - `atlas_admin_list_review_queue` — queue entries with `kind`,
   `status` and confidence-`band` filters, lowest confidence first,
@@ -376,9 +382,11 @@ the write path for published data — is in [MCP.md](MCP.md).
 
 ---
 
-*Accuracy: this guide was verified on 26 Nov 2026 against the code on
-`main` (commit `5e0e827`), the live `/health` and OAuth discovery
-endpoints, and the live index pointer. The one known drift is
-`adminTools` (6 live vs 8 in code, above). The backend test suite
-(`npm --prefix backend/mcp test`, 103 tests) covers the stdio, HTTP /
-OAuth, admin and issue-filing behaviour described here.*
+*Accuracy: this guide was verified on 27 Nov 2026 against the code on
+`main` (commit `72ba91c`), the live `/health` and OAuth discovery
+endpoints, and the live index pointer. Live and code agree:
+`/health` reports `tools: 18` and `adminTools: 8`. The backend test
+suite (`npm --prefix backend/mcp test`, 103 tests) covers the stdio,
+HTTP / OAuth, admin and issue-filing behaviour described here. The
+complete per-tool reference is
+[MCP-TOOL-REFERENCE.md](MCP-TOOL-REFERENCE.md).*
