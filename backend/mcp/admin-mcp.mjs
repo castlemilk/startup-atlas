@@ -15,6 +15,13 @@
  * made with it are attributed exactly like OAuth-path agent decisions
  * (decided_by 'agent-review', below).
  *
+ * The surface also serves the distributed crawl work queue
+ * (crawl-work-queue.mjs over data/crawl-work-queue.json): claim,
+ * heartbeat, complete and fail tools with lease semantics, so multiple
+ * agents can crawl concurrently without double-working an entity. The
+ * state machine mirrors scripts/crawl_work_queue.py; see
+ * docs/MCP-HTTP.md, "Distributed crawl work queue".
+ *
  * Purpose: the assistant reviews the human-band queue items itself
  * wherever the evidence is clear-cut, so the owner only sees the calls
  * that are genuinely his. Every agent decision is recorded through the
@@ -29,6 +36,7 @@
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { AdminError, QueueFileStore, ReviewQueue, gatingVerdict } from './admin.mjs';
+import { CrawlWorkQueue } from './crawl-work-queue.mjs';
 import { EntryError } from '../../scripts/catalogue-entries.mjs';
 
 export const AGENT_DECIDED_BY = 'agent-review';
@@ -137,7 +145,68 @@ export const ADMIN_TOOLS = [
     }),
     annotations: readonly,
   },
+  {
+    name: 'atlas_admin_crawl_claim',
+    description: 'Claim the next pending unit from the distributed crawl work queue (data/crawl-work-queue.json): one crawl mode x one seed shard, or one coverage scope x one entity shard. Exactly one agent holds a unit; the claim carries a lease (default 30 minutes) that atlas_admin_crawl_heartbeat extends. Returns the unit, or unit: null when no matching work remains. Requires agent_id (a label for attribution; the service credential is the authority).',
+    inputSchema: schema({
+      agent_id: { type: 'string', minLength: 1 },
+      run_id: { type: 'string' },
+      kind: { type: 'string', enum: ['mode', 'coverage'] },
+      mode: { type: 'string' },
+      scope_id: { type: 'string' },
+      lease_seconds: { type: 'integer', minimum: 60, maximum: 14400 },
+    }),
+    annotations: write,
+  },
+  {
+    name: 'atlas_admin_crawl_heartbeat',
+    description: 'Extend the lease on a crawl work unit you hold. Errors NOT_HELD when the unit is not claimed by agent_id (including after the lease expired and the unit returned to the pool).',
+    inputSchema: schema({
+      agent_id: { type: 'string', minLength: 1 },
+      unit_id: { type: 'string', minLength: 1 },
+      lease_seconds: { type: 'integer', minimum: 60, maximum: 14400 },
+    }),
+    annotations: write,
+  },
+  {
+    name: 'atlas_admin_crawl_complete',
+    description: 'Record the result of a crawl work unit you hold: result_ref points at the output (snapshot path, artifact, staged findings file or PR) and outcome summarises it. Idempotent: repeating the same agent_id + result_ref returns already_done: true. The output itself still flows through the normal review-queue/corpus path — completing a unit publishes nothing.',
+    inputSchema: schema({
+      agent_id: { type: 'string', minLength: 1 },
+      unit_id: { type: 'string', minLength: 1 },
+      result_ref: { type: 'string', minLength: 1 },
+      outcome: { type: 'object' },
+    }),
+    annotations: write,
+  },
+  {
+    name: 'atlas_admin_crawl_fail',
+    description: 'Fail a crawl work unit you hold, recording the error. The unit returns to pending while attempts remain (default max 3), otherwise it is marked dead and stays visible in the queue as the failure record.',
+    inputSchema: schema({
+      agent_id: { type: 'string', minLength: 1 },
+      unit_id: { type: 'string', minLength: 1 },
+      error: { type: 'string', minLength: 1 },
+    }),
+    annotations: write,
+  },
+  {
+    name: 'atlas_admin_crawl_status',
+    description: 'Read-only summary of the distributed crawl work queue: unit counts by status, overall and per run. Expired leases are reported as pending (they are reclaimable).',
+    inputSchema: schema({
+      run_id: { type: 'string' },
+    }),
+    annotations: readonly,
+  },
 ];
+
+/** Crawl-queue tools share the agent_id / unit_id requirement. */
+function requireCrawlArgs(args, fields) {
+  for (const field of fields) {
+    if (typeof args[field] !== 'string' || !args[field].trim()) {
+      throw new EntryError('VALIDATION_ERROR', `${field} is required and must be a non-empty string.`);
+    }
+  }
+}
 
 /** Batch decisions carry the same evidence-note rule as single decisions. */
 function validateBatchDecisions(decisions) {
@@ -154,11 +223,12 @@ function validateBatchDecisions(decisions) {
   });
 }
 
-export function createAdminServer({ config, store, reviewQueue } = {}) {
+export function createAdminServer({ config, store, reviewQueue, crawlQueue } = {}) {
   const queue = reviewQueue ?? new ReviewQueue(store ?? new QueueFileStore({
     token: config.githubToken, repo: config.githubRepo, branch: config.githubBranch,
     apiBase: config.githubApiBase, fetchImpl: config.fetchImpl, root: config.root,
   }));
+  const crawl = crawlQueue ?? new CrawlWorkQueue(queue.store);
   const server = new Server({ name: 'startup-atlas-admin', version: '1.0.0' }, { capabilities: { tools: {} } });
   server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: ADMIN_TOOLS }));
   server.setRequestHandler(CallToolRequestSchema, async ({ params }) => {
@@ -237,6 +307,44 @@ export function createAdminServer({ config, store, reviewQueue } = {}) {
           entries.sort((a, b) => String(b.decided_at ?? '').localeCompare(String(a.decided_at ?? '')) || String(a.id).localeCompare(String(b.id)));
           const total = entries.length;
           result = { source, decided_by: autoBy, total, entries: entries.slice(0, args.limit ?? 50) };
+          break;
+        }
+        case 'atlas_admin_crawl_claim': {
+          requireCrawlArgs(args, ['agent_id']);
+          const claimed = await crawl.claim({
+            agentId: args.agent_id.trim(), runId: args.run_id, kind: args.kind,
+            mode: args.mode, scopeId: args.scope_id, leaseSeconds: args.lease_seconds,
+          });
+          result = { ok: true, source: claimed.source, unit: claimed.unit, commit: claimed.commit ?? null };
+          break;
+        }
+        case 'atlas_admin_crawl_heartbeat': {
+          requireCrawlArgs(args, ['agent_id', 'unit_id']);
+          const beaten = await crawl.heartbeat({
+            unitId: args.unit_id, agentId: args.agent_id.trim(), leaseSeconds: args.lease_seconds,
+          });
+          result = { ok: true, source: beaten.source, unit: beaten.unit, commit: beaten.commit };
+          break;
+        }
+        case 'atlas_admin_crawl_complete': {
+          requireCrawlArgs(args, ['agent_id', 'unit_id', 'result_ref']);
+          const completed = await crawl.complete({
+            unitId: args.unit_id, agentId: args.agent_id.trim(),
+            resultRef: args.result_ref, outcome: args.outcome,
+          });
+          result = { ok: true, source: completed.source, unit: completed.unit, already_done: completed.alreadyDone, commit: completed.commit };
+          break;
+        }
+        case 'atlas_admin_crawl_fail': {
+          requireCrawlArgs(args, ['agent_id', 'unit_id', 'error']);
+          const failed = await crawl.fail({
+            unitId: args.unit_id, agentId: args.agent_id.trim(), error: args.error,
+          });
+          result = { ok: true, source: failed.source, unit: failed.unit, commit: failed.commit };
+          break;
+        }
+        case 'atlas_admin_crawl_status': {
+          result = { ok: true, ...(await crawl.status({ runId: args.run_id })) };
           break;
         }
       }
