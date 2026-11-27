@@ -12,11 +12,16 @@ change that setup.
 ## Service behaviour
 
 - Same tools, same behaviour: catalogue search/get/validate/add, partner
-  search/get/validate/upsert, startup record reads/edits, and the
+  search/get/validate/upsert, startup record reads/edits, the
   read-only crawl-run registry (`atlas_list_crawl_runs`,
-  `atlas_get_crawl_run`, `atlas_get_crawl_claims`), and GitHub issue
-  filing (`atlas_create_issue`, see below). No shell, fetch or Git
-  tool; MCP never triggers a crawl; the registry stays advisory.
+  `atlas_get_crawl_run`, `atlas_get_crawl_claims`), live crawl
+  progress (`atlas_crawl_status`, read from the crawl-progress
+  record the crawl itself publishes — see
+  [the tool reference](MCP-TOOL-REFERENCE.md#atlas_crawl_status--read)),
+  and GitHub issue filing (`atlas_create_issue`, see below). No
+  shell, fetch or Git tool; MCP never triggers a crawl; the registry
+  stays advisory. The complete per-tool reference is
+  [MCP-TOOL-REFERENCE.md](MCP-TOOL-REFERENCE.md).
 - Writes work exactly as in stdio: they need `--write` **and** the caller's
   Google account to be in `ATLAS_GOOGLE_WRITE_EMAILS`. Writes still only
   change the local checkout — nothing commits, pushes or publishes.
@@ -344,7 +349,11 @@ Token setup (Ben — do this once, in GitHub, not in the repo):
 2. Resource owner: `castlemilk`; Repository access: **Only select
    repositories** → `castlemilk/startup-atlas`.
 3. Permissions → Repository permissions → **Issues: Read and write**.
-   Nothing else is needed; do not grant Contents or Actions.
+   That alone is enough for `atlas_create_issue`. Note the hosted
+   deployment uses this one token for the admin write-back too
+   (below), so its token additionally carries **Contents: Read and
+   write** — grant Contents only when the same token will serve the
+   panel / admin MCP on that deployment. Actions is never needed.
 4. Put the token in the server environment as `ATLAS_GITHUB_TOKEN`
    (DeepHost console env vars for the hosted app, or the shell for a
    local server). Never paste it into chat, a file, or a test — tests

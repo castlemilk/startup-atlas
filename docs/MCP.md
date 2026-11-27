@@ -57,11 +57,20 @@ conflict/recovery cases and the separate hosted draft-PR workflow.
 - `atlas_validate_opportunity`: validate a proposed entry and its provenance without writing. Returns the revision required for adding.
 - `atlas_add_opportunity`: append a validated entry to `data/opportunities-added.json`. Requires `--write` and `expectedRevision`. Does not overwrite, commit, push or deploy.
 
-### Crawl runs (read-only)
+### Crawl runs and live status (read-only)
 
 - `atlas_list_crawl_runs`: list recorded crawl runs from `data/crawl-runs.json`, optionally filtered by `mode`, `source_id`, `status` or `since`.
 - `atlas_get_crawl_run`: read the full record for one run ID, including its outcome, coverage reference and linked publication PR.
 - `atlas_get_crawl_claims`: list current crawl claims per source, derived from claimed and running runs. A claim whose lease has expired is reported as `stale`, never as live.
+- `atlas_crawl_status`: live crawl progress from `crawl-progress.json`, the record the running crawl itself publishes to the public index bucket — per-mode sources done/total, candidates so far, current mode/source and heartbeat age. When no crawl is running it returns the last completed run's summary; when the record is unreachable the state is `unknown`, never invented. Unlike the registry tools it reads the published record, not this checkout, so it answers the same way from any server.
+
+### Issue filing (write)
+
+- `atlas_create_issue`: file a GitHub issue in `castlemilk/startup-atlas` (or another `repo`) through the GitHub API. Create-only — it never edits, closes or deletes an issue. Requires `--write` and a configured `ATLAS_GITHUB_TOKEN`; without the token it reports `GITHUB_TOKEN_MISSING` and files nothing. With `dedup_key` it first returns any open issue carrying the `[kpi-backlog:KEY]` marker instead of filing a duplicate, and a failed create is never retried. Gating and error codes are documented in [MCP over HTTP](MCP-HTTP.md#github-issues-atlas_create_issue).
+
+The full per-tool reference for all 18 tools — parameters, return
+shapes and runnable examples — is
+[MCP-TOOL-REFERENCE.md](MCP-TOOL-REFERENCE.md).
 
 The registry is a committed, append-only JSON file: one record per run, never
 rewriting history, capped at the last 200 runs with older runs archived to

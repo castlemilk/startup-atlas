@@ -14,7 +14,7 @@ Before starting a crawl, record it as described in [the crawl coordination contr
 
 ### Coordinated crawl workflow (worked example)
 
-Use the read-only registry tools (`atlas_list_crawl_runs`, `atlas_get_crawl_run`, `atlas_get_crawl_claims`) through the local stdio MCP or the deployed MCP before, during and after every crawl:
+Use the read-only registry tools (`atlas_list_crawl_runs`, `atlas_get_crawl_run`, `atlas_get_crawl_claims`) through the local stdio MCP or the deployed MCP before, during and after every crawl, and `atlas_crawl_status` for live progress while a crawl is running (it reads the crawl-progress record the crawl itself publishes, not the registry):
 
 1. **Check for live claims first.** Query `atlas_get_crawl_claims` for the sources you plan to crawl. A live claim means another worker owns that source until its lease expires — do not start on it. A stale claim (expired lease, run still `running`) must be recovered explicitly, with the evidence recorded, before the source is re-claimed.
 2. **Record the run before it starts.** Append a record to `data/crawl-runs.json` through the normal branch/review workflow (until claim tools exist, there is no MCP write for this): `run_id` (`crawl-<YYYYMMDD>-<mode>-<nn>`), `mode`, `scope.source_ids`, the seed file's SHA-256, the 40-character main commit the run is based on as `catalogue_revision`, `claimed_by`, `claimed_at`, a 30-minute `lease_expires_at` for a partners run, and `status: claimed`. Also record where the artifact will land.
