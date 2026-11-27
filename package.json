@@ -27,7 +27,8 @@
     "audit:images": "node scripts/audit-image-coverage.mjs",
     "report:media-coverage": "node scripts/media-coverage-report.mjs",
     "report:field-completeness": "node scripts/field-completeness-report.mjs",
-    "report:merge-holdout": "python3 scripts/evaluate_merge_holdout.py --write-report"
+    "report:merge-holdout": "python3 scripts/evaluate_merge_holdout.py --write-report",
+    "report:source-coverage": "node scripts/source-coverage-report.mjs"
   },
   "engines": {
     "node": ">=20"
