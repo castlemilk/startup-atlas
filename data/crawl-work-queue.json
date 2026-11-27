@@ -1216,8 +1216,8 @@
     },
     {
       "attempts": 1,
-      "claimed_at": "2026-11-27T09:03:01Z",
-      "claimed_by": "main-agent-continue",
+      "claimed_at": null,
+      "claimed_by": null,
       "entity_ids": [
         "partner:medtech-actuator",
         "partner:menlo-ventures",
@@ -1260,14 +1260,22 @@
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": "2026-11-27T09:33:01Z",
+      "lease_expires_at": null,
       "max_attempts": 3,
       "mode": null,
-      "result": null,
+      "result": {
+        "result_ref": "scripts/crawl_gap_report.py partner-linkedin scope + data/coverage-exhausted.json on origin/main after PR #678",
+        "outcome": {
+          "scope": "partner-linkedin",
+          "finding": "34 of 38 partners now record a firm LinkedIn page on current main; the remaining 4 are recorded evidence-exhausted (including RMIT DiscoveryHUB, where only the parent institution's page exists). Zero open gaps in this unit."
+        },
+        "completed_by": "main-agent-continue",
+        "completed_at": "2026-11-27T09:03:12Z"
+      },
       "run_id": "selftest-2026-11-27",
       "scope_id": "partner-linkedin",
       "source_ids": null,
-      "status": "claimed",
+      "status": "done",
       "unit_id": "cwu-selftest-2026-11-27-033"
     },
     {
