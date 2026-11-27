@@ -1,5 +1,6 @@
 // Queries against the immutable, published SQLite snapshot. Values are bound;
 // search input never becomes SQL or raw FTS syntax.
+import { rankSearchResults } from './graph-model.js';
 function rows(db, sql, params = []) {
   const statement = db.prepare(sql);
   try {
@@ -17,13 +18,14 @@ export function searchGraph(db, query, limit = 100) {
   const searchable = "e.kind IN ('startup','partner','provider','person','programme')";
   let sql, params;
   if (tokens.length) {
+    // FTS selects the candidate set only; ordering follows the shared
+    // ranking policy in graph-model.js (searchTier/rankSearchResults), the
+    // same policy the JSON fallback applies, never FTS defaults.
     const terms = tokens.slice(0, 12).map(token => `"${token}*"`).join(' AND ');
-    const prefix = value.replace(/[\\%_]/g, '\\$&') + '%';
     sql = `SELECT e.data FROM entity_search s JOIN entities e ON e.id=s.id
-      WHERE entity_search MATCH ? AND ${searchable}
-      ORDER BY CASE WHEN lower(e.name)=lower(?) THEN 0 WHEN e.name LIKE ? ESCAPE '\\' THEN 1 ELSE 2 END,
-      (e.kind='startup') DESC, e.name COLLATE NOCASE LIMIT ?`;
-    params = [terms, value, prefix, limit];
+      WHERE entity_search MATCH ? AND ${searchable}`;
+    params = [terms];
+    return rankSearchResults(rows(db, sql, params).map(row => JSON.parse(row.data)), value).slice(0, limit);
   } else {
     sql = `SELECT e.data FROM entities e WHERE ${searchable}
       ORDER BY (e.kind='startup') DESC, e.name COLLATE NOCASE LIMIT ?`;

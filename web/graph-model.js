@@ -29,6 +29,42 @@ export function fundingTimelineArticles(articles, rounds) {
   });
 }
 
+// Search ranking policy (#76; documented in docs/EXPLORER-VIEWS.md, "List
+// and search"). One policy, shared by the SQLite search (graph-sql.js) and
+// the JSON fallback below, so both paths order identical queries identically:
+//   tier 0 — the query exactly equals the entity name;
+//   tier 1 — the query exactly equals one of the entity's aliases
+//            (former/alternate names from the identity registry);
+//   tier 2 — the entity name starts with the query;
+//   tier 3 — every query term appears in the entity name;
+//   tier 4 — an alias starts with the query, or every term appears in an alias;
+//   tier 5 — any other match (summary, connections, funding or article text).
+// Within a tier: startups before other kinds, then name A–Z, then entity id,
+// so ordering is fully deterministic and never depends on FTS defaults.
+const normalizeSearchText = value => (value || '').normalize('NFKC').toLocaleLowerCase().trim();
+
+export function searchTier(entity,query) {
+  const q=normalizeSearchText(query);
+  if(!q) return 0;
+  const terms=q.match(/[\p{L}\p{N}]+/gu) || [];
+  const name=normalizeSearchText(entity.name);
+  const aliases=(entity.aliases || []).map(normalizeSearchText).filter(Boolean);
+  if(name===q) return 0;
+  if(aliases.includes(q)) return 1;
+  if(name.startsWith(q)) return 2;
+  if(terms.length && terms.every(term=>name.includes(term))) return 3;
+  if(aliases.some(alias=>alias.startsWith(q)) || (terms.length && aliases.some(alias=>terms.every(term=>alias.includes(term))))) return 4;
+  return 5;
+}
+
+export function rankSearchResults(results,query) {
+  return [...results].sort((a,b)=>
+    searchTier(a,query)-searchTier(b,query)
+    || (b.kind==='startup')-(a.kind==='startup')
+    || a.name.localeCompare(b.name)
+    || a.id.localeCompare(b.id));
+}
+
 export function searchSnapshot(graph,query,limit=100) {
   const q=query.trim().normalize('NFKC').toLocaleLowerCase();
   const terms=q.match(/[\p{L}\p{N}]+/gu) || [];
@@ -41,13 +77,11 @@ export function searchSnapshot(graph,query,limit=100) {
   }
   for(const round of graph.funding_rounds) context.get(round.startup_id)?.push(round.stage || '',round.note || '');
   for(const article of graph.articles) context.get(article.startup_id)?.push(article.title || '');
-  return graph.entities.filter(item=>{
-    const haystack=[item.name,item.summary || '',...(context.get(item.id)||[])].join(' ').normalize('NFKC').toLocaleLowerCase();
+  const matches=graph.entities.filter(item=>{
+    const haystack=[item.name,item.summary || '',...(item.aliases || []),...(context.get(item.id)||[])].join(' ').normalize('NFKC').toLocaleLowerCase();
     return terms.every(term=>haystack.includes(term));
-  }).sort((a,b)=>{
-    const rank=item=>item.name.toLocaleLowerCase()===q?0:item.name.toLocaleLowerCase().startsWith(q)?1:2;
-    return rank(a)-rank(b) || (b.kind==='startup')-(a.kind==='startup') || a.name.localeCompare(b.name);
-  }).slice(0,limit);
+  });
+  return rankSearchResults(matches,q).slice(0,limit);
 }
 
 export function neighborhood(graph,rootId,{depth=1,kinds=null,limit=24}={}) {
