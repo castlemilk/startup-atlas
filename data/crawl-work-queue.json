@@ -341,8 +341,8 @@
     },
     {
       "attempts": 1,
-      "claimed_at": "2026-11-27T08:56:30Z",
-      "claimed_by": "main-agent-continue",
+      "claimed_at": null,
+      "claimed_by": null,
       "entity_ids": [
         "airwallex-2018-series-b",
         "airwallex-2020-series-d",
@@ -355,14 +355,22 @@
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": "2026-11-27T12:56:50Z",
+      "lease_expires_at": null,
       "max_attempts": 3,
       "mode": null,
-      "result": null,
+      "result": {
+        "result_ref": "PR #680 (merge 8d46a44); research spec hidden_files/round-leads-unit011.md",
+        "outcome": {
+          "scope": "round-lead-investors",
+          "finding": "2 of 8 rounds gained evidence-bound leads via PR #680: Airwallex Series B 2018 (Tencent + Sequoia China, TechCrunch) and Series D 2020 (ANZi Ventures, AVCJ — Salesforce Ventures deliberately NOT upgraded to co-lead: the issuer release says majority participation and the reviewed Salesforce record, guarded by tests/graph-data.test.js, sources participation only). The other 6 (Series D extension, Series E2, Arkeus 2025, Canva 2013 seed, Deeligence 2024, Emesent 2026 SAFE) named no lead in any credible source checked; Emesent's single syndicated 'led by' rewrite was not accepted over its primary sources' neutral wording."
+        },
+        "completed_by": "main-agent-continue",
+        "completed_at": "2026-11-27T09:20:52Z"
+      },
       "run_id": "selftest-2026-11-27",
       "scope_id": "round-lead-investors",
       "source_ids": null,
-      "status": "claimed",
+      "status": "done",
       "unit_id": "cwu-selftest-2026-11-27-011"
     },
     {
