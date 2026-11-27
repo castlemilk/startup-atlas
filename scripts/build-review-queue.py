@@ -375,6 +375,41 @@ def _name_tokens(name):
     return set(re.findall(r"[a-z0-9]+", str(name).lower()))
 
 
+# Corporate-form tokens that do not distinguish one entity from
+# another. Mirrors entity_resolution.LEGAL_NAME_TOKENS: the fallback
+# matcher must reach the same auto-merge decisions as the primary.
+_LEGAL_NAME_TOKENS = frozenset({
+    "pty", "ltd", "limited", "inc", "llc", "plc", "gmbh", "co",
+    "company", "corp", "corporation", "the",
+})
+
+
+def _names_equivalent(a, b):
+    """Token sets equal once corporate-form tokens are dropped,
+    allowing a single-letter token to stand for the full token it
+    initialises ("J Example" vs "Jane Example"). Mirrors
+    entity_resolution.names_equivalent."""
+    tokens_a = _name_tokens(a) - _LEGAL_NAME_TOKENS
+    tokens_b = _name_tokens(b) - _LEGAL_NAME_TOKENS
+    if not tokens_a or not tokens_b:
+        return False
+    if tokens_a == tokens_b:
+        return True
+    if len(tokens_a) != len(tokens_b):
+        return False
+    unmatched = list(tokens_b)
+    for token in sorted(tokens_a):
+        hit = next((other for other in unmatched
+                    if other == token
+                    or (len(token) == 1 and other.startswith(token))
+                    or (len(other) == 1 and token.startswith(other))),
+                   None)
+        if hit is None:
+            return False
+        unmatched.remove(hit)
+    return True
+
+
 def _jaccard(a, b):
     union = a | b
     return len(a & b) / len(union) if union else 0.0
@@ -420,7 +455,11 @@ def local_match_candidates(name, identity_key, kind, registry):
 
     ``registry`` is an identity-shaped dict (``{"entities": {id:
     {"name", "kind", "identity_key", ...}}}``). Exact identity-key
-    match = 1.0 (auto-merge); otherwise token Jaccard plus a 0.15 host
+    match with an equivalent name = 1.0 (auto-merge); a shared key
+    with a non-equivalent name (subsidiary/programme on a shared host)
+    is a review proposal at 0.87 with basis
+    "shared-key-name-mismatch", mirroring entity_resolution.
+    Otherwise token Jaccard plus a 0.15 host
     bonus when the identity keys share a host, capped at 0.89 so name
     similarity alone never auto-merges. Returns scored candidates
     sorted best-first: [{"id", "name", "score", "basis",
@@ -434,9 +473,15 @@ def local_match_candidates(name, identity_key, kind, registry):
             continue
         cand_key = cand.get("identity_key") or ""
         if identity_key and cand_key and identity_key == cand_key:
-            out.append({"id": cand_id, "name": cand.get("name", ""),
-                        "score": 1.0, "basis": "identity-key",
-                        "identity_key": cand_key, "auto_merge": True})
+            if _names_equivalent(name, cand.get("name", "")):
+                out.append({"id": cand_id, "name": cand.get("name", ""),
+                            "score": 1.0, "basis": "identity-key",
+                            "identity_key": cand_key, "auto_merge": True})
+            else:
+                out.append({"id": cand_id, "name": cand.get("name", ""),
+                            "score": 0.87,
+                            "basis": "shared-key-name-mismatch",
+                            "identity_key": cand_key, "auto_merge": False})
             continue
         score = _jaccard(name_tokens, _name_tokens(cand.get("name", "")))
         cand_host = normalise_host("https://" + cand_key) if cand_key else ""
