@@ -2,7 +2,7 @@ import { startupSourceCoverage } from '../backend/hosted/src/coverage.mjs';
 import {readFile} from 'node:fs/promises';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { entityDetails, fundingTimelineArticles, neighborhood, searchSnapshot, slug, teamPersonId } from '../web/graph-model.js';
+import { entityDetails, fundingTimelineArticles, neighborhood, rankSearchResults, searchSnapshot, searchTier, slug, teamPersonId } from '../web/graph-model.js';
 
 test('funding timeline keeps reviewed evidence and hides duplicate round links', () => {
   const source = 'https://example.com/closed-offer';
@@ -325,4 +325,32 @@ test('curated funding rounds reach the graph unchanged, with no phantom rounds (
     ['alloovium-2026-startmate-accelerator', 120000, 'AUD', '2026-02-17', 'Startmate'],
     ['alloovium-2026-y-combinator-accelerator', 500000, 'USD', '2026-06-05', 'Y Combinator'],
   ]);
+});
+
+test('search ranking policy orders exact, alias, prefix, name-term and context matches (#76)',()=>{
+  const entities=[
+    {id:'startup:context',kind:'startup',name:'Zebra Health',summary:'Backed by Airtree in 2024.'},
+    {id:'partner:airtree-ventures',kind:'partner',name:'Airtree Ventures',aliases:['Airtree'],summary:'Venture capital.'},
+    {id:'startup:air',kind:'startup',name:'Air',summary:'Workflow software.'},
+    {id:'startup:airborne',kind:'startup',name:'Airborne Labs',summary:'Drones.'},
+    {id:'person:air',kind:'person',name:'Air',summary:'Founder.'},
+  ];
+  const graph={entities,edges:[],funding_rounds:[],articles:[]};
+  // Exact alias (tier 1) beats a connection/summary-only mention (tier 5),
+  // and the fallback now finds alias matches at all (parity with SQLite).
+  assert.equal(searchSnapshot(graph,'airtree')[0].id,'partner:airtree-ventures');
+  assert.equal(searchTier(entities[1],'airtree'),1);
+  assert.equal(searchTier(entities[0],'airtree'),5);
+  // Exact name (tier 0) leads; within the tier startups precede people.
+  assert.deepEqual(searchSnapshot(graph,'air').map(x=>x.id),
+    ['startup:air','person:air','startup:airborne','partner:airtree-ventures','startup:context']);
+  assert.equal(searchTier(entities[2],'air'),0);
+  assert.equal(searchTier(entities[3],'air'),2);
+  // Every term in the name (tier 3) beats a summary-only match (tier 5).
+  assert.equal(searchTier({name:'Labs Airborne'},'airborne labs'),3);
+  assert.equal(searchTier({name:'Other',aliases:['Airtree Ventures Fund']},'airtree'),4);
+  // rankSearchResults is deterministic regardless of input order.
+  const shuffled=[entities[4],entities[0],entities[3],entities[1],entities[2]];
+  assert.deepEqual(rankSearchResults(shuffled,'air').map(x=>x.id),
+    rankSearchResults(entities,'air').map(x=>x.id));
 });
