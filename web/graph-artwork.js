@@ -17,7 +17,11 @@ function artworkUrl(value) {
 
 export function graphArtwork(entity) {
   const portrait = entity.kind === 'person';
-  const url = artworkUrl(entity.logo) || (!portrait && logoFor(entity.name)) || '';
+  // A reviewed bundled mark (web/logos.js) wins over the graph node's logo
+  // field: node logos are source URLs recorded as evidence (e.g. partner
+  // records since #644), while logos.js entries are the published local
+  // copies the site is meant to serve. Portraits never use logoFor.
+  const url = (!portrait && logoFor(entity.name)) || artworkUrl(entity.logo) || '';
   const treatment = url === launchVicWordmark ? 'logo-on-dark logo-wide' : !portrait && url ? logoClassFor(entity.name) : '';
   const classes = [portrait && 'person', treatment, paddedCanvaMark(url) && 'padded-mark'].filter(Boolean).join(' ');
   return { url, classes, portrait };
