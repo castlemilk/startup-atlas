@@ -1152,8 +1152,8 @@
     },
     {
       "attempts": 1,
-      "claimed_at": "2026-11-27T09:02:43Z",
-      "claimed_by": "main-agent-continue",
+      "claimed_at": null,
+      "claimed_by": null,
       "entity_ids": [
         "partner:haatch",
         "partner:hashed",
@@ -1196,14 +1196,22 @@
       ],
       "kind": "coverage",
       "last_error": null,
-      "lease_expires_at": "2026-11-27T09:32:43Z",
+      "lease_expires_at": null,
       "max_attempts": 3,
       "mode": null,
-      "result": null,
+      "result": {
+        "result_ref": "scripts/crawl_gap_report.py partner-linkedin scope + data/coverage-exhausted.json on origin/main after PRs #673/#678",
+        "outcome": {
+          "scope": "partner-linkedin",
+          "finding": "30 of 38 partners now record a firm LinkedIn page on current main (Haatch resolved by PR #673 via its own site footer). 7 still uncovered are recorded evidence-exhausted (including MARU, where only the operator's page exists). One deliberate open item remains: Kalytix Ventures — a Prospectoo-only numeric company ID lead (company/80145358) with no binding source anywhere; left open intentionally, not exhausted, pending any source that binds the URL to the firm."
+        },
+        "completed_by": "main-agent-continue",
+        "completed_at": "2026-11-27T09:02:54Z"
+      },
       "run_id": "selftest-2026-11-27",
       "scope_id": "partner-linkedin",
       "source_ids": null,
-      "status": "claimed",
+      "status": "done",
       "unit_id": "cwu-selftest-2026-11-27-032"
     },
     {
