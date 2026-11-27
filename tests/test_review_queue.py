@@ -269,6 +269,49 @@ class BuildTests(FixtureCase):
         headshots = [e for e in added if e["kind"] == "headshot"]
         self.assertEqual(len(headshots), 1)
 
+    def test_headshots_skip_founders_with_recorded_photo(self):
+        # Coverage rule: a founder who already records a photo_url in
+        # the reviewed data is not a gap and must never queue, however
+        # often the crawl re-captures a candidate for them. A founder
+        # with no recorded photo still queues.
+        write_json(self.data_dir / "startup-research.json", {
+            "startups": [
+                {"name": "Gilmour Space",
+                 "website": "https://www.gilmourspace.com/"},
+                {"name": "Canva", "website": "https://www.canva.com/",
+                 "founders": [{"name": "Melanie Perkins",
+                               "photo_url":
+                                   "https://example.com/melanie.png"}]},
+            ]})
+        write_json(self.artifact / "latest-company-profiles.json", {
+            "candidates": [
+                self._bio_row("Melanie Perkins", "Canva",
+                              "https://example.com/melanie.jpg",
+                              "Rights and image review required"),
+                self._bio_row("Casey Ellis", "Bugcrowd",
+                              "https://cdn.example.net/casey.jpg",
+                              "External asset host requires separate review"),
+            ]})
+        queue, added, skipped = self.build()
+        headshots = [e for e in added if e["kind"] == "headshot"]
+        self.assertEqual([e["subject"] for e in headshots],
+                         ["person:casey-ellis"])
+
+    def test_headshots_come_from_portraits_artifact(self):
+        # The portraits mode carries the same bio rows plus staging;
+        # when it is the only artifact present (company-profiles step
+        # failed or was reused), headshots must still queue.
+        write_json(self.artifact / "latest-portraits.json", {
+            "candidates": [
+                self._bio_row("Melanie Perkins", "Canva",
+                              "https://example.com/melanie.jpg",
+                              "Rights and image review required"),
+            ]})
+        queue, added, skipped = self.build()
+        headshots = [e for e in added if e["kind"] == "headshot"]
+        self.assertEqual(len(headshots), 1)
+        self.assertEqual(headshots[0]["subject"], "person:melanie-perkins")
+
     def test_dedup_on_rerun(self):
         _, added_first, _ = self.build()
         queue, added_second, skipped_second = self.build()
@@ -953,6 +996,19 @@ class SocialProducerTests(unittest.TestCase):
         self.assertIn("https://www.linkedin.com/in/melanieperkins",
                       entry["evidence"])
         self.assertIn("https://example.com/team", entry["evidence"])
+
+    def test_structured_candidate_queues_from_portraits_artifact(self):
+        # The portraits artifact carries the same professional-bio
+        # rows; social evidence must queue from it even when the
+        # company-profiles artifact is absent.
+        write_json(self.artifact / "latest-portraits.json", {
+            "candidates": [self._bio_row(
+                "Melanie Perkins", "Canva",
+                ["https://www.linkedin.com/in/melanieperkins"])]})
+        entries = self.produce()
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]["id"],
+                         "social:canva:melanie-perkins:linkedin")
 
     def test_recorded_linkedin_respelled_is_not_requeued(self):
         # Locale subdomain + trailing slash: the identity key is the
