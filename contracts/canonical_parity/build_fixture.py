@@ -93,7 +93,10 @@ def build_fixture(output):
 
     documents = {
         'catalogue.json': inputs['catalogue'],
+        'crawl-runs.json': {'runs': []},
+        'fx-rates.json': {'base': 'USD', 'date': '2026-01-01', 'to_usd': {}},
         'graph.json': graph,
+        'identity.json': {'version': 1, 'entities': {}},
         'land.geojson': {'type': 'FeatureCollection', 'features': []},
         'map-locations.json': [],
         'opportunities-added.json': {'version': 1, 'entries': []},
