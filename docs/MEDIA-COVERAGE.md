@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-27 from data revision fd419f2 by `npm run report:media-coverage` (#85).
+Generated 2026-11-27 from data revision bcd644f by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -12,13 +12,13 @@ resolves to an existing local file (no initials fallback).
 
 | Entity kind | Total | Discovered | Published | Downloaded | Approved | Rendered |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 43 (78%) | 53 (96%) |
+| Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 46 (84%) | 53 (96%) |
 | Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 9 (82%) | 10 (91%) |
 | Provider logos | 92 | 46 (50%) | 46 (50%) | 46 (50%) | 8 (9%) | 46 (50%) |
-| Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 0 (0%) | 44 (96%) |
+| Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 3 (7%) | 44 (96%) |
 | Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
-Public asset manifests on file: 158.
+Public asset manifests on file: 161.
 Rendered can exceed a kind's own discovered count where the graph carries an image
 reference from another record (for example a partner portfolio listing) that the
 kind's own records do not carry.
@@ -32,16 +32,13 @@ kind's own records do not carry.
 
 </details>
 
-<details><summary>Downloaded but not manifest-approved (10)</summary>
+<details><summary>Downloaded but not manifest-approved (7)</summary>
 
 - Canva — no public asset manifest
 - Fusion Books — no public asset manifest
 - Draper — no public asset manifest
 - Gilmour Space — no public asset manifest
 - Go1 — no public asset manifest
-- Wise — no public asset manifest
-- Revolut — no public asset manifest
-- UiPath — no public asset manifest
 - Loam Bio — no public asset manifest
 - FloodMapp — no public asset manifest
 
@@ -204,14 +201,6 @@ kind's own records do not carry.
 - Vixia (Startmate) — no source-attributed image reference
 - Evatto (Startmate) — no source-attributed image reference
 - Zabidou (Startmate) — no source-attributed image reference
-
-</details>
-
-<details><summary>Downloaded but not manifest-approved (3)</summary>
-
-- Revolut (Seedcamp) — no public asset manifest
-- Wise (Seedcamp) — no public asset manifest
-- UiPath (Seedcamp) — no public asset manifest
 
 </details>
 
