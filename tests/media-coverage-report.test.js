@@ -1,10 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { buildMediaCoverage, localAssetPath, renderMediaCoverageMarkdown } from '../scripts/media-coverage-report.mjs';
+import { buildMediaCoverage, localAssetPath, logoAssetPath, renderMediaCoverageMarkdown } from '../scripts/media-coverage-report.mjs';
 
 // #85: the published media coverage report splits logo/portrait coverage by
 // entity kind and pipeline stage, so stalls are visible without raw logs.
+
+test('logoAssetPath resolves logos.js slugs to the bundled file', () => {
+  assert.equal(logoAssetPath('acme'), 'assets/logos/acme.svg');
+  assert.equal(logoAssetPath('acme.png'), 'assets/logos/acme.png');
+});
 
 test('localAssetPath only accepts repository-local asset references', () => {
   assert.equal(localAssetPath('./assets/logos/acme.svg'), 'assets/logos/acme.svg');
