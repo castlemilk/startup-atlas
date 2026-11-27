@@ -46,7 +46,21 @@ time the registry is regenerated. Rejected and pending entries change
 nothing. Replay is deterministic and idempotent: entries are applied
 in sorted order with the entry's own ``decided_at`` / ``decided_by``,
 never the wall clock.
+
+Unmerge replay (#68, DATA-02: a merge is reversible): recorded
+unmerges in ``data/identity-unmerges.json`` replay last (see
+:func:`replay_unmerges`), reversing a seeded or queue merge exactly —
+the merge record is removed, the winner's ``merged_from`` loses the
+entry, and only the aliases that merge added to the winner are
+removed (``apply_merge`` records them as ``aliases_added`` for this
+purpose). The reversal itself is kept in the registry's top-level
+``unmerges[]`` list with the original merge's decider and date, so
+the audit trail survives even though the merge is gone. Record a new
+unmerge with ``record_unmerge`` or the ``unmerge`` CLI subcommand;
+the pair then stays split across every regeneration until the log
+entry is removed.
 """
+import argparse
 import difflib
 import json
 import re
@@ -307,6 +321,12 @@ def apply_merge(registry, from_id, to_id, basis, decided_by, decided_at=None):
     ``merged_into`` so the graph builder can resolve old edges to the
     winner. The winner inherits the loser's aliases. Raises ``ValueError``
     on unknown IDs, a self-merge, or merging an already-merged entity.
+
+    The aliases this merge actually adds to the winner (the loser's
+    name when it differs, plus any loser aliases the winner did not
+    already carry) are recorded on the merge record as
+    ``aliases_added`` — omitted when empty — so :func:`apply_unmerge`
+    can reverse the merge exactly, removing only what it added.
     """
     entities = registry.setdefault('entities', {})
     merges = registry.setdefault('merges', [])
@@ -324,21 +344,95 @@ def apply_merge(registry, from_id, to_id, basis, decided_by, decided_at=None):
     decided_at = decided_at or _utcnow()
     winner = entities[to_id]
     loser = entities[from_id]
+    aliases_added = []
     loser_name = loser.get('name', '')
     if loser_name and loser_name.casefold() != winner.get('name', '').casefold():
         if loser_name not in winner.setdefault('aliases', []):
             winner['aliases'].append(loser_name)
+            aliases_added.append(loser_name)
     for alias in loser.get('aliases', []):
         if alias not in winner.setdefault('aliases', []):
             winner['aliases'].append(alias)
+            aliases_added.append(alias)
     if from_id not in winner.setdefault('merged_from', []):
         winner['merged_from'].append(from_id)
     winner['updated_at'] = decided_at
     loser['merged_into'] = to_id
     loser['updated_at'] = decided_at
-    merges.append({'from': from_id, 'to': to_id, 'basis': basis,
-                   'decided_by': decided_by, 'decided_at': decided_at})
+    record = {'from': from_id, 'to': to_id, 'basis': basis,
+              'decided_by': decided_by, 'decided_at': decided_at}
+    if aliases_added:
+        record['aliases_added'] = aliases_added
+    merges.append(record)
     merges.sort(key=lambda m: (m['from'], m['to']))
+    return registry
+
+
+def apply_unmerge(registry, from_id, decided_by, decided_at=None,
+                  reason=None):
+    """Reverse the recorded merge of ``from_id`` (#68: merges are
+    reversible).
+
+    Undoes :func:`apply_merge` exactly: the merge record leaves
+    ``merges[]``, ``from_id`` leaves the winner's ``merged_from``, the
+    loser's ``merged_into`` is cleared, and the winner's aliases lose
+    precisely the aliases the merge added (the record's
+    ``aliases_added``). Merge records written before ``aliases_added``
+    existed fall back to the aliases :func:`apply_merge` would have
+    added — the loser's name when it differs from the winner's, plus
+    the loser's aliases — which is exact unless the winner carried
+    one of them independently before the merge. The reversal is
+    appended to the top-level ``unmerges[]`` audit list with the
+    original merge's basis, decider and date, so the audit trail is
+    preserved even though the merge is gone. The loser entity itself
+    was never deleted, so its claims, assets and relations are
+    untouched. Raises ``ValueError`` on an unknown ID or when
+    ``from_id`` has no recorded merge.
+    """
+    entities = registry.setdefault('entities', {})
+    merges = registry.setdefault('merges', [])
+    unmerges = registry.setdefault('unmerges', [])
+    if from_id not in entities:
+        raise ValueError(f'Unknown unmerge source: {from_id!r}')
+    record = next((m for m in merges if m['from'] == from_id), None)
+    if record is None:
+        raise ValueError(f'{from_id!r} has no recorded merge to reverse')
+    to_id = record['to']
+    loser = entities[from_id]
+    if loser.get('merged_into') != to_id:
+        raise ValueError(
+            f'{from_id!r} is not merged into {to_id!r} '
+            f'(merged_into: {loser.get("merged_into")!r})')
+    if to_id not in entities:
+        raise ValueError(f'Unknown merge target: {to_id!r}')
+    winner = entities[to_id]
+    decided_at = decided_at or _utcnow()
+    if 'aliases_added' in record:
+        added = record['aliases_added']
+    else:
+        added = []
+        loser_name = loser.get('name', '')
+        if (loser_name
+                and loser_name.casefold() != winner.get('name', '').casefold()):
+            added.append(loser_name)
+        added.extend(loser.get('aliases', []))
+    for alias in added:
+        if alias in winner.get('aliases', []):
+            winner['aliases'].remove(alias)
+    if from_id in winner.get('merged_from', []):
+        winner['merged_from'].remove(from_id)
+    winner['updated_at'] = decided_at
+    del loser['merged_into']
+    loser['updated_at'] = decided_at
+    merges.remove(record)
+    audit = {'from': from_id, 'to': to_id, 'basis': record.get('basis'),
+             'merge_decided_by': record.get('decided_by'),
+             'merge_decided_at': record.get('decided_at'),
+             'decided_by': decided_by, 'decided_at': decided_at}
+    if reason:
+        audit['reason'] = reason
+    unmerges.append(audit)
+    unmerges.sort(key=lambda u: (u['from'], u['to'], u['decided_at']))
     return registry
 
 
@@ -526,6 +620,87 @@ def replay_queue_decisions(registry, data_dir, queue_path=None):
     return registry
 
 
+UNMERGES_FILENAME = 'identity-unmerges.json'
+
+
+def load_unmerges(data_dir, unmerges_path=None):
+    """Read the recorded unmerges from ``data/identity-unmerges.json``.
+
+    Returns the ``unmerges`` list (empty when the file does not exist
+    yet — no unmerge has ever been recorded).
+    """
+    data_dir = Path(data_dir)
+    path = (Path(unmerges_path) if unmerges_path
+            else data_dir / UNMERGES_FILENAME)
+    if not path.is_file():
+        return []
+    payload = json.loads(path.read_text(encoding='utf-8'))
+    return list(payload.get('unmerges', []))
+
+
+def replay_unmerges(registry, data_dir, unmerges_path=None):
+    """Replay recorded unmerges into ``registry``, reversing merges.
+
+    Reads ``identity-unmerges.json`` from ``data_dir`` (or
+    ``unmerges_path``) when it exists and applies each record, in
+    ``(decided_at, from, to)`` order, via :func:`apply_unmerge` with
+    the record's own ``decided_by`` / ``decided_at`` / ``reason`` — so
+    a reversed pair stays split every time the registry is
+    regenerated, exactly as approved queue merges stay merged. A
+    record whose pair is not currently merged into the recorded
+    target (already reversed, or never merged) is skipped rather
+    than raising: replay must never fail a build.
+    """
+    records = load_unmerges(data_dir, unmerges_path=unmerges_path)
+    records.sort(key=lambda r: (r.get('decided_at') or '', r['from'],
+                                r['to']))
+    registry.setdefault('unmerges', [])
+    entities = registry.setdefault('entities', {})
+    for record in records:
+        from_id, to_id = record['from'], record['to']
+        if entities.get(from_id, {}).get('merged_into') != to_id:
+            continue  # not merged into that target; nothing to reverse
+        apply_unmerge(registry, from_id,
+                      decided_by=record.get('decided_by') or 'unmerge-log',
+                      decided_at=record.get('decided_at'),
+                      reason=record.get('reason'))
+    return registry
+
+
+def record_unmerge(data_dir, from_id, to_id, decided_by, reason=None,
+                   decided_at=None):
+    """Append an unmerge record to ``data/identity-unmerges.json``.
+
+    This is the durable half of an unmerge: once recorded, every
+    registry regeneration replays it (see :func:`replay_unmerges`)
+    and the pair stays split. Creates the log file when missing.
+    Raises ``ValueError`` when the same pair is already recorded.
+    Returns the record written. Regenerate the registry afterwards
+    (``python3 scripts/entity_resolution.py``) to apply it.
+    """
+    data_dir = Path(data_dir)
+    path = data_dir / UNMERGES_FILENAME
+    if path.is_file():
+        payload = json.loads(path.read_text(encoding='utf-8'))
+    else:
+        payload = {'version': 1, 'unmerges': []}
+    records = payload.setdefault('unmerges', [])
+    if any(r['from'] == from_id and r['to'] == to_id for r in records):
+        raise ValueError(
+            f'Unmerge already recorded: {from_id!r} -/-> {to_id!r}')
+    record = {'from': from_id, 'to': to_id, 'decided_by': decided_by,
+              'decided_at': decided_at or _utcnow()}
+    if reason:
+        record['reason'] = reason
+    records.append(record)
+    records.sort(key=lambda r: (r.get('decided_at') or '', r['from'],
+                                r['to']))
+    path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + '\n',
+        encoding='utf-8')
+    return record
+
+
 def build_registry(data_dir=None, source_revision=None, generated_at=None):
     """Seed the identity registry from the reviewed files on disk.
 
@@ -541,7 +716,9 @@ def build_registry(data_dir=None, source_revision=None, generated_at=None):
     shared by a scoped profile person (``person:<slug>--<partner>``)
     and a canonical person entry — plus the APPROVED merge decisions
     replayed from ``review-queue.json`` in the same data directory
-    (see :func:`replay_queue_decisions`).
+    (see :func:`replay_queue_decisions`), minus any merge reversed by
+    the unmerges recorded in ``identity-unmerges.json`` in the same
+    directory (see :func:`replay_unmerges`).
     """
     data_dir = Path(data_dir) if data_dir else ROOT / 'data'
     now = generated_at or _utcnow()
@@ -558,7 +735,7 @@ def build_registry(data_dir=None, source_revision=None, generated_at=None):
     registry = {'version': REGISTRY_VERSION,
                 'generated_at': now,
                 'source_revision': source_revision or _git_revision(),
-                'entities': entities, 'merges': []}
+                'entities': entities, 'merges': [], 'unmerges': []}
 
     # Partners: every lead is seeded; reviewed records supply the
     # website host and any reviewed ``aliases`` (names a partner is
@@ -645,12 +822,19 @@ def build_registry(data_dir=None, source_revision=None, generated_at=None):
     # top of the seed, so they survive every regeneration.
     replay_queue_decisions(registry, data_dir)
 
+    # Recorded unmerges replay after every merge source, so a
+    # reversed pair stays split no matter which path merged it.
+    replay_unmerges(registry, data_dir)
+
     # Do not replay aliases from the generated registry: they may have
     # been inherited from a merge that has since been reversed.
 
     registry['entities'] = dict(sorted(entities.items()))
     registry['merges'] = sorted(registry['merges'],
                                 key=lambda m: (m['from'], m['to']))
+    registry['unmerges'] = sorted(
+        registry['unmerges'],
+        key=lambda u: (u['from'], u['to'], u['decided_at']))
     return registry
 
 
@@ -660,7 +844,30 @@ def load_registry(path=None):
     return json.loads(path.read_text(encoding='utf-8'))
 
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        prog='entity_resolution.py',
+        description='Regenerate data/identity.json from the reviewed '
+                    'data files.')
+    subparsers = parser.add_subparsers(dest='command')
+    unmerge_parser = subparsers.add_parser(
+        'unmerge',
+        help='Record an unmerge in data/identity-unmerges.json and '
+             'regenerate the registry with the pair split.')
+    unmerge_parser.add_argument('from_id',
+                                help='The merged-away entity ID to restore')
+    unmerge_parser.add_argument('to_id',
+                                help='The entity ID it was merged into')
+    unmerge_parser.add_argument('--by', required=True,
+                                help='Who decided the unmerge')
+    unmerge_parser.add_argument('--reason', default=None,
+                                help='Why the merge was wrong (audit trail)')
+    args = parser.parse_args(argv)
+    if args.command == 'unmerge':
+        record = record_unmerge(ROOT / 'data', args.from_id, args.to_id,
+                                decided_by=args.by, reason=args.reason)
+        print(f"Recorded unmerge {record['from']} -/-> {record['to']} "
+              f"in {ROOT / 'data' / UNMERGES_FILENAME}")
     registry = build_registry()
     target = ROOT / 'data' / 'identity.json'
     target.write_text(
@@ -673,6 +880,7 @@ def main():
                     if e['identity_basis'] == 'name-only')
     print(f"Identity registry: {len(registry['entities'])} entities "
           f"({by_kind}), {len(registry['merges'])} merges, "
+          f"{len(registry['unmerges'])} unmerges, "
           f"{name_only} name-only")
     print(f"Wrote {target}")
 
