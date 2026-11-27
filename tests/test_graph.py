@@ -1,3 +1,4 @@
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -116,6 +117,31 @@ class GraphTests(unittest.TestCase):
                 self.assertEqual(set(documents),set(database.PUBLIC_DATA_FILES))
                 for name in database.PUBLIC_DATA_FILES:
                     self.assertEqual(documents[name],(data_dir/name).read_bytes().decode('utf-8'))
+                # #70: a published per-file manifest with hashes, sizes,
+                # record counts and per-kind counts for entity containers.
+                manifest={row[0]:row[1:] for row in db.execute(
+                    'select path,sha256,bytes,record_count,kind_counts from source_manifest')}
+                self.assertEqual(set(manifest),set(database.PUBLIC_DATA_FILES))
+                for name in database.PUBLIC_DATA_FILES:
+                    raw=(data_dir/name).read_bytes()
+                    digest,row_bytes,record_count,kind_counts=manifest[name]
+                    self.assertEqual(digest,hashlib.sha256(raw).hexdigest())
+                    self.assertEqual(row_bytes,len(raw))
+                    expected_count,expected_kinds=database.manifest_stats(
+                        name,raw.decode('utf-8'),
+                        json.loads(raw) if name.endswith(('.json','.geojson')) else None)
+                    self.assertEqual(record_count,expected_count)
+                    self.assertEqual(json.loads(kind_counts),expected_kinds)
+                graph=json.loads((data_dir/'graph.json').read_text(encoding='utf-8'))
+                graph_kinds=json.loads(manifest['graph.json'][3])
+                self.assertEqual(sum(graph_kinds.values()),len(graph['entities']))
+                self.assertEqual(manifest['graph.json'][2],len(graph['entities']))
+                identity=json.loads((data_dir/'identity.json').read_text(encoding='utf-8'))
+                self.assertEqual(manifest['identity.json'][2],len(identity['entities']))
+                self.assertEqual(sum(json.loads(manifest['identity.json'][3]).values()),
+                                 len(identity['entities']))
+                crawl_runs=json.loads((data_dir/'crawl-runs.json').read_text(encoding='utf-8'))
+                self.assertEqual(manifest['crawl-runs.json'][2],len(crawl_runs['runs']))
                 self.assertEqual([json.loads(row[0]) for row in db.execute('select data from opportunities order by id')],
                                  sorted(catalogue['opportunities'],key=lambda item:item['id']))
                 stored_additions=[json.loads(row[0]) for row in db.execute('select addition_data from opportunities where addition_data is not null')]
