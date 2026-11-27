@@ -1208,6 +1208,31 @@ def _sampler():
     _SAMPLER=module
     return _SAMPLER
 
+_LEDGER=None
+_LEDGER_TRIED=False
+
+def _coverage_ledger():
+    """Load scripts/crawl_coverage_ledger.py on first use (advisory only).
+
+    Mirrors _sampler(): crawl.py is also loaded via importlib in tests,
+    where the scripts directory is not on sys.path, so the sibling
+    import needs the fallback. Returns None when the ledger module is
+    unavailable; a ledger failure must never fail the crawl.
+    """
+    global _LEDGER,_LEDGER_TRIED
+    if _LEDGER_TRIED: return _LEDGER
+    _LEDGER_TRIED=True
+    try:
+        import crawl_coverage_ledger as module
+    except ImportError:
+        sys.path.insert(0,str(Path(__file__).resolve().parent))
+        try:
+            import crawl_coverage_ledger as module
+        except ImportError:
+            return None
+    _LEDGER=module
+    return _LEDGER
+
 def _apply_sampling(entries, state, key='url'):
     """Order source entries by sampler priority; returns (ordered, skipped).
 
@@ -3004,6 +3029,7 @@ def main(argv=None):
     p.add_argument('--snapshot',type=Path,help='Optional sites snapshot to import website descriptions for approved partners')
     p.add_argument('--captures',type=Path,help='JSON file containing provided, attributable text excerpts')
     p.add_argument('--out',type=Path,default=ROOT/'research/crawl',help='Directory for generated snapshots')
+    p.add_argument('--coverage-ledger',type=Path,help='Write a per-run collection-coverage ledger (SQLite) to this path for fetch modes; opt-in and offline, a ledger failure never fails the crawl')
     args=p.parse_args(argv)
     require_scoped_launcher(args.approved)
     if args.limit<0 or not 0<=args.follow<=5 or not 1<=args.candidates<=10 or args.delay<0 or not 0<=args.logo_limit<=5: p.error('Invalid limits or delay')
@@ -3082,6 +3108,22 @@ def main(argv=None):
             sampler.save_state(source_state)
     if globals().get('__implementation__'): data['implementation']=__implementation__
     path=args.out/f'{args.mode}-{stamp()}.json'; write_json(path,data); write_json(args.out/f'latest-{args.mode}.json',data)
+    # Issue #89: opt-in per-run coverage ledger, for exactly the fetch
+    # modes whose source_state is recorded above. The catalogue revision
+    # is the SHA-1 (40 lowercase hex, as the ledger contract requires)
+    # of the canonical JSON of the loaded catalogue — the catalogue the
+    # run actually crawled from, whether or not its file bytes were
+    # canonical. Advisory only, mirroring the crawl-progress reporter:
+    # any failure is a stderr warning, never a failed crawl.
+    if getattr(args,'coverage_ledger',None) and args.mode in ('sites','logos','profiles','partners','programs','news','company-profiles','portraits'):
+        try:
+            ledger_module=_coverage_ledger()
+            if ledger_module is None: raise ImportError('crawl_coverage_ledger module unavailable')
+            catalogue_revision=hashlib.sha1(json.dumps(catalogue,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf-8')).hexdigest()
+            report=ledger_module.record_run_ledger(args.coverage_ledger,mode=args.mode,run_id=f'{args.mode}-{stamp()}',catalogue_revision=catalogue_revision,created_at=dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),results=data.get('results',[]))
+            print(f"Coverage ledger: {args.coverage_ledger} ({len(report.get('scopes',[]))} scopes)")
+        except Exception as exc:
+            print(f'Warning: coverage ledger not written to {args.coverage_ledger}: {exc}',file=sys.stderr)
     if args.mode=='profiles': print(f"Prepared {len(data['candidates'])} unreviewed profile leads")
     if args.mode=='portraits': print(f"Prepared {sum(1 for row in data['candidates'] if row.get('kind')=='portrait')} unreviewed portrait leads")
     if args.mode=='news': print(f"Prepared {len(data['candidates'])} unreviewed news leads")

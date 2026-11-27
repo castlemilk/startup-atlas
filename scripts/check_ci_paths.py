@@ -43,6 +43,7 @@ RULES = {
     'collection': ('scripts/crawl.py', 'scripts/crawl_gap_report.py', 'scripts/publish_crawl_corpus.py',
                    'scripts/run_scoped_collection.py', 'scripts/*company*profile*.py',
                    'scripts/*company*metadata*.py', 'scripts/*early_investments.py', 'scripts/collection_coverage.py',
+                   'scripts/crawl_coverage_ledger.py',
                    'tests/test_crawl*.py', 'tests/test_company*.py', 'tests/test_scoped_implementation.py',
                    'tests/test_early_investments.py', 'tests/test_collection_coverage.py'),
     'queue': ('scripts/build-review-queue.py', 'scripts/latest_value.py', 'scripts/review_gating.py',
