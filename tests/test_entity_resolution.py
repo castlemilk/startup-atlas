@@ -192,6 +192,175 @@ class MergeTests(unittest.TestCase):
         self.assertIn('Janey', winner['aliases'])
 
 
+class UnmergeTests(unittest.TestCase):
+    """#68 (DATA-02): a merge is reversible, exactly and durably."""
+
+    def _merged_registry(self):
+        registry = tiny_registry()
+        registry['entities']['person:jane-example--airtree'] = {
+            'name': 'J. Example', 'kind': 'person', 'aliases': ['Janey'],
+            'identity_key': 'linkedin.com/in/jane-example',
+            'identity_basis': 'linkedin-url', 'merged_from': [],
+            'updated_at': '2026-11-23T00:00:00Z'}
+        er.apply_merge(registry, 'person:jane-example--airtree',
+                       'person:jane-example', basis='linkedin-url',
+                       decided_by='review-queue',
+                       decided_at='2026-11-23T01:00:00Z')
+        return registry
+
+    def test_unmerge_reverses_a_merge_exactly(self):
+        registry = self._merged_registry()
+        winner = registry['entities']['person:jane-example']
+        # Precondition: the merge added both aliases, and its record
+        # says exactly which ones it added.
+        self.assertEqual(winner['aliases'], ['J. Example', 'Janey'])
+        self.assertEqual(registry['merges'][0]['aliases_added'],
+                         ['J. Example', 'Janey'])
+        er.apply_unmerge(registry, 'person:jane-example--airtree',
+                         decided_by='tester',
+                         decided_at='2026-11-24T01:00:00Z',
+                         reason='Scoped profile is a different person')
+        self.assertEqual(registry['merges'], [])
+        self.assertEqual(winner['merged_from'], [])
+        self.assertEqual(winner['aliases'], [])
+        loser = registry['entities']['person:jane-example--airtree']
+        self.assertNotIn('merged_into', loser)
+        self.assertEqual(
+            er.resolve_canonical_id(
+                registry, 'person:jane-example--airtree'),
+            'person:jane-example--airtree')
+        # The reversal is preserved as an audit record carrying the
+        # original merge's basis, decider and date.
+        self.assertEqual(registry['unmerges'], [{
+            'from': 'person:jane-example--airtree',
+            'to': 'person:jane-example', 'basis': 'linkedin-url',
+            'merge_decided_by': 'review-queue',
+            'merge_decided_at': '2026-11-23T01:00:00Z',
+            'decided_by': 'tester',
+            'decided_at': '2026-11-24T01:00:00Z',
+            'reason': 'Scoped profile is a different person'}])
+
+    def test_unmerge_keeps_aliases_the_winner_already_had(self):
+        # The winner carried 'Janey' before the merge, so the merge
+        # did not add it and the unmerge must not remove it.
+        registry = tiny_registry()
+        registry['entities']['person:jane-example']['aliases'] = ['Janey']
+        registry['entities']['person:jane-example--airtree'] = {
+            'name': 'J. Example', 'kind': 'person', 'aliases': ['Janey'],
+            'identity_key': 'linkedin.com/in/jane-example',
+            'identity_basis': 'linkedin-url', 'merged_from': [],
+            'updated_at': '2026-11-23T00:00:00Z'}
+        er.apply_merge(registry, 'person:jane-example--airtree',
+                       'person:jane-example', basis='linkedin-url',
+                       decided_by='review-queue',
+                       decided_at='2026-11-23T01:00:00Z')
+        self.assertEqual(registry['merges'][0]['aliases_added'],
+                         ['J. Example'])
+        er.apply_unmerge(registry, 'person:jane-example--airtree',
+                         decided_by='tester',
+                         decided_at='2026-11-24T01:00:00Z')
+        self.assertEqual(
+            registry['entities']['person:jane-example']['aliases'],
+            ['Janey'])
+
+    def test_unmerge_rejects_unknown_and_unmerged_entities(self):
+        registry = tiny_registry()
+        with self.assertRaises(ValueError):
+            er.apply_unmerge(registry, 'person:missing', 'tester')
+        with self.assertRaises(ValueError):
+            er.apply_unmerge(registry, 'person:jane-example', 'tester')
+
+    def test_unmerge_reverses_a_legacy_record_without_aliases_added(self):
+        # Merge records written before aliases_added existed (e.g. by
+        # the review-queue writer) still reverse: the fallback removes
+        # the aliases apply_merge would have added.
+        registry = self._merged_registry()
+        del registry['merges'][0]['aliases_added']
+        er.apply_unmerge(registry, 'person:jane-example--airtree',
+                         decided_by='tester',
+                         decided_at='2026-11-24T01:00:00Z')
+        winner = registry['entities']['person:jane-example']
+        self.assertEqual(winner['aliases'], [])
+        self.assertEqual(winner['merged_from'], [])
+        self.assertEqual(registry['merges'], [])
+
+    def test_record_unmerge_round_trip_through_the_log_file(self):
+        with tempfile.TemporaryDirectory() as temp:
+            record = er.record_unmerge(
+                temp, 'person:jane-example--airtree', 'person:jane-example',
+                decided_by='tester', decided_at='2026-11-24T01:00:00Z',
+                reason='Not the same person')
+            self.assertEqual(er.load_unmerges(temp), [record])
+            with self.assertRaises(ValueError):
+                er.record_unmerge(
+                    temp, 'person:jane-example--airtree',
+                    'person:jane-example', decided_by='tester')
+            # Replay over a merged registry splits the pair, and
+            # replaying again is a no-op.
+            registry = self._merged_registry()
+            er.replay_unmerges(registry, temp)
+            self.assertEqual(registry['merges'], [])
+            self.assertEqual(len(registry['unmerges']), 1)
+            er.replay_unmerges(registry, temp)
+            self.assertEqual(len(registry['unmerges']), 1)
+
+    def test_replay_unmerges_without_a_log_file_is_a_no_op(self):
+        with tempfile.TemporaryDirectory() as temp:
+            registry = self._merged_registry()
+            er.replay_unmerges(registry, temp)
+            self.assertEqual(len(registry['merges']), 1)
+            self.assertEqual(registry['unmerges'], [])
+
+
+class UnmergeRegenerationTests(unittest.TestCase):
+    """A recorded unmerge survives regeneration of the registry."""
+
+    GENERATED_AT = '2026-11-25T00:00:00Z'
+
+    def _build(self, temp, unmerges=None):
+        data = Path(temp)
+        (data / 'partner-leads.json').write_text('[]', encoding='utf-8')
+        (data / 'partners-reviewed.json').write_text('{}', encoding='utf-8')
+        (data / 'partner-profiles.json').write_text(
+            json.dumps({'Example Capital': {
+                'people': [{'name': 'Jane Example', 'role': 'Partner',
+                            'source': 'https://example.vc/team',
+                            'linkedin':
+                                'https://www.linkedin.com/in/jane-example'}],
+                'companies': [], 'sponsors': []}}), encoding='utf-8')
+        (data / 'startup-research.json').write_text(
+            json.dumps({'startups': []}), encoding='utf-8')
+        if unmerges is not None:
+            (data / 'identity-unmerges.json').write_text(
+                json.dumps({'version': 1, 'unmerges': unmerges}),
+                encoding='utf-8')
+        return er.build_registry(data_dir=data, source_revision='test',
+                                 generated_at=self.GENERATED_AT)
+
+    def test_recorded_unmerge_survives_regeneration(self):
+        record = {'from': 'person:jane-example--example-capital',
+                  'to': 'person:jane-example', 'decided_by': 'tester',
+                  'decided_at': '2026-11-26T00:00:00Z',
+                  'reason': 'Namesakes, not the same person'}
+        with tempfile.TemporaryDirectory() as temp:
+            merged = self._build(temp)
+            self.assertEqual(len(merged['merges']), 1)
+            split = self._build(temp, unmerges=[record])
+            self.assertEqual(split['merges'], [])
+            scoped = split['entities'][
+                'person:jane-example--example-capital']
+            self.assertNotIn('merged_into', scoped)
+            self.assertEqual(
+                split['entities']['person:jane-example']['merged_from'],
+                [])
+            self.assertEqual(len(split['unmerges']), 1)
+            self.assertEqual(split['unmerges'][0]['basis'], 'linkedin-url')
+            self.assertEqual(split['unmerges'][0]['reason'],
+                             'Namesakes, not the same person')
+            # Regenerating again yields the identical split registry.
+            self.assertEqual(self._build(temp, unmerges=[record]), split)
+
+
 class SeedTests(unittest.TestCase):
     def test_registry_seed_is_structurally_sound(self):
         registry = er.build_registry()
@@ -451,7 +620,8 @@ class ReplayTests(unittest.TestCase):
             self.assertEqual(registry['merges'], [{
                 'from': 'partner:canva-capital', 'to': 'partner:airtree',
                 'basis': 'name-similarity', 'decided_by': 'tester',
-                'decided_at': '2026-11-23T09:00:00Z'}])
+                'decided_at': '2026-11-23T09:00:00Z',
+                'aliases_added': ['Canva Capital']}])
             self.assertNotIn('partner:rejected-co', registry['entities'])
             self.assertNotIn('partner:pending-co', registry['entities'])
 
