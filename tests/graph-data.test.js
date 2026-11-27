@@ -49,7 +49,7 @@ test('generated graph keeps startup, founder and historical funding evidence con
   assert.ok(graph.edges.some(x=>x.from==='person:melanie-perkins'&&x.to==='startup:canva'&&x.source.startsWith('https://')));
   assert.ok(graph.edges.some(x=>x.from==='partner:airtree'&&x.to==='startup:canva'&&x.source.startsWith('https://')));
   assert.ok(graph.edges.some(x=>x.from==='provider:startmate'&&x.to==='programme:startmate'&&x.kind==='offers'));
-  assert.ok(graph.edges.some(x=>x.from===teamPersonId('Elicia McDonald','Airtree')&&x.to==='partner:airtree'&&x.kind==='team_member'));
+  assert.ok(graph.edges.some(x=>x.from==='person:elicia-mcdonald'&&x.to==='partner:airtree'&&x.kind==='team_member'));
   assert.ok(entityDetails(graph,'person:melanie-perkins').related.some(x=>x.id==='startup:canva'));
   assert.ok(entityDetails(graph,'person:melanie-perkins').related.some(x=>x.id==='startup:fusion-books'));
   assert.ok(searchSnapshot(graph,'Melanie Perkins').some(x=>x.id==='person:melanie-perkins'));
