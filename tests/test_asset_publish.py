@@ -10,6 +10,7 @@ import importlib.util
 import io
 import json
 from pathlib import Path
+import random
 import struct
 import tempfile
 import unittest
@@ -321,6 +322,56 @@ class PublishTests(unittest.TestCase):
         updated = json.loads(path.read_text())
         self.assertIn("photo_url", updated["startups"][0]["founders"][0])
         self.assertEqual(updated["startups"][1], research["startups"][1])
+
+    @staticmethod
+    def noisy_jpeg(width=1200, height=1200):
+        from PIL import Image
+        raw = random.Random(20261127).randbytes(width * height * 3)
+        buffer = io.BytesIO()
+        Image.frombytes("RGB", (width, height), raw).save(buffer, format="JPEG", quality=95)
+        return buffer.getvalue()
+
+    def test_convert_downscales_oversized_derivative_and_publishes(self):
+        data = self.noisy_jpeg()
+        # The source itself exceeds the staged-asset byte cap; conversion must
+        # still accept it and shrink the derivative until it fits.
+        self.assertGreater(len(data), assets.MAX_BYTES)
+        png_bytes, record = assets.convert_image(data, "jpeg")
+        self.assertLessEqual(len(png_bytes), assets.MAX_BYTES)
+        self.assertIs(record["downscaled"], True)
+        self.assertEqual((record["source_width"], record["source_height"]), (1200, 1200))
+        self.assertLessEqual(max(record["width"], record["height"]), 512)
+        self.assertEqual(record["derivative_sha256"], hashlib.sha256(png_bytes).hexdigest())
+        blob = assets.inspect_png(png_bytes)
+        self.assertEqual((blob["width"], blob["height"]), (record["width"], record["height"]))
+        source = provenance(subject_id="person:sam-sample", role="portrait",
+                            source_kind="labelled-portrait",
+                            conversion={"original_sha256": record["original_sha256"],
+                                        "original_format": "jpeg",
+                                        "derivative_sha256": record["derivative_sha256"],
+                                        "transformation": "jpeg-to-png",
+                                        "tool": record["tool"]})
+        receipt = self.stage(data=png_bytes, source=source)
+        status, result = self.run_publish(receipt, "Sam Sample", "person:sam-sample", "portrait")
+        self.assertEqual(status, 0, result)
+        published = self.repo / "web" / "assets" / "portraits" / "sam-sample.png"
+        self.assertEqual(published.read_bytes(), png_bytes)
+        self.assertLessEqual(published.stat().st_size, assets.MAX_BYTES)
+        research = json.loads((self.repo / "data" / "startup-research.json").read_text())
+        self.assertEqual(research["startups"][0]["founders"][0]["photo_url"],
+                         "https://castlemilk.github.io/startup-atlas/assets/portraits/sam-sample.png")
+
+    def test_convert_normal_image_is_not_downscaled(self):
+        from PIL import Image
+        buffer = io.BytesIO()
+        Image.new("RGB", (24, 18), (32, 96, 160)).save(buffer, format="JPEG", quality=90)
+        png_bytes, record = assets.convert_image(buffer.getvalue(), "jpeg")
+        self.assertIs(record["downscaled"], False)
+        self.assertEqual((record["width"], record["height"]), (24, 18))
+        self.assertEqual((record["source_width"], record["source_height"]), (24, 18))
+        self.assertLessEqual(len(png_bytes), assets.MAX_BYTES)
+        blob = assets.inspect_png(png_bytes)
+        self.assertEqual((blob["width"], blob["height"]), (24, 18))
 
 
 if __name__ == "__main__":
