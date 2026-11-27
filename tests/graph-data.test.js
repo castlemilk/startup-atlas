@@ -3,6 +3,7 @@ import {readFile} from 'node:fs/promises';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { entityDetails, fundingTimelineArticles, neighborhood, rankSearchResults, searchSnapshot, searchTier, slug, teamPersonId } from '../web/graph-model.js';
+import { partnerRelationships } from '../web/relationships.js';
 
 test('funding timeline keeps reviewed evidence and hides duplicate round links', () => {
   const source = 'https://example.com/closed-offer';
@@ -353,4 +354,41 @@ test('search ranking policy orders exact, alias, prefix, name-term and context m
   const shuffled=[entities[4],entities[0],entities[3],entities[1],entities[2]];
   assert.deepEqual(rankSearchResults(shuffled,'air').map(x=>x.id),
     rankSearchResults(entities,'air').map(x=>x.id));
+});
+
+test('programme relationship edges carry freshness and confidence from their checked stamps (#71)', async () => {
+  const graph = JSON.parse(await readFile(new URL('../data/graph.json', import.meta.url), 'utf8'));
+  const nodes = new Map(graph.entities.map(x => [x.id, x]));
+  // Rebuild the expected edges from the same source records the generator
+  // consumes: every sourced relation for a partner present in the graph.
+  const known = { AWS: 'Amazon Web Services' };
+  const expected = new Map();
+  for (const [partner, relationships] of Object.entries(partnerRelationships)) {
+    const partnerId = 'partner:' + slug(partner);
+    if (!nodes.has(partnerId)) continue;
+    for (const relation of relationships) {
+      if (!relation.source) continue;
+      const providerId = 'provider:' + slug(known[relation.provider] || relation.provider);
+      expected.set(`${providerId}|${partnerId}|${relation.source}`, relation);
+    }
+  }
+  const actual = graph.edges.filter(edge => edge.kind === 'programme_relationship');
+  assert.equal(actual.length, expected.size);
+  assert.ok(actual.length > 0);
+  for (const edge of actual) {
+    const relation = expected.get(`${edge.from}|${edge.to}|${edge.source}`);
+    assert.ok(relation, `unexpected programme relationship ${edge.from} -> ${edge.to}`);
+    // Freshness derives from the relation's recorded checked date, never invented.
+    assert.equal(edge.first_seen, relation.checked);
+    assert.equal(edge.last_verified, relation.checked);
+    assert.equal(typeof edge.stale, 'boolean');
+    // Confidence follows the §2 single-source model: 0.50 base, +0.10 when
+    // the source is an endpoint's own site (primary).
+    assert.equal(edge.confidence_basis.sources, 1);
+    assert.equal(edge.confidence_basis.agreement, false);
+    assert.equal(edge.confidence_basis.inferred, false);
+    assert.equal(edge.confidence_basis.source_types.length, 1);
+    const expectedConfidence = edge.confidence_basis.source_types[0] === 'primary' ? 0.6 : 0.5;
+    assert.equal(edge.confidence, expectedConfidence);
+  }
 });
