@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-28 from data revision 4abd1ce by `npm run report:media-coverage` (#85).
+Generated 2026-11-28 from data revision 254bb8b by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -14,11 +14,11 @@ resolves to an existing local file (no initials fallback).
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 46 (84%) | 53 (96%) |
 | Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 9 (82%) | 10 (91%) |
-| Provider logos | 92 | 46 (50%) | 46 (50%) | 46 (50%) | 44 (48%) | 46 (50%) |
+| Provider logos | 92 | 47 (51%) | 47 (51%) | 47 (51%) | 45 (49%) | 47 (51%) |
 | Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 3 (7%) | 44 (96%) |
 | Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
-Public asset manifests on file: 197.
+Public asset manifests on file: 198.
 Rendered can exceed a kind's own discovered count where the graph carries an image
 reference from another record (for example a partner portfolio listing) that the
 kind's own records do not carry.
@@ -60,7 +60,7 @@ kind's own records do not carry.
 
 ## Provider logos
 
-<details><summary>Not downloaded (46)</summary>
+<details><summary>Not downloaded (45)</summary>
 
 - AI Grant — no source-attributed image reference
 - ANDHealth — no source-attributed image reference
@@ -103,7 +103,6 @@ kind's own records do not carry.
 - StartX — no source-attributed image reference
 - Startup SG — no source-attributed image reference
 - State Library Victoria — no source-attributed image reference
-- Supabase — no source-attributed image reference
 - TechSpark and West of England Mayoral Combined Authority — no source-attributed image reference
 - UK government — no source-attributed image reference
 - UMi — no source-attributed image reference
