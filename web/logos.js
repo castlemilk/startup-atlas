@@ -9,7 +9,7 @@ const logos = Object.freeze({
   'Vercel':'vercel', 'Replit':'replit', 'Blackbird':'blackbird-ventures',
   'Cloudflare':'cloudflare', 'Neon':'neon', 'MongoDB':'mongodb', 'ElevenLabs':'elevenlabs',
   'Deepgram':'deepgram', 'PostHog':'posthog', 'DigitalOcean':'digitalocean', 'Vultr':'vultr', 'Stripe':'stripe',
-  'Atlassian':'atlassian', 'Notion':'notion', 'Intercom':'intercom', 'HubSpot':'hubspot',
+  'Atlassian':'atlassian', 'Notion':'notion', 'Intercom':'intercom', 'HubSpot':'hubspot', 'Supabase':'supabase',
   'Vercel AI Accelerator':'vercel', 'Vercel Ventures':'vercel', 'Product Hunt':'producthunt',
   'Y Combinator Bookface':'ycombinator',
   "8VC":"8vc",
