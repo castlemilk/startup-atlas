@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-28 from data revision 254bb8b by `npm run report:media-coverage` (#85).
+Generated 2026-11-28 from data revision facfaaf by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -14,11 +14,11 @@ resolves to an existing local file (no initials fallback).
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 46 (84%) | 53 (96%) |
 | Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 9 (82%) | 10 (91%) |
-| Provider logos | 92 | 47 (51%) | 47 (51%) | 47 (51%) | 45 (49%) | 47 (51%) |
+| Provider logos | 92 | 58 (63%) | 58 (63%) | 58 (63%) | 56 (61%) | 58 (63%) |
 | Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 3 (7%) | 44 (96%) |
 | Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
-Public asset manifests on file: 198.
+Public asset manifests on file: 209.
 Rendered can exceed a kind's own discovered count where the graph carries an image
 reference from another record (for example a partner portfolio listing) that the
 kind's own records do not carry.
@@ -60,23 +60,12 @@ kind's own records do not carry.
 
 ## Provider logos
 
-<details><summary>Not downloaded (45)</summary>
+<details><summary>Not downloaded (34)</summary>
 
 - AI Grant — no source-attributed image reference
-- ANDHealth — no source-attributed image reference
 - Australian government — no source-attributed image reference
-- Barayamal — no source-attributed image reference
-- BytePlus — no source-attributed image reference
-- CSIRO — no source-attributed image reference
 - CSIRO / Australian government — no source-attributed image reference
-- Carthona Capital — no source-attributed image reference
 - Department for Promotion of Industry and Internal Trade — no source-attributed image reference
-- EWOR — no source-attributed image reference
-- Enterprise Singapore — no source-attributed image reference
-- Entrepreneur First — no source-attributed image reference
-- First Australians Capital — no source-attributed image reference
-- First Nations Economics — no source-attributed image reference
-- Founders Inc — no source-attributed image reference
 - Futurpreneur — no source-attributed image reference
 - Generation AI — no source-attributed image reference
 - Government e-Marketplace — no source-attributed image reference
