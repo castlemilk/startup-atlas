@@ -104,6 +104,10 @@ for (const file of designFiles.filter(file=>/\.(html|js)$/.test(file))) {
 }
 await cp('data/catalogue.json','dist/data/catalogue.json');
 await cp('data/graph.json','dist/data/graph.json');
+// The identity registry is a public graph-store document (#70): entity.js
+// reads it through the store, whose fallback mode fetches the published
+// JSON file, so it must ship alongside the other public documents.
+await cp('data/identity.json','dist/data/identity.json');
 const treemapSource = JSON.parse(await readFile('data/treemap-evidence.json','utf8'));
 const graphForTreemap = JSON.parse(await readFile('data/graph.json','utf8'));
 const treemapEvidence = indexTreemapEvidence(graphForTreemap,treemapSource);
