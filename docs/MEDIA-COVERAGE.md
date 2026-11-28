@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-28 from data revision facfaaf by `npm run report:media-coverage` (#85).
+Generated 2026-11-28 from data revision 183d3ed by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -14,11 +14,11 @@ resolves to an existing local file (no initials fallback).
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 46 (84%) | 53 (96%) |
 | Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 9 (82%) | 10 (91%) |
-| Provider logos | 92 | 58 (63%) | 58 (63%) | 58 (63%) | 56 (61%) | 58 (63%) |
+| Provider logos | 92 | 59 (64%) | 59 (64%) | 59 (64%) | 57 (62%) | 59 (64%) |
 | Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 3 (7%) | 44 (96%) |
 | Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
-Public asset manifests on file: 209.
+Public asset manifests on file: 210.
 Rendered can exceed a kind's own discovered count where the graph carries an image
 reference from another record (for example a partner portfolio listing) that the
 kind's own records do not carry.
@@ -60,7 +60,7 @@ kind's own records do not carry.
 
 ## Provider logos
 
-<details><summary>Not downloaded (34)</summary>
+<details><summary>Not downloaded (33)</summary>
 
 - AI Grant — no source-attributed image reference
 - Australian government — no source-attributed image reference
@@ -89,7 +89,6 @@ kind's own records do not carry.
 - South Australian Government — no source-attributed image reference
 - South Australian Office for Small and Family Business — no source-attributed image reference
 - South Park Commons — no source-attributed image reference
-- StartX — no source-attributed image reference
 - Startup SG — no source-attributed image reference
 - State Library Victoria — no source-attributed image reference
 - TechSpark and West of England Mayoral Combined Authority — no source-attributed image reference
