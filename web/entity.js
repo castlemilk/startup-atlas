@@ -7,7 +7,7 @@ import { icon, renderEvidenceHeading } from './atlas-ui.js';
 import { companyLocationFacts, countryName, indexCompanies } from './atlas-exploration.js';
 import { createProfileEvidence, profileSource, profileTime, recordedProfileDate } from './profile-evidence.js';
 import { installProfileTabs } from './profile-tabs.js';
-import {buildEntityRedirects,  resolveEntityRedirect } from './entity-redirects.js';
+import { buildEntityRedirects, resolveEntityRedirect } from './entity-redirects.js';
 import { edgeKindLabel, microGraphLayout, microGraphNameLines, microGraphNeighbours, microGraphNodeArt } from './micro-graph.js';
 
 const root = document.getElementById('entity-profile');
