@@ -5,6 +5,7 @@ import {readFile} from 'node:fs/promises';
 test('location selection remains usable when WebGL cannot be loaded',async()=>{
   let script=await readFile(new URL('../web/globe.js',import.meta.url),'utf8');
   script=script.replace("import { escapeHtml as esc, sourceUrl } from './logic.js';","const esc=x=>String(x);const sourceUrl=x=>x;")
+    .replace("import { openGraph } from './graph-store.js';","const openGraph=async()=>({document:async name=>{const response=await fetch('./data/'+name,{cache:'no-cache'});if(!response.ok)throw new Error('Data unavailable');return response.json();}});")
     .replace("await import('./vendor/three.module.min.js')","await Promise.reject(new Error('WebGL unavailable'))");
   class Context {
     fillRect(){} beginPath(){} moveTo(){} lineTo(){} closePath(){} fill(){} stroke(){} arc(){} save(){} restore(){} clearRect(){} drawImage(){} putImageData(){} setTransform(){}
@@ -43,4 +44,12 @@ test('location selection remains usable when WebGL cannot be loaded',async()=>{
   assert.equal(elements['globe-loading-status'].textContent,'Globe ready');
   assert.match(script,/showLocation\(hit\.marker\.location,true\)/);
   assert.match(script,/showLocation\(hit\.object\.userData\.location,true\)/);
+});
+
+test('globe reads its documents through the graph store, not direct data fetches (#70)',async()=>{
+  const source=await readFile(new URL('../web/globe.js',import.meta.url),'utf8');
+  assert.match(source,/import \{ openGraph \} from '\.\/graph-store\.js';/);
+  assert.match(source,/store\.document\('map-locations\.json'\)/);
+  assert.match(source,/store\.document\('land\.geojson'\)/);
+  assert.ok(!/\bfetch\(/.test(source),'globe.js must not fetch data documents directly');
 });
