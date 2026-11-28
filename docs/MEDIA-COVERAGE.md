@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-28 from data revision 183d3ed by `npm run report:media-coverage` (#85).
+Generated 2026-11-28 from data revision 7f976dd by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -12,13 +12,13 @@ resolves to an existing local file (no initials fallback).
 
 | Entity kind | Total | Discovered | Published | Downloaded | Approved | Rendered |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 46 (84%) | 53 (96%) |
+| Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 48 (87%) | 53 (96%) |
 | Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 9 (82%) | 10 (91%) |
 | Provider logos | 92 | 59 (64%) | 59 (64%) | 59 (64%) | 57 (62%) | 59 (64%) |
 | Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 3 (7%) | 44 (96%) |
 | Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
-Public asset manifests on file: 210.
+Public asset manifests on file: 212.
 Rendered can exceed a kind's own discovered count where the graph carries an image
 reference from another record (for example a partner portfolio listing) that the
 kind's own records do not carry.
@@ -32,15 +32,13 @@ kind's own records do not carry.
 
 </details>
 
-<details><summary>Downloaded but not manifest-approved (7)</summary>
+<details><summary>Downloaded but not manifest-approved (5)</summary>
 
 - Canva — no public asset manifest
 - Fusion Books — no public asset manifest
-- Draper — no public asset manifest
 - Gilmour Space — no public asset manifest
 - Go1 — no public asset manifest
 - Loam Bio — no public asset manifest
-- FloodMapp — no public asset manifest
 
 </details>
 
