@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-28 from data revision d05d11b by `npm run report:media-coverage` (#85).
+Generated 2026-11-28 from data revision 4abd1ce by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -14,11 +14,11 @@ resolves to an existing local file (no initials fallback).
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 46 (84%) | 53 (96%) |
 | Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 9 (82%) | 10 (91%) |
-| Provider logos | 92 | 46 (50%) | 46 (50%) | 46 (50%) | 10 (11%) | 46 (50%) |
+| Provider logos | 92 | 46 (50%) | 46 (50%) | 46 (50%) | 44 (48%) | 46 (50%) |
 | Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 3 (7%) | 44 (96%) |
 | Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
-Public asset manifests on file: 163.
+Public asset manifests on file: 197.
 Rendered can exceed a kind's own discovered count where the graph carries an image
 reference from another record (for example a partner portfolio listing) that the
 kind's own records do not carry.
@@ -111,44 +111,10 @@ kind's own records do not carry.
 
 </details>
 
-<details><summary>Downloaded but not manifest-approved (36)</summary>
+<details><summary>Downloaded but not manifest-approved (2)</summary>
 
-- Alibaba Cloud — no public asset manifest
-- Amazon Web Services — no public asset manifest
-- Anthropic — no public asset manifest
 - Antler — no public asset manifest
-- Atlassian — no public asset manifest
-- Baseten — no public asset manifest
 - Blackbird — no public asset manifest
-- Cerebras — no public asset manifest
-- Cloudflare — no public asset manifest
-- Cognition — no public asset manifest
-- DeepInfra — no public asset manifest
-- Deepgram — no public asset manifest
-- DigitalOcean — no public asset manifest
-- ElevenLabs — no public asset manifest
-- Fireworks AI — no public asset manifest
-- GitHub — no public asset manifest
-- Google Cloud — no public asset manifest
-- Google for Startups — no public asset manifest
-- HubSpot — no public asset manifest
-- Intercom — no public asset manifest
-- Microsoft — no public asset manifest
-- Modal — no public asset manifest
-- MongoDB — no public asset manifest
-- NVIDIA — no public asset manifest
-- Nebius — no public asset manifest
-- Neon — no public asset manifest
-- Notion — no public asset manifest
-- OpenAI — no public asset manifest
-- Oracle — no public asset manifest
-- PostHog — no public asset manifest
-- Replit — no public asset manifest
-- Stripe — no public asset manifest
-- Together AI — no public asset manifest
-- Vercel — no public asset manifest
-- Vultr — no public asset manifest
-- xAI — no public asset manifest
 
 </details>
 
