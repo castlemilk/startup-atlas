@@ -5,15 +5,10 @@ import { slug, teamPersonId } from './graph-model.js';
 import { icon, renderEvidenceHeading } from './atlas-ui.js';
 import { createProfileEvidence, profileSource as link, profileTime, recordedProfileDate } from './profile-evidence.js';
 import { installProfileTabs } from './profile-tabs.js';
+import { openGraph } from './graph-store.js';
 
 const root = document.getElementById('profile');
 const name = new URLSearchParams(location.search).get('name') || '';
-
-async function fetchJson(path) {
-  const response = await fetch(path, { cache: 'no-cache' });
-  if (!response.ok) throw new Error('Unavailable');
-  return response.json();
-}
 
 const socials = items => Array.isArray(items) ? items.filter(item => sourceUrl(item.source)).map(item => link(item.url, item.label)).join(' ') : '';
 const initials = value => value.trim().split(/\s+/).slice(0, 2).map(part => part[0] || '').join('').toUpperCase();
@@ -116,12 +111,19 @@ function installCompanyInspector(companies, render, evidence, nav) {
 }
 
 async function renderProfile() {
+  // Read every document through the graph store (#70), the published
+  // snapshot the other surfaces read: the database in database mode, the
+  // published JSON documents in fallback mode. The async wrappers keep a
+  // synchronous store failure for one document settling as a rejection, so
+  // the supplemental documents stay independently optional.
+  const store = await openGraph();
+  const readDocument = async documentName => store.document(documentName);
   const [catalogue, supplemental] = await Promise.all([
-    fetchJson('./data/catalogue.json'),
+    readDocument('catalogue.json'),
     Promise.allSettled([
-      fetchJson('./data/partners-reviewed.json'),
-      fetchJson('./data/partner-profiles.json'),
-      fetchJson('./data/map-locations.json')
+      readDocument('partners-reviewed.json'),
+      readDocument('partner-profiles.json'),
+      readDocument('map-locations.json')
     ])
   ]);
   if (!Array.isArray(catalogue.partnerLeads) || !catalogue.partnerLeads.includes(name)) {
