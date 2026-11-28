@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-28 from data revision 7f976dd by `npm run report:media-coverage` (#85).
+Generated 2026-11-28 from data revision f18e109 by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -14,11 +14,11 @@ resolves to an existing local file (no initials fallback).
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 48 (87%) | 53 (96%) |
 | Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 9 (82%) | 10 (91%) |
-| Provider logos | 92 | 59 (64%) | 59 (64%) | 59 (64%) | 57 (62%) | 59 (64%) |
+| Provider logos | 92 | 68 (74%) | 68 (74%) | 68 (74%) | 65 (71%) | 67 (73%) |
 | Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 3 (7%) | 44 (96%) |
 | Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
-Public asset manifests on file: 212.
+Public asset manifests on file: 219.
 Rendered can exceed a kind's own discovered count where the graph carries an image
 reference from another record (for example a partner portfolio listing) that the
 kind's own records do not carry.
@@ -58,27 +58,18 @@ kind's own records do not carry.
 
 ## Provider logos
 
-<details><summary>Not downloaded (33)</summary>
+<details><summary>Not downloaded (24)</summary>
 
 - AI Grant — no source-attributed image reference
 - Australian government — no source-attributed image reference
 - CSIRO / Australian government — no source-attributed image reference
 - Department for Promotion of Industry and Internal Trade — no source-attributed image reference
-- Futurpreneur — no source-attributed image reference
-- Generation AI — no source-attributed image reference
 - Government e-Marketplace — no source-attributed image reference
 - Government of India — no source-attributed image reference
 - Government of Western Australia — Department of Water and Environmental Regulation — no source-attributed image reference
 - Illume Ventures — no source-attributed image reference
-- Innovation Victoria — no source-attributed image reference
 - Innovative Solutions Canada / Shared Services Canada — no source-attributed image reference
-- Loughborough University — no source-attributed image reference
-- MLAI — no source-attributed image reference
-- Melbourne Accelerator Program — no source-attributed image reference
 - National Research Council Canada — no source-attributed image reference
-- Northern Territory Government — no source-attributed image reference
-- Northern Territory government — no source-attributed image reference
-- On Deck — no source-attributed image reference
 - Pacific Economic Development Canada — no source-attributed image reference
 - Press Play Ventures — no source-attributed image reference
 - Queensland Government — no source-attributed image reference
@@ -96,10 +87,11 @@ kind's own records do not carry.
 
 </details>
 
-<details><summary>Downloaded but not manifest-approved (2)</summary>
+<details><summary>Downloaded but not manifest-approved (3)</summary>
 
 - Antler — no public asset manifest
 - Blackbird — no public asset manifest
+- Innovation Victoria — no public asset manifest
 
 </details>
 
