@@ -1,4 +1,5 @@
 import { escapeHtml as esc, sourceUrl } from './logic.js';
+import { openGraph } from './graph-store.js';
 
 const $ = id => document.getElementById(id);
 let canvas=$('atlas-globe');
@@ -204,8 +205,12 @@ function createGlobe(geojson,THREE) {
 }
 
 try {
-  const response=await fetch('./data/map-locations.json',{cache:'no-cache'});if(!response.ok)throw new Error('Locations unavailable');
-  locations=await response.json();if(!Array.isArray(locations)||!locations.length)throw new Error('No locations');
+  // Read the curated places through the graph store (#70), the same
+  // published snapshot the directory reads on this page: the database in
+  // database mode, the published JSON document in fallback mode.
+  const store=await openGraph();
+  locations=await store.document('map-locations.json');
+  if(!Array.isArray(locations)||!locations.length)throw new Error('No locations');
   $('globe-count').textContent=`${locations.length} places · curated sample`;
   list.innerHTML=locations.map(location=>`<button type="button" data-location="${esc(location.id)}" aria-pressed="false">${esc(location.city)}</button>`).join('');
   showLocation(locations.find(location=>location.id==='london')||locations[0],false);
@@ -219,8 +224,7 @@ try {
   });
   updateLoading('Mapping the coastline…');
   try {
-    const land=await fetch('./data/land.geojson');if(!land.ok)throw new Error('Map unavailable');
-    const geojson=await land.json();
+    const geojson=await store.document('land.geojson');
     updateLoading('Rendering the globe…');
     await nextPaint();
     try {const THREE=await import('./vendor/three.module.min.js');globe=createGlobe(geojson,THREE);}
