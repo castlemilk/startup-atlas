@@ -53,6 +53,17 @@ const logos = Object.freeze({
   "Henson Venture Partners":"henson-venture-partners.png",
   "Jumpstart Studio":"jumpstart-studio.png",
   "Kaszek":"kaszek",
+  "ANDHealth":"andhealth",
+  "Barayamal":"barayamal",
+  "BytePlus":"byteplus",
+  "EWOR":"ewor",
+  "Enterprise Singapore":"enterprise-singapore",
+  "CSIRO":"csiro.png",
+  "Carthona Capital":"carthona-capital.png",
+  "Entrepreneur First":"entrepreneur-first.png",
+  "First Australians Capital":"first-australians-capital.png",
+  "First Nations Economics":"first-nations-economics.png",
+  "Founders Inc":"founders-inc.png",
 });
 export function logoFor(name) {
   const slug=Object.hasOwn(logos,name)?logos[name]:null;
@@ -64,8 +75,8 @@ export const logoEntries=Object.freeze(Object.entries(logos));
 export const paddedCanvaMark=url=>url.endsWith('/65deeccca712cb796025a2bd_Canva.png');
 
 // White marks use dark tiles; wordmarks need more horizontal space.
-const darkTiles = new Set(['8VC','Accel','Bain Capital Ventures','Bessemer','CRV',"Airtree","Square Peg","Seedcamp","Investible","Rampersand","Arkeus","iBnkVault","Vixia","Temporal","MedTech Actuator","ENA Respiratory","Cicada Innovations","Skykraft","Henson Venture Partners","Q-CTRL"]);
-const wideMarks = new Set(['Blackbird Ventures','Antler','Startmate','Flybridge',"Airtree","Square Peg","Artesian","Brandon Capital","Seedcamp","Investible","Boson Ventures","Rampersand","Synthesia","Brainwaves","Neuralindex","Deeligence","Ascenda","Boab AI","Temporal","Quantum Brilliance","Strongroom AI","Arkeus","FlowGo","iBnkVault","Thermal Dawn","Vixia","Superstat","CheckGen","Goterra","Evatto","Cicada Innovations","Skykraft","Kaszek","Q-CTRL"]);
+const darkTiles = new Set(['8VC','Accel','Bain Capital Ventures','Bessemer','CRV',"Airtree","Square Peg","Seedcamp","Investible","Rampersand","Arkeus","iBnkVault","Vixia","Temporal","MedTech Actuator","ENA Respiratory","Cicada Innovations","Skykraft","Henson Venture Partners","Q-CTRL","Carthona Capital"]);
+const wideMarks = new Set(['Blackbird Ventures','Antler','Startmate','Flybridge',"Airtree","Square Peg","Artesian","Brandon Capital","Seedcamp","Investible","Boson Ventures","Rampersand","Synthesia","Brainwaves","Neuralindex","Deeligence","Ascenda","Boab AI","Temporal","Quantum Brilliance","Strongroom AI","Arkeus","FlowGo","iBnkVault","Thermal Dawn","Vixia","Superstat","CheckGen","Goterra","Evatto","Cicada Innovations","Skykraft","Kaszek","Q-CTRL","Barayamal","Carthona Capital"]);
 export function logoClassFor(name) {
   return [darkTiles.has(name)?'logo-on-dark':'',wideMarks.has(name)?'logo-wide':''].filter(Boolean).join(' ');
 }
