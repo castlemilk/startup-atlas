@@ -1,6 +1,6 @@
 # Media coverage report
 
-Generated 2026-11-28 from data revision f18e109 by `npm run report:media-coverage` (#85).
+Generated 2026-11-28 from data revision f1ea2b0 by `npm run report:media-coverage` (#85).
 Counts are computed from the committed records, `web/logos.js`, the public asset
 manifests in `web/assets/manifests/` and the published graph — not from live fetches.
 
@@ -14,11 +14,11 @@ resolves to an existing local file (no initials fallback).
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Startup logos | 55 | 53 (96%) | 53 (96%) | 53 (96%) | 48 (87%) | 53 (96%) |
 | Partner logos | 11 | 10 (91%) | 10 (91%) | 10 (91%) | 9 (82%) | 10 (91%) |
-| Provider logos | 92 | 68 (74%) | 68 (74%) | 68 (74%) | 65 (71%) | 67 (73%) |
+| Provider logos | 92 | 73 (79%) | 73 (79%) | 73 (79%) | 70 (76%) | 72 (78%) |
 | Portfolio company logos | 46 | 14 (30%) | 3 (7%) | 3 (7%) | 3 (7%) | 44 (96%) |
 | Portraits (founders & partner people) | 146 | 104 (71%) | 98 (67%) | 98 (67%) | 98 (67%) | 98 (67%) |
 
-Public asset manifests on file: 219.
+Public asset manifests on file: 224.
 Rendered can exceed a kind's own discovered count where the graph carries an image
 reference from another record (for example a partner portfolio listing) that the
 kind's own records do not carry.
@@ -58,7 +58,7 @@ kind's own records do not carry.
 
 ## Provider logos
 
-<details><summary>Not downloaded (24)</summary>
+<details><summary>Not downloaded (19)</summary>
 
 - AI Grant — no source-attributed image reference
 - Australian government — no source-attributed image reference
@@ -74,16 +74,11 @@ kind's own records do not carry.
 - Press Play Ventures — no source-attributed image reference
 - Queensland Government — no source-attributed image reference
 - STATION F — no source-attributed image reference
-- Side Stage Ventures — no source-attributed image reference
 - South Australian Government — no source-attributed image reference
 - South Australian Office for Small and Family Business — no source-attributed image reference
-- South Park Commons — no source-attributed image reference
-- Startup SG — no source-attributed image reference
-- State Library Victoria — no source-attributed image reference
 - TechSpark and West of England Mayoral Combined Authority — no source-attributed image reference
 - UK government — no source-attributed image reference
 - UMi — no source-attributed image reference
-- Z Fellows — no source-attributed image reference
 
 </details>
 
