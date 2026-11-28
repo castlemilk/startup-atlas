@@ -7,7 +7,7 @@ import { icon, renderEvidenceHeading } from './atlas-ui.js';
 import { companyLocationFacts, countryName, indexCompanies } from './atlas-exploration.js';
 import { createProfileEvidence, profileSource, profileTime, recordedProfileDate } from './profile-evidence.js';
 import { installProfileTabs } from './profile-tabs.js';
-import { resolveEntityRedirect } from './entity-redirects.js';
+import { buildEntityRedirects, resolveEntityRedirect } from './entity-redirects.js';
 import { edgeKindLabel, microGraphLayout, microGraphNameLines, microGraphNeighbours, microGraphNodeArt } from './micro-graph.js';
 
 const root = document.getElementById('entity-profile');
@@ -260,12 +260,16 @@ function measureProfileNavigation() {
   if (typeof ResizeObserver === 'function') new ResizeObserver(sync).observe(nav);
 }
 
-async function mergedTarget(id) {
+async function mergedTarget(id, store) {
   try {
-    const response = await fetch('./data/entity-redirects.json', { cache: 'no-cache' });
-    if (!response.ok) return null;
-    const published = await response.json();
-    return resolveEntityRedirect(id, published.redirects ?? published);
+    // Read the identity registry through the graph store (#70): the
+    // database's public document in database mode, the published JSON
+    // document in fallback mode. The redirect map is derived from it with
+    // the same builder the site build uses, so merged-ID handling cannot
+    // drift between the two paths.
+    const identityRegistry = await store.document('identity.json');
+    const redirects = buildEntityRedirects(identityRegistry, new Set(store.graph.entities.map(entity => entity.id)));
+    return resolveEntityRedirect(id, redirects);
   } catch {
     return null;
   }
@@ -280,7 +284,7 @@ async function renderProfile() {
   } catch {
     // A shared link may name an ID retired by a merge (#93): follow the
     // published redirect to the canonical record instead of dead-ending.
-    const target = await mergedTarget(profileId);
+    const target = await mergedTarget(profileId, store);
     if (!target) throw new Error('Entity not found');
     mergedFrom = profileId;
     profileId = target;
